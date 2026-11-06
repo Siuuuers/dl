@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Export YOLO-pose draft .txt labels from cassette_lower_epoch173 (CPU ok)."""
 from pathlib import Path
-import shutil
 from ultralytics import YOLO
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,11 +40,10 @@ def fmt(row):
 
 
 def main():
+    if OUT.exists():
+        raise FileExistsError(f'{OUT} already exists. Move it before exporting again to preserve corrected labels.')
     assert WEIGHTS.exists(), WEIGHTS
     model = YOLO(str(WEIGHTS))
-    # wipe/recreate data_pred skeleton
-    if OUT.exists():
-        shutil.rmtree(OUT)
     for split in SPLITS:
         (OUT / 'images' / split).mkdir(parents=True)
         (OUT / 'labels' / split).mkdir(parents=True)
