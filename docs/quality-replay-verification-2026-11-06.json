@@ -1,0 +1,445 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-11-06T14:56:13.825956+00:00",
+  "scope": "Replay diagnostics on already saved predictions; no new model inference, training, reference edits or acceptance approval.",
+  "run_status": {
+    "status": "complete",
+    "exit_code": 0,
+    "scored_image_threshold_pairs": 60,
+    "diagnostic_only": true
+  },
+  "focused_tests": {
+    "command": "python3 scripts/check_pose_quality.py",
+    "exit_code": 0,
+    "passed": 12,
+    "source_revision": "6ae48d57865611fc9d829e429bbf3b5b387fcf24",
+    "test_file_sha256": "5053a3063f829484b1489bbf36b1ed6a2eda17893d53f749981c536f6579a8b0"
+  },
+  "independent_calculation_comparison": {
+    "aggregate_detection_counts": "exact",
+    "aggregate_radius_counts_and_rates": "exact for all three radii at all three box thresholds",
+    "per_image_detection_and_5px_counts": "exact for all 60 image/threshold pairs",
+    "aggregate_and_per_image_unlocatable_availability_counts": "exact for all 60 image/threshold pairs"
+  },
+  "output_sha256": {
+    "quality-per-image.csv": "56042fbf4878bc9aac9727c0b1f72fa95c9dec279b00d82f9c748b964f8797c3",
+    "quality-per-image.json": "ff80859965013ed3b7019641d6d5393346b1ebe315e9bc9a501c79cdbc7ade2c",
+    "quality-summary.json": "5e2860e308e15b97871364ded445b40c7e68e64a8a0096d54744e391f8fc95a9",
+    "run_status.json": "1a111220ade676e37a00cec0af5d5adefef1a276ef4c722c807f54156a7ec293"
+  },
+  "quality_summary": {
+    "schema_version": 1,
+    "diagnostic_only": true,
+    "created_at_utc": "2026-11-06T14:55:13.938351+00:00",
+    "source": {
+      "revision": "6ae48d57865611fc9d829e429bbf3b5b387fcf24",
+      "working_tree_status": "",
+      "files_sha256": {
+        "scripts/evaluate_pose.py": "23f6de84bf9dc487a0442476fee252bc8a87a75d6072f3ce44a6177f9d97c970",
+        "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+        "scripts/diagnose_pose_quality.py": "2d931efbe0f771121a36dbb6da1e7056f8eded745a320f2bb00de6fb4d110d28"
+      }
+    },
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/scratch/4bca12825372/dl-baseline/scripts/diagnose_pose_quality.py",
+      "--predictions",
+      "reports/baseline-published-20261106/predictions.jsonl",
+      "--radii",
+      "2",
+      "5",
+      "10",
+      "--output",
+      "reports/quality-published-20261106"
+    ],
+    "predictions": {
+      "path": "/workspace/scratch/4bca12825372/dl-baseline/reports/baseline-published-20261106/predictions.jsonl",
+      "sha256": "fe0cf4ca55cc828d5740fda06ca49e6c677c277d8c261c84732bf9c4fd1fa51a",
+      "original_inference_source": {
+        "revision": "3bc783f1e53a477a095ac29160674f07e393348d",
+        "working_tree_status": "",
+        "files_sha256": {
+          "scripts/evaluate_pose.py": "23f6de84bf9dc487a0442476fee252bc8a87a75d6072f3ce44a6177f9d97c970",
+          "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+        }
+      },
+      "original_inference_created_at_utc": "2026-11-06T14:05:43.798460+00:00",
+      "inference": {
+        "imgsz": 1280,
+        "rect": true,
+        "batch": 1,
+        "nms": true,
+        "iou": 0.7,
+        "max_det": 300,
+        "quantize": 32,
+        "save": false,
+        "save_txt": false,
+        "save_crop": false,
+        "show": false,
+        "verbose": false
+      },
+      "runtime": {
+        "python": "3.12.14",
+        "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+        "device_requested": "cpu",
+        "torch": "2.10.0+cpu",
+        "torch_cuda": null,
+        "torch_threads_requested": 4,
+        "ultralytics": "8.4.182",
+        "packages": {
+          "torchvision": "0.25.0+cpu",
+          "numpy": "2.5.4",
+          "Pillow": "13.0.0",
+          "opencv-python": "5.0.0.93"
+        },
+        "device_actual": "cpu",
+        "backend_end2end": false,
+        "backend_fp16": false,
+        "torch_threads": 4
+      }
+    },
+    "reference": {
+      "model_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+      "manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+      "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+      "weights_loaded_or_verified_in_this_diagnostic": false,
+      "images": [
+        {
+          "id": "new_000007",
+          "image": "images/val/new_000007.png",
+          "label": "labels/val/new_000007.txt",
+          "image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+          "label_sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000008",
+          "image": "images/val/new_000008.png",
+          "label": "labels/val/new_000008.txt",
+          "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+          "label_sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000009",
+          "image": "images/val/new_000009.png",
+          "label": "labels/val/new_000009.txt",
+          "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+          "label_sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000010",
+          "image": "images/val/new_000010.png",
+          "label": "labels/val/new_000010.txt",
+          "image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+          "label_sha256": "9a0cc16ca96d094b1c7849b829ec67625d7569666d5753bd660006c9eecbf3c6",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000011",
+          "image": "images/val/new_000011.png",
+          "label": "labels/val/new_000011.txt",
+          "image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+          "label_sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000053",
+          "image": "images/val/new_000053.png",
+          "label": "labels/val/new_000053.txt",
+          "image_sha256": "dfc3621b0387b0da774001334c12c65574ae0084131b154d2f6216e420573d72",
+          "label_sha256": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000054",
+          "image": "images/val/new_000054.png",
+          "label": "labels/val/new_000054.txt",
+          "image_sha256": "cd22201fc88724a2b2d17eb1840af4a88b21dd06ca31a0cdb90172281d8a00d0",
+          "label_sha256": "ab47c7bbb668f33427d740bce989381a0292ebdb0f3c0b0d9ab9c0bb1791d1ce",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000055",
+          "image": "images/val/new_000055.png",
+          "label": "labels/val/new_000055.txt",
+          "image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+          "label_sha256": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000056",
+          "image": "images/val/new_000056.png",
+          "label": "labels/val/new_000056.txt",
+          "image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+          "label_sha256": "65d4820136ea23e8be8e467a15c60e06831fe0b59d903b89e1f12d6b863a28e4",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000057",
+          "image": "images/val/new_000057.png",
+          "label": "labels/val/new_000057.txt",
+          "image_sha256": "39fd900aa786267bd296630fe8ff49f76ce3094268246a65aaa2542fe4e79e11",
+          "label_sha256": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000058",
+          "image": "images/val/new_000058.png",
+          "label": "labels/val/new_000058.txt",
+          "image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+          "label_sha256": "e97220280deda6e39ec9663be2110a208f134305171d882992303dcfc75ca23e",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000059",
+          "image": "images/val/new_000059.png",
+          "label": "labels/val/new_000059.txt",
+          "image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+          "label_sha256": "63c5c7813abc3ce8ca1398f78e00ac996d4e66b59e3794ef6c7651ac99353117",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000086",
+          "image": "images/val/new_000086.png",
+          "label": "labels/val/new_000086.txt",
+          "image_sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+          "label_sha256": "1bcf8922954afe0b1bcfda7a28219e6ca8c25ad4fe8b010d111a45f538854598",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000087",
+          "image": "images/val/new_000087.png",
+          "label": "labels/val/new_000087.txt",
+          "image_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+          "label_sha256": "4620cea073b82f3aef412af275e54bf25b8acdb8aa98dfc1c3643388348d76df",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000088",
+          "image": "images/val/new_000088.png",
+          "label": "labels/val/new_000088.txt",
+          "image_sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+          "label_sha256": "15503652de9a8bba58f3a92749adcaed1f6333be3694341f3adfd49c80600693",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000089",
+          "image": "images/val/new_000089.png",
+          "label": "labels/val/new_000089.txt",
+          "image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+          "label_sha256": "bd1101bdf69c50cf7bfee6d7a4e4b861c0e2d44307a02bc06fffa9d645e498ea",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000090",
+          "image": "images/val/new_000090.png",
+          "label": "labels/val/new_000090.txt",
+          "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+          "label_sha256": "3a4f524cd0731a75cbab6d73a0c49d45f6ce81f050e4dbd30e88dd8b5228233e",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000146",
+          "image": "images/val/new_000146.png",
+          "label": "labels/val/new_000146.txt",
+          "image_sha256": "77e6af710edebef707c4724578ea5e3227fb277b0914c7c8abe1e144f239bb4e",
+          "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000147",
+          "image": "images/val/new_000147.png",
+          "label": "labels/val/new_000147.txt",
+          "image_sha256": "2db9797f9b2011e71e9e22c9408e93ab5f7970aff2cde1f1d44a7d89d9221eee",
+          "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "id": "new_000148",
+          "image": "images/val/new_000148.png",
+          "label": "labels/val/new_000148.txt",
+          "image_sha256": "eadb43382d2e9f5773f42211adff1a9e1c2852a3011dbd3662885e4a1c00e328",
+          "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "width": 1280,
+          "height": 720
+        }
+      ]
+    },
+    "procedure": {
+      "matching_iou": 0.5,
+      "endpoint_confidence": 0.5,
+      "radii_px": [
+        2.0,
+        5.0,
+        10.0
+      ],
+      "radii_are_illustrative_not_acceptance_criteria": true,
+      "endpoint_success": "Corresponding returned endpoint has Euclidean original-pixel error <= radius; denominator includes all gold-visible endpoints and misses.",
+      "both_point_success": "Both corresponding endpoints returned and each error <= radius; denominator is all objects with both gold points visible, including misses.",
+      "availability": "returned_on_unlocatable_reference counts eligible coordinates for gold v0 endpoints only on matched objects; denominator is unlocatable_on_matched_objects. No hidden coordinate error is computed.",
+      "returned": "Endpoint confidence >= 0.5, finite coordinates, 0 <= x < width and 0 <= y < height on a matched object.",
+      "zero_denominator": "null; empty scenes still contribute detection false positives",
+      "new_inference_or_training": false
+    },
+    "limits": [
+      "Pixel radii are illustrative; no acceptance pass/fail decision is made.",
+      "Development validation already used for checkpoint selection; points and related scenes are not independent trials.",
+      "Reference-v0 output availability is a disagreement diagnostic, not proof of a physical false positive or its coordinate error."
+    ],
+    "metrics": [
+      {
+        "box_confidence": 0.15,
+        "gold_count": 664,
+        "prediction_count": 721,
+        "tp": 631,
+        "fn": 33,
+        "fp": 90,
+        "visible_endpoints": 1227,
+        "returned_visible_endpoints": 1189,
+        "both_visible_objects": 584,
+        "both_visible_objects_with_both_returned": 571,
+        "unlocatable_reference_endpoints": 101,
+        "unlocatable_on_matched_objects": 72,
+        "returned_on_unlocatable_reference": 64,
+        "image_count": 20,
+        "object_precision": 0.8751733703190014,
+        "object_recall": 0.9503012048192772,
+        "visible_endpoint_coverage": 0.9690301548492257,
+        "both_visible_objects_returned_fraction": 0.9777397260273972,
+        "returned_on_unlocatable_reference_fraction": 0.8888888888888888,
+        "radii": [
+          {
+            "radius_px": 2.0,
+            "visible_endpoints_within_radius": 737,
+            "both_visible_objects_within_radius": 263,
+            "visible_endpoint_success_rate": 0.6006519967400163,
+            "both_visible_object_success_rate": 0.4503424657534247
+          },
+          {
+            "radius_px": 5.0,
+            "visible_endpoints_within_radius": 1122,
+            "both_visible_objects_within_radius": 521,
+            "visible_endpoint_success_rate": 0.9144254278728606,
+            "both_visible_object_success_rate": 0.8921232876712328
+          },
+          {
+            "radius_px": 10.0,
+            "visible_endpoints_within_radius": 1185,
+            "both_visible_objects_within_radius": 568,
+            "visible_endpoint_success_rate": 0.9657701711491442,
+            "both_visible_object_success_rate": 0.9726027397260274
+          }
+        ]
+      },
+      {
+        "box_confidence": 0.25,
+        "gold_count": 664,
+        "prediction_count": 688,
+        "tp": 625,
+        "fn": 39,
+        "fp": 63,
+        "visible_endpoints": 1227,
+        "returned_visible_endpoints": 1184,
+        "both_visible_objects": 584,
+        "both_visible_objects_with_both_returned": 570,
+        "unlocatable_reference_endpoints": 101,
+        "unlocatable_on_matched_objects": 66,
+        "returned_on_unlocatable_reference": 61,
+        "image_count": 20,
+        "object_precision": 0.9084302325581395,
+        "object_recall": 0.9412650602409639,
+        "visible_endpoint_coverage": 0.9649551752241239,
+        "both_visible_objects_returned_fraction": 0.976027397260274,
+        "returned_on_unlocatable_reference_fraction": 0.9242424242424242,
+        "radii": [
+          {
+            "radius_px": 2.0,
+            "visible_endpoints_within_radius": 737,
+            "both_visible_objects_within_radius": 263,
+            "visible_endpoint_success_rate": 0.6006519967400163,
+            "both_visible_object_success_rate": 0.4503424657534247
+          },
+          {
+            "radius_px": 5.0,
+            "visible_endpoints_within_radius": 1121,
+            "both_visible_objects_within_radius": 521,
+            "visible_endpoint_success_rate": 0.9136104319478403,
+            "both_visible_object_success_rate": 0.8921232876712328
+          },
+          {
+            "radius_px": 10.0,
+            "visible_endpoints_within_radius": 1182,
+            "both_visible_objects_within_radius": 568,
+            "visible_endpoint_success_rate": 0.9633251833740831,
+            "both_visible_object_success_rate": 0.9726027397260274
+          }
+        ]
+      },
+      {
+        "box_confidence": 0.4,
+        "gold_count": 664,
+        "prediction_count": 666,
+        "tp": 622,
+        "fn": 42,
+        "fp": 44,
+        "visible_endpoints": 1227,
+        "returned_visible_endpoints": 1181,
+        "both_visible_objects": 584,
+        "both_visible_objects_with_both_returned": 570,
+        "unlocatable_reference_endpoints": 101,
+        "unlocatable_on_matched_objects": 63,
+        "returned_on_unlocatable_reference": 59,
+        "image_count": 20,
+        "object_precision": 0.933933933933934,
+        "object_recall": 0.9367469879518072,
+        "visible_endpoint_coverage": 0.9625101874490628,
+        "both_visible_objects_returned_fraction": 0.976027397260274,
+        "returned_on_unlocatable_reference_fraction": 0.9365079365079365,
+        "radii": [
+          {
+            "radius_px": 2.0,
+            "visible_endpoints_within_radius": 737,
+            "both_visible_objects_within_radius": 263,
+            "visible_endpoint_success_rate": 0.6006519967400163,
+            "both_visible_object_success_rate": 0.4503424657534247
+          },
+          {
+            "radius_px": 5.0,
+            "visible_endpoints_within_radius": 1119,
+            "both_visible_objects_within_radius": 521,
+            "visible_endpoint_success_rate": 0.9119804400977995,
+            "both_visible_object_success_rate": 0.8921232876712328
+          },
+          {
+            "radius_px": 10.0,
+            "visible_endpoints_within_radius": 1179,
+            "both_visible_objects_within_radius": 568,
+            "visible_endpoint_success_rate": 0.960880195599022,
+            "both_visible_object_success_rate": 0.9726027397260274
+          }
+        ]
+      }
+    ]
+  }
+}

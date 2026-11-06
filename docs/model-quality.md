@@ -4,7 +4,7 @@
 
 The next data action is to settle the box-extent convention and visually review a small training subset under that rule. Correct confirmed defects; do not broadly relabel correct corners to agree with the model. The completed review found no justified coordinate change in the selected cases. Threshold replay also shows that confidence filtering alone has substantial limits.
 
-This extends [the measured baseline](baseline-2026-11-06.md), using its saved predictions from inference revision `3bc783f1e53a477a095ac29160674f07e393348d`. **No new model inference, training or reference edits** were performed for this quality review. The source-hashed [evidence record](quality-review-2026-11-06.json) contains the calculations, label audit and visual decisions.
+This extends [the measured baseline](baseline-2026-11-06.md), using its saved predictions from inference revision `3bc783f1e53a477a095ac29160674f07e393348d`. **No new model inference, training or reference edits** were performed for this quality review. The source-hashed [evidence record](quality-review-2026-11-06.json) contains the calculations, label audit and visual decisions. The [published-revision verification](quality-replay-verification-2026-11-06.json) records the clean diagnostic execution, 12 passing checks and exact comparison with the independent calculations.
 
 ## 1. Define the claim before choosing a target
 
