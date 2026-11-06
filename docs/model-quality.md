@@ -2,7 +2,7 @@
 
 **Current decision:** the supplied model is a measured development baseline suitable for supervised investigation. Acceptance for unattended inspection or physical positioning is **not established**. The first-use goal, application tolerance, permitted misses/extras and deployment timing requirement remain unspecified.
 
-The next data action is to settle the box-extent convention and visually review a small training subset under that rule. Correct confirmed defects; do not broadly relabel correct corners to agree with the model. The completed review found no justified coordinate change in the selected cases. Threshold replay also shows that confidence filtering alone has substantial limits.
+The [training pilot](training-pilot-2026-11-06.md) is complete and supplies an eleven-row deduplication proposal. The [annotation policy](annotation-policy.md) is now adopted as a local working convention, informed by upstream branch/history research and the user's authorization. Complete reference/candidate datasets can be built and checked using the [training preparation guide](prepare-pose-training.md). The next implementation gap is explicit candidate-checkpoint evaluation provenance, followed by a bounded training resource check and controlled comparison. Threshold replay still shows that confidence filtering alone has substantial limits.
 
 This extends [the measured baseline](baseline-2026-11-06.md), using its saved predictions from inference revision `3bc783f1e53a477a095ac29160674f07e393348d`. **No new model inference, training or reference edits** were performed for this quality review. The source-hashed [evidence record](quality-review-2026-11-06.json) contains the calculations, label audit and visual decisions. The [published-revision verification](quality-replay-verification-2026-11-06.json) records the clean diagnostic execution, 12 passing checks and exact comparison with the independent calculations.
 
@@ -14,7 +14,7 @@ This extends [the measured baseline](baseline-2026-11-06.md), using its saved pr
 | --- | --- | --- |
 | Intended use | Supervised 2D review, automatic inspection/counting, or physical positioning | Unconfirmed; use supervised investigation as the working scope, not deployment approval |
 | Corner identity | Which physical corners and their order | Confirmed: actual lower-front corners, image-X order; unlocatable points remain `0 0 0` |
-| Box extent | Front-facing surface only versus visible body/top surfaces; extent behind an occluder | Existing instructions do not fully define it; reviewed cases expose inconsistent extents |
+| Box extent and inclusion | Observed front-face extent; one identifiable visible front independent of corner availability | Adopted local policy `baomai-visible-front-v1`; frozen labels have not been fully migrated or certified |
 | Localization tolerance | Maximum pixel error, or calibrated physical error | Unspecified; 2/5/10 px below are illustrations only |
 | Required usable-output fraction | Minimum proportion of eligible objects with both corners returned within tolerance | Unspecified; always include missed objects in its denominator |
 | Detection errors | Permitted missed objects and extra predictions, ideally with scene-level limits | Unspecified; preserve TP/FN/FP and empty-scene observations |
@@ -27,6 +27,12 @@ Choose the tolerance from the application, not by increasing it until the curren
 Do not equate a model confidence score with a probability of being within a specified pixel distance. Statistical confidence in a measured success rate is another distinct concept. Points on the same objects/images and related capture frames are correlated; 1,227 annotated points are not automatically 1,227 independent deployment trials.
 
 For an illustration of evidence size, if success is defined for **independent, representative scene trials**, observing zero failures in 59 trials gives an exact one-sided 95% binomial lower bound of `0.05^(1/59) = 0.9505` on success probability. A 99% lower bound would require 299 all-success trials under those assumptions. These are mathematical examples, not the required sample size for this project. With failures or clustered scenes, use an appropriate interval and sampling unit. The existing 20-image development set does not satisfy this independent-test example.
+
+### Why pose mAP is not a pixel guarantee
+
+The [pinned standard pose validator](https://github.com/ultralytics/ultralytics/blob/v8.4.182/ultralytics/models/yolo/pose/val.py) uses dataset-specific OKS scales; the distributed two-point YAML supplies no override, so that standard path selects `[0.5, 0.5]`. Its annotated-box area scale is 0.53. The [OKS implementation](https://github.com/ultralytics/ultralytics/blob/v8.4.182/ultralytics/utils/metrics.py) therefore gives, for a visible point at distance `d` and box width/height `w,h`, approximately `exp(-d² / (1.06*w*h))`. It averages over visible reference points.
+
+For a synthetic 100×20 px box with each corner displaced by 10 px, this is about 0.9539—despite failing a 5 px criterion. This illustrates the formula, not this checkpoint's accuracy. Pose mAP summarizes precision/recall across OKS matching thresholds; it is not the fraction of points inside a fixed pixel radius. The historical training run's resolved sigma settings were not independently recovered, so do not claim its published mAP definitely used the distributed default. Continue using direct pixel and both-corner diagnostics for application tolerances.
 
 ## 2. Measure usable corners, not only error among returned points
 
@@ -77,7 +83,7 @@ This establishes mechanical integrity, **not visual correctness of all training 
 
 ### Twelve queued validation rows plus one localization example
 
-The review inspected originals before comparing predictions where possible. All 12 queued rows were reviewed; box-extent/inclusion decisions remain unresolved. Zero label edits were accepted.
+The review inspected originals before comparing predictions where possible. All 12 queued rows were reviewed; no box/inclusion policy had yet been adopted at that stage. Zero label edits were accepted. The observations and decisions below record that historical review; the subsequently adopted working policy guides any separately versioned follow-up.
 
 | Cases | Observation | Decision |
 | --- | --- | --- |
@@ -91,16 +97,16 @@ The review inspected originals before comparing predictions where possible. All 
 
 The final case was an additional targeted review beyond the 12-row queue. Soft/rounded image edges limit exact pixel adjudication, but do not explain its 14.85 px discrepancy. The findings do not justify rewriting the dataset to imitate model outputs.
 
-### Box rule to make concrete before relabeling
+### Adopted working box and inclusion rule
 
-Proposed default for discussion: boxes describe the **visible front-facing surface**, with bounds determined by visible evidence, excluding exposed top/lip/tray surfaces from that target. Where an occluder lies between visible parts, the axis-aligned rectangle can contain it internally; the bounds should not be extended beyond observed evidence by guessing hidden edges. Actual lower-corner keypoints remain independent of rectangle corners.
+The [versioned annotation policy](annotation-policy.md) now adopts visible-front boxes and retains an identifiable visible front even when both actual lower corners are unlocatable. The current baomai point semantics take precedence over historical front-lip and five-point schemas. This is an explicit local choice under the user's authorization, not an additional supervisor-approval claim.
 
-This proposal is **not adopted** and no reference labels were migrated. The supervisor must confirm whether the intended target instead includes the full physical front extent behind occluders or a broader visible object body. Also decide when to retain a barely identifiable instance with both endpoints unlocatable. Keep ambiguous existing instances flagged; do not silently delete them or turn their images into background negatives.
+The observations above remain historical review decisions. Adopting the convention does not retroactively migrate those rectangles or replace validation references. Keep uncertain identity/extent cases recorded, and do not silently turn them into background negatives. The eleven-row training candidate remains deduplication only.
 
 ## 5. Order the improvement work
 
-1. **Agree on the claim and annotation convention.** Record the intended use, tolerance, permitted detection/availability errors, conditions and timing target. Resolve the concrete box examples above before a box-relabeling campaign.
-2. **Review a small training pilot on copies.** Include exposed stack tops, thin/partially occluded faces, hands/grippers, border truncations and the larger corner-error pattern. Inspect originals without model overlays first, then use model drafts as assistance. Correct only physically supported defects; leave hidden endpoints missing. A second independent annotation on ambiguous examples helps reveal whether a tolerance is smaller than annotation uncertainty.
+1. **Apply the adopted annotation convention and define the intended claim.** Use the versioned policy for new/revised labels. Record intended use, tolerance, permitted detection/availability errors, conditions and timing target. Review the concrete box examples before any separately versioned box-migration experiment.
+2. **Reuse the completed training pilot and staged comparison.** The thirteen-image pilot found eleven duplicate rows; its exact candidate has a verifier and a complete paired-dataset staging procedure. Preserve that isolated experiment. For further ambiguous-corner edits, inspect originals first and use independent annotation to understand coordinate uncertainty; do not guess hidden points.
 3. **Collect or select relevant training examples when labels are already correct.** Target confirmed failure modes rather than adding arbitrary images. Review original-image plus TXT pairs, preserve meaningful empty-scene negatives, and separate collection sessions/near-duplicate sequences across training and final testing. Do not use the reviewed validation images as new training examples.
 4. **Run one controlled training comparison when a candidate dataset is ready.** Retain epoch 173; compare an unchanged-data fine-tune with a reviewed-data fine-tune from the same starting checkpoint, settings and predeclared checkpoint rule. PR #1 proposes a first 30-epoch, seed-42 comparison. Equal epochs are not equal optimizer steps when dataset sizes differ; record the budget. A single seeded gain is preliminary.
 5. **Assess the complete outcome.** Compare misses/extras, endpoint availability, both-corner success at the agreed tolerance, unlocatable-side outputs, difficult subgroups and measured runtime. Do not accept a smaller conditional error obtained only by suppressing difficult examples. Retain the baseline if tradeoffs or uncertainty are unresolved.
@@ -125,7 +131,7 @@ The reusable CLI fixes endpoint confidence at 0.50. The separate endpoint-cutoff
 
 ## Next conversation
 
-Read this document and the evidence JSON, inspect current main/open PRs, and reuse the completed baseline and quality diagnostics. The 12-row validation queue has been reviewed; do not treat it as an unfinished automatic-relabeling task. The subsequent [training-image pilot](training-pilot-2026-11-06.md) found eleven duplicate-instance rows and records a separate proposed overlay; its evidence and exact verifier are the next continuation point. Resolve remaining box-extent/inclusion decisions and application tolerances before claiming broader annotation or deployment readiness. Retain the established point semantics and all missing-side labels unless original-image evidence supports a change. Earlier candidate-label recovery remains independent and unresolved.
+Read this document and the evidence JSON, inspect current main/open PRs, and reuse the completed baseline and quality diagnostics. The 12-row validation queue has been reviewed; do not treat it as an unfinished automatic-relabeling task. The subsequent [training-image pilot](training-pilot-2026-11-06.md) found eleven duplicate-instance rows and records a separate proposed overlay; its evidence and exact verifier are the next continuation point. Use the adopted local annotation policy and complete dataset staging procedure. Explicit candidate-checkpoint identity and training resource qualification are the next technical steps; application tolerances and independent testing are still needed for deployment acceptance. Retain the established point semantics and all missing-side labels unless original-image evidence supports a change. Earlier candidate-label recovery remains independent and unresolved.
 
 ## Method references
 

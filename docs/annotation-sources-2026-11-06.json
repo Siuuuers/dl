@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-06T15:53:56.661Z",
+  "repository": "an94-doll/embedding_vision",
+  "method": "Targeted primary-source GitHub reads; current branch heads rechecked; existing frozen label bytes audited locally. No LFS/model/image download and no repository edits.",
+  "branch_heads": [
+    {
+      "branch": "baomai",
+      "commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+      "url": "https://github.com/an94-doll/embedding_vision/tree/351eb3cf960ccc34829e2bc72e1fa4645acc6295"
+    },
+    {
+      "branch": "grasp-vision",
+      "commit": "9a6bf2432582af517d789c94eab2ac27e03a304b",
+      "url": "https://github.com/an94-doll/embedding_vision/tree/9a6bf2432582af517d789c94eab2ac27e03a304b"
+    },
+    {
+      "branch": "yolo-pose",
+      "commit": "72a99dafa1b14bfabd101e639b9ddb5f5aa38d52",
+      "url": "https://github.com/an94-doll/embedding_vision/tree/72a99dafa1b14bfabd101e639b9ddb5f5aa38d52"
+    }
+  ],
+  "sources": [
+    {
+      "id": "current_corner_contract",
+      "commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md#L29",
+      "git_blob_sha": "7af771c01e2d35f0262afec040d039da679418f3",
+      "establishes": "Single cassette_front class; two actual lower-front corners ordered by image X; visible=2 and unlocatable=0 0 0; keep a locatable endpoint when its partner is missing.",
+      "limits": "No explicit bbox extent, minimum visible area, or rule requiring at least one locatable point. Local data README blob matches this upstream blob."
+    },
+    {
+      "id": "historical_visible_front",
+      "commit": "6f7112a553e1759fc755bda1f18ee56cb34dd315",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/6f7112a553e1759fc755bda1f18ee56cb34dd315/detect/data/data_last/picture/work/ANNOTATION_EDITOR.md",
+      "git_blob_sha": "4342fb7915a2c8ec345a0fb2fc50b011394eb50f",
+      "establishes": "Line19 explicitly instructs drawing the visible front-face extent when adding an object. Line20 marks unclear/out-of-image endpoints 0 0 0.",
+      "limits": "Epoch127/277-frame predecessor; not proof every epoch173 box inherited this policy."
+    },
+    {
+      "id": "historical_editor_ui",
+      "commit": "6f7112a553e1759fc755bda1f18ee56cb34dd315",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/6f7112a553e1759fc755bda1f18ee56cb34dd315/detect/data/data_last/picture/work/annotation_editor.html",
+      "git_blob_sha": "8fc6507d39c3afbbda35a190e5cff2be9fdcefa7",
+      "establishes": "Help line32 and tool hint line62 repeat visible-front boxes; hint excludes the metal rack. Lines56–57 normalize missing points and sort by X only when both visible. Line79 creates boxes with both endpoints missing.",
+      "limits": "A positive UI drag threshold and parser behavior are implementation constraints, not an authoritative semantic inclusion threshold. Point placement may expand an existing box."
+    },
+    {
+      "id": "historical_missing_point_allowance",
+      "commit": "6f7112a553e1759fc755bda1f18ee56cb34dd315",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/6f7112a553e1759fc755bda1f18ee56cb34dd315/detect/data/data_last/picture/work/batch/review_server.py",
+      "git_blob_sha": "09913559c18465a3b800bfb2e862e9792b6c300b",
+      "establishes": "Lines61–86 allow both endpoints to be 0 0 0; require positive in-image boxes and visible points inside their box; only both-visible points are X-sorted.",
+      "limits": "Both-v0 support establishes representability, not supervisor intent about including a severely occluded physical instance."
+    },
+    {
+      "id": "historical_different_corner_reference",
+      "commit": "6f7112a553e1759fc755bda1f18ee56cb34dd315",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/6f7112a553e1759fc755bda1f18ee56cb34dd315/detect/data/data_last/picture/work/annotation_standard.json",
+      "git_blob_sha": "af1c0c1d8024f83a033b747d0d6c8b9bacb778f4",
+      "establishes": "Standard id reference83_front_lip_junction_corners refers to saved frame83 actual long-edge turns and natural perspective; user records/approval status preserved and new candidates not auto-approved.",
+      "limits": "Older corner criterion must not override the current explicit lower-front-corner contract."
+    },
+    {
+      "id": "incompatible_whole_object_rules",
+      "commit": "72a99dafa1b14bfabd101e639b9ddb5f5aa38d52",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/72a99dafa1b14bfabd101e639b9ddb5f5aa38d52/annotations/README.md",
+      "git_blob_sha": "11c6732a38814695640a31e8cb0868cf3d7a8cf6",
+      "establishes": "annotations/README.md explicitly boxes the whole object including side thickness/lower protrusions; five fixed physical point identities, geometric midpoint and rounded-corner line-intersection approximation.",
+      "limits": "Different front/back five-point task. Do not import its bbox, ordering or approximation rules into baomai."
+    },
+    {
+      "id": "incompatible_schema",
+      "commit": "72a99dafa1b14bfabd101e639b9ddb5f5aa38d52",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/72a99dafa1b14bfabd101e639b9ddb5f5aa38d52/annotations/pose_schema.yaml",
+      "git_blob_sha": "2f17fc046573d1f5b0c22ad5d9a347c02bb93226",
+      "establishes": "front/back classes; kpt_shape [5,3], flip_idx [4,3,2,1,0].",
+      "limits": "Not a label schema for the current one-class two-corner project."
+    },
+    {
+      "id": "separate_grasp_project",
+      "commit": "9a6bf2432582af517d789c94eab2ac27e03a304b",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/9a6bf2432582af517d789c94eab2ac27e03a304b/provenance/ADAPTATIONS.md",
+      "git_blob_sha": "a1469322718ae103337064645a592335203bbee8",
+      "establishes": "Documents an independent project copy and switch away from the old epoch173 viewer base toward basket/grasp models.",
+      "limits": "No additional baomai bbox or inclusion rule found in this targeted source."
+    },
+    {
+      "id": "grasp_preserved_original_contract",
+      "commit": "9a6bf2432582af517d789c94eab2ac27e03a304b",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/9a6bf2432582af517d789c94eab2ac27e03a304b/provenance/original_project/README.md",
+      "git_blob_sha": "8cf77aa2ca2ebe13661196c53ef6b9b34447f72c",
+      "establishes": "Preserves the epoch173 lower-front corner, image-X ordering and independent initialization documentation for provenance.",
+      "limits": "Preservation is not a new annotation standard or adoption of the incompatible old five-point rules."
+    },
+    {
+      "id": "published_both_v0_example",
+      "commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/labels/val/new_000009.txt",
+      "git_blob_sha": "ed4e627ee8ec59bb765ee716a2397817a25797e6",
+      "establishes": "data/labels/val/new_000009.txt original row56 has a positive box and both endpoints 0 0 0.",
+      "limits": "Published representation; no claim that this specific row is visually correct."
+    }
+  ],
+  "relevant_history": [
+    {
+      "commit": "6f7112a553e1759fc755bda1f18ee56cb34dd315",
+      "parent_commits": [
+        "72a99dafa1b14bfabd101e639b9ddb5f5aa38d52"
+      ],
+      "date": "2026-10-25T12:18:09Z",
+      "message": "Add latest cassette dataset, annotation editor and epoch127 base",
+      "url": "https://github.com/an94-doll/embedding_vision/commit/6f7112a553e1759fc755bda1f18ee56cb34dd315"
+    },
+    {
+      "commit": "df8e3555596b98510415ac4dbaf76dcc7503b9e7",
+      "parent_commits": [
+        "6f7112a553e1759fc755bda1f18ee56cb34dd315"
+      ],
+      "date": "2026-10-26T08:31:36Z",
+      "message": "Remove inherited yolo-pose files from baomai\n\nKeep the cassette detect project unchanged and retain the root README and Git configuration. Link to the original yolo-pose branch for the previous project.",
+      "url": "https://github.com/an94-doll/embedding_vision/commit/df8e3555596b98510415ac4dbaf76dcc7503b9e7"
+    },
+    {
+      "commit": "e36f50d46a98080c5233fbd282b02c99f5968ae3",
+      "parent_commits": [
+        "df8e3555596b98510415ac4dbaf76dcc7503b9e7"
+      ],
+      "date": "2026-10-27T10:58:23Z",
+      "message": "Replace baomai contents with epoch 173 YOLO26 pose and D405 recording app",
+      "url": "https://github.com/an94-doll/embedding_vision/commit/e36f50d46a98080c5233fbd282b02c99f5968ae3"
+    },
+    {
+      "commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+      "parent_commits": [
+        "e36f50d46a98080c5233fbd282b02c99f5968ae3"
+      ],
+      "date": "2026-10-28T15:00:17Z",
+      "message": "Add epoch 173 training and validation data with reviewed annotations",
+      "url": "https://github.com/an94-doll/embedding_vision/commit/351eb3cf960ccc34829e2bc72e1fa4645acc6295"
+    }
+  ],
+  "frozen_reference_count_audit": {
+    "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "all_reference_label_hashes_checked": 157,
+    "scope": "Unchanged frozen reference; before proposed eleven duplicate deletions.",
+    "train": {
+      "images": 137,
+      "objects": 3772,
+      "both_v0_objects": 121,
+      "one_visible_objects": 463,
+      "both_visible_objects": 3188,
+      "images_with_both_v0": 54
+    },
+    "val": {
+      "images": 20,
+      "objects": 664,
+      "both_v0_objects": 21,
+      "one_visible_objects": 59,
+      "both_visible_objects": 584,
+      "images_with_both_v0": 11
+    },
+    "total_both_v0_objects": 142,
+    "total_images_with_both_v0": 65,
+    "interpretation": "Both-missing objects exist in the distributed training and validation data. This does not certify every such annotation."
+  },
+  "working_policy_decisions": [
+    {
+      "id": "current_points",
+      "decision": "retain",
+      "rule": "Keep two actual lower-front corners with image-X ordering. Use v=2 only when reliably locatable and canonical 0 0 0 otherwise; preserve a locatable partner.",
+      "basis": [
+        "current_corner_contract"
+      ],
+      "attribution": "Explicit current upstream contract."
+    },
+    {
+      "id": "visible_front_box",
+      "decision": "adopt_as_local_working_policy",
+      "rule": "Use the axis-aligned extent of the observed front face, clipped to the image. Do not infer hidden outer limits; top/tray/rack/hand surfaces do not define the target bounds. The rectangle may contain background or an occluder between visible front fragments.",
+      "basis": [
+        "historical_visible_front",
+        "historical_editor_ui"
+      ],
+      "attribution": "Grounded in historical visible-front instructions; detailed occlusion/surface exclusions are local clarification under the user's present authorization, not a supervisor quotation."
+    },
+    {
+      "id": "instance_independent_of_points",
+      "decision": "adopt_as_local_working_policy",
+      "rule": "Retain a uniquely identifiable front with annotatable visible extent even when both lower corners are unlocatable. Both-v0 status is not a deletion rule.",
+      "basis": [
+        "historical_missing_point_allowance",
+        "published_both_v0_example"
+      ],
+      "attribution": "Local semantic inclusion decision, supported by representability and published examples; not inferred supervisor intent."
+    },
+    {
+      "id": "uncertain_instances",
+      "decision": "adopt_as_local_working_policy",
+      "rule": "Keep uncertain identity/extent cases in review; do not guess hidden instances or silently turn unresolved annotations into background negatives. No arbitrary visible-area percentage is imposed.",
+      "basis": [
+        "current_corner_contract"
+      ],
+      "attribution": "Local ambiguity-handling rule; no normative area threshold found upstream."
+    },
+    {
+      "id": "one_row_per_instance",
+      "decision": "adopt_as_local_working_policy",
+      "rule": "Represent each physical front once; establish duplicate identity from original images, not merely high box IoU or missing-point flags.",
+      "basis": [
+        "historical_missing_point_allowance"
+      ],
+      "attribution": "Local semantic deduplication rule; historical exact-box rejection alone does not establish physical identity."
+    }
+  ],
+  "rejected_transfers": [
+    {
+      "rule": "Whole-object boxes including side thickness/protrusions",
+      "reason": "Explicitly belongs to the incompatible older five-point front/back task.",
+      "source": "incompatible_whole_object_rules"
+    },
+    {
+      "rule": "Object-relative five-point identities or geometric midpoint",
+      "reason": "Conflicts with current two-corner image-X schema.",
+      "source": "incompatible_schema"
+    },
+    {
+      "rule": "Automatically extrapolate corners using the older rounded-corner rule",
+      "reason": "Not the documented current lower-front contract; do not guess hidden or unreliable locations.",
+      "source": "incompatible_whole_object_rules"
+    },
+    {
+      "rule": "Delete every both-v0 instance or require one visible corner",
+      "reason": "No such instruction found; current reference contains142 both-v0 objects.",
+      "source": "published_both_v0_example"
+    },
+    {
+      "rule": "Attribute all local policy details to supervisor approval",
+      "reason": "Root reports present user authorization for reasonable working rules; no additional supervisor approval claim is supported."
+    }
+  ],
+  "limits": [
+    "No complete visual conformance audit was performed by this evidence review.",
+    "Historical editor instruction is not proof that every current reference box obeys it.",
+    "The root agent owns policy integration and any subsequent candidate-label changes; this record changes no dataset or policy file."
+  ]
+}
