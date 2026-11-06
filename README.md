@@ -104,6 +104,8 @@ test/d405_recordings/recording_日期_时间/
 
 对应数据配置为 [`data/data.yaml`](data/data.yaml)。`data/images/` 保存1280×720原图，`data/labels/` 保存两点Pose标签，`data/annotated/` 保存带编辑器页脚的标注预览，仅供查看。最终测试图和隔离图不包含在训练数据包内。数据说明、逐文件来源与校验值见 [`data/README.md`](data/README.md) 和 [`data/manifest.json`](data/manifest.json)。
 
+标注文件、已完成工具及待恢复修正的状态见 [标注工作交接](docs/handoff-cassette-pose-ste100.md)。
+
 默认权重为 `weights/cassette_lower_epoch173.pt`，原始完整文件大小为 **106,838,542字节**，SHA-256：
 
 ```text
