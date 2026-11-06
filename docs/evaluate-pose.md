@@ -4,7 +4,7 @@
 
 The first completed run, measured results and next review task are in [the 2026-11-06 baseline report](baseline-2026-11-06.md).
 
-Do not use these images as an independent final test: they already participated in selecting epoch 173. Do not change reference labels to improve this score. The user has confirmed robotic positioning/grasping as the intended use; this image evaluation does not establish calibrated robot-frame accuracy or successful physical grasps. Earlier candidate-label recovery and a supervised editor acceptance session are separate work.
+Do not use these images as an independent final test: they already participated in selecting epoch 173. Do not change reference labels to improve this score. The user clarified that the current duty is finding/localizing objects in the supplied baomai D405 images. Keep the two-corner target; camera/robot calibration is outside this evaluation. Use [gpu-handoff.md](gpu-handoff.md) to send training inputs and return completed models. Earlier candidate-label recovery and a supervised editor acceptance session are separate work.
 
 ## 1. Obtain the reference bytes
 
