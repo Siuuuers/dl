@@ -16,7 +16,7 @@
 <button id="open">Open data folder</button>
 <fieldset id="controls" disabled>
   <label>Image <select id="files"></select></label>
-  <button id="save">Save label</button><button id="undo" disabled>Undo</button>
+  <button id="save">Save label</button><button id="saveNext">Save &amp; Next</button><button id="undo" disabled>Undo</button>
   <br>
   <label>Cassette <select id="objects"></select></label>
   <button id="add">Add cassette</button><button id="remove">Delete cassette</button>
@@ -208,7 +208,7 @@ $('undo').onclick = () => {
   objectList(); draw(true);
   message(dirty ? 'Undid last edit — unsaved changes' : 'Undid last edit');
 };
-$('save').onclick = () => busy(async () => {
+async function save() {
   if (current < 0) throw Error('Open a valid image first.');
   if (!canEdit()) return;
   if (rows.some(r => r[3] <= 0 || r[4] <= 0)) throw Error('Draw a nonzero box for every cassette before saving.');
@@ -219,6 +219,11 @@ $('save').onclick = () => busy(async () => {
   await writable.write(text + (rows.length ? '\n' : '')); await writable.close();
   if (undo && formatRows(undo.rows) !== text) undo.dirty = true;
   dirty = false; message(`Saved labels/${entry.path.replace(/\.png$/i, '.txt')}`);
+  return true;
+}
+$('save').onclick = () => busy(save);
+$('saveNext').onclick = () => busy(async () => {
+  if (await save() && current + 1 < entries.length) await load(current + 1);
 });
 function position(event) {
   const rect = canvas.getBoundingClientRect();
