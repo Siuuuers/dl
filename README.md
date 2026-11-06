@@ -121,7 +121,7 @@ e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e
 
 这些是选模使用的验证集指标，不等同于独立测试集或所有真实场景的准确率。端点置信度也不代表像素定位误差。
 
-下一步先扫推理置信度，再做金标与修正标签的对照微调，见 [`docs/refine-cassette-pose.md`](docs/refine-cassette-pose.md)。
+后续评估与条件式微调计划见 [模型改进计划](docs/refine-cassette-pose.md)。
 
 `metadata/model_card.json` 提供模型指标与语义，`metadata/training_config.json` 提供训练参数摘要。`models/cassette_lower_yolo26s_pose.yaml` 是实际模型结构，单类 `cassette_front`、`kpt_shape: [2, 3]`、左右翻转索引 `[1, 0]`。结构文件本身不含训练参数，实时推理加载 `.pt` 权重。
 
