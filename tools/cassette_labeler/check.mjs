@@ -9,7 +9,7 @@ const edited = original.replace('0.50000000', '0.55000000');
 
 function fixture(splits = ['train', 'val'], initial = original) {
   const saved = new Map();
-  const state = {writes: 0, picks: 0, prompts: 0, discard: false, fail: ''};
+  const state = {writes: 0, picks: 0, prompts: 0, discard: false, fail: '', closeGate: null};
   const missing = () => Object.assign(new Error('Not found'), {name: 'NotFoundError'});
   const images = new Map(), labels = new Map();
   for (const split of splits) {
@@ -36,6 +36,7 @@ function fixture(splits = ['train', 'val'], initial = original) {
                 staged = text;
               },
               async close() {
+                if (state.closeGate) await state.closeGate;
                 if (state.fail === 'close') throw Error('Close failed');
                 saved.set(path, staged);
               },
@@ -122,6 +123,7 @@ const checks = [
     assert.equal(app.elements.label.value, edited);
     assert.equal(app.unload(), true);
     await app.click('save');
+    assert.equal(String(app.elements.files.value), '0');
     assert.equal(app.saved.get('train/a.txt'), edited + '\n');
     assert.equal(app.unload(), false);
     await app.click('undo');
@@ -254,6 +256,60 @@ const checks = [
       app.state.fail = ''; await app.click('save');
       assert.equal(app.saved.get('train/a.txt'), edited + '\n');
       assert.equal(app.unload(), false);
+    }
+  }],
+  ['Save & Next waits for close before opening the next image', async () => {
+    const app = await open(['val']);
+    app.text(edited); await app.click('apply');
+    let finishClose;
+    app.state.closeGate = new Promise(resolve => { finishClose = resolve; });
+    const saving = app.click('saveNext');
+    await new Promise(setImmediate);
+    assert.equal(app.state.writes, 1);
+    assert.equal(app.elements.controls.disabled, true);
+    assert.equal(String(app.elements.files.value), '0');
+    assert.equal(app.elements.label.value, edited);
+    assert.equal(app.saved.get('val/a.txt'), original + '\n');
+    finishClose(); await saving;
+    assert.equal(app.saved.get('val/a.txt'), edited + '\n');
+    assert.equal(String(app.elements.files.value), '1');
+    assert.equal(app.elements.label.value, '');
+    assert.equal(app.elements.undo.disabled, true);
+    assert.equal(app.unload(), false);
+    assert.equal(app.state.prompts, 0);
+  }],
+  ['Save & Next saves and stays on the last image', async () => {
+    const app = await open(['val']);
+    await app.select('files', 1);
+    app.text(edited); await app.click('apply'); await app.click('saveNext');
+    assert.equal(app.saved.get('val/b.txt'), edited + '\n');
+    assert.equal(String(app.elements.files.value), '1');
+    assert.equal(app.elements.label.value, edited);
+    assert.equal(app.elements.undo.disabled, false);
+    assert.equal(app.unload(), false);
+  }],
+  ['Blocked Save & Next preserves the current image and permits retry', async () => {
+    for (const failure of ['draft', 'box', 'write', 'close']) {
+      const app = await open(['val']);
+      app.text(edited);
+      if (failure !== 'draft') await app.click('apply');
+      if (failure === 'box') await app.click('add');
+      if (failure === 'write' || failure === 'close') app.state.fail = failure;
+      const pending = app.elements.label.value;
+      await app.click('saveNext');
+      assert.equal(String(app.elements.files.value), '0', failure);
+      assert.equal(app.elements.label.value, pending, failure);
+      assert.equal(app.saved.get('val/a.txt'), original + '\n', failure);
+      assert.equal(app.unload(), true, failure);
+      assert.equal(app.elements.controls.disabled, false, failure);
+      if (failure === 'draft') await app.click('apply');
+      else if (failure === 'box') await app.click('undo');
+      else app.state.fail = '';
+      await app.click('saveNext');
+      assert.equal(app.saved.get('val/a.txt'), edited + '\n', failure);
+      assert.equal(String(app.elements.files.value), '1', failure);
+      assert.equal(app.elements.label.value, '', failure);
+      assert.equal(app.unload(), false, failure);
     }
   }],
 ];
