@@ -5,6 +5,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 import unittest
@@ -13,7 +14,7 @@ sys.dont_write_bytecode = True
 
 from package_gpu_inputs import descriptor, package_inputs
 from restore_gpu_inputs import (CHECKPOINT, KIND, SOURCE_METADATA, read_package,
-                                relative_name, restore_inputs)
+                                refresh_verified_assets, relative_name, restore_inputs, run)
 
 
 class InputPackageChecks(unittest.TestCase):
@@ -103,6 +104,28 @@ class InputPackageChecks(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "output already exists"):
             package_inputs(archive)
         self.assertEqual(archive.read_bytes(), b"existing archive")
+
+    def test_lfs_payload_overlay_refresh_preserves_exact_source_tree(self):
+        source = Path(__file__).resolve().parents[1]
+        clone = self.root / "lfs-checkout"
+        run(["git", "clone", "--no-checkout", str(source), str(clone)])
+        run(["git", "lfs", "install", "--local"], cwd=clone)
+        revision = run(["git", "rev-parse", "HEAD"], cwd=source).decode("ascii").strip()
+        run(["git", "checkout", "--detach", revision], cwd=clone)
+        self.assertEqual(run(["git", "status", "--porcelain=v1"], cwd=clone), b"")
+        relative = "data/images/train/new_000001.png"
+        self.assertTrue((clone / relative).read_bytes().startswith(
+            b"version https://git-lfs.github.com/spec/v1\n"))
+        shutil.copyfile(source / relative, clone / relative)
+        asset = {**descriptor(source / relative, "assets/" + relative), "restore_path": relative}
+        tree = run(["git", "rev-parse", "HEAD^{tree}"], cwd=clone).decode("ascii").strip()
+        refresh_verified_assets(clone, {"source_tree": tree, "assets": [asset]})
+        self.assertEqual(run(["git", "write-tree"], cwd=clone).decode("ascii").strip(), tree)
+        self.assertEqual(run(["git", "status", "--porcelain=v1"], cwd=clone), b"")
+        (clone / relative).write_bytes(b"changed payload")
+        with self.assertRaisesRegex(ValueError, "byte size mismatch"):
+            refresh_verified_assets(clone, {"source_tree": tree, "assets": [asset]})
+        self.assertEqual(run(["git", "write-tree"], cwd=clone).decode("ascii").strip(), tree)
 
 
 if __name__ == "__main__":

@@ -208,6 +208,26 @@ def verify_source_assets(root, manifest):
             "checkpoint size differs from the model card")
 
 
+def refresh_verified_assets(root, manifest):
+    """Refresh LFS index stats without changing the committed tree contents."""
+    expected_tree = manifest["source_tree"].encode("ascii") + b"\n"
+    require(run(["git", "write-tree"], cwd=root) == expected_tree,
+            "restored index differs from the source before LFS refresh")
+    paths = []
+    for asset in manifest["assets"]:
+        relative = asset["restore_path"]
+        check_descriptor(root, {**asset, "path": relative}, relative)
+        paths.append(relative)
+    # A skipped-smudge checkout records pointer-file sizes in its index. After
+    # copying full payloads, status can report them as modified even when the
+    # LFS clean filter produces the exact original pointers. Adding only these
+    # verified files refreshes that cache; the tree equality below proves that
+    # no changed content was accepted into the index.
+    run(["git", "add", "--", *paths], cwd=root)
+    require(run(["git", "write-tree"], cwd=root) == expected_tree,
+            "LFS refresh changed the recorded source tree")
+
+
 SOURCE_CHECK = """
 import json
 from pathlib import Path
@@ -254,6 +274,7 @@ def restore_inputs(package, output):
     require(checked["model_sha256"] == checkpoint["sha256"]
             and checked["checkpoint_bytes_verified"] and checked["original_images_verified"] == 157,
             "restored source checks did not verify all images and the original checkpoint")
+    refresh_verified_assets(output, manifest)
     status = run(["git", "status", "--porcelain=v1", "--untracked-files=all"], cwd=output)
     require(status == b"", "restored Git checkout is not clean")
     return {"status": "verified", "source_root": str(output),
