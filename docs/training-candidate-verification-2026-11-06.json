@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-11-06T15:28:15.906137+00:00",
+  "repository": "Siuuuers/dl",
+  "executed_revision": "42eb13332c081c2c9aa21836fd831bfff509a6aa",
+  "working_tree_clean_during_execution": true,
+  "python": "3.12.14",
+  "command": "python3 scripts/verify_pose_candidate.py",
+  "exit_status": 0,
+  "result": {
+    "status": "verified",
+    "candidate_id": "dedup-2026-11-06",
+    "candidate_manifest_sha256": "425d718e335be312019768e2fe040a3d5a44b2b4143f82b487fec623ba5bd215",
+    "declared_source_revision": "1c201e35a33727ac0ae59f1d11a3d7fbb72b5ae7",
+    "source_revision_git_object_checked": false,
+    "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "reference_labels_verified": 157,
+    "changed_train_labels": 5,
+    "removed_objects": 11,
+    "counts": {
+      "train": {
+        "images": 137,
+        "objects": 3761,
+        "visible_endpoints": 6839,
+        "missing_endpoints": 683,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "validation_labels_unchanged": true,
+    "image_bytes_verified": false,
+    "images_staged_by_check": false,
+    "dataset_built": false,
+    "visual_correctness_verified": false,
+    "code_sha256": {
+      "scripts/verify_pose_candidate.py": "a14d56d707612519bd966bb2637f27edc396023c349e89a0e1fc7f1fed363189",
+      "scripts/evaluate_pose.py": "23f6de84bf9dc487a0442476fee252bc8a87a75d6072f3ce44a6177f9d97c970",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+    }
+  },
+  "bounded_invalid_input_probes": {
+    "kind": "bounded_real_candidate_and_invalid_input_probes",
+    "verifier_sha256": "a14d56d707612519bd966bb2637f27edc396023c349e89a0e1fc7f1fed363189",
+    "results": [
+      {
+        "name": "valid_candidate",
+        "exit_status": 0,
+        "result": {
+          "status": "verified",
+          "candidate_id": "dedup-2026-11-06",
+          "candidate_manifest_sha256": "425d718e335be312019768e2fe040a3d5a44b2b4143f82b487fec623ba5bd215",
+          "declared_source_revision": "1c201e35a33727ac0ae59f1d11a3d7fbb72b5ae7",
+          "source_revision_git_object_checked": false,
+          "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+          "reference_labels_verified": 157,
+          "changed_train_labels": 5,
+          "removed_objects": 11,
+          "counts": {
+            "train": {
+              "images": 137,
+              "objects": 3761,
+              "visible_endpoints": 6839,
+              "missing_endpoints": 683,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          },
+          "validation_labels_unchanged": true,
+          "image_bytes_verified": false,
+          "images_staged_by_check": false,
+          "dataset_built": false,
+          "visual_correctness_verified": false,
+          "code_sha256": {
+            "scripts/verify_pose_candidate.py": "a14d56d707612519bd966bb2637f27edc396023c349e89a0e1fc7f1fed363189",
+            "scripts/evaluate_pose.py": "23f6de84bf9dc487a0442476fee252bc8a87a75d6072f3ce44a6177f9d97c970",
+            "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+          }
+        }
+      },
+      {
+        "name": "retained_coordinate_changed_with_matching_file_hash",
+        "exit_status": 1,
+        "result": {
+          "status": "invalid",
+          "error": "candidate is not the exact byte-preserving deletion: new_000019"
+        }
+      },
+      {
+        "name": "incorrect_retained_candidate_row",
+        "exit_status": 1,
+        "result": {
+          "status": "invalid",
+          "error": "retained_candidate_row mismatch: new_000019:63"
+        }
+      },
+      {
+        "name": "unexpected_validation_label",
+        "exit_status": 1,
+        "result": {
+          "status": "invalid",
+          "error": "unexpected or missing label files in candidate overlay"
+        }
+      },
+      {
+        "name": "changed_reference_label",
+        "exit_status": 1,
+        "result": {
+          "status": "invalid",
+          "error": "source label SHA-256 mismatch: new_000019"
+        }
+      }
+    ],
+    "note": "Temporary copies only; original reference and proposed overlay bytes were not modified."
+  },
+  "frozen_reference_git_paths_unchanged_from": "1c201e35a33727ac0ae59f1d11a3d7fbb72b5ae7",
+  "frozen_reference_git_paths_checked": [
+    "data/images",
+    "data/labels",
+    "data/annotated",
+    "data/manifest.json",
+    "data/data.yaml",
+    "data/README.md",
+    "metadata",
+    "models",
+    "weights"
+  ],
+  "artifact_sha256": {
+    "scripts/verify_pose_candidate.py": "a14d56d707612519bd966bb2637f27edc396023c349e89a0e1fc7f1fed363189",
+    "docs/training-pilot-2026-11-06.json": "3c087b21c6fd21db1864d9eff1f22b315b17cdcd63d974fe914c385d967037b5",
+    "docs/training-pilot-2026-11-06.md": "2768fc74e8115adbfb9aeec2deae2ecbc13746ec989eeb73dfda248f23f3dea4",
+    "data/candidates/dedup-2026-11-06/manifest.json": "425d718e335be312019768e2fe040a3d5a44b2b4143f82b487fec623ba5bd215"
+  },
+  "limits": [
+    "Verification is of the recorded deletion-only label transformation, not physical annotation truth.",
+    "The separate visual-review evidence records actual image-byte checks for thirteen originals; the verifier itself neither checks nor stages images.",
+    "No model inference, fine-tuning, checkpoint replacement, browser interaction or deployment was performed.",
+    "This record is added after execution; the executing script and candidate label files are unchanged."
+  ]
+}

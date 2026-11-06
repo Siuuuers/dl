@@ -71,7 +71,7 @@ python3 scripts/verify_pose_candidate.py
 
 The read-only verifier checks all 157 frozen reference label hashes, schemas and counts; train-only candidate mappings; source image-hash metadata; exact row texts and row remapping; both-unlocatable removals; byte-preserving deletion; absence of unlisted overlay labels; and aggregate counts. It reports code hashes and explicitly states that it does not verify image bytes, stage images, build a dataset or assess physical correctness. The declared Git source revision is provenance metadata; reference bytes are enforced through hashes.
 
-The real candidate passed. Four bounded invalid-input probes were rejected: a changed retained coordinate even after its file hash was updated, an incorrect retained-row mapping, an extra validation label file, and a changed reference label. The original reference and proposal files were not modified by those probes. The image-byte checks for the 13 inspected originals are a separate part of the review evidence.
+The real candidate passed on published revision `42eb13332c081c2c9aa21836fd831bfff509a6aa` with a clean working tree; see the [execution record](training-candidate-verification-2026-11-06.json). Four bounded invalid-input probes were rejected: a changed retained coordinate even after its file hash was updated, an incorrect retained-row mapping, an extra validation label file, and a changed reference label. The original reference and proposal files were not modified by those probes. The image-byte checks for the 13 inspected originals are a separate part of the review evidence.
 
 ## Next experiment
 
