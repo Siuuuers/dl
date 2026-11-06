@@ -1,0 +1,52 @@
+name: Publish baomai GPU input ZIP
+
+on:
+  push:
+    branches:
+      - ops/publish-baomai-gpu-inputs-20261107
+    paths:
+      - .github/workflows/publish-baomai-gpu-inputs.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.repository == 'Siuuuers/dl'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Check out exact source revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+          persist-credentials: false
+
+      - name: Download only original baomai inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs version
+          git lfs install --local
+          git lfs pull --include='data/images/train/*.png,data/images/val/*.png,weights/cassette_lower_epoch173.pt' --exclude=''
+
+      - name: Verify inputs and package the archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/check_gpu_inputs.py
+          mkdir -p ../gpu-release-dist
+          python3 scripts/package_gpu_inputs.py --output ../gpu-release-dist/baomai-gpu-inputs.zip
+          (cd ../gpu-release-dist && sha256sum baomai-gpu-inputs.zip > baomai-gpu-inputs.zip.sha256)
+          unzip -tq ../gpu-release-dist/baomai-gpu-inputs.zip
+          cat ../gpu-release-dist/baomai-gpu-inputs.zip.sha256
+
+      - name: Publish separate GitHub Release assets
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="baomai-gpu-inputs-${GITHUB_SHA:0:12}"
+          gh release create "$tag"             ../gpu-release-dist/baomai-gpu-inputs.zip             ../gpu-release-dist/baomai-gpu-inputs.zip.sha256             --target "$GITHUB_SHA"             --title "Baomai GPU training inputs (${GITHUB_SHA:0:12})"             --notes "Offline training input package: 137 original training images, 20 validation images, epoch173 checkpoint, reference labels, candidate corrections, verified source and GPU instructions. Extract the ZIP and read README.md. This package contains inputs only; it is not a newly trained model."
