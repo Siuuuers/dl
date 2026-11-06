@@ -126,3 +126,9 @@ e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e
 完整 `.pt` 保留优化器、EMA及原训练元信息，文件字节与选定原模型一致；其内部可能含原训练环境路径，实时推理不会访问这些训练路径。旁边的 JSON 和运行入口均采用项目相对路径。
 
 默认推理使用 FP32、`imgsz=1280`、`rect=True`、框置信度0.25、端点显示阈值0.50，并显式启用普通框 NMS，使 IoU 热键有效。可通过 `--weights /path/to/checkpoint.pt` 临时指定其他本地两点模型；若相邻 JSON 存在，会核验哈希和轮次，不会修改默认模型配置。
+
+## 交接说明
+
+Read the cassette pose handoff: [`docs/handoff-cassette-pose-ste100.md`](docs/handoff-cassette-pose-ste100.md).
+
+The handoff uses short sentences for ASD-STE100 readability. It records the labeler, the Colab notebook, the exporter, the session review state, and the next steps. It does not change code, weights, or labels.
