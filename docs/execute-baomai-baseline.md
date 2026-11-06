@@ -1,8 +1,12 @@
 # Execute the baomai baseline evaluation
 
-Start here in the next conversation. The user confirmed that the supervisor requires the upstream `baomai` task and that `Siuuuers/dl` is the working repository. There is enough information to implement and run the first offline baseline; do not repeat the architecture interview.
+Start here in the next conversation. The user confirmed that the supervisor requires the upstream `baomai` task and that `Siuuuers/dl` is the working repository. The first offline baseline has now been implemented and run; do not repeat the architecture interview.
 
-**Next task:** implement a small reproducible evaluator, run unchanged epoch 173 on the 20 reference validation images, and inspect its errors. This document is an execution handoff, not a completed model experiment.
+**Completed on 2026-11-06:** [PR #7](https://github.com/Siuuuers/dl/pull/7) implements the evaluator and records real inference on all 20 unchanged validation images at box confidence 0.15 / 0.25 / 0.40. The executed code was `3bc783f1e53a477a095ac29160674f07e393348d`, with a clean working tree. Read the [measured results report](https://github.com/Siuuuers/dl/blob/2ffd7b9788f29edf057335f2745e2d6efd3ce35f/docs/baseline-2026-11-06.md) and [reproduction guide](https://github.com/Siuuuers/dl/blob/2ffd7b9788f29edf057335f2745e2d6efd3ce35f/docs/evaluate-pose.md) from that PR until merged.
+
+At confidence 0.25, the declared matcher returned 625 TP, 39 FN, 63 FP, and 1,184 / 1,227 visible endpoints (96.50% coverage); conditional median/p95 error was 1.61 / 5.16 px. All 43 missing scored endpoints were on unmatched objects. The 36 focused checks passed; replay reproduced all aggregate and per-image metrics. These remain development-validation diagnostics, not independent final-test accuracy.
+
+**Next task:** review box extent and occlusion handling in `new_000009`, `new_000056` and `new_000090`, starting with the report's seven concrete unmatched pairs and the 12-row review queue in `baomai-baseline-2026-11-06.zip`. Several confident proposals have nearby corner coordinates but fail box IoU 0.50. Keep the frozen labels and matching rules unchanged; record decisions and any proposed corrections separately. The intended deliverable is a small set of adjudicated examples and a consistent box-extent convention, before deciding whether training-label changes are justified.
 
 ## 1. Preserve the task and reference
 
@@ -21,18 +25,18 @@ At the inspected revision, the committed `data/`, `metadata/`, `models/` and `we
 
 | Task / owner | Scope | Depends on | Acceptance evidence |
 | --- | --- | --- | --- |
-| Baseline / executing assistant | Preflight, offline evaluator, one-image smoke run, all 20 validation images, confidence comparison | Reference files and usable inference runtime | Saved predictions, per-image/aggregate metrics, failure overlays, run record |
+| Baseline / completed in PR #7 | Preflight, offline evaluator, smoke run, 20 images × 3 thresholds | Verified reference bytes and pinned CPU runtime | Saved predictions, metrics, overlays, completion record and exact replay |
 | Label recovery / independent assistant if useful | Locate the earlier candidate labels, inventory and compare small text files | Candidate folder, archive or earlier session artifact if available | Actual files, hashes, split, changed rows and review status; otherwise an explicit unresolved location |
-| Integration / one coordinator | Own evaluator, shared configuration and result interpretation | Baseline results | One reviewed PR and an exact-revision evidence summary |
+| Focused review / next assistant | Inspect the three identified frames and adjudicate box extent/occlusion cases on copies | PR #7 report, originals, review queue and usable editor | Source row IDs, explicit decisions, unresolved cases and any separate candidate labels |
 
-Label recovery can run in parallel. Its unresolved location does not block evaluation against the committed reference. Do not train, change the model architecture, expand the target to five points or 3D, or add more editor features as part of this first milestone.
+Label recovery can run in parallel. Its unresolved location does not block evaluation against the committed reference. Do not train, change the model architecture, expand the target to five points or 3D, or add more editor features as part of this focused review. Reuse the completed baseline unless a concrete code, data, runtime or settings change requires another comparison.
 
 ## 3. Preflight and implementation
 
 1. Record the checked-out commit. Recheck the model card, current scripts, and open PRs; this handoff may outlive the inspected revision.
 2. Obtain only the needed model and validation original PNGs first. In a fresh clone, skip automatic LFS smudging and fetch the selected LFS paths. Do not download training images or annotated previews for this milestone. Detect pointer text and verify actual bytes against the model card and validation records in `data/manifest.json`.
 3. Use an isolated headless inference environment with **Ultralytics 8.4.182**. Record Python, PyTorch, CUDA, device and precision. Reuse a compatible runtime where available; do not silently upgrade dependencies. Offline evaluation does not require a RealSense device or the live viewer's desktop/CUDA setup. Select CPU or an available GPU explicitly and use the same device throughout a comparison.
-4. Add a small CLI, proposed path `scripts/evaluate_pose.py`, if no suitable evaluator exists. This file and its CLI do **not** exist in the inspected revision. Separate deterministic scoring from model inference so matching and missing-point accounting can be checked without loading weights.
+4. Reuse `scripts/evaluate_pose.py` and its separate `scripts/pose_scoring.py` from PR #7. They did not exist in the starting main revision above, but are now implemented. Check current main and the PR before adding or changing an evaluator. The reproduction guide defines preflight, smoke, sweep and standard-library replay commands.
 5. Preflight label semantics: exactly 11 finite fields, class 0, positive box dimensions, normalized fields in range, visibility 0 or 2, canonical `0 0 0` for missing points, and left X ≤ right X when both points are visible. Verify image/label pairing and dimensions; preserve genuine empty files. Report semantic failures for review instead of silently rewriting the reference or swapping endpoints.
 6. Use bounded checks for one-to-one matching, duplicates, empty scenes, missed objects with visible endpoints, missing-point denominators, out-of-frame predictions, deterministic tie breaks, and null statistics. Do not add a full training or hardware CI matrix.
 
@@ -48,12 +52,12 @@ Run one original validation image first and verify numerical predictions plus an
 | Image size / rectangular preprocessing | `imgsz=1280`, `rect=True` |
 | Inference path | `nms=True`; verify the loaded predictor is not still end-to-end |
 | NMS IoU / detection limit | `iou=0.70`, `max_det=300` |
-| Precision | FP32, `half=False` |
+| Precision | FP32, `quantize=32` in Ultralytics 8.4.182 (`half=False` is deprecated) |
 | Box confidence | Start at 0.25; then compare 0.15, 0.25 and 0.40 |
 | Endpoint confidence | 0.50 throughout the box sweep |
 | Object matching IoU | 0.50, separate from the NMS threshold |
 
-These are reproducible diagnostic defaults, not supervisor acceptance tolerances. Keep other settings fixed and record the same image order/device. Do not substitute the current draft exporter's differently configured predictions for this evaluation.
+These are reproducible diagnostic defaults, not supervisor acceptance tolerances. The completed run used batch 1, CPU, four actual PyTorch threads after predictor setup, and one excluded explicit warm-up. Keep other settings fixed and record the same image order/device. Do not substitute the current draft exporter's differently configured predictions for this evaluation.
 
 For each image, sort predictions by descending box confidence, with original prediction index breaking ties. Match each prediction to the unmatched same-class reference box with the greatest IoU ≥ 0.50; break IoU ties by reference row order. Each object participates in at most one pair. Matched pairs are TP, unmatched reference objects are FN, and unmatched predictions are FP. An unmatched prediction overlapping an already matched reference at IoU ≥ 0.50 is a duplicate FP; other unmatched predictions are other FP, which can include localization errors as well as background detections.
 
@@ -94,4 +98,4 @@ The current exporter refuses an existing `data_pred/`, exports validation only, 
 
 ## Next-conversation instruction
 
-Read this workflow from its PR branch, inspect current `Siuuuers/dl`, and execute the first offline baseline milestone. Preserve the confirmed `baomai` task and reference assets. Implement the evaluator and bounded scoring checks, then run real inference if the model files and runtime are available. Recover earlier candidate labels independently. Report the tested revision, results, reproducibility evidence and concrete limits; do not present a proposed experiment or editor test as model performance.
+Read this workflow and PR #7's measured baseline report, then inspect current `Siuuuers/dl` and open PRs before editing. Preserve the confirmed baomai task and frozen reference. Continue with the three-image box-extent/occlusion review on original PNGs and copied labels, using the report's row IDs and review queue. Record explicit decisions and unresolved physical boundaries; do not silently relabel the reference, weaken the IoU threshold, or start training to improve the baseline score. Reuse the implemented evaluator and measured evidence. Recover earlier candidate labels independently when their actual location is available. If the review needs browser Save/reopen validation, use a suitable accessible desktop environment and disposable copies; the native-browser limitation below remains unresolved.
