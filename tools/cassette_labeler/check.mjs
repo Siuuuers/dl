@@ -9,7 +9,7 @@ const edited = original.replace('0.50000000', '0.55000000');
 
 function fixture(splits = ['train', 'val'], initial = original) {
   const saved = new Map();
-  const state = {writes: 0, picks: 0, prompts: 0, discard: false, fail: '', closeGate: null};
+  const state = {writes: 0, picks: 0, prompts: 0, discard: false, fail: '', closeGate: null, draws: []};
   const missing = () => Object.assign(new Error('Not found'), {name: 'NotFoundError'});
   const images = new Map(), labels = new Map();
   for (const split of splits) {
@@ -60,19 +60,22 @@ function fixture(splits = ['train', 'val'], initial = original) {
   };
   const elements = Object.fromEntries([...html.matchAll(/<\w+\b([^>]*\bid="([^"]+)"[^>]*)>/g)].map(([, attributes, id]) => [id, {
     value: '', textContent: '', disabled: /\bdisabled\b/.test(attributes), children: [],
+    checked: /\bchecked\b/.test(attributes), open: false, selectionStart: 0, selectionEnd: 0, scrollTop: 0, scrollLeft: 0,
+    focus() { document.activeElement = this; },
+    setSelectionRange(start, end) { this.selectionStart = start; this.selectionEnd = end; },
     replaceChildren(...children) { this.children = children; this.value = children[0]?.value ?? ''; },
   }]));
   const document = {getElementById: id => elements[id], activeElement: null};
   Object.assign(elements.canvas, {
     width: 1280, height: 720,
-    getContext: () => new Proxy({}, {get: () => () => {}, set: () => true}),
+    getContext: () => new Proxy({}, {get: (_, method) => () => state.draws.push(method), set: () => true}),
     getBoundingClientRect: () => ({left: 20, top: 10, width: 640, height: 360}),
     setPointerCapture() {},
   });
   const showDirectoryPicker = async () => { state.picks++; return root; };
   const window = {showDirectoryPicker};
   vm.runInNewContext(script, {
-    document, window, showDirectoryPicker,
+    document, window, showDirectoryPicker, getComputedStyle: () => ({lineHeight: '18px'}),
     confirm: () => { state.prompts++; return state.discard; },
     Option: function (text, value) { this.text = text; this.value = String(value); },
     createImageBitmap: async () => ({width: 1280, height: 720, close() {}}),
@@ -85,24 +88,28 @@ function fixture(splits = ['train', 'val'], initial = original) {
     await new Promise(setImmediate);
   }
   return {
-    elements, saved, state,
+    elements, saved, state, document,
     click: id => event(id, 'onclick'),
     async select(id, value) { elements[id].value = String(value); await event(id, 'onchange'); },
+    async toggle(id, checked) { elements[id].checked = checked; await event(id, 'onchange'); },
     text(value) { elements.label.value = value; document.activeElement = elements.label; elements.label.oninput?.(); },
     unload() {
       const event = {prevented: false, preventDefault() { this.prevented = true; }};
       window.onbeforeunload(event);
       return event.prevented;
     },
+    pointer(type, p) {
+      document.activeElement = elements.canvas;
+      elements.canvas[type]({button: 0, pointerId: 1, clientX: 20 + p[0] * 640, clientY: 10 + p[1] * 360});
+    },
     drag(mode, start, end = start) {
-      elements.mode.value = mode; document.activeElement = elements.canvas;
-      const pointer = p => ({button: 0, pointerId: 1, clientX: 20 + p[0] * 640, clientY: 10 + p[1] * 360});
-      elements.canvas.onpointerdown(pointer(start));
+      elements.mode.value = mode;
+      this.pointer('onpointerdown', start);
       if (start !== end) {
-        elements.canvas.onpointermove(pointer(start.map((v, i) => (v + end[i]) / 2)));
-        elements.canvas.onpointermove(pointer(end));
+        this.pointer('onpointermove', start.map((v, i) => (v + end[i]) / 2));
+        this.pointer('onpointermove', end);
       }
-      elements.canvas.onpointerup(pointer(end));
+      this.pointer('onpointerup', end);
     },
   };
 }
@@ -116,6 +123,114 @@ async function open(splits, initial) {
 }
 
 const checks = [
+  ['Edit selected row targets one of 54 rows without changing the others', async () => {
+    const lines = Array.from({length: 54}, (_, i) => original.replace('0.50000000', (0.25 + i / 100).toFixed(8)));
+    const initial = lines.join('\n'), app = await open(undefined, initial);
+    await app.select('objects', 36);
+    assert.equal(app.document.activeElement, app.elements.objects);
+    assert.equal(app.elements.labelPanel.open, false);
+    app.elements.label.scrollLeft = 120;
+    await app.click('editSelected');
+    const label = app.elements.label;
+    assert.equal(app.elements.labelPanel.open, true);
+    assert.equal(app.document.activeElement, label);
+    assert.equal(label.value.slice(label.selectionStart, label.selectionEnd), lines[36]);
+    assert.equal(label.scrollTop, 36 * 18);
+    assert.equal(label.scrollLeft, 0);
+    assert.equal(app.elements.undo.disabled, true);
+    assert.equal(app.unload(), false);
+    const correction = lines[36].replace('0.75000000 2', '0.72000000 2');
+    app.text(label.value.slice(0, label.selectionStart) + correction + label.value.slice(label.selectionEnd));
+    assert.equal(app.saved.get('train/a.txt'), initial + '\n');
+    await app.click('apply'); await app.click('save');
+    lines[36] = correction;
+    assert.equal(app.saved.get('train/a.txt'), lines.join('\n') + '\n');
+    await app.click('undo');
+    assert.equal(label.value, initial);
+  }],
+  ['Edit selected row handles the first, last, and empty label', async () => {
+    const lines = [original, edited], app = await open(undefined, lines.join('\n'));
+    for (const index of [0, 1]) {
+      await app.select('objects', index); await app.click('editSelected');
+      const label = app.elements.label;
+      assert.equal(label.value.slice(label.selectionStart, label.selectionEnd), lines[index]);
+      if (index === 0) assert.equal(label.selectionStart, 0);
+      else assert.equal(label.selectionEnd, label.value.length);
+      assert.equal(app.elements.undo.disabled, true);
+      assert.equal(app.unload(), false);
+    }
+    const empty = await open(['val'], '');
+    await empty.click('editSelected');
+    assert.equal(empty.elements.labelPanel.open, false);
+    assert.equal(empty.document.activeElement, empty.elements.editSelected);
+    assert.equal(empty.elements.label.value, '');
+    assert.equal(empty.elements.undo.disabled, true);
+    assert.equal(empty.unload(), false);
+  }],
+  ['Row targeting preserves a pending draft and the existing Undo', async () => {
+    const initial = original + '\n' + edited, applied = edited + '\n' + edited;
+    const app = await open(undefined, initial);
+    app.text(applied); await app.click('apply');
+    await app.select('objects', 1); await app.click('editSelected');
+    assert.equal(app.elements.undo.disabled, false);
+    app.text(applied + '\n0 0.5');
+    app.elements.label.setSelectionRange(3, 9);
+    app.elements.labelPanel.open = false;
+    await app.select('objects', 0);
+    assert.equal(app.document.activeElement, app.elements.objects);
+    await app.click('editSelected');
+    assert.equal(app.elements.labelPanel.open, false);
+    assert.equal(app.document.activeElement, app.elements.editSelected);
+    assert.equal(app.elements.label.value, applied + '\n0 0.5');
+    assert.equal(app.elements.label.selectionStart, 3);
+    assert.equal(app.elements.label.selectionEnd, 9);
+    assert.match(app.elements.status.textContent, /Apply or reset/);
+    assert.equal(app.elements.undo.disabled, false);
+    await app.click('reset'); await app.click('undo');
+    assert.equal(app.elements.label.value, initial);
+  }],
+  ['Hidden annotations show only the image and make the canvas view-only', async () => {
+    const app = await open();
+    assert.equal(app.elements.annotations.checked, true);
+    assert.ok(app.state.draws.includes('strokeRect'));
+    app.text(edited); await app.click('apply');
+    app.state.draws.length = 0;
+    await app.toggle('annotations', false);
+    assert.deepEqual(app.state.draws, ['clearRect', 'drawImage']);
+    const selected = app.elements.objects.value;
+    for (const [mode, start, end] of [
+      ['edit', [0.25, 0.75], [0.3, 0.65]],
+      ['edit', [0.5, 0.5], [0.6, 0.55]],
+      ['box', [0.1, 0.1], [0.4, 0.4]],
+      ['left', [0.2, 0.7], [0.3, 0.6]],
+      ['right', [0.8, 0.7], [0.7, 0.6]],
+    ]) {
+      app.drag(mode, start, end);
+      assert.equal(app.elements.label.value, edited, mode);
+      assert.equal(app.elements.objects.value, selected, mode);
+    }
+    assert.equal(app.elements.undo.disabled, false);
+    assert.equal(app.unload(), true);
+    app.text(edited + '\n0 0.5');
+    await app.toggle('annotations', true);
+    assert.ok(app.state.draws.includes('strokeRect'));
+    assert.equal(app.elements.label.value, edited + '\n0 0.5');
+    assert.equal(app.elements.reset.disabled, false);
+    await app.click('reset'); await app.click('undo');
+    assert.equal(app.elements.label.value, original);
+    assert.equal(app.unload(), false);
+    await app.toggle('annotations', false); await app.click('save');
+    assert.equal(app.saved.get('train/a.txt'), original + '\n');
+  }],
+  ['Hiding annotations cancels an active drag before overlays return', async () => {
+    const app = await open();
+    app.pointer('onpointerdown', [0.25, 0.75]);
+    await app.toggle('annotations', false); await app.toggle('annotations', true);
+    app.pointer('onpointermove', [0.3, 0.65]); app.pointer('onpointerup', [0.3, 0.65]);
+    assert.equal(app.elements.label.value, original);
+    assert.equal(app.elements.undo.disabled, true);
+    assert.equal(app.unload(), false);
+  }],
   ['Apply, Save, Undo, and empty labels round-trip', async () => {
     const app = await open();
     assert.equal(app.elements.label.value, original);

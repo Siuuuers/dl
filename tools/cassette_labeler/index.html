@@ -9,7 +9,7 @@
   button, select { font: inherit; margin: 3px; }
   canvas { display: block; width: 100%; max-width: 1280px; touch-action: none; background: #eee; }
   details { margin: 8px 0; }
-  textarea { display: block; width: 100%; max-width: 1280px; box-sizing: border-box; margin: 4px 0; font: 12px ui-monospace, monospace; white-space: pre; }
+  textarea { display: block; width: 100%; max-width: 1280px; box-sizing: border-box; margin: 4px 0; font: 12px/1.5 ui-monospace, monospace; white-space: pre; }
   #status { min-height: 1.5em; }
 </style>
 <h1>Cassette labeler</h1>
@@ -19,6 +19,7 @@
   <button id="save">Save label</button><button id="saveNext">Save &amp; Next</button><button id="undo" disabled>Undo</button>
   <br>
   <label>Cassette <select id="objects"></select></label>
+  <button id="editSelected">Edit selected row</button>
   <button id="add">Add cassette</button><button id="remove">Delete cassette</button>
   <label>Tool <select id="mode">
     <option value="edit">Drag point / box</option>
@@ -27,7 +28,8 @@
     <option value="right">Place right point</option>
   </select></label>
   <button id="missingLeft">Left missing</button><button id="missingRight">Right missing</button>
-  <details>
+  <label><input id="annotations" type="checkbox" checked> Show annotations</label>
+  <details id="labelPanel">
     <summary>Label text</summary>
     <textarea id="label" rows="8" spellcheck="false" aria-label="YOLO pose rows for this image"></textarea>
     <button id="apply">Apply</button><button id="reset" disabled>Reset text</button>
@@ -76,6 +78,7 @@ function draw(force) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (!picture) return;
   ctx.drawImage(picture, 0, 0);
+  if (!$('annotations').checked) return;
   rows.forEach((r, i) => {
     const [cx, cy, w, h] = r.slice(1, 5);
     const x = (cx - w / 2) * canvas.width, y = (cy - h / 2) * canvas.height;
@@ -155,6 +158,15 @@ $('files').onchange = () => {
   busy(() => load(index));
 };
 $('objects').onchange = () => { selected = Number($('objects').value); draw(); };
+$('editSelected').onclick = () => {
+  if (current < 0 || selected < 0 || !canEdit()) return;
+  const el = $('label'), lines = el.value.split('\n');
+  const start = lines.slice(0, selected).reduce((offset, line) => offset + line.length + 1, 0);
+  $('labelPanel').open = true;
+  el.focus(); el.setSelectionRange(start, start + lines[selected].length);
+  el.scrollTop = selected * parseFloat(getComputedStyle(el).lineHeight); el.scrollLeft = 0;
+};
+$('annotations').onchange = () => { drag = null; draw(); };
 $('add').onclick = () => {
   if (current < 0 || !canEdit()) return;
   snapshot();
@@ -231,7 +243,7 @@ function position(event) {
           Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height))];
 }
 canvas.onpointerdown = event => {
-  if (current < 0 || $('controls').disabled || event.button !== 0) return;
+  if (current < 0 || $('controls').disabled || !$('annotations').checked || event.button !== 0) return;
   if (!canEdit()) return;
   const p = position(event), mode = $('mode').value;
   if (mode === 'edit') {
