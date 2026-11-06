@@ -26,7 +26,7 @@ All remaining rows are byte-for-byte unchanged, including boxes, endpoint coordi
 
 ## Before training
 
-This directory is an **overlay**, not a complete training dataset. No candidate YAML is supplied. A future staging step must create a separate paired `images/` and `labels/` tree, retain unchanged labels for all other images, apply only these five replacements, and verify actual source image bytes. Confirm the trainer's resolved label paths: a YAML pointing at the original image tree can still select the original labels. Preserve the frozen reference and do not edit its hashes to accommodate a candidate.
+This directory is an **overlay**, not a complete training dataset. No candidate YAML is supplied. A separate staging step must create a separate paired `images/` and `labels/` tree, retain unchanged labels for all other images, apply only these five replacements, and verify actual source image bytes. Confirm the trainer's resolved label paths: a YAML pointing at the original image tree can still select the original labels. Preserve the frozen reference and do not edit its hashes to accommodate a candidate.
 
 The separate staging step is now implemented in `scripts/stage_pose_training.py`; follow the [training preparation guide](../../../docs/prepare-pose-training.md). It builds and verifies complete reference/candidate copies without modifying this overlay. The [adopted annotation policy](../../../docs/annotation-policy.md) guides future edits; this candidate remains deletion-only and does not claim a complete migration of every retained box to that policy.
 

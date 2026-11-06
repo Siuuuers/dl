@@ -2,6 +2,8 @@
 
 The annotation convention is now adopted in [annotation-policy.md](annotation-policy.md), with [upstream-source evidence](annotation-sources-2026-11-06.json). The existing eleven-row correction remains a [deduplication-only candidate](../data/candidates/dedup-2026-11-06/README.md). This stage prepares complete reference and candidate datasets; it does not change the supplied model or start training.
 
+**Executed on 2026-11-06:** published revision `1f6aeb60c48d72e8d1b9fdfbe02f8b67eaa4fbb6` built and verified both complete datasets with a clean working tree. The installed pinned resolver checked all 314 image/label pairings; seven invalid-input probes were rejected and a final verification passed after restoration. Read the [execution record](training-preparation-verification-2026-11-06.json) for code/data hashes, results and limits.
+
 ## Build and verify a fresh pair
 
 Use a checkout containing `scripts/stage_pose_training.py`. Fetch original image bytes, not annotated previews, and run from the repository root:
