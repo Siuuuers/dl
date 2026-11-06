@@ -1,10 +1,10 @@
-# Reproduce the baomai offline baseline
+# Evaluate the baomai baseline and completed training arms
 
-`scripts/evaluate_pose.py` measures the unchanged epoch-173 model against all 20 reference validation images. It needs no RealSense device or desktop display. The task remains one `cassette_front` class and two actual lower-front corners, ordered by image X. This implements the first milestone in [workflow PR #6](https://github.com/Siuuuers/dl/pull/6).
+`scripts/evaluate_pose.py` defaults to the unchanged epoch-173 model against all 20 reference validation images. An explicit `--checkpoint-manifest` selects a verified completed training arm while keeping the reference validation set fixed. It needs no RealSense device or desktop display. The task remains one `cassette_front` class and two actual lower-front corners, ordered by image X. Continue from [workflow PR #6](https://github.com/Siuuuers/dl/pull/6).
 
 The first completed run, measured results and next review task are in [the 2026-11-06 baseline report](baseline-2026-11-06.md).
 
-Do not use these images as an independent final test: they already participated in selecting epoch 173. Do not change reference labels to improve this score. Earlier candidate-label recovery and a supervised editor acceptance session are separate work.
+Do not use these images as an independent final test: they already participated in selecting epoch 173. Do not change reference labels to improve this score. The user has confirmed robotic positioning/grasping as the intended use; this image evaluation does not establish calibrated robot-frame accuracy or successful physical grasps. Earlier candidate-label recovery and a supervised editor acceptance session are separate work.
 
 ## 1. Obtain the reference bytes
 
@@ -14,7 +14,7 @@ Run from a checkout containing this evaluator. For a fresh clone, skip automatic
 GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/Siuuuers/dl.git
 cd dl
 # Until this implementation is merged, check out its PR branch:
-git switch codex/baomai-baseline-evaluator
+git switch codex/baomai-grasp-training-20261107
 git lfs install --local
 git lfs pull --include='data/images/val/*.png,weights/cassette_lower_epoch173.pt' --exclude=''
 python3 scripts/evaluate_pose.py --preflight-only
@@ -109,7 +109,48 @@ python3 scripts/evaluate_pose.py --replay reports/baseline-001/predictions.jsonl
 
 Replays check dataset/model identity, image/label hashes, dimensions, inference configuration, actual threshold availability and one record for each selected image/threshold. They preserve original inference provenance and timings, including when replaying a replay; the new source revision records the scoring code. Optional `--conf` selects already inferred thresholds. It cannot invent a new threshold run. Changing `--endpoint-conf` or `--matching-iou` changes the scoring criteria and must be stated in comparisons. Checksums establish file identity; a replay is not another model inference.
 
-## 6. Continue from measured errors
+## 6. Evaluate a completed training arm explicitly
+
+The [training runner](train-pose-comparison.md) produces `checkpoint-manifest.json` only after a complete paired fine-tune has passed its provenance checks. A resource trial does not produce an eligible manifest. The thirteen focused checks below use visibly synthetic receipts, results and fake checkpoint bytes; they do not demonstrate a trained candidate or its accuracy:
+
+```bash
+python3 scripts/check_pose_checkpoint.py
+```
+
+Once a real completed run exists, use its generated bundle:
+
+```bash
+.venv/bin/python scripts/evaluate_pose.py --checkpoint-manifest ../baomai-reference-001/checkpoint-manifest.json --preflight-only
+.venv/bin/python scripts/evaluate_pose.py --checkpoint-manifest ../baomai-reference-001/checkpoint-manifest.json --device cpu --threads 4 --conf 0.15 0.25 0.40 --output reports/reference-finetune-001
+```
+
+The same command pattern applies to the candidate arm. Use matching evaluation settings and a suitable common device. Omitting the manifest continues to select and verify the original epoch173 checkpoint; the frozen model card is never replaced.
+
+The manifest identifies the finalized `last.pt` by content hash and byte size, the pose/class/two-point/flip contract, the training receipt and the copied staging manifest. Its artifact paths are relative and confined to the run bundle. The verifier checks:
+
+- The initialization, frozen dataset/model-card hashes, selected training arm and its dataset YAML identity.
+- Both staged file inventories against the frozen reference and the repository's versioned candidate proposal, including all validation image/label hashes.
+- The fixed paired recipe, including float `fraction=1.0`. In the pinned runtime integer `1` selects one image, so that substitution is rejected.
+- A clean recorded code revision, runner/recipe hashes, runtime identity, observed optimizer updates and validation.
+- Successful worker exit without a resource stop or input-verification error, a contiguous completed epoch sequence 1–30, successful finalization and final-epoch selection.
+- Hashed results/log files, with exactly 30 epoch rows and finite numeric results, plus the actual checkpoint bytes before inference.
+
+The loaded model's task, class names and actual `[2, 3]` keypoint head are checked before prediction, including when a scene returns no detections. The checkpoint format cannot independently prove the physical meaning of its points; training-data provenance and annotation review establish that meaning.
+
+The evaluator's top-level `model_sha256` identifies the evaluated checkpoint. Its `model_card_sha256` and `manifest_sha256` continue to identify the frozen reference. A trained run also carries `checkpoint_identity`, binding its manifest, receipt, staged data, arm, initialization and final epoch. The quality diagnostic exposes that identity as `evaluated_checkpoint`, separately from the unchanged `reference` object.
+
+Candidate replay requires the same explicit bundle:
+
+```bash
+python3 scripts/evaluate_pose.py --checkpoint-manifest ../baomai-reference-001/checkpoint-manifest.json --replay reports/reference-finetune-001/predictions.jsonl --overlays 0 --output reports/reference-replay-001
+python3 scripts/diagnose_pose_quality.py --checkpoint-manifest ../baomai-reference-001/checkpoint-manifest.json --predictions reports/reference-finetune-001/predictions.jsonl --output reports/reference-quality-001
+```
+
+Replay verifies the bundle's small evidence files and the reference validation bytes without loading or requiring either checkpoint file, training images, PyTorch or Ultralytics. It still needs the versioned reference/candidate text metadata. It never adopts a candidate identity from the prediction header alone, and it preserves original inference identity through repeated replay. Existing schema-version-1 baseline replays remain supported without a checkpoint manifest.
+
+Keep the receipt, copied staging manifest, results and log together with the manifest. Historical absolute training paths remain provenance text; replay does not load data from those paths. Checksums and consistency checks make the experiment traceable, but are not external attestation that a training claim or physical grasp succeeded. A complete bundle qualifies a checkpoint for the planned comparison, not for deployment.
+
+## 7. Continue from measured errors
 
 Read the baseline report and inspect its selected originals. Pick one bounded action from observed failures before training: for example, review a small set of disputed corner annotations or test one inference setting while keeping the reference fixed. Store any proposed corrections separately with review status and source hashes.
 
