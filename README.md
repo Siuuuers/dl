@@ -104,6 +104,8 @@ test/d405_recordings/recording_日期_时间/
 
 无需连接 D405 或安装桌面环境，即可在 CPU 上评估原始第173轮模型。请按[离线评估说明](docs/evaluate-pose.md)校验20张验证原图和权重，运行置信度对比，并保存逐图指标、预测和诊断叠图。该工具保留参考标签与数据划分；结果属于开发验证集，不能当作独立测试精度或实际相机帧率。
 
+模型品質的判定方式、已完成的標註審查，以及先修正資料或再訓練的決策，見[模型品質與下一步](docs/model-quality.md)。
+
 ## 模型与指标
 
 对应数据配置为 [`data/data.yaml`](data/data.yaml)。`data/images/` 保存1280×720原图，`data/labels/` 保存两点Pose标签，`data/annotated/` 保存带编辑器页脚的标注预览，仅供查看。最终测试图和隔离图不包含在训练数据包内。数据说明、逐文件来源与校验值见 [`data/README.md`](data/README.md) 和 [`data/manifest.json`](data/manifest.json)。
