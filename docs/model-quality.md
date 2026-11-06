@@ -125,7 +125,7 @@ The reusable CLI fixes endpoint confidence at 0.50. The separate endpoint-cutoff
 
 ## Next conversation
 
-Read this document and the evidence JSON, inspect current main/open PRs, and reuse the completed baseline and quality diagnostics. The 12-row queue has been reviewed; do not treat it as an unfinished automatic-relabeling task. Resolve box-extent/inclusion decisions and application tolerances, then perform a small training-image review on copies. Retain the established point semantics and all missing-side labels unless original-image evidence supports a change. Earlier candidate-label recovery remains independent and unresolved.
+Read this document and the evidence JSON, inspect current main/open PRs, and reuse the completed baseline and quality diagnostics. The 12-row validation queue has been reviewed; do not treat it as an unfinished automatic-relabeling task. The subsequent [training-image pilot](training-pilot-2026-11-06.md) found eleven duplicate-instance rows and records a separate proposed overlay; its evidence and exact verifier are the next continuation point. Resolve remaining box-extent/inclusion decisions and application tolerances before claiming broader annotation or deployment readiness. Retain the established point semantics and all missing-side labels unless original-image evidence supports a change. Earlier candidate-label recovery remains independent and unresolved.
 
 ## Method references
 
