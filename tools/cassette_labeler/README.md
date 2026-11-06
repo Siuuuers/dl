@@ -13,6 +13,7 @@ Then open <http://localhost:8000/tools/cassette_labeler/>. No dependencies or ne
 3. Select a cassette by box or number. Drag green (front_lower_left) and blue (front_lower_right) points onto the actual front-lower corners. Drag inside its box to move only the box; use **Draw / replace box** to redraw its bounds.
 4. **Add cassette** starts a new box: drag its bounds, then use **Place left point** and **Place right point**. **Left missing** / **Right missing** write `0 0 0`; placing a point marks it visible (`2`). **Delete cassette** removes the selected row.
 5. **Save label** overwrites `data/labels/{train,val}/<image-stem>.txt` in place (or creates it). All cassette rows are saved as `0 cx cy w h left_x left_y left_v right_x right_y right_v`, normalized to the image. Saving no cassettes writes an empty file. Switching images with unsaved changes asks before discarding them.
+6. **Label text** shows those exact rows for the current image. Edit them and click **Apply** to update the in-memory cassettes; **Save label** still writes the file. **Undo** reverts the last drag, add, delete, missing-point change, or Apply.
 
 Browser automation uses the same controls and canvas; it needs access to the local repo and directory picker. Saves update only labels, not annotated previews or snapshot hashes in `data/manifest.json` / `data/SHA256SUMS.txt`.
 
