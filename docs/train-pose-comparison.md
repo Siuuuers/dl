@@ -27,13 +27,17 @@ The parent process records wall time and samples process-tree resident memory ev
 
 Inspect `training-receipt.json`, `training-progress.json` and `train.log`. A successful resource result has `purpose: resource-trial`, `status: trial-complete`, positive optimizer updates and a recorded parameter change. It has no completed training epochs or final checkpoint. Source drift or changed inputs invalidate its receipt even if some batches ran. Development trials may record a dirty checkout; full comparisons require a clean revision.
 
-### Development resource finding
+### Published execution finding
 
-The development trial on 2026-11-07 constructed both real loaders and verified 137/20 images, 3,772/664 objects and 6,839/1,227 visible endpoints. Its first four-image batch had actual tensor shape `[4, 3, 736, 1280]`, completed in approximately 6.93 seconds, produced finite loss/gradients and completed one optimizer update with an observed parameter change.
+Clean published revision `53bc4f9a01655ada3755f37b41be858f644e2b44` was executed on 2026-11-07 (Hong Kong time). The [execution record](training-execution-verification-2026-11-07.json) and [preserved training log](training-resource-2026-11-07.log) contain the precise evidence.
 
-During the next batch, sampled process-tree RSS reached 6,344.54 MiB and crossed the 6,000 MiB stop threshold. The parent terminated the worker after approximately 17.50 seconds total. The outcome was `resource-trial` / `failed`, with one completed batch, zero completed epochs and no eligible checkpoint. This establishes a limit of the chosen execution budget; it does not prove that every CPU machine is incapable of this training. Steady-state throughput, later-batch memory, validation and checkpoint-finalization costs remain unqualified. Do not extrapolate a reliable full-run duration from this single completed batch or increase the shared environment's memory budget to declare success.
+Both real loaders verified 137/20 images, 3,772/664 objects and 6,839/1,227 visible endpoints. The first four-image training batch had tensor shape `[4, 3, 736, 1280]`, completed in approximately 6.75 seconds, produced finite loss/gradients and completed one optimizer update with an observed parameter change.
 
-This was development execution, before final published-code verification. Preserve the clean execution report with the published revision separately. The monitored process checks passed five focused cases: successful worker exit, enforced wall-time budget, enforced RSS budget, refusal to reuse an output directory, and detection of changed input bytes after loader-cache creation.
+During the next batch, sampled process-tree RSS reached **6,050.04 MiB** and crossed the **6,000 MiB** stop threshold. The parent terminated the worker after approximately **17.64 seconds**. The outcome was `resource-trial` / `failed`, with one completed batch, zero completed epochs and no eligible checkpoint. The real stopped receipt was also rejected by the checkpoint-manifest writer.
+
+This establishes a limit of the chosen execution budget; it does not prove that every CPU machine is incapable of this training. Steady-state throughput, later-batch memory, validation and checkpoint-finalization costs remain unqualified. Do not extrapolate a reliable full-run duration from this single completed batch or silently change the scientific recipe to force a pass.
+
+All **66 focused checks** passed on that published revision: 36 evaluator, 12 quality, 13 checkpoint-bundle and five execution-budget/input checks. The bundle checks use synthetic completed artifacts; no real 30-epoch model exists. Both saved-prediction replays reproduced all 60 image/threshold pairs exactly. New inference on one dense and one empty baseline image verified the actual loaded `[2,3]` head and reproduced the prior predictions exactly.
 
 ## Complete each arm on qualified compute
 

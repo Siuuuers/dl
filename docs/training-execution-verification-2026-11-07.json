@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-11-06T16:54:48.475679+00:00",
+  "recorded_at_hong_kong": "2026-11-07T00:54:48.475679+08:00",
+  "repository": "Siuuuers/dl",
+  "executed_revision": "53bc4f9a01655ada3755f37b41be858f644e2b44",
+  "working_tree_clean_during_execution": true,
+  "purpose": "Robotic positioning/grasping confirmed by user; traceable model comparison preparation and bounded resource qualification.",
+  "focused_checks": [
+    {
+      "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/check_evaluate_pose.py",
+      "passed": 36,
+      "exit_code": 0
+    },
+    {
+      "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/check_pose_quality.py",
+      "passed": 12,
+      "exit_code": 0
+    },
+    {
+      "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/check_pose_checkpoint.py",
+      "passed": 13,
+      "exit_code": 0
+    },
+    {
+      "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/check_train_pose_comparison.py",
+      "passed": 5,
+      "exit_code": 0
+    }
+  ],
+  "focused_checks_total": 66,
+  "focused_check_scope": "Checkpoint-bundle success paths use synthetic bundles and fake checkpoint bytes; they do not establish completed real fine-tuning.",
+  "resource_trial": {
+    "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/train_pose_comparison.py --trial --arm reference --device cpu --threads 4 --trial-batches 4 --max-seconds 600 --max-rss-mib 6000 --output /workspace/scratch/4bca12825372/dl-grasp-resource-published-20261107",
+    "parent_exit_code": 1,
+    "outcome": "Guard stopped the worker after one completed batch; resource qualification did not pass.",
+    "receipt_sha256": "88ccef816c0b90b003d66a3a672cde2a2c7b96ca923fdd6a47fc4d94ae14c407",
+    "receipt": {
+      "schema_version": 1,
+      "purpose": "resource-trial",
+      "created_at_utc": "2026-11-06T16:50:18.644808+00:00",
+      "arm": "reference",
+      "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+      "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+      "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+      "staging_manifest_sha256": "ccfc7448471965445707fcb94a80e9633c275b08e1237c9bf237af05bf8ce04c",
+      "data_yaml_sha256": "2594d27102722adcf2948e51aa65f589cfb61bd9acbba3a8a95b67d0d3fb5bf1",
+      "source": {
+        "revision": "53bc4f9a01655ada3755f37b41be858f644e2b44",
+        "working_tree_status": "",
+        "files_sha256": {
+          "scripts/train_pose_comparison.py": "0a597cb8bfc125287077d7bccd38f50de1f39bdcd3542e8702f2c3b637795d45",
+          "scripts/pose_checkpoint.py": "24522b4ef5b9c9267cc89dd2f47b207a089dd02df9672440fe78e7293f6089cd",
+          "scripts/stage_pose_training.py": "7b54f34b9392af77897d83e75248cd66ffc4e3bdf40af46881ff16ae79667158",
+          "scripts/verify_pose_candidate.py": "a14d56d707612519bd966bb2637f27edc396023c349e89a0e1fc7f1fed363189",
+          "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+          "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+        }
+      },
+      "execution": {
+        "exit_code": -15,
+        "stop_reason": "process RSS limit exceeded",
+        "wall_seconds": 17.635151249000046,
+        "sampled_peak_process_tree_rss_mib": 6050.03515625,
+        "rss_sampling_interval_seconds": 0.2,
+        "max_seconds": 600,
+        "max_rss_mib": 6000
+      },
+      "status": "failed",
+      "completed_epochs": [],
+      "optimizer_steps": 1,
+      "batches_completed": 1,
+      "images_processed": 4,
+      "batch_samples": [
+        {
+          "shape": [
+            4,
+            3,
+            736,
+            1280
+          ],
+          "image_ids": [
+            "new_000116",
+            "new_000085",
+            "new_000072",
+            "old_000046"
+          ],
+          "objects": 104,
+          "epoch": 1,
+          "batch": 1,
+          "wall_seconds": 6.746372745001281,
+          "loss": 12.932026863098145,
+          "loss_components": {
+            "box_loss": 1.4528814554214478,
+            "pose_loss": 0.040459346026182175,
+            "kobj_loss": 0.22486642003059387,
+            "cls_loss": 0.45637592673301697,
+            "l1_loss": 0.005490506533533335,
+            "rle_loss": 0.08609825372695923
+          },
+          "optimizer_steps_total": 1
+        }
+      ],
+      "training_returned": false,
+      "finalization_completed": false,
+      "optimizer_parameter_change_observed": true,
+      "validation_executed": false,
+      "runtime": {
+        "python": "3.12.14",
+        "torch": "2.10.0+cpu",
+        "ultralytics": "8.4.182",
+        "device": "cpu",
+        "torch_cuda": null,
+        "threads": 4,
+        "interop_threads": 1,
+        "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+        "packages": {
+          "torchvision": "0.25.0+cpu",
+          "numpy": "2.5.4",
+          "Pillow": "13.0.0",
+          "opencv-python": "5.0.0.93",
+          "psutil": "7.2.2"
+        }
+      },
+      "loader_verification": [
+        {
+          "split": "train",
+          "images": 137,
+          "objects": 3772,
+          "visible_endpoints": 6839,
+          "batches": 35,
+          "batch_size": 4
+        },
+        {
+          "split": "val",
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "batches": 3,
+          "batch_size": 8
+        }
+      ],
+      "training_settings": {
+        "task": "pose",
+        "mode": "train",
+        "model": "/workspace/scratch/4bca12825372/dl-baseline/weights/cassette_lower_epoch173.pt",
+        "data": "/workspace/scratch/4bca12825372/dl-grasp-resource-published-20261107/staged-data/reference/data.yaml",
+        "epochs": 30,
+        "time": null,
+        "patience": 0,
+        "batch": 4,
+        "imgsz": 1280,
+        "save": true,
+        "save_period": 10,
+        "cache": false,
+        "device": "cpu",
+        "workers": 0,
+        "project": "/workspace/scratch/4bca12825372/dl-grasp-resource-published-20261107",
+        "name": "fit",
+        "exist_ok": false,
+        "pretrained": true,
+        "cls_remap": true,
+        "optimizer": "AdamW",
+        "verbose": false,
+        "seed": 42,
+        "deterministic": true,
+        "single_cls": false,
+        "rect": true,
+        "cos_lr": false,
+        "close_mosaic": 0,
+        "resume": false,
+        "amp": false,
+        "fraction": 1.0,
+        "profile": false,
+        "freeze": 0,
+        "multi_scale": 0.0,
+        "compile": false,
+        "channels_last": null,
+        "overlap_mask": true,
+        "mask_ratio": 4,
+        "dropout": 0.0,
+        "val": true,
+        "split": "val",
+        "save_json": false,
+        "conf": null,
+        "iou": 0.7,
+        "max_det": 300,
+        "quantize": null,
+        "dnn": false,
+        "plots": false,
+        "nms": null,
+        "source": null,
+        "vid_stride": 1,
+        "stream_buffer": false,
+        "visualize": false,
+        "augment": false,
+        "agnostic_nms": false,
+        "classes": null,
+        "retina_masks": false,
+        "embed": null,
+        "show": false,
+        "save_frames": false,
+        "save_txt": false,
+        "save_conf": false,
+        "save_crop": false,
+        "show_labels": true,
+        "show_conf": true,
+        "show_boxes": true,
+        "line_width": null,
+        "format": "torchscript",
+        "optimize": false,
+        "dynamic": false,
+        "simplify": true,
+        "opset": null,
+        "workspace": null,
+        "lr0": 0.0001,
+        "lrf": 0.01,
+        "momentum": 0.937,
+        "weight_decay": 0.0005,
+        "warmup_epochs": 3.0,
+        "warmup_momentum": 0.8,
+        "warmup_bias_lr": 0.1,
+        "distill_model": null,
+        "dis": 6.0,
+        "box": 7.5,
+        "cls": 0.5,
+        "cls_pw": 0.0,
+        "dfl": 1.5,
+        "pose": 12.0,
+        "kobj": 1.0,
+        "rle": 1.0,
+        "angle": 1.0,
+        "dlog": 1.0,
+        "dgrad": 0.5,
+        "dlam": 1.0,
+        "nbs": 64,
+        "hsv_h": 0.01,
+        "hsv_s": 0.2,
+        "hsv_v": 0.2,
+        "degrees": 5.0,
+        "translate": 0.05,
+        "scale": 0.15,
+        "shear": 0.0,
+        "perspective": 0.0,
+        "flipud": 0.0,
+        "fliplr": 0.5,
+        "bgr": 0.0,
+        "mosaic": 0.0,
+        "mixup": 0.0,
+        "cutmix": 0.0,
+        "copy_paste": 0.0,
+        "copy_paste_mode": "flip",
+        "auto_augment": "randaugment",
+        "erasing": 0.4,
+        "cfg": null,
+        "tracker": "tracktrack.yaml",
+        "save_dir": "/workspace/scratch/4bca12825372/dl-grasp-resource-published-20261107/fit"
+      },
+      "worker_wall_seconds": 13.977826152993657,
+      "worker_peak_rss_mib": 5730.87109375,
+      "checkpoint_selection": "none",
+      "inputs_reverified_after_worker": true,
+      "log": {
+        "path": "train.log",
+        "sha256": "0b305fc0242cff3ea851a18bc19623df15e08760ba1848d610a9d9a7b50ac363"
+      }
+    },
+    "actual_trial_manifest_rejection": {
+      "rejected": true,
+      "reason": "only a completed paired-finetune qualifies; resource trials are ineligible",
+      "eligible_manifest_present": false
+    },
+    "preserved_log": {
+      "path": "docs/training-resource-2026-11-07.log",
+      "sha256": "0b305fc0242cff3ea851a18bc19623df15e08760ba1848d610a9d9a7b50ac363"
+    },
+    "validation_loader_constructed": true,
+    "validation_executed": false,
+    "full_finetune_completed": false,
+    "steady_state_and_finalization_memory_qualified": false,
+    "budget_scope": "Sampled host process-tree RSS; not a hard allocation cap, GPU-memory measurement, or proof that all CPU machines cannot train."
+  },
+  "baseline_replay": {
+    "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/evaluate_pose.py --replay reports/baseline-published-20261106/predictions.jsonl --output reports/grasp-replay-20261107 --overlays 0",
+    "exit_code": 0,
+    "image_threshold_pairs": 60,
+    "source_predictions_sha256": "fe0cf4ca55cc828d5740fda06ca49e6c677c277d8c261c84732bf9c4fd1fa51a",
+    "aggregate_metrics_exactly_equal": true,
+    "per_image_metrics_exactly_equal": true,
+    "output_summary_sha256": "073ff20827acd8fac10770e11cd66c0403625d116e8912a982af48425968c8b2",
+    "output_per_image_sha256": "793718db8083df4127601b464422d8542dd2eb6993ea2a47ba02490d3dda031a"
+  },
+  "quality_replay": {
+    "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/diagnose_pose_quality.py --predictions reports/baseline-published-20261106/predictions.jsonl --output reports/grasp-quality-20261107",
+    "exit_code": 0,
+    "image_threshold_pairs": 60,
+    "aggregate_metrics_exactly_equal": true,
+    "per_image_metrics_exactly_equal": true,
+    "output_summary_sha256": "188243b5f2b379648e24470bce4010abb10322067ebfb7454a6f2c88eb3d81a8",
+    "output_per_image_sha256": "388da19f30c15b22ec6d60c30fd8b5521cf91aa4e8e8612080be81fd793505a6"
+  },
+  "real_baseline_head_smoke": {
+    "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/evaluate_pose.py --device cpu --threads 4 --conf 0.25 --image new_000011 --image new_000146 --overlays 0 --output reports/grasp-head-smoke-20261107",
+    "exit_code": 0,
+    "new_inference_executed": true,
+    "model_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "runtime": {
+      "python": "3.12.14",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "device_requested": "cpu",
+      "torch": "2.10.0+cpu",
+      "torch_cuda": null,
+      "torch_threads_requested": 4,
+      "ultralytics": "8.4.182",
+      "loaded_kpt_shape": [
+        2,
+        3
+      ],
+      "packages": {
+        "torchvision": "0.25.0+cpu",
+        "numpy": "2.5.4",
+        "Pillow": "13.0.0",
+        "opencv-python": "5.0.0.93"
+      },
+      "device_actual": "cpu",
+      "backend_end2end": false,
+      "backend_fp16": false,
+      "torch_threads": 4
+    },
+    "images": [
+      {
+        "id": "new_000011",
+        "predictions": 62,
+        "predictions_exactly_equal_to_prior_baseline": true
+      },
+      {
+        "id": "new_000146",
+        "predictions": 0,
+        "predictions_exactly_equal_to_prior_baseline": true
+      }
+    ],
+    "output_predictions_sha256": "2fcab33af26651a03e04302b5841b9e0428948bf32a01f690623f18d486c9ec6",
+    "scope": "Loaded-head compatibility and prediction preservation on one dense and one empty image; not a new full benchmark or candidate evaluation."
+  },
+  "frozen_reference": {
+    "actual_original_png_hashes_verified": 157,
+    "actual_label_hashes_verified": 157,
+    "manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "frozen_git_paths_unchanged_from": "c4f82c039fee3087e8a3fb36fe6c9f735acdb5dc"
+  },
+  "executed_code_sha256": {
+    "scripts/train_pose_comparison.py": "0a597cb8bfc125287077d7bccd38f50de1f39bdcd3542e8702f2c3b637795d45",
+    "scripts/pose_checkpoint.py": "24522b4ef5b9c9267cc89dd2f47b207a089dd02df9672440fe78e7293f6089cd",
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+    "scripts/stage_pose_training.py": "7b54f34b9392af77897d83e75248cd66ffc4e3bdf40af46881ff16ae79667158",
+    "scripts/verify_pose_candidate.py": "a14d56d707612519bd966bb2637f27edc396023c349e89a0e1fc7f1fed363189",
+    "scripts/check_evaluate_pose.py": "37b709330a669ac58928a1e1320da96d60eef5317052164c6c62a1154d72c363",
+    "scripts/check_pose_quality.py": "5053a3063f829484b1489bbf36b1ed6a2eda17893d53f749981c536f6579a8b0",
+    "scripts/check_pose_checkpoint.py": "3cdfe31573d8e9e84613be2dc07dec90292883a0a08bd8e6f8f3f1009aeb9359",
+    "scripts/check_train_pose_comparison.py": "0652e1ba004b8cdd8c7c06193c470ed173c76d8be52a0d0422eab257074699de"
+  },
+  "limits": [
+    "One actual training batch and optimizer update completed; no epoch or paired fine-tune completed.",
+    "Both real loaders were constructed, but validation batches and checkpoint finalization were not executed in the resource trial.",
+    "No eligible trained-model checkpoint or measured candidate accuracy improvement exists.",
+    "An inference smoke and exact saved-prediction replay preserve baseline behavior; they do not establish robot-level accuracy.",
+    "Color-only capture currently supplies neither metric depth nor camera-to-robot/TCP calibration. No camera acquisition or robot motion was executed.",
+    "Camera mounting, plane/depth assumptions, robot/gripper/contact definition, physical tolerances, timing and independent trials remain unresolved.",
+    "Full training needs qualified compute or a separately documented shared recipe revision; original resolution and batch size were not silently reduced."
+  ]
+}
