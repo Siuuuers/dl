@@ -2,6 +2,8 @@
 
 `scripts/evaluate_pose.py` measures the unchanged epoch-173 model against all 20 reference validation images. It needs no RealSense device or desktop display. The task remains one `cassette_front` class and two actual lower-front corners, ordered by image X. This implements the first milestone in [workflow PR #6](https://github.com/Siuuuers/dl/pull/6).
 
+The first completed run, measured results and next review task are in [the 2026-11-06 baseline report](baseline-2026-11-06.md).
+
 Do not use these images as an independent final test: they already participated in selecting epoch 173. Do not change reference labels to improve this score. Earlier candidate-label recovery and a supervised editor acceptance session are separate work.
 
 ## 1. Obtain the reference bytes
