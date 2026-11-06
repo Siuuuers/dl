@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-11-06T16:03:07.886172+00:00",
+  "repository": "Siuuuers/dl",
+  "executed_revision": "1f6aeb60c48d72e8d1b9fdfbe02f8b67eaa4fbb6",
+  "working_tree_clean_during_execution": true,
+  "python_for_staging": "3.12.14",
+  "staging_root": "/workspace/scratch/4bca12825372/dl-training-pair-published-20261106",
+  "commands": [
+    {
+      "command": "python3 scripts/stage_pose_training.py --output /workspace/scratch/4bca12825372/dl-training-pair-published-20261106",
+      "exit_status": 0
+    },
+    {
+      "command": "python3 scripts/stage_pose_training.py --verify /workspace/scratch/4bca12825372/dl-training-pair-published-20261106",
+      "exit_status": 0
+    }
+  ],
+  "staging_manifest_sha256": "9286b28fe63ef11baff71c52fa55b26494f284330ed671a2feeca6411fcd1aaf",
+  "staging_source": {
+    "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+    "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "checkpoint_bytes_verified": false,
+    "candidate_id": "dedup-2026-11-06",
+    "candidate_manifest": "data/candidates/dedup-2026-11-06/manifest.json",
+    "candidate_manifest_sha256": "425d718e335be312019768e2fe040a3d5a44b2b4143f82b487fec623ba5bd215",
+    "declared_candidate_source_revision": "1c201e35a33727ac0ae59f1d11a3d7fbb72b5ae7",
+    "source_revision_git_object_checked": false
+  },
+  "staging_code_sha256": {
+    "scripts/stage_pose_training.py": "7b54f34b9392af77897d83e75248cd66ffc4e3bdf40af46881ff16ae79667158",
+    "scripts/verify_pose_candidate.py": "a14d56d707612519bd966bb2637f27edc396023c349e89a0e1fc7f1fed363189",
+    "scripts/evaluate_pose.py": "23f6de84bf9dc487a0442476fee252bc8a87a75d6072f3ce44a6177f9d97c970",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+  },
+  "staging_counts": {
+    "reference": {
+      "train": {
+        "images": 137,
+        "objects": 3772,
+        "visible_endpoints": 6839,
+        "missing_endpoints": 705,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "candidate": {
+      "train": {
+        "images": 137,
+        "objects": 3761,
+        "visible_endpoints": 6839,
+        "missing_endpoints": 683,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    }
+  },
+  "staging_verification": {
+    "source_labels_verified": 157,
+    "actual_original_pngs_verified": 157,
+    "copied_images_verified": 314,
+    "copied_labels_verified": 314,
+    "changed_train_labels": 5,
+    "removed_training_objects": 11,
+    "validation_images_and_labels_identical": true,
+    "source_files_rewritten": false,
+    "symlinks_present": false,
+    "trainer_loader_executed": false
+  },
+  "post_integration_verification": {
+    "status": "verified",
+    "output": "/workspace/scratch/4bca12825372/dl-training-pair-published-20261106",
+    "staging_manifest_sha256": "9286b28fe63ef11baff71c52fa55b26494f284330ed671a2feeca6411fcd1aaf",
+    "counts": {
+      "reference": {
+        "train": {
+          "images": 137,
+          "objects": 3772,
+          "visible_endpoints": 6839,
+          "missing_endpoints": 705,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "candidate": {
+        "train": {
+          "images": 137,
+          "objects": 3761,
+          "visible_endpoints": 6839,
+          "missing_endpoints": 683,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "actual_original_pngs_verified": 157,
+    "geometry_gate_passed": true,
+    "physical_policy_visually_certified": false,
+    "training_run": false
+  },
+  "geometry_gate": {
+    "passed": true,
+    "serialization_tolerance_original_px": 0.0001,
+    "box_edges_within_closed_image_bounds": true,
+    "visible_endpoints_within_boxes": true,
+    "visible_endpoints_strictly_in_frame": true,
+    "coordinates_clamped_or_rewritten": false
+  },
+  "source_geometry_audit": {
+    "max_box_rounding_overhang_px": 6.4000000747910235e-06,
+    "max_visible_point_box_rounding_overhang_px": 1.280000003589521e-05,
+    "visible_points_outside_half_open_domain": 0,
+    "both_missing_objects": {
+      "train": 121,
+      "val": 21
+    }
+  },
+  "original_checkpoint_hash_separately_verified": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "frozen_git_paths_unchanged_from": "628741ea0cfe607772bfd3d84f76fb04d74bf7ec",
+  "frozen_git_paths_checked": [
+    "data/images",
+    "data/labels",
+    "data/annotated",
+    "data/manifest.json",
+    "data/data.yaml",
+    "data/README.md",
+    "metadata",
+    "models",
+    "weights"
+  ],
+  "invalid_input_probes": {
+    "script_sha256": "7b54f34b9392af77897d83e75248cd66ffc4e3bdf40af46881ff16ae79667158",
+    "pair_root": "/workspace/scratch/4bca12825372/dl-training-pair-published-20261106",
+    "invalid_input_probes": [
+      {
+        "name": "existing_output_refused",
+        "expected_rejection": true,
+        "exit_status": 1,
+        "error": "staging output already exists; choose a fresh directory"
+      },
+      {
+        "name": "candidate_label_replaced_with_original",
+        "expected_rejection": true,
+        "exit_status": 1,
+        "error": "staged file SHA-256 mismatch: /workspace/scratch/4bca12825372/dl-training-pair-published-20261106/candidate/labels/train/new_000019.txt"
+      },
+      {
+        "name": "candidate_split_symlinked_to_source",
+        "expected_rejection": true,
+        "exit_status": 1,
+        "error": "symlinks are forbidden in staged data: /workspace/scratch/4bca12825372/dl-training-pair-published-20261106/candidate/images/train"
+      },
+      {
+        "name": "boolean_forged_as_numeric_manifest_version",
+        "expected_rejection": true,
+        "exit_status": 1,
+        "error": "staging manifest differs from freshly verified source, output, configuration or code"
+      },
+      {
+        "name": "visible_point_at_excluded_right_boundary",
+        "expected_rejection": true,
+        "error": "visible endpoint outside strict image bounds: visible_point_at_excluded_right_boundary:1"
+      },
+      {
+        "name": "visible_point_outside_its_box",
+        "expected_rejection": true,
+        "error": "visible endpoint outside its box: visible_point_outside_its_box:1"
+      },
+      {
+        "name": "derived_box_outside_frame",
+        "expected_rejection": true,
+        "error": "box outside image: derived_box_outside_frame:1"
+      }
+    ],
+    "expected_rejections": 7,
+    "final_verification_exit_status": 0,
+    "final_verification": {
+      "status": "verified",
+      "output": "/workspace/scratch/4bca12825372/dl-training-pair-published-20261106",
+      "staging_manifest_sha256": "9286b28fe63ef11baff71c52fa55b26494f284330ed671a2feeca6411fcd1aaf",
+      "counts": {
+        "reference": {
+          "train": {
+            "images": 137,
+            "objects": 3772,
+            "visible_endpoints": 6839,
+            "missing_endpoints": 705,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "candidate": {
+          "train": {
+            "images": 137,
+            "objects": 3761,
+            "visible_endpoints": 6839,
+            "missing_endpoints": 683,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        }
+      },
+      "actual_original_pngs_verified": 157,
+      "geometry_gate_passed": true,
+      "physical_policy_visually_certified": false,
+      "training_run": false
+    },
+    "source_data_modified": false,
+    "probe_changes_restored": true
+  },
+  "pinned_runtime_integration": {
+    "ultralytics": "8.4.182",
+    "torch": "2.10.0+cpu",
+    "cuda_available": false,
+    "pair_root": "/workspace/scratch/4bca12825372/dl-training-pair-published-20261106",
+    "functions_executed": [
+      "check_det_dataset(autodownload=False)",
+      "BaseDataset.get_img_files(fraction=1.0)",
+      "img2label_paths"
+    ],
+    "results": [
+      {
+        "arm": "reference",
+        "split": "train",
+        "images": 137,
+        "label_paths_checked": 137,
+        "all_resolve_inside_correct_arm": true
+      },
+      {
+        "arm": "reference",
+        "split": "val",
+        "images": 20,
+        "label_paths_checked": 20,
+        "all_resolve_inside_correct_arm": true
+      },
+      {
+        "arm": "candidate",
+        "split": "train",
+        "images": 137,
+        "label_paths_checked": 137,
+        "all_resolve_inside_correct_arm": true
+      },
+      {
+        "arm": "candidate",
+        "split": "val",
+        "images": 20,
+        "label_paths_checked": 20,
+        "all_resolve_inside_correct_arm": true
+      }
+    ],
+    "full_training_dataset_constructed": false,
+    "model_loaded": false,
+    "inference_run": false,
+    "training_run": false,
+    "oks_formula_illustration": {
+      "synthetic_example": true,
+      "box_px": [
+        100,
+        20
+      ],
+      "each_corner_error_px": 10,
+      "sigma": [
+        0.5,
+        0.5
+      ],
+      "area_scale": 0.53,
+      "actual_pinned_kpt_iou": 0.953925371170044,
+      "formula_value": 0.9539253965044694,
+      "historical_checkpoint_metric_recomputed": false
+    }
+  },
+  "pinned_ultralytics_source_sha256": {
+    "data/utils.py": "9109755bc14f8629038351303346e20c35a98fb35d18114fa043c7e7a4a0e237",
+    "data/base.py": "4c8827598a093257a1e3218db2028f591dcd1d5ce68c63f8cdbf5741096b5f96",
+    "models/yolo/pose/val.py": "a23ede43337bdcf9d2478609f043d3822cbbde7b4b2a951e658067d5dfc32713",
+    "utils/metrics.py": "e2f216964bb0d89ac26efecb4e0a76750b554d2e670a27e6ed4a8f42d998b2a0",
+    "utils/loss.py": "f8db64a3093ef310b23cb83d587dd5c8aa3db20a27da94d95a62a734a6c055d2",
+    "engine/trainer.py": "7016131a47b61a8b9b9ea51ef5a9e59b0fb896a328eed4901c89ac7a83169655",
+    "utils/torch_utils.py": "274357cc6841205d1eb5a6016ff81bfd2ec961c53d1f689380bd0222ec3b1c33"
+  },
+  "policy_id": "baomai-visible-front-v1",
+  "policy_and_source_evidence_sha256": {
+    "docs/annotation-policy.md": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+    "docs/annotation-sources-2026-11-06.json": "d6456d8e809a884728e52f783cab77d8d01af031cb09eface4b73c3d23e6e00d"
+  },
+  "limits": [
+    "Working policy adopted under user authorization; no added supervisor approval is claimed.",
+    "Mechanical checks and path-resolution integration do not certify physical correctness of every annotation.",
+    "All157 originals were verified, but no new complete visual dataset review was performed.",
+    "Path resolution was exercised in real Ultralytics8.4.182; a full training loader, forward/backward step and training resource trial were not run.",
+    "No model was loaded by this preparation, and no new inference, fine-tuning or candidate accuracy result is claimed.",
+    "Candidate-checkpoint provenance support, training resource qualification and application acceptance remain pending.",
+    "Historical validation sigma settings were not recovered; the OKS calculation is a synthetic implementation illustration.",
+    "Generated staging pairs use explicit local roots and must be rebuilt after relocation; the source files and scripts are versioned."
+  ]
+}

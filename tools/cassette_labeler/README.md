@@ -2,6 +2,8 @@
 
 For browser-operated correction of prediction drafts: original PNGs and YOLO pose labels in, corrected `.txt` labels out. Use `data_pred/` or another working copy; keep the reference labels in `data/labels/` unchanged.
 
+Follow the [adopted baomai annotation policy](../../docs/annotation-policy.md): one identifiable visible front per row, a box around its observed front-face extent, and two actual lower-front corners ordered by image X. An identifiable front may have both corners missing. Saving is not semantic acceptance; distinguish a genuine empty label from a missing file or unresolved image, and check schema/geometry plus original-image review evidence before using corrections in a dataset.
+
 Open `index.html` in desktop Chrome or Edge. If opening with `file://` does not allow folder access, run from the repo root:
 
 ```sh
