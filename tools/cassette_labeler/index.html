@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cassette labeler</title>
+<style>
+  body { margin: 16px; font: 14px system-ui, sans-serif; color: #222; }
+  fieldset { border: 0; padding: 0; margin: 10px 0; }
+  button, select { font: inherit; margin: 3px; }
+  canvas { display: block; width: 100%; max-width: 1280px; touch-action: none; background: #eee; }
+  #status { min-height: 1.5em; }
+</style>
+<h1>Cassette labeler</h1>
+<button id="open">Open data folder</button>
+<fieldset id="controls" disabled>
+  <label>Image <select id="files"></select></label>
+  <button id="save">Save label</button>
+  <br>
+  <label>Cassette <select id="objects"></select></label>
+  <button id="add">Add cassette</button><button id="remove">Delete cassette</button>
+  <label>Tool <select id="mode">
+    <option value="edit">Drag point / box</option>
+    <option value="box">Draw / replace box</option>
+    <option value="left">Place left point</option>
+    <option value="right">Place right point</option>
+  </select></label>
+  <button id="missingLeft">Left missing</button><button id="missingRight">Right missing</button>
+</fieldset>
+<p>Select a cassette by its box or number. Green = front_lower_left; blue = front_lower_right.
+Draw a box by dragging. Place a missing point with its tool. Dragging a box changes only the box.</p>
+<div id="status" role="status"></div>
+<canvas id="canvas" width="1280" height="720" aria-label="Cassette image: drag points or boxes"></canvas>
+<script>
+const $ = id => document.getElementById(id);
+const canvas = $('canvas'), ctx = canvas.getContext('2d');
+let entries = [], current = -1, rows = [], selected = -1, picture = null, dirty = false, drag = null;
+const message = text => $('status').textContent = text;
+const discard = () => !dirty || confirm('Discard unsaved label changes?');
+function changed() { dirty = true; message('Unsaved changes'); }
+function objectList() {
+  $('objects').replaceChildren(...rows.map((_, i) => new Option(String(i + 1), i)));
+  $('objects').value = selected;
+}
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (!picture) return;
+  ctx.drawImage(picture, 0, 0);
+  rows.forEach((r, i) => {
+    const [cx, cy, w, h] = r.slice(1, 5);
+    const x = (cx - w / 2) * canvas.width, y = (cy - h / 2) * canvas.height;
+    ctx.strokeStyle = i === selected ? '#ffb000' : '#fff';
+    ctx.lineWidth = i === selected ? 2 : 1;
+    ctx.strokeRect(x, y, w * canvas.width, h * canvas.height);
+    ctx.font = '14px sans-serif';
+    ctx.fillStyle = '#000'; ctx.fillRect(x, y - 17, 28, 17);
+    ctx.fillStyle = '#fff'; ctx.fillText(i + 1, x + 2, y - 3);
+    [5, 8].forEach(k => {
+      if (!r[k + 2]) return;
+      ctx.beginPath(); ctx.arc(r[k] * canvas.width, r[k + 1] * canvas.height, i === selected ? 6 : 3, 0, Math.PI * 2);
+      ctx.fillStyle = k === 5 ? '#00e060' : '#0080ff'; ctx.fill();
+      ctx.strokeStyle = '#000'; ctx.stroke();
+    });
+  });
+}
+function parse(text) {
+  return text.trim() ? text.trim().split(/\r?\n/).map((line, i) => {
+    const r = line.trim().split(/\s+/).map(Number);
+    if (r.length !== 11 || !r.every(Number.isFinite) || r[0] !== 0 ||
+        ![0, 2].includes(r[7]) || ![0, 2].includes(r[10]) ||
+        [1, 2, 3, 4, 5, 6, 8, 9].some(k => r[k] < 0 || r[k] > 1) || r[3] === 0 || r[4] === 0)
+      throw Error(`Invalid label at line ${i + 1}; file not opened.`);
+    return r;
+  }) : [];
+}
+async function load(index) {
+  current = -1; rows = []; selected = -1; dirty = false;
+  if (picture) picture.close();
+  picture = null; objectList(); draw();
+  const entry = entries[index];
+  let text = '';
+  try { text = await (await entry.labels.getFileHandle(entry.name)).getFile().then(f => f.text()); }
+  catch (error) { if (error.name !== 'NotFoundError') throw error; }
+  const nextRows = parse(text);
+  picture = await createImageBitmap(await entry.image.getFile());
+  canvas.width = picture.width; canvas.height = picture.height;
+  rows = nextRows; current = index; selected = rows.length ? 0 : -1;
+  $('files').value = index; $('mode').value = 'edit';
+  objectList(); draw(); message(`${entry.path} — ${rows.length} cassettes`);
+}
+async function busy(action) {
+  $('open').disabled = true; $('controls').disabled = true;
+  try { await action(); }
+  catch (error) { message(`${error.name}: ${error.message}`); }
+  finally { $('open').disabled = false; $('controls').disabled = !entries.length; }
+}
+$('open').onclick = () => {
+  if (!discard()) return;
+  // The picker must run directly from the click to retain browser user activation.
+  const picker = showDirectoryPicker({mode: 'readwrite'});
+  busy(async () => {
+    const root = await picker, found = [];
+    const images = await root.getDirectoryHandle('images');
+    const labels = await root.getDirectoryHandle('labels');
+    for (const split of ['train', 'val']) {
+      const imageDir = await images.getDirectoryHandle(split);
+      const labelDir = await labels.getDirectoryHandle(split);
+      for await (const [name, handle] of imageDir.entries()) {
+        if (handle.kind === 'file' && /\.png$/i.test(name))
+          found.push({path: `${split}/${name}`, image: handle, labels: labelDir, name: name.replace(/\.png$/i, '.txt')});
+      }
+    }
+    found.sort((a, b) => a.path.localeCompare(b.path));
+    if (!found.length) throw Error('No PNG images found. Select the repo data folder.');
+    entries = found;
+    $('files').replaceChildren(...entries.map((e, i) => new Option(e.path, i)));
+    await load(0);
+  });
+};
+$('files').onchange = () => {
+  const index = Number($('files').value);
+  if (!discard()) { $('files').value = current; return; }
+  busy(() => load(index));
+};
+$('objects').onchange = () => { selected = Number($('objects').value); draw(); };
+$('add').onclick = () => {
+  if (current < 0) return;
+  rows.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]); selected = rows.length - 1;
+  $('mode').value = 'box'; objectList(); changed(); draw();
+};
+$('remove').onclick = () => {
+  if (selected < 0) return;
+  rows.splice(selected, 1); selected = Math.min(selected, rows.length - 1);
+  objectList(); changed(); draw();
+};
+for (const [id, k] of [['missingLeft', 5], ['missingRight', 8]]) {
+  $(id).onclick = () => {
+    if (selected < 0) return;
+    rows[selected].splice(k, 3, 0, 0, 0); changed(); draw();
+  };
+}
+$('save').onclick = () => busy(async () => {
+  if (current < 0) throw Error('Open a valid image first.');
+  if (rows.some(r => r[3] <= 0 || r[4] <= 0)) throw Error('Draw a nonzero box for every cassette before saving.');
+  const entry = entries[current];
+  const text = rows.map(r => r.map((v, k) => [0, 7, 10].includes(k) ? String(v) : v.toFixed(8)).join(' ')).join('\n');
+  const file = await entry.labels.getFileHandle(entry.name, {create: true});
+  const writable = await file.createWritable();
+  await writable.write(text + (rows.length ? '\n' : '')); await writable.close();
+  dirty = false; message(`Saved labels/${entry.path.replace(/\.png$/i, '.txt')}`);
+});
+function position(event) {
+  const rect = canvas.getBoundingClientRect();
+  return [Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width)),
+          Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height))];
+}
+canvas.onpointerdown = event => {
+  if (current < 0 || $('controls').disabled || event.button !== 0) return;
+  const p = position(event), mode = $('mode').value;
+  if (mode === 'edit') {
+    // Prefer the selected cassette when overlapping boxes or points are hit.
+    const order = [selected, ...rows.map((_, i) => i).filter(i => i !== selected)].filter(i => i >= 0);
+    const rect = canvas.getBoundingClientRect();
+    for (const i of order) for (const k of [5, 8]) {
+      const r = rows[i];
+      if (!drag && r[k + 2] && Math.hypot((p[0] - r[k]) * rect.width, (p[1] - r[k + 1]) * rect.height) < 10)
+        drag = {i, k};
+    }
+    if (!drag) {
+      const i = order.find(i => Math.abs(p[0] - rows[i][1]) <= rows[i][3] / 2 && Math.abs(p[1] - rows[i][2]) <= rows[i][4] / 2);
+      if (i !== undefined) drag = {i, start: p, original: rows[i].slice()};
+    }
+  } else if (selected >= 0) {
+    drag = {i: selected, k: mode === 'left' ? 5 : mode === 'right' ? 8 : null, start: p, box: mode === 'box'};
+  }
+  if (!drag) return;
+  selected = drag.i; objectList(); canvas.setPointerCapture(event.pointerId);
+  if (drag.k) move(event); else draw();
+};
+function move(event) {
+  if (!drag) return;
+  const p = position(event), r = rows[drag.i];
+  if (drag.k) r.splice(drag.k, 3, ...p, 2);
+  else if (drag.box) r.splice(1, 4, (p[0] + drag.start[0]) / 2, (p[1] + drag.start[1]) / 2,
+    Math.abs(p[0] - drag.start[0]), Math.abs(p[1] - drag.start[1]));
+  else for (const k of [1, 2]) r[k] = Math.max(r[k + 2] / 2, Math.min(1 - r[k + 2] / 2, drag.original[k] + p[k - 1] - drag.start[k - 1]));
+  changed(); draw();
+}
+canvas.onpointermove = move;
+canvas.onpointerup = () => { drag = null; };
+canvas.onlostpointercapture = () => { drag = null; };
+window.onbeforeunload = event => { if (dirty) { event.preventDefault(); event.returnValue = ''; } };
+if (!window.showDirectoryPicker) {
+  $('open').disabled = true;
+  message('Use desktop Chrome or Edge. If file:// is unavailable, serve this repo on localhost (see README).');
+}
+</script>
+</html>
