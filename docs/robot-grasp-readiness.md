@@ -1,6 +1,6 @@
 # From cassette corners to a robot grasp
 
-**Purpose confirmed by the user on 2026-11-07 (Hong Kong): robotic positioning/grasping.** Continue the controlled two-corner model comparison while establishing the geometry and robot contract below. No physical tolerance, camera mounting arrangement or robot calibration has yet been supplied. This document records the next implementation choices; it does not report a functioning robot interface or a grasp-accuracy result.
+**Background only; current scope clarified on 2026-11-07 (Hong Kong).** Robotic grasping was discussed as a downstream use, but the user has limited the present duty to finding/localizing objects in the supplied baomai D405 images. Camera mounting, robot/gripper details and calibration are outside this deliverable. Continue through the [GPU handoff](gpu-handoff.md) without requesting those details as a training gate. The material below is retained for a possible later integration task; no robot interface or physical grasp result is claimed.
 
 ## What the existing project actually provides
 

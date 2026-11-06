@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-gpu-handoff-verification",
+  "created_at_utc": "2026-11-06T17:44:21.551365+00:00",
+  "current_scope": "Find/localize cassette objects in the supplied baomai D405 images. Preserve baomai data, split, initialization and two-corner representation. User has GPU access; camera/robot calibration is outside this deliverable.",
+  "executed_source_revision": "df29718b9255917f47ca5d1b7f267d2e4ee1b298",
+  "executed_source_tree": "93a116d8b78dc597436d04e679b92a18189e44d2",
+  "package_command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/package_gpu_inputs.py --output /workspace/scratch/4bca12825372/gpu-deliverables/baomai-gpu-inputs-2026-11-07.zip",
+  "archive": {
+    "archive": "/workspace/scratch/4bca12825372/gpu-deliverables/baomai-gpu-inputs-2026-11-07.zip",
+    "checkpoints": 1,
+    "counts": {
+      "candidate": {
+        "train": {
+          "empty_images": 13,
+          "images": 137,
+          "missing_endpoints": 683,
+          "objects": 3761,
+          "visible_endpoints": 6839
+        },
+        "val": {
+          "empty_images": 3,
+          "images": 20,
+          "missing_endpoints": 101,
+          "objects": 664,
+          "visible_endpoints": 1227
+        }
+      },
+      "reference": {
+        "train": {
+          "empty_images": 13,
+          "images": 137,
+          "missing_endpoints": 705,
+          "objects": 3772,
+          "visible_endpoints": 6839
+        },
+        "val": {
+          "empty_images": 3,
+          "images": 20,
+          "missing_endpoints": 101,
+          "objects": 664,
+          "visible_endpoints": 1227
+        }
+      }
+    },
+    "manifest_sha256": "882a61a9f06bf3efb2afe188814f0d8c72a56a427563c26a92720dc2feab2d32",
+    "original_images": 157,
+    "sha256": "a35d636e4a8a7e9d102c687f7822ab71bb05c2439c9522b0da40553022e82671",
+    "size_bytes": 240124469,
+    "source_revision": "df29718b9255917f47ca5d1b7f267d2e4ee1b298",
+    "source_tree": "93a116d8b78dc597436d04e679b92a18189e44d2",
+    "status": "packaged"
+  },
+  "input_checks": {
+    "source_revision": "df29718b9255917f47ca5d1b7f267d2e4ee1b298",
+    "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/check_gpu_inputs.py",
+    "exit_code": 0,
+    "checks_passed": 5,
+    "stdout_stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 1.157s\n\nOK\n",
+    "scope": "Four fixture-based corruption/path/no-overwrite checks plus a real local Git/LFS clone and original-image overlay regression. No machine-learning execution."
+  },
+  "result_package_checks": {
+    "source_revision": "df29718b9255917f47ca5d1b7f267d2e4ee1b298",
+    "command": "/workspace/scratch/4bca12825372/dl-runtime/bin/python scripts/check_package_gpu_results.py",
+    "exit_code": 0,
+    "checks_passed": 7,
+    "stdout_stderr": "test_ambiguous_archive_path_and_symlink_are_refused (__main__.ReturnPackageChecks.test_ambiguous_archive_path_and_symlink_are_refused) ... ok\ntest_changed_final_checkpoint_is_refused (__main__.ReturnPackageChecks.test_changed_final_checkpoint_is_refused) ... ok\ntest_completed_synthetic_pair_roundtrips_with_only_six_files_per_arm (__main__.ReturnPackageChecks.test_completed_synthetic_pair_roundtrips_with_only_six_files_per_arm) ... ok\ntest_existing_output_and_overlapping_locations_are_refused (__main__.ReturnPackageChecks.test_existing_output_and_overlapping_locations_are_refused) ... ok\ntest_mismatched_source_runtime_and_settings_are_refused (__main__.ReturnPackageChecks.test_mismatched_source_runtime_and_settings_are_refused) ... ok\ntest_partial_and_resource_trial_outputs_are_refused (__main__.ReturnPackageChecks.test_partial_and_resource_trial_outputs_are_refused) ... ok\ntest_swapped_arms_are_refused (__main__.ReturnPackageChecks.test_swapped_arms_are_refused) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.438s\n\nOK\n",
+    "scope": "Explicitly synthetic completed bundles test return eligibility, byte-preserving relocation, matching source/runtime/settings, rejection of partial/tampered outputs, path safety and no overwrite. No genuine trained checkpoints were created."
+  },
+  "actual_offline_restore": {
+    "created_at_utc": "2026-11-06T17:44:21.551365+00:00",
+    "archive_sha256": "a35d636e4a8a7e9d102c687f7822ab71bb05c2439c9522b0da40553022e82671",
+    "archive_entries": 163,
+    "zip_crc_check": "passed",
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "external_packages_present": {
+        "torch": false,
+        "ultralytics": false,
+        "numpy": false,
+        "PIL": false,
+        "yaml": false,
+        "psutil": false
+      }
+    },
+    "restore_command": [
+      "/workspace/scratch/4bca12825372/gpu-transfer-verification-final-20261107/stdlib-python/bin/python",
+      "/workspace/scratch/4bca12825372/gpu-transfer-verification-final-20261107/package/restore_gpu_inputs.py",
+      "--output",
+      "/workspace/scratch/4bca12825372/gpu-transfer-verification-final-20261107/dl-gpu"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"checkpoint_bytes_verified\": true,\n  \"counts\": {\n    \"candidate\": {\n      \"train\": {\n        \"empty_images\": 13,\n        \"images\": 137,\n        \"missing_endpoints\": 683,\n        \"objects\": 3761,\n        \"visible_endpoints\": 6839\n      },\n      \"val\": {\n        \"empty_images\": 3,\n        \"images\": 20,\n        \"missing_endpoints\": 101,\n        \"objects\": 664,\n        \"visible_endpoints\": 1227\n      }\n    },\n    \"reference\": {\n      \"train\": {\n        \"empty_images\": 13,\n        \"images\": 137,\n        \"missing_endpoints\": 705,\n        \"objects\": 3772,\n        \"visible_endpoints\": 6839\n      },\n      \"val\": {\n        \"empty_images\": 3,\n        \"images\": 20,\n        \"missing_endpoints\": 101,\n        \"objects\": 664,\n        \"visible_endpoints\": 1227\n      }\n    }\n  },\n  \"git_status\": \"clean\",\n  \"model_sha256\": \"e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e\",\n  \"offline_restore\": true,\n  \"original_images_verified\": 157,\n  \"source_revision\": \"df29718b9255917f47ca5d1b7f267d2e4ee1b298\",\n  \"source_root\": \"/workspace/scratch/4bca12825372/gpu-transfer-verification-final-20261107/dl-gpu\",\n  \"status\": \"verified\"\n}\n",
+    "stderr": "",
+    "restore_result": {
+      "checkpoint_bytes_verified": true,
+      "counts": {
+        "candidate": {
+          "train": {
+            "empty_images": 13,
+            "images": 137,
+            "missing_endpoints": 683,
+            "objects": 3761,
+            "visible_endpoints": 6839
+          },
+          "val": {
+            "empty_images": 3,
+            "images": 20,
+            "missing_endpoints": 101,
+            "objects": 664,
+            "visible_endpoints": 1227
+          }
+        },
+        "reference": {
+          "train": {
+            "empty_images": 13,
+            "images": 137,
+            "missing_endpoints": 705,
+            "objects": 3772,
+            "visible_endpoints": 6839
+          },
+          "val": {
+            "empty_images": 3,
+            "images": 20,
+            "missing_endpoints": 101,
+            "objects": 664,
+            "visible_endpoints": 1227
+          }
+        }
+      },
+      "git_status": "clean",
+      "model_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+      "offline_restore": true,
+      "original_images_verified": 157,
+      "source_revision": "df29718b9255917f47ca5d1b7f267d2e4ee1b298",
+      "source_root": "/workspace/scratch/4bca12825372/gpu-transfer-verification-final-20261107/dl-gpu",
+      "status": "verified"
+    },
+    "source_bundle_size_bytes": 507581,
+    "asset_payload_size_bytes": 247969310,
+    "post_restore_git_status": "",
+    "post_restore_index_tree": "93a116d8b78dc597436d04e679b92a18189e44d2",
+    "elapsed_seconds": 3.5494883299979847,
+    "scope": "Actual delivered archive restored in a new environment without machine-learning dependencies. Git transport restricted to local files by the bootstrap. No GPU training or inference executed."
+  },
+  "actual_stopped_trial_rejection": {
+    "packer_source_revision": "7b66427699cf89a25f3b557b0cd1849c3f59ef9a",
+    "command": [
+      "/workspace/scratch/4bca12825372/dl-runtime/bin/python",
+      "scripts/package_gpu_results.py",
+      "--reference",
+      "/workspace/scratch/4bca12825372/dl-grasp-resource-published-20261107",
+      "--candidate",
+      "/tmp/gpu-real-trial-rejection-d4_ihatx/empty-candidate-control",
+      "--output",
+      "/tmp/gpu-real-trial-rejection-d4_ihatx/must-not-exist.zip"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "GPU return package refused: missing artifact: /workspace/scratch/4bca12825372/dl-grasp-resource-published-20261107/checkpoint-manifest.json\n",
+    "input_receipt_sha256": "88ccef816c0b90b003d66a3a672cde2a2c7b96ca923fdd6a47fc4d94ae14c407",
+    "input_purpose": "resource-trial",
+    "input_status": "failed",
+    "input_completed_epochs": [],
+    "output_created": false,
+    "note": "Reference input is the actual stopped CPU trial. An empty candidate directory only allows reaching reference eligibility validation; it is not a trained artifact. Results packer bytes are unchanged in the final exported revision."
+  },
+  "resolved_transfer_issue": {
+    "first_source_revision": "7b66427699cf89a25f3b557b0cd1849c3f59ef9a",
+    "observed": "All payload hashes and source preflight passed, but a pointer-to-payload copy left stale Git/LFS index statistics and a dirty working-tree report.",
+    "correction": "Reverify every payload, refresh only those paths through the LFS clean filter, require the index tree to remain exactly equal to the recorded source tree, then require empty status.",
+    "final_result": "Fresh complete archive build and fresh no-ML-environment restoration passed. The first archive is not the delivered archive."
+  },
+  "return_contract": {
+    "command": "python scripts/package_gpu_results.py --reference ../baomai-reference-001 --candidate ../baomai-candidate-001 --output ../baomai-gpu-results.zip",
+    "required_arms": [
+      "reference",
+      "candidate"
+    ],
+    "epochs_per_arm": 30,
+    "artifact_paths_per_arm": [
+      "checkpoint-manifest.json",
+      "training-receipt.json",
+      "staging-manifest.json",
+      "fit/weights/last.pt",
+      "fit/results.csv",
+      "train.log"
+    ],
+    "archive_entries": 13
+  },
+  "limits": [
+    "No GPU training or GPU resource qualification was executed in this assistant environment.",
+    "No real completed reference/candidate pair exists yet; return-packer success is tested with explicitly synthetic artifacts.",
+    "Package verification establishes integrity and reproducible inputs, not model accuracy improvement.",
+    "The exported archive records its exact executable revision; any subsequent documentation-only commit is not represented as that executed revision.",
+    "The final ZIP hash identifies this exact export. Rebuilding can change ZIP timestamps and manifest timestamps without changing input asset identities."
+  ]
+}

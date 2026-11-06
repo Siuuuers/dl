@@ -1,6 +1,6 @@
 # Execute the controlled cassette training comparison
 
-The intended application is robotic positioning/grasping, confirmed by the user on 2026-11-07 (Hong Kong time). This experiment tests one training-label correction. It does not establish calibrated robot coordinates, a grasp strategy, or physical grasp acceptance.
+The user clarified on 2026-11-07 (Hong Kong time) that the current duty is object localization in the supplied baomai D405 images. Retain the existing two-corner target. GPU compute is available; use [gpu-handoff.md](gpu-handoff.md) to transfer the inputs and return the completed models. Camera/robot calibration is outside this experiment.
 
 Use the adopted [annotation policy](annotation-policy.md), the [dataset preparation](prepare-pose-training.md), and [PR #1's experiment plan](https://github.com/Siuuuers/dl/pull/1). Keep the supplied epoch173 checkpoint as M0. Train M1 with unchanged labels and M2 with the eleven-row deletion candidate. Each arm freshly initializes from the exact epoch173 bytes; it does not resume the original optimizer or an earlier trial.
 
@@ -81,8 +81,8 @@ Use the explicit `--checkpoint-manifest` options described in [evaluate-pose.md]
 
 Preserve the complete model bundle when moving results between machines. Its relative artifact references remain together; the recorded absolute training paths describe the original execution. To train again, create a fresh run instead of editing the old manifest or reusing its loader caches.
 
-## Physical acceptance remains separate
+## Scope of this deliverable
 
-The current evaluation measures image-space performance on development validation. Robotic acceptance additionally needs the actual camera/depth setup, calibration into the robot frame, permitted position/orientation error, treatment of unavailable or inconsistent observations, and independent grasp trials. Better pixel metrics alone do not establish any of those. Keep the supplied default until the controlled comparison supplies evidence supporting a change.
+This comparison measures image-space object and corner performance on development validation. Current work does not require camera mounting, robot/gripper details or calibration. Return both complete model bundles using the [GPU handoff](gpu-handoff.md), then evaluate the fixed baseline, reference fine-tune and candidate fine-tune under matching inference settings. Keep the supplied default until the measured comparison supports a change. Physical robot integration remains a separate possible later task.
 
 Implementation references: pinned [training loop and finalization](https://github.com/ultralytics/ultralytics/blob/v8.4.182/ultralytics/engine/trainer.py), [model training entry point](https://github.com/ultralytics/ultralytics/blob/v8.4.182/ultralytics/engine/model.py), and [pose trainer](https://github.com/ultralytics/ultralytics/blob/v8.4.182/ultralytics/models/yolo/pose/train.py). The runner instruments those existing operations rather than replacing the optimization or loss algorithm.
