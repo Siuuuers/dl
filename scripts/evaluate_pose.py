@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate the frozen baomai two-corner baseline or rescore saved predictions."""
+"""Evaluate the baomai baseline or an explicit completed training bundle; replay saved predictions."""
 
 import argparse
 import csv
@@ -17,6 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from pose_scoring import aggregate_scores, score_image
+from pose_checkpoint import check_loaded_pose_model, select_checkpoint
 
 
 ULTRALYTICS_VERSION = "8.4.182"
@@ -172,7 +173,7 @@ def _source_identity(root):
         return result.stdout.strip() if result.returncode == 0 else None
     return {"revision": git("rev-parse", "HEAD"), "working_tree_status": git("status", "--porcelain"),
             "files_sha256": {path: file_sha256(root / path) for path in
-                             ("scripts/evaluate_pose.py", "scripts/pose_scoring.py")}}
+                             ("scripts/evaluate_pose.py", "scripts/pose_scoring.py", "scripts/pose_checkpoint.py")}}
 
 
 def _runtime_and_model(preflight, device, threads):
@@ -188,11 +189,10 @@ def _runtime_and_model(preflight, device, threads):
     if device != "cpu" and not torch.cuda.is_available():
         raise RuntimeError("requested accelerator is unavailable; select --device cpu explicitly")
     model = YOLO(preflight["weights"])
-    if model.task != "pose" or model.names != {0: "cassette_front"}:
-        raise RuntimeError("loaded checkpoint task/classes differ from baomai")
+    check_loaded_pose_model(model)
     runtime = {"python": platform.python_version(), "platform": platform.platform(), "device_requested": device,
                "torch": torch.__version__, "torch_cuda": torch.version.cuda,
-               "torch_threads_requested": threads, "ultralytics": version,
+               "torch_threads_requested": threads, "ultralytics": version, "loaded_kpt_shape": [2, 3],
                "packages": {name: importlib.metadata.version(name) for name in
                             ("torchvision", "numpy", "Pillow", "opencv-python")}}
     return model, runtime
@@ -269,6 +269,9 @@ def _read_replay(path, preflight, requested_thresholds):
     for field in ("model_sha256", "manifest_sha256", "model_card_sha256"):
         if header[field] != preflight[field]:
             raise ValueError("replay model/dataset identity differs from the reference")
+    if (json.dumps(header.get("checkpoint_identity"), sort_keys=True, allow_nan=False)
+            != json.dumps(preflight.get("checkpoint_identity"), sort_keys=True, allow_nan=False)):
+        raise ValueError("replay checkpoint provenance differs; select the matching explicit checkpoint manifest")
     if header["inference"] != INFERENCE:
         raise ValueError("replay inference configuration differs from the baseline contract")
     inferred_thresholds = header["box_confidences"]
@@ -408,6 +411,8 @@ def build_parser():
     parser.add_argument("--overlays", type=int, default=5, help="number of representative images per threshold; 0 skips overlays")
     parser.add_argument("--preflight-only", action="store_true", help="verify reference files without importing the model runtime")
     parser.add_argument("--replay", type=Path, help="rescore saved predictions.jsonl without model inference")
+    parser.add_argument("--checkpoint-manifest", type=Path,
+                        help="verified completed paired-training bundle; omitted uses the frozen epoch173 baseline")
     return parser
 
 
@@ -426,7 +431,10 @@ def main(argv=None):
         parser.error("--output is required except with --preflight-only")
     output = None
     try:
-        preflight = preflight_dataset(args.root, args.image, require_weights=not bool(args.replay))
+        preflight = preflight_dataset(args.root, args.image,
+                                      require_weights=not bool(args.replay or args.checkpoint_manifest))
+        if args.checkpoint_manifest:
+            preflight = select_checkpoint(preflight, args.checkpoint_manifest, require_weights=not bool(args.replay))
         if args.preflight_only:
             print(json.dumps({key: value for key, value in preflight.items() if key != "records"} |
                              {"verified_images": len(preflight["records"]),
@@ -439,6 +447,8 @@ def main(argv=None):
                     "command": [sys.executable, str(Path(__file__).resolve()), *(sys.argv[1:] if argv is None else argv)],
                     "images": [{key: record[key] for key in ("id", "image", "label", "image_sha256", "label_sha256", "width", "height")}
                                for record in preflight["records"]]}
+        if "checkpoint_identity" in preflight:
+            metadata["checkpoint_identity"] = preflight["checkpoint_identity"]
         if args.replay:
             original, items, thresholds = _read_replay(args.replay, preflight, args.conf)
             origin = original.get("replay", {})

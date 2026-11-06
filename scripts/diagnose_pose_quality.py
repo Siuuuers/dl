@@ -14,6 +14,7 @@ from evaluate_pose import (
     file_sha256, preflight_dataset,
 )
 from pose_scoring import score_image
+from pose_checkpoint import select_checkpoint
 
 
 MATCHING_IOU = 0.50
@@ -105,7 +106,9 @@ def aggregate_quality(scores):
 def build_parser():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--predictions", type=Path, required=True, help="existing baseline predictions.jsonl")
+    parser.add_argument("--predictions", type=Path, required=True, help="existing verified predictions.jsonl")
+    parser.add_argument("--checkpoint-manifest", type=Path,
+                        help="matching completed paired-training bundle; omitted requires baseline predictions")
     parser.add_argument("--output", type=Path, required=True, help="new output directory; existing paths are refused")
     parser.add_argument("--radii", type=float, nargs="+", default=[2, 5, 10], help="illustrative pixel radii, not acceptance criteria")
     parser.add_argument("--conf", type=float, nargs="+", help="subset of box thresholds already present in the replay")
@@ -122,6 +125,8 @@ def main(argv=None):
                 or any(not math.isfinite(value) or not 0 <= value <= 1 for value in args.conf)):
             raise ValueError("box confidences must be unique finite numbers in [0, 1]")
         preflight = preflight_dataset(args.root, require_weights=False)
+        if args.checkpoint_manifest:
+            preflight = select_checkpoint(preflight, args.checkpoint_manifest, require_weights=False)
         header, items, thresholds = _read_replay(args.predictions, preflight, args.conf)
         records = {record["id"]: record for record in preflight["records"]}
         per_image = []
@@ -144,7 +149,8 @@ def main(argv=None):
                 "original_inference_source": provenance.get("inference_source", header["source"]),
                 "original_inference_created_at_utc": provenance.get("inference_created_at_utc", header["created_at_utc"]),
                 "inference": header["inference"], "runtime": header["runtime"]},
-            "reference": {**{name: preflight[name] for name in ("model_sha256", "manifest_sha256", "model_card_sha256")},
+            "reference": {**{name: preflight[name] for name in ("manifest_sha256", "model_card_sha256")},
+                "model_sha256": preflight.get("reference_model_sha256", preflight["model_sha256"]),
                 "weights_loaded_or_verified_in_this_diagnostic": False,
                 "images": [{name: record[name] for name in ("id", "image", "label", "image_sha256", "label_sha256", "width", "height")}
                            for record in preflight["records"]]},
@@ -161,6 +167,8 @@ def main(argv=None):
                 "Reference-v0 output availability is a disagreement diagnostic, not proof of a physical false positive or its coordinate error."],
             "metrics": aggregates,
         }
+        if "checkpoint_identity" in preflight:
+            summary["evaluated_checkpoint"] = preflight["checkpoint_identity"]
         output = create_output_directory(args.output)
         _json_write(output / "quality-summary.json", summary)
         _json_write(output / "quality-per-image.json", per_image)
