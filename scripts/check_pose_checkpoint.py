@@ -14,7 +14,9 @@ import unittest
 import evaluate_pose
 import diagnose_pose_quality
 import check_evaluate_pose as baseline_checks
-from pose_checkpoint import RECIPE, check_loaded_pose_model, select_checkpoint, write_checkpoint_manifest
+from pose_checkpoint import (ORIGINAL_RECIPE_ID, PINNED_TRAINER_DEFAULTS, RECIPE, RECIPE_IDS,
+                             WARMUP_RECIPE_ID, check_loaded_pose_model,
+                             get_recipe, recipe_identity, select_checkpoint, write_checkpoint_manifest)
 from train_pose_comparison import descriptor
 
 
@@ -22,7 +24,7 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8")
 
 
-def bundle_fixture(directory, arm="candidate"):
+def bundle_fixture(directory, arm="candidate", *, recipe_id=None):
     """Synthetic receipt consistency only: no real model, training, or accuracy claim."""
     root, run = directory / "reference", directory / "run"
     reference = baseline_checks.preflight_fixture(root)
@@ -95,6 +97,19 @@ def bundle_fixture(directory, arm="candidate"):
         "execution": {"exit_code": 0, "stop_reason": None},
         "checkpoint": descriptor(weights, run, checkpoint=True),
         "results": descriptor(results, run), "log": descriptor(log, run)}
+    if recipe_id is not None:
+        receipt.update({"schema_version": 2, **recipe_identity(recipe_id), "inputs_reverified_after_worker": True,
+            "training_settings": {**PINNED_TRAINER_DEFAULTS, **get_recipe(recipe_id),
+                "model": preflight["weights"], "data": str(Path(stage_root) / variants[arm]["data_yaml"]),
+                "device": "cpu", "project": str(run), "save_dir": str(run / "fit")}})
+        receipt["runtime"].update({"torch_cuda": None, "threads": 4, "interop_threads": 1,
+            "platform": "synthetic CPU fixture; no training performed", "device_name": "cpu",
+            "device_capability": None, "packages": {name: "fixture" for name in
+                ("torchvision", "numpy", "Pillow", "opencv-python", "psutil")},
+            "backend": {"model_channels_last": False, "float32_matmul_precision": "highest",
+                "cuda_matmul_allow_tf32": False, "cudnn_allow_tf32": True, "cudnn_version": None,
+                "deterministic_algorithms_enabled": True, "deterministic_warn_only": True,
+                "cudnn_deterministic": True, "cudnn_benchmark": False}})
     write_json(run / "training-receipt.json", receipt)
     manifest_path = write_checkpoint_manifest(run, preflight)
     return root, run, preflight, receipt, staging, manifest_path
@@ -125,6 +140,9 @@ class CheckpointBundleChecks(unittest.TestCase):
         self.assertEqual(selected["model_card_sha256"], self.preflight["model_card_sha256"])
         self.assertEqual(selected["checkpoint_identity"]["arm"], "candidate")
         self.assertEqual(selected["checkpoint_identity"]["completed_epochs"], 30)
+        self.assertEqual(set(selected["checkpoint_identity"]), {"kind", "purpose", "arm",
+            "checkpoint_sha256", "checkpoint_size_bytes", "training_receipt_sha256",
+            "staging_manifest_sha256", "initial_checkpoint_sha256", "completed_epochs", "selection", "manifest_sha256"})
         self.assertTrue(selected["weights_verified"])
         self.assertNotIn("checkpoint_identity", self.preflight)
 
@@ -250,7 +268,7 @@ class CheckpointBundleChecks(unittest.TestCase):
         fixtures = baseline_checks.ReplayChecks()
         fixtures.evaluator = evaluate_pose
         header, items = fixtures.replay_data(selected, [0.25])
-        header["checkpoint_identity"] = selected["checkpoint_identity"]
+        header["checkpoint_identity"] = copy.deepcopy(selected["checkpoint_identity"])
         predictions = self.run / "predictions.jsonl"
         fixtures.write_replay(predictions, header, items)
         with self.assertRaises(ValueError):
@@ -295,6 +313,139 @@ class CheckpointBundleChecks(unittest.TestCase):
                 model.model.model[-1].kpt_shape = shape
                 with self.assertRaises(RuntimeError):
                     check_loaded_pose_model(model)
+
+
+class VersionedRecipeChecks(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        (self.root, self.run, self.preflight, self.receipt, self.staging,
+         self.manifest_path) = bundle_fixture(Path(self.temporary.name), "reference", recipe_id=WARMUP_RECIPE_ID)
+        self.manifest = json.loads(self.manifest_path.read_text())
+
+    def save(self, receipt, *, manifest=None):
+        write_json(self.run / "training-receipt.json", receipt)
+        manifest = copy.deepcopy(self.manifest if manifest is None else manifest)
+        manifest["training_receipt"] = descriptor(self.run / "training-receipt.json", self.run)
+        write_json(self.manifest_path, manifest)
+
+    def test_recipe_identity_is_fixed_and_only_bias_warmup_changes(self):
+        original, warmup = get_recipe(ORIGINAL_RECIPE_ID), get_recipe(WARMUP_RECIPE_ID)
+        self.assertEqual(original, RECIPE)
+        self.assertEqual({key for key in original if original[key] != warmup[key]}, {"warmup_bias_lr"})
+        self.assertEqual((original["warmup_bias_lr"], warmup["warmup_bias_lr"]), (0.1, 0.0001))
+        self.assertEqual(original["epochs"], warmup["epochs"])
+        warmup["epochs"] = 1
+        self.assertEqual(get_recipe(WARMUP_RECIPE_ID)["epochs"], 30)
+        self.assertEqual(RECIPE["warmup_bias_lr"], 0.1)
+        expected = {ORIGINAL_RECIPE_ID: "47d1cf598191fa0b3ff27a075536ae7b1938074f27b26805f933a9c0652032d5",
+                    WARMUP_RECIPE_ID: "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c"}
+        self.assertEqual({key: recipe_identity(key)["recipe_sha256"] for key in RECIPE_IDS}, expected)
+        with self.assertRaisesRegex(ValueError, "unsupported training recipe"):
+            get_recipe("unregistered-experiment")
+
+    def test_versioned_manifest_and_replay_keep_the_explicit_recipe(self):
+        selected = select_checkpoint(self.preflight, self.manifest_path)
+        for key, value in recipe_identity(WARMUP_RECIPE_ID).items():
+            self.assertEqual(selected["checkpoint_identity"][key], value)
+            self.assertEqual(self.manifest[key], value)
+        self.assertEqual(self.manifest["schema_version"], 2)
+        fixtures = baseline_checks.ReplayChecks()
+        fixtures.evaluator = evaluate_pose
+        header, items = fixtures.replay_data(selected, [0.25])
+        header["checkpoint_identity"] = copy.deepcopy(selected["checkpoint_identity"])
+        predictions = self.run / "predictions.jsonl"
+        fixtures.write_replay(predictions, header, items)
+        evaluate_pose._read_replay(predictions, selected, None)
+        header["checkpoint_identity"]["recipe_id"] = ORIGINAL_RECIPE_ID
+        fixtures.write_replay(predictions, header, items)
+        with self.assertRaisesRegex(ValueError, "checkpoint provenance differs"):
+            evaluate_pose._read_replay(predictions, selected, None)
+
+    def test_original_versioned_recipe_supports_both_label_arms(self):
+        for arm in ("reference", "candidate"):
+            with self.subTest(arm=arm), tempfile.TemporaryDirectory() as directory:
+                _, _, preflight, _, _, manifest = bundle_fixture(Path(directory), arm, recipe_id=ORIGINAL_RECIPE_ID)
+                identity = select_checkpoint(preflight, manifest)["checkpoint_identity"]
+                self.assertEqual(identity["arm"], arm)
+                self.assertEqual(identity["recipe_id"], ORIGINAL_RECIPE_ID)
+
+    def test_recipe_receipt_manifest_and_schema_cannot_disagree(self):
+        cases = [("receipt", "recipe_id", "unknown"), ("receipt", "recipe_sha256", "0" * 64),
+                 ("manifest", "recipe_id", ORIGINAL_RECIPE_ID), ("manifest", "recipe_sha256", "0" * 64),
+                 ("receipt", "schema_version", 1), ("manifest", "schema_version", 1)]
+        for target, key, value in cases:
+            with self.subTest(target=target, key=key):
+                receipt, manifest = copy.deepcopy(self.receipt), copy.deepcopy(self.manifest)
+                (receipt if target == "receipt" else manifest)[key] = value
+                self.save(receipt, manifest=manifest)
+                with self.assertRaises(ValueError):
+                    select_checkpoint(self.preflight, self.manifest_path)
+
+    def test_fixed_defaults_and_unknown_settings_cannot_change(self):
+        cases = [("warmup_bias_lr", 0.1), ("rle", 2.0), ("channels_last", True),
+                 ("time", 1.0), ("distill_model", "another.pt"), ("workers", 1),
+                 ("future_setting", "undeclared"), ("fraction", 1)]
+        for key, value in cases:
+            with self.subTest(setting=key):
+                receipt = copy.deepcopy(self.receipt)
+                receipt["training_settings"][key] = value
+                self.save(receipt)
+                with self.assertRaisesRegex(ValueError, "training setting"):
+                    select_checkpoint(self.preflight, self.manifest_path)
+        receipt = copy.deepcopy(self.receipt)
+        receipt["training_settings"].pop("rle")
+        self.save(receipt)
+        with self.assertRaisesRegex(ValueError, "inventory differs"):
+            select_checkpoint(self.preflight, self.manifest_path)
+
+    def test_warmup_recipe_requires_reference_labels(self):
+        receipt = copy.deepcopy(self.receipt)
+        receipt["arm"] = "candidate"
+        variant = self.staging["variants"]["candidate"]
+        receipt["data_yaml_sha256"] = variant["data_yaml_sha256"]
+        receipt["training_settings"]["data"] = str(Path(self.staging["output_root"]) / variant["data_yaml"])
+        self.save(receipt)
+        with self.assertRaisesRegex(ValueError, "requires the reference label arm"):
+            select_checkpoint(self.preflight, self.manifest_path)
+
+    def test_run_paths_and_input_verification_remain_bound_to_staging(self):
+        for key, value in (("project", "/different/run"), ("save_dir", "/different/run/fit"),
+                           ("model", "/different/initial.pt")):
+            with self.subTest(setting=key):
+                receipt = copy.deepcopy(self.receipt)
+                receipt["training_settings"][key] = value
+                self.save(receipt)
+                with self.assertRaises(ValueError):
+                    select_checkpoint(self.preflight, self.manifest_path)
+        receipt = copy.deepcopy(self.receipt)
+        receipt["inputs_reverified_after_worker"] = False
+        self.save(receipt)
+        with self.assertRaisesRegex(ValueError, "not reverified"):
+            select_checkpoint(self.preflight, self.manifest_path)
+
+    def test_device_and_backend_observations_are_required(self):
+        for key in ("device_name", "device_capability", "backend"):
+            with self.subTest(field=key):
+                receipt = copy.deepcopy(self.receipt)
+                receipt["runtime"].pop(key)
+                self.save(receipt)
+                with self.assertRaisesRegex(ValueError, "runtime inventory"):
+                    select_checkpoint(self.preflight, self.manifest_path)
+        receipt = copy.deepcopy(self.receipt)
+        receipt["training_settings"]["device"] = "0"
+        receipt["runtime"].update(device="cuda:0", device_name="Synthetic GPU fixture",
+                                  device_capability=[8, 0], torch_cuda="13.0")
+        self.save(receipt)
+        select_checkpoint(self.preflight, self.manifest_path)
+        for key, value in (("device_name", ""), ("device_capability", [8]),
+                           ("device_capability", [True, 0]), ("device", "cpu")):
+            with self.subTest(field=key, value=value):
+                changed = copy.deepcopy(receipt)
+                changed["runtime"][key] = value
+                self.save(changed)
+                with self.assertRaisesRegex(ValueError, "CUDA device"):
+                    select_checkpoint(self.preflight, self.manifest_path)
 
 
 if __name__ == "__main__":

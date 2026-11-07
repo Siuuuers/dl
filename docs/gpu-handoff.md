@@ -1,6 +1,6 @@
 # GPU handoff: train the baomai comparison
 
-**First returned pair:** both GPU runs completed and were evaluated on 2026-11-07. [The measured comparison](gpu-comparison-2026-11-07.md) retains the original epoch173 model. Read that result before starting another identical run. The commands below reproduce the original declared recipe; the proposed next warmup experiment needs explicit versioned support.
+**First returned pair:** both GPU runs completed and were evaluated on 2026-11-07. [The measured comparison](gpu-comparison-2026-11-07.md) retains the original epoch173 model. **Continue with the [new bias-warmup handoff](gpu-warmup-handoff.md).** The commands below preserve the original reference/candidate label experiment for reproduction.
 
 The current task is to find cassettes in the supplied baomai D405 images. Camera settings are unknown; robot calibration is outside this experiment. Keep the existing one-class, two-corner target. This handoff trains two comparable models so we can measure whether the reviewed label changes help.
 
@@ -91,7 +91,7 @@ python scripts/train_pose_comparison.py \
 
 Inspect its `training-receipt.json` and `train.log`. Continue when the receipt reports `purpose: resource-trial`, `status: trial-complete`, positive optimizer updates and a parameter change. This is a resource check, not a trained model.
 
-The RSS limit measures **host RAM**, not GPU VRAM. Observe VRAM with `nvidia-smi`. The trial stops before validation and finalization; those phases can use more memory. No completed GPU training has been established yet. Choose host-memory and time budgets appropriate to this machine; 6,000 MiB and the six-hour limits below are examples, not measured requirements or duration estimates.
+The RSS limit measures **host RAM**, not GPU VRAM. Observe VRAM with `nvidia-smi`. The trial stops before validation and finalization; those phases can use more memory. The first complete GPU pair is now recorded in [the comparison report](gpu-comparison-2026-11-07.md). Choose host-memory and time budgets appropriate to this machine; 6,000 MiB and the six-hour limits below are examples, not measured requirements or duration estimates.
 
 ## 4. Train both arms sequentially
 

@@ -27,6 +27,32 @@ RECIPE = {
 POSE_CONTRACT = {"task": "pose", "class_names": ["cassette_front"],
                  "kpt_shape": [2, 3], "flip_idx": [1, 0]}
 ULTRALYTICS_VERSION = "8.4.182"
+ORIGINAL_RECIPE_ID = "paired-finetune-v1"
+WARMUP_RECIPE_ID = "warmup-bias-lr-1e-4-v1"
+RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID)
+
+# Resolved defaults observed in the pinned trainer, in addition to RECIPE.
+# These are checked, not changed, by the runner. In particular RLE stays at 1.0.
+# Schema 1 keeps its original validation rules; schema 2 declares every setting.
+PINNED_TRAINER_DEFAULTS = {
+    "task": "pose", "mode": "train", "time": None, "workers": 0,
+    "name": "fit", "exist_ok": False, "cls_remap": True, "verbose": False,
+    "profile": False, "channels_last": None, "overlap_mask": True,
+    "mask_ratio": 4, "dropout": 0.0, "save_json": False, "conf": None,
+    "iou": 0.7, "max_det": 300, "quantize": None, "dnn": False,
+    "plots": False, "nms": None, "source": None, "vid_stride": 1,
+    "stream_buffer": False, "visualize": False, "augment": False,
+    "agnostic_nms": False, "classes": None, "retina_masks": False,
+    "embed": None, "show": False, "save_frames": False, "save_txt": False,
+    "save_conf": False, "save_crop": False, "show_labels": True,
+    "show_conf": True, "show_boxes": True, "line_width": None,
+    "format": "torchscript", "optimize": False, "dynamic": False,
+    "simplify": True, "opset": None, "workspace": None,
+    "distill_model": None, "dis": 6.0, "cls_pw": 0.0, "rle": 1.0,
+    "angle": 1.0, "dlog": 1.0, "dgrad": 0.5, "dlam": 1.0,
+    "bgr": 0.0, "copy_paste_mode": "flip", "auto_augment": "randaugment",
+    "erasing": 0.4, "cfg": None, "tracker": "tracktrack.yaml",
+}
 
 
 def _require(condition, message):
@@ -37,6 +63,40 @@ def _require(condition, message):
 def _same(actual, expected):
     return json.dumps(actual, sort_keys=True, allow_nan=False) == json.dumps(
         expected, sort_keys=True, allow_nan=False)
+
+
+def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
+    """Return an independent fixed recipe; the original RECIPE remains unchanged."""
+    _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
+    return {**RECIPE, **({"warmup_bias_lr": 0.0001} if recipe_id == WARMUP_RECIPE_ID else {})}
+
+
+def recipe_identity(recipe_id=ORIGINAL_RECIPE_ID):
+    """Hash the full declared fixed settings, excluding execution paths/device.
+
+    The exact payload is {"ultralytics_version": ULTRALYTICS_VERSION,
+    "recipe": get_recipe(recipe_id), "resolved_defaults": PINNED_TRAINER_DEFAULTS}.
+    SHA-256 covers its UTF-8 JSON with sort_keys=True, separators=(",", ":"),
+    allow_nan=False, and no trailing newline. The recipe ID is not in the payload.
+    """
+    payload = {"ultralytics_version": ULTRALYTICS_VERSION, "recipe": get_recipe(recipe_id),
+               "resolved_defaults": PINNED_TRAINER_DEFAULTS}
+    digest = hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":"),
+                                      allow_nan=False).encode("utf-8")).hexdigest()
+    return {"recipe_id": recipe_id, "recipe_sha256": digest}
+
+
+def check_training_settings(settings, recipe_id, *, model, data, device, project):
+    """Check every resolved trainer argument for schema-2 runs, before training."""
+    settings = _mapping(settings, "training settings")
+    expected = {**PINNED_TRAINER_DEFAULTS, **get_recipe(recipe_id),
+                "model": str(model), "data": str(data), "device": device,
+                "project": str(project), "save_dir": str(Path(project) / "fit")}
+    _require(set(settings) == set(expected),
+             "training settings inventory differs from declared recipe: "
+             f"missing={sorted(set(expected) - set(settings))}, extra={sorted(set(settings) - set(expected))}")
+    for key, value in expected.items():
+        _require(_same(settings[key], value), f"training setting differs from declared recipe: {key}")
 
 
 def _sha256(path):
@@ -180,12 +240,65 @@ def _check_results(path, epochs):
     _require(observed == epochs, "results.csv does not contain the complete predeclared epoch sequence")
 
 
+def _check_runtime_v2(runtime, settings):
+    fields = {"python", "torch", "ultralytics", "device", "torch_cuda", "threads", "interop_threads",
+              "platform", "packages", "device_name", "device_capability", "backend"}
+    _require(set(runtime) == fields, "training runtime inventory differs from schema 2")
+    _require(type(runtime["threads"]) is int and runtime["threads"] > 0
+             and type(runtime["interop_threads"]) is int and runtime["interop_threads"] == 1
+             and isinstance(runtime["platform"], str) and runtime["platform"]
+             and (runtime["torch_cuda"] is None or isinstance(runtime["torch_cuda"], str)),
+             "training runtime settings are incomplete")
+    packages = _mapping(runtime["packages"], "training runtime packages")
+    _require(set(packages) == {"torchvision", "numpy", "Pillow", "opencv-python", "psutil"}
+             and all(isinstance(value, str) and value for value in packages.values()),
+             "training runtime package versions are incomplete")
+    device = settings["device"]
+    _require(isinstance(device, str) and (device == "cpu" or device.isdecimal()),
+             "training device must be cpu or one CUDA index")
+    if device == "cpu":
+        _require(runtime["device"] == "cpu" and runtime["device_name"] == "cpu"
+                 and runtime["device_capability"] is None, "CPU device identity differs")
+    else:
+        capability = runtime["device_capability"]
+        _require(re.fullmatch(r"cuda:\d+", runtime["device"]) is not None
+                 and isinstance(runtime["device_name"], str) and runtime["device_name"]
+                 and runtime["device_name"] != "cpu" and isinstance(runtime["torch_cuda"], str)
+                 and bool(runtime["torch_cuda"])
+                 and isinstance(capability, list) and len(capability) == 2
+                 and all(type(value) is int and value >= 0 for value in capability) and capability[0] > 0,
+                 "resolved CUDA device name/capability is missing or invalid")
+    backend = _mapping(runtime["backend"], "training backend")
+    boolean_fields = {"model_channels_last", "cuda_matmul_allow_tf32", "cudnn_allow_tf32",
+                      "deterministic_algorithms_enabled", "deterministic_warn_only",
+                      "cudnn_deterministic", "cudnn_benchmark"}
+    _require(set(backend) == boolean_fields | {"float32_matmul_precision", "cudnn_version"}
+             and all(type(backend[key]) is bool for key in boolean_fields)
+             and backend["float32_matmul_precision"] in ("highest", "high", "medium")
+             and (backend["cudnn_version"] is None or
+                  type(backend["cudnn_version"]) is int and backend["cudnn_version"] > 0),
+             "observed training backend state is missing or invalid")
+
+
 def _check_receipt(preflight, manifest, base, receipt, staging):
-    _require(type(receipt["schema_version"]) is int and receipt["schema_version"] == 1,
-             "unsupported training receipt")
+    version = receipt["schema_version"]
+    _require(type(version) is int and version in (1, 2) and version == manifest["schema_version"],
+             "unsupported training receipt or manifest/receipt schema mismatch")
+    identity = {}
+    if version == 1:
+        _require(not ({"recipe_id", "recipe_sha256"} & set(receipt)),
+                 "legacy training receipt cannot declare a versioned recipe")
+        recipe = RECIPE
+    else:
+        identity = recipe_identity(receipt["recipe_id"])
+        _require(all(receipt[key] == value and manifest[key] == value for key, value in identity.items()),
+                 "training recipe identity differs between declaration, receipt, or manifest")
+        recipe = get_recipe(receipt["recipe_id"])
     _require(receipt["purpose"] == "paired-finetune" and receipt["status"] == "complete",
              "only a completed paired-finetune qualifies; resource trials are ineligible")
     _require(receipt["arm"] in ("reference", "candidate"), "invalid training arm")
+    _require(not identity or identity["recipe_id"] != WARMUP_RECIPE_ID or receipt["arm"] == "reference",
+             "warmup experiment requires the reference label arm")
     for key, expected in (("initial_checkpoint_sha256", preflight["model_sha256"]),
                           ("reference_manifest_sha256", preflight["manifest_sha256"]),
                           ("model_card_sha256", preflight["model_card_sha256"]),
@@ -195,11 +308,25 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
     variant = variants[receipt["arm"]]
     _require(receipt["data_yaml_sha256"] == variant["data_yaml_sha256"], "training arm/YAML identity differs")
     settings = _mapping(receipt["training_settings"], "training settings")
-    for key, value in RECIPE.items():
+    for key, value in recipe.items():
         _require(key in settings and _same(settings[key], value), f"training setting differs from paired recipe: {key}")
     _require(settings["data"] == str(Path(staging["output_root"]) / variant["data_yaml"]),
              "training data path differs from its staged arm")
-    epochs = list(range(1, RECIPE["epochs"] + 1))
+    if version == 2:
+        stage_root = Path(staging["output_root"])
+        _require(stage_root.is_absolute() and ".." not in stage_root.parts and stage_root.name == "staged-data",
+                 "training staging root differs from the declared run structure")
+        _require(isinstance(settings["model"], str), "training model path must be a string")
+        model_path = Path(settings["model"])
+        relative_model = Path(preflight["weights"]).relative_to(preflight["root"])
+        _require(model_path.is_absolute() and ".." not in model_path.parts
+                 and model_path.parts[-len(relative_model.parts):] == relative_model.parts,
+                 "training model path differs from the frozen initialization")
+        check_training_settings(settings, identity["recipe_id"], model=model_path,
+                                data=stage_root / variant["data_yaml"], device=settings["device"],
+                                project=stage_root.parent)
+        _require(receipt["inputs_reverified_after_worker"] is True, "training inputs were not reverified")
+    epochs = list(range(1, recipe["epochs"] + 1))
     _require(_same(receipt["completed_epochs"], epochs), "training did not complete every predeclared epoch")
     _require(type(receipt["optimizer_steps"]) is int and receipt["optimizer_steps"] > 0,
              "no optimizer updates recorded")
@@ -224,30 +351,36 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
     _require(runtime["ultralytics"] == ULTRALYTICS_VERSION
              and all(isinstance(runtime[key], str) and runtime[key] for key in ("python", "torch", "device")),
              "training runtime is missing or incompatible")
+    if version == 2:
+        _check_runtime_v2(runtime, settings)
     _check_results(_artifact(base, receipt["results"]), epochs)
     log = _artifact(base, receipt["log"])
     _require(log.stat().st_size > 0, "training log is empty")
+    return identity
 
 
 def _validate_bundle(preflight, manifest, base, require_weights):
     try:
         _require("checkpoint_identity" not in preflight, "checkpoint selection requires an unmodified reference preflight")
+        version = manifest["schema_version"]
         expected_fields = {"schema_version", "kind", *POSE_CONTRACT, "checkpoint", "training_receipt", "staging_manifest"}
+        if type(version) is int and version == 2:
+            expected_fields |= {"recipe_id", "recipe_sha256"}
         _require(set(manifest) == expected_fields and type(manifest["schema_version"]) is int
-                 and manifest["schema_version"] == 1 and manifest["kind"] == "baomai-trained-checkpoint",
+                 and version in (1, 2) and manifest["kind"] == "baomai-trained-checkpoint",
                  "unsupported checkpoint manifest")
         for key, expected in POSE_CONTRACT.items():
             _require(_same(manifest[key], expected), f"checkpoint {key} differs from baomai")
         weights = _artifact(base, manifest["checkpoint"], checkpoint=True, verify_bytes=require_weights)
         receipt = _read_json(_artifact(base, manifest["training_receipt"]))
         staging = _read_json(_artifact(base, manifest["staging_manifest"]))
-        _check_receipt(preflight, manifest, base, receipt, staging)
+        recipe = _check_receipt(preflight, manifest, base, receipt, staging)
         return weights, {"kind": manifest["kind"], "purpose": receipt["purpose"], "arm": receipt["arm"],
             "checkpoint_sha256": manifest["checkpoint"]["sha256"], "checkpoint_size_bytes": manifest["checkpoint"]["size_bytes"],
             "training_receipt_sha256": manifest["training_receipt"]["sha256"],
             "staging_manifest_sha256": manifest["staging_manifest"]["sha256"],
             "initial_checkpoint_sha256": receipt["initial_checkpoint_sha256"],
-            "completed_epochs": len(receipt["completed_epochs"]), "selection": receipt["checkpoint_selection"]}
+            "completed_epochs": len(receipt["completed_epochs"]), "selection": receipt["checkpoint_selection"], **recipe}
     except (KeyError, TypeError, AttributeError, IndexError) as error:
         raise ValueError(f"invalid checkpoint provenance structure: {error}") from error
 
@@ -271,7 +404,10 @@ def write_checkpoint_manifest(run_dir, preflight, receipt_path="training-receipt
     _require(receipt.get("purpose") == "paired-finetune" and receipt.get("status") == "complete",
              "only a completed paired-finetune qualifies; resource trials are ineligible")
     stage_file = _contained_path(run_dir, "staging-manifest.json")
-    manifest = {"schema_version": 1, "kind": "baomai-trained-checkpoint", **POSE_CONTRACT,
+    version = receipt.get("schema_version")
+    _require(type(version) is int and version in (1, 2), "unsupported training receipt")
+    recipe = ({key: receipt.get(key) for key in ("recipe_id", "recipe_sha256")} if version == 2 else {})
+    manifest = {"schema_version": version, "kind": "baomai-trained-checkpoint", **POSE_CONTRACT, **recipe,
                 "checkpoint": receipt["checkpoint"],
                 "training_receipt": {"path": receipt_path, "sha256": _sha256(receipt_file)},
                 "staging_manifest": {"path": "staging-manifest.json", "sha256": _sha256(stage_file)}}
