@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "status": "verified",
+  "verified_at_utc": "2026-11-07T07:17:22.420534+00:00",
+  "date_hong_kong": "2026-11-07",
+  "returned_result": {
+    "pull_request": "https://github.com/Siuuuers/dl/pull/16",
+    "revision": "dc388867bb3b59ab376c8cdc1875d96e1665f99d",
+    "archive_path": "results/gpu/baomai-warmup-a100-001/baomai-warmup-results.zip",
+    "archive_git_blob": "1ce899125720779fcc3924c3f98f4ef7615ce82d"
+  },
+  "original_return_archive": {
+    "size_bytes": 39776499,
+    "sha256": "2e8ca425c585a17468d8c651014e811681ccefe2a0f1a6a579a920178d560a6a",
+    "members": 13,
+    "payload_files": 12,
+    "sidecar_exact_match": true,
+    "committed_blob_exact_match": true,
+    "all_crc_and_payload_hashes_pass": true,
+    "all_extracted_bytes_match_archive": true,
+    "exact_expected_inventory": true,
+    "index_metadata_matches_validated_bundles": true
+  },
+  "inference_source_revision": "679b87b38e7b0bca5fbd02fb1519a90fb2379541",
+  "inference_source_clean": true,
+  "model_inference_runs": 3,
+  "scored_image_threshold_pairs": 180,
+  "quality_image_threshold_pairs": 180,
+  "run_statuses": {
+    "m0": {
+      "status": "complete",
+      "exit_code": 0,
+      "scored_image_threshold_pairs": 60
+    },
+    "control": {
+      "status": "complete",
+      "exit_code": 0,
+      "scored_image_threshold_pairs": 60
+    },
+    "warmup": {
+      "status": "complete",
+      "exit_code": 0,
+      "scored_image_threshold_pairs": 60
+    },
+    "m0-quality": {
+      "status": "complete",
+      "exit_code": 0,
+      "scored_image_threshold_pairs": 60,
+      "diagnostic_only": true
+    },
+    "control-quality": {
+      "status": "complete",
+      "exit_code": 0,
+      "scored_image_threshold_pairs": 60,
+      "diagnostic_only": true
+    },
+    "warmup-quality": {
+      "status": "complete",
+      "exit_code": 0,
+      "scored_image_threshold_pairs": 60,
+      "diagnostic_only": true
+    }
+  },
+  "inference_and_quality_warnings_found": false,
+  "comparison_source": {
+    "revision": "2f0260c19835fcd60eb2f12040b7c77ebd2ca890",
+    "working_tree_status": "",
+    "files_sha256": {
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/pose_checkpoint.py": "017863af87035e99aa987d874f5aefe3dc90e470b63be576c6f2ef9955b31953",
+      "scripts/summarize_warmup_comparison.py": "d3b60b0a7bbbea94e44ad23414fff86a16e31b63a138adb3d1a5b87e6cc5a5df",
+      "scripts/summarize_pose_comparison.py": "d728710a93bc73e56727a189d20b0a61ef84bd93c964c42ba8b2265afdc24ace",
+      "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953",
+      "scripts/package_warmup_results.py": "2b7f015aabc8e7d9bce367c30683b3d58a6d7671e93c90d9ce24bf4c32821d1a",
+      "scripts/package_gpu_results.py": "120b1a3d22f9cb8896af67a84b7d3da686d89e41b63d5889eb7fb106bdce477c"
+    }
+  },
+  "compared_evidence_files": 31,
+  "comparison_decision": "retain-M0",
+  "baseline_rule_passers": [
+    "warmup"
+  ],
+  "predeclared_adoption_eligible": [],
+  "warmup_meets_rule_against_both_controls": false,
+  "archive": {
+    "path": "results/evaluation/baomai-warmup-a100-001/evaluation.zip",
+    "sha256": "a321cd6f9c0f7cf5cc4830df2c7b36c7d833097ce93085c684f3d13bc3836787",
+    "size_bytes": 1048741,
+    "files": 62,
+    "payload_files_excluding_inventory": 61,
+    "inventory_path": "inventory.json",
+    "exact_inventory": true,
+    "all_readback_bytes_match": true,
+    "all_inventory_sha256_and_sizes_match": true,
+    "crc_passed": true,
+    "fresh_extraction": "/workspace/scratch/ad3aa7140d65/warmup-evidence-restored"
+  },
+  "fresh_restoration_replay": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "/workspace/scratch/ad3aa7140d65/dl-comparison-source/scripts/summarize_warmup_comparison.py",
+      "--root",
+      ".",
+      "--evidence",
+      "/workspace/scratch/ad3aa7140d65/warmup-evidence-restored",
+      "--output",
+      "/workspace/scratch/ad3aa7140d65/warmup-comparison-restored.json"
+    ],
+    "exit_code": 0,
+    "status": "verified",
+    "comparison_source": {
+      "revision": "2f0260c19835fcd60eb2f12040b7c77ebd2ca890",
+      "working_tree_status": "",
+      "files_sha256": {
+        "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+        "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+        "scripts/pose_checkpoint.py": "017863af87035e99aa987d874f5aefe3dc90e470b63be576c6f2ef9955b31953",
+        "scripts/summarize_warmup_comparison.py": "d3b60b0a7bbbea94e44ad23414fff86a16e31b63a138adb3d1a5b87e6cc5a5df",
+        "scripts/summarize_pose_comparison.py": "d728710a93bc73e56727a189d20b0a61ef84bd93c964c42ba8b2265afdc24ace",
+        "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953",
+        "scripts/package_warmup_results.py": "2b7f015aabc8e7d9bce367c30683b3d58a6d7671e93c90d9ce24bf4c32821d1a",
+        "scripts/package_gpu_results.py": "120b1a3d22f9cb8896af67a84b7d3da686d89e41b63d5889eb7fb106bdce477c"
+      }
+    },
+    "ignored_fields": [
+      "created_at_utc",
+      "command"
+    ],
+    "all_other_result_fields_exactly_equal": true,
+    "recomputed_json_sha256": "f49e935eff1a2f469dc2ea7234d17d4b47588bb980ea9604d8660853d42c32b0"
+  },
+  "development_to_published_summary_bridge": {
+    "development_json_sha256": "fe5ccb622ae06b0a1af509cc866feb92013d5119210cf2268feda25738934648",
+    "published_json_sha256": "f9a9d6ed521e4071c4561bcab48ae1fb92d7a9a2e8bf50a6908a2fbd6f28470b",
+    "ignored_fields": [
+      "created_at_utc",
+      "command",
+      "source"
+    ],
+    "all_other_result_fields_exactly_equal": true,
+    "source_file_hashes_identical": true
+  },
+  "archived_independent_and_focused_checks": {
+    "return16-training-audit.json": {
+      "sha256": "02d6c0f98a6595ce8d62e8142c89668e3ff33a800c2f2a92b7e8def568a01a92",
+      "status": "passed"
+    },
+    "return16-summarizer-review.json": {
+      "sha256": "892b7b918b428cfeaa38322783c455ca0108dacf848e647951852e0aa5c5e8d4",
+      "status": "passed"
+    },
+    "warmup-summarizer-verification.json": {
+      "sha256": "3f2bdd1512293dc5f3edc6d2faaaa0e9b08372775e2f0ceb2572ca40c0f8c240",
+      "status": "passed"
+    },
+    "warmup-historical-control-prediction-verification.json": {
+      "sha256": "1a676814f04c36be77d068fc0fe7a540b9e2bb5033fd39257015631b5e6d8c16",
+      "status": "passed"
+    }
+  },
+  "notebook_setup_fix": {
+    "status": "passed",
+    "verified_at_utc": "2026-11-07T07:16:42.874131+00:00",
+    "final_notebook_path": "notebooks/baomai_bias_warmup.ipynb",
+    "final_notebook_sha256": "7ab0ef633e211b07dcd7addd2c118e8460c56305853088610440b7f40db59d7e",
+    "initial_fix_proof_sha256": "6c2634de4c41b25e84cca0f85620e402bec362bfc7ea218eb1385b1354f03443",
+    "initial_fix_notebook_sha256": "ca4dc3a383cc5f6658b220c09820c7777aefd284b51ab4788253e340b7c2441e",
+    "replacing_only_markdown_with_original_reconstructs_initial_fix_hash": true,
+    "markdown_cells_changed_since_initial_fix": [
+      "baomai-warmup-00",
+      "baomai-warmup-15"
+    ],
+    "published_test_source_revision": "2f0260c19835fcd60eb2f12040b7c77ebd2ca890",
+    "published_test_source_clean": true,
+    "focused_check_execution": {
+      "command": [
+        "python",
+        "scripts/check_warmup_notebook.py"
+      ],
+      "cwd": "/workspace/scratch/ad3aa7140d65/dl-comparison-source",
+      "exit_code": 0,
+      "tests_passed": 2,
+      "observed_output": "Both actual-setup-cell tests passed; Ran 2 tests in 0.002s; OK.",
+      "test_script_sha256": "001bab03ec0fc12ba35a0564dec7835632efc0e90eabfc2f42717f955394a8d6"
+    },
+    "final_code_cells_identical_to_tested_published_notebook": true,
+    "changes_since_tested_published_notebook": [
+      "baomai-warmup-15"
+    ],
+    "compiled_code_cell_ids": [
+      "baomai-warmup-02",
+      "baomai-warmup-04",
+      "baomai-warmup-06",
+      "baomai-warmup-08",
+      "baomai-warmup-10",
+      "baomai-warmup-12",
+      "baomai-warmup-14"
+    ],
+    "saved_execution_outputs": false,
+    "training_source_revision_unchanged": "679b87b38e7b0bca5fbd02fb1519a90fb2379541",
+    "pip_install_or_gpu_executed_by_tests": false
+  },
+  "report_review": {
+    "independent_scientific_review": "passed",
+    "reviewed_topics": [
+      "primary and secondary values",
+      "adoption rule",
+      "endpoint and object denominators",
+      "same-endpoint conditioning",
+      "nine-case gate classifications",
+      "training provenance",
+      "figure values and labeling",
+      "limits and prospective next steps"
+    ],
+    "corrected_training_wording": "114 total settings; 110 equal and four differ. First four batch identities match; only first forward loss/components are asserted equal across recipe arms.",
+    "detail_packet_attribution_clarified": true,
+    "report_sha256": "93cb2d5b944f322280c38e759eb776f9376d7b0079b2571a75641f003e8bac48"
+  },
+  "published_artifacts": {
+    "docs/warmup-comparison-2026-11-07.md": {
+      "sha256": "93cb2d5b944f322280c38e759eb776f9376d7b0079b2571a75641f003e8bac48",
+      "size_bytes": 20528
+    },
+    "docs/warmup-comparison-2026-11-07.json": {
+      "sha256": "f9a9d6ed521e4071c4561bcab48ae1fb92d7a9a2e8bf50a6908a2fbd6f28470b",
+      "size_bytes": 60774
+    },
+    "docs/images/baomai-warmup-corner-comparison-2026-11-07.png": {
+      "sha256": "0d97261be716b8b99e738dd51358e3280393ba8a1b296fc39b515299fab3f113",
+      "size_bytes": 164602
+    },
+    "docs/images/baomai-warmup-detection-tradeoffs-2026-11-07.png": {
+      "sha256": "6f017cd07de181c33f962336134beac247c0d9c10e3211d265e45528581150d4",
+      "size_bytes": 367232
+    }
+  },
+  "scope_limits": [
+    "One-seed development comparison; no independent-test or physical-accuracy claim.",
+    "Archive replay loads no models; actual fresh inference and original return integrity are separately recorded.",
+    "Training-image inventory matches recorded metadata; all 137 original training PNGs were not independently downloaded.",
+    "Original staged YAML was reconstructed from pinned generator/paths, not recovered from the return.",
+    "The exact user-side repaired notebook and constraints file were not returned.",
+    "No additional training or broad test-suite rerun was needed for this evaluation and focused notebook repair."
+  ]
+}

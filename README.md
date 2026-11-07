@@ -106,9 +106,11 @@ test/d405_recordings/recording_日期_时间/
 
 模型品質的判定方式、已完成的標註審查，以及先修正資料或再訓練的決策，見[模型品質與下一步](docs/model-quality.md)。
 
-## GPU 訓練交接
+## GPU 訓練與比較結果
 
-目前工作只處理 baomai D405 影像中的包埋盒定位，保留現有兩個下角點的定義。[首輪 GPU 比較](docs/gpu-comparison-2026-11-07.md) 顯示兩組微調模型均未通過替換標準，因此繼續保留原始第173輪模型。下一步依照 [bias warmup 實驗交接](docs/gpu-warmup-handoff.md)，在同一 GPU 環境用原始標籤比較原配方與降低 bias 起始學習率的配方。訓練不需連接相機；完成後回傳一個含兩組模型及紀錄的 ZIP，無需重傳原始影像。[原始標籤／去重標籤交接](docs/gpu-handoff.md) 保留供重現先前實驗。
+目前工作只處理 baomai D405 影像中的包埋盒定位，保留現有兩個下角點的定義。[bias warmup 比較](docs/warmup-comparison-2026-11-07.md) 已完成，並驗證 [PR #16](https://github.com/Siuuuers/dl/pull/16) 回傳的兩組模型與紀錄。降低 bias 起始學習率的模型在五項主要指標上均優於原始第173輪模型，但漏檢數為37，新控制組為36，尚未通過預先訂定的兩組比較標準。因此繼續使用原始模型，保留 warmup 模型作為有潛力的候選。
+
+下一步集中審查剩餘偵測差異的框範圍與遮擋證據，並收集未參與開發的獨立場景後再評估採用。[warmup 交接](docs/gpu-warmup-handoff.md) 與[原始標籤／去重標籤交接](docs/gpu-handoff.md) 保留供重現實驗。目前 notebook 已修正環境設定 cell 的語法錯誤；此修正不需要重跑已完成的訓練。
 
 ## 模型与指标
 

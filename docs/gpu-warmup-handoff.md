@@ -1,10 +1,12 @@
-# Next GPU experiment: test the bias warmup rate
+# Bias-warmup GPU experiment: completed comparison
 
-**Keep epoch173 as the working model.** The [first completed comparison](gpu-comparison-2026-11-07.md) found that both fine-tunes increased extra detections and tight corner error. This experiment tests one possible shared cause: the initial learning rate for bias parameters. It does not assume that the cause has been established.
+**Keep epoch173 as the working model; retain the warmup model as a promising candidate.** The [completed warmup comparison](warmup-comparison-2026-11-07.md) evaluates the audited return from [PR #16](https://github.com/Siuuuers/dl/pull/16). Lower bias warmup improves all five primary measures against M0, but fails the required comparison against the fresh control because missed objects increase from 36 to 37. The predeclared rule requires both comparisons to pass before adoption.
 
-**Colab handoff:** use [baomai_bias_warmup.ipynb](../notebooks/baomai_bias_warmup.ipynb) in a GPU runtime and run its cells in order. It downloads the inputs directly, runs the trial and both recipes, verifies the pair, and downloads `baomai-warmup-results.zip`. The notebook pins training source to `679b87b38e7b0bca5fbd02fb1519a90fb2379541`. The shell route below uses the same revision.
+The next evidence task is a focused review of box extent and occlusion behind the remaining detection tradeoffs, followed by fresh held-out scenes before adoption. Keep the current scoring thresholds and reference labels fixed for that review. Another training run should follow a concrete finding from that evidence.
 
-[Implementation verification](warmup-execution-verification-2026-11-07.md): both real four-batch CPU trials and all 96 focused checks pass. These are execution checks; completed GPU fine-tunes and their accuracy comparison are still pending.
+**Reproduction handoff:** the [Colab notebook](../notebooks/baomai_bias_warmup.ipynb) and shell commands below preserve the completed experiment. The notebook pins training source to `679b87b38e7b0bca5fbd02fb1519a90fb2379541`. Its current setup cell fixes the nested-Python syntax error reported in PR #16 by writing package constraints directly. The returned runs used the intended training source and settings after the session workaround; this notebook repair does not require rerunning them.
+
+The earlier [implementation verification](warmup-execution-verification-2026-11-07.md) preserves the pre-GPU milestone: two real four-batch CPU trials and 96 focused checks. The returned-model and accuracy findings are in the [completed comparison](warmup-comparison-2026-11-07.md).
 
 ## The comparison declared before training
 
@@ -115,11 +117,11 @@ Return `baomai-warmup-results.zip` as a chat attachment or through a new result 
 
 The original `package_gpu_results.py` still serves the reference/candidate label experiment. Use the new packer for this experiment; the roles describe two recipes on the same reference labels.
 
-## How the returned experiment will be assessed
+## Assessment used for the completed experiment
 
-Run fresh inference on **M0, the new control and the new warmup model together** in one evaluator environment. Use the unchanged frozen validation images and current evaluator/scorer: image size 1280, rectangular preprocessing, batch 1, FP32, ordinary NMS at IoU 0.70, `max_det=300`, box thresholds 0.15/0.25/0.40, matching IoU 0.50 and endpoint confidence 0.50. Select each trained model through its returned checkpoint manifest.
+The [completed report](warmup-comparison-2026-11-07.md) runs fresh inference on **M0, the new control and the new warmup model together** in one evaluator environment. Reproduction uses the unchanged frozen validation images and evaluator/scorer: image size 1280, rectangular preprocessing, batch 1, FP32, ordinary NMS at IoU 0.70, `max_det=300`, box thresholds 0.15/0.25/0.40, matching IoU 0.50 and endpoint confidence 0.50. Select each trained model through its returned checkpoint manifest.
 
-At the predeclared primary box threshold 0.25, require all five unrounded measures to be no worse and at least one to improve: **FN, total FP, missing visible endpoints, conditional median error and conditional p95 error**. Missing statistics do not pass. Assess the warmup model against both M0 and the matched fresh control before adopting the revised recipe. Improving against the control while still failing against M0 does not qualify it to replace M0.
+At the predeclared primary box threshold 0.25, require all five unrounded measures to be no worse and at least one to improve: **FN, total FP, missing visible endpoints, conditional median error and conditional p95 error**. Missing statistics do not pass. Assess the warmup model against both M0 and the matched fresh control before adopting the revised recipe. Both comparisons must pass before adoption.
 
 Retain both-corner radius success with missed objects in the denominator, common-endpoint comparisons, empty-image false detections and reference-unlocatable output counts with their denominators. The trainer's automatic `best.pt` console score is not the final-epoch direct-pixel comparison. No threshold tuning, coordinate offset, label correction or second training change is part of this test.
 
