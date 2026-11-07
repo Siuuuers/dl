@@ -1,6 +1,6 @@
 # Execute the controlled cassette training comparison
 
-**First GPU pair completed and evaluated on 2026-11-07:** [PR #13](https://github.com/Siuuuers/dl/pull/13) returned eligible finalized epoch-30 models. The [three-model comparison](gpu-comparison-2026-11-07.md) retains epoch173 because both fine-tunes regress on extra detections and tight corner error. This guide preserves the original recipe and historical CPU trial. The proposed next test changes only bias warmup in a separately versioned experiment; it has not run.
+**First GPU pair completed and evaluated on 2026-11-07:** [PR #13](https://github.com/Siuuuers/dl/pull/13) returned eligible finalized epoch-30 models. The [three-model comparison](gpu-comparison-2026-11-07.md) retains epoch173 because both fine-tunes regress on extra detections and tight corner error. This guide preserves the original recipe and historical CPU trial. **The next [GPU handoff](gpu-warmup-handoff.md) compares explicitly versioned original and lower-bias-warmup recipes on reference labels.** Its completed GPU training and accuracy results are still pending.
 
 The user clarified on 2026-11-07 (Hong Kong time) that the current duty is object localization in the supplied baomai D405 images. Retain the existing two-corner target. GPU compute is available; use [gpu-handoff.md](gpu-handoff.md) to transfer the inputs and return the completed models. Camera/robot calibration is outside this experiment.
 
@@ -43,7 +43,7 @@ All **66 focused checks** passed on that published revision: 36 evaluator, 12 qu
 
 ## Complete each arm on qualified compute
 
-The scientific recipe is fixed in `scripts/pose_checkpoint.py` and follows PR #1: 30 epochs, batch 4, image size 1280, rectangular batches, AdamW, initial learning rate 0.0001, seed 42, FP32 training, and the recorded augmentations/loss gains. The runner explicitly fixes the complete-data fraction to floating-point `1.0`. It disables image RAM caching, compilation, plots and optional logging integrations; it records resolved settings and uses zero data-loader workers. These choices are shared by both arms.
+The default scientific recipe, `paired-finetune-v1`, is fixed in `scripts/pose_checkpoint.py` and follows PR #1: 30 epochs, batch 4, image size 1280, rectangular batches, AdamW, initial learning rate 0.0001, seed 42, FP32 training, and the recorded augmentations/loss gains. Omitting `--recipe` preserves this original selection. The separately named `warmup-bias-lr-1e-4-v1` changes only `warmup_bias_lr` from `0.1` to `0.0001` and is restricted to reference labels; use its own handoff and packer. New schema-2 receipts/manifests identify the recipe and its canonical SHA-256, while existing schema-1 bundles retain their original identity and validation behavior. The runner explicitly fixes the complete-data fraction to floating-point `1.0`. It disables image RAM caching, compilation, plots and optional logging integrations; it records resolved settings and uses zero data-loader workers. These choices are shared by both arms.
 
 Choose the same explicitly named device and thread count for both runs. Do not silently reduce image size or batch size after an out-of-memory error; the runner rejects automatic batch changes. If the configuration is unsuitable, record a separately revised experiment before trying a different scientific recipe.
 

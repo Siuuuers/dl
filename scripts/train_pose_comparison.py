@@ -17,6 +17,8 @@ import subprocess
 import time
 
 from evaluate_pose import ULTRALYTICS_VERSION, file_sha256, preflight_dataset
+from pose_checkpoint import (ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
+                             check_training_settings, get_recipe, recipe_identity)
 from stage_pose_training import MANIFEST, stage_datasets
 from verify_pose_candidate import DEFAULT_CANDIDATE, require
 
@@ -59,6 +61,32 @@ def verify_input_files(run, staging):
     require(file_sha256(base / MANIFEST) == file_sha256(run / MANIFEST), "staging receipt changed")
 
 
+def resolved_runtime(torch, model, device):
+    """Observe the effective device/backend after setup without changing any flags."""
+    cuda = device.type == "cuda"
+    four_dimensional = [parameter for parameter in model.parameters() if parameter.ndim == 4]
+    return {"device": str(device), "threads": torch.get_num_threads(),
+            "interop_threads": torch.get_num_interop_threads(),
+            "device_name": torch.cuda.get_device_name(device) if cuda else "cpu",
+            "device_capability": list(torch.cuda.get_device_capability(device)) if cuda else None,
+            "backend": {
+                "model_channels_last": bool(four_dimensional) and all(parameter.is_contiguous(
+                    memory_format=torch.channels_last) for parameter in four_dimensional),
+                "float32_matmul_precision": torch.get_float32_matmul_precision(),
+                "cuda_matmul_allow_tf32": torch.backends.cuda.matmul.allow_tf32,
+                "cudnn_allow_tf32": torch.backends.cudnn.allow_tf32,
+                "cudnn_version": torch.backends.cudnn.version(),
+                "deterministic_algorithms_enabled": torch.are_deterministic_algorithms_enabled(),
+                "deterministic_warn_only": torch.is_deterministic_algorithms_warn_only_enabled(),
+                "cudnn_deterministic": torch.backends.cudnn.deterministic,
+                "cudnn_benchmark": torch.backends.cudnn.benchmark}}
+
+
+def optimizer_learning_rates(optimizer):
+    return [{"index": index, "parameter_group": group["param_group"], "lr": float(group["lr"]),
+             "initial_lr": float(group["initial_lr"])} for index, group in enumerate(optimizer.param_groups)]
+
+
 def run_worker(config):
     import resource
     import torch
@@ -66,7 +94,13 @@ def run_worker(config):
     from ultralytics.models.yolo.pose import PoseTrainer
     from ultralytics.data.utils import img2label_paths
     from ultralytics.utils import SETTINGS
-    from pose_checkpoint import RECIPE
+
+    recipe = get_recipe(config["recipe_id"])
+    declared_recipe = recipe_identity(config["recipe_id"])
+    require(all(config.get(key) == value for key, value in declared_recipe.items()),
+            "worker configuration recipe identity differs")
+    require(config["recipe_id"] != WARMUP_RECIPE_ID or config["arm"] == "reference",
+            "warmup experiment requires the reference label arm")
 
     SETTINGS.update({key: False for key in
                      ("sync", "clearml", "comet", "dvc", "mlflow", "raytune", "tensorboard", "wandb")})
@@ -76,8 +110,9 @@ def run_worker(config):
     staging = json.loads((run / MANIFEST).read_text())
     arm = config["arm"]
     arm_root = run / "staged-data" / arm
-    progress = {"status": "starting", "completed_epochs": [], "optimizer_steps": 0,
+    progress = {**declared_recipe, "status": "starting", "completed_epochs": [], "optimizer_steps": 0,
                 "batches_completed": 0, "images_processed": 0, "batch_samples": [],
+                "optimizer_step_samples": [],
                 "training_returned": False, "finalization_completed": False,
                 "optimizer_parameter_change_observed": False, "validation_executed": False,
                 "runtime": {"python": platform.python_version(), "torch": torch.__version__,
@@ -113,7 +148,7 @@ def run_worker(config):
             self.add_callback("on_model_save", self.record_model_save)
 
         def _build_train_pipeline(self):
-            require(self.batch_size == RECIPE["batch"], "automatic batch-size changes invalidate the comparison")
+            require(self.batch_size == recipe["batch"], "automatic batch-size changes invalidate the comparison")
             super()._build_train_pipeline()
             routed = []
             files = {item["path"]: item["output_sha256"] for item in staging["variants"][arm]["files"]}
@@ -136,7 +171,10 @@ def run_worker(config):
                                "batches": len(loader), "batch_size": loader.batch_size})
             progress["loader_verification"] = routed
             progress["training_settings"] = dict(vars(self.args))
-            progress["runtime"].update(device=str(self.device), threads=torch.get_num_threads())
+            check_training_settings(progress["training_settings"], config["recipe_id"],
+                                    model=config["initial_weights"], data=arm_root / "data.yaml",
+                                    device=config["device"], project=run)
+            progress["runtime"].update(resolved_runtime(torch, self.model, self.device))
             save_progress()
 
         def preprocess_batch(self, batch):
@@ -170,11 +208,17 @@ def run_worker(config):
                     break
             require(witness is not None, "no nonzero gradient with positive learning rate")
             before = witness.detach().clone()
+            rates = optimizer_learning_rates(self.optimizer)
             super().optimizer_step()
             require(bool(torch.isfinite(witness).all()), "nonfinite parameter after optimizer update")
             changed = bool(torch.any(before != witness.detach()))
             progress["optimizer_parameter_change_observed"] |= changed
             progress["optimizer_steps"] += 1
+            if len(progress["optimizer_step_samples"]) < 8:
+                progress["optimizer_step_samples"].append({"optimizer_step": progress["optimizer_steps"],
+                    "epoch": self.epoch + 1, "batch": self.epoch_batch_count + 1,
+                    "global_batch": progress["batches_completed"] + 1,
+                    "learning_rates": rates, "witness_parameter_changed": changed})
 
         def record_batch_end(self, trainer):
             require(self.current_batch is not None and bool(torch.isfinite(self.loss).all()),
@@ -189,7 +233,8 @@ def run_worker(config):
                     "wall_seconds": time.perf_counter() - self.batch_started,
                     "loss": float(self.loss.detach()),
                     "loss_components": {key: float(value.detach()) for key, value in self.loss_items.items()},
-                    "optimizer_steps_total": progress["optimizer_steps"]})
+                    "optimizer_steps_total": progress["optimizer_steps"],
+                    "learning_rates": optimizer_learning_rates(self.optimizer)})
             progress["status"] = "training"
             save_progress()
             if config["trial"] and progress["batches_completed"] >= config["trial_batches"]:
@@ -229,7 +274,7 @@ def run_worker(config):
         model = YOLO(config["initial_weights"])
         require(model.task == "pose" and model.names == {0: "cassette_front"}
                 and list(model.model.model[-1].kpt_shape) == [2, 3], "initial loaded pose contract differs")
-        settings = {**RECIPE, "data": str(arm_root / "data.yaml"), "device": config["device"],
+        settings = {**recipe, "data": str(arm_root / "data.yaml"), "device": config["device"],
                     "workers": 0, "plots": False, "verbose": False,
                     "project": str(run), "name": "fit", "exist_ok": False}
         model.train(trainer=RecordedPoseTrainer, **settings)
@@ -303,6 +348,9 @@ def run_parent(args):
     require(args.threads > 0 and args.max_seconds > 0 and args.max_rss_mib > 0, "resource limits must be positive")
     require(1 <= args.trial_batches <= 8, "trial batches must be between 1 and 8")
     require(args.device == "cpu" or args.device.isdecimal(), "select cpu or one CUDA device index explicitly")
+    declared_recipe = recipe_identity(args.recipe)
+    require(args.recipe != WARMUP_RECIPE_ID or args.arm == "reference",
+            "warmup experiment requires the reference label arm")
     require(importlib.metadata.version("ultralytics") == ULTRALYTICS_VERSION, "pinned Ultralytics required")
     preflight = preflight_dataset(root, require_weights=True)
     identity = source_identity(root)
@@ -310,7 +358,7 @@ def run_parent(args):
     config = {"root": str(root), "output": str(run), "trial": args.trial,
               "trial_batches": args.trial_batches, "arm": args.arm, "device": args.device,
               "threads": args.threads, "max_seconds": args.max_seconds,
-              "max_rss_mib": args.max_rss_mib, "initial_weights": preflight["weights"]}
+              "max_rss_mib": args.max_rss_mib, "initial_weights": preflight["weights"], **declared_recipe}
     run.mkdir(parents=True, exist_ok=False)
     stage_datasets(root, root / DEFAULT_CANDIDATE, run / "staged-data")
     shutil.copyfile(run / "staged-data" / MANIFEST, run / MANIFEST)
@@ -320,19 +368,21 @@ def run_parent(args):
                                 "--worker", str(run / "run-config.json")], run, config)
     progress_path = run / "training-progress.json"
     progress = json.loads(progress_path.read_text()) if progress_path.exists() else {"status": "failed"}
-    receipt = {"schema_version": 1, "purpose": "resource-trial" if args.trial else "paired-finetune",
+    receipt = {**progress, "schema_version": 2, "purpose": "resource-trial" if args.trial else "paired-finetune",
                "created_at_utc": datetime.now(timezone.utc).isoformat(), "arm": args.arm,
                "initial_checkpoint_sha256": preflight["model_sha256"],
                "reference_manifest_sha256": preflight["manifest_sha256"],
                "model_card_sha256": preflight["model_card_sha256"],
                "staging_manifest_sha256": file_sha256(run / MANIFEST),
                "data_yaml_sha256": staging["variants"][args.arm]["data_yaml_sha256"],
-               "source": identity, "execution": execution, **progress,
+               "source": identity, "execution": execution, **declared_recipe,
                "checkpoint_selection": "final_epoch" if not args.trial else "none",
                "inputs_reverified_after_worker": False,
                "log": descriptor(run / "train.log", run)}
     valid_execution = execution["exit_code"] == 0 and execution["stop_reason"] is None
     try:
+        require(all(progress.get(key) == value for key, value in declared_recipe.items()),
+                "worker reported a different or missing recipe identity")
         verify_input_files(run, staging)
         require(identity == source_identity(root), "training source code or revision changed during execution")
         require(file_sha256(preflight["weights"]) == preflight["model_sha256"], "initial checkpoint changed")
@@ -372,6 +422,8 @@ def main(argv=None):
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--arm", choices=("reference", "candidate"), required=True)
+    parser.add_argument("--recipe", choices=RECIPE_IDS, default=ORIGINAL_RECIPE_ID,
+                        help="fixed training recipe; reduced bias warmup requires --arm reference")
     parser.add_argument("--device", required=True, help="cpu or one CUDA index; same device for both arms")
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--trial", action="store_true", help="stop after bounded real training batches; no eligible checkpoint")

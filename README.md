@@ -108,7 +108,7 @@ test/d405_recordings/recording_日期_时间/
 
 ## GPU 訓練交接
 
-目前工作只處理 baomai D405 影像中的包埋盒定位，保留現有兩個下角點的定義。依照 [GPU 交接說明](docs/gpu-handoff.md) 還原精簡輸入包，或直接在 GPU 主機下載指定分支及必要的 Git LFS 檔案。訓練不需連接相機；完成後回傳兩組模型及其紀錄，無需重傳原始影像。
+目前工作只處理 baomai D405 影像中的包埋盒定位，保留現有兩個下角點的定義。[首輪 GPU 比較](docs/gpu-comparison-2026-11-07.md) 顯示兩組微調模型均未通過替換標準，因此繼續保留原始第173輪模型。下一步依照 [bias warmup 實驗交接](docs/gpu-warmup-handoff.md)，在同一 GPU 環境用原始標籤比較原配方與降低 bias 起始學習率的配方。訓練不需連接相機；完成後回傳一個含兩組模型及紀錄的 ZIP，無需重傳原始影像。[原始標籤／去重標籤交接](docs/gpu-handoff.md) 保留供重現先前實驗。
 
 ## 模型与指标
 
