@@ -1,6 +1,6 @@
 # GPU handoff: train the baomai comparison
 
-**First returned pair:** both GPU runs completed and were evaluated on 2026-11-07. [The measured comparison](gpu-comparison-2026-11-07.md) retains the original epoch173 model. **Continue with the [new bias-warmup handoff](gpu-warmup-handoff.md).** The commands below preserve the original reference/candidate label experiment for reproduction.
+**Both GPU comparisons are complete.** The [first label comparison](gpu-comparison-2026-11-07.md) and [completed bias-warmup comparison](warmup-comparison-2026-11-07.md) retain the original epoch173 model under the predeclared rule. Warmup is a promising candidate, with box/occlusion evidence review and fresh held-out scenes as the next steps. Continue from the completed warmup report; the commands below preserve the original reference/candidate label experiment for reproduction.
 
 The current task is to find cassettes in the supplied baomai D405 images. Camera settings are unknown; robot calibration is outside this experiment. Keep the existing one-class, two-corner target. This handoff trains two comparable models so we can measure whether the reviewed label changes help.
 

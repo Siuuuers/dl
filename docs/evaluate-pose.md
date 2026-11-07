@@ -2,11 +2,11 @@
 
 `scripts/evaluate_pose.py` defaults to the unchanged epoch-173 model against all 20 reference validation images. An explicit `--checkpoint-manifest` selects a verified completed training arm while keeping the reference validation set fixed. It needs no RealSense device or desktop display. The task remains one `cassette_front` class and two actual lower-front corners, ordered by image X. Continue from [workflow PR #6](https://github.com/Siuuuers/dl/pull/6).
 
-The first completed run, measured results and next review task are in [the 2026-11-06 baseline report](baseline-2026-11-06.md).
+**Latest result:** the [completed warmup comparison](warmup-comparison-2026-11-07.md) evaluates the audited [PR #16](https://github.com/Siuuuers/dl/pull/16) return alongside M0 and a fresh control. Warmup improves all five primary measures against M0, but fails the required control comparison on missed objects: 37 versus 36. Keep epoch173 as the default and retain warmup as a promising candidate. Use that report's recorded revision and commands to reproduce its comparison.
 
-The [2026-11-07 GPU comparison](gpu-comparison-2026-11-07.md) now evaluates the returned reference and candidate final-epoch models alongside a fresh M0 run. Both fail the predeclared replacement rule, so epoch173 remains the default. The report includes complete replay evidence and a standard-library comparison summarizer.
+Historical milestones remain in [the 2026-11-06 baseline report](baseline-2026-11-06.md) and [the first GPU comparison](gpu-comparison-2026-11-07.md). The latter evaluated the original-label and cleaned-label fine-tunes, both of which failed the replacement rule. Its replay evidence and comparison summarizer preserve that earlier result.
 
-Do not use these images as an independent final test: they already participated in selecting epoch 173. Do not change reference labels to improve this score. The user clarified that the current duty is finding/localizing objects in the supplied baomai D405 images. Keep the two-corner target; camera/robot calibration is outside this evaluation. Use [gpu-handoff.md](gpu-handoff.md) to send training inputs and return completed models. Earlier candidate-label recovery and a supervised editor acceptance session are separate work.
+Do not use these images as an independent final test: they already participated in selecting epoch 173. Do not change reference labels to improve this score. The user clarified that the current duty is finding/localizing objects in the supplied baomai D405 images. Keep the two-corner target; camera/robot calibration is outside this evaluation. The [warmup handoff](gpu-warmup-handoff.md) now preserves reproduction instructions. Its notebook setup syntax repair does not require rerunning the completed GPU pair. Earlier candidate-label recovery and a supervised editor acceptance session are separate work.
 
 ## 1. Obtain the reference bytes
 
@@ -15,8 +15,8 @@ Run from a checkout containing this evaluator. For a fresh clone, skip automatic
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/Siuuuers/dl.git
 cd dl
-# Until this implementation is merged, check out its PR branch:
-git switch codex/baomai-grasp-training-20261107
+# Pin the published evaluator with schema-2 support and both comparison summaries:
+GIT_LFS_SKIP_SMUDGE=1 git checkout --detach 2f0260c19835fcd60eb2f12040b7c77ebd2ca890
 git lfs install --local
 git lfs pull --include='data/images/val/*.png,weights/cassette_lower_epoch173.pt' --exclude=''
 python3 scripts/evaluate_pose.py --preflight-only
@@ -113,20 +113,20 @@ Replays check dataset/model identity, image/label hashes, dimensions, inference 
 
 ## 6. Evaluate a completed training arm explicitly
 
-The [training runner](train-pose-comparison.md) produces `checkpoint-manifest.json` only after a complete paired fine-tune has passed its provenance checks. A resource trial does not produce an eligible manifest. The thirteen focused checks below use visibly synthetic receipts, results and fake checkpoint bytes; they do not demonstrate a trained candidate or its accuracy:
+The [training runner](train-pose-comparison.md) produces `checkpoint-manifest.json` only after a complete paired fine-tune has passed its provenance checks. A resource trial does not produce an eligible manifest. The focused checks below use visibly synthetic receipts, results and fake checkpoint bytes; they do not demonstrate a trained candidate or its accuracy:
 
 ```bash
 python3 scripts/check_pose_checkpoint.py
 ```
 
-Once a real completed run exists, use its generated bundle:
+To evaluate a completed run, use its generated bundle:
 
 ```bash
 .venv/bin/python scripts/evaluate_pose.py --checkpoint-manifest ../baomai-reference-001/checkpoint-manifest.json --preflight-only
 .venv/bin/python scripts/evaluate_pose.py --checkpoint-manifest ../baomai-reference-001/checkpoint-manifest.json --device cpu --threads 4 --conf 0.15 0.25 0.40 --output reports/reference-finetune-001
 ```
 
-The same command pattern applies to the candidate arm. Use matching evaluation settings and a suitable common device. Omitting the manifest continues to select and verify the original epoch173 checkpoint; the frozen model card is never replaced.
+The same command pattern applies to the candidate arm and to the warmup experiment's `control/` and `warmup/` bundles. For the completed warmup result, use the report's recorded revision and role-specific manifests. Use matching evaluation settings and a suitable common device. Omitting the manifest continues to select and verify the original epoch173 checkpoint; the frozen model card is never replaced.
 
 The manifest identifies the finalized `last.pt` by content hash and byte size, the pose/class/two-point/flip contract, the training receipt and the copied staging manifest. Its artifact paths are relative and confined to the run bundle. The verifier checks:
 
@@ -154,7 +154,7 @@ Keep the receipt, copied staging manifest, results and log together with the man
 
 ## 7. Continue from measured errors
 
-Read the baseline report and inspect its selected originals. Pick one bounded action from observed failures before training: for example, review a small set of disputed corner annotations or test one inference setting while keeping the reference fixed. Store any proposed corrections separately with review status and source hashes.
+Continue from the [completed warmup report](warmup-comparison-2026-11-07.md) and inspect the raw-image box extent and occlusion evidence behind remaining detection tradeoffs. Keep the scorer, thresholds and frozen reference fixed for this review. Store any supported annotation proposals separately with review status and source hashes, then collect fresh held-out scenes before adoption. A further training change should follow a specific finding from this evidence.
 
 Fine-tuning requires actual reviewed training changes or useful new training data, as described in [PR #1](https://github.com/Siuuuers/dl/pull/1). Historical candidate counts in [PR #2](https://github.com/Siuuuers/dl/pull/2) do not establish that those files were recovered. A final generalization claim needs independent scenes or the excluded final-test data, not further optimization on these same 20 validation images.
 
