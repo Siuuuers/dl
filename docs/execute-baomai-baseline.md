@@ -4,7 +4,7 @@
 
 The completed result, figures, replay evidence and notebook setup repair are in [the latest comparison PR](https://github.com/Siuuuers/dl/pull/17) and [the pinned report](https://github.com/Siuuuers/dl/blob/2799b8332bb46ba07d0ef95652d7f398559573c9/docs/warmup-comparison-2026-11-07.md). Do not repeat the successful GPU pair solely because the notebook setup cell was repaired.
 
-The targeted follow-up is now complete in **[PR #18](https://github.com/Siuuuers/dl/pull/18)** and [its pinned illustrated review](https://github.com/Siuuuers/dl/blob/284c62377d3a210f3deeadbbedbd7b749002768a/docs/warmup-detection-review-2026-11-07.md). All nine lost and eight gained matches were reviewed. A recovered 320-frame package supplies additional images and labels, but a model-blind three-image pilot found boxes extending into the rack/base. **Next: a separately versioned annotation adaptation before supplementary scoring.**
+The targeted detection review is complete in [PR #18](https://github.com/Siuuuers/dl/pull/18). Its three selected additional frames now have a complete 129-row annotation review and separately versioned partial corrections in **[PR #19](https://github.com/Siuuuers/dl/pull/19)** and [the pinned report](https://github.com/Siuuuers/dl/blob/664d4af5cd76f77c52076c96b306f1e90d193e4b/docs/additional-annotation-pilot-2026-11-07.md). The proposal changes 87 boxes and five corner positions, preserving all objects and visibility states. **All three images remain quarantined for 36 unresolved box boundaries; no supplementary scoring reference has been released.** Next resolve the physical front-versus-roof/rim distinction and the remaining occlusion-side extent, then continue a bounded annotation review.
 
 The user's current duty is finding/localizing cassette objects in supplied baomai D405 images, preserving the existing one-class, two-lower-corner target. Camera settings are unknown. Camera/robot calibration and physical grasp qualification are outside this deliverable and are not prerequisites for image training.
 
@@ -51,19 +51,36 @@ The 320 raw-image hashes do not overlap the frozen 157. Nevertheless, upstream's
 
 The three-image intake pilot inspected raw originals before supplied-label overlays, without model predictions. Target identity and endpoint intent appear compatible, but `frame_0160` rows 41–43 extend beneath the white fronts into the metal rack/base. Its row 43 box ends at y=666.12 px while the supplied lower endpoints are near y=647.36/647.93 px; raw pixels identify the extra region as rack. These supplied labels are not ready as-is under `baomai-visible-front-v1`. The pilot does not approve all 129 rows or the remaining 317 images.
 
+## Completed three-image annotation adaptation
+
+The [candidate manifest and all-row ledgers](https://github.com/Siuuuers/dl/tree/664d4af5cd76f77c52076c96b306f1e90d193e4b/data/candidates/additional-pilot-2026-11-07) retain exact upstream source labels beside three separately versioned proposals. Original pixels were inspected before supplied overlays; model predictions were not used. Three reviewers covered every row and missing/extra/duplicate-instance scans, followed by root comparison inspection and a separate consistency audit.
+
+| Frame | Rows | Changed boxes | Corrected endpoint positions | Unresolved rows |
+| --- | ---: | ---: | ---: | ---: |
+| frame_0001 | 43 | 6 | 1 | 13 |
+| frame_0160 | 43 | 39 | 4 | 11 |
+| frame_0383 | 43 | 42 | 0 | 12 |
+| Total | 129 | 87 | 5 | 36 |
+
+No objects were added or removed. All 256 visible endpoints and two canonical missing endpoints remain in the same visibility states. The frame_0001 missing right corner on row 42 and missing left corner on row 43 stay missing behind the gripper. The corrected points are the frame_0001 row 30 right corner and frame_0160 row 34 left, row 40 right, and both row 42 corners.
+
+Thirty-five unresolved upper extents concern exposed gray material that could be a front-facing lip or upper/roof/rim surface. Connection to the cassette does not establish surface orientation. Frame_0001 row 43 also has an unresolved left box extent beside the gripper. The relevant source bounds are retained only as unaccepted placeholders, while independently supported other-edge and corner corrections are saved. Four initially proposed frame_0383 top expansions were withdrawn after the physical interpretation was challenged. Every affected whole image is quarantined; no difficult object is removed or converted into an empty negative.
+
+This completes the selected three-image review, not all 320 images. The remaining 317 do not have a complete row review. Two additional originals, frame_0022 and frame_0354, were viewed only for surface context; no labels or coordinates were transferred from them. The recovered pool's prior-use and correlated-frame limits remain.
+
 ## Next bounded assignment
 
-**Goal:** prepare a separately versioned annotation-adaptation candidate from the recovered additional frames, then freeze a supplementary reference before scoring the fixed checkpoints.
+**Goal:** resolve the recorded physical surface ambiguities under the existing visible-front policy, then continue a separately versioned, explicitly selected annotation batch before freezing any supplementary scoring reference.
 
-Preserve the upstream source image/label hashes and original one-based row identities. Review each included physical front, its observed front-face box, and each actual lower-front endpoint independently under the adopted policy. Preserve canonical missing states; do not infer hidden points, automatically snap boxes to endpoints, or use model agreement as annotation truth. Record or quarantine unresolved images before releasing a scoring reference.
+Start from the exact candidate bytes and unresolved row lists in the new manifest. Seek an unequivocal original view or part reference that distinguishes the front-facing lip from the upper/roof/rim plane. Apply that physical interpretation consistently across related cases; gray front material remains target regardless of brightness. Resolve the row 43 left visible extent separately. If the available evidence remains insufficient, retain whole-image quarantine and document the limitation. Do not force a top coordinate, infer a hidden corner, discard hard rows to make an image scoreable, or change the target definition merely to fit supplied boxes.
 
-Freeze eligible image IDs and exact adapted label bytes with review dispositions. Exclude all 157 old-image families even when re-encoded. Record capture/session and prior-use limits; if independent capture grouping cannot be established, label the future result as supplementary frame validation with correlated-scene limits.
+Review complete images and record source hashes, one-based row identities, each box edge and each endpoint state. Freeze eligible IDs and exact adapted label bytes only after their complete dispositions are resolved. Exclude old-image families even when re-encoded. Capture/session and prior-use limits must accompany the future supplementary reference; no independent-test claim is established.
 
-Keep this reference separate from the frozen 20-image development manifest. The current `preflight_dataset` guard deliberately requires that original reference and should remain intact. A supplementary evaluator needs an explicit separate manifest while reusing the existing scorer and checkpoint-provenance checks. Compare M0, control and warmup in one common runtime at the same primary settings, and preserve predictions for replay.
-
-M0 remains the working model and warmup stays frozen. No additional training is needed to prepare or run that checkpoint comparison. Another training change should follow a specific reviewed finding. The original GPU pair does not need to be repeated for the repaired notebook setup cell.
+The candidate currently has an empty eligible-image list. There is no new training or checkpoint inference to run against it. Keep the existing 20-image development manifest, scorer and preflight guard intact. When a nonempty reference is ready, use an explicit separate manifest and the same scorer/checkpoint-provenance rules to compare fixed M0/control/warmup checkpoints in one common runtime with preserved raw predictions. Another training change should follow a specific reviewed finding.
 
 ## Reproduce or inspect the completed work
+
+The new [annotation report and verification](https://github.com/Siuuuers/dl/blob/664d4af5cd76f77c52076c96b306f1e90d193e4b/docs/additional-annotation-pilot-2026-11-07.md) link a review ZIP containing the three original JPEGs, lossless decoded-RGB PNG/TXT editor pairs, exact source/proposal labels, all-row ledgers, nine comparisons and integrity tools. PNG exports preserve decoded RGB pixels and 1280x720 coordinates; they are not native original PNGs. The package retains quarantine and makes no browser Save/reopen acceptance claim. See its structured verification record for archive hashes and fresh-restore results.
 
 The latest [case/intake review](https://github.com/Siuuuers/dl/blob/284c62377d3a210f3deeadbbedbd7b749002768a/docs/warmup-detection-review-2026-11-07.md) and [structured verification record](https://github.com/Siuuuers/dl/blob/284c62377d3a210f3deeadbbedbd7b749002768a/docs/warmup-detection-review-2026-11-07.json) are preserved with a 34-file capsule at `results/review/baomai-warmup-detection-20261107/review.zip`. All 17 case figures and six intake figures reproduce byte-for-byte, and fresh extraction reproduces all seven cohort counts. The published tree and all 14 changed-file bytes were read back. This phase ran no new inference or training.
 
@@ -90,8 +107,9 @@ The [repaired Colab notebook](https://colab.research.google.com/github/Siuuuers/
 | Fresh control and warmup GPU return | [PR #16](https://github.com/Siuuuers/dl/pull/16) |
 | Warmup comparison, evidence and setup repair | [Latest comparison PR](https://github.com/Siuuuers/dl/pull/17) |
 | Completed detection review, recovered320 intake and semantic pilot | [PR #18](https://github.com/Siuuuers/dl/pull/18) |
+| Complete three-frame annotation review, partial corrections and quarantine | [PR #19](https://github.com/Siuuuers/dl/pull/19) |
 
-The latest review is stacked on PR #17, whose comparison is stacked on #15/#14/#12/#11/#10/#9/#8/#7. PRs #13 and #16 contain separate main-based result archives. Inspect current heads before continuing; no merge is implied by this workflow update. Use the appropriate branch rather than rebuilding code missing from main.
+The annotation proposal is stacked on PR #18, which is stacked on PR #17; the earlier comparison is stacked on #15/#14/#12/#11/#10/#9/#8/#7. PRs #13 and #16 contain separate main-based result archives. Inspect current heads before continuing; no merge is implied by this workflow update. Use the appropriate branch rather than rebuilding code missing from main.
 
 The baseline hash is `e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e`. Its reference has 137 training images, 20 validation images, 3,772/664 objects and 13/3 empty scenes. Preserve `cassette_front`, `kpt_shape: [2, 3]`, `flip_idx: [1, 0]` and image-X corner order. The frozen reference uses raw 1280×720 PNGs; preserve the additional pool's original JPEG source bytes separately. Unlocatable endpoints remain exactly `0 0 0`; model predictions do not supply hidden reference coordinates.
 
