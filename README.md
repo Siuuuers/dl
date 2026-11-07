@@ -120,9 +120,11 @@ test/d405_recordings/recording_日期_时间/
 
 ## GPU 訓練與比較結果
 
+**目前下一步：**[既有訓練框的有限修正實驗](docs/box-supervision-2026-11-07.md) 已完成候選標籤與執行檢查。三張既有訓練影像共有16個框邊界修正；物件列的數目與身分、角點及驗證集保持原樣。使用[GPU notebook](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/baomai-training-supervision-20261107/notebooks/baomai_box_supervision.ipynb)，選GPU後依序執行，回傳 `baomai-box-supervision-results.zip`。新的CPU候選組檢查完成一個batch與一次實際參數更新；完整GPU比較尚未完成，繼續使用原始第173輪模型。
+
 目前工作只處理 baomai D405 影像中的包埋盒定位，保留現有兩個下角點的定義。[bias warmup 比較](docs/warmup-comparison-2026-11-07.md) 已完成，並驗證 [PR #16](https://github.com/Siuuuers/dl/pull/16) 回傳的兩組模型與紀錄。降低 bias 起始學習率的模型在五項主要指標上均優於原始第173輪模型，但漏檢數為37，新控制組為36，尚未通過預先訂定的兩組比較標準。因此繼續使用原始模型，保留 warmup 模型作為有潛力的候選。
 
-已完成[額外影格的三張影像、129列標註試審](docs/additional-annotation-pilot-2026-11-07.md)，並建立[獨立版本的候選標籤](data/candidates/additional-pilot-2026-11-07/manifest.json)：87個框及4列中的5個角點位置有調整提案，沒有新增／刪除物件或變更可見性。36列的框邊界仍待釐清，三張影像全部隔離，尚無可供補充評分的合格影像；其餘317張仍未完成逐列審查。下一步是確認可見正面與上表面／凸緣的界線、釐清受遮擋的左框邊界，並完成下一批有限範圍審查，再建立補充參考集與評分。此次未執行推論或訓練；資料先前已被使用及影格相關性的限制仍在，不能視為獨立測試集。[warmup 交接](docs/gpu-warmup-handoff.md) 與[原始標籤／去重標籤交接](docs/gpu-handoff.md) 保留供重現實驗。目前 notebook 已修正環境設定 cell 的語法錯誤；此修正不需要重跑已完成的訓練。
+另已完成[額外影格的三張影像、129列標註試審](docs/additional-annotation-pilot-2026-11-07.md)，並建立[獨立版本的候選標籤](data/candidates/additional-pilot-2026-11-07/manifest.json)：87個框及4列中的5個角點位置有調整提案，沒有新增／刪除物件或變更可見性。36列的框邊界仍待釐清，三張影像全部隔離，尚無可供補充評分的合格影像；其餘317張仍未完成逐列審查。這條補充資料支線仍需確認可見正面與上表面／凸緣的界線，再建立補充參考集；它不阻擋上方既有訓練資料的有限修正實驗。資料先前已被使用及影格相關性的限制仍在，不能視為獨立測試集。[warmup 交接](docs/gpu-warmup-handoff.md) 與[原始標籤／去重標籤交接](docs/gpu-handoff.md) 保留供重現已完成的實驗，無需因本次交接修復而重跑。
 
 ## 模型与指标
 

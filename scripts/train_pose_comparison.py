@@ -16,8 +16,8 @@ import signal
 import subprocess
 import time
 
-from evaluate_pose import ULTRALYTICS_VERSION, file_sha256, preflight_dataset
-from pose_checkpoint import (ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
+from evaluate_pose import ULTRALYTICS_VERSION, _relative_file, file_sha256, preflight_dataset
+from pose_checkpoint import (BOX_RECIPE_ID, ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
                              check_training_settings, get_recipe, recipe_identity)
 from stage_pose_training import MANIFEST, stage_datasets
 from verify_pose_candidate import DEFAULT_CANDIDATE, require
@@ -25,7 +25,7 @@ from verify_pose_candidate import DEFAULT_CANDIDATE, require
 
 SOURCE_FILES = ("scripts/train_pose_comparison.py", "scripts/pose_checkpoint.py",
                 "scripts/stage_pose_training.py", "scripts/verify_pose_candidate.py",
-                "scripts/evaluate_pose.py", "scripts/pose_scoring.py")
+                "scripts/verify_pose_box_candidate.py", "scripts/evaluate_pose.py", "scripts/pose_scoring.py")
 
 
 def write_json(path, value):
@@ -351,6 +351,14 @@ def run_parent(args):
     declared_recipe = recipe_identity(args.recipe)
     require(args.recipe != WARMUP_RECIPE_ID or args.arm == "reference",
             "warmup experiment requires the reference label arm")
+    candidate_name = str(getattr(args, "candidate", DEFAULT_CANDIDATE))
+    require(Path(candidate_name).parts[:2] == ("data", "candidates") and ".." not in Path(candidate_name).parts,
+            "candidate must be a repository-relative data/candidates manifest")
+    candidate = _relative_file(root, candidate_name)
+    proposal = json.loads(candidate.read_text(encoding="utf-8"))
+    require(isinstance(proposal, dict), "candidate manifest must be an object")
+    require((args.recipe == BOX_RECIPE_ID) == (proposal.get("kind") == "training_box_overlay"),
+            "box-supervision recipe and training_box_overlay must be selected together")
     require(importlib.metadata.version("ultralytics") == ULTRALYTICS_VERSION, "pinned Ultralytics required")
     preflight = preflight_dataset(root, require_weights=True)
     identity = source_identity(root)
@@ -358,9 +366,10 @@ def run_parent(args):
     config = {"root": str(root), "output": str(run), "trial": args.trial,
               "trial_batches": args.trial_batches, "arm": args.arm, "device": args.device,
               "threads": args.threads, "max_seconds": args.max_seconds,
-              "max_rss_mib": args.max_rss_mib, "initial_weights": preflight["weights"], **declared_recipe}
+              "max_rss_mib": args.max_rss_mib, "initial_weights": preflight["weights"],
+              "candidate_manifest": candidate_name, **declared_recipe}
     run.mkdir(parents=True, exist_ok=False)
-    stage_datasets(root, root / DEFAULT_CANDIDATE, run / "staged-data")
+    stage_datasets(root, candidate, run / "staged-data")
     shutil.copyfile(run / "staged-data" / MANIFEST, run / MANIFEST)
     staging = json.loads((run / MANIFEST).read_text())
     write_json(run / "run-config.json", config)
@@ -423,7 +432,9 @@ def main(argv=None):
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--arm", choices=("reference", "candidate"), required=True)
     parser.add_argument("--recipe", choices=RECIPE_IDS, default=ORIGINAL_RECIPE_ID,
-                        help="fixed training recipe; reduced bias warmup requires --arm reference")
+                        help="fixed recipe; the historical warmup experiment requires --arm reference")
+    parser.add_argument("--candidate", default=DEFAULT_CANDIDATE,
+                        help="repository-relative candidate manifest; defaults to the original deletion-only proposal")
     parser.add_argument("--device", required=True, help="cpu or one CUDA index; same device for both arms")
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--trial", action="store_true", help="stop after bounded real training batches; no eligible checkpoint")

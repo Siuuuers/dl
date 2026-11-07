@@ -12,28 +12,12 @@ import shutil
 import struct
 
 from evaluate_pose import PNG_SIGNATURE, _relative_file, file_sha256, parse_pose_labels
-from verify_pose_candidate import DEFAULT_CANDIDATE, require, totals, verify_candidate
+from verify_pose_candidate import (DEFAULT_CANDIDATE, GEOMETRY_EPSILON_PX,
+                                   check_geometry, require, totals, verify_candidate)
 
 
 ARMS = ("reference", "candidate")
 MANIFEST = "staging-manifest.json"
-GEOMETRY_EPSILON_PX = 1e-4
-
-
-def check_geometry(objects, width, height, source):
-    """Allow decimal serialization noise, never infer or clamp coordinates."""
-    eps = GEOMETRY_EPSILON_PX
-    for index, obj in enumerate(objects, 1):
-        x1, y1, x2, y2 = obj["bbox_xyxy"]
-        require(x1 >= -eps and y1 >= -eps and x2 <= width + eps and y2 <= height + eps,
-                f"box outside image: {source}:{index}")
-        for x, y, visible in obj["keypoints"]:
-            if visible == 0:
-                continue
-            require(0 <= x < width and 0 <= y < height,
-                    f"visible endpoint outside strict image bounds: {source}:{index}")
-            require(x1 - eps <= x <= x2 + eps and y1 - eps <= y <= y2 + eps,
-                    f"visible endpoint outside its box: {source}:{index}")
 
 
 def check_png(path, expected_hash, dimensions):
@@ -54,9 +38,14 @@ def source_name(path, root):
 
 def source_state(root, candidate):
     """Verify all reference/proposal labels and every original before any copies."""
-    receipt = verify_candidate(root, candidate)
-    reference = json.loads((root / "data/manifest.json").read_text(encoding="utf-8"))
     proposal = json.loads(candidate.read_text(encoding="utf-8"))
+    require(isinstance(proposal, dict), "candidate manifest must be an object")
+    if proposal.get("kind") == "training_box_overlay":
+        from verify_pose_box_candidate import verify_box_candidate
+        receipt = verify_box_candidate(root, candidate)
+    else:
+        receipt = verify_candidate(root, candidate)
+    reference = json.loads((root / "data/manifest.json").read_text(encoding="utf-8"))
     require(file_sha256(candidate) == receipt["candidate_manifest_sha256"], "proposal changed during preflight")
     card_path = _relative_file(root, "metadata/model_card.json")
     card = json.loads(card_path.read_text(encoding="utf-8"))
@@ -158,7 +147,8 @@ def verify_outputs(output, state):
 def code_hashes():
     scripts = Path(__file__).resolve().parent
     return {f"scripts/{name}": file_sha256(scripts / name) for name in
-            ("stage_pose_training.py", "verify_pose_candidate.py", "evaluate_pose.py", "pose_scoring.py")}
+            ("stage_pose_training.py", "verify_pose_candidate.py", "verify_pose_box_candidate.py",
+             "evaluate_pose.py", "pose_scoring.py")}
 
 
 def manifest_fields(output, state, variants):

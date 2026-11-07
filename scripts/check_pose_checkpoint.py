@@ -14,7 +14,7 @@ import unittest
 import evaluate_pose
 import diagnose_pose_quality
 import check_evaluate_pose as baseline_checks
-from pose_checkpoint import (ORIGINAL_RECIPE_ID, PINNED_TRAINER_DEFAULTS, RECIPE, RECIPE_IDS,
+from pose_checkpoint import (BOX_RECIPE_ID, ORIGINAL_RECIPE_ID, PINNED_TRAINER_DEFAULTS, RECIPE, RECIPE_IDS,
                              WARMUP_RECIPE_ID, check_loaded_pose_model,
                              get_recipe, recipe_identity, select_checkpoint, write_checkpoint_manifest)
 from train_pose_comparison import descriptor
@@ -30,7 +30,7 @@ def bundle_fixture(directory, arm="candidate", *, recipe_id=None):
     reference = baseline_checks.preflight_fixture(root)
     image_hash = reference["records"][0]["image_sha256"]
     label_hash = hashlib.sha256(b"synthetic unlocatable object\n").hexdigest()
-    empty_hash = hashlib.sha256(b"").hexdigest()
+    changed_label_hash = hashlib.sha256(b"synthetic box correction\n" if recipe_id == BOX_RECIPE_ID else b"").hexdigest()
     for index in range(137):
         identifier = f"train_{index:03d}"
         reference["records"].append({"id": identifier, "split": "train",
@@ -44,11 +44,14 @@ def bundle_fixture(directory, arm="candidate", *, recipe_id=None):
     counts = {split: {("objects" if key == "instances" else key): value for key, value in values.items()}
               for split, values in reference["split_summary"].items()}
     candidate_counts = copy.deepcopy(counts)
-    candidate_counts["train"].update(objects=136, missing_endpoints=272, empty_images=1)
+    if recipe_id != BOX_RECIPE_ID:
+        candidate_counts["train"].update(objects=136, missing_endpoints=272, empty_images=1)
     proposal = {"candidate_id": "synthetic-provenance-fixture", "source_manifest_sha256": preflight["manifest_sha256"],
         "changes": [{"image_id": "train_000", "source_label": "labels/train/train_000.txt",
-                     "source_label_sha256": label_hash, "candidate_label_sha256": empty_hash}],
+                     "source_label_sha256": label_hash, "candidate_label_sha256": changed_label_hash}],
         "expected_counts": candidate_counts}
+    if recipe_id == BOX_RECIPE_ID:
+        proposal["kind"] = "training_box_overlay"
     proposal_path = root / "data/candidates/fixture/manifest.json"
     proposal_path.parent.mkdir(parents=True)
     write_json(proposal_path, proposal)
@@ -61,7 +64,7 @@ def bundle_fixture(directory, arm="candidate", *, recipe_id=None):
             for kind in ("image", "label"):
                 digest = record[f"{kind}_sha256"]
                 if variant == "candidate" and kind == "label" and record["id"] == "train_000":
-                    digest = empty_hash
+                    digest = changed_label_hash
                 files.append({"path": record[kind], "source_sha256": digest, "output_sha256": digest})
         variants[variant] = {"data_yaml": f"{variant}/data.yaml",
             "data_yaml_sha256": hashlib.sha256(f"synthetic YAML {variant}".encode()).hexdigest(),
@@ -339,7 +342,8 @@ class VersionedRecipeChecks(unittest.TestCase):
         self.assertEqual(get_recipe(WARMUP_RECIPE_ID)["epochs"], 30)
         self.assertEqual(RECIPE["warmup_bias_lr"], 0.1)
         expected = {ORIGINAL_RECIPE_ID: "47d1cf598191fa0b3ff27a075536ae7b1938074f27b26805f933a9c0652032d5",
-                    WARMUP_RECIPE_ID: "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c"}
+                    WARMUP_RECIPE_ID: "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c",
+                    BOX_RECIPE_ID: "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c"}
         self.assertEqual({key: recipe_identity(key)["recipe_sha256"] for key in RECIPE_IDS}, expected)
         with self.assertRaisesRegex(ValueError, "unsupported training recipe"):
             get_recipe("unregistered-experiment")
@@ -369,6 +373,49 @@ class VersionedRecipeChecks(unittest.TestCase):
                 identity = select_checkpoint(preflight, manifest)["checkpoint_identity"]
                 self.assertEqual(identity["arm"], arm)
                 self.assertEqual(identity["recipe_id"], ORIGINAL_RECIPE_ID)
+
+    def test_box_recipe_supports_both_arms_and_requires_box_candidate(self):
+        for arm in ("reference", "candidate"):
+            with self.subTest(arm=arm), tempfile.TemporaryDirectory() as directory:
+                root, run, preflight, receipt, staging, manifest = bundle_fixture(
+                    Path(directory), arm, recipe_id=BOX_RECIPE_ID)
+                identity = select_checkpoint(preflight, manifest)["checkpoint_identity"]
+                self.assertEqual(identity["arm"], arm)
+                self.assertEqual(identity["recipe_id"], BOX_RECIPE_ID)
+                proposal_path = root / staging["source"]["candidate_manifest"]
+                proposal = json.loads(proposal_path.read_text())
+                proposal["kind"] = "training_label_overlay"
+                write_json(proposal_path, proposal)
+                staging["source"]["candidate_manifest_sha256"] = evaluate_pose.file_sha256(proposal_path)
+                write_json(run / "staging-manifest.json", staging)
+                receipt["staging_manifest_sha256"] = evaluate_pose.file_sha256(run / "staging-manifest.json")
+                write_json(run / "training-receipt.json", receipt)
+                bundle = json.loads(manifest.read_text())
+                bundle["training_receipt"] = descriptor(run / "training-receipt.json", run)
+                bundle["staging_manifest"] = descriptor(run / "staging-manifest.json", run)
+                write_json(manifest, bundle)
+                with self.assertRaisesRegex(ValueError, "must be selected together"):
+                    select_checkpoint(preflight, manifest)
+
+    def test_historical_recipes_cannot_claim_box_overlay_after_hash_refresh(self):
+        for recipe_id in (None, ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID):
+            with self.subTest(recipe=recipe_id), tempfile.TemporaryDirectory() as directory:
+                root, run, preflight, receipt, staging, manifest = bundle_fixture(
+                    Path(directory), "reference", recipe_id=recipe_id)
+                proposal_path = root / staging["source"]["candidate_manifest"]
+                proposal = json.loads(proposal_path.read_text())
+                proposal["kind"] = "training_box_overlay"
+                write_json(proposal_path, proposal)
+                staging["source"]["candidate_manifest_sha256"] = evaluate_pose.file_sha256(proposal_path)
+                write_json(run / "staging-manifest.json", staging)
+                receipt["staging_manifest_sha256"] = evaluate_pose.file_sha256(run / "staging-manifest.json")
+                write_json(run / "training-receipt.json", receipt)
+                bundle = json.loads(manifest.read_text())
+                bundle["training_receipt"] = descriptor(run / "training-receipt.json", run)
+                bundle["staging_manifest"] = descriptor(run / "staging-manifest.json", run)
+                write_json(manifest, bundle)
+                with self.assertRaisesRegex(ValueError, "must be selected together"):
+                    select_checkpoint(preflight, manifest)
 
     def test_recipe_receipt_manifest_and_schema_cannot_disagree(self):
         cases = [("receipt", "recipe_id", "unknown"), ("receipt", "recipe_sha256", "0" * 64),

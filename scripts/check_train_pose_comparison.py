@@ -9,7 +9,9 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from pose_checkpoint import ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe
+from pose_checkpoint import BOX_RECIPE_ID, ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe
+from verify_pose_box_candidate import BOX_CANDIDATE
+from verify_pose_candidate import DEFAULT_CANDIDATE
 from train_pose_comparison import (file_sha256, main, monitor_worker, resolved_runtime,
                                    run_parent, verify_input_files)
 
@@ -92,6 +94,30 @@ class ExecutionChecks(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "requires the reference label arm"):
                 run_parent(args)
             self.assertFalse(output.exists())
+
+    def test_box_recipe_and_candidate_are_selected_together_before_training(self):
+        for recipe_id, candidate in ((ORIGINAL_RECIPE_ID, BOX_CANDIDATE),
+                                     (WARMUP_RECIPE_ID, BOX_CANDIDATE),
+                                     (BOX_RECIPE_ID, DEFAULT_CANDIDATE)):
+            with self.subTest(recipe=recipe_id), tempfile.TemporaryDirectory() as directory:
+                output = Path(directory) / "fresh"
+                args = SimpleNamespace(root=Path(__file__).resolve().parents[1], output=output,
+                    threads=1, max_seconds=1, max_rss_mib=128, trial_batches=1,
+                    device="cpu", recipe=recipe_id, arm="reference", candidate=candidate)
+                with self.assertRaisesRegex(ValueError, "must be selected together"):
+                    run_parent(args)
+                self.assertFalse(output.exists())
+
+    def test_candidate_path_must_stay_in_repository_candidate_directory(self):
+        for candidate in ("/tmp/candidate.json", "data/candidates/../../candidate.json", "docs/candidate.json"):
+            with self.subTest(candidate=candidate), tempfile.TemporaryDirectory() as directory:
+                output = Path(directory) / "fresh"
+                args = SimpleNamespace(root=Path(__file__).resolve().parents[1], output=output,
+                    threads=1, max_seconds=1, max_rss_mib=128, trial_batches=1,
+                    device="cpu", recipe=BOX_RECIPE_ID, arm="reference", candidate=candidate)
+                with self.assertRaisesRegex(ValueError, "repository-relative"):
+                    run_parent(args)
+                self.assertFalse(output.exists())
 
     def test_runtime_records_the_resolved_cuda_device_and_observes_backend_flags(self):
         class Device:

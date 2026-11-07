@@ -1,0 +1,323 @@
+{
+  "actual_original_trial_rejection": {
+    "call": "write_checkpoint_manifest(actual_candidate_run, preflight_dataset(source_root, require_weights=True))",
+    "checkpoint_manifest_after": false,
+    "checkpoint_manifest_before": false,
+    "created_at_utc": "2026-11-07T13:22:32.715553+00:00",
+    "exception_message": "only a completed paired-finetune qualifies; resource trials are ineligible",
+    "exception_type": "ValueError",
+    "receipt_sha256_after": "7f845ad99d5268d14c3b0a596cc7047f09063209e422188d8cc9bb35aebddf1b",
+    "receipt_sha256_before": "7f845ad99d5268d14c3b0a596cc7047f09063209e422188d8cc9bb35aebddf1b",
+    "run_directory": "/workspace/scratch/470b9cd0057a/box-supervision-candidate-smoke-001",
+    "scope": "Actual completed one-batch resource-trial receipt rejected by the completed-model eligibility guard; no receipt rewrite or eligible manifest.",
+    "source_file_sha256": "5bffe8994fa58df2f69686139fc9cf48c2134a05a8916685656c35a71f6d1769",
+    "source_revision": "918b2fdb811bd595fc09de9a423df6c40258c55a",
+    "source_root": "/workspace/scratch/e02731b2268d/dl-supervision",
+    "validation_images_and_initial_weights_preflight_passed": true
+  },
+  "archive": {
+    "all_payload_sizes_and_hashes_passed": true,
+    "crc_passed": true,
+    "fresh_extraction_file_set_and_hashes_passed": true,
+    "inventoried_payload_count": 55,
+    "manifest_sha256": "e09b8139ca7e9a0cdead9d654ff5fa7a53932055e2b9adaaa465a700807f08bc",
+    "member_count": 56,
+    "no_weights_or_images": true,
+    "path": "results/verification/baomai-box-supervision-20261107/execution.zip",
+    "sha256": "37d58d491110abb1be262b1efa1e6c164f1f8966ddab4b5c33371aa6a60fa46b",
+    "size_bytes": 299997,
+    "unique_safe_regular_paths": true
+  },
+  "created_at_utc": "2026-11-07T13:22:32.858464+00:00",
+  "fresh_verification": {
+    "candidate_first_batch_contains_edited_images": false,
+    "candidate_trial_rejection_replayed": {
+      "error": "only a completed paired-finetune qualifies; resource trials are ineligible",
+      "no_checkpoint_manifest_created": true,
+      "passed": true,
+      "receipt_unchanged": true
+    },
+    "command": "python -B <extracted>/verify_evidence.py <execution.zip>",
+    "exit_code": 0,
+    "notebook": {
+      "code_cells_compiled": 7,
+      "embedded_preflight_matches_executed_harness": true,
+      "placeholder_occurrences": 0,
+      "sha256": "3478e24b7846515f2efe4305109c8d7e12931d532d442065076ff6b9f6631960",
+      "source_pin": "918b2fdb811bd595fc09de9a423df6c40258c55a"
+    },
+    "original_vs_candidate_only_differ_in_three_training_label_files": true,
+    "preserved_checks": {
+      "existing_focused_checks": {
+        "check_package_gpu_results.py": 7,
+        "check_pose_box_candidate.py": 9,
+        "check_pose_checkpoint.py": 23,
+        "check_train_pose_comparison.py": 10,
+        "check_warmup_notebook.py": 2,
+        "check_warmup_results.py": 12
+      },
+      "input_preflight": {
+        "box_edge_corrections": {
+          "new_000012": 6,
+          "new_000030": 8,
+          "new_000128": 2
+        },
+        "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+        "label_counts": {
+          "candidate": {
+            "train": {
+              "empty_images": 13,
+              "images": 137,
+              "missing_endpoints": 705,
+              "objects": 3772,
+              "visible_endpoints": 6839
+            },
+            "val": {
+              "empty_images": 3,
+              "images": 20,
+              "missing_endpoints": 101,
+              "objects": 664,
+              "visible_endpoints": 1227
+            }
+          },
+          "reference": {
+            "train": {
+              "empty_images": 13,
+              "images": 137,
+              "missing_endpoints": 705,
+              "objects": 3772,
+              "visible_endpoints": 6839
+            },
+            "val": {
+              "empty_images": 3,
+              "images": 20,
+              "missing_endpoints": 101,
+              "objects": 664,
+              "visible_endpoints": 1227
+            }
+          }
+        },
+        "original_images": 157,
+        "recipe_id": "box-supervision-warmup-v1",
+        "recipe_sha256": "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c",
+        "status": "verified",
+        "weights_verified": true
+      },
+      "new_notebook_setup_probes": [
+        {
+          "case": "installed_cuda_pins_exist_before_pip",
+          "command_count": 2,
+          "passed": true,
+          "source_cell": "baomai-box-supervision-06"
+        },
+        {
+          "case": "missing_torchvision_stops_before_install",
+          "command_count": 0,
+          "passed": true,
+          "source_cell": "baomai-box-supervision-06"
+        }
+      ],
+      "scope": "Preserved successful check evidence; verifier rehashes it and validates its counts, not reruns the complete harness.",
+      "synthetic_box_pair_packaging_probe": {
+        "archive_members": 13,
+        "passed": true,
+        "roundtrip_identities": {
+          "candidate": {
+            "arm": "candidate",
+            "completed_epochs": 30,
+            "recipe_id": "box-supervision-warmup-v1"
+          },
+          "reference": {
+            "arm": "reference",
+            "completed_epochs": 30,
+            "recipe_id": "box-supervision-warmup-v1"
+          }
+        },
+        "scope": "Completed-bundle validator and existing return packer accept matching schema-2 box experiment identities. No actual completed training or weights.",
+        "synthetic_only": true
+      },
+      "total": 63
+    },
+    "source_provenance": {
+      "all_trial_recorded_source_hashes_match_published_source": true,
+      "commit_objects_rehashed": true,
+      "common_tree": "4146a55f9c15028a72ff3d0695612bc08c7175b6",
+      "legacy_trial_revision": "aa75df96abc31cf9f15fa23136dce342504b9cc7",
+      "seven_source_files_proven_through_git_tree": true,
+      "source_revision": "918b2fdb811bd595fc09de9a423df6c40258c55a",
+      "tree_objects_rehashed": true
+    },
+    "staged_file_identities_equal_across_attempts": true,
+    "trials": {
+      "candidate-smoke-001": {
+        "arm": "candidate",
+        "batch_image_ids": [
+          "new_000116",
+          "new_000085",
+          "new_000072",
+          "old_000046"
+        ],
+        "batches_completed": 1,
+        "completed_epochs": 0,
+        "execution": {
+          "exit_code": 0,
+          "max_rss_mib": 6500,
+          "max_seconds": 120,
+          "rss_sampling_interval_seconds": 0.2,
+          "sampled_peak_process_tree_rss_mib": 5767.546875,
+          "stop_reason": null,
+          "wall_seconds": 17.05154263100121
+        },
+        "images_processed": 4,
+        "inputs_reverified_after_worker": true,
+        "loader_verification": [
+          {
+            "batch_size": 4,
+            "batches": 35,
+            "images": 137,
+            "objects": 3772,
+            "split": "train",
+            "visible_endpoints": 6839
+          },
+          {
+            "batch_size": 8,
+            "batches": 3,
+            "images": 20,
+            "objects": 664,
+            "split": "val",
+            "visible_endpoints": 1227
+          }
+        ],
+        "log_staging_and_both_yaml_hashes_match": true,
+        "optimizer_steps": 1,
+        "parameter_change_observed": true,
+        "requested_batches": 1,
+        "source_revision": "918b2fdb811bd595fc09de9a423df6c40258c55a",
+        "source_tree_clean_at_execution": true,
+        "status": "trial-complete",
+        "threads": 2
+      },
+      "reference-trial-001": {
+        "arm": "reference",
+        "batch_image_ids": [
+          "new_000116",
+          "new_000085",
+          "new_000072",
+          "old_000046"
+        ],
+        "batches_completed": 1,
+        "completed_epochs": 0,
+        "execution": {
+          "exit_code": -15,
+          "max_rss_mib": 6000,
+          "max_seconds": 300,
+          "rss_sampling_interval_seconds": 0.2,
+          "sampled_peak_process_tree_rss_mib": 6238.4609375,
+          "stop_reason": "process RSS limit exceeded",
+          "wall_seconds": 15.868949031999364
+        },
+        "images_processed": 4,
+        "inputs_reverified_after_worker": true,
+        "loader_verification": [
+          {
+            "batch_size": 4,
+            "batches": 35,
+            "images": 137,
+            "objects": 3772,
+            "split": "train",
+            "visible_endpoints": 6839
+          },
+          {
+            "batch_size": 8,
+            "batches": 3,
+            "images": 20,
+            "objects": 664,
+            "split": "val",
+            "visible_endpoints": 1227
+          }
+        ],
+        "log_staging_and_both_yaml_hashes_match": true,
+        "optimizer_steps": 1,
+        "parameter_change_observed": true,
+        "requested_batches": 4,
+        "source_revision": "aa75df96abc31cf9f15fa23136dce342504b9cc7",
+        "source_tree_clean_at_execution": true,
+        "status": "failed",
+        "threads": 4
+      },
+      "reference-trial-002": {
+        "arm": "reference",
+        "batch_image_ids": [
+          "new_000116",
+          "new_000085",
+          "new_000072",
+          "old_000046"
+        ],
+        "batches_completed": 1,
+        "completed_epochs": 0,
+        "execution": {
+          "exit_code": -9,
+          "max_rss_mib": 7500,
+          "max_seconds": 300,
+          "rss_sampling_interval_seconds": 0.2,
+          "sampled_peak_process_tree_rss_mib": 6297.59765625,
+          "stop_reason": null,
+          "wall_seconds": 15.857136203001573
+        },
+        "images_processed": 4,
+        "inputs_reverified_after_worker": true,
+        "loader_verification": [
+          {
+            "batch_size": 4,
+            "batches": 35,
+            "images": 137,
+            "objects": 3772,
+            "split": "train",
+            "visible_endpoints": 6839
+          },
+          {
+            "batch_size": 8,
+            "batches": 3,
+            "images": 20,
+            "objects": 664,
+            "split": "val",
+            "visible_endpoints": 1227
+          }
+        ],
+        "log_staging_and_both_yaml_hashes_match": true,
+        "optimizer_steps": 1,
+        "parameter_change_observed": true,
+        "requested_batches": 4,
+        "source_revision": "aa75df96abc31cf9f15fa23136dce342504b9cc7",
+        "source_tree_clean_at_execution": true,
+        "status": "failed",
+        "threads": 4
+      }
+    }
+  },
+  "handoff_review_snapshot": {
+    "archive_path": "review/handoff_review.json",
+    "scope": "Preserved independent review snapshot. Its README hash predates a later wording clarification; this record does not assert that snapshot documentation hashes match the final delivered README. Source scripts and pinned notebook remained unchanged.",
+    "sha256": "4f80c059e35ffe6870b9c934f0c2f4bb7d07e27785177f618fadeb17b5141955"
+  },
+  "limits": [
+    "One real candidate batch, four image presentations and one parameter-changing update; zero completed epochs, validation runs or eligible checkpoint manifests.",
+    "Candidate first batch contains none of the three corrected image IDs; complete candidate loader inputs were verified, but no changed-label gradient or learning-gain claim follows.",
+    "Both historical reference attempts requested four batches and failed after one; second SIGKILL cause is not recorded and remains unknown.",
+    "Candidate smoke used two CPU threads; historical reference attempts used four. These are functional/resource probes, not matched scientific model comparisons.",
+    "A one-batch CPU smoke does not qualify the four-batch GPU resource trial, full validation/finalization memory, complete training or accuracy.",
+    "The pair-packaging probe uses synthetic fixtures and does not establish any real completed model.",
+    "The 63 checks and 157-image preflight are preserved previous successful execution evidence. This packaging pass reran integrity, final notebook compilation and actual trial rejection, not those full suites or training.",
+    "Git commit/tree hashes preserve exact source identity and identical-tree proof; repository publication is checked separately by the parent workflow."
+  ],
+  "notebook_change_from_training_source": {
+    "entire_file_equals_only_that_replacement": true,
+    "historical_review_report_preserved_without_rewriting": true,
+    "replacement": "SOURCE_COMMIT_TO_PIN -> 918b2fdb811bd595fc09de9a423df6c40258c55a",
+    "sha256": "3478e24b7846515f2efe4305109c8d7e12931d532d442065076ff6b9f6631960"
+  },
+  "raw_inputs_preserved_byte_for_byte": true,
+  "repository": "Siuuuers/dl",
+  "schema_version": 1,
+  "source_revision": "918b2fdb811bd595fc09de9a423df6c40258c55a"
+}
