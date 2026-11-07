@@ -100,6 +100,16 @@ test/d405_recordings/recording_日期_时间/
 
 运行状态每5秒更新到 `reports/d405_live_latest.json`；退出后保留最终帧数、性能、录像信息和错误原因。
 
+## 資料夾影像推論
+
+將原始 PNG／JPEG 放入資料夾，可用原始第173輪模型批次輸出標註圖片、JSON 預測與逐圖 CSV。無需標籤、相機或桌面介面；使用已有的推論環境，選擇尚不存在且位於輸入資料夾外的輸出路徑：
+
+```bash
+python scripts/predict_pose_folder.py --input /path/to/images --output /path/to/new-results --device cpu
+```
+
+已有相容 CUDA 環境時可改用 `--device 0`。[操作與輸出說明](docs/predict-pose-folder.md) 包含模型下載、完成狀態和角點信心值的解讀。此工具只輸出預測；漏檢、誤檢與定位誤差仍須透過下方有參考標籤的評估流程計算。
+
 ## 离线基线评估
 
 无需连接 D405 或安装桌面环境，即可在 CPU 上评估原始第173轮模型。请按[离线评估说明](docs/evaluate-pose.md)校验20张验证原图和权重，运行置信度对比，并保存逐图指标、预测和诊断叠图。该工具保留参考标签与数据划分；结果属于开发验证集，不能当作独立测试精度或实际相机帧率。
