@@ -1,6 +1,6 @@
 # Continue the baomai image-localization experiment
 
-**Current usable deliverable:** [PR #20](https://github.com/Siuuuers/dl/pull/20) contains the verified still-image folder command. The interrupted publication and proof review are complete. Start with the folder guide linked below.
+**Current usable deliverable:** [PR #21](https://github.com/Siuuuers/dl/pull/21) completes the interrupted existing-data NMS comparison and adds an optional `--nms-iou 0.68` setting to the verified folder command. The fresh-extraction replay and independent implementation review passed. **Keep epoch173, box confidence 0.25 and default NMS 0.70.** Use the latest folder guide below.
 
 **Current decision, 2026-11-07 (Asia/Hong_Kong): retain epoch173 as the default and preserve the lower-bias warmup model as a promising candidate.** The GPU pair returned in [PR #16](https://github.com/Siuuuers/dl/pull/16) has now been audited and evaluated. Warmup improves all five primary measures against M0, but misses 37 objects versus the fresh control's 36, so it does not pass the predeclared requirement against both comparators.
 
@@ -14,7 +14,7 @@ The user's current duty is finding/localizing cassette objects in supplied baoma
 
 The user selected **a folder of still images**, **current repository material only**, and **no priority between missed and extra detections**. Those choices are sufficient for this delivery. Unknown camera settings and unresolved reference surfaces do not prevent image-space inference.
 
-[PR #20](https://github.com/Siuuuers/dl/pull/20) provides `scripts/predict_pose_folder.py` on branch `codex/baomai-folder-inference-20261107`, published at [`c234a30`](https://github.com/Siuuuers/dl/commit/c234a30bf6208261e973fd39ca33165efa029a31). Follow [the folder guide](https://github.com/Siuuuers/dl/blob/c234a30bf6208261e973fd39ca33165efa029a31/docs/predict-pose-folder.md) for the correct checkout, model-only Git LFS download and isolated runtime; the old evaluator-only checkout does not contain this command.
+[PR #20](https://github.com/Siuuuers/dl/pull/20) introduced `scripts/predict_pose_folder.py`; [PR #21](https://github.com/Siuuuers/dl/pull/21) adds the optional NMS setting. The current working branch is `codex/baomai-postprocess-review-20261107`, published at [`79069d3`](https://github.com/Siuuuers/dl/commit/79069d31a25d5229166cdc2ba2b2cfed7ca47a25). Follow [the current folder guide](https://github.com/Siuuuers/dl/blob/79069d31a25d5229166cdc2ba2b2cfed7ca47a25/docs/predict-pose-folder.md) for the correct checkout, model-only Git LFS download and isolated runtime. The old evaluator-only checkout does not contain this command.
 
 ```bash
 .venv/bin/python scripts/predict_pose_folder.py \
@@ -25,13 +25,42 @@ The user selected **a folder of still images**, **current repository material on
 
 Use the Python from an existing compatible CUDA environment and `--device 0` when desired. The command writes original-size annotated PNGs, raw predictions with endpoint display flags, a per-image CSV and explicit run status. Annotation TXT files are unnecessary. Require process exit 0 and `status: complete`; unreadable images, aborted runs and successful zero-detection images remain distinct.
 
-Real CPU inference at clean source `df9254ac16f61eb6f5f858dfd4737459d4133a7e` produced 53 predictions on `new_000007.png` and zero on `new_000146.png`. Both complete raw prediction lists exactly match the existing evaluator in the same runtime. Eleven focused checks passed and were independently rerun during recovery. The final source hashes are unchanged; the final commit only clarifies checkout and interpreter instructions.
+Real CPU inference at clean source `df9254ac16f61eb6f5f858dfd4737459d4133a7e` produced 53 predictions on `new_000007.png` and zero on `new_000146.png`. Both complete raw prediction lists exactly match the existing evaluator in the same runtime. Eleven focused checks passed and were independently rerun during recovery. For PR #20, the final executable hashes matched its tested source; its last commit only clarified checkout and interpreter instructions.
 
 The [demo ZIP](https://github.com/Siuuuers/dl/blob/c234a30bf6208261e973fd39ca33165efa029a31/results/prediction/baomai-folder-20261107/demo.zip) preserves original inputs, outputs and command evidence. Its 19 entries, CRC and all inventoried payload hashes passed inspection. The [verification record](https://github.com/Siuuuers/dl/blob/c234a30bf6208261e973fd39ca33165efa029a31/results/prediction/baomai-folder-20261107/verification.json) retains the actual executed revision. The published candidate tree matches the reviewed local files.
 
-This closes the interrupted folder-inference publication and proof step. The next practical use is running the command on a selected original-image folder. Prediction counts do not measure false positives, false negatives or accuracy without a valid reference. The existing 0.25 box / 0.50 endpoint thresholds remain operating settings, not a proven optimal error tradeoff.
+The original folder-inference publication is complete. The optional-NMS continuation below is also published and replay-verified. Prediction counts do not measure false positives, false negatives or accuracy without a valid reference. The existing 0.25 box / 0.50 endpoint thresholds remain operating settings, not a proven optimal error tradeoff.
 
-## Latest completed comparison
+## Completed existing-data NMS comparison and readiness assessment
+
+The [pinned result and failure examples](https://github.com/Siuuuers/dl/blob/79069d31a25d5229166cdc2ba2b2cfed7ca47a25/docs/postprocess-experiment-2026-11-07.md) preserve the fixed, pre-inference plan, all 240 image/settings predictions and the failed primary hypothesis. At box confidence 0.25:
+
+| NMS IoU | Role | Missed objects | Extra detections | Missing visible endpoints | Declared guard |
+| --- | --- | ---: | ---: | ---: | --- |
+| 0.70 | Default control | 39 | 63 | 43 | Reference |
+| 0.60 | Primary hypothesis | 40 | 46 | 44 | Fails |
+| 0.68 | Secondary candidate | 39 | 61 | 43 | Passes on this reference |
+| 0.50 | Secondary candidate | 41 | 34 | 45 | Fails |
+
+At 0.68 all 625 matched objects retain identical full prediction payloads and corner errors. Seven unmatched outputs disappear and five appear across four images; duplicate FP stays 17, while other FP falls 46 to 44. Describe this as two fewer extras, not two duplicates removed. The 0.60/0.50 settings lose one/two reference matches in `new_000009`. Keep default NMS 0.70; the optional command adds `--conf 0.25 --nms-iou 0.68`.
+
+The [evidence archive](https://github.com/Siuuuers/dl/blob/79069d31a25d5229166cdc2ba2b2cfed7ca47a25/results/evaluation/baomai-postprocess-20261107/evidence.zip) is 1,551,707 bytes, SHA-256 `761b4c94a812b3933a10ac9ca5fe30a8c63d62eb96143fb459d726977090cc6a`. Recovery independently checked all 33 unique safe entries, CRC and 32 inventoried payload hashes. Fresh extraction reproduced all 240 score records and 12 aggregate records; predictions, summary, per-image results and CSV are byte-identical. All 60 historical baseline payloads and the six saved folder-run payloads match exactly. Seven experiment and 14 folder checks passed again. Published tree `906ddc53edb82cfbb8df80faa8d90db6e78ea662` matches the audited source; the six executed helpers retain their recorded hashes. No model rerun or training was needed for recovery.
+
+**Readiness remains limited to a human-reviewed still-image workflow.** All 17 nonempty development images have at least one measured FN or FP. Objects with one/neither corner locatable account for 25 of 39 misses, an association rather than a causal occlusion claim. Conditional corner error excludes missing endpoints; endpoint confidence does not certify physical visibility. Replaying the same evidence verifies reproducibility, not independent generalization.
+
+## Next bounded supervision assignment
+
+**Goal:** review complete existing training images under `baomai-visible-front-v1`, then preserve a separately identified correction candidate only where original pixels support it. This can proceed while the additional-pool surface ambiguities remain unresolved.
+
+Start with `new_000030` (29 objects), `new_000012` (38), `new_000128` (37) and the empty control `new_000131`. The three nonempty source files contain 104 objects: 64 with both corners locatable, 28 with one and 12 with neither. This is a proposed purposive review batch, not a completed review or a prevalence estimate. The earlier 13-image pilot reviewed targeted rows, not every row in those images.
+
+Materialize original PNGs and verify manifest hashes before visual judgments. Inspect raw pixels before overlays, review each complete image for omitted/extra instances, and retain source row identities. Preserve the two real instances in `new_000030` rows 6/29 while reviewing the overly broad row-29 extent; assess visibility and fragment questions independently in the other images. Save supported edits with explicit reasons; leave unresolved fields unaccepted. Do not invent coordinates or remove hard fronts merely to make labels scoreable.
+
+Keep the original labels, frozen development reference and eleven-row deletion-only candidate intact. The current `verify_pose_candidate.py` and staging path deliberately accept exact row deletions only. A coordinate-edit proposal needs a distinct candidate contract and a small explicit verifier/staging extension using existing parsing, geometry and provenance checks; do not weaken the deletion-only contract. A narrow correction candidate does not certify all remaining legacy labels.
+
+The prior deletion-only fine-tune did not establish an accuracy gain. Better supervision is a testable improvement hypothesis. After an accepted usable candidate exists, compare unchanged-data and corrected-data runs from the same initialization with matched settings and a declared budget. Keep the promising warmup seed-replication study separate. Do not repeat the already-reproduced seed solely because this conversation stopped.
+
+## Completed warmup checkpoint comparison
 
 PR #16's original archive is `results/gpu/baomai-warmup-a100-001/baomai-warmup-results.zip` at commit `dc388867bb3b59ab376c8cdc1875d96e1665f99d`. It has 39,776,499 bytes and SHA-256 `2e8ca425c585a17468d8c651014e811681ccefe2a0f1a6a579a920178d560a6a`. Its complete inventory, payload hashes, CRC and both finalized checkpoint bundles passed validation.
 
@@ -109,7 +138,7 @@ The latest [case/intake review](https://github.com/Siuuuers/dl/blob/284c62377d3a
 
 Use the [latest report](https://github.com/Siuuuers/dl/blob/2799b8332bb46ba07d0ef95652d7f398559573c9/docs/warmup-comparison-2026-11-07.md) and [verification record](https://github.com/Siuuuers/dl/blob/2799b8332bb46ba07d0ef95652d7f398559573c9/docs/warmup-comparison-verification-2026-11-07.json). The compact archive is `results/evaluation/baomai-warmup-a100-001/evaluation.zip`. Its inventory and whole-archive checksum were read back; a fresh extraction replays successfully. The standard-library `scripts/summarize_warmup_comparison.py` validates original saved scores, correct recipe roles, completed runs and matched provenance before deriving the decision. It needs original validation PNGs/labels but no weights or machine-learning runtime.
 
-For new inference, use `scripts/evaluate_pose.py` with each explicit trained-checkpoint manifest; omitting it selects the frozen M0. Keep image size 1280, rectangular preprocessing, FP32, ordinary NMS at IoU 0.70, batch 1, `max_det=300`, box confidences 0.15/0.25/0.40, matching IoU 0.50 and endpoint confidence 0.50. Use the same device/runtime across models. The baseline replacement rule requires all five unrounded metrics to be no worse and at least one better. Warmup must pass against both M0 and its matched control. Missing statistics do not pass.
+For a fresh comparison on the frozen labeled development set, use `scripts/evaluate_pose.py` with each explicit trained-checkpoint manifest; omitting it selects the frozen M0. Keep image size 1280, rectangular preprocessing, FP32, ordinary NMS at IoU 0.70, batch 1, `max_det=300`, box confidences 0.15/0.25/0.40, matching IoU 0.50 and endpoint confidence 0.50. Use the same device/runtime across models. The baseline replacement rule requires all five unrounded metrics to be no worse and at least one better. Warmup must pass against both M0 and its matched control. Missing statistics do not pass.
 
 The [repaired Colab notebook](https://colab.research.google.com/github/Siuuuers/dl/blob/2799b8332bb46ba07d0ef95652d7f398559573c9/notebooks/baomai_bias_warmup.ipynb) and [handoff](https://github.com/Siuuuers/dl/blob/2799b8332bb46ba07d0ef95652d7f398559573c9/docs/gpu-warmup-handoff.md) preserve the experiment for reproduction. The setup cell now writes installed Torch version constraints directly, removing the nested-Python syntax error reported in PR #16. Two focused checks cover correct constraints before pip and a missing-metadata failure. All notebook code cells compile. The training source pin is unchanged, and the returned pair passed its scientific source/settings audit.
 
@@ -132,8 +161,9 @@ The [repaired Colab notebook](https://colab.research.google.com/github/Siuuuers/
 | Completed detection review, recovered320 intake and semantic pilot | [PR #18](https://github.com/Siuuuers/dl/pull/18) |
 | Complete three-frame annotation review, partial corrections and quarantine | [PR #19](https://github.com/Siuuuers/dl/pull/19) |
 | Label-free folder inference, verified examples and completed publication | [PR #20](https://github.com/Siuuuers/dl/pull/20) |
+| Fixed existing-data NMS comparison, optional 0.68 and completed recovery | [PR #21](https://github.com/Siuuuers/dl/pull/21) |
 
-The folder-inference delivery is stacked on PR #19. The annotation proposal is stacked on PR #18, which is stacked on PR #17; the earlier comparison is stacked on #15/#14/#12/#11/#10/#9/#8/#7. PRs #13 and #16 contain separate main-based result archives. Inspect current heads before continuing; no merge is implied by this workflow update. Use the appropriate branch rather than rebuilding code missing from main.
+The optional-NMS delivery is stacked on PR #20, whose folder-inference delivery is stacked on PR #19. The annotation proposal is stacked on PR #18, which is stacked on PR #17; the earlier comparison is stacked on #15/#14/#12/#11/#10/#9/#8/#7. PRs #13 and #16 contain separate main-based result archives. Inspect current heads before continuing; no merge is implied by this workflow update. Use the appropriate branch rather than rebuilding code missing from main.
 
 The baseline hash is `e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e`. Its reference has 137 training images, 20 validation images, 3,772/664 objects and 13/3 empty scenes. Preserve `cassette_front`, `kpt_shape: [2, 3]`, `flip_idx: [1, 0]` and image-X corner order. The frozen reference uses raw 1280×720 PNGs; preserve the additional pool's original JPEG source bytes separately. Unlocatable endpoints remain exactly `0 0 0`; model predictions do not supply hidden reference coordinates.
 
