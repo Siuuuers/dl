@@ -1,6 +1,6 @@
 # Continue the baomai image-localization experiment
 
-**Current decision, 2026-11-07 (Asia/Hong_Kong): retain the supplied epoch173 model.** Both GPU fine-tunes completed correctly, but neither improves the predeclared combination of detection and corner measurements. Start with [the completed comparison](https://github.com/Siuuuers/dl/blob/155f1118f9773d22af944c4b5774fc406d51d943/docs/gpu-comparison-2026-11-07.md) and [PR #14](https://github.com/Siuuuers/dl/pull/14).
+**Current decision, 2026-11-07 (Asia/Hong_Kong): retain the supplied epoch173 model.** Both GPU fine-tunes completed correctly, but neither improves the predeclared combination of detection and corner measurements. The next executable handoff is [PR #15's matched bias-warmup experiment](https://github.com/Siuuuers/dl/pull/15). The [completed comparison](https://github.com/Siuuuers/dl/blob/155f1118f9773d22af944c4b5774fc406d51d943/docs/gpu-comparison-2026-11-07.md) and [PR #14](https://github.com/Siuuuers/dl/pull/14) explain the retained-model decision.
 
 The user's current duty is finding/localizing cassette objects in the supplied baomai D405 images, preserving the existing one-class, two-lower-corner target. Camera settings are unknown. Camera/robot calibration and physical grasp qualification are outside this deliverable and are not prerequisites for image training. The user has GPU access and returned the first completed pair in [PR #13](https://github.com/Siuuuers/dl/pull/13).
 
@@ -29,27 +29,35 @@ The report preserves complete raw predictions, per-image metrics, source/runtime
 
 ## Next bounded assignment
 
-**Goal:** isolate the shared training setting that may disturb precise localization.
+**Goal:** execute the matched bias-warmup experiment and return both complete model bundles.
 
-**Owner:** next implementation assistant; user supplies the GPU execution.
+**Owners:** the user supplies GPU execution; the next evaluation assistant validates the return and runs the common M0/control/warmup comparison.
 
-**Scope:** implement an explicitly versioned reference-label experiment that freshly initializes from epoch173 and changes only `warmup_bias_lr: 0.1 -> 0.0001`. Preserve the original recipe and its returned evidence. The current runner/verifier deliberately pins the original recipe, so the existing GPU commands do not yet run this new experiment.
+**Implementation is complete:** [PR #15](https://github.com/Siuuuers/dl/pull/15) adds the isolated recipe, schema-2 recipe provenance, full resolved-settings checks, actual GPU/backend observations, matched return packaging and a pinned Colab notebook. The verified training-code revision is `679b87b38e7b0bca5fbd02fb1519a90fb2379541`; notebook, instructions and raw evidence are published at `b9a12a02c970bf8c0f43addb5648e0d54e26ab6b`.
 
-**Evidence and hypothesis:** explicit AdamW in pinned Ultralytics preserves bias warmup at 0.1 even though nominal `lr0=0.0001`. The first bias update therefore starts at 1,000 times the nominal LR. The returned end-of-epoch bias rates are 0.0676514, 0.0343493 and 0.00104489 before settling onto the shared schedule. The logged values match the implementation; both GPU runs followed our plan. This is a concrete hypothesis, not a demonstrated cause of the final regression.
+**One GPU handoff:** [open the Colab notebook](https://colab.research.google.com/github/Siuuuers/dl/blob/b9a12a02c970bf8c0f43addb5648e0d54e26ab6b/notebooks/baomai_bias_warmup.ipynb), select a GPU runtime, and run its cells in order. [Full instructions](https://github.com/Siuuuers/dl/blob/b9a12a02c970bf8c0f43addb5648e0d54e26ab6b/docs/gpu-warmup-handoff.md) also give shell commands. Return `baomai-warmup-results.zip` as an attachment or a new result PR.
 
-**Depends on:** [PR #14's measured report](https://github.com/Siuuuers/dl/blob/155f1118f9773d22af944c4b5774fc406d51d943/docs/gpu-comparison-2026-11-07.md), the existing runner/checkpoint support from PR #11 and the GPU handoff from PR #12.
+| Role | Recipe | Labels | Bias warmup start |
+| --- | --- | --- | ---: |
+| Fresh control | `paired-finetune-v1` | Original reference | 0.1 |
+| Warmup experiment | `warmup-bias-lr-1e-4-v1` | Original reference | 0.0001 |
 
-**Acceptance checks:**
+Both runs freshly initialize from epoch173. Keep seed 42, 30 epochs, batch 4, image size 1280, FP32, AdamW, nominal LR, augmentation, loss/RLE gains, accumulation and final-epoch selection. Run both in the same unchanged source/software/GPU session. The new packer requires a fresh schema-2 matched control and does not silently reuse historical M1. The candidate-label arm is excluded from this warmup experiment.
 
-- Existing returned bundles retain their validity and identity; a revised recipe cannot be mistaken for the original.
-- Only the declared bias-warmup setting changes. Keep original reference labels, seed 42, 30 epochs, batch 4, image size 1280, FP32, AdamW, nominal LR, augmentation, loss gains, accumulation and final-epoch selection.
-- A bounded trial retains the 30-epoch schedule; stopping after a few batches is different from changing `epochs` to a small number.
-- Use the current M1 as control only if the new run keeps its recorded training environment/device. Otherwise run the original and revised reference recipes together in the new environment.
-- Compare the revised run against M0 and its matched M1 control using the same primary metrics and complete corner/availability diagnostics.
-- Preserve actual settings, optimizer updates, completed epochs, finalized checkpoint hash, raw log and results. Do not rewrite old receipts.
-- A positive bias start of 0.0001 works with the existing positive-LR update witness. Zero-start warmup would require separately handling the first zero-rate optimizer call and is additional scope.
+**Verified readiness:** [the implementation report](https://github.com/Siuuuers/dl/blob/b9a12a02c970bf8c0f43addb5648e0d54e26ab6b/docs/warmup-execution-verification-2026-11-07.md) records 96 passing focused checks and two actual clean-source CPU trials. Each completes four batches, sixteen image presentations and four parameter-changing updates while retaining the 30-epoch schedule. Initial bias rates are 0.1/0.0001; initial batches and first forward loss match. Both real trial receipts are correctly refused as completed models. Both PR #13 checkpoint identities remain exact. Notebook cells compile; two local subprocess checks validate interruption cleanup. CUDA and complete 30-epoch execution remain pending.
 
-Do not infer a causal fix from the observed upward residual, add an empirical coordinate offset, choose a different threshold for each model or change augmentation/loss/labels simultaneously. The proposed warmup experiment is not yet implemented or executed. A later deduplicated-label run can follow if the shared training recipe proves useful.
+**Evidence and hypothesis:** the original explicit-AdamW recipe starts bias learning rate at 1,000 times nominal `lr0`, as the pinned trainer and returned logs show. The new experiment tests whether that shared setting contributes to the localization regression. It does not establish causality or an accuracy improvement before the complete comparison.
+
+**Acceptance after return:**
+
+- Verify the unchanged return ZIP, both role/recipe identities, complete epochs and finalized `last.pt` artifacts through the new packer/checkpoint gate.
+- Require identical source, runtime/device/backend state and reference data, allowing only bias warmup and execution-path differences.
+- Run fresh M0/control/warmup inference together in one evaluator environment; preserve the frozen split, scorer and thresholds.
+- Compare the warmup model against both M0 and its fresh control using the same five unrounded primary measures and complete corner/availability diagnostics.
+- Keep epoch173 unless the predeclared rule supports replacement. Lower early training loss or the trainer's automatic `best.pt` score is not the acceptance result.
+- Preserve all raw predictions, receipts, settings, real update counts, completed epochs, finalized hashes, CSVs and logs. Never rewrite old results.
+
+No full new GPU training or model-quality result exists yet. Do not change labels, augmentation, losses, thresholds or coordinates alongside this test. A later deduplicated-label run can follow if the shared training recipe proves useful.
 
 ## Reuse the completed work
 
@@ -64,8 +72,9 @@ Do not infer a causal fix from the observed upward residual, add an empirical co
 | Portable input/return packaging | [PR #12](https://github.com/Siuuuers/dl/pull/12) |
 | Actual returned GPU models and logs | [PR #13](https://github.com/Siuuuers/dl/pull/13) |
 | Matched M0/M1/M2 result and replayable evidence | [PR #14](https://github.com/Siuuuers/dl/pull/14) |
+| Isolated bias-warmup recipes, verified trials and pinned GPU notebook | [PR #15](https://github.com/Siuuuers/dl/pull/15) |
 
-PR #14 is stacked on PR #12, which depends on #11, #10, #9, #8 and #7. PR #13 contains the result archive on a separate branch based on main. Inspect current heads before continuing; do not assume this stack has merged or reimplement missing code from main.
+PR #15 is stacked on PR #14; PR #14 is stacked on PR #12, which depends on #11, #10, #9, #8 and #7. PR #13 contains the result archive on a separate branch based on main. Inspect current heads before continuing; do not assume this stack has merged or reimplement missing code from main.
 
 The baseline hash is `e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e`. Its reference has 137 training images, 20 validation images, 3,772/664 objects and 13/3 empty scenes. Preserve `cassette_front`, `kpt_shape: [2, 3]`, `flip_idx: [1, 0]` and image-X corner order. Use raw 1280×720 PNGs; the annotated previews are review aids. Unlocatable endpoints stay exactly `0 0 0`; do not invent them from predictions.
 
