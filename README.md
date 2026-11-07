@@ -1,5 +1,7 @@
 # D405 包埋盒两点实时检测与录像
 
+**處理靜態影像資料夾：**從[資料夾推論指南](docs/predict-pose-folder.md)開始，使用 `Siuuuers/dl` 的工作分支與獨立推論環境。
+
 使用第 **173 轮 YOLO26s-Pose** 模型，在 RealSense D405 彩色画面中识别白色蜡块正面**下沿的左、右两个实际角点**。目标不是上方唇缘、底托或篮架角点。两个点按图像 X 方向排列；只有达到显示置信度的点才绘制，两点都可见时连线。
 
 仓库包含运行脚本、原始完整模型权重、模型结构、训练配置／指标，以及该模型实际使用的训练与验证数据。数据集中存放在 [`data/`](data/README.md)，包含157张原图、157张人工修正后的标注预览和157份YOLO标签，保留137张训练、20张验证的原划分；图片和权重通过Git LFS保存。
@@ -102,13 +104,13 @@ test/d405_recordings/recording_日期_时间/
 
 ## 資料夾影像推論
 
-將原始 PNG／JPEG 放入資料夾，可用原始第173輪模型批次輸出標註圖片、JSON 預測與逐圖 CSV。無需標籤、相機或桌面介面；使用已有的推論環境，選擇尚不存在且位於輸入資料夾外的輸出路徑：
+將原始 PNG／JPEG 放入資料夾，可用原始第173輪模型批次輸出標註圖片、JSON 預測與逐圖 CSV。無需標籤、相機或桌面介面；先依[操作指南](docs/predict-pose-folder.md)建立 `.venv`，選擇尚不存在且位於輸入資料夾外的輸出路徑：
 
 ```bash
-python scripts/predict_pose_folder.py --input /path/to/images --output /path/to/new-results --device cpu
+.venv/bin/python scripts/predict_pose_folder.py --input /path/to/images --output /path/to/new-results --device cpu
 ```
 
-已有相容 CUDA 環境時可改用 `--device 0`。[操作與輸出說明](docs/predict-pose-folder.md) 包含模型下載、完成狀態和角點信心值的解讀。此工具只輸出預測；漏檢、誤檢與定位誤差仍須透過下方有參考標籤的評估流程計算。
+已有相容 CUDA 環境時，使用該環境的 Python 並改用 `--device 0`。[操作與輸出說明](docs/predict-pose-folder.md) 包含模型下載、完成狀態和角點信心值的解讀。此工具只輸出預測；漏檢、誤檢與定位誤差仍須透過下方有參考標籤的評估流程計算。
 
 ## 离线基线评估
 

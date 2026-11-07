@@ -6,23 +6,27 @@ The agreed scope is one `cassette_front` class and its two lower-front corner sl
 
 ## Run
 
-Use a checkout containing this script. Download the original model once:
+The current implementation is on `Siuuuers/dl` branch `codex/baomai-folder-inference-20261107`. Use this branch while its PR is open; the older evaluator checkout does not contain this runner. For a fresh Linux checkout with Git and Git LFS installed:
 
 ```bash
+GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --single-branch \
+  --branch codex/baomai-folder-inference-20261107 \
+  https://github.com/Siuuuers/dl.git dl-folder
+cd dl-folder
 git lfs install --local
 git lfs pull --include='weights/cassette_lower_epoch173.pt' --exclude=''
 ```
 
-Use the isolated, pinned inference environment described in [evaluate-pose.md](evaluate-pose.md#2-use-an-isolated-runtime). The runner requires Ultralytics `8.4.182`; the verified CPU environment uses PyTorch `2.10.0+cpu`, torchvision `0.25.0+cpu`, NumPy `2.5.4`, Pillow `13.0.0` and OpenCV `5.0.0.93`. The live-camera environment's RealSense and display setup is unnecessary for this command.
+This downloads the original model once without fetching the image dataset. Create `.venv` using only [the isolated-runtime setup](evaluate-pose.md#2-use-an-isolated-runtime), keeping the folder-inference checkout above. The runner requires Ultralytics `8.4.182`; the verified CPU environment uses PyTorch `2.10.0+cpu`, torchvision `0.25.0+cpu`, NumPy `2.5.4`, Pillow `13.0.0` and OpenCV `5.0.0.93`. The live-camera environment's RealSense and display setup is unnecessary for this command.
 
 ```bash
-python scripts/predict_pose_folder.py \
+.venv/bin/python scripts/predict_pose_folder.py \
   --input /path/to/original-images \
   --output /path/to/new-results \
   --device cpu
 ```
 
-In an existing compatible CUDA environment, use `--device 0`. Choose a new output directory for each run. The input and output directories must not contain each other. Existing outputs are refused.
+In an existing compatible CUDA environment, use that environment's Python in place of `.venv/bin/python` and choose `--device 0`. Choose a new output directory for each run. The input and output directories must not contain each other. Existing outputs are refused.
 
 The command recursively selects `.png`, `.jpg` and `.jpeg` files, including uppercase extensions, in a stable relative-path order. Use original camera images; `data/annotated/` contains reference previews with a footer and is not the image input. Labels and other file types are ignored. Unreadable images are reported explicitly. Animated/multiple-frame files and non-8-bit image modes are rejected rather than silently converted into an unintended still image.
 
@@ -75,7 +79,7 @@ It decodes each selected file explicitly to avoid a framework folder loader sile
 Run the focused checks in an environment with Pillow and NumPy:
 
 ```bash
-python scripts/check_predict_pose_folder.py
+.venv/bin/python scripts/check_predict_pose_folder.py
 ```
 
 The tests use temporary images and a substituted prediction adapter. A separately recorded real-model check uses a dense original and a reference-empty original, inspects both overlays, and compares their raw predictions with the existing evaluator in the same runtime. Neither check establishes independent-test accuracy.
