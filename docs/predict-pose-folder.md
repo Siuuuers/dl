@@ -51,6 +51,21 @@ This is an inference deliverable. Unlabeled images cannot supply false-negative,
 
 The [additional-frame candidate](additional-annotation-pilot-2026-11-07.md) still has three quarantined images and zero eligible scoring/training images. Drawing predictions on an image does not resolve its reference boundaries. The unchanged epoch173 default and historical model comparison remain recorded in [the warmup report](warmup-comparison-2026-11-07.md).
 
+## Verified example, 2026-11-07
+
+Clean source revision [`df9254ac16f61eb6f5f858dfd4737459d4133a7e`](https://github.com/Siuuuers/dl/commit/df9254ac16f61eb6f5f858dfd4737459d4133a7e) passed all **11 focused checks** and a real CPU run on two hash-verified repository originals:
+
+| Original image | Folder-runner predictions | Comparison with the existing evaluator |
+| --- | ---: | --- |
+| `new_000007.png`, dense scene | 53 | Raw boxes, keypoints and confidences exactly equal |
+| `new_000146.png`, reference-empty scene | 0 | Raw predictions exactly equal |
+
+Both runs completed with exit 0 at the same clean revision, using four CPU threads, ordinary NMS and FP32. Both 1280×720 overlays were inspected. The dense overlay uses compact numbers; the empty-image output preserves the image without invented annotations. Prediction counts alone are not missed-object or false-positive counts.
+
+![Epoch173 folder-runner prediction on the original dense cassette scene](images/baomai-folder-dense-2026-11-07.png)
+
+The [19-file demo ZIP](../results/prediction/baomai-folder-20261107/demo.zip) contains both original inputs, both rendered outputs, predictions, CSV, runtime/status records, comparison output and command logs. Fresh extraction passed every payload hash and the archive CRC check. The [verification record](../results/prediction/baomai-folder-20261107/verification.json) preserves the tested revision, source hashes, commands, runtime and exact archive identity. Later documentation/evidence commits do not change the executed runner or helpers.
+
 ## Implementation and focused verification
 
 The runner reuses `evaluate_pose.INFERENCE`, `_runtime_and_model` and `_prediction_records`, including the existing actual model-head check. Its model-only preflight verifies the original checkpoint's SHA-256, byte size and two-corner identity. The frozen evaluator's 20-image guard and scorer are unchanged.

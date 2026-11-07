@@ -1,0 +1,145 @@
+{
+  "date_hong_kong": "2026-11-07",
+  "tested_revision": "df9254ac16f61eb6f5f858dfd4737459d4133a7e",
+  "tested_working_tree_clean": true,
+  "source_files_sha256": {
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+    "scripts/pose_checkpoint.py": "017863af87035e99aa987d874f5aefe3dc90e470b63be576c6f2ef9955b31953",
+    "scripts/predict_pose_folder.py": "6ac5a3477fc71e969f6ad18098d52f5516846ad385c2a93c6291cef13c836ce5"
+  },
+  "commands": [
+    {
+      "name": "focused-checks",
+      "command": [
+        "../inference-venv/bin/python",
+        "scripts/check_predict_pose_folder.py"
+      ],
+      "exit_code": 0,
+      "revision": "df9254ac16f61eb6f5f858dfd4737459d4133a7e"
+    },
+    {
+      "name": "folder-inference",
+      "command": [
+        "../inference-venv/bin/python",
+        "scripts/predict_pose_folder.py",
+        "--input",
+        "../cassette-demo-input",
+        "--output",
+        "../cassette-demo-output-published",
+        "--device",
+        "cpu",
+        "--threads",
+        "4"
+      ],
+      "exit_code": 0,
+      "revision": "df9254ac16f61eb6f5f858dfd4737459d4133a7e"
+    },
+    {
+      "name": "reference-inference",
+      "command": [
+        "../inference-venv/bin/python",
+        "scripts/evaluate_pose.py",
+        "--image",
+        "new_000007",
+        "--image",
+        "new_000146",
+        "--conf",
+        "0.25",
+        "--endpoint-conf",
+        "0.50",
+        "--overlays",
+        "0",
+        "--device",
+        "cpu",
+        "--threads",
+        "4",
+        "--output",
+        "../cassette-reference-check-published"
+      ],
+      "exit_code": 0,
+      "revision": "df9254ac16f61eb6f5f858dfd4737459d4133a7e"
+    }
+  ],
+  "focused_checks_passed": 11,
+  "images": [
+    {
+      "image": "new_000007.png",
+      "image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "prediction_count": 53,
+      "displayed_endpoints": 106,
+      "width": 1280,
+      "height": 720,
+      "raw_predictions_exactly_equal": true
+    },
+    {
+      "image": "new_000146.png",
+      "image_sha256": "77e6af710edebef707c4724578ea5e3227fb277b0914c7c8abe1e144f239bb4e",
+      "prediction_count": 0,
+      "displayed_endpoints": 0,
+      "width": 1280,
+      "height": 720,
+      "raw_predictions_exactly_equal": true
+    }
+  ],
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "device_requested": "cpu",
+    "torch": "2.10.0+cpu",
+    "torch_cuda": null,
+    "torch_threads_requested": 4,
+    "ultralytics": "8.4.182",
+    "loaded_kpt_shape": [
+      2,
+      3
+    ],
+    "packages": {
+      "torchvision": "0.25.0+cpu",
+      "numpy": "2.5.4",
+      "Pillow": "13.0.0",
+      "opencv-python": "5.0.0.93"
+    },
+    "device_actual": "cpu",
+    "backend_end2end": false,
+    "backend_fp16": false,
+    "torch_threads": 4
+  },
+  "inference": {
+    "imgsz": 1280,
+    "rect": true,
+    "batch": 1,
+    "nms": true,
+    "iou": 0.7,
+    "max_det": 300,
+    "quantize": 32,
+    "save": false,
+    "save_txt": false,
+    "save_crop": false,
+    "show": false,
+    "verbose": false,
+    "conf": 0.25
+  },
+  "endpoint_confidence": 0.5,
+  "baseline_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "baseline_bytes": 106838542,
+  "image_decode_evidence": "Independent Pillow RGB-to-BGR and pinned Ultralytics file-decoder comparison: zero differing channel values on both original PNGs.",
+  "visual_review": "Both original-size overlays inspected. Dense confidence text simplified to per-image numeric IDs before this tested revision; coordinates and raw confidences retained.",
+  "independent_review": "Separate assistant read-only review found no blocking issue in coordinates, source preservation, model identity, common filename collisions or failure accounting.",
+  "archive": {
+    "path": "results/prediction/baomai-folder-20261107/demo.zip",
+    "bytes": 2817739,
+    "sha256": "fbaca99a147d1ff9aa3df1c6a88844bc1b4043ab8e41c7a0f5edc0760113dc2e",
+    "files": 19,
+    "crc_verified": true,
+    "fresh_extraction_all_payload_hashes_verified": true
+  },
+  "limits": [
+    "Two existing development images, not independent-test accuracy.",
+    "Raw prediction equality covers the two checked 8-bit PNGs and recorded CPU runtime.",
+    "Fake-model focused checks cover error paths; real model executed on the two originals.",
+    "No training, annotation acceptance, default model replacement or new operating threshold.",
+    "Unlabeled predictions cannot measure missed or extra detections.",
+    "The existing supplementary annotation candidate remains quarantined."
+  ]
+}
