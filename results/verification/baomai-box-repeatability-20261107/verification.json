@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-box-repeatability-preparation",
+  "status": "ready-for-gpu-execution",
+  "created_at_utc": "2026-11-07T15:18:02.371352+00:00",
+  "study_id": "box-supervision-repeatability-v1",
+  "prospective_seeds": [
+    43,
+    44
+  ],
+  "historical_seed42_in_new_aggregate": false,
+  "default_model": "epoch173",
+  "training_source_revision": "f087c35f74bf304eb61998edcaa2172fe1cba49c",
+  "training_source_tree": "70d4a384609aa1798a6695880e9f6959dcda22f6",
+  "training_source_working_tree_status": "",
+  "base_revision": "5f2adb2a2d4aeecf87c29545406b50645e91ab5d",
+  "source_files_sha256": {
+    "scripts/pose_checkpoint.py": "69123751ce59ad5fd4588d81715afff229391f98e553b15c3280909663cd0be2",
+    "scripts/train_pose_comparison.py": "6a2ac2742a7dd03b1e8b6751ff8fee1f7e6ea7e69185473e919640d860c123a6",
+    "scripts/check_pose_checkpoint.py": "d690da26cea71c636fcb58a9ce35d35028896c760fa5498a6d7bb2059f880ec3",
+    "scripts/check_train_pose_comparison.py": "eeed437fd4e91127890848607358edba83945ea352d8a1fc33478a446dba4064",
+    "scripts/package_box_repeatability.py": "16938c6de4cb45709e47d9884c879fd6aa52792074b5f66ef2cfd41374527def",
+    "scripts/summarize_box_repeatability.py": "a770dc229161821cb4c1204c7edd1a4911934f87f0f2a44454bc4f1533c31dc7",
+    "scripts/check_box_repeatability_package.py": "48394e1895cb2962f48e011b2eeae62c748f55ec4cb6b238391347d5ea39c82e",
+    "scripts/check_box_repeatability_summary.py": "b3627f0d17d21a4bb1a9471c0409db036c4d9cdba567da853cfb35b03fa61350",
+    "scripts/check_box_repeatability_notebook.py": "3eef864961a4f2c425810b856a496582effab0792904f5964af4e6fffd26112d"
+  },
+  "notebook": {
+    "path": "notebooks/baomai_box_repeatability.ipynb",
+    "sha256": "1e7047ad07080d765b58588ffba48256ab503293110010e46a82a02ed17b2647",
+    "pinned_source_revision": "f087c35f74bf304eb61998edcaa2172fe1cba49c",
+    "code_cells_compiled": 10,
+    "outputs_saved": 0,
+    "change_from_reviewed_template": "Only SOURCE_REVISION_PLACEHOLDER replaced by the published source commit.",
+    "template_sha256": "0768f5de528bb9e14250816dbd78c55bde5e5e98101e968bd90eb5c92860a4ff"
+  },
+  "checks": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/check_pose_checkpoint.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "source_revision": "5f2adb2a2d4aeecf87c29545406b50645e91ab5d",
+      "files_sha256": {
+        "scripts/pose_checkpoint.py": "69123751ce59ad5fd4588d81715afff229391f98e553b15c3280909663cd0be2",
+        "scripts/train_pose_comparison.py": "6a2ac2742a7dd03b1e8b6751ff8fee1f7e6ea7e69185473e919640d860c123a6",
+        "scripts/check_pose_checkpoint.py": "d690da26cea71c636fcb58a9ce35d35028896c760fa5498a6d7bb2059f880ec3",
+        "scripts/check_train_pose_comparison.py": "eeed437fd4e91127890848607358edba83945ea352d8a1fc33478a446dba4064"
+      },
+      "scope": "Synthetic checkpoint/CLI/process-guard checks only; no training, inference, or weight deserialization.",
+      "name": "checkpoint",
+      "tests": 26,
+      "log": "checkpoint.log",
+      "raw_output": "test_candidate_replay_requires_explicit_matching_bundle_and_preserves_it (__main__.CheckpointBundleChecks.test_candidate_replay_requires_explicit_matching_bundle_and_preserves_it) ... ok\ntest_changed_artifact_bytes_are_rejected (__main__.CheckpointBundleChecks.test_changed_artifact_bytes_are_rejected) ... ok\ntest_changed_recipe_or_integer_fraction_is_rejected (__main__.CheckpointBundleChecks.test_changed_recipe_or_integer_fraction_is_rejected) ... ok\ntest_changed_staged_label_is_rejected_even_with_refreshed_artifact_hashes (__main__.CheckpointBundleChecks.test_changed_staged_label_is_rejected_even_with_refreshed_artifact_hashes) ... ok\ntest_completed_bundle_uses_runner_descriptors_and_preserves_reference_identity (__main__.CheckpointBundleChecks.test_completed_bundle_uses_runner_descriptors_and_preserves_reference_identity) ... ok\ntest_contradictory_completion_cannot_be_hidden_by_refreshed_hashes (__main__.CheckpointBundleChecks.test_contradictory_completion_cannot_be_hidden_by_refreshed_hashes) ... ok\ntest_loaded_pose_head_checked_before_any_detection_is_available (__main__.CheckpointBundleChecks.test_loaded_pose_head_checked_before_any_detection_is_available) ... ok\ntest_manifest_creation_does_not_replace_existing_evidence (__main__.CheckpointBundleChecks.test_manifest_creation_does_not_replace_existing_evidence) ... ok\ntest_manifest_schema_and_checkpoint_path_cannot_change_task_or_escape (__main__.CheckpointBundleChecks.test_manifest_schema_and_checkpoint_path_cannot_change_task_or_escape) ... ok\ntest_reference_arm_is_supported_and_arm_mismatch_is_rejected (__main__.CheckpointBundleChecks.test_reference_arm_is_supported_and_arm_mismatch_is_rejected) ... ok\ntest_results_must_show_every_epoch_and_finite_losses (__main__.CheckpointBundleChecks.test_results_must_show_every_epoch_and_finite_losses) ... ok\ntest_symlinked_checkpoint_is_rejected (__main__.CheckpointBundleChecks.test_symlinked_checkpoint_is_rejected) ... ok\ntest_trial_and_incomplete_receipts_cannot_publish_a_manifest (__main__.CheckpointBundleChecks.test_trial_and_incomplete_receipts_cannot_publish_a_manifest) ... ok\ntest_box_recipe_supports_both_arms_and_requires_box_candidate (__main__.VersionedRecipeChecks.test_box_recipe_supports_both_arms_and_requires_box_candidate) ... ok\ntest_box_repeats_change_only_the_declared_seed_and_keep_seed42_fixed (__main__.VersionedRecipeChecks.test_box_repeats_change_only_the_declared_seed_and_keep_seed42_fixed) ... ok\ntest_box_seed_mismatch_is_rejected_after_refreshing_receipt_hash (__main__.VersionedRecipeChecks.test_box_seed_mismatch_is_rejected_after_refreshing_receipt_hash) ... ok\ntest_device_and_backend_observations_are_required (__main__.VersionedRecipeChecks.test_device_and_backend_observations_are_required) ... ok\ntest_fixed_defaults_and_unknown_settings_cannot_change (__main__.VersionedRecipeChecks.test_fixed_defaults_and_unknown_settings_cannot_change) ... ok\ntest_historical_recipes_cannot_claim_box_overlay_after_hash_refresh (__main__.VersionedRecipeChecks.test_historical_recipes_cannot_claim_box_overlay_after_hash_refresh) ... ok\ntest_matching_seed_pairs_package_but_mixed_seeds_are_refused (__main__.VersionedRecipeChecks.test_matching_seed_pairs_package_but_mixed_seeds_are_refused) ... ok\ntest_original_versioned_recipe_supports_both_label_arms (__main__.VersionedRecipeChecks.test_original_versioned_recipe_supports_both_label_arms) ... ok\ntest_recipe_identity_is_fixed_and_only_bias_warmup_changes (__main__.VersionedRecipeChecks.test_recipe_identity_is_fixed_and_only_bias_warmup_changes) ... ok\ntest_recipe_receipt_manifest_and_schema_cannot_disagree (__main__.VersionedRecipeChecks.test_recipe_receipt_manifest_and_schema_cannot_disagree) ... ok\ntest_run_paths_and_input_verification_remain_bound_to_staging (__main__.VersionedRecipeChecks.test_run_paths_and_input_verification_remain_bound_to_staging) ... ok\ntest_versioned_manifest_and_replay_keep_the_explicit_recipe (__main__.VersionedRecipeChecks.test_versioned_manifest_and_replay_keep_the_explicit_recipe) ... ok\ntest_warmup_recipe_requires_reference_labels (__main__.VersionedRecipeChecks.test_warmup_recipe_requires_reference_labels) ... ok\n\n----------------------------------------------------------------------\nRan 26 tests in 1.002s\n\nOK\n",
+      "log_sha256": "d857dde07c454db13ae71dbcdba7d68935c93f7a7febc5ed2ac98c7b6a0bf86e"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/check_train_pose_comparison.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "source_revision": "5f2adb2a2d4aeecf87c29545406b50645e91ab5d",
+      "files_sha256": {
+        "scripts/pose_checkpoint.py": "69123751ce59ad5fd4588d81715afff229391f98e553b15c3280909663cd0be2",
+        "scripts/train_pose_comparison.py": "6a2ac2742a7dd03b1e8b6751ff8fee1f7e6ea7e69185473e919640d860c123a6",
+        "scripts/check_pose_checkpoint.py": "d690da26cea71c636fcb58a9ce35d35028896c760fa5498a6d7bb2059f880ec3",
+        "scripts/check_train_pose_comparison.py": "eeed437fd4e91127890848607358edba83945ea352d8a1fc33478a446dba4064"
+      },
+      "scope": "Synthetic checkpoint/CLI/process-guard checks only; no training, inference, or weight deserialization.",
+      "name": "runner",
+      "tests": 11,
+      "log": "runner.log",
+      "raw_output": "test_box_recipe_and_candidate_are_selected_together_before_training (__main__.ExecutionChecks.test_box_recipe_and_candidate_are_selected_together_before_training) ... ok\ntest_candidate_path_must_stay_in_repository_candidate_directory (__main__.ExecutionChecks.test_candidate_path_must_stay_in_repository_candidate_directory) ... ok\ntest_cli_preserves_original_default_and_thirty_epoch_trial_schedule (__main__.ExecutionChecks.test_cli_preserves_original_default_and_thirty_epoch_trial_schedule) ... ok\ntest_cli_rejects_seed_override_and_undeclared_recipe_before_execution (__main__.ExecutionChecks.test_cli_rejects_seed_override_and_undeclared_recipe_before_execution) ... ok\ntest_completed_worker_is_distinct_from_a_budget_stop (__main__.ExecutionChecks.test_completed_worker_is_distinct_from_a_budget_stop) ... ok\ntest_existing_run_is_never_reused (__main__.ExecutionChecks.test_existing_run_is_never_reused) ... ok\ntest_input_mutation_is_detected_after_cache_creation (__main__.ExecutionChecks.test_input_mutation_is_detected_after_cache_creation) ... ok\ntest_memory_budget_terminates_real_worker (__main__.ExecutionChecks.test_memory_budget_terminates_real_worker) ... ok\ntest_runtime_records_the_resolved_cuda_device_and_observes_backend_flags (__main__.ExecutionChecks.test_runtime_records_the_resolved_cuda_device_and_observes_backend_flags) ... ok\ntest_wall_budget_terminates_real_worker (__main__.ExecutionChecks.test_wall_budget_terminates_real_worker) ... ok\ntest_warmup_candidate_is_rejected_before_staging_or_importing_training_runtime (__main__.ExecutionChecks.test_warmup_candidate_is_rejected_before_staging_or_importing_training_runtime) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.628s\n\nOK\n",
+      "log_sha256": "e234436f59ffbe79f8762f1475731c6ae29e9b439091d84bb7d493588ee3150f"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/check_package_gpu_results.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "source_revision": "5f2adb2a2d4aeecf87c29545406b50645e91ab5d",
+      "files_sha256": {
+        "scripts/pose_checkpoint.py": "69123751ce59ad5fd4588d81715afff229391f98e553b15c3280909663cd0be2",
+        "scripts/train_pose_comparison.py": "6a2ac2742a7dd03b1e8b6751ff8fee1f7e6ea7e69185473e919640d860c123a6",
+        "scripts/check_pose_checkpoint.py": "d690da26cea71c636fcb58a9ce35d35028896c760fa5498a6d7bb2059f880ec3",
+        "scripts/check_train_pose_comparison.py": "eeed437fd4e91127890848607358edba83945ea352d8a1fc33478a446dba4064"
+      },
+      "scope": "Existing synthetic package regression checks only; no training, inference, or weight deserialization.",
+      "name": "legacy-pair-packager",
+      "tests": 7,
+      "log": "legacy-pair-packager.log",
+      "raw_output": "test_ambiguous_archive_path_and_symlink_are_refused (__main__.ReturnPackageChecks.test_ambiguous_archive_path_and_symlink_are_refused) ... ok\ntest_changed_final_checkpoint_is_refused (__main__.ReturnPackageChecks.test_changed_final_checkpoint_is_refused) ... ok\ntest_completed_synthetic_pair_roundtrips_with_only_six_files_per_arm (__main__.ReturnPackageChecks.test_completed_synthetic_pair_roundtrips_with_only_six_files_per_arm) ... ok\ntest_existing_output_and_overlapping_locations_are_refused (__main__.ReturnPackageChecks.test_existing_output_and_overlapping_locations_are_refused) ... ok\ntest_mismatched_source_runtime_and_settings_are_refused (__main__.ReturnPackageChecks.test_mismatched_source_runtime_and_settings_are_refused) ... ok\ntest_partial_and_resource_trial_outputs_are_refused (__main__.ReturnPackageChecks.test_partial_and_resource_trial_outputs_are_refused) ... ok\ntest_swapped_arms_are_refused (__main__.ReturnPackageChecks.test_swapped_arms_are_refused) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.313s\n\nOK\n",
+      "log_sha256": "3ad06df703ae703d6803480ce420acd66e86c6bd880ca6ed29cd5c87fd5ff7c9"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/check_warmup_results.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "source_revision": "5f2adb2a2d4aeecf87c29545406b50645e91ab5d",
+      "files_sha256": {
+        "scripts/pose_checkpoint.py": "69123751ce59ad5fd4588d81715afff229391f98e553b15c3280909663cd0be2",
+        "scripts/train_pose_comparison.py": "6a2ac2742a7dd03b1e8b6751ff8fee1f7e6ea7e69185473e919640d860c123a6",
+        "scripts/check_pose_checkpoint.py": "d690da26cea71c636fcb58a9ce35d35028896c760fa5498a6d7bb2059f880ec3",
+        "scripts/check_train_pose_comparison.py": "eeed437fd4e91127890848607358edba83945ea352d8a1fc33478a446dba4064"
+      },
+      "scope": "Existing synthetic package regression checks only; no training, inference, or weight deserialization.",
+      "name": "legacy-warmup-packager",
+      "tests": 12,
+      "log": "legacy-warmup-packager.log",
+      "raw_output": "test_ambiguous_archive_path_and_symlink_are_refused (__main__.WarmupPackageChecks.test_ambiguous_archive_path_and_symlink_are_refused) ... ok\ntest_candidate_labels_and_existing_label_packer_reject_mixed_comparisons (__main__.WarmupPackageChecks.test_candidate_labels_and_existing_label_packer_reject_mixed_comparisons) ... ok\ntest_changed_checkpoint_or_log_is_refused (__main__.WarmupPackageChecks.test_changed_checkpoint_or_log_is_refused) ... ok\ntest_changed_staged_reference_evidence_is_refused_after_rehashing (__main__.WarmupPackageChecks.test_changed_staged_reference_evidence_is_refused_after_rehashing) ... ok\ntest_completed_reference_pair_roundtrips_with_distinct_recipe_identities (__main__.WarmupPackageChecks.test_completed_reference_pair_roundtrips_with_distinct_recipe_identities) ... ok\ntest_existing_output_and_overlapping_locations_are_refused (__main__.WarmupPackageChecks.test_existing_output_and_overlapping_locations_are_refused) ... ok\ntest_individually_valid_different_cuda_hardware_is_refused (__main__.WarmupPackageChecks.test_individually_valid_different_cuda_hardware_is_refused) ... ok\ntest_mismatched_source_hardware_runtime_and_other_settings_are_refused (__main__.WarmupPackageChecks.test_mismatched_source_hardware_runtime_and_other_settings_are_refused) ... ok\ntest_missing_hardware_and_dirty_source_are_refused (__main__.WarmupPackageChecks.test_missing_hardware_and_dirty_source_are_refused) ... ok\ntest_partial_and_resource_trial_outputs_are_refused (__main__.WarmupPackageChecks.test_partial_and_resource_trial_outputs_are_refused) ... ok\ntest_swapped_roles_and_same_recipe_are_refused (__main__.WarmupPackageChecks.test_swapped_roles_and_same_recipe_are_refused) ... ok\ntest_valid_legacy_results_cannot_silently_supply_the_control (__main__.WarmupPackageChecks.test_valid_legacy_results_cannot_silently_supply_the_control) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.747s\n\nOK\n",
+      "log_sha256": "5ec948f01c752f4ce161eaea1a2c4666b97cedf53e817b6733d13b99e8eb9464"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/check_box_repeatability_package.py"
+      ],
+      "cwd": "/workspace/scratch/470b9cd0057a/dl",
+      "exit_code": 0,
+      "wall_seconds": 0.7324981470010243,
+      "log": "/workspace/scratch/470b9cd0057a/box-repeatability-notebook-package-checks/check_box_repeatability_package.log",
+      "log_sha256": "3d5bedc42cf62299be1c28110c8e1c45e5ef9ae5127e0ea516509dfef085f023",
+      "name": "four-run-package",
+      "tests": 7,
+      "scope": "Synthetic completed bundles and trial; no trained models or model loading.",
+      "raw_output": "test_changed_candidate_bytes_are_rejected_even_when_all_receipts_agree (__main__.RepeatabilityPackageChecks.test_changed_candidate_bytes_are_rejected_even_when_all_receipts_agree) ... ok\ntest_cross_seed_runtime_mismatch_is_rejected_after_each_pair_validates (__main__.RepeatabilityPackageChecks.test_cross_seed_runtime_mismatch_is_rejected_after_each_pair_validates) ... ok\ntest_existing_return_is_preserved (__main__.RepeatabilityPackageChecks.test_existing_return_is_preserved) ... ok\ntest_four_complete_runs_roundtrip_as_two_flat_pairs (__main__.RepeatabilityPackageChecks.test_four_complete_runs_roundtrip_as_two_flat_pairs) ... ok\ntest_missing_or_partial_arm_never_creates_a_return_zip (__main__.RepeatabilityPackageChecks.test_missing_or_partial_arm_never_creates_a_return_zip) ... ok\ntest_trial_is_only_supplemental_and_must_complete_four_batches (__main__.RepeatabilityPackageChecks.test_trial_is_only_supplemental_and_must_complete_four_batches) ... ok\ntest_wrong_seed_recipe_and_legacy_seed42_are_refused (__main__.RepeatabilityPackageChecks.test_wrong_seed_recipe_and_legacy_seed42_are_refused) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.597s\n\nOK\n"
+    },
+    {
+      "name": "summary-final-dependencies",
+      "command": [
+        "/workspace/scratch/ad3aa7140d65/eval-venv/bin/python",
+        "-B",
+        "scripts/check_box_repeatability_summary.py"
+      ],
+      "cwd": "/workspace/scratch/470b9cd0057a/dl-repeatability-source",
+      "exit_code": 0,
+      "wall_seconds": 0.33236978099739645,
+      "source_revision": "f087c35f74bf304eb61998edcaa2172fe1cba49c",
+      "working_tree_status": "",
+      "log": "summary-final-dependencies.log",
+      "log_sha256": "2ecc88d9f9a16ae54db5c998f2e088bad9c13e9c55a3ad95de9f68e57fcf1520",
+      "tests": 14,
+      "scope": "Synthetic audited interfaces with the existing auditor boundary stubbed; all final shared helper dependencies included.",
+      "raw_output": "..............\n----------------------------------------------------------------------\nRan 14 tests in 0.176s\n\nOK\n"
+    },
+    {
+      "name": "notebook-pinned",
+      "command": [
+        "/workspace/scratch/ad3aa7140d65/eval-venv/bin/python",
+        "-B",
+        "scripts/check_box_repeatability_notebook.py"
+      ],
+      "cwd": "/workspace/scratch/470b9cd0057a/dl",
+      "exit_code": 0,
+      "wall_seconds": 0.12117466200288618,
+      "source_revision": "f087c35f74bf304eb61998edcaa2172fe1cba49c",
+      "working_tree_status": "M README.md\n M notebooks/baomai_box_repeatability.ipynb\n?? docs/box-repeatability-2026-11-07.md",
+      "log": "notebook-pinned.log",
+      "log_sha256": "6e0bc3b2a6383b6ab6b8475f911524619aa502349e7e046c6a3cfe5b54be84af",
+      "tests": 5,
+      "scope": "Delivered notebook compilation and actual workspace/setup code with safe GPU/install substitutes.",
+      "raw_output": "test_actual_install_cell_constrains_existing_cuda_versions_before_pip (__main__.RepeatabilityNotebookChecks.test_actual_install_cell_constrains_existing_cuda_versions_before_pip) ... ok\ntest_actual_workspace_cell_creates_only_a_fresh_folder (__main__.RepeatabilityNotebookChecks.test_actual_workspace_cell_creates_only_a_fresh_folder) ... ok\ntest_all_delivered_code_and_inline_preflight_compile_with_fixed_four_run_order (__main__.RepeatabilityNotebookChecks.test_all_delivered_code_and_inline_preflight_compile_with_fixed_four_run_order) ... ok\ntest_missing_cuda_package_version_stops_before_install_or_partial_pins (__main__.RepeatabilityNotebookChecks.test_missing_cuda_package_version_stops_before_install_or_partial_pins) ... ok\ntest_unpinned_workspace_refuses_before_gpu_or_filesystem_actions (__main__.RepeatabilityNotebookChecks.test_unpinned_workspace_refuses_before_gpu_or_filesystem_actions) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.009s\n\nOK\n"
+    }
+  ],
+  "unique_focused_checks_passed": 82,
+  "real_input_preflight": {
+    "name": "real-input-preflight",
+    "command": [
+      "/workspace/scratch/ad3aa7140d65/eval-venv/bin/python",
+      "-B",
+      "-c",
+      "\nimport json\nfrom pathlib import Path\nimport sys\nsys.dont_write_bytecode = True\nroot = Path.cwd()\nsys.path.insert(0, str(root / 'scripts'))\nfrom evaluate_pose import preflight_dataset\nfrom stage_pose_training import source_state\nfrom pose_checkpoint import BOX_RECIPE_ID, BOX_REPEATABILITY_RECIPES, get_recipe, recipe_identity\nfrom evaluate_pose import file_sha256\nfrom package_box_repeatability import CANDIDATE_SHA256, STUDY_ID\ncandidate = root / sys.argv[1]\nexpected_recipes = {43: \"box-supervision-warmup-seed43-v1\", 44: \"box-supervision-warmup-seed44-v1\"}\nassert BOX_REPEATABILITY_RECIPES == expected_recipes\nassert STUDY_ID == \"box-supervision-repeatability-v1\"\nassert file_sha256(candidate) == CANDIDATE_SHA256 == sys.argv[2]\nproposal = json.loads(candidate.read_text())\nassert proposal['kind'] == 'training_box_overlay'\nassert proposal['candidate_id'] == 'box-refinement-2026-11-07'\nedge_counts = {change['image_id']: sum(len(row['box_edges_changed']) for row in change['rows'])\n               for change in proposal['changes']}\nassert edge_counts == {'new_000030': 8, 'new_000012': 6, 'new_000128': 2}, edge_counts\nstate = source_state(root, candidate)\ninitial = preflight_dataset(root, require_weights=True)\nassert len(state['records']) == 157\nassert state['counts']['reference'] == state['counts']['candidate']\nassert state['counts']['reference']['train']['images'] == 137\nassert state['counts']['reference']['val']['images'] == 20\nassert state['source']['initial_checkpoint_sha256'] == initial['model_sha256']\nassert Path(initial['weights']) == root / 'weights/cassette_lower_epoch173.pt'\nfor seed, recipe_id in expected_recipes.items():\n    assert get_recipe(recipe_id) == {**get_recipe(BOX_RECIPE_ID), 'seed': seed}\nprint(json.dumps({'status': 'verified', 'original_images': len(state['records']),\n                  'box_edge_corrections': edge_counts, 'label_counts': state['counts'],\n                  'initial_checkpoint_sha256': initial['model_sha256'],\n                  'weights_verified': initial['weights_verified'],\n                  'recipes': {seed: recipe_identity(recipe_id) for seed, recipe_id in expected_recipes.items()}}, indent=2))\n",
+      "data/candidates/box-refinement-2026-11-07/manifest.json",
+      "b61d012052001377089ad048ba13da14b8cd19d665ac8f0ef7828e45c530ec3e"
+    ],
+    "cwd": "/workspace/scratch/470b9cd0057a/dl-repeatability-source",
+    "exit_code": 0,
+    "wall_seconds": 0.4505182809953112,
+    "source_revision": "f087c35f74bf304eb61998edcaa2172fe1cba49c",
+    "working_tree_status": "",
+    "log": "real-input-preflight.log",
+    "log_sha256": "84bfa2ac8b0cb43ad7601c8182e6aa0016692d04e5c53d9df1dd36775aad3ee8",
+    "result": {
+      "status": "verified",
+      "original_images": 157,
+      "box_edge_corrections": {
+        "new_000030": 8,
+        "new_000012": 6,
+        "new_000128": 2
+      },
+      "label_counts": {
+        "reference": {
+          "train": {
+            "images": 137,
+            "objects": 3772,
+            "visible_endpoints": 6839,
+            "missing_endpoints": 705,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "candidate": {
+          "train": {
+            "images": 137,
+            "objects": 3772,
+            "visible_endpoints": 6839,
+            "missing_endpoints": 705,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        }
+      },
+      "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+      "weights_verified": true,
+      "recipes": {
+        "43": {
+          "recipe_id": "box-supervision-warmup-seed43-v1",
+          "recipe_sha256": "4a4bc07ad45cd9fced727c5c39cf32ae43212a06f586f4e96c03a57959c279f7"
+        },
+        "44": {
+          "recipe_id": "box-supervision-warmup-seed44-v1",
+          "recipe_sha256": "1353838f0e3137a2690c24514b3fb972d85b07ce8f417632b889f1d784cab6fe"
+        }
+      }
+    },
+    "raw_output": "{\n  \"status\": \"verified\",\n  \"original_images\": 157,\n  \"box_edge_corrections\": {\n    \"new_000030\": 8,\n    \"new_000012\": 6,\n    \"new_000128\": 2\n  },\n  \"label_counts\": {\n    \"reference\": {\n      \"train\": {\n        \"images\": 137,\n        \"objects\": 3772,\n        \"visible_endpoints\": 6839,\n        \"missing_endpoints\": 705,\n        \"empty_images\": 13\n      },\n      \"val\": {\n        \"images\": 20,\n        \"objects\": 664,\n        \"visible_endpoints\": 1227,\n        \"missing_endpoints\": 101,\n        \"empty_images\": 3\n      }\n    },\n    \"candidate\": {\n      \"train\": {\n        \"images\": 137,\n        \"objects\": 3772,\n        \"visible_endpoints\": 6839,\n        \"missing_endpoints\": 705,\n        \"empty_images\": 13\n      },\n      \"val\": {\n        \"images\": 20,\n        \"objects\": 664,\n        \"visible_endpoints\": 1227,\n        \"missing_endpoints\": 101,\n        \"empty_images\": 3\n      }\n    }\n  },\n  \"initial_checkpoint_sha256\": \"e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e\",\n  \"weights_verified\": true,\n  \"recipes\": {\n    \"43\": {\n      \"recipe_id\": \"box-supervision-warmup-seed43-v1\",\n      \"recipe_sha256\": \"4a4bc07ad45cd9fced727c5c39cf32ae43212a06f586f4e96c03a57959c279f7\"\n    },\n    \"44\": {\n      \"recipe_id\": \"box-supervision-warmup-seed44-v1\",\n      \"recipe_sha256\": \"1353838f0e3137a2690c24514b3fb972d85b07ce8f417632b889f1d784cab6fe\"\n    }\n  }\n}\n"
+  },
+  "independent_review": {
+    "mode": "Read-only code review; no additional runtime test claim",
+    "files": [
+      "scripts/package_box_repeatability.py",
+      "notebooks/baomai_box_repeatability.ipynb",
+      "scripts/summarize_box_repeatability.py"
+    ],
+    "result": "No material findings after source-helper provenance and historical-seed wording corrections.",
+    "reviewed_production_sha256": {
+      "scripts/package_box_repeatability.py": "16938c6de4cb45709e47d9884c879fd6aa52792074b5f66ef2cfd41374527def",
+      "scripts/summarize_box_repeatability.py": "a770dc229161821cb4c1204c7edd1a4911934f87f0f2a44454bc4f1533c31dc7"
+    }
+  },
+  "historical_notebook": {
+    "path": "notebooks/baomai_box_supervision.ipynb",
+    "unchanged": true,
+    "sha256": "3478e24b7846515f2efe4305109c8d7e12931d532d442065076ff6b9f6631960"
+  },
+  "scope": [
+    "Core checks were run before publication; their exact executed source hashes equal the published code.",
+    "The final summary checks ran at the clean published source with all final shared helper dependencies.",
+    "The final notebook checks ran against the delivered source pin; its accompanying documentation was still being prepared.",
+    "The embedded notebook preflight ran at the clean published source on all 157 real original PNGs, frozen labels, reviewed overlays and original checkpoint bytes.",
+    "Synthetic checkpoint/package fixtures, stubbed summary inputs and mocked notebook GPU/install calls are preparation evidence, not successful model training.",
+    "No seed-43/44 training, inference, model deserialization, new accuracy measurement, model promotion or independent-test claim is made."
+  ],
+  "gpu_study_executed": false,
+  "new_accuracy_result": false
+}

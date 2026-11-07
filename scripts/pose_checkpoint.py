@@ -30,7 +30,12 @@ ULTRALYTICS_VERSION = "8.4.182"
 ORIGINAL_RECIPE_ID = "paired-finetune-v1"
 WARMUP_RECIPE_ID = "warmup-bias-lr-1e-4-v1"
 BOX_RECIPE_ID = "box-supervision-warmup-v1"
-RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, BOX_RECIPE_ID)
+BOX_REPEATABILITY_RECIPES = {
+    43: "box-supervision-warmup-seed43-v1",
+    44: "box-supervision-warmup-seed44-v1",
+}
+BOX_RECIPE_IDS = (BOX_RECIPE_ID, *BOX_REPEATABILITY_RECIPES.values())
+RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS)
 
 # Resolved defaults observed in the pinned trainer, in addition to RECIPE.
 # These are checked, not changed, by the runner. In particular RLE stays at 1.0.
@@ -69,8 +74,12 @@ def _same(actual, expected):
 def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
     """Return an independent fixed recipe; the original RECIPE remains unchanged."""
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
-    return {**RECIPE, **({"warmup_bias_lr": 0.0001}
-                       if recipe_id in (WARMUP_RECIPE_ID, BOX_RECIPE_ID) else {})}
+    recipe = {**RECIPE, **({"warmup_bias_lr": 0.0001}
+                         if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS) else {})}
+    for seed, fixed_id in BOX_REPEATABILITY_RECIPES.items():
+        if recipe_id == fixed_id:
+            recipe["seed"] = seed
+    return recipe
 
 
 def recipe_identity(recipe_id=ORIGINAL_RECIPE_ID):
@@ -308,7 +317,7 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
         _require(receipt[key] == expected, f"training receipt {key} differs")
     variants = _check_staging(preflight, staging)
     proposal = _read_json(_contained_path(Path(preflight["root"]), staging["source"]["candidate_manifest"]))
-    _require((identity.get("recipe_id") == BOX_RECIPE_ID) == (proposal.get("kind") == "training_box_overlay"),
+    _require((identity.get("recipe_id") in BOX_RECIPE_IDS) == (proposal.get("kind") == "training_box_overlay"),
              "box-supervision recipe and training_box_overlay must be selected together")
     variant = variants[receipt["arm"]]
     _require(receipt["data_yaml_sha256"] == variant["data_yaml_sha256"], "training arm/YAML identity differs")
