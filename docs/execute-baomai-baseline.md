@@ -1,12 +1,35 @@
 # Continue the baomai image-localization experiment
 
+**Current usable deliverable:** [PR #20](https://github.com/Siuuuers/dl/pull/20) contains the verified still-image folder command. The interrupted publication and proof review are complete. Start with the folder guide linked below.
+
 **Current decision, 2026-11-07 (Asia/Hong_Kong): retain epoch173 as the default and preserve the lower-bias warmup model as a promising candidate.** The GPU pair returned in [PR #16](https://github.com/Siuuuers/dl/pull/16) has now been audited and evaluated. Warmup improves all five primary measures against M0, but misses 37 objects versus the fresh control's 36, so it does not pass the predeclared requirement against both comparators.
 
 The completed result, figures, replay evidence and notebook setup repair are in [the latest comparison PR](https://github.com/Siuuuers/dl/pull/17) and [the pinned report](https://github.com/Siuuuers/dl/blob/2799b8332bb46ba07d0ef95652d7f398559573c9/docs/warmup-comparison-2026-11-07.md). Do not repeat the successful GPU pair solely because the notebook setup cell was repaired.
 
-The targeted detection review is complete in [PR #18](https://github.com/Siuuuers/dl/pull/18). Its three selected additional frames now have a complete 129-row annotation review and separately versioned partial corrections in **[PR #19](https://github.com/Siuuuers/dl/pull/19)** and [the pinned report](https://github.com/Siuuuers/dl/blob/664d4af5cd76f77c52076c96b306f1e90d193e4b/docs/additional-annotation-pilot-2026-11-07.md). The proposal changes 87 boxes and five corner positions, preserving all objects and visibility states. **All three images remain quarantined for 36 unresolved box boundaries; no supplementary scoring reference has been released.** Next resolve the physical front-versus-roof/rim distinction and the remaining occlusion-side extent, then continue a bounded annotation review.
+The targeted detection review is complete in [PR #18](https://github.com/Siuuuers/dl/pull/18). Its three selected additional frames now have a complete 129-row annotation review and separately versioned partial corrections in **[PR #19](https://github.com/Siuuuers/dl/pull/19)** and [the pinned report](https://github.com/Siuuuers/dl/blob/664d4af5cd76f77c52076c96b306f1e90d193e4b/docs/additional-annotation-pilot-2026-11-07.md). The proposal changes 87 boxes and five corner positions, preserving all objects and visibility states. **All three images remain quarantined for 36 unresolved box boundaries; no supplementary scoring reference has been released.** The annotation follow-up remains pending where source material cannot settle those physical boundaries; it does not block the folder-inference deliverable.
 
 The user's current duty is finding/localizing cassette objects in supplied baomai D405 images, preserving the existing one-class, two-lower-corner target. Camera settings are unknown. Camera/robot calibration and physical grasp qualification are outside this deliverable and are not prerequisites for image training.
+
+## Completed still-image folder deliverable
+
+The user selected **a folder of still images**, **current repository material only**, and **no priority between missed and extra detections**. Those choices are sufficient for this delivery. Unknown camera settings and unresolved reference surfaces do not prevent image-space inference.
+
+[PR #20](https://github.com/Siuuuers/dl/pull/20) provides `scripts/predict_pose_folder.py` on branch `codex/baomai-folder-inference-20261107`, published at [`c234a30`](https://github.com/Siuuuers/dl/commit/c234a30bf6208261e973fd39ca33165efa029a31). Follow [the folder guide](https://github.com/Siuuuers/dl/blob/c234a30bf6208261e973fd39ca33165efa029a31/docs/predict-pose-folder.md) for the correct checkout, model-only Git LFS download and isolated runtime; the old evaluator-only checkout does not contain this command.
+
+```bash
+.venv/bin/python scripts/predict_pose_folder.py \
+  --input /path/to/original-images \
+  --output /path/to/new-results \
+  --device cpu
+```
+
+Use the Python from an existing compatible CUDA environment and `--device 0` when desired. The command writes original-size annotated PNGs, raw predictions with endpoint display flags, a per-image CSV and explicit run status. Annotation TXT files are unnecessary. Require process exit 0 and `status: complete`; unreadable images, aborted runs and successful zero-detection images remain distinct.
+
+Real CPU inference at clean source `df9254ac16f61eb6f5f858dfd4737459d4133a7e` produced 53 predictions on `new_000007.png` and zero on `new_000146.png`. Both complete raw prediction lists exactly match the existing evaluator in the same runtime. Eleven focused checks passed and were independently rerun during recovery. The final source hashes are unchanged; the final commit only clarifies checkout and interpreter instructions.
+
+The [demo ZIP](https://github.com/Siuuuers/dl/blob/c234a30bf6208261e973fd39ca33165efa029a31/results/prediction/baomai-folder-20261107/demo.zip) preserves original inputs, outputs and command evidence. Its 19 entries, CRC and all inventoried payload hashes passed inspection. The [verification record](https://github.com/Siuuuers/dl/blob/c234a30bf6208261e973fd39ca33165efa029a31/results/prediction/baomai-folder-20261107/verification.json) retains the actual executed revision. The published candidate tree matches the reviewed local files.
+
+This closes the interrupted folder-inference publication and proof step. The next practical use is running the command on a selected original-image folder. Prediction counts do not measure false positives, false negatives or accuracy without a valid reference. The existing 0.25 box / 0.50 endpoint thresholds remain operating settings, not a proven optimal error tradeoff.
 
 ## Latest completed comparison
 
@@ -68,7 +91,7 @@ Thirty-five unresolved upper extents concern exposed gray material that could be
 
 This completes the selected three-image review, not all 320 images. The remaining 317 do not have a complete row review. Two additional originals, frame_0022 and frame_0354, were viewed only for surface context; no labels or coordinates were transferred from them. The recovered pool's prior-use and correlated-frame limits remain.
 
-## Next bounded assignment
+## Annotation follow-up and evidence limits
 
 **Goal:** resolve the recorded physical surface ambiguities under the existing visible-front policy, then continue a separately versioned, explicitly selected annotation batch before freezing any supplementary scoring reference.
 
@@ -76,7 +99,7 @@ Start from the exact candidate bytes and unresolved row lists in the new manifes
 
 Review complete images and record source hashes, one-based row identities, each box edge and each endpoint state. Freeze eligible IDs and exact adapted label bytes only after their complete dispositions are resolved. Exclude old-image families even when re-encoded. Capture/session and prior-use limits must accompany the future supplementary reference; no independent-test claim is established.
 
-The candidate currently has an empty eligible-image list. There is no new training or checkpoint inference to run against it. Keep the existing 20-image development manifest, scorer and preflight guard intact. When a nonempty reference is ready, use an explicit separate manifest and the same scorer/checkpoint-provenance rules to compare fixed M0/control/warmup checkpoints in one common runtime with preserved raw predictions. Another training change should follow a specific reviewed finding.
+The candidate currently has an empty eligible-image list, so it cannot support training or reference-based scoring. Label-free inference can still run on original images for inspection; its predictions do not approve the candidate labels. Keep the existing 20-image development manifest, scorer and preflight guard intact. When a nonempty reference is ready, use an explicit separate manifest and the same scorer/checkpoint-provenance rules to compare fixed M0/control/warmup checkpoints in one common runtime with preserved raw predictions. Another training change should follow a specific reviewed finding.
 
 ## Reproduce or inspect the completed work
 
@@ -108,8 +131,9 @@ The [repaired Colab notebook](https://colab.research.google.com/github/Siuuuers/
 | Warmup comparison, evidence and setup repair | [Latest comparison PR](https://github.com/Siuuuers/dl/pull/17) |
 | Completed detection review, recovered320 intake and semantic pilot | [PR #18](https://github.com/Siuuuers/dl/pull/18) |
 | Complete three-frame annotation review, partial corrections and quarantine | [PR #19](https://github.com/Siuuuers/dl/pull/19) |
+| Label-free folder inference, verified examples and completed publication | [PR #20](https://github.com/Siuuuers/dl/pull/20) |
 
-The annotation proposal is stacked on PR #18, which is stacked on PR #17; the earlier comparison is stacked on #15/#14/#12/#11/#10/#9/#8/#7. PRs #13 and #16 contain separate main-based result archives. Inspect current heads before continuing; no merge is implied by this workflow update. Use the appropriate branch rather than rebuilding code missing from main.
+The folder-inference delivery is stacked on PR #19. The annotation proposal is stacked on PR #18, which is stacked on PR #17; the earlier comparison is stacked on #15/#14/#12/#11/#10/#9/#8/#7. PRs #13 and #16 contain separate main-based result archives. Inspect current heads before continuing; no merge is implied by this workflow update. Use the appropriate branch rather than rebuilding code missing from main.
 
 The baseline hash is `e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e`. Its reference has 137 training images, 20 validation images, 3,772/664 objects and 13/3 empty scenes. Preserve `cassette_front`, `kpt_shape: [2, 3]`, `flip_idx: [1, 0]` and image-X corner order. The frozen reference uses raw 1280×720 PNGs; preserve the additional pool's original JPEG source bytes separately. Unlocatable endpoints remain exactly `0 0 0`; model predictions do not supply hidden reference coordinates.
 
