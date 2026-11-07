@@ -1,0 +1,3161 @@
+{
+  "schema_version": 1,
+  "candidate_id": "additional-pilot-2026-11-07",
+  "image_id": "frame_0001",
+  "status": "quarantined-partial-annotation-proposal",
+  "whole_image_inspected": true,
+  "model_predictions_used": false,
+  "source_row_order_preserved": true,
+  "review_origin": "Separate AI visual reviewers inspected originals and every row; root inspected proposed comparisons and adjudicated disagreements. No human approval claimed.",
+  "upstream_review_record_sha256": "b3bd9367a653749b724bd1625d8d0c877336376b25f55ead756d60212d8b2de1",
+  "whole_image_assessment": {
+    "visible_front_count": 43,
+    "source_rows": 43,
+    "proposed_rows": 43,
+    "missing_identifiable_fronts_found": [],
+    "extra_source_instances_found": [],
+    "duplicate_source_instances_found": [],
+    "unresolved_instance_fragments": [],
+    "unresolved_box_boundary_rows": [
+      1,
+      2,
+      4,
+      9,
+      10,
+      15,
+      21,
+      23,
+      30,
+      31,
+      35,
+      36,
+      43
+    ],
+    "groups": [
+      {
+        "group": "upper_left_three",
+        "source_row_ids": [
+          1,
+          3,
+          6
+        ],
+        "description": "upper-left three-front stack"
+      },
+      {
+        "group": "upper_middle_two",
+        "source_row_ids": [
+          4,
+          7
+        ],
+        "description": "two-front stack immediately right of the upper-left stack"
+      },
+      {
+        "group": "central_column",
+        "source_row_ids": [
+          2,
+          5,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18,
+          20,
+          24,
+          28
+        ],
+        "description": "long central column of individually visible fronts"
+      },
+      {
+        "group": "middle_right_six",
+        "source_row_ids": [
+          15,
+          17,
+          19,
+          22,
+          26,
+          29
+        ],
+        "description": "six-front middle-right stack"
+      },
+      {
+        "group": "far_right_upper",
+        "source_row_ids": [
+          9
+        ],
+        "description": "isolated upper far-right front"
+      },
+      {
+        "group": "far_right_lower",
+        "source_row_ids": [
+          30
+        ],
+        "description": "isolated middle-tier far-right front"
+      },
+      {
+        "group": "middle_left_two",
+        "source_row_ids": [
+          21,
+          25
+        ],
+        "description": "two-front middle-tier left stack"
+      },
+      {
+        "group": "middle_middle_two",
+        "source_row_ids": [
+          23,
+          27
+        ],
+        "description": "two-front middle-tier stack beside the left pair"
+      },
+      {
+        "group": "bottom_left_six",
+        "source_row_ids": [
+          31,
+          32,
+          33,
+          34,
+          37,
+          40
+        ],
+        "description": "six-front lower-left occupied stack"
+      },
+      {
+        "group": "bottom_middle_three",
+        "source_row_ids": [
+          36,
+          39,
+          42
+        ],
+        "description": "three-front lower-middle occupied stack"
+      },
+      {
+        "group": "bottom_right_four",
+        "source_row_ids": [
+          35,
+          38,
+          41,
+          43
+        ],
+        "description": "four-front lower-right occupied stack"
+      }
+    ],
+    "excluded_non_targets": [
+      "metal basket, shelves and lattice openings",
+      "foreground gripper including white surfaces below/over rows42 and43",
+      "background desks, keyboards, mouse, screens and cylindrical container",
+      "small rounded bright rack/plate feature near x883,y382; no cassette-front identity"
+    ],
+    "scope_limit": "Only visible identifiable fronts are counted; no hidden faces are inferred from stack spacing or other frames. All43 identities are supported, but12 upper-front extents and one occluded-side extent are unresolved."
+  },
+  "whole_image_unresolved_issues": [
+    "Exposed raised gray material cannot be reliably assigned to front versus roof/rim in this image.",
+    "Row 43 left extent beside the foreground gripper remains unresolved."
+  ],
+  "unresolved_source_rows": [
+    1,
+    2,
+    4,
+    9,
+    10,
+    15,
+    21,
+    23,
+    30,
+    31,
+    35,
+    36,
+    43
+  ],
+  "rows": [
+    {
+      "source_row_1based": 1,
+      "source_text": "0 0.48373539 0.28484910 0.05909047 0.02877042 0.45575266 0.29029000 2 0.51110203 0.29645653 2",
+      "candidate_text": "0 0.48373539 0.28484910 0.05909047 0.02877042 0.45575266 0.29029000 2 0.51110203 0.29645653 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "upper_left_three",
+        "visible_position_in_group": 1,
+        "visible_group_count": 3,
+        "description": "upper-left three-front stack, observed front 1 of 3",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Uppermost left front has a stepped gray/white outline. Its lower edge and both lower side junctions are visible. The raised gray patch extends above the source box; its plane membership is unresolved and it is not discarded merely because it is darker.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The raised gray upper-left patch reaches about y192–193, above source y_min194.734. If this patch is target front material, the source box clips it; if it is a raised rim/upper plane, its inclusion must instead be reconsidered. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          581.3633983999999,
+          194.73400080000002,
+          656.9992,
+          215.4487032
+        ],
+        "proposed_xyxy_px": [
+          581.3633983999999,
+          194.73400080000002,
+          656.9992,
+          215.4487032
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          583.3634048,
+          209.0088,
+          2
+        ],
+        "proposed_px": [
+          583.3634048,
+          209.0088,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          654.2105984,
+          213.4487016,
+          2
+        ],
+        "proposed_px": [
+          654.2105984,
+          213.4487016,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-upper.png"
+    },
+    {
+      "source_row_1based": 2,
+      "source_text": "0 0.60268051 0.29723319 0.06159727 0.03080972 0.57344438 0.30304278 2 0.62994508 0.30871861 2",
+      "candidate_text": "0 0.60268051 0.29723319 0.06159727 0.03080972 0.57344438 0.30304278 2 0.62994508 0.30871861 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 1,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 1 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Uppermost central front is distinct from the front immediately below. Both lower corners are visible against the rack/gap, despite a soft right edge.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The upper-left gray step and the bright main face form a softened stepped contour. Source top y202.916 is near that contour; the front-plane/upper-plane classification must be settled before certifying the exact top. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          732.0088,
+          202.91639759999998,
+          810.8533056,
+          225.099396
+        ],
+        "proposed_xyxy_px": [
+          732.0088,
+          202.91639759999998,
+          810.8533056,
+          225.099396
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          734.0088063999999,
+          218.19080160000001,
+          2
+        ],
+        "proposed_px": [
+          734.0088063999999,
+          218.19080160000001,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          806.3297024000001,
+          222.2773992,
+          2
+        ],
+        "proposed_px": [
+          806.3297024000001,
+          222.2773992,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-upper.png"
+    },
+    {
+      "source_row_1based": 3,
+      "source_text": "0 0.48236461 0.30578097 0.05959594 0.03172389 0.45593406 0.31384250 2 0.50971031 0.31771042 2",
+      "candidate_text": "0 0.48342504 0.30578097 0.05747508 0.03172389 0.45593406 0.31384250 2 0.50971031 0.31771042 2",
+      "status": "corrected-supported",
+      "identity_assessment": {
+        "group": "upper_left_three",
+        "visible_position_in_group": 2,
+        "visible_group_count": 3,
+        "description": "upper-left three-front stack, observed front 2 of 3",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Middle front of the upper-left three has its own gray face and lower white strip between rows1 and6. It is not a duplicate of either adjacent face.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "modify_observed_side_bound",
+        "reason": "The raw left contour of row3 reaches about x582 at the gray/white face edge, while source xmin579.285 lies in the dark rack gap. Move only xmin to582.0; both independently reviewed lower corners remain unchanged.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          579.2852992,
+          208.74169799999999,
+          655.5681024,
+          231.58289879999998
+        ],
+        "proposed_xyxy_px": [
+          582.0,
+          208.74169799999999,
+          655.5681024,
+          231.58289879999998
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          583.5955968,
+          225.96660000000003,
+          2
+        ],
+        "proposed_px": [
+          583.5955968,
+          225.96660000000003,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          652.4291968,
+          228.7515024,
+          2
+        ],
+        "proposed_px": [
+          652.4291968,
+          228.7515024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-upper.png"
+    },
+    {
+      "source_row_1based": 4,
+      "source_text": "0 0.54140789 0.31591819 0.06065719 0.03256944 0.51264180 0.32199583 2 0.56909891 0.32843278 2",
+      "candidate_text": "0 0.54140789 0.31591819 0.06065719 0.03256944 0.51264180 0.32199583 2 0.56909891 0.32843278 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "upper_middle_two",
+        "visible_position_in_group": 1,
+        "visible_group_count": 2,
+        "description": "two-front stack immediately right of the upper-left stack, observed front 1 of 2",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Upper face of the two-front upper-middle stack is independently visible; its sloping lower edge continues between the supported left/right corners.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The stepped upper-left gray part is visible above the main bright face. Its plane membership is not established merely by continuity or brightness, so the source top remains provisional. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          654.1814976000001,
+          215.7360984,
+          731.8227007999999,
+          239.18609519999998
+        ],
+        "proposed_xyxy_px": [
+          654.1814976000001,
+          215.7360984,
+          731.8227007999999,
+          239.18609519999998
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          656.181504,
+          231.8369976,
+          2
+        ],
+        "proposed_px": [
+          656.181504,
+          231.8369976,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          728.4466048,
+          236.47160159999999,
+          2
+        ],
+        "proposed_px": [
+          728.4466048,
+          236.47160159999999,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-upper.png"
+    },
+    {
+      "source_row_1based": 5,
+      "source_text": "0 0.60185766 0.31934632 0.06277406 0.03375097 0.57203313 0.32763306 2 0.62933875 0.33336944 2",
+      "candidate_text": "0 0.60125094 0.31934632 0.06156062 0.03375097 0.57203313 0.32763306 2 0.62933875 0.33336944 2",
+      "status": "corrected-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 2,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 2 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Second central front has visible gray body above its lower strip. Both lower corners belong to this face, not the lower face beginning underneath it.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "modify_observed_side_bound",
+        "reason": "The shaded right contour slopes outward near x808–809 in the upper part of this face and inward below. Source xmax810.553 reaches the rack side. Use xmax809.0 to preserve shaded front material, rather than clipping to the brighter lower strip around x807.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          730.2024064,
+          217.77900119999998,
+          810.5532031999999,
+          242.07969960000003
+        ],
+        "proposed_xyxy_px": [
+          730.2024064,
+          217.77900119999998,
+          809.0,
+          242.07969960000003
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          732.2024064,
+          235.8958032,
+          2
+        ],
+        "proposed_px": [
+          732.2024064,
+          235.8958032,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          805.5536,
+          240.0259968,
+          2
+        ],
+        "proposed_px": [
+          805.5536,
+          240.0259968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-upper.png"
+    },
+    {
+      "source_row_1based": 6,
+      "source_text": "0 0.48083793 0.32925583 0.06009727 0.03192972 0.45367844 0.33705069 2 0.50861664 0.34244292 2",
+      "candidate_text": "0 0.48083793 0.32925583 0.06009727 0.03192972 0.45367844 0.33705069 2 0.50861664 0.34244292 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "upper_left_three",
+        "visible_position_in_group": 3,
+        "visible_group_count": 3,
+        "description": "upper-left three-front stack, observed front 3 of 3",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Lowest front of the upper-left stack is separated from the open rack below; both softened lower corners remain visible.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          577.0102976000001,
+          225.56949840000001,
+          653.9348032,
+          248.55889680000004
+        ],
+        "proposed_xyxy_px": [
+          577.0102976000001,
+          225.56949840000001,
+          653.9348032,
+          248.55889680000004
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          580.7084032,
+          242.6764968,
+          2
+        ],
+        "proposed_px": [
+          580.7084032,
+          242.6764968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          651.0292992,
+          246.5589024,
+          2
+        ],
+        "proposed_px": [
+          651.0292992,
+          246.5589024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-upper.png"
+    },
+    {
+      "source_row_1based": 7,
+      "source_text": "0 0.54001039 0.33744979 0.06123609 0.03253597 0.51095484 0.34384736 2 0.56812586 0.35094000 2",
+      "candidate_text": "0 0.54001039 0.33744979 0.06123609 0.03253597 0.51095484 0.34384736 2 0.56812586 0.35094000 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "upper_middle_two",
+        "visible_position_in_group": 2,
+        "visible_group_count": 2,
+        "description": "two-front stack immediately right of the upper-left stack, observed front 2 of 2",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Lowest front of the upper-middle two is distinguishable from row4 by its own face and lower edge; neither corner is hidden by the neighboring column.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          652.0222016,
+          231.25089960000003,
+          730.4043967999999,
+          254.67679800000002
+        ],
+        "proposed_xyxy_px": [
+          652.0222016,
+          231.25089960000003,
+          730.4043967999999,
+          254.67679800000002
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          654.0221952,
+          247.5700992,
+          2
+        ],
+        "proposed_px": [
+          654.0221952,
+          247.5700992,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          727.2011008,
+          252.6768,
+          2
+        ],
+        "proposed_px": [
+          727.2011008,
+          252.6768,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-upper.png"
+    },
+    {
+      "source_row_1based": 8,
+      "source_text": "0 0.60091223 0.34419007 0.06379133 0.03570125 0.57057906 0.35296958 2 0.62784773 0.35890875 2",
+      "candidate_text": "0 0.60091223 0.34419007 0.06379133 0.03570125 0.57057906 0.35296958 2 0.62784773 0.35890875 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 3,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 3 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Third upper central front is distinct from row10 below the small dark separation. Its lower corners are visible; no extra face is inferred from that separation.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          728.3412032000001,
+          234.96440040000002,
+          809.9941056,
+          260.6693004
+        ],
+        "proposed_xyxy_px": [
+          728.3412032000001,
+          234.96440040000002,
+          809.9941056,
+          260.6693004
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          730.3411968,
+          254.1380976,
+          2
+        ],
+        "proposed_px": [
+          730.3411968,
+          254.1380976,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          803.6450944000001,
+          258.4143,
+          2
+        ],
+        "proposed_px": [
+          803.6450944000001,
+          258.4143,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-upper.png"
+    },
+    {
+      "source_row_1based": 9,
+      "source_text": "0 0.72713035 0.36139715 0.06708320 0.03176514 0.69546922 0.36589917 2 0.75748437 0.37421194 2",
+      "candidate_text": "0 0.72713035 0.36139715 0.06708320 0.03176514 0.69546922 0.36589917 2 0.75748437 0.37421194 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "far_right_upper",
+        "visible_position_in_group": 1,
+        "visible_group_count": 1,
+        "description": "isolated upper far-right front, observed front 1 of 1",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Single upper far-right front has one supported gray/white body. The metal lattice below and around it is not a second front; both lower junctions are visible.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The upper-left gray projection reaches above/near the source top y248.77. A target-front interpretation and a raised-upper-plane interpretation imply different top bounds. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          887.7936000000001,
+          248.7704976,
+          973.660096,
+          271.6413984
+        ],
+        "proposed_xyxy_px": [
+          887.7936000000001,
+          248.7704976,
+          973.660096,
+          271.6413984
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          890.2006016,
+          263.4474024,
+          2
+        ],
+        "proposed_px": [
+          890.2006016,
+          263.4474024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          969.5799936000001,
+          269.4325968,
+          2
+        ],
+        "proposed_px": [
+          969.5799936000001,
+          269.4325968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-upper.png"
+    },
+    {
+      "source_row_1based": 10,
+      "source_text": "0 0.59967734 0.37687556 0.06256453 0.03515556 0.56995758 0.38270125 2 0.62767586 0.39165917 2",
+      "candidate_text": "0 0.59967734 0.37687556 0.06256453 0.03515556 0.56995758 0.38270125 2 0.62767586 0.39165917 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 4,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 4 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Front below the upper central group has its own stepped upper outline and bottom edge. The dark gap above is not counted as a hidden cassette.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The source box includes the upper gray stepped feature above the lower-front corners. A separate upper plane cannot be excluded from these softened pixels, so this top is not certified. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          727.5456959999999,
+          258.6944016,
+          807.6282944,
+          284.0064048
+        ],
+        "proposed_xyxy_px": [
+          727.5456959999999,
+          258.6944016,
+          807.6282944,
+          284.0064048
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          729.5457024,
+          275.5449,
+          2
+        ],
+        "proposed_px": [
+          729.5457024,
+          275.5449,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          803.4251008,
+          281.9946024,
+          2
+        ],
+        "proposed_px": [
+          803.4251008,
+          281.9946024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 11,
+      "source_text": "0 0.59851797 0.40136458 0.06288828 0.03800778 0.56863633 0.40805292 2 0.62601930 0.41759069 2",
+      "candidate_text": "0 0.59851797 0.40136458 0.06288828 0.03800778 0.56863633 0.40805292 2 0.62601930 0.41759069 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 5,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 5 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Central front immediately below row10 has a continuous shaded face and its own lower strip; both lower side/edge junctions are visible.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          725.8545024,
+          275.2996968,
+          806.3515007999999,
+          302.66529840000004
+        ],
+        "proposed_xyxy_px": [
+          725.8545024,
+          275.2996968,
+          806.3515007999999,
+          302.66529840000004
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          727.8545024,
+          293.7981024,
+          2
+        ],
+        "proposed_px": [
+          727.8545024,
+          293.7981024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          801.3047039999999,
+          300.66529679999996,
+          2
+        ],
+        "proposed_px": [
+          801.3047039999999,
+          300.66529679999996,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 12,
+      "source_text": "0 0.59729938 0.42685924 0.06309688 0.03852014 0.56731344 0.43343625 2 0.62592141 0.44334153 2",
+      "candidate_text": "0 0.59729938 0.42685924 0.06309688 0.03852014 0.56731344 0.43343625 2 0.62592141 0.44334153 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 6,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 6 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Central front below row11 is independently visible. The slightly rounded right lower junction remains one supported physical corner.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          724.1612032,
+          293.4714024,
+          804.9252096,
+          321.20590319999997
+        ],
+        "proposed_xyxy_px": [
+          724.1612032,
+          293.4714024,
+          804.9252096,
+          321.20590319999997
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          726.1612031999999,
+          312.07410000000004,
+          2
+        ],
+        "proposed_px": [
+          726.1612031999999,
+          312.07410000000004,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          801.1794048,
+          319.2059016,
+          2
+        ],
+        "proposed_px": [
+          801.1794048,
+          319.2059016,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 13,
+      "source_text": "0 0.59605227 0.45188368 0.06332453 0.03770042 0.56595250 0.45954917 2 0.62485875 0.46795611 2",
+      "candidate_text": "0 0.59605227 0.45188368 0.06332453 0.03770042 0.56595250 0.45954917 2 0.62485875 0.46795611 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 7,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 7 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Central front below row12 has a continuous slanted lower boundary; both visible points belong to the same face.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          722.4192064,
+          311.7840984,
+          803.4746048000001,
+          338.92840079999996
+        ],
+        "proposed_xyxy_px": [
+          722.4192064,
+          311.7840984,
+          803.4746048000001,
+          338.92840079999996
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          724.4191999999999,
+          330.8754024,
+          2
+        ],
+        "proposed_px": [
+          724.4191999999999,
+          330.8754024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          799.8192,
+          336.9283992,
+          2
+        ],
+        "proposed_px": [
+          799.8192,
+          336.9283992,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 14,
+      "source_text": "0 0.59486012 0.47686951 0.06348461 0.03734736 0.56468031 0.48395917 2 0.62379125 0.49276542 2",
+      "candidate_text": "0 0.59486012 0.47686951 0.06348461 0.03734736 0.56468031 0.48395917 2 0.62379125 0.49276542 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 8,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 8 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Central front above row16 retains gray face material above its bright lower strip; the strip alone is not treated as the entire box.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          720.7908032,
+          329.9009976,
+          802.0511039999999,
+          356.7910968
+        ],
+        "proposed_xyxy_px": [
+          720.7908032,
+          329.9009976,
+          802.0511039999999,
+          356.7910968
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          722.7907968,
+          348.4506024,
+          2
+        ],
+        "proposed_px": [
+          722.7907968,
+          348.4506024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          798.4528,
+          354.7911024,
+          2
+        ],
+        "proposed_px": [
+          798.4528,
+          354.7911024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 15,
+      "source_text": "0 0.65671906 0.48884903 0.06381562 0.03830556 0.62643109 0.49375875 2 0.68551930 0.50522403 2",
+      "candidate_text": "0 0.65671906 0.48884903 0.06381562 0.03830556 0.62643109 0.49375875 2 0.68551930 0.50522403 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "middle_right_six",
+        "visible_position_in_group": 1,
+        "visible_group_count": 6,
+        "description": "six-front middle-right stack, observed front 1 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Uppermost face of the middle-right stack is distinct from central row14. Its wider stepped visible outline and both lower corners are supported.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The exposed uppermost middle-right cassette has a gray upper-left step adjoining the bright face. The source top cannot be certified without deciding whether that step belongs to the front plane. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          799.7584,
+          338.1813,
+          881.4423936000001,
+          365.7613032
+        ],
+        "proposed_xyxy_px": [
+          799.7584,
+          338.1813,
+          881.4423936000001,
+          365.7613032
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          801.8317952,
+          355.5063,
+          2
+        ],
+        "proposed_px": [
+          801.8317952,
+          355.5063,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          877.4647040000001,
+          363.7613016,
+          2
+        ],
+        "proposed_px": [
+          877.4647040000001,
+          363.7613016,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 16,
+      "source_text": "0 0.59362426 0.50256167 0.06380227 0.03992111 0.56328563 0.51071972 2 0.62187250 0.51945056 2",
+      "candidate_text": "0 0.59362426 0.50256167 0.06380227 0.03992111 0.56328563 0.51071972 2 0.62187250 0.51945056 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 9,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 9 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Central front between rows14 and18 is separately identifiable from its gray body and lower boundary; overlapping axis-aligned boxes do not imply a duplicate.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          719.0056,
+          347.47280279999995,
+          800.6725056,
+          376.216002
+        ],
+        "proposed_xyxy_px": [
+          719.0056,
+          347.47280279999995,
+          800.6725056,
+          376.216002
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          721.0056064,
+          367.7181984,
+          2
+        ],
+        "proposed_px": [
+          721.0056064,
+          367.7181984,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          795.9968000000001,
+          374.0044032,
+          2
+        ],
+        "proposed_px": [
+          795.9968000000001,
+          374.0044032,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 17,
+      "source_text": "0 0.65572000 0.51352583 0.06438984 0.04052417 0.62515063 0.51895347 2 0.68469156 0.53101014 2",
+      "candidate_text": "0 0.65572000 0.51352583 0.06438984 0.04052417 0.62515063 0.51895347 2 0.68469156 0.53101014 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "middle_right_six",
+        "visible_position_in_group": 2,
+        "visible_group_count": 6,
+        "description": "six-front middle-right stack, observed front 2 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Second middle-right front has its own shaded body and lower white strip between rows15 and19; both corners remain visible.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          798.1121023999999,
+          355.1498964,
+          880.5310976,
+          384.3272988
+        ],
+        "proposed_xyxy_px": [
+          798.1121023999999,
+          355.1498964,
+          880.5310976,
+          384.3272988
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          800.1928064000001,
+          373.64649840000004,
+          2
+        ],
+        "proposed_px": [
+          800.1928064000001,
+          373.64649840000004,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          876.4051968,
+          382.3273008,
+          2
+        ],
+        "proposed_px": [
+          876.4051968,
+          382.3273008,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 18,
+      "source_text": "0 0.59235875 0.52889083 0.06394984 0.03950833 0.56194633 0.53641736 2 0.62043125 0.54541139 2",
+      "candidate_text": "0 0.59235875 0.52889083 0.06394984 0.03950833 0.56194633 0.53641736 2 0.62043125 0.54541139 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 10,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 10 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Central front between rows16 and20 has a visible slanted face; both side/lower-edge junctions are supported in the original.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          717.2913024000001,
+          366.5783988,
+          799.1470976,
+          395.02439640000006
+        ],
+        "proposed_xyxy_px": [
+          717.2913024000001,
+          366.5783988,
+          799.1470976,
+          395.02439640000006
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          719.2913024000001,
+          386.22049919999995,
+          2
+        ],
+        "proposed_px": [
+          719.2913024000001,
+          386.22049919999995,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          794.152,
+          392.69620080000004,
+          2
+        ],
+        "proposed_px": [
+          794.152,
+          392.69620080000004,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 19,
+      "source_text": "0 0.65465145 0.53924389 0.06487477 0.04146667 0.62380281 0.54522333 2 0.68383516 0.55719944 2",
+      "candidate_text": "0 0.65465145 0.53924389 0.06487477 0.04146667 0.62380281 0.54522333 2 0.68383516 0.55719944 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "middle_right_six",
+        "visible_position_in_group": 3,
+        "visible_group_count": 6,
+        "description": "six-front middle-right stack, observed front 3 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Third middle-right front is distinct from rows17 and22. The shaded lower-right boundary belongs to the cassette, not only its brightest strip.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          796.4340032,
+          373.3275996,
+          879.4737088,
+          403.18360199999995
+        ],
+        "proposed_xyxy_px": [
+          796.4340032,
+          373.3275996,
+          879.4737088,
+          403.18360199999995
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          798.4675968,
+          392.5607976,
+          2
+        ],
+        "proposed_px": [
+          798.4675968,
+          392.5607976,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          875.3090048,
+          401.1835968,
+          2
+        ],
+        "proposed_px": [
+          875.3090048,
+          401.1835968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 20,
+      "source_text": "0 0.59113340 0.55442507 0.06414102 0.03997431 0.56062539 0.56176306 2 0.61905578 0.57018694 2",
+      "candidate_text": "0 0.59113340 0.55442507 0.06414102 0.03997431 0.56062539 0.56176306 2 0.61905578 0.57018694 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 11,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 11 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Central front above row24 is identifiable independently of its neighbors; both lower corners remain in one softened physical junction each.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          715.6004992,
+          384.79529879999996,
+          797.7010048000001,
+          413.576802
+        ],
+        "proposed_xyxy_px": [
+          715.6004992,
+          384.79529879999996,
+          797.7010048000001,
+          413.576802
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          717.6004992000001,
+          404.4694032,
+          2
+        ],
+        "proposed_px": [
+          717.6004992000001,
+          404.4694032,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          792.3913984000001,
+          410.53459680000003,
+          2
+        ],
+        "proposed_px": [
+          792.3913984000001,
+          410.53459680000003,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 21,
+      "source_text": "0 0.46875000 0.56083806 0.06042938 0.03766278 0.44009781 0.56598583 2 0.49512664 0.57650208 2",
+      "candidate_text": "0 0.46875000 0.56083806 0.06042938 0.03766278 0.44009781 0.56598583 2 0.49512664 0.57650208 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "middle_left_two",
+        "visible_position_in_group": 1,
+        "visible_group_count": 2,
+        "description": "two-front middle-tier left stack, observed front 1 of 2",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Upper face of the middle-tier left pair has a stepped outline and both lower corners visible. The rack at its left is excluded as an instance.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The exposed top face of this two-front stack has a stepped upper-left gray region. No brightness-based clipping is applied; the physical upper-front boundary remains unresolved. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          561.3251968,
+          390.2448024,
+          638.6748032,
+          417.362004
+        ],
+        "proposed_xyxy_px": [
+          561.3251968,
+          390.2448024,
+          638.6748032,
+          417.362004
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          563.3251968,
+          407.5097976,
+          2
+        ],
+        "proposed_px": [
+          563.3251968,
+          407.5097976,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          633.7620992,
+          415.08149760000003,
+          2
+        ],
+        "proposed_px": [
+          633.7620992,
+          415.08149760000003,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 22,
+      "source_text": "0 0.65354836 0.56501639 0.06532391 0.04101611 0.62244891 0.57157806 2 0.68301852 0.58274667 2",
+      "candidate_text": "0 0.65354836 0.56501639 0.06532391 0.04101611 0.62244891 0.57157806 2 0.68301852 0.58274667 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "middle_right_six",
+        "visible_position_in_group": 4,
+        "visible_group_count": 6,
+        "description": "six-front middle-right stack, observed front 4 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Fourth middle-right front is separately visible between rows19 and26; both lower corners are exposed.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          794.7345984000001,
+          392.04600120000003,
+          878.3492032000001,
+          421.5776004
+        ],
+        "proposed_xyxy_px": [
+          794.7345984000001,
+          392.04600120000003,
+          878.3492032000001,
+          421.5776004
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          796.7346048,
+          411.5362032,
+          2
+        ],
+        "proposed_px": [
+          796.7346048,
+          411.5362032,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          874.2637056,
+          419.5776024,
+          2
+        ],
+        "proposed_px": [
+          874.2637056,
+          419.5776024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 23,
+      "source_text": "0 0.52886148 0.57029708 0.06128062 0.04126639 0.49978367 0.57758458 2 0.55544938 0.58700764 2",
+      "candidate_text": "0 0.52886148 0.57029708 0.06128062 0.04126639 0.49978367 0.57758458 2 0.55544938 0.58700764 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "middle_middle_two",
+        "visible_position_in_group": 1,
+        "visible_group_count": 2,
+        "description": "two-front middle-tier stack beside the left pair, observed front 1 of 2",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Upper face of the middle-tier middle pair is distinct from row21 beside it and row27 beneath it; both actual lower-front junctions are visible.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The exposed upper-left gray region adjoins the bright frontal region; whether the whole raised region is target front or upper-plane material remains unresolved. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          637.7230976,
+          395.7579972,
+          716.1622912,
+          425.469798
+        ],
+        "proposed_xyxy_px": [
+          637.7230976,
+          395.7579972,
+          716.1622912,
+          425.469798
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          639.7230976000001,
+          415.8608976,
+          2
+        ],
+        "proposed_px": [
+          639.7230976000001,
+          415.8608976,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          710.9752063999999,
+          422.64550080000004,
+          2
+        ],
+        "proposed_px": [
+          710.9752063999999,
+          422.64550080000004,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 24,
+      "source_text": "0 0.58989453 0.58029528 0.06440141 0.04165083 0.55925633 0.58803264 2 0.61809313 0.59533514 2",
+      "candidate_text": "0 0.58989453 0.58029528 0.06440141 0.04165083 0.55925633 0.58803264 2 0.61809313 0.59533514 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 12,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 12 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Central front between rows20 and28 is distinct despite adjacent sloping faces. Its visible gray body is retained.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          713.8480959999999,
+          402.81830279999997,
+          796.2819008000001,
+          432.80690039999996
+        ],
+        "proposed_xyxy_px": [
+          713.8480959999999,
+          402.81830279999997,
+          796.2819008000001,
+          432.80690039999996
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          715.8481024,
+          423.3835008,
+          2
+        ],
+        "proposed_px": [
+          715.8481024,
+          423.3835008,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          791.1592064,
+          428.6413008,
+          2
+        ],
+        "proposed_px": [
+          791.1592064,
+          428.6413008,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 25,
+      "source_text": "0 0.46707621 0.58456250 0.06161352 0.03858083 0.43783195 0.59013375 2 0.49383727 0.60048292 2",
+      "candidate_text": "0 0.46707621 0.58456250 0.06161352 0.03858083 0.43783195 0.59013375 2 0.49383727 0.60048292 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "middle_left_two",
+        "visible_position_in_group": 2,
+        "visible_group_count": 2,
+        "description": "two-front middle-tier left stack, observed front 2 of 2",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Lower face of the middle-tier left pair is separate from row21 and the open rack below. Both lower corners remain visible near the softened outer contour.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          558.424896,
+          406.99590120000005,
+          637.2902015999999,
+          434.77409879999993
+        ],
+        "proposed_xyxy_px": [
+          558.424896,
+          406.99590120000005,
+          637.2902015999999,
+          434.77409879999993
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          560.424896,
+          424.8963,
+          2
+        ],
+        "proposed_px": [
+          560.424896,
+          424.8963,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          632.1117056,
+          432.3477024,
+          2
+        ],
+        "proposed_px": [
+          632.1117056,
+          432.3477024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 26,
+      "source_text": "0 0.65246957 0.59080750 0.06575648 0.04116833 0.62115383 0.59696986 2 0.68217875 0.60861389 2",
+      "candidate_text": "0 0.65246957 0.59080750 0.06575648 0.04116833 0.62115383 0.59696986 2 0.68217875 0.60861389 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "middle_right_six",
+        "visible_position_in_group": 5,
+        "visible_group_count": 6,
+        "description": "six-front middle-right stack, observed front 5 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Fifth middle-right front has its own body and bottom edge above row29. Both points remain within single supported corner regions.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          793.0769024,
+          410.5608012,
+          877.2451968000001,
+          440.20199880000007
+        ],
+        "proposed_xyxy_px": [
+          793.0769024,
+          410.5608012,
+          877.2451968000001,
+          440.20199880000007
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          795.0769024,
+          429.81829919999996,
+          2
+        ],
+        "proposed_px": [
+          795.0769024,
+          429.81829919999996,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          873.1887999999999,
+          438.2020008,
+          2
+        ],
+        "proposed_px": [
+          873.1887999999999,
+          438.2020008,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 27,
+      "source_text": "0 0.52784535 0.59590924 0.06298477 0.03752125 0.49791547 0.60212736 2 0.55476047 0.61189208 2",
+      "candidate_text": "0 0.52784535 0.59590924 0.06298477 0.03752125 0.49791547 0.60212736 2 0.55476047 0.61189208 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "middle_middle_two",
+        "visible_position_in_group": 2,
+        "visible_group_count": 2,
+        "description": "two-front middle-tier stack beside the left pair, observed front 2 of 2",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Lower face of the middle-tier middle pair is distinct from row23 and the metal support beneath. Its lower corners are visible.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          635.3317952,
+          415.54700280000003,
+          715.9523007999999,
+          442.5623028
+        ],
+        "proposed_xyxy_px": [
+          635.3317952,
+          415.54700280000003,
+          715.9523007999999,
+          442.5623028
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          637.3318016000001,
+          433.5316992,
+          2
+        ],
+        "proposed_px": [
+          637.3318016000001,
+          433.5316992,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          710.0934015999999,
+          440.56229759999997,
+          2
+        ],
+        "proposed_px": [
+          710.0934015999999,
+          440.56229759999997,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 28,
+      "source_text": "0 0.58862117 0.60671660 0.06461562 0.04266958 0.55787586 0.61451986 2 0.61699016 0.62298597 2",
+      "candidate_text": "0 0.58862117 0.60671660 0.06461562 0.04266958 0.55787586 0.61451986 2 0.61699016 0.62298597 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "central_column",
+        "visible_position_in_group": 13,
+        "visible_group_count": 13,
+        "description": "long central column of individually visible fronts, observed front 13 of 13",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Lowest central front ends above open rack. Its shaded lower contour supports the existing points; the brighter band alone is not used as a replacement boundary.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          712.0811008,
+          421.4749032,
+          794.7890944000001,
+          452.19700080000007
+        ],
+        "proposed_xyxy_px": [
+          712.0811008,
+          421.4749032,
+          794.7890944000001,
+          452.19700080000007
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          714.0811008000001,
+          442.45429920000004,
+          2
+        ],
+        "proposed_px": [
+          714.0811008000001,
+          442.45429920000004,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          789.7474047999999,
+          448.5498984,
+          2
+        ],
+        "proposed_px": [
+          789.7474047999999,
+          448.5498984,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 29,
+      "source_text": "0 0.65136602 0.61696049 0.06627703 0.04269708 0.61979000 0.62345986 2 0.68126797 0.63553125 2",
+      "candidate_text": "0 0.65136602 0.61696049 0.06627703 0.04269708 0.61979000 0.62345986 2 0.68126797 0.63553125 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "middle_right_six",
+        "visible_position_in_group": 6,
+        "visible_group_count": 6,
+        "description": "six-front middle-right stack, observed front 6 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Lowest middle-right stack front is distinct from isolated row30 beside it. Its existing right point is within the softened junction at the face edge/gap.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          791.3312064,
+          428.840604,
+          876.1658047999999,
+          459.58250159999994
+        ],
+        "proposed_xyxy_px": [
+          791.3312064,
+          428.840604,
+          876.1658047999999,
+          459.58250159999994
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          793.3312,
+          448.8910992,
+          2
+        ],
+        "proposed_px": [
+          793.3312,
+          448.8910992,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          872.0230015999999,
+          457.5825,
+          2
+        ],
+        "proposed_px": [
+          872.0230015999999,
+          457.5825,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 30,
+      "source_text": "0 0.71614883 0.62906597 0.06926078 0.04454556 0.68310477 0.63376083 2 0.74705563 0.64821875 2",
+      "candidate_text": "0 0.71614883 0.62631326 0.06926078 0.03904014 0.68310477 0.63376083 2 0.74570313 0.64444444 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "far_right_lower",
+        "visible_position_in_group": 1,
+        "visible_group_count": 1,
+        "description": "isolated middle-tier far-right front, observed front 1 of 1",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Isolated middle-tier far-right front is one instance. The old right point extends below/right of its softened side/lower-edge junction into the rack/dark region.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "modify_bottom_upper_plane_unresolved",
+        "reason": "The visible gray/white front ends by about y465 at its right side. The previous bottom y468.964 includes rack below. This bound was judged from the original face contour independently of the point correction. The bottom and right corner can be corrected independently, but the exposed gray stepped feature at the upper-left still needs front-plane versus raised-upper-plane adjudication. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          872.3436032,
+          436.8910968,
+          960.9974016,
+          468.96389999999997
+        ],
+        "proposed_xyxy_px": [
+          872.3436032,
+          436.8910968,
+          960.9974016,
+          465.0
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          874.3741056,
+          456.3077976,
+          2
+        ],
+        "proposed_px": [
+          874.3741056,
+          456.3077976,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "relocate_supported_physical_junction",
+        "source_px": [
+          956.2312064,
+          466.7175,
+          2
+        ],
+        "proposed_px": [
+          954.5,
+          464.0,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The old point (956.2312064,466.7175) is below/right of the supported cassette corner into rack/dark pixels. The actual side/lower-front junction is manually localized at (954.5,464.0) within a soft edge. Root independently inspected the raw/source focus and concurred; the decimal coordinate is not subpixel-accuracy evidence."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-middle.png"
+    },
+    {
+      "source_row_1based": 31,
+      "source_text": "0 0.51873363 0.73266806 0.06177586 0.04219083 0.49016055 0.73464750 2 0.54617289 0.74949486 2",
+      "candidate_text": "0 0.51873363 0.73266806 0.06177586 0.04219083 0.49016055 0.73464750 2 0.54617289 0.74949486 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "bottom_left_six",
+        "visible_position_in_group": 1,
+        "visible_group_count": 6,
+        "description": "six-front lower-left occupied stack, observed front 1 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Topmost lower-left-stack front is independently identifiable from its stepped outline and sloping bottom edge. Both lower corners are visible.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The raised upper-left gray region reaches around/above the source top y512.332. It may require an expanded front box if it is front material; a roof interpretation would give a different boundary. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          624.4424959999999,
+          512.3323044,
+          703.5155967999999,
+          542.709702
+        ],
+        "proposed_xyxy_px": [
+          624.4424959999999,
+          512.3323044,
+          703.5155967999999,
+          542.709702
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          627.405504,
+          528.9462,
+          2
+        ],
+        "proposed_px": [
+          627.405504,
+          528.9462,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          699.1012992000001,
+          539.6362991999999,
+          2
+        ],
+        "proposed_px": [
+          699.1012992000001,
+          539.6362991999999,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 32,
+      "source_text": "0 0.51737691 0.75729778 0.06255492 0.04824611 0.48841555 0.76152681 2 0.54491594 0.77714694 2",
+      "candidate_text": "0 0.51737691 0.75729778 0.06255492 0.04824611 0.48841555 0.76152681 2 0.54491594 0.77714694 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "bottom_left_six",
+        "visible_position_in_group": 2,
+        "visible_group_count": 6,
+        "description": "six-front lower-left occupied stack, observed front 2 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Second lower-left front has its own shaded face and lower strip between rows31 and33; both lower corners remain visible.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          622.207296,
+          527.885802,
+          702.2775935999999,
+          562.6230012
+        ],
+        "proposed_xyxy_px": [
+          622.207296,
+          527.885802,
+          702.2775935999999,
+          562.6230012
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          625.1719039999999,
+          548.2993032,
+          2
+        ],
+        "proposed_px": [
+          625.1719039999999,
+          548.2993032,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          697.4924032,
+          559.5457968,
+          2
+        ],
+        "proposed_px": [
+          697.4924032,
+          559.5457968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 33,
+      "source_text": "0 0.51592207 0.78363799 0.06295008 0.04709236 0.48665781 0.78869403 2 0.54375914 0.80290528 2",
+      "candidate_text": "0 0.51592207 0.78363799 0.06295008 0.04709236 0.48665781 0.78869403 2 0.54375914 0.80290528 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "bottom_left_six",
+        "visible_position_in_group": 3,
+        "visible_group_count": 6,
+        "description": "six-front lower-left occupied stack, observed front 3 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Third lower-left front is distinct from rows32 and34; the entire shaded face is retained rather than only its bright bottom stripe.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          620.0921984,
+          547.2661032,
+          700.6683008,
+          581.1726024
+        ],
+        "proposed_xyxy_px": [
+          620.0921984,
+          547.2661032,
+          700.6683008,
+          581.1726024
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          622.9219968,
+          567.8597016,
+          2
+        ],
+        "proposed_px": [
+          622.9219968,
+          567.8597016,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          696.0116992000001,
+          578.0918016,
+          2
+        ],
+        "proposed_px": [
+          696.0116992000001,
+          578.0918016,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 34,
+      "source_text": "0 0.51447566 0.80985611 0.06340898 0.04721889 0.48497656 0.81434625 2 0.54257391 0.82918153 2",
+      "candidate_text": "0 0.51447566 0.80985611 0.06340898 0.04721889 0.48497656 0.81434625 2 0.54257391 0.82918153 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "bottom_left_six",
+        "visible_position_in_group": 4,
+        "visible_group_count": 6,
+        "description": "six-front lower-left occupied stack, observed front 4 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Fourth lower-left front has a supported face and both lower side/edge junctions between rows33 and37.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          617.9470976,
+          566.0975988,
+          699.110592,
+          600.0951996
+        ],
+        "proposed_xyxy_px": [
+          617.9470976,
+          566.0975988,
+          699.110592,
+          600.0951996
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          620.7699968,
+          586.3293,
+          2
+        ],
+        "proposed_px": [
+          620.7699968,
+          586.3293,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          694.4946047999999,
+          597.0107016000001,
+          2
+        ],
+        "proposed_px": [
+          694.4946047999999,
+          597.0107016000001,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 35,
+      "source_text": "0 0.64471563 0.81292000 0.06482172 0.04542306 0.61473172 0.81667792 2 0.67320352 0.83115736 2",
+      "candidate_text": "0 0.64471563 0.81292000 0.06482172 0.04542306 0.61473172 0.81667792 2 0.67320352 0.83115736 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "bottom_right_four",
+        "visible_position_in_group": 1,
+        "visible_group_count": 4,
+        "description": "four-front lower-right occupied stack, observed front 1 of 4",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Topmost lower-right front is identifiable separately from the back rack and row38 below; both lower corners are visible despite soft shading.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "A broad shaded upper region and a stepped gray portion precede the bright front. Their plane boundary is not unambiguously recoverable from this JPEG; the source top y568.95 is held provisionally. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          783.7501055999999,
+          568.9500984,
+          866.7219072,
+          601.6547016
+        ],
+        "proposed_xyxy_px": [
+          783.7501055999999,
+          568.9500984,
+          866.7219072,
+          601.6547016
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          786.8566016,
+          588.0081024,
+          2
+        ],
+        "proposed_px": [
+          786.8566016,
+          588.0081024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          861.7005056,
+          598.4332992,
+          2
+        ],
+        "proposed_px": [
+          861.7005056,
+          598.4332992,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 36,
+      "source_text": "0 0.57877281 0.82557590 0.06352672 0.04896931 0.54932187 0.83091972 2 0.60783945 0.84555167 2",
+      "candidate_text": "0 0.57877281 0.82557590 0.06352672 0.04896931 0.54932187 0.83091972 2 0.60783945 0.84555167 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "bottom_middle_three",
+        "visible_position_in_group": 1,
+        "visible_group_count": 3,
+        "description": "three-front lower-middle occupied stack, observed front 1 of 3",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Topmost lower-middle front has a stepped visible outline and two exposed lower corners. The relation between its upper gray region and the actual target front plane remains unresolved; brightness alone cannot classify it.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_placeholder_upper_plane_unresolved",
+        "reason": "The broad shaded upper region and upper-left step may mix upper-plane and front material. The source top y576.786 is held as a placeholder, not certified from brightness. The current top is retained only in the quarantined provisional file; no exact unverified replacement is forced.",
+        "other_edges": "Upper extent not certified; source coordinates are placeholders pending semantic adjudication.",
+        "source_xyxy_px": [
+          700.172096,
+          576.7856964,
+          781.4862976000001,
+          612.0435996
+        ],
+        "proposed_xyxy_px": [
+          700.172096,
+          576.7856964,
+          781.4862976000001,
+          612.0435996
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          703.1319936,
+          598.2621984,
+          2
+        ],
+        "proposed_px": [
+          703.1319936,
+          598.2621984,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          778.034496,
+          608.7972024,
+          2
+        ],
+        "proposed_px": [
+          778.034496,
+          608.7972024,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "ymin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Raised gray region is target front material",
+          "consequence": "Enclose all observed target material, including any part above the source top. Do not clip gray material by brightness."
+        },
+        {
+          "interpretation": "Raised gray region is a rim or upper plane outside the target front",
+          "consequence": "Exclude that non-front plane only after its physical boundary is identifiable. No replacement top is asserted from this JPEG."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 37,
+      "source_text": "0 0.51299477 0.83682736 0.06399063 0.04988389 0.48319906 0.84197569 2 0.54131820 0.85677194 2",
+      "candidate_text": "0 0.51299477 0.83682736 0.06399063 0.04988389 0.48319906 0.84197569 2 0.54131820 0.85677194 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "bottom_left_six",
+        "visible_position_in_group": 5,
+        "visible_group_count": 6,
+        "description": "six-front lower-left occupied stack, observed front 5 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Fifth lower-left front remains distinct from row34 above and row40 below. Neither point is occluded by the foreground gripper.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          615.6793024,
+          584.5574988,
+          697.5873088000001,
+          620.4738996
+        ],
+        "proposed_xyxy_px": [
+          615.6793024,
+          584.5574988,
+          697.5873088000001,
+          620.4738996
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          618.4947968,
+          606.2224968,
+          2
+        ],
+        "proposed_px": [
+          618.4947968,
+          606.2224968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          692.887296,
+          616.8757968,
+          2
+        ],
+        "proposed_px": [
+          692.887296,
+          616.8757968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 38,
+      "source_text": "0 0.64339191 0.83862229 0.06598727 0.04899569 0.61281906 0.84339569 2 0.67228969 0.85863972 2",
+      "candidate_text": "0 0.64339191 0.83862229 0.06598727 0.04899569 0.61281906 0.84339569 2 0.67228969 0.85863972 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "bottom_right_four",
+        "visible_position_in_group": 2,
+        "visible_group_count": 4,
+        "description": "four-front lower-right occupied stack, observed front 2 of 4",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Second lower-right front has a visible shaded body and its own lower strip between rows35 and41; both corners are visible.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          781.309792,
+          586.1696004,
+          865.7734975999999,
+          621.4464972
+        ],
+        "proposed_xyxy_px": [
+          781.309792,
+          586.1696004,
+          865.7734975999999,
+          621.4464972
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          784.4083968,
+          607.2448968,
+          2
+        ],
+        "proposed_px": [
+          784.4083968,
+          607.2448968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          860.5308032,
+          618.2205984,
+          2
+        ],
+        "proposed_px": [
+          860.5308032,
+          618.2205984,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 39,
+      "source_text": "0 0.57743637 0.85217444 0.06470727 0.04952194 0.54738906 0.85697069 2 0.60756039 0.87168222 2",
+      "candidate_text": "0 0.57743637 0.85217444 0.06470727 0.04952194 0.54738906 0.85697069 2 0.60756039 0.87168222 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "bottom_middle_three",
+        "visible_position_in_group": 2,
+        "visible_group_count": 3,
+        "description": "three-front lower-middle occupied stack, observed front 2 of 3",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Middle lower-middle front is independently visible above row42. Both corners are exposed; the foreground gripper starts below this face.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          697.7059008000001,
+          595.7376984,
+          780.5312064,
+          631.3934952
+        ],
+        "proposed_xyxy_px": [
+          697.7059008000001,
+          595.7376984,
+          780.5312064,
+          631.3934952
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          700.6579968,
+          617.0188968,
+          2
+        ],
+        "proposed_px": [
+          700.6579968,
+          617.0188968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          777.6772991999999,
+          627.6111983999999,
+          2
+        ],
+        "proposed_px": [
+          777.6772991999999,
+          627.6111983999999,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 40,
+      "source_text": "0 0.51151363 0.86370965 0.06439320 0.04911347 0.48155711 0.86689278 2 0.53949359 0.88192014 2",
+      "candidate_text": "0 0.51151363 0.86159035 0.06439320 0.04487486 0.48155711 0.86689278 2 0.53949359 0.88192014 2",
+      "status": "corrected-supported",
+      "identity_assessment": {
+        "group": "bottom_left_six",
+        "visible_position_in_group": 6,
+        "visible_group_count": 6,
+        "description": "six-front lower-left occupied stack, observed front 6 of 6",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Lowest lower-left front is fully identifiable above the support rail. The front ends near its slanted gray/white lower contour; the source bottom extends into rail/gripper-adjacent pixels.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "modify_observed_bottom_bound",
+        "reason": "The front lower contour reaches the softened right junction around y635–636; the source bottom y639.552 includes the support rail/foreground region. Keep shaded face pixels through y636.5, not only the bright stripe.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          613.5257984,
+          604.1900988,
+          695.9490944000001,
+          639.5517972
+        ],
+        "proposed_xyxy_px": [
+          613.5257984,
+          604.1900988,
+          695.9490944000001,
+          636.5
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          616.3931008,
+          624.1628016,
+          2
+        ],
+        "proposed_px": [
+          616.3931008,
+          624.1628016,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          690.5517952,
+          634.9825008,
+          2
+        ],
+        "proposed_px": [
+          690.5517952,
+          634.9825008,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 41,
+      "source_text": "0 0.64191152 0.86673160 0.06708602 0.05181236 0.61084094 0.87108000 2 0.67123680 0.88815083 2",
+      "candidate_text": "0 0.64191152 0.86673160 0.06708602 0.05181236 0.61084094 0.87108000 2 0.67123680 0.88815083 2",
+      "status": "retained-supported",
+      "identity_assessment": {
+        "group": "bottom_right_four",
+        "visible_position_in_group": 3,
+        "visible_group_count": 4,
+        "description": "four-front lower-right occupied stack, observed front 3 of 4",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Third lower-right front is distinguishable from row38 above and row43 below. Both lower-front corners remain visible above the gripper overlap.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "retain_reviewed_source_geometry",
+        "reason": "Raw pixels support this visible gray/white face and the existing enclosing rectangle at the softened image boundary. No distinct, more tightly supported physical extremum was identified for an edit. Retention is not based on endpoint containment or a brightness threshold; nearby slanted-face boxes may overlap.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          778.7116927999999,
+          605.3943024,
+          864.5817984,
+          642.6992016
+        ],
+        "proposed_xyxy_px": [
+          778.7116927999999,
+          605.3943024,
+          864.5817984,
+          642.6992016
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          781.8764032,
+          627.1776,
+          2
+        ],
+        "proposed_px": [
+          781.8764032,
+          627.1776,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          859.183104,
+          639.4685976,
+          2
+        ],
+        "proposed_px": [
+          859.183104,
+          639.4685976,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 42,
+      "source_text": "0 0.57551859 0.88241021 0.06543406 0.05601347 0.54545031 0.88355889 2 0.00000000 0.00000000 0",
+      "candidate_text": "0 0.57551859 0.87372952 0.06543406 0.03865208 0.54545031 0.88355889 2 0.00000000 0.00000000 0",
+      "status": "corrected-supported",
+      "identity_assessment": {
+        "group": "bottom_middle_three",
+        "visible_position_in_group": 3,
+        "visible_group_count": 3,
+        "description": "three-front lower-middle occupied stack, observed front 3 of 3",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Lowest lower-middle front remains identifiable from its visible gray body and lower strip. The left lower corner is visible; the actual right lower corner is covered/merged by the foreground gripper.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "modify_observed_bottom_bound",
+        "reason": "The last observed front material reaches the slanted front/gripper boundary around y641–643. The source bottom y655.5 extends substantially into the foreground gripper. The proposed bound encloses observed front portions; it does not extrapolate the hidden right corner.",
+        "other_edges": "Retained after independent original-image review; no automatic point-to-box adjustment.",
+        "source_xyxy_px": [
+          694.7859968,
+          615.170502,
+          778.5415936000002,
+          655.5002003999999
+        ],
+        "proposed_xyxy_px": [
+          694.7859968,
+          615.170502,
+          778.5415936000002,
+          643.0
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          698.1763968,
+          636.1624008,
+          2
+        ],
+        "proposed_px": [
+          698.1763968,
+          636.1624008,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The left side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_canonical_missing",
+        "source_px": [
+          0.0,
+          0.0,
+          0
+        ],
+        "proposed_px": [
+          0.0,
+          0.0,
+          0
+        ],
+        "visibility_independent": true,
+        "reason": "The actual right lower-front corner of row42 is occluded by the foreground gripper; no corner is inferred from the other point, box or edge extension."
+      },
+      "unresolved_fields": [],
+      "uncertainties_and_alternatives": [],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    },
+    {
+      "source_row_1based": 43,
+      "source_text": "0 0.64043699 0.89484132 0.06800195 0.05165847 0.00000000 0.00000000 0 0.67044203 0.91362569 2",
+      "candidate_text": "0 0.64043699 0.89214493 0.06800195 0.04626569 0.00000000 0.00000000 0 0.67044203 0.91362569 2",
+      "status": "unresolved",
+      "identity_assessment": {
+        "group": "bottom_right_four",
+        "visible_position_in_group": 4,
+        "visible_group_count": 4,
+        "description": "four-front lower-right occupied stack, observed front 4 of 4",
+        "decision": "one_identifiable_visible_front",
+        "observation": "Lowest lower-right front remains one identifiable face despite foreground occlusion on its left. The actual left corner is hidden; the right lower junction is visible above the rack.",
+        "duplicate_of": null
+      },
+      "box_assessment": {
+        "decision": "modify_bottom_left_observed_extent_unresolved",
+        "reason": "The visible right lower front ends around y658–659, including its gray outer boundary. The source bottom y662.883 includes rack below. The hidden left corner is not reconstructed to set this bound. The source xmin776.238 is also unresolved: the clearly visible gray front begins farther right around x780–782, but the gripper/soft side transition does not support a precise new observed left extent. Keep xmin only as a quarantined placeholder; do not infer a hidden full-face boundary.",
+        "other_edges": "The source xmin is an unresolved placeholder at the foreground gripper/soft side transition; no hidden full-object extent is inferred. The supported bottom trim does not resolve this left edge.",
+        "source_xyxy_px": [
+          776.2380992,
+          625.6887012000001,
+          863.2805952,
+          662.8827996
+        ],
+        "proposed_xyxy_px": [
+          776.2380992,
+          625.6887012000001,
+          863.2805952,
+          659.0
+        ]
+      },
+      "left_endpoint_assessment": {
+        "decision": "retain_canonical_missing",
+        "source_px": [
+          0.0,
+          0.0,
+          0
+        ],
+        "proposed_px": [
+          0.0,
+          0.0,
+          0
+        ],
+        "visibility_independent": true,
+        "reason": "The actual left lower-front corner of row43 is hidden by the foreground gripper; the exposed right point does not justify reconstructing it."
+      },
+      "right_endpoint_assessment": {
+        "decision": "retain_supported_visible_point",
+        "source_px": [
+          858.1657984000001,
+          657.8104968,
+          2
+        ],
+        "proposed_px": [
+          858.1657984000001,
+          657.8104968,
+          2
+        ],
+        "visibility_independent": true,
+        "reason": "The right side/lower-front-edge junction for this specific face is visible in the original and the source coordinate lies within that one supported softened junction. Preserve it rather than shifting to a brighter stripe, bounding-box edge, or cosmetic offset."
+      },
+      "unresolved_fields": [
+        "xmin"
+      ],
+      "uncertainties_and_alternatives": [
+        {
+          "interpretation": "Leftmost observed front material begins around x780–782",
+          "consequence": "A tighter xmin may be needed, but the softened gripper/front transition does not support a precise replacement from this view."
+        },
+        {
+          "interpretation": "Darker material nearer source xmin776.238 belongs to the front",
+          "consequence": "Retain only if this material can be distinguished physically from the metal/gripper; do not preserve the source bound merely because the true left corner is hidden."
+        }
+      ],
+      "precision_note": "Original JPEG edges are optically softened. Manual retention/placement is a physical-junction judgment, not a subpixel accuracy claim. No error bound is established by decimal formatting.",
+      "review_figure": "figures/frame_0001-lower.png"
+    }
+  ],
+  "root_adjudication": {
+    "status": "supported partial corrections retained; whole image quarantined",
+    "gray_material_rule": "Keep observed gray front material; neither brightness nor connection to the cassette establishes plane orientation.",
+    "unresolved_export_rule": "Retain the source coordinate only as an unaccepted placeholder. Other independently supported fields may be corrected.",
+    "frame_specific": "Peer proposed xmax808 for row5; original pixels show the shaded slanted right contour near808-809, so xmax809 is retained. Row3 xmin582 is supported. Row43 xmin remains unresolved."
+  }
+}
