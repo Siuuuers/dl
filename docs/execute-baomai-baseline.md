@@ -4,6 +4,8 @@
 
 The completed result, figures, replay evidence and notebook setup repair are in [the latest comparison PR](https://github.com/Siuuuers/dl/pull/17) and [the pinned report](https://github.com/Siuuuers/dl/blob/2799b8332bb46ba07d0ef95652d7f398559573c9/docs/warmup-comparison-2026-11-07.md). Do not repeat the successful GPU pair solely because the notebook setup cell was repaired.
 
+The targeted follow-up is now complete in **[PR #18](https://github.com/Siuuuers/dl/pull/18)** and [its pinned illustrated review](https://github.com/Siuuuers/dl/blob/284c62377d3a210f3deeadbbedbd7b749002768a/docs/warmup-detection-review-2026-11-07.md). All nine lost and eight gained matches were reviewed. A recovered 320-frame package supplies additional images and labels, but a model-blind three-image pilot found boxes extending into the rack/base. **Next: a separately versioned annotation adaptation before supplementary scoring.**
+
 The user's current duty is finding/localizing cassette objects in supplied baomai D405 images, preserving the existing one-class, two-lower-corner target. Camera settings are unknown. Camera/robot calibration and physical grasp qualification are outside this deliverable and are not prerequisites for image training.
 
 ## Latest completed comparison
@@ -31,19 +33,39 @@ The fresh control reproduces all 60 historical M1 prediction records exactly aft
 
 The net one-object deficit against control consists of **nine lost matches and eight gained matches**. Against M0, warmup loses one and gains three. The sole M0-detected loss is `new_000010`, one-based label row 14: an object largely covered by the gripper, with neither reference corner locatable. It still counts in object recall under the adopted visible-front policy.
 
+## Completed case review and additional-frame intake
+
+The complete 17-case review spans ten validation originals. Seven of eight warmup gains have a high-confidence control prediction overlapping the target region below the fixed IoU gate; their qualifying warmup IoUs are only 0.500357–0.533900. In one illustrated case, every predicted box edge moves by less than one pixel while the match flips. Original images raise reference-box extent questions on both gained and lost sides, without establishing model predictions as annotation truth.
+
+| Reference point availability | Objects | M0 misses | Control misses | Warmup misses |
+| --- | ---: | ---: | ---: | ---: |
+| Both corners visible | 584 | 14 | 14 | 11 |
+| One corner visible | 59 | 15 | 15 | 15 |
+| Neither corner locatable | 21 | 10 | 7 | 11 |
+
+These groups partition the original 664 objects. They do not redefine occlusion categories or exempt difficult objects from recall. No duplicate deletion or corrected coordinate is approved by this review; the original comparison and adoption rule remain intact.
+
+The actual upstream reviewed320 ZIP was recovered from `an94-doll/embedding_vision`, grasp-vision commit `9a6bf2432582af517d789c94eab2ac27e03a304b`. All 320 images and 320 labels match the pinned source hashes; structural checks cover 12,987 objects with no reported violation. Source ZIP: 43,424,432 bytes, SHA256 `b28bcce5fffe91f3e486ff11ec3085a67c868fe09e65c14788bc6fe494af4dd0`. [The inventory](https://github.com/Siuuuers/dl/blob/284c62377d3a210f3deeadbbedbd7b749002768a/docs/additional-frame-intake-2026-11-07.json) and the review capsule preserve source identities, lineage and a bounded recovery recipe.
+
+The 320 raw-image hashes do not overlap the frozen 157. Nevertheless, upstream's 48-test listing reuses 15 current-training and three current-validation images from its combined 477-source pool. Re-encoding those PNGs as JPEGs does not remove their lineage. The 320 additions also have historical upstream model usage and a random frame split with possible neighboring-frame overlap; they are not a certified independent test. The original excluded five final-test and nineteen gap images remain unidentified as those specific sets.
+
+The three-image intake pilot inspected raw originals before supplied-label overlays, without model predictions. Target identity and endpoint intent appear compatible, but `frame_0160` rows 41–43 extend beneath the white fronts into the metal rack/base. Its row 43 box ends at y=666.12 px while the supplied lower endpoints are near y=647.36/647.93 px; raw pixels identify the extra region as rack. These supplied labels are not ready as-is under `baomai-visible-front-v1`. The pilot does not approve all 129 rows or the remaining 317 images.
+
 ## Next bounded assignment
 
-**Goal:** resolve the specific box/occlusion questions in the saved cases and evaluate the frozen warmup candidate on fresh held-out scenes before promotion.
+**Goal:** prepare a separately versioned annotation-adaptation candidate from the recovered additional frames, then freeze a supplementary reference before scoring the fixed checkpoints.
 
-The latest evidence archive contains `warmup-object-transition-details.json` with every lost/gained object ID and a detailed packet for the nine control-only matches. Main comparison `gold_index` values are zero-based; the detail packet explicitly records actual one-based label rows. The report already provides a first diagnostic review and two raw-image figure comparisons.
+Preserve the upstream source image/label hashes and original one-based row identities. Review each included physical front, its observed front-face box, and each actual lower-front endpoint independently under the adopted policy. Preserve canonical missing states; do not infer hidden points, automatically snap boxes to endpoints, or use model agreement as annotation truth. Record or quarantine unresolved images before releasing a scoring reference.
 
-Continue with the clipped top-edge boxes, the four confidence-filtered objects, and `new_000056` row 4, where close corners accompany a box with IoU 0.479266 below the fixed 0.50 gate. Review visible front extent and occlusion under the existing annotation policy. A nearby box for a neighboring cassette is not a recovered detection. Store any supported annotation proposal separately with source hashes and review status; do not revise this comparison's frozen reference to make a model pass.
+Freeze eligible image IDs and exact adapted label bytes with review dispositions. Exclude all 157 old-image families even when re-encoded. Record capture/session and prior-use limits; if independent capture grouping cannot be established, label the future result as supplementary frame validation with correlated-scene limits.
 
-Use fresh scenes covering ordinary stacks, clipping and gripper occlusion to test whether the observed recovery persists. Define any prospective policy clarification or acceptance change before scoring those new images. Keep new evaluation data and its manifest separate from the 20-image development reference. The source-data README mentions five excluded final-test and nineteen gap images, but those images are absent from this package; do not treat them as available or as previously evaluated.
+Keep this reference separate from the frozen 20-image development manifest. The current `preflight_dataset` guard deliberately requires that original reference and should remain intact. A supplementary evaluator needs an explicit separate manifest while reusing the existing scorer and checkpoint-provenance checks. Compare M0, control and warmup in one common runtime at the same primary settings, and preserve predictions for replay.
 
-Keep M0 as the working model and preserve the warmup checkpoint unchanged while gathering that evidence. A new training change should follow a specific finding. Another blind sweep or a repeat solely for the notebook setup fix does not address the current evidence gap. No camera/calibration questionnaire is needed for this image-localization follow-up.
+M0 remains the working model and warmup stays frozen. No additional training is needed to prepare or run that checkpoint comparison. Another training change should follow a specific reviewed finding. The original GPU pair does not need to be repeated for the repaired notebook setup cell.
 
 ## Reproduce or inspect the completed work
+
+The latest [case/intake review](https://github.com/Siuuuers/dl/blob/284c62377d3a210f3deeadbbedbd7b749002768a/docs/warmup-detection-review-2026-11-07.md) and [structured verification record](https://github.com/Siuuuers/dl/blob/284c62377d3a210f3deeadbbedbd7b749002768a/docs/warmup-detection-review-2026-11-07.json) are preserved with a 34-file capsule at `results/review/baomai-warmup-detection-20261107/review.zip`. All 17 case figures and six intake figures reproduce byte-for-byte, and fresh extraction reproduces all seven cohort counts. The published tree and all 14 changed-file bytes were read back. This phase ran no new inference or training.
 
 Use the [latest report](https://github.com/Siuuuers/dl/blob/2799b8332bb46ba07d0ef95652d7f398559573c9/docs/warmup-comparison-2026-11-07.md) and [verification record](https://github.com/Siuuuers/dl/blob/2799b8332bb46ba07d0ef95652d7f398559573c9/docs/warmup-comparison-verification-2026-11-07.json). The compact archive is `results/evaluation/baomai-warmup-a100-001/evaluation.zip`. Its inventory and whole-archive checksum were read back; a fresh extraction replays successfully. The standard-library `scripts/summarize_warmup_comparison.py` validates original saved scores, correct recipe roles, completed runs and matched provenance before deriving the decision. It needs original validation PNGs/labels but no weights or machine-learning runtime.
 
@@ -67,10 +89,11 @@ The [repaired Colab notebook](https://colab.research.google.com/github/Siuuuers/
 | Isolated warmup recipes and original handoff | [PR #15](https://github.com/Siuuuers/dl/pull/15) |
 | Fresh control and warmup GPU return | [PR #16](https://github.com/Siuuuers/dl/pull/16) |
 | Warmup comparison, evidence and setup repair | [Latest comparison PR](https://github.com/Siuuuers/dl/pull/17) |
+| Completed detection review, recovered320 intake and semantic pilot | [PR #18](https://github.com/Siuuuers/dl/pull/18) |
 
-The latest comparison is stacked on PR #15, which is stacked on #14/#12/#11/#10/#9/#8/#7. PRs #13 and #16 contain separate main-based result archives. Inspect current heads before continuing; no merge is implied by this workflow update. Use the appropriate branch rather than rebuilding code missing from main.
+The latest review is stacked on PR #17, whose comparison is stacked on #15/#14/#12/#11/#10/#9/#8/#7. PRs #13 and #16 contain separate main-based result archives. Inspect current heads before continuing; no merge is implied by this workflow update. Use the appropriate branch rather than rebuilding code missing from main.
 
-The baseline hash is `e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e`. Its reference has 137 training images, 20 validation images, 3,772/664 objects and 13/3 empty scenes. Preserve `cassette_front`, `kpt_shape: [2, 3]`, `flip_idx: [1, 0]` and image-X corner order. Use raw 1280×720 PNGs. Unlocatable endpoints remain exactly `0 0 0`; model predictions do not supply hidden reference coordinates.
+The baseline hash is `e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e`. Its reference has 137 training images, 20 validation images, 3,772/664 objects and 13/3 empty scenes. Preserve `cassette_front`, `kpt_shape: [2, 3]`, `flip_idx: [1, 0]` and image-X corner order. The frozen reference uses raw 1280×720 PNGs; preserve the additional pool's original JPEG source bytes separately. Unlocatable endpoints remain exactly `0 0 0`; model predictions do not supply hidden reference coordinates.
 
 The adopted `baomai-visible-front-v1` policy retains identifiable visible fronts even when both target corners are unlocatable, and boxes observed front-face extent. Frozen legacy labels have not been completely migrated or certified. The separate deletion-only candidate has 3,761 objects and retains all 6,839 visible training endpoints. PR #2's historical 3,765-object candidate remains unrecovered and distinct. The first GPU comparison did not show that the eleven-row cleanup improved the model; its report remains an unchanged historical milestone.
 
