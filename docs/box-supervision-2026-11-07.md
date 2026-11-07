@@ -1,8 +1,8 @@
 # Bounded training-box refinement — 2026-11-07
 
-**Keep epoch173 as the working model.** The next concrete experiment corrects 16 supported box edges in three existing training images. The review and training path are prepared; a complete GPU comparison is still required before claiming model improvement. NMS remains 0.70 by default; the earlier 0.68 setting remains optional and is not mixed into this training experiment.
+**Completed result: keep epoch173 as the working model.** The [returned-model comparison](box-supervision-comparison-2026-11-07.md) audits both completed 30-epoch GPU runs from [PR #23](https://github.com/Siuuuers/dl/pull/23). The corrected-box candidate has 36 misses and 59 extras versus the matched original-label reference's 37 and 60, but p95 corner error increases from 5.004297 to 5.096371 px. It does not pass the predeclared requirement against both comparators. Preserve the candidate as promising. NMS remains 0.70 by default; the earlier optional 0.68 setting is a separate experiment.
 
-**Next action:** open the [GPU notebook](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/baomai-training-supervision-20261107/notebooks/baomai_box_supervision.ipynb), select a GPU runtime, and run all cells. It downloads the required inputs itself and returns one `baomai-box-supervision-results.zip`. Its immutable training source is [`918b2fd`](https://github.com/Siuuuers/dl/commit/918b2fdb811bd595fc09de9a423df6c40258c55a). The notebook and this guide are published separately from that pinned training source.
+**No rerun is needed for this completed pair.** The [GPU notebook](https://colab.research.google.com/github/Siuuuers/dl/blob/99c8df3116a17984dcf5d0e0421495b6c633b95d/notebooks/baomai_box_supervision.ipynb) and the instructions below preserve the original experiment for reproduction. Its immutable training source is [`918b2fd`](https://github.com/Siuuuers/dl/commit/918b2fdb811bd595fc09de9a423df6c40258c55a). Read the new result report for evidence and the next bounded question; historical CPU smoke limitations below describe the pre-GPU handoff.
 
 ## What the image review established
 
@@ -57,7 +57,7 @@ The low bias-warmup schedule is the already studied numeric recipe from the [war
 
 Keep every other setting fixed, including augmentation, losses, gradient accumulation and checkpoint selection. Both arms use the same software and GPU session. A resource trial preserves the 30-epoch schedule but stops after four actual batches and yields no eligible checkpoint. No inference threshold tuning is part of the experiment.
 
-## Run the GPU comparison
+## Reproduce the GPU comparison
 
 Open [baomai_box_supervision.ipynb](../notebooks/baomai_box_supervision.ipynb) in Colab, select a GPU runtime, and run the cells in order. The notebook pins an immutable training source, clones a fresh checkout, obtains only the original images and epoch173 through Git LFS, preserves the existing CUDA PyTorch installation, installs `ultralytics==8.4.182`, verifies the inputs, runs the resource trial and then the two full runs sequentially. It packages one `baomai-box-supervision-results.zip` to return for evaluation.
 
@@ -109,9 +109,9 @@ The two recovered failures recorded source `aa75df96abc31cf9f15fa23136dce342504b
 
 Independent review passed 63 existing focused checks, two checks of the new notebook's actual setup cell, and a synthetic matched-box package/restore probe. The embedded notebook preflight verified all 157 original images and the original checkpoint bytes. All seven delivered code cells compile, and the source placeholder is resolved. The packaging probe uses synthetic artifacts; it is not evidence of completed GPU training.
 
-The [execution verification record](../results/verification/baomai-box-supervision-20261107/verification.json) and [compact evidence ZIP](../results/verification/baomai-box-supervision-20261107/execution.zip) preserve commands, raw receipts, logs, staged YAMLs and review checks. The notebook still requires its four-batch resource trial on the actual GPU before full training. Colab execution and full validation/finalization resource usage have not been qualified here.
+The [execution verification record](../results/verification/baomai-box-supervision-20261107/verification.json) and [compact evidence ZIP](../results/verification/baomai-box-supervision-20261107/execution.zip) preserve commands, raw receipts, logs, staged YAMLs and review checks. At that handoff, Colab execution and full validation/finalization resource usage had not yet been qualified. The [completed GPU result](box-supervision-comparison-2026-11-07.md) now records both finalized runs; the notebook retains its four-batch resource trial for future reproduction on another runtime.
 
-## Decide after the returned models are evaluated
+## Predeclared evaluation and adoption rule
 
 Run epoch173, the fresh reference arm and the corrected-label arm together in one evaluator environment on the unchanged development reference. Preserve image size 1280, rectangular preprocessing, batch 1, FP32, ordinary NMS IoU 0.70, `max_det=300`, matching IoU 0.50, endpoint confidence 0.50 and box thresholds 0.15/0.25/0.40. The primary decision uses 0.25.
 
