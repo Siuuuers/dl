@@ -100,12 +100,13 @@ def describe_predictions(raw, width, height, endpoint_conf):
     return described
 
 
-def prepare_predictor(weights, device, threads, first_rgb, conf=0.25):
+def prepare_predictor(weights, device, threads, first_rgb, conf=0.25, nms_iou=0.70):
     import numpy as np
     import torch
+    inference = {**INFERENCE, "iou": nms_iou}
     model, runtime = _runtime_and_model({"weights": str(weights)}, device, threads)
     model.predict(source=np.zeros((first_rgb.height, first_rgb.width, 3), dtype=np.uint8),
-                  device=device, conf=conf, **INFERENCE)
+                  device=device, conf=conf, **inference)
     backend = model.predictor.model
     if backend.end2end or backend.fp16:
         raise RuntimeError("expected ordinary NMS and FP32")
@@ -116,7 +117,7 @@ def prepare_predictor(weights, device, threads, first_rgb, conf=0.25):
     def predict(rgb):
         bgr = np.ascontiguousarray(np.asarray(rgb)[:, :, ::-1])
         started = time.perf_counter()
-        results = model.predict(source=bgr, device=device, conf=conf, **INFERENCE)
+        results = model.predict(source=bgr, device=device, conf=conf, **inference)
         duration = (time.perf_counter() - started) * 1000
         if len(results) != 1 or tuple(results[0].orig_shape) != (rgb.height, rgb.width):
             raise RuntimeError("prediction image count or dimensions changed")
@@ -157,6 +158,8 @@ def run(args):
         raise ValueError("threads must be positive")
     if any(not _finite(value) or not 0 <= value <= 1 for value in (args.conf, args.endpoint_conf)):
         raise ValueError("confidence thresholds must be finite numbers in [0, 1]")
+    if not _finite(args.nms_iou) or not 0 <= args.nms_iou <= 1:
+        raise ValueError("NMS IoU must be a finite number in [0, 1]")
     source, output, images = discover_images(args.input, args.output)
     baseline = verify_baseline(ROOT)
     identity = _source_identity(ROOT)
@@ -167,7 +170,7 @@ def run(args):
                "selected_images": len(images), "succeeded_images": 0, "failed_images": 0,
                "unprocessed_images": 0, "prediction_count": 0, "displayed_endpoints": 0,
                "ground_truth_available": False, "source": identity, "runtime": None,
-               "inference": {**INFERENCE, "conf": args.conf}, "endpoint_confidence": args.endpoint_conf,
+               "inference": {**INFERENCE, "iou": args.nms_iou, "conf": args.conf}, "endpoint_confidence": args.endpoint_conf,
                "coordinate_system": "Pixels of the EXIF-oriented decoded image, before model resizing; overlays use these same pixels.",
                "prediction_scope": "Ultralytics postprocessed boxes/keypoints, including framework clipping; endpoint confidence is not reference visibility.",
                "warmup": None,
@@ -199,7 +202,7 @@ def run(args):
                 try:
                     if predictor is None:
                         predictor, summary["runtime"] = prepare_predictor(baseline["weights"], args.device, args.threads,
-                                                                        rgb, conf=args.conf)
+                                                                        rgb, conf=args.conf, nms_iou=args.nms_iou)
                         summary["warmup"] = "one explicit zero-image prediction excluded from timings"
                     result = predictor(rgb)
                     predictions = describe_predictions(result["predictions"], rgb.width, rgb.height, args.endpoint_conf)
@@ -244,6 +247,7 @@ def main(argv=None):
     parser.add_argument("--device", default="cpu", help="cpu or explicit CUDA device index")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--conf", type=float, default=0.25, help="box confidence threshold")
+    parser.add_argument("--nms-iou", type=float, default=0.70, help="NMS overlap threshold; default 0.70")
     parser.add_argument("--endpoint-conf", type=float, default=0.50, help="endpoint display threshold, not physical visibility")
     args = parser.parse_args(argv)
     try:

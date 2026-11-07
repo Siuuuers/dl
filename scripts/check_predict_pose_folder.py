@@ -8,9 +8,11 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from PIL import Image, ImageOps
 
@@ -68,6 +70,7 @@ class FolderChecks(unittest.TestCase):
         code, prepare = self.invoke()
         self.assertEqual(code, 0)
         prepare.assert_called_once()
+        self.assertEqual(prepare.call_args.kwargs["nms_iou"], 0.70)
         records = self.records()
         self.assertEqual([r["image"] for r in records], ["a/frame.jpg", "a/frame.png", "b/frame.png"])
         self.assertEqual([r["prediction_count"] for r in records], [1, 0, 1])
@@ -82,6 +85,7 @@ class FolderChecks(unittest.TestCase):
         self.assertEqual((summary["status"], summary["selected_images"], summary["succeeded_images"],
                           summary["failed_images"], summary["prediction_count"]), ("complete", 3, 3, 0, 2))
         self.assertIs(summary["ground_truth_available"], False)
+        self.assertEqual(summary["inference"]["iou"], 0.70)
         with (self.output / "summary.csv").open(newline="") as stream:
             self.assertEqual(len(list(csv.DictReader(stream))), 3)
         self.assertEqual(hashes, {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in hashes})
@@ -168,6 +172,45 @@ class FolderChecks(unittest.TestCase):
                 except SystemExit as error:
                     code = error.code
                 self.assertNotEqual(code, 0)
+                self.assertFalse(self.output.exists())
+
+    def test_nondefault_nms_is_forwarded_and_recorded_without_changing_baseline(self):
+        self.image("frame.png")
+        original = copy.deepcopy(runner.INFERENCE)
+        code, prepare = self.invoke(extra=("--nms-iou", "0.68"))
+        self.assertEqual(code, 0)
+        self.assertEqual(prepare.call_args.kwargs["nms_iou"], 0.68)
+        self.assertEqual(self.summary()["inference"], {**original, "iou": 0.68, "conf": 0.25})
+        self.assertEqual(runner.INFERENCE, original)
+
+    def test_predictor_uses_selected_nms_for_warmup_and_each_image(self):
+        import numpy as np
+        rgb = Image.fromarray(np.full((10, 12, 3), 255, dtype=np.uint8))
+        original = copy.deepcopy(runner.INFERENCE)
+        for kwargs, expected in (({}, 0.70), ({"nms_iou": 0.68}, 0.68)):
+            with self.subTest(nms_iou=expected):
+                result = SimpleNamespace(orig_shape=(10, 12), speed={"inference": 1.0})
+                model = SimpleNamespace(predict=Mock(return_value=[result]), predictor=SimpleNamespace(
+                    model=SimpleNamespace(end2end=False, fp16=False, device="cpu")))
+                torch = SimpleNamespace(set_num_threads=Mock(), get_num_threads=Mock(return_value=4))
+                with patch.dict(sys.modules, {"torch": torch}), \
+                        patch.object(runner, "_runtime_and_model", return_value=(model, {})), \
+                        patch.object(runner, "_prediction_records", return_value=[]):
+                    predict, _ = runner.prepare_predictor("model.pt", "cpu", 4, rgb, **kwargs)
+                    predict(rgb)
+                    predict(rgb)
+                self.assertEqual(model.predict.call_count, 3)
+                for call in model.predict.call_args_list:
+                    self.assertEqual({key: call.kwargs[key] for key in original}, {**original, "iou": expected})
+                self.assertEqual(runner.INFERENCE, original)
+
+    def test_invalid_nms_is_rejected_before_creating_output(self):
+        self.image("frame.png")
+        for value in ("nan", "inf", "-0.1", "1.1"):
+            with self.subTest(value=value):
+                code, prepare = self.invoke(extra=("--nms-iou", value))
+                self.assertNotEqual(code, 0)
+                prepare.assert_not_called()
                 self.assertFalse(self.output.exists())
 
     def test_display_flags_preserve_raw_coordinates_confidence_and_slot_order(self):

@@ -1,0 +1,438 @@
+{
+  "schema": "baomai-postprocess-verification-v1",
+  "created_at_utc": "2026-11-07T11:53:24.243992+00:00",
+  "status": "verified",
+  "decision": "Keep original epoch173 and default NMS0.70; expose optional NMS0.68 at box confidence0.25 as a small development-reference finding.",
+  "primary_hypothesis_passed": false,
+  "secondary_nms_068_guard_passed": true,
+  "plan_and_inference_source": {
+    "revision": "89895a172d94421f90c13a7858d9e8e8db4c11fd",
+    "working_tree_status": "",
+    "files_sha256": {
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/pose_checkpoint.py": "017863af87035e99aa987d874f5aefe3dc90e470b63be576c6f2ef9955b31953",
+      "scripts/experiment_pose_postprocess.py": "2c97908a5457e490797022c011cc8bcecd840bcd8f387ab9821daeaee4a034e3",
+      "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953"
+    }
+  },
+  "folder_inference_source": {
+    "revision": "2c409f4fa7c16367b7895a8b021611a277c68a3c",
+    "working_tree_status": "",
+    "files_sha256": {
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/pose_checkpoint.py": "017863af87035e99aa987d874f5aefe3dc90e470b63be576c6f2ef9955b31953",
+      "scripts/predict_pose_folder.py": "19463728cc695439f8f47d5b1462dffdd0b1605bd3ba6d933b4b0b7ff38ab7f6"
+    }
+  },
+  "model_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "device_requested": "cpu",
+    "torch": "2.10.0+cpu",
+    "torch_cuda": null,
+    "torch_threads_requested": 4,
+    "ultralytics": "8.4.182",
+    "loaded_kpt_shape": [
+      2,
+      3
+    ],
+    "packages": {
+      "torchvision": "0.25.0+cpu",
+      "numpy": "2.5.4",
+      "Pillow": "13.0.0",
+      "opencv-python": "5.0.0.93"
+    },
+    "device_actual": "cpu",
+    "backend_end2end": false,
+    "backend_fp16": false,
+    "torch_threads": 4
+  },
+  "plan": {
+    "nms_ious": [
+      0.7,
+      0.6,
+      0.68,
+      0.5
+    ],
+    "box_confidences": [
+      0.15,
+      0.25,
+      0.4
+    ],
+    "reference_images": 20,
+    "expected_prediction_records": 240,
+    "baseline": {
+      "nms_iou": 0.7,
+      "threshold": 0.25
+    },
+    "primary_candidate": {
+      "nms_iou": 0.6,
+      "threshold": 0.25
+    },
+    "secondary_candidates": [
+      {
+        "nms_iou": 0.68,
+        "threshold": 0.25
+      },
+      {
+        "nms_iou": 0.5,
+        "threshold": 0.25
+      }
+    ],
+    "matching_iou": 0.5,
+    "endpoint_confidence": 0.5,
+    "illustrative_radii_px": [
+      2,
+      5,
+      10
+    ],
+    "gate_metrics": [
+      "fn",
+      "fp",
+      "missing_endpoints",
+      "conditional_median_error_px",
+      "conditional_p95_error_px"
+    ],
+    "gate": "All five unrounded metrics finite and no worse than baseline, with at least one strictly better.",
+    "scope": "Development comparison; other box confidences are sensitivity analyses. No automatic adoption.",
+    "nms_068_reason": "Added before fresh inference after a saved-baseline overlap audit identified a possible lost true positive at 0.60.",
+    "fresh_inference": "Every image/setting pair is inferred separately; never filter already-suppressed predictions to construct another cell."
+  },
+  "primary_confidence_metrics": [
+    {
+      "nms_iou": 0.7,
+      "threshold": 0.25,
+      "tp": 625,
+      "fn": 39,
+      "fp": 63,
+      "duplicate_fp": 17,
+      "other_fp": 46,
+      "missing_endpoints": 43,
+      "conditional_median_error_px": 1.6117904791992994,
+      "conditional_p95_error_px": 5.161682583866238,
+      "precision": 0.9084302325581395,
+      "recall": 0.9412650602409639,
+      "f1": 0.9245562130177515,
+      "fn_plus_fp": 102
+    },
+    {
+      "nms_iou": 0.6,
+      "threshold": 0.25,
+      "tp": 624,
+      "fn": 40,
+      "fp": 46,
+      "duplicate_fp": 7,
+      "other_fp": 39,
+      "missing_endpoints": 44,
+      "conditional_median_error_px": 1.6112706180477285,
+      "conditional_p95_error_px": 5.088071891182782,
+      "precision": 0.9313432835820895,
+      "recall": 0.9397590361445783,
+      "f1": 0.9355322338830585,
+      "fn_plus_fp": 86
+    },
+    {
+      "nms_iou": 0.68,
+      "threshold": 0.25,
+      "tp": 625,
+      "fn": 39,
+      "fp": 61,
+      "duplicate_fp": 17,
+      "other_fp": 44,
+      "missing_endpoints": 43,
+      "conditional_median_error_px": 1.6117904791992994,
+      "conditional_p95_error_px": 5.161682583866238,
+      "precision": 0.9110787172011662,
+      "recall": 0.9412650602409639,
+      "f1": 0.9259259259259259,
+      "fn_plus_fp": 100
+    },
+    {
+      "nms_iou": 0.5,
+      "threshold": 0.25,
+      "tp": 623,
+      "fn": 41,
+      "fp": 34,
+      "duplicate_fp": 0,
+      "other_fp": 34,
+      "missing_endpoints": 45,
+      "conditional_median_error_px": 1.6109893394924364,
+      "conditional_p95_error_px": 5.039748193653929,
+      "precision": 0.9482496194824962,
+      "recall": 0.9382530120481928,
+      "f1": 0.9432248296744891,
+      "fn_plus_fp": 75
+    }
+  ],
+  "guard_outcomes": [
+    {
+      "role": "primary",
+      "nms_iou": 0.6,
+      "threshold": 0.25,
+      "passes_declared_gate": false
+    },
+    {
+      "role": "secondary",
+      "nms_iou": 0.68,
+      "threshold": 0.25,
+      "passes_declared_gate": true
+    },
+    {
+      "role": "secondary",
+      "nms_iou": 0.5,
+      "threshold": 0.25,
+      "passes_declared_gate": false
+    }
+  ],
+  "nms_068_at_confidence_025": {
+    "identical_matched_reference_prediction_records": 625,
+    "lost_or_gained_reference_matches": 0,
+    "removed_predictions": 7,
+    "added_predictions": 5,
+    "changed_images": 4,
+    "fn_delta": 0,
+    "fp_delta": -2,
+    "duplicate_fp_delta": 0,
+    "changes": [
+      {
+        "image_id": "new_000007",
+        "fn_before": 3,
+        "fn_after": 3,
+        "fp_before": 2,
+        "fp_after": 2,
+        "removed_prediction_indices_0based": [
+          51
+        ],
+        "removed_categories": [
+          "duplicate_FP"
+        ],
+        "added_prediction_indices_0based": [
+          52
+        ],
+        "added_categories": [
+          "duplicate_FP"
+        ]
+      },
+      {
+        "image_id": "new_000008",
+        "fn_before": 3,
+        "fn_after": 3,
+        "fp_before": 4,
+        "fp_after": 3,
+        "removed_prediction_indices_0based": [
+          34
+        ],
+        "removed_categories": [
+          "other_FP"
+        ],
+        "added_prediction_indices_0based": [],
+        "added_categories": []
+      },
+      {
+        "image_id": "new_000009",
+        "fn_before": 5,
+        "fn_after": 5,
+        "fp_before": 14,
+        "fp_after": 13,
+        "removed_prediction_indices_0based": [
+          54,
+          57,
+          64,
+          65
+        ],
+        "removed_categories": [
+          "other_FP",
+          "other_FP",
+          "other_FP",
+          "other_FP"
+        ],
+        "added_prediction_indices_0based": [
+          56,
+          60,
+          62
+        ],
+        "added_categories": [
+          "other_FP",
+          "other_FP",
+          "other_FP"
+        ]
+      },
+      {
+        "image_id": "new_000090",
+        "fn_before": 3,
+        "fn_after": 3,
+        "fp_before": 13,
+        "fp_after": 13,
+        "removed_prediction_indices_0based": [
+          50
+        ],
+        "removed_categories": [
+          "other_FP"
+        ],
+        "added_prediction_indices_0based": [
+          53
+        ],
+        "added_categories": [
+          "other_FP"
+        ]
+      }
+    ]
+  },
+  "lost_reference_rows_1based_at_confidence_025": {
+    "0.60": {
+      "new_000009": [
+        51
+      ]
+    },
+    "0.50": {
+      "new_000009": [
+        50,
+        51
+      ]
+    }
+  },
+  "checks": {
+    "experiment_focused_checks": {
+      "passed": 7,
+      "source_revision": "2c409f4fa7c16367b7895a8b021611a277c68a3c",
+      "log": "experiment-checks.log",
+      "exit_code": 0
+    },
+    "folder_focused_checks": {
+      "passed": 14,
+      "source_revision": "2c409f4fa7c16367b7895a8b021611a277c68a3c",
+      "log": "folder-checks.log",
+      "exit_code": 0
+    },
+    "fresh_fixed_grid": {
+      "exit_code": 0,
+      "image_settings_predictions": 240,
+      "settings_cells": 12,
+      "images_per_cell": 20
+    },
+    "independent_rescore": {
+      "exit_code": 0,
+      "per_image_records": 240,
+      "aggregate_quality_records": 12,
+      "historical_control_payloads_exact": 60
+    },
+    "fresh_archive_restore": {
+      "exit_code": 0,
+      "numeric_replay_files_exact": [
+        "predictions.jsonl",
+        "summary.json",
+        "per_image.json",
+        "metrics.csv"
+      ],
+      "readiness_report_exact": true,
+      "folder_parity_report_exact": true,
+      "selected_figures_exact": 3
+    },
+    "folder_real_inference": {
+      "candidate_images": 4,
+      "default_images": 2,
+      "all_complete_raw_prediction_lists_exact": true,
+      "both_commands_exit_code": 0
+    }
+  },
+  "archive": {
+    "path": "results/evaluation/baomai-postprocess-20261107/evidence.zip",
+    "bytes": 1551707,
+    "sha256": "761b4c94a812b3933a10ac9ca5fe30a8c63d62eb96143fb459d726977090cc6a",
+    "archive_members": 33,
+    "inventoried_payloads": 32,
+    "crc": "passed",
+    "fresh_extraction_payload_hashes": "passed",
+    "inventory_sha256": "80afd6ec04ef3cb5d16d6c7b38792429d74bbf8ddef4eb70f2003d911ae0d0dc"
+  },
+  "figures": [
+    {
+      "archive_path": "visual-review/new_000008-gripper-nms.png",
+      "sha256": "bcf729ab510aa242f3c8042154fadf2eca5d2a5169cf019bd20c1d5f29414d5a",
+      "bytes": 135978,
+      "fresh_restore_render_exact": true
+    },
+    {
+      "archive_path": "visual-review/new_000009-occlusion-nms.png",
+      "sha256": "efb77950332464c188a2b8842a0c1a059cce4b19e54e7646555cd109ec391bdd",
+      "bytes": 192268,
+      "fresh_restore_render_exact": true
+    },
+    {
+      "archive_path": "visual-review/border-replacements-nms068.png",
+      "sha256": "6b9626067b23bf3d46a79ad8d51cbe81710c6285e25bb22a0b69491f70870da0",
+      "bytes": 164521,
+      "fresh_restore_render_exact": true
+    }
+  ],
+  "commands": {
+    "fresh_fixed_grid": [
+      "/workspace/scratch/9efde40f17e2/inference-venv/bin/python",
+      "/workspace/scratch/5f62b3a9ec07/dl-postprocess/scripts/experiment_pose_postprocess.py",
+      "--output",
+      "/workspace/scratch/5f62b3a9ec07/postprocess-evidence/fresh",
+      "--device",
+      "cpu",
+      "--threads",
+      "4"
+    ],
+    "folder_runs": [
+      {
+        "arguments": [
+          "/workspace/scratch/9efde40f17e2/inference-venv/bin/python",
+          "scripts/predict_pose_folder.py",
+          "--input",
+          "/workspace/scratch/5f62b3a9ec07/postprocess-evidence/folder-input-068",
+          "--output",
+          "/workspace/scratch/5f62b3a9ec07/postprocess-evidence/folder-output-068",
+          "--device",
+          "cpu",
+          "--threads",
+          "4",
+          "--nms-iou",
+          "0.68"
+        ],
+        "exit_code": 0,
+        "started_utc": "2026-11-07T11:43:42.522383+00:00",
+        "finished_utc": "2026-11-07T11:43:47.375071+00:00"
+      },
+      {
+        "arguments": [
+          "/workspace/scratch/9efde40f17e2/inference-venv/bin/python",
+          "scripts/predict_pose_folder.py",
+          "--input",
+          "/workspace/scratch/5f62b3a9ec07/postprocess-evidence/folder-input-default",
+          "--output",
+          "/workspace/scratch/5f62b3a9ec07/postprocess-evidence/folder-output-default",
+          "--device",
+          "cpu",
+          "--threads",
+          "4"
+        ],
+        "exit_code": 0,
+        "started_utc": "2026-11-07T11:43:47.375440+00:00",
+        "finished_utc": "2026-11-07T11:43:50.997084+00:00"
+      }
+    ]
+  },
+  "files_unchanged_since_executed_source": {
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+    "scripts/pose_checkpoint.py": "017863af87035e99aa987d874f5aefe3dc90e470b63be576c6f2ef9955b31953",
+    "scripts/experiment_pose_postprocess.py": "2c97908a5457e490797022c011cc8bcecd840bcd8f387ab9821daeaee4a034e3",
+    "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953",
+    "scripts/predict_pose_folder.py": "19463728cc695439f8f47d5b1462dffdd0b1605bd3ba6d933b4b0b7ff38ab7f6"
+  },
+  "limitations": [
+    "20 repeatedly analyzed development images; no independent test population.",
+    "Frozen legacy references have not been fully visually certified.",
+    "Misses and extras are measured by the fixed matching rule, not physical certification of every rectangle.",
+    "Conditional corner errors exclude missing endpoints and do not measure hidden-corner accuracy.",
+    "No new images, labels, model weights, training, default-setting change or PR merge."
+  ]
+}
