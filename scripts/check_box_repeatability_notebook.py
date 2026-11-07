@@ -7,6 +7,7 @@ from importlib.metadata import PackageNotFoundError
 from io import StringIO
 import json
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 from types import SimpleNamespace
@@ -44,6 +45,16 @@ class RepeatabilityNotebookChecks(unittest.TestCase):
                               next(ast.literal_eval(k.value) for k in call.keywords if k.arg == "seed")))
         self.assertEqual(order, [("seed-43/reference", "reference", 43), ("seed-43/candidate", "candidate", 43),
                                  ("seed-44/reference", "reference", 44), ("seed-44/candidate", "candidate", 44)])
+        workspace = self.cells["box-repeatability-workspace"]
+        trial = self.cells["box-repeatability-trial"]
+        self.assertIn('SOURCE_REVISION = "f087c35f74bf304eb61998edcaa2172fe1cba49c"', workspace)
+        self.assertIn('drive.mount("/content/drive")', workspace)
+        self.assertIn("MyDrive/baomai-box-repeatability-20261107", workspace)
+        self.assertIn("restore_from_drive(folder)", trial)
+        self.assertEqual(trial.count("save_to_drive(output)"), 2)
+        self.assertIn('"--max-seconds", "600" if trial else "21600"', trial)
+        self.assertIn("save_to_drive(RESULTS_ZIP)", self.cells["box-repeatability-package"])
+        self.assertIn('"ultralytics==8.4.182"', self.cells["box-repeatability-install"])
 
     def execute_workspace(self, revision="a" * 40):
         tree = ast.parse(self.cells["box-repeatability-workspace"])
@@ -70,6 +81,7 @@ class RepeatabilityNotebookChecks(unittest.TestCase):
     def test_actual_workspace_cell_creates_only_a_fresh_folder(self):
         scope = self.execute_workspace()
         self.assertTrue(scope["RUN_BASE"].is_dir())
+        self.assertIsNone(scope["DRIVE_ROOT"])
         self.assertEqual(scope["RECIPE_BY_SEED"], {43: "box-supervision-warmup-seed43-v1", 44: "box-supervision-warmup-seed44-v1"})
         marker = scope["RUN_BASE"] / "preserve.txt"
         marker.write_text("preserve completed work")
@@ -115,6 +127,123 @@ class RepeatabilityNotebookChecks(unittest.TestCase):
             self.execute_install(missing)
         self.assertFalse((self.base / "torch-constraints.txt").exists())
         self.assertEqual(self.commands, [])
+
+    def finished_receipt(self, *, trial):
+        receipt = {
+            "status": "trial-complete" if trial else "complete",
+            "optimizer_steps": 4,
+            "optimizer_parameter_change_observed": True,
+            "arm": "candidate" if trial else "reference",
+            "recipe_id": "box-supervision-warmup-seed43-v1",
+            "initial_checkpoint_sha256": "abc",
+            "source": {"revision": "a" * 40, "working_tree_status": ""},
+            "training_settings": {"seed": 43, "epochs": 30, "warmup_bias_lr": 0.0001},
+            "batches_completed": 4,
+            "completed_epochs": [] if trial else list(range(1, 31)),
+            "checkpoint_selection": "none",
+        }
+        return receipt
+
+    def write_run(self, path, *, trial):
+        path.mkdir(parents=True)
+        (path / "training-receipt.json").write_text(
+            json.dumps(self.finished_receipt(trial=trial)), encoding="utf-8")
+        (path / "train.log").write_text("log", encoding="utf-8")
+        if not trial:
+            (path / "checkpoint-manifest.json").write_text("{}", encoding="utf-8")
+
+    def test_finished_drive_runs_restore_without_training_and_finished_copies_stay(self):
+        workspace = self.execute_workspace()
+        drive = self.base / "drive"
+        workspace["DRIVE_ROOT"] = drive
+        run_base = workspace["RUN_BASE"]
+        trial_dir = run_base / "resource-trial"
+        reference_dir = run_base / "seed-43" / "reference"
+        self.write_run(trial_dir, trial=True)
+        self.write_run(reference_dir, trial=False)
+        with redirect_stdout(StringIO()):
+            workspace["save_to_drive"](trial_dir)
+            workspace["save_to_drive"](reference_dir)
+        self.assertEqual((drive / "resource-trial" / "train.log").read_text(encoding="utf-8"), "log")
+        self.assertTrue((self.base / "drive" / "resource-trial.complete").is_file())
+        (drive / "resource-trial" / "train.log").write_text("keep", encoding="utf-8")
+        with redirect_stdout(StringIO()):
+            workspace["save_to_drive"](trial_dir)
+        self.assertEqual((drive / "resource-trial" / "train.log").read_text(encoding="utf-8"), "keep")
+        archive = run_base / "baomai-box-repeatability-results.zip"
+        archive.write_bytes(b"zip-bytes")
+        with redirect_stdout(StringIO()):
+            workspace["save_to_drive"](archive)
+        self.assertEqual((drive / archive.name).read_bytes(), b"zip-bytes")
+        archive.write_bytes(b"different")
+        with redirect_stdout(StringIO()):
+            workspace["save_to_drive"](archive)
+        self.assertEqual((drive / archive.name).read_bytes(), b"zip-bytes")
+        partial = drive / "seed-44" / "candidate"
+        partial.mkdir(parents=True)
+        (partial / "training-receipt.json").write_text("{}", encoding="utf-8")
+        self.assertIsNone(workspace["restore_from_drive"]("seed-44/candidate"))
+        self.assertFalse((run_base / "seed-44" / "candidate").exists())
+        half = drive / "seed-44" / "reference"
+        half.mkdir(parents=True)
+        (half / "train.log").write_text("partial", encoding="utf-8")
+        local_half = run_base / "seed-44" / "reference"
+        local_half.mkdir(parents=True)
+        (local_half / "train.log").write_text("full", encoding="utf-8")
+        with redirect_stdout(StringIO()):
+            workspace["save_to_drive"](local_half)
+        self.assertEqual((half / "train.log").read_text(encoding="utf-8"), "full")
+        self.assertTrue(Path(str(half) + ".complete").is_file())
+        shutil.rmtree(trial_dir)
+        shutil.rmtree(reference_dir)
+
+        class TrainingStarted(RuntimeError):
+            pass
+
+        class Subprocess:
+            PIPE = object()
+            STDOUT = object()
+
+            def Popen(self, *args, **kwargs):
+                raise TrainingStarted("training started")
+
+        tree = ast.parse(self.cells["box-repeatability-trial"])
+        tree.body = [node for node in tree.body if isinstance(node, ast.FunctionDef)]
+        self.assertEqual([node.name for node in tree.body], ["train_one"])
+        scope = {
+            "RUN_BASE": run_base,
+            "RECIPE_BY_SEED": workspace["RECIPE_BY_SEED"],
+            "SOURCE_REVISION": workspace["SOURCE_REVISION"],
+            "reference_manifest": {"model_sha256": "abc"},
+            "json": json,
+            "sys": sys,
+            "subprocess": Subprocess(),
+            "restore_from_drive": workspace["restore_from_drive"],
+            "save_to_drive": workspace["save_to_drive"],
+            "CANDIDATE_MANIFEST": "data/candidates/box-refinement-2026-11-07/manifest.json",
+            "HOST_RSS_LIMIT_MIB": 12000,
+            "REPO": run_base / "dl",
+        }
+        with redirect_stdout(StringIO()):
+            exec(compile(tree, "repeatability-trial", "exec"), scope)
+            restored_trial = scope["train_one"]("resource-trial", "candidate", seed=43, trial=True)
+            restored_reference = scope["train_one"]("seed-43/reference", "reference", seed=43)
+        self.assertEqual(restored_trial, trial_dir)
+        self.assertEqual(restored_reference, reference_dir)
+        self.assertEqual((trial_dir / "train.log").read_text(encoding="utf-8"), "keep")
+        self.assertFalse((trial_dir / "checkpoint-manifest.json").exists())
+        self.assertTrue((reference_dir / "checkpoint-manifest.json").is_file())
+        bad = run_base / "seed-43" / "candidate"
+        bad.mkdir(parents=True)
+        (bad / "training-receipt.json").write_text("{}", encoding="utf-8")
+        with redirect_stdout(StringIO()):
+            with self.assertRaisesRegex(FileExistsError, "new folder name"):
+                scope["train_one"]("seed-43/candidate", "candidate", seed=43)
+            with self.assertRaisesRegex(TrainingStarted, "training started"):
+                scope["train_one"]("seed-44/candidate", "candidate", seed=44)
+        workspace["DRIVE_ROOT"] = None
+        self.assertIsNone(workspace["save_to_drive"](trial_dir))
+        self.assertIsNone(workspace["restore_from_drive"]("resource-trial"))
 
 
 if __name__ == "__main__":
