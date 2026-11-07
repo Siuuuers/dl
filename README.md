@@ -120,7 +120,7 @@ test/d405_recordings/recording_日期_时间/
 
 ## GPU 訓練與比較結果
 
-**目前下一步：**[既有訓練框的有限修正實驗](docs/box-supervision-2026-11-07.md) 已完成候選標籤與執行檢查。三張既有訓練影像共有16個框邊界修正；物件列的數目與身分、角點及驗證集保持原樣。使用[GPU notebook](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/baomai-training-supervision-20261107/notebooks/baomai_box_supervision.ipynb)，選GPU後依序執行，回傳 `baomai-box-supervision-results.zip`。新的CPU候選組檢查完成一個batch與一次實際參數更新；完整GPU比較尚未完成，繼續使用原始第173輪模型。
+**最新結果：繼續使用原始第173輪模型。** [訓練框修正比較](docs/box-supervision-comparison-2026-11-07.md) 已完成 [PR #23](https://github.com/Siuuuers/dl/pull/23) 的兩組30輪GPU結果審核及三模型共同評估，無需重跑該次GPU作業。修正框候選的漏檢／額外偵測為36／59，原始第173輪為39／63，同配方的原標籤控制組為37／60；但候選的角點p95誤差為5.096371 px，控制組為5.004297 px，尚未通過預先訂定的兩組比較標準。保留候選與16個經審查的框邊界修正；下一個建議問題是以預先固定的配對種子檢查這項偵測／角點取捨是否穩定。[原實驗計畫與notebook](docs/box-supervision-2026-11-07.md) 保留供重現。
 
 目前工作只處理 baomai D405 影像中的包埋盒定位，保留現有兩個下角點的定義。[bias warmup 比較](docs/warmup-comparison-2026-11-07.md) 已完成，並驗證 [PR #16](https://github.com/Siuuuers/dl/pull/16) 回傳的兩組模型與紀錄。降低 bias 起始學習率的模型在五項主要指標上均優於原始第173輪模型，但漏檢數為37，新控制組為36，尚未通過預先訂定的兩組比較標準。因此繼續使用原始模型，保留 warmup 模型作為有潛力的候選。
 
