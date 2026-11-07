@@ -1,6 +1,8 @@
 # Decide whether the two-corner model is good enough
 
-**Current scope, clarified by the user on 2026-11-07 (Asia/Hong_Kong): find/localize cassette objects in the supplied baomai D405 images.** Keep the existing two-lower-corner pose target and use baomai as the foundation. Camera mounting, robot/gripper integration and physical calibration are outside this deliverable and do not block image evaluation. Continue from the [additional annotation pilot](additional-annotation-pilot-2026-11-07.md). The supplied epoch173 model remains the working default under the predeclared replacement rule.
+**Current scope, clarified by the user on 2026-11-07 (Asia/Hong_Kong): find/localize cassette objects in the supplied baomai D405 images.** Keep the existing two-lower-corner pose target and use baomai as the foundation. Camera mounting, robot/gripper integration and physical calibration are outside this deliverable and do not block image evaluation. The supplied epoch173 model remains the working default under the predeclared replacement rule.
+
+**Latest readiness and settings review, 2026-11-07:** the [fixed NMS experiment](postprocess-experiment-2026-11-07.md) completed 240 image/settings predictions without new training data. NMS 0.68 at confidence 0.25 reduces FP 63→61 with the same 39 FN and the exact same 625 matched predictions. The primary 0.60 setting fails because it adds a miss. The [folder command](predict-pose-folder.md) now offers `--nms-iou 0.68` explicitly; default NMS remains 0.70. This is a small development-reference result. Every nonempty validation image still has a matching error, so the present evidence supports a human-reviewed prototype rather than unattended operation on future scenes. The report also prioritizes improvements using the existing repository material.
 
 **Latest model comparison, 2026-11-07:** the audited [PR #16](https://github.com/Siuuuers/dl/pull/16) warmup model improves all five primary measures against M0, but its 37 missed objects exceed the fresh control's 36. It therefore fails the required comparison against both controls. Retain epoch173 and preserve warmup as a promising candidate. The [warmup report](warmup-comparison-2026-11-07.md) records that result; the [first label comparison](gpu-comparison-2026-11-07.md) remains historical evidence.
 
@@ -8,7 +10,7 @@ Following the [completed case review and intake](warmup-detection-review-2026-11
 
 The [training pilot](training-pilot-2026-11-06.md) is complete and supplies an eleven-row deduplication proposal. The [annotation policy](annotation-policy.md) is adopted as a local working convention, informed by upstream branch/history research and the user's authorization. Complete reference/candidate datasets can be built and checked using the [training preparation guide](prepare-pose-training.md). The [training runner](train-pose-comparison.md) records bounded resource trials and completed-arm provenance; the evaluator accepts an explicitly verified completed-checkpoint bundle. Both the original label pair and the warmup pair are now evaluated. Any further training change should follow specific reviewed evidence and remain separately identified; preserve the current reference, thresholds and recorded comparison.
 
-This extends [the measured baseline](baseline-2026-11-06.md), using its saved predictions from inference revision `3bc783f1e53a477a095ac29160674f07e393348d`. **No new model inference, training or reference edits** were performed for this quality review. The source-hashed [evidence record](quality-review-2026-11-06.json) contains the calculations, label audit and visual decisions. The [published-revision verification](quality-replay-verification-2026-11-06.json) records the clean diagnostic execution, 12 passing checks and exact comparison with the independent calculations.
+The original 2026-11-06 quality review below extends [the measured baseline](baseline-2026-11-06.md), using its saved predictions from inference revision `3bc783f1e53a477a095ac29160674f07e393348d`. **No new model inference, training or reference edits** were performed for that original review. The source-hashed [evidence record](quality-review-2026-11-06.json) contains its calculations, label audit and visual decisions. The [published-revision verification](quality-replay-verification-2026-11-06.json) records the clean diagnostic execution, 12 passing checks and exact comparison with the independent calculations.
 
 ## 1. Define the claim before choosing a target
 
@@ -44,7 +46,7 @@ The reference has 1,227 visible endpoints and 584 objects with both endpoints vi
 
 At box confidence 0.25, matching IoU 0.50 and endpoint confidence 0.50:
 
-| Illustrative maximum error | Visible endpoints within tolerance / all 1,227 | Objects with both corners within tolerance / all 584 fully visible objects |
+| Illustrative maximum error | Visible endpoints within tolerance / all 1,227 | Objects with both corners within tolerance / all 584 objects with both reference corners locatable |
 | --- | ---: | ---: |
 | 2 px | 737 / 1,227 = 60.07% | 263 / 584 = 45.03% |
 | 5 px | 1,121 / 1,227 = 91.36% | 521 / 584 = 89.21% |
@@ -52,7 +54,7 @@ At box confidence 0.25, matching IoU 0.50 and endpoint confidence 0.50:
 
 Success includes equality at the radius and preserves left/right correspondence. Both-corner success means **both corners on the same object** meet the criterion; it is not a squared average endpoint rate. Its denominator excludes partially/unlocatable reference objects, so the two columns describe different populations. Extra detections remain separately reported and are not excused by high corner success.
 
-At the illustrative 5 px radius, 63 fully visible objects fail: 14 lack both returned points and 49 have both points returned but at least one lies farther than 5 px. At 10 px, that becomes 14 unavailable pairs and two pairs with a returned corner outside the radius. The application tolerance changes which failure deserves priority.
+At the illustrative 5 px radius, 63 objects with both reference corners locatable fail: 14 lack both returned points and 49 have both points returned but at least one lies farther than 5 px. At 10 px, that becomes 14 unavailable pairs and two pairs with a returned corner outside the radius. The application tolerance changes which failure deserves priority.
 
 For example, a hypothetical requirement of both corners within 5 px on at least 95% of eligible objects would not be met by 89.21%. Neither 5 px nor 95% is an approved project requirement. At 10 px, the development point estimate exceeds 95%, but that would still leave independent testing, unlocatable-side behavior and other requirements unresolved.
 
