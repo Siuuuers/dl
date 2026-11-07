@@ -1,0 +1,714 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-bias-warmup-execution-verification",
+  "created_at_utc": "2026-11-07T05:36:25.442270+00:00",
+  "status": "ready-for-gpu-execution",
+  "completed_new_gpu_training": false,
+  "model_quality_result": null,
+  "working_model": "original epoch173",
+  "source_revision": "679b87b38e7b0bca5fbd02fb1519a90fb2379541",
+  "source_tree": "eff702216b997fa7cf2d5cd529f6e43a64e0c32b",
+  "tests": {
+    "created_at_utc": "2026-11-07T05:33:48.451210+00:00",
+    "source_revision": "679b87b38e7b0bca5fbd02fb1519a90fb2379541",
+    "source_tree": "eff702216b997fa7cf2d5cd529f6e43a64e0c32b",
+    "working_tree_status": "",
+    "checks": [
+      {
+        "script": "scripts/check_evaluate_pose.py",
+        "script_sha256": "37b709330a669ac58928a1e1320da96d60eef5317052164c6c62a1154d72c363",
+        "tests": 36,
+        "seconds": 0.092,
+        "exit_code": 0,
+        "output": "checks/check_evaluate_pose.txt"
+      },
+      {
+        "script": "scripts/check_pose_quality.py",
+        "script_sha256": "5053a3063f829484b1489bbf36b1ed6a2eda17893d53f749981c536f6579a8b0",
+        "tests": 12,
+        "seconds": 0.003,
+        "exit_code": 0,
+        "output": "checks/check_pose_quality.txt"
+      },
+      {
+        "script": "scripts/check_pose_checkpoint.py",
+        "script_sha256": "4697c9d4345e73b7836b398d7e4a5aac05b6d50e5e5518297b116a479a8dab4f",
+        "tests": 21,
+        "seconds": 0.543,
+        "exit_code": 0,
+        "output": "checks/check_pose_checkpoint.txt"
+      },
+      {
+        "script": "scripts/check_train_pose_comparison.py",
+        "script_sha256": "eb5ab79d6f2bf697d511b8d687b9c352b2b68dc28317c03fd506c3a55a76b2fd",
+        "tests": 8,
+        "seconds": 0.618,
+        "exit_code": 0,
+        "output": "checks/check_train_pose_comparison.txt"
+      },
+      {
+        "script": "scripts/check_package_gpu_results.py",
+        "script_sha256": "05536b08e6e960c4f4149ba197494ff939f404966fc0d82ce615a01f8ee67082",
+        "tests": 7,
+        "seconds": 0.322,
+        "exit_code": 0,
+        "output": "checks/check_package_gpu_results.txt"
+      },
+      {
+        "script": "scripts/check_warmup_results.py",
+        "script_sha256": "532db2e494211ad8e6af653d1cfb076766e23bc6d6f78d922dd73e987c518e13",
+        "tests": 12,
+        "seconds": 0.646,
+        "exit_code": 0,
+        "output": "checks/check_warmup_results.txt"
+      }
+    ],
+    "total_tests": 96
+  },
+  "runtime_trials": {
+    "schema_version": 1,
+    "kind": "baomai-warmup-runtime-verification",
+    "status": "passed",
+    "verified_at_utc": "2026-11-07T05:33:30.642665+00:00",
+    "scope": "Targeted read-back of two actual four-batch CPU resource trials from the clean published implementation; no completed fine-tune or model-quality result.",
+    "source_checkout": "/workspace/scratch/ad3aa7140d65/dl-warmup-published",
+    "source": {
+      "revision": "679b87b38e7b0bca5fbd02fb1519a90fb2379541",
+      "working_tree_status": "",
+      "files_sha256": {
+        "scripts/train_pose_comparison.py": "8d62303d33744439e73e875be486cdf524b5f6ec8a2d3ff88ede92f4942383f1",
+        "scripts/pose_checkpoint.py": "017863af87035e99aa987d874f5aefe3dc90e470b63be576c6f2ef9955b31953",
+        "scripts/stage_pose_training.py": "7b54f34b9392af77897d83e75248cd66ffc4e3bdf40af46881ff16ae79667158",
+        "scripts/verify_pose_candidate.py": "a14d56d707612519bd966bb2637f27edc396023c349e89a0e1fc7f1fed363189",
+        "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+        "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+      }
+    },
+    "source_unchanged_after_verification": true,
+    "input_checkpoint": {
+      "sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+      "size_bytes": 106838542,
+      "bytes_independently_reverified": true
+    },
+    "runtime": {
+      "python": "3.12.14",
+      "torch": "2.10.0+cpu",
+      "ultralytics": "8.4.182",
+      "device": "cpu",
+      "torch_cuda": null,
+      "threads": 4,
+      "interop_threads": 1,
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "packages": {
+        "torchvision": "0.25.0+cpu",
+        "numpy": "2.5.4",
+        "Pillow": "13.0.0",
+        "opencv-python": "5.0.0.93",
+        "psutil": "7.2.2"
+      },
+      "device_name": "cpu",
+      "device_capability": null,
+      "backend": {
+        "model_channels_last": false,
+        "float32_matmul_precision": "highest",
+        "cuda_matmul_allow_tf32": false,
+        "cudnn_allow_tf32": true,
+        "cudnn_version": null,
+        "deterministic_algorithms_enabled": true,
+        "deterministic_warn_only": true,
+        "cudnn_deterministic": true,
+        "cudnn_benchmark": false
+      }
+    },
+    "runtime_equal_between_runs": true,
+    "recorded_package_versions_match_verifier_environment": true,
+    "loader_verification": [
+      {
+        "split": "train",
+        "images": 137,
+        "objects": 3772,
+        "visible_endpoints": 6839,
+        "batches": 35,
+        "batch_size": 4
+      },
+      {
+        "split": "val",
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "batches": 3,
+        "batch_size": 8
+      }
+    ],
+    "loader_identity_equal_between_runs": true,
+    "staged_reference_files_counts_and_source_equal_between_runs": true,
+    "declared_schedule": {
+      "epochs": 30,
+      "warmup_epochs": 3.0,
+      "batch": 4,
+      "imgsz": 1280,
+      "amp": false,
+      "rle": 1.0,
+      "nbs": 64
+    },
+    "resolved_settings_differences": {
+      "data": {
+        "control": "/workspace/scratch/ad3aa7140d65/warmup-published-control-trial-001/staged-data/reference/data.yaml",
+        "warmup": "/workspace/scratch/ad3aa7140d65/warmup-published-low-bias-trial-001/staged-data/reference/data.yaml"
+      },
+      "project": {
+        "control": "/workspace/scratch/ad3aa7140d65/warmup-published-control-trial-001",
+        "warmup": "/workspace/scratch/ad3aa7140d65/warmup-published-low-bias-trial-001"
+      },
+      "warmup_bias_lr": {
+        "control": 0.1,
+        "warmup": 0.0001
+      },
+      "save_dir": {
+        "control": "/workspace/scratch/ad3aa7140d65/warmup-published-control-trial-001/fit",
+        "warmup": "/workspace/scratch/ad3aa7140d65/warmup-published-low-bias-trial-001/fit"
+      }
+    },
+    "only_scientific_setting_difference": "warmup_bias_lr",
+    "first_forward_loss_equal": true,
+    "first_forward_loss": 12.932026863098145,
+    "first_forward_loss_components_equal": true,
+    "first_forward_loss_components": {
+      "box_loss": 1.4528814554214478,
+      "pose_loss": 0.040459346026182175,
+      "kobj_loss": 0.22486642003059387,
+      "cls_loss": 0.45637592673301697,
+      "l1_loss": 0.005490506533533335,
+      "rle_loss": 0.08609825372695923
+    },
+    "observed_losses": {
+      "control": {
+        "total": [
+          12.932026863098145,
+          314.71417236328125,
+          111.67034912109375,
+          75.5166015625
+        ],
+        "rle_component": [
+          0.08609825372695923,
+          87.53863525390625,
+          26.750003814697266,
+          13.965703010559082
+        ]
+      },
+      "warmup": {
+        "total": [
+          12.932026863098145,
+          5.804203033447266,
+          18.80929946899414,
+          8.677091598510742
+        ],
+        "rle_component": [
+          0.08609825372695923,
+          0.0,
+          0.5444661974906921,
+          0.0
+        ]
+      }
+    },
+    "runs": {
+      "control": {
+        "run_directory": "/workspace/scratch/ad3aa7140d65/warmup-published-control-trial-001",
+        "recipe": {
+          "recipe_id": "paired-finetune-v1",
+          "recipe_sha256": "47d1cf598191fa0b3ff27a075536ae7b1938074f27b26805f933a9c0652032d5"
+        },
+        "artifacts": {
+          "run-config.json": {
+            "sha256": "c12aa9bd4d80cd096ebf071d5ef76d617d0cf6abf70af048ea3945af1e11a993",
+            "size_bytes": 526
+          },
+          "staging-manifest.json": {
+            "sha256": "645f00d6fb97e1fcfecf107993dcdde13c22e558e1620cec17b5296c864d08ab",
+            "size_bytes": 204186
+          },
+          "train.log": {
+            "sha256": "061bcced8d0ac6a59c19e743b9d8eb463396a65d2e5aed8182c454c5a7fd1c13",
+            "size_bytes": 9425
+          },
+          "training-progress.json": {
+            "sha256": "58b0eae725581c9ea67bfd555a35b048dcd5d22d0b75ff89d453415c3677805e",
+            "size_bytes": 11378
+          },
+          "training-receipt.json": {
+            "sha256": "22cb04bac252125d311cf43e9a16ce8216696b2fcce4baf923e88d555d406b0b",
+            "size_bytes": 13208
+          }
+        },
+        "receipt_status": "trial-complete",
+        "purpose": "resource-trial",
+        "arm": "reference",
+        "execution": {
+          "exit_code": 0,
+          "stop_reason": null,
+          "wall_seconds": 28.500079222000295,
+          "sampled_peak_process_tree_rss_mib": 6849.8046875,
+          "rss_sampling_interval_seconds": 0.2,
+          "max_seconds": 600,
+          "max_rss_mib": 8000
+        },
+        "worker_wall_seconds": 26.49325765399999,
+        "worker_peak_rss_mib": 6878.109375,
+        "completed_epochs": [],
+        "batches_completed": 4,
+        "images_processed": 16,
+        "optimizer_steps": 4,
+        "all_sampled_updates_changed_witness": true,
+        "all_recorded_losses_finite": true,
+        "initial_group_learning_rates": {
+          "weight": 0.0,
+          "bn": 0.0,
+          "bias": 0.1
+        },
+        "bias_learning_rate_samples": [
+          0.1,
+          0.09904857142857143,
+          0.09809714285714287,
+          0.0971457142857143
+        ],
+        "resolved_settings_count": 114,
+        "resolved_settings_declaration_passed": true,
+        "runtime_schema_validation_passed": true,
+        "receipt_progress_consistency_passed": true,
+        "input_verification": {
+          "receipt_post_worker_verification_passed": true,
+          "independent_reverification_passed": true,
+          "staging_reference_binding_passed": true,
+          "staged_file_count": 628,
+          "staged_data_yaml_count": 2,
+          "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+          "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+          "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+          "staging_manifest_sha256": "645f00d6fb97e1fcfecf107993dcdde13c22e558e1620cec17b5296c864d08ab",
+          "data_yaml_sha256": "4e4bae4239e261c8577c772390fca536f292c2ee48e839a430b9dce785346822"
+        },
+        "checkpoint_eligibility": {
+          "eligible": false,
+          "checkpoint_selection": "none",
+          "manifest_absent_before_and_after_gate": true,
+          "final_checkpoint_present": false,
+          "manifest_write_attempt_refused": true,
+          "refusal_type": "ValueError",
+          "refusal_message": "only a completed paired-finetune qualifies; resource trials are ineligible",
+          "receipt_bytes_unchanged_by_check": true
+        }
+      },
+      "warmup": {
+        "run_directory": "/workspace/scratch/ad3aa7140d65/warmup-published-low-bias-trial-001",
+        "recipe": {
+          "recipe_id": "warmup-bias-lr-1e-4-v1",
+          "recipe_sha256": "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c"
+        },
+        "artifacts": {
+          "run-config.json": {
+            "sha256": "28f7874f26b870a77b64b9f851bc338cd70e2398b89c9950f74ba190c8ea65df",
+            "size_bytes": 531
+          },
+          "staging-manifest.json": {
+            "sha256": "5b0ee46c825f48ba6895f588b7598910e244cbce1098b75339f2076e1bd6e419",
+            "size_bytes": 204187
+          },
+          "train.log": {
+            "sha256": "3e348ccae91d9d4d6bc00b4444f067118a1f3c26015778f53cf5f36f6d351562",
+            "size_bytes": 9445
+          },
+          "training-progress.json": {
+            "sha256": "8d27b0a1cf7d28974f937b84edc83bfa5478970c35a5397991ce81468df13705",
+            "size_bytes": 11298
+          },
+          "training-receipt.json": {
+            "sha256": "14e8fa59dc8a33006d830f74c8166a212f982cf7727339f41514b5ecea20f082",
+            "size_bytes": 13129
+          }
+        },
+        "receipt_status": "trial-complete",
+        "purpose": "resource-trial",
+        "arm": "reference",
+        "execution": {
+          "exit_code": 0,
+          "stop_reason": null,
+          "wall_seconds": 25.887850622000315,
+          "sampled_peak_process_tree_rss_mib": 6802.69921875,
+          "rss_sampling_interval_seconds": 0.2,
+          "max_seconds": 600,
+          "max_rss_mib": 8000
+        },
+        "worker_wall_seconds": 23.937685684999906,
+        "worker_peak_rss_mib": 6802.2890625,
+        "completed_epochs": [],
+        "batches_completed": 4,
+        "images_processed": 16,
+        "optimizer_steps": 4,
+        "all_sampled_updates_changed_witness": true,
+        "all_recorded_losses_finite": true,
+        "initial_group_learning_rates": {
+          "weight": 0.0,
+          "bn": 0.0,
+          "bias": 0.0001
+        },
+        "bias_learning_rate_samples": [
+          0.0001,
+          0.0001,
+          0.0001,
+          0.0001
+        ],
+        "resolved_settings_count": 114,
+        "resolved_settings_declaration_passed": true,
+        "runtime_schema_validation_passed": true,
+        "receipt_progress_consistency_passed": true,
+        "input_verification": {
+          "receipt_post_worker_verification_passed": true,
+          "independent_reverification_passed": true,
+          "staging_reference_binding_passed": true,
+          "staged_file_count": 628,
+          "staged_data_yaml_count": 2,
+          "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+          "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+          "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+          "staging_manifest_sha256": "5b0ee46c825f48ba6895f588b7598910e244cbce1098b75339f2076e1bd6e419",
+          "data_yaml_sha256": "94f7c062524f80116786b6818dafae82f540a78bb0955b4c9a3e32ef2a5fd7cd"
+        },
+        "checkpoint_eligibility": {
+          "eligible": false,
+          "checkpoint_selection": "none",
+          "manifest_absent_before_and_after_gate": true,
+          "final_checkpoint_present": false,
+          "manifest_write_attempt_refused": true,
+          "refusal_type": "ValueError",
+          "refusal_message": "only a completed paired-finetune qualifies; resource trials are ineligible",
+          "receipt_bytes_unchanged_by_check": true
+        }
+      }
+    },
+    "findings": [
+      "Both actual CPU workers exited successfully after four batches, sixteen image presentations, and four observed parameter-changing optimizer updates.",
+      "Both retained the declared 30-epoch schedule; neither completed an epoch or ran validation/final checkpoint finalization.",
+      "The first four batch identities, shapes and object counts matched; the first pre-update loss and every component matched exactly.",
+      "The recorded first bias-group learning rates were 0.1 for control and 0.0001 for warmup; other groups started at zero in both runs.",
+      "Both receipts matched the clean published revision and all six recorded source hashes. Input bytes, staged identities and log hashes passed independent read-back.",
+      "Actual resource-trial receipts were refused by write_checkpoint_manifest, leaving receipt bytes unchanged and no checkpoint manifest or final last.pt."
+    ],
+    "limitations": [
+      "These are CPU resource trials, not 30-epoch training results or CUDA runtime validation.",
+      "Early training-loss differences do not establish validation accuracy, generalization, or acceptance of a replacement for epoch173.",
+      "The matched full GPU runs and common-environment M0/control/warmup evaluation remain to be performed."
+    ],
+    "initial_batch_identities_equal": true,
+    "shared_initial_batch_identities": [
+      {
+        "epoch": 1,
+        "batch": 1,
+        "image_ids": [
+          "new_000116",
+          "new_000085",
+          "new_000072",
+          "old_000046"
+        ],
+        "objects": 104,
+        "shape": [
+          4,
+          3,
+          736,
+          1280
+        ]
+      },
+      {
+        "epoch": 1,
+        "batch": 2,
+        "image_ids": [
+          "new_000150",
+          "old_000050",
+          "new_000114",
+          "old_000004"
+        ],
+        "objects": 46,
+        "shape": [
+          4,
+          3,
+          736,
+          1280
+        ]
+      },
+      {
+        "epoch": 1,
+        "batch": 3,
+        "image_ids": [
+          "new_000012",
+          "new_000050",
+          "new_000030",
+          "new_000006"
+        ],
+        "objects": 157,
+        "shape": [
+          4,
+          3,
+          736,
+          1280
+        ]
+      },
+      {
+        "epoch": 1,
+        "batch": 4,
+        "image_ids": [
+          "new_000020",
+          "new_000013",
+          "old_000013",
+          "new_000113"
+        ],
+        "objects": 128,
+        "shape": [
+          4,
+          3,
+          736,
+          1280
+        ]
+      }
+    ]
+  },
+  "legacy_identity_verification": {
+    "status": "passed",
+    "serialized_identities_equal": true,
+    "schema_1_recipe_fields_added": false,
+    "historical": {
+      "revision": "484f5671456f004e4198173537fd847e0a56db90",
+      "identities": {
+        "candidate": {
+          "arm": "candidate",
+          "checkpoint_sha256": "72793c6874a7e6d5851dd9697c52f2216c92174b65262b605939dbdcea610a9c",
+          "checkpoint_size_bytes": 21704686,
+          "completed_epochs": 30,
+          "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+          "kind": "baomai-trained-checkpoint",
+          "manifest_sha256": "d8d6c927aa5d81748dec8aff540c71355532b729a714b8e7e90643a17e33704c",
+          "purpose": "paired-finetune",
+          "selection": "final_epoch",
+          "staging_manifest_sha256": "e8e6f296472ff80922733e4837e668315ccfca615b32a5b668c288013a6d0d88",
+          "training_receipt_sha256": "46da10b1d0874f89bdf176665cd984ac0d918eb3a421a6c06fbc2890c6d6593a"
+        },
+        "reference": {
+          "arm": "reference",
+          "checkpoint_sha256": "7dabd1253f8d54f63049c62365647a65d9d390e517898b677412084f25f92bea",
+          "checkpoint_size_bytes": 21704686,
+          "completed_epochs": 30,
+          "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+          "kind": "baomai-trained-checkpoint",
+          "manifest_sha256": "642d3242cbedfc2f700f274256452bbe7b93d788e1e77fff0048945e79f97c0f",
+          "purpose": "paired-finetune",
+          "selection": "final_epoch",
+          "staging_manifest_sha256": "81c491f0605caad80c2cb21605b3bb2caae80a8ecdf2daf14f75f03761493808",
+          "training_receipt_sha256": "5a50eef749189a43ca87a3ca715735c444b606c3a5871e29974a20dbc1e94d9e"
+        }
+      }
+    },
+    "current": {
+      "revision": "679b87b38e7b0bca5fbd02fb1519a90fb2379541",
+      "identities": {
+        "candidate": {
+          "arm": "candidate",
+          "checkpoint_sha256": "72793c6874a7e6d5851dd9697c52f2216c92174b65262b605939dbdcea610a9c",
+          "checkpoint_size_bytes": 21704686,
+          "completed_epochs": 30,
+          "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+          "kind": "baomai-trained-checkpoint",
+          "manifest_sha256": "d8d6c927aa5d81748dec8aff540c71355532b729a714b8e7e90643a17e33704c",
+          "purpose": "paired-finetune",
+          "selection": "final_epoch",
+          "staging_manifest_sha256": "e8e6f296472ff80922733e4837e668315ccfca615b32a5b668c288013a6d0d88",
+          "training_receipt_sha256": "46da10b1d0874f89bdf176665cd984ac0d918eb3a421a6c06fbc2890c6d6593a"
+        },
+        "reference": {
+          "arm": "reference",
+          "checkpoint_sha256": "7dabd1253f8d54f63049c62365647a65d9d390e517898b677412084f25f92bea",
+          "checkpoint_size_bytes": 21704686,
+          "completed_epochs": 30,
+          "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+          "kind": "baomai-trained-checkpoint",
+          "manifest_sha256": "642d3242cbedfc2f700f274256452bbe7b93d788e1e77fff0048945e79f97c0f",
+          "purpose": "paired-finetune",
+          "selection": "final_epoch",
+          "staging_manifest_sha256": "81c491f0605caad80c2cb21605b3bb2caae80a8ecdf2daf14f75f03761493808",
+          "training_receipt_sha256": "5a50eef749189a43ca87a3ca715735c444b606c3a5871e29974a20dbc1e94d9e"
+        }
+      }
+    }
+  },
+  "notebook_verification": {
+    "schema_version": 1,
+    "kind": "baomai-warmup-notebook-local-process-verification",
+    "created_at_utc": "2026-11-07T05:35:13.939779+00:00",
+    "notebook": {
+      "path": "/workspace/scratch/ad3aa7140d65/dl/notebooks/baomai_bias_warmup.ipynb",
+      "sha256": "43190d5a5181ea512c77a733ac25eba2ec245d967ad2f50a1ad935fea2c93452",
+      "nbformat": 4,
+      "nbformat_minor": 5,
+      "cell_count": 16,
+      "compiled_code_cell_indexes": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      "all_code_cells_compile": true,
+      "no_saved_execution": true,
+      "unique_cell_ids": true,
+      "train_one_cell_index": 8,
+      "train_one_source_sha256": "45bcdcc3870ba487f69532ef3d7472d723b1fa9946ada3981ff3819f1cfb6e66"
+    },
+    "scope": "Only the train_one AST FunctionDef was executed, using tiny real local fixture processes. No notebook setup, model code, GPU training, downloads, network or installation was executed.",
+    "fixture": {
+      "launcher_command_dispatch_mocked": true,
+      "real_subprocess_popen_retained": true,
+      "worker_stdout": "DEVNULL",
+      "worker_stderr": "DEVNULL",
+      "worker_start_new_session": true,
+      "descendant_discovery": "real psutil with observations recorded",
+      "polling_sleep": "controlled synchronization and KeyboardInterrupt injection",
+      "linux_child_subreaper_used_in_harness": true
+    },
+    "cases": [
+      {
+        "mode": "launcher-exits",
+        "descendant_observations": [
+          [
+            7
+          ]
+        ],
+        "trigger": {
+          "descendant_remembered": true,
+          "parent_alive_before_trigger": true,
+          "child_alive_before_trigger": true,
+          "launcher_exit_code_before_helper_cleanup": 1,
+          "child_alive_after_launcher_exit": true
+        },
+        "requested_command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/train_pose_comparison.py",
+          "--trial",
+          "--arm",
+          "reference",
+          "--recipe",
+          "warmup-bias-lr-1e-4-v1",
+          "--device",
+          "0",
+          "--threads",
+          "4",
+          "--trial-batches",
+          "4",
+          "--max-seconds",
+          "600",
+          "--max-rss-mib",
+          "6000",
+          "--output",
+          "/tmp/warmup-notebook-process-check-4ay2ym61/launcher-exits/runs/synthetic-run"
+        ],
+        "parent_pid": 6,
+        "child_pid": 7,
+        "parent_session": 6,
+        "child_session": 7,
+        "raised": {
+          "type": "RuntimeError",
+          "message": "synthetic-run failed. Preserve its receipt/log and use a new output directory for a retry."
+        },
+        "parent_returncode_after_helper": 1,
+        "parent_alive_after_helper": false,
+        "child_alive_after_helper": false,
+        "reaped_by_harness_after_helper": false,
+        "wait_status": null,
+        "parent_absent_after_reaping": true,
+        "child_absent_after_reaping": true,
+        "captured_helper_output": "Starting: synthetic-run warmup-bias-lr-1e-4-v1\nLog: /tmp/warmup-notebook-process-check-4ay2ym61/launcher-exits/runs/synthetic-run/train.log\nsynthetic-run: 0s; verifying/staging inputs\n\ninput_verification_error: synthetic fixture provenance failure\nSynthetic process fixture only; no training performed.\n",
+        "status": "passed",
+        "duration_seconds": 0.039615
+      },
+      {
+        "mode": "keyboard-interrupt",
+        "descendant_observations": [
+          [
+            9
+          ],
+          [
+            9
+          ]
+        ],
+        "trigger": {
+          "descendant_remembered": true,
+          "parent_alive_before_trigger": true,
+          "child_alive_before_trigger": true
+        },
+        "requested_command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/train_pose_comparison.py",
+          "--trial",
+          "--arm",
+          "reference",
+          "--recipe",
+          "warmup-bias-lr-1e-4-v1",
+          "--device",
+          "0",
+          "--threads",
+          "4",
+          "--trial-batches",
+          "4",
+          "--max-seconds",
+          "600",
+          "--max-rss-mib",
+          "6000",
+          "--output",
+          "/tmp/warmup-notebook-process-check-4ay2ym61/keyboard-interrupt/runs/synthetic-run"
+        ],
+        "parent_pid": 8,
+        "child_pid": 9,
+        "parent_session": 8,
+        "child_session": 9,
+        "raised": {
+          "type": "KeyboardInterrupt",
+          "message": "synthetic notebook interrupt"
+        },
+        "parent_returncode_after_helper": -15,
+        "parent_alive_after_helper": false,
+        "child_alive_after_helper": false,
+        "reaped_by_harness_after_helper": false,
+        "wait_status": null,
+        "parent_absent_after_reaping": true,
+        "child_absent_after_reaping": true,
+        "captured_helper_output": "Starting: synthetic-run warmup-bias-lr-1e-4-v1\nLog: /tmp/warmup-notebook-process-check-4ay2ym61/keyboard-interrupt/runs/synthetic-run/train.log\nsynthetic-run: 0s; verifying/staging inputs\n",
+        "status": "passed",
+        "duration_seconds": 1.047614
+      }
+    ],
+    "status": "passed"
+  },
+  "pinned_fetch_verification": {
+    "status": "passed",
+    "source_revision": "679b87b38e7b0bca5fbd02fb1519a90fb2379541",
+    "source_tree": "eff702216b997fa7cf2d5cd529f6e43a64e0c32b",
+    "fresh_shallow_checkout": true,
+    "working_tree_status": "",
+    "network_action": "git fetch --depth=1 https://github.com/Siuuuers/dl.git 679b87b38e7b0bca5fbd02fb1519a90fb2379541",
+    "lfs_payloads": "not fetched in this checkout probe; real published trials used verified LFS bytes"
+  },
+  "development_probe": {
+    "purpose": "resource-trial",
+    "status": "failed",
+    "input_verification_error": "training source code or revision changed during execution",
+    "batches_completed": 4,
+    "optimizer_steps": 4,
+    "eligible_checkpoint": false
+  },
+  "evidence_archive": {
+    "path": "results/verification/baomai-warmup-001/local-verification.zip",
+    "size_bytes": 142192,
+    "sha256": "7b501faa14ad8ef26db48612f99431311e17b8a2e5b2528100d35b06e6c50459",
+    "members": 28,
+    "all_members_read_back_and_verified": true
+  },
+  "scope": "Implementation/provenance checks and bounded CPU resource trials. Full matched GPU training and a common M0/control/warmup evaluation are pending."
+}

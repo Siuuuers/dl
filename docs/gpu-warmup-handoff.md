@@ -2,6 +2,10 @@
 
 **Keep epoch173 as the working model.** The [first completed comparison](gpu-comparison-2026-11-07.md) found that both fine-tunes increased extra detections and tight corner error. This experiment tests one possible shared cause: the initial learning rate for bias parameters. It does not assume that the cause has been established.
 
+**Colab handoff:** use [baomai_bias_warmup.ipynb](../notebooks/baomai_bias_warmup.ipynb) in a GPU runtime and run its cells in order. It downloads the inputs directly, runs the trial and both recipes, verifies the pair, and downloads `baomai-warmup-results.zip`. The notebook pins training source to `679b87b38e7b0bca5fbd02fb1519a90fb2379541`. The shell route below uses the same revision.
+
+[Implementation verification](warmup-execution-verification-2026-11-07.md): both real four-batch CPU trials and all 96 focused checks pass. These are execution checks; completed GPU fine-tunes and their accuracy comparison are still pending.
+
 ## The comparison declared before training
 
 Run both recipes consecutively in one GPU session, using this same clean source revision and software environment. Both initialize freshly from the verified epoch173 checkpoint and use the **original reference labels**.
@@ -31,6 +35,7 @@ GIT_LFS_SKIP_SMUDGE=1 git clone \
   --branch codex/baomai-bias-warmup-20261107 --single-branch \
   https://github.com/Siuuuers/dl.git dl-warmup
 cd dl-warmup
+GIT_LFS_SKIP_SMUDGE=1 git checkout --detach 679b87b38e7b0bca5fbd02fb1519a90fb2379541
 git lfs install --local
 git lfs pull \
   --include='data/images/train/*.png,data/images/val/*.png,weights/cassette_lower_epoch173.pt' \
