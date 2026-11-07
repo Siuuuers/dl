@@ -2,6 +2,8 @@
 
 **Keep epoch173 as the working model.** The next concrete experiment corrects 16 supported box edges in three existing training images. The review and training path are prepared; a complete GPU comparison is still required before claiming model improvement. NMS remains 0.70 by default; the earlier 0.68 setting remains optional and is not mixed into this training experiment.
 
+**Next action:** open the [GPU notebook](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/baomai-training-supervision-20261107/notebooks/baomai_box_supervision.ipynb), select a GPU runtime, and run all cells. It downloads the required inputs itself and returns one `baomai-box-supervision-results.zip`. Its immutable training source is [`918b2fd`](https://github.com/Siuuuers/dl/commit/918b2fdb811bd595fc09de9a423df6c40258c55a). The notebook and this guide are published separately from that pinned training source.
+
 ## What the image review established
 
 The reviewers examined all 104 rows in `new_000030` (29), `new_000012` (38) and `new_000128` (37), plus the empty `new_000131` control. Raw images were inspected before annotations. Every object identity, all 416 box edges and all 208 endpoint states were reviewed; the whole images were scanned for missing, extra or duplicate instances. The root reviewer independently inspected every proposed correction. No model predictions were used as annotation truth.
@@ -28,6 +30,10 @@ The [separate candidate](../data/candidates/box-refinement-2026-11-07/README.md)
 | `new_000128` / 11 | Bottom | 126.159998 | 118 | Exclude the metal rack below the front |
 
 The proposed integers are conservative original-pixel boundary estimates, not subpixel measurements. All 104 row identities, all class tokens and all endpoint tokens remain unchanged. Neither overlap nor missing corners were used to delete objects. The empty control retains its original zero-byte label.
+
+![Original and proposed lower edges in new_000030](images/baomai-box-refinement-example-2026-11-07.png)
+
+In this preserved review crop, red marks the original lower edges and green marks the proposed edges. The original boxes extend into the next front or the gripper. The proposal changes only those reviewed edges; the figure does not certify the unchanged edges. The full-resolution original and the other review crops remain in the physical-evidence archive.
 
 **Complete inspection does not mean complete certification.** Seven identities remain unresolved: `new_000030:12`, `new_000012:23`, and `new_000128:1,6,9,12,19`. Several upper and occlusion boundaries remain uncertain, including tops that visibly clip the face. These legacy fields remain explicitly recorded under the policy's incremental-experiment provision. The candidate does not claim full compliance, human approval or a new scoring reference. The selected images are a targeted review, not a random annotation-error sample.
 
@@ -86,6 +92,24 @@ python scripts/package_gpu_results.py \
 ```
 
 Both full runs start from epoch173, not from the trial or each other. The packer checks the source, runtime, selected inputs, recipe, completed epochs and exact archived artifacts. It refuses incomplete or mismatched pairs. The ZIP contains final weights, provenance, results and logs for both arms; return it unchanged.
+
+## What was actually executed before the handoff
+
+The interrupted work was recovered without treating its last progress message as a successful run. Two saved reference-arm CPU attempts each reached one parameter-changing optimizer update but failed before their requested four batches. A new, explicitly one-batch candidate smoke check then completed at the clean, published training source.
+
+| CPU execution | Requested / completed batches | Result | Sampled peak host RAM |
+| --- | --- | --- | ---: |
+| Recovered reference trial 001 | 4 / 1 | Failed; configured 6,000 MiB RSS guard stopped it | 6,238.46 MiB |
+| Recovered reference trial 002 | 4 / 1 | Failed; process exit -9, cause not established by the receipt | 6,297.60 MiB |
+| New candidate smoke 001 | 1 / 1 | `trial-complete`, exit 0; one actual optimizer update | 5,767.55 MiB |
+
+The successful candidate check processed four images in 17.05 seconds under a 120-second, 6,500 MiB stop budget, using two CPU threads, FP32 and the unchanged numerical recipe. It verified the complete selected-arm train and validation loaders against the staged file hashes and counts. Its first batch did **not** contain any of the three edited images: this proves candidate input routing and a working optimizer path, not a changed-label gradient or a learning benefit. No epoch, validation pass or eligible checkpoint completed. The actual trial receipt is rejected by the completed-checkpoint writer without changing the receipt or creating a manifest.
+
+The two recovered failures recorded source `aa75df96abc31cf9f15fa23136dce342504b9cc7`, whose complete Git tree equals published `918b2fdb811bd595fc09de9a423df6c40258c55a`. Their original receipts retain the actual executed SHA. All seven recorded training-source file hashes match the published source. The new successful candidate run directly records the published SHA.
+
+Independent review passed 63 existing focused checks, two checks of the new notebook's actual setup cell, and a synthetic matched-box package/restore probe. The embedded notebook preflight verified all 157 original images and the original checkpoint bytes. All seven delivered code cells compile, and the source placeholder is resolved. The packaging probe uses synthetic artifacts; it is not evidence of completed GPU training.
+
+The [execution verification record](../results/verification/baomai-box-supervision-20261107/verification.json) and [compact evidence ZIP](../results/verification/baomai-box-supervision-20261107/execution.zip) preserve commands, raw receipts, logs, staged YAMLs and review checks. The notebook still requires its four-batch resource trial on the actual GPU before full training. Colab execution and full validation/finalization resource usage have not been qualified here.
 
 ## Decide after the returned models are evaluated
 
