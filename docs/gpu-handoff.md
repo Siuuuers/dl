@@ -1,5 +1,7 @@
 # GPU handoff: train the baomai comparison
 
+**First returned pair:** both GPU runs completed and were evaluated on 2026-11-07. [The measured comparison](gpu-comparison-2026-11-07.md) retains the original epoch173 model. Read that result before starting another identical run. The commands below reproduce the original declared recipe; the proposed next warmup experiment needs explicit versioned support.
+
 The current task is to find cassettes in the supplied baomai D405 images. Camera settings are unknown; robot calibration is outside this experiment. Keep the existing one-class, two-corner target. This handoff trains two comparable models so we can measure whether the reviewed label changes help.
 
 ## 1. Put the inputs on the GPU machine
