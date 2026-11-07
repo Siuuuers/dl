@@ -40,6 +40,8 @@ M2 also fails the rule against M1: it has one more missed object, one more missi
 
 The full unrounded statistics and comparisons are in [the machine-readable comparison](gpu-comparison-2026-11-07.json). They are derived from the raw prediction records in [the evidence archive](../results/evaluation/baomai-a100-001/evaluation.zip), not from the training console's best-checkpoint score.
 
+The [execution verification record](gpu-comparison-verification-2026-11-07.json) identifies the clean comparison-code revision, archive hash, successful fresh-restoration replay and two rejected altered-evidence probes. The compact archive contains 58 files and is about 1.12 MiB.
+
 ## Tight corner accuracy became worse
 
 This diagnostic counts success only when the same object has **both** corresponding corners returned within the specified radius. Its denominator includes all 584 reference objects with both corners visible, including missed objects.

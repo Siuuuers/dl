@@ -1,0 +1,104 @@
+{
+  "status": "verified",
+  "date_hong_kong": "2026-11-07",
+  "inference_source_revision": "707ca254ac624ae956400216deffbefb52a4bc89",
+  "inference_source_clean": true,
+  "model_inference_runs": 3,
+  "scored_image_threshold_pairs": 180,
+  "inference_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "inference_warnings_found": false,
+  "comparison_source": {
+    "revision": "484f5671456f004e4198173537fd847e0a56db90",
+    "working_tree_status": "",
+    "files_sha256": {
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/pose_checkpoint.py": "24522b4ef5b9c9267cc89dd2f47b207a089dd02df9672440fe78e7293f6089cd",
+      "scripts/summarize_pose_comparison.py": "d728710a93bc73e56727a189d20b0a61ef84bd93c964c42ba8b2265afdc24ace",
+      "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953",
+      "scripts/package_gpu_results.py": "120b1a3d22f9cb8896af67a84b7d3da686d89e41b63d5889eb7fb106bdce477c"
+    }
+  },
+  "compared_evidence_files": 31,
+  "comparison_decision": "retain-M0",
+  "archive": {
+    "path": "results/evaluation/baomai-a100-001/evaluation.zip",
+    "sha256": "8906559fdb6b59f248d5953e59d7686868d217b80cc80bd72a1603e297111e08",
+    "size_bytes": 1174694,
+    "files": 58,
+    "readback_sha256_all_files_passed": true,
+    "crc_passed": true
+  },
+  "fresh_restoration_replay": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "/workspace/scratch/ad3aa7140d65/dl-published/scripts/summarize_pose_comparison.py",
+      "--root",
+      "/workspace/scratch/ad3aa7140d65/dl-published",
+      "--evidence",
+      "/workspace/scratch/ad3aa7140d65/comparison-published-restored",
+      "--output",
+      "/workspace/scratch/ad3aa7140d65/comparison-published-restored-result.json"
+    ],
+    "exit_code": 0,
+    "same_all_result_fields_except_source_time_command": true
+  },
+  "negative_probes": [
+    {
+      "case": "incomplete-candidate",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/ad3aa7140d65/dl/scripts/summarize_pose_comparison.py",
+        "--root",
+        "/workspace/scratch/ad3aa7140d65/dl",
+        "--evidence",
+        "/workspace/scratch/ad3aa7140d65/comparison-audit-kb6gjkky/incomplete-candidate",
+        "--output",
+        "/workspace/scratch/ad3aa7140d65/comparison-audit-kb6gjkky/incomplete-candidate-output.json"
+      ],
+      "exit_code": 1,
+      "error": "Comparison refused: m2: incomplete execution",
+      "output_created": false
+    },
+    {
+      "case": "altered-primary-summary",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/ad3aa7140d65/dl/scripts/summarize_pose_comparison.py",
+        "--root",
+        "/workspace/scratch/ad3aa7140d65/dl",
+        "--evidence",
+        "/workspace/scratch/ad3aa7140d65/comparison-audit-kb6gjkky/altered-primary-summary",
+        "--output",
+        "/workspace/scratch/ad3aa7140d65/comparison-audit-kb6gjkky/altered-primary-summary-output.json"
+      ],
+      "exit_code": 1,
+      "error": "Comparison refused: m2: aggregate scores differ from replay at 0.25",
+      "output_created": false
+    }
+  ],
+  "comparison_report_sha256": "15c66cf427ff51dda5fcd71f6f51545632e2d42c1b866163267574137a319f61",
+  "scientific_figure": {
+    "path": "docs/images/baomai-gpu-corner-comparison-2026-11-07.png",
+    "sha256": "6e58744d7a28deac763249c0a6fdc19ba9a8b88f55d5dcf3bcfaa0ee9aca55ee",
+    "raw_original_and_render_visually_inspected": true
+  },
+  "unchanged": [
+    "original checkpoint",
+    "frozen labels and split",
+    "candidate label overlay",
+    "training recipe and runner",
+    "inference/scoring implementation",
+    "returned GPU artifacts"
+  ],
+  "limits": [
+    "One seed on development validation; no independent test or measured accuracy improvement.",
+    "Fresh restoration replays predictions without loading model weights.",
+    "Proposed bias-warmup experiment is not implemented or executed."
+  ],
+  "published_code_tree_matches_verified_local_code_tree": true
+}
