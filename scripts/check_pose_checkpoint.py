@@ -14,7 +14,8 @@ import unittest
 import evaluate_pose
 import diagnose_pose_quality
 import check_evaluate_pose as baseline_checks
-from pose_checkpoint import (BOX_RECIPE_ID, ORIGINAL_RECIPE_ID, PINNED_TRAINER_DEFAULTS, RECIPE, RECIPE_IDS,
+from pose_checkpoint import (BOX_RECIPE_ID, BOX_RECIPE_IDS, BOX_REPEATABILITY_RECIPES,
+                             ORIGINAL_RECIPE_ID, PINNED_TRAINER_DEFAULTS, RECIPE, RECIPE_IDS,
                              WARMUP_RECIPE_ID, check_loaded_pose_model,
                              get_recipe, recipe_identity, select_checkpoint, write_checkpoint_manifest)
 from train_pose_comparison import descriptor
@@ -30,7 +31,7 @@ def bundle_fixture(directory, arm="candidate", *, recipe_id=None):
     reference = baseline_checks.preflight_fixture(root)
     image_hash = reference["records"][0]["image_sha256"]
     label_hash = hashlib.sha256(b"synthetic unlocatable object\n").hexdigest()
-    changed_label_hash = hashlib.sha256(b"synthetic box correction\n" if recipe_id == BOX_RECIPE_ID else b"").hexdigest()
+    changed_label_hash = hashlib.sha256(b"synthetic box correction\n" if recipe_id in BOX_RECIPE_IDS else b"").hexdigest()
     for index in range(137):
         identifier = f"train_{index:03d}"
         reference["records"].append({"id": identifier, "split": "train",
@@ -44,13 +45,13 @@ def bundle_fixture(directory, arm="candidate", *, recipe_id=None):
     counts = {split: {("objects" if key == "instances" else key): value for key, value in values.items()}
               for split, values in reference["split_summary"].items()}
     candidate_counts = copy.deepcopy(counts)
-    if recipe_id != BOX_RECIPE_ID:
+    if recipe_id not in BOX_RECIPE_IDS:
         candidate_counts["train"].update(objects=136, missing_endpoints=272, empty_images=1)
     proposal = {"candidate_id": "synthetic-provenance-fixture", "source_manifest_sha256": preflight["manifest_sha256"],
         "changes": [{"image_id": "train_000", "source_label": "labels/train/train_000.txt",
                      "source_label_sha256": label_hash, "candidate_label_sha256": changed_label_hash}],
         "expected_counts": candidate_counts}
-    if recipe_id == BOX_RECIPE_ID:
+    if recipe_id in BOX_RECIPE_IDS:
         proposal["kind"] = "training_box_overlay"
     proposal_path = root / "data/candidates/fixture/manifest.json"
     proposal_path.parent.mkdir(parents=True)
@@ -343,10 +344,26 @@ class VersionedRecipeChecks(unittest.TestCase):
         self.assertEqual(RECIPE["warmup_bias_lr"], 0.1)
         expected = {ORIGINAL_RECIPE_ID: "47d1cf598191fa0b3ff27a075536ae7b1938074f27b26805f933a9c0652032d5",
                     WARMUP_RECIPE_ID: "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c",
-                    BOX_RECIPE_ID: "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c"}
+                    BOX_RECIPE_ID: "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c",
+                    BOX_REPEATABILITY_RECIPES[43]: "4a4bc07ad45cd9fced727c5c39cf32ae43212a06f586f4e96c03a57959c279f7",
+                    BOX_REPEATABILITY_RECIPES[44]: "1353838f0e3137a2690c24514b3fb972d85b07ce8f417632b889f1d784cab6fe"}
         self.assertEqual({key: recipe_identity(key)["recipe_sha256"] for key in RECIPE_IDS}, expected)
         with self.assertRaisesRegex(ValueError, "unsupported training recipe"):
             get_recipe("unregistered-experiment")
+
+    def test_box_repeats_change_only_the_declared_seed_and_keep_seed42_fixed(self):
+        self.assertEqual(BOX_REPEATABILITY_RECIPES, {
+            43: "box-supervision-warmup-seed43-v1", 44: "box-supervision-warmup-seed44-v1"})
+        original = get_recipe(BOX_RECIPE_ID)
+        self.assertEqual(original["seed"], 42)
+        for seed, recipe_id in BOX_REPEATABILITY_RECIPES.items():
+            with self.subTest(seed=seed):
+                recipe = get_recipe(recipe_id)
+                self.assertEqual(recipe, {**original, "seed": seed})
+                recipe["seed"] = 999
+                self.assertEqual(get_recipe(recipe_id)["seed"], seed)
+        self.assertEqual(get_recipe(BOX_RECIPE_ID), original)
+        self.assertEqual(RECIPE["seed"], 42)
 
     def test_versioned_manifest_and_replay_keep_the_explicit_recipe(self):
         selected = select_checkpoint(self.preflight, self.manifest_path)
@@ -375,13 +392,14 @@ class VersionedRecipeChecks(unittest.TestCase):
                 self.assertEqual(identity["recipe_id"], ORIGINAL_RECIPE_ID)
 
     def test_box_recipe_supports_both_arms_and_requires_box_candidate(self):
-        for arm in ("reference", "candidate"):
-            with self.subTest(arm=arm), tempfile.TemporaryDirectory() as directory:
+        for recipe_id, arm in ((recipe_id, arm) for recipe_id in BOX_RECIPE_IDS
+                               for arm in ("reference", "candidate")):
+            with self.subTest(recipe=recipe_id, arm=arm), tempfile.TemporaryDirectory() as directory:
                 root, run, preflight, receipt, staging, manifest = bundle_fixture(
-                    Path(directory), arm, recipe_id=BOX_RECIPE_ID)
+                    Path(directory), arm, recipe_id=recipe_id)
                 identity = select_checkpoint(preflight, manifest)["checkpoint_identity"]
                 self.assertEqual(identity["arm"], arm)
-                self.assertEqual(identity["recipe_id"], BOX_RECIPE_ID)
+                self.assertEqual(identity["recipe_id"], recipe_id)
                 proposal_path = root / staging["source"]["candidate_manifest"]
                 proposal = json.loads(proposal_path.read_text())
                 proposal["kind"] = "training_label_overlay"
@@ -396,6 +414,43 @@ class VersionedRecipeChecks(unittest.TestCase):
                 write_json(manifest, bundle)
                 with self.assertRaisesRegex(ValueError, "must be selected together"):
                     select_checkpoint(preflight, manifest)
+
+    def test_box_seed_mismatch_is_rejected_after_refreshing_receipt_hash(self):
+        for recipe_id in BOX_RECIPE_IDS:
+            with self.subTest(recipe=recipe_id), tempfile.TemporaryDirectory() as directory:
+                _, run, preflight, receipt, _, manifest_path = bundle_fixture(
+                    Path(directory), "candidate", recipe_id=recipe_id)
+                manifest = json.loads(manifest_path.read_text())
+                for wrong_seed in {42, 43, 44} - {get_recipe(recipe_id)["seed"]}:
+                    with self.subTest(wrong_seed=wrong_seed):
+                        changed = copy.deepcopy(receipt)
+                        changed["training_settings"]["seed"] = wrong_seed
+                        write_json(run / "training-receipt.json", changed)
+                        manifest["training_receipt"] = descriptor(run / "training-receipt.json", run)
+                        write_json(manifest_path, manifest)
+                        with self.assertRaisesRegex(ValueError, "training setting differs from paired recipe: seed"):
+                            select_checkpoint(preflight, manifest_path)
+
+    def test_matching_seed_pairs_package_but_mixed_seeds_are_refused(self):
+        from package_gpu_results import package_results
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            runs = {}
+            for seed, recipe_id in BOX_REPEATABILITY_RECIPES.items():
+                for arm in ("reference", "candidate"):
+                    root, run, _, _, _, _ = bundle_fixture(base / f"seed{seed}-{arm}", arm, recipe_id=recipe_id)
+                    runs[seed, arm] = root, run
+                root, reference = runs[seed, "reference"]
+                candidate = runs[seed, "candidate"][1]
+                result = package_results(root, reference, candidate, base / f"seed{seed}.zip")
+                self.assertEqual(result["files"], 13)
+                for arm in ("reference", "candidate"):
+                    self.assertEqual(result["arms"][arm]["checkpoint_identity"]["recipe_id"], recipe_id)
+            output = base / "mixed-seeds.zip"
+            root, reference = runs[43, "reference"]
+            with self.assertRaisesRegex(ValueError, "shared training settings differ"):
+                package_results(root, reference, runs[44, "candidate"][1], output)
+            self.assertFalse(output.exists())
 
     def test_historical_recipes_cannot_claim_box_overlay_after_hash_refresh(self):
         for recipe_id in (None, ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID):

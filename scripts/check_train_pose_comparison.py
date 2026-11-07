@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Check process budgets and input preservation without training a model."""
 
+import contextlib
+import io
 import json
 from pathlib import Path
 import sys
@@ -9,7 +11,7 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from pose_checkpoint import BOX_RECIPE_ID, ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe
+from pose_checkpoint import BOX_RECIPE_ID, BOX_RECIPE_IDS, ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe
 from verify_pose_box_candidate import BOX_CANDIDATE
 from verify_pose_candidate import DEFAULT_CANDIDATE
 from train_pose_comparison import (file_sha256, main, monitor_worker, resolved_runtime,
@@ -77,13 +79,25 @@ class ExecutionChecks(unittest.TestCase):
     def test_cli_preserves_original_default_and_thirty_epoch_trial_schedule(self):
         arguments = ["--output", "/unused/fixture", "--arm", "reference", "--device", "cpu",
                      "--trial", "--max-seconds", "1"]
-        for extra, expected in (([], ORIGINAL_RECIPE_ID), (["--recipe", WARMUP_RECIPE_ID], WARMUP_RECIPE_ID)):
+        selections = [([], ORIGINAL_RECIPE_ID)] + [(["--recipe", recipe_id], recipe_id)
+            for recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS)]
+        for extra, expected in selections:
             with self.subTest(recipe=expected), patch("train_pose_comparison.run_parent", return_value=0) as parent:
                 self.assertEqual(main(arguments + extra), 0)
                 args = parent.call_args.args[0]
                 self.assertEqual(args.recipe, expected)
                 self.assertTrue(args.trial)
                 self.assertEqual(get_recipe(args.recipe)["epochs"], 30)
+
+    def test_cli_rejects_seed_override_and_undeclared_recipe_before_execution(self):
+        arguments = ["--output", "/unused/fixture", "--arm", "reference", "--device", "cpu",
+                     "--trial", "--max-seconds", "1"]
+        for extra in (["--seed", "43"], ["--recipe", "box-supervision-warmup-seed45-v1"]):
+            with self.subTest(arguments=extra), patch("train_pose_comparison.run_parent") as parent:
+                with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as raised:
+                    main(arguments + extra)
+                self.assertEqual(raised.exception.code, 2)
+                parent.assert_not_called()
 
     def test_warmup_candidate_is_rejected_before_staging_or_importing_training_runtime(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -96,9 +110,9 @@ class ExecutionChecks(unittest.TestCase):
             self.assertFalse(output.exists())
 
     def test_box_recipe_and_candidate_are_selected_together_before_training(self):
-        for recipe_id, candidate in ((ORIGINAL_RECIPE_ID, BOX_CANDIDATE),
-                                     (WARMUP_RECIPE_ID, BOX_CANDIDATE),
-                                     (BOX_RECIPE_ID, DEFAULT_CANDIDATE)):
+        selections = [(ORIGINAL_RECIPE_ID, BOX_CANDIDATE), (WARMUP_RECIPE_ID, BOX_CANDIDATE)]
+        selections.extend((recipe_id, DEFAULT_CANDIDATE) for recipe_id in BOX_RECIPE_IDS)
+        for recipe_id, candidate in selections:
             with self.subTest(recipe=recipe_id), tempfile.TemporaryDirectory() as directory:
                 output = Path(directory) / "fresh"
                 args = SimpleNamespace(root=Path(__file__).resolve().parents[1], output=output,

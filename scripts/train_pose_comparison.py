@@ -17,7 +17,7 @@ import subprocess
 import time
 
 from evaluate_pose import ULTRALYTICS_VERSION, _relative_file, file_sha256, preflight_dataset
-from pose_checkpoint import (BOX_RECIPE_ID, ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
+from pose_checkpoint import (BOX_RECIPE_IDS, ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
                              check_training_settings, get_recipe, recipe_identity)
 from stage_pose_training import MANIFEST, stage_datasets
 from verify_pose_candidate import DEFAULT_CANDIDATE, require
@@ -357,7 +357,7 @@ def run_parent(args):
     candidate = _relative_file(root, candidate_name)
     proposal = json.loads(candidate.read_text(encoding="utf-8"))
     require(isinstance(proposal, dict), "candidate manifest must be an object")
-    require((args.recipe == BOX_RECIPE_ID) == (proposal.get("kind") == "training_box_overlay"),
+    require((args.recipe in BOX_RECIPE_IDS) == (proposal.get("kind") == "training_box_overlay"),
             "box-supervision recipe and training_box_overlay must be selected together")
     require(importlib.metadata.version("ultralytics") == ULTRALYTICS_VERSION, "pinned Ultralytics required")
     preflight = preflight_dataset(root, require_weights=True)
