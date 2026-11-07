@@ -14,6 +14,7 @@ from evaluate_pose import _relative_file, file_sha256, parse_pose_labels
 
 DEFAULT_CANDIDATE = "data/candidates/dedup-2026-11-06/manifest.json"
 COUNT_KEYS = ("images", "objects", "visible_endpoints", "missing_endpoints", "empty_images")
+GEOMETRY_EPSILON_PX = 1e-4
 
 
 def require(condition, message):
@@ -34,21 +35,25 @@ def totals(records, objects):
     return result
 
 
-def verify_candidate(root, candidate):
-    root, candidate = Path(root).resolve(), Path(candidate).resolve()
-    proposal = json.loads(candidate.read_text(encoding="utf-8"))
-    require(isinstance(proposal, dict), "candidate manifest must be an object")
-    require(type(proposal.get("schema_version")) is int and proposal["schema_version"] == 1,
-            "unsupported candidate schema_version")
-    require(proposal.get("status") == "proposed" and proposal.get("kind") == "training_label_overlay",
-            "expected a proposed training_label_overlay")
-    require(isinstance(proposal.get("candidate_id"), str) and proposal["candidate_id"].strip(),
-            "candidate_id must be a nonempty string")
-    require(isinstance(proposal.get("source_revision"), str)
-            and re.fullmatch(r"[0-9a-f]{40}", proposal["source_revision"]), "expected full source revision SHA")
+def check_geometry(objects, width, height, source):
+    eps = GEOMETRY_EPSILON_PX
+    for index, obj in enumerate(objects, 1):
+        x1, y1, x2, y2 = obj["bbox_xyxy"]
+        require(x1 >= -eps and y1 >= -eps and x2 <= width + eps and y2 <= height + eps,
+                f"box outside image: {source}:{index}")
+        for x, y, visible in obj["keypoints"]:
+            if visible == 0:
+                continue
+            require(0 <= x < width and 0 <= y < height,
+                    f"visible endpoint outside strict image bounds: {source}:{index}")
+            require(x1 - eps <= x <= x2 + eps and y1 - eps <= y <= y2 + eps,
+                    f"visible endpoint outside its box: {source}:{index}")
+
+
+def read_reference(root, expected_manifest_sha256):
     reference_path = _relative_file(root, "data/manifest.json")
     reference_hash = file_sha256(reference_path)
-    require(reference_hash == proposal["source_manifest_sha256"], "source manifest SHA-256 mismatch")
+    require(reference_hash == expected_manifest_sha256, "source manifest SHA-256 mismatch")
     reference = json.loads(reference_path.read_text(encoding="utf-8"))
     records = reference["records"]
     require(isinstance(records, list) and len(records) == 157, "expected all 157 reference records")
@@ -77,6 +82,23 @@ def verify_candidate(root, candidate):
         require(source_counts[split]["images"] == size
                 and all(source_counts[split][key] == expected["instances" if key == "objects" else key]
                         for key in COUNT_KEYS), f"reference {split} totals mismatch")
+    return reference_hash, records, by_id, source_bytes, gold, source_counts
+
+
+def verify_candidate(root, candidate):
+    root, candidate = Path(root).resolve(), Path(candidate).resolve()
+    proposal = json.loads(candidate.read_text(encoding="utf-8"))
+    require(isinstance(proposal, dict), "candidate manifest must be an object")
+    require(type(proposal.get("schema_version")) is int and proposal["schema_version"] == 1,
+            "unsupported candidate schema_version")
+    require(proposal.get("status") == "proposed" and proposal.get("kind") == "training_label_overlay",
+            "expected a proposed training_label_overlay")
+    require(isinstance(proposal.get("candidate_id"), str) and proposal["candidate_id"].strip(),
+            "candidate_id must be a nonempty string")
+    require(isinstance(proposal.get("source_revision"), str)
+            and re.fullmatch(r"[0-9a-f]{40}", proposal["source_revision"]), "expected full source revision SHA")
+    reference_hash, records, by_id, source_bytes, gold, source_counts = read_reference(
+        root, proposal["source_manifest_sha256"])
 
     changes = proposal["changes"]
     require(isinstance(changes, list) and changes, "changes must be a nonempty list")

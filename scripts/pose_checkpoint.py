@@ -29,7 +29,8 @@ POSE_CONTRACT = {"task": "pose", "class_names": ["cassette_front"],
 ULTRALYTICS_VERSION = "8.4.182"
 ORIGINAL_RECIPE_ID = "paired-finetune-v1"
 WARMUP_RECIPE_ID = "warmup-bias-lr-1e-4-v1"
-RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID)
+BOX_RECIPE_ID = "box-supervision-warmup-v1"
+RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, BOX_RECIPE_ID)
 
 # Resolved defaults observed in the pinned trainer, in addition to RECIPE.
 # These are checked, not changed, by the runner. In particular RLE stays at 1.0.
@@ -68,7 +69,8 @@ def _same(actual, expected):
 def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
     """Return an independent fixed recipe; the original RECIPE remains unchanged."""
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
-    return {**RECIPE, **({"warmup_bias_lr": 0.0001} if recipe_id == WARMUP_RECIPE_ID else {})}
+    return {**RECIPE, **({"warmup_bias_lr": 0.0001}
+                       if recipe_id in (WARMUP_RECIPE_ID, BOX_RECIPE_ID) else {})}
 
 
 def recipe_identity(recipe_id=ORIGINAL_RECIPE_ID):
@@ -305,6 +307,9 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
                           ("staging_manifest_sha256", manifest["staging_manifest"]["sha256"])):
         _require(receipt[key] == expected, f"training receipt {key} differs")
     variants = _check_staging(preflight, staging)
+    proposal = _read_json(_contained_path(Path(preflight["root"]), staging["source"]["candidate_manifest"]))
+    _require((identity.get("recipe_id") == BOX_RECIPE_ID) == (proposal.get("kind") == "training_box_overlay"),
+             "box-supervision recipe and training_box_overlay must be selected together")
     variant = variants[receipt["arm"]]
     _require(receipt["data_yaml_sha256"] == variant["data_yaml_sha256"], "training arm/YAML identity differs")
     settings = _mapping(receipt["training_settings"], "training settings")

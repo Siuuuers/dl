@@ -1,0 +1,426 @@
+{
+  "schema_version": 1,
+  "candidate_id": "box-refinement-2026-11-07",
+  "status": "proposed",
+  "kind": "training_box_overlay",
+  "created_at_utc": "2026-11-07T12:42:28.452678+00:00",
+  "source_repository": "Siuuuers/dl",
+  "source_revision": "79069d31a25d5229166cdc2ba2b2cfed7ca47a25",
+  "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "annotation_policy": {
+    "id": "baomai-visible-front-v1",
+    "path": "docs/annotation-policy.md",
+    "sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91"
+  },
+  "review": {
+    "path": "review.json",
+    "sha256": "3ccdd6e8aa627780ed3f81b358629d2503466f2e573a682b7da64cd6f6310c8e"
+  },
+  "scope": "16 original-pixel-supported single-edge box corrections; all rows, class and endpoint tokens retained. Independent of the deletion-only candidate. Unresolved legacy fields remain explicitly disclosed.",
+  "changes": [
+    {
+      "image_id": "new_000030",
+      "source_label": "labels/train/new_000030.txt",
+      "source_label_sha256": "ca4d206c754ad205b156ea9a51dd916a9d69ae4a5f9d54aa07717984fe870bbb",
+      "source_image_sha256": "1ca47b685707d4b9dd1bec727e8de7acd5f7bd32cbd6d2ecab308668b135cca3",
+      "candidate_label": "labels/train/new_000030.txt",
+      "candidate_label_sha256": "4e4fb159f26951b0ae7d4330cd0b5dd8802e8067b935a3403b3d34370705a1c1",
+      "source_objects": 29,
+      "candidate_objects": 29,
+      "rows": [
+        {
+          "original_row": 9,
+          "source_row_text": "0 0.56180098 0.50978042 0.14774055 0.08974056 0.49550781 0.50958333 2 0.63137500 0.51034722 2",
+          "candidate_row_text": "0 0.56180098 0.48939951 0.14774055 0.04897875 0.49550781 0.50958333 2 0.63137500 0.51034722 2",
+          "source_bbox_xyxy_px": [
+            624.5513024,
+            334.7353008,
+            813.6592064,
+            399.34850400000005
+          ],
+          "candidate_bbox_xyxy_px": [
+            624.5513024,
+            334.7353008,
+            813.6592064,
+            370
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The same physical front that owns the visible lower corners near y367 ends at the seam near y369-370. The source bottom y399.35 lies inside the next front. Set bottom to y370, based on the pixel seam, independently of keypoint placement."
+        },
+        {
+          "original_row": 10,
+          "source_row_text": "0 0.55849254 0.57070431 0.14337273 0.07121639 0.49632031 0.56333333 2 0.62832813 0.55938889 2",
+          "candidate_row_text": "0 0.55849254 0.55227028 0.14337273 0.03434833 0.49632031 0.56333333 2 0.62832813 0.55938889 2",
+          "source_bbox_xyxy_px": [
+            623.111904,
+            385.2692028,
+            806.6289984000001,
+            436.5450036
+          ],
+          "candidate_bbox_xyxy_px": [
+            623.111904,
+            385.2692028,
+            806.6289984000001,
+            410
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The front ends at the seam around y407-410; the source bottom y436.55 lies well inside the next front. Set bottom to y410 using the visible face termination."
+        },
+        {
+          "original_row": 11,
+          "source_row_text": "0 0.55612629 0.61908451 0.13839227 0.06782931 0.49809375 0.61075000 2 0.62388281 0.60837500 2",
+          "candidate_row_text": "0 0.55612629 0.60022382 0.13839227 0.03010792 0.49809375 0.61075000 2 0.62388281 0.60837500 2",
+          "source_bbox_xyxy_px": [
+            623.2705984,
+            421.32229559999996,
+            800.4127040000001,
+            470.1593988
+          ],
+          "candidate_bbox_xyxy_px": [
+            623.2705984,
+            421.32229559999996,
+            800.4127040000001,
+            443
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The visible front ends immediately above the gripper near y441-443. The source bottom y470.16 encloses gripper material. Set bottom to y443 based on the physical front/gripper boundary."
+        },
+        {
+          "original_row": 23,
+          "source_row_text": "0 0.83528805 0.55984319 0.15435578 0.09471111 0.77475000 0.57386111 2 0.90453125 0.57256944 2",
+          "candidate_row_text": "0 0.83528805 0.54513271 0.15435578 0.06529014 0.77475000 0.57386111 2 0.90453125 0.57256944 2",
+          "source_bbox_xyxy_px": [
+            970.3810048,
+            368.9910972,
+            1167.9564031999998,
+            437.1830964
+          ],
+          "candidate_bbox_xyxy_px": [
+            970.3810048,
+            368.9910972,
+            1167.9564031999998,
+            416
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The physical front ends at about y414-416. The source bottom y437.18 lies in the second front. Set bottom to y416 from the observed lower-face termination."
+        },
+        {
+          "original_row": 24,
+          "source_row_text": "0 0.82266758 0.61514882 0.14318641 0.06834458 0.76210937 0.61966667 2 0.88875000 0.61944444 2",
+          "candidate_row_text": "0 0.82266758 0.60229382 0.14318641 0.04263458 0.76210937 0.61966667 2 0.88875000 0.61944444 2",
+          "source_bbox_xyxy_px": [
+            961.3752,
+            418.30310160000005,
+            1144.6538048,
+            467.5111992
+          ],
+          "candidate_bbox_xyxy_px": [
+            961.3752,
+            418.30310160000005,
+            1144.6538048,
+            449
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The front terminates around y447-449; the source bottom y467.51 extends into row25. Set bottom to y449 using the visible seam."
+        },
+        {
+          "original_row": 25,
+          "source_row_text": "0 0.81403578 0.66085368 0.14022094 0.06791153 0.75719531 0.66801389 2 0.87910156 0.66302778 2",
+          "candidate_row_text": "0 0.81403578 0.64886562 0.14022094 0.04393542 0.75719531 0.66801389 2 0.87910156 0.66302778 2",
+          "source_bbox_xyxy_px": [
+            952.2243967999999,
+            451.36649880000004,
+            1131.7072,
+            500.2628004
+          ],
+          "candidate_bbox_xyxy_px": [
+            952.2243967999999,
+            451.36649880000004,
+            1131.7072,
+            483
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The front terminates around y480-483; the source bottom y500.26 includes row26. Set bottom to y483 from the observed lower boundary."
+        },
+        {
+          "original_row": 26,
+          "source_row_text": "0 0.80618215 0.70115549 0.13717742 0.06038903 0.75114063 0.71312500 2 0.87007813 0.70854167 2",
+          "candidate_row_text": "0 0.80618215 0.69242493 0.13717742 0.04292791 0.75114063 0.71312500 2 0.87007813 0.70854167 2",
+          "source_bbox_xyxy_px": [
+            944.1196032,
+            483.09190199999995,
+            1119.7067008000001,
+            526.5720036
+          ],
+          "candidate_bbox_xyxy_px": [
+            944.1196032,
+            483.09190199999995,
+            1119.7067008000001,
+            514
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "This lowest right-stack front ends near y513-514. The source bottom y526.57 contains rack below it. Set bottom to y514 from the visible face/rack termination."
+        },
+        {
+          "original_row": 29,
+          "source_row_text": "0 0.42606641 0.58222222 0.14060156 0.10605556 0.36132812 0.62534722 2 0.00000000 0.00000000 0",
+          "candidate_row_text": "0 0.42606641 0.60790278 0.14060156 0.05469444 0.36132812 0.62534722 2 0.00000000 0.00000000 0",
+          "source_bbox_xyxy_px": [
+            455.3800064,
+            381.01999680000006,
+            635.3500032000001,
+            457.38
+          ],
+          "candidate_bbox_xyxy_px": [
+            455.3800064,
+            418,
+            635.3500032000001,
+            457.38
+          ],
+          "box_edges_changed": [
+            "top"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The source top y381.02 lies across the distinct row6 face. The intended row29 front begins at the visible seam around y418. Set top to y418 while retaining row6 as a different object."
+        }
+      ]
+    },
+    {
+      "image_id": "new_000012",
+      "source_label": "labels/train/new_000012.txt",
+      "source_label_sha256": "a1921b9a95054868abe1a226ec4996df5317c1190af13bbea2d45837cc796231",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "candidate_label": "labels/train/new_000012.txt",
+      "candidate_label_sha256": "4bcb6ff94c03c5bf936d0221b8adf6f0fd1e1f3c59c839a65464f62d7e77a35f",
+      "source_objects": 38,
+      "candidate_objects": 38,
+      "rows": [
+        {
+          "original_row": 15,
+          "source_row_text": "0 0.58434820 0.21319472 0.16405188 0.07369222 0.50776562 0.19643056 2 0.65781250 0.22916667 2",
+          "candidate_row_text": "0 0.58434820 0.20414653 0.16405188 0.05559583 0.50776562 0.19643056 2 0.65781250 0.22916667 2",
+          "source_bbox_xyxy_px": [
+            642.9724928,
+            126.97099920000001,
+            852.9588991999999,
+            180.02939759999998
+          ],
+          "candidate_bbox_xyxy_px": [
+            642.9724928,
+            126.97099920000001,
+            852.9588991999999,
+            167
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The original bottom at 180.03 px extends into the second front. The first front terminates near y=165-166 at its right end; 167 px is a conservative observed lower bound. This judgment uses the raw contour, with the retained right corner as corroboration, not an automatic snap to that point."
+        },
+        {
+          "original_row": 16,
+          "source_row_text": "0 0.57848250 0.27475750 0.15847609 0.08111139 0.50319531 0.26298611 2 0.64823438 0.29195833 2",
+          "candidate_row_text": "0 0.57848250 0.26571201 0.15847609 0.06302042 0.50319531 0.26298611 2 0.64823438 0.29195833 2",
+          "source_bbox_xyxy_px": [
+            639.0329024,
+            168.62529959999998,
+            841.8822976,
+            227.0255004
+          ],
+          "candidate_bbox_xyxy_px": [
+            639.0329024,
+            168.62529959999998,
+            841.8822976,
+            214
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The original bottom at 227.03 px includes a band of the third front. The second front terminates near y=211-213 at the right. A conservative bottom of 214 px removes the clearly different lower front."
+        },
+        {
+          "original_row": 26,
+          "source_row_text": "0 0.67022090 0.67598056 0.13304961 0.05847611 0.00000000 0.00000000 0 0.73396094 0.68530556 2",
+          "candidate_row_text": "0 0.68595098 0.67598056 0.10158946 0.05847611 0.00000000 0.00000000 0 0.73396094 0.68530556 2",
+          "source_bbox_xyxy_px": [
+            772.7310016,
+            465.6546036,
+            943.0345024000001,
+            507.75740279999997
+          ],
+          "candidate_bbox_xyxy_px": [
+            813,
+            465.6546036,
+            943.0345024000001,
+            507.75740279999997
+          ],
+          "box_edges_changed": [
+            "left"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The original left bound at 772.73 px covers gripper material. The visibly exposed portion of this front begins near x=815 at its upper-left occlusion boundary; 813 px is a conservative outer bound. The hidden actual lower-left corner remains missing."
+        },
+        {
+          "original_row": 27,
+          "source_row_text": "0 0.66485426 0.71553660 0.13071445 0.05184681 0.00000000 0.00000000 0 0.72767187 0.72990278 2",
+          "candidate_row_text": "0 0.68971512 0.71553660 0.08099273 0.05184681 0.00000000 0.00000000 0 0.72767187 0.72990278 2",
+          "source_bbox_xyxy_px": [
+            767.3562048000001,
+            496.5215004,
+            934.6707008,
+            533.8512036
+          ],
+          "candidate_bbox_xyxy_px": [
+            831,
+            496.5215004,
+            934.6707008,
+            533.8512036
+          ],
+          "box_edges_changed": [
+            "left"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The original left bound at 767.36 px lies across the gripper. The exposed lowest right front starts around x=833 beside the gripper; 831 px conservatively retains the visible front edge. The occluder boundary is not promoted to a lower-left keypoint."
+        },
+        {
+          "original_row": 37,
+          "source_row_text": "0 0.41651035 0.82186125 0.11949773 0.04705861 0.36521094 0.82502778 2 0.00000000 0.00000000 0",
+          "candidate_row_text": "0 0.37720887 0.82186125 0.04089476 0.04705861 0.36521094 0.82502778 2 0.00000000 0.00000000 0",
+          "source_bbox_xyxy_px": [
+            456.6547008,
+            574.7990004,
+            609.6117952,
+            608.6811996
+          ],
+          "candidate_bbox_xyxy_px": [
+            456.6547008,
+            574.7990004,
+            509,
+            608.6811996
+          ],
+          "box_edges_changed": [
+            "right"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The original right bound at 609.61 px lies far over the thumb. The maximum x of the visible left-front fragment occurs near its upper contact with the thumb, around x=505-508. A conservative bound of 509 px removes the definite skin-only region; the hidden right corner is unchanged."
+        },
+        {
+          "original_row": 38,
+          "source_row_text": "0 0.41569754 0.85934687 0.11757414 0.04774458 0.36549219 0.85984722 2 0.00000000 0.00000000 0",
+          "candidate_row_text": "0 0.37259586 0.85934687 0.03137078 0.04774458 0.36549219 0.85984722 2 0.00000000 0.00000000 0",
+          "source_bbox_xyxy_px": [
+            456.84540159999995,
+            601.5416976,
+            607.3403008,
+            635.9177952
+          ],
+          "candidate_bbox_xyxy_px": [
+            456.84540159999995,
+            601.5416976,
+            497,
+            635.9177952
+          ],
+          "box_edges_changed": [
+            "right"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The original right bound at 607.34 px lies over the thumb. The exposed left-front fragment reaches only approximately x=494-496 near its upper occlusion boundary. A conservative right bound of 497 px removes the definite skin-only region without assigning a hidden corner."
+        }
+      ]
+    },
+    {
+      "image_id": "new_000128",
+      "source_label": "labels/train/new_000128.txt",
+      "source_label_sha256": "ed67b6d46e877ea5faeb14876e86ad20425de3d8ef175e42a770c69bf3690dc0",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "candidate_label": "labels/train/new_000128.txt",
+      "candidate_label_sha256": "ed3e7b00737530381a71dadfdd153e32e27957fd02a83ca9ec20d22b668db1d6",
+      "source_objects": 37,
+      "candidate_objects": 37,
+      "rows": [
+        {
+          "original_row": 10,
+          "source_row_text": "0 0.91025391 0.08004861 0.17949219 0.09212500 0.83825781 0.08322222 2 0.00000000 0.00000000 0",
+          "candidate_row_text": "0 0.91025391 0.06143750 0.17949219 0.05490278 0.83825781 0.08322222 2 0.00000000 0.00000000 0",
+          "source_bbox_xyxy_px": [
+            1050.2500032,
+            24.469999200000004,
+            1280.0000064,
+            90.7999992
+          ],
+          "candidate_bbox_xyxy_px": [
+            1050.2500032,
+            24.469999200000004,
+            1280.0000064,
+            64
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The main front ends around y60-64; source y90.7999992 includes a substantial band of the next front. Move only this bottom edge to y64, retaining a conservative edge through the soft seam."
+        },
+        {
+          "original_row": 11,
+          "source_row_text": "0 0.90763281 0.13275000 0.18473438 0.08494444 0.82541406 0.15995833 2 0.99052344 0.15798611 2",
+          "candidate_row_text": "0 0.90763281 0.12708333 0.18473438 0.07361111 0.82541406 0.15995833 2 0.99052344 0.15798611 2",
+          "source_bbox_xyxy_px": [
+            1043.5399936,
+            65.0000016,
+            1280.0,
+            126.1599984
+          ],
+          "candidate_bbox_xyxy_px": [
+            1043.5399936,
+            65.0000016,
+            1280.0,
+            118
+          ],
+          "box_edges_changed": [
+            "bottom"
+          ],
+          "review_status": "accepted_incremental",
+          "reason": "The face ends around y115-118. Source y126.1599984 extends into the open rack below; move only this bottom edge to y118, preserving both actual lower corners."
+        }
+      ]
+    }
+  ],
+  "expected_counts": {
+    "train": {
+      "images": 137,
+      "objects": 3772,
+      "visible_endpoints": 6839,
+      "missing_endpoints": 705,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 664,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 101,
+      "empty_images": 3
+    }
+  }
+}
