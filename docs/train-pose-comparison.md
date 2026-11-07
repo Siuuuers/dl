@@ -1,5 +1,7 @@
 # Execute the controlled cassette training comparison
 
+**First GPU pair completed and evaluated on 2026-11-07:** [PR #13](https://github.com/Siuuuers/dl/pull/13) returned eligible finalized epoch-30 models. The [three-model comparison](gpu-comparison-2026-11-07.md) retains epoch173 because both fine-tunes regress on extra detections and tight corner error. This guide preserves the original recipe and historical CPU trial. The proposed next test changes only bias warmup in a separately versioned experiment; it has not run.
+
 The user clarified on 2026-11-07 (Hong Kong time) that the current duty is object localization in the supplied baomai D405 images. Retain the existing two-corner target. GPU compute is available; use [gpu-handoff.md](gpu-handoff.md) to transfer the inputs and return the completed models. Camera/robot calibration is outside this experiment.
 
 Use the adopted [annotation policy](annotation-policy.md), the [dataset preparation](prepare-pose-training.md), and [PR #1's experiment plan](https://github.com/Siuuuers/dl/pull/1). Keep the supplied epoch173 checkpoint as M0. Train M1 with unchanged labels and M2 with the eleven-row deletion candidate. Each arm freshly initializes from the exact epoch173 bytes; it does not resume the original optimizer or an earlier trial.
@@ -37,7 +39,7 @@ During the next batch, sampled process-tree RSS reached **6,050.04 MiB** and cro
 
 This establishes a limit of the chosen execution budget; it does not prove that every CPU machine is incapable of this training. Steady-state throughput, later-batch memory, validation and checkpoint-finalization costs remain unqualified. Do not extrapolate a reliable full-run duration from this single completed batch or silently change the scientific recipe to force a pass.
 
-All **66 focused checks** passed on that published revision: 36 evaluator, 12 quality, 13 checkpoint-bundle and five execution-budget/input checks. The bundle checks use synthetic completed artifacts; no real 30-epoch model exists. Both saved-prediction replays reproduced all 60 image/threshold pairs exactly. New inference on one dense and one empty baseline image verified the actual loaded `[2,3]` head and reproduced the prior predictions exactly.
+All **66 focused checks** passed on that published revision: 36 evaluator, 12 quality, 13 checkpoint-bundle and five execution-budget/input checks. The bundle checks use synthetic completed artifacts; no real 30-epoch model existed at that CPU-trial milestone. Both saved-prediction replays reproduced all 60 image/threshold pairs exactly. New inference on one dense and one empty baseline image verified the actual loaded `[2,3]` head and reproduced the prior predictions exactly.
 
 ## Complete each arm on qualified compute
 
