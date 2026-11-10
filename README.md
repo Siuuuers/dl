@@ -120,9 +120,11 @@ test/d405_recordings/recording_日期_时间/
 
 ## GPU 訓練與比較結果
 
-**目前下一步：**[固定種子43／44的配對重複性實驗](docs/box-repeatability-2026-11-07.md) 已固定比較方式：每個種子各訓練原標籤與修正框兩組，共四次30輪訓練。使用[新GPU notebook](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/baomai-box-repeatability-20261107/notebooks/baomai_box_repeatability.ipynb)，選GPU後執行全部儲存格，回傳一個 `baomai-box-repeatability-results.zip`。原種子42保留為獨立歷史結果；不重跑、不混入新種子的平均，也不挑選表現最好的種子。新結果尚待GPU執行。
+**最新結果：種子43／44的重複性實驗已完成，繼續使用原始第173輪模型。** [PR #27](https://github.com/Siuuuers/dl/pull/27) 的四組30輪GPU結果已通過審核，並完成五模型共同評估。[完整比較](docs/box-repeatability-comparison-2026-11-10.md) 顯示：在主要信心值0.25下，兩個修正框候選都比各自的原標籤控制組多漏檢1個物件、多缺少1個可定位角點；p95角點誤差均略降，但額外偵測與中位數誤差的變化方向不一致。先前種子42的偵測改善未在這兩組重現。保留所有結果，不挑選最佳種子；此次GPU作業無需重跑。
 
-**最新結果：繼續使用原始第173輪模型。** [訓練框修正比較](docs/box-supervision-comparison-2026-11-07.md) 已完成 [PR #23](https://github.com/Siuuuers/dl/pull/23) 的兩組30輪GPU結果審核及三模型共同評估，無需重跑該次GPU作業。修正框候選的漏檢／額外偵測為36／59，原始第173輪為39／63，同配方的原標籤控制組為37／60；但候選的角點p95誤差為5.096371 px，控制組為5.004297 px，尚未通過預先訂定的兩組比較標準。保留候選與16個經審查的框邊界修正；下一個建議問題是以預先固定的配對種子檢查這項偵測／角點取捨是否穩定。[原實驗計畫與notebook](docs/box-supervision-2026-11-07.md) 保留供重現。
+**目前下一步：**按[33個持續漏檢參考物件的審查清單](results/evaluation/baomai-box-repeatability-a100-001/failure-review-locations.json) 檢視原圖，先處理其中12個兩角點均可定位的案例，再釐清其餘物件的正面邊界、身分與配對競爭。這是待審查清單，尚非新修正標籤。保持已完成評估的參考標籤與信心值不變；以具影像依據的發現決定下一個有限訓練標籤修正。原種子42保留為獨立歷史結果，未混入新種子的平均。[固定實驗計畫與notebook](docs/box-repeatability-2026-11-07.md) 保留供重現。
+
+[種子42的訓練框修正比較](docs/box-supervision-comparison-2026-11-07.md) 已完成 [PR #23](https://github.com/Siuuuers/dl/pull/23) 的兩組30輪GPU結果審核及三模型共同評估。修正框候選的漏檢／額外偵測為36／59，原始第173輪為39／63，同配方的原標籤控制組為37／60；但候選的角點p95誤差為5.096371 px，控制組為5.004297 px，未通過預先訂定的兩組比較標準。該次決定及16個經審查的框邊界修正均保留。[原實驗計畫與notebook](docs/box-supervision-2026-11-07.md) 保留供重現。
 
 目前工作只處理 baomai D405 影像中的包埋盒定位，保留現有兩個下角點的定義。[bias warmup 比較](docs/warmup-comparison-2026-11-07.md) 已完成，並驗證 [PR #16](https://github.com/Siuuuers/dl/pull/16) 回傳的兩組模型與紀錄。降低 bias 起始學習率的模型在五項主要指標上均優於原始第173輪模型，但漏檢數為37，新控制組為36，尚未通過預先訂定的兩組比較標準。因此繼續使用原始模型，保留 warmup 模型作為有潛力的候選。
 

@@ -1,0 +1,378 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-box-repeatability-evaluation-capsule-verification",
+  "status": "PASS",
+  "created_at_utc": "2026-11-10T12:36:46.875338+00:00",
+  "archive": {
+    "path": "evaluation.zip",
+    "sha256": "e4d8c586d2553964bf09b07ffdfa2a1d26326488435f3991375b0cf25c49e0c3",
+    "size_bytes": 2161801,
+    "members": 110,
+    "verified_payload_files": 109,
+    "safe_unique_regular_paths": true,
+    "crc_valid": true,
+    "all_payload_hashes_and_sizes_match_inventory": true,
+    "no_model_weight_files_or_nested_archives": true,
+    "inventory_sha256": "7c1ded05f7b8d9274104b602a768ae1cd7872fdeac8d64e39c422a80c8e9b308"
+  },
+  "checksum_sidecar": {
+    "path": "evaluation.zip.sha256",
+    "sha256": "84f103ff2cd07c8eec116e1f4fc5f401d23c9dc36ac83f791f6806e7e7310b77"
+  },
+  "source": {
+    "revision": "8ce9fe233dc3b4b9f3ccfc4491a952dca541a64b",
+    "working_tree_status": "",
+    "files_sha256": {
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/pose_checkpoint.py": "69123751ce59ad5fd4588d81715afff229391f98e553b15c3280909663cd0be2",
+      "scripts/summarize_pose_comparison.py": "d728710a93bc73e56727a189d20b0a61ef84bd93c964c42ba8b2265afdc24ace",
+      "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953",
+      "scripts/package_gpu_results.py": "120b1a3d22f9cb8896af67a84b7d3da686d89e41b63d5889eb7fb106bdce477c",
+      "scripts/summarize_box_repeatability.py": "a770dc229161821cb4c1204c7edd1a4911934f87f0f2a44454bc4f1533c31dc7",
+      "scripts/package_box_repeatability.py": "16938c6de4cb45709e47d9884c879fd6aa52792074b5f66ef2cfd41374527def",
+      "scripts/train_pose_comparison.py": "6a2ac2742a7dd03b1e8b6751ff8fee1f7e6ea7e69185473e919640d860c123a6",
+      "scripts/stage_pose_training.py": "3bce2f50f9c6c6626f50a145e66b2cca9ad9742607f0962b3c1d08dcd30b5aca",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5"
+    }
+  },
+  "return_commit": "265fe52dc6e2d8721986fcfdf8944eb4ed33497f",
+  "training_source_commit": "f087c35f74bf304eb61998edcaa2172fe1cba49c",
+  "original_gpu_archive": {
+    "sha256": "4e4d36aaee4bfe316a5517afa68a276e76eef07ed8680347bd9b52ffbe455beb",
+    "size_bytes": 79587975,
+    "members": 28,
+    "safe_unique_paths": true,
+    "crc_valid": true,
+    "verified_payloads": 27
+  },
+  "reference": {
+    "model_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+    "reference_validation_images": 20
+  },
+  "candidate_manifest_sha256": "b61d012052001377089ad048ba13da14b8cd19d665ac8f0ef7828e45c530ec3e",
+  "inference_runtime": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "device_requested": "cpu",
+    "torch": "2.10.0+cpu",
+    "torch_cuda": null,
+    "torch_threads_requested": 4,
+    "ultralytics": "8.4.182",
+    "loaded_kpt_shape": [
+      2,
+      3
+    ],
+    "packages": {
+      "torchvision": "0.25.0+cpu",
+      "numpy": "2.5.4",
+      "Pillow": "13.0.0",
+      "opencv-python": "5.0.0.93"
+    },
+    "device_actual": "cpu",
+    "backend_end2end": false,
+    "backend_fp16": false,
+    "torch_threads": 4
+  },
+  "evaluation_scope": {
+    "fresh_model_inferences": 5,
+    "unique_image_model_threshold_records": 300,
+    "unique_score_aggregates": 15,
+    "unique_quality_records": 300,
+    "unique_quality_aggregates": 15,
+    "m0_inferred_once_then_copied": true,
+    "prospective_seeds": [
+      43,
+      44
+    ],
+    "historical_seed_42_included_in_aggregation": false,
+    "original_execution_commands": 11,
+    "all_original_execution_exit_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "fresh_extraction_and_replay": {
+    "source_commit": "8ce9fe233dc3b4b9f3ccfc4491a952dca541a64b",
+    "source_tree": "ab3a5d540cc1445236f121651a18c0fee0813ae1",
+    "working_tree_before": "",
+    "working_tree_after": "",
+    "original_pngs_hydrated_and_hash_verified": 157,
+    "hydration": "Hardlinks from original hash-verified inputs; unchanged Git LFS content. Worktree index refreshed without changing its tree.",
+    "python": "3.12.14",
+    "full_replay_executions": 1,
+    "fresh_archive_extractions": 1,
+    "command": {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/470b9cd0057a/dl-replay/scripts/summarize_box_repeatability.py",
+        "--root",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "--evidence",
+        "/workspace/scratch/470b9cd0057a/pr27-package/fresh-extraction/evidence",
+        "--output",
+        "/workspace/scratch/470b9cd0057a/pr27-package/replayed-summary.json"
+      ],
+      "cwd": "/workspace/scratch/470b9cd0057a/dl-replay",
+      "started_at_utc": "2026-11-10T12:36:45.092894+00:00",
+      "exit_code": 0,
+      "wall_seconds": 1.729507958000113,
+      "stdout": "{\"output\": \"/workspace/scratch/470b9cd0057a/pr27-package/replayed-summary.json\", \"status\": \"verified-descriptive-only\", \"prospective_seeds\": [43, 44], \"decision\": \"retain-M0\"}\n",
+      "stderr": ""
+    },
+    "original_summary_sha256": "0dfc6342ce01dc2d4c93727537dbddc5d0d12193062b4c52ba2e71abb827527f",
+    "replayed_summary_sha256": "8ac0659e1822d60ea857f518600b537dd3ce916dba00918effa5ac4d5cca369b",
+    "complete_semantics_equal": true,
+    "excluded_json_paths": [
+      "/created_at_utc",
+      "/per_seed/0/created_at_utc",
+      "/per_seed/1/created_at_utc",
+      "/command"
+    ],
+    "numeric_tolerance": null,
+    "inference_or_weight_loading_performed": false
+  },
+  "packaging_execution": {
+    "initial_command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "/workspace/scratch/470b9cd0057a/pr27-package/package_evidence.py"
+    ],
+    "initial_exit_code": 1,
+    "initial_stop": "Clean-worktree preflight before any saved-prediction replay; hydrated LFS index needed refresh.",
+    "initial_script_sha256": "1aae540872ac36b95d895e55031e367132395862c8b25204391f70082e6b8643",
+    "index_refresh": {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "add",
+        "data/images"
+      ],
+      "exit_code": 0,
+      "observed_tool_chunk_id": "a9435e",
+      "resulting_tree": "ab3a5d540cc1445236f121651a18c0fee0813ae1",
+      "working_tree_status_after": "",
+      "reason": "Refresh the hydrated Git LFS index. The initial packaging setup stopped before replay because the first status reported hydrated PNGs as modified. No file bytes or Git tree changed."
+    },
+    "completion_command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "/workspace/scratch/470b9cd0057a/pr27-package/finish_package.py"
+    ],
+    "completion_script_sha256": "2ed7951cf030468f587c1bea5fdc45ca3a6e6aee890347250e70fb9db06de2a6",
+    "completion_exit_code": 0
+  },
+  "commands": [
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl",
+        "worktree",
+        "add",
+        "--detach",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "8ce9fe233dc3b4b9f3ccfc4491a952dca541a64b"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T12:34:32.355782+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.1863780690000567,
+      "stdout": "HEAD is now at 8ce9fe2 Pin the repeatability GPU notebook and publish verified study handoff\n",
+      "stderr": "Preparing worktree (detached HEAD 8ce9fe2)\n"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T12:34:32.542413+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.0018547229999512638,
+      "stdout": "8ce9fe233dc3b4b9f3ccfc4491a952dca541a64b\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T12:34:32.544533+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.003011837000030937,
+      "stdout": "ab3a5d540cc1445236f121651a18c0fee0813ae1\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "config",
+        "--get-regexp",
+        "^filter\\.lfs\\."
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T12:34:32.547715+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.0019051870001476345,
+      "stdout": "filter.lfs.clean git-lfs clean -- %f\nfilter.lfs.smudge git-lfs smudge --skip -- %f\nfilter.lfs.process git-lfs filter-process --skip\nfilter.lfs.required true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T12:34:32.779174+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.15168930699996963,
+      "stdout": " M data/images/train/new_000001.png\n M data/images/train/new_000002.png\n M data/images/train/new_000003.png\n M data/images/train/new_000004.png\n M data/images/train/new_000005.png\n M data/images/train/new_000006.png\n M data/images/train/new_000012.png\n M data/images/train/new_000013.png\n M data/images/train/new_000014.png\n M data/images/train/new_000015.png\n M data/images/train/new_000016.png\n M data/images/train/new_000017.png\n M data/images/train/new_000018.png\n M data/images/train/new_000019.png\n M data/images/train/new_000020.png\n M data/images/train/new_000023.png\n M data/images/train/new_000024.png\n M data/images/train/new_000025.png\n M data/images/train/new_000026.png\n M data/images/train/new_000027.png\n M data/images/train/new_000028.png\n M data/images/train/new_000029.png\n M data/images/train/new_000030.png\n M data/images/train/new_000031.png\n M data/images/train/new_000032.png\n M data/images/train/new_000033.png\n M data/images/train/new_000034.png\n M data/images/train/new_000035.png\n M data/images/train/new_000036.png\n M data/images/train/new_000037.png\n M data/images/train/new_000038.png\n M data/images/train/new_000039.png\n M data/images/train/new_000040.png\n M data/images/train/new_000041.png\n M data/images/train/new_000042.png\n M data/images/train/new_000043.png\n M data/images/train/new_000044.png\n M data/images/train/new_000045.png\n M data/images/train/new_000049.png\n M data/images/train/new_000050.png\n M data/images/train/new_000051.png\n M data/images/train/new_000061.png\n M data/images/train/new_000062.png\n M data/images/train/new_000063.png\n M data/images/train/new_000064.png\n M data/images/train/new_000065.png\n M data/images/train/new_000066.png\n M data/images/train/new_000067.png\n M data/images/train/new_000068.png\n M data/images/train/new_000069.png\n M data/images/train/new_000070.png\n M data/images/train/new_000071.png\n M data/images/train/new_000072.png\n M data/images/train/new_000073.png\n M data/images/train/new_000074.png\n M data/images/train/new_000075.png\n M data/images/train/new_000079.png\n M data/images/train/new_000080.png\n M data/images/train/new_000081.png\n M data/images/train/new_000082.png\n M data/images/train/new_000083.png\n M data/images/train/new_000084.png\n M data/images/train/new_000085.png\n M data/images/train/new_000094.png\n M data/images/train/new_000095.png\n M data/images/train/new_000096.png\n M data/images/train/new_000097.png\n M data/images/train/new_000098.png\n M data/images/train/new_000099.png\n M data/images/train/new_000100.png\n M data/images/train/new_000101.png\n M data/images/train/new_000102.png\n M data/images/train/new_000103.png\n M data/images/train/new_000111.png\n M data/images/train/new_000112.png\n M data/images/train/new_000113.png\n M data/images/train/new_000114.png\n M data/images/train/new_000115.png\n M data/images/train/new_000116.png\n M data/images/train/new_000117.png\n M data/images/train/new_000118.png\n M data/images/train/new_000119.png\n M data/images/train/new_000120.png\n M data/images/train/new_000121.png\n M data/images/train/new_000122.png\n M data/images/train/new_000123.png\n M data/images/train/new_000124.png\n M data/images/train/new_000125.png\n M data/images/train/new_000126.png\n M data/images/train/new_000127.png\n M data/images/train/new_000128.png\n M data/images/train/new_000129.png\n M data/images/train/new_000130.png\n M data/images/train/new_000131.png\n M data/images/train/new_000132.png\n M data/images/train/new_000133.png\n M data/images/train/new_000134.png\n M data/images/train/new_000135.png\n M data/images/train/new_000136.png\n M data/images/train/new_000139.png\n M data/images/train/new_000140.png\n M data/images/train/new_000141.png\n M data/images/train/new_000142.png\n M data/images/train/new_000143.png\n M data/images/train/new_000144.png\n M data/images/train/new_000150.png\n M data/images/train/old_000003.png\n M data/images/train/old_000004.png\n M data/images/train/old_000007.png\n M data/images/train/old_000010.png\n M data/images/train/old_000013.png\n M data/images/train/old_000018.png\n M data/images/train/old_000021.png\n M data/images/train/old_000022.png\n M data/images/train/old_000027.png\n M data/images/train/old_000028.png\n M data/images/train/old_000038.png\n M data/images/train/old_000039.png\n M data/images/train/old_000042.png\n M data/images/train/old_000046.png\n M data/images/train/old_000050.png\n M data/images/train/old_000051.png\n M data/images/train/old_000054.png\n M data/images/train/old_000057.png\n M data/images/train/old_000061.png\n M data/images/train/old_000065.png\n M data/images/train/old_000068.png\n M data/images/train/old_000069.png\n M data/images/train/old_000073.png\n M data/images/train/old_000077.png\n M data/images/train/old_000079.png\n M data/images/train/old_000087.png\n M data/images/train/old_000089.png\n M data/images/train/old_000093.png\n M data/images/train/old_000097.png\n M data/images/train/old_000100.png\n M data/images/train/old_000101.png\n M data/images/val/new_000007.png\n M data/images/val/new_000008.png\n M data/images/val/new_000009.png\n M data/images/val/new_000010.png\n M data/images/val/new_000011.png\n M data/images/val/new_000053.png\n M data/images/val/new_000054.png\n M data/images/val/new_000055.png\n M data/images/val/new_000056.png\n M data/images/val/new_000057.png\n M data/images/val/new_000058.png\n M data/images/val/new_000059.png\n M data/images/val/new_000086.png\n M data/images/val/new_000087.png\n M data/images/val/new_000088.png\n M data/images/val/new_000089.png\n M data/images/val/new_000090.png\n M data/images/val/new_000146.png\n M data/images/val/new_000147.png\n M data/images/val/new_000148.png\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "add",
+        "data/images"
+      ],
+      "exit_code": 0,
+      "observed_tool_chunk_id": "a9435e",
+      "resulting_tree": "ab3a5d540cc1445236f121651a18c0fee0813ae1",
+      "working_tree_status_after": "",
+      "reason": "Refresh the hydrated Git LFS index. The initial packaging setup stopped before replay because the first status reported hydrated PNGs as modified. No file bytes or Git tree changed."
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T12:36:45.086613+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.003616290999843841,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "write-tree"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T12:36:45.090482+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.0022013960001459054,
+      "stdout": "ab3a5d540cc1445236f121651a18c0fee0813ae1\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/470b9cd0057a/dl-replay/scripts/summarize_box_repeatability.py",
+        "--root",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "--evidence",
+        "/workspace/scratch/470b9cd0057a/pr27-package/fresh-extraction/evidence",
+        "--output",
+        "/workspace/scratch/470b9cd0057a/pr27-package/replayed-summary.json"
+      ],
+      "cwd": "/workspace/scratch/470b9cd0057a/dl-replay",
+      "started_at_utc": "2026-11-10T12:36:45.092894+00:00",
+      "exit_code": 0,
+      "wall_seconds": 1.729507958000113,
+      "stdout": "{\"output\": \"/workspace/scratch/470b9cd0057a/pr27-package/replayed-summary.json\", \"status\": \"verified-descriptive-only\", \"prospective_seeds\": [43, 44], \"decision\": \"retain-M0\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/470b9cd0057a/dl-replay",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T12:36:46.824902+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.004277322999996613,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "input_evidence": {
+    "repeatability-summary.json": {
+      "size_bytes": 165580,
+      "sha256": "0dfc6342ce01dc2d4c93727537dbddc5d0d12193062b4c52ba2e71abb827527f"
+    },
+    "commands.json": {
+      "size_bytes": 10144,
+      "sha256": "181a769c4b5371e2618a2172d2a650cc16082e41c9ece9c3de4d121d2656fd38"
+    },
+    "execution-status.json": {
+      "size_bytes": 276,
+      "sha256": "2b8353727e67c8730d4bfef545dfa73c891a0cfc8376741f94d2392fb0972edc"
+    },
+    "m0-continuity.json": {
+      "size_bytes": 617,
+      "sha256": "9030b7de72091f4e449be7c46646fe386123df8d53d174bfc8ff9090acb4eeee"
+    },
+    "audit/audit.json": {
+      "size_bytes": 54806,
+      "sha256": "cb907f6ce474fc5f5e3d59d3c5c2398b0b47c5a8ff6a88db228049a351690f7f"
+    },
+    "audit/execution.json": {
+      "size_bytes": 1036,
+      "sha256": "0d50c630c14c52c539a58d95821b8325168c9bced411c0bc2eabf2dcb6f46f6b"
+    },
+    "independent/independent-review.json": {
+      "size_bytes": 100682,
+      "sha256": "f6923dc6ba6afa0a53aeca60e88238639ca16f1c990fcc1d716e13d0e90fca70"
+    },
+    "independent/execution-record.json": {
+      "size_bytes": 2209,
+      "sha256": "d808c503edb20341980dd981d5c7e21a36ae3dae5edb627403aaceab7c10c416"
+    },
+    "independent/failure-review-locations.json": {
+      "size_bytes": 329551,
+      "sha256": "f583fa19f84bbd12ba8d9527985291e50d09a39b90319c935ab57c0fb590266d"
+    }
+  },
+  "limits": [
+    "The capsule contains saved predictions and checkpoint evidence, not model weights or original image bytes.",
+    "The preserved return audit verified the original GPU archive and initial checkpoint bytes; compact replay does not repeat weight-byte validation.",
+    "Five model inferences generate 300 unique records and 15 aggregates; copied M0 evidence is not counted twice.",
+    "Complete saved-result semantics match after excluding only the explicitly listed timestamps and invocation fields, without numeric tolerance.",
+    "Two prospective seeds on the reused development split do not establish significance, unseen-scene accuracy or a physical acceptance tolerance."
+  ]
+}
