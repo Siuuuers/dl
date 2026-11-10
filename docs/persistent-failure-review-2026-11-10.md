@@ -1,5 +1,7 @@
 # Persistent misses: review the reference before another training experiment
 
+**Follow-up completed:** the [separately versioned reference amendment](reference-amendment-2026-11-10.md) applies accepted assistant-reviewed corrections under the user's authorization and replays every compared model. It amends 14 queue rows, retains 19 unresolved dispositions, and adds a previously omitted neighboring cassette. The diagnostic findings and frozen-reference counts below describe the preceding review stage.
+
 **Decision, 2026-11-10: keep epoch173, box confidence 0.25 and NMS IoU 0.70.** The seed-43/44 study is complete, and its [published conclusion](box-repeatability-comparison-2026-11-10.md) stands. This follow-up completes original-image review of all 33 persistent reference-object misses. It identifies specific annotation and matching concerns alongside remaining model limitations. It does not introduce a new model, acceptance tolerance or accuracy result.
 
 The most useful next task is a **separately versioned reference-correction proposal**, starting with questionable instance identity and duplicate representations, then supported box-extent issues. Review analogous training annotations independently. Correcting measurement labels and improving a trained model are different operations; neither implies the other succeeded.

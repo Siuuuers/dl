@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-reference-amendment-verification",
+  "status": "passed",
+  "parent_revision": "137abbd55c5dc4d7710adc9527dc5c85a782eba4",
+  "reference_id": "baomai-visible-front-2026-11-10",
+  "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "amended_manifest_sha256": "edf2d01624b96d0a4e652b1fa1fdfbc861c453f825343c840972493a908e6ed2",
+  "artifacts": {
+    "data/references/visible-front-2026-11-10/manifest.json": {
+      "sha256": "edf2d01624b96d0a4e652b1fa1fdfbc861c453f825343c840972493a908e6ed2",
+      "size_bytes": 63798
+    },
+    "scripts/rescore_reference_amendment.py": {
+      "sha256": "a4321d0354345ca89f7055ef8bacc611cd342b7d047bbc0e9df48aaa4815c2de",
+      "size_bytes": 16744
+    },
+    "results/evaluation/baomai-reference-amendment-20261110/summary.json": {
+      "sha256": "42e13e07d2f50369826028ae581eaefba34ff4e75c4f356b676aa7cb76cf3b23",
+      "size_bytes": 94075
+    }
+  },
+  "archive": {
+    "path": "results/evaluation/baomai-reference-amendment-20261110/replay.zip",
+    "sha256": "faf7de33059be62b8a7e7466be74b98553c5b2f693e26d2929001a3f367b3ba4",
+    "size_bytes": 97103,
+    "crc_checked": true,
+    "all_payload_hashes_and_sizes_checked": true,
+    "all_members_are_json": true,
+    "payloads": [
+      {
+        "path": "replay.json",
+        "sha256": "d35b58415b693ad21268dc76f0541c878abf1f27b5f1664e8d5dcee87e6076d8",
+        "size_bytes": 1896586
+      },
+      {
+        "path": "annotation-review.json",
+        "sha256": "2c7ea190729820815fa8a0e6accaadd8fd4f6de48d21306282167d335bf47d08",
+        "size_bytes": 3878
+      },
+      {
+        "path": "numerical-review.json",
+        "sha256": "74cf365d78067ae83362657867d4aeecc06d532b9d59c159a6011fbfa17cef6d",
+        "size_bytes": 13039
+      },
+      {
+        "path": "corner-spans.json",
+        "sha256": "aa4c3b52aec7906e5b3deeb2d35f7e50b0af284ab517afb5eafa7756d6d42878",
+        "size_bytes": 2118
+      },
+      {
+        "path": "report-review.json",
+        "sha256": "87c2538ef4419550d3b831a1539b600c502d30386bd83137c5ca7739dbc1cb58",
+        "size_bytes": 3381
+      }
+    ]
+  },
+  "annotation_integrity": {
+    "source_and_revised_label_files_checked": 20,
+    "source_labels_unchanged_against_parent_checkout": true,
+    "all_source_image_sha256_verified_from_hydrated_PNGs": true,
+    "all_before_and_after_text_matched_actual_files": true,
+    "all_source_to_revised_row_mappings_verified": true,
+    "retained_source_rows": 660,
+    "unchanged_rows_preserved_exactly": 647,
+    "modified_retained_rows": 13,
+    "source_visible_endpoint_tokens_preserved_in_correct_slots": 1227,
+    "merged_right_endpoint_tokens_preserved_exactly": true,
+    "newly_marked_visible_right_endpoints": 1,
+    "removed_original_rows": [
+      [
+        "new_000058",
+        15
+      ],
+      [
+        "new_000059",
+        16
+      ],
+      [
+        "new_000086",
+        58
+      ],
+      [
+        "new_000086",
+        59
+      ]
+    ],
+    "added_revised_rows": [
+      [
+        "new_000059",
+        19
+      ]
+    ],
+    "changed_label_files": 11,
+    "all_final_schema_bounds_point_containment_and_missing_sentinels_pass": true
+  },
+  "queue": {
+    "original_persistent_miss_rows": 33,
+    "every_original_queue_key_covered_once": true,
+    "amended": 14,
+    "retained_unresolved": 19,
+    "all_edit_number_links_resolve_to_correct_source_rows": true,
+    "unresolved_rows_preserved_unchanged": true,
+    "new_000009_original_row56": "explicitly unresolved and unchanged, consistent with independent image review"
+  },
+  "reference_counts": {
+    "images": 20,
+    "objects": 661,
+    "visible_endpoints": 1228,
+    "missing_endpoints": 94,
+    "empty_images": 3
+  },
+  "original_prediction_replay_checks": {
+    "original_images_and_labels_hash_verified": true,
+    "original_replay_identity_verified_before_amendment": true,
+    "complete_amended_reference_and_geometry_verified": true,
+    "unique_models": 5,
+    "images": 20,
+    "image_threshold_records": 300,
+    "model_threshold_aggregates": 15
+  },
+  "independent_numeric_audit": {
+    "method": "Separate normalized-label parser, direct area IoU, confidence-ordered one-to-one greedy matching and endpoint/radius calculation; did not import production scoring functions.",
+    "passed": true,
+    "per_image_reference_evaluations_checked": 600,
+    "model_threshold_aggregate_pairs_checked": 15,
+    "historical_score_aggregates_reproduced": 15,
+    "historical_quality_aggregates_reproduced": 15,
+    "all_shared_endpoint_correspondence_errors_bit_identical": true
+  },
+  "script_negative_checks": [
+    "Wrong amended-label digest rejects without output.",
+    "Missing twentieth manifest entry rejects without output.",
+    "Valid-digest invalid geometry rejects without output."
+  ],
+  "editor_validation": "Existing folder layout and controls inspected in source; native browser input unavailable, so no GUI load/save round-trip claimed.",
+  "new_inference": false,
+  "new_training": false,
+  "model_promoted": false,
+  "limits": [
+    "This is a bounded reference amendment, not a complete reannotation or independent test.",
+    "Retained source labels and unmodified box edges can still contain legacy defects. Unresolved cases remain labeled, not empty negatives.",
+    "Some reviewed views may be correlated. Do not treat rows or endpoints as independent scene trials.",
+    "All five models must be rescored on these same bytes; reference-driven metric changes do not mean the models learned.",
+    "Do not mix validation images into training. A future training correction is separately identified."
+  ]
+}
