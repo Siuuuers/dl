@@ -3,12 +3,15 @@
 
 import copy
 import json
+from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from check_evaluate_pose import gold, prediction
 from diagnose_pose_quality import aggregate_quality, quality_for_image
 from pose_scoring import score_image
-from rescore_annotation_comparison import (common_diagnostics, returned_endpoints,
+from pose_checkpoint import ANNOTATION_RECIPE_IDS, ORIGINAL_RECIPE_ID
+from rescore_annotation_comparison import (common_diagnostics, returned_endpoints, summarize,
                                            verify_fresh_inference)
 
 
@@ -52,6 +55,25 @@ class FreshComparisonChecks(unittest.TestCase):
         self.receipts["candidate"]["created_at_utc"] = "2026-11-10T10:02:00"
         with self.assertRaisesRegex(ValueError, "explicitly identify UTC"):
             verify_fresh_inference(self.headers, self.receipts, self.revision)
+
+    def test_only_registered_annotation_recipes_reach_candidate_verification(self):
+        class ReachedCandidateVerification(Exception):
+            pass
+        root = Path(__file__).resolve().parents[1]
+        arguments = (root, Path('/unused/evidence'), 'data/candidates/annotations-2026-11-10/manifest.json')
+        for recipe_id in ANNOTATION_RECIPE_IDS:
+            with self.subTest(recipe=recipe_id), patch(
+                    'verify_pose_annotation_candidate.verify_annotation_candidate',
+                    side_effect=ReachedCandidateVerification) as verifier:
+                with self.assertRaises(ReachedCandidateVerification):
+                    summarize(*arguments, recipe_id, Path('/unused/reference'), self.revision)
+                verifier.assert_called_once()
+        for recipe_id in (ORIGINAL_RECIPE_ID, 'reviewed-annotations-seed47-v1'):
+            with self.subTest(recipe=recipe_id), patch(
+                    'verify_pose_annotation_candidate.verify_annotation_candidate') as verifier:
+                with self.assertRaisesRegex(ValueError, 'registered annotation-overlay recipe'):
+                    summarize(*arguments, recipe_id, Path('/unused/reference'), self.revision)
+                verifier.assert_not_called()
 
 
 class PairedDiagnosticChecks(unittest.TestCase):

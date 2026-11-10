@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "kind": "reviewed-annotation-seed45-evidence-verification",
+  "status": "PASS",
+  "created_at_utc": "2026-11-10T16:56:21.796977+00:00",
+  "archive": {
+    "path": "evaluation.zip",
+    "size_bytes": 1158160,
+    "sha256": "066973ce25ad099ec2711dfd9d7bc24f11ecb5de979406b1cd53a9275406cebc",
+    "members": 67,
+    "verified_payload_files": 66,
+    "safe_unique_regular_paths": true,
+    "crc_valid": true,
+    "all_hashes_and_sizes_match": true,
+    "all_payloads_utf8_text": true,
+    "camera_images_included": false,
+    "model_weights_included": false,
+    "inventory_sha256": "22d900e93c738a14d13ac5d14fa02c2092e34b1e21b53df0c0cdfe128c57e460"
+  },
+  "return_revision": "074f4d28736fab8b82baf7e56e6ad551997ae3c6",
+  "training_source_revision": "1c5d2e48ab26c578c5f6660010d6ecfb33231eb8",
+  "source": {
+    "revision": "ed4ee162738685bff93d6cad1402d95e128bceb4",
+    "working_tree_status": "",
+    "files_sha256": {
+      "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/package_gpu_results.py": "120b1a3d22f9cb8896af67a84b7d3da686d89e41b63d5889eb7fb106bdce477c",
+      "scripts/pose_checkpoint.py": "7c320cec4130abd206deb0beae73c12dc3d95d4907d5528a093715f987872596",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/rescore_annotation_comparison.py": "09e9c352b6f328a5d739b861b551be7947450b43c48d30dd7194f675fbc46c9c",
+      "scripts/rescore_reference_amendment.py": "a4321d0354345ca89f7055ef8bacc611cd342b7d047bbc0e9df48aaa4815c2de",
+      "scripts/stage_pose_training.py": "e28a4f1b705086e4461876df97627d57111932a7455e20ed116d35b4f4d38eae",
+      "scripts/summarize_pose_comparison.py": "d728710a93bc73e56727a189d20b0a61ef84bd93c964c42ba8b2265afdc24ace",
+      "scripts/train_pose_comparison.py": "d4ab5031029c150039843383d0d42d0a72a4062b97212be5633dd39993309abe",
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+      "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491"
+    }
+  },
+  "model_sha256": {
+    "m0": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "m1": "111eb3edd8723fd7eccf5e9392e414cbefc64cf4e0dc2191a508d2f6bfa6c0cf",
+    "m2": "47cb4fc84260fdc0fa0c707e046dfb57e85702b63ce1a1798181a110884492f1"
+  },
+  "evaluation_scope": {
+    "fresh_model_inferences": 3,
+    "unique_prediction_records": 180,
+    "per_image_reference_evaluations": 360,
+    "reference_specific_aggregates": 18,
+    "seed": 45,
+    "other_training_interventions_pooled": false
+  },
+  "fresh_extraction_and_replay": {
+    "source_revision": "ed4ee162738685bff93d6cad1402d95e128bceb4",
+    "source_tree": "3925bda1f492e1cc7b06027a3b230f09c70792b7",
+    "working_tree_before": "",
+    "working_tree_after": "",
+    "hydrated_original_pngs": 157,
+    "hydration": "Hash-verified original bytes, hardlinked without alteration.",
+    "executions": 1,
+    "python": "3.12.14",
+    "complete_semantics_equal": true,
+    "numeric_tolerance": null,
+    "excluded_json_paths": [
+      "/created_at_utc",
+      "/command"
+    ],
+    "normalized_checked_root_paths": [
+      "/revised_reference/root",
+      "/procedure/original_label_path_base",
+      "/procedure/revised_label_path_base"
+    ],
+    "original_comparison_sha256": "3cefe58ce12e43e88d2ade42e428b3b2b6c7c7500dec65805d8bd66c679f75ed",
+    "replayed_comparison_sha256": "08f22e83e6eca09f1af0fb02fd6d31a752f319e76bbac12158066e1bed6a13d2",
+    "inference_or_weight_loading_performed": false
+  },
+  "independent_numerical_audit": {
+    "status": "verified",
+    "per_image_reference_evaluations_verified": 360,
+    "reference_specific_aggregates_verified": 18,
+    "method": {
+      "implementation": "Separate standard-library label parser, direct-area IoU, confidence-ordered greedy one-to-one matching, Euclidean endpoint errors and linearly interpolated quantiles. No production matching/scoring imports.",
+      "matching_iou": 0.5,
+      "endpoint_confidence": 0.5,
+      "radii_px": [
+        2,
+        5,
+        10
+      ],
+      "all_count_identity_comparisons_exact": true,
+      "float_comparison_absolute_tolerance": 1e-10,
+      "maximum_observed_float_difference": 1.1102230246251565e-14,
+      "float_comparisons": 19498,
+      "both_corner_denominator": "Every object with both reference corners locatable, including missed objects.",
+      "hidden_side_denominator": "Unlocatable reference sides on matched objects; coordinate accuracy cannot be inferred on these sides.",
+      "reference_identity_scope": "Model comparisons use object indices only within each named reference; cross-reference correspondence uses physical coordinate/side and prediction identity."
+    }
+  },
+  "packaging_script_sha256": "d26e05576a1146ec7a0d45aebfccdd50939d161cda37ff547abaeee0d56264c6",
+  "commands": [
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/e8c6ed25e3ab/dl-training",
+        "worktree",
+        "add",
+        "--detach",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay",
+        "ed4ee162738685bff93d6cad1402d95e128bceb4"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T16:56:18.632154+00:00",
+      "exit_code": 0,
+      "seconds": 0.1365135830019426,
+      "stdout": "HEAD is now at ed4ee16 Pin reviewed-annotation GPU handoff and preparation evidence\n",
+      "stderr": "Preparing worktree (detached HEAD ed4ee16)\n"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T16:56:18.768908+00:00",
+      "exit_code": 0,
+      "seconds": 0.0017546820017741993,
+      "stdout": "ed4ee162738685bff93d6cad1402d95e128bceb4\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay",
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T16:56:18.771042+00:00",
+      "exit_code": 0,
+      "seconds": 0.002468837999913376,
+      "stdout": "3925bda1f492e1cc7b06027a3b230f09c70792b7\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay",
+        "add",
+        "--renormalize",
+        "--sparse",
+        "--",
+        "data/images"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T16:56:18.988903+00:00",
+      "exit_code": 0,
+      "seconds": 0.4392778190012905,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay",
+        "write-tree"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T16:56:19.428430+00:00",
+      "exit_code": 0,
+      "seconds": 0.003142354002193315,
+      "stdout": "3925bda1f492e1cc7b06027a3b230f09c70792b7\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T16:56:19.431762+00:00",
+      "exit_code": 0,
+      "seconds": 0.0036351600028865505,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/workspace/scratch/470b9cd0057a/eval-venv/bin/python",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay/scripts/rescore_annotation_comparison.py",
+        "--root",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay",
+        "--evidence",
+        "/workspace/scratch/e8c6ed25e3ab/annotation-eval-work/package/fresh-extraction/evidence/seed-45",
+        "--candidate",
+        "data/candidates/annotations-2026-11-10/manifest.json",
+        "--recipe",
+        "reviewed-annotations-seed45-v1",
+        "--reference-dir",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay/data/references/visible-front-2026-11-10",
+        "--evaluation-revision",
+        "ed4ee162738685bff93d6cad1402d95e128bceb4",
+        "--output",
+        "/workspace/scratch/e8c6ed25e3ab/annotation-eval-work/package/replayed-comparison.json"
+      ],
+      "cwd": "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay",
+      "started_at_utc": "2026-11-10T16:56:19.435619+00:00",
+      "exit_code": 0,
+      "seconds": 2.3283178079982463,
+      "stdout": "{\"output\": \"/workspace/scratch/e8c6ed25e3ab/annotation-eval-work/package/replayed-comparison.json\", \"status\": \"verified-descriptive-only\", \"decision\": \"review-required-no-promotion\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/e8c6ed25e3ab/dl-annotation-replay",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": null,
+      "started_at_utc": "2026-11-10T16:56:21.791807+00:00",
+      "exit_code": 0,
+      "seconds": 0.003980639998189872,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "earlier_packaging_attempt": {
+    "stopped_before_replay": true,
+    "reason": "Manually hydrated LFS files had stale index stat entries; no content diff existed. Refreshed via canonical LFS clean filter and required exact original index tree before replay."
+  },
+  "limits": [
+    "A replay verifies saved evidence, not new model inference.",
+    "Original weights remain in PR32; the preserved return audit checked their bytes.",
+    "A single seed and reused development images do not establish independent-test performance.",
+    "Seed46 preparation is separate and contains no completed training result."
+  ]
+}

@@ -15,7 +15,8 @@ from unittest.mock import patch
 from check_evaluate_pose import png_bytes, preflight_fixture
 from check_pose_checkpoint import bundle_fixture
 from evaluate_pose import file_sha256
-from pose_checkpoint import (ANNOTATION_RECIPE_ID, BOX_RECIPE_ID, ORIGINAL_RECIPE_ID,
+from pose_checkpoint import (ANNOTATION_CONFIRMATION_RECIPE_ID, ANNOTATION_RECIPE_ID, ANNOTATION_RECIPE_IDS,
+                             BOX_RECIPE_ID, ORIGINAL_RECIPE_ID,
                              RECIPE_IDS, check_recipe_candidate_kind, get_recipe,
                              select_checkpoint)
 from stage_pose_training import MANIFEST, stage_datasets, verify_staging
@@ -279,13 +280,18 @@ class AnnotationCandidateChecks(unittest.TestCase):
 class AnnotationRecipeChecks(unittest.TestCase):
     def test_recipe_changes_only_seed_from_established_low_bias_pair(self):
         self.assertEqual(get_recipe(ANNOTATION_RECIPE_ID), {**get_recipe(BOX_RECIPE_ID), "seed": 45})
+        self.assertEqual(get_recipe(ANNOTATION_CONFIRMATION_RECIPE_ID),
+                         {**get_recipe(ANNOTATION_RECIPE_ID), "seed": 46})
         recipe = get_recipe(ANNOTATION_RECIPE_ID)
         recipe["seed"] = 46
         self.assertEqual(get_recipe(ANNOTATION_RECIPE_ID)["seed"], 45)
+        confirmation = get_recipe(ANNOTATION_CONFIRMATION_RECIPE_ID)
+        confirmation["seed"] = 45
+        self.assertEqual(get_recipe(ANNOTATION_CONFIRMATION_RECIPE_ID)["seed"], 46)
         for recipe_id in RECIPE_IDS:
             for kind in ("training_label_overlay", "training_box_overlay", ANNOTATION_KIND):
-                valid = ((recipe_id == ANNOTATION_RECIPE_ID and kind == ANNOTATION_KIND)
-                         or (recipe_id != ANNOTATION_RECIPE_ID and kind != ANNOTATION_KIND
+                valid = ((recipe_id in ANNOTATION_RECIPE_IDS and kind == ANNOTATION_KIND)
+                         or (recipe_id not in ANNOTATION_RECIPE_IDS and kind != ANNOTATION_KIND
                              and (recipe_id.startswith("box-supervision-") == (kind == "training_box_overlay"))))
                 if valid:
                     check_recipe_candidate_kind(recipe_id, kind)
@@ -299,7 +305,7 @@ class AnnotationRecipeChecks(unittest.TestCase):
             base = Path(directory)
             proposal = base / "manifest.json"
             for recipe_id, kind in ((ORIGINAL_RECIPE_ID, ANNOTATION_KIND),
-                                     (ANNOTATION_RECIPE_ID, "training_label_overlay")):
+                                     *((recipe_id, "training_label_overlay") for recipe_id in ANNOTATION_RECIPE_IDS)):
                 write_json(proposal, {"kind": kind})
                 output = base / "fresh"
                 args = SimpleNamespace(root=root, output=output, threads=1, max_seconds=1,
@@ -313,20 +319,21 @@ class AnnotationRecipeChecks(unittest.TestCase):
                 self.assertFalse(output.exists())
 
     def test_completed_checkpoint_supports_both_arms_and_rejects_refreshed_wrong_seed(self):
-        for arm in ("reference", "candidate"):
-            with self.subTest(arm=arm), tempfile.TemporaryDirectory() as directory:
+        for recipe_id, arm in ((recipe_id, arm) for recipe_id in ANNOTATION_RECIPE_IDS
+                               for arm in ("reference", "candidate")):
+            with self.subTest(recipe=recipe_id, arm=arm), tempfile.TemporaryDirectory() as directory:
                 root, run, preflight, receipt, staging, manifest_path = bundle_fixture(
-                    Path(directory), arm, recipe_id=ANNOTATION_RECIPE_ID)
+                    Path(directory), arm, recipe_id=recipe_id)
                 identity = select_checkpoint(preflight, manifest_path)["checkpoint_identity"]
-                self.assertEqual((identity["arm"], identity["recipe_id"]), (arm, ANNOTATION_RECIPE_ID))
-                receipt["training_settings"]["seed"] = 42
+                self.assertEqual((identity["arm"], identity["recipe_id"]), (arm, recipe_id))
+                receipt["training_settings"]["seed"] = 46 if recipe_id == ANNOTATION_RECIPE_ID else 45
                 write_json(run / "training-receipt.json", receipt)
                 manifest = json.loads(manifest_path.read_text())
                 manifest["training_receipt"] = descriptor(run / "training-receipt.json", run)
                 write_json(manifest_path, manifest)
                 with self.assertRaisesRegex(ValueError, "paired recipe: seed"):
                     select_checkpoint(preflight, manifest_path)
-                receipt["training_settings"]["seed"] = 45
+                receipt["training_settings"]["seed"] = get_recipe(recipe_id)["seed"]
                 candidate_path = root / staging["source"]["candidate_manifest"]
                 proposal = json.loads(candidate_path.read_text())
                 proposal["kind"] = "training_label_overlay"
@@ -340,6 +347,24 @@ class AnnotationRecipeChecks(unittest.TestCase):
                 write_json(manifest_path, manifest)
                 with self.assertRaisesRegex(ValueError, "must be selected together"):
                     select_checkpoint(preflight, manifest_path)
+
+    def test_same_seed_annotation_pairs_package_and_mixed_seeds_are_rejected(self):
+        from package_gpu_results import package_results
+        with tempfile.TemporaryDirectory() as directory:
+            base, runs = Path(directory), {}
+            for recipe_id in ANNOTATION_RECIPE_IDS:
+                for arm in ("reference", "candidate"):
+                    root, run, _, _, _, _ = bundle_fixture(base / f"{recipe_id}-{arm}", arm, recipe_id=recipe_id)
+                    runs[recipe_id, arm] = root, run
+                root, reference = runs[recipe_id, "reference"]
+                result = package_results(root, reference, runs[recipe_id, "candidate"][1], base / f"{recipe_id}.zip")
+                self.assertEqual(result["files"], 13)
+                self.assertEqual(result["arms"]["candidate"]["checkpoint_identity"]["recipe_id"], recipe_id)
+            root, reference = runs[ANNOTATION_RECIPE_ID, "reference"]
+            with self.assertRaisesRegex(ValueError, "shared training settings differ"):
+                package_results(root, reference, runs[ANNOTATION_CONFIRMATION_RECIPE_ID, "candidate"][1],
+                                base / "mixed-seeds.zip")
+            self.assertFalse((base / "mixed-seeds.zip").exists())
 
 
 if __name__ == "__main__":

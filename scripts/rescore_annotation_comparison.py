@@ -127,7 +127,7 @@ def common_diagnostics(endpoints, gold_by_image):
 
 
 def summarize(root, evidence, candidate, recipe, reference_dir, evaluation_revision):
-    from pose_checkpoint import ANNOTATION_RECIPE_ID
+    from pose_checkpoint import ANNOTATION_RECIPE_IDS
     from verify_pose_annotation_candidate import verify_annotation_candidate
 
     root, evidence, reference_dir = (Path(path).resolve() for path in (root, evidence, reference_dir))
@@ -136,7 +136,7 @@ def summarize(root, evidence, candidate, recipe, reference_dir, evaluation_revis
     _require(Path(candidate_name).parts[:2] == ("data", "candidates")
              and not Path(candidate_name).is_absolute(), "--candidate must be repository-relative under data/candidates")
     candidate_path = _contained_path(root, candidate_name)
-    _require(recipe == ANNOTATION_RECIPE_ID, "this entry point requires the annotation-overlay recipe")
+    _require(recipe in ANNOTATION_RECIPE_IDS, "this entry point requires a registered annotation-overlay recipe")
     proposal = _read_json(candidate_path)
     _require(proposal.get("kind") == "training_annotation_overlay", "expected a training_annotation_overlay candidate")
     candidate_verified = verify_annotation_candidate(root, candidate_path)

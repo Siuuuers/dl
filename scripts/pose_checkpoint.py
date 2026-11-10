@@ -36,7 +36,9 @@ BOX_REPEATABILITY_RECIPES = {
 }
 BOX_RECIPE_IDS = (BOX_RECIPE_ID, *BOX_REPEATABILITY_RECIPES.values())
 ANNOTATION_RECIPE_ID = "reviewed-annotations-seed45-v1"
-RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, ANNOTATION_RECIPE_ID)
+ANNOTATION_CONFIRMATION_RECIPE_ID = "reviewed-annotations-seed46-v1"
+ANNOTATION_RECIPE_IDS = (ANNOTATION_RECIPE_ID, ANNOTATION_CONFIRMATION_RECIPE_ID)
+RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS)
 
 # Resolved defaults observed in the pinned trainer, in addition to RECIPE.
 # These are checked, not changed, by the runner. In particular RLE stays at 1.0.
@@ -76,12 +78,14 @@ def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
     """Return an independent fixed recipe; the original RECIPE remains unchanged."""
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
     recipe = {**RECIPE, **({"warmup_bias_lr": 0.0001}
-                         if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, ANNOTATION_RECIPE_ID) else {})}
+                         if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS) else {})}
     for seed, fixed_id in BOX_REPEATABILITY_RECIPES.items():
         if recipe_id == fixed_id:
             recipe["seed"] = seed
     if recipe_id == ANNOTATION_RECIPE_ID:
         recipe["seed"] = 45
+    elif recipe_id == ANNOTATION_CONFIRMATION_RECIPE_ID:
+        recipe["seed"] = 46
     return recipe
 
 
@@ -89,7 +93,7 @@ def check_recipe_candidate_kind(recipe_id, kind):
     """Bind each new experiment to its intended overlay; retain legacy contracts."""
     _require((recipe_id in BOX_RECIPE_IDS) == (kind == "training_box_overlay"),
              "box-supervision recipe and training_box_overlay must be selected together")
-    _require((recipe_id == ANNOTATION_RECIPE_ID) == (kind == "training_annotation_overlay"),
+    _require((recipe_id in ANNOTATION_RECIPE_IDS) == (kind == "training_annotation_overlay"),
              "reviewed-annotations recipe and training_annotation_overlay must be selected together")
 
 
