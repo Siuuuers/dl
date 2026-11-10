@@ -1,6 +1,6 @@
 # Reviewed training annotations
 
-**Status: accepted as a bounded annotation intervention; model benefit is unmeasured.** Use this overlay for the prospective seed45 control/candidate experiment described in [the training handoff](../../../docs/training-annotations-2026-11-10.md).
+**Status: seed45 evaluated; one fixed seed46 confirmation is prepared.** The [completed comparison](../../../docs/annotation-comparison-2026-11-11.md) shows a small primary detection gain over the matched control, with threshold dependence and mixed corner diagnostics. Epoch173 remains the working default. Use this unchanged overlay for the [seed46 confirmation](../../../docs/training-annotations-seed46.md).
 
 The [manifest](manifest.json) reconstructs every changed label from explicit original-row deletions, replacements and appended additions. The [review](review.json) records original-image hashes, accepted decisions, source row identities, manual geometry and unresolved cases. Frozen labels are unchanged.
 
@@ -34,4 +34,4 @@ python scripts/stage_pose_training.py \
 
 The verifier checks exact source/candidate bytes, full row maps, accepted review provenance, canonical visibility, geometry and donor transfers. The complete staging pass additionally checks all original PNG bytes and creates independent control/candidate copies. Neither step runs training or certifies the untouched labels visually.
 
-Only `reviewed-annotations-seed45-v1` is currently registered for this candidate kind. Train both arms freshly from epoch173 and keep the final epoch-30 checkpoints. The [GPU notebook](../../../notebooks/baomai_reviewed_annotations.ipynb) provides the complete run-and-return procedure.
+The explicitly registered recipes are `reviewed-annotations-seed45-v1` and `reviewed-annotations-seed46-v1`. Train both arms freshly from epoch173 and keep the final epoch-30 checkpoints. The new [seed46 GPU notebook](../../../notebooks/baomai_reviewed_annotations_seed46.ipynb) provides the confirmation procedure; the original seed45 notebook and its source pin remain unchanged.

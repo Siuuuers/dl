@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-seed46-preparation-verification",
+  "status": "verified-preparation-awaiting-implementation-pin",
+  "created_at_utc": "2026-11-10T16:55:00.721249+00:00",
+  "source_worktree": "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval",
+  "base_revision": "ed4ee162738685bff93d6cad1402d95e128bceb4",
+  "tested_files_sha256": {
+    "scripts/pose_checkpoint.py": "8c92a452f632aec92bfd51bc8fbf9fc745a09978d840cdb294af0a37dea8696f",
+    "scripts/rescore_annotation_comparison.py": "7a1b925f5c0cff54d38b53ddaed6c233fe977e134b19a453c9634798d647bd7f",
+    "scripts/check_pose_annotation_candidate.py": "018c639668c0c82c1119a05e1a3c3161e461fef2f307b9c1ebdaaab9e5b2223b",
+    "scripts/check_pose_checkpoint.py": "e2495f494dbea652fd53b7b6a5100ecee1bf3652fa0202dfc5002be794e5b21e",
+    "scripts/check_train_pose_comparison.py": "b8222066bce9e763d78c9f3473fd2955590354d0d5af7b40aaaa7fb34ed0310d",
+    "scripts/check_rescore_annotation_comparison.py": "d8063be5b907e73e0187a123058a2ffd3088cbf0fe1b9d9c8d08db2d7f6c8f17",
+    "notebooks/baomai_reviewed_annotations_seed46.ipynb": "4b8911d2921496b80747b3a0cc6e56ea8a01e5a25a1f250865ee707fd2f73f80",
+    "docs/training-annotations-seed46.md": "795ecf4ba9308c09f19845879469dcaf596a75c4b026fa917beaa5081e15e373"
+  },
+  "checks": [
+    {
+      "command": "python -B scripts/check_pose_annotation_candidate.py",
+      "working_directory": "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval",
+      "exit_code": 0,
+      "tests_passed": 19,
+      "result": "OK"
+    },
+    {
+      "command": "python -B scripts/check_pose_checkpoint.py",
+      "working_directory": "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval",
+      "exit_code": 0,
+      "tests_passed": 26,
+      "result": "OK"
+    },
+    {
+      "command": "python -B scripts/check_train_pose_comparison.py",
+      "working_directory": "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval",
+      "exit_code": 0,
+      "tests_passed": 11,
+      "result": "OK"
+    },
+    {
+      "command": "python -B scripts/check_rescore_annotation_comparison.py",
+      "working_directory": "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval",
+      "exit_code": 0,
+      "tests_passed": 7,
+      "result": "OK"
+    },
+    {
+      "command": "python -B scripts/check_package_gpu_results.py",
+      "working_directory": "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval",
+      "exit_code": 0,
+      "tests_passed": 7,
+      "result": "OK"
+    }
+  ],
+  "total_focused_tests_passed": 70,
+  "meaningful_gates": [
+    "Historical recipe hashes, including seed45, unchanged",
+    "Seed46 numerical recipe differs from seed45 only in seed",
+    "Wrong actual seed rejected after receipt hash refresh for both recipe IDs",
+    "Both annotation recipe IDs require training_annotation_overlay and both arms are supported",
+    "Same-seed pairs package; a seed45 control/seed46 candidate pair is refused",
+    "CLI accepts the fixed recipe IDs, refuses free seed overrides and undeclared seed47",
+    "Replay wrapper admits only registered annotation recipes and retains existing provenance gates"
+  ],
+  "notebook": {
+    "path": "notebooks/baomai_reviewed_annotations_seed46.ipynb",
+    "sha256_before_pin": "4b8911d2921496b80747b3a0cc6e56ea8a01e5a25a1f250865ee707fd2f73f80",
+    "code_cells_compiled": 7,
+    "inline_preflight_compiled": true,
+    "inline_preflight_executed": false,
+    "unpinned_refusal_executed_before_gpu_actions": true,
+    "code_cell_sha256": {
+      "annotation-seed46-02": "f2da894e692819da3b7c7690e336eaeaa7dd3d23e32c24f804de265a9bd665f8",
+      "annotation-seed46-04": "f0fe781651249dd0ead69f3dfc52d7a887f1695c07c5c9ca2572ce2c03d990ac",
+      "annotation-seed46-06": "5938615d3a92534a5280402ae675204ff6afe25c334f055c1ca580fc7562107e",
+      "annotation-seed46-08": "df59f337adb137a4af11d304699b74df0b40ea84c2a8343a02591812ba5e7922",
+      "annotation-seed46-10": "8faa48409a75ffe43bf58fd07173f039379dd3d934049daa417828cd9370a76b",
+      "annotation-seed46-12": "0e16885fbd001fef3739f74035ca7577af498255a0eed4103a36ad4af03b59e3",
+      "annotation-seed46-14": "afbc125d63d8cd2993e550e9323f7f594834565a9332f13ae613f3f1b6743318"
+    },
+    "full_notebook_executed": false,
+    "gpu_training_or_inference_executed": false,
+    "constants": {
+      "SOURCE_REVISION": "PIN_IMPLEMENTATION_COMMIT_40_HEX",
+      "RECIPE_ID": "reviewed-annotations-seed46-v1",
+      "RECIPE_SHA256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+      "CANDIDATE_MANIFEST": "data/candidates/annotations-2026-11-10/manifest.json",
+      "CANDIDATE_SHA256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7"
+    },
+    "installed_cuda_preservation": "Uses pip constraints for installed torch and torchvision; pinned ultralytics8.4.182; no GPU-family gate",
+    "prose_spacing_adjusted_after_compile": "Only markdown cells changed; compiled code and inline preflight bytes unchanged"
+  },
+  "historical_seed45": {
+    "recipe_id": "reviewed-annotations-seed45-v1",
+    "recipe_sha256": "34b8eda9e9b986a2ba19d9ba07661eef1792027ef8d4465d10763a8eb2cd2850",
+    "existing_notebook_unchanged": true,
+    "existing_notebook_sha256": "796a205dfb1b7d12e8f4c0809ac9204263f237abdb89b3b138eca80c8a06af4f",
+    "replay_scope": "Historical seed45 evidence retains its own pinned compatible source; no source-hash bypass added"
+  },
+  "seed46": {
+    "recipe_id": "reviewed-annotations-seed46-v1",
+    "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+    "candidate_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+    "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+    "return_zip": "baomai-reviewed-annotations-seed46-results.zip"
+  },
+  "git_diff_check": {
+    "command": "git diff --check",
+    "exit_code": 0
+  },
+  "source_changes_staged_by_agent": false,
+  "commits_or_remote_actions_by_agent": false,
+  "pending": [
+    {
+      "action": "Replace full-SHA placeholder after publishing immutable implementation commit",
+      "placeholder": "PIN_IMPLEMENTATION_COMMIT_40_HEX",
+      "paths": [
+        "notebooks/baomai_reviewed_annotations_seed46.ipynb",
+        "docs/training-annotations-seed46.md"
+      ],
+      "notebook_locations": [
+        "cell0 markdown implementation revision",
+        "cell2 code SOURCE_REVISION"
+      ],
+      "doc_location": "Implementation revision paragraph",
+      "after_pin": "Record the final notebook/doc hashes and confirm the delivered pin identifies the published implementation."
+    }
+  ],
+  "limits": [
+    "Focused integrity checks use synthetic checkpoint fixtures; they are not training results.",
+    "Publication worktree retains original Git LFS pointers. The GPU notebook downloads and verifies inputs before training.",
+    "No returned seed46 model or accuracy claim exists."
+  ]
+}

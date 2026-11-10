@@ -11,7 +11,8 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from pose_checkpoint import BOX_RECIPE_ID, BOX_RECIPE_IDS, ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe
+from pose_checkpoint import (ANNOTATION_RECIPE_IDS, BOX_RECIPE_ID, BOX_RECIPE_IDS,
+                             ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe)
 from verify_pose_box_candidate import BOX_CANDIDATE
 from verify_pose_candidate import DEFAULT_CANDIDATE
 from train_pose_comparison import (file_sha256, main, monitor_worker, resolved_runtime,
@@ -80,7 +81,7 @@ class ExecutionChecks(unittest.TestCase):
         arguments = ["--output", "/unused/fixture", "--arm", "reference", "--device", "cpu",
                      "--trial", "--max-seconds", "1"]
         selections = [([], ORIGINAL_RECIPE_ID)] + [(["--recipe", recipe_id], recipe_id)
-            for recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS)]
+            for recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS)]
         for extra, expected in selections:
             with self.subTest(recipe=expected), patch("train_pose_comparison.run_parent", return_value=0) as parent:
                 self.assertEqual(main(arguments + extra), 0)
@@ -92,7 +93,8 @@ class ExecutionChecks(unittest.TestCase):
     def test_cli_rejects_seed_override_and_undeclared_recipe_before_execution(self):
         arguments = ["--output", "/unused/fixture", "--arm", "reference", "--device", "cpu",
                      "--trial", "--max-seconds", "1"]
-        for extra in (["--seed", "43"], ["--recipe", "box-supervision-warmup-seed45-v1"]):
+        for extra in (["--seed", "43"], ["--seed", "46"], ["--recipe", "box-supervision-warmup-seed45-v1"],
+                      ["--recipe", "reviewed-annotations-seed47-v1"]):
             with self.subTest(arguments=extra), patch("train_pose_comparison.run_parent") as parent:
                 with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as raised:
                     main(arguments + extra)

@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "command": [
+    "/workspace/scratch/470b9cd0057a/eval-venv/bin/python",
+    "-c",
+    "\nimport json\nfrom pathlib import Path\nimport sys\nsys.dont_write_bytecode = True\nroot = Path.cwd()\nsys.path.insert(0, str(root / 'scripts'))\nfrom evaluate_pose import file_sha256, preflight_dataset\nfrom stage_pose_training import source_state\nfrom pose_checkpoint import get_recipe, recipe_identity\ncandidate = root / sys.argv[1]\nrecipe_id, expected_hash, expected_recipe_hash = sys.argv[2:5]\nassert file_sha256(candidate) == expected_hash, 'Candidate manifest differs from the pinned handoff.'\nproposal = json.loads(candidate.read_text())\nassert proposal['kind'] == 'training_annotation_overlay'\nassert proposal['candidate_id'] == 'annotations-2026-11-10'\nedits = {key: sum(len(change[key]) for change in proposal['changes'])\n         for key in ('deletions', 'replacements', 'additions')}\nassert len(proposal['changes']) == 8\nassert edits == {'deletions': 6, 'replacements': 3, 'additions': 5}, edits\nstate = source_state(root, candidate)\ninitial = preflight_dataset(root, require_weights=True)\nassert len(state['records']) == 157\nassert state['counts']['reference']['train'] == {\n    'images': 137, 'objects': 3772, 'visible_endpoints': 6839, 'missing_endpoints': 705, 'empty_images': 13}\nassert state['counts']['candidate']['train'] == {\n    'images': 137, 'objects': 3771, 'visible_endpoints': 6841, 'missing_endpoints': 701, 'empty_images': 13}\nassert state['counts']['reference']['val'] == state['counts']['candidate']['val'] == {\n    'images': 20, 'objects': 664, 'visible_endpoints': 1227, 'missing_endpoints': 101, 'empty_images': 3}\nassert state['source']['initial_checkpoint_sha256'] == initial['model_sha256']\nassert Path(initial['weights']) == root / 'weights/cassette_lower_epoch173.pt'\nexpected_recipe = get_recipe('warmup-bias-lr-1e-4-v1')\nexpected_recipe['seed'] = 46\nassert get_recipe(recipe_id) == expected_recipe\nassert recipe_identity(recipe_id)['recipe_sha256'] == expected_recipe_hash\nprint(json.dumps({'status': 'verified', 'original_images': len(state['records']),\n                  'annotation_edits': edits, 'label_counts': state['counts'],\n                  'candidate_manifest_sha256': expected_hash,\n                  'initial_checkpoint_sha256': initial['model_sha256'],\n                  'weights_verified': initial['weights_verified'],\n                  **recipe_identity(recipe_id)}, indent=2))\n",
+    "data/candidates/annotations-2026-11-10/manifest.json",
+    "reviewed-annotations-seed46-v1",
+    "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+    "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8"
+  ],
+  "cwd": "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval",
+  "exit_code": 0,
+  "seconds": 0.3976919380002073,
+  "hydrated_original_pngs": 157,
+  "original_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "stdout": "{\n  \"status\": \"verified\",\n  \"original_images\": 157,\n  \"annotation_edits\": {\n    \"deletions\": 6,\n    \"replacements\": 3,\n    \"additions\": 5\n  },\n  \"label_counts\": {\n    \"reference\": {\n      \"train\": {\n        \"images\": 137,\n        \"objects\": 3772,\n        \"visible_endpoints\": 6839,\n        \"missing_endpoints\": 705,\n        \"empty_images\": 13\n      },\n      \"val\": {\n        \"images\": 20,\n        \"objects\": 664,\n        \"visible_endpoints\": 1227,\n        \"missing_endpoints\": 101,\n        \"empty_images\": 3\n      }\n    },\n    \"candidate\": {\n      \"train\": {\n        \"images\": 137,\n        \"objects\": 3771,\n        \"visible_endpoints\": 6841,\n        \"missing_endpoints\": 701,\n        \"empty_images\": 13\n      },\n      \"val\": {\n        \"images\": 20,\n        \"objects\": 664,\n        \"visible_endpoints\": 1227,\n        \"missing_endpoints\": 101,\n        \"empty_images\": 3\n      }\n    }\n  },\n  \"candidate_manifest_sha256\": \"28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7\",\n  \"initial_checkpoint_sha256\": \"e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e\",\n  \"weights_verified\": true,\n  \"recipe_id\": \"reviewed-annotations-seed46-v1\",\n  \"recipe_sha256\": \"f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8\"\n}\n",
+  "stderr": "",
+  "embedded_preflight_sha256": "4d2a9cfdaf15b57061cf9a2d7100c8e90cde40c705d96794e35696787f7ebde9",
+  "gpu_training_performed": false,
+  "inference_performed": false,
+  "source_stage": "Working tree under review before implementation commit; exact preflight code executed on verified original bytes."
+}
