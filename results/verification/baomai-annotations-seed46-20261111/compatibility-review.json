@@ -1,0 +1,72 @@
+{
+  "status": "approved_pending_source_pin",
+  "scope": "Read-only compatibility inspection of registered seed46 recipe, dual-reference rescoring, paired packaging and the new seed46 notebook. No GPU training, install, network or broad test suite was run.",
+  "implementation_commit": "23d7db97ca626f5591dbd26e699c0f23d318ee73",
+  "compared_to_commit": "ed4ee162738685bff93d6cad1402d95e128bceb4",
+  "source_file_sha256": {
+    "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval/scripts/pose_checkpoint.py": "8c92a452f632aec92bfd51bc8fbf9fc745a09978d840cdb294af0a37dea8696f",
+    "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval/scripts/rescore_annotation_comparison.py": "7a1b925f5c0cff54d38b53ddaed6c233fe977e134b19a453c9634798d647bd7f",
+    "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval/scripts/package_gpu_results.py": "120b1a3d22f9cb8896af67a84b7d3da686d89e41b63d5889eb7fb106bdce477c",
+    "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval/scripts/train_pose_comparison.py": "d4ab5031029c150039843383d0d42d0a72a4062b97212be5633dd39993309abe",
+    "/workspace/scratch/e8c6ed25e3ab/dl-annotation-eval/notebooks/baomai_reviewed_annotations_seed46.ipynb": "4b8911d2921496b80747b3a0cc6e56ea8a01e5a25a1f250865ee707fd2f73f80"
+  },
+  "seed45_recipe_identity": {
+    "recipe_id": "reviewed-annotations-seed45-v1",
+    "recipe_sha256": "34b8eda9e9b986a2ba19d9ba07661eef1792027ef8d4465d10763a8eb2cd2850"
+  },
+  "seed46_recipe_identity": {
+    "recipe_id": "reviewed-annotations-seed46-v1",
+    "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8"
+  },
+  "numeric_recipe_difference": {
+    "seed": {
+      "seed45": 45,
+      "seed46": 46
+    }
+  },
+  "direct_checks": {
+    "preserved_seed45_recipe_hash": true,
+    "seed46_differs_only_by_seed": true,
+    "both_annotation_recipes_accept_only_annotation_candidate_kind": true,
+    "same_settings_pair_accepted": true,
+    "mixed_seed_pair_rejected": true,
+    "mixed_seed_rejection_message": "reference/candidate shared training settings differ; return a matched comparison",
+    "all_notebook_code_cells_compile": true,
+    "code_cell_count": 7,
+    "notebook_has_no_outputs_or_execution_counts": true,
+    "notebook_candidate_and_recipe_hashes_exact": true,
+    "notebook_code_has_no_seed45_warmstart": true,
+    "notebook_both_arms_and_trial_have_separate_invocations": true,
+    "source_pin_checked_before_gpu_or_filesystem_action": true,
+    "input_preflight_before_trainer_install": true
+  },
+  "unchanged_guard_functions": {
+    "scripts/pose_checkpoint.py:_check_receipt": "unchanged",
+    "scripts/pose_checkpoint.py:_check_staging": "unchanged",
+    "scripts/package_gpu_results.py:check_pair": "unchanged",
+    "scripts/package_gpu_results.py:shared_settings": "unchanged"
+  },
+  "manual_findings": [
+    "The source diff adds seed46 registration and permits either registered annotation recipe in the rescorer; it does not change seed45 numerical settings.",
+    "The rescorer still requires each arm\u2019s checkpoint manifest, receipt and audited checkpoint identity to exactly match the requested recipe ID and SHA256. Thus a mixed-seed pair also fails this layer.",
+    "Training source inventories, exact per-file hashes against the current auditor, paired source/runtime/proposal equality, clean revision evidence and after-worker input verification remain enforced. Old seed45 evidence retains its original pinned replay code; broader recipe recognition does not relax source checks.",
+    "The notebook selectively obtains exactly 157 original PNGs and original epoch173. Its embedded preflight checks original and candidate label counts, candidate manifest hash, unchanged validation, frozen initial checkpoint identity and seed46 recipe identity.",
+    "Both full arms start through the unchanged training runner from the frozen epoch173 initialization. No seed45 or trial checkpoint is passed to either arm; failed retries require fresh output directories. Final epoch30 last.pt remains selected and incomplete/trial results remain ineligible.",
+    "The notebook states separate original/PR30 references, fixed primary and diagnostic thresholds, separate seed reports, no seed search and no automatic model promotion."
+  ],
+  "source_pin": {
+    "value_at_review": "PIN_IMPLEMENTATION_COMMIT_40_HEX",
+    "expected_implementation_commit": "23d7db97ca626f5591dbd26e699c0f23d318ee73",
+    "pending_action": "Replace the explicit notebook placeholder with the published immutable implementation commit before distributing an executable handoff."
+  },
+  "blocking_findings": [],
+  "limits": [
+    "This review did not execute Colab, CUDA, package installation or a new training run. Root reports successful exact embedded preflight against all157 original PNGs and epoch173; the preparation agent reports70 existing focused checks. Those executions were not repeated here."
+  ],
+  "publication_revision_note": {
+    "initially_announced_commit": "1936018393316d6ac5c6014464d7619a588efdab",
+    "current_reviewed_commit": "23d7db97ca626f5591dbd26e699c0f23d318ee73",
+    "reviewed_production_scripts_identical_between_these_commits": true,
+    "comparison_parent": "ed4ee162738685bff93d6cad1402d95e128bceb4"
+  }
+}
