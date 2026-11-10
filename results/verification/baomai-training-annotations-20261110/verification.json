@@ -1,0 +1,641 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-reviewed-training-annotations-preparation",
+  "status": "verified-preparation-only",
+  "created_at_utc": "2026-11-10T15:23:50.392756+00:00",
+  "implementation": {
+    "revision": "1c5d2e48ab26c578c5f6660010d6ecfb33231eb8",
+    "tree": "d4887e0a108467d325d986217db17260e8346520",
+    "local_reviewed_commit": "c478ef796306f87cd8f9f98fe7f176195ead5042",
+    "remote_tree_equals_reviewed_local_tree": true,
+    "code_sha256": {
+      "scripts/check_pose_annotation_candidate.py": "a04866ad2b4a6316003b24dfb1273f5eac5446f678a27ae518f036ec11b65ec5",
+      "scripts/check_pose_checkpoint.py": "5ad15b5e5f8050827c4bb6ebb3cf5ded2f69a700850180d9913e72d223220e49",
+      "scripts/check_rescore_annotation_comparison.py": "30e0383004a3a0c61510261d91230571d90cf2505bdcde1ddc202c6860ac298e",
+      "scripts/pose_checkpoint.py": "7c320cec4130abd206deb0beae73c12dc3d95d4907d5528a093715f987872596",
+      "scripts/rescore_annotation_comparison.py": "09e9c352b6f328a5d739b861b551be7947450b43c48d30dd7194f675fbc46c9c",
+      "scripts/stage_pose_training.py": "e28a4f1b705086e4461876df97627d57111932a7455e20ed116d35b4f4d38eae",
+      "scripts/train_pose_comparison.py": "d4ab5031029c150039843383d0d42d0a72a4062b97212be5633dd39993309abe",
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979"
+    }
+  },
+  "candidate": {
+    "path": "data/candidates/annotations-2026-11-10/manifest.json",
+    "sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+    "review_sha256": "84dd73407aa147637d8eb68f8ff8268c856d70c46a8a8bf144549e00e6480c85"
+  },
+  "focused_checks": {
+    "created_at_utc": "2026-11-10T15:18:02.011589+00:00",
+    "runs": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/check_pose_annotation_candidate.py"
+        ],
+        "exit_code": 0,
+        "seconds": 1.442,
+        "tests": 18,
+        "stdout": "",
+        "stderr": "..................\n----------------------------------------------------------------------\nRan 18 tests in 1.297s\n\nOK\n",
+        "script_sha256": "a04866ad2b4a6316003b24dfb1273f5eac5446f678a27ae518f036ec11b65ec5"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/check_pose_box_candidate.py"
+        ],
+        "exit_code": 0,
+        "seconds": 0.289,
+        "tests": 9,
+        "stdout": "",
+        "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.195s\n\nOK\n",
+        "script_sha256": "9eaa51ab2e26759b3fcac9168a1679d04a012ea1086c06fae8b3f6e8438a8fca"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/check_pose_checkpoint.py"
+        ],
+        "exit_code": 0,
+        "seconds": 1.133,
+        "tests": 26,
+        "stdout": "",
+        "stderr": "test_candidate_replay_requires_explicit_matching_bundle_and_preserves_it (__main__.CheckpointBundleChecks.test_candidate_replay_requires_explicit_matching_bundle_and_preserves_it) ... ok\ntest_changed_artifact_bytes_are_rejected (__main__.CheckpointBundleChecks.test_changed_artifact_bytes_are_rejected) ... ok\ntest_changed_recipe_or_integer_fraction_is_rejected (__main__.CheckpointBundleChecks.test_changed_recipe_or_integer_fraction_is_rejected) ... ok\ntest_changed_staged_label_is_rejected_even_with_refreshed_artifact_hashes (__main__.CheckpointBundleChecks.test_changed_staged_label_is_rejected_even_with_refreshed_artifact_hashes) ... ok\ntest_completed_bundle_uses_runner_descriptors_and_preserves_reference_identity (__main__.CheckpointBundleChecks.test_completed_bundle_uses_runner_descriptors_and_preserves_reference_identity) ... ok\ntest_contradictory_completion_cannot_be_hidden_by_refreshed_hashes (__main__.CheckpointBundleChecks.test_contradictory_completion_cannot_be_hidden_by_refreshed_hashes) ... ok\ntest_loaded_pose_head_checked_before_any_detection_is_available (__main__.CheckpointBundleChecks.test_loaded_pose_head_checked_before_any_detection_is_available) ... ok\ntest_manifest_creation_does_not_replace_existing_evidence (__main__.CheckpointBundleChecks.test_manifest_creation_does_not_replace_existing_evidence) ... ok\ntest_manifest_schema_and_checkpoint_path_cannot_change_task_or_escape (__main__.CheckpointBundleChecks.test_manifest_schema_and_checkpoint_path_cannot_change_task_or_escape) ... ok\ntest_reference_arm_is_supported_and_arm_mismatch_is_rejected (__main__.CheckpointBundleChecks.test_reference_arm_is_supported_and_arm_mismatch_is_rejected) ... ok\ntest_results_must_show_every_epoch_and_finite_losses (__main__.CheckpointBundleChecks.test_results_must_show_every_epoch_and_finite_losses) ... ok\ntest_symlinked_checkpoint_is_rejected (__main__.CheckpointBundleChecks.test_symlinked_checkpoint_is_rejected) ... ok\ntest_trial_and_incomplete_receipts_cannot_publish_a_manifest (__main__.CheckpointBundleChecks.test_trial_and_incomplete_receipts_cannot_publish_a_manifest) ... ok\ntest_box_recipe_supports_both_arms_and_requires_box_candidate (__main__.VersionedRecipeChecks.test_box_recipe_supports_both_arms_and_requires_box_candidate) ... ok\ntest_box_repeats_change_only_the_declared_seed_and_keep_seed42_fixed (__main__.VersionedRecipeChecks.test_box_repeats_change_only_the_declared_seed_and_keep_seed42_fixed) ... ok\ntest_box_seed_mismatch_is_rejected_after_refreshing_receipt_hash (__main__.VersionedRecipeChecks.test_box_seed_mismatch_is_rejected_after_refreshing_receipt_hash) ... ok\ntest_device_and_backend_observations_are_required (__main__.VersionedRecipeChecks.test_device_and_backend_observations_are_required) ... ok\ntest_fixed_defaults_and_unknown_settings_cannot_change (__main__.VersionedRecipeChecks.test_fixed_defaults_and_unknown_settings_cannot_change) ... ok\ntest_historical_recipes_cannot_claim_box_overlay_after_hash_refresh (__main__.VersionedRecipeChecks.test_historical_recipes_cannot_claim_box_overlay_after_hash_refresh) ... ok\ntest_matching_seed_pairs_package_but_mixed_seeds_are_refused (__main__.VersionedRecipeChecks.test_matching_seed_pairs_package_but_mixed_seeds_are_refused) ... ok\ntest_original_versioned_recipe_supports_both_label_arms (__main__.VersionedRecipeChecks.test_original_versioned_recipe_supports_both_label_arms) ... ok\ntest_recipe_identity_is_fixed_and_only_bias_warmup_changes (__main__.VersionedRecipeChecks.test_recipe_identity_is_fixed_and_only_bias_warmup_changes) ... ok\ntest_recipe_receipt_manifest_and_schema_cannot_disagree (__main__.VersionedRecipeChecks.test_recipe_receipt_manifest_and_schema_cannot_disagree) ... ok\ntest_run_paths_and_input_verification_remain_bound_to_staging (__main__.VersionedRecipeChecks.test_run_paths_and_input_verification_remain_bound_to_staging) ... ok\ntest_versioned_manifest_and_replay_keep_the_explicit_recipe (__main__.VersionedRecipeChecks.test_versioned_manifest_and_replay_keep_the_explicit_recipe) ... ok\ntest_warmup_recipe_requires_reference_labels (__main__.VersionedRecipeChecks.test_warmup_recipe_requires_reference_labels) ... ok\n\n----------------------------------------------------------------------\nRan 26 tests in 1.033s\n\nOK\n",
+        "script_sha256": "5ad15b5e5f8050827c4bb6ebb3cf5ded2f69a700850180d9913e72d223220e49"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/check_train_pose_comparison.py"
+        ],
+        "exit_code": 0,
+        "seconds": 0.739,
+        "tests": 11,
+        "stdout": "",
+        "stderr": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.624s\n\nOK\n",
+        "script_sha256": "eeed437fd4e91127890848607358edba83945ea352d8a1fc33478a446dba4064"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/check_rescore_annotation_comparison.py"
+        ],
+        "exit_code": 0,
+        "seconds": 0.105,
+        "tests": 6,
+        "stdout": "",
+        "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.002s\n\nOK\n",
+        "script_sha256": "30e0383004a3a0c61510261d91230571d90cf2505bdcde1ddc202c6860ac298e"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/check_package_gpu_results.py"
+        ],
+        "exit_code": 0,
+        "seconds": 0.432,
+        "tests": 7,
+        "stdout": "",
+        "stderr": "test_ambiguous_archive_path_and_symlink_are_refused (__main__.ReturnPackageChecks.test_ambiguous_archive_path_and_symlink_are_refused) ... ok\ntest_changed_final_checkpoint_is_refused (__main__.ReturnPackageChecks.test_changed_final_checkpoint_is_refused) ... ok\ntest_completed_synthetic_pair_roundtrips_with_only_six_files_per_arm (__main__.ReturnPackageChecks.test_completed_synthetic_pair_roundtrips_with_only_six_files_per_arm) ... ok\ntest_existing_output_and_overlapping_locations_are_refused (__main__.ReturnPackageChecks.test_existing_output_and_overlapping_locations_are_refused) ... ok\ntest_mismatched_source_runtime_and_settings_are_refused (__main__.ReturnPackageChecks.test_mismatched_source_runtime_and_settings_are_refused) ... ok\ntest_partial_and_resource_trial_outputs_are_refused (__main__.ReturnPackageChecks.test_partial_and_resource_trial_outputs_are_refused) ... ok\ntest_swapped_arms_are_refused (__main__.ReturnPackageChecks.test_swapped_arms_are_refused) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.337s\n\nOK\n",
+        "script_sha256": "05536b08e6e960c4f4149ba197494ff939f404966fc0d82ce615a01f8ee67082"
+      }
+    ],
+    "total_tests": 77
+  },
+  "real_input_and_staging": {
+    "created_at_utc": "2026-11-10T15:18:36.494661+00:00",
+    "checks": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/verify_pose_annotation_candidate.py",
+          "--candidate",
+          "data/candidates/annotations-2026-11-10/manifest.json"
+        ],
+        "exit_code": 0,
+        "result": {
+          "status": "verified",
+          "candidate_id": "annotations-2026-11-10",
+          "kind": "training_annotation_overlay",
+          "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+          "declared_source_revision": "fda37dc364f8c6ea54ad23819482dbf21be0534a",
+          "source_revision_git_object_checked": false,
+          "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+          "review_sha256": "84dd73407aa147637d8eb68f8ff8268c856d70c46a8a8bf144549e00e6480c85",
+          "annotation_policy_sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+          "reference_labels_verified": 157,
+          "changed_train_labels": 8,
+          "removed_objects": 6,
+          "replaced_objects": 3,
+          "added_objects": 5,
+          "merged_endpoints": 2,
+          "counts": {
+            "train": {
+              "images": 137,
+              "objects": 3771,
+              "visible_endpoints": 6841,
+              "missing_endpoints": 701,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          },
+          "validation_labels_unchanged": true,
+          "unchanged_rows_byte_preserved": true,
+          "full_row_maps_verified": true,
+          "image_bytes_verified": false,
+          "images_staged_by_check": false,
+          "dataset_built": false,
+          "visual_correctness_verified": false,
+          "mechanical_geometry_verified": true,
+          "code_sha256": {
+            "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+            "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+            "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+            "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+          }
+        }
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "scripts/stage_pose_training.py",
+          "--candidate",
+          "data/candidates/annotations-2026-11-10/manifest.json",
+          "--verify",
+          "/workspace/scratch/e8c6ed25e3ab/training-work/staged-pair"
+        ],
+        "exit_code": 0,
+        "result": {
+          "status": "verified",
+          "output": "/workspace/scratch/e8c6ed25e3ab/training-work/staged-pair",
+          "staging_manifest_sha256": "d52d0acd269142fedbf1db07573e5b16e937f556596a4b66f5d1962a364a496f",
+          "counts": {
+            "reference": {
+              "train": {
+                "images": 137,
+                "objects": 3772,
+                "visible_endpoints": 6839,
+                "missing_endpoints": 705,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            },
+            "candidate": {
+              "train": {
+                "images": 137,
+                "objects": 3771,
+                "visible_endpoints": 6841,
+                "missing_endpoints": 701,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            }
+          },
+          "actual_original_pngs_verified": 157,
+          "geometry_gate_passed": true,
+          "physical_policy_visually_certified": false,
+          "training_run": false
+        }
+      },
+      {
+        "command_kind": "exact embedded notebook input_preflight",
+        "inline_code_sha256": "b3e865fcfd4a1829b38b8e33dee5dcd7baaf2014ee2a4b64a738039a94068703",
+        "exit_code": 0,
+        "result": {
+          "status": "verified",
+          "original_images": 157,
+          "annotation_edits": {
+            "deletions": 6,
+            "replacements": 3,
+            "additions": 5
+          },
+          "label_counts": {
+            "reference": {
+              "train": {
+                "images": 137,
+                "objects": 3772,
+                "visible_endpoints": 6839,
+                "missing_endpoints": 705,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            },
+            "candidate": {
+              "train": {
+                "images": 137,
+                "objects": 3771,
+                "visible_endpoints": 6841,
+                "missing_endpoints": 701,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            }
+          },
+          "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+          "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+          "weights_verified": true,
+          "recipe_id": "reviewed-annotations-seed45-v1",
+          "recipe_sha256": "34b8eda9e9b986a2ba19d9ba07661eef1792027ef8d4465d10763a8eb2cd2850"
+        }
+      }
+    ],
+    "staging_manifest_sha256": "d52d0acd269142fedbf1db07573e5b16e937f556596a4b66f5d1962a364a496f",
+    "staging_verification": {
+      "source_labels_verified": 157,
+      "actual_original_pngs_verified": 157,
+      "copied_images_verified": 314,
+      "copied_labels_verified": 314,
+      "changed_train_labels": 8,
+      "removed_training_objects": 6,
+      "validation_images_and_labels_identical": true,
+      "source_files_rewritten": false,
+      "symlinks_present": false,
+      "trainer_loader_executed": false
+    },
+    "staging_source": {
+      "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+      "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+      "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+      "checkpoint_bytes_verified": false,
+      "candidate_id": "annotations-2026-11-10",
+      "candidate_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+      "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+      "declared_candidate_source_revision": "fda37dc364f8c6ea54ad23819482dbf21be0534a",
+      "source_revision_git_object_checked": false
+    },
+    "staging_code_sha256": {
+      "scripts/stage_pose_training.py": "e28a4f1b705086e4461876df97627d57111932a7455e20ed116d35b4f4d38eae",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+    },
+    "mechanical_geometry_gate": {
+      "passed": true,
+      "serialization_tolerance_original_px": 0.0001,
+      "box_edges_within_closed_image_bounds": true,
+      "visible_endpoints_within_boxes": true,
+      "visible_endpoints_strictly_in_frame": true,
+      "coordinates_clamped_or_rewritten": false
+    },
+    "training_run": false,
+    "gpu_trial_run": false
+  },
+  "independent_annotation_review": {
+    "schema_version": 1,
+    "candidate_id": "annotations-2026-11-10",
+    "reviewer": "train_identity_review",
+    "decision": "accept_incremental_annotation_candidate",
+    "blocking_findings": [],
+    "manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+    "review_sha256": "84dd73407aa147637d8eb68f8ff8268c856d70c46a8a8bf144549e00e6480c85",
+    "verification_summary": {
+      "all_checks_passed": true,
+      "checks_passed": 672,
+      "checks_total": 672,
+      "frozen_source_image_label_pairs_verified": 157,
+      "existing_visible_endpoint_occurrences_preserved": 6839,
+      "donor_transfers_verified": 2,
+      "new_visible_endpoint_occurrences": 2,
+      "train": {
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 701,
+        "empty_images": 13
+      },
+      "validation": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      },
+      "edit_counts": {
+        "changed_train_files": 8,
+        "added_rows": 5,
+        "deleted_rows": 6,
+        "replaced_rows": 3,
+        "donor_endpoints_transferred": 2,
+        "existing_visible_endpoint_tokens_preserved": 6839,
+        "new_visible_endpoints": 2,
+        "net_object_change": -1
+      },
+      "details": "final-annotation-review/verification.json"
+    },
+    "visual_review": [
+      {
+        "image_id": "new_000065",
+        "verdict": "accept",
+        "reason": "Accept both additions. Top-clipped front has two supported visible lower corners. Lower hand-occluded fragment has a separate seam; both physical lower corners remain unlocatable.",
+        "evidence": [
+          "final-annotation-review/065_top_final_overlay.png",
+          "final-annotation-review/065_lower_final_overlay.png"
+        ]
+      },
+      {
+        "image_id": "new_000067",
+        "verdict": "accept",
+        "reason": "Accept consolidation. Exact left donor point belongs to the retained fourth front and survives removal of aggregate source25; right corner remains hidden.",
+        "evidence": [
+          "final-annotation-review/067_final_overlay.png"
+        ]
+      },
+      {
+        "image_id": "new_000068",
+        "verdict": "accept",
+        "reason": "Accept both gripper-only deletions. No cassette front occupies either deleted source box; genuine exposed front source14 is retained unchanged.",
+        "evidence": [
+          "final-annotation-review/068_final_overlay.png"
+        ]
+      },
+      {
+        "image_id": "new_000072",
+        "verdict": "accept",
+        "reason": "Accept source35 deletion and source36→34 consolidation. Final box encloses the observed right fragment; exact source36 right-point tokens survive.",
+        "evidence": [
+          "final-annotation-review/072_final_overlay.png"
+        ]
+      },
+      {
+        "image_id": "new_000097",
+        "verdict": "accept",
+        "reason": "Accept added front in gripper opening. White front is connected below slotted upper surface. Neither physical lower corner is visible; hand/jaw intersections must not become keypoints.",
+        "evidence": [
+          "final-annotation-review/new_000097_raw.png",
+          "final-annotation-review/097_final_overlay.png"
+        ]
+      },
+      {
+        "image_id": "new_000101",
+        "verdict": "accept",
+        "reason": "Accept added front in gripper opening. Positive white front extent is directly visible, with both lower physical corners occluded.",
+        "evidence": [
+          "final-annotation-review/new_000101_raw.png",
+          "final-annotation-review/101_final_overlay.png"
+        ]
+      },
+      {
+        "image_id": "new_000102",
+        "verdict": "accept",
+        "reason": "Accept observed-extent refit of existing source53. Box is restricted to the central white front; all six original endpoint tokens remain exact.",
+        "evidence": [
+          "final-annotation-review/new_000102_raw.png",
+          "final-annotation-review/102_final_overlay.png"
+        ]
+      },
+      {
+        "image_id": "new_000103",
+        "verdict": "accept",
+        "reason": "Accept independent deletion and addition. Old source50 lies wholly on solid right jaw; new candidate50 describes the real front above and to its left. Both new lower corners remain missing.",
+        "evidence": [
+          "final-annotation-review/new_000103_raw.png",
+          "final-annotation-review/103_final_overlay.png"
+        ]
+      }
+    ],
+    "remaining_concerns": [
+      {
+        "severity": "nonblocking scope limit",
+        "issue": "This is a bounded amendment. Existing loose boxes and unresolved identities explicitly documented in review.json remain; this acceptance does not certify all unchanged rows or the complete dataset."
+      },
+      {
+        "severity": "nonblocking legacy geometry",
+        "issue": "new_000067 retained source12 bbox is intentionally unchanged and still includes legacy excess extent. The donor point is supported and preserved; a separate geometry pass may tighten the box."
+      },
+      {
+        "severity": "nonblocking annotation uncertainty",
+        "issue": "Added/refitted boxes are manual judgments on blurred original pixels. The provisional 10px evaluation ceiling does not prove a physical tolerance or a calibrated annotation error bound."
+      },
+      {
+        "severity": "unmeasured model outcome",
+        "issue": "Annotation acceptance establishes image support and reproducibility, not improved generalization. A paired training experiment with unchanged validation is still needed."
+      }
+    ],
+    "review_limit": "All final changed rows across eight images were inspected using original pixels and overlays derived from the exact candidate files. Source hashes and mappings were exhaustively verified. The reviewer originated some earlier 065–072 proposals; this is independent verification of the builder output, not a blinded external audit of every original annotation. No model predictions, inferred hidden corners, source edits, or production writes were used."
+  },
+  "independent_notebook_template_review": {
+    "schema_version": 1,
+    "artifact": "/workspace/scratch/e8c6ed25e3ab/training-work/baomai_reviewed_annotations.template.ipynb",
+    "artifact_sha256": "4c69f3039f9e434cda828c5e14b4451a9a45c927298dc8f6c1da133c8ba92800",
+    "verdict": "approved_template_pending_immutable_source_pin",
+    "blocking_findings": [],
+    "publication_gate": {
+      "required": "Replace every SOURCE_REVISION_PLACEHOLDER in code and Markdown URLs with the immutable published implementation commit containing the reviewed code and candidate.",
+      "enforcement": "Cell2 refuses any revision not matching40 lowercase hexadecimal characters; clone checks exact detachedHEAD and clean source.",
+      "expected_for_template": true
+    },
+    "checks": [
+      {
+        "area": "syntax",
+        "status": "pass",
+        "finding": "All seven code cells compile; embedded input_preflight also compiles. No cell execution depends on notebook-only magics."
+      },
+      {
+        "area": "annotation manifest and counts",
+        "status": "pass",
+        "finding": "Exact embedded preflight ran successfully on hydrated local originals and epoch173; SHA and counts match the final accepted candidate."
+      },
+      {
+        "area": "seed45 low-bias recipe",
+        "status": "pass",
+        "finding": "Recipe reviewed-annotations-seed45-v1 equals the fixed warmup-bias-lr-1e-4-v1 recipe with seed changed to45, including epochs30, batch4, imgsz1280, ampFalse, AdamW, lr0=warmup_bias_lr=0.0001, resumeFalse."
+      },
+      {
+        "area": "identical validation",
+        "status": "pass",
+        "finding": "Preflight compares both validation totals; staging source inventory selects original validation images/labels for both arms and per-file hashes are checked again by checkpoint eligibility."
+      },
+      {
+        "area": "selective LFS and preflight order",
+        "status": "pass",
+        "finding": "GPU/runtime prerequisite is checked first. Clone disables smudge; exact tracked original PNG set must match all157 manifest records. LFS pulls only those train/val PNGs and epoch173. Candidate/source/weight preflight completes before trainer installation or training."
+      },
+      {
+        "area": "epoch173 initialization",
+        "status": "pass",
+        "finding": "Each fresh training invocation obtains initial_weights from preflight_dataset and instantiates YOLO from that path. No resume or resource-trial output is used as initialization. Notebook receipts recheck the original weight hash."
+      },
+      {
+        "area": "four-batch resource trial",
+        "status": "pass",
+        "finding": "Trial uses the full30-epoch schedule but stops after four completed batches; optimizer step and observed parameter change are required. Trial receives no eligible checkpoint manifest."
+      },
+      {
+        "area": "epoch30 selection",
+        "status": "pass",
+        "finding": "Completed epochs must exactly equal1..30. Runner descriptors and packager select finalized fit/weights/last.pt; complete status, finalization, validation and updated parameters are required. No best.pt selection is requested."
+      },
+      {
+        "area": "fresh-output retries",
+        "status": "pass",
+        "finding": "Workspace and per-run existing paths are refused. Markdown instructs retaining failed receipts/logs and retrying the candidate into a fresh named folder only in an unchanged session. Changed source/environment/settings requires a new pair."
+      },
+      {
+        "area": "new-kind packaging",
+        "status": "pass by static trace",
+        "finding": "source_state dispatches training_annotation_overlay to its verifier. Receipt validation binds the annotation recipe to this kind. Packager calls select_checkpoint for each arm and compares source/runtime/proposal/shared scientific settings, so no legacy-only candidate-kind branch blocks this notebook."
+      },
+      {
+        "area": "markdown and code",
+        "status": "pass",
+        "finding": "Narrative matches5 additions/4 gripper-only deletions/2 donor-preserving consolidations,8 changed files/3 replacements, exact recipe, same validation, original initialization, final checkpoint, one-seed limits and no automatic promotion."
+      },
+      {
+        "area": "clean notebook outputs",
+        "status": "pass",
+        "finding": "All code execution counts are null and outputs empty."
+      }
+    ],
+    "executed_local_checks": {
+      "compiled_code_cell_indices": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      "embedded_preflight_exit_code": 0,
+      "preflight": {
+        "status": "verified",
+        "original_images": 157,
+        "annotation_edits": {
+          "deletions": 6,
+          "replacements": 3,
+          "additions": 5
+        },
+        "label_counts": {
+          "reference": {
+            "train": {
+              "images": 137,
+              "objects": 3772,
+              "visible_endpoints": 6839,
+              "missing_endpoints": 705,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          },
+          "candidate": {
+            "train": {
+              "images": 137,
+              "objects": 3771,
+              "visible_endpoints": 6841,
+              "missing_endpoints": 701,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          }
+        },
+        "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+        "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+        "weights_verified": true,
+        "recipe_id": "reviewed-annotations-seed45-v1",
+        "recipe_sha256": "34b8eda9e9b986a2ba19d9ba07661eef1792027ef8d4465d10763a8eb2cd2850"
+      },
+      "outputs_clean": true,
+      "stdout": "notebook-review/embedded-preflight.stdout.txt",
+      "stderr": "notebook-review/embedded-preflight.stderr.txt"
+    },
+    "reviewed_script_sha256": {
+      "scripts/pose_checkpoint.py": "7c320cec4130abd206deb0beae73c12dc3d95d4907d5528a093715f987872596",
+      "scripts/train_pose_comparison.py": "d4ab5031029c150039843383d0d42d0a72a4062b97212be5633dd39993309abe",
+      "scripts/stage_pose_training.py": "e28a4f1b705086e4461876df97627d57111932a7455e20ed116d35b4f4d38eae",
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+      "scripts/package_gpu_results.py": "120b1a3d22f9cb8896af67a84b7d3da686d89e41b63d5889eb7fb106bdce477c",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0"
+    },
+    "limits": [
+      "No GPU training was executed.",
+      "No dependency install, clone, network access or package publication was performed.",
+      "Packager new-kind compatibility was checked by tracing actual verifier/receipt/packager code; no completed GPU pair was fabricated for a packaging test.",
+      "The revision placeholder is intentional in this template; final pinned artifact should differ only by the intended pin replacement unless reviewed again."
+    ],
+    "repo_edits_made": false
+  },
+  "delivered_notebook": {
+    "source_revision": "1c5d2e48ab26c578c5f6660010d6ecfb33231eb8",
+    "source_tree": "d4887e0a108467d325d986217db17260e8346520",
+    "notebook_sha256": "796a205dfb1b7d12e8f4c0809ac9204263f237abdb89b3b138eca80c8a06af4f",
+    "template_sha256": "4c69f3039f9e434cda828c5e14b4451a9a45c927298dc8f6c1da133c8ba92800",
+    "code_cells_compiled": 7,
+    "embedded_preflight_sha256": "b3e865fcfd4a1829b38b8e33dee5dcd7baaf2014ee2a4b64a738039a94068703",
+    "outputs_empty": true,
+    "gpu_execution": false,
+    "template_changes": [
+      "Every literal SOURCE_REVISION_PLACEHOLDER replaced by immutable implementation commit.",
+      "One prose guide link targets the delivery branch, where notebook and verification artifacts exist; all executable cells otherwise unchanged."
+    ]
+  },
+  "independent_code_review": {
+    "status": "accepted_after_two_conservation_fixes",
+    "findings_resolved": [
+      "Deleted visible endpoints now require complete exactly-once declared donor provenance.",
+      "Retained visible endpoint token triples cannot be changed; donor recipients must originally be missing."
+    ],
+    "checks": [
+      "Reviewer reran both original failure reproductions and observed rejection.",
+      "New-kind synthetic completed control/candidate bundles package into the expected13-file generic result archive.",
+      "Fresh-pair evaluator API fields, source chronology and reference-specific denominators independently reviewed."
+    ],
+    "model_loading_or_training": false
+  },
+  "runtime_limit": {
+    "cuda_training_available": false,
+    "observed": "No nvidia-smi or NVIDIA devices; available evaluation environment uses Torch2.10.0+cpu and cuda.is_available()==False.",
+    "new_gpu_resource_trial_executed": false,
+    "new_training_completed": false,
+    "new_model_inference_completed": false
+  },
+  "claim_limits": [
+    "Annotation acceptance covers the declared bounded intervention, not all remaining labels.",
+    "Focused completed-run fixtures are synthetic and never deserialized as model weights.",
+    "A full successful new-pair evaluation awaits actual returned seed45 checkpoints and fresh predictions.",
+    "No model improvement, deployment acceptance, default-model change or merge is claimed."
+  ],
+  "next_step": "Run the pinned GPU notebook, return both completed arms, then infer fresh M0/control/candidate and audit both original and PR30 references."
+}

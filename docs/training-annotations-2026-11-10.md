@@ -109,4 +109,15 @@ python scripts/rescore_annotation_comparison.py \
 
 ## Preparation evidence
 
+Immutable training implementation: [`1c5d2e4`](https://github.com/Siuuuers/dl/tree/1c5d2e48ab26c578c5f6660010d6ecfb33231eb8). The delivered notebook pins that commit; its subsequent delivery commit adds the notebook and this verification record without altering training code.
+
+| Check | Result |
+| --- | --- |
+| Mixed-label, existing-box, checkpoint, runner, paired-report and result-package checks | 77 passing focused checks |
+| Final annotation review | All eight changed images accepted; all 6,839 existing visible corner marks preserved |
+| Actual input preflight | All157 original PNGs and epoch173 bytes verified |
+| Complete paired staging | 314 copied images and314 copied labels verified; original validation identical in both arms |
+| Delivered notebook | Seven code cells and embedded preflight compile; exact input preflight executes locally |
+| GPU training or new-model inference | Not performed here |
+
 The [verification record](../results/verification/baomai-training-annotations-20261110/verification.json) records the final source hashes, exact checks, real-input preflight and complete paired staging. It distinguishes synthetic checkpoint fixtures and notebook setup probes from real training. Final annotation review confirms exact source immutability and endpoint preservation. No completed seed45 training checkpoint or model-gain claim exists at this preparation stage.
