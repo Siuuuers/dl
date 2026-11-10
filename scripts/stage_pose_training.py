@@ -43,6 +43,9 @@ def source_state(root, candidate):
     if proposal.get("kind") == "training_box_overlay":
         from verify_pose_box_candidate import verify_box_candidate
         receipt = verify_box_candidate(root, candidate)
+    elif proposal.get("kind") == "training_annotation_overlay":
+        from verify_pose_annotation_candidate import verify_annotation_candidate
+        receipt = verify_annotation_candidate(root, candidate)
     else:
         receipt = verify_candidate(root, candidate)
     reference = json.loads((root / "data/manifest.json").read_text(encoding="utf-8"))
@@ -148,7 +151,7 @@ def code_hashes():
     scripts = Path(__file__).resolve().parent
     return {f"scripts/{name}": file_sha256(scripts / name) for name in
             ("stage_pose_training.py", "verify_pose_candidate.py", "verify_pose_box_candidate.py",
-             "evaluate_pose.py", "pose_scoring.py")}
+             "verify_pose_annotation_candidate.py", "evaluate_pose.py", "pose_scoring.py")}
 
 
 def manifest_fields(output, state, variants):

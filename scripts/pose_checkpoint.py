@@ -35,7 +35,8 @@ BOX_REPEATABILITY_RECIPES = {
     44: "box-supervision-warmup-seed44-v1",
 }
 BOX_RECIPE_IDS = (BOX_RECIPE_ID, *BOX_REPEATABILITY_RECIPES.values())
-RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS)
+ANNOTATION_RECIPE_ID = "reviewed-annotations-seed45-v1"
+RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, ANNOTATION_RECIPE_ID)
 
 # Resolved defaults observed in the pinned trainer, in addition to RECIPE.
 # These are checked, not changed, by the runner. In particular RLE stays at 1.0.
@@ -75,11 +76,21 @@ def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
     """Return an independent fixed recipe; the original RECIPE remains unchanged."""
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
     recipe = {**RECIPE, **({"warmup_bias_lr": 0.0001}
-                         if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS) else {})}
+                         if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, ANNOTATION_RECIPE_ID) else {})}
     for seed, fixed_id in BOX_REPEATABILITY_RECIPES.items():
         if recipe_id == fixed_id:
             recipe["seed"] = seed
+    if recipe_id == ANNOTATION_RECIPE_ID:
+        recipe["seed"] = 45
     return recipe
+
+
+def check_recipe_candidate_kind(recipe_id, kind):
+    """Bind each new experiment to its intended overlay; retain legacy contracts."""
+    _require((recipe_id in BOX_RECIPE_IDS) == (kind == "training_box_overlay"),
+             "box-supervision recipe and training_box_overlay must be selected together")
+    _require((recipe_id == ANNOTATION_RECIPE_ID) == (kind == "training_annotation_overlay"),
+             "reviewed-annotations recipe and training_annotation_overlay must be selected together")
 
 
 def recipe_identity(recipe_id=ORIGINAL_RECIPE_ID):
@@ -317,8 +328,7 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
         _require(receipt[key] == expected, f"training receipt {key} differs")
     variants = _check_staging(preflight, staging)
     proposal = _read_json(_contained_path(Path(preflight["root"]), staging["source"]["candidate_manifest"]))
-    _require((identity.get("recipe_id") in BOX_RECIPE_IDS) == (proposal.get("kind") == "training_box_overlay"),
-             "box-supervision recipe and training_box_overlay must be selected together")
+    check_recipe_candidate_kind(identity.get("recipe_id"), proposal.get("kind"))
     variant = variants[receipt["arm"]]
     _require(receipt["data_yaml_sha256"] == variant["data_yaml_sha256"], "training arm/YAML identity differs")
     settings = _mapping(receipt["training_settings"], "training settings")
