@@ -1,0 +1,2534 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-persistent-failure-original-image-review",
+  "date_asia_hong_kong": "2026-11-10",
+  "parent_revision": "843c6a6f37073f585e61f130e7b17551bea6f5df",
+  "decision": "retain-epoch173-and-prepare-separate-reference-adjudication",
+  "review_method": {
+    "reviewer_type": "assistant; not human or supervisor approval",
+    "images_hash_verified": 16,
+    "persistent_rows_reviewed": 33,
+    "independently_visually_reviewed_priority_rows": 12,
+    "raw_before_overlay": "Separate visual reviewers opened all 33 unannotated crops before their comparison overlays; priority reviewer also opened all seven full originals first.",
+    "numerical_audit": "Independent normalized-label parsing, Euclidean distances and confidence-ordered one-to-one IoU matching against saved predictions.",
+    "new_inference": false,
+    "new_training": false,
+    "full_benchmark_replay": false,
+    "accepted_label_changes": 0,
+    "official_score_changes": 0
+  },
+  "sources": {
+    "failure_queue": {
+      "path": "results/evaluation/baomai-box-repeatability-a100-001/failure-review-locations.json",
+      "sha256": "f583fa19f84bbd12ba8d9527985291e50d09a39b90319c935ab57c0fb590266d"
+    },
+    "capsule": {
+      "path": "results/evaluation/baomai-box-repeatability-a100-001/evaluation.zip",
+      "sha256": "e4d8c586d2553964bf09b07ffdfa2a1d26326488435f3991375b0cf25c49e0c3",
+      "size_bytes": 2161801,
+      "verified_payloads": 109
+    },
+    "m0_predictions": {
+      "capsule_path": "evidence/seed-43/m0/predictions.jsonl",
+      "sha256": "7b9edb88ca507975bf475d81b66db5b726d42c4ebdc653bf6883e7069612c5a8"
+    },
+    "model_identity_from_prediction_header": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "model_weight_bytes_loaded_or_rehashed": false,
+    "verified_evaluator_source_hashes": {
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/pose_checkpoint.py": "69123751ce59ad5fd4588d81715afff229391f98e553b15c3280909663cd0be2",
+      "scripts/summarize_pose_comparison.py": "d728710a93bc73e56727a189d20b0a61ef84bd93c964c42ba8b2265afdc24ace",
+      "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953",
+      "scripts/package_gpu_results.py": "120b1a3d22f9cb8896af67a84b7d3da686d89e41b63d5889eb7fb106bdce477c",
+      "scripts/summarize_box_repeatability.py": "a770dc229161821cb4c1204c7edd1a4911934f87f0f2a44454bc4f1533c31dc7",
+      "scripts/package_box_repeatability.py": "16938c6de4cb45709e47d9884c879fd6aa52792074b5f66ef2cfd41374527def",
+      "scripts/train_pose_comparison.py": "6a2ac2742a7dd03b1e8b6751ff8fee1f7e6ea7e69185473e919640d860c123a6",
+      "scripts/stage_pose_training.py": "3bce2f50f9c6c6626f50a145e66b2cca9ad9742607f0962b3c1d08dcd30b5aca",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5"
+    }
+  },
+  "fixed_settings": {
+    "box_confidence": 0.25,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "endpoint_confidence": 0.5,
+    "width": 1280,
+    "height": 720
+  },
+  "summary": {
+    "review_groups": {
+      "border_truncation": 10,
+      "foreground_occlusion": 7,
+      "box_extent_disagreement": 12,
+      "reference_identity_ambiguity": 2,
+      "possible_duplicate_reference": 2
+    },
+    "priority_same_apparent_front_correspondences": 12,
+    "priority_unmatched_m0_proposals": 12,
+    "priority_diagnostic_endpoint_count": 24,
+    "priority_unscored_endpoint_min_px": 0.29419103848914624,
+    "priority_unscored_endpoint_max_px": 3.9461017499215507,
+    "priority_m0_box_confidence_range": [
+      0.8514489531517029,
+      0.9433552026748657
+    ],
+    "priority_m0_iou_range": [
+      0.3528731101479758,
+      0.4873404445463909
+    ],
+    "confirmed_competing_match_reference": "The proposal qualifying for new_000086 row 59 is assigned to row 48 in all 15 model/threshold records"
+  },
+  "rows": [
+    {
+      "image_id": "new_000007",
+      "label_row_one_based": 7,
+      "source_image": "data/images/val/new_000007.png",
+      "source_image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "source_label": "data/labels/val/new_000007.txt",
+      "source_label_sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+      "reference_box_xyxy": [
+        720.3100032000001,
+        0.0,
+        801.0300032000001,
+        2.4500016000000002
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 0,
+      "crop_xyxy": [
+        667,
+        0,
+        858,
+        70
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 51,
+        "confidence": 0.6840828657150269,
+        "iou": 0.12262413487189043,
+        "bbox_xyxy": [
+          720.3720703125,
+          0.0,
+          804.514404296875,
+          19.15058135986328
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "A roughly 2.45-pixel-high reference strip touches the top image boundary above a stack. No full lower-front corner is observable in that strip. The overlapping proposal spans a much taller visible face below the strip.",
+      "next_action": "Review the identity/inclusion of the top sliver and its relationship to the face below; neither the proposal nor the sliver establishes a usable two-corner target.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000007",
+      "label_row_one_based": 14,
+      "source_image": "data/images/val/new_000007.png",
+      "source_image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "source_label": "data/labels/val/new_000007.txt",
+      "source_label_sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+      "reference_box_xyxy": [
+        872.0799999999999,
+        3.5999999998814758e-06,
+        948.7500032,
+        2.4900012
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 0,
+      "crop_xyxy": [
+        764,
+        0,
+        981,
+        69
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 52,
+        "confidence": 0.608425498008728,
+        "iou": 0.011835591308328374,
+        "bbox_xyxy": [
+          796.889892578125,
+          0.0,
+          879.709716796875,
+          17.30559539794922
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "A roughly 2.49-pixel-high reference strip touches the top edge in the rightmost visible stack. The maximum-overlap M0 proposal is mainly in the neighboring stack to the left, with only incidental overlap.",
+      "next_action": "Do not interpret the neighboring proposal as this object or score its corners against this row. Adjudicate the top-border sliver under the existing visible-front inclusion rule.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000008",
+      "label_row_one_based": 1,
+      "source_image": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label": "data/labels/val/new_000008.txt",
+      "source_label_sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07",
+      "reference_box_xyxy": [
+        528.2600064,
+        3.600000000325565e-06,
+        752.6600064,
+        15.990001199999998
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          738.6099968000001,
+          5.8199976,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        495,
+        0,
+        785,
+        77
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 29,
+        "confidence": 0.7871897220611572,
+        "iou": 0.4682325833092666,
+        "bbox_xyxy": [
+          527.268798828125,
+          0.0,
+          745.994140625,
+          33.50762176513672
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "The target is clipped by the top boundary, with a small right boundary corner marked near y=5.82. The reference box stops near y=16 while the M0 proposal extends to about y=33.5, into a larger band below.",
+      "next_action": "Review top-border object identity and box extent separately from confidence. Existing row2 describes the next full face below; avoid conflating the two.",
+      "nearby_reference_rows_checked": [
+        2
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000008",
+      "label_row_one_based": 33,
+      "source_image": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label": "data/labels/val/new_000008.txt",
+      "source_label_sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07",
+      "reference_box_xyxy": [
+        1211.8400000000001,
+        409.4399988,
+        1280.0,
+        480.05999640000005
+      ],
+      "reference_keypoints": [
+        [
+          1236.6899968,
+          450.0,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        1148,
+        377,
+        1280,
+        538
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 35,
+        "confidence": 0.36293789744377136,
+        "iou": 0.26599235148024625,
+        "bbox_xyxy": [
+          1207.1240234375,
+          453.4381103515625,
+          1280.0,
+          505.8956298828125
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "A partially visible front is clipped by the right image edge; its left lower corner is visible. The maximum-overlap prediction is vertically lower and visually follows a lower neighboring face rather than the row33 corner.",
+      "next_action": "Retain right-side unlocatability. This is a missed clipped target at the tested matching settings, with neighboring-instance confusion; inspect predictions for adjacent rows34/35 before attributing corner error.",
+      "nearby_reference_rows_checked": [
+        34,
+        35
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000008",
+      "label_row_one_based": 36,
+      "source_image": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label": "data/labels/val/new_000008.txt",
+      "source_label_sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07",
+      "reference_box_xyxy": [
+        1026.0,
+        699.0000011999999,
+        1124.0,
+        720.0000036
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 0,
+      "crop_xyxy": [
+        980,
+        649,
+        1170,
+        720
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 0,
+        "confidence": 0.9220550656318665,
+        "iou": 0.0,
+        "bbox_xyxy": [
+          888.2120361328125,
+          368.17529296875,
+          1069.85302734375,
+          422.9022216796875
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "The reference box meets the bottom image boundary. The crop shows ridged/top or tray-like structure and a narrow bright lower region, without visible lower-front corners. No primary M0 prediction overlaps the row; the reported max-IoU proposal has IoU zero and is elsewhere.",
+      "next_action": "Adjudicate whether a visible cassette front is actually identifiable in this bottom sliver. Do not use the unrelated zero-IoU proposal as a same-object detection or automatically delete the row.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000009",
+      "label_row_one_based": 8,
+      "source_image": "data/images/val/new_000009.png",
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label": "data/labels/val/new_000009.txt",
+      "source_label_sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f",
+      "reference_box_xyxy": [
+        618.9299968,
+        3.600000000325565e-06,
+        724.72,
+        9.600001200000001
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          721.32,
+          1.4500008,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        576,
+        0,
+        767,
+        75
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 59,
+        "confidence": 0.4591738283634186,
+        "iou": 0.3256378582522877,
+        "bbox_xyxy": [
+          617.655029296875,
+          0.0,
+          722.0789794921875,
+          28.877853393554688
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "The reference is a top-edge strip, with a right point about 1.45 pixels below the image boundary. The larger overlapping M0 proposal follows the front below, whose two lower corners are visible and represented by neighboring row9.",
+      "next_action": "Retain the distinction between the clipped strip and row9. This proposal cannot certify a corner error for row8. Review strip inclusion/extent without changing the completed reference.",
+      "nearby_reference_rows_checked": [
+        9
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000009",
+      "label_row_one_based": 53,
+      "source_image": "data/images/val/new_000009.png",
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label": "data/labels/val/new_000009.txt",
+      "source_label_sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f",
+      "reference_box_xyxy": [
+        594.9999936,
+        487.999998,
+        617.9999936,
+        509.0000004
+      ],
+      "reference_keypoints": [
+        [
+          599.0,
+          503.99999999999994,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        529,
+        439,
+        720,
+        560
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 56,
+        "confidence": 0.5915852189064026,
+        "iou": 0.2995917301645591,
+        "bbox_xyxy": [
+          596.46875,
+          491.84844970703125,
+          654.186767578125,
+          511.2349853515625
+        ]
+      },
+      "group": "foreground_occlusion",
+      "observation": "A narrow left fragment of a cassette front is exposed beside the white gripper. The reference keeps the left corner and leaves the right corner unlocatable. The M0 proposal starts near that fragment but extends across the gripper, with its right point on the foreground tool.",
+      "next_action": "Keep the unsupported right corner absent; review visible-front extent. This is a concrete occlusion-related extent/endpoint problem, not evidence that the hidden right corner can be filled from the prediction.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000009",
+      "label_row_one_based": 56,
+      "source_image": "data/images/val/new_000009.png",
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label": "data/labels/val/new_000009.txt",
+      "source_label_sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f",
+      "reference_box_xyxy": [
+        677.0000064000001,
+        470.99999879999996,
+        756.0000064000001,
+        512.9999964
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 0,
+      "crop_xyxy": [
+        621,
+        431,
+        812,
+        552
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 0,
+        "confidence": 0.9441893696784973,
+        "iou": 0.0,
+        "bbox_xyxy": [
+          517.4444580078125,
+          15.731290817260742,
+          621.8460693359375,
+          53.97508239746094
+        ]
+      },
+      "group": "foreground_occlusion",
+      "observation": "The reference surrounds the central gripper opening and substantial foreground tool pixels. No distinct cassette lower-front boundary or lower corner can be confidently identified within it from the original image. All primary M0 boxes have zero overlap; the arbitrary zero-IoU proposal is unrelated.",
+      "next_action": "Require instance-inclusion/identity adjudication before treating this as a genuine missed cassette or background. Preserve both missing corners and the frozen record.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000009",
+      "label_row_one_based": 57,
+      "source_image": "data/images/val/new_000009.png",
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label": "data/labels/val/new_000009.txt",
+      "source_label_sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f",
+      "reference_box_xyxy": [
+        748.0,
+        489.999996,
+        828.0,
+        520.9999992
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          824.0,
+          517.9999968,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        693,
+        445,
+        883,
+        566
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 0,
+        "confidence": 0.9441893696784973,
+        "iou": 0.0,
+        "bbox_xyxy": [
+          517.4444580078125,
+          15.731290817260742,
+          621.8460693359375,
+          53.97508239746094
+        ]
+      },
+      "group": "foreground_occlusion",
+      "observation": "The gripper hides most of the referenced lower-right cassette; a small pale front/right-edge fragment remains beside the tool and the marked right lower corner is plausible. No primary M0 box overlaps the row; the max-IoU-zero proposal is unrelated.",
+      "next_action": "Treat as an occluded-target miss at the tested settings, with left side still unlocatable. Exact visible-front box extent needs adjudication; never infer the hidden left corner from the stack.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000011",
+      "label_row_one_based": 15,
+      "source_image": "data/images/val/new_000011.png",
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "source_label": "data/labels/val/new_000011.txt",
+      "source_label_sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838",
+      "reference_box_xyxy": [
+        655.7700032,
+        0.0,
+        753.0100032,
+        10.440000000000001
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 0,
+      "crop_xyxy": [
+        609,
+        0,
+        800,
+        77
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 20,
+        "confidence": 0.9118689298629761,
+        "iou": 0.2348711439017146,
+        "bbox_xyxy": [
+          655.734130859375,
+          2.75634765625,
+          748.270263671875,
+          32.16797637939453
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "The zero-corner reference is a shallow strip along the top image boundary. The high-confidence overlapping proposal instead spans the larger front below, also described by row16.",
+      "next_action": "Review distinct-object identity and inclusion of the clipped top strip. Do not call the row16 proposal a correct row15 detection solely from shared x extent.",
+      "nearby_reference_rows_checked": [
+        16
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000053",
+      "label_row_one_based": 1,
+      "source_image": "data/images/val/new_000053.png",
+      "source_image_sha256": "dfc3621b0387b0da774001334c12c65574ae0084131b154d2f6216e420573d72",
+      "source_label": "data/labels/val/new_000053.txt",
+      "source_label_sha256": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded",
+      "reference_box_xyxy": [
+        640.7999936000001,
+        0.0,
+        772.4200000000001,
+        8.7099984
+      ],
+      "reference_keypoints": [
+        [
+          640.8,
+          8.3299968,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        607,
+        0,
+        805,
+        82
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 7,
+        "confidence": 0.8762337565422058,
+        "iou": 0.12879137367478266,
+        "bbox_xyxy": [
+          639.388916015625,
+          3.0518760681152344,
+          754.196533203125,
+          42.04746627807617
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "The referenced strip is cut by the top edge on a tilted stack. Only its left reference corner is locatable. The M0 proposal covers the fuller face beneath the strip; row2 describes that lower face.",
+      "next_action": "Preserve missing right corner; adjudicate border-strip extent and row1/row2 identity before interpreting overlap as localization error.",
+      "nearby_reference_rows_checked": [
+        2
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000054",
+      "label_row_one_based": 17,
+      "source_image": "data/images/val/new_000054.png",
+      "source_image_sha256": "cd22201fc88724a2b2d17eb1840af4a88b21dd06ca31a0cdb90172281d8a00d0",
+      "source_label": "data/labels/val/new_000054.txt",
+      "source_label_sha256": "ab47c7bbb668f33427d740bce989381a0292ebdb0f3c0b0d9ab9c0bb1791d1ce",
+      "reference_box_xyxy": [
+        297.1100032,
+        362.93999759999997,
+        400.2900096,
+        422.74000079999996
+      ],
+      "reference_keypoints": [
+        [
+          304.7900032,
+          420.7000032,
+          2
+        ],
+        [
+          388.6700032,
+          412.6199976,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        253,
+        330,
+        444,
+        461
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 18,
+        "confidence": 0.8726788759231567,
+        "iou": 0.4342913555405385,
+        "bbox_xyxy": [
+          303.0761413574219,
+          391.0276184082031,
+          395.3754577636719,
+          428.9114685058594
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "reference_upper_extent_contains_background",
+      "observation": "The isolated top front in the left lower compartment is identifiable. The reference upper span visibly includes rack/background above the white cassette region. The M0 proposal is concentrated lower around that same front and its bottom also extends below the lower contour. This supports a box-extent review, not adoption of the model rectangle.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          308.6619873046875,
+          419.93878173828125,
+          0.9419317841529846
+        ],
+        [
+          389.6160583496094,
+          412.22808837890625,
+          0.9487957954406738
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        3.9461017499215507,
+        1.0240181559331432
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000055",
+      "label_row_one_based": 26,
+      "source_image": "data/images/val/new_000055.png",
+      "source_image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "source_label": "data/labels/val/new_000055.txt",
+      "source_label_sha256": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0",
+      "reference_box_xyxy": [
+        458.0,
+        602.6700024,
+        501.64999680000005,
+        613.0000008000001
+      ],
+      "reference_keypoints": [
+        [
+          460.0,
+          610.9999992,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        419,
+        538,
+        610,
+        659
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 24,
+        "confidence": 0.8514014482498169,
+        "iou": 0.09304435610718195,
+        "bbox_xyxy": [
+          454.50128173828125,
+          578.221435546875,
+          573.7625122070312,
+          618.85595703125
+        ]
+      },
+      "group": "foreground_occlusion",
+      "observation": "A hand covers the right side of the lowest visible cassette. The frozen box retains a very short lower-left strip, while the M0 box spans a substantially larger visible/occluded region; its right endpoint lies over the hand.",
+      "next_action": "Retain the right missing-point state. Review whether the frozen box omits supported visible front above the strip and where the physical front boundary ends; do not accept the proposal wholesale.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000056",
+      "label_row_one_based": 1,
+      "source_image": "data/images/val/new_000056.png",
+      "source_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "source_label": "data/labels/val/new_000056.txt",
+      "source_label_sha256": "65d4820136ea23e8be8e467a15c60e06831fe0b59d903b89e1f12d6b863a28e4",
+      "reference_box_xyxy": [
+        721.1499904,
+        258.9900048,
+        889.5299967999999,
+        315.5600016
+      ],
+      "reference_keypoints": [
+        [
+          732.0099968,
+          314.8099992,
+          2
+        ],
+        [
+          888.5299967999999,
+          314.56000079999995,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        689,
+        226,
+        922,
+        359
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 14,
+        "confidence": 0.8514489531517029,
+        "iou": 0.47083120255143235,
+        "bbox_xyxy": [
+          723.9560546875,
+          283.51715087890625,
+          889.66845703125,
+          326.0516357421875
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "reference_upper_extent_contains_background",
+      "observation": "The top front in the right stack is identifiable and its lower corners are exposed. The reference upper boundary extends above the white cassette into rack/background. The M0 proposal begins lower and extends below the lower contour toward the next layer. Both rectangles require independent physical-edge judgment.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          728.9783325195312,
+          313.8222351074219,
+          0.9404701590538025
+        ],
+        [
+          887.0374145507812,
+          315.233642578125,
+          0.9390515685081482
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        3.1885210069962677,
+        1.6375576374339262
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000056",
+      "label_row_one_based": 4,
+      "source_image": "data/images/val/new_000056.png",
+      "source_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "source_label": "data/labels/val/new_000056.txt",
+      "source_label_sha256": "65d4820136ea23e8be8e467a15c60e06831fe0b59d903b89e1f12d6b863a28e4",
+      "reference_box_xyxy": [
+        400.2599935999999,
+        342.79999919999995,
+        561.12,
+        397.2499992
+      ],
+      "reference_keypoints": [
+        [
+          402.0600064,
+          396.1499976,
+          2
+        ],
+        [
+          555.8099968,
+          396.24999840000004,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        368,
+        310,
+        594,
+        440
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 13,
+        "confidence": 0.8519823551177979,
+        "iou": 0.47100194991227395,
+        "bbox_xyxy": [
+          401.170654296875,
+          366.14886474609375,
+          558.0761108398438,
+          407.45953369140625
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "front_vs_upper_surface_extent_requires_adjudication",
+      "observation": "The top front in the middle stack is identifiable. A gray sloping upper region and projecting upper lip lie above the broad white region. The reference includes more of this upper span while the model begins lower and extends below the front. The image supports an extent disagreement; exact front/roof/rim boundary has not been adjudicated.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          403.8047790527344,
+          397.5193176269531,
+          0.9278380870819092
+        ],
+        [
+          555.7525024414062,
+          395.7266845703125,
+          0.9267524480819702
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        2.2179425028491084,
+        0.5264626915673578
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000057",
+      "label_row_one_based": 1,
+      "source_image": "data/images/val/new_000057.png",
+      "source_image_sha256": "39fd900aa786267bd296630fe8ff49f76ce3094268246a65aaa2542fe4e79e11",
+      "source_label": "data/labels/val/new_000057.txt",
+      "source_label_sha256": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f",
+      "reference_box_xyxy": [
+        766.7800000000001,
+        3.600000000325565e-06,
+        872.6400064000001,
+        9.260002799999999
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 0,
+      "crop_xyxy": [
+        729,
+        0,
+        920,
+        73
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 21,
+        "confidence": 0.3664289712905884,
+        "iou": 0.330051465332363,
+        "bbox_xyxy": [
+          775.919921875,
+          0.0,
+          882.807373046875,
+          24.595638275146484
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "The reference is a shallow top-border strip with both corners unlocatable. The overlap proposal spans the taller face below; row2 represents a visible front with two corners near y=14-21.",
+      "next_action": "Separate top-strip inclusion from neighboring-face localization. Neither low IoU nor the model confidence establishes the correct instance boundary.",
+      "nearby_reference_rows_checked": [
+        2
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000058",
+      "label_row_one_based": 15,
+      "source_image": "data/images/val/new_000058.png",
+      "source_image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "source_label": "data/labels/val/new_000058.txt",
+      "source_label_sha256": "e97220280deda6e39ec9663be2110a208f134305171d882992303dcfc75ca23e",
+      "reference_box_xyxy": [
+        665.8399999999999,
+        352.08,
+        742.0,
+        397.44
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 0,
+      "crop_xyxy": [
+        600,
+        320,
+        824,
+        445
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 1,
+        "confidence": 0.8985727429389954,
+        "iou": 0.2707995637480835,
+        "bbox_xyxy": [
+          632.3261108398438,
+          368.232421875,
+          791.1691284179688,
+          412.20166015625
+        ]
+      },
+      "group": "reference_identity_ambiguity",
+      "observation": "The zero-corner rectangle lies centrally across the boundary between two clearly visible stacked fronts instead of enclosing a distinct visible front. Existing rows13 and14 already cover those two fronts. The closest M0 box covers the lower full face.",
+      "next_action": "Prioritize independent reference-identity adjudication: possible residual/duplicate representation. No label deletion is accepted by this review, and the frozen experiment remains unchanged.",
+      "nearby_reference_rows_checked": [
+        13,
+        14
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000059",
+      "label_row_one_based": 1,
+      "source_image": "data/images/val/new_000059.png",
+      "source_image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "source_label": "data/labels/val/new_000059.txt",
+      "source_label_sha256": "63c5c7813abc3ce8ca1398f78e00ac996d4e66b59e3794ef6c7651ac99353117",
+      "reference_box_xyxy": [
+        971.1299968,
+        0.0,
+        1156.3499904,
+        7.2200016
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 0,
+      "crop_xyxy": [
+        939,
+        0,
+        1201,
+        84
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 9,
+        "confidence": 0.8718698620796204,
+        "iou": 0.11786602981317,
+        "bbox_xyxy": [
+          983.5155029296875,
+          1.1802539825439453,
+          1168.8131103515625,
+          47.3927001953125
+        ]
+      },
+      "group": "border_truncation",
+      "observation": "The reference is a roughly 7.22-pixel top-edge strip. The maximum-overlap proposal spans the taller visible face below, represented by row2, while the strip has no locatable reference corners.",
+      "next_action": "Review top-edge inclusion/identity independently of the fuller neighboring-face prediction. Preserve both missing corners pending adjudication.",
+      "nearby_reference_rows_checked": [
+        2
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000059",
+      "label_row_one_based": 16,
+      "source_image": "data/images/val/new_000059.png",
+      "source_image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "source_label": "data/labels/val/new_000059.txt",
+      "source_label_sha256": "63c5c7813abc3ce8ca1398f78e00ac996d4e66b59e3794ef6c7651ac99353117",
+      "reference_box_xyxy": [
+        667.0700032,
+        365.00000040000003,
+        744.6399999999999,
+        410.9799996
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 0,
+      "crop_xyxy": [
+        602,
+        333,
+        826,
+        460
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 3,
+        "confidence": 0.8958151340484619,
+        "iou": 0.24710522768442555,
+        "bbox_xyxy": [
+          634.2584228515625,
+          384.30389404296875,
+          793.80078125,
+          427.40606689453125
+        ]
+      },
+      "group": "reference_identity_ambiguity",
+      "observation": "As in new_000058 row15, the zero-corner rectangle straddles the seam between two visible stacked fronts, already represented by rows14 and15. It does not isolate a distinct visible front in the original image.",
+      "next_action": "Prioritize independent instance/extent adjudication together with new_000058 row15; treat repeated geometry across related views as a linked issue, not independent proof of two model failures.",
+      "nearby_reference_rows_checked": [
+        14,
+        15
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000086",
+      "label_row_one_based": 4,
+      "source_image": "data/images/val/new_000086.png",
+      "source_image_sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+      "source_label": "data/labels/val/new_000086.txt",
+      "source_label_sha256": "1bcf8922954afe0b1bcfda7a28219e6ca8c25ad4fe8b010d111a45f538854598",
+      "reference_box_xyxy": [
+        454.3099968,
+        132.12,
+        549.7099968,
+        144.31000319999998
+      ],
+      "reference_keypoints": [
+        [
+          456.3100032,
+          139.3699968,
+          2
+        ],
+        [
+          546.7000064,
+          140.7499992,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        406,
+        70,
+        597,
+        191
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 21,
+        "confidence": 0.9174798130989075,
+        "iou": 0.3528731101479758,
+        "bbox_xyxy": [
+          452.39715576171875,
+          114.278076171875,
+          551.2496337890625,
+          147.6165771484375
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "narrow_reference_band_requires_extent_adjudication",
+      "observation": "The top front in the second column is identifiable without an apparent foreground occluder. The reference covers a thin lower strip while the M0 proposal covers a taller white cassette region and nearby margins. Much light cassette material lies above the reference top; exact front-versus-upper-rim membership remains unaccepted.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          458.14361572265625,
+          141.02606201171875,
+          0.9529988765716553
+        ],
+        [
+          546.224609375,
+          138.9353485107422,
+          0.9661109447479248
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        2.470766453695485,
+        1.8758889773658454
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000086",
+      "label_row_one_based": 15,
+      "source_image": "data/images/val/new_000086.png",
+      "source_image_sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+      "source_label": "data/labels/val/new_000086.txt",
+      "source_label_sha256": "1bcf8922954afe0b1bcfda7a28219e6ca8c25ad4fe8b010d111a45f538854598",
+      "reference_box_xyxy": [
+        646.8799935999999,
+        129.400002,
+        751.5899968,
+        142.9100028
+      ],
+      "reference_keypoints": [
+        [
+          653.6599936,
+          139.96000080000002,
+          2
+        ],
+        [
+          747.6899967999999,
+          139.2999984,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        604,
+        69,
+        795,
+        190
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 2,
+        "confidence": 0.9378198385238647,
+        "iou": 0.41809952698220004,
+        "bbox_xyxy": [
+          649.8262939453125,
+          114.06302642822266,
+          750.8568115234375,
+          145.88388061523438
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "narrow_reference_band_requires_extent_adjudication",
+      "observation": "The interior front in the taller column is identifiable. The reference spans the lower part of one light cassette band, while the M0 proposal extends upward toward its shaded upper portion. Both lower-corner pairs lie on the same apparent lower contour. The boundary between front and upper material is not certified.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          653.7178344726562,
+          138.72349548339844,
+          0.9556991457939148
+        ],
+        [
+          746.7553100585938,
+          140.59715270996094,
+          0.9678841233253479
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        1.2378574088050727,
+        1.5988272603413756
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000086",
+      "label_row_one_based": 57,
+      "source_image": "data/images/val/new_000086.png",
+      "source_image_sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+      "source_label": "data/labels/val/new_000086.txt",
+      "source_label_sha256": "1bcf8922954afe0b1bcfda7a28219e6ca8c25ad4fe8b010d111a45f538854598",
+      "reference_box_xyxy": [
+        495.6100032,
+        595.9000008,
+        573.2500032,
+        628.8899976
+      ],
+      "reference_keypoints": [
+        [
+          505.2499968,
+          616.95,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        398,
+        549,
+        606,
+        670
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 41,
+        "confidence": 0.8962092399597168,
+        "iou": 0.0264661482513099,
+        "bbox_xyxy": [
+          430.00927734375,
+          589.25439453125,
+          500.2183837890625,
+          623.80126953125
+        ]
+      },
+      "group": "foreground_occlusion",
+      "observation": "The hand obscures almost all of the referenced front immediately to the right of a lower cassette. A very narrow pale edge remains beside the hand, with the marked left corner nearby. The maximum-overlap prediction belongs mainly to the adjacent left cassette.",
+      "next_action": "Retain hidden right corner; review whether the small exposed strip supports a distinct cassette identity and the large hidden-side box extent. The neighbor proposal is not evidence of correct localization for this row.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000086",
+      "label_row_one_based": 58,
+      "source_image": "data/images/val/new_000086.png",
+      "source_image_sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+      "source_label": "data/labels/val/new_000086.txt",
+      "source_label_sha256": "1bcf8922954afe0b1bcfda7a28219e6ca8c25ad4fe8b010d111a45f538854598",
+      "reference_box_xyxy": [
+        652.7499968,
+        435.2300028,
+        738.8899904,
+        453.49000200000006
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          732.1399936,
+          444.36000240000004,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        599,
+        379,
+        790,
+        500
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 13,
+        "confidence": 0.9269644021987915,
+        "iou": 0.47851666291783534,
+        "bbox_xyxy": [
+          650.4765625,
+          424.92401123046875,
+          737.584228515625,
+          449.34698486328125
+        ]
+      },
+      "group": "possible_duplicate_reference",
+      "observation": "The crop shows one upper front immediately above a lower gripper-obscured front. Rows47 and58 appear to describe the same upper face; row47 has both corners v0 and row58 supplies a right visible corner. The M0 overlap proposal is a high-confidence box for that upper face, but misses row58 IoU cutoff due to extent.",
+      "next_action": "Adjudicate row47/58 identity and conflicting visibility together. Image and row context support a possible duplicate representation; do not automatically remove or merge rows.",
+      "nearby_reference_rows_checked": [
+        47
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000086",
+      "label_row_one_based": 59,
+      "source_image": "data/images/val/new_000086.png",
+      "source_image_sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+      "source_label": "data/labels/val/new_000086.txt",
+      "source_label_sha256": "1bcf8922954afe0b1bcfda7a28219e6ca8c25ad4fe8b010d111a45f538854598",
+      "reference_box_xyxy": [
+        648.3900032,
+        446.7399984,
+        745.64,
+        472.54999680000003
+      ],
+      "reference_keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          732.5399935999999,
+          462.6200016,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        602,
+        398,
+        793,
+        519
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 55,
+        "confidence": 0.8113865852355957,
+        "iou": 0.6638905826695052,
+        "bbox_xyxy": [
+          653.332763671875,
+          444.5177001953125,
+          737.80419921875,
+          467.9425048828125
+        ]
+      },
+      "group": "possible_duplicate_reference",
+      "observation": "Rows48 and59 appear to describe the same lowest central, partly gripper-obscured front. Row48 has both corners v0; row59 supplies the exposed right lower corner. M0 prediction55 overlaps row59 above the matching cutoff but is assigned to row48 at a higher IoU.",
+      "next_action": "Adjudicate row48/59 as a possible duplicate representation with inconsistent visibility. This is confirmed matching competition under the frozen labels, not a lack of an overlapping detection. Keep the hidden left corner unsupported.",
+      "nearby_reference_rows_checked": [
+        48
+      ],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000087",
+      "label_row_one_based": 4,
+      "source_image": "data/images/val/new_000087.png",
+      "source_image_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "source_label": "data/labels/val/new_000087.txt",
+      "source_label_sha256": "4620cea073b82f3aef412af275e54bf25b8acdb8aa98dfc1c3643388348d76df",
+      "reference_box_xyxy": [
+        524.1500032,
+        111.2399964,
+        620.8700032,
+        127.2699972
+      ],
+      "reference_keypoints": [
+        [
+          526.1500032,
+          116.41999679999999,
+          2
+        ],
+        [
+          617.6300032,
+          123.6199968,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        478,
+        51,
+        669,
+        172
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 51,
+        "confidence": 0.8719862699508667,
+        "iou": 0.4756089350026245,
+        "bbox_xyxy": [
+          523.7052612304688,
+          95.22186279296875,
+          623.8964233398438,
+          127.75833129882812
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "narrow_reference_band_requires_extent_adjudication",
+      "observation": "The slanted top front in the second column is identifiable. The reference spans its lower strip; the M0 proposal extends over the taller visible white region. Lower corners remain near the same sloping contour. No exact replacement bounds are supported by this review.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          527.6673583984375,
+          117.01284790039062,
+          0.9600104689598083
+        ],
+        [
+          618.5537109375,
+          122.18217468261719,
+          0.95926833152771
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        1.6290608415463321,
+        1.708967063916824
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000088",
+      "label_row_one_based": 4,
+      "source_image": "data/images/val/new_000088.png",
+      "source_image_sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+      "source_label": "data/labels/val/new_000088.txt",
+      "source_label_sha256": "15503652de9a8bba58f3a92749adcaed1f6333be3694341f3adfd49c80600693",
+      "reference_box_xyxy": [
+        480.88,
+        128.5300044,
+        575.5699968,
+        141.820002
+      ],
+      "reference_keypoints": [
+        [
+          482.88,
+          133.5100032,
+          2
+        ],
+        [
+          572.7000064,
+          138.2199984,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        432,
+        69,
+        623,
+        190
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 50,
+        "confidence": 0.860199511051178,
+        "iou": 0.42501971489884327,
+        "bbox_xyxy": [
+          479.95556640625,
+          113.73558807373047,
+          575.9178466796875,
+          144.59014892578125
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "narrow_reference_band_requires_extent_adjudication",
+      "observation": "The top front in the second column is identifiable. The reference upper edge cuts through the light cassette region, and the M0 box extends toward the upper lip. The same lower edge is represented by both corner pairs. The appropriate front-plane upper limit requires consistent policy application.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          483.1572570800781,
+          135.95106506347656,
+          0.9424131512641907
+        ],
+        [
+          572.9234008789062,
+          138.4114227294922,
+          0.9424524307250977
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        2.4567569089702626,
+        0.29419103848914624
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000088",
+      "label_row_one_based": 15,
+      "source_image": "data/images/val/new_000088.png",
+      "source_image_sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+      "source_label": "data/labels/val/new_000088.txt",
+      "source_label_sha256": "15503652de9a8bba58f3a92749adcaed1f6333be3694341f3adfd49c80600693",
+      "reference_box_xyxy": [
+        672.9600064,
+        133.0700004,
+        776.9700032,
+        147.8199996
+      ],
+      "reference_keypoints": [
+        [
+          679.2899968,
+          142.4299968,
+          2
+        ],
+        [
+          773.1799936,
+          145.26000000000002,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        629,
+        74,
+        820,
+        195
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 34,
+        "confidence": 0.9076170325279236,
+        "iou": 0.45663900212190406,
+        "bbox_xyxy": [
+          674.1519165039062,
+          118.47229766845703,
+          775.0560913085938,
+          150.31951904296875
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "narrow_reference_band_requires_extent_adjudication",
+      "observation": "The interior front in the taller column is identifiable. The reference encloses its lower band whereas the M0 rectangle also covers shaded material above it. Neither an exact front-plane split nor the correctness of the model upper edge is established.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          677.8304443359375,
+          141.19642639160156,
+          0.91975337266922
+        ],
+        [
+          771.6090087890625,
+          147.11375427246094,
+          0.9051608443260193
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        1.9110178826550301,
+        2.4298967424282467
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000088",
+      "label_row_one_based": 57,
+      "source_image": "data/images/val/new_000088.png",
+      "source_image_sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+      "source_label": "data/labels/val/new_000088.txt",
+      "source_label_sha256": "15503652de9a8bba58f3a92749adcaed1f6333be3694341f3adfd49c80600693",
+      "reference_box_xyxy": [
+        498.53000320000007,
+        592.2300024,
+        577.2400064000001,
+        628.5200040000001
+      ],
+      "reference_keypoints": [
+        [
+          507.9100032,
+          613.9300032,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        400,
+        545,
+        610,
+        666
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 49,
+        "confidence": 0.8655009865760803,
+        "iou": 0.034638664456643056,
+        "bbox_xyxy": [
+          432.9932861328125,
+          583.29931640625,
+          505.2528076171875,
+          619.470703125
+        ]
+      },
+      "group": "foreground_occlusion",
+      "observation": "This closely resembles new_000086 row57: the hand covers the right compartment and only a narrow pale boundary next to it is visible. The overlapping M0 proposal belongs mainly to the lower left cassette, not the hand-covered reference.",
+      "next_action": "Review visible identity and hidden-side box extent alongside new_000086 row57. Keep right corner absent and avoid treating repeated scene content as independent evidence.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    },
+    {
+      "image_id": "new_000089",
+      "label_row_one_based": 4,
+      "source_image": "data/images/val/new_000089.png",
+      "source_image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "source_label": "data/labels/val/new_000089.txt",
+      "source_label_sha256": "bd1101bdf69c50cf7bfee6d7a4e4b861c0e2d44307a02bc06fffa9d645e498ea",
+      "reference_box_xyxy": [
+        474.7299968,
+        151.7600016,
+        573.24,
+        166.9700016
+      ],
+      "reference_keypoints": [
+        [
+          476.7299968,
+          159.97999679999998,
+          2
+        ],
+        [
+          566.7100032,
+          162.8500032,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        427,
+        91,
+        618,
+        212
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 43,
+        "confidence": 0.8761382699012756,
+        "iou": 0.44126831279662104,
+        "bbox_xyxy": [
+          472.42645263671875,
+          135.10775756835938,
+          573.2172241210938,
+          168.78536987304688
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "narrow_reference_band_requires_extent_adjudication",
+      "observation": "The top front in the second column is identifiable. The reference covers the lower part of a broad light region and the model covers a taller region. The two lower-corner pairs indicate the same apparent front, with no visible evidence that the model chose a different instance.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          476.785888671875,
+          160.31288146972656,
+          0.9609770774841309
+        ],
+        [
+          569.1110229492188,
+          162.71609497070312,
+          0.9612286686897278
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        0.33754422625882513,
+        2.4047509746358533
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000089",
+      "label_row_one_based": 15,
+      "source_image": "data/images/val/new_000089.png",
+      "source_image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "source_label": "data/labels/val/new_000089.txt",
+      "source_label_sha256": "bd1101bdf69c50cf7bfee6d7a4e4b861c0e2d44307a02bc06fffa9d645e498ea",
+      "reference_box_xyxy": [
+        674.7699968000001,
+        156.7100016,
+        783.5699968,
+        173.43
+      ],
+      "reference_keypoints": [
+        [
+          681.3299968,
+          168.34999679999999,
+          2
+        ],
+        [
+          776.04,
+          172.3600008,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        634,
+        98,
+        825,
+        219
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 3,
+        "confidence": 0.9433552026748657,
+        "iou": 0.4873404445463909,
+        "bbox_xyxy": [
+          676.373291015625,
+          141.8621826171875,
+          783.48046875,
+          175.90658569335938
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "narrow_reference_band_requires_extent_adjudication",
+      "observation": "The interior front in the taller column is identifiable. The reference is vertically narrow, while the M0 proposal extends to the shaded upper region. The lower points align with the same apparent front boundary. Exact upper-plane semantics remain unresolved.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          680.407958984375,
+          166.27398681640625,
+          0.9609007835388184
+        ],
+        [
+          779.261474609375,
+          172.78814697265625,
+          0.9642989039421082
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        2.271556995856232,
+        3.249801194536097
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000090",
+      "label_row_one_based": 4,
+      "source_image": "data/images/val/new_000090.png",
+      "source_image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "source_label": "data/labels/val/new_000090.txt",
+      "source_label_sha256": "3a4f524cd0731a75cbab6d73a0c49d45f6ce81f050e4dbd30e88dd8b5228233e",
+      "reference_box_xyxy": [
+        454.58999679999994,
+        185.720004,
+        561.6399935999999,
+        201.1600008
+      ],
+      "reference_keypoints": [
+        [
+          456.59000319999996,
+          192.6499968,
+          2
+        ],
+        [
+          558.3400064,
+          198.6799968,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        412,
+        124,
+        603,
+        245
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 18,
+        "confidence": 0.9236624240875244,
+        "iou": 0.3801431072890345,
+        "bbox_xyxy": [
+          451.5809326171875,
+          164.8380889892578,
+          564.173095703125,
+          203.45509338378906
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "narrow_reference_band_requires_extent_adjudication",
+      "observation": "The top front in the second column is identifiable. A raised/upper surface is visible, with a broad light region beneath it. The reference is restricted to a low strip while the model includes a taller region. This is a useful front-versus-upper-surface annotation case, not permission to copy predicted bounds.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          455.3673095703125,
+          193.52357482910156,
+          0.9663435220718384
+        ],
+        [
+          558.5531005859375,
+          197.2060546875,
+          0.9647659659385681
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        1.502703658412816,
+        1.4892664244792888
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000090",
+      "label_row_one_based": 15,
+      "source_image": "data/images/val/new_000090.png",
+      "source_image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "source_label": "data/labels/val/new_000090.txt",
+      "source_label_sha256": "3a4f524cd0731a75cbab6d73a0c49d45f6ce81f050e4dbd30e88dd8b5228233e",
+      "reference_box_xyxy": [
+        672.2699968000001,
+        192.48999840000002,
+        791.0900032000001,
+        209.72000160000002
+      ],
+      "reference_keypoints": [
+        [
+          679.5500032,
+          202.8299976,
+          2
+        ],
+        [
+          786.7400064000001,
+          206.86000320000002,
+          2
+        ]
+      ],
+      "reference_locatable_corners": 2,
+      "crop_xyxy": [
+        638,
+        133,
+        829,
+        254
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 31,
+        "confidence": 0.9011611342430115,
+        "iou": 0.451891885794627,
+        "bbox_xyxy": [
+          677.3277587890625,
+          175.205322265625,
+          793.8087158203125,
+          211.69583129882812
+        ]
+      },
+      "group": "box_extent_disagreement",
+      "subtype": "narrow_reference_band_requires_extent_adjudication",
+      "observation": "The interior front in the taller column is identifiable. The reference covers the lower band and extends slightly farther left than the model; the model covers more upper material. Lower-corner pairs concern the same apparent front. Exact physical upper boundary remains unadjudicated.",
+      "same_apparent_front_correspondence": "supported_visual_hypothesis_not_official_match",
+      "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+      "m0_proposal_keypoints": [
+        [
+          681.3272094726562,
+          201.4363555908203,
+          0.9547979831695557
+        ],
+        [
+          789.3190307617188,
+          209.02444458007812,
+          0.9638055562973022
+        ]
+      ],
+      "unscored_left_right_endpoint_distances_px": [
+        2.2584729764420874,
+        3.36692339475266
+      ],
+      "m0_proposal_official_assignment": null,
+      "m0_proposal_official_error_category": "other_false_positive",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "root_and_separate_assistant"
+    },
+    {
+      "image_id": "new_000090",
+      "label_row_one_based": 43,
+      "source_image": "data/images/val/new_000090.png",
+      "source_image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "source_label": "data/labels/val/new_000090.txt",
+      "source_label_sha256": "3a4f524cd0731a75cbab6d73a0c49d45f6ce81f050e4dbd30e88dd8b5228233e",
+      "reference_box_xyxy": [
+        396.8600064,
+        677.3800032,
+        480.96000000000004,
+        717.12
+      ],
+      "reference_keypoints": [
+        [
+          416.32,
+          691.8400008,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "reference_locatable_corners": 1,
+      "crop_xyxy": [
+        344,
+        631,
+        535,
+        720
+      ],
+      "review_status": "diagnostic_observation_no_accepted_annotation_change",
+      "official_persistent_miss_for_all_five_models_at_025": true,
+      "m0_max_overlap_at_025": {
+        "prediction_index": 46,
+        "confidence": 0.7451758980751038,
+        "iou": 0.492169986659198,
+        "bbox_xyxy": [
+          409.99725341796875,
+          666.0694580078125,
+          482.2265625,
+          706.4814453125
+        ]
+      },
+      "group": "foreground_occlusion",
+      "observation": "The hand hides the right part of the lowest left cassette. The left reference corner follows the exposed lower boundary; M0 covers the visible front plus part of the hand, places a right endpoint on the hand, and misses the IoU0.50 gate narrowly.",
+      "next_action": "Preserve the right missing corner and review box extent. This demonstrates unsupported hidden-side output and an overlap-boundary mismatch, not complete absence of a model proposal.",
+      "nearby_reference_rows_checked": [],
+      "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+    }
+  ],
+  "matching_competition": [
+    {
+      "model": "m0",
+      "threshold": 0.15,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.8113865852355957,
+      "iou_to_row59": 0.6638905826695065,
+      "assigned_row": 48,
+      "assigned_iou": 0.8493906147622399,
+      "prediction_bbox": [
+        653.332763671875,
+        444.5177001953125,
+        737.80419921875,
+        467.9425048828125
+      ],
+      "prediction_keypoints": [
+        [
+          658.1339721679688,
+          459.7129821777344,
+          0.9041633605957031
+        ],
+        [
+          733.2650756835938,
+          463.5439453125,
+          0.86644446849823
+        ]
+      ]
+    },
+    {
+      "model": "m0",
+      "threshold": 0.25,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.8113865852355957,
+      "iou_to_row59": 0.6638905826695065,
+      "assigned_row": 48,
+      "assigned_iou": 0.8493906147622399,
+      "prediction_bbox": [
+        653.332763671875,
+        444.5177001953125,
+        737.80419921875,
+        467.9425048828125
+      ],
+      "prediction_keypoints": [
+        [
+          658.1339721679688,
+          459.7129821777344,
+          0.9041633605957031
+        ],
+        [
+          733.2650756835938,
+          463.5439453125,
+          0.86644446849823
+        ]
+      ]
+    },
+    {
+      "model": "m0",
+      "threshold": 0.4,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.8113865852355957,
+      "iou_to_row59": 0.6638905826695065,
+      "assigned_row": 48,
+      "assigned_iou": 0.8493906147622399,
+      "prediction_bbox": [
+        653.332763671875,
+        444.5177001953125,
+        737.80419921875,
+        467.9425048828125
+      ],
+      "prediction_keypoints": [
+        [
+          658.1339721679688,
+          459.7129821777344,
+          0.9041633605957031
+        ],
+        [
+          733.2650756835938,
+          463.5439453125,
+          0.86644446849823
+        ]
+      ]
+    },
+    {
+      "model": "43-reference",
+      "threshold": 0.15,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.8407485485076904,
+      "iou_to_row59": 0.6318542637461805,
+      "assigned_row": 48,
+      "assigned_iou": 0.899732381671991,
+      "prediction_bbox": [
+        653.5992431640625,
+        443.1568603515625,
+        738.5653076171875,
+        467.669921875
+      ],
+      "prediction_keypoints": [
+        [
+          658.9102783203125,
+          459.8304443359375,
+          0.9002518653869629
+        ],
+        [
+          733.4412841796875,
+          464.0364990234375,
+          0.8543561697006226
+        ]
+      ]
+    },
+    {
+      "model": "43-reference",
+      "threshold": 0.25,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.8407485485076904,
+      "iou_to_row59": 0.6318542637461805,
+      "assigned_row": 48,
+      "assigned_iou": 0.899732381671991,
+      "prediction_bbox": [
+        653.5992431640625,
+        443.1568603515625,
+        738.5653076171875,
+        467.669921875
+      ],
+      "prediction_keypoints": [
+        [
+          658.9102783203125,
+          459.8304443359375,
+          0.9002518653869629
+        ],
+        [
+          733.4412841796875,
+          464.0364990234375,
+          0.8543561697006226
+        ]
+      ]
+    },
+    {
+      "model": "43-reference",
+      "threshold": 0.4,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.8407485485076904,
+      "iou_to_row59": 0.6318542637461805,
+      "assigned_row": 48,
+      "assigned_iou": 0.899732381671991,
+      "prediction_bbox": [
+        653.5992431640625,
+        443.1568603515625,
+        738.5653076171875,
+        467.669921875
+      ],
+      "prediction_keypoints": [
+        [
+          658.9102783203125,
+          459.8304443359375,
+          0.9002518653869629
+        ],
+        [
+          733.4412841796875,
+          464.0364990234375,
+          0.8543561697006226
+        ]
+      ]
+    },
+    {
+      "model": "43-candidate",
+      "threshold": 0.15,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.838850736618042,
+      "iou_to_row59": 0.6318675572616007,
+      "assigned_row": 48,
+      "assigned_iou": 0.9004176211502183,
+      "prediction_bbox": [
+        653.5501708984375,
+        443.1689453125,
+        738.5721435546875,
+        467.65045166015625
+      ],
+      "prediction_keypoints": [
+        [
+          658.9576416015625,
+          459.78997802734375,
+          0.9003098011016846
+        ],
+        [
+          733.3497924804688,
+          464.07928466796875,
+          0.8541433811187744
+        ]
+      ]
+    },
+    {
+      "model": "43-candidate",
+      "threshold": 0.25,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.838850736618042,
+      "iou_to_row59": 0.6318675572616007,
+      "assigned_row": 48,
+      "assigned_iou": 0.9004176211502183,
+      "prediction_bbox": [
+        653.5501708984375,
+        443.1689453125,
+        738.5721435546875,
+        467.65045166015625
+      ],
+      "prediction_keypoints": [
+        [
+          658.9576416015625,
+          459.78997802734375,
+          0.9003098011016846
+        ],
+        [
+          733.3497924804688,
+          464.07928466796875,
+          0.8541433811187744
+        ]
+      ]
+    },
+    {
+      "model": "43-candidate",
+      "threshold": 0.4,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.838850736618042,
+      "iou_to_row59": 0.6318675572616007,
+      "assigned_row": 48,
+      "assigned_iou": 0.9004176211502183,
+      "prediction_bbox": [
+        653.5501708984375,
+        443.1689453125,
+        738.5721435546875,
+        467.65045166015625
+      ],
+      "prediction_keypoints": [
+        [
+          658.9576416015625,
+          459.78997802734375,
+          0.9003098011016846
+        ],
+        [
+          733.3497924804688,
+          464.07928466796875,
+          0.8541433811187744
+        ]
+      ]
+    },
+    {
+      "model": "44-reference",
+      "threshold": 0.15,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.816227376461029,
+      "iou_to_row59": 0.61974317395491,
+      "assigned_row": 48,
+      "assigned_iou": 0.9061490227055874,
+      "prediction_bbox": [
+        654.0910034179688,
+        443.1190185546875,
+        738.3551635742188,
+        467.4447021484375
+      ],
+      "prediction_keypoints": [
+        [
+          659.947021484375,
+          459.0347595214844,
+          0.8995676040649414
+        ],
+        [
+          733.1185302734375,
+          464.2683410644531,
+          0.8496741056442261
+        ]
+      ]
+    },
+    {
+      "model": "44-reference",
+      "threshold": 0.25,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.816227376461029,
+      "iou_to_row59": 0.61974317395491,
+      "assigned_row": 48,
+      "assigned_iou": 0.9061490227055874,
+      "prediction_bbox": [
+        654.0910034179688,
+        443.1190185546875,
+        738.3551635742188,
+        467.4447021484375
+      ],
+      "prediction_keypoints": [
+        [
+          659.947021484375,
+          459.0347595214844,
+          0.8995676040649414
+        ],
+        [
+          733.1185302734375,
+          464.2683410644531,
+          0.8496741056442261
+        ]
+      ]
+    },
+    {
+      "model": "44-reference",
+      "threshold": 0.4,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.816227376461029,
+      "iou_to_row59": 0.61974317395491,
+      "assigned_row": 48,
+      "assigned_iou": 0.9061490227055874,
+      "prediction_bbox": [
+        654.0910034179688,
+        443.1190185546875,
+        738.3551635742188,
+        467.4447021484375
+      ],
+      "prediction_keypoints": [
+        [
+          659.947021484375,
+          459.0347595214844,
+          0.8995676040649414
+        ],
+        [
+          733.1185302734375,
+          464.2683410644531,
+          0.8496741056442261
+        ]
+      ]
+    },
+    {
+      "model": "44-candidate",
+      "threshold": 0.15,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.8120065927505493,
+      "iou_to_row59": 0.6170905430275119,
+      "assigned_row": 48,
+      "assigned_iou": 0.9083905645152315,
+      "prediction_bbox": [
+        654.1749267578125,
+        443.07891845703125,
+        738.356201171875,
+        467.39892578125
+      ],
+      "prediction_keypoints": [
+        [
+          660.0052490234375,
+          459.0038146972656,
+          0.8992596864700317
+        ],
+        [
+          733.1306762695312,
+          464.18438720703125,
+          0.8492076992988586
+        ]
+      ]
+    },
+    {
+      "model": "44-candidate",
+      "threshold": 0.25,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.8120065927505493,
+      "iou_to_row59": 0.6170905430275119,
+      "assigned_row": 48,
+      "assigned_iou": 0.9083905645152315,
+      "prediction_bbox": [
+        654.1749267578125,
+        443.07891845703125,
+        738.356201171875,
+        467.39892578125
+      ],
+      "prediction_keypoints": [
+        [
+          660.0052490234375,
+          459.0038146972656,
+          0.8992596864700317
+        ],
+        [
+          733.1306762695312,
+          464.18438720703125,
+          0.8492076992988586
+        ]
+      ]
+    },
+    {
+      "model": "44-candidate",
+      "threshold": 0.4,
+      "prediction_index_zero_based": 55,
+      "confidence": 0.8120065927505493,
+      "iou_to_row59": 0.6170905430275119,
+      "assigned_row": 48,
+      "assigned_iou": 0.9083905645152315,
+      "prediction_bbox": [
+        654.1749267578125,
+        443.07891845703125,
+        738.356201171875,
+        467.39892578125
+      ],
+      "prediction_keypoints": [
+        [
+          660.0052490234375,
+          459.0038146972656,
+          0.8992596864700317
+        ],
+        [
+          733.1306762695312,
+          464.18438720703125,
+          0.8492076992988586
+        ]
+      ]
+    }
+  ],
+  "competition_reference_rows": {
+    "57": {
+      "class_id": 0,
+      "bbox_xyxy": [
+        495.61000320000005,
+        595.9000008,
+        573.2500032,
+        628.8899976
+      ],
+      "keypoints": [
+        [
+          505.2499968,
+          616.95,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ]
+    },
+    "58": {
+      "class_id": 0,
+      "bbox_xyxy": [
+        652.7499968,
+        435.2300028,
+        738.8899904,
+        453.490002
+      ],
+      "keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          732.1399936,
+          444.36000240000004,
+          2
+        ]
+      ]
+    },
+    "59": {
+      "class_id": 0,
+      "bbox_xyxy": [
+        648.3900031999999,
+        446.7399984,
+        745.6399999999999,
+        472.5499968
+      ],
+      "keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          732.5399935999999,
+          462.6200016,
+          2
+        ]
+      ]
+    },
+    "48": {
+      "class_id": 0,
+      "bbox_xyxy": [
+        652.6500032,
+        442.5900012000001,
+        736.1,
+        466.630002
+      ],
+      "keypoints": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ]
+    }
+  },
+  "limits": [
+    "The 24 distances are exploratory same-front associations outside official matching; they cannot revise official true positives, misses, extras or 521/584 pair successes.",
+    "The groups prioritize review; they do not mean 33 label errors or 33 independent physical failures.",
+    "Exact replacement boxes, visibility changes and duplicate deletions are not accepted by this diagnostic record.",
+    "Similar rack views may be correlated; their capture/session lineage is not established here.",
+    "Frozen historical labels and scores remain the parent benchmark. Any amended reference requires a distinct version and the same new bytes for every compared model.",
+    "Image review cannot supply unseen-scene test evidence or an application tolerance."
+  ]
+}
