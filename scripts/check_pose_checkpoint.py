@@ -14,7 +14,7 @@ import unittest
 import evaluate_pose
 import diagnose_pose_quality
 import check_evaluate_pose as baseline_checks
-from pose_checkpoint import (BOX_RECIPE_ID, BOX_RECIPE_IDS, BOX_REPEATABILITY_RECIPES,
+from pose_checkpoint import (ANNOTATION_RECIPE_ID, BOX_RECIPE_ID, BOX_RECIPE_IDS, BOX_REPEATABILITY_RECIPES,
                              ORIGINAL_RECIPE_ID, PINNED_TRAINER_DEFAULTS, RECIPE, RECIPE_IDS,
                              WARMUP_RECIPE_ID, check_loaded_pose_model,
                              get_recipe, recipe_identity, select_checkpoint, write_checkpoint_manifest)
@@ -53,6 +53,8 @@ def bundle_fixture(directory, arm="candidate", *, recipe_id=None):
         "expected_counts": candidate_counts}
     if recipe_id in BOX_RECIPE_IDS:
         proposal["kind"] = "training_box_overlay"
+    elif recipe_id == ANNOTATION_RECIPE_ID:
+        proposal["kind"] = "training_annotation_overlay"
     proposal_path = root / "data/candidates/fixture/manifest.json"
     proposal_path.parent.mkdir(parents=True)
     write_json(proposal_path, proposal)
@@ -346,7 +348,8 @@ class VersionedRecipeChecks(unittest.TestCase):
                     WARMUP_RECIPE_ID: "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c",
                     BOX_RECIPE_ID: "540a6ad54f1ed104b95bdf0a03e1a77c49de5fffffdab811130198fe0c57498c",
                     BOX_REPEATABILITY_RECIPES[43]: "4a4bc07ad45cd9fced727c5c39cf32ae43212a06f586f4e96c03a57959c279f7",
-                    BOX_REPEATABILITY_RECIPES[44]: "1353838f0e3137a2690c24514b3fb972d85b07ce8f417632b889f1d784cab6fe"}
+                    BOX_REPEATABILITY_RECIPES[44]: "1353838f0e3137a2690c24514b3fb972d85b07ce8f417632b889f1d784cab6fe",
+                    ANNOTATION_RECIPE_ID: "34b8eda9e9b986a2ba19d9ba07661eef1792027ef8d4465d10763a8eb2cd2850"}
         self.assertEqual({key: recipe_identity(key)["recipe_sha256"] for key in RECIPE_IDS}, expected)
         with self.assertRaisesRegex(ValueError, "unsupported training recipe"):
             get_recipe("unregistered-experiment")

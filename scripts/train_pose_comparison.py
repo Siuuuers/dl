@@ -17,15 +17,16 @@ import subprocess
 import time
 
 from evaluate_pose import ULTRALYTICS_VERSION, _relative_file, file_sha256, preflight_dataset
-from pose_checkpoint import (BOX_RECIPE_IDS, ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
-                             check_training_settings, get_recipe, recipe_identity)
+from pose_checkpoint import (ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
+                             check_recipe_candidate_kind, check_training_settings, get_recipe, recipe_identity)
 from stage_pose_training import MANIFEST, stage_datasets
 from verify_pose_candidate import DEFAULT_CANDIDATE, require
 
 
 SOURCE_FILES = ("scripts/train_pose_comparison.py", "scripts/pose_checkpoint.py",
                 "scripts/stage_pose_training.py", "scripts/verify_pose_candidate.py",
-                "scripts/verify_pose_box_candidate.py", "scripts/evaluate_pose.py", "scripts/pose_scoring.py")
+                "scripts/verify_pose_box_candidate.py", "scripts/verify_pose_annotation_candidate.py",
+                "scripts/evaluate_pose.py", "scripts/pose_scoring.py")
 
 
 def write_json(path, value):
@@ -357,8 +358,7 @@ def run_parent(args):
     candidate = _relative_file(root, candidate_name)
     proposal = json.loads(candidate.read_text(encoding="utf-8"))
     require(isinstance(proposal, dict), "candidate manifest must be an object")
-    require((args.recipe in BOX_RECIPE_IDS) == (proposal.get("kind") == "training_box_overlay"),
-            "box-supervision recipe and training_box_overlay must be selected together")
+    check_recipe_candidate_kind(args.recipe, proposal.get("kind"))
     require(importlib.metadata.version("ultralytics") == ULTRALYTICS_VERSION, "pinned Ultralytics required")
     preflight = preflight_dataset(root, require_weights=True)
     identity = source_identity(root)
