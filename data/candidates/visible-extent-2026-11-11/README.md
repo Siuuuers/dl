@@ -1,8 +1,8 @@
 # Reviewed visible-front extents
 
-**Status: verified annotation candidate; trained-model effect is unmeasured.** This cumulative candidate preserves the exact eight-file `annotations-2026-11-10` overlay used for the selected PR35 model and adds a bounded, original-image-supported delta. The [review report](../../../docs/visible-extent-review-2026-11-11.md) supplies the images and uncertainty decisions. The [matched training handoff](../../../docs/training-visible-extent-2026-11-11.md) tests this one supervision change with the existing recipe.
+**Status: annotation candidate preserved; matched training completed without model promotion.** The [PR43 evaluation](../../../docs/visible-extent-results-2026-11-11.md) finds no additional reference-object recovery at the declared confidence 0.13; misses change 20→21 and extras 85→87. This cumulative candidate preserves the exact eight-file `annotations-2026-11-10` overlay used for the selected PR35 model and adds a bounded, original-image-supported delta. The [review report](../../../docs/visible-extent-review-2026-11-11.md) supplies the images and uncertainty decisions. The [training handoff](../../../docs/training-visible-extent-2026-11-11.md) remains archived provenance; no rerun is requested.
 
-The selected PR35 checkpoint and its explicit confidence 0.13 proposal command remain current. Creating a more faithful label file does not establish that a model trained from it will improve.
+The selected PR35 checkpoint and its explicit confidence 0.13 proposal command remain current. The completed comparison does not show that this supervision delta improves the operational model. The original-image reasons for its accepted annotation changes remain separately recorded.
 
 ## What changes relative to the current training overlay
 

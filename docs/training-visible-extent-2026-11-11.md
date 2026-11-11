@@ -1,12 +1,12 @@
 # One matched visible-extent training comparison
 
-**Ready for one matched GPU comparison.** The candidate, protocol and implementation source are pinned and the preparation checks pass. The current PR35 seed 46 checkpoint at confidence 0.13 remains the selected reviewed-proposal model while this experiment is pending. No new GPU training or accuracy result is claimed here.
+**Completed: retain PR35; no further GPU run is requested.** Both matched 30-epoch A100 runs returned in [PR43](https://github.com/Siuuuers/dl/pull/43) pass artifact verification. The [completed result](visible-extent-results-2026-11-11.md) finds no additional recovered reference object at the fixed confidence 0.13: misses change 20→21 and extras 85→87, with mixed corner results. Keep the PR35 seed46 checkpoint and its [explicit reviewed-proposal workflow](predict-pose-folder.md#assistant-reviewed-proposals). The notebook and instructions below preserve the completed experiment's provenance.
 
 The [handoff notebook](../notebooks/baomai_visible_extent.ipynb) downloads implementation commit [`d43a58b9456a782ace14e20f0bf7ed2da3572ca1`](https://github.com/Siuuuers/dl/commit/d43a58b9456a782ace14e20f0bf7ed2da3572ca1). Its protocol SHA-256 is `42aa275a5d2ed1ccabb786c07b537a8f0d515b27b7804fec2b71e942d6c9022b`. The implementation commit contains the reviewed labels and code; the later notebook handoff supplies the completed source pin. Use the handoff notebook linked here, rather than the earlier draft notebook inside the implementation commit.
 
 The question is specific: does replacing recorded hand/gripper and neighboring-band box supervision with supported observed-front annotations improve the present model's recovery of partly visible fronts? This follows the completed negative PR40 result but uses a different, explicitly frozen supervision delta. It is not a repetition of PR40's five-image omission extension or the earlier 16-edge box study.
 
-## What will run
+## What ran
 
 The [notebook](../notebooks/baomai_visible_extent.ipynb) prepares one matched pair from the [protocol](../experiments/visible-extent-2026-11-11.json).
 
@@ -21,9 +21,9 @@ The review scope is 061/062/063/079/082/094. This is a review limit, not a requi
 
 Training retains seed 46, 30 epochs, batch 4, input size 1280, FP32, AdamW, learning rate 0.0001, bias warmup 0.0001 and the existing losses/augmentations. Original 137/20 assignments and original validation labels remain fixed. A four-batch trial is separate from both full initializations. The resource trial cannot become either selected model.
 
-## Colab handoff
+## Archived Colab handoff
 
-Open the final source-pinned notebook, select a CUDA GPU, Run all, approve its Drive mount and return **`baomai-visible-extent-seed46-results.zip`**. The notebook downloads and verifies the exact source, original images, epoch 173 bytes and both effective label variants. It preserves completed bundles and the ZIP under `MyDrive/baomai-visible-extent-seed46-20261111`.
+The completed handoff used the final source-pinned notebook, a CUDA GPU and Drive mount to return **`baomai-visible-extent-seed46-results.zip`**. The notebook downloads and verifies the exact source, original images, epoch 173 bytes and both effective label variants. It preserves completed bundles and the ZIP under `MyDrive/baomai-visible-extent-seed46-20261111`. Use the [returned archive and replay instructions](../results/verification/baomai-visible-extent-results-20261111/README.md) to inspect this result; another training run is unnecessary.
 
 A returned arm contains its checkpoint manifest, weights, training receipt, staging manifest, log and results CSV. Keep the bundle intact. Completed arms are restored, reverified and skipped. A complete compatible resource trial can also be reused. The current source/runtime, restored arms and resource trial must agree before any missing full arm runs. Incomplete local runs are preserved and rejected; after interruption, choose a fresh workspace and restore completed Drive artifacts.
 
