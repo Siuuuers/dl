@@ -6,6 +6,8 @@ The [candidate](../data/candidates/consistency-2026-11-11/README.md) contains th
 
 Review began **2026-11-11, Asia/Hong_Kong**, after the [completed PR43 experiment](visible-extent-results-2026-11-11.md). The current reviewed-proposal setting remains **PR35 seed46 / 1280 / box confidence 0.13 / NMS 0.70 / endpoint cutoff 0.50**. Use the existing [folder command](predict-pose-folder.md#assistant-reviewed-proposals).
 
+**Follow-up, 2026-11-12:** the separately versioned [single matched training handoff](training-consistency-2026-11-12.md) now tests this exact candidate against the selected eight-file control. The review and its evidence below remain unchanged; this follow-up is a prepared experiment, not a new model result.
+
 ## 1. Why these six images
 
 The preceding targeted review records covered a union of **55 of 137 training image IDs**. That is a review-history count, not complete annotation certification. The remaining 82 contained 70 nonempty and 12 empty label files.
