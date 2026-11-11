@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-visible-extent-comparison-protocol",
+  "experiment_id": "visible-extent-seed46-v1",
+  "status": "prospectively_declared",
+  "declared_at_utc": "2026-11-11T12:40:42.464108+00:00",
+  "recipe_id": "reviewed-annotations-seed46-v1",
+  "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+  "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "roles": {
+    "old_reviewed": {
+      "candidate_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+      "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+      "candidate_id": "annotations-2026-11-10"
+    },
+    "extended_reviewed": {
+      "candidate_manifest": "data/candidates/visible-extent-2026-11-11/manifest.json",
+      "candidate_manifest_sha256": "ab89253e4c2e886a6f1274fa50e400cf568c132e9cecc83d8f558d567b88c6d4",
+      "candidate_id": "visible-extent-2026-11-11"
+    }
+  },
+  "delta_train_image_ids": [
+    "new_000061",
+    "new_000079",
+    "new_000082",
+    "new_000094"
+  ],
+  "scientific_difference": "Eleven observed-front box replacements and one supported missing-front addition in four training images061/079/082/094; all prior point tokens and all eight annotations-2026-11-10 label files remain byte-identical. Images062/063 were reviewed but left unchanged because material/extent ambiguities were not resolved.",
+  "execution": {
+    "initialization": "Both runs independently initialize from original epoch173; neither resumes a previous fine-tune or the resource trial.",
+    "actual_runner_arm_for_both_roles": "candidate",
+    "epochs": 30,
+    "selection": "Finalized last.pt after completed epoch30; never select best.pt based on validation.",
+    "seed": 46,
+    "resource_trial": "Four real extended-review batches under the unchanged full recipe, separate from both full-run initialization. Restore a completed matching trial when available.",
+    "runtime": "Same source, GPU runtime and resolved settings for both roles; recovered completed roles must match before starting a missing full role.",
+    "automatic_promotion": false
+  },
+  "evaluation": {
+    "primary_box_confidence": 0.13,
+    "diagnostic_box_confidences": [
+      0.15
+    ],
+    "imgsz": 1280,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "endpoint_confidence": 0.5,
+    "radii_px": [
+      2,
+      5,
+      10
+    ],
+    "primary_reference": "data/references/visible-front-2026-11-11/manifest.json",
+    "primary_reference_sha256": "2e60b3e81195448cc565a1000b4305e3215baba2bf0ee0c976e6551c2e64937c",
+    "historical_reference": "data/manifest.json",
+    "references_reported_separately": true,
+    "required_results": [
+      "All-object misses/extras, duplicate and other extra counts",
+      "Every gained/lost object identity, preserving prior reference uncertainty",
+      "Zero/one/two-locatable-corner groups, visible-point coverage and both-corner 5/10px successes",
+      "Miss-free nonempty scenes and all three empty-image outputs",
+      "Concrete outcomes for reviewed partial targets008:33 and009:57",
+      "Points returned on reference-unlocatable sides",
+      "Current PR35 comparator at the same settings, with exact checkpoint/reference/prediction identities"
+    ],
+    "decision": "At primary confidence0.13 prioritize supported missed-object recovery, recording losses and all extra/corner/empty-scene tradeoffs. A gain only among uncertain reference rows does not establish physically supported recovery. A candidate must improve supported recovery without losing previously supported matches or 5/10px pair successes or adding empty-scene detections before any separate promotion decision. Inspect every newly added proposal and report review workload; no automatic promotion or threshold/seed/epoch search."
+  },
+  "limits": [
+    "One matched pair after the bounded review; no search over seeds, epochs or thresholds.",
+    "Twenty reused correlated development images do not supply an independent generalization test.",
+    "Both arms initialize from epoch173 under the unchanged seed46 recipe. Their inner arm is candidate, never an original-label reference.",
+    "Original training-validation assignments and original in-training validation labels stay unchanged. The corrected663-object reference is only for post-training evaluation.",
+    "The standalone079 proposal is not silently substituted for the cumulative candidate; the frozen old-reviewed eight files must be inherited exactly. PR40 five-image extension is not included.",
+    "No trained-model improvement is claimed before returned checkpoints and predictions are evaluated.",
+    "079/082 and the cohort have soft occlusion boundaries and retained uncertain identities; accepted edits are not full-image certification."
+  ],
+  "review_scope_train_image_ids": [
+    "new_000061",
+    "new_000062",
+    "new_000063",
+    "new_000079",
+    "new_000082",
+    "new_000094"
+  ],
+  "reviewed_unchanged_train_image_ids": [
+    "new_000062",
+    "new_000063"
+  ]
+}

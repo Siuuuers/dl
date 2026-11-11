@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "status": "staged_and_verified",
+  "candidate_id": "visible-extent-2026-11-11",
+  "context": "Actual staging in the recovered working checkout before publication; this is not a clean published-source execution or a GPU training result.",
+  "staging_manifest_sha256": "dbcf3362adb4c592b8bb7a780611f05751dedb5c46afa0b3fd7f74883b491b3b",
+  "source": {
+    "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+    "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "checkpoint_bytes_verified": false,
+    "candidate_id": "visible-extent-2026-11-11",
+    "candidate_manifest": "data/candidates/visible-extent-2026-11-11/manifest.json",
+    "candidate_manifest_sha256": "ab89253e4c2e886a6f1274fa50e400cf568c132e9cecc83d8f558d567b88c6d4",
+    "declared_candidate_source_revision": "54640284671996584c9fe282da3bc88bf3b8e448",
+    "source_revision_git_object_checked": false
+  },
+  "verification": {
+    "source_labels_verified": 157,
+    "actual_original_pngs_verified": 157,
+    "copied_images_verified": 314,
+    "copied_labels_verified": 314,
+    "changed_train_labels": 12,
+    "removed_training_objects": 6,
+    "validation_images_and_labels_identical": true,
+    "source_files_rewritten": false,
+    "symlinks_present": false,
+    "trainer_loader_executed": false
+  },
+  "mechanical_geometry_gate": {
+    "passed": true,
+    "serialization_tolerance_original_px": 0.0001,
+    "box_edges_within_closed_image_bounds": true,
+    "visible_endpoints_within_boxes": true,
+    "visible_endpoints_strictly_in_frame": true,
+    "coordinates_clamped_or_rewritten": false
+  },
+  "code_sha256": {
+    "scripts/stage_pose_training.py": "e28a4f1b705086e4461876df97627d57111932a7455e20ed116d35b4f4d38eae",
+    "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+    "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+    "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+  },
+  "counts": {
+    "reference": {
+      "train": {
+        "images": 137,
+        "objects": 3772,
+        "visible_endpoints": 6839,
+        "missing_endpoints": 705,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "candidate": {
+      "train": {
+        "images": 137,
+        "objects": 3772,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 703,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    }
+  },
+  "training_run": false,
+  "inference_run": false,
+  "full_image_visual_certification": false
+}

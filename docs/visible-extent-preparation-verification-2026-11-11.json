@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "status": "preparation_verified",
+  "source_context": "Recovered working checkout before publication; clean published-source execution and GPU training not claimed.",
+  "candidate_manifest_sha256": "ab89253e4c2e886a6f1274fa50e400cf568c132e9cecc83d8f558d567b88c6d4",
+  "protocol_sha256": "42aa275a5d2ed1ccabb786c07b537a8f0d515b27b7804fec2b71e942d6c9022b",
+  "annotation_verifier": {
+    "status": "verified",
+    "candidate_id": "visible-extent-2026-11-11",
+    "kind": "training_annotation_overlay",
+    "candidate_manifest_sha256": "ab89253e4c2e886a6f1274fa50e400cf568c132e9cecc83d8f558d567b88c6d4",
+    "declared_source_revision": "54640284671996584c9fe282da3bc88bf3b8e448",
+    "source_revision_git_object_checked": false,
+    "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "review_sha256": "e8302f06cf57b82e82039f7f96415b9a62e39f54cc4b2805afe87e0a19b4258e",
+    "annotation_policy_sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+    "reference_labels_verified": 157,
+    "changed_train_labels": 12,
+    "removed_objects": 6,
+    "replaced_objects": 14,
+    "added_objects": 6,
+    "merged_endpoints": 2,
+    "counts": {
+      "train": {
+        "images": 137,
+        "objects": 3772,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 703,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "validation_labels_unchanged": true,
+    "unchanged_rows_byte_preserved": true,
+    "full_row_maps_verified": true,
+    "image_bytes_verified": false,
+    "images_staged_by_check": false,
+    "dataset_built": false,
+    "visual_correctness_verified": false,
+    "mechanical_geometry_verified": true,
+    "code_sha256": {
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+    }
+  },
+  "composition_verification": {
+    "status": "verified",
+    "candidate_id": "visible-extent-2026-11-11",
+    "candidate_manifest_sha256": "ab89253e4c2e886a6f1274fa50e400cf568c132e9cecc83d8f558d567b88c6d4",
+    "parent_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+    "exact_inherited_label_files": 8,
+    "exact_inherited_change_objects": 8,
+    "exact_inherited_decisions": 12,
+    "previous_079_label_and_operations_exactly_preserved": true,
+    "new_delta_image_ids": [
+      "new_000061",
+      "new_000079",
+      "new_000082",
+      "new_000094"
+    ],
+    "new_delta_existing_endpoint_tokens_preserved": true,
+    "reviewed_source_images_sha256_verified": 6,
+    "frozen_source_labels_sha256_verified": 6,
+    "fresh_training_or_inference": false
+  },
+  "staging_verification": "data/candidates/visible-extent-2026-11-11/staging-verification.json",
+  "focused_checks": {
+    "command": "python -B scripts/check_package_visible_extent_results.py",
+    "passed": 6,
+    "failed": 0,
+    "fixtures": "Synthetic completed bundles and substituted notebook boundaries; actual candidate composition also checked.",
+    "limits": "No trained model loaded; no GPU work or accuracy measurement."
+  },
+  "actual_notebook_input_preflight": {
+    "status": "verified",
+    "original_pngs_verified": 157,
+    "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "checkpoint_size_bytes": 106838542,
+    "both_effective_label_variants_verified": true,
+    "validation_unchanged": true,
+    "execution": "Embedded input_preflight extracted from notebook cell4 and executed in the hydrated working checkout by publication_check."
+  },
+  "independent_review": {
+    "candidate_composition": "passed",
+    "original_images_and_final_082_094_figures": "passed",
+    "wrapper_protocol_notebook": "no functional blocker",
+    "source_pin": "Finalized to the verified implementation commit; notebook code cells compile and protocol hash matches."
+  },
+  "training_run": false,
+  "inference_run": false,
+  "model_improvement_measured": false,
+  "files_sha256": {
+    "scripts/package_visible_extent_results.py": "a5faf45a58dbf31c5e038149f1d60f8b4aea48371e8ebbf0f4c7afd7738816f2",
+    "scripts/check_package_visible_extent_results.py": "2e8d3ed374140c8a9939577409733b10dda18563ef1e41123b72ff1323cf6c7c",
+    "experiments/visible-extent-2026-11-11.json": "42aa275a5d2ed1ccabb786c07b537a8f0d515b27b7804fec2b71e942d6c9022b",
+    "data/candidates/visible-extent-2026-11-11/manifest.json": "ab89253e4c2e886a6f1274fa50e400cf568c132e9cecc83d8f558d567b88c6d4",
+    "data/candidates/visible-extent-2026-11-11/review.json": "e8302f06cf57b82e82039f7f96415b9a62e39f54cc4b2805afe87e0a19b4258e"
+  },
+  "published_implementation": {
+    "commit": "d43a58b9456a782ace14e20f0bf7ed2da3572ca1",
+    "tree": "eed024dad862ad79dbe7746614d4188d7b84594d",
+    "changed_paths_verified_by_remote_blob_sha_and_mode": 30
+  },
+  "handoff_notebook_sha256": "ecdb5768df05e295f4bc8bb6a4a95cd781b29e7bcf5f4f00a15b4101f17e7141",
+  "gpu_training_executed": false
+}
