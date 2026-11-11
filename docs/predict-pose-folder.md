@@ -73,7 +73,7 @@ On the corrected 663-object reference, this candidate setting yields 21 misses a
 
 The [review](low-confidence-review-2026-11-11.md) inspected all additions and produced two separately versioned reference labels. Keep unavailable corners missing even when a model reports a confident coordinate. Low-confidence predictions are proposals to inspect, not automatically approved annotations. Use the [corrected reference label set](../data/references/visible-front-2026-11-11/README.md) with the existing HTML editor; training labels and weights are separate.
 
-Retain the existing 1280 inference size. A subsequent [fixed 1920 comparison](partial-front-improvement-2026-11-11.md#2-one-fixed-resolution-test-1920-did-not-help) increased misses from 21 to 31 and reduced 10 px two-corner successes from 577 to 572 on the same reference. Its new training-label extension is a separate pending experiment and does not change the currently selected checkpoint.
+Retain the existing 1280 inference size. The [fixed 1920 comparison](partial-front-improvement-2026-11-11.md#2-one-fixed-resolution-test-1920-did-not-help) increased misses from 21 to 31 and reduced 10 px two-corner successes from 577 to 572 on the same reference. The subsequent [completed PR40 training-label comparison](partial-front-results-2026-11-11.md) also retains this PR35 checkpoint: the new model leaves misses at 21, changes extras 76→77 and keeps 577/584 two-corner successes. The current model and fresh old-reviewed control produce exactly the same 60 ordered prediction arrays.
 
 ### Optional overlap suppression
 
