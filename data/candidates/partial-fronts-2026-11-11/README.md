@@ -34,3 +34,7 @@ python scripts/verify_pose_annotation_candidate.py \
 ```
 
 The existing verifier checks source and candidate label hashes, every original-row mapping, explicit accepted operations, exact donor transfers, visibility and geometry. It does not adjudicate image identity or demonstrate model improvement. The review records source-image hashes, inherited provenance, peer-review file hashes, final decisions and unresolved observations. All original labels, images and the inherited candidate remain unchanged.
+
+## Completed comparison
+
+The [PR40 result](../../../docs/partial-front-results-2026-11-11.md) measures this overlay against the previous reviewed labels under the fixed recipe. It recovers no additional object at the three declared thresholds, so the existing operational checkpoint is retained. These original-pixel-supported label corrections remain preserved as a separate annotation candidate; measured model benefit is not implied by their acceptance.

@@ -1,0 +1,538 @@
+{
+  "schema_version": 1,
+  "status": "completed_reviewed_and_selected",
+  "date": "2026-11-11",
+  "timezone": "Asia/Hong_Kong",
+  "scope": "Explicit assistant-reviewed still-image proposal collection; generic runtime defaults remain epoch173/0.25.",
+  "selected_checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+  "checkpoint_source": "PR35 candidate finalized epoch-30 last.pt; PR40 extended checkpoint is not selected.",
+  "settings": {
+    "box_confidence": 0.13,
+    "nms_iou": 0.7,
+    "endpoint_cutoff": 0.5,
+    "imgsz": 1280,
+    "rect": true,
+    "precision": "FP32"
+  },
+  "primary_reference_sha256": "2e60b3e81195448cc565a1000b4305e3215baba2bf0ee0c976e6551c2e64937c",
+  "measured_summary_sha256": "4f870bc4ab123608746cb395446260e876ac0c05cd2e8121618f46967130c471",
+  "visual_review_sha256": "1e38d60934527f1cf222baccd6e84ac552f7052f480d7aad378a896f4c95732b",
+  "numeric_acceptance": {
+    "008_33_formally_recovered": true,
+    "no_lost_existing_matches": true,
+    "no_5px_pair_count_reduction": true,
+    "no_10px_pair_count_reduction": true,
+    "no_new_empty_scene_detections": true
+  },
+  "review_coverage": {
+    "added_proposals": 10,
+    "reviewed": 10,
+    "images": 6,
+    "reviewer_type": "assistant",
+    "human_or_supervisor_certification": false
+  },
+  "workload": {
+    "previous_proposals": 718,
+    "selected_proposals": 728,
+    "additional_proposals": 10,
+    "additional_reference_matches": 1,
+    "additional_scored_extras": 9,
+    "review_time_measured": false
+  },
+  "gained_reference_objects": [
+    "new_000008:33"
+  ],
+  "lost_reference_objects": [],
+  "results_by_reference": {
+    "primary": {
+      "0.15": {
+        "gold_count": 663,
+        "prediction_count": 718,
+        "tp": 642,
+        "fn": 21,
+        "fp": 76,
+        "duplicate_fp": 28,
+        "other_fp": 48,
+        "visible_endpoints": 1228,
+        "returned_endpoints": 1207,
+        "missing_endpoints": 21,
+        "conditional_median_error_px": 1.5630111538282914,
+        "conditional_p95_error_px": 5.120128923490233,
+        "two_corner_success": {
+          "2": 261,
+          "5": 529,
+          "10": 577
+        },
+        "returned_on_unlocatable_reference": 69,
+        "unlocatable_on_matched_objects": 76,
+        "miss_free_nonempty_image_ids": [
+          "new_000010",
+          "new_000054",
+          "new_000058"
+        ],
+        "empty_image_predictions": {
+          "new_000146": 0,
+          "new_000147": 0,
+          "new_000148": 0
+        },
+        "groups_by_locatable_corners": {
+          "0": {
+            "reference_objects": 19,
+            "matched_objects": 12,
+            "missed_objects": 7,
+            "visible_endpoints": 0,
+            "returned_visible_endpoints": 0,
+            "missing_visible_endpoints": 0,
+            "unlocatable_on_matched_objects": 24,
+            "returned_on_unlocatable_reference": 20,
+            "conditional_median_error_px": null,
+            "conditional_p95_error_px": null,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              }
+            ]
+          },
+          "1": {
+            "reference_objects": 60,
+            "matched_objects": 52,
+            "missed_objects": 8,
+            "visible_endpoints": 60,
+            "returned_visible_endpoints": 51,
+            "missing_visible_endpoints": 9,
+            "unlocatable_on_matched_objects": 52,
+            "returned_on_unlocatable_reference": 49,
+            "conditional_median_error_px": 2.8414598946613614,
+            "conditional_p95_error_px": 6.725098948597434,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 20,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 38,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 50,
+                "both_visible_objects_within_radius": 0
+              }
+            ]
+          },
+          "2": {
+            "reference_objects": 584,
+            "matched_objects": 578,
+            "missed_objects": 6,
+            "visible_endpoints": 1168,
+            "returned_visible_endpoints": 1156,
+            "missing_visible_endpoints": 12,
+            "unlocatable_on_matched_objects": 0,
+            "returned_on_unlocatable_reference": 0,
+            "conditional_median_error_px": 1.5450990706271353,
+            "conditional_p95_error_px": 4.982032570609542,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 727,
+                "both_visible_objects_within_radius": 261
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1099,
+                "both_visible_objects_within_radius": 529
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1154,
+                "both_visible_objects_within_radius": 577
+              }
+            ]
+          }
+        }
+      },
+      "0.13": {
+        "gold_count": 663,
+        "prediction_count": 728,
+        "tp": 643,
+        "fn": 20,
+        "fp": 85,
+        "duplicate_fp": 31,
+        "other_fp": 54,
+        "visible_endpoints": 1228,
+        "returned_endpoints": 1208,
+        "missing_endpoints": 20,
+        "conditional_median_error_px": 1.563073128681407,
+        "conditional_p95_error_px": 5.130618386666422,
+        "two_corner_success": {
+          "2": 261,
+          "5": 529,
+          "10": 577
+        },
+        "returned_on_unlocatable_reference": 69,
+        "unlocatable_on_matched_objects": 77,
+        "miss_free_nonempty_image_ids": [
+          "new_000010",
+          "new_000054",
+          "new_000058"
+        ],
+        "empty_image_predictions": {
+          "new_000146": 0,
+          "new_000147": 0,
+          "new_000148": 0
+        },
+        "groups_by_locatable_corners": {
+          "0": {
+            "reference_objects": 19,
+            "matched_objects": 12,
+            "missed_objects": 7,
+            "visible_endpoints": 0,
+            "returned_visible_endpoints": 0,
+            "missing_visible_endpoints": 0,
+            "unlocatable_on_matched_objects": 24,
+            "returned_on_unlocatable_reference": 20,
+            "conditional_median_error_px": null,
+            "conditional_p95_error_px": null,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              }
+            ]
+          },
+          "1": {
+            "reference_objects": 60,
+            "matched_objects": 53,
+            "missed_objects": 7,
+            "visible_endpoints": 60,
+            "returned_visible_endpoints": 52,
+            "missing_visible_endpoints": 8,
+            "unlocatable_on_matched_objects": 53,
+            "returned_on_unlocatable_reference": 49,
+            "conditional_median_error_px": 2.8710697747380625,
+            "conditional_p95_error_px": 6.901816775833954,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 20,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 38,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 51,
+                "both_visible_objects_within_radius": 0
+              }
+            ]
+          },
+          "2": {
+            "reference_objects": 584,
+            "matched_objects": 578,
+            "missed_objects": 6,
+            "visible_endpoints": 1168,
+            "returned_visible_endpoints": 1156,
+            "missing_visible_endpoints": 12,
+            "unlocatable_on_matched_objects": 0,
+            "returned_on_unlocatable_reference": 0,
+            "conditional_median_error_px": 1.5450990706271353,
+            "conditional_p95_error_px": 4.982032570609542,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 727,
+                "both_visible_objects_within_radius": 261
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1099,
+                "both_visible_objects_within_radius": 529
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1154,
+                "both_visible_objects_within_radius": 577
+              }
+            ]
+          }
+        }
+      }
+    },
+    "original": {
+      "0.15": {
+        "gold_count": 664,
+        "prediction_count": 718,
+        "tp": 631,
+        "fn": 33,
+        "fp": 87,
+        "duplicate_fp": 26,
+        "other_fp": 61,
+        "visible_endpoints": 1227,
+        "returned_endpoints": 1189,
+        "missing_endpoints": 38,
+        "conditional_median_error_px": 1.5576506345021846,
+        "conditional_p95_error_px": 5.1300552212400055,
+        "two_corner_success": {
+          "2": 259,
+          "5": 522,
+          "10": 570
+        },
+        "returned_on_unlocatable_reference": 65,
+        "unlocatable_on_matched_objects": 72,
+        "miss_free_nonempty_image_ids": [
+          "new_000010"
+        ],
+        "empty_image_predictions": {
+          "new_000146": 0,
+          "new_000147": 0,
+          "new_000148": 0
+        },
+        "groups_by_locatable_corners": {
+          "0": {
+            "reference_objects": 21,
+            "matched_objects": 12,
+            "missed_objects": 9,
+            "visible_endpoints": 0,
+            "returned_visible_endpoints": 0,
+            "missing_visible_endpoints": 0,
+            "unlocatable_on_matched_objects": 24,
+            "returned_on_unlocatable_reference": 20,
+            "conditional_median_error_px": null,
+            "conditional_p95_error_px": null,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              }
+            ]
+          },
+          "1": {
+            "reference_objects": 59,
+            "matched_objects": 48,
+            "missed_objects": 11,
+            "visible_endpoints": 59,
+            "returned_visible_endpoints": 47,
+            "missing_visible_endpoints": 12,
+            "unlocatable_on_matched_objects": 48,
+            "returned_on_unlocatable_reference": 45,
+            "conditional_median_error_px": 2.8414598946613614,
+            "conditional_p95_error_px": 6.548121572585945,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 19,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 35,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 46,
+                "both_visible_objects_within_radius": 0
+              }
+            ]
+          },
+          "2": {
+            "reference_objects": 584,
+            "matched_objects": 571,
+            "missed_objects": 13,
+            "visible_endpoints": 1168,
+            "returned_visible_endpoints": 1142,
+            "missing_visible_endpoints": 26,
+            "unlocatable_on_matched_objects": 0,
+            "returned_on_unlocatable_reference": 0,
+            "conditional_median_error_px": 1.5438954559709872,
+            "conditional_p95_error_px": 4.993898921892534,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 718,
+                "both_visible_objects_within_radius": 259
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1085,
+                "both_visible_objects_within_radius": 522
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1140,
+                "both_visible_objects_within_radius": 570
+              }
+            ]
+          }
+        }
+      },
+      "0.13": {
+        "gold_count": 664,
+        "prediction_count": 728,
+        "tp": 632,
+        "fn": 32,
+        "fp": 96,
+        "duplicate_fp": 29,
+        "other_fp": 67,
+        "visible_endpoints": 1227,
+        "returned_endpoints": 1190,
+        "missing_endpoints": 37,
+        "conditional_median_error_px": 1.558031299715185,
+        "conditional_p95_error_px": 5.177849520605724,
+        "two_corner_success": {
+          "2": 259,
+          "5": 522,
+          "10": 570
+        },
+        "returned_on_unlocatable_reference": 65,
+        "unlocatable_on_matched_objects": 73,
+        "miss_free_nonempty_image_ids": [
+          "new_000010"
+        ],
+        "empty_image_predictions": {
+          "new_000146": 0,
+          "new_000147": 0,
+          "new_000148": 0
+        },
+        "groups_by_locatable_corners": {
+          "0": {
+            "reference_objects": 21,
+            "matched_objects": 12,
+            "missed_objects": 9,
+            "visible_endpoints": 0,
+            "returned_visible_endpoints": 0,
+            "missing_visible_endpoints": 0,
+            "unlocatable_on_matched_objects": 24,
+            "returned_on_unlocatable_reference": 20,
+            "conditional_median_error_px": null,
+            "conditional_p95_error_px": null,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 0,
+                "both_visible_objects_within_radius": 0
+              }
+            ]
+          },
+          "1": {
+            "reference_objects": 59,
+            "matched_objects": 49,
+            "missed_objects": 10,
+            "visible_endpoints": 59,
+            "returned_visible_endpoints": 48,
+            "missing_visible_endpoints": 11,
+            "unlocatable_on_matched_objects": 49,
+            "returned_on_unlocatable_reference": 45,
+            "conditional_median_error_px": 2.8710697747380625,
+            "conditional_p95_error_px": 6.807087568724691,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 19,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 35,
+                "both_visible_objects_within_radius": 0
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 47,
+                "both_visible_objects_within_radius": 0
+              }
+            ]
+          },
+          "2": {
+            "reference_objects": 584,
+            "matched_objects": 571,
+            "missed_objects": 13,
+            "visible_endpoints": 1168,
+            "returned_visible_endpoints": 1142,
+            "missing_visible_endpoints": 26,
+            "unlocatable_on_matched_objects": 0,
+            "returned_on_unlocatable_reference": 0,
+            "conditional_median_error_px": 1.5438954559709872,
+            "conditional_p95_error_px": 4.993898921892534,
+            "radii": [
+              {
+                "radius_px": 2,
+                "visible_endpoints_within_radius": 718,
+                "both_visible_objects_within_radius": 259
+              },
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1085,
+                "both_visible_objects_within_radius": 522
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1140,
+                "both_visible_objects_within_radius": 570
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "decision_reason": "The user prioritizes missed objects and delegated beneficial proposal-review workload decisions. All fixed numerical checks pass, the additional 008:33 proposal is supported by original pixels, and all ten additions have bounded review dispositions. Select the existing 0.13 argument for this reviewed workflow; no global-optimality or unattended-use claim.",
+  "limits": [
+    "Hypothesis chosen after tracing an existing development case; all twenty images are reused development data.",
+    "The recovered box extends about20px below the reference and its right corner is unavailable/out of frame; it requires correction.",
+    "Nine additional scored extras include uncertain-reference and alternative-box cases, not nine independently certified false physical objects.",
+    "Eighteen remaining misses retain prior reference uncertainty; 011:61 retains a separate boundary/identity caveat.",
+    "Three of seventeen nonempty images are miss-free; reviewing only the proposal list cannot establish complete annotation.",
+    "No trained weights, labels, scorer, generic defaults or frozen experiment evidence changed.",
+    "No further threshold, resolution, seed or epoch search is scheduled by this result."
+  ]
+}

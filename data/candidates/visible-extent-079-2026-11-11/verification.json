@@ -1,0 +1,77 @@
+{
+  "verified_at_utc": "2026-11-11T12:10:37.881981+00:00",
+  "command": [
+    "python",
+    "-B",
+    "scripts/verify_pose_annotation_candidate.py",
+    "--candidate",
+    "data/candidates/visible-extent-079-2026-11-11/manifest.json"
+  ],
+  "exit_code": 0,
+  "mechanical_verification": {
+    "status": "verified",
+    "candidate_id": "visible-extent-079-2026-11-11",
+    "kind": "training_annotation_overlay",
+    "candidate_manifest_sha256": "e9488904b40f5ca27a9ba12993c41f55c35481f33893d39370e63f962003b3d6",
+    "declared_source_revision": "d7cc3190d152b7efc54d3e6a23408d4c2dd1af2c",
+    "source_revision_git_object_checked": false,
+    "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "review_sha256": "59c3dd297d74bcc0b0aba8bbda4d71c422efb6b20cdc7fb57207ecc7e98ef293",
+    "annotation_policy_sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+    "reference_labels_verified": 157,
+    "changed_train_labels": 1,
+    "removed_objects": 0,
+    "replaced_objects": 3,
+    "added_objects": 0,
+    "merged_endpoints": 0,
+    "counts": {
+      "train": {
+        "images": 137,
+        "objects": 3772,
+        "visible_endpoints": 6839,
+        "missing_endpoints": 705,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "validation_labels_unchanged": true,
+    "unchanged_rows_byte_preserved": true,
+    "full_row_maps_verified": true,
+    "image_bytes_verified": false,
+    "images_staged_by_check": false,
+    "dataset_built": false,
+    "visual_correctness_verified": false,
+    "mechanical_geometry_verified": true,
+    "code_sha256": {
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+    }
+  },
+  "separate_original_byte_checks": {
+    "image": {
+      "path": "data/images/train/new_000079.png",
+      "expected_sha256": "dd93f2e0d44b4de9aaece6386fd094bd4e11d90f477952563e5fbec52b2c063f",
+      "actual_sha256": "dd93f2e0d44b4de9aaece6386fd094bd4e11d90f477952563e5fbec52b2c063f",
+      "matches": true
+    },
+    "label": {
+      "path": "data/labels/train/new_000079.txt",
+      "expected_sha256": "c26e6fe43d5100d096aecea7798f3b043ba6ce7637bc7f76fd5a9bab9289a050",
+      "actual_sha256": "c26e6fe43d5100d096aecea7798f3b043ba6ce7637bc7f76fd5a9bab9289a050",
+      "matches": true
+    }
+  },
+  "limits": [
+    "Mechanical verification does not adjudicate original pixels. Root and two independent assistant reviews are recorded separately.",
+    "The checkout contains the recovered publication and new uncommitted proposal; this is not described as a clean-checkout run. Executed verifier source hashes and candidate hashes are recorded.",
+    "No model inference, training, reference edits or full-image certification."
+  ]
+}

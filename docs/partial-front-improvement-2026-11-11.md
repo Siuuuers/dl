@@ -1,5 +1,7 @@
 # Improve partial-front supervision; retain 1280 inference
 
+**Completion update:** the prepared GPU comparison has now returned in PR40. The [completed result](partial-front-results-2026-11-11.md) retains the current checkpoint: no additional object is recovered. The preparation record below preserves what was known and fixed before those runs.
+
 **Keep the current seed46 candidate at 1280 / confidence 0.15 for reviewed proposals. The fixed 1920 comparison worsened misses and corner results. A new, separately identified training-label candidate is ready for one matched GPU comparison.** No new trained checkpoint is claimed by this preparation pass.
 
 The user delegated original-image review and supported label amendments, with missed objects first. This continuation addresses a concrete remaining problem: identifiable partial fronts can be omitted from the training labels, while a gripper-only rectangle or duplicate can supply conflicting targets. It preserves the existing two-corner task, trainer, model architecture and browser editor.
