@@ -278,7 +278,8 @@ class NotebookRecoveryChecks(unittest.TestCase):
         runtime = {**current, "device_name": "old synthetic GPU",
                    "backend": {"cudnn_version": current["cudnn_version"]}}
         runtime.pop("cudnn_version")
-        scope = dict(COMPLETED={}, subprocess=mock.Mock(), sys=sys, json=json,
+        scope = dict(COMPLETED={}, DRIVE_ROOT=None, TRIAL_RUNTIME=None,
+                     subprocess=mock.Mock(), sys=sys, json=json,
                      REPO=Path("/synthetic/repo"),
                      train_one=mock.Mock(return_value=(Path("/synthetic/resource-trial"), {"runtime": runtime})))
         scope["subprocess"].check_output.return_value = json.dumps(current)
@@ -292,10 +293,36 @@ class NotebookRecoveryChecks(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "differs from resource trial"):
             exec(code, scope)
         scope["train_one"].assert_called_once_with("extended_reviewed", trial=True)
-        self.assertNotIn("TRIAL_RUNTIME", scope)
+        self.assertIsNone(scope["TRIAL_RUNTIME"])
         runtime["device_name"] = current["device_name"]
         exec(code, scope)
         self.assertEqual(scope["TRIAL_RUNTIME"], runtime)
+
+    def test_unusable_drive_trial_does_not_block_a_fresh_trial(self):
+        current = {"python": "synthetic", "torch": "fixture", "device": "cuda:0",
+                   "device_name": "synthetic GPU", "cudnn_version": 90000}
+        runtime = {**current, "backend": {"cudnn_version": current["cudnn_version"]}}
+        runtime.pop("cudnn_version")
+        with tempfile.TemporaryDirectory() as temporary:
+            drive = Path(temporary)
+            (drive / "resource-trials").mkdir()
+            (drive / "resource-trials" / "deadbeef.complete").write_text("{not json")
+            scope = dict(COMPLETED={}, DRIVE_ROOT=drive, TRIAL_RUNTIME=None,
+                         subprocess=mock.Mock(), sys=sys, json=json, REPO=Path("/synthetic/repo"),
+                         restore_from_drive=mock.Mock(side_effect=AssertionError(
+                             "Drive completion belongs to different source/protocol pins.")),
+                         train_one=mock.Mock(return_value=(Path("/synthetic/resource-trial"), {"runtime": runtime})))
+            scope["subprocess"].check_output.return_value = json.dumps(current)
+            self.functions(3, {"assert_current_runtime"}, scope)
+            gate = next(n for n in ast.parse(self.codes[3]).body if isinstance(n, ast.If)
+                        and isinstance(n.test, ast.Compare)
+                        and isinstance(n.test.left, ast.Call)
+                        and isinstance(n.test.left.func, ast.Name)
+                        and n.test.left.func.id == "len")
+            exec(compile(ast.Module(body=[gate], type_ignores=[]), "notebook-pre-full-run-gate", "exec"), scope)
+            scope["restore_from_drive"].assert_called_once_with("resource-trials/deadbeef")
+            scope["train_one"].assert_called_once_with("extended_reviewed", trial=True)
+            self.assertEqual(scope["TRIAL_RUNTIME"], runtime)
 
 
 if __name__ == "__main__":
