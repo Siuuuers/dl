@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-consistency-comparison-protocol",
+  "experiment_id": "consistency-seed46-v1",
+  "status": "prospectively_declared",
+  "declared_at_utc": "2026-11-11T16:10:36+00:00",
+  "recipe_id": "reviewed-annotations-seed46-v1",
+  "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+  "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "roles": {
+    "old_reviewed": {
+      "candidate_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+      "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+      "candidate_id": "annotations-2026-11-10"
+    },
+    "consistency_reviewed": {
+      "candidate_manifest": "data/candidates/consistency-2026-11-11/manifest.json",
+      "candidate_manifest_sha256": "2f59ec8a09466922eb2f20fd66c5f0f8a972a6c5694bbb41c17d51277ff3b9a9",
+      "candidate_id": "consistency-2026-11-11"
+    }
+  },
+  "delta_train_image_ids": [
+    "new_000018",
+    "new_000034",
+    "new_000049"
+  ],
+  "scientific_difference": "Fourteen observed-front bbox replacements in three training images: six in new_000018, three in new_000034, and five in new_000049. Four replacements expand to exposed front material; the other ten remove hidden width or non-target extent. This is one combined correction delta. The exact eight selected PR35 label files, change objects and twelve accepted decisions are inherited; all new-delta class/corner tokens, object counts and row order remain unchanged. Nine held full-box proposals and unresolved identity cases remain unchanged.",
+  "execution": {
+    "initialization": "Both runs independently initialize from original epoch 173; neither resumes a previous fine-tune or the resource trial.",
+    "actual_runner_arm_for_both_roles": "candidate",
+    "epochs": 30,
+    "selection": "Finalized last.pt after completed epoch30; never select best.pt based on validation.",
+    "seed": 46,
+    "resource_trial": "Four real consistency-reviewed batches under the unchanged full recipe, separate from both full-run initialization. Restore a completed matching trial when available; a historical trial from another source/protocol is ineligible.",
+    "runtime": "Same source, GPU runtime and resolved settings for both roles; recovered completed roles must match before starting a missing full role.",
+    "automatic_promotion": false
+  },
+  "evaluation": {
+    "primary_box_confidence": 0.13,
+    "diagnostic_box_confidences": [
+      0.15
+    ],
+    "imgsz": 1280,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "endpoint_confidence": 0.5,
+    "radii_px": [
+      2,
+      5,
+      10
+    ],
+    "primary_reference": "data/references/visible-front-2026-11-11/manifest.json",
+    "primary_reference_sha256": "2e60b3e81195448cc565a1000b4305e3215baba2bf0ee0c976e6551c2e64937c",
+    "historical_reference": "data/manifest.json",
+    "references_reported_separately": true,
+    "required_results": [
+      "All-object misses/extras, duplicate and other extra counts",
+      "Every gained/lost object identity, preserving prior reference uncertainty",
+      "Zero/one/two-locatable-corner groups, visible-point coverage and both-corner 5/10px successes",
+      "Miss-free nonempty scenes and all three empty-image outputs",
+      "Concrete outcomes for reviewed partial targets008:33 and009:57",
+      "Points returned on reference-unlocatable sides",
+      "Current PR35 comparator at the same settings, with exact checkpoint/reference/prediction identities",
+      "Original-image adjudication of changed matches and proposal assignments, distinguishing IoU crossings from physically supported object recovery or loss"
+    ],
+    "decision": "At primary confidence 0.13 prioritize supported missed-object recovery, recording every gained/lost identity and all extra/corner/empty-scene tradeoffs. A gain only among uncertain reference rows or a changed assignment does not establish physically supported recovery. Before any separate promotion decision, require supported additional recovery without losing previously supported matches or existing 5/10 px pair successes, and without adding empty-scene detections. Inspect every newly added proposal and report review workload. Retain the current PR35 workflow otherwise. No automatic promotion or threshold/seed/epoch search."
+  },
+  "limits": [
+    "One matched pair for the frozen PR45 fourteen-box candidate; no search over seeds, epochs, thresholds or alternative annotation subsets.",
+    "Both roles retain the same YOLO-Pose architecture, cassette_front class and two actual lower-front corner slots. This study retains the observed-front policy; it does not infer hidden/full-object boxes, missing corners or physical dimensions.",
+    "Both roles initialize independently from original epoch 173 under the unchanged seed46 recipe. Their inner arm is candidate, never an original-label reference. Neither PR35/PR43 weights nor the resource trial initialize a full run.",
+    "All 157 original images and original 137/20 train-validation assignments stay fixed. Both effective training variants contain 3771 objects, 6841 visible endpoints and 701 missing endpoint slots. Original 664-object in-training validation stays unchanged; the separately corrected 663-object reference is used only after training.",
+    "The non-adopted PR40 partial-front and PR43 visible-extent label extensions are not accumulated. Completed historical protocols, receipts and returned archives remain unchanged.",
+    "Twenty reused correlated development images do not supply an independent generalization test. The six reviewed training images are not a new validation set.",
+    "Accepted pixel extrema have soft-boundary uncertainty. Held boxes, unresolved identities and existing corner-localization concerns remain in the PR45 adjudication; acceptance is not complete image certification.",
+    "A change in a scored match or point-pair success can result from IoU boundary crossing or prediction assignment. Inspect original-image evidence before claiming physical recovery or disappearance.",
+    "No trained-model improvement is claimed before returned checkpoints and predictions are evaluated. The PR35 reviewed-proposal workflow remains selected unless a separate documented decision supports changing it."
+  ],
+  "review_scope_train_image_ids": [
+    "new_000018",
+    "new_000034",
+    "new_000049",
+    "old_000007",
+    "old_000057",
+    "new_000132"
+  ],
+  "reviewed_unchanged_train_image_ids": [
+    "old_000007",
+    "old_000057",
+    "new_000132"
+  ],
+  "declared_date": "2026-11-12",
+  "declared_timezone": "Asia/Hong_Kong",
+  "delta_train_rows_1based": {
+    "new_000018": [
+      24,
+      25,
+      26,
+      32,
+      33,
+      34
+    ],
+    "new_000034": [
+      55,
+      56,
+      57
+    ],
+    "new_000049": [
+      9,
+      14,
+      24,
+      25,
+      26
+    ]
+  },
+  "annotation_adjudication": {
+    "path": "results/review/baomai-training-consistency-20261111/adjudication.json",
+    "sha256": "60c5cbf8f215c796a28c13c184e88ad7fc9dffac08d821e2b77194ac97b147fb"
+  }
+}
