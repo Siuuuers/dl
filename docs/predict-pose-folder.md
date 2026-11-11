@@ -104,7 +104,7 @@ The two keypoint slots remain in model order. Their confidence and coordinates a
 
 This is an inference deliverable. Unlabeled images cannot supply false-negative, false-positive, precision, recall or accuracy measurements. `ground_truth_available: false` distinguishes predictions from reference annotations. Keep the existing [evaluation command](evaluate-pose.md) for the frozen labeled development set.
 
-The [additional-frame candidate](additional-annotation-pilot-2026-11-07.md) still has three quarantined images and zero eligible scoring/training images. Drawing predictions on an image does not resolve its reference boundaries. See the [completed proposal review](low-confidence-review-2026-11-11.md) for the current assistant-review setting, corrected reference and limits of the existing development results.
+The [additional-frame candidate](additional-annotation-pilot-2026-11-07.md) still has three quarantined images and zero eligible scoring/training images. Drawing predictions on an image does not resolve its reference boundaries. See the [completed proposal-filter review](proposal-filter-review-2026-11-11.md) for the current assistant-review setting, corrected reference and limits of the existing development results.
 
 ## Verified example, 2026-11-07
 
