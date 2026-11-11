@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "candidate_id": "visible-extent-079-2026-11-11",
+  "policy_id": "baomai-visible-front-v1",
+  "status": "reviewed_incremental_proposal",
+  "human_or_supervisor_certified": false,
+  "full_image_certified": false,
+  "source_revision": "d7cc3190d152b7efc54d3e6a23408d4c2dd1af2c",
+  "scope": {
+    "images": [
+      "new_000079"
+    ],
+    "source_rows": 34,
+    "context_rows_1based": [
+      14,
+      34,
+      15,
+      16
+    ],
+    "changed_rows_1based": [
+      15,
+      16,
+      34
+    ],
+    "method": "Root and two independent assistant reviewers inspected the full original before label overlays, then nearest-neighbor original crops. Root selected integer box extrema before any model inference, training or scoring; both reviewers inspected the final comparison.",
+    "model_predictions_used": false,
+    "fresh_training_or_inference": false
+  },
+  "sources": {
+    "image": {
+      "path": "data/images/train/new_000079.png",
+      "sha256": "dd93f2e0d44b4de9aaece6386fd094bd4e11d90f477952563e5fbec52b2c063f",
+      "size": [
+        1280,
+        720
+      ]
+    },
+    "label": {
+      "path": "data/labels/train/new_000079.txt",
+      "sha256": "c26e6fe43d5100d096aecea7798f3b043ba6ce7637bc7f76fd5a9bab9289a050"
+    },
+    "previous_deferred_case": {
+      "path": "data/candidates/annotations-2026-11-10/review.json",
+      "location": "unresolved_and_retained.crosscheck[0]",
+      "sha256": "84dd73407aa147637d8eb68f8ff8268c856d70c46a8a8bf144549e00e6480c85"
+    }
+  },
+  "row_association": {
+    "14": "First upper front, unchanged context",
+    "34": "Second front with preserved visible left corner",
+    "15": "Third thumb-occluded triangular front",
+    "16": "Fourth narrow front beside the gripper"
+  },
+  "identity_limit": "Four visible bands are supported. Existing row slots are retained and explicitly reassociated; the source author's intended identities cannot be proved from the old broad boxes.",
+  "decisions": [
+    {
+      "id": "visible-extent-079-row34",
+      "image_id": "new_000079",
+      "source_rows_1based": [
+        34
+      ],
+      "review_status": "accepted_incremental",
+      "reason": "Refit this row to the second observed front, preserving its supported left-corner token. The source rectangle extends across rack, gripper and the next band. The new rectangle bounds the observed face; its soft right occlusion edge remains approximate.",
+      "proposed_bbox_xyxy_original_pixels": [
+        547,
+        484,
+        627,
+        502
+      ],
+      "corner_tokens_preserved": true
+    },
+    {
+      "id": "visible-extent-079-row15",
+      "image_id": "new_000079",
+      "source_rows_1based": [
+        15
+      ],
+      "review_status": "accepted_incremental",
+      "reason": "Explicitly associate this retained row slot with the third observed triangular front between thumb and gripper. The source rectangle spans the second and third bands while clipping the right exposed fragment. Both actual lower corners remain unlocatable.",
+      "proposed_bbox_xyxy_original_pixels": [
+        580,
+        508,
+        624,
+        527
+      ],
+      "corner_tokens_preserved": true
+    },
+    {
+      "id": "visible-extent-079-row16",
+      "image_id": "new_000079",
+      "source_rows_1based": [
+        16
+      ],
+      "review_status": "accepted_incremental",
+      "reason": "Explicitly associate this retained row slot with the fourth observed narrow front. The source rectangle lies mainly on the thumb and excludes most of the visible strip to its right. Bound the observed fragment without reconstructing hidden width or either actual lower corner.",
+      "proposed_bbox_xyxy_original_pixels": [
+        608,
+        532,
+        623,
+        552
+      ],
+      "corner_tokens_preserved": true
+    }
+  ],
+  "independent_reviews": [
+    {
+      "reviewer": "readiness_audit",
+      "original_first": true,
+      "initial_bbox_estimates": {
+        "34": [
+          547,
+          484,
+          627,
+          502
+        ],
+        "15": [
+          582,
+          508,
+          624,
+          527
+        ],
+        "16": [
+          608,
+          532,
+          623,
+          551
+        ]
+      },
+      "final_proposal": "accepted_with_limits",
+      "finding": "All three final boxes map to the observed bands. Final row15 xmin580 and row16 ymax552 are within soft-boundary variation; no material inconsistency. Preserve every corner token, unchanged row14 and uncertain lower sliver."
+    },
+    {
+      "reviewer": "publication_check",
+      "original_first": true,
+      "initial_bbox_estimates": {
+        "34": [
+          546,
+          485,
+          621,
+          501
+        ],
+        "15": [
+          578,
+          508,
+          623,
+          526
+        ],
+        "16": [
+          609,
+          531,
+          623,
+          552
+        ]
+      },
+      "final_proposal": "accepted_with_limits",
+      "finding": "Final row34 xmax627 is at the soft front/gripper transition and may include a narrow blurred boundary strip; defensible as an approximate annotation choice. All three final boxes remove gross misplaced coverage without inventing hidden corners."
+    }
+  ],
+  "unresolved_and_retained": [
+    {
+      "scope": "Soft front/rim/occlusion transitions",
+      "decision": "Selected integer bounds are reviewable visual annotation choices. Reviewer edge variation is preserved; no one-pixel or subpixel physical accuracy is asserted."
+    },
+    {
+      "source_row": 14,
+      "decision": "Identity provides context, but its existing extent is not certified. Entire source row retained byte for byte."
+    },
+    {
+      "scope": "Thin pale material below the fourth front, approximately y557 onward",
+      "decision": "No fifth instance accepted. Cannot confidently separate another front from gripper/edge highlight; remain unresolved."
+    },
+    {
+      "scope": "Unrelated image rows",
+      "decision": "Preserved without new physical certification. This is a controlled incremental proposal, not a complete-image reannotation."
+    }
+  ],
+  "figure": {
+    "path": "docs/images/training-visible-extent-079-2026-11-11.png",
+    "sha256": "30d82e1d143fc05b0fc0f89fd5d01b3151a7e7fea307a829b3d1be0682afba5d",
+    "crop_xyxy": [
+      530,
+      445,
+      665,
+      570
+    ],
+    "rendering": "Unmodified source RGB crop displayed nearest-neighbor; separate source/proposed rectangles and unchanged visible endpoint markers."
+  },
+  "hypothesis": "Correcting boxes that associate a front with hand/gripper or neighboring-band regions may improve supervision for crowded partial fronts. This one-image proposal does not measure that effect and is not a training request."
+}
