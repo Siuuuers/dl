@@ -6,11 +6,11 @@ The agreed scope is one `cassette_front` class and its two lower-front corner sl
 
 ## Run
 
-The current instructions and implementation including verified candidate selection are on `Siuuuers/dl` branch `codex/partial-fronts-results-20261111`. Use this branch while its PR is open. PR40 is a results-only branch based on main; it does not supply this developed workflow. The selected model comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
+The current instructions, completed PR43 evaluation and implementation including verified candidate selection are on `Siuuuers/dl` branch `codex/visible-extent-results-20261111`. Use this branch while its PR is open. PR40 and PR43 are results-only branches based on main; the complete developed workflow is on the branch named here. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
 
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --single-branch \
-  --branch codex/partial-fronts-results-20261111 \
+  --branch codex/visible-extent-results-20261111 \
   https://github.com/Siuuuers/dl.git dl-folder
 cd dl-folder
 git lfs install --local
@@ -74,6 +74,8 @@ On the corrected 663-object reference, confidence **0.13 yields 20 misses and 85
 The earlier [0.25-to-0.15 review](low-confidence-review-2026-11-11.md) inspected its 29 additions and produced two separately versioned reference labels. The later 0.13 comparison preserves that reference unchanged. Keep unavailable corners missing even when a model reports a confident coordinate. Low-confidence predictions are proposals to inspect, not automatically approved annotations. Use the [corrected reference label set](../data/references/visible-front-2026-11-11/README.md) with the existing HTML editor; training labels and weights are separate. Review the complete original image as well as the proposal list, because missing proposals will not appear in the list.
 
 Retain the existing 1280 inference size. The [fixed 1920 comparison](partial-front-improvement-2026-11-11.md#2-one-fixed-resolution-test-1920-did-not-help) increased misses from 21 to 31 and reduced 10 px two-corner successes from 577 to 572 on the same reference. The subsequent [completed PR40 training-label comparison](partial-front-results-2026-11-11.md) also retains this PR35 checkpoint: the new model leaves misses at 21, changes extras 76→77 and keeps 577/584 two-corner successes. The current model and fresh old-reviewed control produce exactly the same 60 ordered prediction arrays.
+
+The later [PR43 visible-extent comparison](visible-extent-results-2026-11-11.md) is also complete and retains PR35. At the fixed primary confidence 0.13, its new model changes misses 20→21, extras 85→87, 5 px pairs 529→526 and 10 px pairs 577→578. Original-image review establishes no additional recovered front; the lost scored match survives as a nearly identical proposal, and the 10 px gain reflects assignment between existing alternatives. Its old-reviewed control exactly equals PR35 for all forty prediction arrays at 0.13/0.15. Keep the PR35 bundle above; no new training or model replacement is required.
 
 ### Optional overlap suppression
 
