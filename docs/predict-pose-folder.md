@@ -73,6 +73,8 @@ On the corrected 663-object reference, this candidate setting yields 21 misses a
 
 The [review](low-confidence-review-2026-11-11.md) inspected all additions and produced two separately versioned reference labels. Keep unavailable corners missing even when a model reports a confident coordinate. Low-confidence predictions are proposals to inspect, not automatically approved annotations. Use the [corrected reference label set](../data/references/visible-front-2026-11-11/README.md) with the existing HTML editor; training labels and weights are separate.
 
+Retain the existing 1280 inference size. A subsequent [fixed 1920 comparison](partial-front-improvement-2026-11-11.md#2-one-fixed-resolution-test-1920-did-not-help) increased misses from 21 to 31 and reduced 10 px two-corner successes from 577 to 572 on the same reference. Its new training-label extension is a separate pending experiment and does not change the currently selected checkpoint.
+
 ### Optional overlap suppression
 
 The default NMS IoU remains **0.70**. A bounded [existing-data comparison](postprocess-experiment-2026-11-07.md) found that **0.68 at box confidence 0.25** reduces extra detections from 63 to 61 on the 20 development images, preserving all 625 matched objects and their exact predictions. This is a small settings result on familiar images, not a new trained model or an independent accuracy guarantee.
