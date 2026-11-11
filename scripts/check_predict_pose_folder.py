@@ -8,6 +8,7 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 from types import SimpleNamespace
@@ -17,6 +18,9 @@ from unittest.mock import Mock, patch
 from PIL import Image, ImageOps
 
 import predict_pose_folder as runner
+from check_pose_checkpoint import bundle_fixture
+from pose_checkpoint import ANNOTATION_CONFIRMATION_RECIPE_ID
+from train_pose_comparison import descriptor
 
 
 def detection(points=None):
@@ -60,6 +64,99 @@ class FolderChecks(unittest.TestCase):
 
     def summary(self):
         return json.loads((self.output / "run_status.json").read_text())
+
+    def completed_bundle(self):
+        root, run, _, receipt, staging, manifest_path = bundle_fixture(
+            self.root / "bundle-fixture", recipe_id=ANNOTATION_CONFIRMATION_RECIPE_ID)
+        card_path = root / "metadata/model_card.json"
+        card = json.loads(card_path.read_text())
+        card["epoch"] = 173
+        card_path.write_text(json.dumps(card))
+        card_sha256 = runner.file_sha256(card_path)
+        staging["source"]["model_card_sha256"] = card_sha256
+        (run / "staging-manifest.json").write_text(json.dumps(staging))
+        receipt.update(model_card_sha256=card_sha256,
+                       staging_manifest_sha256=runner.file_sha256(run / "staging-manifest.json"))
+        (run / "training-receipt.json").write_text(json.dumps(receipt))
+        manifest = json.loads(manifest_path.read_text())
+        manifest.update(training_receipt=descriptor(run / "training-receipt.json", run),
+                        staging_manifest=descriptor(run / "staging-manifest.json", run))
+        manifest_path.write_text(json.dumps(manifest))
+        for directory in ("data/images", "data/labels", "weights"):
+            shutil.rmtree(root / directory)
+        return root, run, manifest_path, card
+
+    def invoke_bundle(self, root, manifest, card):
+        with patch.object(runner, "ROOT", root), \
+                patch.object(runner, "BASELINE_SHA256", card["sha256"]), \
+                patch.object(runner, "BASELINE_BYTES", card["size_bytes"]), \
+                patch.object(runner, "verify_baseline", side_effect=AssertionError("unexpected baseline fallback")) as baseline, \
+                patch.object(runner, "_source_identity", return_value={"files_sha256": {}}), \
+                patch.object(runner, "prepare_predictor", return_value=(fake_prediction, {"test_adapter": True})) as prepare, \
+                contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            code = runner.main(["--input", str(self.inputs), "--output", str(self.output),
+                                "--checkpoint-manifest", str(manifest)])
+        return code, prepare, baseline
+
+    def test_completed_bundle_uses_explicit_weights_without_reference_payloads(self):
+        self.image("dense.png")
+        self.image("empty.png", "black")
+        root, run, manifest_path, card = self.completed_bundle()
+        code, prepare, baseline = self.invoke_bundle(root, manifest_path, card)
+        self.assertEqual(code, 0)
+        baseline.assert_not_called()
+        self.assertEqual(prepare.call_args.args[0], str(run / "fit/weights/last.pt"))
+        self.assertEqual(prepare.call_args.kwargs, {"conf": 0.25, "nms_iou": 0.70})
+        summary = self.summary()
+        self.assertEqual(summary["model_sha256"], runner.file_sha256(run / "fit/weights/last.pt"))
+        self.assertEqual(summary["reference_model_sha256"], card["sha256"])
+        self.assertEqual(summary["reference_model_card_sha256"], runner.file_sha256(root / "metadata/model_card.json"))
+        self.assertEqual(summary["reference_manifest_sha256"], runner.file_sha256(root / "data/manifest.json"))
+        self.assertNotIn("epoch", summary)
+        identity = summary["checkpoint_identity"]
+        self.assertEqual((identity["arm"], identity["completed_epochs"], identity["selection"], identity["recipe_id"]),
+                         ("candidate", 30, "final_epoch", ANNOTATION_CONFIRMATION_RECIPE_ID))
+        self.assertEqual(identity["manifest_sha256"], runner.file_sha256(manifest_path))
+        self.assertEqual(identity["training_receipt_sha256"], runner.file_sha256(run / "training-receipt.json"))
+        self.assertEqual(identity["staging_manifest_sha256"], runner.file_sha256(run / "staging-manifest.json"))
+        self.assertEqual(summary["checkpoint_verification"], {
+            "bundle_bytes_and_recorded_completion": True, "repository_metadata": True,
+            "reference_image_and_label_bytes": False, "initial_checkpoint_bytes": False})
+        self.assertIs(summary["weights_verified"], True)
+        self.assertIs(summary["ground_truth_available"], False)
+        self.assertEqual([r["prediction_count"] for r in self.records()], [1, 0])
+        for directory in ("data/images", "data/labels", "weights"):
+            self.assertFalse((root / directory).exists())
+
+    def test_invalid_completed_bundle_fails_before_inference_without_fallback(self):
+        self.image("frame.png")
+        root, run, manifest_path, card = self.completed_bundle()
+        weights, receipt_path = run / "fit/weights/last.pt", run / "training-receipt.json"
+        originals = {path: path.read_bytes() for path in (weights, receipt_path, manifest_path)}
+        for failure in ("changed_weights", "incomplete_receipt", "wrong_pose_contract"):
+            with self.subTest(failure=failure):
+                if failure == "changed_weights":
+                    weights.write_bytes(originals[weights] + b"changed")
+                elif failure == "incomplete_receipt":
+                    receipt = json.loads(originals[receipt_path])
+                    receipt["status"] = "running"
+                    receipt_path.write_text(json.dumps(receipt))
+                    manifest = json.loads(originals[manifest_path])
+                    manifest["training_receipt"] = descriptor(receipt_path, run)
+                    manifest_path.write_text(json.dumps(manifest))
+                else:
+                    manifest = json.loads(originals[manifest_path])
+                    manifest["kpt_shape"] = [5, 3]
+                    manifest_path.write_text(json.dumps(manifest))
+                try:
+                    code, prepare, baseline = self.invoke_bundle(root, manifest_path, card)
+                    self.assertNotEqual(code, 0)
+                    prepare.assert_not_called()
+                    baseline.assert_not_called()
+                    self.assertFalse(self.output.exists())
+                finally:
+                    for path, contents in originals.items():
+                        path.write_bytes(contents)
 
     def test_label_free_nested_files_zero_predictions_and_no_source_changes(self):
         self.image("a/frame.png", "black")

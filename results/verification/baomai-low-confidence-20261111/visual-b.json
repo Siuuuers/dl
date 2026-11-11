@@ -1,0 +1,740 @@
+{
+  "schema_version": 1,
+  "kind": "low-confidence-proposal-visual-review-b",
+  "reviewer": "visual_low_b",
+  "repo_commit": "62c6be7512a5ec625f6cf7090d6c612086413cc7",
+  "policy": "baomai-visible-front-v1",
+  "scope": "All13 added low-confidence proposals in new_000010,new_000011,new_000055,new_000059,new_000089,new_000090. Threshold0.15 raw entries absent at0.25; no fresh inference.",
+  "method": [
+    "Viewed all six untouched original PNGs before prediction overlays.",
+    "Inspected original-pixel crops beside reference/proposal overlays, then additional unmarked coordinate crops for ambiguous cases.",
+    "Compared to PR30 reference and existing case notes; scorer duplicate/other flags were kept separate from visual identity.",
+    "No images, labels, scorer, models or repository files changed. Suggested new boxes only for visible fronts supported by original pixels; no hidden endpoint inference."
+  ],
+  "source": {
+    "predictions_capsule": "results/evaluation/baomai-annotations-seed46-20261111/evaluation.zip",
+    "capsule_sha256": "3dfe3415841b47a605e2fd4b9e490b2c12b348b0014c6c2a8c78c06f323ffc1a",
+    "predictions_member": "evidence/seed-46/m2/predictions.jsonl",
+    "predictions_sha256": "25b5eabecbffa13c1d01d62194dfbdebdc0fcdf914f0661123c23347c4060ee9",
+    "numerical_audit_sha256": "0e823460f07a7bdf9720252fbca9e6219d3ee81ef80b2f6defc0161b33b2033b"
+  },
+  "images": {
+    "new_000010": {
+      "image_path": "data/images/val/new_000010.png",
+      "image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000010.txt",
+      "reference_label_sha256": "9a0cc16ca96d094b1c7849b829ec67625d7569666d5753bd660006c9eecbf3c6"
+    },
+    "new_000011": {
+      "image_path": "data/images/val/new_000011.png",
+      "image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000011.txt",
+      "reference_label_sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838"
+    },
+    "new_000055": {
+      "image_path": "data/images/val/new_000055.png",
+      "image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000055.txt",
+      "reference_label_sha256": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0"
+    },
+    "new_000059": {
+      "image_path": "data/images/val/new_000059.png",
+      "image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000059.txt",
+      "reference_label_sha256": "60e6866fda66ad0d385094c32fd41f19eb451c5a16365b41da77cf5f0e01ade4"
+    },
+    "new_000089": {
+      "image_path": "data/images/val/new_000089.png",
+      "image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000089.txt",
+      "reference_label_sha256": "799e3e7301f4fd8f1b727dfc07e9a0891335a917c3994ebcc9d3786990219e7f"
+    },
+    "new_000090": {
+      "image_path": "data/images/val/new_000090.png",
+      "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000090.txt",
+      "reference_label_sha256": "0b77064a84e23159fb42001114fa253296103092d5eaa3bc13cf38ac1cc4a859"
+    }
+  },
+  "summary": {
+    "proposal_count": 13,
+    "visual_category_counts": {
+      "same_labeled_front_duplicate": 5,
+      "uncertain_existing_fragment_new_scorer_match": 1,
+      "existing_front_extent_mismatch": 2,
+      "uncertain_top_border_strip": 1,
+      "occluder_or_background": 2,
+      "identifiable_omitted_partial_front": 2
+    },
+    "recommended_new_partial_fronts": [
+      "new_000090:p54",
+      "new_000090:p55"
+    ],
+    "label_edits_applied": 0,
+    "legacy_unresolved_statuses_changed": 0
+  },
+  "proposals": [
+    {
+      "case_id": "new_000010:p36",
+      "image_id": "new_000010",
+      "prediction_index_zero_based": 35,
+      "prediction_number_one_based": 36,
+      "image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          322.86968994140625,
+          680.85498046875,
+          456.70465087890625,
+          720.0
+        ],
+        "class_id": 0,
+        "confidence": 0.17863565683364868,
+        "keypoints": [
+          [
+            346.75579833984375,
+            719.7195434570312,
+            0.884591817855835
+          ],
+          [
+            447.8428649902344,
+            713.244384765625,
+            0.7928377389907837
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "duplicate_extra",
+      "reference_rows_one_based_context": [
+        29,
+        30
+      ],
+      "visual_category": "same_labeled_front_duplicate",
+      "observation": "The proposal covers the same large bottom-clipped white front represented by G29. A thin lower-edge reference G30 is also nearby, but this proposal does not establish an additional physical front.",
+      "decision": "Do not add an instance or copy the proposed lower points. Retain the existing reference and any legacy ambiguity at the bottom crop.",
+      "certainty_and_limits": "high for absence of a newly supported instance; existing clipped extent is not re-certified",
+      "inspection_crop": "visual-b/new_000010_p036.png",
+      "inspection_crop_original_bounds_xyxy": [
+        272,
+        635,
+        507,
+        720
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000011:p64",
+      "image_id": "new_000011",
+      "prediction_index_zero_based": 63,
+      "prediction_number_one_based": 64,
+      "image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          679.0775146484375,
+          462.51654052734375,
+          735.9720458984375,
+          486.2906494140625
+        ],
+        "class_id": 0,
+        "confidence": 0.20958010852336884,
+        "keypoints": [
+          [
+            682.24462890625,
+            472.6126708984375,
+            0.282781720161438
+          ],
+          [
+            729.9871826171875,
+            479.49371337890625,
+            0.3266619145870209
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "new_match",
+      "reference_rows_one_based_context": [
+        59,
+        61
+      ],
+      "visual_category": "uncertain_existing_fragment_new_scorer_match",
+      "observation": "The pale central fragment between the gripper jaws is visible, but its separation from the upper surface/tool and the exact front bounds remain ambiguous. The proposed box extends below the pale fragment into dark/tool material. This is the previously disclosed source row61 case.",
+      "decision": "Keep the prior boundary/identity caveat. The new IoU match is not independent confirmation of a physical cassette or tight visible-face box. Do not amend or invent either hidden corner.",
+      "certainty_and_limits": "unresolved identity/extent, both physical lower corners unavailable",
+      "inspection_crop": "visual-b/new_000011_p064.png",
+      "inspection_crop_original_bounds_xyxy": [
+        629,
+        417,
+        786,
+        532
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000011:p65",
+      "image_id": "new_000011",
+      "prediction_index_zero_based": 64,
+      "prediction_number_one_based": 65,
+      "image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          600.212158203125,
+          438.28143310546875,
+          656.66455078125,
+          460.68792724609375
+        ],
+        "class_id": 0,
+        "confidence": 0.1566111147403717,
+        "keypoints": [
+          [
+            604.2540893554688,
+            454.3338623046875,
+            0.7830247282981873
+          ],
+          [
+            653.2196044921875,
+            453.46044921875,
+            0.7117238640785217
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "duplicate_extra",
+      "reference_rows_one_based_context": [
+        56,
+        57
+      ],
+      "visual_category": "same_labeled_front_duplicate",
+      "observation": "The exposed face to the left of the gripper is already represented by G56. The candidate reaches toward neighboring G57 and puts its right predicted point on the occluder rather than on an exposed actual outer corner.",
+      "decision": "No added instance. Preserve the hidden-side corner state and existing reference; candidate geometry is not a correction target.",
+      "certainty_and_limits": "high for same-front identity; precise extent remains limited by occlusion",
+      "inspection_crop": "visual-b/new_000011_p065.png",
+      "inspection_crop_original_bounds_xyxy": [
+        550,
+        393,
+        707,
+        506
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000055:p27",
+      "image_id": "new_000055",
+      "prediction_index_zero_based": 26,
+      "prediction_number_one_based": 27,
+      "image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          453.65350341796875,
+          588.6134643554688,
+          574.9140014648438,
+          630.1964721679688
+        ],
+        "class_id": 0,
+        "confidence": 0.23631015419960022,
+        "keypoints": [
+          [
+            465.616943359375,
+            611.3628540039062,
+            0.7794137001037598
+          ],
+          [
+            571.412841796875,
+            613.3353271484375,
+            0.7817137241363525
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "other_extra",
+      "reference_rows_one_based_context": [
+        26
+      ],
+      "visual_category": "existing_front_extent_mismatch",
+      "observation": "A real bottom front is exposed above the rack base and partly hidden by the thumb. The tiny existing G26 omits visible front area, as already documented. The proposal also includes hand/base material and extends below the front, so its larger box is not a justified replacement.",
+      "decision": "Do not add a second row for this front or copy the proposed box. Preserve the existing unresolved top/right-boundary case rather than force an amendment.",
+      "certainty_and_limits": "existing G26 identity supported; exact replacement top/right extent remains unresolved",
+      "inspection_crop": "visual-b/new_000055_p027.png",
+      "inspection_crop_original_bounds_xyxy": [
+        403,
+        543,
+        625,
+        676
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000055:p28",
+      "image_id": "new_000055",
+      "prediction_index_zero_based": 27,
+      "prediction_number_one_based": 28,
+      "image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          652.1470947265625,
+          0.0,
+          786.0904541015625,
+          9.139434814453125
+        ],
+        "class_id": 0,
+        "confidence": 0.19564135372638702,
+        "keypoints": [
+          [
+            668.6206665039062,
+            5.400594711303711,
+            0.7059722542762756
+          ],
+          [
+            771.1055908203125,
+            1.7775802612304688,
+            0.6471719741821289
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "other_extra",
+      "reference_rows_one_based_context": [],
+      "visual_category": "uncertain_top_border_strip",
+      "observation": "Only a shallow pale strip is visible along the image top above the rack. It is adjacent to the G23 top strip but does not expose enough distinctive front structure to confidently separate a clipped front from lip/rack material.",
+      "decision": "Leave as unresolved candidate; neither add a positive nor certify a hard negative based only on the strip. Do not accept model points on the crop boundary as physical corners.",
+      "certainty_and_limits": "front versus lip/rack identity unresolved",
+      "inspection_crop": "visual-b/new_000055_p028.png",
+      "inspection_crop_original_bounds_xyxy": [
+        602,
+        0,
+        837,
+        55
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000059:p21",
+      "image_id": "new_000059",
+      "prediction_index_zero_based": 20,
+      "prediction_number_one_based": 21,
+      "image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          637.9720458984375,
+          454.9532165527344,
+          800.1678466796875,
+          500.4449768066406
+        ],
+        "class_id": 0,
+        "confidence": 0.16152320802211761,
+        "keypoints": [
+          [
+            651.5225830078125,
+            482.0322570800781,
+            0.8679668307304382
+          ],
+          [
+            793.7692260742188,
+            485.38726806640625,
+            0.8118658661842346
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "other_extra",
+      "reference_rows_one_based_context": [
+        19
+      ],
+      "visual_category": "occluder_or_background",
+      "observation": "The proposed box lies mostly across the gripper body, central cutout and raised edges. A small top overlap touches the already labeled G19 front, but there is no separately exposed cassette front within the lower proposal.",
+      "decision": "Reject the new proposal as a cassette-front annotation. Do not create hidden cassette corners from the gripper features.",
+      "certainty_and_limits": "high for gripper/background rather than a new visible front",
+      "inspection_crop": "visual-b/new_000059_p021.png",
+      "inspection_crop_original_bounds_xyxy": [
+        587,
+        409,
+        851,
+        546
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000089:p62",
+      "image_id": "new_000089",
+      "prediction_index_zero_based": 61,
+      "prediction_number_one_based": 62,
+      "image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          769.0604858398438,
+          468.2154541015625,
+          846.4313354492188,
+          495.694091796875
+        ],
+        "class_id": 0,
+        "confidence": 0.1769680231809616,
+        "keypoints": [
+          [
+            779.1766357421875,
+            484.255859375,
+            0.8271178007125854
+          ],
+          [
+            841.4967041015625,
+            490.3094177246094,
+            0.7872976064682007
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "duplicate_extra",
+      "reference_rows_one_based_context": [
+        49
+      ],
+      "visual_category": "same_labeled_front_duplicate",
+      "observation": "The white right-side partial face behind the gripper is the existing G49 front. The proposal repeats it with slightly different extent and a left point on the jaw; the right visible corner does not imply the hidden left corner is known.",
+      "decision": "Do not add an instance or restore an invented hidden point.",
+      "certainty_and_limits": "high for same-front identity",
+      "inspection_crop": "visual-b/new_000089_p062.png",
+      "inspection_crop_original_bounds_xyxy": [
+        719,
+        423,
+        897,
+        541
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000089:p63",
+      "image_id": "new_000089",
+      "prediction_index_zero_based": 62,
+      "prediction_number_one_based": 63,
+      "image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          670.227783203125,
+          466.15625,
+          728.605712890625,
+          485.600341796875
+        ],
+        "class_id": 0,
+        "confidence": 0.15510934591293335,
+        "keypoints": [
+          [
+            675.7797241210938,
+            475.5129089355469,
+            0.6717920303344727
+          ],
+          [
+            723.0662841796875,
+            482.9933166503906,
+            0.6040489077568054
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "other_extra",
+      "reference_rows_one_based_context": [
+        47
+      ],
+      "visual_category": "existing_front_extent_mismatch",
+      "observation": "The candidate isolates a smaller exposed central lower band of the front already represented by G47 between the jaws. Its IoU of about0.454 is below the matching threshold, but original-image continuity supports the same labeled front rather than a new object.",
+      "decision": "No added instance. Record this as an existing-front/extent issue rather than a proved background false positive. No exact reference amendment is forced.",
+      "certainty_and_limits": "high for existing-front identity; local visible extent and hidden corners remain separate judgments",
+      "inspection_crop": "visual-b/new_000089_p063.png",
+      "inspection_crop_original_bounds_xyxy": [
+        620,
+        421,
+        779,
+        531
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000090:p53",
+      "image_id": "new_000090",
+      "prediction_index_zero_based": 52,
+      "prediction_number_one_based": 53,
+      "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          568.3673095703125,
+          454.88238525390625,
+          669.1278076171875,
+          489.65911865234375
+        ],
+        "class_id": 0,
+        "confidence": 0.24656648933887482,
+        "keypoints": [
+          [
+            572.5670776367188,
+            484.8765563964844,
+            0.8667912483215332
+          ],
+          [
+            660.921875,
+            484.77435302734375,
+            0.8285620212554932
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "duplicate_extra",
+      "reference_rows_one_based_context": [
+        39,
+        40
+      ],
+      "visual_category": "same_labeled_front_duplicate",
+      "observation": "The visible left strip belongs to the already labeled stack at G39/G40; the proposal is primarily the G40 match region with a vertically shifted extent. Much of its right side and predicted right point lie on the gripper.",
+      "decision": "No added front. Preserve unavailable right-corner semantics and do not copy the proposal box.",
+      "certainty_and_limits": "high for no additional front supported by this box",
+      "inspection_crop": "visual-b/new_000090_p053.png",
+      "inspection_crop_original_bounds_xyxy": [
+        518,
+        409,
+        720,
+        535
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000090:p54",
+      "image_id": "new_000090",
+      "prediction_index_zero_based": 53,
+      "prediction_number_one_based": 54,
+      "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          673.00146484375,
+          471.7511291503906,
+          741.6944580078125,
+          495.3525695800781
+        ],
+        "class_id": 0,
+        "confidence": 0.23062604665756226,
+        "keypoints": [
+          [
+            678.983642578125,
+            484.2794494628906,
+            0.5651714205741882
+          ],
+          [
+            735.10791015625,
+            489.0521240234375,
+            0.6125037670135498
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "other_extra",
+      "reference_rows_one_based_context": [],
+      "visual_category": "identifiable_omitted_partial_front",
+      "observation": "The original shows a perforated cassette body/roof behind the jaw opening, a broad solid upper surface, then a distinct lower white front band. That lower band is not represented by any existing reference row. Its visible left/right/bottom boundaries are imposed partly by the jaws and thumb; they are not the actual physical lower corner pair.",
+      "decision": "Recommend a separately versioned addition for the visible lower front only, excluding the upper surface, dark right jaw pad and thumb. Both actual lower corners remain unavailable.",
+      "certainty_and_limits": "front identity supported by connected cassette structure and visible face transition; box edges have about1\u20132px softness",
+      "inspection_crop": "visual-b/new_000090_p054.png",
+      "inspection_crop_original_bounds_xyxy": [
+        623,
+        426,
+        792,
+        541
+      ],
+      "label_edit_applied": false,
+      "recommended_separate_reference_addition": {
+        "bbox_xyxy": [
+          674,
+          474,
+          737,
+          495
+        ],
+        "keypoints": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "label_row": "0 0.55117187 0.67291667 0.04921875 0.02916667 0 0 0 0 0 0",
+        "bounds_uncertainty_px_approx": 2,
+        "basis": "Independent manual inspection of original pixels. Bounds were selected for visible front and deliberately differ from raw prediction. No actual lower corner is exposed.",
+        "status": "Reviewer recommendation for independent confirmation; not applied to any reference."
+      }
+    },
+    {
+      "case_id": "new_000090:p55",
+      "image_id": "new_000090",
+      "prediction_index_zero_based": 54,
+      "prediction_number_one_based": 55,
+      "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          570.5147705078125,
+          527.5184326171875,
+          621.38525390625,
+          549.8284912109375
+        ],
+        "class_id": 0,
+        "confidence": 0.183009073138237,
+        "keypoints": [
+          [
+            575.5668334960938,
+            539.7214965820312,
+            0.675291895866394
+          ],
+          [
+            617.3085327148438,
+            547.9391479492188,
+            0.6004708409309387
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "other_extra",
+      "reference_rows_one_based_context": [
+        42
+      ],
+      "visual_category": "identifiable_omitted_partial_front",
+      "observation": "Below the visible stack seam around y526\u2013528 is a separate exposed white front down to about y545. G42 belongs to the face above: its actual visible left lower point is near y525.42. G42's loose box overlaps the new face, but that does not make the two physical fronts the same. The thumb hides the lower-left corner and the gripper hides the outer right side.",
+      "decision": "Recommend a separately versioned addition tightly enclosing the visible lower fragment. Both actual lower corner slots must be zero. Do not expand to the raw proposal bounds on the gripper/thumb.",
+      "certainty_and_limits": "strong supported omitted-front identity from visible seam and lower face, not stack-spacing inference; box edges about1\u20132px soft",
+      "inspection_crop": "visual-b/new_000090_p055.png",
+      "inspection_crop_original_bounds_xyxy": [
+        520,
+        482,
+        672,
+        595
+      ],
+      "label_edit_applied": false,
+      "recommended_separate_reference_addition": {
+        "bbox_xyxy": [
+          572,
+          527,
+          607,
+          545
+        ],
+        "keypoints": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "label_row": "0 0.46054688 0.74444444 0.02734375 0.02500000 0 0 0 0 0 0",
+        "bounds_uncertainty_px_approx": 2,
+        "basis": "Independent manual inspection of original pixels. Bounds were selected for visible front and deliberately differ from raw prediction. No actual lower corner is exposed.",
+        "status": "Reviewer recommendation for independent confirmation; not applied to any reference."
+      }
+    },
+    {
+      "case_id": "new_000090:p56",
+      "image_id": "new_000090",
+      "prediction_index_zero_based": 55,
+      "prediction_number_one_based": 56,
+      "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          569.6881103515625,
+          494.3449401855469,
+          671.3565673828125,
+          530.792724609375
+        ],
+        "class_id": 0,
+        "confidence": 0.1711813062429428,
+        "keypoints": [
+          [
+            571.5501708984375,
+            521.7265014648438,
+            0.8642811179161072
+          ],
+          [
+            662.5055541992188,
+            520.1635131835938,
+            0.8193356990814209
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "duplicate_extra",
+      "reference_rows_one_based_context": [
+        41,
+        42
+      ],
+      "visual_category": "same_labeled_front_duplicate",
+      "observation": "The proposal overlaps the existing lower stack face G42, with upper overlap into G41. Its broad right extent and predicted right point are on the occluding gripper. This is distinct from the extra visible lower fragment considered in P55.",
+      "decision": "No additional object from P56; preserve the unavailable physical right corner.",
+      "certainty_and_limits": "high for existing-front identity",
+      "inspection_crop": "visual-b/new_000090_p056.png",
+      "inspection_crop_original_bounds_xyxy": [
+        519,
+        449,
+        722,
+        576
+      ],
+      "label_edit_applied": false
+    },
+    {
+      "case_id": "new_000090:p57",
+      "image_id": "new_000090",
+      "prediction_index_zero_based": 56,
+      "prediction_number_one_based": 57,
+      "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "raw_prediction": {
+        "bbox_xyxy": [
+          1204.20361328125,
+          648.901123046875,
+          1280.0,
+          706.2542724609375
+        ],
+        "class_id": 0,
+        "confidence": 0.15627224743366241,
+        "keypoints": [
+          [
+            1219.60791015625,
+            699.0218505859375,
+            0.7857125997543335
+          ],
+          [
+            1280.0,
+            670.883056640625,
+            0.885762095451355
+          ]
+        ]
+      },
+      "scorer_classification_not_visual_truth": "other_extra",
+      "reference_rows_one_based_context": [],
+      "visual_category": "occluder_or_background",
+      "observation": "This box is in the far bottom-right outside the rack, over a blue object and surrounding scene background. No white cassette front or its target corner pair is visible there.",
+      "decision": "Reject as a cassette-front annotation.",
+      "certainty_and_limits": "high for non-cassette background/object",
+      "inspection_crop": "visual-b/new_000090_p057.png",
+      "inspection_crop_original_bounds_xyxy": [
+        1154,
+        603,
+        1280,
+        720
+      ],
+      "label_edit_applied": false
+    }
+  ],
+  "limits": [
+    "These judgments concern specific existing development-validation pixels, not independent test performance or physical accuracy.",
+    "The two suggested new fragments would change the reference; any re-score must be separately versioned as reference amendment, not reported as model improvement.",
+    "011:61 and055:26 legacy uncertainty remains. A new thin top-border candidate055:p28 is also unresolved.",
+    "Same-front classifications do not newly certify all existing box extents or endpoint labels."
+  ]
+}

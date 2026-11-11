@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-candidate-folder-inference-check",
+  "report_date": "2026-11-11",
+  "execution": {
+    "command": [
+      "/workspace/scratch/b2268c0c3452/work/runtime/venv/bin/python",
+      "scripts/predict_pose_folder.py",
+      "--input",
+      "/workspace/scratch/b2268c0c3452/work/candidate-inputs",
+      "--output",
+      "/workspace/scratch/b2268c0c3452/work/candidate-folder-smoke",
+      "--checkpoint-manifest",
+      "/workspace/scratch/b2268c0c3452/work/seed46-return/candidate/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.25",
+      "--nms-iou",
+      "0.70",
+      "--endpoint-conf",
+      "0.50"
+    ],
+    "cwd": "/workspace/scratch/b2268c0c3452/dl",
+    "exit_code": 0,
+    "elapsed_seconds": 6.07408881187439,
+    "stdout": "candidate-smoke.stdout.log",
+    "stderr": "candidate-smoke.stderr.log"
+  },
+  "stdout": "complete: new_000007.png (54 predictions)\ncomplete: new_000146.png (0 predictions)\n{\n  \"status\": \"complete\",\n  \"output_directory\": \"/workspace/scratch/b2268c0c3452/work/candidate-folder-smoke\",\n  \"selected_images\": 2,\n  \"succeeded_images\": 2,\n  \"failed_images\": 0,\n  \"prediction_count\": 54\n}\n",
+  "stderr": "",
+  "run_status": {
+    "schema_version": 1,
+    "status": "complete",
+    "exit_code": 0,
+    "created_at_utc": "2026-11-11T06:55:32.582240+00:00",
+    "input_directory": "/workspace/scratch/b2268c0c3452/work/candidate-inputs",
+    "output_directory": "/workspace/scratch/b2268c0c3452/work/candidate-folder-smoke",
+    "weights": "/workspace/scratch/b2268c0c3452/work/seed46-return/candidate/fit/weights/last.pt",
+    "model_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+    "weights_verified": true,
+    "reference_model_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "reference_model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+    "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "checkpoint_manifest": "/workspace/scratch/b2268c0c3452/work/seed46-return/candidate/checkpoint-manifest.json",
+    "checkpoint_identity": {
+      "kind": "baomai-trained-checkpoint",
+      "purpose": "paired-finetune",
+      "arm": "candidate",
+      "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+      "checkpoint_size_bytes": 21704814,
+      "training_receipt_sha256": "da9e4c9614ac0fd198fcc3124745de855047dd8cd78a0d84344692b73bc3e49d",
+      "staging_manifest_sha256": "12f6cf212600e1e2a27fb1d434b34c490f77a290fe5cb78d26b1442423d11616",
+      "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+      "completed_epochs": 30,
+      "selection": "final_epoch",
+      "recipe_id": "reviewed-annotations-seed46-v1",
+      "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+      "manifest_sha256": "c5f07c4445a7b33a679fd4fc896aaf9643d81b4f72d8ca8e4e7179cb0bc691e8"
+    },
+    "checkpoint_verification": {
+      "bundle_bytes_and_recorded_completion": true,
+      "repository_metadata": true,
+      "reference_image_and_label_bytes": false,
+      "initial_checkpoint_bytes": false
+    },
+    "selected_images": 2,
+    "succeeded_images": 2,
+    "failed_images": 0,
+    "unprocessed_images": 0,
+    "prediction_count": 54,
+    "displayed_endpoints": 108,
+    "ground_truth_available": false,
+    "source": {
+      "revision": "fff2c5c6490fc35f70ce105c13566b4fb28aabf8",
+      "working_tree_status": "?? docs/readiness-2026-11-11.md\n?? results/verification/baomai-readiness-20261111/",
+      "files_sha256": {
+        "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+        "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+        "scripts/pose_checkpoint.py": "8c92a452f632aec92bfd51bc8fbf9fc745a09978d840cdb294af0a37dea8696f",
+        "scripts/predict_pose_folder.py": "239c3b1dd7f5fefc46b8b102277d86aec53d7e92dff99b890eaccfd74adfdefb"
+      }
+    },
+    "runtime": {
+      "python": "3.12.14",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "device_requested": "cpu",
+      "torch": "2.10.0+cpu",
+      "torch_cuda": null,
+      "torch_threads_requested": 4,
+      "ultralytics": "8.4.182",
+      "loaded_kpt_shape": [
+        2,
+        3
+      ],
+      "packages": {
+        "torchvision": "0.25.0+cpu",
+        "numpy": "2.5.4",
+        "Pillow": "13.0.0",
+        "opencv-python": "5.0.0.93"
+      },
+      "device_actual": "cpu",
+      "backend_end2end": false,
+      "backend_fp16": false,
+      "torch_threads": 4
+    },
+    "inference": {
+      "imgsz": 1280,
+      "rect": true,
+      "batch": 1,
+      "nms": true,
+      "iou": 0.7,
+      "max_det": 300,
+      "quantize": 32,
+      "save": false,
+      "save_txt": false,
+      "save_crop": false,
+      "show": false,
+      "verbose": false,
+      "conf": 0.25
+    },
+    "endpoint_confidence": 0.5,
+    "coordinate_system": "Pixels of the EXIF-oriented decoded image, before model resizing; overlays use these same pixels.",
+    "prediction_scope": "Ultralytics postprocessed boxes/keypoints, including framework clipping; endpoint confidence is not reference visibility.",
+    "warmup": "one explicit zero-image prediction excluded from timings",
+    "timing_scope": "predict call excludes file decoding, overlay rendering and serialization",
+    "finished_at_utc": "2026-11-11T06:55:37.884951+00:00"
+  },
+  "runtime_setup": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "executable": "/workspace/scratch/b2268c0c3452/work/runtime/venv/bin/python",
+    "packages": {
+      "torch": "2.10.0+cpu",
+      "torchvision": "0.25.0+cpu",
+      "ultralytics": "8.4.182",
+      "numpy": "2.5.4",
+      "Pillow": "13.0.0",
+      "opencv-python": "5.0.0.93"
+    },
+    "torch_cuda": null,
+    "cuda_available": false,
+    "cpu_tensor_sum": 6
+  },
+  "gpu_return": {
+    "revision": "8e8bb99cabcb44ed0ec0acd14db911aa44013fd8",
+    "path": "results/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip",
+    "size_bytes": 39776456,
+    "sha256": "df53683ccf6f266a605b2844f42a98e808f75686cfab09f14d680c9d061e8a91",
+    "archive_crc_and_regular_member_paths_checked": true
+  },
+  "saved_prediction_comparison": {
+    "evaluation_zip_sha256": "3dfe3415841b47a605e2fd4b9e490b2c12b348b0014c6c2a8c78c06f323ffc1a",
+    "saved_member": "evidence/seed-46/m2/predictions.jsonl",
+    "saved_member_sha256": "25b5eabecbffa13c1d01d62194dfbdebdc0fcdf914f0661123c23347c4060ee9",
+    "comparison_scope": "Same image identity and ordered raw class_id/bbox_xyxy/confidence/keypoints; display flags and execution timing excluded. No rematching or tolerance-based equality.",
+    "images": [
+      {
+        "image": "new_000007.png",
+        "image_sha256_matches": true,
+        "fresh_count": 54,
+        "saved_count": 54,
+        "raw_predictions_exactly_equal": true,
+        "class_ids_equal": true,
+        "max_bbox_coordinate_abs_diff_px": 0.0,
+        "max_detection_confidence_abs_diff": 0.0,
+        "max_corner_coordinate_abs_diff_px": 0.0,
+        "max_corner_euclidean_displacement_px": 0.0,
+        "max_endpoint_confidence_abs_diff": 0.0,
+        "predictions_with_any_changed_raw_field": 0
+      },
+      {
+        "image": "new_000146.png",
+        "image_sha256_matches": true,
+        "fresh_count": 0,
+        "saved_count": 0,
+        "raw_predictions_exactly_equal": true,
+        "class_ids_equal": true,
+        "max_bbox_coordinate_abs_diff_px": 0,
+        "max_detection_confidence_abs_diff": 0,
+        "max_corner_coordinate_abs_diff_px": 0,
+        "max_corner_euclidean_displacement_px": 0,
+        "max_endpoint_confidence_abs_diff": 0,
+        "predictions_with_any_changed_raw_field": 0
+      }
+    ],
+    "all_image_hashes_match": true,
+    "all_raw_predictions_exactly_equal": true
+  },
+  "overlay_review": {
+    "inspection": "Both rendered overlays viewed by reviewer; dimensions and empty-image pixel equality checked programmatically.",
+    "images": [
+      {
+        "image": "new_000007.png",
+        "input_size": [
+          1280,
+          720
+        ],
+        "overlay_size": [
+          1280,
+          720
+        ],
+        "overlay_sha256": "e2b25f034770093950455df1dfd4cbd48b95d9b1bce40dd49d41a8fe5b4a2a05",
+        "rgb_pixels_equal_to_input": false,
+        "visual_observation": "Dense original scene preserved; cyan boxes, green/pink corner slots, orange segments and compact IDs visible; top boundary remains clipped as in original. Crowded annotations do not establish all objects are correct."
+      },
+      {
+        "image": "new_000146.png",
+        "input_size": [
+          1280,
+          720
+        ],
+        "overlay_size": [
+          1280,
+          720
+        ],
+        "overlay_sha256": "aa2656aa10cf50c176a5cc98e296ef8e51a9fce8fee2c81a881b99d1cd8f7818",
+        "rgb_pixels_equal_to_input": true,
+        "visual_observation": "Empty-reference scene preserved without boxes, keypoints, lines or numbers."
+      }
+    ]
+  },
+  "fresh_predictions": {
+    "path": "folder-predictions.jsonl",
+    "sha256": "42c94fdc1d5657022288678bc4f18c3e1f786c7a871f4834a5a8c8f1296bb85e"
+  },
+  "focused_checks": {
+    "command": [
+      "python3",
+      "scripts/check_predict_pose_folder.py"
+    ],
+    "revision": "fff2c5c6490fc35f70ce105c13566b4fb28aabf8",
+    "tests": 16,
+    "exit_code": 0,
+    "scope": "Executed by the independent code reviewer on the recovered script bytes; temporary synthetic checkpoint fixtures and a substituted inference adapter."
+  },
+  "limits": [
+    "The real-model check covers only a dense and a reference-empty image. It verifies candidate selection and parity with saved predictions, not new model accuracy.",
+    "The source record includes concurrent untracked documentation. Executed script hashes match fff2c5c and the delivered script bytes; this is not described as a clean-checkout run.",
+    "The six-second complete process duration includes startup and output work and is not a deployment latency benchmark.",
+    "Original training image/label and initial-checkpoint payloads were not reverified for candidate-only inference; the selected completed bundle was verified.",
+    "Overlay pixels remain reproducible outputs from the original images and selected checkpoint. Only text prediction and execution evidence is added here."
+  ]
+}
