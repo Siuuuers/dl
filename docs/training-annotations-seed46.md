@@ -1,4 +1,10 @@
-# Confirm the annotation intervention with seed 46
+# Seed 46 annotation confirmation: completed
+
+**Completed 2026-11-11 (Asia/Hong_Kong).** [PR35](https://github.com/Siuuuers/dl/pull/35) returned both completed A100 training arms. Fresh inference, both-reference scoring, independent checks and complete saved-prediction replay are available in the [confirmation report](annotation-confirmation-2026-11-11.md) and [evidence package](../results/evaluation/baomai-annotations-seed46-20261111/README.md). At confidence 0.25 on the PR30 reference, control/candidate miss counts tie at **24/24** and extras improve **58→52**. The candidate improves the seven chosen primary headline measures against epoch173, while localization changes against control remain mixed. Keep epoch173 as the working default and the candidate as an experimental checkpoint pending the [focused review](../results/evaluation/baomai-annotations-seed46-20261111/review-queue.md). No additional GPU run is requested.
+
+The protocol below is retained as the historical preparation and reproduction record. Its GPU instructions are not a new run request. Actual seed46 training used A100; PR35 reports a later L4 session that restored and packaged completed arms using the Drive persistence added in [PR34](https://github.com/Siuuuers/dl/pull/34).
+
+## Original preparation
 
 **Run one fresh seed 46 control/candidate pair with the same annotations.** The [seed 46 GPU notebook](../notebooks/baomai_reviewed_annotations_seed46.ipynb) verifies the inputs, runs a short resource trial, trains both arms and returns `baomai-reviewed-annotations-seed46-results.zip`. No seed 46 training or accuracy result is available at this preparation stage.
 
@@ -70,4 +76,4 @@ The wrapper retains strict candidate, recipe, checkpoint, source and chronology 
 
 The [verification record](../results/verification/baomai-annotations-seed46-20261111/verification.json) binds the delivered notebook to the published implementation. All **70 focused compatibility and integrity checks pass**. All seven code cells and the embedded preflight compile; the exact preflight has executed successfully on all **157 original PNGs** and the original epoch173 checkpoint. An independent read-only review confirms that seed46 changes only the seed and preserves the paired source/runtime/recipe guards. The earlier preparation and review records retain their pre-pin state; the final verification resolves that pin.
 
-This is a prepared handoff. No seed46 GPU training, model inference or full Colab execution has been performed here.
+At the preparation stage, no seed46 GPU training, model inference or full Colab execution had been performed here. The completed returned-run evaluation is now linked at the top of this document; the preparation verification remains historical evidence.

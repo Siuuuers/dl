@@ -1,0 +1,2833 @@
+{
+  "schema_version": 1,
+  "kind": "seed46-targeted-error-review-queue",
+  "status": "computed_from_stored_evidence_no_label_changes",
+  "reference_id": "baomai-visible-front-2026-11-10",
+  "source_revision": "e4bb7019bcffd80b08cab28c4877dd562ee1d796",
+  "settings": {
+    "box_confidence": 0.25,
+    "matching_iou": 0.5,
+    "endpoint_confidence": 0.5,
+    "diagnostic_pair_radius_px": 10,
+    "corner_coordinate_system": "original image pixels",
+    "miss_definition": "No one-to-one reference match under the unchanged official scorer"
+  },
+  "inputs": {
+    "seed45_summary": {
+      "path": "seed45/evidence/seed-45/comparison-original-and-pr30.json",
+      "sha256": "3cefe58ce12e43e88d2ade42e428b3b2b6c7c7500dec65805d8bd66c679f75ed",
+      "size_bytes": 1225641
+    },
+    "seed46_summary": {
+      "path": "evidence/seed-46/comparison-original-and-pr30.json",
+      "sha256": "a0d74aebe68fb0c5b1e7864df53ddfa8894dd1d2484fbd77d5333b4af0afb651",
+      "size_bytes": 1225610
+    },
+    "case_details": {
+      "path": "independent/seed46-case-details.json",
+      "sha256": "dbbc68c42f6f23e81f7045737d8b87d592cde846ea8114d11009b34b5fd8e192",
+      "size_bytes": 1567346
+    },
+    "reference_manifest": {
+      "path": "data/references/visible-front-2026-11-10/manifest.json",
+      "sha256": "edf2d01624b96d0a4e652b1fa1fdfbc861c453f825343c840972493a908e6ed2",
+      "size_bytes": 63798
+    },
+    "historical_diagnosis": {
+      "path": "docs/persistent-failure-review-2026-11-10.json",
+      "sha256": "67f727b5ce9fe21d5094fe50de0a4f6aded220b056640335255268975ffc9544",
+      "size_bytes": 86594
+    },
+    "reference_amendment_context": {
+      "path": "docs/reference-amendment-2026-11-10.md",
+      "sha256": "f7f3ee5c14132869e0821a421e8d624e9603ef6125b8f06d2a814f78e998daee",
+      "size_bytes": 14801
+    },
+    "generator": {
+      "path": "review-queue/generate_review_queue.py",
+      "sha256": "a13daa624f789cc1b2d3004cc7083e3ad65416b9fc3469ae795dcf7f699926fb"
+    }
+  },
+  "variants": {
+    "m0": {
+      "summary_seed": 46,
+      "model_id": "m0",
+      "model_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e"
+    },
+    "seed45_control": {
+      "summary_seed": 45,
+      "model_id": "m1",
+      "model_sha256": "111eb3edd8723fd7eccf5e9392e414cbefc64cf4e0dc2191a508d2f6bfa6c0cf"
+    },
+    "seed45_candidate": {
+      "summary_seed": 45,
+      "model_id": "m2",
+      "model_sha256": "47cb4fc84260fdc0fa0c707e046dfb57e85702b63ce1a1798181a110884492f1"
+    },
+    "seed46_control": {
+      "summary_seed": 46,
+      "model_id": "m1",
+      "model_sha256": "ad99cff1bd8f252f7851fec371a9d5878244ca66a3b1865e98ae16687c22ec33"
+    },
+    "seed46_candidate": {
+      "summary_seed": 46,
+      "model_id": "m2",
+      "model_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1"
+    }
+  },
+  "variant_order": [
+    "m0",
+    "seed45_control",
+    "seed45_candidate",
+    "seed46_control",
+    "seed46_candidate"
+  ],
+  "ranking": "Persistent current misses first; then variable misses by number of missed variants; then separate transition diagnostics. Previously unresolved rows precede other rows within equal priority.",
+  "counts": {
+    "unique_queue_objects": 26,
+    "current_primary_candidate_misses": 24,
+    "persistent_across_five_variants": 21,
+    "variable_current_misses": 3,
+    "previous_unresolved_rows_total": 19,
+    "previous_unresolved_rows_still_missed": 19,
+    "previous_unresolved_rows_missed_by_all_five": 18,
+    "current_misses_by_previous_disposition": {
+      "amended": 2,
+      "not_in_previous_33_row_queue": 3,
+      "retained_unresolved": 19
+    },
+    "current_misses_by_locatable_corners": {
+      "0": 8,
+      "1": 10,
+      "2": 6
+    },
+    "additional_unique_diagnostic_objects": 2,
+    "primary_detection_loss_records": 1
+  },
+  "limits": [
+    "Five related model variants are repeated comparisons on the same references, not five independent trials or confirmations of label truth.",
+    "The same baseline is counted once after verifying identical primary missed-row sets in both seed summaries.",
+    "The older 33-row diagnosis was assembled from different historical seed43/44 model variants. Its observations are context only; its old persistence flags are not reused here.",
+    "The source PNGs and reference bytes are hash-verified. This queue generator performs no new visual adjudication and changes no labels.",
+    "Prior unresolved labels remain unresolved. Persistent benchmark misses can involve reference identity or box-extent uncertainty.",
+    "Seed45 used L4 and seed46 used A100 for training. Each control/candidate pair is matched internally; cross-seed changes are not attributable to seed alone.",
+    "These validation views may be correlated and have been repeatedly inspected. They do not establish independent-scene reliability.",
+    "10 px is a provisional Euclidean image-space tolerance per actual corner, not physical-unit or deployment certification; missing objects and one/zero-corner references are separate populations."
+  ],
+  "recommendation": "Keep epoch173 as the working default and stop seed searching. Use this queue for targeted supervision and error review: carry unresolved reference issues forward, inspect the small set of changed detections and duplicate/assignment behavior, and audit analogous training examples only for a specific remaining policy inconsistency. Any next intervention must be separately identified and justified from pixels. Do not request a seed47 sweep or alter reference labels to make predictions score better.",
+  "rows": [
+    {
+      "object_id": "new_000007:7",
+      "image_id": "new_000007",
+      "reference_row_one_based": 7,
+      "original_row_one_based": 7,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          720.3100032,
+          0.0,
+          801.0300032,
+          2.4500016000000002
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 0
+      },
+      "reference_raw_label": "0 0.59427344 0.00170139 0.06306250 0.00340278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000007.png",
+        "sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000007.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000007.txt",
+        "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000007.txt#L7"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000007.txt",
+        "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000007",
+        "source_row_one_based": 7,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "Only a 2.45 px top-edge strip is represented, overlapping the top-truncated front assigned to row8. The original pixels do not establish whether this strip is a separate physical front or part of that front/lip. Preserve it rather than delete a thin target or infer a missing lower corner.",
+        "unresolved_issues": [
+          "Distinct-front identity and exact extent at the upper image boundary remain unresolved."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "A roughly 2.45-pixel-high reference strip touches the top image boundary above a stack. No full lower-front corner is observable in that strip. The overlapping proposal spans a much taller visible face below the strip.",
+        "next_action": "Review the identity/inclusion of the top sliver and its relationship to the face below; neither the proposal nor the sliver establishes a usable two-corner target.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 1
+    },
+    {
+      "object_id": "new_000007:14",
+      "image_id": "new_000007",
+      "reference_row_one_based": 14,
+      "original_row_one_based": 14,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          872.0799999999999,
+          3.5999999999786203e-06,
+          948.7500032,
+          2.4900012
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 0
+      },
+      "reference_raw_label": "0 0.71126172 0.00172917 0.05989844 0.00345833 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000007.png",
+        "sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000007.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000007.txt",
+        "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000007.txt#L14"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000007.txt",
+        "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000007",
+        "source_row_one_based": 14,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The 2.49 px strip lies at the image boundary above/within the same stack region as row15. No separating physical front boundary can be certified from these few blurred rows of pixels. Keep the row and both missing-point triplets.",
+        "unresolved_issues": [
+          "Possible separate fragment versus overlap with row15 remains unresolved; size is not a deletion criterion."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "A roughly 2.49-pixel-high reference strip touches the top edge in the rightmost visible stack. The maximum-overlap M0 proposal is mainly in the neighboring stack to the left, with only incidental overlap.",
+        "next_action": "Do not interpret the neighboring proposal as this object or score its corners against this row. Adjudicate the top-border sliver under the existing visible-front inclusion rule.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 2
+    },
+    {
+      "object_id": "new_000008:36",
+      "image_id": "new_000008",
+      "reference_row_one_based": 36,
+      "original_row_one_based": 36,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          1026.0,
+          699.0000012,
+          1124.0,
+          720.0000036
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 0
+      },
+      "reference_raw_label": "0 0.83984375 0.98541667 0.07656250 0.02916667 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000008.png",
+        "sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000008.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000008.txt",
+        "sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000008.txt#L36"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000008.txt",
+        "sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000008",
+        "source_row_one_based": 36,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "At the lower frame edge a pale partial surface lies beneath slotted upper material, adjacent to a dark rack divider. The source rectangle also covers rack/upper material. Both actual lower corners are outside or unreliable.",
+        "unresolved_issues": [
+          "A precise positive-area front extent and its separation from neighboring roof/rack material remain unresolved; retain rather than turn the image into a negative."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "The reference box meets the bottom image boundary. The crop shows ridged/top or tray-like structure and a narrow bright lower region, without visible lower-front corners. No primary M0 prediction overlaps the row; the reported max-IoU proposal has IoU zero and is elsewhere.",
+        "next_action": "Adjudicate whether a visible cassette front is actually identifiable in this bottom sliver. Do not use the unrelated zero-IoU proposal as a same-object detection or automatically delete the row.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 3
+    },
+    {
+      "object_id": "new_000009:8",
+      "image_id": "new_000009",
+      "reference_row_one_based": 8,
+      "original_row_one_based": 8,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          618.9299968,
+          3.6000000006031208e-06,
+          724.72,
+          9.6000012
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            721.32,
+            1.4500008,
+            2
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.52486328 0.00666667 0.08264844 0.01333333 0.00000000 0.00000000 0 0.56353125 0.00201389 2",
+      "image": {
+        "path": "data/images/val/new_000009.png",
+        "sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000009.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000009.txt",
+        "sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000009.txt#L8"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000009.txt",
+        "sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000009",
+        "source_row_one_based": 8,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "A top-clipped fragment is present with a plausible right lower junction around x721,y1.5 and no locatable left lower corner. The adjacent front below is separate.",
+        "unresolved_issues": [
+          "Softness and truncation leave exact upper-fragment extent uncertain; preserve current independent visibility states."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "The reference is a top-edge strip, with a right point about 1.45 pixels below the image boundary. The larger overlapping M0 proposal follows the front below, whose two lower corners are visible and represented by neighboring row9.",
+        "next_action": "Retain the distinction between the clipped strip and row9. This proposal cannot certify a corner error for row8. Review strip inclusion/extent without changing the completed reference.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 4
+    },
+    {
+      "object_id": "new_000009:53",
+      "image_id": "new_000009",
+      "reference_row_one_based": 53,
+      "original_row_one_based": 53,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          594.9999936,
+          487.999998,
+          617.9999936,
+          509.0000004
+        ],
+        "keypoints_xy_visibility": [
+          [
+            599.0,
+            503.99999999999994,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.47382812 0.69236111 0.01796875 0.02916667 0.46796875 0.70000000 2 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000009.png",
+        "sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000009.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000009.txt",
+        "sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000009.txt#L53"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000009.txt",
+        "sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000009",
+        "source_row_one_based": 53,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The lowest narrow front immediately left of the gripper is visible; its existing left lower corner around x599,y504 is plausible. The right side disappears behind the gripper. No additional front is demonstrated in this examined strip.",
+        "unresolved_issues": [
+          "The boundary against the rack and gripper is soft, and the bottom border differs only by a few uncertain pixels; no material exact amendment selected."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "foreground_occlusion",
+        "observation": "A narrow left fragment of a cassette front is exposed beside the white gripper. The reference keeps the left corner and leaves the right corner unlocatable. The M0 proposal starts near that fragment but extends across the gripper, with its right point on the foreground tool.",
+        "next_action": "Keep the unsupported right corner absent; review visible-front extent. This is a concrete occlusion-related extent/endpoint problem, not evidence that the hidden right corner can be filled from the prediction.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 5
+    },
+    {
+      "object_id": "new_000009:56",
+      "image_id": "new_000009",
+      "reference_row_one_based": 56,
+      "original_row_one_based": 56,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          677.0000064,
+          470.99999879999996,
+          756.0000064000001,
+          512.9999964
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 0
+      },
+      "reference_raw_label": "0 0.55976563 0.68333333 0.06171875 0.05833333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000009.png",
+        "sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000009.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000009.txt",
+        "sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000009.txt#L56"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000009.txt",
+        "sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000009",
+        "source_row_one_based": 56,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "Deletion would assert an unsupported non-target identity. With missed objects prioritized, preserve the source annotation as explicitly unresolved instead of deleting a possibly valid target.",
+        "unresolved_issues": [
+          "A tighter box around the pale patch would still require unestablished front-surface identity; do not convert a visual fragment into accepted ground truth by drawing alone.",
+          "This is a completed review disposition, not a certified positive label. The bounded revised reference must disclose that this legacy annotation remains unresolved. Do not describe all 33 reviewed cases as fully corrected or adjudicated targets, and do not label this image a negative."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "foreground_occlusion",
+        "observation": "The reference surrounds the central gripper opening and substantial foreground tool pixels. No distinct cassette lower-front boundary or lower corner can be confidently identified within it from the original image. All primary M0 boxes have zero overlap; the arbitrary zero-IoU proposal is unrelated.",
+        "next_action": "Require instance-inclusion/identity adjudication before treating this as a genuine missed cassette or background. Preserve both missing corners and the frozen record.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 6
+    },
+    {
+      "object_id": "new_000011:15",
+      "image_id": "new_000011",
+      "reference_row_one_based": 15,
+      "original_row_one_based": 15,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          655.7700032000001,
+          0.0,
+          753.0100032,
+          10.440000000000001
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 0
+      },
+      "reference_raw_label": "0 0.55030469 0.00725000 0.07596875 0.01450000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000011.png",
+        "sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000011.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000011.txt",
+        "sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000011.txt#L15"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000011.txt",
+        "sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000011",
+        "source_row_one_based": 15,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The top-cropped gray/light strip overlaps the larger front assigned to row16. The raw crop does not provide a decisive separating contour identifying an additional physical front.",
+        "unresolved_issues": [
+          "Distinct identity versus roof/lip material of the lower front remains unresolved; retain both missing endpoints without inferring them."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "The zero-corner reference is a shallow strip along the top image boundary. The high-confidence overlapping proposal instead spans the larger front below, also described by row16.",
+        "next_action": "Review distinct-object identity and inclusion of the clipped top strip. Do not call the row16 proposal a correct row15 detection solely from shared x extent.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 7
+    },
+    {
+      "object_id": "new_000053:1",
+      "image_id": "new_000053",
+      "reference_row_one_based": 1,
+      "original_row_one_based": 1,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          640.7999936,
+          0.0,
+          772.4200000000001,
+          8.7099984
+        ],
+        "keypoints_xy_visibility": [
+          [
+            640.8,
+            8.3299968,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.55203906 0.00604861 0.10282813 0.01209722 0.50062500 0.01156944 2 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000053.png",
+        "sha256": "dfc3621b0387b0da774001334c12c65574ae0084131b154d2f6216e420573d72",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000053.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000053.txt",
+        "sha256": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000053.txt#L1"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000053.txt",
+        "sha256": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000053",
+        "source_row_one_based": 1,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The slanted top-clipped front has a plausible visible left lower corner near x641,y8.3; the other actual lower corner is beyond the top image boundary. Retain this asymmetric visibility.",
+        "unresolved_issues": [
+          "The exact right extent of the progressively disappearing sliver is uncertain, and a brightness boundary alone does not establish a physical cutoff."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "The referenced strip is cut by the top edge on a tilted stack. Only its left reference corner is locatable. The M0 proposal covers the fuller face beneath the strip; row2 describes that lower face.",
+        "next_action": "Preserve missing right corner; adjudicate border-strip extent and row1/row2 identity before interpreting overlap as localization error.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 8
+    },
+    {
+      "object_id": "new_000055:26",
+      "image_id": "new_000055",
+      "reference_row_one_based": 26,
+      "original_row_one_based": 26,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          458.00000000000006,
+          602.6700023999999,
+          501.6499968,
+          613.0000008000001
+        ],
+        "keypoints_xy_visibility": [
+          [
+            460.0,
+            610.9999992,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.37486328 0.84421528 0.03410156 0.01434722 0.35937500 0.84861111 2 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000055.png",
+        "sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000055.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000055.txt",
+        "sha256": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000055.txt#L26"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000055.txt",
+        "sha256": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000055",
+        "source_row_one_based": 26,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The lowest existing front remains identifiable behind the hand, and its left lower corner near x460,y611 is plausible. The source box encloses only a short lower-left strip, although contiguous front material visibly extends above and to the right. This is an under-sized box for the existing instance, not a newly missing object.",
+        "unresolved_issues": [
+          "The upper gray face/lip transition is approximately y583-595, and the visible rightmost extent near the hand depends on that transition (roughly x545-570). No precise paired top/right replacement is selected; right endpoint stays missing."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "foreground_occlusion",
+        "observation": "A hand covers the right side of the lowest visible cassette. The frozen box retains a very short lower-left strip, while the M0 box spans a substantially larger visible/occluded region; its right endpoint lies over the hand.",
+        "next_action": "Retain the right missing-point state. Review whether the frozen box omits supported visible front above the strip and where the physical front boundary ends; do not accept the proposal wholesale.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 9
+    },
+    {
+      "object_id": "new_000056:4",
+      "image_id": "new_000056",
+      "reference_row_one_based": 4,
+      "original_row_one_based": 4,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          400.25999360000003,
+          342.79999919999995,
+          561.1199999999999,
+          397.2499992
+        ],
+        "keypoints_xy_visibility": [
+          [
+            402.0600064,
+            396.1499976,
+            2
+          ],
+          [
+            555.8099968,
+            396.24999840000004,
+            2
+          ]
+        ],
+        "locatable_corners": 2
+      },
+      "reference_raw_label": "0 0.37553906 0.51392361 0.12567188 0.07562500 0.31410938 0.55020833 2 0.43422656 0.55034722 2",
+      "image": {
+        "path": "data/images/val/new_000056.png",
+        "sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000056.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000056.txt",
+        "sha256": "40a5932996a295d9e89a79a435e31cb5bdcbed0b230baf5bb700a644099fe7c7",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000056.txt#L4"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000056.txt",
+        "sha256": "65d4820136ea23e8be8e467a15c60e06831fe0b59d903b89e1f12d6b863a28e4"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000056",
+        "source_row_one_based": 4,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The exposed slotted roof, projecting lip and broad front have a stepped transition. The original top y342.8 includes roof material, but the local upper front-face extremum cannot be isolated confidently within the visible y361-367 transition. Keep the source row as unresolved after this review rather than select an arbitrary exact face/lip boundary.",
+        "unresolved_issues": [
+          "No exact top-edge amendment adjudicated. Keep the entire original row unchanged in this primary proposal.",
+          "The preserved source box is not thereby certified correct; the uncertainty is recorded independently of schema validity or model overlap."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "box_extent_disagreement",
+        "observation": "The top front in the middle stack is identifiable. A gray sloping upper region and projecting upper lip lie above the broad white region. The reference includes more of this upper span while the model begins lower and extends below the front. The image supports an extent disagreement; exact front/roof/rim boundary has not been adjudicated.",
+        "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+        "visual_review": "root_and_separate_assistant"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 10
+    },
+    {
+      "object_id": "new_000057:1",
+      "image_id": "new_000057",
+      "reference_row_one_based": 1,
+      "original_row_one_based": 1,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          766.78,
+          3.5999999999786203e-06,
+          872.6400064000001,
+          9.260002799999999
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 0
+      },
+      "reference_raw_label": "0 0.64039844 0.00643056 0.08270313 0.01286111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000057.png",
+        "sha256": "39fd900aa786267bd296630fe8ff49f76ce3094268246a65aaa2542fe4e79e11",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000057.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000057.txt",
+        "sha256": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000057.txt#L1"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000057.txt",
+        "sha256": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000057",
+        "source_row_one_based": 1,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "A small upper-image strip lies above/within the top-truncated front assigned to row2. The image shows a mixture of pale material and gray upper band but no decisive independent front boundary for this row.",
+        "unresolved_issues": [
+          "Distinct fragment identity and extent remain unresolved; no deletion or inferred corners justified."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "The reference is a shallow top-border strip with both corners unlocatable. The overlap proposal spans the taller face below; row2 represents a visible front with two corners near y=14-21.",
+        "next_action": "Separate top-strip inclusion from neighboring-face localization. Neither low IoU nor the model confidence establishes the correct instance boundary.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 11
+    },
+    {
+      "object_id": "new_000059:1",
+      "image_id": "new_000059",
+      "reference_row_one_based": 1,
+      "original_row_one_based": 1,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          971.1299968000001,
+          0.0,
+          1156.3499904,
+          7.2200016
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 0
+      },
+      "reference_raw_label": "0 0.83104687 0.00501389 0.14470312 0.01002778 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000059.png",
+        "sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000059.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000059.txt",
+        "sha256": "60e6866fda66ad0d385094c32fd41f19eb451c5a16365b41da77cf5f0e01ade4",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000059.txt#L1"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000059.txt",
+        "sha256": "63c5c7813abc3ce8ca1398f78e00ac996d4e66b59e3794ef6c7651ac99353117"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000059",
+        "source_row_one_based": 1,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The 7.22 px upper-image strip overlaps the broad front assigned to row2, with gray material at the boundary. Its physical separation from that front or upper material is not settled by the original pixels.",
+        "unresolved_issues": [
+          "Retain the original row and zero corner sentinels until a distinct-front adjudication is possible; repeated stack structure is not sufficient evidence."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "The reference is a roughly 7.22-pixel top-edge strip. The maximum-overlap proposal spans the taller visible face below, represented by row2, while the strip has no locatable reference corners.",
+        "next_action": "Review top-edge inclusion/identity independently of the fuller neighboring-face prediction. Preserve both missing corners pending adjudication.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 12
+    },
+    {
+      "object_id": "new_000086:15",
+      "image_id": "new_000086",
+      "reference_row_one_based": 15,
+      "original_row_one_based": 15,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          646.8799935999999,
+          129.400002,
+          751.5899967999999,
+          142.9100028
+        ],
+        "keypoints_xy_visibility": [
+          [
+            653.6599936,
+            139.96000080000002,
+            2
+          ],
+          [
+            747.6899967999999,
+            139.2999984,
+            2
+          ]
+        ],
+        "locatable_corners": 2
+      },
+      "reference_raw_label": "0 0.54627734 0.18910417 0.08180469 0.01876389 0.51067187 0.19438889 2 0.58413281 0.19347222 2",
+      "image": {
+        "path": "data/images/val/new_000086.png",
+        "sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000086.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000086.txt",
+        "sha256": "43f8e85d4a0af9dec2aba6e9e5ed39b5f149e33f0f17ec0cc5286d20225783b1",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000086.txt#L15"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000086.txt",
+        "sha256": "1bcf8922954afe0b1bcfda7a28219e6ca8c25ad4fe8b010d111a45f538854598"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000086",
+        "source_row_one_based": 15,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "An identifiable interior front owns the existing lower corner pair. Its upper shaded transition is adjacent to the preceding cassette flange; original pixels support multiple plausible front-versus-projecting-material assignments between approximately y121 and y127. The source box retains only the lower band. Preserve it as explicitly unresolved.",
+        "unresolved_issues": [
+          "No exact top-edge amendment adjudicated. Keep the entire original row unchanged in this primary proposal.",
+          "The preserved source box is not thereby certified correct; the uncertainty is recorded independently of schema validity or model overlap."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "box_extent_disagreement",
+        "observation": "The interior front in the taller column is identifiable. The reference spans the lower part of one light cassette band, while the M0 proposal extends upward toward its shaded upper portion. Both lower-corner pairs lie on the same apparent lower contour. The boundary between front and upper material is not certified.",
+        "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+        "visual_review": "root_and_separate_assistant"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 13
+    },
+    {
+      "object_id": "new_000086:57",
+      "image_id": "new_000086",
+      "reference_row_one_based": 57,
+      "original_row_one_based": 57,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          495.61000320000005,
+          595.9000008,
+          573.2500032,
+          628.8899976
+        ],
+        "keypoints_xy_visibility": [
+          [
+            505.2499968,
+            616.95,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.41752344 0.85054861 0.06065625 0.04581944 0.39472656 0.85687500 2 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000086.png",
+        "sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000086.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000086.txt",
+        "sha256": "43f8e85d4a0af9dec2aba6e9e5ed39b5f149e33f0f17ec0cc5286d20225783b1",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000086.txt#L57"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000086.txt",
+        "sha256": "1bcf8922954afe0b1bcfda7a28219e6ca8c25ad4fe8b010d111a45f538854598"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000086",
+        "source_row_one_based": 57,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "A very narrow pale wedge is visible beside the hand and to the right of the adjacent lower cassette, near the existing left corner x505,y617. Most of the source rectangle covers the hand.",
+        "unresolved_issues": [
+          "Whether the wedge is a distinct cassette front and exactly where its front ends versus side/roof material remain unresolved. Preserve the row and hidden right corner; do not extend an inferred box under the hand or delete the row merely because tiny."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "foreground_occlusion",
+        "observation": "The hand obscures almost all of the referenced front immediately to the right of a lower cassette. A very narrow pale edge remains beside the hand, with the marked left corner nearby. The maximum-overlap prediction belongs mainly to the adjacent left cassette.",
+        "next_action": "Retain hidden right corner; review whether the small exposed strip supports a distinct cassette identity and the large hidden-side box extent. The neighbor proposal is not evidence of correct localization for this row.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 14
+    },
+    {
+      "object_id": "new_000088:15",
+      "image_id": "new_000088",
+      "reference_row_one_based": 15,
+      "original_row_one_based": 15,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          672.9600063999999,
+          133.0700004,
+          776.9700032000001,
+          147.8199996
+        ],
+        "keypoints_xy_visibility": [
+          [
+            679.2899968,
+            142.4299968,
+            2
+          ],
+          [
+            773.1799936,
+            145.26000000000002,
+            2
+          ]
+        ],
+        "locatable_corners": 2
+      },
+      "reference_raw_label": "0 0.56637891 0.19506250 0.08125781 0.02048611 0.53069531 0.19781944 2 0.60404687 0.20175000 2",
+      "image": {
+        "path": "data/images/val/new_000088.png",
+        "sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000088.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000088.txt",
+        "sha256": "6be98a964b6faf88345caf92b9efcb2d8c23eea054aaed7ab74f03717e5639ef",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000088.txt#L15"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000088.txt",
+        "sha256": "15503652de9a8bba58f3a92749adcaed1f6333be3694341f3adfd49c80600693"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000088",
+        "source_row_one_based": 15,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The interior front is identifiable, with the existing actual lower corners. Shadow under the preceding cassette blurs the boundary between the face and projecting material over approximately y123-130. The source top likely omits visible front material, but no single precise replacement is adjudicated.",
+        "unresolved_issues": [
+          "No exact top-edge amendment adjudicated. Keep the entire original row unchanged in this primary proposal.",
+          "The preserved source box is not thereby certified correct; the uncertainty is recorded independently of schema validity or model overlap."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "box_extent_disagreement",
+        "observation": "The interior front in the taller column is identifiable. The reference encloses its lower band whereas the M0 rectangle also covers shaded material above it. Neither an exact front-plane split nor the correctness of the model upper edge is established.",
+        "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+        "visual_review": "root_and_separate_assistant"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 15
+    },
+    {
+      "object_id": "new_000088:57",
+      "image_id": "new_000088",
+      "reference_row_one_based": 57,
+      "original_row_one_based": 57,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          498.53000320000007,
+          592.2300024,
+          577.2400064,
+          628.520004
+        ],
+        "keypoints_xy_visibility": [
+          [
+            507.9100032,
+            613.9300032,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.42022266 0.84774306 0.06149219 0.05040278 0.39680469 0.85268056 2 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000088.png",
+        "sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000088.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000088.txt",
+        "sha256": "6be98a964b6faf88345caf92b9efcb2d8c23eea054aaed7ab74f03717e5639ef",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000088.txt#L57"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000088.txt",
+        "sha256": "15503652de9a8bba58f3a92749adcaed1f6333be3694341f3adfd49c80600693"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000088",
+        "source_row_one_based": 57,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "A narrow pale wedge beside the hand resembles the fragment in new_000086, with a plausible existing left point near x508,y614. The source box extends far under the hand.",
+        "unresolved_issues": [
+          "Distinct front identity and observed front-versus-side extent remain unresolved. This related view is not independent confirmation; preserve the source row and missing right corner."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "foreground_occlusion",
+        "observation": "This closely resembles new_000086 row57: the hand covers the right compartment and only a narrow pale boundary next to it is visible. The overlapping M0 proposal belongs mainly to the lower left cassette, not the hand-covered reference.",
+        "next_action": "Review visible identity and hidden-side box extent alongside new_000086 row57. Keep right corner absent and avoid treating repeated scene content as independent evidence.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 16
+    },
+    {
+      "object_id": "new_000089:15",
+      "image_id": "new_000089",
+      "reference_row_one_based": 15,
+      "original_row_one_based": 15,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          674.7699968000001,
+          156.7100016,
+          783.5699968,
+          173.43
+        ],
+        "keypoints_xy_visibility": [
+          [
+            681.3299968,
+            168.34999679999999,
+            2
+          ],
+          [
+            776.04,
+            172.3600008,
+            2
+          ]
+        ],
+        "locatable_corners": 2
+      },
+      "reference_raw_label": "0 0.56966406 0.22926389 0.08500000 0.02322222 0.53228906 0.23381944 2 0.60628125 0.23938889 2",
+      "image": {
+        "path": "data/images/val/new_000089.png",
+        "sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000089.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000089.txt",
+        "sha256": "799e3e7301f4fd8f1b727dfc07e9a0891335a917c3994ebcc9d3786990219e7f",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000089.txt#L15"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000089.txt",
+        "sha256": "bd1101bdf69c50cf7bfee6d7a4e4b861c0e2d44307a02bc06fffa9d645e498ea"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000089",
+        "source_row_one_based": 15,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The same visible interior front is bounded below by the existing lower corners. The upper shaded band blends with the preceding flange over approximately y149-157; a precise upper front-face boundary is unresolved. Do not substitute a taller prediction rectangle.",
+        "unresolved_issues": [
+          "No exact top-edge amendment adjudicated. Keep the entire original row unchanged in this primary proposal.",
+          "The preserved source box is not thereby certified correct; the uncertainty is recorded independently of schema validity or model overlap."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "box_extent_disagreement",
+        "observation": "The interior front in the taller column is identifiable. The reference is vertically narrow, while the M0 proposal extends to the shaded upper region. The lower points align with the same apparent front boundary. Exact upper-plane semantics remain unresolved.",
+        "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+        "visual_review": "root_and_separate_assistant"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 17
+    },
+    {
+      "object_id": "new_000090:15",
+      "image_id": "new_000090",
+      "reference_row_one_based": 15,
+      "original_row_one_based": 15,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          672.2699968000001,
+          192.4899984,
+          791.0900032000001,
+          209.72000160000002
+        ],
+        "keypoints_xy_visibility": [
+          [
+            679.5500032,
+            202.8299976,
+            2
+          ],
+          [
+            786.7400064000001,
+            206.86000320000002,
+            2
+          ]
+        ],
+        "locatable_corners": 2
+      },
+      "reference_raw_label": "0 0.57162500 0.27931250 0.09282813 0.02393056 0.53089844 0.28170833 2 0.61464063 0.28730556 2",
+      "image": {
+        "path": "data/images/val/new_000090.png",
+        "sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000090.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000090.txt",
+        "sha256": "0b77064a84e23159fb42001114fa253296103092d5eaa3bc13cf38ac1cc4a859",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000090.txt#L15"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000090.txt",
+        "sha256": "3a4f524cd0731a75cbab6d73a0c49d45f6ce81f050e4dbd30e88dd8b5228233e"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000090",
+        "source_row_one_based": 15,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The interior front beneath the previous cassette has an extended shaded upper band. The possible face/lip transition spans approximately y183-193, and the source top lies near its lower end. Original pixels do not settle one exact upper extent confidently; preserve the row with this unresolved issue.",
+        "unresolved_issues": [
+          "No exact top-edge amendment adjudicated. Keep the entire original row unchanged in this primary proposal.",
+          "The preserved source box is not thereby certified correct; the uncertainty is recorded independently of schema validity or model overlap."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "box_extent_disagreement",
+        "observation": "The interior front in the taller column is identifiable. The reference covers the lower band and extends slightly farther left than the model; the model covers more upper material. Lower-corner pairs concern the same apparent front. Exact physical upper boundary remains unadjudicated.",
+        "next_action": "Prepare any accepted box amendment as a separately versioned reference proposal; review analogous training boxes independently. Do not copy the model rectangle.",
+        "visual_review": "root_and_separate_assistant"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 18
+    },
+    {
+      "object_id": "new_000008:33",
+      "image_id": "new_000008",
+      "reference_row_one_based": 33,
+      "original_row_one_based": 33,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          1211.84,
+          409.43999879999996,
+          1280.0,
+          456.0000012
+        ],
+        "keypoints_xy_visibility": [
+          [
+            1236.6899968,
+            450.0,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.97337500 0.60100000 0.05325000 0.06466667 0.96616406 0.62500000 2 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000008.png",
+        "sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000008.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000008.txt",
+        "sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000008.txt#L33"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000008.txt",
+        "sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07"
+      },
+      "previous_queue_disposition": "amended",
+      "previous_reference_review": {
+        "image_id": "new_000008",
+        "source_row_one_based": 33,
+        "disposition": "amended",
+        "edit_numbers_one_based": [
+          8
+        ],
+        "reason": "The source lower edge includes the next right-clipped front. The target face ends near y453-455; select y456 at the soft boundary.",
+        "unresolved_issues": []
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "A partially visible front is clipped by the right image edge; its left lower corner is visible. The maximum-overlap prediction is vertically lower and visually follows a lower neighboring face rather than the row33 corner.",
+        "next_action": "Retain right-side unlocatability. This is a missed clipped target at the tested matching settings, with neighboring-instance confusion; inspect predictions for adjacent rows34/35 before attributing corner error.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [
+        {
+          "image_id": "new_000008",
+          "action": "adjust_box",
+          "retained_source_row_one_based": 33,
+          "before": [
+            {
+              "source_row_one_based": 33,
+              "text": "0 0.97337500 0.61770833 0.05325000 0.09808333 0.96616406 0.62500000 2 0.00000000 0.00000000 0"
+            }
+          ],
+          "after_text": "0 0.97337500 0.60100000 0.05325000 0.06466667 0.96616406 0.62500000 2 0.00000000 0.00000000 0",
+          "reason": "The source lower edge includes the next right-clipped front. The target face ends near y453-455; select y456 at the soft boundary.",
+          "source_bbox_xyxy_px": [
+            1211.84,
+            409.43999880000007,
+            1280.0,
+            480.0599964
+          ],
+          "selected_bbox_xyxy_px": [
+            1211.84,
+            409.43999880000007,
+            1280.0,
+            456
+          ],
+          "corner_decision": "Preserve source corner tokens exactly.",
+          "residual_issues": [
+            "Only the specified defective edge is amended; retained edges are not certified policy-tight.",
+            "Soft image boundaries limit exact pixel certainty. Existing corner tokens remain unchanged."
+          ],
+          "revised_row_one_based": 33,
+          "review_status": "independent_assistant_and_root_original_pixel_review_accepted",
+          "estimated_transition_interval_px": [
+            452,
+            456
+          ]
+        }
+      ],
+      "new_label_adjudication": false,
+      "next_review_action": "Inspect the original image first, then official match/duplicate/threshold behavior. For amended rows, retain the accepted correction and its residual limitations. Any further annotation change needs its own image-supported version; model disagreement or agreement is not an annotation verdict.",
+      "rank": 19
+    },
+    {
+      "object_id": "new_000009:57",
+      "image_id": "new_000009",
+      "reference_row_one_based": 57,
+      "original_row_one_based": 57,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          810.0,
+          489.999996,
+          828.0000000000001,
+          520.9999992
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            824.0,
+            517.9999968,
+            2
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.63984375 0.70208333 0.01406250 0.04305556 0.00000000 0.00000000 0 0.64375000 0.71944444 2",
+      "image": {
+        "path": "data/images/val/new_000009.png",
+        "sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000009.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000009.txt",
+        "sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000009.txt#L57"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000009.txt",
+        "sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f"
+      },
+      "previous_queue_disposition": "amended",
+      "previous_reference_review": {
+        "image_id": "new_000009",
+        "source_row_one_based": 57,
+        "disposition": "amended",
+        "edit_numbers_one_based": [
+          9
+        ],
+        "reason": "The original left extent covers the gripper. The identifiable exposed front fragment is beside its right edge, approximately x810-824; do not infer the hidden extent.",
+        "unresolved_issues": []
+      },
+      "previous_diagnosis": {
+        "group": "foreground_occlusion",
+        "observation": "The gripper hides most of the referenced lower-right cassette; a small pale front/right-edge fragment remains beside the tool and the marked right lower corner is plausible. No primary M0 box overlaps the row; the max-IoU-zero proposal is unrelated.",
+        "next_action": "Treat as an occluded-target miss at the tested settings, with left side still unlocatable. Exact visible-front box extent needs adjudication; never infer the hidden left corner from the stack.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [
+        {
+          "image_id": "new_000009",
+          "action": "adjust_box",
+          "retained_source_row_one_based": 57,
+          "before": [
+            {
+              "source_row_one_based": 57,
+              "text": "0 0.61562500 0.70208333 0.06250000 0.04305556 0.00000000 0.00000000 0 0.64375000 0.71944444 2"
+            }
+          ],
+          "after_text": "0 0.63984375 0.70208333 0.01406250 0.04305556 0.00000000 0.00000000 0 0.64375000 0.71944444 2",
+          "reason": "The original left extent covers the gripper. The identifiable exposed front fragment is beside its right edge, approximately x810-824; do not infer the hidden extent.",
+          "source_bbox_xyxy_px": [
+            748.0,
+            489.999996,
+            828.0,
+            520.9999992
+          ],
+          "selected_bbox_xyxy_px": [
+            810,
+            489.999996,
+            828.0,
+            520.9999992
+          ],
+          "corner_decision": "Preserve source corner tokens exactly.",
+          "residual_issues": [
+            "Only the specified defective edge is amended; retained edges are not certified policy-tight.",
+            "Soft image boundaries limit exact pixel certainty. Existing corner tokens remain unchanged."
+          ],
+          "revised_row_one_based": 57,
+          "review_status": "independent_assistant_and_root_original_pixel_review_accepted",
+          "estimated_transition_interval_px": [
+            809,
+            814
+          ]
+        }
+      ],
+      "new_label_adjudication": false,
+      "next_review_action": "Inspect the original image first, then official match/duplicate/threshold behavior. For amended rows, retain the accepted correction and its residual limitations. Any further annotation change needs its own image-supported version; model disagreement or agreement is not an annotation verdict.",
+      "rank": 20
+    },
+    {
+      "object_id": "new_000011:61",
+      "image_id": "new_000011",
+      "reference_row_one_based": 61,
+      "original_row_one_based": 61,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 1,
+      "priority_reason": "Missed by all five compared model variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 5,
+      "persistent_across_all_five_variants": true,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          675.0,
+          463.0000032,
+          741.0,
+          479.00000159999996
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 0
+      },
+      "reference_raw_label": "0 0.55312500 0.65416667 0.05156250 0.02222222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000011.png",
+        "sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000011.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000011.txt",
+        "sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000011.txt#L61"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000011.txt",
+        "sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838"
+      },
+      "previous_queue_disposition": "not_in_previous_33_row_queue",
+      "previous_reference_review": null,
+      "previous_diagnosis": null,
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Inspect the original image first, then official match/duplicate/threshold behavior. For amended rows, retain the accepted correction and its residual limitations. Any further annotation change needs its own image-supported version; model disagreement or agreement is not an annotation verdict.",
+      "rank": 21
+    },
+    {
+      "object_id": "new_000008:1",
+      "image_id": "new_000008",
+      "reference_row_one_based": 1,
+      "original_row_one_based": 1,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss",
+        "primary_detection_loss_vs_seed46_control"
+      ],
+      "priority_tier": 2,
+      "priority_reason": "Current candidate miss with a changed match across variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": false,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 4,
+      "persistent_across_all_five_variants": false,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          528.2600064000001,
+          3.6000000006031208e-06,
+          752.6600064,
+          15.9900012
+        ],
+        "keypoints_xy_visibility": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            738.6099968000001,
+            5.8199976,
+            2
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.50035938 0.01110417 0.17531250 0.02220833 0.00000000 0.00000000 0 0.57703906 0.00808333 2",
+      "image": {
+        "path": "data/images/val/new_000008.png",
+        "sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000008.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000008.txt",
+        "sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000008.txt#L1"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000008.txt",
+        "sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07"
+      },
+      "previous_queue_disposition": "retained_unresolved",
+      "previous_reference_review": {
+        "image_id": "new_000008",
+        "source_row_one_based": 1,
+        "disposition": "retained_unresolved",
+        "edit_numbers_one_based": [],
+        "reason": "The top border truncates the front, while the right lower corner near x739,y6 is plausible and the left lower corner is out of frame. Preserve the asymmetric visibility. A soft band separates this fragment from the next front below.",
+        "unresolved_issues": [
+          "Exact observed-face box limits near the frame edge remain unresolved; do not infer the hidden left endpoint."
+        ]
+      },
+      "previous_diagnosis": {
+        "group": "border_truncation",
+        "observation": "The target is clipped by the top boundary, with a small right boundary corner marked near y=5.82. The reference box stops near y=16 while the M0 proposal extends to about y=33.5, into a larger band below.",
+        "next_action": "Review top-border object identity and box extent separately from confidence. Existing row2 describes the next full face below; avoid conflating the two.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "current_prediction_context": {
+        "m0": {
+          "matched": false,
+          "highest_iou_prediction": {
+            "prediction_index": 29,
+            "iou": 0.46823263585138486,
+            "confidence": 0.7871896624565125,
+            "bbox_xyxy": [
+              527.268798828125,
+              0.0,
+              745.994140625,
+              33.50761795043945
+            ],
+            "keypoints": [
+              [
+                535.7041625976562,
+                3.2459983825683594,
+                0.9648559093475342
+              ],
+              [
+                741.7025146484375,
+                6.86728572845459,
+                0.9431962370872498
+              ]
+            ]
+          },
+          "matched_prediction": null,
+          "visible_endpoint_errors_px": [
+            null,
+            null
+          ],
+          "all_predictions_with_matching_iou": []
+        },
+        "m1": {
+          "matched": true,
+          "highest_iou_prediction": {
+            "prediction_index": 37,
+            "iou": 0.5931968682440603,
+            "confidence": 0.2644440531730652,
+            "bbox_xyxy": [
+              518.0936279296875,
+              0.0,
+              762.5770263671875,
+              24.741329193115234
+            ],
+            "keypoints": [
+              [
+                554.2471923828125,
+                0.0,
+                0.20433689653873444
+              ],
+              [
+                747.5098876953125,
+                5.521668434143066,
+                0.20064397156238556
+              ]
+            ]
+          },
+          "matched_prediction": {
+            "index": 37,
+            "iou": 0.5931968682440603,
+            "class_id": 0,
+            "bbox_xyxy": [
+              518.0936279296875,
+              0.0,
+              762.5770263671875,
+              24.741329193115234
+            ],
+            "confidence": 0.2644440531730652,
+            "keypoints": [
+              [
+                554.2471923828125,
+                0.0,
+                0.20433689653873444
+              ],
+              [
+                747.5098876953125,
+                5.521668434143066,
+                0.20064397156238556
+              ]
+            ]
+          },
+          "visible_endpoint_errors_px": [
+            null,
+            null
+          ],
+          "all_predictions_with_matching_iou": [
+            {
+              "prediction_index": 37,
+              "confidence": 0.2644440531730652,
+              "iou": 0.5931968682440603,
+              "matched_to_reference_rows": [
+                1
+              ],
+              "bbox_xyxy": [
+                518.0936279296875,
+                0.0,
+                762.5770263671875,
+                24.741329193115234
+              ],
+              "keypoints": [
+                [
+                  554.2471923828125,
+                  0.0,
+                  0.20433689653873444
+                ],
+                [
+                  747.5098876953125,
+                  5.521668434143066,
+                  0.20064397156238556
+                ]
+              ]
+            }
+          ]
+        },
+        "m2": {
+          "matched": false,
+          "highest_iou_prediction": {
+            "prediction_index": 26,
+            "iou": 0.4073651514701778,
+            "confidence": 0.868845522403717,
+            "bbox_xyxy": [
+              527.9041748046875,
+              0.0,
+              752.2337646484375,
+              39.159603118896484
+            ],
+            "keypoints": [
+              [
+                535.3117065429688,
+                6.168426513671875,
+                0.9641710519790649
+              ],
+              [
+                744.2012939453125,
+                6.446396827697754,
+                0.9481455683708191
+              ]
+            ]
+          },
+          "matched_prediction": null,
+          "visible_endpoint_errors_px": [
+            null,
+            null
+          ],
+          "all_predictions_with_matching_iou": []
+        }
+      },
+      "diagnostic_note": "The candidate loses the control's primary box match on a previously unresolved top-clipped reference. The control's matched right endpoint is below the 0.50 endpoint-confidence gate, so this loss is not an additional lost returned visible endpoint. Preserve reference uncertainty.",
+      "next_review_action": "Carry the existing unresolved decision forward. Review original pixels under the fixed visible-front policy only if a concrete boundary or identity question can be answered; preserve ambiguity otherwise. Use the phenotype to inspect analogous training supervision without moving validation rows into training.",
+      "rank": 22
+    },
+    {
+      "object_id": "new_000009:52",
+      "image_id": "new_000009",
+      "reference_row_one_based": 52,
+      "original_row_one_based": 52,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 2,
+      "priority_reason": "Current candidate miss with a changed match across variants",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": false,
+        "seed45_candidate": false,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 3,
+      "persistent_across_all_five_variants": false,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          595.0,
+          472.99999679999996,
+          621.0,
+          495.0
+        ],
+        "keypoints_xy_visibility": [
+          [
+            599.0,
+            490.99999679999996,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.47500000 0.67222222 0.02031250 0.03055556 0.46796875 0.68194444 2 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000009.png",
+        "sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000009.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000009.txt",
+        "sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000009.txt#L52"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000009.txt",
+        "sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f"
+      },
+      "previous_queue_disposition": "not_in_previous_33_row_queue",
+      "previous_reference_review": null,
+      "previous_diagnosis": null,
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Inspect the original image first, then official match/duplicate/threshold behavior. For amended rows, retain the accepted correction and its residual limitations. Any further annotation change needs its own image-supported version; model disagreement or agreement is not an annotation verdict.",
+      "rank": 23
+    },
+    {
+      "object_id": "new_000087:15",
+      "image_id": "new_000087",
+      "reference_row_one_based": 15,
+      "original_row_one_based": 15,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "current_primary_candidate_miss"
+      ],
+      "priority_tier": 2,
+      "priority_reason": "Current candidate miss with a changed match across variants",
+      "miss_flags": {
+        "m0": false,
+        "seed45_control": false,
+        "seed45_candidate": false,
+        "seed46_control": true,
+        "seed46_candidate": true
+      },
+      "missed_by_variants_count": 2,
+      "persistent_across_all_five_variants": false,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          719.5799936000001,
+          121.030002,
+          824.9399936,
+          138.7299996
+        ],
+        "keypoints_xy_visibility": [
+          [
+            725.9500032,
+            130.6699992,
+            2
+          ],
+          [
+            820.9900032,
+            136.03999679999998,
+            2
+          ]
+        ],
+        "locatable_corners": 2
+      },
+      "reference_raw_label": "0 0.60332812 0.18038889 0.08231250 0.02458333 0.56714844 0.18148611 2 0.64139844 0.18894444 2",
+      "image": {
+        "path": "data/images/val/new_000087.png",
+        "sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000087.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000087.txt",
+        "sha256": "17d7537f9626058aca885a2afb4ebc1dfa2d8b89acb818e90c09ecbe1113eab1",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000087.txt#L15"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000087.txt",
+        "sha256": "4620cea073b82f3aef412af275e54bf25b8acdb8aa98dfc1c3643388348d76df"
+      },
+      "previous_queue_disposition": "not_in_previous_33_row_queue",
+      "previous_reference_review": null,
+      "previous_diagnosis": null,
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "next_review_action": "Inspect the original image first, then official match/duplicate/threshold behavior. For amended rows, retain the accepted correction and its residual limitations. Any further annotation change needs its own image-supported version; model disagreement or agreement is not an annotation verdict.",
+      "rank": 24
+    },
+    {
+      "object_id": "new_000090:43",
+      "image_id": "new_000090",
+      "reference_row_one_based": 43,
+      "original_row_one_based": 43,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "primary_detection_gain_vs_seed46_control"
+      ],
+      "priority_tier": 3,
+      "priority_reason": "Paired localization or detection transition diagnostic",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": true,
+        "seed45_candidate": true,
+        "seed46_control": true,
+        "seed46_candidate": false
+      },
+      "missed_by_variants_count": 4,
+      "persistent_across_all_five_variants": false,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          396.86000640000003,
+          677.3800031999999,
+          480.96000000000004,
+          699.9999984
+        ],
+        "keypoints_xy_visibility": [
+          [
+            416.32,
+            691.8400008,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ],
+        "locatable_corners": 1
+      },
+      "reference_raw_label": "0 0.34289844 0.95651389 0.06570312 0.03141666 0.32525000 0.96088889 2 0.00000000 0.00000000 0",
+      "image": {
+        "path": "data/images/val/new_000090.png",
+        "sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000090.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000090.txt",
+        "sha256": "0b77064a84e23159fb42001114fa253296103092d5eaa3bc13cf38ac1cc4a859",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000090.txt#L43"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000090.txt",
+        "sha256": "3a4f524cd0731a75cbab6d73a0c49d45f6ce81f050e4dbd30e88dd8b5228233e"
+      },
+      "previous_queue_disposition": "amended",
+      "previous_reference_review": {
+        "image_id": "new_000090",
+        "source_row_one_based": 43,
+        "disposition": "amended",
+        "edit_numbers_one_based": [
+          10
+        ],
+        "reason": "The source lower edge includes rack/background below the exposed front. The physical lower contour ends near y697-699; select y700 at the soft boundary.",
+        "unresolved_issues": []
+      },
+      "previous_diagnosis": {
+        "group": "foreground_occlusion",
+        "observation": "The hand hides the right part of the lowest left cassette. The left reference corner follows the exposed lower boundary; M0 covers the visible front plus part of the hand, places a right endpoint on the hand, and misses the IoU0.50 gate narrowly.",
+        "next_action": "Preserve the right missing corner and review box extent. This demonstrates unsupported hidden-side output and an overlap-boundary mismatch, not complete absence of a model proposal.",
+        "visual_review": "assistant_original_crop_review_and_root_comparison_review"
+      },
+      "reference_edits": [
+        {
+          "image_id": "new_000090",
+          "action": "adjust_box",
+          "retained_source_row_one_based": 43,
+          "before": [
+            {
+              "source_row_one_based": 43,
+              "text": "0 0.34289844 0.96840278 0.06570312 0.05519444 0.32525000 0.96088889 2 0.00000000 0.00000000 0"
+            }
+          ],
+          "after_text": "0 0.34289844 0.95651389 0.06570312 0.03141666 0.32525000 0.96088889 2 0.00000000 0.00000000 0",
+          "reason": "The source lower edge includes rack/background below the exposed front. The physical lower contour ends near y697-699; select y700 at the soft boundary.",
+          "source_bbox_xyxy_px": [
+            396.86000640000003,
+            677.3800032,
+            480.96000000000004,
+            717.12
+          ],
+          "selected_bbox_xyxy_px": [
+            396.86000640000003,
+            677.3800032,
+            480.96000000000004,
+            700
+          ],
+          "corner_decision": "Preserve source corner tokens exactly.",
+          "residual_issues": [
+            "Only the specified defective edge is amended; retained edges are not certified policy-tight.",
+            "Soft image boundaries limit exact pixel certainty. Existing corner tokens remain unchanged."
+          ],
+          "revised_row_one_based": 43,
+          "review_status": "independent_assistant_and_root_original_pixel_review_accepted",
+          "estimated_transition_interval_px": [
+            696,
+            700
+          ]
+        }
+      ],
+      "new_label_adjudication": false,
+      "current_prediction_context": {
+        "m0": {
+          "matched": false,
+          "highest_iou_prediction": {
+            "prediction_index": 46,
+            "iou": 0.49910716641579045,
+            "confidence": 0.7451766133308411,
+            "bbox_xyxy": [
+              409.99725341796875,
+              666.0694580078125,
+              482.22662353515625,
+              706.4814453125
+            ],
+            "keypoints": [
+              [
+                415.1510009765625,
+                690.926025390625,
+                0.8465570211410522
+              ],
+              [
+                475.10247802734375,
+                698.2609252929688,
+                0.8242413997650146
+              ]
+            ]
+          },
+          "matched_prediction": null,
+          "visible_endpoint_errors_px": [
+            null,
+            null
+          ],
+          "all_predictions_with_matching_iou": []
+        },
+        "m1": {
+          "matched": false,
+          "highest_iou_prediction": {
+            "prediction_index": 45,
+            "iou": 0.4990937222283992,
+            "confidence": 0.7606902122497559,
+            "bbox_xyxy": [
+              409.203369140625,
+              665.4238891601562,
+              478.9356689453125,
+              706.0853881835938
+            ],
+            "keypoints": [
+              [
+                416.2030334472656,
+                689.0028686523438,
+                0.8937418460845947
+              ],
+              [
+                470.3720703125,
+                697.6937255859375,
+                0.8420014381408691
+              ]
+            ]
+          },
+          "matched_prediction": null,
+          "visible_endpoint_errors_px": [
+            null,
+            null
+          ],
+          "all_predictions_with_matching_iou": []
+        },
+        "m2": {
+          "matched": true,
+          "highest_iou_prediction": {
+            "prediction_index": 45,
+            "iou": 0.5024810504206327,
+            "confidence": 0.7701209783554077,
+            "bbox_xyxy": [
+              409.24615478515625,
+              665.6231689453125,
+              477.86749267578125,
+              705.5374755859375
+            ],
+            "keypoints": [
+              [
+                416.09478759765625,
+                688.9229736328125,
+                0.892102062702179
+              ],
+              [
+                469.49566650390625,
+                697.3960571289062,
+                0.840035617351532
+              ]
+            ]
+          },
+          "matched_prediction": {
+            "index": 45,
+            "iou": 0.5024810504206327,
+            "class_id": 0,
+            "bbox_xyxy": [
+              409.24615478515625,
+              665.6231689453125,
+              477.86749267578125,
+              705.5374755859375
+            ],
+            "confidence": 0.7701209783554077,
+            "keypoints": [
+              [
+                416.09478759765625,
+                688.9229736328125,
+                0.892102062702179
+              ],
+              [
+                469.49566650390625,
+                697.3960571289062,
+                0.840035617351532
+              ]
+            ]
+          },
+          "visible_endpoint_errors_px": [
+            2.925708139968729,
+            null
+          ],
+          "all_predictions_with_matching_iou": [
+            {
+              "prediction_index": 45,
+              "confidence": 0.7701209783554077,
+              "iou": 0.5024810504206327,
+              "matched_to_reference_rows": [
+                43
+              ],
+              "bbox_xyxy": [
+                409.24615478515625,
+                665.6231689453125,
+                477.86749267578125,
+                705.5374755859375
+              ],
+              "keypoints": [
+                [
+                  416.09478759765625,
+                  688.9229736328125,
+                  0.892102062702179
+                ],
+                [
+                  469.49566650390625,
+                  697.3960571289062,
+                  0.840035617351532
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "diagnostic_note": "The primary gain crosses the fixed IoU 0.50 boundary narrowly. The reference bottom edge was amended in PR30; unchanged edges and the missing right corner remain uncertified. An additional benchmark match is not independent evidence of a newly discovered object.",
+      "next_review_action": "Inspect the original image first, then official match/duplicate/threshold behavior. For amended rows, retain the accepted correction and its residual limitations. Any further annotation change needs its own image-supported version; model disagreement or agreement is not an annotation verdict.",
+      "rank": 25
+    },
+    {
+      "object_id": "new_000007:15",
+      "image_id": "new_000007",
+      "reference_row_one_based": 15,
+      "original_row_one_based": 15,
+      "row_mapping_source": "PR30 manifest retained_source_to_revised_row_one_based (reversed)",
+      "roles": [
+        "new_10px_pair_failure_vs_seed46_control"
+      ],
+      "priority_tier": 3,
+      "priority_reason": "Paired localization or detection transition diagnostic",
+      "miss_flags": {
+        "m0": true,
+        "seed45_control": false,
+        "seed45_candidate": false,
+        "seed46_control": false,
+        "seed46_candidate": false
+      },
+      "missed_by_variants_count": 1,
+      "persistent_across_all_five_variants": false,
+      "reference_geometry": {
+        "class_id": 0,
+        "box_xyxy_px": [
+          870.84,
+          0.0,
+          946.5399936,
+          20.7400032
+        ],
+        "keypoints_xy_visibility": [
+          [
+            876.0499968,
+            5.4100008,
+            2
+          ],
+          [
+            944.5399936,
+            5.0800032,
+            2
+          ]
+        ],
+        "locatable_corners": 2
+      },
+      "reference_raw_label": "0 0.70991406 0.01440278 0.05914062 0.02880556 0.68441406 0.00751389 2 0.73792187 0.00705556 2",
+      "image": {
+        "path": "data/images/val/new_000007.png",
+        "sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+        "width": 1280,
+        "height": 720,
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/images/val/new_000007.png"
+      },
+      "reference_label": {
+        "path": "data/references/visible-front-2026-11-10/labels/val/new_000007.txt",
+        "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+        "url": "https://github.com/Siuuuers/dl/blob/e4bb7019bcffd80b08cab28c4877dd562ee1d796/data/references/visible-front-2026-11-10/labels/val/new_000007.txt#L15"
+      },
+      "original_label": {
+        "path": "data/labels/val/new_000007.txt",
+        "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921"
+      },
+      "previous_queue_disposition": "not_in_previous_33_row_queue",
+      "previous_reference_review": null,
+      "previous_diagnosis": null,
+      "reference_edits": [],
+      "new_label_adjudication": false,
+      "current_prediction_context": {
+        "m0": {
+          "matched": false,
+          "highest_iou_prediction": {
+            "prediction_index": 33,
+            "iou": 0.3476431851649277,
+            "confidence": 0.8655000329017639,
+            "bbox_xyxy": [
+              872.1514892578125,
+              6.868125915527344,
+              950.1776123046875,
+              38.013938903808594
+            ],
+            "keypoints": [
+              [
+                878.9866943359375,
+                26.948829650878906,
+                0.8813769221305847
+              ],
+              [
+                944.547119140625,
+                23.684314727783203,
+                0.9183480739593506
+              ]
+            ]
+          },
+          "matched_prediction": null,
+          "visible_endpoint_errors_px": [
+            null,
+            null
+          ],
+          "all_predictions_with_matching_iou": []
+        },
+        "m1": {
+          "matched": true,
+          "highest_iou_prediction": {
+            "prediction_index": 52,
+            "iou": 0.8424066495483431,
+            "confidence": 0.3177323639392853,
+            "bbox_xyxy": [
+              871.851806640625,
+              0.0,
+              951.721435546875,
+              18.807331085205078
+            ],
+            "keypoints": [
+              [
+                879.3975830078125,
+                10.096878051757812,
+                0.8815018534660339
+              ],
+              [
+                945.5123291015625,
+                6.232255935668945,
+                0.8709574341773987
+              ]
+            ]
+          },
+          "matched_prediction": {
+            "index": 52,
+            "iou": 0.8424066495483431,
+            "class_id": 0,
+            "bbox_xyxy": [
+              871.851806640625,
+              0.0,
+              951.721435546875,
+              18.807331085205078
+            ],
+            "confidence": 0.3177323639392853,
+            "keypoints": [
+              [
+                879.3975830078125,
+                10.096878051757812,
+                0.8815018534660339
+              ],
+              [
+                945.5123291015625,
+                6.232255935668945,
+                0.8709574341773987
+              ]
+            ]
+          },
+          "visible_endpoint_errors_px": [
+            5.759613857871128,
+            1.5076878637355153
+          ],
+          "all_predictions_with_matching_iou": [
+            {
+              "prediction_index": 52,
+              "confidence": 0.3177323639392853,
+              "iou": 0.8424066495483431,
+              "matched_to_reference_rows": [
+                15
+              ],
+              "bbox_xyxy": [
+                871.851806640625,
+                0.0,
+                951.721435546875,
+                18.807331085205078
+              ],
+              "keypoints": [
+                [
+                  879.3975830078125,
+                  10.096878051757812,
+                  0.8815018534660339
+                ],
+                [
+                  945.5123291015625,
+                  6.232255935668945,
+                  0.8709574341773987
+                ]
+              ]
+            },
+            {
+              "prediction_index": 53,
+              "confidence": 0.28288760781288147,
+              "iou": 0.6350620132659889,
+              "matched_to_reference_rows": [],
+              "bbox_xyxy": [
+                872.2537231445312,
+                0.0,
+                950.3250122070312,
+                30.69934844970703
+              ],
+              "keypoints": [
+                [
+                  879.3540649414062,
+                  18.258014678955078,
+                  0.8024972677230835
+                ],
+                [
+                  943.907470703125,
+                  18.43124771118164,
+                  0.8152631521224976
+                ]
+              ]
+            }
+          ]
+        },
+        "m2": {
+          "matched": true,
+          "highest_iou_prediction": {
+            "prediction_index": 53,
+            "iou": 0.8508087177205839,
+            "confidence": 0.30039843916893005,
+            "bbox_xyxy": [
+              870.8485107421875,
+              0.0,
+              952.9493408203125,
+              19.017887115478516
+            ],
+            "keypoints": [
+              [
+                879.5157470703125,
+                8.668720245361328,
+                0.8056440353393555
+              ],
+              [
+                948.3407592773438,
+                6.071680068969727,
+                0.7999370694160461
+              ]
+            ]
+          },
+          "matched_prediction": {
+            "index": 52,
+            "iou": 0.5892243990534314,
+            "class_id": 0,
+            "bbox_xyxy": [
+              872.4490966796875,
+              0.5779581069946289,
+              950.249755859375,
+              32.1849365234375
+            ],
+            "confidence": 0.3046436905860901,
+            "keypoints": [
+              [
+                879.3416748046875,
+                19.629987716674805,
+                0.7968893051147461
+              ],
+              [
+                943.8041381835938,
+                19.41692543029785,
+                0.8129342198371887
+              ]
+            ]
+          },
+          "visible_endpoint_errors_px": [
+            14.595998492633038,
+            14.355794029988838
+          ],
+          "all_predictions_with_matching_iou": [
+            {
+              "prediction_index": 52,
+              "confidence": 0.3046436905860901,
+              "iou": 0.5892243990534314,
+              "matched_to_reference_rows": [
+                15
+              ],
+              "bbox_xyxy": [
+                872.4490966796875,
+                0.5779581069946289,
+                950.249755859375,
+                32.1849365234375
+              ],
+              "keypoints": [
+                [
+                  879.3416748046875,
+                  19.629987716674805,
+                  0.7968893051147461
+                ],
+                [
+                  943.8041381835938,
+                  19.41692543029785,
+                  0.8129342198371887
+                ]
+              ]
+            },
+            {
+              "prediction_index": 53,
+              "confidence": 0.30039843916893005,
+              "iou": 0.8508087177205839,
+              "matched_to_reference_rows": [],
+              "bbox_xyxy": [
+                870.8485107421875,
+                0.0,
+                952.9493408203125,
+                19.017887115478516
+              ],
+              "keypoints": [
+                [
+                  879.5157470703125,
+                  8.668720245361328,
+                  0.8056440353393555
+                ],
+                [
+                  948.3407592773438,
+                  6.071680068969727,
+                  0.7999370694160461
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "diagnostic_note": "The officially matched candidate proposal returns both corners but exceeds 10 px on both. A separate higher-IoU candidate proposal has slightly lower confidence and is unmatched. Inspect duplicate/assignment competition and thin top-boundary geometry together. Do not substitute the more favorable proposal into the official score.",
+      "next_review_action": "Inspect the original image first, then official match/duplicate/threshold behavior. For amended rows, retain the accepted correction and its residual limitations. Any further annotation change needs its own image-supported version; model disagreement or agreement is not an annotation verdict.",
+      "rank": 26
+    }
+  ]
+}
