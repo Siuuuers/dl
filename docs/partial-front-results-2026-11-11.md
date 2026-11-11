@@ -6,11 +6,11 @@ This report closes the fixed [partial-front training protocol](../experiments/pa
 
 ## Decision and practical use
 
-Continue using the existing [assistant-reviewed proposal command](predict-pose-folder.md#assistant-reviewed-proposals): the PR35 seed46 candidate, image size 1280, box confidence 0.15, NMS IoU 0.70 and endpoint cutoff 0.50. The generic runner still defaults to epoch173/0.25.
+Retain the PR35 seed46 candidate, image size 1280, NMS IoU 0.70 and endpoint cutoff 0.50. This training comparison's fixed primary confidence remains 0.15. A subsequent [completed proposal-filter investigation](proposal-filter-review-2026-11-11.md) separately selects confidence **0.13** for the [assistant-reviewed proposal command](predict-pose-folder.md#assistant-reviewed-proposals): one additional supported reference match for nine additional scored extras, with all existing matches and corner-pair results preserved. The generic runner still defaults to epoch173/0.25.
 
 Keep the [reviewed training corrections](../data/candidates/partial-fronts-2026-11-11/README.md) as a separately versioned annotation candidate. Their original-pixel justification and their effect on model performance are different questions. The labels were corrected before training; this comparison does not show that their five-image extension improves missed-object recovery under the declared recipe.
 
-No further seed, resolution or epoch search is requested by this result. A useful next investigation is a bounded trace of proposals **before confidence filtering and NMS** for the two supported residual targets, `008:33` and `009:57`, using the current checkpoint. Saved post-filter predictions alone do not distinguish a weak proposal, a suppressed proposal and no corresponding raw proposal. That diagnosis has not been performed in this experiment and should precede a new training or inference intervention.
+No further seed, resolution or epoch search is requested by this result. The subsequently completed [bounded trace before confidence filtering and NMS](proposal-filter-review-2026-11-11.md) explains the two supported residual targets separately: `008:33` has qualifying geometry below the confidence cutoff, while `009:57` has no decoded box reaching the fixed IoU criterion and its nearby proposals have very low scores. That follow-up and its fixed 0.15/0.13 comparison are separate from this training experiment; all tables below retain the original declared settings.
 
 ## 1. The returned comparison is eligible
 
@@ -48,7 +48,7 @@ The current operational checkpoint was also evaluated under the same fresh CPU i
 | Fresh old-reviewed control | `024022f1ffb20370413c2d99660f44d729fc312b8921dd89e8c68554a348a15b` |
 | Extended-reviewed candidate | `debf6b07a6188f9061df4b308e7ebcdf7a21ba85de0fb6602d8f3a1ac952734d` |
 
-The current and fresh old-reviewed checkpoint files have different archive identities, but **all 879 recorded model-state tensors after loading and before prediction/fusion are identical**. All **60 ordered raw prediction arrays** are also exactly identical across the twenty images and three fixed thresholds. No numerical tolerance is used for this comparison. Thus the fresh control provides the same observed behavior as the currently selected model in this evaluation.
+The current and fresh old-reviewed checkpoint files have different archive identities, but **all 879 recorded model-state tensors after loading and before prediction/fusion are identical**. All **60 ordered saved post-filter prediction arrays** are also exactly identical across the twenty images and three fixed thresholds. No numerical tolerance is used for this comparison. Thus the fresh control provides the same observed behavior as the currently selected model in this evaluation.
 
 The extended checkpoint changes **686 of those 879 recorded tensors**. Its unchanged missed-object set is therefore an observed training result, not an accidental evaluation of the same weights. This one repeated control does not establish universal determinism across hardware, runtimes or future runs.
 
@@ -141,7 +141,7 @@ For limited training-curve context, original-reference epoch-30 CSV box mAP50 ch
 
 ## 5. Reproduction and evidence
 
-The [evaluation driver](../results/verification/baomai-partial-fronts-results-20261111/evaluate_comparison.py) ran from clean published revision **`19459913c8be2f08978d8eee93387a6087407444`**. It produced **180 real image predictions**, with three explicitly excluded warmups, in one shared CPU FP32 environment. It uses the unchanged repository matching and corner-quality functions, records model-state and source hashes, and preserves raw ordered predictions. Network access was disabled during evaluation.
+The [evaluation driver](../results/verification/baomai-partial-fronts-results-20261111/evaluate_comparison.py) ran from clean published revision **`19459913c8be2f08978d8eee93387a6087407444`**. It produced **180 real image predictions**, with three explicitly excluded warmups, in one shared CPU FP32 environment. It uses the unchanged repository matching and corner-quality functions, records model-state and source hashes, and preserves ordered predictions after confidence filtering and NMS. Network access was disabled during evaluation.
 
 The [evidence capsule](../results/verification/baomai-partial-fronts-results-20261111/evidence.zip) and [inventory](../results/verification/baomai-partial-fronts-results-20261111/evidence-inventory.json) preserve the returned-bundle audit, exact source/input identities, raw outputs, scoring, case evidence and reproduction records. The [compact JSON](../results/verification/baomai-partial-fronts-results-20261111/summary.json) separates current, old-reviewed and extended-reviewed roles and both references.
 
