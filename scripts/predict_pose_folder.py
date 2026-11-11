@@ -13,7 +13,7 @@ import time
 from datetime import datetime, timezone
 
 from evaluate_pose import INFERENCE, _prediction_records, _runtime_and_model, _source_identity, file_sha256
-from pose_checkpoint import POSE_CONTRACT
+from pose_checkpoint import POSE_CONTRACT, select_checkpoint
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,7 +58,7 @@ def decode_image(path):
                  "exif_orientation": orientation, "width": rgb.width, "height": rgb.height}
 
 
-def verify_baseline(root):
+def _reference_model(root):
     root = Path(root).resolve()
     card_path = root / "metadata/model_card.json"
     card = json.loads(card_path.read_text(encoding="utf-8"))
@@ -67,12 +67,39 @@ def verify_baseline(root):
             or card.get("size_bytes") != BASELINE_BYTES):
         raise ValueError("model card does not identify the frozen epoch173 cassette model")
     weights = (root / card["checkpoint"]).resolve()
-    if not weights.is_relative_to(root) or not weights.is_file():
+    if not weights.is_relative_to(root):
+        raise ValueError("model card checkpoint path escapes the repository")
+    return weights, file_sha256(card_path)
+
+
+def verify_baseline(root):
+    weights, card_sha256 = _reference_model(root)
+    if not weights.is_file():
         raise ValueError(f"missing repository checkpoint: {weights}")
     if weights.stat().st_size != BASELINE_BYTES or file_sha256(weights) != BASELINE_SHA256:
         raise ValueError(f"epoch173 size or SHA-256 mismatch; obtain the original Git LFS bytes: {weights}")
     return {"weights": str(weights), "model_sha256": BASELINE_SHA256,
-            "model_card_sha256": file_sha256(card_path), "epoch": 173}
+            "model_card_sha256": card_sha256, "epoch": 173}
+
+
+def verify_trained_checkpoint(root, manifest_path):
+    root = Path(root).resolve()
+    baseline_path, card_sha256 = _reference_model(root)
+    reference = {"root": str(root), "weights": str(baseline_path),
+                 "model_sha256": BASELINE_SHA256, "model_card_sha256": card_sha256,
+                 "manifest_sha256": file_sha256(root / "data/manifest.json")}
+    selected = select_checkpoint(reference, manifest_path, require_weights=True)
+    return {"weights": selected["weights"], "model_sha256": selected["model_sha256"],
+            "weights_verified": selected["weights_verified"],
+            "reference_model_sha256": selected["reference_model_sha256"],
+            "reference_model_card_sha256": selected["model_card_sha256"],
+            "reference_manifest_sha256": selected["manifest_sha256"],
+            "checkpoint_manifest": str(Path(manifest_path).resolve()),
+            "checkpoint_identity": selected["checkpoint_identity"],
+            "checkpoint_verification": {"bundle_bytes_and_recorded_completion": True,
+                                        "repository_metadata": True,
+                                        "reference_image_and_label_bytes": False,
+                                        "initial_checkpoint_bytes": False}}
 
 
 def _finite(value):
@@ -161,12 +188,13 @@ def run(args):
     if not _finite(args.nms_iou) or not 0 <= args.nms_iou <= 1:
         raise ValueError("NMS IoU must be a finite number in [0, 1]")
     source, output, images = discover_images(args.input, args.output)
-    baseline = verify_baseline(ROOT)
+    model_identity = (verify_baseline(ROOT) if args.checkpoint_manifest is None else
+                      verify_trained_checkpoint(ROOT, args.checkpoint_manifest))
     identity = _source_identity(ROOT)
     identity["files_sha256"]["scripts/predict_pose_folder.py"] = file_sha256(Path(__file__))
     summary = {"schema_version": 1, "status": "running", "exit_code": None,
                "created_at_utc": datetime.now(timezone.utc).isoformat(),
-               "input_directory": str(source), "output_directory": str(output), **baseline,
+               "input_directory": str(source), "output_directory": str(output), **model_identity,
                "selected_images": len(images), "succeeded_images": 0, "failed_images": 0,
                "unprocessed_images": 0, "prediction_count": 0, "displayed_endpoints": 0,
                "ground_truth_available": False, "source": identity, "runtime": None,
@@ -201,7 +229,7 @@ def run(args):
                 stage = "inference"
                 try:
                     if predictor is None:
-                        predictor, summary["runtime"] = prepare_predictor(baseline["weights"], args.device, args.threads,
+                        predictor, summary["runtime"] = prepare_predictor(model_identity["weights"], args.device, args.threads,
                                                                         rgb, conf=args.conf, nms_iou=args.nms_iou)
                         summary["warmup"] = "one explicit zero-image prediction excluded from timings"
                     result = predictor(rgb)
@@ -244,6 +272,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", required=True, type=Path, help="PNG/JPEG folder, searched recursively; labels are not read")
     parser.add_argument("--output", required=True, type=Path, help="new output directory outside the input tree")
+    parser.add_argument("--checkpoint-manifest", type=Path,
+                        help="explicit completed training bundle; default is the original epoch173 model")
     parser.add_argument("--device", default="cpu", help="cpu or explicit CUDA device index")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--conf", type=float, default=0.25, help="box confidence threshold")
