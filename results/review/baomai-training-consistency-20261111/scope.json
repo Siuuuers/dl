@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_training_consistency_review_scope",
+  "status": "declared_before_original_pixel_review",
+  "review_id": "training-consistency-2026-11-11",
+  "declared_at_utc": "2026-11-11T15:11:06.902628+00:00",
+  "source_repository": "Siuuuers/dl",
+  "source_revision": "61ae0e68fc517a6dfc7d8c19b63d846303a79e03",
+  "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "annotation_policy": {
+    "id": "baomai-visible-front-v1",
+    "path": "docs/annotation-policy.md",
+    "sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91"
+  },
+  "selected_model_training_overlay": {
+    "path": "data/candidates/annotations-2026-11-10/manifest.json",
+    "sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7"
+  },
+  "selection": {
+    "review_history_union_count": 55,
+    "training_image_count": 137,
+    "remaining_images": 82,
+    "remaining_nonempty_label_files": 70,
+    "remaining_empty_label_files": 12,
+    "algorithm": "Sort nonempty unreviewed training IDs lexicographically; split into five contiguous balanced strata (extra items assigned to earlier strata); in each select greatest missing-endpoint count, breaking ties by ID. Add lexicographically first unreviewed empty-labelled image.",
+    "stratum_sizes": [
+      14,
+      14,
+      14,
+      14,
+      14
+    ],
+    "selection_inputs": "Frozen label metadata and documented prior review IDs only. No original-pixel preview or model predictions.",
+    "selected_ids": [
+      "new_000018",
+      "new_000034",
+      "new_000049",
+      "old_000007",
+      "old_000057",
+      "new_000132"
+    ],
+    "limits": [
+      "Risk-targeted bounded review, not a random representative sample.",
+      "Filename strata do not establish independent acquisition sessions.",
+      "The last two strata have zero missing-endpoint labels; their selected records are ordinary positive controls.",
+      "An empty label is only a proposed negative until its original is inspected."
+    ]
+  },
+  "selected_records": [
+    {
+      "id": "new_000018",
+      "split": "train",
+      "image": "images/train/new_000018.png",
+      "label": "labels/train/new_000018.txt",
+      "original_size": [
+        1280,
+        720
+      ],
+      "image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+      "label_sha256": "ae3a604dfb58d46a42d6d5c9ba627c2bb798602f83377152abd4d2a507c99a2e",
+      "instances": 34,
+      "visible_endpoints": 51,
+      "missing_endpoints": 17
+    },
+    {
+      "id": "new_000034",
+      "split": "train",
+      "image": "images/train/new_000034.png",
+      "label": "labels/train/new_000034.txt",
+      "original_size": [
+        1280,
+        720
+      ],
+      "image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "label_sha256": "c37ae46de7de374770f53ac08463a4e6a6f32f592a30766f62e724a55c598e45",
+      "instances": 57,
+      "visible_endpoints": 95,
+      "missing_endpoints": 19
+    },
+    {
+      "id": "new_000049",
+      "split": "train",
+      "image": "images/train/new_000049.png",
+      "label": "labels/train/new_000049.txt",
+      "original_size": [
+        1280,
+        720
+      ],
+      "image_sha256": "bd085b01cf8fbce5df55d5f91c6e7810f03848f307c409d2afcd5e6cde652b7a",
+      "label_sha256": "90b87aa4c27e575be365cbd7bbdc419e8f0ca5304941cc1b77de3589bd91f38c",
+      "instances": 26,
+      "visible_endpoints": 41,
+      "missing_endpoints": 11
+    },
+    {
+      "id": "old_000007",
+      "split": "train",
+      "image": "images/train/old_000007.png",
+      "label": "labels/train/old_000007.txt",
+      "original_size": [
+        1280,
+        720
+      ],
+      "image_sha256": "b56b7fcfd5424959e4309d869d796c71063439f3bf2b73ed531a5518163fe941",
+      "label_sha256": "d748afa5c26d736876049d5b53a5edc6d599fdab41d932f5c86943da4e51ab4a",
+      "instances": 10,
+      "visible_endpoints": 20,
+      "missing_endpoints": 0
+    },
+    {
+      "id": "old_000057",
+      "split": "train",
+      "image": "images/train/old_000057.png",
+      "label": "labels/train/old_000057.txt",
+      "original_size": [
+        1280,
+        720
+      ],
+      "image_sha256": "b2cfe81d5bfe404c6f5cba7ac3b9e072f534b345e63afc924589473bcedf1428",
+      "label_sha256": "6c5dc6a4c95fabf29849f6599ddad4332b4f283755e79ba90513f1d521f40ed0",
+      "instances": 8,
+      "visible_endpoints": 16,
+      "missing_endpoints": 0
+    },
+    {
+      "id": "new_000132",
+      "split": "train",
+      "image": "images/train/new_000132.png",
+      "label": "labels/train/new_000132.txt",
+      "original_size": [
+        1280,
+        720
+      ],
+      "image_sha256": "4653485ff74717ab1c27842e733a0ba691681d8ba4e417291200d1402e6ae0b5",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "instances": 0,
+      "visible_endpoints": 0,
+      "missing_endpoints": 0
+    }
+  ],
+  "frozen_label_totals": {
+    "images": 6,
+    "nonempty": 5,
+    "empty": 1,
+    "objects": 135,
+    "visible_endpoints": 223,
+    "missing_endpoints": 47,
+    "objects_by_visible_corners": {
+      "0": 9,
+      "1": 29,
+      "2": 97
+    }
+  },
+  "review_method": [
+    "Inspect each full original before any labels or overlays.",
+    "Inspect every labelled object and the complete image for omitted identifiable fronts.",
+    "Compare supported identity, observed-front box extent and actual lower-front corner visibility under the existing policy.",
+    "Have root and an independent assistant reviewer form initial judgments separately before reconciliation.",
+    "Accept only explicitly supported incremental edits; record unresolved material and no-change decisions.",
+    "Keep the selected PR35 overlay explicit. Earlier non-adopted training extensions remain separate unless later composition is explicitly documented.",
+    "Use the existing candidate verifier. Retained visible endpoint tokens are protected; suspected point corrections are separately recorded rather than silently relaxing that contract."
+  ],
+  "stop_rule": "Review these six originals and their 135 existing rows, reconcile findings, publish supported candidate edits if any with provenance and mechanical verification; stop without automatically choosing more images or starting training.",
+  "unchanged": [
+    "all original images and labels",
+    "train/validation assignments",
+    "all validation references",
+    "selected PR35 checkpoint and reviewed 0.13 settings",
+    "earlier experiment protocols"
+  ],
+  "no_model_inference_for_selection_or_annotation": true,
+  "no_training_requested_by_this_review": true
+}
