@@ -1,0 +1,866 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_original_image_adjudication",
+  "status": "accepted_bounded_review",
+  "candidate_id": "consistency-2026-11-11",
+  "completed_at_utc": "2026-11-11T15:31:31.490360+00:00",
+  "scope": {
+    "images": [
+      "new_000018",
+      "new_000034",
+      "new_000049",
+      "old_000007",
+      "old_000057",
+      "new_000132"
+    ],
+    "training_images_reviewed": 6,
+    "original_rows_reviewed": 135,
+    "original_visible_endpoints": 223,
+    "original_missing_endpoints": 47,
+    "method": "Full originals before overlays; all rows and whole-image completeness; independent first proposals followed by original-pixel reconciliation and root inspection of every accepted raw/overlay proof. No predictions.",
+    "source_scope_sha256": "de9f1d44301fcfb0e4fb07b14a502256529c3e33abc468411d4468511b6d0f7a",
+    "inventory_sha256": "d71c7fb5ecf1f4cf58c0120b76588d5913d653bc3f18c89ce8b59725d9343294",
+    "source_revision": "61ae0e68fc517a6dfc7d8c19b63d846303a79e03",
+    "original_image_checkout_revision": "d43a58b9456a782ace14e20f0bf7ed2da3572ca1",
+    "cohort_outside_prior_55_ids": true,
+    "stop_rule_completed": true,
+    "new_bbox_replacements": 14,
+    "new_additions": 0,
+    "new_deletions": 0,
+    "new_endpoint_edits": 0,
+    "model_predictions_used": false,
+    "fresh_training_or_inference": false,
+    "limit": "Risk-targeted six-image review, not dataset prevalence estimation or complete policy migration."
+  },
+  "accepted": [
+    {
+      "id": "consistency-018-row24",
+      "image_id": "new_000018",
+      "original_row": 24,
+      "bbox_xyxy_original_pixels": [
+        793,
+        454,
+        924,
+        495
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        753.5600000000001,
+        465.18999840000004,
+        921.7000064,
+        507.08000160000006
+      ],
+      "reason": "Refit the second right-stack front to the observed exposed surface, including its upper slant and excluding the gripper to the left and the next front below. Retain the same instance and its existing visible right corner; the hidden left corner remains missing.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Retain initial geometry: original shows upper-left exposed material beginning near x793 at y454; foreground jaw covers material farther left. Soft right curvature remains within about 2–3 px.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000018-row24-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-018-row25",
+      "image_id": "new_000018",
+      "original_row": 25,
+      "bbox_xyxy_original_pixels": [
+        807,
+        488,
+        918,
+        524
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        750.5099968000001,
+        495.94999680000006,
+        915.7199936,
+        537.9300000000001
+      ],
+      "reason": "Refit the third right-stack front to its exposed surface beside the gripper. The old left bound extends through the jaw and its lower bound includes the neighboring band. Keep the original visible right-corner triple and missing left slot.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original shows the upper exposed fragment beginning around y488 and the rounded right face reaching approximately x918. Initial right edge916 was slightly inside visible material; root left800 would include jaw material.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000018-row25-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-018-row26",
+      "image_id": "new_000018",
+      "original_row": 26,
+      "bbox_xyxy_original_pixels": [
+        815,
+        521,
+        910,
+        552
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        747.5699967999999,
+        525.6300024,
+        910.5499904,
+        562.8200039999999
+      ],
+      "reason": "Refit the lowest right-stack front to the visible fragment above the hand and rack. Remove unsupported width through the gripper and background below. Preserve the original right-corner triple and missing left slot.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original seam is near y521, with foreground jaw extending to about x815 at the upper-left visible extreme. Initial left812/top516 included jaw/previous-front material.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000018-row26-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-018-row32",
+      "image_id": "new_000018",
+      "original_row": 32,
+      "bbox_xyxy_original_pixels": [
+        452,
+        579,
+        534,
+        609
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        447.5500032,
+        583.9500023999999,
+        602.9400064,
+        621.050004
+      ],
+      "reason": "The visible front beside the thumb starts at the left-edge step near y579 and ends at the separate step near y607–609. Limit its right extent to exposed material near x534 rather than the hidden width through the thumb. Keep the original left-corner triple and missing right slot.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original left step begins around y579 and the lower step is near y607–609. Initial bottom613 crossed into the next front. Right extreme follows the hand boundary at the upper seam around x534; no coordinate averaging.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000018-row32-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-018-row33",
+      "image_id": "new_000018",
+      "original_row": 33,
+      "bbox_xyxy_original_pixels": [
+        457,
+        607,
+        511,
+        635
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        452.1099968,
+        611.9799984,
+        602.3399999999999,
+        644.76
+      ],
+      "reason": "The next visible front beside the thumb has a distinct left-edge step near y607 and lower transition near y633–635. Its upper exposed material reaches approximately x511 before meeting the hand. Remove the unsupported box span across the thumb; preserve both corner triples.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original shows a new left-edge step near x457,y607 and another lower step around y633–635. Initial top608 was close, but bottom637 included transition below; x511 is the visible upper hand-boundary extreme.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000018-row33-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-018-row34",
+      "image_id": "new_000018",
+      "original_row": 34,
+      "bbox_xyxy_original_pixels": [
+        460,
+        633,
+        486,
+        659
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        454.1399936,
+        637.5900024,
+        602.2,
+        670.640004
+      ],
+      "reason": "Only the lower-left front fragment remains exposed between the y633 step and the hand boundary near y657–659. Enclose this observed fragment rather than extending the box through the thumb. Preserve the original left-corner triple and missing right slot.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original lower left fragment starts near the y633 step and ends near y657–659. Upper visible portion extends to the hand near x486; initial right483 omitted a narrow visible piece.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000018-row34-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-034-row55",
+      "image_id": "new_000034",
+      "original_row": 55,
+      "bbox_xyxy_original_pixels": [
+        574,
+        659,
+        616,
+        685
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        571.0,
+        657.0000036,
+        651.0,
+        683.0000028
+      ],
+      "reason": "Refit the second lower-center front to the separately visible strip between rack and gripper. Its rightmost exposed material reaches approximately x616; the old x651 bound describes hidden width. Preserve the original left-corner triple and missing right slot.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original raw fragment below row54 has an upper slanted seam reaching the gripper near x616,y659; left lower step lies around y682–685. Initial right611 missed the upper-right exposed portion.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000034-row55-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-034-row56",
+      "image_id": "new_000034",
+      "original_row": 56,
+      "bbox_xyxy_original_pixels": [
+        578,
+        679,
+        601,
+        703
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        575.0,
+        677.0000016,
+        649.0,
+        702.0
+      ],
+      "reason": "Refit the next lower-center front to the visible fragment beside the gripper, ending near x601. The old right bound extends into the occluder. Keep the source instance and exact original corner triples.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original exposed face reaches the gripper near x601 around its upper transition and ends near y700–703 at the next step. Initial right597 clipped visible upper material.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000034-row56-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-034-row57",
+      "image_id": "new_000034",
+      "original_row": 57,
+      "bbox_xyxy_original_pixels": [
+        580,
+        698,
+        593,
+        720
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        577.9999935999999,
+        695.0000016,
+        646.9999935999999,
+        720.0
+      ],
+      "reason": "Refit the narrow lowest lower-center front to its observed strip, clipped at the image bottom. The old right bound covers the gripper. Preserve the original left-corner triple and missing right slot; their physical localization is not newly certified by box containment.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original narrow gray strip is visible between rack and gripper from approximately y698 to image bottom. Its upper-right portion reaches about x593; initial x589 was too narrow. Bottom stays clipped at720, with existing left v2 token retained.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000034-row57-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-049-row9",
+      "image_id": "new_000049",
+      "original_row": 9,
+      "bbox_xyxy_original_pixels": [
+        0,
+        439,
+        140,
+        495
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        6.3999999966313226e-06,
+        441.41000040000006,
+        162.25000319999998,
+        490.17999960000003
+      ],
+      "reason": "The image-left clipped front has a visible rounded right extreme around x140. Remove the old span to x162 across the metal rack, retaining the same observed front and its exact original missing-left/visible-right corner triples.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Retain initial geometry: rounded physical front ends near x140, while original x162 includes rack/background. The image-left edge remains clipped and unavailable.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000049-row09-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-049-row14",
+      "image_id": "new_000049",
+      "original_row": 14,
+      "bbox_xyxy_original_pixels": [
+        350,
+        645,
+        478,
+        669
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        350.00000639999996,
+        645.6700008,
+        423.6400064,
+        662.000004
+      ],
+      "reason": "The visible third lower-center front continues to the thumb near x478, well beyond the old x424 right bound. Expand to the observed front and its own slanted top/bottom boundaries. The old visible left-corner triple stays exact; the occluded actual right corner remains missing.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original right-edge zoom shows white front material to roughly x476–478 near y650 before the hand. Initial right472 omitted supported visible material; preserve the rounded left v2 junction token.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000049-row14-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-049-row24",
+      "image_id": "new_000049",
+      "original_row": 24,
+      "bbox_xyxy_original_pixels": [
+        356,
+        663,
+        472,
+        686
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        357.00000639999996,
+        665.4999996,
+        421.52000639999994,
+        680.0000004
+      ],
+      "reason": "The next lower-center front continues to exposed material near x472 at its upper-right edge around y664–666. The old x422 right bound cuts off that face. Enclose this observed front without inferring hidden width or a hidden corner; preserve both original corner triples.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original shows front material reaching x470–472 around y664–666. Initial right466 cut this upper-right piece. This follows the hand intersection and is not an average of proposals.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000049-row24-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-049-row25",
+      "image_id": "new_000049",
+      "original_row": 25,
+      "bbox_xyxy_original_pixels": [
+        364,
+        681,
+        454,
+        701
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        365.0,
+        682.5300048,
+        419.3399936,
+        695.0000016
+      ],
+      "reason": "The next lower-center front continues to the hand near x454, beyond the old x419 bound. Refit to its visible band and preserve the original left-corner triple and missing right slot.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original shows the upper seam entering the hand around x452–454,y681. Initial right449 was too narrow; left/top adjusted to the visible stepped transition.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000049-row25-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    },
+    {
+      "id": "consistency-049-row26",
+      "image_id": "new_000049",
+      "original_row": 26,
+      "bbox_xyxy_original_pixels": [
+        365,
+        698,
+        442,
+        716
+      ],
+      "source_bbox_xyxy_original_pixels": [
+        366.00000639999996,
+        705.259998,
+        411.69000320000004,
+        716.0000004000001
+      ],
+      "reason": "The lowest retained lower-center front continues to the hand near x442, beyond the old x412 bound. Enclose the visible band near y698–716, keeping its source identity and original corner triples. Do not add the unresolved border-adjacent material below.",
+      "reviewers": [
+        "root",
+        "training_image_review"
+      ],
+      "root_final_proof_inspected": true,
+      "reconciliation_note": "Original final visible front starts near the y698 transition and reaches the hand around x440–442 there. Initial top705/right412 from source, and own first top699/right436, omit visible material; lower edge remains around716.",
+      "proof_raw_overlay": "independent-review/reconciliation-proofs/new_000049-row26-raw-overlay.png",
+      "boundary_uncertainty": "Manual original-pixel judgment; approximately 1–4 px at soft boundaries, not a calibrated uncertainty interval."
+    }
+  ],
+  "all_row_disposition": [
+    {
+      "image_id": "new_000018",
+      "original_rows_reviewed": 34,
+      "whole_image_completeness_reviewed": true,
+      "accepted_box_rows": [
+        24,
+        25,
+        26,
+        32,
+        33,
+        34
+      ],
+      "held_box_rows": [
+        23,
+        28,
+        29,
+        30,
+        31
+      ],
+      "unresolved_identity_rows": [
+        27
+      ],
+      "retained_source_rows_without_new_edits": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "all_corner_tokens_preserved": true,
+      "full_image_certified": false,
+      "empty_label_visually_supported": false
+    },
+    {
+      "image_id": "new_000034",
+      "original_rows_reviewed": 57,
+      "whole_image_completeness_reviewed": true,
+      "accepted_box_rows": [
+        55,
+        56,
+        57
+      ],
+      "held_box_rows": [
+        43,
+        44,
+        45,
+        54
+      ],
+      "unresolved_identity_rows": [
+        15,
+        48,
+        49,
+        50
+      ],
+      "retained_source_rows_without_new_edits": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ],
+      "all_corner_tokens_preserved": true,
+      "full_image_certified": false,
+      "empty_label_visually_supported": false
+    },
+    {
+      "image_id": "new_000049",
+      "original_rows_reviewed": 26,
+      "whole_image_completeness_reviewed": true,
+      "accepted_box_rows": [
+        9,
+        14,
+        24,
+        25,
+        26
+      ],
+      "held_box_rows": [],
+      "unresolved_identity_rows": [
+        6,
+        18,
+        21
+      ],
+      "retained_source_rows_without_new_edits": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "all_corner_tokens_preserved": true,
+      "full_image_certified": false,
+      "empty_label_visually_supported": false
+    },
+    {
+      "image_id": "old_000007",
+      "original_rows_reviewed": 10,
+      "whole_image_completeness_reviewed": true,
+      "accepted_box_rows": [],
+      "held_box_rows": [],
+      "unresolved_identity_rows": [],
+      "retained_source_rows_without_new_edits": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "all_corner_tokens_preserved": true,
+      "full_image_certified": false,
+      "empty_label_visually_supported": false
+    },
+    {
+      "image_id": "old_000057",
+      "original_rows_reviewed": 8,
+      "whole_image_completeness_reviewed": true,
+      "accepted_box_rows": [],
+      "held_box_rows": [],
+      "unresolved_identity_rows": [],
+      "retained_source_rows_without_new_edits": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "all_corner_tokens_preserved": true,
+      "full_image_certified": false,
+      "empty_label_visually_supported": false
+    },
+    {
+      "image_id": "new_000132",
+      "original_rows_reviewed": 0,
+      "whole_image_completeness_reviewed": true,
+      "accepted_box_rows": [],
+      "held_box_rows": [],
+      "unresolved_identity_rows": [],
+      "retained_source_rows_without_new_edits": [],
+      "all_corner_tokens_preserved": true,
+      "full_image_certified": false,
+      "empty_label_visually_supported": true
+    }
+  ],
+  "unresolved_and_retained": {
+    "held_complete_bbox_replacements": [
+      {
+        "image_id": "new_000018",
+        "original_row": 23,
+        "decision": "retain_source_unchanged",
+        "reason": "Instance and excessive left extent are supported, but the first estimate also changes the roof/front top from419.74 to407. The upper face/roof transition is not confidently separated; hold the complete replacement rather than accepting uncertain top geometry.",
+        "initial_proposal_not_adopted": [
+          777,
+          407,
+          935,
+          459
+        ]
+      },
+      {
+        "image_id": "new_000018",
+        "original_row": 28,
+        "decision": "retain_source_unchanged",
+        "reason": "Observed front and hand occlusion are clear, but the first estimate changes top650.82 to637 across the roof/front transition. No final front-only upper extent is sufficiently resolved in this pass; hold.",
+        "initial_proposal_not_adopted": [
+          319,
+          637,
+          463,
+          684
+        ]
+      },
+      {
+        "image_id": "new_000018",
+        "original_row": 29,
+        "decision": "retain_source_unchanged",
+        "reason": "Visible row and overextended right bound are supported, but the exact upper/lower seams in the shaded lower stack remain weak. Hold the complete replacement rather than treating a right-edge improvement as certification of every edge.",
+        "initial_proposal_not_adopted": [
+          329,
+          678,
+          450,
+          708
+        ]
+      },
+      {
+        "image_id": "new_000018",
+        "original_row": 30,
+        "decision": "retain_source_unchanged",
+        "reason": "Bottom-clipped front is supported, but its upper seam and relationship to the image-border/lip transition remain weak. Hold the complete replacement; preserve both unavailable corners.",
+        "initial_proposal_not_adopted": [
+          333,
+          702,
+          438,
+          720
+        ]
+      },
+      {
+        "image_id": "new_000018",
+        "original_row": 31,
+        "decision": "retain_source_unchanged",
+        "reason": "A broad upper exposed segment before the thumb may support nearly the old right extreme, but the seam with row14/32 is not resolved tightly enough to adopt the first estimate. Hold.",
+        "initial_proposal_not_adopted": [
+          448,
+          546,
+          600,
+          584
+        ]
+      },
+      {
+        "image_id": "new_000034",
+        "original_row": 43,
+        "decision": "retain_source_unchanged",
+        "reason": "Occluded width is clearly excessive. Reinspection shows slanted seams meeting the gripper; the full proposed top/bottom extrema remain disputed beyond ordinary 1–3px blur. Hold instead of averaging root/peer boxes or copying the full legacy-height band.",
+        "initial_proposal_not_adopted": [
+          539,
+          448,
+          627,
+          487
+        ]
+      },
+      {
+        "image_id": "new_000034",
+        "original_row": 44,
+        "decision": "retain_source_unchanged",
+        "reason": "Right extent is excessive, but slanted visible-row seams change the full box top more than a small rounding adjustment. Full-box replacement held until the face-versus-rounded lip transition is adjudicated.",
+        "initial_proposal_not_adopted": [
+          544,
+          469,
+          620,
+          513
+        ]
+      },
+      {
+        "image_id": "new_000034",
+        "original_row": 45,
+        "decision": "retain_source_unchanged",
+        "reason": "Right extent is excessive, but proposed upper extent may include the preceding front where it is hidden by the gripper. Hold the full replacement rather than extrapolating a hidden slanted seam.",
+        "initial_proposal_not_adopted": [
+          548,
+          493,
+          614,
+          535
+        ]
+      },
+      {
+        "image_id": "new_000034",
+        "original_row": 54,
+        "decision": "retain_source_unchanged",
+        "reason": "Bright top transition spans approximately y625–637. Original pixels do not resolve whether the higher material is target front or upper surface. Peer625 and root637 are materially different semantic choices, not quantities to average. Hold full replacement.",
+        "initial_proposal_not_adopted": [
+          570,
+          625,
+          631,
+          665
+        ]
+      }
+    ],
+    "identity_source_rows_retained": {
+      "new_000018": [
+        27
+      ],
+      "new_000034": [
+        15,
+        48,
+        49,
+        50
+      ],
+      "new_000049": [
+        6,
+        18,
+        21
+      ]
+    },
+    "independent_ambiguity_record": {
+      "capsule_path": "ambiguity-review/decisions.json",
+      "sha256": "3124aabd2c4d566fe50b4284680c3d2085bfe80be62baed88d40781f389fec4c"
+    },
+    "whole_image_regions": [
+      {
+        "image_id": "new_000018",
+        "region_xyxy": [
+          602,
+          450,
+          617,
+          550
+        ],
+        "decision": "No new row. Existing row22 has an upper exposed strip; lower pale material is plausible but not a certified extra front; intermediate strip is more ambiguous."
+      },
+      {
+        "image_id": "new_000034",
+        "region_xyxy": [
+          380,
+          705,
+          575,
+          720
+        ],
+        "decision": "No addition; roof/front border transition unresolved."
+      },
+      {
+        "image_id": "new_000049",
+        "region_xyxy": [
+          360,
+          714,
+          445,
+          720
+        ],
+        "decision": "No addition below lowest retained center front; same-front/lip versus another front unresolved."
+      },
+      {
+        "image_id": "old_000057",
+        "region_xyxy": [
+          555,
+          0,
+          975,
+          25
+        ],
+        "decision": "No addition; bright projecting edge without a securely identified separate front."
+      }
+    ],
+    "point_localization_concerns": [
+      {
+        "image_id": "new_000018",
+        "rows": [
+          15
+        ],
+        "note": "Upper front physical-corner junction is not recertified; preserve existing tokens."
+      },
+      {
+        "image_id": "new_000034",
+        "rows": [
+          15,
+          57
+        ],
+        "note": "Near-border row15 association and narrow-strip row57 left junction remain explicit point-review concerns. Geometry containment is not physical proof."
+      },
+      {
+        "image_id": "new_000049",
+        "rows": [
+          14,
+          24,
+          25,
+          26
+        ],
+        "note": "Rounded left junction precision is not recertified by accepted box expansion; existing tokens remain exact."
+      }
+    ],
+    "ordinary_retained_rows": "No accepted edit does not certify legacy box padding, physical corner localization, or full annotation completeness."
+  },
+  "boundary_note": "Manual integer bounds follow observed pixels. Approximate 1–4 px softness is not a calibrated uncertainty interval. Missing corners remain missing; no hidden geometry is reconstructed. Existing numerical geometry epsilon stays 0.0001 px for serialization only.",
+  "review_provenance": {
+    "assistant_review_not_human_certification": true,
+    "root_viewed_all_originals_before_overlays": true,
+    "independent_peer_first_proposals_blinded_to_root_coordinates": true,
+    "root_received_early_peer_qualitative_messages_during_detailed_review": true,
+    "fully_blinded_review_claimed": false,
+    "root_initial_sha256": "ec7a6028124a8f67ce24a2ef77427b0d3e121193b83c28315405b6e26b85ad25",
+    "independent_initial_sha256": "e99c97923e9e368fbadaad3f29ecfe070e1e9aa92860d75dd1cc2869f0dcade8",
+    "reconciliation_sha256": "9dbbfc5bd438d6c11c9bd95b9b9860b8c5d2d9a785a5586046b713b839a4677b",
+    "accepted_raw_overlay_proofs_all_inspected_by_root": true,
+    "generated_pixels_used": false,
+    "frozen_sources_modified": false
+  },
+  "model_decision": {
+    "selected_checkpoint": "PR35 seed46 finalized last.pt",
+    "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+    "input_size": 1280,
+    "box_confidence": 0.13,
+    "nms_iou": 0.7,
+    "endpoint_cutoff": 0.5,
+    "new_model_effect": "unmeasured",
+    "gpu_run_requested": false
+  }
+}
