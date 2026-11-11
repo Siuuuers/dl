@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "experiment_id": "seed46-m2-fixed-resolution-1280-1920-v1",
+  "status": "prospectively_declared_single_comparison",
+  "model_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+  "checkpoint_manifest_sha256": "c5f07c4445a7b33a679fd4fc896aaf9643d81b4f72d8ca8e4e7179cb0bc691e8",
+  "reference": "data/references/visible-front-2026-11-11",
+  "reference_manifest_sha256": "2e60b3e81195448cc565a1000b4305e3215baba2bf0ee0c976e6551c2e64937c",
+  "capsule": "results/evaluation/baomai-annotations-seed46-20261111/evaluation.zip",
+  "capsule_sha256": "3dfe3415841b47a605e2fd4b9e490b2c12b348b0014c6c2a8c78c06f323ffc1a",
+  "archived_prediction_member": "evidence/seed-46/m2/predictions.jsonl",
+  "archived_prediction_sha256": "25b5eabecbffa13c1d01d62194dfbdebdc0fcdf914f0661123c23347c4060ee9",
+  "reference_replay": "results/verification/baomai-low-confidence-20261111/reference-replay.json.gz",
+  "reference_replay_sha256": "770eea983e325b5d0ac85390b9de17c437228fc4810ae4e0e8d4ac7e3936c32f",
+  "image_count": 20,
+  "reference_objects": 663,
+  "visible_reference_endpoints": 1228,
+  "sizes_in_fixed_order": [
+    1280,
+    1920
+  ],
+  "fresh_model_load_for_each_arm": true,
+  "image_order": "ascending image_id in both arms",
+  "box_confidence": 0.15,
+  "nms_iou": 0.7,
+  "matching_iou": 0.5,
+  "endpoint_confidence": 0.5,
+  "radii_px": [
+    2,
+    5,
+    10
+  ],
+  "device": "cpu",
+  "torch_threads": 4,
+  "precision": "FP32",
+  "ordinary_nms": true,
+  "warmup": "one zero-image prediction at that arm's size and confidence, excluded from image timings",
+  "coordinates": "original 1280 x 720 image pixels returned by the existing prediction helper",
+  "focus_object_ids": [
+    "new_000008:33",
+    "new_000009:57"
+  ],
+  "focus_hypothesis": "Upsampling may change the network representation of two reviewed partial fronts: a 68.16 x 46.56 px right-clipped target and an 18 x 31 px fragment beside a jaw. It adds no optical information.",
+  "primary_comparison": "fresh 1920 against fresh 1280; independently compare fresh 1280 exactly with archived M2 at confidence 0.15",
+  "required_outcomes": [
+    "all-object FN/FP and duplicate/other extras",
+    "every gained/lost reference row",
+    "both focus objects",
+    "returned corners and 2/5/10 px success",
+    "each empty image and pooled nonempty/empty results",
+    "per-image stage and wall timings"
+  ],
+  "decision": "Report gains, losses, corner regressions, and review burden. No automatic promotion or default change. A gain confined to unresolved legacy rows does not establish the stated partial-front hypothesis.",
+  "network_controls": "YOLO_OFFLINE=true, YOLO_AUTOINSTALL=false, Python audit rejection of DNS/connect/sendto events; all assets must already exist locally",
+  "internal_deadline_seconds": 590,
+  "outer_timeout_recommendation": "timeout --kill-after=5s 595s (600 seconds maximum including forced termination)",
+  "forbidden_changes": [
+    "labels",
+    "matcher",
+    "endpoint gate",
+    "other resolutions",
+    "threshold/NMS search",
+    "training",
+    "production defaults"
+  ],
+  "limits": [
+    "Repeated use of the same 20 images is exploratory validation, not independent generalization evidence.",
+    "CPU timing is descriptive and is not a deployment latency limit.",
+    "Fixed arm order and one timing sample per image do not support a rigorous hardware benchmark.",
+    "Eighteen of the 21 archived misses retain documented reference uncertainty; official denominators stay unchanged.",
+    "The prior interrupted size trial has no verified recovered results and is not evidence for this comparison."
+  ]
+}

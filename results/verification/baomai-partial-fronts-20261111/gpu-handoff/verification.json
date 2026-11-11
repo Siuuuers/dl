@@ -1,0 +1,124 @@
+{
+  "kind": "partial-fronts-gpu-handoff-local-verification",
+  "schema_version": 1,
+  "started_at_utc": "2026-11-11T08:13:46.103677+00:00",
+  "finished_at_utc": "2026-11-11T08:13:48.839227+00:00",
+  "elapsed_seconds": 2.736,
+  "implementation_revision": "2d8b6f61865100e50742e384fb06dd87c37fb603",
+  "implementation_tree": "d7362b82f1aeddaa63a3b9ced7a8746fa2619c1e",
+  "notebook_source_revision": "2d8b6f61865100e50742e384fb06dd87c37fb603",
+  "python_executable": "/workspace/scratch/b2268c0c3452/work/runtime/venv/bin/python",
+  "python_version": "Python 3.12.14",
+  "code_cells_compiled": 7,
+  "focused_checks": {
+    "command": [
+      "/workspace/scratch/b2268c0c3452/work/runtime/venv/bin/python",
+      "-B",
+      "scripts/check_package_partial_front_results.py"
+    ],
+    "exit_code": 0,
+    "passed": 12,
+    "log": "focused-checks.log",
+    "scope": "Pair packaging and notebook recovery/source/runtime guards; CUDA bundles are explicitly synthetic fixtures, not GPU execution evidence."
+  },
+  "real_input_preflight": {
+    "origin": "Literal input_preflight script in notebook code cell index 1, executed with the exact protocol path/hash arguments. GPU setup and training cells were not executed.",
+    "exit_code": 0,
+    "stdout": "input-preflight.stdout",
+    "stderr": "input-preflight.stderr",
+    "summary": {
+      "status": "verified",
+      "original_images": 157,
+      "label_counts": {
+        "old_reviewed": {
+          "train": {
+            "images": 137,
+            "objects": 3771,
+            "visible_endpoints": 6841,
+            "missing_endpoints": 701,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "extended_reviewed": {
+          "train": {
+            "images": 137,
+            "objects": 3774,
+            "visible_endpoints": 6841,
+            "missing_endpoints": 707,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        }
+      },
+      "weights_verified": true,
+      "protocol_sha256": "428cd853e0991ba138def8ba9ba9b74909bc654ab2d0c9c49e32a5b598479726",
+      "delta_train_image_ids": [
+        "new_000119",
+        "new_000120",
+        "new_000122",
+        "new_000125",
+        "new_000130"
+      ]
+    }
+  },
+  "gpu_resource_trial_performed": false,
+  "gpu_training_performed": false,
+  "new_trained_checkpoint_available": false,
+  "source_files": [
+    {
+      "path": "notebooks/baomai_partial_fronts.ipynb",
+      "sha256": "d354ccbaa78512570a1d3639369e56a12612a567fb15625d9ba058dfdad5b554"
+    },
+    {
+      "path": "scripts/package_partial_front_results.py",
+      "sha256": "17abedbc58487de7a14344d4fa2657261c79fe0c7be75921c540a142afcb75e9"
+    },
+    {
+      "path": "scripts/check_package_partial_front_results.py",
+      "sha256": "1fb81e5a893121c6663944ba2e2702b8bf015c6a05c3e95b2ae076bba87b53bd"
+    },
+    {
+      "path": "experiments/partial-fronts-2026-11-11.json",
+      "sha256": "428cd853e0991ba138def8ba9ba9b74909bc654ab2d0c9c49e32a5b598479726"
+    },
+    {
+      "path": "data/candidates/partial-fronts-2026-11-11/manifest.json",
+      "sha256": "4a4cb7db127b8da577b33fe510105383e1b7088e374cbbcb3128a39a5377932f"
+    },
+    {
+      "path": "data/candidates/partial-fronts-2026-11-11/review.json",
+      "sha256": "4940712c9fd6ca50c0a157ba6ebbc1e866909b992e5bcb6c78b0c1bf03004e49"
+    }
+  ],
+  "logs": [
+    {
+      "path": "focused-checks.log",
+      "size_bytes": 2471,
+      "sha256": "9fef5b91bfe64c89d85a3295449ae68b61557c40b39a66d334dcf02f9a76228e"
+    },
+    {
+      "path": "input-preflight.stderr",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "input-preflight.stdout",
+      "size_bytes": 1048,
+      "sha256": "a33fbfcdfb503f26eb5f6d20d8e4acaf1ee87a1d795dcf58ec50e11b8fbe3d4c"
+    }
+  ],
+  "working_tree_note": "The implementation tree matches the remote pinned commit. The final source-pinned notebook and these verification artifacts are pending a separate publication commit; this is not described as a clean-checkout training run."
+}
