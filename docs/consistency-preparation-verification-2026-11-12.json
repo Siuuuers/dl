@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "status": "preparation_verified",
+  "prepared_at_utc": "2026-11-11T16:19:04.158062+00:00",
+  "study_date": "2026-11-12",
+  "study_timezone": "Asia/Hong_Kong",
+  "experiment_id": "consistency-seed46-v1",
+  "published_implementation": {
+    "commit": "14561b7f01cc89c4472e11ffb37b3943ea3e34f9",
+    "tree": "b2c7b6aa1f2a316930032ceefedf56e36fa9df6f",
+    "parent": "3bc19e5afc1927665cf64b8e2dc7834b190d9960",
+    "remote_added_blob_hashes_and_modes_verified": 4,
+    "clean_before_and_after_input_replay": true
+  },
+  "protocol_sha256": "da692f2261fae441dfa7d68b3f86ed850acbb861c75e86e8c54f40b7184e540b",
+  "candidate_manifest_sha256": "2f59ec8a09466922eb2f20fd66c5f0f8a972a6c5694bbb41c17d51277ff3b9a9",
+  "parent_candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+  "recipe_id": "reviewed-annotations-seed46-v1",
+  "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+  "annotation_candidate_checks": {
+    "old_reviewed": {
+      "status": "verified",
+      "original_labels_verified": 157,
+      "changed_train_labels": 8,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "consistency_reviewed": {
+      "status": "verified",
+      "original_labels_verified": 157,
+      "changed_train_labels": 11,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    }
+  },
+  "delta_verification": {
+    "inherited_files_and_change_objects_exact": 8,
+    "inherited_decision_objects_exact": 12,
+    "new_bbox_replacements": 14,
+    "new_additions": 0,
+    "new_deletions": 0,
+    "all_class_and_endpoint_tokens_preserved": true,
+    "deferred_rows_unchanged": true,
+    "counts_identical": true,
+    "visual_correctness_verified": false
+  },
+  "actual_notebook_input_preflight": {
+    "status": "verified",
+    "original_images": 157,
+    "label_counts": {
+      "old_reviewed": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "consistency_reviewed": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "weights_verified": true,
+    "protocol_sha256": "da692f2261fae441dfa7d68b3f86ed850acbb861c75e86e8c54f40b7184e540b",
+    "delta_train_image_ids": [
+      "new_000018",
+      "new_000034",
+      "new_000049"
+    ],
+    "execution": "Final handoff notebook embedded input_preflight executed in the clean published implementation checkout; all 157 original PNG hashes/dimensions and both effective label sets checked.",
+    "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "checkpoint_size_bytes": 106838542,
+    "checkpoint_deserialized": false
+  },
+  "actual_staging": {
+    "status": "verified",
+    "roles": {
+      "old_reviewed": {
+        "status": "verified",
+        "staging_manifest_sha256": "a081b64fea60b351337e1300140f85f9bc29b2cd6801250c478e2119694ba05d",
+        "actual_original_pngs_verified": 157
+      },
+      "consistency_reviewed": {
+        "status": "verified",
+        "staging_manifest_sha256": "8abedcfd24a2d1d67db029d2c0eaba2690acf1638e5f5d92002b989e7a8ab9de",
+        "actual_original_pngs_verified": 157
+      }
+    },
+    "execution": "Both complete reference/candidate staging pairs were created outside the source checkout and reverified against the published implementation.",
+    "training_executed": false
+  },
+  "focused_package_checks": {
+    "passed": 9,
+    "failed": 0,
+    "command": "python -B scripts/check_package_consistency_results.py",
+    "execution": "Passed in the working checkout and again in the clean published implementation.",
+    "scope": "Real fixed protocol and candidate composition, plus synthetic completed-bundle, rejected-input and archive-tamper cases.",
+    "model_loaded": false
+  },
+  "notebook_checks": {
+    "passed": 14,
+    "failed": 0,
+    "method": "AST-extracted notebook functions and recovery branches executed with synthetic files, runtime probes and training/process substitutes; actual archived PR43 rectangular batch samples used as a shape fixture.",
+    "covers": [
+      "Invalid pins stop before GPU/process/workspace actions",
+      "Exact experiment, candidate, recipe and protocol identities",
+      "Four real-batch evidence fields and rectangular shape compatibility",
+      "Six-artifact Drive backup, restoration and corruption refusal",
+      "Complete pair skips resource trial and both training runs",
+      "Runtime mismatch blocks missing-arm training",
+      "Matching completed resource trial is reused; invalid saved trial falls back to a trial substitute",
+      "Partial local runs are preserved and refused",
+      "Fixed candidate-arm command, separate trial/full outputs, verify-existing and complete-ZIP download"
+    ],
+    "selected_recovery_boundary_tests": {
+      "passed": 3,
+      "tests": [
+        {
+          "name": "test_completed_pair_skips_all_gpu_trial_and_training",
+          "status": "passed"
+        },
+        {
+          "name": "test_runtime_mismatch_stops_before_missing_full_arm",
+          "status": "passed"
+        },
+        {
+          "name": "test_saved_trial_reuse_invalid_skip_and_local_partial_rejection",
+          "status": "passed"
+        }
+      ],
+      "method": "Executed AST-extracted functions and the exact len(COMPLETED)==2 recovery gate from the actual notebook. Runtime probes, collection, GPU training calls and external processes were substituted. Synthetic Drive markers and fixtures exercise recovery reuse, incompatibility fallback and partial local rejection."
+    },
+    "final_pin_validation": {
+      "source_ref": "14561b7f01cc89c4472e11ffb37b3943ea3e34f9",
+      "protocol_sha256": "da692f2261fae441dfa7d68b3f86ed850acbb861c75e86e8c54f40b7184e540b",
+      "compiled_code_cells": 7,
+      "compiled_embedded_scripts": 2,
+      "changed_cell_indices_from_implementation_draft": [
+        0,
+        2
+      ],
+      "only_executable_change": "SOURCE_REF literal replaced with the immutable implementation commit",
+      "other_executable_cells_byte_identical": true,
+      "recovery_tests_repeated_after_pin": false
+    }
+  },
+  "baseline_preservation": {
+    "notebooks/baomai_visible_extent.ipynb": true,
+    "experiments/visible-extent-2026-11-11.json": true,
+    "scripts/package_visible_extent_results.py": true,
+    "scripts/check_package_visible_extent_results.py": true,
+    "scripts/train_pose_comparison.py": true,
+    "scripts/pose_checkpoint.py": true,
+    "scripts/stage_pose_training.py": true,
+    "scripts/verify_pose_candidate.py": true,
+    "scripts/verify_pose_box_candidate.py": true,
+    "scripts/verify_pose_annotation_candidate.py": true,
+    "scripts/evaluate_pose.py": true,
+    "scripts/pose_scoring.py": true,
+    "scripts/package_gpu_results.py": true,
+    "data/candidates/annotations-2026-11-10/manifest.json": true,
+    "data/candidates/annotations-2026-11-10/review.json": true,
+    "data/candidates/consistency-2026-11-11/manifest.json": true,
+    "data/candidates/consistency-2026-11-11/review.json": true,
+    "data/manifest.json": true,
+    "data/references/visible-front-2026-11-11/manifest.json": true
+  },
+  "independent_review": {
+    "implementation_and_scope": "passed; no remaining implementation blocker",
+    "resolved_issue": "Trial shape gate now accepts the unchanged rectangular recipe rather than requiring square batches.",
+    "final_handoff_pin_review": "passed; clean implementation commit/tree, exact source/protocol pins, notebook-only executable pin change, documentation and saved preparation proof verified",
+    "final_pin_review_sha256": "d554abc821704988a1e24627b44063acc39b0b960267e64947fab4ab6c744093"
+  },
+  "files_sha256": {
+    "experiments/consistency-2026-11-12.json": "da692f2261fae441dfa7d68b3f86ed850acbb861c75e86e8c54f40b7184e540b",
+    "scripts/package_consistency_results.py": "20c36c3738bb72057a06e2bc669e3f53970895f1d6cd5b86a1c3fffb667a088e",
+    "scripts/check_package_consistency_results.py": "14580d68e0d6f8fb17cd80470489312996f827952c66852210f1b75b2a1716f4",
+    "notebooks/baomai_consistency.ipynb": "0b13698b658500b6b5cf78957d980f49654845549d20cc22889fb7ab3429cf64",
+    "docs/training-consistency-2026-11-12.md": "ad4ce331ae7fc7826a9946efc5158ab3e0664998919ec16785ed075ea4ef4e37",
+    "data/candidates/consistency-2026-11-11/manifest.json": "2f59ec8a09466922eb2f20fd66c5f0f8a972a6c5694bbb41c17d51277ff3b9a9",
+    "data/candidates/consistency-2026-11-11/review.json": "5e22ccc984de4887f62ae11ec38f2aca614a0ef12078ee180a43ad612f602afc"
+  },
+  "limitations": [
+    "Preparation verification is not a Colab GPU execution.",
+    "Synthetic packaging and recovery tests do not establish actual runtime performance or model accuracy.",
+    "No additional annotation review is implied by mechanical candidate checks.",
+    "Both future full runs still require the same compatible GPU/runtime and the pinned clean implementation.",
+    "The unchanged development reference is reused; this does not supply independent unseen-scene evidence."
+  ],
+  "gpu_training_executed": false,
+  "training_executed": false,
+  "inference_executed": false,
+  "model_improvement_measured": false,
+  "documentation_checks": {
+    "relative_targets_checked": 94,
+    "all_targets_exist": true,
+    "whitespace_check": "passed"
+  }
+}
