@@ -2,7 +2,7 @@
 
 Use `scripts/predict_pose_folder.py` to run the default epoch173 model or an explicitly selected, verified completed checkpoint on a folder of original still images. It writes annotated PNGs, structured predictions and an image summary. No annotation TXT files, camera, desktop display or training run are needed.
 
-The agreed scope is one `cassette_front` class and its two lower-front corner slots. Missed objects have priority, while an acceptable extra-detection budget remains unspecified. Keep box confidence **0.25**, NMS IoU **0.70** and endpoint display confidence **0.50**. The [current readiness report](readiness-2026-11-11.md) explains the remaining misses and the measured cost of lowering confidence. These settings are not a claim of an optimal error tradeoff.
+The agreed scope is one `cassette_front` class and its two lower-front corner slots. The user has delegated assistant review and supported label amendments, with missed objects first. For that review workflow, use the **seed46 candidate at box confidence 0.15**, NMS IoU **0.70** and endpoint display confidence **0.50**. The generic runtime default remains epoch173 at 0.25. The [completed proposal review](low-confidence-review-2026-11-11.md) explains this bounded choice and the corrected reference; no universal optimum is claimed.
 
 ## Run
 
@@ -57,6 +57,22 @@ The archive is **39,776,456 bytes** and contains both completed arms. Select `ca
 
 The existing validator checks the selected checkpoint bytes, recorded completion, recipe, pose contract and matching repository metadata before inference. It does not reverify the original training image/label payloads or initial checkpoint bytes for this inference-only command. These limits are recorded in `run_status.json`. An invalid explicit selection fails; it never silently falls back to epoch173. Prediction success is not an accuracy measurement without a reference annotation.
 
+### Assistant-reviewed proposals
+
+After obtaining the candidate bundle above, use the existing threshold argument:
+
+```bash
+.venv/bin/python scripts/predict_pose_folder.py \
+  --checkpoint-manifest ../seed46-results/candidate/checkpoint-manifest.json \
+  --input /path/to/original-images \
+  --output /path/to/new-review-results \
+  --device cpu --conf 0.15 --nms-iou 0.70 --endpoint-conf 0.50
+```
+
+On the corrected 663-object reference, this candidate setting yields 21 misses and 76 extras, compared with 26/52 at 0.25. It retains all 689 higher-threshold predictions exactly and adds 29 proposals: five reference matches and 24 extras. The two-corner success count does not improve. This is the selected proposal-collection setting for assistant review, while the earlier 0.25 command remains the fixed primary comparison.
+
+The [review](low-confidence-review-2026-11-11.md) inspected all additions and produced two separately versioned reference labels. Keep unavailable corners missing even when a model reports a confident coordinate. Low-confidence predictions are proposals to inspect, not automatically approved annotations. Use the [corrected reference label set](../data/references/visible-front-2026-11-11/README.md) with the existing HTML editor; training labels and weights are separate.
+
 ### Optional overlap suppression
 
 The default NMS IoU remains **0.70**. A bounded [existing-data comparison](postprocess-experiment-2026-11-07.md) found that **0.68 at box confidence 0.25** reduces extra detections from 63 to 61 on the 20 development images, preserving all 625 matched objects and their exact predictions. This is a small settings result on familiar images, not a new trained model or an independent accuracy guarantee.
@@ -86,7 +102,7 @@ The two keypoint slots remain in model order. Their confidence and coordinates a
 
 This is an inference deliverable. Unlabeled images cannot supply false-negative, false-positive, precision, recall or accuracy measurements. `ground_truth_available: false` distinguishes predictions from reference annotations. Keep the existing [evaluation command](evaluate-pose.md) for the frozen labeled development set.
 
-The [additional-frame candidate](additional-annotation-pilot-2026-11-07.md) still has three quarantined images and zero eligible scoring/training images. Drawing predictions on an image does not resolve its reference boundaries. See the [current readiness report](readiness-2026-11-11.md) for the epoch173 default, seed46 candidate and limits of the existing development results.
+The [additional-frame candidate](additional-annotation-pilot-2026-11-07.md) still has three quarantined images and zero eligible scoring/training images. Drawing predictions on an image does not resolve its reference boundaries. See the [completed proposal review](low-confidence-review-2026-11-11.md) for the current assistant-review setting, corrected reference and limits of the existing development results.
 
 ## Verified example, 2026-11-07
 

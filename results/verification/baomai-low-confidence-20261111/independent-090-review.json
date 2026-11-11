@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "kind": "independent-original-pixel-review-of-two-possible-omissions",
+  "image_id": "new_000090",
+  "image_path": "data/images/val/new_000090.png",
+  "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+  "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000090.txt",
+  "reference_label_sha256": "0b77064a84e23159fb42001114fa253296103092d5eaa3bc13cf38ac1cc4a859",
+  "annotation_policy_path": "docs/annotation-policy.md",
+  "annotation_policy_sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+  "method": [
+    "Viewed full unchanged original image first, then read adopted annotation policy and PR30 labels.",
+    "Viewed supplied central original crop and lower-strip coordinate crop.",
+    "Produced two additional in-memory nearest-neighbor enlarged original-pixel crops with coordinate ticks outside the image area; no prediction boxes or labels overlaid.",
+    "Selected rectangles from visible-front surfaces before receiving the other reviewer rectangles.",
+    "Reviewed only identity and visible face extent, without inferring hidden corner coordinates or consulting amended-reference scores."
+  ],
+  "internal_coordinate_view_bounds_xyxy": [
+    [
+      665,
+      460,
+      750,
+      505
+    ],
+    [
+      565,
+      515,
+      620,
+      553
+    ]
+  ],
+  "cases": [
+    {
+      "id": "central_gripper_gap",
+      "decision": "supported_omitted_visible_front",
+      "bbox_xyxy_pixels": [
+        675,
+        474,
+        735,
+        496
+      ],
+      "keypoints_pixels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "observation": "An upper pale plane lies above a narrower front-facing facet. The exposed lower front facet begins near the horizontal transition around y474 and extends down toward y495; its lateral sides are cut by the jaws and lower extent by occlusion. This is cassette material, distinct from the beige jaws and skin.",
+      "plane_exclusion": "Exclude the broad upper plane above the approximately y474 transition and all jaw/skin material; do not use the whole held-piece silhouette.",
+      "corners": "Neither actual outer lower-front corner is visible. Apparent lower junctions are occluder intersections, not certified cassette corners.",
+      "bounds_precision": "Integer-pixel working proposal with roughly 1\u20132 px softness at the upper transition, lateral jaw boundary and lower edge; not a subpixel guarantee."
+    },
+    {
+      "id": "lower_left_of_gripper",
+      "decision": "supported_omitted_visible_front",
+      "bbox_xyxy_pixels": [
+        572,
+        527,
+        605,
+        546
+      ],
+      "keypoints_pixels": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "observation": "A separate pale front strip is visible below the horizontal lower edge of existing row42 near y525. The new front occupies the band beneath that separation, bounded by stack side at left, gripper jaw at right and thumb below. Identity is established by the visible separate surface, not inferred solely from stack spacing.",
+      "existing_reference_relation": "Existing row42 labels the preceding face and its lower-left point near (573.11,525.42). Its old rectangle extends into this region, but the visible boundary separates the physical fronts; box overlap alone is not duplication.",
+      "corners": "The thumb masks the actual left lower corner and the jaw masks the right. The visible white/skin edge is an occlusion boundary, so both slots remain canonical zero.",
+      "bounds_precision": "Integer-pixel working proposal with roughly 1\u20132 px softness at top/right/lower occluder boundaries; not a subpixel guarantee."
+    }
+  ],
+  "cross_review_received_after_selection": {
+    "other_reviewer_central_bbox": [
+      674,
+      474,
+      737,
+      495
+    ],
+    "other_reviewer_lower_bbox": [
+      572,
+      527,
+      607,
+      545
+    ],
+    "agreement": "Same two instances, same front-surface interpretation and same missing-corner states. Independent rectangle differences are 1\u20132 px along soft/occluder boundaries. Root adjudicates final selected coordinates."
+  },
+  "effects": {
+    "label_changes_made": false,
+    "inference_or_training": false,
+    "amended_reference_scoring": false,
+    "previous_unresolved_cases_adjudicated": false
+  },
+  "limits": [
+    "This is assistant visual adjudication of two bounded omissions, not certification of all image annotations or supervisor approval.",
+    "No hidden face extent or corner is inferred from prediction, symmetry or another frame.",
+    "The two independent reviewers support the same regions but do not imply statistical independence or perfect coordinate certainty."
+  ]
+}

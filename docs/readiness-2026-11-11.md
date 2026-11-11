@@ -1,4 +1,6 @@
-# Readiness on the supplied cassette images
+# PR30 readiness snapshot on the supplied cassette images
+
+**Later follow-up:** the user delegated assistant review, and the [completed low-confidence review](low-confidence-review-2026-11-11.md) added two omitted fronts in a separate 663-object reference and selected candidate confidence 0.15 for reviewed proposals. The tables below remain the historical PR30 661-object snapshot; do not combine their denominators with the new reference.
 
 **Use the system as a human-reviewed offline prototype. Retain epoch173 as the working default and seed46 M2 as an explicitly selected experimental candidate. The evidence does not establish unattended reliability on unseen scenes.** No new training is justified merely by repeating the completed annotation experiment.
 

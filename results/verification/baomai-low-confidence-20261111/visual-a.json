@@ -1,0 +1,985 @@
+{
+  "schema_version": 1,
+  "kind": "added-low-confidence-proposal-visual-review",
+  "review_date": "2026-11-11",
+  "reviewer": "assistant visual review, subset A",
+  "repo_commit": "62c6be7512a5ec625f6cf7090d6c612086413cc7",
+  "scope": {
+    "images": [
+      "new_000007",
+      "new_000008",
+      "new_000009"
+    ],
+    "added_proposal_count": 16,
+    "model": "candidate seed46 M2",
+    "box_confidence_interval": [
+      0.15,
+      0.25
+    ],
+    "upper_bound_exclusive": true,
+    "nms_iou": 0.7,
+    "endpoint_confidence": 0.5,
+    "reference": "visible-front-2026-11-10",
+    "case_id_convention": "pN is one-based position in that image raw 0.15 prediction list; explicit zero-based index is also recorded."
+  },
+  "method": [
+    "Inspected all three full original 1280x720 PNGs without annotations before opening candidate/reference crops.",
+    "Individually inspected every added proposal with a raw nearest-neighbour crop, PR30 reference overlay, and proposal overlay; the originals were not altered.",
+    "Compared visible object identity and extent against baomai-visible-front-v1. Numerical duplicate/other classifications were not treated as visual truth.",
+    "Did not infer corners through opaque occluders, beyond the image boundary, or from predicted confidence.",
+    "Consulted the existing reference dispositions after initial pixel inspection; unresolved identities/extents were retained."
+  ],
+  "sources": [
+    {
+      "image_id": "new_000007",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000007.png",
+      "image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "original_label_path": "data/labels/val/new_000007.txt",
+      "original_label_sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+      "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000007.txt",
+      "reference_label_sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921"
+    },
+    {
+      "image_id": "new_000008",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000008.png",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "original_label_path": "data/labels/val/new_000008.txt",
+      "original_label_sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07",
+      "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000008.txt",
+      "reference_label_sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57"
+    },
+    {
+      "image_id": "new_000009",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000009.png",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "original_label_path": "data/labels/val/new_000009.txt",
+      "original_label_sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f",
+      "reference_label_path": "data/references/visible-front-2026-11-10/labels/val/new_000009.txt",
+      "reference_label_sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9"
+    }
+  ],
+  "policy": {
+    "path": "docs/annotation-policy.md",
+    "sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91"
+  },
+  "numerical_audit": {
+    "path": "numerical-audit.json",
+    "sha256_at_read": "0e823460f07a7bdf9720252fbca9e6219d3ee81ef80b2f6defc0161b33b2033b"
+  },
+  "summary": {
+    "visual_classification_counts": {
+      "uncertain": 2,
+      "real_existing_front_extent_mismatch": 9,
+      "existing_front_recovered": 2,
+      "occluder_background_other_surface": 1,
+      "same_already_labeled_front": 2
+    },
+    "genuinely_omitted_visible_fronts_established": 0,
+    "reference_edits_supported": 0,
+    "reference_edits_made": 0,
+    "recovered_existing_reference_matches": [
+      "new_000008:p38",
+      "new_000009:p67"
+    ],
+    "uncertain_cases": [
+      "new_000007:p55",
+      "new_000009:p72"
+    ],
+    "prior_reference_uncertainty_preserved_for_recovered_match": [
+      "new_000008:1"
+    ],
+    "main_finding": "Most added proposals in this subset repeat already annotated fronts while extending into the gripper or clipped borders. Two recover existing reference matches; neither provides two usable visible corners. No scientifically supported annotation addition or coordinate correction was established."
+  },
+  "limits": [
+    "This is assistant visual triage of the added proposals on three reused validation images, not independent reference certification or a new-data generalization test.",
+    "The retained numerical score and the visual classification answer different questions; a real existing fragment can still be an other extra under the fixed IoU gate.",
+    "Top clipping, blur, and foreground occlusion leave some identity/extent questions unresolved. Existing uncertainty dispositions were not erased.",
+    "No complete-image relabelling audit beyond the proposal regions is claimed."
+  ],
+  "cases": [
+    {
+      "case_id": "new_000007:p55",
+      "image_id": "new_000007",
+      "image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "prediction_index_zero_based": 54,
+      "prediction_number_one_based": 55,
+      "prediction": {
+        "bbox_xyxy": [
+          716.23095703125,
+          0.0,
+          805.043701171875,
+          7.620210647583008
+        ],
+        "class_id": 0,
+        "confidence": 0.17549411952495575,
+        "keypoints": [
+          [
+            722.91650390625,
+            4.399538993835449,
+            0.7854613065719604
+          ],
+          [
+            796.0165405273438,
+            2.5715274810791016,
+            0.6600112915039062
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "uncertain",
+      "associated_revised_rows_one_based": [
+        7,
+        8
+      ],
+      "observation": "A shallow top-border strip crosses the already annotated central stack. The proposal ends above the lower boundary used by row 8 and also overlaps the extremely shallow row 7 strip. The crop does not resolve an independently identifiable additional front.",
+      "decision": "Do not add a reference instance or enlarge a reference to fit this prediction. Retain the existing uncertainty around row 7 and the current labels.",
+      "uncertainty": "The exact association with row 7 versus the upper portion of row 8 is unresolved at this clipped, blurred border.",
+      "endpoint_observation": "The two predicted points lie in the clipped strip; they do not establish new independently visible lower-front corners.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        681,
+        0,
+        841,
+        80
+      ],
+      "inspection_image": "visual-a/new_000007_p55.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000007:p56",
+      "image_id": "new_000007",
+      "image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "prediction_index_zero_based": 55,
+      "prediction_number_one_based": 56,
+      "prediction": {
+        "bbox_xyxy": [
+          791.841796875,
+          0.0,
+          880.532470703125,
+          7.608600616455078
+        ],
+        "class_id": 0,
+        "confidence": 0.1527131348848343,
+        "keypoints": [
+          [
+            797.078857421875,
+            4.566078186035156,
+            0.7873234152793884
+          ],
+          [
+            875.2130737304688,
+            3.387849807739258,
+            0.6962080597877502
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "real_existing_front_extent_mismatch",
+      "associated_revised_rows_one_based": [
+        11
+      ],
+      "observation": "The proposal covers the upper strip of the top-clipped front already represented by row 11. Its approximately 7.6-pixel box height covers less of that front than the retained approximately 18.2-pixel reference rectangle.",
+      "decision": "Treat as another proposal for an existing front with an extent mismatch. Preserve the reference; no new front is supported.",
+      "uncertainty": "Top clipping and blur limit exact border placement; no precise reference correction is established.",
+      "endpoint_observation": "The predicted points are near the clipped upper band and are not evidence for moving the retained lower-front corners.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        756,
+        0,
+        916,
+        80
+      ],
+      "inspection_image": "visual-a/new_000007_p56.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000008:p37",
+      "image_id": "new_000008",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_index_zero_based": 36,
+      "prediction_number_one_based": 37,
+      "prediction": {
+        "bbox_xyxy": [
+          541.5667114257812,
+          429.58111572265625,
+          714.4800415039062,
+          482.5919189453125
+        ],
+        "class_id": 0,
+        "confidence": 0.24972885847091675,
+        "keypoints": [
+          [
+            554.2529907226562,
+            466.5545349121094,
+            0.9100034832954407
+          ],
+          [
+            706.428955078125,
+            455.5562438964844,
+            0.8968626856803894
+          ]
+        ]
+      },
+      "numerical_classification": "duplicate_extra",
+      "visual_classification": "real_existing_front_extent_mismatch",
+      "associated_revised_rows_one_based": [
+        10,
+        11
+      ],
+      "observation": "The box straddles the exposed lower part of row 10 and upper part of row 11 while enclosing the foreground gripper. Its right point follows the higher row-10 boundary while the left point lies below it. There is no separate unlabelled front between these two existing fronts.",
+      "decision": "Do not create another instance. The official duplicate classification against row 11 is an overlap result, while visual inspection shows an inconsistent extent across existing fronts.",
+      "uncertainty": "A unique row association is not cleanly supported for this malformed box; rows 10 and 11 remain separate visible targets.",
+      "endpoint_observation": "The proposed pair is not a reliable pair of corners on one newly identified front.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        506,
+        399,
+        750,
+        513
+      ],
+      "inspection_image": "visual-a/new_000008_p37.png",
+      "inspection_scale": 2,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000008:p38",
+      "image_id": "new_000008",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_index_zero_based": 37,
+      "prediction_number_one_based": 38,
+      "prediction": {
+        "bbox_xyxy": [
+          518.4083862304688,
+          0.0,
+          762.1608276367188,
+          24.911739349365234
+        ],
+        "class_id": 0,
+        "confidence": 0.23263438045978546,
+        "keypoints": [
+          [
+            554.8302001953125,
+            0.0,
+            0.22601638734340668
+          ],
+          [
+            747.2276611328125,
+            5.489204406738281,
+            0.2200203537940979
+          ]
+        ]
+      },
+      "numerical_classification": "new_match",
+      "numerical_match": {
+        "endpoint_details": [
+          {
+            "coordinate_distance_px_if_locatable": null,
+            "endpoint_confidence": 0.22601638734340668,
+            "reference_locatable": false,
+            "returned_at_endpoint_050": false,
+            "scored_error_px": null,
+            "slot": 0
+          },
+          {
+            "coordinate_distance_px_if_locatable": 8.624010823841505,
+            "endpoint_confidence": 0.2200203537940979,
+            "reference_locatable": true,
+            "returned_at_endpoint_050": false,
+            "scored_error_px": null,
+            "slot": 1
+          }
+        ],
+        "iou": 0.5909057630730778,
+        "locatable_reference_corners": 1,
+        "reference": {
+          "bbox_xyxy": [
+            528.2600064000001,
+            3.6000000006031208e-06,
+            752.6600064,
+            15.9900012
+          ],
+          "class_id": 0,
+          "keypoints": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              738.6099968000001,
+              5.8199976,
+              2
+            ]
+          ]
+        },
+        "revised_row_one_based": 1,
+        "source_rows_one_based": [
+          1
+        ]
+      },
+      "visual_classification": "existing_front_recovered",
+      "associated_revised_rows_one_based": [
+        1
+      ],
+      "observation": "The low-confidence proposal retrieves the already labelled top-truncated target region at row 1. The visible strip continues across the upper edge above row 2; the proposal is taller and wider than the retained row-1 box.",
+      "decision": "Keep as a useful object proposal in assisted review, retaining row 1 and its current visibility flags. This is a newly recovered model match, not a new annotation.",
+      "uncertainty": "The clipped front versus upper-material separation and exact extent remain uncertain. This inspection does not resolve the pre-existing reference disposition.",
+      "endpoint_observation": "Both predicted endpoint confidences are below 0.5 (about 0.226 and 0.220), so the recovered object supplies no returned endpoint at the fixed endpoint threshold. Do not infer the missing left corner.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        483,
+        0,
+        798,
+        80
+      ],
+      "inspection_image": "visual-a/new_000008_p38.png",
+      "inspection_scale": 2,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000008:p39",
+      "image_id": "new_000008",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_index_zero_based": 38,
+      "prediction_number_one_based": 39,
+      "prediction": {
+        "bbox_xyxy": [
+          835.910400390625,
+          622.935791015625,
+          976.955078125,
+          672.670166015625
+        ],
+        "class_id": 0,
+        "confidence": 0.169841006398201,
+        "keypoints": [
+          [
+            849.5711669921875,
+            653.7111206054688,
+            0.8220630288124084
+          ],
+          [
+            966.7355346679688,
+            658.9149169921875,
+            0.7908949255943298
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "occluder_background_other_surface",
+      "associated_revised_rows_one_based": [],
+      "observation": "The proposed rectangle and its points lie across the visible forearm, white foreground structure, and background/rack area. No cassette front is identifiable inside this proposed object.",
+      "decision": "Reject the proposal as a cassette instance. No reference addition is warranted.",
+      "uncertainty": "No material uncertainty about absence of a distinct visible front within this proposal; this is a local judgment, not a claim about objects hidden behind the arm.",
+      "endpoint_observation": "The points follow arm/occluder boundaries rather than visible lower-front corners.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        800,
+        592,
+        1012,
+        703
+      ],
+      "inspection_image": "visual-a/new_000008_p39.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000008:p40",
+      "image_id": "new_000008",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_index_zero_based": 39,
+      "prediction_number_one_based": 40,
+      "prediction": {
+        "bbox_xyxy": [
+          1219.921875,
+          448.448486328125,
+          1280.0,
+          505.965576171875
+        ],
+        "class_id": 0,
+        "confidence": 0.15422455966472626,
+        "keypoints": [
+          [
+            1232.34228515625,
+            486.8993835449219,
+            0.8144578337669373
+          ],
+          [
+            1280.0,
+            484.5588684082031,
+            0.8032256960868835
+          ]
+        ]
+      },
+      "numerical_classification": "duplicate_extra",
+      "visual_classification": "same_already_labeled_front",
+      "associated_revised_rows_one_based": [
+        34
+      ],
+      "observation": "The proposal repeats the existing front clipped by the right image edge at row 34. Its extent differs and reaches into adjacent vertical bands, but the visible front is already represented.",
+      "decision": "Reject as an additional instance; preserve the existing right-clipped front and unavailable right endpoint.",
+      "uncertainty": "Exact left/bottom extents are softened by blur; no precise reference correction is established.",
+      "endpoint_observation": "The predicted right endpoint has x=1280, outside the image pixel domain 0..1279. The actual right corner is off-frame and must not be marked locatable. The left prediction is displaced from the visible retained corner.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        1184,
+        418,
+        1280,
+        536
+      ],
+      "inspection_image": "visual-a/new_000008_p40.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p65",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 64,
+      "prediction_number_one_based": 65,
+      "prediction": {
+        "bbox_xyxy": [
+          596.9716796875,
+          450.8115234375,
+          671.68701171875,
+          477.521484375
+        ],
+        "class_id": 0,
+        "confidence": 0.24775050580501556,
+        "keypoints": [
+          [
+            601.0579223632812,
+            471.2029724121094,
+            0.8567558526992798
+          ],
+          [
+            662.0626220703125,
+            468.13916015625,
+            0.8475774526596069
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "real_existing_front_extent_mismatch",
+      "associated_revised_rows_one_based": [
+        51
+      ],
+      "observation": "The left edge includes the visible fragment of existing row 51, while most of the box extends right into the opaque gripper. No new front is visible in that rightward extension.",
+      "decision": "Keep the existing tight visible-fragment reference and reject this box as an additional instance.",
+      "uncertainty": "Adjacent row 50 is also touched by the upper extent, but the visible lower fragment and left point associate most closely with row 51.",
+      "endpoint_observation": "The proposed right point at about (662.06,468.14) lies on the gripper; it does not reveal the hidden right corner.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        561,
+        420,
+        707,
+        508
+      ],
+      "inspection_image": "visual-a/new_000009_p65.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p66",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 65,
+      "prediction_number_one_based": 66,
+      "prediction": {
+        "bbox_xyxy": [
+          598.609619140625,
+          450.44305419921875,
+          646.998046875,
+          474.7694091796875
+        ],
+        "class_id": 0,
+        "confidence": 0.23937173187732697,
+        "keypoints": [
+          [
+            602.4908447265625,
+            467.4805908203125,
+            0.7740042805671692
+          ],
+          [
+            649.6673583984375,
+            466.61181640625,
+            0.6844768524169922
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "real_existing_front_extent_mismatch",
+      "associated_revised_rows_one_based": [
+        51
+      ],
+      "observation": "This is another box around the same exposed left fragment near row 51. It is narrower than p65 but still extends through the gripper, with its upper edge also crossing the preceding front boundary.",
+      "decision": "Do not add a label or extend row 51 into the occluder to satisfy the IoU gate.",
+      "uncertainty": "The proposal straddles the boundary with row 50; a distinct extra instance is unsupported.",
+      "endpoint_observation": "The right point at about (649.67,466.61) is on the occluder, not an exposed cassette corner.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        563,
+        420,
+        682,
+        505
+      ],
+      "inspection_image": "visual-a/new_000009_p66.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p67",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 66,
+      "prediction_number_one_based": 67,
+      "prediction": {
+        "bbox_xyxy": [
+          593.4300537109375,
+          476.4217834472656,
+          637.5772705078125,
+          494.5080261230469
+        ],
+        "class_id": 0,
+        "confidence": 0.2384716421365738,
+        "keypoints": [
+          [
+            599.5686645507812,
+            487.7574768066406,
+            0.6879095435142517
+          ],
+          [
+            633.3323364257812,
+            490.0160217285156,
+            0.6169404983520508
+          ]
+        ]
+      },
+      "numerical_classification": "new_match",
+      "numerical_match": {
+        "endpoint_details": [
+          {
+            "coordinate_distance_px_if_locatable": 3.2920077883641587,
+            "endpoint_confidence": 0.6879095435142517,
+            "reference_locatable": true,
+            "returned_at_endpoint_050": true,
+            "scored_error_px": 3.2920077883641587,
+            "slot": 0
+          },
+          {
+            "coordinate_distance_px_if_locatable": null,
+            "endpoint_confidence": 0.6169404983520508,
+            "reference_locatable": false,
+            "returned_at_endpoint_050": true,
+            "scored_error_px": null,
+            "slot": 1
+          }
+        ],
+        "iou": 0.5223666384264665,
+        "locatable_reference_corners": 1,
+        "reference": {
+          "bbox_xyxy": [
+            595.0,
+            472.99999679999996,
+            621.0,
+            495.0
+          ],
+          "class_id": 0,
+          "keypoints": [
+            [
+              599.0,
+              490.99999679999996,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        "revised_row_one_based": 52,
+        "source_rows_one_based": [
+          52
+        ]
+      },
+      "visual_classification": "existing_front_recovered",
+      "associated_revised_rows_one_based": [
+        52
+      ],
+      "observation": "A narrow front is visibly distinguishable to the left of the gripper at row 52. This proposal retrieves that existing target at IoU about 0.522. Its left point is about 3.29 pixels from the retained visible corner, while the rightward part extends onto the gripper.",
+      "decision": "Retain as a useful recovered object proposal, keep the reference instance and left-corner visibility, and keep the right corner unavailable. This is a model match recovery, not a newly discovered label.",
+      "uncertainty": "Blur prevents a defensible subpixel amendment. The hidden right corner cannot be recovered visually.",
+      "endpoint_observation": "The predicted right point (633.3323,490.0160), confidence 0.61694, is returned at 0.5 despite falling on the gripper. It must not become a visible reference endpoint. The left reference remains about (599,491).",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        558,
+        446,
+        673,
+        526
+      ],
+      "inspection_image": "visual-a/new_000009_p67.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p68",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 67,
+      "prediction_number_one_based": 68,
+      "prediction": {
+        "bbox_xyxy": [
+          594.841796875,
+          479.1935119628906,
+          663.7802734375,
+          500.6844177246094
+        ],
+        "class_id": 0,
+        "confidence": 0.21839852631092072,
+        "keypoints": [
+          [
+            601.036865234375,
+            489.3421936035156,
+            0.7010471820831299
+          ],
+          [
+            653.0241088867188,
+            495.7312927246094,
+            0.7278813719749451
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "real_existing_front_extent_mismatch",
+      "associated_revised_rows_one_based": [
+        52
+      ],
+      "observation": "This wider box again starts on the exposed row-52 fragment and extends across the gripper. Its lower extent also touches the row-53 band; the crop contains no separate front accounting for the extension.",
+      "decision": "Reject as an additional instance and preserve the visible-fragment references.",
+      "uncertainty": "The wide box overlaps neighbouring row 53, but its exposed left corner is associated with row 52.",
+      "endpoint_observation": "The predicted right point at about (653.02,495.73) is on the gripper and unsupported as a cassette corner.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        559,
+        449,
+        699,
+        531
+      ],
+      "inspection_image": "visual-a/new_000009_p68.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p69",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 68,
+      "prediction_number_one_based": 69,
+      "prediction": {
+        "bbox_xyxy": [
+          592.7847290039062,
+          492.86883544921875,
+          636.6480102539062,
+          508.9268798828125
+        ],
+        "class_id": 0,
+        "confidence": 0.18854442238807678,
+        "keypoints": [
+          [
+            599.409912109375,
+            502.4802551269531,
+            0.6872918009757996
+          ],
+          [
+            632.4168701171875,
+            505.10833740234375,
+            0.6280080676078796
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "real_existing_front_extent_mismatch",
+      "associated_revised_rows_one_based": [
+        53
+      ],
+      "observation": "The proposal includes the lowest exposed front fragment at row 53. It extends to the right beyond the visible material and onto the gripper. IoU about 0.451 falls below the fixed match gate despite the visible front being real.",
+      "decision": "Do not change a reference merely to lift this prediction over IoU 0.5. Retain the existing fragment and its unresolved extent disposition.",
+      "uncertainty": "The existing row-53 extent remains uncertain under occlusion, but there is no evidence for a new instance.",
+      "endpoint_observation": "The left point is near the retained visible corner; the right point near (632.42,505.11) lies on the occluder and does not justify marking a hidden corner visible.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        557,
+        462,
+        672,
+        542
+      ],
+      "inspection_image": "visual-a/new_000009_p69.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p70",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 69,
+      "prediction_number_one_based": 70,
+      "prediction": {
+        "bbox_xyxy": [
+          722.4238891601562,
+          0.0,
+          830.0731811523438,
+          7.882875442504883
+        ],
+        "class_id": 0,
+        "confidence": 0.18150421977043152,
+        "keypoints": [
+          [
+            727.2575073242188,
+            1.1443071365356445,
+            0.7386831641197205
+          ],
+          [
+            824.8711547851562,
+            4.477910041809082,
+            0.7453751564025879
+          ]
+        ]
+      },
+      "numerical_classification": "duplicate_extra",
+      "visual_classification": "same_already_labeled_front",
+      "associated_revised_rows_one_based": [
+        13
+      ],
+      "observation": "The candidate repeats the top-clipped front already represented by row 13. Its shallow box excludes part of the retained visible extent; no additional front is resolved along the top boundary.",
+      "decision": "Reject as an additional instance and retain the existing row-13 annotation.",
+      "uncertainty": "The top boundary and soft image edges limit exact extent assessment.",
+      "endpoint_observation": "The points do not establish new corners; the right point is higher than the retained lower-front corner.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        687,
+        0,
+        866,
+        80
+      ],
+      "inspection_image": "visual-a/new_000009_p70.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p71",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 70,
+      "prediction_number_one_based": 71,
+      "prediction": {
+        "bbox_xyxy": [
+          598.0531005859375,
+          442.52423095703125,
+          675.5386962890625,
+          468.55780029296875
+        ],
+        "class_id": 0,
+        "confidence": 0.17483320832252502,
+        "keypoints": [
+          [
+            601.0914306640625,
+            462.2534484863281,
+            0.6339488625526428
+          ],
+          [
+            661.3079223632812,
+            463.610107421875,
+            0.5817500948905945
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "real_existing_front_extent_mismatch",
+      "associated_revised_rows_one_based": [
+        50
+      ],
+      "observation": "The left visible material belongs to row 50. The proposal expands well beyond that exposed fragment into the gripper and crosses slightly into the row-51 band below.",
+      "decision": "Preserve the existing visible-fragment references and reject as an additional instance.",
+      "uncertainty": "Adjacent-row boundary overlap does not support an additional object.",
+      "endpoint_observation": "The predicted right point near (661.31,463.61) lies on the gripper, whereas the true right corner is occluded.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        563,
+        412,
+        711,
+        499
+      ],
+      "inspection_image": "visual-a/new_000009_p71.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p72",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 71,
+      "prediction_number_one_based": 72,
+      "prediction": {
+        "bbox_xyxy": [
+          683.611328125,
+          436.7978820800781,
+          754.6123046875,
+          480.5918884277344
+        ],
+        "class_id": 0,
+        "confidence": 0.174199178814888,
+        "keypoints": [
+          [
+            691.0989990234375,
+            465.12933349609375,
+            0.5148932933807373
+          ],
+          [
+            743.09521484375,
+            469.30859375,
+            0.43452590703964233
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "uncertain",
+      "associated_revised_rows_one_based": [
+        56
+      ],
+      "observation": "Most of the box covers the grey upper surface/mechanism between the white gripper jaws and part of the right jaw. Its bottom overlaps the upper edge of the pale region already recorded as uncertain row 56. An independent front with observable lower corners is not resolved.",
+      "decision": "Do not add an instance, delete row 56, or set either corner visible from this proposal. Preserve the unresolved row-56 identity/extent disposition.",
+      "uncertainty": "The pale/grey material may include an occluder, an upper or side surface, or part of a target. Current pixels do not settle front identity; classification as definite background would overstate the evidence.",
+      "endpoint_observation": "Neither predicted point provides independent evidence of a visible lower-front corner. One prediction passes 0.5 and the other does not, which is not physical visibility proof.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        648,
+        406,
+        790,
+        511
+      ],
+      "inspection_image": "visual-a/new_000009_p72.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p73",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 72,
+      "prediction_number_one_based": 73,
+      "prediction": {
+        "bbox_xyxy": [
+          595.57080078125,
+          495.45947265625,
+          660.794189453125,
+          515.3026123046875
+        ],
+        "class_id": 0,
+        "confidence": 0.17164698243141174,
+        "keypoints": [
+          [
+            598.43798828125,
+            502.6231689453125,
+            0.7238597869873047
+          ],
+          [
+            651.0447387695312,
+            509.95849609375,
+            0.7190683484077454
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "real_existing_front_extent_mismatch",
+      "associated_revised_rows_one_based": [
+        53
+      ],
+      "observation": "This box repeats the lowest existing left fragment at row 53 and extends broadly into the gripper and the band below the visible cassette edge.",
+      "decision": "Reject as an additional front; preserve row 53 and its missing right corner.",
+      "uncertainty": "The retained row-53 extent uncertainty is unchanged.",
+      "endpoint_observation": "The left point is near the visible lower-left corner. The right point near (651.04,509.96) lies on the gripper.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        560,
+        465,
+        696,
+        546
+      ],
+      "inspection_image": "visual-a/new_000009_p73.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    },
+    {
+      "case_id": "new_000009:p74",
+      "image_id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "prediction_index_zero_based": 73,
+      "prediction_number_one_based": 74,
+      "prediction": {
+        "bbox_xyxy": [
+          596.3907470703125,
+          467.66607666015625,
+          669.1656494140625,
+          492.77093505859375
+        ],
+        "class_id": 0,
+        "confidence": 0.16319125890731812,
+        "keypoints": [
+          [
+            600.1092529296875,
+            487.437255859375,
+            0.8407278656959534
+          ],
+          [
+            658.927734375,
+            482.1817321777344,
+            0.8267120718955994
+          ]
+        ]
+      },
+      "numerical_classification": "other_extra",
+      "visual_classification": "real_existing_front_extent_mismatch",
+      "associated_revised_rows_one_based": [
+        52
+      ],
+      "observation": "The left visible fragment is the same row-52 front recovered by p67. The wider box stretches over the gripper and reaches into the row-51 band above rather than outlining another front.",
+      "decision": "Reject as an additional instance; retain the narrow visible-front label and unavailable right corner.",
+      "uncertainty": "The upper overlap with row 51 does not establish a separate front.",
+      "endpoint_observation": "The left point is close to the visible row-52 lower-left junction. The high-confidence right point near (658.93,482.18) is on the gripper and unsupported as a visible corner.",
+      "accept_as_additional_instance": false,
+      "reviewed_original_crop_xyxy": [
+        561,
+        437,
+        705,
+        523
+      ],
+      "inspection_image": "visual-a/new_000009_p74.png",
+      "inspection_scale": 3,
+      "label_action": "none",
+      "reference_correction_coordinates": null
+    }
+  ]
+}
