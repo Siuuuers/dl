@@ -1,7 +1,9 @@
 # One matched comparison for the reviewed endpoint corrections
 
 Date: 2026-11-12, Asia/Hong_Kong  
-Status: prepared GPU handoff; no completed trial, training pair or new accuracy result
+Status: archived handoff; PR52 full training pair and evaluation complete, retain PR35
+
+**This experiment is complete.** Read the [results and decision](endpoint-results-2026-11-12.md). The instructions below preserve how the fixed pair was produced; no repeat GPU run is requested.
 
 **Keep PR35 selected at 1280 / box confidence 0.13 / NMS 0.70 / endpoint cutoff 0.50 with whole-image review.** This handoff tests the revised endpoint supervision under one fixed matched experiment. It does not replace PR35 automatically.
 
@@ -11,7 +13,7 @@ The original-image recheck accepts the upper of the three questioned right corne
 
 Only that one right triple changes relative to PR50. The cumulative intervention against PR35 supervision now contains ten endpoint slots on six rows: three coordinate corrections, three visible-to-missing changes, and four missing-to-visible changes. Two missing right slots remain unchanged. No box, object-list or split change is added. The separate seventeen-box/duplicate proposal is not combined with this study.
 
-## Run the prepared notebook
+## Archived run instructions
 
 1. Open [baomai_endpoint_visibility.ipynb](../notebooks/baomai_endpoint_visibility.ipynb) in [Google Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/endpoint-study-20261112/notebooks/baomai_endpoint_visibility.ipynb).
 2. Select **Runtime → Change runtime type → GPU**, then **Runtime → Run all**. Keep the same GPU/runtime for the pair. Approve the notebook's Drive mount to preserve completed work.
@@ -55,7 +57,7 @@ The endpoint verifier now supports separate descriptive ranges for two visible c
 
 This work also fixes a compatibility regression in PR50: a schema 1 receipt has no explicit recipe ID, and the newly strict recipe check rejected it. The legacy receipt path now selects the established original recipe explicitly; unknown public recipe IDs and candidate kinds remain rejected. Positive legacy-bundle and endpoint-admission checks cover both cases.
 
-The [preparation receipt](endpoint-preparation-verification-2026-11-12.json) separates original-input/staging checks from synthetic bundle and notebook checks. Preparation checks do not deserialize a checkpoint or execute a GPU trial. The notebook's actual GPU trial and training remain to be run.
+The [preparation receipt](endpoint-preparation-verification-2026-11-12.json) separates original-input/staging checks from synthetic bundle and notebook checks. Preparation checks do not deserialize a checkpoint or execute a GPU trial. PR52's completed full-run artifacts and fresh evaluation are documented in the [result](endpoint-results-2026-11-12.md). The returned archive does not independently establish resource-trial execution.
 
 After a completed pair, the notebook invokes the dedicated packager:
 

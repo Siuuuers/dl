@@ -6,11 +6,11 @@ The agreed scope is one `cassette_front` class and its two lower-front corner sl
 
 ## Run
 
-The current instructions, [completed PR47 evaluation](consistency-results-2026-11-12.md) and full working implementation, including verified candidate selection, are on `Siuuuers/dl` branch `codex/consistency-results-20261112`. Use this branch while its PR is open. PR47 contains the returned results archive and checksum on a branch based on main; it does not contain this complete developed workflow. PR40 and PR43 are likewise historical results-only branches. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
+The current instructions, [completed PR52 evaluation](endpoint-results-2026-11-12.md) and full working implementation, including verified candidate selection, are on `Siuuuers/dl` branch `codex/endpoint-results-20261112`. Use this branch while its PR is open. PR52 contains the returned results archive and checksum on a branch based on main; it does not contain this complete developed workflow. PR40, PR43 and PR47 are likewise historical results-only branches. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
 
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --single-branch \
-  --branch codex/consistency-results-20261112 \
+  --branch codex/endpoint-results-20261112 \
   https://github.com/Siuuuers/dl.git dl-folder
 cd dl-folder
 git lfs install --local
@@ -148,3 +148,5 @@ Run the focused checks in an environment with Pillow and NumPy:
 The tests use temporary images and a substituted prediction adapter. A separately recorded real-model check uses a dense original and a reference-empty original, inspects both overlays, and compares their raw predictions with the existing evaluator in the same runtime. Neither check establishes independent-test accuracy.
 
 Implementation research used the pinned official [pose-coordinate conversion](https://github.com/ultralytics/ultralytics/blob/v8.4.182/ultralytics/models/yolo/pose/predict.py), [image loaders](https://github.com/ultralytics/ultralytics/blob/v8.4.182/ultralytics/data/loaders.py) and [coordinate clipping](https://github.com/ultralytics/ultralytics/blob/v8.4.182/ultralytics/utils/ops.py), alongside the repository's existing evaluator.
+
+The [PR52 endpoint comparison](endpoint-results-2026-11-12.md) is complete and retains PR35. The endpoint model matches the same 643 objects as PR35, records 86 rather than 85 scored extras, and changes 5/10 px pair successes from 529/577 to 528/578. The matched control already has the additional 10 px success. Three existing 5 px successes are lost, and common-matched reference-unlocatable outputs increase from 65/75 to 67/75 against the control. Keep the PR35 bundle and command above; no repeat GPU run is requested.

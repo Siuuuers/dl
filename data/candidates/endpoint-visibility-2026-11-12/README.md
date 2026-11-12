@@ -1,6 +1,6 @@
 # Endpoint visibility candidate
 
-**Status: revised supervision candidate; matched GPU handoff prepared, with no new trained model or accuracy result.** Keep PR35 selected for reviewed proposals at input 1280, box confidence 0.13, NMS IoU 0.70 and endpoint cutoff 0.50.
+**Status: fixed matched training comparison completed; retain PR35.** See the [PR52 result and decision](../../../docs/endpoint-results-2026-11-12.md). Keep PR35 selected for reviewed proposals at input 1280, box confidence 0.13, NMS IoU 0.70 and endpoint cutoff 0.50.
 
 This candidate copies the selected [PR35 annotation parent](../annotations-2026-11-10/README.md) exactly, then amends ten endpoint slots on six original training rows. It is an endpoint-only intervention relative to PR35. No additional boxes, object identities, additions or deletions change.
 
@@ -54,4 +54,4 @@ python -B scripts/verify_pose_endpoint_candidate.py --candidate data/candidates/
 
 The `training_endpoint_overlay` kind separates these audited point changes from the older annotation contract, which protects inherited visible-point tokens. The existing parent verifier remains unchanged. The dedicated `reviewed-endpoints-seed46-v1` recipe now supports this kind; older recipes still reject it. The [fixed matched-comparison handoff](../../../docs/training-endpoint-visibility-2026-11-12.md) compares the PR35-label control with this exact ten-slot candidate under identical numerical settings. Both inner runner arms are `candidate`.
 
-Mechanical checks can establish source identity, preservation, slot transitions, geometry and exact composition. They cannot show that training on this candidate improves detection, corner accuracy or unseen-scene reliability. The current model selection therefore remains PR35.
+Mechanical checks can establish source identity, preservation, slot transitions, geometry and exact composition. They cannot show that training on this candidate improves detection, corner accuracy or unseen-scene reliability. The completed fixed comparison did not meet the preservation/replacement rule; current model selection remains PR35.
