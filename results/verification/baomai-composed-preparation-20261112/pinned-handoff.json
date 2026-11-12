@@ -1,0 +1,53 @@
+{
+  "status": "verified-pinned-handoff",
+  "created_at_utc": "2026-11-12T15:21:39.554225+00:00",
+  "implementation_commit": "082ea773426b6422f859c68b8b6ec8496ef07df0",
+  "implementation_tree": "473819cd72d9c28284a0456b43d744091af4df8e",
+  "notebook_path": "notebooks/baomai_composed_fronts.ipynb",
+  "notebook_sha256": "36f4dcf14084316801bdde68ac74bc8badcc3136f7f70a5d44d68de52e9cbd53",
+  "protocol_sha256": "2e73d4d81585e8ed1759bdb02aea98d8c9db3a856f8887ef9f41069eb799fa3f",
+  "implementation_sources_match_commit": true,
+  "source_sha256": {
+    "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+    "scripts/stage_pose_training.py": "a733f5e80335204747139e87a723b7bb095123059dc5a58b86ee824a26e5afe6",
+    "scripts/pose_checkpoint.py": "f902c34720283480f948cca78bd2d6d24fd07bf6bc5a325945172d56d55f5bd5",
+    "scripts/train_pose_comparison.py": "4f20a5a88876aac70e366018fc84652002975e4fe3812584a30621076a16f5f6",
+    "scripts/package_composed_results.py": "1883edcf48c0f2b8ffd1ae77e950e60002934268f1fb91a05b4cae34b7896aa9",
+    "experiments/composed-fronts-2026-11-12.json": "2e73d4d81585e8ed1759bdb02aea98d8c9db3a856f8887ef9f41069eb799fa3f"
+  },
+  "checks": [
+    {
+      "command": [
+        "python",
+        "-B",
+        "scripts/check_composed_notebook.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_both_completed_arms_skip_probe_trial_and_training (__main__.ComposedNotebookChecks.test_both_completed_arms_skip_probe_trial_and_training) ... ok\ntest_both_completed_training_cell_skips_process_creation (__main__.ComposedNotebookChecks.test_both_completed_training_cell_skips_process_creation) ... ok\ntest_code_cells_and_inline_preflight_compile_and_pin_state_is_explicit (__main__.ComposedNotebookChecks.test_code_cells_and_inline_preflight_compile_and_pin_state_is_explicit) ... ok\ntest_completed_receipt_cannot_be_reused_under_the_other_runner_arm (__main__.ComposedNotebookChecks.test_completed_receipt_cannot_be_reused_under_the_other_runner_arm) ... ok\ntest_control_runtime_mismatch_prevents_starting_treatment (__main__.ComposedNotebookChecks.test_control_runtime_mismatch_prevents_starting_treatment) ... ok\ntest_drive_backup_restore_verifies_protocol_identity_and_bytes (__main__.ComposedNotebookChecks.test_drive_backup_restore_verifies_protocol_identity_and_bytes) ... ok\ntest_inline_preflight_reads_distinct_arm_counts_and_separate_evaluation_reference (__main__.ComposedNotebookChecks.test_inline_preflight_reads_distinct_arm_counts_and_separate_evaluation_reference) ... ok\ntest_install_cell_constrains_existing_cuda_packages (__main__.ComposedNotebookChecks.test_install_cell_constrains_existing_cuda_packages) ... ok\ntest_package_command_preserves_both_roles_and_reverifies_existing_zip (__main__.ComposedNotebookChecks.test_package_command_preserves_both_roles_and_reverifies_existing_zip) ... ok\ntest_partial_local_trial_is_preserved_and_control_trial_is_forbidden (__main__.ComposedNotebookChecks.test_partial_local_trial_is_preserved_and_control_trial_is_forbidden) ... ok\ntest_runtime_mismatch_stops_before_trial_or_missing_full_arm (__main__.ComposedNotebookChecks.test_runtime_mismatch_stops_before_trial_or_missing_full_arm) ... ok\ntest_saved_trial_search_skips_bad_copy_and_reuses_compatible_copy (__main__.ComposedNotebookChecks.test_saved_trial_search_skips_bad_copy_and_reuses_compatible_copy) ... ok\ntest_train_commands_select_the_correct_recipe_and_candidate_without_initializing_from_a_trial (__main__.ComposedNotebookChecks.test_train_commands_select_the_correct_recipe_and_candidate_without_initializing_from_a_trial) ... ok\ntest_trial_receipt_binds_treatment_recipe_candidate_source_and_schedule (__main__.ComposedNotebookChecks.test_trial_receipt_binds_treatment_recipe_candidate_source_and_schedule) ... ok\ntest_unfilled_pins_stop_before_gpu_and_workspace_actions (__main__.ComposedNotebookChecks.test_unfilled_pins_stop_before_gpu_and_workspace_actions) ... ok\ntest_workspace_can_resume_only_matching_source_and_protocol (__main__.ComposedNotebookChecks.test_workspace_can_resume_only_matching_source_and_protocol) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.174s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "-c",
+        "\nimport json\nfrom pathlib import Path\nimport sys\nsys.dont_write_bytecode = True\nroot = Path.cwd()\nsys.path.insert(0, str(root / 'scripts'))\nfrom evaluate_pose import preflight_dataset\nfrom stage_pose_training import source_state\nfrom package_composed_results import validate_protocol\ncontext = validate_protocol(root, sys.argv[1])\nassert context['sha256'] == sys.argv[2]\ninitial = preflight_dataset(root, require_weights=True)\nroles = context['document']['roles']\nassert set(roles) == {'reference', 'candidate'}\nshared_manifest = {spec['candidate_manifest'] for spec in roles.values()}\nassert len(shared_manifest) == 1, 'Both arms must use the same composed manifest.'\nstate = source_state(root, root / next(iter(shared_manifest)))\nassert len(state['records']) == 157\nassert state['source']['initial_checkpoint_sha256'] == initial['model_sha256']\nassert state['counts']['reference']['val'] == state['counts']['candidate']['val']\ncounts = {}\nfor role, spec in roles.items():\n    assert spec['arm'] == role, 'Protocol role and actual runner arm must agree.'\n    assert all(state['source'][key] == spec[key] for key in\n               ('candidate_manifest', 'candidate_manifest_sha256', 'candidate_id'))\n    counts[role] = state['counts'][role]\n# The corrected development reference is checked separately; stage_pose_training\n# continues to use the unchanged original validation labels in both arms.\nfrom evaluate_pose import file_sha256\nfrom rescore_reference_amendment import load_api, verify_amendment\nfrom replay_corner_reference import reference_counts\nevaluation = context['document']['evaluation']\nreference_path = root / evaluation['primary_reference']\nassert file_sha256(reference_path) == evaluation['primary_reference_sha256']\n_, api = load_api(root)\nreference, gold, *_ = verify_amendment(root, reference_path.parent, initial, api)\nevaluation_counts, locatable_groups = reference_counts(gold)\nassert evaluation_counts == reference['counts'] == {\n    'images': 20, 'objects': 663, 'visible_endpoints': 1227,\n    'missing_endpoints': 99, 'empty_images': 3}\nassert locatable_groups == reference['objects_by_locatable_corners'] == {'0': 20, '1': 59, '2': 584}\nassert evaluation_counts['objects'] == evaluation['all_object_denominator']\nassert evaluation_counts['visible_endpoints'] == evaluation['locatable_endpoint_denominator']\nassert locatable_groups['2'] == evaluation['both_corner_denominator']\nprint(json.dumps({'status':'verified', 'original_images':157, 'label_counts':counts,\n                  'weights_verified':initial['weights_verified'],\n                  'protocol_sha256':context['sha256'],\n                  'delta_train_image_ids':context['delta_train_image_ids'],\n                  'evaluation_reference_counts':evaluation_counts,\n                  'evaluation_objects_by_locatable_corners':locatable_groups}, indent=2))\n",
+        "experiments/composed-fronts-2026-11-12.json",
+        "2e73d4d81585e8ed1759bdb02aea98d8c9db3a856f8887ef9f41069eb799fa3f"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"verified\",\n  \"original_images\": 157,\n  \"label_counts\": {\n    \"reference\": {\n      \"train\": {\n        \"images\": 137,\n        \"objects\": 3771,\n        \"visible_endpoints\": 6842,\n        \"missing_endpoints\": 700,\n        \"empty_images\": 13\n      },\n      \"val\": {\n        \"images\": 20,\n        \"objects\": 664,\n        \"visible_endpoints\": 1227,\n        \"missing_endpoints\": 101,\n        \"empty_images\": 3\n      }\n    },\n    \"candidate\": {\n      \"train\": {\n        \"images\": 137,\n        \"objects\": 3770,\n        \"visible_endpoints\": 6842,\n        \"missing_endpoints\": 698,\n        \"empty_images\": 13\n      },\n      \"val\": {\n        \"images\": 20,\n        \"objects\": 664,\n        \"visible_endpoints\": 1227,\n        \"missing_endpoints\": 101,\n        \"empty_images\": 3\n      }\n    }\n  },\n  \"weights_verified\": true,\n  \"protocol_sha256\": \"2e73d4d81585e8ed1759bdb02aea98d8c9db3a856f8887ef9f41069eb799fa3f\",\n  \"delta_train_image_ids\": [\n    \"new_000023\",\n    \"new_000031\",\n    \"new_000045\"\n  ],\n  \"evaluation_reference_counts\": {\n    \"images\": 20,\n    \"objects\": 663,\n    \"visible_endpoints\": 1227,\n    \"missing_endpoints\": 99,\n    \"empty_images\": 3\n  },\n  \"evaluation_objects_by_locatable_corners\": {\n    \"0\": 20,\n    \"1\": 59,\n    \"2\": 584\n  }\n}\n",
+      "stderr": ""
+    }
+  ],
+  "notebook_tests": 16,
+  "gpu_execution": false,
+  "full_training": false,
+  "model_inference": false,
+  "scope": "Pinned notebook orchestration with substituted GPU/network/training operations, plus exact real-data input preflight. No full notebook GPU execution.",
+  "editorial_followup": {
+    "previous_notebook_sha256": "9a1093af263235a1e3eb6651268831d8e5ed2f43fbaf72989a29070f429e1db0",
+    "change": "Clarify that the returned ZIP includes the frozen protocol and archive index, for14files.",
+    "code_cells_byte_identical_to_executed_checks": true
+  }
+}

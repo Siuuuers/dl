@@ -17,7 +17,7 @@ The staging receipt identifies the executed file bytes. Its workspace paths reco
 | [Contract checks and final review](contract-checks.json) | Real composed labels, row maps, rehashed undeclared edits, policy snapshots, strict verifier preservation | 14 |
 | [Integration checks](integration-checks.json) | New arm/label identity, stager, worker, completed checkpoint and generic collector/evaluator integration | 8 |
 | [Return package checks](package-checks.json) | Real frozen protocol plus synthetic archive transport, integrity and role/runtime rejection | 5 |
-| Notebook checker, final result recorded with the pinned handoff | Actual notebook code-cell flow with substituted GPU, network and training operations | 16 |
+| [Final pinned notebook check](pinned-handoff.json) | Actual notebook code-cell flow with substituted GPU, network and training operations | 16 |
 | Historical checkpoint/trainer/annotation checks in the integration record | Existing behavior and recipe inventories | 60 |
 | Unchanged endpoint checks in the integration record | Correct historical-policy input snapshot | 14 |
 
