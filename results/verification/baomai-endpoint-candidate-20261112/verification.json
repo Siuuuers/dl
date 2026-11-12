@@ -1,0 +1,574 @@
+{
+  "schema_version": 1,
+  "kind": "endpoint_candidate_integration_verification",
+  "date": "2026-11-12",
+  "recorded_at_utc": "2026-11-12T08:12:18.971415+00:00",
+  "source_revision": "ab998df15cf7b8e6d92a3ba95bea6a70230f4145",
+  "implementation_state": "Working tree on source revision; final script hashes below identify verified implementation.",
+  "candidate": {
+    "command": [
+      "python3",
+      "-B",
+      "scripts/verify_pose_endpoint_candidate.py",
+      "--candidate",
+      "data/candidates/endpoint-visibility-2026-11-12/manifest.json"
+    ],
+    "exit_code": 0,
+    "result": {
+      "status": "verified",
+      "kind": "training_endpoint_overlay",
+      "candidate_id": "endpoint-visibility-2026-11-12",
+      "candidate_manifest_sha256": "817a6c3b9a4590ebdf2410cccc1e82341512c401ca844253f37847038fcdbdfe",
+      "declared_source_revision": "ab998df15cf7b8e6d92a3ba95bea6a70230f4145",
+      "source_revision_git_object_checked": false,
+      "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+      "parent_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+      "parent_verified_by": "verify_pose_annotation_candidate.py",
+      "review_sha256": "dc2ddb48ab8eb24f4361ed80c20efefe19d480b2c7bb85acf1154b8ef4002eb2",
+      "annotation_policy_sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+      "reference_labels_verified": 157,
+      "changed_train_labels": 10,
+      "added_objects": 5,
+      "removed_objects": 6,
+      "replaced_objects": 9,
+      "merged_endpoints": 2,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "new_endpoint_edit_counts": {
+        "changed_train_files": 2,
+        "replaced_rows": 6,
+        "changed_endpoint_slots": 9,
+        "visible_to_missing": 3,
+        "missing_to_visible": 3,
+        "visible_coordinate_corrections": 3,
+        "retained_missing_slots": 3,
+        "net_visible_endpoint_change": 0,
+        "net_object_change": 0
+      },
+      "validation_labels_unchanged": true,
+      "parent_labels_and_reviews_preserved": true,
+      "unchanged_rows_byte_preserved": true,
+      "full_row_maps_verified": true,
+      "class_and_boxes_preserved_in_endpoint_delta": true,
+      "image_bytes_verified": false,
+      "images_staged_by_check": false,
+      "dataset_built": false,
+      "visual_correctness_verified": false,
+      "mechanical_geometry_verified": true,
+      "training_recipe_supported": false,
+      "code_sha256": {
+        "scripts/verify_pose_endpoint_candidate.py": "38245f6ce25e8c42dc26bc3e2d1a04c4fea5c3fdb8a494b8368e1e48858d1473",
+        "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+        "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+        "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+        "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+      }
+    }
+  },
+  "original_inputs": {
+    "status": "verified",
+    "source_revision": "f8d758ade0b721d494306e3002d26a3d56d807cb",
+    "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "original_labels_verified": 157,
+    "original_pngs_verified": 157,
+    "bytes": 141130768,
+    "no_models_downloaded": true,
+    "no_inference_or_training": true
+  },
+  "published_recovery_identity": {
+    "url": "https://github.com/Siuuuers/dl/blob/ab998df15cf7b8e6d92a3ba95bea6a70230f4145/results/review/baomai-review-recovery-20261112/correction-record.json",
+    "sha256": "6f199638487933a04a0f2d67958d06be642ff998bd14657bfc913fe3406e24e3",
+    "git_blob_sha": "93b4971123be2d569acdcc4346a43aa2ed6878fe",
+    "remote_content_equal_local": true,
+    "checked_separately_from_endpoint_verifier": true
+  },
+  "delta_against_pr35": {
+    "parent_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+    "inherited_files_byte_identical": [
+      {
+        "image_id": "new_000065",
+        "sha256": "fa21820c98c1d6f5f0310508551fa27d2ac2258da9f2df3b11f0e964205b0853"
+      },
+      {
+        "image_id": "new_000067",
+        "sha256": "d0720b16c678ba49704c6b92f89439635ece5341dac0b2cad023e19be2cd3825"
+      },
+      {
+        "image_id": "new_000068",
+        "sha256": "5b968ce4857b88095334bb9ef89cbe96781f2717e65eca5cadf9c8f0a160687f"
+      },
+      {
+        "image_id": "new_000072",
+        "sha256": "89d0e251f6e549a6582b7de290bc62917b2d6bfd9b7491c18138af75c452d81c"
+      },
+      {
+        "image_id": "new_000097",
+        "sha256": "10875339351afa2824477addd0e14b77113c32a606dfb67dda100dc5f032ba2f"
+      },
+      {
+        "image_id": "new_000101",
+        "sha256": "7a955f7bfbb9457630466e26788c6afd103ed6589b6d55952f28b8a70d7ff3c2"
+      },
+      {
+        "image_id": "new_000102",
+        "sha256": "1981878ebd387621fce91790781340db8cf3446f38b0db96d5915966af81e876"
+      },
+      {
+        "image_id": "new_000103",
+        "sha256": "f33c9c3a772633abe4a6c2f024019835a110f6c1e7a182c0888df5caee596d58"
+      }
+    ],
+    "changed_rows": [
+      {
+        "image_id": "new_000023",
+        "original_row": 33,
+        "changed_slots": [
+          {
+            "side": "left",
+            "before": [
+              "0.37626562",
+              "0.77293056",
+              "2"
+            ],
+            "after": [
+              "0.37656250",
+              "0.76388889",
+              "2"
+            ]
+          }
+        ]
+      },
+      {
+        "image_id": "new_000023",
+        "original_row": 34,
+        "changed_slots": [
+          {
+            "side": "left",
+            "before": [
+              "0.37948437",
+              "0.81243056",
+              "2"
+            ],
+            "after": [
+              "0.37968750",
+              "0.80555556",
+              "2"
+            ]
+          }
+        ]
+      },
+      {
+        "image_id": "new_000023",
+        "original_row": 35,
+        "changed_slots": [
+          {
+            "side": "left",
+            "before": [
+              "0.38317969",
+              "0.85866667",
+              "2"
+            ],
+            "after": [
+              "0.38281250",
+              "0.84305556",
+              "2"
+            ]
+          }
+        ]
+      },
+      {
+        "image_id": "new_000031",
+        "original_row": 22,
+        "changed_slots": [
+          {
+            "side": "left",
+            "before": [
+              "0.45509375",
+              "0.61259722",
+              "2"
+            ],
+            "after": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "side": "right",
+            "before": [
+              "0.00000000",
+              "0.00000000",
+              "0"
+            ],
+            "after": [
+              "0.57968750",
+              "0.63611111",
+              "2"
+            ]
+          }
+        ]
+      },
+      {
+        "image_id": "new_000031",
+        "original_row": 23,
+        "changed_slots": [
+          {
+            "side": "left",
+            "before": [
+              "0.45603906",
+              "0.66416667",
+              "2"
+            ],
+            "after": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "side": "right",
+            "before": [
+              "0.00000000",
+              "0.00000000",
+              "0"
+            ],
+            "after": [
+              "0.57578125",
+              "0.68194444",
+              "2"
+            ]
+          }
+        ]
+      },
+      {
+        "image_id": "new_000031",
+        "original_row": 24,
+        "changed_slots": [
+          {
+            "side": "left",
+            "before": [
+              "0.45544531",
+              "0.71018056",
+              "2"
+            ],
+            "after": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "side": "right",
+            "before": [
+              "0.00000000",
+              "0.00000000",
+              "0"
+            ],
+            "after": [
+              "0.57187500",
+              "0.71944444",
+              "2"
+            ]
+          }
+        ]
+      }
+    ],
+    "changed_endpoint_slots": 9,
+    "class_and_box_tokens_unchanged": true,
+    "object_lists_unchanged": true,
+    "validation_labels_unchanged": true,
+    "new_000023_rows": 36,
+    "new_000031_rows": 41
+  },
+  "staging": {
+    "create": {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/stage_pose_training.py",
+        "--candidate",
+        "data/candidates/endpoint-visibility-2026-11-12/manifest.json",
+        "--output",
+        "/workspace/scratch/58fa048dfc17/endpoint-staged-final-20261112"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "staged",
+        "output": "/workspace/scratch/58fa048dfc17/endpoint-staged-final-20261112",
+        "staging_manifest_sha256": "c9c3be7aa15a9d30d403c8ed3775f3dca6597a5aa94103293bf064c571f6a11f",
+        "counts": {
+          "reference": {
+            "train": {
+              "images": 137,
+              "objects": 3772,
+              "visible_endpoints": 6839,
+              "missing_endpoints": 705,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          },
+          "candidate": {
+            "train": {
+              "images": 137,
+              "objects": 3771,
+              "visible_endpoints": 6841,
+              "missing_endpoints": 701,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          }
+        },
+        "actual_original_pngs_verified": 157,
+        "geometry_gate_passed": true,
+        "physical_policy_visually_certified": false,
+        "training_run": false
+      }
+    },
+    "recheck": {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/stage_pose_training.py",
+        "--candidate",
+        "data/candidates/endpoint-visibility-2026-11-12/manifest.json",
+        "--verify",
+        "/workspace/scratch/58fa048dfc17/endpoint-staged-final-20261112"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "verified",
+        "output": "/workspace/scratch/58fa048dfc17/endpoint-staged-final-20261112",
+        "staging_manifest_sha256": "c9c3be7aa15a9d30d403c8ed3775f3dca6597a5aa94103293bf064c571f6a11f",
+        "counts": {
+          "reference": {
+            "train": {
+              "images": 137,
+              "objects": 3772,
+              "visible_endpoints": 6839,
+              "missing_endpoints": 705,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          },
+          "candidate": {
+            "train": {
+              "images": 137,
+              "objects": 3771,
+              "visible_endpoints": 6841,
+              "missing_endpoints": 701,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          }
+        },
+        "actual_original_pngs_verified": 157,
+        "geometry_gate_passed": true,
+        "physical_policy_visually_certified": false,
+        "training_run": false
+      }
+    },
+    "verification": {
+      "source_labels_verified": 157,
+      "actual_original_pngs_verified": 157,
+      "copied_images_verified": 314,
+      "copied_labels_verified": 314,
+      "changed_train_labels": 10,
+      "removed_training_objects": 6,
+      "validation_images_and_labels_identical": true,
+      "source_files_rewritten": false,
+      "symlinks_present": false,
+      "trainer_loader_executed": false
+    },
+    "code_sha256": {
+      "scripts/stage_pose_training.py": "2631c7d6f372c29b6bcfd48b7effb07f59c2255bf13328cc3e6bbe41691c302b",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+      "scripts/verify_pose_endpoint_candidate.py": "38245f6ce25e8c42dc26bc3e2d1a04c4fea5c3fdb8a494b8368e1e48858d1473",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+    },
+    "manifest_sha256": "c9c3be7aa15a9d30d403c8ed3775f3dca6597a5aa94103293bf064c571f6a11f",
+    "full_inventory_in_git": false,
+    "inventory_note": "The local staging manifest inventories each copied file. This compact receipt preserves its hash, summary and code identities; expected input file hashes are already in the frozen dataset and candidate manifests. Rebuild with the recorded commands using a fresh local output path."
+  },
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_pose_endpoint_candidate.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests_passed": 13,
+      "test_script_sha256": "b09fd9243e42f2e91ea50a5fbe8261a970d3be9d52bbeff161cba9b6995e719d",
+      "case_names": [
+        "test_declared_class_and_box_edits_are_rejected_even_with_matching_review",
+        "test_deleted_row_and_nonidentity_map_cannot_be_declared",
+        "test_inherited_records_labels_and_decisions_are_immutable",
+        "test_missing_and_outside_box_points_fail_even_when_review_rehashed",
+        "test_no_existing_recipe_admits_endpoint_or_unknown_overlay",
+        "test_old_annotation_contract_does_not_accept_endpoint_amendments",
+        "test_omitted_review_and_unexpected_validation_label_are_rejected",
+        "test_parent_cannot_be_replaced_by_rehashing",
+        "test_real_candidate_has_exact_parent_and_nine_slot_delta",
+        "test_rehashed_row_deletion_and_reordering_are_rejected",
+        "test_rehashed_unlisted_edit_is_rejected",
+        "test_slot_inventory_before_tokens_and_changed_fields_are_bound",
+        "test_validation_and_source_image_identity_are_protected"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_pose_annotation_candidate.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests_passed": 19,
+      "test_script_sha256": "018c639668c0c82c1119a05e1a3c3161e461fef2f307b9c1ebdaaab9e5b2223b",
+      "case_names": [
+        "test_actual_staging_preserves_validation_and_routes_only_declared_train_overlay",
+        "test_additions_must_append_and_expected_counts_cannot_lie",
+        "test_donor_must_be_deleted_and_transfer_exact_visible_endpoint",
+        "test_duplicate_deletion_overlap_or_invented_changed_fields_are_rejected",
+        "test_explicit_retained_visible_point_movement_is_rejected_with_unchanged_counts",
+        "test_extra_labels_and_symlinks_are_rejected",
+        "test_full_row_map_rejects_missing_deleted_or_boolean_entries",
+        "test_missing_endpoint_state_and_visible_point_containment_are_enforced",
+        "test_mixed_operations_count_actual_deletions_even_when_net_objects_unchanged",
+        "test_old_verifiers_do_not_accept_new_operation_contract",
+        "test_omitted_or_repeated_donor_provenance_fails_with_unchanged_labels_and_counts",
+        "test_refreshed_label_hash_does_not_hide_unlisted_edits",
+        "test_review_hash_and_applied_decision_are_both_bound",
+        "test_source_candidate_and_image_hashes_are_bound",
+        "test_validation_and_wrong_label_mappings_are_rejected",
+        "test_completed_checkpoint_supports_both_arms_and_rejects_refreshed_wrong_seed",
+        "test_recipe_changes_only_seed_from_established_low_bias_pair",
+        "test_runner_rejects_wrong_kind_before_training_import_or_output_creation",
+        "test_same_seed_annotation_pairs_package_and_mixed_seeds_are_rejected"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_train_pose_comparison.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests_passed": 11,
+      "test_script_sha256": "b8222066bce9e763d78c9f3473fd2955590354d0d5af7b40aaaa7fb34ed0310d",
+      "case_names": [
+        "test_box_recipe_and_candidate_are_selected_together_before_training",
+        "test_candidate_path_must_stay_in_repository_candidate_directory",
+        "test_cli_preserves_original_default_and_thirty_epoch_trial_schedule",
+        "test_cli_rejects_seed_override_and_undeclared_recipe_before_execution",
+        "test_completed_worker_is_distinct_from_a_budget_stop",
+        "test_existing_run_is_never_reused",
+        "test_input_mutation_is_detected_after_cache_creation",
+        "test_memory_budget_terminates_real_worker",
+        "test_runtime_records_the_resolved_cuda_device_and_observes_backend_flags",
+        "test_wall_budget_terminates_real_worker",
+        "test_warmup_candidate_is_rejected_before_staging_or_importing_training_runtime"
+      ]
+    }
+  ],
+  "tests_passed_total": 43,
+  "training_cli_rejection": {
+    "command": [
+      "python3",
+      "-B",
+      "scripts/train_pose_comparison.py",
+      "--root",
+      "/workspace/scratch/58fa048dfc17/dl-next",
+      "--output",
+      "/workspace/scratch/58fa048dfc17/endpoint-verification-work/training-must-not-start",
+      "--arm",
+      "candidate",
+      "--recipe",
+      "reviewed-annotations-seed46-v1",
+      "--candidate",
+      "data/candidates/endpoint-visibility-2026-11-12/manifest.json",
+      "--device",
+      "cpu",
+      "--trial",
+      "--max-seconds",
+      "1"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "ValueError: training_endpoint_overlay is staging-only; a fixed endpoint training protocol is required\n",
+    "output_directory_created": false,
+    "training_executed": false
+  },
+  "protected_tracked_paths_unchanged_against_source_revision": [
+    "data/labels",
+    "data/manifest.json",
+    "data/data.yaml",
+    "data/references",
+    "data/candidates/annotations-2026-11-10",
+    "docs/annotation-policy.md",
+    "scripts/verify_pose_annotation_candidate.py",
+    "scripts/verify_pose_candidate.py",
+    "scripts/evaluate_pose.py",
+    "scripts/pose_scoring.py",
+    "models",
+    "metadata",
+    "results/review/baomai-review-recovery-20261112"
+  ],
+  "additional_code_sha256": {
+    "scripts/pose_checkpoint.py": "9a6118d2108a3d32065ffe44381dd62e4f45e9034aef3e534a83d0aa78021cbc",
+    "scripts/check_pose_endpoint_candidate.py": "b09fd9243e42f2e91ea50a5fbe8261a970d3be9d52bbeff161cba9b6995e719d",
+    "scripts/render_endpoint_review.py": "9f16e5bb010e9b00708b6576ec0c8f92776536a4061003b0dcbccbfbaecbbe80"
+  },
+  "scope": {
+    "new_visual_adjudication": false,
+    "human_signoff": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "new_model_performance_claim": false,
+    "selected_model": "PR35 seed46",
+    "training_recipe_supported": false
+  }
+}

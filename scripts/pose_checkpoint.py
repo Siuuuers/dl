@@ -91,6 +91,11 @@ def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
 
 def check_recipe_candidate_kind(recipe_id, kind):
     """Bind each new experiment to its intended overlay; retain legacy contracts."""
+    _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
+    _require(kind != "training_endpoint_overlay",
+             "training_endpoint_overlay is staging-only; a fixed endpoint training protocol is required")
+    _require(kind in ("training_label_overlay", "training_box_overlay", "training_annotation_overlay"),
+             f"unsupported training candidate kind: {kind}")
     _require((recipe_id in BOX_RECIPE_IDS) == (kind == "training_box_overlay"),
              "box-supervision recipe and training_box_overlay must be selected together")
     _require((recipe_id in ANNOTATION_RECIPE_IDS) == (kind == "training_annotation_overlay"),
