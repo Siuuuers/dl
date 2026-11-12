@@ -271,7 +271,7 @@ def render(packet, detections, controls, metrics, epoch, overlap_iou, recording=
             cv2.rectangle(image, (x1,y1), (x2,y2), (255,220,70), 1)
             lines = [f"#{number} box={obj['confidence']:.3f}"]
             if controls.diagnostics:
-                lines += [f"{side}={p[2]:.3f} {'VISIBLE' if good else 'HIDDEN'}" for side,p,good in zip(('L','R'),points,valid)]
+                lines += [f"{side}={p[2]:.3f} {'SHOWN' if good else 'NOT SHOWN'}" for side,p,good in zip(('L','R'),points,valid)]
                 if number in duplicate_ids:
                     lines.append('OVERLAP? review manually')
             tx, ty = max(0,min(width-210,x1)), max(14,min(height-16*len(lines),y1))
@@ -304,7 +304,7 @@ def render(packet, detections, controls, metrics, epoch, overlap_iou, recording=
         f"D405 | epoch {epoch} | {state} | frame {packet['frame_number']} | boxes={len(detections)} edges={visible_edges}",
         recording_line,
         f"Camera RX {metrics['camera_fps']:.1f} FPS | infer {metrics['inference_fps']:.1f} FPS | display {metrics['display_fps']:.1f} FPS | infer {metrics['infer_ms']:.1f} ms",
-        f"conf={controls.conf:.2f} kp={controls.endpoint_conf:.2f} NMS IoU={controls.iou:.2f} | hidden-kp={hidden} | post-NMS pairs IoU>={overlap_iou:.2f}: {pairs if controls.diagnostics else 'D to check'}",
+        f"conf={controls.conf:.2f} kp={controls.endpoint_conf:.2f} NMS IoU={controls.iou:.2f} | low-conf-kp={hidden} | post-NMS pairs IoU>={overlap_iou:.2f}: {pairs if controls.diagnostics else 'D to check'}",
         'Q/Esc quit | R record | A mode | Y YOLO | B boxes | D debug | Space pause | S photo | 1/2/3 conf .10/.25/.50',
         '[ / ] box conf | , / . endpoint conf | - / = NMS IoU | IDs are per frame; scores are not accuracy',
     ]

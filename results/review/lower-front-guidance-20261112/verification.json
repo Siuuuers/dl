@@ -1,0 +1,51 @@
+{
+  "source_revision": "40fa0f1ee863b3458feec0db1cf40086dab4538f",
+  "checks": {
+    "original_source": {
+      "files": 157,
+      "objects": 4436,
+      "parse_and_geometry_pass": true
+    },
+    "pr35_training": {
+      "files": 137,
+      "objects": 3771,
+      "parse_and_geometry_pass": true
+    },
+    "pr56_reference": {
+      "files": 20,
+      "objects": 663,
+      "parse_and_geometry_pass": true
+    }
+  },
+  "helper_files": {
+    "scripts/evaluate_pose.py": {
+      "sha256": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "git_blob": "23ff664de3e151bc342337d8b8192c2459f30b45"
+    },
+    "scripts/verify_pose_candidate.py": {
+      "sha256": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "git_blob": "a4bb874b48dad77946968935b92d28b9b9c674af"
+    },
+    "scripts/pose_scoring.py": {
+      "sha256": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "git_blob": "63835c68c0e861929d6a40bb7fb2f20e0510e118"
+    }
+  },
+  "runtime_text_change": {
+    "path": "scripts/view_d405_yolo.py",
+    "base_git_blob": "1ff2c89b8e62425a520bbd6c85fa8447dbc4dd56",
+    "result_sha256": "5dcc75155a25857d79df52c80a5157e819366c1252ad7a3921f50ebdbbcd9bed",
+    "syntax_valid": true,
+    "AST_identical_except_display_text": true,
+    "camera_run": false
+  },
+  "limits": [
+    "Structural parsing and geometry are not physical landmark certification.",
+    "This audit does not execute the full historical training-candidate verifier or rerun training/inference.",
+    "The original training PNG payloads were not visually audited in this pass."
+  ],
+  "audited_repository": "Siuuuers/dl",
+  "audited_revision": "40fa0f1ee863b3458feec0db1cf40086dab4538f",
+  "date_local": "2026-11-12",
+  "timezone": "Asia/Hong_Kong"
+}

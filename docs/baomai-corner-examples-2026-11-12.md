@@ -2,7 +2,9 @@
 
 The original baomai annotations include the exact rightmost stack discussed in `new_000010`. They generally identify the two ends of each front's lower edge. In this stack, the saved left points lie near the shaded outer ends of those seams. The examples do not support a general rule that every point should move to the beginning of the brighter interior surface.
 
-**A shared stack junction needs an owning front.** The lower-left corner of the front above and the upper-left shoulder of the front below are close together, but they are not automatically the same physical feature. The original target is the former. The thick orange marks in the user's crop identify that general neighborhood; they do not establish exact coordinates or settle which neighboring feature was intended.
+**A shared stack junction needs an owning front.** The lower-left corner of the front above and the upper-left shoulder of the front below are close together, but they are not automatically the same physical feature. The existing guidance fixes the target as the former. The thick orange marks in the user's crop identify that general neighborhood; they do not establish exact coordinates or override the lower-front definition.
+
+The user reaffirmed that existing guidance after reviewing these examples. The [follow-up compliance audit](lower-front-guidance-audit-2026-11-12.md) applies it directly: the target definition is settled, while a few shaded or occluded locations remain unresolved. No choice of a new landmark is needed.
 
 ## Source and display method
 
@@ -76,11 +78,11 @@ The three original pairs again belong to the lower edges of their respective fro
 
 The source examples support a consistent semantic target: **find one front, follow its lower edge, and locate the two actual terminal turns using the visible contour**. The upper shoulder of the next front can be close to that endpoint. Calling it a “top tip” is therefore insufficient on its own to specify which object and feature the point belongs to.
 
-If “top tip” means the outward termination of the lower edge of the front above, it is compatible with the existing target. If it means the upper corner of the front below, that would define a different target and require an explicit labeling decision. Neither brightness alone nor a neighboring cassette's dimensions establishes the exact hidden or ambiguous point.
+Apply the existing lower-front target to the outward termination of the lower edge of the front above. A nearby upper corner of the front below is excluded by that same guidance. Neither brightness alone nor a neighboring cassette's dimensions establishes the exact hidden or ambiguous point. The remaining issue is identifying the physical feature in the pixels, not choosing an annotation convention.
 
 For the existing review, keep `new_000010` rows 25–28 unchanged. The original lower-front pairs are useful precedents, and the shaded material boundary remains open to physical clarification. No further coordinate change follows merely from the orange marks. The earlier six accepted visible-point refinements and their frozen replay are unaffected by this guide.
 
-The useful follow-up is to compare the green point on the **bottom-left of front 26** with the nearby **upper-left shoulder of front 27** and specify which physical turn “top tip” names. This is a feature-definition question; it does not yet call for a new architecture or a training run.
+The relevant comparison is the green point on the **bottom-left of front 26** versus the nearby **upper-left shoulder of front 27**. The former is the required feature. If the pixels do not locate it reliably, record that uncertainty under the existing policy. In the subsequent audit, row 25's point remains defensible; left points 26–28 remain unresolved at exact-pixel level. Retaining inherited values for a bounded historical reference is not certification that those values are correct.
 
 ## Verification and reproduction
 
