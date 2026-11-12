@@ -1,0 +1,168 @@
+{
+  "phase": "blind original-pixel first estimates preserved before reading any annotation labels or predictions",
+  "created_utc": "2026-11-12T12:41:10.228305+00:00",
+  "image": "/workspace/scratch/58fa048dfc17/dl-eval52/data/images/val/new_000010.png",
+  "image_size": [
+    1280,
+    720
+  ],
+  "coordinate_convention": "Original image integer pixels, x rightward and y downward; plausible regions are inclusive [xmin,ymin,xmax,ymax]. Representative points are visual estimates, not subpixel ground truth.",
+  "target": "Actual visible lower-front corner/rounded turn of white cassette fronts, not upper projecting lip, rack, extrapolated sharp corner, or brightest stripe.",
+  "labels_read": false,
+  "predictions_read": false,
+  "views_used": [
+    "original full image",
+    "tall_original_3x.png",
+    "tall_top_6x.png",
+    "tall_bottom_6x.png",
+    "ten_turns_original_8x.png"
+  ],
+  "processing": "Crops of original unmarked RGB pixels and nearest-neighbor scaling only; no enhancement or model output.",
+  "rear_right_stack_right_corners_top_to_bottom": [
+    {
+      "position": 1,
+      "representative_xy": [
+        1008,
+        137
+      ],
+      "plausible_region": [
+        1005,
+        134,
+        1013,
+        141
+      ],
+      "notes": "Top front has a broad rounded lower-right turn; the side silhouette lies farther right above the turn."
+    },
+    {
+      "position": 2,
+      "representative_xy": [
+        994,
+        186
+      ],
+      "plausible_region": [
+        991,
+        183,
+        999,
+        190
+      ],
+      "notes": "Rounded lower turn distinct from the dark gap below; a few pixels of blur obscure an exact elbow."
+    },
+    {
+      "position": 3,
+      "representative_xy": [
+        981,
+        233
+      ],
+      "plausible_region": [
+        978,
+        230,
+        985,
+        237
+      ],
+      "notes": "Adjacent gray rack creates a second edge to the right; follow the white front contour."
+    },
+    {
+      "position": 4,
+      "representative_xy": [
+        969,
+        276
+      ],
+      "plausible_region": [
+        966,
+        273,
+        973,
+        280
+      ],
+      "notes": "Lower contour is visible; do not follow the diagonal metal/rack edge."
+    },
+    {
+      "position": 5,
+      "representative_xy": [
+        957,
+        317
+      ],
+      "plausible_region": [
+        954,
+        314,
+        961,
+        321
+      ],
+      "notes": "Lower white contour bends up at the right; neighboring stack top is behind it."
+    },
+    {
+      "position": 6,
+      "representative_xy": [
+        945,
+        356
+      ],
+      "plausible_region": [
+        942,
+        353,
+        948,
+        360
+      ],
+      "notes": "Lower right transition is above the narrow dark V gap."
+    },
+    {
+      "position": 7,
+      "representative_xy": [
+        935,
+        392
+      ],
+      "plausible_region": [
+        931,
+        389,
+        938,
+        396
+      ],
+      "notes": "Visible lower turn, with rack/neighbor contour immediately to its right; whole rounded transition is only a few original pixels."
+    },
+    {
+      "position": 8,
+      "representative_xy": [
+        925,
+        427
+      ],
+      "plausible_region": [
+        921,
+        424,
+        929,
+        431
+      ],
+      "notes": "Lower turn on the white front; do not select the brightest vertical stripe or rack diagonal."
+    },
+    {
+      "position": 9,
+      "representative_xy": [
+        917,
+        460
+      ],
+      "plausible_region": [
+        913,
+        457,
+        922,
+        464
+      ],
+      "notes": "Curved lower turn occupies a diffuse several-pixel region; dark support continues to the right and below."
+    },
+    {
+      "position": 10,
+      "representative_xy": [
+        910,
+        491
+      ],
+      "plausible_region": [
+        906,
+        488,
+        914,
+        494
+      ],
+      "notes": "Bottom-most lower turn remains visible; adjacent gray/tan/rack pixels to the right are not the white front."
+    }
+  ],
+  "limitations": [
+    "Rounded/blurred turns do not define a uniquely recoverable integer pixel. Regions record visual support, not calibrated confidence intervals.",
+    "This human/model visual review is not statistically independent ground-truth evidence.",
+    "No labels or predictions were opened before this file was written."
+  ]
+}

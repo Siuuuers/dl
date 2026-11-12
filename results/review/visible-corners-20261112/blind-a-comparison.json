@@ -1,0 +1,146 @@
+{
+  "review_type": "Comparison with existing reference after blinded initial judgments; no model predictions or other reviewers read",
+  "initial_file": "/workspace/scratch/a2905ee84412/corner-review-blind-a/initial.json",
+  "initial_sha256": "af9e328a74e51c7f700216e31e1c28a8ac6270fb87c2eb0f61f976d5377adc2c",
+  "reference_file": "/workspace/scratch/58fa048dfc17/dl-eval52/data/references/visible-front-2026-11-11/labels/val/new_000010.txt",
+  "decision_principle": "Do not change a defensible representative merely because another pixel in the blurred rounded transition is available. A refinement is supported where the old point lies on the comparatively straight lower contour before the visible bend, or materially inside the front rather than on the junction.",
+  "bottom_four": [
+    {
+      "row": 21,
+      "old_xy": [
+        933.45,
+        394.25
+      ],
+      "blind_preferred_xy": [
+        936,
+        393
+      ],
+      "decision": "retain",
+      "classification": "Defensible placement at the lower/left portion of the rounded transition",
+      "reason": "The old point is in the pre-recorded plausible region. It is somewhat bottom/left of my preferred center of the bend, but the source is sufficiently blurred and rounded that the approximately 2.6-pixel horizontal difference does not justify an edit."
+    },
+    {
+      "row": 22,
+      "old_xy": [
+        921.67,
+        429.23
+      ],
+      "blind_preferred_xy": [
+        926,
+        428
+      ],
+      "decision": "modest_refinement_supported",
+      "classification": "Old point is along the lower edge before the visible bend",
+      "reason": "The visible turn lies several pixels right of the current marker. The current point falls outside my pre-recorded region on its left, and a short nearly horizontal edge segment still separates it from the side upturn. A roughly 4-pixel rightward and 1-pixel upward refinement is supported. This is a localization refinement, not a wrong-object or wrong-boundary hard error.",
+      "suggested_integer_xy": [
+        926,
+        428
+      ]
+    },
+    {
+      "row": 23,
+      "old_xy": [
+        914.11,
+        462.38
+      ],
+      "blind_preferred_xy": [
+        920,
+        460
+      ],
+      "decision": "modest_refinement_supported",
+      "classification": "Old point lies on the lower edge, left of the rounded junction",
+      "reason": "A visible horizontal lower contour continues to the right of the old point before curling upward. The old point is about 6 pixels left of the blind preferred point and outside the blind region. The source supports a modest right/up refinement toward the bend; exact choice within the rounded/blurred region remains representational.",
+      "suggested_integer_xy": [
+        920,
+        460
+      ]
+    },
+    {
+      "row": 24,
+      "old_xy": [
+        905.84,
+        492.72
+      ],
+      "blind_preferred_xy": [
+        911,
+        491
+      ],
+      "decision": "modest_refinement_supported",
+      "classification": "Old point lies on the horizontal lower silhouette before its right-side turn",
+      "reason": "The visible lower silhouette against the dark basket continues several pixels right of the old marker before rounding upward. The old point is about 5 pixels left of the blind nomination and outside the blind region. A modest right/up refinement is supported, without extrapolating a sharp corner.",
+      "suggested_integer_xy": [
+        911,
+        491
+      ]
+    }
+  ],
+  "first_six_secondary_inspection": [
+    {
+      "row": 15,
+      "old_xy": [
+        1004.0,
+        140.0
+      ],
+      "assessment": "A modest refinement is supported on the same criterion as rows22-24, but this upper-six inspection was not coordinate-blinded.",
+      "reason": "The old point sits on the lower contour several pixels left of the visible upturn. The side/lower junction is farther right and slightly above. This is a comparable lower-edge-versus-turn localization issue.",
+      "candidate_xy": [
+        1009,
+        138
+      ],
+      "candidate_status": "Secondary visual candidate, not a separately blinded nomination"
+    },
+    {
+      "row": 16,
+      "old_xy": [
+        991.25,
+        185.25
+      ],
+      "assessment": "A modest refinement is supported, though this was not coordinate-blinded.",
+      "reason": "The old point appears inside the front, left of the outer bend, rather than at the visible silhouette. The actual bend is farther right and slightly down. This point deserves correction under the same target definition.",
+      "candidate_xy": [
+        996,
+        187
+      ],
+      "candidate_status": "Secondary visual candidate, not a separately blinded nomination"
+    },
+    {
+      "row": 17,
+      "old_xy": [
+        979.89,
+        233.75
+      ],
+      "assessment": "Retain; no clear edit recommendation.",
+      "reason": "The old point is near the lower portion/start of the rounded transition. A more central arc representative exists to its right/up, but the current position is defensible given blur."
+    },
+    {
+      "row": 18,
+      "old_xy": [
+        967.87,
+        278.11
+      ],
+      "assessment": "Retain conservatively; consistency concern only.",
+      "reason": "The point favors the lower/left end of the turn, as do several others in the stack. The distinction from an alternative bend representative is only a few blurred pixels; no strong independent basis to force a change."
+    },
+    {
+      "row": 19,
+      "old_xy": [
+        956.29,
+        320.2
+      ],
+      "assessment": "Retain conservatively; consistency concern only.",
+      "reason": "The current point lies close to the lower end of the rounded transition. There is a general bottom/left bias relative to choosing the middle of the bend, but changing this point alone would risk arbitrary representative churn."
+    },
+    {
+      "row": 20,
+      "old_xy": [
+        942.26,
+        357.45
+      ],
+      "assessment": "Retain conservatively; consistency concern only.",
+      "reason": "The point is at the lower/left portion of the rounded lower-right junction. A slight right/up alternative is possible, but current pixels do not establish a sufficiently stronger localization to require it."
+    }
+  ],
+  "systematic_observation": "The reference usually favors the lower/left end of rounded right corners rather than the middle of the turning arc. That convention alone is not an error. Rows22-24 and, in the secondary inspection, rows15-16 have stronger evidence because the marker is separated from the visible turn by lower-edge pixels or is inside the front. Do not move all ten points simply for visual uniformity.",
+  "initial_unchanged": true,
+  "no_source_edits": true
+}
