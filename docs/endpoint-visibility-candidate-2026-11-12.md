@@ -1,11 +1,13 @@
 # Endpoint corrections prepared for a controlled comparison
 
+**Historical PR50 snapshot.** The nine-slot counts, staging-only status and figure below describe commit `5f547d6166099faf39bc5b3bf9c044333d1682f0`. A user-requested original-image recheck subsequently accepted 023 row33's right corner, producing a ten-slot candidate and a dedicated GPU protocol. See the [current review and training handoff](training-endpoint-visibility-2026-11-12.md). Run historical commands from their pinned snapshot.
+
 Date: 2026-11-12  
 Status: verified annotation candidate and staging support; no new trained model
 
 **Keep PR35 selected at input 1280, box confidence 0.13, NMS IoU 0.70 and endpoint cutoff 0.50.** The interrupted recovery is published in [draft PR49](https://github.com/Siuuuers/dl/pull/49). This continuation makes its six recorded corner decisions consumable by the existing dataset stager, as a separate endpoint-only extension of PR35's exact annotation parent.
 
-The [candidate README](../data/candidates/endpoint-visibility-2026-11-12/README.md), [manifest](../data/candidates/endpoint-visibility-2026-11-12/manifest.json), [review](../data/candidates/endpoint-visibility-2026-11-12/review.json) and [verification receipt](../results/verification/baomai-endpoint-candidate-20261112/verification.json) contain the inputs, decisions and mechanical checks. No inference, training, threshold search or model replacement occurred.
+The [candidate README](https://github.com/Siuuuers/dl/blob/5f547d6166099faf39bc5b3bf9c044333d1682f0/data/candidates/endpoint-visibility-2026-11-12/README.md), [manifest](https://github.com/Siuuuers/dl/blob/5f547d6166099faf39bc5b3bf9c044333d1682f0/data/candidates/endpoint-visibility-2026-11-12/manifest.json), [review](https://github.com/Siuuuers/dl/blob/5f547d6166099faf39bc5b3bf9c044333d1682f0/data/candidates/endpoint-visibility-2026-11-12/review.json) and [verification receipt](../results/verification/baomai-endpoint-candidate-20261112/verification.json) contain the inputs, decisions and mechanical checks. No inference, training, threshold search or model replacement occurred.
 
 ## What changed
 

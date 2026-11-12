@@ -16,7 +16,7 @@ import tempfile
 import unittest
 
 from evaluate_pose import file_sha256
-from pose_checkpoint import ORIGINAL_RECIPE_ID, RECIPE_IDS, check_recipe_candidate_kind
+from pose_checkpoint import ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID, RECIPE_IDS, check_recipe_candidate_kind
 from verify_pose_annotation_candidate import ANNOTATION_CANDIDATE, ANNOTATION_KIND, verify_annotation_candidate
 from verify_pose_endpoint_candidate import ENDPOINT_CANDIDATE, ENDPOINT_KIND, verify_endpoint_candidate
 
@@ -72,17 +72,18 @@ class EndpointCandidateChecks(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, message):
             verify_endpoint_candidate(self.root, self.manifest)
 
-    def test_real_candidate_has_exact_parent_and_nine_slot_delta(self):
+    def test_real_candidate_has_exact_parent_and_ten_slot_delta(self):
         result = verify_endpoint_candidate(self.root, self.manifest)
         self.assertEqual(result["counts"]["train"], {
-            "images": 137, "objects": 3771, "visible_endpoints": 6841,
-            "missing_endpoints": 701, "empty_images": 13})
+            "images": 137, "objects": 3771, "visible_endpoints": 6842,
+            "missing_endpoints": 700, "empty_images": 13})
         self.assertEqual(result["new_endpoint_edit_counts"], self.proposal["new_endpoint_edit_counts"])
-        self.assertEqual(result["new_endpoint_edit_counts"]["changed_endpoint_slots"], 9)
+        self.assertEqual(result["new_endpoint_edit_counts"]["changed_endpoint_slots"], 10)
         self.assertTrue(result["parent_labels_and_reviews_preserved"])
         self.assertTrue(result["validation_labels_unchanged"])
         self.assertFalse(result["visual_correctness_verified"])
-        self.assertFalse(result["training_recipe_supported"])
+        self.assertTrue(result["training_recipe_supported"])
+        self.assertEqual(result["training_recipe_id"], ENDPOINT_RECIPE_ID)
 
     def test_rehashed_unlisted_edit_is_rejected(self):
         lines = self.label.read_bytes().splitlines(keepends=True)
@@ -159,7 +160,7 @@ class EndpointCandidateChecks(unittest.TestCase):
         for mutation, error in (
             (lambda op: op["endpoints"].reverse(), "slot inventory"),
             (lambda op: op["endpoints"][0].update(before=["0", "0", "0"]), "slot audit differs"),
-            (lambda op: op.update(changed_fields=["left_endpoint", "right_endpoint"]), "field inventory"),
+            (lambda op: op.update(changed_fields=["left_endpoint"]), "field inventory"),
             (lambda op: op["endpoints"][0].update(accepted_original_pixels=[1, 2]), "coordinate provenance"),
         ):
             with self.subTest(error=error):
@@ -170,7 +171,7 @@ class EndpointCandidateChecks(unittest.TestCase):
                 self.reject(error)
 
     def test_missing_and_outside_box_points_fail_even_when_review_rehashed(self):
-        operation = self.change["replacements"][0]
+        operation = self.change["replacements"][1]
         original = copy.deepcopy(operation)
         tokens = operation["candidate_row_text"].split()
         tokens[8] = "0.1"
@@ -186,7 +187,7 @@ class EndpointCandidateChecks(unittest.TestCase):
         tokens[5] = "0.99"
         operation["candidate_row_text"] = " ".join(tokens)
         operation["endpoints"][0]["after"] = tokens[5:8]
-        point, ranges = [1267.2, 550], [[1265, 1270], [548, 553]]
+        point, ranges = [1267.2, 580], [[1265, 1270], [578, 583]]
         operation["endpoints"][0]["accepted_original_pixels"] = point
         operation["endpoints"][0]["coordinate_uncertainty_pixels"] = {
             "x_range": ranges[0], "y_range": ranges[1]}
@@ -194,8 +195,8 @@ class EndpointCandidateChecks(unittest.TestCase):
         row = next(item for item in recovered["endpoint_rows"]
                    if item["image_id"] == self.change["image_id"]
                    and item["original_row"] == operation["original_row"])
-        row.update(after_tokens=tokens[5:], left_original_pixels=point,
-                   visible_point_descriptive_ranges_xy=ranges)
+        row.update(after_tokens=tokens[5:], left_original_pixels=point)
+        row["visible_point_descriptive_ranges_by_side"]["left"] = ranges
         write_json(self.evidence_path, recovered)
         self.review["evidence"]["sha256"] = file_sha256(self.evidence_path)
         for decision in self.review["decisions"][12:]:
@@ -205,6 +206,24 @@ class EndpointCandidateChecks(unittest.TestCase):
         lines[operation["original_row"] - 1] = (operation["candidate_row_text"] + "\n").encode()
         self.rehash_label(b"".join(lines))
         self.reject("outside its box")
+
+    def test_two_visible_sides_keep_distinct_ranges_and_pixel_units(self):
+        operation = self.change["replacements"][0]
+        self.assertEqual(operation["endpoints"][1]["accepted_original_pixels"], [612, 549])
+        self.assertNotEqual(operation["endpoints"][0]["coordinate_uncertainty_pixels"],
+                            operation["endpoints"][1]["coordinate_uncertainty_pixels"])
+        recovered = json.loads(self.evidence_path.read_text())
+        row = next(item for item in recovered["endpoint_rows"]
+                   if item["image_id"] == self.change["image_id"]
+                   and item["original_row"] == operation["original_row"])
+        row["right_original_pixels"] = [611, 549]
+        operation["endpoints"][1]["accepted_original_pixels"] = [611, 549]
+        write_json(self.evidence_path, recovered)
+        self.review["evidence"]["sha256"] = file_sha256(self.evidence_path)
+        for decision in self.review["decisions"][12:]:
+            decision["evidence"] = copy.deepcopy(self.review["evidence"])
+        self.sync_operation_review(operation)
+        self.reject("accepted pixel point differs from normalized label")
 
     def test_omitted_review_and_unexpected_validation_label_are_rejected(self):
         decision = self.review["decisions"].pop()
@@ -225,14 +244,20 @@ class EndpointCandidateChecks(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "original visible endpoint tokens must be preserved"):
             verify_annotation_candidate(self.root, self.manifest)
 
-    def test_no_existing_recipe_admits_endpoint_or_unknown_overlay(self):
-        for recipe in RECIPE_IDS:
-            with self.subTest(recipe=recipe), self.assertRaisesRegex(ValueError, "staging-only"):
+    def test_only_the_endpoint_recipe_admits_endpoint_overlay(self):
+        check_recipe_candidate_kind(ENDPOINT_RECIPE_ID, ENDPOINT_KIND)
+        for recipe in (key for key in RECIPE_IDS if key != ENDPOINT_RECIPE_ID):
+            with self.subTest(recipe=recipe), self.assertRaisesRegex(ValueError, "must be selected together"):
                 check_recipe_candidate_kind(recipe, ENDPOINT_KIND)
+        for kind in ("training_label_overlay", "training_box_overlay", ANNOTATION_KIND):
+            with self.subTest(kind=kind), self.assertRaisesRegex(ValueError, "must be selected together"):
+                check_recipe_candidate_kind(ENDPOINT_RECIPE_ID, kind)
         with self.assertRaisesRegex(ValueError, "unsupported training candidate kind"):
             check_recipe_candidate_kind(ORIGINAL_RECIPE_ID, "undeclared_overlay")
         with self.assertRaisesRegex(ValueError, "unsupported training recipe"):
             check_recipe_candidate_kind("undeclared_recipe", "training_label_overlay")
+        with self.assertRaisesRegex(ValueError, "unsupported training recipe"):
+            check_recipe_candidate_kind(None, "training_label_overlay")
 
 
 if __name__ == "__main__":

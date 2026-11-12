@@ -1,13 +1,13 @@
 {
   "kind": "endpoint_only_candidate_generation",
-  "source_revision": "ab998df15cf7b8e6d92a3ba95bea6a70230f4145",
+  "source_revision": "5f547d6166099faf39bc5b3bf9c044333d1682f0",
   "parent": {
     "manifest": "data/candidates/annotations-2026-11-10/manifest.json",
     "sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7"
   },
   "evidence": {
-    "path": "results/review/baomai-review-recovery-20261112/correction-record.json",
-    "sha256": "6f199638487933a04a0f2d67958d06be642ff998bd14657bfc913fe3406e24e3"
+    "path": "results/review/baomai-endpoint-recheck-20261112/adjudication.json",
+    "sha256": "da622a47e30895f782cf2ad6b3f5380021eb88690b500aaca0d0ba49845bee5f"
   },
   "inherited_label_files": [
     {
@@ -64,7 +64,8 @@
       "original_row": 33,
       "candidate_row": 33,
       "changed_fields": [
-        "left_endpoint"
+        "left_endpoint",
+        "right_endpoint"
       ]
     },
     {
@@ -111,11 +112,13 @@
       ]
     }
   ],
-  "generation": "Copy parent overlay label bytes and change/decision objects exactly; read each new target from frozen originals; replace only the six recovered point triples after the unchanged five class/box tokens; preserve every original line ending and full identity row maps.",
-  "candidate_manifest_sha256": "817a6c3b9a4590ebdf2410cccc1e82341512c401ca844253f37847038fcdbdfe",
-  "review_sha256": "dc2ddb48ab8eb24f4361ed80c20efefe19d480b2c7bb85acf1154b8ef4002eb2",
+  "generation": "Preserve exact PR35 parent files and decisions; reconstruct the two delta files from frozen originals and six declared row amendments. This revision adds only row33 right=(612,549) to the prior nine-slot candidate; no class/box/object-list or other endpoint changes.",
+  "candidate_manifest_sha256": "9c489bf57a526509de73e40cc73b02117398fba4ec97107bf047aa71e4951c41",
+  "review_sha256": "9f46d3ef891adf89592cfb70b56e36b6c63f6aa204a4a5aaae0f92d28d4317d7",
   "no_box_or_duplicate_review_applied": true,
-  "new_visual_judgment": false,
+  "new_visual_judgment": true,
   "inference_executed": false,
-  "training_executed": false
+  "training_executed": false,
+  "previous_candidate_manifest_sha256": "817a6c3b9a4590ebdf2410cccc1e82341512c401ca844253f37847038fcdbdfe",
+  "new_visual_judgment_scope": "new_000023 row33 right accepted after user question; rows34/35 right remain missing. Other recorded decisions carried unchanged."
 }

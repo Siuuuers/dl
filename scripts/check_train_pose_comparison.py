@@ -12,9 +12,11 @@ import unittest
 from unittest.mock import Mock, patch
 
 from pose_checkpoint import (ANNOTATION_RECIPE_IDS, BOX_RECIPE_ID, BOX_RECIPE_IDS,
-                             ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe)
+                             ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe)
+from verify_pose_annotation_candidate import ANNOTATION_CANDIDATE
 from verify_pose_box_candidate import BOX_CANDIDATE
 from verify_pose_candidate import DEFAULT_CANDIDATE
+from verify_pose_endpoint_candidate import ENDPOINT_CANDIDATE
 from train_pose_comparison import (file_sha256, main, monitor_worker, resolved_runtime,
                                    run_parent, verify_input_files)
 
@@ -81,7 +83,7 @@ class ExecutionChecks(unittest.TestCase):
         arguments = ["--output", "/unused/fixture", "--arm", "reference", "--device", "cpu",
                      "--trial", "--max-seconds", "1"]
         selections = [([], ORIGINAL_RECIPE_ID)] + [(["--recipe", recipe_id], recipe_id)
-            for recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS)]
+            for recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS, ENDPOINT_RECIPE_ID)]
         for extra, expected in selections:
             with self.subTest(recipe=expected), patch("train_pose_comparison.run_parent", return_value=0) as parent:
                 self.assertEqual(main(arguments + extra), 0)
@@ -134,6 +136,37 @@ class ExecutionChecks(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "repository-relative"):
                     run_parent(args)
                 self.assertFalse(output.exists())
+
+    def test_endpoint_recipe_kind_and_arm_are_checked_before_runtime_or_output_creation(self):
+        selections = [(recipe, ENDPOINT_CANDIDATE, "candidate", "must be selected together")
+                      for recipe in (ORIGINAL_RECIPE_ID, *ANNOTATION_RECIPE_IDS)]
+        selections.extend((ENDPOINT_RECIPE_ID, candidate, "candidate", "must be selected together")
+                          for candidate in (DEFAULT_CANDIDATE, BOX_CANDIDATE, ANNOTATION_CANDIDATE))
+        selections.append((ENDPOINT_RECIPE_ID, ENDPOINT_CANDIDATE, "reference", "requires the candidate label arm"))
+        for recipe_id, candidate, arm, message in selections:
+            with self.subTest(recipe=recipe_id, candidate=candidate, arm=arm), tempfile.TemporaryDirectory() as directory:
+                output = Path(directory) / "fresh"
+                args = SimpleNamespace(root=Path(__file__).resolve().parents[1], output=output,
+                    threads=1, max_seconds=1, max_rss_mib=128, trial_batches=1,
+                    device="cpu", recipe=recipe_id, arm=arm, candidate=candidate)
+                with patch("train_pose_comparison.importlib.metadata.version") as runtime:
+                    with self.assertRaisesRegex(ValueError, message):
+                        run_parent(args)
+                    runtime.assert_not_called()
+                self.assertFalse(output.exists())
+
+    def test_endpoint_candidate_admission_reaches_input_preflight_without_training(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "fresh"
+            args = SimpleNamespace(root=Path(__file__).resolve().parents[1], output=output,
+                threads=1, max_seconds=1, max_rss_mib=128, trial_batches=1,
+                device="cpu", recipe=ENDPOINT_RECIPE_ID, arm="candidate", candidate=ENDPOINT_CANDIDATE)
+            with patch("train_pose_comparison.importlib.metadata.version", return_value="8.4.182"), \
+                    patch("train_pose_comparison.preflight_dataset", side_effect=RuntimeError("preflight sentinel")) as preflight:
+                with self.assertRaisesRegex(RuntimeError, "preflight sentinel"):
+                    run_parent(args)
+                preflight.assert_called_once_with(args.root, require_weights=True)
+            self.assertFalse(output.exists())
 
     def test_runtime_records_the_resolved_cuda_device_and_observes_backend_flags(self):
         class Device:

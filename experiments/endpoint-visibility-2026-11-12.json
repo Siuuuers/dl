@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-endpoint-comparison-protocol",
+  "experiment_id": "endpoint-visibility-seed46-v1",
+  "status": "prospectively_declared",
+  "declared_at_utc": "2026-11-12T08:44:23.614871+00:00",
+  "declared_timezone": "Asia/Hong_Kong",
+  "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+  "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "candidate_source_revision": "5f547d6166099faf39bc5b3bf9c044333d1682f0",
+  "roles": {
+    "old_reviewed": {
+      "candidate_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+      "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+      "candidate_id": "annotations-2026-11-10",
+      "recipe_id": "reviewed-annotations-seed46-v1",
+      "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8"
+    },
+    "endpoint_reviewed": {
+      "candidate_manifest": "data/candidates/endpoint-visibility-2026-11-12/manifest.json",
+      "candidate_manifest_sha256": "9c489bf57a526509de73e40cc73b02117398fba4ec97107bf047aa71e4951c41",
+      "candidate_id": "endpoint-visibility-2026-11-12",
+      "recipe_id": "reviewed-endpoints-seed46-v1",
+      "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8"
+    }
+  },
+  "delta_train_image_ids": [
+    "new_000023",
+    "new_000031"
+  ],
+  "delta_train_rows_1based": {
+    "new_000023": [
+      33,
+      34,
+      35
+    ],
+    "new_000031": [
+      22,
+      23,
+      24
+    ]
+  },
+  "new_endpoint_edit_counts": {
+    "changed_train_files": 2,
+    "replaced_rows": 6,
+    "changed_endpoint_slots": 10,
+    "visible_to_missing": 3,
+    "missing_to_visible": 4,
+    "visible_coordinate_corrections": 3,
+    "retained_missing_slots": 2,
+    "net_visible_endpoint_change": 1,
+    "net_object_change": 0
+  },
+  "annotation_adjudication": {
+    "path": "results/review/baomai-endpoint-recheck-20261112/adjudication.json",
+    "sha256": "da622a47e30895f782cf2ad6b3f5380021eb88690b500aaca0d0ba49845bee5f"
+  },
+  "scientific_difference": "The exact PR35 eight-file annotation parent versus ten reviewed endpoint-slot amendments on six retained rows in two disjoint training images: three visible-coordinate corrections, three visible-to-missing changes and four missing-to-visible changes. The fourth newly visible slot is the rechecked upper right corner new_000023:33 at (612, 549); its moderate-confidence dissent remains recorded. No new boxes, objects or split changes. The separate seventeen-box/duplicate candidate is not included.",
+  "hypothesis": "Correcting wrong-side visibility and misplaced endpoint supervision may reduce returned points on reference-unlocatable sides while preserving locatable coverage, detection and accurate point pairs. A decrease caused by missed objects or blanket endpoint suppression does not support this hypothesis.",
+  "execution": {
+    "actual_runner_arm_for_both_roles": "candidate",
+    "seed": 46,
+    "epochs": 30,
+    "independent_epoch173_initialization": true,
+    "resume": false,
+    "checkpoint_selection": "final_epoch",
+    "checkpoint_path": "fit/weights/last.pt",
+    "resource_trial": {
+      "role": "endpoint_reviewed",
+      "batches": 4,
+      "initializes_full_runs": false
+    },
+    "require_same_clean_source": true,
+    "require_same_recorded_gpu_runtime": true,
+    "require_same_resolved_numerical_settings": true,
+    "reject_incompatible_restores": true,
+    "automatic_promotion": false
+  },
+  "evaluation": {
+    "primary_box_confidence": 0.13,
+    "diagnostic_box_confidences": [],
+    "imgsz": 1280,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "endpoint_confidence": 0.5,
+    "radii_px": [
+      5,
+      10
+    ],
+    "primary_reference": "data/references/visible-front-2026-11-11/manifest.json",
+    "primary_reference_sha256": "2e60b3e81195448cc565a1000b4305e3215baba2bf0ee0c976e6551c2e64937c",
+    "all_object_denominator": 663,
+    "both_corner_denominator": 584,
+    "historical_reference": "data/manifest.json",
+    "references_reported_separately": true,
+    "grouped_recall_by_locatable_corner_count": [
+      0,
+      1,
+      2
+    ],
+    "endpoint_visibility_pairs": [
+      [
+        "endpoint_reviewed",
+        "old_reviewed"
+      ],
+      [
+        "endpoint_reviewed",
+        "PR35"
+      ]
+    ],
+    "unlocatable_slot_comparison": "Use the same reference-unlocatable slots on objects matched by both members of each pair; report numerator, denominator and identities. Also report unconditional outputs and unmatched-object counts.",
+    "locatable_coverage": "Report returned/reference-locatable slots over the full reference and the same common-matched objects; report missing returned slots and coordinate errors.",
+    "required_results": [
+      "All-object matches, misses, duplicate and other extras, and review workload",
+      "Zero/one/two-locatable-corner group recall with complete denominators",
+      "Both-corner 5/10px successes over all 584 eligible objects, including failures to detect",
+      "Common-matched unlocatable-slot outputs together with locatable-slot coverage",
+      "All gained/lost object and pair-success identities, with original-image assignment review",
+      "Miss-free nonempty scenes and every output on the three empty images",
+      "The exact current PR35 checkpoint at identical inference/reference settings"
+    ],
+    "PR35": {
+      "source_revision": "8e8bb99cabcb44ed0ec0acd14db911aa44013fd8",
+      "archive_path": "results/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip",
+      "archive_sha256": "df53683ccf6f266a605b2844f42a98e808f75686cfab09f14d680c9d061e8a91",
+      "checkpoint_manifest": "candidate/checkpoint-manifest.json",
+      "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1"
+    },
+    "decision": "At the fixed primary confidence 0.13, require supported endpoint-availability or localization improvement against the matched old_reviewed control while preserving object completeness: no additional supported lost matches and no higher missed-object count. Preserve locatable-slot coverage and existing 5px and 10px pair successes; empty scenes must have no added outputs. Inspect extras and all gained/lost identities against original pixels. Newly found objects are not required for an endpoint benefit, but fewer unlocatable-slot outputs caused by missed objects or blanket endpoint suppression do not qualify. Assess replacement of the exact operational PR35 checkpoint separately at these same settings and preservation criteria. IoU/assignment crossings and uncertain labels do not establish physical recovery. No automatic promotion or threshold/seed/epoch/subset search."
+  },
+  "limits": [
+    "One fixed matched pair, seed 46 and finalized epoch 30; no seed, epoch, threshold, resolution or subset search.",
+    "Both roles independently initialize from original epoch 173. The resource trial and PR35 weights never initialize either full run. Both inner arm IDs remain candidate.",
+    "Recipe IDs differ truthfully: reviewed-annotations-seed46-v1 for the PR35-label control and reviewed-endpoints-seed46-v1 for the endpoint proposal. Their complete numerical recipe settings and SHA256 are identical.",
+    "All 157 original images and 137/20 train/validation assignments remain fixed. Control training counts are 3,771 objects, 6,841 visible endpoints and 701 missing slots; endpoint training counts are 3,771 objects, 6,842 visible endpoints and 700 missing slots. Original 664-object in-training validation and the separately corrected 663-object post-training reference remain unchanged.",
+    "The six amended rows are training supervision, not independent evaluation scenes. Reused correlated development views do not establish unseen-scene performance.",
+    "Manual rounded-boundary placement and retained reviewer dissent remain annotation uncertainty. Missing slots have no inferred coordinate target; do not score a physical hidden-corner location.",
+    "A gained or lost match/pair can reflect an IoU boundary crossing or assignment change. Inspect identities against original pixels before claiming object recovery or disappearance.",
+    "The returned ZIP proves integrity and eligibility of the two completed full-run artifacts. It does not independently prove resource-trial execution or model improvement.",
+    "Keep the current PR35 reviewed-proposal workflow unless a separately documented evaluation supports a replacement."
+  ]
+}
