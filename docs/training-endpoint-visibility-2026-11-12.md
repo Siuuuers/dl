@@ -20,7 +20,7 @@ Only that one right triple changes relative to PR50. The cumulative intervention
 
 The dedicated backup folder is `MyDrive/baomai-endpoint-visibility-seed46-20261112`. The notebook restores and verifies compatible completed arms before starting missing work. If both full arms are already complete, it skips the trial and training. It can reuse a compatible completed trial. Partial runs are preserved and rejected as complete results; use a fresh `RUN_BASE` and restore verified completed artifacts. A changed runtime, source, candidate, recipe or protocol cannot silently join an earlier completed arm.
 
-The final notebook pins a full immutable implementation commit and the protocol SHA256. It refuses an unset pin before starting work. Use this final handoff notebook rather than an intentionally unpinned preparation snapshot. Both full-run receipts must identify the same clean implementation checkout.
+The final notebook pins implementation commit [`ce207c7`](https://github.com/Siuuuers/dl/commit/ce207c7a4b929fcf2ff02fb3f0db9929de08e1ea) and protocol SHA256 `0e257cc036c86ea6859b6ed3b86f10768a87994e8f3b8b82b7e553a1cc1f8f60`. It refuses an unset pin before starting work. Use this final handoff notebook rather than an intentionally unpinned preparation snapshot. Both full-run receipts must identify the same clean implementation checkout.
 
 ## What is compared
 
