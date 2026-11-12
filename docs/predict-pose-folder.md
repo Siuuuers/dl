@@ -2,15 +2,15 @@
 
 Use `scripts/predict_pose_folder.py` to run the default epoch173 model or an explicitly selected, verified completed checkpoint on a folder of original still images. It writes annotated PNGs, structured predictions and an image summary. No annotation TXT files, camera, desktop display or training run are needed.
 
-The agreed scope is one `cassette_front` class and its two lower-front corner slots. The user has delegated assistant review and supported label amendments, with missed objects first. For that review workflow, use the **PR35 seed46 candidate at box confidence 0.13**, NMS IoU **0.70** and endpoint display confidence **0.50**. The generic runtime default remains epoch173 at 0.25. The [completed proposal-filter review](proposal-filter-review-2026-11-11.md) explains this bounded choice, its added review cost and the corrected reference; no universal optimum is claimed.
+The agreed scope is one `cassette_front` class and its two lower-front corner slots. The user has delegated assistant review and supported label amendments, with missed objects first. For that review workflow, use the **PR35 seed46 candidate at image size 1280 and box confidence 0.13**, NMS IoU **0.70** and endpoint display confidence **0.50**. The generic runtime default remains epoch173 at 0.25. The [completed proposal-filter review](proposal-filter-review-2026-11-11.md) explains this bounded choice, its added review cost and the corrected reference; no universal optimum is claimed.
 
 ## Run
 
-The current instructions, completed PR43 evaluation and implementation including verified candidate selection are on `Siuuuers/dl` branch `codex/visible-extent-results-20261111`. Use this branch while its PR is open. PR40 and PR43 are results-only branches based on main; the complete developed workflow is on the branch named here. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
+The current instructions, [completed PR47 evaluation](consistency-results-2026-11-12.md) and full working implementation, including verified candidate selection, are on `Siuuuers/dl` branch `codex/consistency-results-20261112`. Use this branch while its PR is open. PR47 contains the returned results archive and checksum on a branch based on main; it does not contain this complete developed workflow. PR40 and PR43 are likewise historical results-only branches. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
 
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --single-branch \
-  --branch codex/visible-extent-results-20261111 \
+  --branch codex/consistency-results-20261112 \
   https://github.com/Siuuuers/dl.git dl-folder
 cd dl-folder
 git lfs install --local
@@ -76,6 +76,8 @@ The earlier [0.25-to-0.15 review](low-confidence-review-2026-11-11.md) inspected
 Retain the existing 1280 inference size. The [fixed 1920 comparison](partial-front-improvement-2026-11-11.md#2-one-fixed-resolution-test-1920-did-not-help) increased misses from 21 to 31 and reduced 10 px two-corner successes from 577 to 572 on the same reference. The subsequent [completed PR40 training-label comparison](partial-front-results-2026-11-11.md) also retains this PR35 checkpoint: the new model leaves misses at 21, changes extras 76→77 and keeps 577/584 two-corner successes. The current model and fresh old-reviewed control produce exactly the same 60 ordered prediction arrays.
 
 The later [PR43 visible-extent comparison](visible-extent-results-2026-11-11.md) is also complete and retains PR35. At the fixed primary confidence 0.13, its new model changes misses 20→21, extras 85→87, 5 px pairs 529→526 and 10 px pairs 577→578. Original-image review establishes no additional recovered front; the lost scored match survives as a nearly identical proposal, and the 10 px gain reflects assignment between existing alternatives. Its old-reviewed control exactly equals PR35 for all forty prediction arrays at 0.13/0.15. Keep the PR35 bundle above; no new training or model replacement is required.
+
+The [PR47 fourteen-box consistency comparison](consistency-results-2026-11-12.md) is complete and also retains PR35. Its valid matched L4 runs do not meet the promotion criterion: at 0.13, the new candidate has **21 misses / 88 extras / 530 pairs within 5 px / 578 pairs within 10 px**, compared with PR35's **20 / 85 / 529 / 577**. Its matched L4 control has **22 / 88 / 527 / 578**. All pair counts use the same 584 eligible objects. The sole scored gain over the L4 control is an IoU crossing of an existing proposal; previously successful 5 px pairs are also lost, and no additional recovered front is established. Keep the PR35 bundle and explicit command above. This completed result requests no further GPU run; next work is a bounded review of unreviewed training material for annotation consistency and completeness.
 
 ### Optional overlap suppression
 
