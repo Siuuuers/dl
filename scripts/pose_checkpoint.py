@@ -38,7 +38,9 @@ BOX_RECIPE_IDS = (BOX_RECIPE_ID, *BOX_REPEATABILITY_RECIPES.values())
 ANNOTATION_RECIPE_ID = "reviewed-annotations-seed45-v1"
 ANNOTATION_CONFIRMATION_RECIPE_ID = "reviewed-annotations-seed46-v1"
 ANNOTATION_RECIPE_IDS = (ANNOTATION_RECIPE_ID, ANNOTATION_CONFIRMATION_RECIPE_ID)
-RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS)
+ENDPOINT_RECIPE_ID = "reviewed-endpoints-seed46-v1"
+RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS,
+              ENDPOINT_RECIPE_ID)
 
 # Resolved defaults observed in the pinned trainer, in addition to RECIPE.
 # These are checked, not changed, by the runner. In particular RLE stays at 1.0.
@@ -78,13 +80,14 @@ def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
     """Return an independent fixed recipe; the original RECIPE remains unchanged."""
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
     recipe = {**RECIPE, **({"warmup_bias_lr": 0.0001}
-                         if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS) else {})}
+                         if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS,
+                                          ENDPOINT_RECIPE_ID) else {})}
     for seed, fixed_id in BOX_REPEATABILITY_RECIPES.items():
         if recipe_id == fixed_id:
             recipe["seed"] = seed
     if recipe_id == ANNOTATION_RECIPE_ID:
         recipe["seed"] = 45
-    elif recipe_id == ANNOTATION_CONFIRMATION_RECIPE_ID:
+    elif recipe_id in (ANNOTATION_CONFIRMATION_RECIPE_ID, ENDPOINT_RECIPE_ID):
         recipe["seed"] = 46
     return recipe
 
@@ -92,10 +95,11 @@ def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
 def check_recipe_candidate_kind(recipe_id, kind):
     """Bind each new experiment to its intended overlay; retain legacy contracts."""
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
-    _require(kind != "training_endpoint_overlay",
-             "training_endpoint_overlay is staging-only; a fixed endpoint training protocol is required")
-    _require(kind in ("training_label_overlay", "training_box_overlay", "training_annotation_overlay"),
+    _require(kind in ("training_label_overlay", "training_box_overlay", "training_annotation_overlay",
+                     "training_endpoint_overlay"),
              f"unsupported training candidate kind: {kind}")
+    _require((recipe_id == ENDPOINT_RECIPE_ID) == (kind == "training_endpoint_overlay"),
+             "reviewed-endpoints recipe and training_endpoint_overlay must be selected together")
     _require((recipe_id in BOX_RECIPE_IDS) == (kind == "training_box_overlay"),
              "box-supervision recipe and training_box_overlay must be selected together")
     _require((recipe_id in ANNOTATION_RECIPE_IDS) == (kind == "training_annotation_overlay"),
@@ -330,6 +334,8 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
     _require(receipt["arm"] in ("reference", "candidate"), "invalid training arm")
     _require(not identity or identity["recipe_id"] != WARMUP_RECIPE_ID or receipt["arm"] == "reference",
              "warmup experiment requires the reference label arm")
+    _require(not identity or identity["recipe_id"] != ENDPOINT_RECIPE_ID or receipt["arm"] == "candidate",
+             "endpoint experiment requires the candidate label arm")
     for key, expected in (("initial_checkpoint_sha256", preflight["model_sha256"]),
                           ("reference_manifest_sha256", preflight["manifest_sha256"]),
                           ("model_card_sha256", preflight["model_card_sha256"]),
@@ -337,7 +343,7 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
         _require(receipt[key] == expected, f"training receipt {key} differs")
     variants = _check_staging(preflight, staging)
     proposal = _read_json(_contained_path(Path(preflight["root"]), staging["source"]["candidate_manifest"]))
-    check_recipe_candidate_kind(identity.get("recipe_id"), proposal.get("kind"))
+    check_recipe_candidate_kind(identity.get("recipe_id", ORIGINAL_RECIPE_ID), proposal.get("kind"))
     variant = variants[receipt["arm"]]
     _require(receipt["data_yaml_sha256"] == variant["data_yaml_sha256"], "training arm/YAML identity differs")
     settings = _mapping(receipt["training_settings"], "training settings")

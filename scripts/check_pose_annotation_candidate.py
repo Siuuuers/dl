@@ -16,7 +16,7 @@ from check_evaluate_pose import png_bytes, preflight_fixture
 from check_pose_checkpoint import bundle_fixture
 from evaluate_pose import file_sha256
 from pose_checkpoint import (ANNOTATION_CONFIRMATION_RECIPE_ID, ANNOTATION_RECIPE_ID, ANNOTATION_RECIPE_IDS,
-                             BOX_RECIPE_ID, ORIGINAL_RECIPE_ID,
+                             BOX_RECIPE_ID, ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID,
                              RECIPE_IDS, check_recipe_candidate_kind, get_recipe,
                              select_checkpoint)
 from stage_pose_training import MANIFEST, stage_datasets, verify_staging
@@ -290,7 +290,7 @@ class AnnotationRecipeChecks(unittest.TestCase):
         self.assertEqual(get_recipe(ANNOTATION_CONFIRMATION_RECIPE_ID)["seed"], 46)
         for recipe_id in RECIPE_IDS:
             for kind in ("training_label_overlay", "training_box_overlay", ANNOTATION_KIND):
-                valid = ((recipe_id in ANNOTATION_RECIPE_IDS and kind == ANNOTATION_KIND)
+                valid = recipe_id != ENDPOINT_RECIPE_ID and ((recipe_id in ANNOTATION_RECIPE_IDS and kind == ANNOTATION_KIND)
                          or (recipe_id not in ANNOTATION_RECIPE_IDS and kind != ANNOTATION_KIND
                              and (recipe_id.startswith("box-supervision-") == (kind == "training_box_overlay"))))
                 if valid:

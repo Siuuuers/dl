@@ -3,7 +3,7 @@
 
 The inherited annotation contract remains strict and unchanged. This separate
 kind binds each new row and both endpoint slots to recorded review evidence;
-it does not establish visual correctness or authorize a training recipe.
+it does not establish visual correctness or a trained-model improvement.
 """
 
 import sys
@@ -11,13 +11,16 @@ sys.dont_write_bytecode = True
 
 import argparse
 import json
+import math
 from pathlib import Path
 import re
 
 from evaluate_pose import _relative_file, file_sha256, parse_pose_labels
+from pose_checkpoint import ENDPOINT_RECIPE_ID
 from verify_pose_annotation_candidate import (ANNOTATION_CANDIDATE, nonempty,
     read_json, row_text, verify_annotation_candidate)
-from verify_pose_candidate import COUNT_KEYS, check_geometry, read_reference, require, totals
+from verify_pose_candidate import (COUNT_KEYS, GEOMETRY_EPSILON_PX, check_geometry,
+                                   read_reference, require, totals)
 
 
 ENDPOINT_KIND = "training_endpoint_overlay"
@@ -175,7 +178,29 @@ def verify_endpoint_candidate(root, candidate):
                 require(endpoint.get("before") == a and endpoint.get("after") == b
                         and nonempty(endpoint.get("reason")), f"endpoint slot audit differs: {image_id}:{number}:{SIDES[i]}")
                 point = recovered[key][f"{SIDES[i]}_original_pixels"]
-                ranges = recovered[key]["visible_point_descriptive_ranges_xy"]
+                ranges_by_side = recovered[key].get("visible_point_descriptive_ranges_by_side")
+                if ranges_by_side is not None:
+                    require(isinstance(ranges_by_side, dict) and set(ranges_by_side) == set(SIDES),
+                            "recovered uncertainty must describe both endpoint sides")
+                    ranges = ranges_by_side[SIDES[i]]
+                else:
+                    ranges = recovered[key]["visible_point_descriptive_ranges_xy"]
+                if point is not None:
+                    require(isinstance(point, list) and len(point) == 2
+                            and all(type(value) in (int, float) and math.isfinite(value) for value in point)
+                            and isinstance(ranges, list) and len(ranges) == 2
+                            and all(isinstance(axis, list) and len(axis) == 2
+                                    and all(type(value) in (int, float) and math.isfinite(value) for value in axis)
+                                    and axis[0] <= coordinate <= axis[1]
+                                    for axis, coordinate in zip(ranges, point)),
+                            "invalid accepted point or descriptive coordinate range")
+                    require(float(b[2]) == 2 and all(
+                        abs(float(b[j]) * record["original_size"][j] - point[j]) <= GEOMETRY_EPSILON_PX
+                        for j in range(2)), "accepted pixel point differs from normalized label")
+                else:
+                    require(float(b[2]) == 0, "missing accepted point has a visible label")
+                    require(ranges_by_side is None or ranges is None,
+                            "missing accepted point must have no per-side coordinate range")
                 uncertainty = None if point is None else {"x_range": ranges[0], "y_range": ranges[1]}
                 require(same(endpoint.get("accepted_original_pixels"), point)
                         and same(endpoint.get("coordinate_uncertainty_pixels"), uncertainty),
@@ -245,9 +270,10 @@ def verify_endpoint_candidate(root, candidate):
         "parent_labels_and_reviews_preserved": True, "unchanged_rows_byte_preserved": True,
         "full_row_maps_verified": True, "class_and_boxes_preserved_in_endpoint_delta": True,
         "image_bytes_verified": False, "images_staged_by_check": False, "dataset_built": False,
-        "visual_correctness_verified": False, "mechanical_geometry_verified": True, "training_recipe_supported": False,
+        "visual_correctness_verified": False, "mechanical_geometry_verified": True,
+        "training_recipe_supported": True, "training_recipe_id": ENDPOINT_RECIPE_ID,
         "code_sha256": {f"scripts/{name}": file_sha256(scripts / name) for name in
-            ("verify_pose_endpoint_candidate.py", "verify_pose_annotation_candidate.py", "verify_pose_candidate.py",
+            ("verify_pose_endpoint_candidate.py", "pose_checkpoint.py", "verify_pose_annotation_candidate.py", "verify_pose_candidate.py",
              "evaluate_pose.py", "pose_scoring.py")}}
 
 

@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-endpoint-followup-adjudication",
+  "date": "2026-11-12",
+  "timezone": "Asia/Hong_Kong",
+  "source_revision": "5f547d6166099faf39bc5b3bf9c044333d1682f0",
+  "previous_evidence": {
+    "path": "results/review/baomai-review-recovery-20261112/correction-record.json",
+    "sha256": "6f199638487933a04a0f2d67958d06be642ff998bd14657bfc913fe3406e24e3"
+  },
+  "previous_candidate_manifest_sha256": "817a6c3b9a4590ebdf2410cccc1e82341512c401ca844253f37847038fcdbdfe",
+  "trigger": "User asked whether the lower-right endpoints in new_000023 can still be determined.",
+  "source_image": {
+    "path": "data/images/train/new_000023.png",
+    "sha256": "3bb858735aa80fb8c07e19eb6c05c35cd601ef7a355bd5de0f9446d2625e895b",
+    "size": [
+      1280,
+      720
+    ]
+  },
+  "inspection": {
+    "original_pixels_only": true,
+    "full_image_inspected": true,
+    "larger_crops_inspected": true,
+    "generative_edits": false,
+    "left_points_and_new_000031_reopened": false
+  },
+  "independent_initial_reviews": [
+    {
+      "reviewer": "original-only reviewer A",
+      "labels_and_previous_conclusions_seen": false,
+      "initial": "Upper front has a possible seam endpoint above the fingertip beside the tool; lower two are covered.",
+      "final": "Retain missing for all three. Upper feature at x611\u2013615/y547\u2013553 is borderline because its upright boundary cannot be confidently separated from the tool contour.",
+      "upper_point_accepted": false
+    },
+    {
+      "reviewer": "original-only reviewer B",
+      "labels_and_previous_conclusions_seen": false,
+      "initial": "All three are vulnerable to occlusion; upper corner needs crop inspection.",
+      "final": "Accept upper lower-right at (612,549), range x610\u2013614/y547\u2013551. Its short rounded return is left of the brighter continuous tool contour around x616\u2013618. Keep the lower two missing.",
+      "upper_point_accepted": true
+    }
+  ],
+  "root_adjudication": {
+    "reviewer_informed_by_user_and_prior_labels": true,
+    "original_row": 33,
+    "right_original_pixels": [
+      612,
+      549
+    ],
+    "status": "accepted_incremental",
+    "confidence_description": "Moderate; blurred small junction, with an independent reviewer disagreement preserved.",
+    "reason": "The upper front bottom boundary reaches a short dark rounded bend that turns upward a few pixels left of the continuous brighter gripper contour. Mark that cassette-owned bend, not the farther-right seam/tool termination. This is direct-pixel placement on the visible junction; no hidden-line or neighbor-spacing extrapolation.",
+    "other_right_slots": {
+      "34": "Keep missing: the finger covers the lower-edge/right-edge junction.",
+      "35": "Keep missing: the hand covers the lower-right target region."
+    },
+    "not_unanimous": true,
+    "human_signoff": false
+  },
+  "coordinate_uncertainty_note": "Per-side ranges describe manual placement uncertainty, not statistical confidence intervals or physical tolerances. Upper-row right visibility is an adjudicated moderate-confidence label; it is not a claim of indisputable pixel truth.",
+  "new_change_relative_to_pr50": {
+    "image_id": "new_000023",
+    "original_row": 33,
+    "slot": "right",
+    "before": [
+      "0.00000000",
+      "0.00000000",
+      "0"
+    ],
+    "after": [
+      "0.47812500",
+      "0.76250000",
+      "2"
+    ],
+    "all_other_label_tokens_unchanged": true
+  },
+  "endpoint_rows": [
+    {
+      "image_id": "new_000023",
+      "original_row": 33,
+      "before_tokens": [
+        "0.37626562",
+        "0.77293056",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_tokens": [
+        "0.37656250",
+        "0.76388889",
+        "2",
+        "0.47812500",
+        "0.76250000",
+        "2"
+      ],
+      "left_original_pixels": [
+        482,
+        550
+      ],
+      "right_original_pixels": [
+        612,
+        549
+      ],
+      "candidate_row": 33,
+      "visible_point_descriptive_ranges_by_side": {
+        "left": [
+          [
+            480,
+            485
+          ],
+          [
+            548,
+            553
+          ]
+        ],
+        "right": [
+          [
+            610,
+            614
+          ],
+          [
+            547,
+            551
+          ]
+        ]
+      },
+      "decision_source": "Left carried unchanged; right re-adjudicated after user question, full-image inspection and two independent initial reviews."
+    },
+    {
+      "image_id": "new_000023",
+      "original_row": 34,
+      "before_tokens": [
+        "0.37948437",
+        "0.81243056",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_tokens": [
+        "0.37968750",
+        "0.80555556",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "left_original_pixels": [
+        486,
+        580
+      ],
+      "right_original_pixels": null,
+      "candidate_row": 34,
+      "visible_point_descriptive_ranges_by_side": {
+        "left": [
+          [
+            484,
+            489
+          ],
+          [
+            577,
+            583
+          ]
+        ],
+        "right": null
+      },
+      "decision_source": "Carried from PR49 and PR50; not newly re-adjudicated in this follow-up."
+    },
+    {
+      "image_id": "new_000023",
+      "original_row": 35,
+      "before_tokens": [
+        "0.38317969",
+        "0.85866667",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_tokens": [
+        "0.38281250",
+        "0.84305556",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "left_original_pixels": [
+        490,
+        607
+      ],
+      "right_original_pixels": null,
+      "candidate_row": 35,
+      "visible_point_descriptive_ranges_by_side": {
+        "left": [
+          [
+            488,
+            493
+          ],
+          [
+            605,
+            610
+          ]
+        ],
+        "right": null
+      },
+      "decision_source": "Carried from PR49 and PR50; not newly re-adjudicated in this follow-up."
+    },
+    {
+      "image_id": "new_000031",
+      "original_row": 22,
+      "before_tokens": [
+        "0.45509375",
+        "0.61259722",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_tokens": [
+        "0",
+        "0",
+        "0",
+        "0.57968750",
+        "0.63611111",
+        "2"
+      ],
+      "left_original_pixels": null,
+      "right_original_pixels": [
+        742,
+        458
+      ],
+      "candidate_row": 22,
+      "visible_point_descriptive_ranges_by_side": {
+        "left": null,
+        "right": [
+          [
+            739,
+            744
+          ],
+          [
+            455,
+            461
+          ]
+        ]
+      },
+      "decision_source": "Carried from PR49 and PR50; not newly re-adjudicated in this follow-up."
+    },
+    {
+      "image_id": "new_000031",
+      "original_row": 23,
+      "before_tokens": [
+        "0.45603906",
+        "0.66416667",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_tokens": [
+        "0",
+        "0",
+        "0",
+        "0.57578125",
+        "0.68194444",
+        "2"
+      ],
+      "left_original_pixels": null,
+      "right_original_pixels": [
+        737,
+        491
+      ],
+      "candidate_row": 23,
+      "visible_point_descriptive_ranges_by_side": {
+        "left": null,
+        "right": [
+          [
+            734,
+            739
+          ],
+          [
+            488,
+            494
+          ]
+        ]
+      },
+      "decision_source": "Carried from PR49 and PR50; not newly re-adjudicated in this follow-up."
+    },
+    {
+      "image_id": "new_000031",
+      "original_row": 24,
+      "before_tokens": [
+        "0.45544531",
+        "0.71018056",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_tokens": [
+        "0",
+        "0",
+        "0",
+        "0.57187500",
+        "0.71944444",
+        "2"
+      ],
+      "left_original_pixels": null,
+      "right_original_pixels": [
+        732,
+        518
+      ],
+      "candidate_row": 24,
+      "visible_point_descriptive_ranges_by_side": {
+        "left": null,
+        "right": [
+          [
+            729,
+            735
+          ],
+          [
+            515,
+            521
+          ]
+        ]
+      },
+      "decision_source": "Carried from PR49 and PR50; not newly re-adjudicated in this follow-up."
+    }
+  ],
+  "scope_limits": [
+    "Only new_000023 rows33\u201335 right slots were reopened; left amendments and image031 decisions are carried from the prior review.",
+    "The original train/validation split, boxes, object lists, PR49 recovery package and PR35 parent remain unchanged.",
+    "No training, inference or model-performance gain is claimed by this adjudication."
+  ]
+}

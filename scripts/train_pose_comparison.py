@@ -17,7 +17,7 @@ import subprocess
 import time
 
 from evaluate_pose import ULTRALYTICS_VERSION, _relative_file, file_sha256, preflight_dataset
-from pose_checkpoint import (ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
+from pose_checkpoint import (ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
                              check_recipe_candidate_kind, check_training_settings, get_recipe, recipe_identity)
 from stage_pose_training import MANIFEST, stage_datasets
 from verify_pose_candidate import DEFAULT_CANDIDATE, require
@@ -26,6 +26,7 @@ from verify_pose_candidate import DEFAULT_CANDIDATE, require
 SOURCE_FILES = ("scripts/train_pose_comparison.py", "scripts/pose_checkpoint.py",
                 "scripts/stage_pose_training.py", "scripts/verify_pose_candidate.py",
                 "scripts/verify_pose_box_candidate.py", "scripts/verify_pose_annotation_candidate.py",
+                "scripts/verify_pose_endpoint_candidate.py",
                 "scripts/evaluate_pose.py", "scripts/pose_scoring.py")
 
 
@@ -102,6 +103,8 @@ def run_worker(config):
             "worker configuration recipe identity differs")
     require(config["recipe_id"] != WARMUP_RECIPE_ID or config["arm"] == "reference",
             "warmup experiment requires the reference label arm")
+    require(config["recipe_id"] != ENDPOINT_RECIPE_ID or config["arm"] == "candidate",
+            "endpoint experiment requires the candidate label arm")
 
     SETTINGS.update({key: False for key in
                      ("sync", "clearml", "comet", "dvc", "mlflow", "raytune", "tensorboard", "wandb")})
@@ -352,6 +355,8 @@ def run_parent(args):
     declared_recipe = recipe_identity(args.recipe)
     require(args.recipe != WARMUP_RECIPE_ID or args.arm == "reference",
             "warmup experiment requires the reference label arm")
+    require(args.recipe != ENDPOINT_RECIPE_ID or args.arm == "candidate",
+            "endpoint experiment requires the candidate label arm")
     candidate_name = str(getattr(args, "candidate", DEFAULT_CANDIDATE))
     require(Path(candidate_name).parts[:2] == ("data", "candidates") and ".." not in Path(candidate_name).parts,
             "candidate must be a repository-relative data/candidates manifest")

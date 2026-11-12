@@ -1,0 +1,632 @@
+{
+  "schema_version": 1,
+  "kind": "endpoint_study_preparation",
+  "date": "2026-11-12",
+  "timezone": "Asia/Hong_Kong",
+  "recorded_at_utc": "2026-11-12T08:53:33.561936+00:00",
+  "base_revision": "5f547d6166099faf39bc5b3bf9c044333d1682f0",
+  "implementation_state": "Preflight and focused checks used the working-tree code and data captured by the immutable implementation revision. The final handoff changes only the notebook execution pins, this receipt, and the handoff documentation.",
+  "candidate_manifest_sha256": "9c489bf57a526509de73e40cc73b02117398fba4ec97107bf047aa71e4951c41",
+  "review_sha256": "9f46d3ef891adf89592cfb70b56e36b6c63f6aa204a4a5aaae0f92d28d4317d7",
+  "adjudication_sha256": "da622a47e30895f782cf2ad6b3f5380021eb88690b500aaca0d0ba49845bee5f",
+  "candidate_delta_from_pr50": [
+    {
+      "path": "data/candidates/endpoint-visibility-2026-11-12/labels/train/new_000023.txt",
+      "original_row": 33,
+      "before_right": [
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_right": [
+        "0.47812500",
+        "0.76250000",
+        "2"
+      ]
+    }
+  ],
+  "original_inputs_sha256_verified": {
+    "images": 157,
+    "labels": 157,
+    "image_bytes": 141130768
+  },
+  "initial_checkpoint": {
+    "status": "verified",
+    "source_url": "https://github.com/Siuuuers/dl/raw/5f547d6166099faf39bc5b3bf9c044333d1682f0/weights/cassette_lower_epoch173.pt",
+    "path": "weights/cassette_lower_epoch173.pt",
+    "sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "bytes": 106838542,
+    "checkpoint_deserialized": false,
+    "training_executed": false
+  },
+  "actual_preflight": {
+    "root": "/workspace/scratch/58fa048dfc17/dl-next",
+    "weights": "/workspace/scratch/58fa048dfc17/dl-next/weights/cassette_lower_epoch173.pt",
+    "model_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+    "weights_verified": true,
+    "reference_validation_images": 20,
+    "validated_record_count": 20,
+    "record_inventory_note": "Frozen original validation record identities and labels remain in data/manifest.json; this receipt keeps the checked source identities and count instead of duplicating parsed object coordinates."
+  },
+  "protocol_validation": {
+    "status": "verified",
+    "protocol_path": "experiments/endpoint-visibility-2026-11-12.json",
+    "protocol_sha256": "0e257cc036c86ea6859b6ed3b86f10768a87994e8f3b8b82b7e553a1cc1f8f60",
+    "delta_rows": {
+      "new_000023": [
+        33,
+        34,
+        35
+      ],
+      "new_000031": [
+        22,
+        23,
+        24
+      ]
+    },
+    "counts": {
+      "old_reviewed": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "endpoint_reviewed": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6842,
+          "missing_endpoints": 700,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "candidate_receipts": {
+      "old_reviewed": {
+        "status": "verified",
+        "candidate_id": "annotations-2026-11-10",
+        "kind": "training_annotation_overlay",
+        "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+        "declared_source_revision": "fda37dc364f8c6ea54ad23819482dbf21be0534a",
+        "source_revision_git_object_checked": false,
+        "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+        "review_sha256": "84dd73407aa147637d8eb68f8ff8268c856d70c46a8a8bf144549e00e6480c85",
+        "annotation_policy_sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+        "reference_labels_verified": 157,
+        "changed_train_labels": 8,
+        "removed_objects": 6,
+        "replaced_objects": 3,
+        "added_objects": 5,
+        "merged_endpoints": 2,
+        "counts": {
+          "train": {
+            "images": 137,
+            "objects": 3771,
+            "visible_endpoints": 6841,
+            "missing_endpoints": 701,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "validation_labels_unchanged": true,
+        "unchanged_rows_byte_preserved": true,
+        "full_row_maps_verified": true,
+        "image_bytes_verified": false,
+        "images_staged_by_check": false,
+        "dataset_built": false,
+        "visual_correctness_verified": false,
+        "mechanical_geometry_verified": true,
+        "code_sha256": {
+          "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+          "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+          "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+          "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+        }
+      },
+      "endpoint_reviewed": {
+        "status": "verified",
+        "kind": "training_endpoint_overlay",
+        "candidate_id": "endpoint-visibility-2026-11-12",
+        "candidate_manifest_sha256": "9c489bf57a526509de73e40cc73b02117398fba4ec97107bf047aa71e4951c41",
+        "declared_source_revision": "5f547d6166099faf39bc5b3bf9c044333d1682f0",
+        "source_revision_git_object_checked": false,
+        "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+        "parent_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+        "parent_verified_by": "verify_pose_annotation_candidate.py",
+        "review_sha256": "9f46d3ef891adf89592cfb70b56e36b6c63f6aa204a4a5aaae0f92d28d4317d7",
+        "annotation_policy_sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+        "reference_labels_verified": 157,
+        "changed_train_labels": 10,
+        "added_objects": 5,
+        "removed_objects": 6,
+        "replaced_objects": 9,
+        "merged_endpoints": 2,
+        "counts": {
+          "train": {
+            "images": 137,
+            "objects": 3771,
+            "visible_endpoints": 6842,
+            "missing_endpoints": 700,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "new_endpoint_edit_counts": {
+          "changed_train_files": 2,
+          "replaced_rows": 6,
+          "changed_endpoint_slots": 10,
+          "visible_to_missing": 3,
+          "missing_to_visible": 4,
+          "visible_coordinate_corrections": 3,
+          "retained_missing_slots": 2,
+          "net_visible_endpoint_change": 1,
+          "net_object_change": 0
+        },
+        "validation_labels_unchanged": true,
+        "parent_labels_and_reviews_preserved": true,
+        "unchanged_rows_byte_preserved": true,
+        "full_row_maps_verified": true,
+        "class_and_boxes_preserved_in_endpoint_delta": true,
+        "image_bytes_verified": false,
+        "images_staged_by_check": false,
+        "dataset_built": false,
+        "visual_correctness_verified": false,
+        "mechanical_geometry_verified": true,
+        "training_recipe_supported": true,
+        "training_recipe_id": "reviewed-endpoints-seed46-v1",
+        "code_sha256": {
+          "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+          "scripts/pose_checkpoint.py": "88ec2b4d19616470718707b90a6b3d982c7a5f3470bab3e161f14068db11591a",
+          "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+          "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+          "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+          "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+        }
+      }
+    }
+  },
+  "staging": {
+    "old_reviewed": {
+      "output": {
+        "command": [
+          "python3",
+          "-B",
+          "scripts/stage_pose_training.py",
+          "--candidate",
+          "data/candidates/annotations-2026-11-10/manifest.json",
+          "--output",
+          "/workspace/scratch/58fa048dfc17/endpoint-study-work/staged/old_reviewed"
+        ],
+        "exit_code": 0,
+        "result": {
+          "status": "staged",
+          "output": "/workspace/scratch/58fa048dfc17/endpoint-study-work/staged/old_reviewed",
+          "staging_manifest_sha256": "1855b953665f1300998f83a7c69cf1a32c0aa1a0918db2674185e4e40a5fb1a4",
+          "counts": {
+            "reference": {
+              "train": {
+                "images": 137,
+                "objects": 3772,
+                "visible_endpoints": 6839,
+                "missing_endpoints": 705,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            },
+            "candidate": {
+              "train": {
+                "images": 137,
+                "objects": 3771,
+                "visible_endpoints": 6841,
+                "missing_endpoints": 701,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            }
+          },
+          "actual_original_pngs_verified": 157,
+          "geometry_gate_passed": true,
+          "physical_policy_visually_certified": false,
+          "training_run": false
+        }
+      },
+      "verify": {
+        "command": [
+          "python3",
+          "-B",
+          "scripts/stage_pose_training.py",
+          "--candidate",
+          "data/candidates/annotations-2026-11-10/manifest.json",
+          "--verify",
+          "/workspace/scratch/58fa048dfc17/endpoint-study-work/staged/old_reviewed"
+        ],
+        "exit_code": 0,
+        "result": {
+          "status": "verified",
+          "output": "/workspace/scratch/58fa048dfc17/endpoint-study-work/staged/old_reviewed",
+          "staging_manifest_sha256": "1855b953665f1300998f83a7c69cf1a32c0aa1a0918db2674185e4e40a5fb1a4",
+          "counts": {
+            "reference": {
+              "train": {
+                "images": 137,
+                "objects": 3772,
+                "visible_endpoints": 6839,
+                "missing_endpoints": 705,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            },
+            "candidate": {
+              "train": {
+                "images": 137,
+                "objects": 3771,
+                "visible_endpoints": 6841,
+                "missing_endpoints": 701,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            }
+          },
+          "actual_original_pngs_verified": 157,
+          "geometry_gate_passed": true,
+          "physical_policy_visually_certified": false,
+          "training_run": false
+        }
+      },
+      "staging_verification": {
+        "source_labels_verified": 157,
+        "actual_original_pngs_verified": 157,
+        "copied_images_verified": 314,
+        "copied_labels_verified": 314,
+        "changed_train_labels": 8,
+        "removed_training_objects": 6,
+        "validation_images_and_labels_identical": true,
+        "source_files_rewritten": false,
+        "symlinks_present": false,
+        "trainer_loader_executed": false
+      },
+      "code_sha256": {
+        "scripts/stage_pose_training.py": "2631c7d6f372c29b6bcfd48b7effb07f59c2255bf13328cc3e6bbe41691c302b",
+        "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+        "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+        "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+        "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+        "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+        "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+      },
+      "full_staging_inventory_in_git": false
+    },
+    "endpoint_reviewed": {
+      "output": {
+        "command": [
+          "python3",
+          "-B",
+          "scripts/stage_pose_training.py",
+          "--candidate",
+          "data/candidates/endpoint-visibility-2026-11-12/manifest.json",
+          "--output",
+          "/workspace/scratch/58fa048dfc17/endpoint-study-work/staged/endpoint_reviewed"
+        ],
+        "exit_code": 0,
+        "result": {
+          "status": "staged",
+          "output": "/workspace/scratch/58fa048dfc17/endpoint-study-work/staged/endpoint_reviewed",
+          "staging_manifest_sha256": "7fc71cd65a7772dd39fc86938ba56ec3480dd796287f6dcabf5d64fe52555e38",
+          "counts": {
+            "reference": {
+              "train": {
+                "images": 137,
+                "objects": 3772,
+                "visible_endpoints": 6839,
+                "missing_endpoints": 705,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            },
+            "candidate": {
+              "train": {
+                "images": 137,
+                "objects": 3771,
+                "visible_endpoints": 6842,
+                "missing_endpoints": 700,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            }
+          },
+          "actual_original_pngs_verified": 157,
+          "geometry_gate_passed": true,
+          "physical_policy_visually_certified": false,
+          "training_run": false
+        }
+      },
+      "verify": {
+        "command": [
+          "python3",
+          "-B",
+          "scripts/stage_pose_training.py",
+          "--candidate",
+          "data/candidates/endpoint-visibility-2026-11-12/manifest.json",
+          "--verify",
+          "/workspace/scratch/58fa048dfc17/endpoint-study-work/staged/endpoint_reviewed"
+        ],
+        "exit_code": 0,
+        "result": {
+          "status": "verified",
+          "output": "/workspace/scratch/58fa048dfc17/endpoint-study-work/staged/endpoint_reviewed",
+          "staging_manifest_sha256": "7fc71cd65a7772dd39fc86938ba56ec3480dd796287f6dcabf5d64fe52555e38",
+          "counts": {
+            "reference": {
+              "train": {
+                "images": 137,
+                "objects": 3772,
+                "visible_endpoints": 6839,
+                "missing_endpoints": 705,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            },
+            "candidate": {
+              "train": {
+                "images": 137,
+                "objects": 3771,
+                "visible_endpoints": 6842,
+                "missing_endpoints": 700,
+                "empty_images": 13
+              },
+              "val": {
+                "images": 20,
+                "objects": 664,
+                "visible_endpoints": 1227,
+                "missing_endpoints": 101,
+                "empty_images": 3
+              }
+            }
+          },
+          "actual_original_pngs_verified": 157,
+          "geometry_gate_passed": true,
+          "physical_policy_visually_certified": false,
+          "training_run": false
+        }
+      },
+      "staging_verification": {
+        "source_labels_verified": 157,
+        "actual_original_pngs_verified": 157,
+        "copied_images_verified": 314,
+        "copied_labels_verified": 314,
+        "changed_train_labels": 10,
+        "removed_training_objects": 6,
+        "validation_images_and_labels_identical": true,
+        "source_files_rewritten": false,
+        "symlinks_present": false,
+        "trainer_loader_executed": false
+      },
+      "code_sha256": {
+        "scripts/stage_pose_training.py": "2631c7d6f372c29b6bcfd48b7effb07f59c2255bf13328cc3e6bbe41691c302b",
+        "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+        "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+        "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+        "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+        "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+        "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+      },
+      "full_staging_inventory_in_git": false
+    }
+  },
+  "focused_checks": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_endpoint_notebook.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 14,
+      "test_script_sha256": "3a6654de83e68bee51410bccd3e9a5f081ef4e93e16693d561b738a6d22bae27"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_package_endpoint_results.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 9,
+      "test_script_sha256": "592ec7547c62c248473dc52a3d0b67af26bc737bed4c83e1f8907ac19913cf6c"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_package_gpu_results.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 7,
+      "test_script_sha256": "05536b08e6e960c4f4149ba197494ff939f404966fc0d82ce615a01f8ee67082"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_pose_annotation_candidate.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 19,
+      "test_script_sha256": "30828cf0c2d1a65d9132ce304b215e352b0d71bfb1ea176813d5aeb77242c2ac"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_pose_checkpoint.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 28,
+      "test_script_sha256": "43916c4c020f416d1494d226f4c1f4e9fcf6f5beb80ad3e12c7d33e7fc742e53"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_pose_endpoint_candidate.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 14,
+      "test_script_sha256": "bfe2b22b450fe0387539c996fd8e9e7c7627f4f9583a13c552882fbd2b814f08"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_train_pose_comparison.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 13,
+      "test_script_sha256": "3eb6502cadce2123ce4ad95cb2114ba4321a00e4f09e4091209efd780b58d979"
+    }
+  ],
+  "tests_passed_total": 104,
+  "current_production_code_sha256": {
+    "scripts/pose_checkpoint.py": "88ec2b4d19616470718707b90a6b3d982c7a5f3470bab3e161f14068db11591a",
+    "scripts/train_pose_comparison.py": "3130e936abd81305db39bb51569d946e547d5cbcdcb2832a05a4495f3017195b",
+    "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+    "scripts/package_endpoint_results.py": "2d804ba39f4be48d9629666b83b6d46d71a9b47b3b6a622a26e40cb057edb0bd",
+    "scripts/render_endpoint_recheck.py": "02cc604bb98c1572bf039b7a0c2b83fdad826014e3cea5942335f510dfb673fe"
+  },
+  "legacy_compatibility": {
+    "schema1_positive_bundle_passed": true,
+    "historical_recipe_hashes_preserved": true,
+    "old_annotation_verifier_unchanged": true,
+    "historical_pr50_nine_slot_candidate_verified_with_new_verifier": true,
+    "historical_candidate_manifest_sha256": "817a6c3b9a4590ebdf2410cccc1e82341512c401ca844253f37847038fcdbdfe"
+  },
+  "visual_review": {
+    "original_only_initial_reviewers": 2,
+    "upper_corner_review_unanimous": false,
+    "root_adjudication_confidence": "moderate",
+    "human_signoff": false
+  },
+  "environment": {
+    "cuda_device_present": false,
+    "nvidia_smi_available": false,
+    "torch_installed": false,
+    "ultralytics_installed": false
+  },
+  "handoff": {
+    "state": "ready_for_gpu_execution",
+    "finalized_at_utc": "2026-11-12T09:00:07.907258+00:00",
+    "notebook": "notebooks/baomai_endpoint_visibility.ipynb",
+    "notebook_sha256": "40bd6df77acf27ea4eecd23ba624e40086b53d191dae0b9901e80e15ea440532",
+    "implementation_revision": "ce207c7a4b929fcf2ff02fb3f0db9929de08e1ea",
+    "protocol_path": "experiments/endpoint-visibility-2026-11-12.json",
+    "protocol_sha256": "0e257cc036c86ea6859b6ed3b86f10768a87994e8f3b8b82b7e553a1cc1f8f60",
+    "pins_read_back_from_notebook": {
+      "SOURCE_REF": "ce207c7a4b929fcf2ff02fb3f0db9929de08e1ea",
+      "PROTOCOL_PATH": "experiments/endpoint-visibility-2026-11-12.json",
+      "PROTOCOL_SHA256": "0e257cc036c86ea6859b6ed3b86f10768a87994e8f3b8b82b7e553a1cc1f8f60"
+    },
+    "pin_check": {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_endpoint_notebook.py"
+      ],
+      "exit_code": 0,
+      "tests_run": 14,
+      "unittest_summary": "Ran 14 tests in 0.143s\n\nOK",
+      "fail_closed_mutation_checks": "passed: unfilled source and protocol pins each stop before GPU probes and workspace actions",
+      "verification_mode": "Compile actual notebook cells and execute workflow logic using local temporary fixtures with GPU/network/install substitutes. No GPU, installation, network, training or publication executed by this check."
+    },
+    "remaining_action": "Execute the pinned notebook on one compatible CUDA runtime and return both completed run bundles; then perform the fixed evaluation."
+  },
+  "execution_scope": {
+    "checkpoint_deserialized": false,
+    "real_gpu_trial_executed": false,
+    "full_training_executed": false,
+    "inference_executed": false,
+    "new_model_performance_claim": false,
+    "selected_model": "PR35 seed46"
+  },
+  "implementation_revision": "ce207c7a4b929fcf2ff02fb3f0db9929de08e1ea",
+  "implementation_tree": "f7ca946bc2bfa8802b42baa7bf567d32825e7842"
+}
