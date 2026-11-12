@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "kind": "composed-training-integration-verification",
+  "status": "passed",
+  "created_at_utc": "2026-11-12T15:16:40.500393+00:00",
+  "repository": "/workspace/scratch/a2905ee84412/dl-composed",
+  "source_head": "543a6afb4bc22c8b340deeb0402396c942a693c6",
+  "source_sha256": {
+    "scripts/stage_pose_training.py": "a733f5e80335204747139e87a723b7bb095123059dc5a58b86ee824a26e5afe6",
+    "scripts/pose_checkpoint.py": "f902c34720283480f948cca78bd2d6d24fd07bf6bc5a325945172d56d55f5bd5",
+    "scripts/train_pose_comparison.py": "4f20a5a88876aac70e366018fc84652002975e4fe3812584a30621076a16f5f6",
+    "scripts/check_pose_composed_training.py": "3240f23b31fda725994b2a97df1b22cb32888da01e6e67a147c807214eeefc3f",
+    "scripts/check_pose_checkpoint.py": "ef61cc57809af96950350ec8d953dd9b06b855dc7037c2ca67c68fd49f3aa608",
+    "scripts/check_train_pose_comparison.py": "ae9421451841d7188b52e0fba017900d325351f9d822dc507c8fb83f82664340",
+    "scripts/check_pose_annotation_candidate.py": "19003b130307ee6e670805215edc33faf72af64ad63fb1ca72c9e843b4b19a06",
+    "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+    "data/candidates/composed-fronts-2026-11-12/manifest.json": "86522ed6549390e8e6fb147aeb8244c4aef0b2f1273f57cdd0fc07b85074b38a",
+    "data/candidates/endpoint-visibility-2026-11-12/manifest.json": "9c489bf57a526509de73e40cc73b02117398fba4ec97107bf047aa71e4951c41"
+  },
+  "training_executed": false,
+  "weights_deserialized": false,
+  "gpu_runtime_executed": false,
+  "checks": [
+    {
+      "command": [
+        "python",
+        "scripts/check_pose_composed_training.py"
+      ],
+      "cwd": "/workspace/scratch/a2905ee84412/dl-composed",
+      "exit_code": 0,
+      "tests": 8,
+      "result": "OK",
+      "scope": "Synthetic actual-PNG staging and completed-receipt consistency; independent verifier receipt mocked; no training/model deserialization."
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "check_pose_checkpoint",
+        "check_train_pose_comparison",
+        "check_pose_annotation_candidate"
+      ],
+      "env": {
+        "PYTHONPATH": "scripts"
+      },
+      "cwd": "/workspace/scratch/a2905ee84412/dl-composed",
+      "exit_code": 0,
+      "tests": 60,
+      "result": "OK"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "-c",
+        "from pathlib import Path\nimport json,shutil,tempfile,unittest\nimport check_pose_endpoint_candidate as checks\nfrom verify_pose_composed_candidate import HISTORICAL_POLICY, bound_file\nroot=Path('/workspace/scratch/a2905ee84412/dl-composed')\nwith tempfile.TemporaryDirectory(prefix='endpoint-historical-regression-') as temp:\n    snapshot=Path(temp)\n    for relative in ('data/labels',str(Path(checks.ANNOTATION_CANDIDATE).parent),str(Path(checks.ENDPOINT_CANDIDATE).parent)):\n        shutil.copytree(root/relative,snapshot/relative)\n    endpoint=json.loads((root/checks.ENDPOINT_CANDIDATE).read_text())\n    review=json.loads((root/Path(checks.ENDPOINT_CANDIDATE).parent/endpoint['review']['path']).read_text())\n    for relative in ('data/manifest.json',review['evidence']['path']):\n        target=snapshot/relative\n        target.parent.mkdir(parents=True,exist_ok=True)\n        shutil.copyfile(root/relative,target)\n    (snapshot/'docs').mkdir(exist_ok=True)\n    (snapshot/'docs/annotation-policy.md').write_bytes(bound_file(root,HISTORICAL_POLICY,'historical policy').read_bytes())\n    checks.REPOSITORY=snapshot\n    suite=unittest.defaultTestLoader.loadTestsFromModule(checks)\n    result=unittest.TextTestRunner(verbosity=1).run(suite)\n    raise SystemExit(0 if result.wasSuccessful() else 1)\n"
+      ],
+      "env": {
+        "PYTHONPATH": "scripts"
+      },
+      "cwd": "/workspace/scratch/a2905ee84412/dl-composed",
+      "exit_code": 0,
+      "tests": 14,
+      "result": "OK",
+      "scope": "Unchanged endpoint checks and validators against disposable input copy with their pinned historical policy; live files and validators untouched."
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "-c",
+        "from pathlib import Path\nimport json,tempfile\nfrom stage_pose_training import stage_datasets,verify_staging,MANIFEST\nfrom evaluate_pose import file_sha256\nroot=Path('/workspace/scratch/a2905ee84412/dl-composed')\ncandidate=root/'data/candidates/composed-fronts-2026-11-12/manifest.json'\nwith tempfile.TemporaryDirectory(prefix='composed-real-stage-',dir='/workspace/scratch/a2905ee84412') as temp:\n    output=Path(temp)/'paired'\n    staged=stage_datasets(root,candidate,output)\n    verified=verify_staging(root,candidate,output)\n    receipt=json.loads((output/MANIFEST).read_text())\n    control_path=root/receipt['source']['control']['manifest']\n    control=json.loads(control_path.read_text())\n    for change in control['changes']:\n        actual=output/'reference'/change['source_label']\n        assert file_sha256(actual)==change['candidate_label_sha256']\n        assert actual.read_bytes()==(control_path.parent/change['candidate_label']).read_bytes()\n    print(json.dumps({'status':verified['status'],'training_run':False,'actual_original_pngs_verified':verified['actual_original_pngs_verified'],'source':receipt['source'],'counts':verified['counts'],'control_overlay_files_exact':len(control['changes']),'verification':receipt['verification']},indent=2))\n"
+      ],
+      "env": {
+        "PYTHONPATH": "scripts"
+      },
+      "cwd": "/workspace/scratch/a2905ee84412/dl-composed",
+      "exit_code": 0,
+      "result": "verified",
+      "actual_original_pngs_verified": 157,
+      "copied_images_verified": 314,
+      "copied_labels_verified": 314,
+      "control_overlay_files_exact": 10,
+      "temporary_output_removed": true,
+      "counts": {
+        "control_train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6842,
+          "missing_endpoints": 700,
+          "empty_images": 13
+        },
+        "treatment_train": {
+          "images": 137,
+          "objects": 3770,
+          "visible_endpoints": 6842,
+          "missing_endpoints": 698,
+          "empty_images": 13
+        },
+        "unchanged_validation": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    }
+  ],
+  "initial_attempt": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "check_pose_checkpoint",
+      "check_train_pose_comparison",
+      "check_pose_annotation_candidate",
+      "check_pose_endpoint_candidate"
+    ],
+    "env": {
+      "PYTHONPATH": "scripts"
+    },
+    "cwd": "/workspace/scratch/a2905ee84412/dl-composed",
+    "exit_code": 1,
+    "tests": 74,
+    "failures": 16,
+    "errors": 1,
+    "cause": "Every failure/error came from the old endpoint module copying the current extended policy into a fixture whose parent manifest pins the historical policy. The strict validator rejected policy identity before reaching those test assertions. This preexisting compatibility boundary is preserved. The 60 checkpoint/trainer/annotation checks passed independently, and all 14 endpoint tests passed using the correctly pinned historical policy in a temporary source copy."
+  },
+  "integration_guarantees": [
+    "New recipe is explicitly paired only with training_composed_overlay and has exact ENDPOINT_RECIPE_ID numerical settings, seed46.",
+    "Reference arm uses original source plus the exact pinned ten-file endpoint control overlay. Candidate arm uses the complete composed eleven-file overlay.",
+    "New staging source preserves control manifest/hash/id/kind/counts and endpoint-slot count.",
+    "New completed checkpoint identity distinguishes endpoint_control from composed_treatment and binds both manifest hashes.",
+    "Wrong arm/label identities, original-label substitution, refreshed control hashes, or missing worker identity are rejected.",
+    "Generic return collection and evaluator replay preserve the composed checkpoint identity.",
+    "Historical annotation validators and original datasets were not edited."
+  ],
+  "scope_limits": [
+    "Synthetic completed-receipt fixtures test integrity only and are not evidence of an executed optimizer, actual learned weights, or model accuracy.",
+    "No GPU resource trial or completed training run occurred.",
+    "Source changes remain uncommitted for parent review."
+  ]
+}

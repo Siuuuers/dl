@@ -4,11 +4,11 @@
 
 **最新標註覆核：** [完整的20張開發參考標註](data/references/visible-front-adjudication-2026-11-12/README.md)已修正 `new_000010` 第28個物件的左端點，並把第32個物件無法可靠定位的左端點改為缺失。參考共663個物件、1,227個可定位端點；框與物件數不變。[原圖、覆核分歧與三模型重播](docs/corner-adjudication-2026-11-12.md)保留完整證據。這次改的是評估參考，沒有重新訓練模型，仍選用PR35。
 
-**2026-11-12：使用 PR35 種子46模型處理靜態影像，設定為輸入1280、框門檻0.13、NMS 0.70、端點門檻0.50。** 依[資料夾推論指南](docs/predict-pose-folder.md#run)先取得工作分支並建立推論環境，再下載PR35模型並執行[覆核提案指令](docs/predict-pose-folder.md#assistant-reviewed-proposals)。使用本專案的 `codex/visible-corner-review-20261112` 工作分支；結果上傳用的 PR35／PR52 分支沒有完整工作流程。
+**2026-11-12：使用 PR35 種子46模型處理靜態影像，設定為輸入1280、框門檻0.13、NMS 0.70、端點門檻0.50。** 依[資料夾推論指南](docs/predict-pose-folder.md#run)先取得工作分支並建立推論環境，再下載PR35模型並執行[覆核提案指令](docs/predict-pose-folder.md#assistant-reviewed-proposals)。使用本專案的 `codex/composed-training-20261112` 工作分支；結果上傳用的 PR35／PR52 分支沒有完整工作流程。
 
 [PR52 比較已完成，結果保留 PR35](docs/endpoint-results-2026-11-12.md)，無需再跑這項 GPU 實驗。PR35 在固定開發參考中配對到643／663個物件，漏檢20個、額外提案85個；17張非空影像只有3張沒有漏檢。因此，請檢查**完整原圖，包括沒有偵測框的區域**。這些結果支持有覆核的使用方式，尚未證實未見場景的自動完整偵測。
 
-沒有新影像時，下一步是依既定[標註規則](docs/annotation-policy.md)整理尚未覆核的訓練資料。[下一個受控比較的準備紀錄](results/review/next-training-20261112/README.md)已整理出目前十端點候選加上17個框修正及1個重複物件移除的相容原型；仍須取回原有LFS訓練影像，並完成明確的組合資料驗證與暫存流程，才能形成可執行訓練包。最新[覆核範圍紀錄](results/review/baomai-review-coverage-20261112/coverage.json)累計涉及64／137張訓練影像，另外73張不在這些已記錄的定向覆核中；這不是64張已完整修正或認證。先累積有原圖支持且明確保留疑點的資料修訂，再決定是否值得做新的固定比較。
+沒有新影像時，下一步是依既定[標註規則](docs/annotation-policy.md)整理尚未覆核的訓練資料。[下一個受控比較](docs/training-composed-fronts-2026-11-12.md)已備妥：兩組都保留目前十端點修正，實驗組再加17個框修正及移除1個重複物件。原有157張影像與epoch173權重已取回並驗證，組合標註及兩組完整資料暫存均已通過檢查。可開啟[Colab筆記本](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/composed-training-20261112/notebooks/baomai_composed_fronts.ipynb)，選GPU後執行全部；新的完整訓練尚未執行，結果評估前仍使用PR35。最新[覆核範圍紀錄](results/review/baomai-review-coverage-20261112/coverage.json)累計涉及64／137張訓練影像，另外73張不在這些已記錄的定向覆核中；這不是64張已完整修正或認證。先累積有原圖支持且明確保留疑點的資料修訂，再決定是否值得做新的固定比較。
 
 以下保留原始 **epoch173／0.25** 相機與基線操作；通用程式預設仍是該基線。需要目前建議的PR35設定時，請使用上方明確選取模型的指令。
 

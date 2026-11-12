@@ -12,7 +12,7 @@ import unittest
 from unittest.mock import Mock, patch
 
 from pose_checkpoint import (ANNOTATION_RECIPE_IDS, BOX_RECIPE_ID, BOX_RECIPE_IDS,
-                             ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe)
+                             COMPOSED_RECIPE_ID, ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, get_recipe)
 from verify_pose_annotation_candidate import ANNOTATION_CANDIDATE
 from verify_pose_box_candidate import BOX_CANDIDATE
 from verify_pose_candidate import DEFAULT_CANDIDATE
@@ -83,7 +83,7 @@ class ExecutionChecks(unittest.TestCase):
         arguments = ["--output", "/unused/fixture", "--arm", "reference", "--device", "cpu",
                      "--trial", "--max-seconds", "1"]
         selections = [([], ORIGINAL_RECIPE_ID)] + [(["--recipe", recipe_id], recipe_id)
-            for recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS, ENDPOINT_RECIPE_ID)]
+            for recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS, ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID)]
         for extra, expected in selections:
             with self.subTest(recipe=expected), patch("train_pose_comparison.run_parent", return_value=0) as parent:
                 self.assertEqual(main(arguments + extra), 0)

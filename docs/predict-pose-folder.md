@@ -6,11 +6,11 @@ The agreed scope is one `cassette_front` class and its two lower-front corner sl
 
 ## Run
 
-The current instructions, [completed PR52 evaluation](endpoint-results-2026-11-12.md) and full working implementation, including verified candidate selection, are on `Siuuuers/dl` branch `codex/visible-corner-review-20261112`. Use this branch while its PR is open. PR52 contains the returned results archive and checksum on a branch based on main; it does not contain this complete developed workflow. PR35, PR40, PR43 and PR47 are likewise results-only branches. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
+The current instructions, [completed PR52 evaluation](endpoint-results-2026-11-12.md) and full working implementation, including verified candidate selection, are on `Siuuuers/dl` branch `codex/composed-training-20261112`. Use this branch while its PR is open. PR52 contains the returned results archive and checksum on a branch based on main; it does not contain this complete developed workflow. PR35, PR40, PR43 and PR47 are likewise results-only branches. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
 
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --single-branch \
-  --branch codex/visible-corner-review-20261112 \
+  --branch codex/composed-training-20261112 \
   https://github.com/Siuuuers/dl.git dl-folder
 cd dl-folder
 git lfs install --local

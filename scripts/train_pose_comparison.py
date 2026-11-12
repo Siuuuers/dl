@@ -17,8 +17,9 @@ import subprocess
 import time
 
 from evaluate_pose import ULTRALYTICS_VERSION, _relative_file, file_sha256, preflight_dataset
-from pose_checkpoint import (ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
-                             check_recipe_candidate_kind, check_training_settings, get_recipe, recipe_identity)
+from pose_checkpoint import (COMPOSED_RECIPE_ID, ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID, RECIPE_IDS, WARMUP_RECIPE_ID,
+                             check_recipe_candidate_kind, check_training_settings, get_recipe, recipe_identity,
+                             training_label_identity)
 from stage_pose_training import MANIFEST, stage_datasets
 from verify_pose_candidate import DEFAULT_CANDIDATE, require
 
@@ -27,6 +28,7 @@ SOURCE_FILES = ("scripts/train_pose_comparison.py", "scripts/pose_checkpoint.py"
                 "scripts/stage_pose_training.py", "scripts/verify_pose_candidate.py",
                 "scripts/verify_pose_box_candidate.py", "scripts/verify_pose_annotation_candidate.py",
                 "scripts/verify_pose_endpoint_candidate.py",
+                "scripts/verify_pose_composed_candidate.py",
                 "scripts/evaluate_pose.py", "scripts/pose_scoring.py")
 
 
@@ -89,14 +91,19 @@ def optimizer_learning_rates(optimizer):
              "initial_lr": float(group["initial_lr"])} for index, group in enumerate(optimizer.param_groups)]
 
 
-def run_worker(config):
-    import resource
-    import torch
-    from ultralytics import YOLO
-    from ultralytics.models.yolo.pose import PoseTrainer
-    from ultralytics.data.utils import img2label_paths
-    from ultralytics.utils import SETTINGS
+def worker_training_labels(config, staging):
+    """Reject a composed arm/label mismatch before importing a training runtime."""
+    labels = training_label_identity(staging, config["arm"])
+    if config["recipe_id"] == COMPOSED_RECIPE_ID or labels is not None:
+        check_recipe_candidate_kind(config["recipe_id"], staging["source"].get("candidate_kind"))
+        require(labels is not None and config.get("training_labels") == labels,
+                "worker control/treatment label identity differs from staging")
+        require(config["candidate_manifest"] == staging["source"]["candidate_manifest"],
+                "worker composed proposal differs from staging")
+    return labels
 
+
+def run_worker(config):
     recipe = get_recipe(config["recipe_id"])
     declared_recipe = recipe_identity(config["recipe_id"])
     require(all(config.get(key) == value for key, value in declared_recipe.items()),
@@ -105,14 +112,22 @@ def run_worker(config):
             "warmup experiment requires the reference label arm")
     require(config["recipe_id"] != ENDPOINT_RECIPE_ID or config["arm"] == "candidate",
             "endpoint experiment requires the candidate label arm")
+    run = Path(config["output"])
+    staging = json.loads((run / MANIFEST).read_text())
+    arm = config["arm"]
+    labels = worker_training_labels(config, staging)
+
+    import resource
+    import torch
+    from ultralytics import YOLO
+    from ultralytics.models.yolo.pose import PoseTrainer
+    from ultralytics.data.utils import img2label_paths
+    from ultralytics.utils import SETTINGS
 
     SETTINGS.update({key: False for key in
                      ("sync", "clearml", "comet", "dvc", "mlflow", "raytune", "tensorboard", "wandb")})
     torch.set_num_threads(config["threads"])
     torch.set_num_interop_threads(1)
-    run = Path(config["output"])
-    staging = json.loads((run / MANIFEST).read_text())
-    arm = config["arm"]
     arm_root = run / "staged-data" / arm
     progress = {**declared_recipe, "status": "starting", "completed_epochs": [], "optimizer_steps": 0,
                 "batches_completed": 0, "images_processed": 0, "batch_samples": [],
@@ -126,6 +141,8 @@ def run_worker(config):
                             "platform": platform.platform(),
                             "packages": {name: importlib.metadata.version(name) for name in
                                          ("torchvision", "numpy", "Pillow", "opencv-python", "psutil")}}}
+    if labels is not None:
+        progress["training_labels"] = labels
     started = time.perf_counter()
 
     def save_progress():
@@ -377,6 +394,10 @@ def run_parent(args):
     stage_datasets(root, candidate, run / "staged-data")
     shutil.copyfile(run / "staged-data" / MANIFEST, run / MANIFEST)
     staging = json.loads((run / MANIFEST).read_text())
+    labels = training_label_identity(staging, args.arm)
+    if args.recipe == COMPOSED_RECIPE_ID:
+        require(labels is not None, "composed training requires the staged endpoint control identity")
+        config["training_labels"] = labels
     write_json(run / "run-config.json", config)
     execution = monitor_worker([sys.executable, str(Path(__file__).resolve()),
                                 "--worker", str(run / "run-config.json")], run, config)
@@ -393,10 +414,19 @@ def run_parent(args):
                "checkpoint_selection": "final_epoch" if not args.trial else "none",
                "inputs_reverified_after_worker": False,
                "log": descriptor(run / "train.log", run)}
+    if labels is not None:
+        receipt["training_labels"] = labels
     valid_execution = execution["exit_code"] == 0 and execution["stop_reason"] is None
     try:
         require(all(progress.get(key) == value for key, value in declared_recipe.items()),
                 "worker reported a different or missing recipe identity")
+        if labels is not None:
+            require(progress.get("training_labels") == labels, "worker reported a different or missing control/treatment label identity")
+            require(file_sha256(candidate) == staging["source"]["candidate_manifest_sha256"],
+                    "composed candidate manifest changed during execution")
+            control = staging["source"]["control"]
+            require(file_sha256(_relative_file(root, control["manifest"])) == control["manifest_sha256"],
+                    "endpoint control manifest changed during execution")
         verify_input_files(run, staging)
         require(identity == source_identity(root), "training source code or revision changed during execution")
         require(file_sha256(preflight["weights"]) == preflight["model_sha256"], "initial checkpoint changed")
@@ -435,7 +465,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--arm", choices=("reference", "candidate"), required=True)
+    parser.add_argument("--arm", choices=("reference", "candidate"), required=True,
+                        help="for the composed recipe: reference is the endpoint control, candidate is the composed treatment")
     parser.add_argument("--recipe", choices=RECIPE_IDS, default=ORIGINAL_RECIPE_ID,
                         help="fixed recipe; the historical warmup experiment requires --arm reference")
     parser.add_argument("--candidate", default=DEFAULT_CANDIDATE,

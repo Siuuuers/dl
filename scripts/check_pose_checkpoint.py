@@ -16,7 +16,7 @@ import diagnose_pose_quality
 import check_evaluate_pose as baseline_checks
 from pose_checkpoint import (ANNOTATION_CONFIRMATION_RECIPE_ID, ANNOTATION_RECIPE_ID, ANNOTATION_RECIPE_IDS,
                              BOX_RECIPE_ID, BOX_RECIPE_IDS, BOX_REPEATABILITY_RECIPES,
-                             ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID, PINNED_TRAINER_DEFAULTS, RECIPE, RECIPE_IDS,
+                             COMPOSED_RECIPE_ID, ENDPOINT_RECIPE_ID, ORIGINAL_RECIPE_ID, PINNED_TRAINER_DEFAULTS, RECIPE, RECIPE_IDS,
                              WARMUP_RECIPE_ID, check_loaded_pose_model,
                              get_recipe, recipe_identity, select_checkpoint, write_checkpoint_manifest)
 from train_pose_comparison import descriptor
@@ -359,7 +359,8 @@ class VersionedRecipeChecks(unittest.TestCase):
                     BOX_REPEATABILITY_RECIPES[44]: "1353838f0e3137a2690c24514b3fb972d85b07ce8f417632b889f1d784cab6fe",
                     ANNOTATION_RECIPE_ID: "34b8eda9e9b986a2ba19d9ba07661eef1792027ef8d4465d10763a8eb2cd2850",
                     ANNOTATION_CONFIRMATION_RECIPE_ID: "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
-                    ENDPOINT_RECIPE_ID: "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8"}
+                    ENDPOINT_RECIPE_ID: "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+                    COMPOSED_RECIPE_ID: "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8"}
         self.assertEqual({key: recipe_identity(key)["recipe_sha256"] for key in RECIPE_IDS}, expected)
         with self.assertRaisesRegex(ValueError, "unsupported training recipe"):
             get_recipe("unregistered-experiment")
@@ -419,7 +420,9 @@ class VersionedRecipeChecks(unittest.TestCase):
                 bundle_fixture(Path(directory), "reference", recipe_id=ENDPOINT_RECIPE_ID)
 
     def test_endpoint_overlay_cannot_be_claimed_by_legacy_or_other_recipe_after_hash_refresh(self):
-        for recipe_id in (None, *(key for key in RECIPE_IDS if key != ENDPOINT_RECIPE_ID)):
+        # The composed kind has a separately verified control overlay and is
+        # covered by check_pose_composed_training, not this historical fixture.
+        for recipe_id in (None, *(key for key in RECIPE_IDS if key not in (ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID))):
             with self.subTest(recipe=recipe_id), tempfile.TemporaryDirectory() as directory:
                 arm = "reference" if recipe_id == WARMUP_RECIPE_ID else "candidate"
                 root, run, preflight, receipt, staging, manifest = bundle_fixture(
