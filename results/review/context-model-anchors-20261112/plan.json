@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "experiment_id": "context-model-anchors-20261112",
+  "base_commit": "7f4e058a25f7474ca42eeb2f74b9786e8f475c38",
+  "frozen_at_utc": "2026-11-12T12:04:27.689936+00:00",
+  "frozen_before_new_strategy_errors": true,
+  "cohort_path": "results/review/context-corners-20261112/cohort.json",
+  "cohort_sha256": "67fe072944cc7dbe60f2be20b0ddb6c87029864cb7c0c81601a201c72c80196c",
+  "baseline_evaluation_path": "results/review/context-corners-20261112/evaluation.json",
+  "baseline_evaluation_sha256": "141f0bc7d583faeca455719751fabdd9525b2424e6acb5bf43d3d2bf72f2d07d",
+  "model_inputs_path": "results/review/context-model-anchors-20261112/model-inputs.json",
+  "model_inputs_sha256": "7cbed9aef5970e8d2bbb85a19770fdfebec5ea7d1801b0c422d49f9534025004",
+  "strategies": [
+    "direct_pr35",
+    "model_donor_homography",
+    "right_anchored_homography"
+  ],
+  "endpoint_confidence_threshold": 0.5,
+  "box_confidence_threshold": 0.13,
+  "association_iou_threshold": 0.5,
+  "radii_px": [
+    5,
+    10
+  ],
+  "geometry_selection": "Homography fixed from the prior PR55 comparison before this follow-up; no per-case method selection.",
+  "donor_selection": "Exact same donor rows, ranks and excluded-row sets as the frozen baseline evaluation; do not replace an unavailable donor with another row.",
+  "right_anchored_formula": "R = direct target PR35 R; L = R + (geometry L - geometry R). Direct target L never enters either contextual estimator.",
+  "availability": "Donors need both model endpoints with confidence >= 0.50, finite coordinates and the half-open image bounds. Structural H failure blocks an inferred left; an available direct right is preserved. Each final output endpoint is checked independently without clipping. A finite raw H pair outside frame may still supply its relative vector to an in-frame anchored result.",
+  "confidence": "Direct points retain their original model confidences. Context-derived points have no calibrated confidence and do not inherit a donor confidence.",
+  "primary_followup_measure": "Left endpoint coverage and success at 5/10 px in the separate 26-interpolation and 8-extrapolation denominators; right and pair metrics also reported.",
+  "paired_comparisons": [
+    "model_donor_homography vs direct_pr35",
+    "right_anchored_homography vs direct_pr35",
+    "right_anchored_homography vs model_donor_homography"
+  ],
+  "limits": [
+    "Manual stack/rank and frozen reference-box matching remain oracle-assisted. Reference boxes are never geometry inputs.",
+    "Saved PR35 inference used intact images, including target pixels; coordinate-field exclusion is not a pixel-occlusion test.",
+    "The 26+8 scenarios overlap and cover30distinct fully labelled objects; these are reused development images.",
+    "Actual010:23/24 left errors remain unknown; right copied into anchored output is not an independent hidden-left validation.",
+    "No new inference or training; no change to selected PR35 or core reference/training labels."
+  ],
+  "new_000010_visual_review": {
+    "rows": [
+      23,
+      24
+    ],
+    "right_corners_visible": true,
+    "reference_revision_supported": false,
+    "notes": "Original lower face boundaries terminate at exposed rounded right edges distinct from upper lips. Existing labels are plausible; no basis to shift them toward model predictions."
+  }
+}

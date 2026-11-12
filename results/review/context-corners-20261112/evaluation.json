@@ -1,0 +1,4890 @@
+{
+  "schema_version": 1,
+  "experiment_id": "context-corners-20261112",
+  "status": "complete",
+  "coordinate_system": "Original image pixels; no clipping, resizing or model predictions",
+  "purpose": "Contextual geometry diagnostic; source observations and labels remain unchanged",
+  "methods": [
+    "linear",
+    "homography"
+  ],
+  "radii_px": [
+    5,
+    10
+  ],
+  "assumptions": [
+    "Manually supplied stack membership and layer ranks are correct",
+    "Rank differences represent equal physical layer pitch",
+    "Homography additionally assumes equal width and one local planar projective surface"
+  ],
+  "limits": [
+    "Interpolation and extrapolation are separate; their cases overlap and must not be pooled",
+    "Errors concern visible withheld endpoints, not accuracy of hidden corners",
+    "No calibrated confidence or uncertainty interval; disagreement is diagnostic only",
+    "Development images and adjacent stack rows are not independent test observations",
+    "No inferred point is approved for training or as an observed reference"
+  ],
+  "provenance": {
+    "cohort": {
+      "filename": "cohort.json",
+      "sha256": "67fe072944cc7dbe60f2be20b0ddb6c87029864cb7c0c81601a201c72c80196c",
+      "bytes": 8776
+    },
+    "script_sha256": "8922c46287f57efdad23e17ff20e6ce2e28e920d5a0e394c965761ae745039b9",
+    "reference_manifest": "data/references/visible-front-2026-11-11/manifest.json",
+    "reference_manifest_sha256": "2e60b3e81195448cc565a1000b4305e3215baba2bf0ee0c976e6551c2e64937c",
+    "source_commit": "3939b2bd52a4d38b460d45faf4f9e2f62db6c9e2",
+    "source_files": [
+      {
+        "image_id": "new_000007",
+        "image_path": "data/images/val/new_000007.png",
+        "image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+        "image_bytes": 650768,
+        "dimensions": [
+          1280,
+          720
+        ],
+        "label_path": "data/references/visible-front-2026-11-11/labels/val/new_000007.txt",
+        "label_sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+        "label_bytes": 5076
+      },
+      {
+        "image_id": "new_000008",
+        "image_path": "data/images/val/new_000008.png",
+        "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+        "image_bytes": 655029,
+        "dimensions": [
+          1280,
+          720
+        ],
+        "label_path": "data/references/visible-front-2026-11-11/labels/val/new_000008.txt",
+        "label_sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57",
+        "label_bytes": 3384
+      },
+      {
+        "image_id": "new_000009",
+        "image_path": "data/images/val/new_000009.png",
+        "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+        "image_bytes": 677085,
+        "dimensions": [
+          1280,
+          720
+        ],
+        "label_path": "data/references/visible-front-2026-11-11/labels/val/new_000009.txt",
+        "label_sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9",
+        "label_bytes": 5358
+      },
+      {
+        "image_id": "new_000010",
+        "image_path": "data/images/val/new_000010.png",
+        "image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+        "image_bytes": 796212,
+        "dimensions": [
+          1280,
+          720
+        ],
+        "label_path": "data/references/visible-front-2026-11-11/labels/val/new_000010.txt",
+        "label_sha256": "9a0cc16ca96d094b1c7849b829ec67625d7569666d5753bd660006c9eecbf3c6",
+        "label_bytes": 3008
+      },
+      {
+        "image_id": "new_000011",
+        "image_path": "data/images/val/new_000011.png",
+        "image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+        "image_bytes": 631605,
+        "dimensions": [
+          1280,
+          720
+        ],
+        "label_path": "data/references/visible-front-2026-11-11/labels/val/new_000011.txt",
+        "label_sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838",
+        "label_bytes": 5734
+      },
+      {
+        "image_id": "new_000090",
+        "image_path": "data/images/val/new_000090.png",
+        "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+        "image_bytes": 661854,
+        "dimensions": [
+          1280,
+          720
+        ],
+        "label_path": "data/references/visible-front-2026-11-11/labels/val/new_000090.txt",
+        "label_sha256": "1781643ded0bc4a9a0c71b655711845c3840f8276b1170835088c7fac2475e79",
+        "label_bytes": 4534
+      }
+    ],
+    "runtime": {
+      "python": "3.12.14",
+      "numpy": "2.3.5"
+    }
+  },
+  "lanes": {
+    "interpolation": {
+      "cases": [
+        {
+          "case_id": "new_000007:28",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 28,
+          "rank": 1,
+          "excluded_rows": [
+            28
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 27,
+              "rank": 0,
+              "xy": [
+                [
+                  725.4300032000001,
+                  76.0800024
+                ],
+                [
+                  795.1399936,
+                  74.3800032
+                ]
+              ]
+            },
+            {
+              "row": 29,
+              "rank": 2,
+              "xy": [
+                [
+                  725.6399999999999,
+                  117.20000160000001
+                ],
+                [
+                  793.6899968,
+                  112.3300008
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              725.4099968,
+              95.4699984
+            ],
+            [
+              794.7799936,
+              93.5899992
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.5350016,
+                  96.64000200000001
+                ],
+                [
+                  794.4149952,
+                  93.355002
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.1766624936811836,
+                0.43410542038817107
+              ],
+              "maximum_endpoint_error_px": 1.1766624936811836,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.5363616135307,
+                  96.90630965469039
+                ],
+                [
+                  794.4063463494554,
+                  93.58136378052968
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.4418592464068551,
+                0.37374702448180724
+              ],
+              "maximum_endpoint_error_px": 1.4418592464068551,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.2663111274120822,
+              0.22652694828720402
+            ],
+            "maximum_px": 0.2663111274120822,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000007:29",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 29,
+          "rank": 2,
+          "excluded_rows": [
+            29
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 28,
+              "rank": 1,
+              "xy": [
+                [
+                  725.4099968,
+                  95.4699984
+                ],
+                [
+                  794.7799936,
+                  93.5899992
+                ]
+              ]
+            },
+            {
+              "row": 30,
+              "rank": 3,
+              "xy": [
+                [
+                  724.7900032,
+                  135.2200032
+                ],
+                [
+                  792.0700032000001,
+                  131.9899968
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              725.6399999999999,
+              117.20000160000001
+            ],
+            [
+              793.6899968,
+              112.3300008
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.1,
+                  115.34500080000001
+                ],
+                [
+                  793.4249984,
+                  112.789998
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.9320010269149637,
+                0.5308686994072888
+              ],
+              "maximum_endpoint_error_px": 1.9320010269149637,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.0950294961726,
+                  115.66367755891913
+                ],
+                [
+                  793.4040533834004,
+                  113.0867845078656
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.6301179126814072,
+                0.80900260691018
+              ],
+              "maximum_endpoint_error_px": 1.6301179126814072,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.3187155198346892,
+              0.2975246627952366
+            ],
+            "maximum_px": 0.3187155198346892,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000007:30",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 30,
+          "rank": 3,
+          "excluded_rows": [
+            30
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 29,
+              "rank": 2,
+              "xy": [
+                [
+                  725.6399999999999,
+                  117.20000160000001
+                ],
+                [
+                  793.6899968,
+                  112.3300008
+                ]
+              ]
+            },
+            {
+              "row": 31,
+              "rank": 4,
+              "xy": [
+                [
+                  725.4300032000001,
+                  154.9000008
+                ],
+                [
+                  792.16,
+                  151.1400024
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              724.7900032,
+              135.2200032
+            ],
+            [
+              792.0700032000001,
+              131.9899968
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.5350016,
+                  136.0500012
+                ],
+                [
+                  792.9249984,
+                  131.73500159999998
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.1153113000443065,
+                0.8922103698377574
+              ],
+              "maximum_endpoint_error_px": 1.1153113000443065,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.5340048471656,
+                  136.2289447889643
+                ],
+                [
+                  792.9175386389716,
+                  131.92422639932622
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.2535954614336249,
+                0.8500835640790638
+              ],
+              "maximum_endpoint_error_px": 1.2535954614336249,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.1789463650025831,
+              0.18937178436783544
+            ],
+            "maximum_px": 0.18937178436783544,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000007:31",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 31,
+          "rank": 4,
+          "excluded_rows": [
+            31
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 30,
+              "rank": 3,
+              "xy": [
+                [
+                  724.7900032,
+                  135.2200032
+                ],
+                [
+                  792.0700032000001,
+                  131.9899968
+                ]
+              ]
+            },
+            {
+              "row": 32,
+              "rank": 5,
+              "xy": [
+                [
+                  724.4499968,
+                  172.3099968
+                ],
+                [
+                  790.84,
+                  168.8600016
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              725.4300032000001,
+              154.9000008
+            ],
+            [
+              792.16,
+              151.1400024
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  724.62,
+                  153.765
+                ],
+                [
+                  791.4550016000001,
+                  150.4249992
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.3943930579327468,
+                1.0041176823523466
+              ],
+              "maximum_endpoint_error_px": 1.3943930579327468,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  724.6188568512505,
+                  153.88970171091867
+                ],
+                [
+                  791.4508956591134,
+                  150.5480769775266
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.295632142426379,
+                0.9236907881074284
+              ],
+              "maximum_endpoint_error_px": 1.295632142426379,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.12470695046833184,
+              0.12314624668031735
+            ],
+            "maximum_px": 0.12470695046833184,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000007:32",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 32,
+          "rank": 5,
+          "excluded_rows": [
+            32
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 31,
+              "rank": 4,
+              "xy": [
+                [
+                  725.4300032000001,
+                  154.9000008
+                ],
+                [
+                  792.16,
+                  151.1400024
+                ]
+              ]
+            },
+            {
+              "row": 33,
+              "rank": 6,
+              "xy": [
+                [
+                  725.4700032,
+                  190.3600008
+                ],
+                [
+                  790.9000063999999,
+                  186.7600008
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              724.4499968,
+              172.3099968
+            ],
+            [
+              790.84,
+              168.8600016
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.4500032000001,
+                  172.6300008
+                ],
+                [
+                  791.5300032,
+                  168.9500016
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.0499596944917062,
+                0.69584798340601
+              ],
+              "maximum_endpoint_error_px": 1.0499596944917062,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.4501994604012,
+                  172.80398564568264
+                ],
+                [
+                  791.523805757061,
+                  169.1252032102022
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.1155403809511089,
+                0.7334318014945973
+              ],
+              "maximum_endpoint_error_px": 1.1155403809511089,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.1739849563765698,
+              0.17531118765332218
+            ],
+            "maximum_px": 0.17531118765332218,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000007:33",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 33,
+          "rank": 6,
+          "excluded_rows": [
+            33
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 32,
+              "rank": 5,
+              "xy": [
+                [
+                  724.4499968,
+                  172.3099968
+                ],
+                [
+                  790.84,
+                  168.8600016
+                ]
+              ]
+            },
+            {
+              "row": 34,
+              "rank": 7,
+              "xy": [
+                [
+                  724.9399936,
+                  207.6600024
+                ],
+                [
+                  788.52,
+                  203.3599968
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              725.4700032,
+              190.3600008
+            ],
+            [
+              790.9000063999999,
+              186.7600008
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  724.6949952,
+                  189.98499959999998
+                ],
+                [
+                  789.6800000000001,
+                  186.1099992
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.8609664918365777,
+                1.3823594670139923
+              ],
+              "maximum_endpoint_error_px": 1.3823594670139923,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  724.7004216588642,
+                  190.37648246525956
+                ],
+                [
+                  789.6550461800346,
+                  186.48107966079036
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.769758009861905,
+                1.27582246068732
+              ],
+              "maximum_endpoint_error_px": 1.27582246068732,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.39152047232252424,
+              0.3719185414996827
+            ],
+            "maximum_px": 0.39152047232252424,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000007:34",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 34,
+          "rank": 7,
+          "excluded_rows": [
+            34
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 33,
+              "rank": 6,
+              "xy": [
+                [
+                  725.4700032,
+                  190.3600008
+                ],
+                [
+                  790.9000063999999,
+                  186.7600008
+                ]
+              ]
+            },
+            {
+              "row": 35,
+              "rank": 8,
+              "xy": [
+                [
+                  725.12,
+                  224.82000000000002
+                ],
+                [
+                  788.92,
+                  221.0600016
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              724.9399936,
+              207.6600024
+            ],
+            [
+              788.52,
+              203.3599968
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.2950016,
+                  207.5900004
+                ],
+                [
+                  789.9100031999999,
+                  203.9100012
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.36184383381231866,
+                1.4948624471935057
+              ],
+              "maximum_endpoint_error_px": 1.4948624471935057,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  725.2927744412028,
+                  207.80927808193732
+                ],
+                [
+                  789.8974964128599,
+                  204.1266584839916
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.3830633774424794,
+                1.5764728050755838
+              ],
+              "maximum_endpoint_error_px": 1.5764728050755838,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.219288992044994,
+              0.2170179679915433
+            ],
+            "maximum_px": 0.219288992044994,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000007:35",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 35,
+          "rank": 8,
+          "excluded_rows": [
+            35
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 34,
+              "rank": 7,
+              "xy": [
+                [
+                  724.9399936,
+                  207.6600024
+                ],
+                [
+                  788.52,
+                  203.3599968
+                ]
+              ]
+            },
+            {
+              "row": 36,
+              "rank": 9,
+              "xy": [
+                [
+                  724.2899968,
+                  241.74
+                ],
+                [
+                  787.24,
+                  236.82000240000002
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              725.12,
+              224.82000000000002
+            ],
+            [
+              788.92,
+              221.0600016
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  724.6149952000001,
+                  224.7000012
+                ],
+                [
+                  787.88,
+                  220.0899996
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.5190660459174937,
+                1.422147629468865
+              ],
+              "maximum_endpoint_error_px": 1.422147629468865,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  724.6133113931769,
+                  224.78828491537647
+                ],
+                [
+                  787.876749058436,
+                  220.174981258542
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.507680205323211,
+                1.3680765811417794
+              ],
+              "maximum_endpoint_error_px": 1.3680765811417794,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.08829977126861657,
+              0.08504381758601165
+            ],
+            "maximum_px": 0.08829977126861657,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000008:13",
+          "stack_id": "new_000008-center-left",
+          "image_id": "new_000008",
+          "row": 13,
+          "rank": 1,
+          "excluded_rows": [
+            13
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 12,
+              "rank": 0,
+              "xy": [
+                [
+                  734.9699968,
+                  308.0399976
+                ],
+                [
+                  902.24,
+                  317.9000016
+                ]
+              ]
+            },
+            {
+              "row": 14,
+              "rank": 2,
+              "xy": [
+                [
+                  727.2599936,
+                  389.31999840000003
+                ],
+                [
+                  884.6700032,
+                  399.1399992
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              725.5900032,
+              347.6100024
+            ],
+            [
+              889.7799936,
+              359.25999840000003
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  731.1149952000001,
+                  348.679998
+                ],
+                [
+                  893.4550016000001,
+                  358.52000039999996
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                5.627648459533044,
+                3.7487705771450535
+              ],
+              "maximum_endpoint_error_px": 5.627648459533044,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  730.9993386199473,
+                  349.8992668738702
+                ],
+                [
+                  893.1896388339163,
+                  359.7469824379108
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                5.873809795764644,
+                3.4442465176505674
+              ],
+              "maximum_endpoint_error_px": 5.873809795764644,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              1.2247420264276876,
+              1.2553494808137797
+            ],
+            "maximum_px": 1.2553494808137797,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000008:14",
+          "stack_id": "new_000008-center-left",
+          "image_id": "new_000008",
+          "row": 14,
+          "rank": 2,
+          "excluded_rows": [
+            14
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 13,
+              "rank": 1,
+              "xy": [
+                [
+                  725.5900032,
+                  347.6100024
+                ],
+                [
+                  889.7799936,
+                  359.25999840000003
+                ]
+              ]
+            },
+            {
+              "row": 15,
+              "rank": 3,
+              "xy": [
+                [
+                  719.0,
+                  427.99999679999996
+                ],
+                [
+                  876.0,
+                  435.0000024
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              727.2599936,
+              389.31999840000003
+            ],
+            [
+              884.6700032,
+              399.1399992
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  722.2950016,
+                  387.8049996
+                ],
+                [
+                  882.8899968000001,
+                  397.13000040000003
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                5.190989012131131,
+                2.6848683319749513
+              ],
+              "maximum_endpoint_error_px": 5.190989012131131,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  722.213424238729,
+                  388.80014382326175
+                ],
+                [
+                  882.7283533866614,
+                  398.0184531183567
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                5.07327419908243,
+                2.2422911521225593
+              ],
+              "maximum_endpoint_error_px": 5.07327419908243,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.9984822937655035,
+              0.9030375550502648
+            ],
+            "maximum_px": 0.9984822937655035,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000008:15",
+          "stack_id": "new_000008-center-left",
+          "image_id": "new_000008",
+          "row": 15,
+          "rank": 3,
+          "excluded_rows": [
+            15
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 14,
+              "rank": 2,
+              "xy": [
+                [
+                  727.2599936,
+                  389.31999840000003
+                ],
+                [
+                  884.6700032,
+                  399.1399992
+                ]
+              ]
+            },
+            {
+              "row": 16,
+              "rank": 4,
+              "xy": [
+                [
+                  715.0,
+                  461.0000016
+                ],
+                [
+                  869.0,
+                  469.0000008
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              719.0,
+              427.99999679999996
+            ],
+            [
+              876.0,
+              435.0000024
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  721.1299968000001,
+                  425.16
+                ],
+                [
+                  876.8350015999999,
+                  434.07
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                3.549995520000051,
+                1.2498528457415645
+              ],
+              "maximum_endpoint_error_px": 3.549995520000051,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  721.055788464239,
+                  425.5938708418911
+                ],
+                [
+                  876.7422820933228,
+                  434.48336206522333
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                3.1647603915594176,
+                0.9043782071599896
+              ],
+              "maximum_endpoint_error_px": 3.1647603915594176,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.4401713127177815,
+              0.42363321857964414
+            ],
+            "maximum_px": 0.4401713127177815,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000008:16",
+          "stack_id": "new_000008-center-left",
+          "image_id": "new_000008",
+          "row": 16,
+          "rank": 4,
+          "excluded_rows": [
+            16
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 15,
+              "rank": 3,
+              "xy": [
+                [
+                  719.0,
+                  427.99999679999996
+                ],
+                [
+                  876.0,
+                  435.0000024
+                ]
+              ]
+            },
+            {
+              "row": 17,
+              "rank": 5,
+              "xy": [
+                [
+                  712.0,
+                  501.9999984
+                ],
+                [
+                  862.0,
+                  506.0000016
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              715.0,
+              461.0000016
+            ],
+            [
+              869.0,
+              469.0000008
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  715.5,
+                  464.9999976
+                ],
+                [
+                  869.0,
+                  470.500002
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                4.0311249050377524,
+                1.5000011999999856
+              ],
+              "maximum_endpoint_error_px": 4.0311249050377524,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  715.4140585800866,
+                  465.9085212015854
+                ],
+                [
+                  868.8344812413027,
+                  471.33941855250583
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                4.925952617199173,
+                2.3452658442530776
+              ],
+              "maximum_endpoint_error_px": 4.925952617199173,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.9125793457527509,
+              0.8555796912628815
+            ],
+            "maximum_px": 0.9125793457527509,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:32",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 32,
+          "rank": 1,
+          "excluded_rows": [
+            32
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 31,
+              "rank": 0,
+              "xy": [
+                [
+                  618.4600064,
+                  126.92000159999999
+                ],
+                [
+                  708.2300032,
+                  133.7899968
+                ]
+              ]
+            },
+            {
+              "row": 33,
+              "rank": 2,
+              "xy": [
+                [
+                  616.7399936,
+                  176.49
+                ],
+                [
+                  703.8800000000001,
+                  179.7400008
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              617.4700032,
+              151.4800008
+            ],
+            [
+              706.4700032000001,
+              158.2799976
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  617.6,
+                  151.7050008
+                ],
+                [
+                  706.0550016000001,
+                  156.7649988
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.2598541283302155,
+                1.570811157333684
+              ],
+              "maximum_endpoint_error_px": 1.570811157333684,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  617.5856268095213,
+                  152.1192297109939
+                ],
+                [
+                  706.0211902830257,
+                  157.12215489363825
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.6496017393212377,
+                1.241786119715522
+              ],
+              "maximum_endpoint_error_px": 1.241786119715522,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.4144782012455294,
+              0.3587529517348647
+            ],
+            "maximum_px": 0.4144782012455294,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:33",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 33,
+          "rank": 2,
+          "excluded_rows": [
+            33
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 32,
+              "rank": 1,
+              "xy": [
+                [
+                  617.4700032,
+                  151.4800008
+                ],
+                [
+                  706.4700032000001,
+                  158.2799976
+                ]
+              ]
+            },
+            {
+              "row": 34,
+              "rank": 3,
+              "xy": [
+                [
+                  614.88,
+                  197.59000319999998
+                ],
+                [
+                  700.6199936,
+                  202.8700008
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              616.7399936,
+              176.49
+            ],
+            [
+              703.8800000000001,
+              179.7400008
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  616.1750016,
+                  174.535002
+                ],
+                [
+                  703.5449984,
+                  180.5749992
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.0350020000157625,
+                0.8996935033694455
+              ],
+              "maximum_endpoint_error_px": 2.0350020000157625,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  616.1495941808448,
+                  174.98733200415683
+                ],
+                [
+                  703.4892159977803,
+                  181.00018439858178
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.6144914307205858,
+                1.3193842649226442
+              ],
+              "maximum_endpoint_error_px": 1.6144914307205858,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.4530430107712159,
+              0.4288287880849714
+            ],
+            "maximum_px": 0.4530430107712159,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:34",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 34,
+          "rank": 3,
+          "excluded_rows": [
+            34
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 33,
+              "rank": 2,
+              "xy": [
+                [
+                  616.7399936,
+                  176.49
+                ],
+                [
+                  703.8800000000001,
+                  179.7400008
+                ]
+              ]
+            },
+            {
+              "row": 35,
+              "rank": 4,
+              "xy": [
+                [
+                  614.7699968,
+                  219.9000024
+                ],
+                [
+                  699.5600000000001,
+                  224.6600016
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              614.88,
+              197.59000319999998
+            ],
+            [
+              700.6199936,
+              202.8700008
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  615.7549951999999,
+                  198.1950012
+                ],
+                [
+                  701.72,
+                  202.20000119999997
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.063785307299819,
+                1.2879881769803392
+              ],
+              "maximum_endpoint_error_px": 1.2879881769803392,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  615.7424201819248,
+                  198.4720988911393
+                ],
+                [
+                  701.6913976936373,
+                  202.49741222423546
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.2336374582987213,
+                1.1343407683112636
+              ],
+              "maximum_endpoint_error_px": 1.2336374582987213,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.27738287891345315,
+              0.2987832144985174
+            ],
+            "maximum_px": 0.2987832144985174,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:35",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 35,
+          "rank": 4,
+          "excluded_rows": [
+            35
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 34,
+              "rank": 3,
+              "xy": [
+                [
+                  614.88,
+                  197.59000319999998
+                ],
+                [
+                  700.6199936,
+                  202.8700008
+                ]
+              ]
+            },
+            {
+              "row": 36,
+              "rank": 5,
+              "xy": [
+                [
+                  612.7299968,
+                  241.15999680000002
+                ],
+                [
+                  696.7799936,
+                  246.43000080000002
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              614.7699968,
+              219.9000024
+            ],
+            [
+              699.5600000000001,
+              224.6600016
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  613.8049983999999,
+                  219.375
+                ],
+                [
+                  698.6999936,
+                  224.65000080000002
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.0985669902233322,
+                0.8600645464392493
+              ],
+              "maximum_endpoint_error_px": 1.0985669902233322,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  613.7943511640304,
+                  219.5907671221357
+                ],
+                [
+                  698.6809358262873,
+                  224.86618742055398
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.0234797819508414,
+                0.9029210453316796
+              ],
+              "maximum_endpoint_error_px": 1.0234797819508414,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.2160296614553494,
+              0.21702500695871443
+            ],
+            "maximum_px": 0.21702500695871443,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:36",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 36,
+          "rank": 5,
+          "excluded_rows": [
+            36
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 35,
+              "rank": 4,
+              "xy": [
+                [
+                  614.7699968,
+                  219.9000024
+                ],
+                [
+                  699.5600000000001,
+                  224.6600016
+                ]
+              ]
+            },
+            {
+              "row": 37,
+              "rank": 6,
+              "xy": [
+                [
+                  613.1900032,
+                  262.3299984
+                ],
+                [
+                  695.7699968,
+                  267.4399968
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              612.7299968,
+              241.15999680000002
+            ],
+            [
+              696.7799936,
+              246.43000080000002
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  613.98,
+                  241.1150004
+                ],
+                [
+                  697.6649984000001,
+                  246.0499992
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.250812806147784,
+                0.9631379506725368
+              ],
+              "maximum_endpoint_error_px": 1.250812806147784,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  613.9697684282573,
+                  241.3897645181009
+                ],
+                [
+                  697.6401782310776,
+                  246.330159044551
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.2608833786330853,
+                0.8659595693063268
+              ],
+              "maximum_endpoint_error_px": 1.2608833786330853,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.2749545519828281,
+              0.28125714085901027
+            ],
+            "maximum_px": 0.28125714085901027,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:37",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 37,
+          "rank": 6,
+          "excluded_rows": [
+            37
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 36,
+              "rank": 5,
+              "xy": [
+                [
+                  612.7299968,
+                  241.15999680000002
+                ],
+                [
+                  696.7799936,
+                  246.43000080000002
+                ]
+              ]
+            },
+            {
+              "row": 38,
+              "rank": 7,
+              "xy": [
+                [
+                  611.7500032,
+                  283.2799968
+                ],
+                [
+                  691.7500031999999,
+                  287.48000160000004
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              613.1900032,
+              262.3299984
+            ],
+            [
+              695.7699968,
+              267.4399968
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  612.24,
+                  262.2199968
+                ],
+                [
+                  694.2649984,
+                  266.9550012
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.9563505800765473,
+                1.58121501258426
+              ],
+              "maximum_endpoint_error_px": 1.58121501258426,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  612.2275992713347,
+                  262.7529785372124
+                ],
+                [
+                  694.202611394124,
+                  267.46414464510826
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.0512533083831543,
+                1.5675714111249457
+              ],
+              "maximum_endpoint_error_px": 1.5675714111249457,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.533125979739689,
+              0.5129514462391651
+            ],
+            "maximum_px": 0.533125979739689,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:38",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 38,
+          "rank": 7,
+          "excluded_rows": [
+            38
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 37,
+              "rank": 6,
+              "xy": [
+                [
+                  613.1900032,
+                  262.3299984
+                ],
+                [
+                  695.7699968,
+                  267.4399968
+                ]
+              ]
+            },
+            {
+              "row": 39,
+              "rank": 8,
+              "xy": [
+                [
+                  611.1900032,
+                  302.03999999999996
+                ],
+                [
+                  691.2,
+                  307.0599984
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              611.7500032,
+              283.2799968
+            ],
+            [
+              691.7500031999999,
+              287.48000160000004
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  612.1900032,
+                  282.1849992
+                ],
+                [
+                  693.4849984,
+                  287.24999760000003
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.1800931081934622,
+                1.7501743296138506
+              ],
+              "maximum_endpoint_error_px": 1.7501743296138506,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  612.1742459792915,
+                  282.4978588297732
+                ],
+                [
+                  693.4489297958423,
+                  287.56269763393396
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.8897874691472604,
+                1.7009380388741606
+              ],
+              "maximum_endpoint_error_px": 1.7009380388741606,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.3132561858068726,
+              0.31477333976715205
+            ],
+            "maximum_px": 0.31477333976715205,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:39",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 39,
+          "rank": 8,
+          "excluded_rows": [
+            39
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 38,
+              "rank": 7,
+              "xy": [
+                [
+                  611.7500032,
+                  283.2799968
+                ],
+                [
+                  691.7500031999999,
+                  287.48000160000004
+                ]
+              ]
+            },
+            {
+              "row": 40,
+              "rank": 9,
+              "xy": [
+                [
+                  609.36,
+                  323.4100032
+                ],
+                [
+                  688.1000064,
+                  327.1299984
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              611.1900032,
+              302.03999999999996
+            ],
+            [
+              691.2,
+              307.0599984
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  610.5550016,
+                  303.345
+                ],
+                [
+                  689.9250047999999,
+                  307.305
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.4512932274363917,
+                1.2983214332460162
+              ],
+              "maximum_endpoint_error_px": 1.4512932274363917,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  610.5452285554213,
+                  303.5090969942995
+                ],
+                [
+                  689.9102341588028,
+                  307.46545380538237
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.6043629018870713,
+                1.3519948264963653
+              ],
+              "maximum_endpoint_error_px": 1.6043629018870713,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.16438776091443452,
+              0.16113222987054035
+            ],
+            "maximum_px": 0.16438776091443452,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000010:16",
+          "stack_id": "new_000010-right",
+          "image_id": "new_000010",
+          "row": 16,
+          "rank": 1,
+          "excluded_rows": [
+            16
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 15,
+              "rank": 0,
+              "xy": [
+                [
+                  825.2599936,
+                  123.8999976
+                ],
+                [
+                  1004.0,
+                  139.9999968
+                ]
+              ]
+            },
+            {
+              "row": 17,
+              "rank": 2,
+              "xy": [
+                [
+                  805.3900032,
+                  226.7500032
+                ],
+                [
+                  979.8899968000001,
+                  233.7500016
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              815.9100032000001,
+              174.1600008
+            ],
+            [
+              991.2499968,
+              185.25000239999997
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  815.3249984,
+                  175.32500040000002
+                ],
+                [
+                  991.9449984,
+                  186.8749992
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.3036313451368622,
+                1.7673827610376194
+              ],
+              "maximum_endpoint_error_px": 1.7673827610376194,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  815.1429865209514,
+                  176.26712077361626
+                ],
+                [
+                  991.7428561910356,
+                  187.66101456895257
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.2423802463345823,
+                2.460871808560838
+              ],
+              "maximum_endpoint_error_px": 2.460871808560838,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.9595410999522747,
+              0.8115920359852514
+            ],
+            "maximum_px": 0.9595410999522747,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000010:17",
+          "stack_id": "new_000010-right",
+          "image_id": "new_000010",
+          "row": 17,
+          "rank": 2,
+          "excluded_rows": [
+            17
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 16,
+              "rank": 1,
+              "xy": [
+                [
+                  815.9100032000001,
+                  174.1600008
+                ],
+                [
+                  991.2499968,
+                  185.25000239999997
+                ]
+              ]
+            },
+            {
+              "row": 18,
+              "rank": 3,
+              "xy": [
+                [
+                  800.4700032,
+                  270.9
+                ],
+                [
+                  967.8700032,
+                  278.1100008
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              805.3900032,
+              226.7500032
+            ],
+            [
+              979.8899968000001,
+              233.7500016
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  808.1900032000001,
+                  222.5300004
+                ],
+                [
+                  979.56,
+                  231.6800016
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                5.064427275813944,
+                2.096138804566694
+              ],
+              "maximum_endpoint_error_px": 5.064427275813944,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  807.9918201933779,
+                  223.77172474599035
+                ],
+                [
+                  979.270532211026,
+                  232.82970159055037
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                3.9546926829587945,
+                1.1093639999503389
+              ],
+              "maximum_endpoint_error_px": 3.9546926829587945,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              1.2574401995876332,
+              1.1855807307497095
+            ],
+            "maximum_px": 1.2574401995876332,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000010:18",
+          "stack_id": "new_000010-right",
+          "image_id": "new_000010",
+          "row": 18,
+          "rank": 3,
+          "excluded_rows": [
+            18
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 17,
+              "rank": 2,
+              "xy": [
+                [
+                  805.3900032,
+                  226.7500032
+                ],
+                [
+                  979.8899968000001,
+                  233.7500016
+                ]
+              ]
+            },
+            {
+              "row": 19,
+              "rank": 4,
+              "xy": [
+                [
+                  794.7699968000001,
+                  312.2799984
+                ],
+                [
+                  956.2899968,
+                  320.1999984
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              800.4700032,
+              270.9
+            ],
+            [
+              967.8700032,
+              278.1100008
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  800.08,
+                  269.5150008
+                ],
+                [
+                  968.0899968000001,
+                  276.975
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.4388624951713624,
+                1.1561245607812463
+              ],
+              "maximum_endpoint_error_px": 1.4388624951713624,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  799.8812596804482,
+                  271.11558915532294
+                ],
+                [
+                  967.6406677328428,
+                  278.62095323804584
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.6269749721535981,
+                0.5600599525418837
+              ],
+              "maximum_endpoint_error_px": 0.6269749721535981,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              1.6128796600524635,
+              1.706182485089451
+            ],
+            "maximum_px": 1.706182485089451,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000010:19",
+          "stack_id": "new_000010-right",
+          "image_id": "new_000010",
+          "row": 19,
+          "rank": 4,
+          "excluded_rows": [
+            19
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 18,
+              "rank": 3,
+              "xy": [
+                [
+                  800.4700032,
+                  270.9
+                ],
+                [
+                  967.8700032,
+                  278.1100008
+                ]
+              ]
+            },
+            {
+              "row": 20,
+              "rank": 5,
+              "xy": [
+                [
+                  783.6099968000001,
+                  354.3099984
+                ],
+                [
+                  942.2599936,
+                  357.4499976
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              794.7699968000001,
+              312.2799984
+            ],
+            [
+              956.2899968,
+              320.1999984
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  792.04,
+                  312.60499919999995
+                ],
+                [
+                  955.0649984,
+                  317.7799992
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.7492740947405294,
+                2.712382201682359
+              ],
+              "maximum_endpoint_error_px": 2.7492740947405294,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  791.7824413711077,
+                  313.87919591820673
+                ],
+                [
+                  954.6914457863446,
+                  318.9372679255872
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                3.3886457682889994,
+                2.0371189445561613
+              ],
+              "maximum_endpoint_error_px": 3.3886457682889994,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              1.2999668165017948,
+              1.2160643315182744
+            ],
+            "maximum_px": 1.2999668165017948,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000010:20",
+          "stack_id": "new_000010-right",
+          "image_id": "new_000010",
+          "row": 20,
+          "rank": 5,
+          "excluded_rows": [
+            20
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 19,
+              "rank": 4,
+              "xy": [
+                [
+                  794.7699968000001,
+                  312.2799984
+                ],
+                [
+                  956.2899968,
+                  320.1999984
+                ]
+              ]
+            },
+            {
+              "row": 21,
+              "rank": 6,
+              "xy": [
+                [
+                  773.72,
+                  391.0600008
+                ],
+                [
+                  933.4499968,
+                  394.24999679999996
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              783.6099968000001,
+              354.3099984
+            ],
+            [
+              942.2599936,
+              357.4499976
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  784.2449984,
+                  351.6699996
+                ],
+                [
+                  944.8699968000001,
+                  357.2249976
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.7152938507653035,
+                2.619683512184347
+              ],
+              "maximum_endpoint_error_px": 2.7152938507653035,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  784.1396784232326,
+                  352.0641615612271
+                ],
+                [
+                  944.76243026222,
+                  357.57374111797355
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.3074543827299503,
+                2.5054943038576925
+              ],
+              "maximum_endpoint_error_px": 2.5054943038576925,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.4079901336854633,
+              0.36495561562819856
+            ],
+            "maximum_px": 0.4079901336854633,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000010:21",
+          "stack_id": "new_000010-right",
+          "image_id": "new_000010",
+          "row": 21,
+          "rank": 6,
+          "excluded_rows": [
+            21
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 20,
+              "rank": 5,
+              "xy": [
+                [
+                  783.6099968000001,
+                  354.3099984
+                ],
+                [
+                  942.2599936,
+                  357.4499976
+                ]
+              ]
+            },
+            {
+              "row": 22,
+              "rank": 7,
+              "xy": [
+                [
+                  768.96,
+                  427.3699968
+                ],
+                [
+                  921.6700032,
+                  429.23000160000004
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 0.5,
+          "target_xy_for_scoring_only": [
+            [
+              773.72,
+              391.0600008
+            ],
+            [
+              933.4499968,
+              394.24999679999996
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  776.2849984000001,
+                  390.8399976
+                ],
+                [
+                  931.9649984,
+                  393.33999960000006
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.5744160891380763,
+                1.741641510762251
+              ],
+              "maximum_endpoint_error_px": 2.5744160891380763,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  776.1372977174958,
+                  391.57658558529016
+                ],
+                [
+                  931.7607659919554,
+                  394.051986482051
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.471879466196441,
+                1.7007965218865255
+              ],
+              "maximum_endpoint_error_px": 2.471879466196441,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.7512505252484248,
+              0.7406998020172126
+            ],
+            "maximum_px": 0.7512505252484248,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        }
+      ],
+      "summary": {
+        "target_pair_denominator": 26,
+        "endpoint_denominator": 52,
+        "methods": {
+          "linear": {
+            "estimated_pairs": 26,
+            "failed_pairs": 0,
+            "failure_reasons": {},
+            "both_within_radius": {
+              "5": 23,
+              "10": 26
+            },
+            "endpoints_within_radius": {
+              "5": 49,
+              "10": 52
+            },
+            "endpoint_error": {
+              "count": 52,
+              "median_px": 1.3883762624733695,
+              "p90_px": 3.469923377474098,
+              "maximum_px": 5.627648459533044
+            },
+            "pair_maximum_error": {
+              "count": 26,
+              "median_px": 1.576013084958972,
+              "p90_px": 4.547776090425849,
+              "maximum_px": 5.627648459533044
+            },
+            "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+          },
+          "homography": {
+            "estimated_pairs": 26,
+            "failed_pairs": 0,
+            "failure_reasons": {},
+            "both_within_radius": {
+              "5": 24,
+              "10": 26
+            },
+            "endpoints_within_radius": {
+              "5": 50,
+              "10": 52
+            },
+            "endpoint_error": {
+              "count": 52,
+              "median_px": 1.3075082036745116,
+              "p90_px": 3.366257230616041,
+              "maximum_px": 5.873809795764644
+            },
+            "pair_maximum_error": {
+              "count": 26,
+              "median_px": 1.5904178534813276,
+              "p90_px": 4.440322650078984,
+              "maximum_px": 5.873809795764644
+            },
+            "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+          }
+        },
+        "maximum_pair_method_disagreement": {
+          "count": 26,
+          "median_px": 0.39975530300399376,
+          "p90_px": 1.2563948402007066,
+          "maximum_px": 1.706182485089451
+        }
+      },
+      "per_stack": {
+        "new_000007-center": {
+          "target_pair_denominator": 8,
+          "endpoint_denominator": 16,
+          "methods": {
+            "linear": {
+              "estimated_pairs": 8,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 8,
+                "10": 8
+              },
+              "endpoints_within_radius": {
+                "5": 16,
+                "10": 16
+              },
+              "endpoint_error": {
+                "count": 16,
+                "median_px": 1.0270386884220264,
+                "p90_px": 1.4585050383311855,
+                "maximum_px": 1.9320010269149637
+              },
+              "pair_maximum_error": {
+                "count": 8,
+                "median_px": 1.3883762624733695,
+                "p90_px": 1.6260040211099431,
+                "maximum_px": 1.9320010269149637
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            },
+            "homography": {
+              "estimated_pairs": 8,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 8,
+                "10": 8
+              },
+              "endpoints_within_radius": {
+                "5": 16,
+                "10": 16
+              },
+              "endpoint_error": {
+                "count": 16,
+                "median_px": 1.0196155845292687,
+                "p90_px": 1.5091660257412194,
+                "maximum_px": 1.6301179126814072
+              },
+              "pair_maximum_error": {
+                "count": 8,
+                "median_px": 1.3318543617840792,
+                "p90_px": 1.5925663373573309,
+                "maximum_px": 1.6301179126814072
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            }
+          },
+          "maximum_pair_method_disagreement": {
+            "count": 8,
+            "median_px": 0.20433038820641472,
+            "p90_px": 0.3405570055810397,
+            "maximum_px": 0.39152047232252424
+          }
+        },
+        "new_000008-center-left": {
+          "target_pair_denominator": 4,
+          "endpoint_denominator": 8,
+          "methods": {
+            "linear": {
+              "estimated_pairs": 4,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 2,
+                "10": 4
+              },
+              "endpoints_within_radius": {
+                "5": 6,
+                "10": 8
+              },
+              "endpoint_error": {
+                "count": 8,
+                "median_px": 3.6493830485725525,
+                "p90_px": 5.321986846351705,
+                "maximum_px": 5.627648459533044
+              },
+              "pair_maximum_error": {
+                "count": 4,
+                "median_px": 4.611056958584442,
+                "p90_px": 5.49665062531247,
+                "maximum_px": 5.627648459533044
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            },
+            "homography": {
+              "estimated_pairs": 4,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 2,
+                "10": 4
+              },
+              "endpoints_within_radius": {
+                "5": 6,
+                "10": 8
+              },
+              "endpoint_error": {
+                "count": 8,
+                "median_px": 3.3045034546049923,
+                "p90_px": 5.313434878087095,
+                "maximum_px": 5.873809795764644
+              },
+              "pair_maximum_error": {
+                "count": 4,
+                "median_px": 4.999613408140801,
+                "p90_px": 5.63364911675998,
+                "maximum_px": 5.873809795764644
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            }
+          },
+          "maximum_pair_method_disagreement": {
+            "count": 4,
+            "median_px": 0.9555308197591272,
+            "p90_px": 1.178289324699297,
+            "maximum_px": 1.2553494808137797
+          }
+        },
+        "new_000009-center": {
+          "target_pair_denominator": 8,
+          "endpoint_denominator": 16,
+          "methods": {
+            "linear": {
+              "estimated_pairs": 8,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 8,
+                "10": 8
+              },
+              "endpoints_within_radius": {
+                "5": 16,
+                "10": 16
+              },
+              "endpoint_error": {
+                "count": 16,
+                "median_px": 1.2154529571706232,
+                "p90_px": 1.6656946710990552,
+                "maximum_px": 2.0350020000157625
+              },
+              "pair_maximum_error": {
+                "count": 8,
+                "median_px": 1.511052192385038,
+                "p90_px": 1.835622630734424,
+                "maximum_px": 2.0350020000157625
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            },
+            "homography": {
+              "estimated_pairs": 8,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 8,
+                "10": 8
+              },
+              "endpoints_within_radius": {
+                "5": 16,
+                "10": 16
+              },
+              "endpoint_error": {
+                "count": 16,
+                "median_px": 1.2377117890071216,
+                "p90_px": 1.6094271663038286,
+                "maximum_px": 1.7009380388741606
+              },
+              "pair_maximum_error": {
+                "count": 8,
+                "median_px": 1.4142273948790156,
+                "p90_px": 1.6404254131666582,
+                "maximum_px": 1.7009380388741606
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            }
+          },
+          "maximum_pair_method_disagreement": {
+            "count": 8,
+            "median_px": 0.30677827713283473,
+            "p90_px": 0.4770679014617578,
+            "maximum_px": 0.533125979739689
+          }
+        },
+        "new_000010-right": {
+          "target_pair_denominator": 6,
+          "endpoint_denominator": 12,
+          "methods": {
+            "linear": {
+              "estimated_pairs": 6,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 5,
+                "10": 6
+              },
+              "endpoints_within_radius": {
+                "5": 11,
+                "10": 12
+              },
+              "endpoint_error": {
+                "count": 12,
+                "median_px": 2.335277446852385,
+                "p90_px": 2.745876070343007,
+                "maximum_px": 5.064427275813944
+              },
+              "pair_maximum_error": {
+                "count": 6,
+                "median_px": 2.64485496995169,
+                "p90_px": 3.906850685277237,
+                "maximum_px": 5.064427275813944
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            },
+            "homography": {
+              "estimated_pairs": 6,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 6,
+                "10": 6
+              },
+              "endpoints_within_radius": {
+                "5": 12,
+                "10": 12
+              },
+              "endpoint_error": {
+                "count": 12,
+                "median_px": 2.2749173145322663,
+                "p90_px": 3.3003306218458692,
+                "maximum_px": 3.9546926829587945
+              },
+              "pair_maximum_error": {
+                "count": 6,
+                "median_px": 2.4886868850270667,
+                "p90_px": 3.671669225623897,
+                "maximum_px": 3.9546926829587945
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            }
+          },
+          "maximum_pair_method_disagreement": {
+            "count": 6,
+            "median_px": 1.108490649769954,
+            "p90_px": 1.503074650795623,
+            "maximum_px": 1.706182485089451
+          }
+        }
+      }
+    },
+    "extrapolation": {
+      "cases": [
+        {
+          "case_id": "new_000007:35",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 35,
+          "rank": 8,
+          "excluded_rows": [
+            35,
+            36
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 33,
+              "rank": 6,
+              "xy": [
+                [
+                  725.4700032,
+                  190.3600008
+                ],
+                [
+                  790.9000063999999,
+                  186.7600008
+                ]
+              ]
+            },
+            {
+              "row": 34,
+              "rank": 7,
+              "xy": [
+                [
+                  724.9399936,
+                  207.6600024
+                ],
+                [
+                  788.52,
+                  203.3599968
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 2.0,
+          "target_xy_for_scoring_only": [
+            [
+              725.12,
+              224.82000000000002
+            ],
+            [
+              788.92,
+              221.0600016
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  724.409984,
+                  224.960004
+                ],
+                [
+                  786.1399936,
+                  219.9599928
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.7236876676246373,
+                2.989724894387107
+              ],
+              "maximum_endpoint_error_px": 2.989724894387107,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  724.4409036526919,
+                  223.95075805230684
+                ],
+                [
+                  786.2725719139031,
+                  219.03528962253085
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.1030654615917797,
+                3.332916750049636
+              ],
+              "maximum_endpoint_error_px": 3.332916750049636,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              1.0097194698814365,
+              0.9341589670601763
+            ],
+            "maximum_px": 1.0097194698814365,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000007:36",
+          "stack_id": "new_000007-center",
+          "image_id": "new_000007",
+          "row": 36,
+          "rank": 9,
+          "excluded_rows": [
+            35,
+            36
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 33,
+              "rank": 6,
+              "xy": [
+                [
+                  725.4700032,
+                  190.3600008
+                ],
+                [
+                  790.9000063999999,
+                  186.7600008
+                ]
+              ]
+            },
+            {
+              "row": 34,
+              "rank": 7,
+              "xy": [
+                [
+                  724.9399936,
+                  207.6600024
+                ],
+                [
+                  788.52,
+                  203.3599968
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 3.0,
+          "target_xy_for_scoring_only": [
+            [
+              724.2899968,
+              241.74
+            ],
+            [
+              787.24,
+              236.82000240000002
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  723.8799744,
+                  242.26000560000006
+                ],
+                [
+                  783.7599872000001,
+                  236.55998880000004
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                0.6622115919652655,
+                3.4897129051468365
+              ],
+              "maximum_endpoint_error_px": 3.4897129051468365,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  723.9701043612616,
+                  239.31808063480884
+                ],
+                [
+                  784.1469444113154,
+                  233.86105145260186
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.4429540691241036,
+                4.280465346641821
+              ],
+              "maximum_endpoint_error_px": 4.280465346641821,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              2.9433052697150486,
+              2.726536023706583
+            ],
+            "maximum_px": 2.9433052697150486,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000008:16",
+          "stack_id": "new_000008-center-left",
+          "image_id": "new_000008",
+          "row": 16,
+          "rank": 4,
+          "excluded_rows": [
+            16,
+            17
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 14,
+              "rank": 2,
+              "xy": [
+                [
+                  727.2599936,
+                  389.31999840000003
+                ],
+                [
+                  884.6700032,
+                  399.1399992
+                ]
+              ]
+            },
+            {
+              "row": 15,
+              "rank": 3,
+              "xy": [
+                [
+                  719.0,
+                  427.99999679999996
+                ],
+                [
+                  876.0,
+                  435.0000024
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 2.0,
+          "target_xy_for_scoring_only": [
+            [
+              715.0,
+              461.0000016
+            ],
+            [
+              869.0,
+              469.0000008
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  710.7400064,
+                  466.6799951999999
+                ],
+                [
+                  867.3299968,
+                  470.8600056000001
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                7.099991040000034,
+                2.499705691483205
+              ],
+              "maximum_endpoint_error_px": 7.099991040000034,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  710.8521218455083,
+                  466.15497962942163
+                ],
+                [
+                  867.4393403336277,
+                  470.4077497731764
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                6.616546808443857,
+                2.101764916854544
+              ],
+              "maximum_endpoint_error_px": 6.616546808443857,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              0.5368530734485556,
+              0.46528630029492524
+            ],
+            "maximum_px": 0.5368530734485556,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000008:17",
+          "stack_id": "new_000008-center-left",
+          "image_id": "new_000008",
+          "row": 17,
+          "rank": 5,
+          "excluded_rows": [
+            16,
+            17
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 14,
+              "rank": 2,
+              "xy": [
+                [
+                  727.2599936,
+                  389.31999840000003
+                ],
+                [
+                  884.6700032,
+                  399.1399992
+                ]
+              ]
+            },
+            {
+              "row": 15,
+              "rank": 3,
+              "xy": [
+                [
+                  719.0,
+                  427.99999679999996
+                ],
+                [
+                  876.0,
+                  435.0000024
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 3.0,
+          "target_xy_for_scoring_only": [
+            [
+              712.0,
+              501.9999984
+            ],
+            [
+              862.0,
+              506.0000016
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  702.4800127999999,
+                  505.3599935999998
+                ],
+                [
+                  858.6599936,
+                  506.7200088000001
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                10.095529903486343,
+                3.416731350295606
+              ],
+              "maximum_endpoint_error_px": 10.095529903486343,
+              "both_within_radius": {
+                "5": false,
+                "10": false
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  702.8140918573862,
+                  503.79556413056747
+                ],
+                [
+                  858.9859686500926,
+                  505.37174328385396
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                9.359752384402436,
+                3.078813649773489
+              ],
+              "maximum_endpoint_error_px": 9.359752384402436,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              1.5997025915502179,
+              1.3871119764862492
+            ],
+            "maximum_px": 1.5997025915502179,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:39",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 39,
+          "rank": 8,
+          "excluded_rows": [
+            39,
+            40
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 37,
+              "rank": 6,
+              "xy": [
+                [
+                  613.1900032,
+                  262.3299984
+                ],
+                [
+                  695.7699968,
+                  267.4399968
+                ]
+              ]
+            },
+            {
+              "row": 38,
+              "rank": 7,
+              "xy": [
+                [
+                  611.7500032,
+                  283.2799968
+                ],
+                [
+                  691.7500031999999,
+                  287.48000160000004
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 2.0,
+          "target_xy_for_scoring_only": [
+            [
+              611.1900032,
+              302.03999999999996
+            ],
+            [
+              691.2,
+              307.0599984
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  610.3100032000001,
+                  304.22999519999996
+                ],
+                [
+                  687.7300095999999,
+                  307.52000640000006
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.3601862163869245,
+                3.500348659227708
+              ],
+              "maximum_endpoint_error_px": 3.500348659227708,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  610.402122320346,
+                  302.8897900445424
+                ],
+                [
+                  687.9782866610469,
+                  306.282324455654
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.158835363771606,
+                3.314244046853383
+              ],
+              "maximum_endpoint_error_px": 3.314244046853383,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              1.343367332879714,
+              1.2623383438691587
+            ],
+            "maximum_px": 1.343367332879714,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000009:40",
+          "stack_id": "new_000009-center",
+          "image_id": "new_000009",
+          "row": 40,
+          "rank": 9,
+          "excluded_rows": [
+            39,
+            40
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 37,
+              "rank": 6,
+              "xy": [
+                [
+                  613.1900032,
+                  262.3299984
+                ],
+                [
+                  695.7699968,
+                  267.4399968
+                ]
+              ]
+            },
+            {
+              "row": 38,
+              "rank": 7,
+              "xy": [
+                [
+                  611.7500032,
+                  283.2799968
+                ],
+                [
+                  691.7500031999999,
+                  287.48000160000004
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 3.0,
+          "target_xy_for_scoring_only": [
+            [
+              609.36,
+              323.4100032
+            ],
+            [
+              688.1000064,
+              327.1299984
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  608.8700032000002,
+                  325.1799936
+                ],
+                [
+                  683.710016,
+                  327.5600112000001
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                1.836562789588802,
+                4.411000648408021
+              ],
+              "maximum_endpoint_error_px": 4.411000648408021,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  609.1377950238005,
+                  321.283994794338
+                ],
+                [
+                  684.4325355758723,
+                  323.95819059795394
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                2.137589013911058,
+                4.8487840722131486
+              ],
+              "maximum_endpoint_error_px": 4.8487840722131486,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              3.905191308324584,
+              3.6735740344850334
+            ],
+            "maximum_px": 3.905191308324584,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000010:21",
+          "stack_id": "new_000010-right",
+          "image_id": "new_000010",
+          "row": 21,
+          "rank": 6,
+          "excluded_rows": [
+            21,
+            22
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 19,
+              "rank": 4,
+              "xy": [
+                [
+                  794.7699968000001,
+                  312.2799984
+                ],
+                [
+                  956.2899968,
+                  320.1999984
+                ]
+              ]
+            },
+            {
+              "row": 20,
+              "rank": 5,
+              "xy": [
+                [
+                  783.6099968000001,
+                  354.3099984
+                ],
+                [
+                  942.2599936,
+                  357.4499976
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 2.0,
+          "target_xy_for_scoring_only": [
+            [
+              773.72,
+              391.0600008
+            ],
+            [
+              933.4499968,
+              394.24999679999996
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  772.4499968000001,
+                  396.33999839999996
+                ],
+                [
+                  928.2299904,
+                  394.6999968
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                5.430587701530579,
+                5.239367024368581
+              ],
+              "maximum_endpoint_error_px": 5.430587701530579,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  773.0661842458098,
+                  394.0193569710231
+                ],
+                [
+                  928.9223174795494,
+                  392.86185159135505
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                3.0307200443788616,
+                4.735697113321318
+              ],
+              "maximum_endpoint_error_px": 4.735697113321318,
+              "both_within_radius": {
+                "5": true,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              2.401054687060913,
+              1.9642032973044836
+            ],
+            "maximum_px": 2.401054687060913,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        },
+        {
+          "case_id": "new_000010:22",
+          "stack_id": "new_000010-right",
+          "image_id": "new_000010",
+          "row": 22,
+          "rank": 7,
+          "excluded_rows": [
+            21,
+            22
+          ],
+          "target_bbox_used": false,
+          "target_endpoints_used_for_prediction": false,
+          "donors": [
+            {
+              "row": 19,
+              "rank": 4,
+              "xy": [
+                [
+                  794.7699968000001,
+                  312.2799984
+                ],
+                [
+                  956.2899968,
+                  320.1999984
+                ]
+              ]
+            },
+            {
+              "row": 20,
+              "rank": 5,
+              "xy": [
+                [
+                  783.6099968000001,
+                  354.3099984
+                ],
+                [
+                  942.2599936,
+                  357.4499976
+                ]
+              ]
+            }
+          ],
+          "rank_ratio": 3.0,
+          "target_xy_for_scoring_only": [
+            [
+              768.96,
+              427.3699968
+            ],
+            [
+              921.6700032,
+              429.23000160000004
+            ]
+          ],
+          "methods": {
+            "linear": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  761.2899968000004,
+                  438.3699983999999
+                ],
+                [
+                  914.1999871999999,
+                  431.94999600000006
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                13.410032971175132,
+                7.949811857917705
+              ],
+              "maximum_endpoint_error_px": 13.410032971175132,
+              "both_within_radius": {
+                "5": false,
+                "10": false
+              }
+            },
+            "homography": {
+              "status": "estimated",
+              "reason": null,
+              "raw_pair_xy": [
+                [
+                  763.0888969645937,
+                  431.5951082639901
+                ],
+                [
+                  916.2269568332855,
+                  426.56834240078274
+                ]
+              ],
+              "in_frame": true,
+              "endpoint_errors_px": [
+                7.233354528536389,
+                6.058975444989191
+              ],
+              "maximum_endpoint_error_px": 7.233354528536389,
+              "both_within_radius": {
+                "5": false,
+                "10": true
+              }
+            }
+          },
+          "method_disagreement": {
+            "endpoint_distances_px": [
+              7.00964893251984,
+              5.750721811758126
+            ],
+            "maximum_px": 7.00964893251984,
+            "interpretation": "Uncalibrated method disagreement; not an error bound"
+          }
+        }
+      ],
+      "summary": {
+        "target_pair_denominator": 8,
+        "endpoint_denominator": 16,
+        "methods": {
+          "linear": {
+            "estimated_pairs": 8,
+            "failed_pairs": 0,
+            "failure_reasons": {},
+            "both_within_radius": {
+              "5": 4,
+              "10": 6
+            },
+            "endpoints_within_radius": {
+              "5": 10,
+              "10": 14
+            },
+            "endpoint_error": {
+              "count": 16,
+              "median_px": 3.495030782187272,
+              "p90_px": 9.022670880702023,
+              "maximum_px": 13.410032971175132
+            },
+            "pair_maximum_error": {
+              "count": 8,
+              "median_px": 4.9207941749693,
+              "p90_px": 11.08988082379298,
+              "maximum_px": 13.410032971175132
+            },
+            "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+          },
+          "homography": {
+            "estimated_pairs": 8,
+            "failed_pairs": 0,
+            "failure_reasons": {},
+            "both_within_radius": {
+              "5": 5,
+              "10": 8
+            },
+            "endpoints_within_radius": {
+              "5": 12,
+              "10": 16
+            },
+            "endpoint_error": {
+              "count": 16,
+              "median_px": 3.3235803984515098,
+              "p90_px": 6.924950668490123,
+              "maximum_px": 9.359752384402436
+            },
+            "pair_maximum_error": {
+              "count": 8,
+              "median_px": 4.792240592767233,
+              "p90_px": 7.871273885296203,
+              "maximum_px": 9.359752384402436
+            },
+            "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+          }
+        },
+        "maximum_pair_method_disagreement": {
+          "count": 8,
+          "median_px": 2.0003786393055654,
+          "p90_px": 4.83652859558316,
+          "maximum_px": 7.00964893251984
+        }
+      },
+      "per_stack": {
+        "new_000007-center": {
+          "target_pair_denominator": 2,
+          "endpoint_denominator": 4,
+          "methods": {
+            "linear": {
+              "estimated_pairs": 2,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 2,
+                "10": 2
+              },
+              "endpoints_within_radius": {
+                "5": 4,
+                "10": 4
+              },
+              "endpoint_error": {
+                "count": 4,
+                "median_px": 1.856706281005872,
+                "p90_px": 3.3397165019189177,
+                "maximum_px": 3.4897129051468365
+              },
+              "pair_maximum_error": {
+                "count": 2,
+                "median_px": 3.239718899766972,
+                "p90_px": 3.4397141040708634,
+                "maximum_px": 3.4897129051468365
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            },
+            "homography": {
+              "estimated_pairs": 2,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 2,
+                "10": 2
+              },
+              "endpoints_within_radius": {
+                "5": 4,
+                "10": 4
+              },
+              "endpoint_error": {
+                "count": 4,
+                "median_px": 2.88793540958687,
+                "p90_px": 3.996200767664166,
+                "maximum_px": 4.280465346641821
+              },
+              "pair_maximum_error": {
+                "count": 2,
+                "median_px": 3.806691048345729,
+                "p90_px": 4.185710486982603,
+                "maximum_px": 4.280465346641821
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            }
+          },
+          "maximum_pair_method_disagreement": {
+            "count": 2,
+            "median_px": 1.9765123697982425,
+            "p90_px": 2.7499466897316873,
+            "maximum_px": 2.9433052697150486
+          }
+        },
+        "new_000008-center-left": {
+          "target_pair_denominator": 2,
+          "endpoint_denominator": 4,
+          "methods": {
+            "linear": {
+              "estimated_pairs": 2,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 0,
+                "10": 1
+              },
+              "endpoints_within_radius": {
+                "5": 2,
+                "10": 3
+              },
+              "endpoint_error": {
+                "count": 4,
+                "median_px": 5.2583611951478195,
+                "p90_px": 9.19686824444045,
+                "maximum_px": 10.095529903486343
+              },
+              "pair_maximum_error": {
+                "count": 2,
+                "median_px": 8.597760471743188,
+                "p90_px": 9.795976017137711,
+                "maximum_px": 10.095529903486343
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            },
+            "homography": {
+              "estimated_pairs": 2,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 0,
+                "10": 2
+              },
+              "endpoints_within_radius": {
+                "5": 2,
+                "10": 4
+              },
+              "endpoint_error": {
+                "count": 4,
+                "median_px": 4.847680229108673,
+                "p90_px": 8.536790711614863,
+                "maximum_px": 9.359752384402436
+              },
+              "pair_maximum_error": {
+                "count": 2,
+                "median_px": 7.988149596423146,
+                "p90_px": 9.085431826806579,
+                "maximum_px": 9.359752384402436
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            }
+          },
+          "maximum_pair_method_disagreement": {
+            "count": 2,
+            "median_px": 1.0682778324993867,
+            "p90_px": 1.4934176397400516,
+            "maximum_px": 1.5997025915502179
+          }
+        },
+        "new_000009-center": {
+          "target_pair_denominator": 2,
+          "endpoint_denominator": 4,
+          "methods": {
+            "linear": {
+              "estimated_pairs": 2,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 2,
+                "10": 2
+              },
+              "endpoints_within_radius": {
+                "5": 4,
+                "10": 4
+              },
+              "endpoint_error": {
+                "count": 4,
+                "median_px": 2.9302674378073164,
+                "p90_px": 4.1378050516539275,
+                "maximum_px": 4.411000648408021
+              },
+              "pair_maximum_error": {
+                "count": 2,
+                "median_px": 3.955674653817865,
+                "p90_px": 4.31993544948999,
+                "maximum_px": 4.411000648408021
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            },
+            "homography": {
+              "estimated_pairs": 2,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 2,
+                "10": 2
+              },
+              "endpoints_within_radius": {
+                "5": 4,
+                "10": 4
+              },
+              "endpoint_error": {
+                "count": 4,
+                "median_px": 2.7259165303822206,
+                "p90_px": 4.388422064605219,
+                "maximum_px": 4.8487840722131486
+              },
+              "pair_maximum_error": {
+                "count": 2,
+                "median_px": 4.081514059533266,
+                "p90_px": 4.695330069677172,
+                "maximum_px": 4.8487840722131486
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            }
+          },
+          "maximum_pair_method_disagreement": {
+            "count": 2,
+            "median_px": 2.624279320602149,
+            "p90_px": 3.649008910780097,
+            "maximum_px": 3.905191308324584
+          }
+        },
+        "new_000010-right": {
+          "target_pair_denominator": 2,
+          "endpoint_denominator": 4,
+          "methods": {
+            "linear": {
+              "estimated_pairs": 2,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 0,
+                "10": 1
+              },
+              "endpoints_within_radius": {
+                "5": 0,
+                "10": 3
+              },
+              "endpoint_error": {
+                "count": 4,
+                "median_px": 6.690199779724142,
+                "p90_px": 11.771966637197906,
+                "maximum_px": 13.410032971175132
+              },
+              "pair_maximum_error": {
+                "count": 2,
+                "median_px": 9.420310336352856,
+                "p90_px": 12.612088444210677,
+                "maximum_px": 13.410032971175132
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            },
+            "homography": {
+              "estimated_pairs": 2,
+              "failed_pairs": 0,
+              "failure_reasons": {},
+              "both_within_radius": {
+                "5": 1,
+                "10": 2
+              },
+              "endpoints_within_radius": {
+                "5": 2,
+                "10": 4
+              },
+              "endpoint_error": {
+                "count": 4,
+                "median_px": 5.397336279155255,
+                "p90_px": 6.88104080347223,
+                "maximum_px": 7.233354528536389
+              },
+              "pair_maximum_error": {
+                "count": 2,
+                "median_px": 5.984525820928853,
+                "p90_px": 6.983588787014882,
+                "maximum_px": 7.233354528536389
+              },
+              "error_statistic_basis": "All finite raw estimates, including rejected out-of-frame outputs; failures remain in success denominators."
+            }
+          },
+          "maximum_pair_method_disagreement": {
+            "count": 2,
+            "median_px": 4.705351809790376,
+            "p90_px": 6.5487895079739475,
+            "maximum_px": 7.00964893251984
+          }
+        }
+      }
+    }
+  },
+  "hidden_cases": [
+    {
+      "image_id": "new_000010",
+      "row": 23,
+      "stack_id": "new_000010-right",
+      "rank": 8,
+      "disposition": "estimate_extrapolation",
+      "reason": "Same visually identifiable stack; left lower corner is hidden by the gripper. Right endpoint is withheld from fitting and used only as a visible-side check. No donor below.",
+      "case_id": "new_000010:23",
+      "kind": "context_estimate_sidecar",
+      "accepted_for_training": false,
+      "accepted_as_observed_reference": false,
+      "target_bbox_used": false,
+      "target_endpoints_used_for_prediction": false,
+      "confidence": null,
+      "confidence_calibrated": false,
+      "status": "review_only",
+      "donors": [
+        {
+          "row": 21,
+          "rank": 6,
+          "xy": [
+            [
+              773.72,
+              391.0600008
+            ],
+            [
+              933.4499968,
+              394.24999679999996
+            ]
+          ]
+        },
+        {
+          "row": 22,
+          "rank": 7,
+          "xy": [
+            [
+              768.96,
+              427.3699968
+            ],
+            [
+              921.6700032,
+              429.23000160000004
+            ]
+          ]
+        }
+      ],
+      "rank_ratio": 2.0,
+      "methods": {
+        "linear": {
+          "status": "estimated",
+          "reason": null,
+          "raw_pair_xy": [
+            [
+              764.2,
+              463.67999280000004
+            ],
+            [
+              909.8900096,
+              464.2100064000001
+            ]
+          ],
+          "in_frame": true,
+          "proposals": [
+            {
+              "slot": "left",
+              "xy": [
+                764.2,
+                463.67999280000004
+              ],
+              "status": "estimated_from_context",
+              "accepted_for_training": false,
+              "ground_truth_available": false,
+              "geometric_error_px": null
+            }
+          ],
+          "visible_endpoint_checks": [
+            {
+              "slot": "right",
+              "reference_xy": [
+                914.1100031999999,
+                462.3799968
+              ],
+              "error_px": 4.5997044600857855,
+              "used_in_predictor": false,
+              "certifies_hidden_side_accuracy": false
+            }
+          ]
+        },
+        "homography": {
+          "status": "estimated",
+          "reason": null,
+          "raw_pair_xy": [
+            [
+              764.6224957846459,
+              460.45713140283436
+            ],
+            [
+              910.9028944530409,
+              461.20230383034686
+            ]
+          ],
+          "in_frame": true,
+          "proposals": [
+            {
+              "slot": "left",
+              "xy": [
+                764.6224957846459,
+                460.45713140283436
+              ],
+              "status": "estimated_from_context",
+              "accepted_for_training": false,
+              "ground_truth_available": false,
+              "geometric_error_px": null
+            }
+          ],
+          "visible_endpoint_checks": [
+            {
+              "slot": "right",
+              "reference_xy": [
+                914.1100031999999,
+                462.3799968
+              ],
+              "error_px": 3.416505121552124,
+              "used_in_predictor": false,
+              "certifies_hidden_side_accuracy": false
+            }
+          ]
+        }
+      },
+      "method_disagreement": {
+        "endpoint_distances_px": [
+          3.250436628113863,
+          3.173674600997774
+        ],
+        "maximum_px": 3.250436628113863,
+        "interpretation": "Uncalibrated method disagreement; not an error bound"
+      }
+    },
+    {
+      "image_id": "new_000010",
+      "row": 24,
+      "stack_id": "new_000010-right",
+      "rank": 9,
+      "disposition": "estimate_extrapolation",
+      "reason": "Second lower continuation of the same stack; left corner is hidden by the gripper. Right endpoint is withheld from fitting and used only as a visible-side check. No donor below.",
+      "case_id": "new_000010:24",
+      "kind": "context_estimate_sidecar",
+      "accepted_for_training": false,
+      "accepted_as_observed_reference": false,
+      "target_bbox_used": false,
+      "target_endpoints_used_for_prediction": false,
+      "confidence": null,
+      "confidence_calibrated": false,
+      "status": "review_only",
+      "donors": [
+        {
+          "row": 21,
+          "rank": 6,
+          "xy": [
+            [
+              773.72,
+              391.0600008
+            ],
+            [
+              933.4499968,
+              394.24999679999996
+            ]
+          ]
+        },
+        {
+          "row": 22,
+          "rank": 7,
+          "xy": [
+            [
+              768.96,
+              427.3699968
+            ],
+            [
+              921.6700032,
+              429.23000160000004
+            ]
+          ]
+        }
+      ],
+      "rank_ratio": 3.0,
+      "methods": {
+        "linear": {
+          "status": "estimated",
+          "reason": null,
+          "raw_pair_xy": [
+            [
+              759.44,
+              499.9899888
+            ],
+            [
+              898.1100160000001,
+              499.1900112000003
+            ]
+          ],
+          "in_frame": true,
+          "proposals": [
+            {
+              "slot": "left",
+              "xy": [
+                759.44,
+                499.9899888
+              ],
+              "status": "estimated_from_context",
+              "accepted_for_training": false,
+              "ground_truth_available": false,
+              "geometric_error_px": null
+            }
+          ],
+          "visible_endpoint_checks": [
+            {
+              "slot": "right",
+              "reference_xy": [
+                905.84,
+                492.7199976
+              ],
+              "error_px": 10.080363516483123,
+              "used_in_predictor": false,
+              "certifies_hidden_side_accuracy": false
+            }
+          ]
+        },
+        "homography": {
+          "status": "estimated",
+          "reason": null,
+          "raw_pair_xy": [
+            [
+              760.6536268267894,
+              490.7322608112997
+            ],
+            [
+              901.0234183228387,
+              490.5388327106302
+            ]
+          ],
+          "in_frame": true,
+          "proposals": [
+            {
+              "slot": "left",
+              "xy": [
+                760.6536268267894,
+                490.7322608112997
+              ],
+              "status": "estimated_from_context",
+              "accepted_for_training": false,
+              "ground_truth_available": false,
+              "geometric_error_px": null
+            }
+          ],
+          "visible_endpoint_checks": [
+            {
+              "slot": "right",
+              "reference_xy": [
+                905.84,
+                492.7199976
+              ],
+              "error_px": 5.287432205464793,
+              "used_in_predictor": false,
+              "certifies_hidden_side_accuracy": false
+            }
+          ]
+        }
+      },
+      "method_disagreement": {
+        "endpoint_distances_px": [
+          9.336938341205204,
+          9.12857066301519
+        ],
+        "maximum_px": 9.336938341205204,
+        "interpretation": "Uncalibrated method disagreement; not an error bound"
+      }
+    },
+    {
+      "image_id": "new_000009",
+      "row": 56,
+      "disposition": "abstain",
+      "reason": "Front fragment between gripper jaws; target front plane, full width and physical rank relative to visible neighbouring stacks are not established.",
+      "case_id": "new_000009:56",
+      "kind": "context_estimate_sidecar",
+      "accepted_for_training": false,
+      "accepted_as_observed_reference": false,
+      "target_bbox_used": false,
+      "target_endpoints_used_for_prediction": false,
+      "confidence": null,
+      "confidence_calibrated": false,
+      "status": "abstained",
+      "donors": [],
+      "methods": {},
+      "method_disagreement": null
+    },
+    {
+      "image_id": "new_000090",
+      "row": 48,
+      "disposition": "abstain",
+      "reason": "Supported visible front fragment between jaws, but no established same-plane target rank or bracketing full-pair donors. Do not import offsets from another column or shelf.",
+      "case_id": "new_000090:48",
+      "kind": "context_estimate_sidecar",
+      "accepted_for_training": false,
+      "accepted_as_observed_reference": false,
+      "target_bbox_used": false,
+      "target_endpoints_used_for_prediction": false,
+      "confidence": null,
+      "confidence_calibrated": false,
+      "status": "abstained",
+      "donors": [],
+      "methods": {},
+      "method_disagreement": null
+    },
+    {
+      "image_id": "new_000011",
+      "row": 61,
+      "disposition": "abstain",
+      "reason": "Ambiguous jaw fragment with unresolved relationship to adjacent lip/front; reliable stack membership and physical rank are unavailable.",
+      "case_id": "new_000011:61",
+      "kind": "context_estimate_sidecar",
+      "accepted_for_training": false,
+      "accepted_as_observed_reference": false,
+      "target_bbox_used": false,
+      "target_endpoints_used_for_prediction": false,
+      "confidence": null,
+      "confidence_calibrated": false,
+      "status": "abstained",
+      "donors": [],
+      "methods": {},
+      "method_disagreement": null
+    }
+  ]
+}
