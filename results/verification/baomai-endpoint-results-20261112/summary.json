@@ -1,0 +1,1621 @@
+{
+  "schema_version": 1,
+  "kind": "endpoint-study-evaluation-summary",
+  "date": "2026-11-12",
+  "timezone": "Asia/Hong_Kong",
+  "result_pr": 52,
+  "result_revision": "8714dbb254895e3aafae92bc43d6fbad4622ddc4",
+  "training_revision": "ce207c7a4b929fcf2ff02fb3f0db9929de08e1ea",
+  "evaluation_source_revision": "c9f510a881c212d0aee936f85626af69ef5dbe3b",
+  "driver_sha256": "54a66f22775fc8dbc1469a651991977d1f145efee99427bca6835e693abde64c",
+  "primary_confidence": 0.13,
+  "decision": "retain_PR35",
+  "decision_basis": [
+    "Three previously successful 5px pairs are lost against the matched control and against PR35.",
+    "Common-matched reference-unlocatable outputs increase 65/75 to67/75 against the control; no reduction against PR35.",
+    "Matched-reference object identities equal PR35; no reference recovery beyond the selected model.",
+    "The10px success gain against PR35 is already present in the unchanged-label L4control."
+  ],
+  "primary_reference_sha256": "2e60b3e81195448cc565a1000b4305e3215baba2bf0ee0c976e6551c2e64937c",
+  "reference_counts": {
+    "objects": 663,
+    "both_locatable_objects": 584,
+    "locatable_endpoints": 1228,
+    "unlocatable_slots": 98,
+    "groups": {
+      "0": 19,
+      "1": 60,
+      "2": 584
+    },
+    "nonempty_images": 17,
+    "empty_images": 3
+  },
+  "metrics": {
+    "old_reviewed": {
+      "checkpoint": {
+        "kind": "baomai-trained-checkpoint",
+        "purpose": "paired-finetune",
+        "arm": "candidate",
+        "checkpoint_sha256": "c480ff0881e9bc8feca94b2478e6cbca76cdb8de5ed5bbf82c5de47041920b29",
+        "checkpoint_size_bytes": 21704814,
+        "training_receipt_sha256": "959c8dd878952529bb2723fe14072c4a48873acbcf2cce3e06a858cb79ab3a11",
+        "staging_manifest_sha256": "697c7619805aa712dada916bb89edd7549827f7ff1e80e8f99506b83ee869a2f",
+        "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+        "completed_epochs": 30,
+        "selection": "final_epoch",
+        "recipe_id": "reviewed-annotations-seed46-v1",
+        "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+        "manifest_sha256": "5faf25e742c7e8517b485946e3db393bd9b474a88bf896b3de6e80738eaaa291"
+      },
+      "loaded_model_state_sha256": "66dc9fdcdb8809ad7d38f036d1614a8ebb2007a68a4dad59f89d59398da9c9c9",
+      "references": {
+        "primary": {
+          "score": {
+            "gold_count": 663,
+            "prediction_count": 729,
+            "tp": 641,
+            "fn": 22,
+            "fp": 88,
+            "duplicate_fp": 28,
+            "other_fp": 60,
+            "visible_endpoints": 1228,
+            "returned_endpoints": 1206,
+            "missing_endpoints": 22,
+            "endpoint_coverage": 0.9820846905537459,
+            "conditional_median_error_px": 1.5664801479995087,
+            "conditional_p95_error_px": 5.139762090445965,
+            "image_count": 20
+          },
+          "quality": {
+            "gold_count": 663,
+            "prediction_count": 729,
+            "tp": 641,
+            "fn": 22,
+            "fp": 88,
+            "visible_endpoints": 1228,
+            "returned_visible_endpoints": 1206,
+            "both_visible_objects": 584,
+            "both_visible_objects_with_both_returned": 578,
+            "unlocatable_reference_endpoints": 98,
+            "unlocatable_on_matched_objects": 75,
+            "returned_on_unlocatable_reference": 65,
+            "image_count": 20,
+            "object_precision": 0.879286694101509,
+            "object_recall": 0.9668174962292609,
+            "visible_endpoint_coverage": 0.9820846905537459,
+            "both_visible_objects_returned_fraction": 0.9897260273972602,
+            "returned_on_unlocatable_reference_fraction": 0.8666666666666667,
+            "radii": [
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1138,
+                "both_visible_objects_within_radius": 527,
+                "visible_endpoint_success_rate": 0.9267100977198697,
+                "both_visible_object_success_rate": 0.9023972602739726
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1205,
+                "both_visible_objects_within_radius": 578,
+                "visible_endpoint_success_rate": 0.9812703583061889,
+                "both_visible_object_success_rate": 0.9897260273972602
+              }
+            ]
+          },
+          "groups_by_locatable_corners": {
+            "0": {
+              "reference_objects": 19,
+              "matched_objects": 12,
+              "missed_objects": 7,
+              "visible_endpoints": 0,
+              "returned_visible_endpoints": 0,
+              "missing_visible_endpoints": 0,
+              "unlocatable_on_matched_objects": 24,
+              "returned_on_unlocatable_reference": 18,
+              "conditional_median_error_px": null,
+              "conditional_p95_error_px": null,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "1": {
+              "reference_objects": 60,
+              "matched_objects": 51,
+              "missed_objects": 9,
+              "visible_endpoints": 60,
+              "returned_visible_endpoints": 50,
+              "missing_visible_endpoints": 10,
+              "unlocatable_on_matched_objects": 51,
+              "returned_on_unlocatable_reference": 47,
+              "conditional_median_error_px": 2.704828893650485,
+              "conditional_p95_error_px": 6.2664809080293535,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 39,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 49,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "2": {
+              "reference_objects": 584,
+              "matched_objects": 578,
+              "missed_objects": 6,
+              "visible_endpoints": 1168,
+              "returned_visible_endpoints": 1156,
+              "missing_visible_endpoints": 12,
+              "unlocatable_on_matched_objects": 0,
+              "returned_on_unlocatable_reference": 0,
+              "conditional_median_error_px": 1.5459208062354164,
+              "conditional_p95_error_px": 4.978257643707705,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 1099,
+                  "both_visible_objects_within_radius": 527
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 1156,
+                  "both_visible_objects_within_radius": 578
+                }
+              ]
+            }
+          },
+          "miss_free_nonempty_image_ids": [
+            "new_000010",
+            "new_000054",
+            "new_000058"
+          ],
+          "empty_image_predictions": {
+            "new_000146": 0,
+            "new_000147": 0,
+            "new_000148": 0
+          }
+        },
+        "original": {
+          "score": {
+            "gold_count": 664,
+            "prediction_count": 729,
+            "tp": 631,
+            "fn": 33,
+            "fp": 98,
+            "duplicate_fp": 26,
+            "other_fp": 72,
+            "visible_endpoints": 1227,
+            "returned_endpoints": 1189,
+            "missing_endpoints": 38,
+            "endpoint_coverage": 0.9690301548492257,
+            "conditional_median_error_px": 1.5577893053093594,
+            "conditional_p95_error_px": 5.14746395150985,
+            "image_count": 20
+          },
+          "quality": {
+            "gold_count": 664,
+            "prediction_count": 729,
+            "tp": 631,
+            "fn": 33,
+            "fp": 98,
+            "visible_endpoints": 1227,
+            "returned_visible_endpoints": 1189,
+            "both_visible_objects": 584,
+            "both_visible_objects_with_both_returned": 571,
+            "unlocatable_reference_endpoints": 101,
+            "unlocatable_on_matched_objects": 72,
+            "returned_on_unlocatable_reference": 64,
+            "image_count": 20,
+            "object_precision": 0.8655692729766804,
+            "object_recall": 0.9503012048192772,
+            "visible_endpoint_coverage": 0.9690301548492257,
+            "both_visible_objects_returned_fraction": 0.9777397260273972,
+            "returned_on_unlocatable_reference_fraction": 0.8888888888888888,
+            "radii": [
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1122,
+                "both_visible_objects_within_radius": 520,
+                "visible_endpoint_success_rate": 0.9144254278728606,
+                "both_visible_object_success_rate": 0.8904109589041096
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1188,
+                "both_visible_objects_within_radius": 571,
+                "visible_endpoint_success_rate": 0.9682151589242054,
+                "both_visible_object_success_rate": 0.9777397260273972
+              }
+            ]
+          },
+          "groups_by_locatable_corners": {
+            "0": {
+              "reference_objects": 21,
+              "matched_objects": 12,
+              "missed_objects": 9,
+              "visible_endpoints": 0,
+              "returned_visible_endpoints": 0,
+              "missing_visible_endpoints": 0,
+              "unlocatable_on_matched_objects": 24,
+              "returned_on_unlocatable_reference": 20,
+              "conditional_median_error_px": null,
+              "conditional_p95_error_px": null,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "1": {
+              "reference_objects": 59,
+              "matched_objects": 48,
+              "missed_objects": 11,
+              "visible_endpoints": 59,
+              "returned_visible_endpoints": 47,
+              "missing_visible_endpoints": 12,
+              "unlocatable_on_matched_objects": 48,
+              "returned_on_unlocatable_reference": 44,
+              "conditional_median_error_px": 2.8154554133508563,
+              "conditional_p95_error_px": 6.417820542928356,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 37,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 46,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "2": {
+              "reference_objects": 584,
+              "matched_objects": 571,
+              "missed_objects": 13,
+              "visible_endpoints": 1168,
+              "returned_visible_endpoints": 1142,
+              "missing_visible_endpoints": 26,
+              "unlocatable_on_matched_objects": 0,
+              "returned_on_unlocatable_reference": 0,
+              "conditional_median_error_px": 1.5453963096362189,
+              "conditional_p95_error_px": 4.978997921948925,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 1085,
+                  "both_visible_objects_within_radius": 520
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 1142,
+                  "both_visible_objects_within_radius": 571
+                }
+              ]
+            }
+          },
+          "miss_free_nonempty_image_ids": [
+            "new_000010"
+          ],
+          "empty_image_predictions": {
+            "new_000146": 0,
+            "new_000147": 0,
+            "new_000148": 0
+          }
+        }
+      }
+    },
+    "endpoint_reviewed": {
+      "checkpoint": {
+        "kind": "baomai-trained-checkpoint",
+        "purpose": "paired-finetune",
+        "arm": "candidate",
+        "checkpoint_sha256": "890ff20f4d7c377435ee29872de18739a6571fece2f8672a19802e24dbba418c",
+        "checkpoint_size_bytes": 21704878,
+        "training_receipt_sha256": "e59c1ff4a071561722f247572ca1b9a53e897d88b19de1fd636dec602eb7a1be",
+        "staging_manifest_sha256": "71849bea6b898d8bf51c79bc4ab6f43212537278200cdf580e0fb985f392bfa8",
+        "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+        "completed_epochs": 30,
+        "selection": "final_epoch",
+        "recipe_id": "reviewed-endpoints-seed46-v1",
+        "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+        "manifest_sha256": "7869ff9ad7afea8b538f937c40a0fa7d92fdf5ab050ddaf32c4bf33bc0c3045f"
+      },
+      "loaded_model_state_sha256": "a0bae9aa8174f56486036f7b39b4559ba3a430993e438d86522ee4924de365f8",
+      "references": {
+        "primary": {
+          "score": {
+            "gold_count": 663,
+            "prediction_count": 729,
+            "tp": 643,
+            "fn": 20,
+            "fp": 86,
+            "duplicate_fp": 29,
+            "other_fp": 57,
+            "visible_endpoints": 1228,
+            "returned_endpoints": 1208,
+            "missing_endpoints": 20,
+            "endpoint_coverage": 0.9837133550488599,
+            "conditional_median_error_px": 1.5797753349082573,
+            "conditional_p95_error_px": 5.039372004795077,
+            "image_count": 20
+          },
+          "quality": {
+            "gold_count": 663,
+            "prediction_count": 729,
+            "tp": 643,
+            "fn": 20,
+            "fp": 86,
+            "visible_endpoints": 1228,
+            "returned_visible_endpoints": 1208,
+            "both_visible_objects": 584,
+            "both_visible_objects_with_both_returned": 578,
+            "unlocatable_reference_endpoints": 98,
+            "unlocatable_on_matched_objects": 77,
+            "returned_on_unlocatable_reference": 69,
+            "image_count": 20,
+            "object_precision": 0.8820301783264746,
+            "object_recall": 0.9698340874811463,
+            "visible_endpoint_coverage": 0.9837133550488599,
+            "both_visible_objects_returned_fraction": 0.9897260273972602,
+            "returned_on_unlocatable_reference_fraction": 0.8961038961038961,
+            "radii": [
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1142,
+                "both_visible_objects_within_radius": 528,
+                "visible_endpoint_success_rate": 0.9299674267100977,
+                "both_visible_object_success_rate": 0.9041095890410958
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1207,
+                "both_visible_objects_within_radius": 578,
+                "visible_endpoint_success_rate": 0.9828990228013029,
+                "both_visible_object_success_rate": 0.9897260273972602
+              }
+            ]
+          },
+          "groups_by_locatable_corners": {
+            "0": {
+              "reference_objects": 19,
+              "matched_objects": 12,
+              "missed_objects": 7,
+              "visible_endpoints": 0,
+              "returned_visible_endpoints": 0,
+              "missing_visible_endpoints": 0,
+              "unlocatable_on_matched_objects": 24,
+              "returned_on_unlocatable_reference": 20,
+              "conditional_median_error_px": null,
+              "conditional_p95_error_px": null,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "1": {
+              "reference_objects": 60,
+              "matched_objects": 53,
+              "missed_objects": 7,
+              "visible_endpoints": 60,
+              "returned_visible_endpoints": 52,
+              "missing_visible_endpoints": 8,
+              "unlocatable_on_matched_objects": 53,
+              "returned_on_unlocatable_reference": 49,
+              "conditional_median_error_px": 2.897610075523172,
+              "conditional_p95_error_px": 6.433011556720829,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 42,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 51,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "2": {
+              "reference_objects": 584,
+              "matched_objects": 578,
+              "missed_objects": 6,
+              "visible_endpoints": 1168,
+              "returned_visible_endpoints": 1156,
+              "missing_visible_endpoints": 12,
+              "unlocatable_on_matched_objects": 0,
+              "returned_on_unlocatable_reference": 0,
+              "conditional_median_error_px": 1.548638086189447,
+              "conditional_p95_error_px": 4.9248336515529765,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 1100,
+                  "both_visible_objects_within_radius": 528
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 1156,
+                  "both_visible_objects_within_radius": 578
+                }
+              ]
+            }
+          },
+          "miss_free_nonempty_image_ids": [
+            "new_000010",
+            "new_000054",
+            "new_000058"
+          ],
+          "empty_image_predictions": {
+            "new_000146": 0,
+            "new_000147": 0,
+            "new_000148": 0
+          }
+        },
+        "original": {
+          "score": {
+            "gold_count": 664,
+            "prediction_count": 729,
+            "tp": 632,
+            "fn": 32,
+            "fp": 97,
+            "duplicate_fp": 27,
+            "other_fp": 70,
+            "visible_endpoints": 1227,
+            "returned_endpoints": 1190,
+            "missing_endpoints": 37,
+            "endpoint_coverage": 0.9698451507742462,
+            "conditional_median_error_px": 1.5644781561527725,
+            "conditional_p95_error_px": 5.055757834352935,
+            "image_count": 20
+          },
+          "quality": {
+            "gold_count": 664,
+            "prediction_count": 729,
+            "tp": 632,
+            "fn": 32,
+            "fp": 97,
+            "visible_endpoints": 1227,
+            "returned_visible_endpoints": 1190,
+            "both_visible_objects": 584,
+            "both_visible_objects_with_both_returned": 571,
+            "unlocatable_reference_endpoints": 101,
+            "unlocatable_on_matched_objects": 73,
+            "returned_on_unlocatable_reference": 65,
+            "image_count": 20,
+            "object_precision": 0.8669410150891632,
+            "object_recall": 0.9518072289156626,
+            "visible_endpoint_coverage": 0.9698451507742462,
+            "both_visible_objects_returned_fraction": 0.9777397260273972,
+            "returned_on_unlocatable_reference_fraction": 0.8904109589041096,
+            "radii": [
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1125,
+                "both_visible_objects_within_radius": 521,
+                "visible_endpoint_success_rate": 0.9168704156479217,
+                "both_visible_object_success_rate": 0.8921232876712328
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1189,
+                "both_visible_objects_within_radius": 571,
+                "visible_endpoint_success_rate": 0.9690301548492257,
+                "both_visible_object_success_rate": 0.9777397260273972
+              }
+            ]
+          },
+          "groups_by_locatable_corners": {
+            "0": {
+              "reference_objects": 21,
+              "matched_objects": 12,
+              "missed_objects": 9,
+              "visible_endpoints": 0,
+              "returned_visible_endpoints": 0,
+              "missing_visible_endpoints": 0,
+              "unlocatable_on_matched_objects": 24,
+              "returned_on_unlocatable_reference": 20,
+              "conditional_median_error_px": null,
+              "conditional_p95_error_px": null,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "1": {
+              "reference_objects": 59,
+              "matched_objects": 49,
+              "missed_objects": 10,
+              "visible_endpoints": 59,
+              "returned_visible_endpoints": 48,
+              "missing_visible_endpoints": 11,
+              "unlocatable_on_matched_objects": 49,
+              "returned_on_unlocatable_reference": 45,
+              "conditional_median_error_px": 2.897610075523172,
+              "conditional_p95_error_px": 6.295534373500446,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 39,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 47,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "2": {
+              "reference_objects": 584,
+              "matched_objects": 571,
+              "missed_objects": 13,
+              "visible_endpoints": 1168,
+              "returned_visible_endpoints": 1142,
+              "missing_visible_endpoints": 26,
+              "unlocatable_on_matched_objects": 0,
+              "returned_on_unlocatable_reference": 0,
+              "conditional_median_error_px": 1.546214896412382,
+              "conditional_p95_error_px": 4.925329767812095,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 1086,
+                  "both_visible_objects_within_radius": 521
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 1142,
+                  "both_visible_objects_within_radius": 571
+                }
+              ]
+            }
+          },
+          "miss_free_nonempty_image_ids": [
+            "new_000010"
+          ],
+          "empty_image_predictions": {
+            "new_000146": 0,
+            "new_000147": 0,
+            "new_000148": 0
+          }
+        }
+      }
+    },
+    "current": {
+      "checkpoint": {
+        "kind": "baomai-trained-checkpoint",
+        "purpose": "paired-finetune",
+        "arm": "candidate",
+        "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+        "checkpoint_size_bytes": 21704814,
+        "training_receipt_sha256": "da9e4c9614ac0fd198fcc3124745de855047dd8cd78a0d84344692b73bc3e49d",
+        "staging_manifest_sha256": "12f6cf212600e1e2a27fb1d434b34c490f77a290fe5cb78d26b1442423d11616",
+        "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+        "completed_epochs": 30,
+        "selection": "final_epoch",
+        "recipe_id": "reviewed-annotations-seed46-v1",
+        "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+        "manifest_sha256": "c5f07c4445a7b33a679fd4fc896aaf9643d81b4f72d8ca8e4e7179cb0bc691e8"
+      },
+      "loaded_model_state_sha256": "3e0275fccf9ae7b6a64ee331e5c696c596f22dd914f9bdfb1ebd71712606cc8c",
+      "references": {
+        "primary": {
+          "score": {
+            "gold_count": 663,
+            "prediction_count": 728,
+            "tp": 643,
+            "fn": 20,
+            "fp": 85,
+            "duplicate_fp": 31,
+            "other_fp": 54,
+            "visible_endpoints": 1228,
+            "returned_endpoints": 1208,
+            "missing_endpoints": 20,
+            "endpoint_coverage": 0.9837133550488599,
+            "conditional_median_error_px": 1.563067748137773,
+            "conditional_p95_error_px": 5.130618386666422,
+            "image_count": 20
+          },
+          "quality": {
+            "gold_count": 663,
+            "prediction_count": 728,
+            "tp": 643,
+            "fn": 20,
+            "fp": 85,
+            "visible_endpoints": 1228,
+            "returned_visible_endpoints": 1208,
+            "both_visible_objects": 584,
+            "both_visible_objects_with_both_returned": 578,
+            "unlocatable_reference_endpoints": 98,
+            "unlocatable_on_matched_objects": 77,
+            "returned_on_unlocatable_reference": 69,
+            "image_count": 20,
+            "object_precision": 0.8832417582417582,
+            "object_recall": 0.9698340874811463,
+            "visible_endpoint_coverage": 0.9837133550488599,
+            "both_visible_objects_returned_fraction": 0.9897260273972602,
+            "returned_on_unlocatable_reference_fraction": 0.8961038961038961,
+            "radii": [
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1137,
+                "both_visible_objects_within_radius": 529,
+                "visible_endpoint_success_rate": 0.9258957654723127,
+                "both_visible_object_success_rate": 0.9058219178082192
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1205,
+                "both_visible_objects_within_radius": 577,
+                "visible_endpoint_success_rate": 0.9812703583061889,
+                "both_visible_object_success_rate": 0.988013698630137
+              }
+            ]
+          },
+          "groups_by_locatable_corners": {
+            "0": {
+              "reference_objects": 19,
+              "matched_objects": 12,
+              "missed_objects": 7,
+              "visible_endpoints": 0,
+              "returned_visible_endpoints": 0,
+              "missing_visible_endpoints": 0,
+              "unlocatable_on_matched_objects": 24,
+              "returned_on_unlocatable_reference": 20,
+              "conditional_median_error_px": null,
+              "conditional_p95_error_px": null,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "1": {
+              "reference_objects": 60,
+              "matched_objects": 53,
+              "missed_objects": 7,
+              "visible_endpoints": 60,
+              "returned_visible_endpoints": 52,
+              "missing_visible_endpoints": 8,
+              "unlocatable_on_matched_objects": 53,
+              "returned_on_unlocatable_reference": 49,
+              "conditional_median_error_px": 2.8710697747380625,
+              "conditional_p95_error_px": 6.901833327332684,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 38,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 51,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "2": {
+              "reference_objects": 584,
+              "matched_objects": 578,
+              "missed_objects": 6,
+              "visible_endpoints": 1168,
+              "returned_visible_endpoints": 1156,
+              "missing_visible_endpoints": 12,
+              "unlocatable_on_matched_objects": 0,
+              "returned_on_unlocatable_reference": 0,
+              "conditional_median_error_px": 1.5450840898852087,
+              "conditional_p95_error_px": 4.982033487154155,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 1099,
+                  "both_visible_objects_within_radius": 529
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 1154,
+                  "both_visible_objects_within_radius": 577
+                }
+              ]
+            }
+          },
+          "miss_free_nonempty_image_ids": [
+            "new_000010",
+            "new_000054",
+            "new_000058"
+          ],
+          "empty_image_predictions": {
+            "new_000146": 0,
+            "new_000147": 0,
+            "new_000148": 0
+          }
+        },
+        "original": {
+          "score": {
+            "gold_count": 664,
+            "prediction_count": 728,
+            "tp": 632,
+            "fn": 32,
+            "fp": 96,
+            "duplicate_fp": 29,
+            "other_fp": 67,
+            "visible_endpoints": 1227,
+            "returned_endpoints": 1190,
+            "missing_endpoints": 37,
+            "endpoint_coverage": 0.9698451507742462,
+            "conditional_median_error_px": 1.558031299715185,
+            "conditional_p95_error_px": 5.177849520605724,
+            "image_count": 20
+          },
+          "quality": {
+            "gold_count": 664,
+            "prediction_count": 728,
+            "tp": 632,
+            "fn": 32,
+            "fp": 96,
+            "visible_endpoints": 1227,
+            "returned_visible_endpoints": 1190,
+            "both_visible_objects": 584,
+            "both_visible_objects_with_both_returned": 571,
+            "unlocatable_reference_endpoints": 101,
+            "unlocatable_on_matched_objects": 73,
+            "returned_on_unlocatable_reference": 65,
+            "image_count": 20,
+            "object_precision": 0.8681318681318682,
+            "object_recall": 0.9518072289156626,
+            "visible_endpoint_coverage": 0.9698451507742462,
+            "both_visible_objects_returned_fraction": 0.9777397260273972,
+            "returned_on_unlocatable_reference_fraction": 0.8904109589041096,
+            "radii": [
+              {
+                "radius_px": 5,
+                "visible_endpoints_within_radius": 1120,
+                "both_visible_objects_within_radius": 522,
+                "visible_endpoint_success_rate": 0.9127954360228199,
+                "both_visible_object_success_rate": 0.8938356164383562
+              },
+              {
+                "radius_px": 10,
+                "visible_endpoints_within_radius": 1187,
+                "both_visible_objects_within_radius": 570,
+                "visible_endpoint_success_rate": 0.967400162999185,
+                "both_visible_object_success_rate": 0.976027397260274
+              }
+            ]
+          },
+          "groups_by_locatable_corners": {
+            "0": {
+              "reference_objects": 21,
+              "matched_objects": 12,
+              "missed_objects": 9,
+              "visible_endpoints": 0,
+              "returned_visible_endpoints": 0,
+              "missing_visible_endpoints": 0,
+              "unlocatable_on_matched_objects": 24,
+              "returned_on_unlocatable_reference": 20,
+              "conditional_median_error_px": null,
+              "conditional_p95_error_px": null,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 0,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "1": {
+              "reference_objects": 59,
+              "matched_objects": 49,
+              "missed_objects": 10,
+              "visible_endpoints": 59,
+              "returned_visible_endpoints": 48,
+              "missing_visible_endpoints": 11,
+              "unlocatable_on_matched_objects": 49,
+              "returned_on_unlocatable_reference": 45,
+              "conditional_median_error_px": 2.8710697747380625,
+              "conditional_p95_error_px": 6.807087568724691,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 35,
+                  "both_visible_objects_within_radius": 0
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 47,
+                  "both_visible_objects_within_radius": 0
+                }
+              ]
+            },
+            "2": {
+              "reference_objects": 584,
+              "matched_objects": 571,
+              "missed_objects": 13,
+              "visible_endpoints": 1168,
+              "returned_visible_endpoints": 1142,
+              "missing_visible_endpoints": 26,
+              "unlocatable_on_matched_objects": 0,
+              "returned_on_unlocatable_reference": 0,
+              "conditional_median_error_px": 1.5439096367788867,
+              "conditional_p95_error_px": 4.993898982995508,
+              "radii": [
+                {
+                  "radius_px": 5,
+                  "visible_endpoints_within_radius": 1085,
+                  "both_visible_objects_within_radius": 522
+                },
+                {
+                  "radius_px": 10,
+                  "visible_endpoints_within_radius": 1140,
+                  "both_visible_objects_within_radius": 570
+                }
+              ]
+            }
+          },
+          "miss_free_nonempty_image_ids": [
+            "new_000010"
+          ],
+          "empty_image_predictions": {
+            "new_000146": 0,
+            "new_000147": 0,
+            "new_000148": 0
+          }
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "primary": {
+      "endpoint_reviewed-vs-old_reviewed": {
+        "gained_object_ids": [
+          "new_000056:14",
+          "new_000090:43"
+        ],
+        "lost_object_ids": [],
+        "both_corner_changes": {
+          "5": {
+            "gained": [
+              "new_000008:10",
+              "new_000008:11",
+              "new_000056:3",
+              "new_000058:7"
+            ],
+            "lost": [
+              "new_000011:4",
+              "new_000058:1",
+              "new_000059:2"
+            ]
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        },
+        "common_endpoints": {
+          "matched_before": 641,
+          "matched_after": 643,
+          "common_matched_objects": 641,
+          "reference_row_numbering": "one-based within the separately identified scoring reference",
+          "unlocatable": {
+            "full_reference_slots": 98,
+            "full_reference_returned_before": 65,
+            "full_reference_returned_after": 69,
+            "slots_on_matched_objects_before": 75,
+            "slots_on_matched_objects_after": 77,
+            "common_matched_slots": 75,
+            "common_matched_returned_before": 65,
+            "common_matched_returned_after": 67,
+            "common_matched_availability_changes": [
+              {
+                "object_id": "new_000090:48",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": true,
+                "after_matched": true,
+                "before_prediction_index_zero_based": 54,
+                "after_prediction_index_zero_based": 52,
+                "before_error_px": null,
+                "after_error_px": null
+              },
+              {
+                "object_id": "new_000090:48",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": true,
+                "after_matched": true,
+                "before_prediction_index_zero_based": 54,
+                "after_prediction_index_zero_based": 52,
+                "before_error_px": null,
+                "after_error_px": null
+              }
+            ],
+            "full_reference_availability_changes": [
+              {
+                "object_id": "new_000056:14",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": false,
+                "after_matched": true
+              },
+              {
+                "object_id": "new_000090:43",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": false,
+                "after_matched": true
+              },
+              {
+                "object_id": "new_000090:48",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": true,
+                "after_matched": true
+              },
+              {
+                "object_id": "new_000090:48",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": true,
+                "after_matched": true
+              }
+            ],
+            "common_matched_conditional_errors": null
+          },
+          "locatable": {
+            "full_reference_slots": 1228,
+            "full_reference_returned_before": 1206,
+            "full_reference_returned_after": 1208,
+            "slots_on_matched_objects_before": 1207,
+            "slots_on_matched_objects_after": 1209,
+            "common_matched_slots": 1207,
+            "common_matched_returned_before": 1206,
+            "common_matched_returned_after": 1206,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [
+              {
+                "object_id": "new_000056:14",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": false,
+                "after_matched": true
+              },
+              {
+                "object_id": "new_000090:43",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": false,
+                "after_matched": true
+              }
+            ],
+            "common_matched_conditional_errors": {
+              "before": {
+                "count": 1206,
+                "median_px": 1.5664801479995087,
+                "p95_px": 5.139762090445965
+              },
+              "after": {
+                "count": 1206,
+                "median_px": 1.5736475065634203,
+                "p95_px": 5.025925982796762
+              }
+            }
+          },
+          "interpretation": "Only common-matched slots have identical detection opportunity. Full-reference counts include missing detections; reduced unlocatable-side output alone is not improvement. Unlocatable slots have no scored hidden-coordinate error."
+        }
+      },
+      "old_reviewed-vs-current": {
+        "gained_object_ids": [],
+        "lost_object_ids": [
+          "new_000056:14",
+          "new_000090:43"
+        ],
+        "both_corner_changes": {
+          "5": {
+            "gained": [
+              "new_000008:22",
+              "new_000011:4",
+              "new_000087:53"
+            ],
+            "lost": [
+              "new_000008:10",
+              "new_000008:11",
+              "new_000008:21",
+              "new_000056:3",
+              "new_000058:7"
+            ]
+          },
+          "10": {
+            "gained": [
+              "new_000007:15"
+            ],
+            "lost": []
+          }
+        },
+        "common_endpoints": {
+          "matched_before": 643,
+          "matched_after": 641,
+          "common_matched_objects": 641,
+          "reference_row_numbering": "one-based within the separately identified scoring reference",
+          "unlocatable": {
+            "full_reference_slots": 98,
+            "full_reference_returned_before": 69,
+            "full_reference_returned_after": 65,
+            "slots_on_matched_objects_before": 77,
+            "slots_on_matched_objects_after": 75,
+            "common_matched_slots": 75,
+            "common_matched_returned_before": 67,
+            "common_matched_returned_after": 65,
+            "common_matched_availability_changes": [
+              {
+                "object_id": "new_000090:48",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": true,
+                "before_prediction_index_zero_based": 53,
+                "after_prediction_index_zero_based": 54,
+                "before_error_px": null,
+                "after_error_px": null
+              },
+              {
+                "object_id": "new_000090:48",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": true,
+                "before_prediction_index_zero_based": 53,
+                "after_prediction_index_zero_based": 54,
+                "before_error_px": null,
+                "after_error_px": null
+              }
+            ],
+            "full_reference_availability_changes": [
+              {
+                "object_id": "new_000056:14",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": false
+              },
+              {
+                "object_id": "new_000090:43",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": false
+              },
+              {
+                "object_id": "new_000090:48",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": true
+              },
+              {
+                "object_id": "new_000090:48",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": true
+              }
+            ],
+            "common_matched_conditional_errors": null
+          },
+          "locatable": {
+            "full_reference_slots": 1228,
+            "full_reference_returned_before": 1208,
+            "full_reference_returned_after": 1206,
+            "slots_on_matched_objects_before": 1209,
+            "slots_on_matched_objects_after": 1207,
+            "common_matched_slots": 1207,
+            "common_matched_returned_before": 1206,
+            "common_matched_returned_after": 1206,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [
+              {
+                "object_id": "new_000056:14",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": false
+              },
+              {
+                "object_id": "new_000090:43",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": false
+              }
+            ],
+            "common_matched_conditional_errors": {
+              "before": {
+                "count": 1206,
+                "median_px": 1.5622048433827365,
+                "p95_px": 5.120656975595696
+              },
+              "after": {
+                "count": 1206,
+                "median_px": 1.5664801479995087,
+                "p95_px": 5.139762090445965
+              }
+            }
+          },
+          "interpretation": "Only common-matched slots have identical detection opportunity. Full-reference counts include missing detections; reduced unlocatable-side output alone is not improvement. Unlocatable slots have no scored hidden-coordinate error."
+        }
+      },
+      "endpoint_reviewed-vs-current": {
+        "gained_object_ids": [],
+        "lost_object_ids": [],
+        "both_corner_changes": {
+          "5": {
+            "gained": [
+              "new_000008:22",
+              "new_000087:53"
+            ],
+            "lost": [
+              "new_000008:21",
+              "new_000058:1",
+              "new_000059:2"
+            ]
+          },
+          "10": {
+            "gained": [
+              "new_000007:15"
+            ],
+            "lost": []
+          }
+        },
+        "common_endpoints": {
+          "matched_before": 643,
+          "matched_after": 643,
+          "common_matched_objects": 643,
+          "reference_row_numbering": "one-based within the separately identified scoring reference",
+          "unlocatable": {
+            "full_reference_slots": 98,
+            "full_reference_returned_before": 69,
+            "full_reference_returned_after": 69,
+            "slots_on_matched_objects_before": 77,
+            "slots_on_matched_objects_after": 77,
+            "common_matched_slots": 77,
+            "common_matched_returned_before": 69,
+            "common_matched_returned_after": 69,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [],
+            "common_matched_conditional_errors": null
+          },
+          "locatable": {
+            "full_reference_slots": 1228,
+            "full_reference_returned_before": 1208,
+            "full_reference_returned_after": 1208,
+            "slots_on_matched_objects_before": 1209,
+            "slots_on_matched_objects_after": 1209,
+            "common_matched_slots": 1209,
+            "common_matched_returned_before": 1208,
+            "common_matched_returned_after": 1208,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [],
+            "common_matched_conditional_errors": {
+              "before": {
+                "count": 1208,
+                "median_px": 1.563067748137773,
+                "p95_px": 5.130618386666422
+              },
+              "after": {
+                "count": 1208,
+                "median_px": 1.5797753349082573,
+                "p95_px": 5.039372004795077
+              }
+            }
+          },
+          "interpretation": "Only common-matched slots have identical detection opportunity. Full-reference counts include missing detections; reduced unlocatable-side output alone is not improvement. Unlocatable slots have no scored hidden-coordinate error."
+        }
+      }
+    },
+    "original": {
+      "endpoint_reviewed-vs-old_reviewed": {
+        "gained_object_ids": [
+          "new_000056:14"
+        ],
+        "lost_object_ids": [],
+        "both_corner_changes": {
+          "5": {
+            "gained": [
+              "new_000008:10",
+              "new_000008:11",
+              "new_000056:3",
+              "new_000058:7"
+            ],
+            "lost": [
+              "new_000011:4",
+              "new_000058:1",
+              "new_000059:2"
+            ]
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        },
+        "common_endpoints": {
+          "matched_before": 631,
+          "matched_after": 632,
+          "common_matched_objects": 631,
+          "reference_row_numbering": "one-based within the separately identified scoring reference",
+          "unlocatable": {
+            "full_reference_slots": 101,
+            "full_reference_returned_before": 64,
+            "full_reference_returned_after": 65,
+            "slots_on_matched_objects_before": 72,
+            "slots_on_matched_objects_after": 73,
+            "common_matched_slots": 72,
+            "common_matched_returned_before": 64,
+            "common_matched_returned_after": 64,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [
+              {
+                "object_id": "new_000056:14",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": false,
+                "after_matched": true
+              }
+            ],
+            "common_matched_conditional_errors": null
+          },
+          "locatable": {
+            "full_reference_slots": 1227,
+            "full_reference_returned_before": 1189,
+            "full_reference_returned_after": 1190,
+            "slots_on_matched_objects_before": 1190,
+            "slots_on_matched_objects_after": 1191,
+            "common_matched_slots": 1190,
+            "common_matched_returned_before": 1189,
+            "common_matched_returned_after": 1189,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [
+              {
+                "object_id": "new_000056:14",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": false,
+                "after_returned": true,
+                "before_matched": false,
+                "after_matched": true
+              }
+            ],
+            "common_matched_conditional_errors": {
+              "before": {
+                "count": 1189,
+                "median_px": 1.5577893053093594,
+                "p95_px": 5.14746395150985
+              },
+              "after": {
+                "count": 1189,
+                "median_px": 1.56303902990169,
+                "p95_px": 5.036929940733103
+              }
+            }
+          },
+          "interpretation": "Only common-matched slots have identical detection opportunity. Full-reference counts include missing detections; reduced unlocatable-side output alone is not improvement. Unlocatable slots have no scored hidden-coordinate error."
+        }
+      },
+      "old_reviewed-vs-current": {
+        "gained_object_ids": [],
+        "lost_object_ids": [
+          "new_000056:14"
+        ],
+        "both_corner_changes": {
+          "5": {
+            "gained": [
+              "new_000008:22",
+              "new_000011:4",
+              "new_000087:53"
+            ],
+            "lost": [
+              "new_000008:10",
+              "new_000008:11",
+              "new_000008:21",
+              "new_000056:3",
+              "new_000058:7"
+            ]
+          },
+          "10": {
+            "gained": [
+              "new_000007:15"
+            ],
+            "lost": []
+          }
+        },
+        "common_endpoints": {
+          "matched_before": 632,
+          "matched_after": 631,
+          "common_matched_objects": 631,
+          "reference_row_numbering": "one-based within the separately identified scoring reference",
+          "unlocatable": {
+            "full_reference_slots": 101,
+            "full_reference_returned_before": 65,
+            "full_reference_returned_after": 64,
+            "slots_on_matched_objects_before": 73,
+            "slots_on_matched_objects_after": 72,
+            "common_matched_slots": 72,
+            "common_matched_returned_before": 64,
+            "common_matched_returned_after": 64,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [
+              {
+                "object_id": "new_000056:14",
+                "side_index_zero_based": 1,
+                "side": "right",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": false
+              }
+            ],
+            "common_matched_conditional_errors": null
+          },
+          "locatable": {
+            "full_reference_slots": 1227,
+            "full_reference_returned_before": 1190,
+            "full_reference_returned_after": 1189,
+            "slots_on_matched_objects_before": 1191,
+            "slots_on_matched_objects_after": 1190,
+            "common_matched_slots": 1190,
+            "common_matched_returned_before": 1189,
+            "common_matched_returned_after": 1189,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [
+              {
+                "object_id": "new_000056:14",
+                "side_index_zero_based": 0,
+                "side": "left",
+                "before_returned": true,
+                "after_returned": false,
+                "before_matched": true,
+                "after_matched": false
+              }
+            ],
+            "common_matched_conditional_errors": {
+              "before": {
+                "count": 1189,
+                "median_px": 1.5576506345021846,
+                "p95_px": 5.1300552212400055
+              },
+              "after": {
+                "count": 1189,
+                "median_px": 1.5577893053093594,
+                "p95_px": 5.14746395150985
+              }
+            }
+          },
+          "interpretation": "Only common-matched slots have identical detection opportunity. Full-reference counts include missing detections; reduced unlocatable-side output alone is not improvement. Unlocatable slots have no scored hidden-coordinate error."
+        }
+      },
+      "endpoint_reviewed-vs-current": {
+        "gained_object_ids": [],
+        "lost_object_ids": [],
+        "both_corner_changes": {
+          "5": {
+            "gained": [
+              "new_000008:22",
+              "new_000087:53"
+            ],
+            "lost": [
+              "new_000008:21",
+              "new_000058:1",
+              "new_000059:2"
+            ]
+          },
+          "10": {
+            "gained": [
+              "new_000007:15"
+            ],
+            "lost": []
+          }
+        },
+        "common_endpoints": {
+          "matched_before": 632,
+          "matched_after": 632,
+          "common_matched_objects": 632,
+          "reference_row_numbering": "one-based within the separately identified scoring reference",
+          "unlocatable": {
+            "full_reference_slots": 101,
+            "full_reference_returned_before": 65,
+            "full_reference_returned_after": 65,
+            "slots_on_matched_objects_before": 73,
+            "slots_on_matched_objects_after": 73,
+            "common_matched_slots": 73,
+            "common_matched_returned_before": 65,
+            "common_matched_returned_after": 65,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [],
+            "common_matched_conditional_errors": null
+          },
+          "locatable": {
+            "full_reference_slots": 1227,
+            "full_reference_returned_before": 1190,
+            "full_reference_returned_after": 1190,
+            "slots_on_matched_objects_before": 1191,
+            "slots_on_matched_objects_after": 1191,
+            "common_matched_slots": 1191,
+            "common_matched_returned_before": 1190,
+            "common_matched_returned_after": 1190,
+            "common_matched_availability_changes": [],
+            "full_reference_availability_changes": [],
+            "common_matched_conditional_errors": {
+              "before": {
+                "count": 1190,
+                "median_px": 1.558031299715185,
+                "p95_px": 5.177849520605724
+              },
+              "after": {
+                "count": 1190,
+                "median_px": 1.5644781561527725,
+                "p95_px": 5.055757834352935
+              }
+            }
+          },
+          "interpretation": "Only common-matched slots have identical detection opportunity. Full-reference counts include missing detections; reduced unlocatable-side output alone is not improvement. Unlocatable slots have no scored hidden-coordinate error."
+        }
+      }
+    }
+  },
+  "inference": {
+    "real_image_calls": 60,
+    "excluded_blank_warmups": 3,
+    "scored_image_reference_cases": 120,
+    "network_events_blocked": [],
+    "runtime": {
+      "python": "3.12.14",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "device_requested": "cpu",
+      "torch": "2.10.0+cpu",
+      "torch_cuda": null,
+      "torch_threads_requested": 4,
+      "ultralytics": "8.4.182",
+      "loaded_kpt_shape": [
+        2,
+        3
+      ],
+      "packages": {
+        "torchvision": "0.25.0+cpu",
+        "numpy": "2.2.6",
+        "Pillow": "11.3.0",
+        "opencv-python": "4.11.0.86"
+      },
+      "device_actual": "cpu",
+      "backend_end2end": false,
+      "backend_fp16": false,
+      "torch_threads": 4,
+      "torch_interop_threads": 1,
+      "mkldnn_enabled": true,
+      "deterministic_algorithms_enabled": false,
+      "float32_matmul_precision": "highest",
+      "resolved_prediction_args_after_warmup": {
+        "imgsz": 1280,
+        "conf": 0.13,
+        "iou": 0.7,
+        "rect": true,
+        "batch": 1,
+        "nms": true,
+        "max_det": 300,
+        "quantize": 32,
+        "augment": false
+      }
+    }
+  },
+  "limits": [
+    "The current checkpoint is an operational comparator, not a third training arm.",
+    "Primary and original references are scored separately. References are not changed after observing results.",
+    "Filename ranges are descriptive groups, not independent scenes or captures.",
+    "Corner availability on reference-v0 sides is a disagreement diagnostic; no hidden-coordinate error is computed.",
+    "Repeated development images do not establish unseen-scene generalization.",
+    "Single observations in a fixed order are descriptive CPU timings, not deployment benchmarks."
+  ],
+  "visual_review": {
+    "changed_reference_cases": 14,
+    "endpoint_only_proposals": 8,
+    "proposal_categories": {
+      "alternative_extent_of_existing_front": 4,
+      "foreground_or_background_structure": 3,
+      "ambiguous_occluded_extent": 1,
+      "supported_additional_physical_front": 0
+    },
+    "changed_cases_evidence_sha256": "34d0594edc2f5e3f27bc0557f121f555830b7dfc03d697f24cfb329fd558be4a",
+    "proposal_decisions_sha256": "c2646f7dfcf2c143a37d6bd22f186159d08ea71832dc7002d42c037989b7d505",
+    "physical_review_is_manual_and_uncertain": true,
+    "reference_labels_changed": false
+  },
+  "independent_audit": {
+    "script_sha256": "2c3fc367c9f4faf77b4ca5e2853364eace52e8628ddff350d4f9b055ed33108c",
+    "report_sha256": "093dc81836d7b5816fc242bbac4f55f63e3b36aa879c3811570d23a64a3429ca",
+    "image_reference_cases": 120,
+    "reference_object_states": 3981,
+    "pairwise_comparisons": 6,
+    "actual_original_pngs_verified": 20
+  }
+}
