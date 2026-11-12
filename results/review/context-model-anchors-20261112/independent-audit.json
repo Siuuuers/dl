@@ -1,0 +1,578 @@
+{
+  "schema_version": 1,
+  "audit_status": "pass",
+  "audit_script_sha256": "c0447e8f1cbdf3513e32eedb778b25e39248793bc745eef3f37d4f09eb1c900c",
+  "plan_sha256": "45c12b2e2e8617ad76a0b2c812122b9156eb29d908e721bc79e334bac4fb22cd",
+  "model_inputs_sha256": "7cbed9aef5970e8d2bbb85a19770fdfebec5ea7d1801b0c422d49f9534025004",
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "source_extraction_audit": {
+    "status": "pass",
+    "member_records": 36,
+    "images": 4,
+    "exact_source_prediction_records": 36,
+    "exact_saved_scorer_associations": 36,
+    "independently_recomputed_bbox_ious": 36,
+    "maximum_bbox_iou_difference": 3.3306690738754696e-16,
+    "minimum_included_endpoint_confidence": 0.8522350788116455,
+    "source_prediction_sha256": "45587e9bd1c194fe44730a5b5404408856aa80bfb4e582632acaefb19e95c700",
+    "source_scoring_sha256": "4b97981807f0d7baddc84e9cba8e8e4b79c33bc0686aa316ac45c899b2ec4344",
+    "image_and_label_identities": [
+      {
+        "image_id": "new_000007",
+        "image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+        "label_sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921"
+      },
+      {
+        "image_id": "new_000008",
+        "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+        "label_sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57"
+      },
+      {
+        "image_id": "new_000009",
+        "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+        "label_sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9"
+      },
+      {
+        "image_id": "new_000010",
+        "image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+        "label_sha256": "9a0cc16ca96d094b1c7849b829ec67625d7569666d5753bd660006c9eecbf3c6"
+      }
+    ],
+    "matching_policy": "Use frozen reference-box scorer association; never rematch using endpoint errors."
+  },
+  "checks": 10486,
+  "numerical_and_measurement_audit": {
+    "status": "pass",
+    "script_sha256": "7478d5a9d65a7aa45fd3252d3a310da60b727e787020c1f582c37a7ff9f47329",
+    "evaluation_sha256": "e28d5ef7b4d0c3f4a622f6fde6dfa353684ee56c8e88830fbcc6010d57249459",
+    "scenarios_independently_calculated": 36,
+    "strategy_pairs_compared": 108,
+    "homography_fits_independently_solved": 36,
+    "maximum_absolute_coordinate_difference_px": 4.547473508864641e-13,
+    "lane_denominators": {
+      "interpolation": 26,
+      "extrapolation": 8
+    },
+    "distinct_observed_objects": 30,
+    "actual_hidden_cases_with_unknown_left_error": 2,
+    "abstentions": 3,
+    "all_lane_and_per_stack_summaries_and_paired_comparisons_recomputed": true,
+    "summary": {
+      "interpolation": {
+        "direct_pr35": {
+          "left_5px": 24,
+          "left_10px": 26,
+          "right_5px": 25,
+          "right_10px": 26,
+          "pair_5px": 24,
+          "pair_10px": 26,
+          "left_error": {
+            "count": 26,
+            "median_px": 1.8867084682619026,
+            "p90_px": 4.6914009180056535,
+            "maximum_px": 5.734508607259665
+          }
+        },
+        "model_donor_homography": {
+          "left_5px": 23,
+          "left_10px": 26,
+          "right_5px": 25,
+          "right_10px": 26,
+          "pair_5px": 23,
+          "pair_10px": 26,
+          "left_error": {
+            "count": 26,
+            "median_px": 2.1875406635190338,
+            "p90_px": 5.109295313003939,
+            "maximum_px": 7.66130961008111
+          }
+        },
+        "right_anchored_homography": {
+          "left_5px": 24,
+          "left_10px": 26,
+          "right_5px": 25,
+          "right_10px": 26,
+          "pair_5px": 23,
+          "pair_10px": 26,
+          "left_error": {
+            "count": 26,
+            "median_px": 2.268917735755801,
+            "p90_px": 3.8437637929899067,
+            "maximum_px": 8.112414214929938
+          }
+        }
+      },
+      "extrapolation": {
+        "direct_pr35": {
+          "left_5px": 8,
+          "left_10px": 8,
+          "right_5px": 7,
+          "right_10px": 8,
+          "pair_5px": 7,
+          "pair_10px": 8,
+          "left_error": {
+            "count": 8,
+            "median_px": 2.3554211865395085,
+            "p90_px": 3.2149602507758894,
+            "maximum_px": 3.357031238716098
+          }
+        },
+        "model_donor_homography": {
+          "left_5px": 6,
+          "left_10px": 7,
+          "right_5px": 7,
+          "right_10px": 8,
+          "pair_5px": 6,
+          "pair_10px": 7,
+          "left_error": {
+            "count": 8,
+            "median_px": 2.323875057489006,
+            "p90_px": 9.418289779164422,
+            "maximum_px": 10.109683852128372
+          }
+        },
+        "right_anchored_homography": {
+          "left_5px": 7,
+          "left_10px": 8,
+          "right_5px": 7,
+          "right_10px": 8,
+          "pair_5px": 6,
+          "pair_10px": 8,
+          "left_error": {
+            "count": 8,
+            "median_px": 3.886200150059401,
+            "p90_px": 5.8472361998659,
+            "maximum_px": 7.841421922747769
+          }
+        }
+      }
+    },
+    "donor_substitution_sensitivity": {
+      "interpolation": {
+        "meaning": "Change in H estimates when replacing the frozen manual donor points with PR35 donor points; not hidden-point accuracy.",
+        "all_endpoint_displacement": {
+          "count": 52,
+          "median_px": 1.7894780989935055,
+          "p90_px": 3.749927724631448,
+          "maximum_px": 5.394540801040441
+        },
+        "cases": [
+          {
+            "case_id": "new_000007:28",
+            "left_displacement_px": 2.4712154010575142,
+            "right_displacement_px": 1.7007300282016444
+          },
+          {
+            "case_id": "new_000007:29",
+            "left_displacement_px": 2.9886093044502706,
+            "right_displacement_px": 1.3534096436011172
+          },
+          {
+            "case_id": "new_000007:30",
+            "left_displacement_px": 2.215717185835007,
+            "right_displacement_px": 1.2724011207680992
+          },
+          {
+            "case_id": "new_000007:31",
+            "left_displacement_px": 3.1897676027315605,
+            "right_displacement_px": 0.9204597348359985
+          },
+          {
+            "case_id": "new_000007:32",
+            "left_displacement_px": 1.6672750197793376,
+            "right_displacement_px": 0.32103309950158476
+          },
+          {
+            "case_id": "new_000007:33",
+            "left_displacement_px": 2.3845955380452573,
+            "right_displacement_px": 1.1972362399453151
+          },
+          {
+            "case_id": "new_000007:34",
+            "left_displacement_px": 2.226094158830697,
+            "right_displacement_px": 0.31820637420374714
+          },
+          {
+            "case_id": "new_000007:35",
+            "left_displacement_px": 2.390888297997339,
+            "right_displacement_px": 1.8357672511044794
+          },
+          {
+            "case_id": "new_000008:13",
+            "left_displacement_px": 2.394692875959216,
+            "right_displacement_px": 3.767640989077308
+          },
+          {
+            "case_id": "new_000008:14",
+            "left_displacement_px": 2.936736043799084,
+            "right_displacement_px": 5.394540801040441
+          },
+          {
+            "case_id": "new_000008:15",
+            "left_displacement_px": 2.787824715202091,
+            "right_displacement_px": 4.073285006979359
+          },
+          {
+            "case_id": "new_000008:16",
+            "left_displacement_px": 1.7431889468825317,
+            "right_displacement_px": 4.576820387121802
+          },
+          {
+            "case_id": "new_000009:32",
+            "left_displacement_px": 0.857577011040853,
+            "right_displacement_px": 1.059272886378277
+          },
+          {
+            "case_id": "new_000009:33",
+            "left_displacement_px": 0.5241910134087551,
+            "right_displacement_px": 0.7355290509475735
+          },
+          {
+            "case_id": "new_000009:34",
+            "left_displacement_px": 1.5161891277765314,
+            "right_displacement_px": 0.7273882996259582
+          },
+          {
+            "case_id": "new_000009:35",
+            "left_displacement_px": 0.7391080183371176,
+            "right_displacement_px": 0.2872330027405263
+          },
+          {
+            "case_id": "new_000009:36",
+            "left_displacement_px": 1.194951959413188,
+            "right_displacement_px": 1.3696855532039531
+          },
+          {
+            "case_id": "new_000009:37",
+            "left_displacement_px": 1.25729970017277,
+            "right_displacement_px": 1.0350211310186488
+          },
+          {
+            "case_id": "new_000009:38",
+            "left_displacement_px": 1.4232392333602477,
+            "right_displacement_px": 2.1839936009205294
+          },
+          {
+            "case_id": "new_000009:39",
+            "left_displacement_px": 1.0822641350545115,
+            "right_displacement_px": 0.8239513169802797
+          },
+          {
+            "case_id": "new_000010:16",
+            "left_displacement_px": 3.1563025517267844,
+            "right_displacement_px": 2.3949103741785747
+          },
+          {
+            "case_id": "new_000010:17",
+            "left_displacement_px": 3.8312974401882003,
+            "right_displacement_px": 2.295340682607086
+          },
+          {
+            "case_id": "new_000010:18",
+            "left_displacement_px": 2.9697528806794056,
+            "right_displacement_px": 1.278742096892893
+          },
+          {
+            "case_id": "new_000010:19",
+            "left_displacement_px": 4.623183929816953,
+            "right_displacement_px": 3.013268669904017
+          },
+          {
+            "case_id": "new_000010:20",
+            "left_displacement_px": 2.795722891966264,
+            "right_displacement_px": 1.189170079371677
+          },
+          {
+            "case_id": "new_000010:21",
+            "left_displacement_px": 1.8605754680066195,
+            "right_displacement_px": 3.590508344618709
+          }
+        ]
+      },
+      "extrapolation": {
+        "meaning": "Change in H estimates when replacing the frozen manual donor points with PR35 donor points; not hidden-point accuracy.",
+        "all_endpoint_displacement": {
+          "count": 16,
+          "median_px": 4.006951726500547,
+          "p90_px": 8.20651017456308,
+          "maximum_px": 10.738255322510172
+        },
+        "cases": [
+          {
+            "case_id": "new_000007:35",
+            "left_displacement_px": 2.648177512973592,
+            "right_displacement_px": 3.1307034439506283
+          },
+          {
+            "case_id": "new_000007:36",
+            "left_displacement_px": 3.7050705118589855,
+            "right_displacement_px": 5.036146752393041
+          },
+          {
+            "case_id": "new_000008:16",
+            "left_displacement_px": 5.18961953822486,
+            "right_displacement_px": 4.132264820162259
+          },
+          {
+            "case_id": "new_000008:17",
+            "left_displacement_px": 9.370687888546323,
+            "right_displacement_px": 4.904541840345854
+          },
+          {
+            "case_id": "new_000009:39",
+            "left_displacement_px": 1.2779660731199372,
+            "right_displacement_px": 3.8816386328388344
+          },
+          {
+            "case_id": "new_000009:40",
+            "left_displacement_px": 2.8308958293707716,
+            "right_displacement_px": 7.0423324605798365
+          },
+          {
+            "case_id": "new_000010:21",
+            "left_displacement_px": 3.8489789196793796,
+            "right_displacement_px": 6.90029426814106
+          },
+          {
+            "case_id": "new_000010:22",
+            "left_displacement_px": 3.3561769679224933,
+            "right_displacement_px": 10.738255322510172
+          }
+        ]
+      }
+    },
+    "actual_hidden_estimates": [
+      {
+        "case_id": "new_000010:23",
+        "stack_id": "new_000010-right",
+        "image_id": "new_000010",
+        "row": 23,
+        "donor_rows": [
+          21,
+          22
+        ],
+        "ratio": 2.0,
+        "strategies": {
+          "direct_pr35": {
+            "raw_pair_xy": [
+              [
+                770.4288330078125,
+                464.2621765136719
+              ],
+              [
+                916.9888305664062,
+                460.9068603515625
+              ]
+            ],
+            "endpoint_available": [
+              true,
+              true
+            ],
+            "endpoint_errors_px": [
+              null,
+              3.2338487907267712
+            ],
+            "endpoint_within_radius": {
+              "5": [
+                null,
+                true
+              ],
+              "10": [
+                null,
+                true
+              ]
+            }
+          },
+          "model_donor_homography": {
+            "raw_pair_xy": [
+              [
+                766.3151050539667,
+                463.10787238569145
+              ],
+              [
+                916.7650608562303,
+                459.30550098415665
+              ]
+            ],
+            "endpoint_available": [
+              true,
+              true
+            ],
+            "endpoint_errors_px": [
+              null,
+              4.062247614258137
+            ],
+            "endpoint_within_radius": {
+              "5": [
+                null,
+                true
+              ],
+              "10": [
+                null,
+                true
+              ]
+            }
+          },
+          "right_anchored_homography": {
+            "raw_pair_xy": [
+              [
+                766.5388747641427,
+                464.70923175309736
+              ],
+              [
+                916.9888305664062,
+                460.9068603515625
+              ]
+            ],
+            "endpoint_available": [
+              true,
+              true
+            ],
+            "endpoint_errors_px": [
+              null,
+              3.2338487907267712
+            ],
+            "endpoint_within_radius": {
+              "5": [
+                null,
+                true
+              ],
+              "10": [
+                null,
+                true
+              ]
+            }
+          }
+        }
+      },
+      {
+        "case_id": "new_000010:24",
+        "stack_id": "new_000010-right",
+        "image_id": "new_000010",
+        "row": 24,
+        "donor_rows": [
+          21,
+          22
+        ],
+        "ratio": 3.0,
+        "strategies": {
+          "direct_pr35": {
+            "raw_pair_xy": [
+              [
+                768.7337646484375,
+                493.9151611328125
+              ],
+              [
+                910.9419555664062,
+                492.3881530761719
+              ]
+            ],
+            "endpoint_available": [
+              true,
+              true
+            ],
+            "endpoint_errors_px": [
+              null,
+              5.11273619401374
+            ],
+            "endpoint_within_radius": {
+              "5": [
+                null,
+                false
+              ],
+              "10": [
+                null,
+                true
+              ]
+            }
+          },
+          "model_donor_homography": {
+            "raw_pair_xy": [
+              [
+                762.5942538126749,
+                495.13432833480664
+              ],
+              [
+                908.4765082720027,
+                489.213011800576
+              ]
+            ],
+            "endpoint_available": [
+              true,
+              true
+            ],
+            "endpoint_errors_px": [
+              null,
+              4.3874964690242075
+            ],
+            "endpoint_within_radius": {
+              "5": [
+                null,
+                true
+              ],
+              "10": [
+                null,
+                true
+              ]
+            }
+          },
+          "right_anchored_homography": {
+            "raw_pair_xy": [
+              [
+                765.0597011070785,
+                498.3094696104026
+              ],
+              [
+                910.9419555664062,
+                492.3881530761719
+              ]
+            ],
+            "endpoint_available": [
+              true,
+              true
+            ],
+            "endpoint_errors_px": [
+              null,
+              5.11273619401374
+            ],
+            "endpoint_within_radius": {
+              "5": [
+                null,
+                false
+              ],
+              "10": [
+                null,
+                true
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  "dependency_and_denominator_audit": {
+    "status": "pass",
+    "excluded_target_left_and_box_perturbation_cases": 36,
+    "reference_coordinate_perturbation_cases": 36,
+    "target_right_translation_cases": 36,
+    "single_designated_donor_failure_injection": {
+      "case_id": "new_000007:28",
+      "designated_earlier_donor_row": 27,
+      "altered_endpoint_confidence": 0.49,
+      "all_case_denominator_preserved": 26,
+      "no_donor_fallback": true,
+      "direct_right_preserved_exactly": true
+    },
+    "scope": "Coordinate-field dependency checks only; cached inference still used intact original images."
+  },
+  "limits": [
+    "Manual stack/rank and frozen reference-box associations remain oracle-assisted.",
+    "Withheld coordinate fields do not remove target pixels from cached model inference.",
+    "All 36 included matched predictions have both endpoints available; the single failure injection is a software audit, not an accuracy observation.",
+    "Actual 010:23/24 left errors are unknown. Copying the right prediction cannot certify them.",
+    "Success counts from overlapping interpolation/extrapolation lanes must not be pooled."
+  ]
+}

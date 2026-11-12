@@ -1,5 +1,7 @@
 # Context-derived corner proposals
 
+The [follow-up with PR35 anchors](context-model-anchors-2026-11-12.md) distinguishes direct model predictions from this geometry-only pilot and tests what happens when the neighboring coordinates come from PR35. The original experiment below remains separately recorded.
+
 ## Decision
 
 The user's proposal is feasible as an **annotation aid for regular local stacks**. A small, frozen coordinate-holdout experiment recovered both known corners within 10 original-image pixels in all 26 interpolation cases. The projective method recovered both within 5 pixels in 24/26 cases. Extending a stack beyond the available anchors was less precise: 5/8 projective extrapolation cases met 5 pixels and 8/8 met 10 pixels.
@@ -93,6 +95,8 @@ Both endpoint coordinates are estimated from donor rows 21/22. Each target's kno
 ![Original pixels beside conditional hidden-corner estimates](images/context-corners-hidden-20261112.png)
 
 The orange crosses and blue circles on the gripper indicate where the hidden corners are predicted to project under the stack assumptions. They are not corners observed on the gripper surface.
+
+Both the left and right blue/orange points in this figure come from geometry. The green right points are reference annotations, and the figure contains no PR35 predictions. The right corners are visibly locatable; the follow-up includes a separate original-image view of their direct PR35 predictions.
 
 Three additional cases deliberately have no coordinates:
 
