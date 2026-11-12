@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "experiment_id": "context-corners-20261112",
+  "source_commit": "3939b2bd52a4d38b460d45faf4f9e2f62db6c9e2",
+  "reference_manifest": "data/references/visible-front-2026-11-11/manifest.json",
+  "reference_manifest_sha256": "2e60b3e81195448cc565a1000b4305e3215baba2bf0ee0c976e6551c2e64937c",
+  "frozen_at_utc": "2026-11-12T11:34:57.725630+00:00",
+  "frozen_before_estimator_run": true,
+  "purpose": "Test context-derived corner proposals before deciding whether any may become training targets.",
+  "selection": {
+    "method": "Assistant original-image review followed by mapping existing reference row IDs. No geometry errors or PR35 predictions used for selection.",
+    "reviewed_originals": [
+      "new_000007",
+      "new_000008",
+      "new_000009",
+      "new_000010",
+      "new_000011",
+      "new_000090"
+    ],
+    "assistant_reviewers": 2,
+    "human_certification": false,
+    "rank_origin": "Manually assigned consecutive physical layers within the selected stack. Equal physical pitch and coplanarity are assumptions, not measured guarantees.",
+    "independence": "Development images previously used for model selection; nearby frame IDs may show the same physical rack and objects. This is not an independent test set."
+  },
+  "protocol": {
+    "methods": [
+      "linear",
+      "homography"
+    ],
+    "interpolation": "For each listed target independently, exclude its entire annotation from donor inputs; use nearest fully labelled member above and below by rank.",
+    "extrapolation": "Hold out both listed final fully labelled members together; use the two nearest remaining fully labelled members above the first target. One- and two-rank extensions are kept in a separate lane.",
+    "predictor_inputs": "Only donor endpoint coordinates and rank ratio. No target bbox, target endpoint, PR35 prediction, or image-derived target extent.",
+    "radii_px": [
+      5,
+      10
+    ],
+    "no_clipping": true,
+    "uncertainty": "No calibrated confidence or interval. Method disagreement is only a diagnostic and does not bound error.",
+    "promotion": "No inferred proposal is accepted as observed reference or training label in this pilot."
+  },
+  "stacks": [
+    {
+      "id": "new_000007-center",
+      "image_id": "new_000007",
+      "members": [
+        {
+          "row": 27,
+          "rank": 0
+        },
+        {
+          "row": 28,
+          "rank": 1
+        },
+        {
+          "row": 29,
+          "rank": 2
+        },
+        {
+          "row": 30,
+          "rank": 3
+        },
+        {
+          "row": 31,
+          "rank": 4
+        },
+        {
+          "row": 32,
+          "rank": 5
+        },
+        {
+          "row": 33,
+          "rank": 6
+        },
+        {
+          "row": 34,
+          "rank": 7
+        },
+        {
+          "row": 35,
+          "rank": 8
+        },
+        {
+          "row": 36,
+          "rank": 9
+        }
+      ],
+      "holdout_rows": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "extrapolation_holdout_rows": [
+        35,
+        36
+      ],
+      "original_observation": "central tall column on the middle shelf; small lateral shifts and tilted lower edges",
+      "assumptions": [
+        "common local front plane",
+        "equal physical front width",
+        "equal physical layer pitch",
+        "correct manual stack membership and physical rank"
+      ],
+      "crop_xyxy": [
+        680,
+        40,
+        830,
+        260
+      ]
+    },
+    {
+      "id": "new_000008-center-left",
+      "image_id": "new_000008",
+      "members": [
+        {
+          "row": 12,
+          "rank": 0
+        },
+        {
+          "row": 13,
+          "rank": 1
+        },
+        {
+          "row": 14,
+          "rank": 2
+        },
+        {
+          "row": 15,
+          "rank": 3
+        },
+        {
+          "row": 16,
+          "rank": 4
+        },
+        {
+          "row": 17,
+          "rank": 5
+        }
+      ],
+      "holdout_rows": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "extrapolation_holdout_rows": [
+        16,
+        17
+      ],
+      "original_observation": "central-left stack immediately left of the tall right stack; gripper overlaps the lower fronts",
+      "assumptions": [
+        "common local front plane",
+        "equal physical front width",
+        "equal physical layer pitch",
+        "correct manual stack membership and physical rank"
+      ],
+      "crop_xyxy": [
+        675,
+        240,
+        930,
+        525
+      ]
+    },
+    {
+      "id": "new_000009-center",
+      "image_id": "new_000009",
+      "members": [
+        {
+          "row": 31,
+          "rank": 0
+        },
+        {
+          "row": 32,
+          "rank": 1
+        },
+        {
+          "row": 33,
+          "rank": 2
+        },
+        {
+          "row": 34,
+          "rank": 3
+        },
+        {
+          "row": 35,
+          "rank": 4
+        },
+        {
+          "row": 36,
+          "rank": 5
+        },
+        {
+          "row": 37,
+          "rank": 6
+        },
+        {
+          "row": 38,
+          "rank": 7
+        },
+        {
+          "row": 39,
+          "rank": 8
+        },
+        {
+          "row": 40,
+          "rank": 9
+        }
+      ],
+      "holdout_rows": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "extrapolation_holdout_rows": [
+        39,
+        40
+      ],
+      "original_observation": "central tall middle-shelf stack; individual widths, pitch and left/right tilts vary",
+      "assumptions": [
+        "common local front plane",
+        "equal physical front width",
+        "equal physical layer pitch",
+        "correct manual stack membership and physical rank"
+      ],
+      "crop_xyxy": [
+        585,
+        95,
+        735,
+        345
+      ]
+    },
+    {
+      "id": "new_000010-right",
+      "image_id": "new_000010",
+      "members": [
+        {
+          "row": 15,
+          "rank": 0
+        },
+        {
+          "row": 16,
+          "rank": 1
+        },
+        {
+          "row": 17,
+          "rank": 2
+        },
+        {
+          "row": 18,
+          "rank": 3
+        },
+        {
+          "row": 19,
+          "rank": 4
+        },
+        {
+          "row": 20,
+          "rank": 5
+        },
+        {
+          "row": 21,
+          "rank": 6
+        },
+        {
+          "row": 22,
+          "rank": 7
+        },
+        {
+          "row": 23,
+          "rank": 8
+        },
+        {
+          "row": 24,
+          "rank": 9
+        }
+      ],
+      "holdout_rows": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "extrapolation_holdout_rows": [
+        21,
+        22
+      ],
+      "original_observation": "tall right stack; rows15-22 have both endpoints, rows23-24 have visible right endpoints and gripper-occluded left endpoints",
+      "assumptions": [
+        "common local front plane",
+        "equal physical front width",
+        "equal physical layer pitch",
+        "correct manual stack membership and physical rank"
+      ],
+      "crop_xyxy": [
+        745,
+        75,
+        1025,
+        515
+      ]
+    }
+  ],
+  "hidden_cases": [
+    {
+      "image_id": "new_000010",
+      "row": 23,
+      "stack_id": "new_000010-right",
+      "rank": 8,
+      "disposition": "estimate_extrapolation",
+      "reason": "Same visually identifiable stack; left lower corner is hidden by the gripper. Right endpoint is withheld from fitting and used only as a visible-side check. No donor below."
+    },
+    {
+      "image_id": "new_000010",
+      "row": 24,
+      "stack_id": "new_000010-right",
+      "rank": 9,
+      "disposition": "estimate_extrapolation",
+      "reason": "Second lower continuation of the same stack; left corner is hidden by the gripper. Right endpoint is withheld from fitting and used only as a visible-side check. No donor below."
+    },
+    {
+      "image_id": "new_000009",
+      "row": 56,
+      "disposition": "abstain",
+      "reason": "Front fragment between gripper jaws; target front plane, full width and physical rank relative to visible neighbouring stacks are not established."
+    },
+    {
+      "image_id": "new_000090",
+      "row": 48,
+      "disposition": "abstain",
+      "reason": "Supported visible front fragment between jaws, but no established same-plane target rank or bracketing full-pair donors. Do not import offsets from another column or shelf."
+    },
+    {
+      "image_id": "new_000011",
+      "row": 61,
+      "disposition": "abstain",
+      "reason": "Ambiguous jaw fragment with unresolved relationship to adjacent lip/front; reliable stack membership and physical rank are unavailable."
+    }
+  ]
+}

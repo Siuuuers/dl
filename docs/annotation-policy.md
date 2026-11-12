@@ -89,3 +89,11 @@ The [dedup-2026-11-06 candidate](../data/candidates/dedup-2026-11-06/README.md) 
 Keep reference images, labels, split and checkpoint intact. Preserve original row IDs, source hashes, reason, reviewer status and changed-row text for each correction. The supervised HTML editor already supplies the needed drawing and saving operations; saving a file alone does not establish semantic acceptance. Run the mechanical checks and retain original-image review evidence.
 
 Validation has already been used for development and epoch selection. Any correction of its reference labels must be separately versioned and reported, not folded into a score comparison unnoticed. Independent final-test scenes and application tolerances are still required for an application-level acceptance claim.
+
+## 8. Context-derived proposals
+
+The user has requested investigation of hidden-corner estimates from neighboring cassettes and rack geometry. The [context-corner pilot](context-corners-2026-11-12.md) implements that proposal with separately recorded `estimated_from_context` coordinates, source anchors, method, physical assumptions and review status. A proposal may be useful even when the corner cannot be directly seen.
+
+Sections 1–7 continue to define the observed reference and current training labels. They do not prohibit a separate experiment with inferred coordinates. Keep an estimated point distinguishable from a visible `v=2` point; retain uncertainty when rank, plane or object identity is unresolved. This pilot approves no inferred point for training and does not replace a canonical missing slot.
+
+Adopting inferred points as training targets would require an explicitly versioned candidate contract, including occlusion/provenance states, coordinate uncertainty, box/point compatibility and evaluation against evidence independent of the estimates. Native `v=1` support alone does not establish accuracy or give inferred coordinates a lower training weight.
