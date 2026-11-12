@@ -1,0 +1,45 @@
+{
+  "status": "expected_contract_rejection",
+  "command": [
+    "python",
+    "-B",
+    "/workspace/scratch/58fa048dfc17/dl-eval52/scripts/verify_pose_annotation_candidate.py",
+    "--root",
+    "/workspace/scratch/a2905ee84412/next-training-material/standard-contract-probe/verification-root",
+    "--candidate",
+    "/workspace/scratch/a2905ee84412/next-training-material/standard-contract-probe/candidate/manifest.json"
+  ],
+  "exit_code": 1,
+  "stdout": {
+    "status": "invalid",
+    "error": "original visible endpoint tokens must be preserved: new_000023:33"
+  },
+  "stderr": "",
+  "current_policy_sha256": "74dd943976a4abc22ecbf73551c69f715666060d5961b2bed81e6a9c73a3afc9",
+  "original_label_files_copied": 157,
+  "verifier_modified": false,
+  "source_labels_modified": false,
+  "effective_control_labels_byte_identical_to_current_endpoint_candidate": true,
+  "historical_manifest_bytes_modified": false,
+  "reason": "Standard training_annotation_overlay forbids any replacement changing an original v2 triple. Both the exact endpoint control and combined intervention require such changes. New manifest/review identities and a corrected policy pin do not change the kind's contract.",
+  "blocked_changes": [
+    {
+      "image": "new_000023",
+      "rows": [
+        33,
+        34,
+        35
+      ],
+      "change": "move originally visible left coordinates"
+    },
+    {
+      "image": "new_000031",
+      "rows": [
+        22,
+        23,
+        24
+      ],
+      "change": "replace originally visible left slots by000"
+    }
+  ]
+}

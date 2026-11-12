@@ -1,0 +1,428 @@
+{
+  "source_repository": "an94-doll/embedding_vision",
+  "source_branch": "baomai",
+  "source_commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+  "source_verified_on": "2026-11-12",
+  "source_dimensions": [
+    1280,
+    720
+  ],
+  "source_readme_url": "https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md",
+  "manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "coordinate_convention": "Pixel coordinates are decoded exactly from the original decimal normalized labels; TXT row IDs are 1-based. These decimal values are not a claim of subpixel physical certainty. Crop boxes use Pillow [left,top,right,bottom] with right/bottom exclusive.",
+  "display_semantics": "Newly rendered display of original baomai annotations. Exact saved TXT geometry over unchanged source PNG pixels; not an upstream editor-export preview and not model predictions. IDs are one-based source TXT lines. Text positions are illustrative, not additional landmarks. Red segments indicate same-row association, not traced physical contours.",
+  "original_preview_status": "Upstream annotated PNG paths were found, but access returned Git LFS pointers. Their payloads were not inspected. Reconstructed figures preserve original point geometry; exporter rasterization and styling are not reproduced byte for byte.",
+  "prior_narrow_crop_xyxy": [
+    910,
+    395,
+    981,
+    500
+  ],
+  "mark_interpretation": "The user's thick orange marks approximately identify the 25/26, 26/27 and 27/28 junctions. The lower corner above and upper shoulder below are close but distinct. No precise coordinate is extracted from the marks. Row 25 original points both lie above y=395 and outside the earlier narrow crop.",
+  "cases": [
+    {
+      "id": "query_same_stack",
+      "image": "new_000010",
+      "crop_xyxy": [
+        910,
+        310,
+        1125,
+        512
+      ],
+      "notes": "Exact queried rightmost stack. All original left labels identify the left endpoints of lower-front seams. This includes the shaded outer margin; using the brighter interior rounding as a replacement would shift some points right. Row 28 especially illustrates the difference. Full face context makes clear that each point belongs to the cassette above the seam, even if the same location looks like the top tip of a dark vertical strip below.",
+      "image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "label_sha256": "9a0cc16ca96d094b1c7849b829ec67625d7569666d5753bd660006c9eecbf3c6",
+      "annotations": [
+        {
+          "row_1_based": 25,
+          "original_yolo_line": "0 0.79593910 0.53789451 0.14368711 0.08873153 0.73970313 0.54558333 2 0.86091406 0.54769444 2",
+          "bbox_cx_cy_w_h_px": [
+            1018.802048,
+            387.2840472,
+            183.9195008,
+            63.8867016
+          ],
+          "left_xy_px": [
+            946.8200064,
+            392.8199976
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1101.9699968,
+            394.3399968
+          ],
+          "right_visibility": 2
+        },
+        {
+          "row_1_based": 26,
+          "original_yolo_line": "0 0.78455504 0.59178750 0.13394055 0.06419639 0.72795312 0.59329167 2 0.84672656 0.59573611 2",
+          "bbox_cx_cy_w_h_px": [
+            1004.2304512,
+            426.087,
+            171.443904,
+            46.2214008
+          ],
+          "left_xy_px": [
+            931.7799936,
+            427.1700024
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1083.8099968,
+            428.9299992
+          ],
+          "right_visibility": 2
+        },
+        {
+          "row_1_based": 27,
+          "original_yolo_line": "0 0.77672898 0.63667951 0.13154469 0.06465819 0.72349219 0.64116667 2 0.83808594 0.63827778 2",
+          "bbox_cx_cy_w_h_px": [
+            994.2130944,
+            458.4092472,
+            168.3772032,
+            46.5538968
+          ],
+          "left_xy_px": [
+            926.0700032,
+            461.6400024
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1072.7500032,
+            459.5600016
+          ],
+          "right_visibility": 2
+        },
+        {
+          "row_1_based": 28,
+          "original_yolo_line": "0 0.76958195 0.67638049 0.12906219 0.05798236 0.71790625 0.68597222 2 0.82998438 0.68293056 2",
+          "bbox_cx_cy_w_h_px": [
+            985.064896,
+            486.9939528,
+            165.1996032,
+            41.7472992
+          ],
+          "left_xy_px": [
+            918.92,
+            493.8999984
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1062.3800064,
+            491.7100032
+          ],
+          "right_visibility": 2
+        }
+      ],
+      "title": "The queried stack, with complete front faces",
+      "display_scale": 3,
+      "output_file": "baomai-original-010-stack-20261112.png",
+      "face_id_text_positions_px": {
+        "25": [
+          1020,
+          370
+        ],
+        "26": [
+          1008,
+          411
+        ],
+        "27": [
+          1001,
+          445
+        ],
+        "28": [
+          991,
+          479
+        ]
+      },
+      "image_path": "data/images/val/new_000010.png",
+      "label_path": "data/labels/val/new_000010.txt",
+      "upstream_annotated_path": "data/annotated/val/new_000010_annotated.png"
+    },
+    {
+      "id": "clear_full_front",
+      "image": "new_000008",
+      "crop_xyxy": [
+        910,
+        192,
+        1134,
+        253
+      ],
+      "notes": "Relatively clear single front with both original labeled corners visible. Shows the annotation target as the two ends of the front lower edge, not the top lip. Both labels remain slightly inset from extreme antialiased silhouette pixels, so treat them as annotation evidence, not a perfect geometric definition.",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "label_sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07",
+      "annotations": [
+        {
+          "row_1_based": 20,
+          "original_yolo_line": "0 0.79971094 0.32029861 0.16487500 0.07798611 0.72678906 0.33387500 2 0.87080469 0.34152778 2",
+          "bbox_cx_cy_w_h_px": [
+            1023.6300032,
+            230.6149992,
+            211.04,
+            56.1499992
+          ],
+          "left_xy_px": [
+            930.2899968,
+            240.39
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1114.6300032,
+            245.9000016
+          ],
+          "right_visibility": 2
+        }
+      ],
+      "title": "A clear front: both ends of its lower edge",
+      "display_scale": 3,
+      "output_file": "baomai-original-008-front-20261112.png",
+      "face_id_text_positions_px": {
+        "20": [
+          1020,
+          222
+        ]
+      },
+      "image_path": "data/images/val/new_000008.png",
+      "label_path": "data/labels/val/new_000008.txt",
+      "upstream_annotated_path": "data/annotated/val/new_000008_annotated.png"
+    },
+    {
+      "id": "same_kind_closer_view",
+      "image": "new_000008",
+      "crop_xyxy": [
+        1018,
+        270,
+        1280,
+        530
+      ],
+      "notes": "Similar rightmost stack at closer scale. Labels are near the lower front junctions on both sides. Original left labels in rows 28\u201331 appear slightly above or inward from the lowest visible silhouette turn; they do not form an exact, universally consistent pixel rule. Row 32 is a useful bottom-of-stack case with both corners free of a lower cassette.",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "label_sha256": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07",
+      "annotations": [
+        {
+          "row_1_based": 28,
+          "original_yolo_line": "0 0.91390625 0.49040972 0.16370312 0.09356944 0.84659375 0.51147222 2 0.97974219 0.53362500 2",
+          "bbox_cx_cy_w_h_px": [
+            1169.8,
+            353.0949984,
+            209.5399936,
+            67.3699968
+          ],
+          "left_xy_px": [
+            1083.64,
+            368.2599984
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1254.0700032,
+            384.21
+          ],
+          "right_visibility": 2
+        },
+        {
+          "row_1_based": 29,
+          "original_yolo_line": "0 0.89866016 0.55506944 0.15588281 0.07133333 0.83906250 0.56426389 2 0.96633594 0.58284722 2",
+          "bbox_cx_cy_w_h_px": [
+            1150.2850048,
+            399.6499968,
+            199.5299968,
+            51.3599976
+          ],
+          "left_xy_px": [
+            1074.0,
+            406.2700008
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1236.9100032,
+            419.6499984
+          ],
+          "right_visibility": 2
+        },
+        {
+          "row_1_based": 30,
+          "original_yolo_line": "0 0.88619531 0.60400000 0.14782813 0.06927778 0.82636719 0.61363889 2 0.95048437 0.63047222 2",
+          "bbox_cx_cy_w_h_px": [
+            1134.3299968,
+            434.88,
+            189.2200064,
+            49.8800016
+          ],
+          "left_xy_px": [
+            1057.7500032,
+            441.8200008
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1216.6199936,
+            453.9399984
+          ],
+          "right_visibility": 2
+        },
+        {
+          "row_1_based": 31,
+          "original_yolo_line": "0 0.87632422 0.65099306 0.14427344 0.06756944 0.81815625 0.65915278 2 0.93978906 0.67501389 2",
+          "bbox_cx_cy_w_h_px": [
+            1121.6950016,
+            468.7150032,
+            184.6700032,
+            48.6499968
+          ],
+          "left_xy_px": [
+            1047.24,
+            474.5900016
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1202.9299968,
+            486.0100008
+          ],
+          "right_visibility": 2
+        },
+        {
+          "row_1_based": 32,
+          "original_yolo_line": "0 0.86680078 0.69876389 0.14217969 0.07144444 0.81457813 0.70941667 2 0.92987500 0.72125000 2",
+          "bbox_cx_cy_w_h_px": [
+            1109.5049984,
+            503.1100008,
+            181.9900032,
+            51.4399968
+          ],
+          "left_xy_px": [
+            1042.6600064,
+            510.7800024
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            1190.24,
+            519.3
+          ],
+          "right_visibility": 2
+        }
+      ],
+      "title": "Another stack with shaded left margins",
+      "display_scale": 2,
+      "output_file": "baomai-original-008-stack-20261112.png",
+      "face_id_text_positions_px": {
+        "28": [
+          1170,
+          351
+        ],
+        "29": [
+          1150,
+          397
+        ],
+        "30": [
+          1135,
+          432
+        ],
+        "31": [
+          1120,
+          467
+        ],
+        "32": [
+          1105,
+          502
+        ]
+      },
+      "image_path": "data/images/val/new_000008.png",
+      "label_path": "data/labels/val/new_000008.txt",
+      "upstream_annotated_path": "data/annotated/val/new_000008_annotated.png"
+    },
+    {
+      "id": "same_kind_wider_view",
+      "image": "new_000009",
+      "crop_xyxy": [
+        774,
+        240,
+        880,
+        349
+      ],
+      "notes": "Same kind of rightmost stack in a wider view. Rows 46 and 47 left labels are somewhat inward from the darkest outside edge, while row 48 is near the exposed bottom corner. These labels support lower-front endpoints but do not establish a unique shading threshold. Low native resolution limits exact turn localization.",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "label_sha256": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f",
+      "annotations": [
+        {
+          "row_1_based": 46,
+          "original_yolo_line": "0 0.64431641 0.39868056 0.06961719 0.05391667 0.61485937 0.40918056 2 0.67423437 0.41505556 2",
+          "bbox_cx_cy_w_h_px": [
+            824.7250048,
+            287.0500032,
+            89.1100032,
+            38.8200024
+          ],
+          "left_xy_px": [
+            787.0199936,
+            294.6100032
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            863.0199936,
+            298.8400032
+          ],
+          "right_visibility": 2
+        },
+        {
+          "row_1_based": 47,
+          "original_yolo_line": "0 0.64094922 0.43297917 0.06777344 0.03748611 0.61296875 0.43718056 2 0.67302344 0.44143056 2",
+          "bbox_cx_cy_w_h_px": [
+            820.4150016,
+            311.7450024,
+            86.7500032,
+            26.9899992
+          ],
+          "left_xy_px": [
+            784.6,
+            314.7700032
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            861.4700032,
+            317.8300032
+          ],
+          "right_visibility": 2
+        },
+        {
+          "row_1_based": 48,
+          "original_yolo_line": "0 0.63801563 0.46159722 0.06685938 0.03880556 0.61017969 0.46306944 2 0.66988281 0.46851389 2",
+          "bbox_cx_cy_w_h_px": [
+            816.6600064,
+            332.3499984,
+            85.5800064,
+            27.9400032
+          ],
+          "left_xy_px": [
+            781.0300032,
+            333.4099968
+          ],
+          "left_visibility": 2,
+          "right_xy_px": [
+            857.4499968,
+            337.3300008
+          ],
+          "right_visibility": 2
+        }
+      ],
+      "title": "A smaller stack: blur limits exact placement",
+      "display_scale": 5,
+      "output_file": "baomai-original-009-stack-20261112.png",
+      "face_id_text_positions_px": {
+        "46": [
+          824,
+          285
+        ],
+        "47": [
+          820,
+          308
+        ],
+        "48": [
+          817,
+          327
+        ]
+      },
+      "image_path": "data/images/val/new_000009.png",
+      "label_path": "data/labels/val/new_000009.txt",
+      "upstream_annotated_path": "data/annotated/val/new_000009_annotated.png"
+    }
+  ]
+}

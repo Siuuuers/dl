@@ -1,0 +1,154 @@
+{
+  "review_type": "Additional reference comparison after independent left-corner nominations",
+  "reference_file": "/workspace/scratch/58fa048dfc17/dl-eval52/data/references/visible-front-2026-11-11/labels/val/new_000010.txt",
+  "additional_initial_sha256": "c2bf8703c561ae9c92cddb96bddd8bbb12c40a74bd980bf139c07c2be136c2ab",
+  "blinding": "Only the specified existing reference file was compared; no model predictions or other reviewer coordinates were read. Root final representative choices were supplied after the blinded judgments and reference inspection.",
+  "findings": [
+    {
+      "row": 25,
+      "old_left_xy": [
+        946.82,
+        392.82
+      ],
+      "blind_preferred_xy": [
+        949,
+        391
+      ],
+      "decision": "retain",
+      "reason": "The current point lies within my blind visual region and is a defensible representative of the shaded, blurred lower-left turn. My alternate point does not warrant churn."
+    },
+    {
+      "row": 26,
+      "old_left_xy": [
+        931.78,
+        427.17
+      ],
+      "blind_preferred_xy": [
+        941,
+        427
+      ],
+      "decision": "retain_pending_physical_boundary_clarification",
+      "reason": "The old point appears substantially left of the visible face turn, in or near the shaded gap/side region, and lies outside my blind region. However, the physical outer molded side is shaded and must be distinguished from the brighter front-face transition. This issue warrants explicit boundary-definition adjudication rather than automatically moving it to the bright-face bend."
+    },
+    {
+      "row": 27,
+      "old_left_xy": [
+        926.07,
+        461.64
+      ],
+      "blind_preferred_xy": [
+        933,
+        460
+      ],
+      "decision": "retain_pending_physical_boundary_clarification",
+      "reason": "The old point is left of my nominated turn and outside my blind region, near the shaded bottom/side transition. The source supports a localization concern, but the exact physical-side-versus-bright-face target remains consequential. No immediate edit recommendation without that clarification."
+    },
+    {
+      "row": 28,
+      "old_left_xy": [
+        918.92,
+        493.9
+      ],
+      "blind_preferred_xy": [
+        926,
+        491
+      ],
+      "decision": "retain_pending_physical_boundary_clarification",
+      "reason": "The old marker is in the dark region below/left of the bright cassette outline and outside my blind region. The difference is larger than a one-pixel choice. The visible physical outline is shaded and rounded, so preserve the issue as pending adjudication rather than impose a front-brightness boundary interpretation."
+    },
+    {
+      "row": 31,
+      "old_left_xy": [
+        455.72,
+        645.45
+      ],
+      "blind_preferred_xy": [
+        457,
+        640
+      ],
+      "decision": "refinement_supported",
+      "selected_integer_xy": [
+        457,
+        641
+      ],
+      "reason": "The old point lies below the visible lower-left step of the upper partial cassette, beside the next front. Moving to the step around x457,y640-641 is supported by the original pixels and the blind region. Root selected (457,641), which is visually defensible."
+    },
+    {
+      "row": 32,
+      "old_left_xy": [
+        453.21,
+        660.7
+      ],
+      "blind_tentative_tip_xy": [
+        461,
+        664
+      ],
+      "decision": "retain_as_unresolved",
+      "reason": "The old point is left of the white tip, near the dark basket/gap. There is a visible small white tip in the blind region, but the hand intersects the outline almost at the proposed lower corner. The source does not give me enough confidence to certify the actual lower-front junction and its visibility. Retain pending adjudication rather than assert a precise replacement."
+    }
+  ],
+  "root_selected_representative_support": [
+    {
+      "row": 15,
+      "endpoint": "right",
+      "selected_xy": [
+        1008,
+        138
+      ],
+      "supported": true,
+      "basis": "Within the visually observed rounded turn; one pixel left of my non-blinded secondary candidate (1009,138)."
+    },
+    {
+      "row": 16,
+      "endpoint": "right",
+      "selected_xy": [
+        996,
+        187
+      ],
+      "supported": true,
+      "basis": "Matches my secondary visual candidate."
+    },
+    {
+      "row": 22,
+      "endpoint": "right",
+      "selected_xy": [
+        926,
+        428
+      ],
+      "supported": true,
+      "basis": "Matches blind preferred point."
+    },
+    {
+      "row": 23,
+      "endpoint": "right",
+      "selected_xy": [
+        919,
+        460
+      ],
+      "supported": true,
+      "basis": "Within blind plausible region [917,457,925,465], one pixel left of preferred point. Actual source supports this as a rounded-turn representative."
+    },
+    {
+      "row": 24,
+      "endpoint": "right",
+      "selected_xy": [
+        911,
+        491
+      ],
+      "supported": true,
+      "basis": "Matches blind preferred point."
+    },
+    {
+      "row": 31,
+      "endpoint": "left",
+      "selected_xy": [
+        457,
+        641
+      ],
+      "supported": true,
+      "basis": "Within blind region [454,637,461,644], one pixel below preferred point and on the observed lower-left step."
+    }
+  ],
+  "no_source_edits": true,
+  "scores_not_computed": true
+}

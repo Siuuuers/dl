@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "review_id": "baomai-corner-adjudication-2026-11-12",
+  "status": "decisions_frozen_before_saved_prediction_replay",
+  "date_local": "2026-11-12",
+  "timezone": "Asia/Hong_Kong",
+  "frozen_at_utc": "2026-11-12T14:43:18.113286+00:00",
+  "source_revision": "6af0f9b4f04f2f282aa3c74cdc4837fa0252fa3a",
+  "source_image": {
+    "path": "data/images/val/new_000010.png",
+    "sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+    "dimensions": [
+      1280,
+      720
+    ]
+  },
+  "policy": {
+    "id": "baomai-visible-front-v1",
+    "path": "docs/annotation-policy.md",
+    "sha256": "74dd943976a4abc22ecbf73551c69f715666060d5961b2bed81e6a9c73a3afc9"
+  },
+  "parent_reference": {
+    "reference_id": "baomai-visible-front-corners-2026-11-12",
+    "path": "data/references/visible-front-corners-2026-11-12/manifest.json",
+    "sha256": "28ba06fe7183ebbfa6f295639194a67c4b473c17a8d67c28a9733eb359bdba92",
+    "target_label_sha256": "241c75463f8bf5d6d5c70de67deb89a4bf14209237855e0f21e6ebc6e35db01c"
+  },
+  "new_reference": {
+    "reference_id": "baomai-visible-front-adjudication-2026-11-12",
+    "path": "data/references/visible-front-adjudication-2026-11-12/manifest.json",
+    "target_label_sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d"
+  },
+  "authorization": "User requested relabeling where necessary and continuation toward model improvement. Existing lower-front landmark definition is retained.",
+  "method": {
+    "fresh_image_only_reviewers": 2,
+    "initial_records_frozen_before_label_comparison": true,
+    "root_prior_exposure": "Primary assistant knew prior label/model review history. New case scoring was not read before these decisions were frozen. This is not a completely model-blind study.",
+    "case_selection": "Previously recorded ambiguous points, not a random sample.",
+    "models_or_geometry_used_as_coordinates": false,
+    "human_visual_certification": false
+  },
+  "accepted_changes": [
+    {
+      "id": "new_000010-r28-left-adjudication",
+      "image_id": "new_000010",
+      "row_one_based": 28,
+      "side": "left",
+      "before_normalized_tokens": [
+        "0.71790625",
+        "0.68597222",
+        "2"
+      ],
+      "after_normalized_tokens": [
+        "0.72109375",
+        "0.68333333",
+        "2"
+      ],
+      "before_pixel_triplet": [
+        918.92,
+        493.8999984,
+        2
+      ],
+      "selected_pixel_triplet": [
+        923,
+        492,
+        2
+      ],
+      "serialized_pixel_triplet": [
+        923.0,
+        491.9999976,
+        2
+      ],
+      "changed_token_indices_zero_based": [
+        5,
+        6
+      ],
+      "before_row_text": "0 0.76958195 0.67638049 0.12906219 0.05798236 0.71790625 0.68597222 2 0.82998438 0.68293056 2",
+      "after_row_text": "0 0.76958195 0.67638049 0.12906219 0.05798236 0.72109375 0.68333333 2 0.82998438 0.68293056 2",
+      "reason": "Both reviewers locate the saved point below-left of the exposed wax turn. Select reviewer B's image-only integer representative; reviewer A independently chose a point two pixels farther right on the same arc. Do not average predictions or snap to the bright inner boundary.",
+      "decision": "refine_visible_coordinate",
+      "confidence": "High agreement that old point misses the required wax turn; moderate precision of the new representative."
+    },
+    {
+      "id": "new_000010-r32-left-adjudication",
+      "image_id": "new_000010",
+      "row_one_based": 32,
+      "side": "left",
+      "before_normalized_tokens": [
+        "0.35407031",
+        "0.91763889",
+        "2"
+      ],
+      "after_normalized_tokens": [
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "before_pixel_triplet": [
+        453.2099968,
+        660.7000008,
+        2
+      ],
+      "selected_pixel_triplet": [
+        0,
+        0,
+        0
+      ],
+      "serialized_pixel_triplet": [
+        0.0,
+        0.0,
+        0
+      ],
+      "changed_token_indices_zero_based": [
+        5,
+        6,
+        7
+      ],
+      "before_row_text": "0 0.40657555 0.91581875 0.11434859 0.04505500 0.35407031 0.91763889 2 0.00000000 0.00000000 0",
+      "after_row_text": "0 0.40657555 0.91581875 0.11434859 0.04505500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "reason": "Both reviewers reject the saved point on dark material left of the wax. A replacement near the hand has disputed physical-corner visibility, only about one to three native pixels of possible free lower arc, and no reliably established independent lower edge. Under the observed-point rule, mark unlocatable instead of certifying a guessed coordinate.",
+      "decision": "mark_unlocatable",
+      "confidence": "High agreement that the old point is unsupported; physical visibility of the alternative remains disputed. v0 records inability to locate reliably, not proof that the corner is hidden."
+    }
+  ],
+  "retained_points": [
+    {
+      "row_one_based": 25,
+      "side": "left",
+      "decision": "retain_visible_coordinate",
+      "reason": "Saved point follows the darker outer wax turn; coordinate differences within a rounded arc do not compel a shift."
+    },
+    {
+      "row_one_based": 26,
+      "side": "left",
+      "decision": "retain_visible_coordinate",
+      "reason": "Post-label tracing confirms the saved point on the outer shaded wax contour. Reviewer A corrected its initial brighter-inner-boundary interpretation."
+    },
+    {
+      "row_one_based": 27,
+      "side": "left",
+      "decision": "retain_visible_coordinate",
+      "reason": "Saved point follows the visible lower-left turn; no supported replacement is needed."
+    },
+    {
+      "row_one_based": 31,
+      "side": "left",
+      "decision": "retain_visible_coordinate",
+      "reason": "Saved point identifies the upper partial front's exposed lower-left step; opposite endpoint remains missing."
+    }
+  ],
+  "visibility_dissent": {
+    "row_one_based": 32,
+    "side": "left",
+    "reviewer_a": "A small free curve may expose the actual corner; initial (463,664) revised after tracing to approximately (459,663), v2, reduced confidence.",
+    "reviewer_b": "The short curve does not establish the actual bottom edge independently of the hand; use000.",
+    "root_adjudication": "Use000 because the observed-point contract requires a reliably locatable actual corner. The old point is unsupported under either interpretation. Preserve the object and box; no invented replacement."
+  },
+  "review_evidence": [
+    {
+      "path": "results/review/corner-adjudication-20261112/reviewer-a-initial.json",
+      "sha256": "0b53cbbe06dd855e1bf5181e3a813cdab85a5c2ee8421efb901ed3900a88093b"
+    },
+    {
+      "path": "results/review/corner-adjudication-20261112/reviewer-a-comparison.json",
+      "sha256": "384760549d847c0a3ccdace632fc6122fd1e00aca7041bf9c8da5ae39b3d7b0d"
+    },
+    {
+      "path": "results/review/corner-adjudication-20261112/reviewer-b-initial.json",
+      "sha256": "0aaf7ac89b838c2580c018461b2ab31eeb7640f85bcfb6e3f5a2d4219609160a"
+    },
+    {
+      "path": "results/review/corner-adjudication-20261112/reviewer-b-comparison.json",
+      "sha256": "3710adf90f204d87da457f6caf6a2484fc92944035e272fe4d16de9c94f646e1"
+    }
+  ],
+  "scope": {
+    "image": "new_000010",
+    "targeted_left_points": [
+      25,
+      26,
+      27,
+      28,
+      31,
+      32
+    ],
+    "changed_coordinate_slots": 1,
+    "changed_visibility_slots": 1,
+    "boxes_changed": 0,
+    "instances_added_or_removed": 0,
+    "other_19_label_files_unchanged": true
+  },
+  "limits": [
+    "The new integer point is a reproducible visual representative, not subpixel physical truth.",
+    "The two reviewers disagree on physical visibility of the alternative row32 tip; disagreement is preserved.",
+    "Other inherited object/box uncertainties remain outside this bounded amendment.",
+    "Changing an evaluation reference changes measurement; it does not retrain or improve a model.",
+    "Reference-unlocatable means no supported coordinate target, not proven absence of the physical feature."
+  ]
+}
