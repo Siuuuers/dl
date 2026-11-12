@@ -1,0 +1,610 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "timezone": "Asia/Hong_Kong",
+  "source_repository": "Siuuuers/dl",
+  "source_revision": "23b8aaac264179a18b0738d3e0b2e44ce0a53e56",
+  "kind": "documented_targeted_training_review_coverage",
+  "annotation_policy_id": "baomai-visible-front-v1",
+  "full_image_or_label_correctness_certified": false,
+  "new_original_image_review_performed": false,
+  "new_review_cohort_selected": false,
+  "source_manifest": {
+    "path": "data/manifest.json",
+    "sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "selector": "$.records[?(@.split == \"train\")]",
+    "training_images": 137,
+    "count_basis": "Original frozen label metadata; not the selected PR35 training overlay."
+  },
+  "review_history_sources": [
+    {
+      "path": "docs/training-pilot-2026-11-06.json",
+      "sha256": "3c087b21c6fd21db1864d9eff1f22b315b17cdcd63d974fe914c385d967037b5",
+      "selectors": [
+        "$.verified_originals[*].image_id"
+      ],
+      "training_image_ids": [
+        "new_000012",
+        "new_000019",
+        "new_000030",
+        "new_000043",
+        "new_000051",
+        "new_000075",
+        "new_000102",
+        "new_000112",
+        "new_000123",
+        "new_000128",
+        "new_000131",
+        "old_000003",
+        "old_000018"
+      ]
+    },
+    {
+      "path": "data/candidates/box-refinement-2026-11-07/review.json",
+      "sha256": "3ccdd6e8aa627780ed3f81b358629d2503466f2e573a682b7da64cd6f6310c8e",
+      "selectors": [
+        "$.primary_reviews[*].image_id",
+        "$.empty_control.image_id"
+      ],
+      "training_image_ids": [
+        "new_000012",
+        "new_000030",
+        "new_000128",
+        "new_000131"
+      ]
+    },
+    {
+      "path": "data/candidates/annotations-2026-11-10/review.json",
+      "sha256": "84dd73407aa147637d8eb68f8ff8268c856d70c46a8a8bf144549e00e6480c85",
+      "selectors": [
+        "$.scope.images[*]"
+      ],
+      "training_image_ids": [
+        "new_000061",
+        "new_000062",
+        "new_000063",
+        "new_000064",
+        "new_000065",
+        "new_000066",
+        "new_000067",
+        "new_000068",
+        "new_000069",
+        "new_000070",
+        "new_000071",
+        "new_000072",
+        "new_000073",
+        "new_000074",
+        "new_000075",
+        "new_000079",
+        "new_000080",
+        "new_000081",
+        "new_000082",
+        "new_000083",
+        "new_000084",
+        "new_000085",
+        "new_000094",
+        "new_000095",
+        "new_000096",
+        "new_000097",
+        "new_000098",
+        "new_000099",
+        "new_000100",
+        "new_000101",
+        "new_000102",
+        "new_000103"
+      ]
+    },
+    {
+      "path": "data/candidates/partial-fronts-2026-11-11/review.json",
+      "sha256": "4940712c9fd6ca50c0a157ba6ebbc1e866909b992e5bcb6c78b0c1bf03004e49",
+      "selectors": [
+        "$.scope.images[*]"
+      ],
+      "training_image_ids": [
+        "new_000111",
+        "new_000114",
+        "new_000115",
+        "new_000116",
+        "new_000117",
+        "new_000119",
+        "new_000120",
+        "new_000122",
+        "new_000124",
+        "new_000125",
+        "new_000127",
+        "new_000130"
+      ]
+    },
+    {
+      "path": "data/candidates/visible-extent-2026-11-11/review.json",
+      "sha256": "e8302f06cf57b82e82039f7f96415b9a62e39f54cc4b2805afe87e0a19b4258e",
+      "selectors": [
+        "$.scope.images[*]"
+      ],
+      "training_image_ids": [
+        "new_000061",
+        "new_000062",
+        "new_000063",
+        "new_000079",
+        "new_000082",
+        "new_000094"
+      ]
+    },
+    {
+      "path": "data/candidates/consistency-2026-11-11/review.json",
+      "sha256": "5e22ccc984de4887f62ae11ec38f2aca614a0ef12078ee180a43ad612f602afc",
+      "selectors": [
+        "$.scope.images[*]"
+      ],
+      "training_image_ids": [
+        "new_000018",
+        "new_000034",
+        "new_000049",
+        "new_000132",
+        "old_000007",
+        "old_000057"
+      ]
+    },
+    {
+      "path": "results/review/baomai-review-recovery-20261112/correction-record.json",
+      "sha256": "6f199638487933a04a0f2d67958d06be642ff998bd14657bfc913fe3406e24e3",
+      "selectors": [
+        "$.source_label_hashes_verified[*]"
+      ],
+      "training_image_ids": [
+        "new_000023",
+        "new_000031",
+        "new_000045"
+      ]
+    }
+  ],
+  "summary": {
+    "training_images": 137,
+    "documented_targeted_review_images": 64,
+    "images_outside_documented_passes": 73,
+    "remaining_nonempty_label_files": 62,
+    "remaining_empty_label_files": 11,
+    "remaining_original_label_objects": 1707,
+    "remaining_original_missing_endpoint_slots": 222
+  },
+  "documented_training_image_ids": [
+    "new_000012",
+    "new_000018",
+    "new_000019",
+    "new_000023",
+    "new_000030",
+    "new_000031",
+    "new_000034",
+    "new_000043",
+    "new_000045",
+    "new_000049",
+    "new_000051",
+    "new_000061",
+    "new_000062",
+    "new_000063",
+    "new_000064",
+    "new_000065",
+    "new_000066",
+    "new_000067",
+    "new_000068",
+    "new_000069",
+    "new_000070",
+    "new_000071",
+    "new_000072",
+    "new_000073",
+    "new_000074",
+    "new_000075",
+    "new_000079",
+    "new_000080",
+    "new_000081",
+    "new_000082",
+    "new_000083",
+    "new_000084",
+    "new_000085",
+    "new_000094",
+    "new_000095",
+    "new_000096",
+    "new_000097",
+    "new_000098",
+    "new_000099",
+    "new_000100",
+    "new_000101",
+    "new_000102",
+    "new_000103",
+    "new_000111",
+    "new_000112",
+    "new_000114",
+    "new_000115",
+    "new_000116",
+    "new_000117",
+    "new_000119",
+    "new_000120",
+    "new_000122",
+    "new_000123",
+    "new_000124",
+    "new_000125",
+    "new_000127",
+    "new_000128",
+    "new_000130",
+    "new_000131",
+    "new_000132",
+    "old_000003",
+    "old_000007",
+    "old_000018",
+    "old_000057"
+  ],
+  "remaining_training_images": [
+    {
+      "id": "new_000001",
+      "objects": 51,
+      "missing_endpoint_slots": 10
+    },
+    {
+      "id": "new_000002",
+      "objects": 48,
+      "missing_endpoint_slots": 10
+    },
+    {
+      "id": "new_000003",
+      "objects": 62,
+      "missing_endpoint_slots": 12
+    },
+    {
+      "id": "new_000004",
+      "objects": 56,
+      "missing_endpoint_slots": 5
+    },
+    {
+      "id": "new_000005",
+      "objects": 53,
+      "missing_endpoint_slots": 12
+    },
+    {
+      "id": "new_000006",
+      "objects": 60,
+      "missing_endpoint_slots": 14
+    },
+    {
+      "id": "new_000013",
+      "objects": 37,
+      "missing_endpoint_slots": 7
+    },
+    {
+      "id": "new_000014",
+      "objects": 40,
+      "missing_endpoint_slots": 16
+    },
+    {
+      "id": "new_000015",
+      "objects": 59,
+      "missing_endpoint_slots": 5
+    },
+    {
+      "id": "new_000016",
+      "objects": 40,
+      "missing_endpoint_slots": 9
+    },
+    {
+      "id": "new_000017",
+      "objects": 58,
+      "missing_endpoint_slots": 3
+    },
+    {
+      "id": "new_000020",
+      "objects": 54,
+      "missing_endpoint_slots": 6
+    },
+    {
+      "id": "new_000024",
+      "objects": 42,
+      "missing_endpoint_slots": 10
+    },
+    {
+      "id": "new_000025",
+      "objects": 56,
+      "missing_endpoint_slots": 4
+    },
+    {
+      "id": "new_000026",
+      "objects": 53,
+      "missing_endpoint_slots": 11
+    },
+    {
+      "id": "new_000027",
+      "objects": 10,
+      "missing_endpoint_slots": 2
+    },
+    {
+      "id": "new_000028",
+      "objects": 62,
+      "missing_endpoint_slots": 5
+    },
+    {
+      "id": "new_000029",
+      "objects": 42,
+      "missing_endpoint_slots": 10
+    },
+    {
+      "id": "new_000032",
+      "objects": 55,
+      "missing_endpoint_slots": 8
+    },
+    {
+      "id": "new_000033",
+      "objects": 50,
+      "missing_endpoint_slots": 10
+    },
+    {
+      "id": "new_000035",
+      "objects": 58,
+      "missing_endpoint_slots": 2
+    },
+    {
+      "id": "new_000036",
+      "objects": 36,
+      "missing_endpoint_slots": 6
+    },
+    {
+      "id": "new_000037",
+      "objects": 15,
+      "missing_endpoint_slots": 4
+    },
+    {
+      "id": "new_000038",
+      "objects": 15,
+      "missing_endpoint_slots": 1
+    },
+    {
+      "id": "new_000039",
+      "objects": 30,
+      "missing_endpoint_slots": 1
+    },
+    {
+      "id": "new_000040",
+      "objects": 36,
+      "missing_endpoint_slots": 6
+    },
+    {
+      "id": "new_000041",
+      "objects": 14,
+      "missing_endpoint_slots": 5
+    },
+    {
+      "id": "new_000042",
+      "objects": 14,
+      "missing_endpoint_slots": 3
+    },
+    {
+      "id": "new_000044",
+      "objects": 21,
+      "missing_endpoint_slots": 9
+    },
+    {
+      "id": "new_000050",
+      "objects": 35,
+      "missing_endpoint_slots": 5
+    },
+    {
+      "id": "new_000113",
+      "objects": 29,
+      "missing_endpoint_slots": 4
+    },
+    {
+      "id": "new_000118",
+      "objects": 33,
+      "missing_endpoint_slots": 3
+    },
+    {
+      "id": "new_000121",
+      "objects": 56,
+      "missing_endpoint_slots": 3
+    },
+    {
+      "id": "new_000126",
+      "objects": 47,
+      "missing_endpoint_slots": 1
+    },
+    {
+      "id": "new_000129",
+      "objects": 49,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000133",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000134",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000135",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000136",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000139",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000140",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000141",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000142",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000143",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000144",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "new_000150",
+      "objects": 0,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000004",
+      "objects": 10,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000010",
+      "objects": 9,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000013",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000021",
+      "objects": 10,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000022",
+      "objects": 10,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000027",
+      "objects": 6,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000028",
+      "objects": 6,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000038",
+      "objects": 10,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000039",
+      "objects": 10,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000042",
+      "objects": 10,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000046",
+      "objects": 10,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000050",
+      "objects": 10,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000051",
+      "objects": 10,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000054",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000061",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000065",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000068",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000069",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000073",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000077",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000079",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000087",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000089",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000093",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000097",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000100",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    },
+    {
+      "id": "old_000101",
+      "objects": 8,
+      "missing_endpoint_slots": 0
+    }
+  ],
+  "limits": [
+    "Membership records a documented targeted pass, not exhaustive review, label correctness, independent testing or human certification.",
+    "The recovery record adds new_000023, new_000031 and new_000045 to the earlier 61-image union. Its image review predates recovery; this inventory performs no new visual inspection.",
+    "Remaining means outside these seven recorded passes. It does not establish that an image was never inspected elsewhere.",
+    "An empty label is counted from the frozen metadata, not newly certified as an empty scene.",
+    "This inventory selects no new cohort, changes no labels, split, model or settings, and performs no inference or training."
+  ]
+}
