@@ -1,5 +1,7 @@
 # Apply the existing lower-front annotation guidance
 
+**Later follow-up:** the [original-image adjudication](corner-adjudication-2026-11-12.md) resolves the bounded left-point review with two amendments: row 28 moves onto the exposed wax turn and row 32 becomes unlocatable. The other reviewed left points are retained, and the physical-visibility disagreement beside the hand is preserved. The [new reference](../data/references/visible-front-adjudication-2026-11-12/README.md) has 1,227 locatable and 99 missing endpoints. The audit and counts below describe the earlier reference at the revision named here; its evidence JSON is unchanged.
+
 **The target definition is already settled.** The current policy and the inspected examples use the actual two bottom-edge corners of the white wax block's front face. The current reference passes all checked representation and geometry rules. Some inherited point locations remain unresolved, so this is not a certification that every saved coordinate is physically correct.
 
 The user reaffirmed the existing upstream guidance on 2026-11-12. This audit checks the current proposed PR56 reference and the selected PR35 training-label composition at revision `40fa0f1ee863b3458feec0db1cf40086dab4538f`. It corrects the earlier source guide's suggestion that the user needed to choose between different landmarks. The guidance already excludes an upper shoulder or lip when it belongs to a different edge.

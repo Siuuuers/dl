@@ -1,5 +1,7 @@
 # Original baomai examples: shaded turns and complete fronts
 
+**Later review:** the [adjudication report](corner-adjudication-2026-11-12.md) refines row 28's left point in a new reference and marks the separate hand-adjacent row 32 point unlocatable. All original labels, coordinate tables and source-example figures on this page remain unchanged: they show what upstream saved, including a point now revised in our working reference.
+
 The original baomai annotations include the exact rightmost stack discussed in `new_000010`. They generally identify the two ends of each front's lower edge. In this stack, the saved left points lie near the shaded outer ends of those seams. The examples do not support a general rule that every point should move to the beginning of the brighter interior surface.
 
 **A shared stack junction needs an owning front.** The lower-left corner of the front above and the upper-left shoulder of the front below are close together, but they are not automatically the same physical feature. The existing guidance fixes the target as the former. The thick orange marks in the user's crop identify that general neighborhood; they do not establish exact coordinates or override the lower-front definition.

@@ -1,0 +1,149 @@
+{
+  "inspection_stage": "Post-label comparison; initial_decisions.json preserved unchanged",
+  "source_reference": "/workspace/scratch/a2905ee84412/corner-label-review/data/references/visible-front-corners-2026-11-12/labels/val/new_000010.txt",
+  "rows_inspected": [
+    25,
+    26,
+    27,
+    28,
+    31,
+    32
+  ],
+  "image": "/workspace/scratch/58fa048dfc17/dl-eval52/data/images/val/new_000010.png",
+  "permitted_evidence": "Original image, crops from original, and the specified six current label rows only. No model or prediction access.",
+  "recommendations": [
+    {
+      "row_1_based": 25,
+      "current_lower_left": {
+        "xy": [
+          946.82001,
+          392.82
+        ],
+        "visibility": 2
+      },
+      "recommendation": "retain",
+      "recommended_lower_left": {
+        "xy": [
+          946.82001,
+          392.82
+        ],
+        "visibility": 2
+      },
+      "reason": "The saved point lies within the shaded lower-left turn and lower seam. Its roughly four-pixel difference from the blind center estimate is normal blur/rounding uncertainty. No clear coordinate correction is justified. Do not move to the brighter inner boundary."
+    },
+    {
+      "row_1_based": 26,
+      "current_lower_left": {
+        "xy": [
+          931.77999,
+          427.17
+        ],
+        "visibility": 2
+      },
+      "recommendation": "retain",
+      "recommended_lower_left": {
+        "xy": [
+          931.77999,
+          427.17
+        ],
+        "visibility": 2
+      },
+      "reason": "The saved point is on the shadowed outer turn entering the bottom seam, within the blind contour range. The bright front begins farther right but is not the material boundary."
+    },
+    {
+      "row_1_based": 27,
+      "current_lower_left": {
+        "xy": [
+          926.07,
+          461.64
+        ],
+        "visibility": 2
+      },
+      "recommendation": "retain",
+      "recommended_lower_left": {
+        "xy": [
+          926.07,
+          461.64
+        ],
+        "visibility": 2
+      },
+      "reason": "The saved point matches the visible shaded turn into the bottom edge, essentially coincident with the blind estimate."
+    },
+    {
+      "row_1_based": 28,
+      "current_lower_left": {
+        "xy": [
+          918.92,
+          493.9
+        ],
+        "visibility": 2
+      },
+      "recommendation": "move",
+      "recommended_lower_left": {
+        "xy": [
+          923,
+          492
+        ],
+        "visibility": 2
+      },
+      "confidence": "medium",
+      "reason": "At high magnification the saved point is below/left of the rounded wax contour, in the dark rack/background transition. A small move to the blind estimate (923,492) places it on the exposed physical lower-left arc. This is not a move to the bright inner face. The initial independent x/y bounds were conservative separate bounds; their low-x/high-y extreme is not automatically an acceptable point on the jointly curved arc.",
+      "defensible_arc_neighborhood": {
+        "x_range": [
+          922,
+          928
+        ],
+        "y_range": [
+          490,
+          493
+        ]
+      }
+    },
+    {
+      "row_1_based": 31,
+      "current_lower_left": {
+        "xy": [
+          457.0,
+          641.0
+        ],
+        "visibility": 2
+      },
+      "recommendation": "retain",
+      "recommended_lower_left": {
+        "xy": [
+          457.0,
+          641.0
+        ],
+        "visibility": 2
+      },
+      "reason": "The saved point is within a few pixels of the upper partial front's visible left-to-bottom rounded turn. The hand covers its right end, but a short lower-edge segment establishes the lower-left corner. A three-pixel adjustment is not compelled by these soft pixels."
+    },
+    {
+      "row_1_based": 32,
+      "current_lower_left": {
+        "xy": [
+          453.21,
+          660.7
+        ],
+        "visibility": 2
+      },
+      "recommendation": "unlocatable",
+      "recommended_lower_left": {
+        "xy": [
+          0,
+          0
+        ],
+        "visibility": 0,
+        "encoding": "missing000"
+      },
+      "confidence": "medium for unlocatable; high that current saved coordinate is not the physical wax corner",
+      "reason": "The current point (453.21,660.70) is visibly left of the wax silhouette and cannot be retained. The tip near (463,664) is a plausible physical corner, but it occurs where the wax outer boundary and diagonal hand occlusion contour meet, without a securely separate bottom-edge run. I cannot certify actual bottom-edge identity from these pixels; strict observed-point policy therefore calls for missing000.",
+      "reviewer_disagreement": {
+        "other_fresh_review": "The point near (463,664) is a visible tiny free lower arc and may be labeled observed.",
+        "my_assessment": "I see the local rounded tip but cannot reliably distinguish its lower boundary from the hand intersection or establish that the actual lower edge emerges. The other reading is plausible and remains a genuine observability disagreement. I do not average it with the off-object saved coordinate or with zero.",
+        "conditional_if_final_adjudication_establishes_visible_arc": "Use approximately (463,664), not the current (453.21,660.70). This is not my recommended observed-point label."
+      }
+    }
+  ],
+  "summary": "Retain rows25/26/27/31 L; move row28 L slightly to (923,492); mark row32 L missing000 under strict observed-point policy. Preserve disagreement that a fresh reviewer sees a free lower arc at (463,664)."
+}

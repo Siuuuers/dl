@@ -1,5 +1,7 @@
 # Visible corner review: new_000010
 
+**Later follow-up:** the [two-point adjudication](corner-adjudication-2026-11-12.md) completes the targeted review of left points 25–28, 31 and 32. It refines row 28, marks row 32 unlocatable with reviewer dissent recorded, and retains the other four points. Use the [latest complete reference](../data/references/visible-front-adjudication-2026-11-12/README.md) for a new review. The six-point decisions and scores below remain the historical record for their own reference version.
+
 **The user's observation is supported: PR35's right points on rows 23 and 24 are closer to the visible lower-front turns than the inherited label placements. This review refines six visible endpoints in a separately versioned development reference. PR35 remains selected, with a newly documented local failure beside the hand.**
 
 Review date: **2026-11-12, Asia/Hong_Kong**. Source revision: [`c55a7160df0b9ce0fa32a2bfb6df61dbf4cfd128`](https://github.com/Siuuuers/dl/commit/c55a7160df0b9ce0fa32a2bfb6df61dbf4cfd128). The [review record](../results/review/visible-corners-20261112/review.json) contains the original-image judgments, exact before/after rows, uncertainty, exposure history and unresolved cases. The [new complete reference](../data/references/visible-front-corners-2026-11-12/README.md) is ready for inspection or explicit use in a new comparison.

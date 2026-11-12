@@ -1,0 +1,198 @@
+{
+  "image": "/workspace/scratch/58fa048dfc17/dl-eval52/data/images/val/new_000010.png",
+  "image_size": [
+    1280,
+    720
+  ],
+  "inspection": "Blind visual inspection of original pixels and enlarged crops only; no existing labels, predictions, models, or reports read.",
+  "target": "Physical left and right ends of the BOTTOM EDGE of each white wax front; shaded wax belongs to the object; top lip, rack, and hand occlusion contours excluded.",
+  "coordinate_convention": "Integer image pixel x,y. Ranges express normal contour blur/rounding uncertainty, not a different target definition.",
+  "right_stack_top_to_bottom": [
+    {
+      "row": 1,
+      "lower_left": {
+        "status": "observed",
+        "xy": [
+          943,
+          394
+        ],
+        "x_range": [
+          939,
+          948
+        ],
+        "y_range": [
+          391,
+          397
+        ],
+        "confidence": "medium"
+      },
+      "lower_right": {
+        "status": "observed",
+        "xy": [
+          1104,
+          394
+        ],
+        "x_range": [
+          1100,
+          1108
+        ],
+        "y_range": [
+          391,
+          397
+        ],
+        "confidence": "medium"
+      },
+      "reason": "The front has a shaded left margin extending left of the bright face. Its outer contour can be followed down beside the central stack and into the horizontal lower seam. The bright inner transition near x950+ is not the physical left end."
+    },
+    {
+      "row": 2,
+      "lower_left": {
+        "status": "observed",
+        "xy": [
+          933,
+          429
+        ],
+        "x_range": [
+          929,
+          938
+        ],
+        "y_range": [
+          426,
+          432
+        ],
+        "confidence": "medium"
+      },
+      "lower_right": {
+        "status": "observed",
+        "xy": [
+          1091,
+          429
+        ],
+        "x_range": [
+          1087,
+          1095
+        ],
+        "y_range": [
+          426,
+          432
+        ],
+        "confidence": "medium"
+      },
+      "reason": "The shaded left edge curves into the bottom seam at the next step of the stack. The left endpoint is soft but bounded by the outer silhouette; it should not be moved to the whiter inner face."
+    },
+    {
+      "row": 3,
+      "lower_left": {
+        "status": "observed",
+        "xy": [
+          925,
+          461
+        ],
+        "x_range": [
+          921,
+          930
+        ],
+        "y_range": [
+          458,
+          464
+        ],
+        "confidence": "medium"
+      },
+      "lower_right": {
+        "status": "observed",
+        "xy": [
+          1078,
+          461
+        ],
+        "x_range": [
+          1074,
+          1082
+        ],
+        "y_range": [
+          458,
+          464
+        ],
+        "confidence": "medium"
+      },
+      "reason": "A visible shadowed outer contour reaches the lower seam. Its rounding gives several pixels of uncertainty but does not erase the corner."
+    },
+    {
+      "row": 4,
+      "lower_left": {
+        "status": "observed",
+        "xy": [
+          923,
+          492
+        ],
+        "x_range": [
+          918,
+          929
+        ],
+        "y_range": [
+          489,
+          495
+        ],
+        "confidence": "medium"
+      },
+      "lower_right": {
+        "status": "observed",
+        "xy": [
+          1067,
+          492
+        ],
+        "x_range": [
+          1063,
+          1071
+        ],
+        "y_range": [
+          489,
+          495
+        ],
+        "confidence": "medium-high"
+      },
+      "reason": "The bottommost block has a rounded outer lower-left silhouette against the dark rack/background and an exposed bottom edge. The actual rounded corner is left of the bright flat front, not at its brightness transition."
+    }
+  ],
+  "hand_adjacent_partials_top_to_bottom": [
+    {
+      "row": 1,
+      "lower_left": {
+        "status": "observed",
+        "xy": [
+          458,
+          638
+        ],
+        "x_range": [
+          455,
+          462
+        ],
+        "y_range": [
+          635,
+          641
+        ],
+        "confidence": "medium-high"
+      },
+      "lower_right": {
+        "status": "unavailable",
+        "encoding": "missing000",
+        "confidence": "high"
+      },
+      "reason": "The upper partial has a visible left side rounding into a short bottom edge around y638 before the hand covers the rest. Its physical lower-left corner is locatable; its right end is occluded."
+    },
+    {
+      "row": 2,
+      "lower_left": {
+        "status": "unavailable",
+        "encoding": "missing000",
+        "confidence": "medium"
+      },
+      "lower_right": {
+        "status": "unavailable",
+        "encoding": "missing000",
+        "confidence": "high"
+      },
+      "reason": "The lower partial narrows to an apparent tip near (462,664) exactly where the diagonal hand boundary meets the wax silhouette. There is no separately observable bottom-edge run establishing that this tip is the physical lower-left corner. Under a strict observed-point policy, mark unavailable rather than treating the hand termination as a physical corner. Normal rounding alone would not justify missing, but occlusion/corner identity here is unresolved from pixels."
+    }
+  ],
+  "bounded_decision": "Keep all four right-stack lower-left corners observed, using shaded outer wax contours. Keep upper hand-partial lower-left observed. Mark lower hand-partial lower-left missing000 under the strict observed-point rule; both hand-partial lower-right points are missing000."
+}
