@@ -1,5 +1,7 @@
 # Next training proposal: combine the reviewed front corrections
 
+**Later preparation:** the [composed training handoff](../../../docs/training-composed-fronts-2026-11-12.md) now restores and verifies the original assets, implements the explicit composed contract, and stages both complete arms. This proposal and its compatibility artifacts remain the historical input to that implementation; they are not silently rewritten as completed training evidence.
+
 **Status: reviewable compatibility proposal only. This is not an accepted, staged or GPU-ready training dataset.** No inference or training was executed for this preparation, and no new visual certification of training images is claimed. PR35 remains the selected model.
 
 The [operation specification](combined-operations-spec.json) and three [prototype label files](compatibility-prototype/labels/train/) make the proposed next intervention concrete. They reconcile previously recorded decisions by original source row ID, preserve the historical files, and pass label parsing and geometry checks. They do not yet implement the required training-data contract.

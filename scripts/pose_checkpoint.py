@@ -39,8 +39,9 @@ ANNOTATION_RECIPE_ID = "reviewed-annotations-seed45-v1"
 ANNOTATION_CONFIRMATION_RECIPE_ID = "reviewed-annotations-seed46-v1"
 ANNOTATION_RECIPE_IDS = (ANNOTATION_RECIPE_ID, ANNOTATION_CONFIRMATION_RECIPE_ID)
 ENDPOINT_RECIPE_ID = "reviewed-endpoints-seed46-v1"
+COMPOSED_RECIPE_ID = "reviewed-composed-seed46-v1"
 RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS,
-              ENDPOINT_RECIPE_ID)
+              ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID)
 
 # Resolved defaults observed in the pinned trainer, in addition to RECIPE.
 # These are checked, not changed, by the runner. In particular RLE stays at 1.0.
@@ -81,13 +82,13 @@ def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
     recipe = {**RECIPE, **({"warmup_bias_lr": 0.0001}
                          if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS,
-                                          ENDPOINT_RECIPE_ID) else {})}
+                                          ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID) else {})}
     for seed, fixed_id in BOX_REPEATABILITY_RECIPES.items():
         if recipe_id == fixed_id:
             recipe["seed"] = seed
     if recipe_id == ANNOTATION_RECIPE_ID:
         recipe["seed"] = 45
-    elif recipe_id in (ANNOTATION_CONFIRMATION_RECIPE_ID, ENDPOINT_RECIPE_ID):
+    elif recipe_id in (ANNOTATION_CONFIRMATION_RECIPE_ID, ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID):
         recipe["seed"] = 46
     return recipe
 
@@ -96,10 +97,12 @@ def check_recipe_candidate_kind(recipe_id, kind):
     """Bind each new experiment to its intended overlay; retain legacy contracts."""
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
     _require(kind in ("training_label_overlay", "training_box_overlay", "training_annotation_overlay",
-                     "training_endpoint_overlay"),
+                     "training_endpoint_overlay", "training_composed_overlay"),
              f"unsupported training candidate kind: {kind}")
     _require((recipe_id == ENDPOINT_RECIPE_ID) == (kind == "training_endpoint_overlay"),
              "reviewed-endpoints recipe and training_endpoint_overlay must be selected together")
+    _require((recipe_id == COMPOSED_RECIPE_ID) == (kind == "training_composed_overlay"),
+             "reviewed-composed recipe and training_composed_overlay must be selected together")
     _require((recipe_id in BOX_RECIPE_IDS) == (kind == "training_box_overlay"),
              "box-supervision recipe and training_box_overlay must be selected together")
     _require((recipe_id in ANNOTATION_RECIPE_IDS) == (kind == "training_annotation_overlay"),
@@ -232,30 +235,77 @@ def _check_staging(preflight, staging):
                  and change["source_label_sha256"] == record["label_sha256"]
                  and _digest(change["candidate_label_sha256"]), "candidate changes a different source or split")
         changes[identifier] = change
+    control, control_path, control_changes = None, None, {}
+    if proposal.get("kind") == "training_composed_overlay":
+        from verify_pose_composed_candidate import verify_composed_candidate
+        verified = verify_composed_candidate(root, proposal_path)
+        control = verified["control"]
+        _require(source.get("candidate_kind") == "training_composed_overlay"
+                 and _same(source.get("control"), control), "staged endpoint control identity/counts differ")
+        _require(verified["candidate_manifest_sha256"] == source["candidate_manifest_sha256"]
+                 and _same(verified["counts"], proposal["expected_counts"]), "verified composed proposal differs")
+        control_path = _contained_path(root, control["manifest"])
+        _require(_sha256(control_path) == control["manifest_sha256"], "staged control manifest identity differs")
+        control_proposal = _read_json(control_path)
+        _require(control_proposal.get("kind") == "training_endpoint_overlay"
+                 and control_proposal.get("candidate_id") == control["candidate_id"], "staged control is not the endpoint overlay")
+        control_changes = {change["image_id"]: change for change in control_proposal["changes"]}
+        _require(len(control_changes) == control["changed_train_labels"], "staged control changed-label count differs")
     variants = _mapping(staging["variants"], "staged variants")
     _require(set(variants) == {"reference", "candidate"}, "staging requires both experiment arms")
     for arm, variant in variants.items():
-        expected = {}
+        expected, expected_sources = {}, {}
+        arm_changes, overlay_path = (changes, proposal_path) if arm == "candidate" else (control_changes, control_path)
         for identifier, record in records.items():
             expected[record["image"]] = record["image_sha256"]
-            expected[record["label"]] = (changes[identifier]["candidate_label_sha256"]
-                if arm == "candidate" and identifier in changes else record["label_sha256"])
+            change = arm_changes.get(identifier)
+            expected[record["label"]] = change["candidate_label_sha256"] if change else record["label_sha256"]
+            if control is not None:
+                expected_sources[record["image"]] = f"data/{record['image']}"
+                expected_sources[record["label"]] = (
+                    _contained_path(overlay_path.parent, change["candidate_label"]).relative_to(root).as_posix()
+                    if change else f"data/{record['label']}")
         actual = {}
         for entry in variant["files"]:
             _require(entry["path"] not in actual and entry["source_sha256"] == entry["output_sha256"],
                      "staging has duplicate files or changed copied contents")
             actual[entry["path"]] = entry["output_sha256"]
+            if control is not None:
+                _require(entry.get("source_path") == expected_sources.get(entry["path"]),
+                         f"staged {arm} source path differs from composed/control overlay")
         _require(actual == expected, f"staged {arm} file inventory differs from declared reference/proposal")
         counts = {split: {("objects" if key == "instances" else key): value for key, value in values.items()}
                   for split, values in reference["split_summary"].items()}
         if arm == "candidate":
             counts = proposal["expected_counts"]
+        elif control is not None:
+            counts = control["counts"]
         _require(_same(variant["counts"], counts), f"staged {arm} counts differ")
         _require(variant["data_yaml"] == f"{arm}/data.yaml" and _digest(variant["data_yaml_sha256"]),
                  "invalid staged dataset YAML identity")
     _require(_same(variants["reference"]["counts"]["val"], variants["candidate"]["counts"]["val"]),
              "staged validation counts differ between arms")
     return variants
+
+
+def training_label_identity(staging, arm):
+    """Name the composed experiment's actual control/treatment labels explicitly."""
+    source = _mapping(staging["source"], "staging source")
+    if source.get("candidate_kind") != "training_composed_overlay":
+        return None
+    _require(arm in ("reference", "candidate"), "invalid composed training arm")
+    control = _mapping(source["control"], "staged endpoint control")
+    reference = arm == "reference"
+    return {
+        "kind": "training_composed_overlay",
+        "role": "endpoint_control" if reference else "composed_treatment",
+        "label_manifest": control["manifest"] if reference else source["candidate_manifest"],
+        "label_manifest_sha256": control["manifest_sha256"] if reference else source["candidate_manifest_sha256"],
+        "label_candidate_id": control["candidate_id"] if reference else source["candidate_id"],
+        "control_manifest": control["manifest"], "control_manifest_sha256": control["manifest_sha256"],
+        "composed_manifest": source["candidate_manifest"],
+        "composed_manifest_sha256": source["candidate_manifest_sha256"],
+    }
 
 
 def _check_results(path, epochs):
@@ -344,6 +394,11 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
     variants = _check_staging(preflight, staging)
     proposal = _read_json(_contained_path(Path(preflight["root"]), staging["source"]["candidate_manifest"]))
     check_recipe_candidate_kind(identity.get("recipe_id", ORIGINAL_RECIPE_ID), proposal.get("kind"))
+    labels = None
+    if proposal.get("kind") == "training_composed_overlay":
+        labels = training_label_identity(staging, receipt["arm"])
+        _require(labels is not None and _same(receipt.get("training_labels"), labels),
+                 "completed composed checkpoint control/treatment label identity differs")
     variant = variants[receipt["arm"]]
     _require(receipt["data_yaml_sha256"] == variant["data_yaml_sha256"], "training arm/YAML identity differs")
     settings = _mapping(receipt["training_settings"], "training settings")
@@ -386,6 +441,9 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
     _require({"scripts/pose_checkpoint.py", "scripts/train_pose_comparison.py"} <= set(hashes)
              and all(_digest(value) for value in hashes.values()),
              "training code/recipe hashes are missing or invalid")
+    if labels is not None:
+        _require({"scripts/stage_pose_training.py", "scripts/verify_pose_composed_candidate.py"} <= set(hashes),
+                 "composed training source lacks stager/verifier identities")
     runtime = _mapping(receipt["runtime"], "training runtime")
     _require(runtime["ultralytics"] == ULTRALYTICS_VERSION
              and all(isinstance(runtime[key], str) and runtime[key] for key in ("python", "torch", "device")),
@@ -395,7 +453,7 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
     _check_results(_artifact(base, receipt["results"]), epochs)
     log = _artifact(base, receipt["log"])
     _require(log.stat().st_size > 0, "training log is empty")
-    return identity
+    return {**identity, **({"training_labels": labels} if labels is not None else {})}
 
 
 def _validate_bundle(preflight, manifest, base, require_weights):

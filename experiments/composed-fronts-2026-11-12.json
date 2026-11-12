@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-composed-comparison-protocol",
+  "experiment_id": "composed-fronts-seed46-v1",
+  "status": "prospectively_declared",
+  "declared_at_utc": "2026-11-12T15:13:53.064528+00:00",
+  "declared_timezone": "Asia/Hong_Kong",
+  "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+  "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "candidate_source_revision": "543a6afb4bc22c8b340deeb0402396c942a693c6",
+  "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "control": {
+    "manifest": "data/candidates/endpoint-visibility-2026-11-12/manifest.json",
+    "sha256": "9c489bf57a526509de73e40cc73b02117398fba4ec97107bf047aa71e4951c41"
+  },
+  "candidate": {
+    "manifest": "data/candidates/composed-fronts-2026-11-12/manifest.json",
+    "sha256": "86522ed6549390e8e6fb147aeb8244c4aef0b2f1273f57cdd0fc07b85074b38a",
+    "candidate_id": "composed-fronts-2026-11-12"
+  },
+  "reviewed_operation_spec": {
+    "path": "results/review/next-training-20261112/combined-operations-spec.json",
+    "sha256": "1492c39b5a6b3b890ab6807fc51a1ed1524f1bf57844dd285341b6b2344852b0"
+  },
+  "roles": {
+    "reference": {
+      "arm": "reference",
+      "supervision": "endpoint_control",
+      "candidate_manifest": "data/candidates/composed-fronts-2026-11-12/manifest.json",
+      "candidate_manifest_sha256": "86522ed6549390e8e6fb147aeb8244c4aef0b2f1273f57cdd0fc07b85074b38a",
+      "candidate_id": "composed-fronts-2026-11-12",
+      "recipe_id": "reviewed-composed-seed46-v1",
+      "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6842,
+          "missing_endpoints": 700,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "candidate": {
+      "arm": "candidate",
+      "supervision": "composed_treatment",
+      "candidate_manifest": "data/candidates/composed-fronts-2026-11-12/manifest.json",
+      "candidate_manifest_sha256": "86522ed6549390e8e6fb147aeb8244c4aef0b2f1273f57cdd0fc07b85074b38a",
+      "candidate_id": "composed-fronts-2026-11-12",
+      "recipe_id": "reviewed-composed-seed46-v1",
+      "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3770,
+          "visible_endpoints": 6842,
+          "missing_endpoints": 698,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    }
+  },
+  "incremental_delta": {
+    "changed_train_images": [
+      "new_000023",
+      "new_000031",
+      "new_000045"
+    ],
+    "box_replacements": 17,
+    "deleted_objects": 1,
+    "deleted_source_rows": {
+      "new_000023": [
+        22
+      ]
+    },
+    "new_endpoint_slot_changes": 0,
+    "preserved_endpoint_slot_edits": 10
+  },
+  "scientific_difference": "Keep the exact ten endpoint-slot corrections in both arms. Add only 17 recorded bbox replacements and delete original new_000023 row 22, a duplicate with both slots missing. The endpoint rows and bbox rows are disjoint; source row 36 is retained and source row 33 maps to candidate row 32 after deletion.",
+  "hypothesis": "More consistent front boxes and removal of one duplicate target may improve object completeness or reduce duplicate/false detections while preserving supported endpoint successes. No gain is assumed.",
+  "execution": {
+    "seed": 46,
+    "epochs": 30,
+    "independent_epoch173_initialization": true,
+    "resume": false,
+    "checkpoint_selection": "final_epoch",
+    "checkpoint_path": "fit/weights/last.pt",
+    "resource_trial": {
+      "role": "candidate",
+      "batches": 4,
+      "initializes_full_runs": false
+    },
+    "require_same_clean_source": true,
+    "require_same_recorded_gpu_runtime": true,
+    "require_same_resolved_numerical_settings": true,
+    "reject_incompatible_restores": true,
+    "automatic_promotion": false
+  },
+  "evaluation": {
+    "primary_box_confidence": 0.13,
+    "diagnostic_box_confidences": [],
+    "imgsz": 1280,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "endpoint_confidence": 0.5,
+    "radii_px": [
+      5,
+      10
+    ],
+    "primary_reference": "data/references/visible-front-adjudication-2026-11-12/manifest.json",
+    "primary_reference_sha256": "75e8689f65f7f32ca7f4657f27d214aa1ba371347812de780c6e5e6ac21af61e",
+    "all_object_denominator": 663,
+    "locatable_endpoint_denominator": 1227,
+    "both_corner_denominator": 584,
+    "objects_by_locatable_corner_count": {
+      "0": 20,
+      "1": 59,
+      "2": 584
+    },
+    "training_validation_unchanged": true,
+    "references_reported_separately": true,
+    "sensitivity_reference": "data/references/visible-front-corners-2026-11-12/manifest.json",
+    "sensitivity_reference_sha256": "28ba06fe7183ebbfa6f295639194a67c4b473c17a8d67c28a9733eb359bdba92",
+    "required_results": [
+      "All-object matches, misses, duplicates and other extras, plus full-image review workload",
+      "Recall for zero/one/two-locatable-corner groups with all eligible objects in denominators",
+      "Both-corner 5/10 px successes over all 584 eligible objects, including missed objects",
+      "All gained/lost match and point-success identities with original-pixel review",
+      "Locatable endpoint coverage over the full reference and common-matched objects",
+      "Reference-unlocatable outputs on identical common-matched objects; no inferred hidden-coordinate error",
+      "Miss-free nonempty scenes and all outputs on three empty images",
+      "Identical inference comparison to retained PR35; report sensitivity to the preceding reference separately"
+    ],
+    "PR35": {
+      "source_revision": "8e8bb99cabcb44ed0ec0acd14db911aa44013fd8",
+      "archive_path": "results/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip",
+      "archive_sha256": "df53683ccf6f266a605b2844f42a98e808f75686cfab09f14d680c9d061e8a91",
+      "checkpoint_manifest": "candidate/checkpoint-manifest.json",
+      "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1"
+    },
+    "decision": "At box confidence 0.13, require an original-image-supported improvement in object completeness or reduction of duplicate/false detections against the matched endpoint control, with no higher miss count or additional supported lost objects. Preserve locatable coverage and existing 5px and 10px pair successes; empty scenes must have no added outputs. Inspect all gained/lost match and success identities and distinguish actual recovery from IoU or assignment crossings. Assess replacement of the exact operational PR35 separately using the same preservation criteria. Reused development views and uncertain labels do not establish unseen-scene reliability. No automatic promotion or threshold/seed/epoch/subset search."
+  },
+  "limits": [
+    "One seed 46 matched pair and finalized epoch 30; no threshold, seed, epoch, resolution or label-subset sweep.",
+    "Both actual runner arms share the composed manifest and recipe, but reference uses the exact endpoint control and candidate uses composed treatment.",
+    "Original 664-object in-training validation is unchanged. The adjudicated 663-object reference is for post-training evaluation only.",
+    "Current proposal is based on previously recorded image reviews. Restoring source PNGs and validating composition does not constitute new visual certification.",
+    "The policy snapshot reproduces historical validation in an isolated temporary root; the live current policy and historical manifests remain unchanged.",
+    "Resource-trial weights never initialize either full run. Completed artifacts may be restored only when source, protocol, recipe, data and runtime match.",
+    "Return packaging proves completed-artifact eligibility and integrity; it does not establish accuracy or independently prove a GPU trial.",
+    "PR35 remains selected until a separate evaluation supports replacement."
+  ]
+}

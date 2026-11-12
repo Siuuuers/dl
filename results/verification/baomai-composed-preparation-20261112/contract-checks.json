@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "recorded_at_utc": "2026-11-12T15:17:23.374627+00:00",
+  "source_root": "/workspace/scratch/a2905ee84412/dl-composed",
+  "source_base_revision": "543a6afb4bc22c8b340deeb0402396c942a693c6",
+  "test_execution": {
+    "command": "python scripts/check_pose_composed_candidate.py",
+    "cwd": "/workspace/scratch/a2905ee84412/dl-composed",
+    "tests_run": 14,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "observed_summary": "Ran 14 tests in 2.838s; OK",
+    "execution_note": "Observed earlier in this task after implementation. No optional test expansion or rerun during final read-only review."
+  },
+  "positive_verification": {
+    "command": "python scripts/verify_pose_composed_candidate.py",
+    "cwd": "/workspace/scratch/a2905ee84412/dl-composed",
+    "exit_code": 0,
+    "status": "verified",
+    "candidate_manifest_sha256": "86522ed6549390e8e6fb147aeb8244c4aef0b2f1273f57cdd0fc07b85074b38a",
+    "control_manifest_sha256": "9c489bf57a526509de73e40cc73b02117398fba4ec97107bf047aa71e4951c41",
+    "reference_labels_verified": 157,
+    "changed_train_labels": 11,
+    "removed_objects": 7,
+    "replaced_objects": 26,
+    "treatment_train_counts": {
+      "images": 137,
+      "objects": 3770,
+      "visible_endpoints": 6842,
+      "missing_endpoints": 698,
+      "empty_images": 13
+    },
+    "control_train_counts": {
+      "images": 137,
+      "objects": 3771,
+      "visible_endpoints": 6842,
+      "missing_endpoints": 700,
+      "empty_images": 13
+    }
+  },
+  "final_review": {
+    "mode": "read-only static review; no shared edits or new tests",
+    "files": [
+      "scripts/package_composed_results.py",
+      "experiments/composed-fronts-2026-11-12.json",
+      "integration diff in pose_checkpoint.py, stage_pose_training.py, train_pose_comparison.py and adjusted legacy tests"
+    ],
+    "substantive_issues": [],
+    "control_treatment": "Reference inventory resolves through the exact current endpoint control and candidate through all eleven composed overlay files. Original labels only provide unaffected-file fallback; they are not substituted for the reference arm. Counts and full staged-file hashes are independently checked.",
+    "provenance": "Completed arm selection retains strict completed-run eligibility, final epoch selection, initialization and recipe identities, exact supervision inventories, clean recorded source, matching runtime/settings, and explicit training_labels identities. Package includes both six-artifact bundles plus pinned protocol and index; archive is read back and verify-existing reconstructs expected bytes. No accuracy or independent GPU-trial claim is made.",
+    "old_guards": "Legacy recipe numeric settings remain unchanged. New kind/recipe pairing is exclusive, endpoint recipe remains candidate-arm-only, and legacy staging uses its previous original-reference fallback. Existing strict annotation/endpoint validators remain unchanged.",
+    "limitations": "Static review confirms implementation/protocol consistency, not evidence that actual GPU training has occurred."
+  },
+  "sha256_captured_at_final_review": {
+    "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+    "scripts/check_pose_composed_candidate.py": "71351ce364d3c6e291a56a8bde84b8ea4a7885e7852267631d7337d801bdde9c",
+    "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+    "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+    "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+    "scripts/pose_checkpoint.py": "f902c34720283480f948cca78bd2d6d24fd07bf6bc5a325945172d56d55f5bd5",
+    "scripts/stage_pose_training.py": "a733f5e80335204747139e87a723b7bb095123059dc5a58b86ee824a26e5afe6",
+    "scripts/train_pose_comparison.py": "4f20a5a88876aac70e366018fc84652002975e4fe3812584a30621076a16f5f6",
+    "scripts/package_composed_results.py": "1883edcf48c0f2b8ffd1ae77e950e60002934268f1fb91a05b4cae34b7896aa9",
+    "experiments/composed-fronts-2026-11-12.json": "2e73d4d81585e8ed1759bdb02aea98d8c9db3a856f8887ef9f41069eb799fa3f",
+    "data/manifest.json": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "data/candidates/composed-fronts-2026-11-12/manifest.json": "86522ed6549390e8e6fb147aeb8244c4aef0b2f1273f57cdd0fc07b85074b38a",
+    "data/candidates/composed-fronts-2026-11-12/review.json": "afe7067f9dbe27cb2debe306490a4130d544331aedfe57074d827e69d8641a92",
+    "data/candidates/endpoint-visibility-2026-11-12/manifest.json": "9c489bf57a526509de73e40cc73b02117398fba4ec97107bf047aa71e4951c41",
+    "data/candidates/annotations-2026-11-10/manifest.json": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+    "results/review/next-training-20261112/combined-operations-spec.json": "1492c39b5a6b3b890ab6807fc51a1ed1524f1bf57844dd285341b6b2344852b0",
+    "results/review/baomai-review-recovery-20261112/correction-record.json": "6f199638487933a04a0f2d67958d06be642ff998bd14657bfc913fe3406e24e3",
+    "docs/annotation-policy.md": "74dd943976a4abc22ecbf73551c69f715666060d5961b2bed81e6a9c73a3afc9",
+    "docs/policies/annotation-policy-pr35-2026-11-10.md": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91"
+  },
+  "written_outside_repository": true,
+  "repository_files_modified_by_final_review": false
+}

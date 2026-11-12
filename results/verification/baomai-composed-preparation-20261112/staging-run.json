@@ -1,0 +1,128 @@
+{
+  "created_at_utc": "2026-11-12T15:14:39.512549+00:00",
+  "actual_original_assets": true,
+  "new_training": false,
+  "commands": [
+    {
+      "command": [
+        "python",
+        "-B",
+        "scripts/stage_pose_training.py",
+        "--root",
+        "/workspace/scratch/a2905ee84412/dl-composed",
+        "--candidate",
+        "data/candidates/composed-fronts-2026-11-12/manifest.json",
+        "--output",
+        "/workspace/scratch/a2905ee84412/composed-verification/staged-real-inputs"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "status": "staged",
+        "output": "/workspace/scratch/a2905ee84412/composed-verification/staged-real-inputs",
+        "staging_manifest_sha256": "53eb0a45c5b92dca1842c862e0b1d1aa3aaf8ee4584257055509b9f62f0c6614",
+        "counts": {
+          "reference": {
+            "train": {
+              "images": 137,
+              "objects": 3771,
+              "visible_endpoints": 6842,
+              "missing_endpoints": 700,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          },
+          "candidate": {
+            "train": {
+              "images": 137,
+              "objects": 3770,
+              "visible_endpoints": 6842,
+              "missing_endpoints": 698,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          }
+        },
+        "actual_original_pngs_verified": 157,
+        "geometry_gate_passed": true,
+        "physical_policy_visually_certified": false,
+        "training_run": false
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "scripts/stage_pose_training.py",
+        "--root",
+        "/workspace/scratch/a2905ee84412/dl-composed",
+        "--candidate",
+        "data/candidates/composed-fronts-2026-11-12/manifest.json",
+        "--verify",
+        "/workspace/scratch/a2905ee84412/composed-verification/staged-real-inputs"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "status": "verified",
+        "output": "/workspace/scratch/a2905ee84412/composed-verification/staged-real-inputs",
+        "staging_manifest_sha256": "53eb0a45c5b92dca1842c862e0b1d1aa3aaf8ee4584257055509b9f62f0c6614",
+        "counts": {
+          "reference": {
+            "train": {
+              "images": 137,
+              "objects": 3771,
+              "visible_endpoints": 6842,
+              "missing_endpoints": 700,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          },
+          "candidate": {
+            "train": {
+              "images": 137,
+              "objects": 3770,
+              "visible_endpoints": 6842,
+              "missing_endpoints": 698,
+              "empty_images": 13
+            },
+            "val": {
+              "images": 20,
+              "objects": 664,
+              "visible_endpoints": 1227,
+              "missing_endpoints": 101,
+              "empty_images": 3
+            }
+          }
+        },
+        "actual_original_pngs_verified": 157,
+        "geometry_gate_passed": true,
+        "physical_policy_visually_certified": false,
+        "training_run": false
+      },
+      "stderr": ""
+    }
+  ],
+  "implementation_sha256": {
+    "scripts/stage_pose_training.py": "a733f5e80335204747139e87a723b7bb095123059dc5a58b86ee824a26e5afe6",
+    "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+    "scripts/pose_checkpoint.py": "f902c34720283480f948cca78bd2d6d24fd07bf6bc5a325945172d56d55f5bd5"
+  }
+}
