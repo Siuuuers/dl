@@ -6,11 +6,11 @@ The agreed scope is one `cassette_front` class and its two lower-front corner sl
 
 ## Run
 
-The current instructions, [completed PR52 evaluation](endpoint-results-2026-11-12.md) and full working implementation, including verified candidate selection, are on `Siuuuers/dl` branch `codex/endpoint-results-20261112`. Use this branch while its PR is open. PR52 contains the returned results archive and checksum on a branch based on main; it does not contain this complete developed workflow. PR40, PR43 and PR47 are likewise historical results-only branches. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
+The current instructions, [completed PR52 evaluation](endpoint-results-2026-11-12.md) and full working implementation, including verified candidate selection, are on `Siuuuers/dl` branch `codex/current-readiness-20261112`. Use this branch while its PR is open. PR52 contains the returned results archive and checksum on a branch based on main; it does not contain this complete developed workflow. PR35, PR40, PR43 and PR47 are likewise results-only branches. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
 
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --single-branch \
-  --branch codex/endpoint-results-20261112 \
+  --branch codex/current-readiness-20261112 \
   https://github.com/Siuuuers/dl.git dl-folder
 cd dl-folder
 git lfs install --local
@@ -18,23 +18,13 @@ git lfs install --local
 
 The checkout leaves LFS image and weight payloads unfetched. Create `.venv` using only [the isolated-runtime setup](evaluate-pose.md#2-use-an-isolated-runtime), keeping the folder-inference checkout above. The runner requires Ultralytics `8.4.182`; the verified CPU environment uses PyTorch `2.10.0+cpu`, torchvision `0.25.0+cpu`, NumPy `2.5.4`, Pillow `13.0.0` and OpenCV `5.0.0.93`. The live-camera environment's RealSense and display setup is unnecessary for this command.
 
-For the default epoch173 model, download its weights once and run:
-
-```bash
-git lfs pull --include='weights/cassette_lower_epoch173.pt' --exclude=''
-.venv/bin/python scripts/predict_pose_folder.py \
-  --input /path/to/original-images \
-  --output /path/to/new-results \
-  --device cpu
-```
-
-In an existing compatible CUDA environment, use that environment's Python in place of `.venv/bin/python` and choose `--device 0`. Choose a new output directory for each run. The input and output directories must not contain each other. Existing outputs are refused.
+For the selected reviewed workflow, obtain the PR35 bundle below, then run the [assistant-reviewed proposal command](#assistant-reviewed-proposals). In an existing compatible CUDA environment, use that environment's Python in place of `.venv/bin/python` and choose `--device 0`. Choose a new output directory for each run. The input and output directories must not contain each other. Existing outputs are refused.
 
 The command recursively selects `.png`, `.jpg` and `.jpeg` files, including uppercase extensions, in a stable relative-path order. Use original camera images; `data/annotated/` contains reference previews with a footer and is not the image input. Labels and other file types are ignored. Unreadable images are reported explicitly. Animated/multiple-frame files and non-8-bit image modes are rejected rather than silently converted into an unintended still image.
 
 ### Use the seed46 candidate explicitly
 
-The [completed seed46 comparison](annotation-confirmation-2026-11-11.md) retains a useful experimental candidate. Selecting it here does not change the default model or approve unattended use. Candidate-only inference needs the returned candidate bundle and tracked repository metadata; it does not require downloading the original dataset or epoch173 weight payload.
+The PR35 seed46 candidate remains the selected model after the [completed PR52 comparison](endpoint-results-2026-11-12.md). Selecting it here does not change the generic runtime default or approve unattended use. Candidate-only inference needs the returned candidate bundle and tracked repository metadata; it does not require downloading the original dataset or epoch173 weight payload.
 
 From the checkout above, download the immutable [PR35 return archive](https://github.com/Siuuuers/dl/blob/8e8bb99cabcb44ed0ec0acd14db911aa44013fd8/results/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip) and verify it before extracting into a new folder:
 
@@ -46,11 +36,6 @@ printf '%s  %s\n' \
   df53683ccf6f266a605b2844f42a98e808f75686cfab09f14d680c9d061e8a91 \
   ../seed46-results.zip | sha256sum --check -
 python3 -m zipfile -e ../seed46-results.zip ../seed46-results
-.venv/bin/python scripts/predict_pose_folder.py \
-  --checkpoint-manifest ../seed46-results/candidate/checkpoint-manifest.json \
-  --input /path/to/original-images \
-  --output /path/to/new-candidate-results \
-  --device cpu --conf 0.25 --nms-iou 0.70 --endpoint-conf 0.50
 ```
 
 The archive is **39,776,456 bytes** and contains both completed arms. Select `candidate/checkpoint-manifest.json`, which identifies the **30-epoch final `last.pt`**, SHA-256 `420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1`. Keep the candidate directory intact: its manifest refers to the weights, training receipt, staging manifest, training log and results CSV. Passing the manifest alone or an unrelated `.pt` file is insufficient.
@@ -78,6 +63,22 @@ Retain the existing 1280 inference size. The [fixed 1920 comparison](partial-fro
 The later [PR43 visible-extent comparison](visible-extent-results-2026-11-11.md) is also complete and retains PR35. At the fixed primary confidence 0.13, its new model changes misses 20→21, extras 85→87, 5 px pairs 529→526 and 10 px pairs 577→578. Original-image review establishes no additional recovered front; the lost scored match survives as a nearly identical proposal, and the 10 px gain reflects assignment between existing alternatives. Its old-reviewed control exactly equals PR35 for all forty prediction arrays at 0.13/0.15. Keep the PR35 bundle above; no new training or model replacement is required.
 
 The [PR47 fourteen-box consistency comparison](consistency-results-2026-11-12.md) is complete and also retains PR35. Its valid matched L4 runs do not meet the promotion criterion: at 0.13, the new candidate has **21 misses / 88 extras / 530 pairs within 5 px / 578 pairs within 10 px**, compared with PR35's **20 / 85 / 529 / 577**. Its matched L4 control has **22 / 88 / 527 / 578**. All pair counts use the same 584 eligible objects. The sole scored gain over the L4 control is an IoU crossing of an existing proposal; previously successful 5 px pairs are also lost, and no additional recovered front is established. Keep the PR35 bundle and explicit command above. This completed result requests no further GPU run; next work is a bounded review of unreviewed training material for annotation consistency and completeness.
+
+The [current review-history inventory](../results/review/baomai-review-coverage-20261112/coverage.json) includes the PR49 recovery, bringing the recorded union to **64 of 137 training images**. The remaining **73** comprise **62 nonempty and 11 empty label files**. These counts describe which image IDs occur in the recorded targeted passes; they do not certify complete annotation review, prove that an empty label is correct, or create independent test data. Inspect and hash actual original PNGs before a new review; a Git LFS pointer is not an image. Accumulate a coherent, image-supported data revision before proposing another training comparison.
+
+### Preserved epoch173 baseline
+
+For an explicit baseline comparison, download the original weights once and run the generic default:
+
+```bash
+git lfs pull --include='weights/cassette_lower_epoch173.pt' --exclude=''
+.venv/bin/python scripts/predict_pose_folder.py \
+  --input /path/to/original-images \
+  --output /path/to/new-baseline-results \
+  --device cpu
+```
+
+This uses epoch173 at confidence 0.25. The reviewed PR35 workflow above requires its checkpoint manifest and confidence 0.13 explicitly; the runtime default has not been changed.
 
 ### Optional overlap suppression
 
