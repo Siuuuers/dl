@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "reviewer": "review_existing_data / reviewer A",
+  "date": "2026-11-13",
+  "timezone": "Asia/Hong_Kong",
+  "status": "independent_coordinate_nominations_for_parent_reconciliation_not_dataset_acceptance",
+  "images_viewed_in_order": [
+    "full new_000027 original",
+    "full old_000010 original",
+    "new_000027 unmarked nearest-neighbor top crops",
+    "old_000010 unmarked nearest-neighbor top crops"
+  ],
+  "prior_exposure": "Reviewer read prior identity-only pilot and its old_000010 single-bound proposal before this new coordinate task. No other current reviewer outputs or model predictions were seen.",
+  "no_model_predictions": true,
+  "no_source_or_repo_edits": true,
+  "pixel_method": "Original RGB pixels only; crops use nearest-neighbor replication. Axes outside image; brightness samples were read only as an edge-softness check and were not used as a target threshold. No sharpening, interpolation, hallucinated enhancement or inferred hidden corner.",
+  "source_image_hashes": {
+    "new_000027": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8",
+    "old_000010": "da428edba10715f5d02fad4855942700194ea05896eb2c10f3ca671d4f97a0b9"
+  },
+  "coordinate_convention": {
+    "image_size": [
+      1280,
+      720
+    ],
+    "bbox": "xyxy in original-image pixel coordinates; normalized by width/height",
+    "point": "xy in original-image coordinates; v2 means actual visible target reliably localizable to recorded neighborhood, not exact subpixel truth",
+    "ranges": "manual plausible coordinate neighborhoods, not measured confidence intervals or statistical calibration"
+  },
+  "nominations": [
+    {
+      "id": "027-top-A",
+      "image": "new_000027",
+      "source_row": null,
+      "identity": "supported separate front clipped at top and left image boundaries",
+      "bbox_xyxy": [
+        0,
+        0,
+        85,
+        20
+      ],
+      "bbox_extrema_plausible_ranges": {
+        "xmin": [
+          0,
+          0
+        ],
+        "ymin": [
+          0,
+          0
+        ],
+        "xmax": [
+          82,
+          86
+        ],
+        "ymax": [
+          18,
+          21
+        ]
+      },
+      "left": {
+        "xy": null,
+        "visibility": 0,
+        "reason": "Actual left lower turn lies outside the frame. The intersection of the visible lower edge with x=0 is not the physical corner.",
+        "triple": [
+          0,
+          0,
+          0
+        ]
+      },
+      "right": {
+        "xy": [
+          80,
+          17
+        ],
+        "visibility": 2,
+        "plausible_xy_range": [
+          78,
+          15,
+          83,
+          19
+        ],
+        "confidence": "moderate",
+        "reason": "Soft rounded turn where the first strip lower edge meets its right-side boundary; target remains distinguishable from the seam and basket below. Coordinate is inside the broad visible turn, not at the darkest seam center."
+      },
+      "status": "complete reviewer nomination; parent adjudication required",
+      "ambiguities": "Blur makes the side and lower extrema gradual. The physical endpoint is a rounded visible junction, not an intersection extrapolated to the vertical seam.",
+      "nominee_yolo_row": "0 0.033203125 0.013888889 0.066406250 0.027777778 0 0 0 0.062500000 0.023611111 2"
+    },
+    {
+      "id": "027-top-B",
+      "image": "new_000027",
+      "source_row": null,
+      "identity": "supported neighboring top-clipped front distinct from A and next bay",
+      "bbox_xyxy": [
+        86,
+        0,
+        316,
+        18
+      ],
+      "bbox_extrema_plausible_ranges": {
+        "xmin": [
+          85,
+          89
+        ],
+        "ymin": [
+          0,
+          0
+        ],
+        "xmax": [
+          314,
+          318
+        ],
+        "ymax": [
+          16,
+          19
+        ]
+      },
+      "left": {
+        "xy": [
+          90,
+          15
+        ],
+        "visibility": 2,
+        "plausible_xy_range": [
+          88,
+          13,
+          93,
+          17
+        ],
+        "confidence": "moderate",
+        "reason": "Rounded exposed turn where the left side bends into the lower edge, on the strip side of the narrow seam. It is not hidden merely because top of front is cropped."
+      },
+      "right": {
+        "xy": [
+          312,
+          13
+        ],
+        "visibility": 2,
+        "plausible_xy_range": [
+          309,
+          11,
+          314,
+          15
+        ],
+        "confidence": "moderate",
+        "reason": "Exposed rounded turn where light front meets the dark vertical gap. The dark separator at x317-320 and metal below are outside the target."
+      },
+      "status": "complete reviewer nomination; parent adjudication required",
+      "ambiguities": "The strip lower boundary slopes slightly upward to the right. Do not force both endpoint Y values equal. Endpoints and boundary carry a few-pixel softness.",
+      "nominee_yolo_row": "0 0.157031250 0.012500000 0.179687500 0.025000000 0.070312500 0.020833333 2 0.243750000 0.018055556 2"
+    },
+    {
+      "id": "010-row1-top",
+      "image": "old_000010",
+      "source_row": 1,
+      "identity": "supported top-clipped source instance",
+      "source_tokens": "0 0.60881250 0.09778313 0.34887500 0.15027292 0.43772656 0.10431944 2 0.77663281 0.09461111 2",
+      "before_bbox_xyxy": [
+        556.0,
+        16.3056024,
+        1002.56,
+        124.5021048
+      ],
+      "proposed_bbox_xyxy": [
+        556.0,
+        0.0,
+        1002.56,
+        124.5021048
+      ],
+      "changed_extrema": [
+        "ymin"
+      ],
+      "supported_new_extrema_ranges": {
+        "ymin": [
+          0,
+          0
+        ]
+      },
+      "other_extrema_status": "preserved inherited values, not re-certified as tight visible-front extent in this bounded intervention",
+      "left": {
+        "source_xy": [
+          560.2899968,
+          75.1099968
+        ],
+        "visibility": 2,
+        "action": "preserve exact original triple",
+        "new_coordinate_nomination": null,
+        "observed_corner_neighborhood": [
+          554,
+          65,
+          564,
+          80
+        ],
+        "reason": "A soft front-to-lower-band turn is visible beside the left metal pole, but this pass does not justify replacing the inherited coordinate. Neighborhood is wider than the new027 nominees."
+      },
+      "right": {
+        "source_xy": [
+          994.0899968,
+          68.1199992
+        ],
+        "visibility": 2,
+        "action": "preserve exact original triple",
+        "new_coordinate_nomination": null,
+        "observed_corner_neighborhood": [
+          991,
+          60,
+          1007,
+          75
+        ],
+        "reason": "The right lower-front turn is visible beside the rack edge but rounded/soft. This bounded pass supports retaining the source, not a more precise new point."
+      },
+      "proposed_row": "0 0.60881250 0.086459795 0.34887500 0.172919590 0.43772656 0.10431944 2 0.77663281 0.09461111 2",
+      "status": "accept one-bound change only; no complete geometry certification",
+      "reason": "The same source front visibly reaches y=0. Starting the enclosing box at y=16.3056024 excludes visible material. The rest of the source geometry can remain unchanged for this explicitly bounded correction."
+    }
+  ],
+  "unresolved_cases": [
+    "Other farther-right thin top-border fragments in new_000027 not adjudicated or added."
+  ],
+  "limitations": [
+    "These are assistant pixel judgments, not independent human measurements.",
+    "Manual ranges are not guarantees that every pixel within them is equally valid.",
+    "No claim of new trained-model performance or independent scene reliability.",
+    "No ROI copied as a box; all proposed boxes selected from observed front extent."
+  ]
+}

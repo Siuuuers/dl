@@ -1,10 +1,12 @@
-# One comparison for the composed front annotations
+# Completed composed-front comparison: preparation record
 
-**The input data and workflow are prepared for one matched GPU comparison. Full training has not been executed here. Keep PR35 selected until the returned models are evaluated.**
+**Completed, 2026-11-13: both 30-epoch L4 runs returned in PR58 have been verified and evaluated. Retain PR35 at 1280 / confidence 0.13 / NMS 0.70 / endpoint cutoff 0.50. No GPU rerun is requested.** See the [result and decision](composed-results-2026-11-13.md) and [verification evidence](../results/verification/baomai-composed-results-20261113/). The candidate does not meet the comparison and original-image evidence requirements for promotion.
 
-This experiment holds the current ten endpoint-slot corrections fixed and tests the additional **17 box corrections and one duplicate removal**. The original training images have now been restored and verified. No new camera captures are required for this comparison.
+This completed experiment held ten endpoint-slot corrections fixed and tested the additional **17 box corrections and one duplicate removal**. The original training images were restored and verified. The procedure below preserves the frozen preparation and reproduction instructions; it is not a request to start another experiment.
 
-## Run it
+## Historical notebook procedure
+
+These were the run instructions for the now-completed PR58 experiment. Preserve the returned archive and use the [offline result replay](composed-results-2026-11-13.md) for the current comparison.
 
 1. Open [baomai_composed_fronts.ipynb](../notebooks/baomai_composed_fronts.ipynb) in [Google Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/composed-training-20261112/notebooks/baomai_composed_fronts.ipynb).
 2. Select **Runtime → Change runtime type → GPU**, then **Runtime → Run all**. Keep the same GPU/runtime for both arms. The notebook asks to mount Drive so it can preserve completed work.
@@ -43,7 +45,7 @@ Evaluate both returned checkpoints and the exact retained PR35 checkpoint in one
 
 The primary question is whether the new box/deletion supervision produces supported improvement in completeness or fewer duplicate/false detections while preserving existing supported successes. Inspect originals to distinguish actual recovery from an existing proposal crossing an IoU threshold or being assigned differently. Compare the effect against the matched endpoint control first, then assess replacement of PR35 separately. No automatic promotion, threshold sweep, seed sweep or additional unlabeled-data claim is part of this experiment.
 
-## What is verified already
+## Preparation checks recorded on 2026-11-12
 
 The [preparation evidence](../results/verification/baomai-composed-preparation-20261112/README.md) distinguishes actual-data checks from synthetic execution tests:
 
@@ -53,7 +55,7 @@ The [preparation evidence](../results/verification/baomai-composed-preparation-2
 - Focused tests check altered/rehashed labels and evidence, wrong row maps, arm swaps, control identity, completed-receipt identity, notebook recovery and returned archive integrity. They do not simulate a successful physical model.
 - The notebook's exact embedded input preflight ran against the restored originals and the actual protocol, including the separate adjudicated evaluation reference.
 
-No GPU resource trial, full training, new inference or measured model improvement is claimed by these preparation checks. This environment has no available `nvidia-smi`; the notebook performs the real CUDA/device checks in the selected GPU runtime before starting missing work.
+These preparation checks alone did not establish a GPU resource trial, completed training, inference or model improvement. The later [PR58 result](composed-results-2026-11-13.md) separately records completed L4 training, checkpoint verification, evaluation and its limits.
 
 ## Historical rules remain strict
 
@@ -61,7 +63,7 @@ The current annotation policy appends a section separating context-derived propo
 
 The live policy, historical manifests, accepted endpoint labels and existing strict validators are unchanged. The historical policy snapshot is [recorded separately](policies/annotation-policy-pr35-2026-11-10.md). The ordinary validator still rejects undeclared changes to original visible endpoint tokens. The composed kind adds explicit permission for this exact recorded composition; it does not relax that ordinary contract.
 
-## Command-line use
+## Historical command-line reproduction
 
 After checking out the implementation revision pinned by the notebook and restoring original LFS assets, verify and stage into a fresh directory:
 
