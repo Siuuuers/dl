@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "experiment_id": "pixel-occlusion-20261113-v1",
+  "source_commit": "d28cb65dbb45afa215839ba9b383ea8202318fbe",
+  "frozen_at_utc": "2026-11-13T11:46:59.373878+00:00",
+  "timezone": "Asia/Hong_Kong",
+  "purpose": "Measure existing PR35 sensitivity to actual removal of known corner pixels before deciding whether hidden-coordinate supervision is justified.",
+  "authorization": "The user explicitly permits investigating hidden-corner predictions and reasonable implementation choices where the task leaves them unspecified. Estimates remain distinct from observed reference coordinates.",
+  "cohort": {
+    "path": "results/review/context-corners-20261112/cohort.json",
+    "sha256": "67fe072944cc7dbe60f2be20b0ddb6c87029864cb7c0c81601a201c72c80196c",
+    "selection": "Unique union of previously fixed interpolation and extrapolation target identities; no selection from new masked results. Four familiar, possibly correlated development scenes; not an independent test."
+  },
+  "reference": {
+    "manifest_path": "data/references/visible-front-adjudication-2026-11-12/manifest.json",
+    "manifest_sha256": "75e8689f65f7f32ca7f4657f27d214aa1ba371347812de780c6e5e6ac21af61e",
+    "meaning": "Known physical coordinates observed in unmodified originals. Original boxes are fixed association anchors after masking, not readjudicated visible-face boxes."
+  },
+  "images": [
+    {
+      "id": "new_000007",
+      "image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "label_path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000007.txt",
+      "label_sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": "new_000008",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "label_path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000008.txt",
+      "label_sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": "new_000009",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "label_path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000009.txt",
+      "label_sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": "new_000010",
+      "image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "label_path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000010.txt",
+      "label_sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "targets": [
+    {
+      "image_id": "new_000007",
+      "row": 28
+    },
+    {
+      "image_id": "new_000007",
+      "row": 29
+    },
+    {
+      "image_id": "new_000007",
+      "row": 30
+    },
+    {
+      "image_id": "new_000007",
+      "row": 31
+    },
+    {
+      "image_id": "new_000007",
+      "row": 32
+    },
+    {
+      "image_id": "new_000007",
+      "row": 33
+    },
+    {
+      "image_id": "new_000007",
+      "row": 34
+    },
+    {
+      "image_id": "new_000007",
+      "row": 35
+    },
+    {
+      "image_id": "new_000007",
+      "row": 36
+    },
+    {
+      "image_id": "new_000008",
+      "row": 13
+    },
+    {
+      "image_id": "new_000008",
+      "row": 14
+    },
+    {
+      "image_id": "new_000008",
+      "row": 15
+    },
+    {
+      "image_id": "new_000008",
+      "row": 16
+    },
+    {
+      "image_id": "new_000008",
+      "row": 17
+    },
+    {
+      "image_id": "new_000009",
+      "row": 32
+    },
+    {
+      "image_id": "new_000009",
+      "row": 33
+    },
+    {
+      "image_id": "new_000009",
+      "row": 34
+    },
+    {
+      "image_id": "new_000009",
+      "row": 35
+    },
+    {
+      "image_id": "new_000009",
+      "row": 36
+    },
+    {
+      "image_id": "new_000009",
+      "row": 37
+    },
+    {
+      "image_id": "new_000009",
+      "row": 38
+    },
+    {
+      "image_id": "new_000009",
+      "row": 39
+    },
+    {
+      "image_id": "new_000009",
+      "row": 40
+    },
+    {
+      "image_id": "new_000010",
+      "row": 16
+    },
+    {
+      "image_id": "new_000010",
+      "row": 17
+    },
+    {
+      "image_id": "new_000010",
+      "row": 18
+    },
+    {
+      "image_id": "new_000010",
+      "row": 19
+    },
+    {
+      "image_id": "new_000010",
+      "row": 20
+    },
+    {
+      "image_id": "new_000010",
+      "row": 21
+    },
+    {
+      "image_id": "new_000010",
+      "row": 22
+    }
+  ],
+  "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+  "checkpoint_size_bytes": 21704814,
+  "baseline": {
+    "archive_path": "results/verification/baomai-composed-results-20261113/evaluation.zip",
+    "archive_sha256": "1d87aa19fdb62ec87420b07bec44919a04bfe95d713838c596007bcc062baf6a",
+    "predictions_member": "evaluation/predictions-current.jsonl",
+    "require_exact_intact_prediction_arrays": true
+  },
+  "settings": {
+    "box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "imgsz": 1280,
+    "threads": 4,
+    "device": "cpu",
+    "radii_px": [
+      5,
+      10
+    ]
+  },
+  "masks": {
+    "side_fraction": 0.25,
+    "outside_fraction": 0.05,
+    "pad_y": 6,
+    "fill_rgb": [
+      127,
+      127,
+      127
+    ],
+    "neighborhood_radius_px": 3,
+    "conditions": [
+      "left",
+      "right",
+      "center"
+    ],
+    "construction": "Use original target box only: left[x0-.05w,x0+.25w], right[x1-.25w,x1+.05w], center[cx-.15w,cx+.15w], y[y0-6,y1+6]. Floor lower/ceil upper bounds and clip mask to image. Each altered image starts from the intact original.",
+    "control": "Center is a location control of approximately equal mask area, not a sham or guaranteed unaffected condition.",
+    "coverage": "Left/right must fully cover a radius-3px target neighborhood and leave the opposite point outside; center must leave both target points outside. Retain and report all collateral intersections."
+  },
+  "expected": {
+    "source_images": 4,
+    "unique_targets": 30,
+    "intact_predictions": 4,
+    "altered_predictions": 90,
+    "image_predictions_excluding_warmup": 94,
+    "targets_per_condition": 30,
+    "masks_intersecting_other_reference_endpoint_centers": 51
+  },
+  "source_files": {
+    "scripts/predict_pose_folder.py": "239c3b1dd7f5fefc46b8b102277d86aec53d7e92dff99b890eaccfd74adfdefb",
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+    "scripts/pose_checkpoint.py": "f902c34720283480f948cca78bd2d6d24fd07bf6bc5a325945172d56d55f5bd5",
+    "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+    "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+    "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+    "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5"
+  },
+  "metrics": {
+    "association": "Existing full-image confidence-ordered one-to-one same-class matching at IoU>=0.50. Do not use endpoint distance to select predictions.",
+    "denominators": "All30targets per condition, including missing matches, suppressed endpoints and invalid points. Intact target observations derive from4sharedimagepredictions.",
+    "endpoints": "Report covered side and opposite side separately: display availability, original-pixel error,5/10px success,confidence,pairedidentitychanges; preserve raw coords and scores.",
+    "extra_diagnostic": "For unmatched targets, record best same-class box-IoU proposal as diagnostic only; never promote it into an official success.",
+    "visibility": "Known reference coordinates remain immutable; covered coordinates have observed_in_masked_input=false in experiment metadata. Source v2 flags describe the original image only."
+  },
+  "decision_limits": [
+    "No training, checkpoint replacement, production threshold change, reference rewrite, or automatic hidden-label acceptance in this diagnostic.",
+    "Actual hidden-corner errors without independent coordinates remain unknown.",
+    "Mask artifacts, reference-derived placement, collateral occlusion and repeated scenes limit transfer to natural occlusion.",
+    "A supported occlusion-training hypothesis would need a separately fixed training-only protocol and explicit coordinate/visibility semantics; it is not automatically executed after this result.",
+    "The primary-reference coordinates for010:16and010:22 differ from the older context-study reference; compare only with fresh intact controls using this frozen reference."
+  ]
+}
