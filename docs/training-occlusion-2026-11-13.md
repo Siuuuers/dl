@@ -14,6 +14,8 @@ The completed [PR60 diagnostic](pixel-occlusion-2026-11-13.md) found 28/30 left-
 2. Select **Runtime → Change runtime type → GPU**, then **Runtime → Run all**. Authorize its Drive mount to preserve completed work. Keep the same runtime for both runs.
 3. Return **`baomai-occlusion-seed46-results.zip`**. Keep the verified Drive backup until the comparison is evaluated.
 
+The notebook checks out implementation commit [`b457a4a69751`](https://github.com/Siuuuers/dl/commit/b457a4a6975104700d7342fa4b997ea6da7625ad) and verifies the frozen protocol SHA-256 `c70563034d3ac969ff7837a594d53bc6316fda3897e1557b5d7828be52e94a62`.
+
 No manual label edits or separate image upload are needed. The notebook retrieves the exact 157 original PNGs and original epoch173 initialization weights with selective Git LFS, checks their identities, and verifies the chosen label composition. It installs Ultralytics 8.4.182 while preserving the runtime's Torch/torchvision versions.
 
 The notebook first performs four candidate training batches at the actual batch size and resolution. That trial must observe an optimizer update, parameter change, and applied masks. Its weights never initialize either full run. Each full arm starts independently from epoch173 and completes the fixed 30 epochs. The selected checkpoint is finalized epoch-30 `last.pt`; there is no best-epoch search.
