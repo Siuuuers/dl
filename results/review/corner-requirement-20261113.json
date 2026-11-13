@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "timezone": "Asia/Hong_Kong",
+  "kind": "saved_prediction_requirement_diagnostic",
+  "source_revision": "6fa530035030d6703e80839700506e05d9c921b0",
+  "selected_model": "PR35",
+  "model_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+  "evidence_capsule": "results/verification/baomai-composed-results-20261113/evaluation.zip",
+  "inputs": {
+    "predictions-current.jsonl": "2435dad151751745a0019cbbbe9e34113236db1da59b49434e8d0708a1eba3d9",
+    "scoring-current-primary.json": "e3c3a9665754382b38be38e126574dfeae17e7dad888e50009406a03178129d4"
+  },
+  "settings": {
+    "box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "image_size": [
+      1280,
+      720
+    ]
+  },
+  "method": "Parse the20 current-model image records. A pair is drawable only when both endpoint scores >=0.50 and both coordinates are finite within0<=x<width,0<=y<height. Preserve raw slots and all existing frozen prediction-to-reference assignments. Classify each drawable pair by the matched reference corner-availability count; otherwise keep it unmatched. No rescoring, new matching, threshold selection, inference, or training.",
+  "image_count": 20,
+  "counts": {
+    "predictions": 728,
+    "drawable_pairs": 715,
+    "x_order_correct": 715,
+    "drawable_matched_with_2_locatable_reference_corners": 578,
+    "drawable_matched_both_within_5px": 529,
+    "drawable_matched_both_within_10px": 577,
+    "drawable_unmatched_proposals": 78,
+    "drawable_matched_with_1_locatable_reference_corners": 48,
+    "not_drawable_as_pair": 13,
+    "drawable_matched_with_0_locatable_reference_corners": 11,
+    "x_order_reversed": 0,
+    "x_order_equal": 0
+  },
+  "examples": [
+    {
+      "image_id": "new_000010",
+      "reference_row_one_based": 28,
+      "prediction_index_zero_based": 17,
+      "predicted_points_xy_confidence": [
+        [
+          923.7900390625,
+          493.8005676269531,
+          0.9065807461738586
+        ],
+        [
+          1062.1612548828125,
+          492.3167724609375,
+          0.9085108637809753
+        ]
+      ],
+      "locatable_reference_corners": 2,
+      "visible_endpoint_errors_px": [
+        1.9662690920212211,
+        0.6449970250245365
+      ]
+    },
+    {
+      "image_id": "new_000010",
+      "reference_row_one_based": 31,
+      "prediction_index_zero_based": 30,
+      "predicted_points_xy_confidence": [
+        [
+          458.2908935546875,
+          651.5001220703125,
+          0.8613705039024353
+        ],
+        [
+          591.6378173828125,
+          648.7257080078125,
+          0.7977786064147949
+        ]
+      ],
+      "locatable_reference_corners": 1,
+      "visible_endpoint_errors_px": [
+        10.57917463985773,
+        null
+      ]
+    },
+    {
+      "image_id": "new_000010",
+      "reference_row_one_based": 32,
+      "prediction_index_zero_based": 29,
+      "predicted_points_xy_confidence": [
+        [
+          457.8441162109375,
+          663.8034057617188,
+          0.8622178435325623
+        ],
+        [
+          555.6776733398438,
+          661.0387573242188,
+          0.874555230140686
+        ]
+      ],
+      "locatable_reference_corners": 0,
+      "visible_endpoint_errors_px": [
+        null,
+        null
+      ]
+    }
+  ],
+  "renderer_sources": {
+    "scripts/predict_pose_folder.py": "239c3b1dd7f5fefc46b8b102277d86aec53d7e92dff99b890eaccfd74adfdefb",
+    "scripts/view_d405_yolo.py": "5dcc75155a25857d79df52c80a5157e819366c1252ad7a3921f50ebdbbcd9bed"
+  },
+  "runtime_findings": {
+    "per_endpoint_confidence_and_bounds_gate": true,
+    "line_requires_both_gates": true,
+    "y_coordinates_forced_equal": false,
+    "raw_model_slots_preserved": true,
+    "runtime_x_sort_or_reversal_rejection": false,
+    "diagnostic_mode_can_show_rejected_point_crosses": true,
+    "generic_defaults_select_epoch173": true
+  },
+  "limits": [
+    "These are20 reused development images, not new independent observations.",
+    "Drawable describes what the ordinary threshold/bounds gate would show; no actual live camera rendering was run.",
+    "The59 drawable pairs matched to one/zero-corner reference objects are not fully verifiable as observed physical corner pairs; this does not prove59 physically false lines.",
+    "The78 unmatched drawable proposals are unmatched under the existing IoU scorer, not automatically78 nonexistent physical edges.",
+    "The577/584 10px result is eligible-target pair success, not precision over all715 drawn lines.",
+    "X order is observed in all715 drawable pairs; it is not a hard guarantee on arbitrary future outputs.",
+    "Reference annotations are versioned reviewed measurements with remaining uncertainty, not perfect physical truth."
+  ]
+}

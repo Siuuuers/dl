@@ -13,13 +13,15 @@ python3 -m http.server 8000 --bind 127.0.0.1
 Then open <http://localhost:8000/tools/cassette_labeler/>. No dependencies or network connection needed.
 
 1. Click **Open data folder**, choose exported `data_pred/` or another working copy, and allow read/write access. The folder can contain `train`, `val`, or both under `images/` and `labels/`. PNGs must be downloaded, not Git LFS pointers.
-2. Choose a `train/` or `val/` image. Existing labels load automatically; absent or empty labels start with no cassettes.
+2. Choose a `train/` or `val/` image. Existing valid labels load automatically; absent or empty labels start with no cassettes. If a label is invalid, its original text stays unchanged in the open Label text pane beside the image. Correct it and Apply before saving; Reset text explicitly discards that rejected text and returns to an empty annotation list.
 3. Select a cassette by box or number. **Edit selected row** opens the existing Label text pane and selects that cassette's row for replacement; then use Apply. It waits for any pending text to be applied or reset. Ordinary cassette selection does not move keyboard focus into the text pane. Drag green (front_lower_left) and blue (front_lower_right) points onto the actual front-lower corners. Drag inside its box to move only the box; use **Draw / replace box** to redraw its bounds.
 4. **Add cassette** starts a new box: drag its bounds, then use **Place left point** and **Place right point**. **Left missing** / **Right missing** write `0 0 0`; placing a point marks it visible (`2`). **Delete cassette** removes the selected row.
 5. **Save label** overwrites `labels/{train,val}/<image-stem>.txt` within the chosen folder (or creates it). All cassette rows are saved as `0 cx cy w h left_x left_y left_v right_x right_y right_v`, normalized to the image. Saving no cassettes writes an empty file. **Save & Next** opens the next image only after the current label is written successfully; on the last image it saves and stays. Unapplied text or a failed save keeps the current image open. Use the Image list to return to any image. Switching images with unsaved changes asks before discarding them.
 6. **Label text** shows those exact rows for the current image. Edit them and click **Apply** to update the cassettes; **Save label** writes the file. Invalid text leaves the cassettes unchanged. Pending text survives cassette selection and is protected when leaving the image. Apply it or use **Reset text** before editing graphically, using Undo, or saving. Reset text discards only the unapplied text.
 7. **Undo** reverts one actual drag, add, delete, missing-point change, or Apply. Selecting a point or marking an already missing point does not consume it. Undo after saving marks the restored labels unsaved; save again to write them.
 8. Uncheck **Show annotations** to inspect the original image without boxes, numbers, or point markers. The canvas is view-only until annotations are shown again. This display change preserves the selected cassette, labels, pending text, and Undo.
+
+Import, Apply, and Save enforce the policy's mechanical rules: missing points are exactly `0 0 0`; visible points keep their left/right slots and follow image X when both are visible; boxes stay within the image; visible points stay inside their boxes and below normalized 1 on both axes. Box edges may equal 1. Geometry checks allow only the documented 0.0001 original-image-pixel serialization tolerance. The saved eight-decimal text is checked too, so rounding a visible point to 1 cannot pass Save. Invalid canvas edits remain editable and Undo remains available; Save and Save & Next write nothing until corrected. These checks never reorder, clamp, infer, or change visibility to repair a label.
 
 ## Existing corrected example
 
@@ -56,4 +58,4 @@ node tools/cassette_labeler/check.mjs
 python3 scripts/check_export_pose_drafts.py
 ```
 
-These dependency-free checks cover editing/Undo/file writes and draft-folder preservation. The exporter check uses a fake model; it does not run inference. Browser rendering and native folder permissions require a desktop browser walkthrough.
+These dependency-free checks cover editing/Undo/file writes, rejection and recovery of invalid labels, valid partial visibility and boundaries, all 157 frozen label files, and draft-folder preservation. The exporter check uses a fake model; it does not run inference. Browser rendering and native folder permissions require a desktop browser walkthrough.

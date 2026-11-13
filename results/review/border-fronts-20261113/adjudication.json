@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "timezone": "Asia/Hong_Kong",
+  "candidate_id": "border-fronts-2026-11-13",
+  "source_revision": "85ce9515c172d9563051c4472a1479a150c00ee4",
+  "method": "Full original then nearest-neighbor source crops; two separate assistant coordinate nominations followed by root original-pixel reconciliation. No model predictions or generated image detail.",
+  "source_images": [
+    {
+      "id": "new_000027",
+      "sha256": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8",
+      "original_size": [
+        1280,
+        720
+      ],
+      "upstream_path": "images/train/new_000027.png",
+      "original_available_in_prior_capsule": "review/training-pilot/originals/new_000027.png"
+    },
+    {
+      "id": "old_000010",
+      "sha256": "da428edba10715f5d02fad4855942700194ea05896eb2c10f3ca671d4f97a0b9",
+      "original_size": [
+        1280,
+        720
+      ],
+      "upstream_path": "images/train/old_000010.png",
+      "original_available_in_prior_capsule": "review/training-pilot/originals/old_000010.png"
+    }
+  ],
+  "reviewers": {
+    "a": {
+      "path": "reviewer-a.json",
+      "sha256": "880c30d6047b9e43d1863de317b3c262ce62bbfe3a71e56ead904a7f19e5c9d7"
+    },
+    "b": {
+      "path": "reviewer-b.json",
+      "sha256": "8c542007f0469a87c7f34386fbe3ab66df872eef8b88b29083961f9ff536002c"
+    }
+  },
+  "accepted": [
+    {
+      "id": "027-top-A",
+      "image_id": "new_000027",
+      "review_status": "accepted_incremental",
+      "reason": "The original image supports a separate top- and left-clipped front, absent from all ten source rows. Its rounded lower-right junction is visible and locatable with several pixels of manual uncertainty. The left physical lower corner lies outside the frame; the visible lower edge meeting x=0 is not a substitute corner.",
+      "reviewers": [
+        "reviewer A",
+        "reviewer B",
+        "root reconciler"
+      ],
+      "details": {
+        "id": "027-top-A",
+        "image_id": "new_000027",
+        "box_xyxy_px": [
+          0,
+          0,
+          86,
+          20
+        ],
+        "corners_px": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            82,
+            16,
+            2
+          ]
+        ],
+        "candidate_row": 11,
+        "reason": "The original image supports a separate top- and left-clipped front, absent from all ten source rows. Its rounded lower-right junction is visible and locatable with several pixels of manual uncertainty. The left physical lower corner lies outside the frame; the visible lower edge meeting x=0 is not a substitute corner.",
+        "reviewer_neighborhoods": {
+          "a_right": {
+            "x": [
+              78,
+              83
+            ],
+            "y": [
+              15,
+              19
+            ]
+          },
+          "b_right": {
+            "x": [
+              80,
+              85
+            ],
+            "y": [
+              14,
+              19
+            ]
+          }
+        },
+        "geometry_choice": "Select reviewer B's original-pixel nomination. The right point lies within both independently recorded plausible neighborhoods; the one-pixel box-bound difference is within the observed soft edge. No coordinates come from model predictions.",
+        "row_text": "0 0.033593750 0.013888889 0.067187500 0.027777778 0 0 0 0.064062500 0.022222222 2"
+      }
+    },
+    {
+      "id": "027-top-B",
+      "image_id": "new_000027",
+      "review_status": "accepted_incremental",
+      "reason": "A second distinct top-clipped front is separated from the first strip and the next rack bay. Both actual lower-front turns remain visible in-frame. Original pixels support the two soft junctions; top clipping does not make these lower corners missing.",
+      "reviewers": [
+        "reviewer A",
+        "reviewer B",
+        "root reconciler"
+      ],
+      "details": {
+        "id": "027-top-B",
+        "image_id": "new_000027",
+        "box_xyxy_px": [
+          86,
+          0,
+          317,
+          18
+        ],
+        "corners_px": [
+          [
+            89,
+            15,
+            2
+          ],
+          [
+            313,
+            13,
+            2
+          ]
+        ],
+        "candidate_row": 12,
+        "reason": "A second distinct top-clipped front is separated from the first strip and the next rack bay. Both actual lower-front turns remain visible in-frame. Original pixels support the two soft junctions; top clipping does not make these lower corners missing.",
+        "reviewer_neighborhoods": {
+          "a_left": {
+            "x": [
+              88,
+              93
+            ],
+            "y": [
+              13,
+              17
+            ]
+          },
+          "b_left": {
+            "x": [
+              87,
+              92
+            ],
+            "y": [
+              13,
+              18
+            ]
+          },
+          "a_right": {
+            "x": [
+              309,
+              314
+            ],
+            "y": [
+              11,
+              15
+            ]
+          },
+          "b_right": {
+            "x": [
+              310,
+              315
+            ],
+            "y": [
+              11,
+              16
+            ]
+          }
+        },
+        "geometry_choice": "Select reviewer B's original-pixel nomination. Both points lie within both independently recorded plausible neighborhoods. The one-pixel right-box-bound difference is within the soft edge. No averaging or hidden-corner inference is used.",
+        "row_text": "0 0.157421875 0.012500000 0.180468750 0.025000000 0.069531250 0.020833333 2 0.244531250 0.018055556 2"
+      }
+    },
+    {
+      "id": "010-row1-top",
+      "image_id": "old_000010",
+      "review_status": "accepted_incremental",
+      "reason": "The same front covered by source row1 visibly reaches the top image boundary. Extend only y_min from16.3056024 to0, preserving x bounds, y_max and all endpoint tokens. This selective repair does not newly certify the other inherited bounds or endpoints.",
+      "reviewers": [
+        "reviewer A",
+        "reviewer B",
+        "root reconciler"
+      ],
+      "details": {
+        "original_row": 1,
+        "before_bbox_xyxy_px": [
+          556.0,
+          16.3056024,
+          1002.56,
+          124.5021048
+        ],
+        "after_bbox_xyxy_px": [
+          556.0,
+          0,
+          1002.56,
+          124.5021048
+        ],
+        "endpoint_tokens_preserved": true,
+        "all_other_rows_byte_preserved": true
+      }
+    }
+  ],
+  "held_cases": [
+    "new_000027 farther-right top fragments",
+    "new_000001 source rows42/43 visible bounds",
+    "new_000013 source row34 visible bounds"
+  ],
+  "coverage": {
+    "previous_union_images": 70,
+    "current_union_images": 70,
+    "total_train_images": 137,
+    "remaining_images": 67,
+    "remaining_nonempty": 57,
+    "remaining_empty": 10,
+    "remaining_original_objects": 1590,
+    "remaining_missing_endpoint_slots": 203,
+    "interpretation": "This finishes known cases in two already-covered images. Coverage is not exhaustive certification."
+  },
+  "selected_model": "PR35",
+  "training_performed": false,
+  "inference_performed": false,
+  "frozen_reference_modified": false,
+  "geometry_uncertainty": "Approximately2–3 original pixels around soft rounded turns; record reviewer-specific ranges. These are subjective neighborhoods, not calibrated confidence intervals."
+}

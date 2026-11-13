@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent reviewer B",
+  "review_kind": "original-first coordinate nomination, no source label writes",
+  "policy": "baomai-visible-front-v1",
+  "observation_order": [
+    "policy",
+    "full original new_000027",
+    "full original old_000010",
+    "raw nearest-neighbor crops",
+    "crops with original pixel axes",
+    "freeze prelabel-observations.json",
+    "source label text",
+    "nomination overlays"
+  ],
+  "prior_exposure": "Read prior result report describing two omitted fronts and the old_000010 y_min issue. Did not inspect other reviewers' coordinate nominations, predictions or overlays. This is independent image-based nomination, not a fully blinded external review.",
+  "source_hashes": {
+    "originals/new_000027.png": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8",
+    "originals/old_000010.png": "da428edba10715f5d02fad4855942700194ea05896eb2c10f3ca671d4f97a0b9",
+    "labels/new_000027.txt": "0d2dcd25ea55d8d623e16e06b7c6ece33e3b574aad4fe433eb0b46d543be5a37",
+    "labels/old_000010.txt": "7de7a919d2a1bdb1c4fbea1742ca0746691b223f1d491c2fed16d0b51f595492"
+  },
+  "decisions": [
+    {
+      "id": "027-top-A",
+      "image": "new_000027",
+      "source_row": null,
+      "identity": "Distinct top- and left-clipped front; source ten rows cover lower objects and do not annotate this strip.",
+      "proposed_bbox_xyxy": [
+        0,
+        0,
+        86,
+        20
+      ],
+      "proposed_keypoints": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          82,
+          16,
+          2
+        ]
+      ],
+      "bbox_uncertainty_xyxy": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          84,
+          88
+        ],
+        [
+          18,
+          21
+        ]
+      ],
+      "keypoint_uncertainty": {
+        "left": "Physical left corner outside image; true missing, not deferred measurement.",
+        "right": {
+          "x": [
+            80,
+            85
+          ],
+          "y": [
+            14,
+            19
+          ]
+        }
+      },
+      "rationale": "Visible face extends to both image boundaries. Its right side curves into the lower-front boundary near (82,16). Junction is soft but identifiable; do not substitute darker metal seam below around y22 or mathematically extrapolate a hidden square corner.",
+      "status": "coordinate proposal for parent reconciliation",
+      "visibility_assessment": "left missing, right visible v2; softness means several-pixel uncertainty, not evidence of occlusion"
+    },
+    {
+      "id": "027-top-B",
+      "image": "new_000027",
+      "source_row": null,
+      "identity": "Distinct top-clipped front right of A, separated by the narrow dark junction.",
+      "proposed_bbox_xyxy": [
+        86,
+        0,
+        317,
+        18
+      ],
+      "proposed_keypoints": [
+        [
+          89,
+          15,
+          2
+        ],
+        [
+          313,
+          13,
+          2
+        ]
+      ],
+      "bbox_uncertainty_xyxy": [
+        [
+          84,
+          89
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          315,
+          319
+        ],
+        [
+          16,
+          19
+        ]
+      ],
+      "keypoint_uncertainty": {
+        "left": {
+          "x": [
+            87,
+            92
+          ],
+          "y": [
+            13,
+            18
+          ]
+        },
+        "right": {
+          "x": [
+            310,
+            315
+          ],
+          "y": [
+            11,
+            16
+          ]
+        }
+      },
+      "rationale": "Both actual lower junctions are within the frame and visually distinguishable despite blur. Bottom edge tilts slightly, so do not enforce equal Y. The bottom/dark rack line around y20\u201323 is not the target corner; top clipping does not make the visible lower endpoints missing.",
+      "status": "coordinate proposal for parent reconciliation",
+      "visibility_assessment": "both visible v2, coordinate accuracy approximately 2\u20133 original pixels"
+    },
+    {
+      "id": "old_000010:1",
+      "image": "old_000010",
+      "source_row": 1,
+      "source_row_text": "0 0.60881250 0.09778313 0.34887500 0.15027292 0.43772656 0.10431944 2 0.77663281 0.09461111 2",
+      "source_bbox_xyxy": [
+        556.0,
+        16.3056024,
+        1002.56,
+        124.5021048
+      ],
+      "proposed_bbox_xyxy": [
+        556.0,
+        0.0,
+        1002.56,
+        124.5021048
+      ],
+      "proposed_row_text": "0 0.60881250 0.08645979500 0.34887500 0.17291959000 0.43772656 0.10431944 2 0.77663281 0.09461111 2",
+      "operation": "Replace y_min only with 0, preserve x_min/x_max/y_max and all corner tokens.",
+      "keypoints_retained": [
+        [
+          560.2899968,
+          75.1099968,
+          2
+        ],
+        [
+          994.0899968,
+          68.1199992,
+          2
+        ]
+      ],
+      "rationale": "The full original and crop show the same topmost physical front intersecting y=0. No upper bound at y16.3056024 is supported as the tight observed extent. Other fields are preserved for this selective correction; this review does not newly certify every inherited bound or point.",
+      "status": "single-bound change supported"
+    }
+  ],
+  "limits": [
+    "Source pixels are visibly soft; nearest-neighbor enlargement adds no detail. Ranges express reviewer uncertainty, not fitted probabilistic confidence intervals.",
+    "No model outputs were viewed or used.",
+    "No source or candidate label file was written.",
+    "Nominees require parent reconciliation before accepting complete training rows."
+  ]
+}

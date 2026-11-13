@@ -4,7 +4,7 @@ import vm from 'node:vm';
 
 const html = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
 const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
-const original = '0 0.50000000 0.50000000 0.50000000 0.50000000 0.25000000 0.75000000 2 0.75000000 0.75000000 2';
+const original = '0 0.50000000 0.50000000 0.60000000 0.50000000 0.25000000 0.75000000 2 0.75000000 0.75000000 2';
 const edited = original.replace('0.50000000', '0.55000000');
 
 function fixture(splits = ['train', 'val'], initial = original) {
@@ -124,7 +124,7 @@ async function open(splits, initial) {
 
 const checks = [
   ['Edit selected row targets one of 54 rows without changing the others', async () => {
-    const lines = Array.from({length: 54}, (_, i) => original.replace('0.50000000', (0.25 + i / 100).toFixed(8)));
+    const lines = Array.from({length: 54}, (_, i) => original.replace('0.50000000', (0.45 + i / 1000).toFixed(8)));
     const initial = lines.join('\n'), app = await open(undefined, initial);
     await app.select('objects', 36);
     assert.equal(app.document.activeElement, app.elements.objects);
@@ -427,6 +427,121 @@ const checks = [
       assert.equal(app.unload(), false, failure);
     }
   }],
+  ['Invalid imports preserve their exact text for correction and cannot be saved', async () => {
+    const invalid = [
+      original.replace('0.25000000 0.75000000 2', '0.25000000 0.75000000 0'),
+      original.replace('0.75000000 0.75000000 2', '0.75000000 0.75000000 0'),
+      '0 0.5 0.5 1 1 0.75 0.7 2 0.25 0.8 2',
+      '0 0.5 0.5 1 1 0.25 0.7 2 1 0.8 2',
+      '0 0.5 0.5 1 1 0.25 0.7 2 0.75 1 2',
+      '0 0.1 0.5 0.6 0.5 0 0 0 0 0 0',
+      '0 0.5 0.5 0.5 0.5 0.1 0.7 2 0.75 0.7 2',
+    ];
+    for (const row of invalid) {
+      const raw = `  ${row}  \n`, app = await open(['val'], raw.slice(0, -1));
+      assert.equal(app.elements.label.value, raw);
+      assert.equal(app.elements.labelPanel.open, true);
+      assert.match(app.elements.status.textContent, /invalid.*line 1/i);
+      assert.equal(app.elements.objects.children.length, 0);
+      assert.equal(app.unload(), true);
+      await app.click('saveNext');
+      assert.equal(app.state.writes, 0);
+      assert.equal(app.saved.get('val/a.txt'), raw);
+      assert.equal(String(app.elements.files.value), '0');
+      await app.toggle('annotations', false); await app.toggle('annotations', true);
+      assert.equal(app.elements.label.value, raw);
+      app.text(original); await app.click('apply'); await app.click('save');
+      assert.equal(app.saved.get('val/a.txt'), original + '\n');
+      assert.equal(app.unload(), false);
+    }
+  }],
+  ['Invalid Apply preserves rows, Undo, and the unmodified draft', async () => {
+    for (const draft of [
+      '0 0.5 0.5 1 1 0.2 0.7 0 0.8 0.7 2',
+      '0 0.5 0.5 1 1 0.8 0.7 2 0.2 0.7 2',
+      '0 0.5 0.5 1 1 0.2 0.7 2 1 0.7 2',
+      '0 0.5 0.5 1 1 0.2 0.7 2 0.999999999 0.7 2',
+    ]) {
+      const app = await open();
+      app.text(edited); await app.click('apply');
+      app.text(draft); await app.click('apply');
+      assert.equal(app.elements.label.value, draft);
+      assert.match(app.elements.status.textContent, /invalid/i);
+      await app.click('save'); assert.equal(app.state.writes, 0);
+      await app.click('reset'); assert.equal(app.elements.label.value, edited);
+      await app.click('undo'); assert.equal(app.elements.label.value, original);
+    }
+  }],
+  ['Save rejects invalid canvas edits and leaves the image open for repair', async () => {
+    for (const edit of [
+      app => app.drag('left', [0.79, 0.7]),
+      app => app.drag('right', [1, 0.7]),
+      app => app.drag('right', [0.7, 1]),
+      app => app.drag('right', [0.999999999, 0.7]),
+      app => app.drag('box', [0.4, 0.4], [0.6, 0.6]),
+    ]) {
+      const app = await open(['val']);
+      edit(app);
+      const pending = app.elements.label.value;
+      await app.click('saveNext');
+      assert.match(app.elements.status.textContent, /invalid/i);
+      assert.equal(app.state.writes, 0);
+      assert.equal(app.saved.get('val/a.txt'), original + '\n');
+      assert.equal(String(app.elements.files.value), '0');
+      assert.equal(app.elements.label.value, pending);
+      assert.equal(app.unload(), true);
+      await app.click('undo'); await app.click('saveNext');
+      assert.equal(app.saved.get('val/a.txt'), original + '\n');
+      assert.equal(String(app.elements.files.value), '1');
+    }
+  }],
+  ['Partial visibility preserves its slot, and point and box boundaries differ', async () => {
+    for (const row of [
+      '0 0.5 0.5 1 1 0 0 2 0.999 0.999 2',
+      '0 0.5 0.5 1 1 0.75 0.75 2 0 0 0',
+      '0 0.5 0.5 1 1 0 0 0 0.25 0.75 2',
+      '0 0.5 0.5 1 1 0 0 0 0 0 0',
+    ]) {
+      const app = await open(['val'], row);
+      assert.equal(app.elements.objects.children.length, 1);
+      assert.equal(app.unload(), false);
+      const accepted = app.elements.label.value;
+      await app.click('save');
+      assert.equal(app.saved.get('val/a.txt'), accepted + '\n');
+      assert.equal(app.state.writes, 1);
+    }
+  }],
+  ['Geometry checks allow only the documented decimal serialization tolerance', async () => {
+    const within = [
+      '0 0.5 0.5 0.50000002 0.5 0.24999994 0.75 2 0.75000006 0.75 2',
+      '0 0.49999999 0.49999999 1 1 0 0 2 0.99 0.99 2',
+    ];
+    for (const row of within) {
+      const app = await open(['val'], row);
+      await app.click('save'); assert.equal(app.state.writes, 1);
+    }
+    for (const row of [
+      '0 0.5 0.5 0.5 0.5 0.2499999 0.75 2 0.75 0.75 2',
+      '0 0.4999999 0.5 1 1 0 0 0 0 0 0',
+    ]) {
+      const app = await open(['val'], row);
+      await app.click('save'); assert.equal(app.state.writes, 0);
+      assert.equal(app.elements.label.value, row + '\n');
+    }
+  }],
+  ['All 157 frozen label files remain mechanically accepted without changing source files', async () => {
+    const manifest = JSON.parse(readFileSync(new URL('../../data/manifest.json', import.meta.url), 'utf8'));
+    assert.equal(manifest.records.length, 157);
+    for (const record of manifest.records) {
+      const initial = readFileSync(new URL(`../../data/${record.label}`, import.meta.url), 'utf8');
+      const app = await open(['val'], initial.trimEnd());
+      assert.equal(app.elements.objects.children.length, record.instances, record.id);
+      assert.equal(app.unload(), false, record.id);
+      await app.click('save');
+      assert.equal(app.state.writes, 1, `${record.id}: ${app.elements.status.textContent}`);
+    }
+  }],
+
 ];
 
 let failures = 0;

@@ -1,5 +1,7 @@
 # Apply the existing lower-front annotation guidance
 
+**Editor follow-up, 2026-11-13:** the [browser editor](../tools/cassette_labeler/README.md) now rejects the malformed import/save states described in section 5, preserves invalid imported text for explicit correction, and validates the serialized label before writing. All 157 frozen source label files remain accepted. The historical audit below and its evidence retain their original scope; this preventive fix changes no saved labels or model weights.
+
 **Later follow-up:** the [original-image adjudication](corner-adjudication-2026-11-12.md) resolves the bounded left-point review with two amendments: row 28 moves onto the exposed wax turn and row 32 becomes unlocatable. The other reviewed left points are retained, and the physical-visibility disagreement beside the hand is preserved. The [new reference](../data/references/visible-front-adjudication-2026-11-12/README.md) has 1,227 locatable and 99 missing endpoints. The audit and counts below describe the earlier reference at the revision named here; its evidence JSON is unchanged.
 
 **The target definition is already settled.** The current policy and the inspected examples use the actual two bottom-edge corners of the white wax block's front face. The current reference passes all checked representation and geometry rules. Some inherited point locations remain unresolved, so this is not a certification that every saved coordinate is physically correct.

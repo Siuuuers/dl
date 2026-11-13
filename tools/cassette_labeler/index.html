@@ -99,10 +99,24 @@ function draw(force) {
 function parse(text) {
   return text.trim() ? text.trim().split(/\r?\n/).map((line, i) => {
     const r = line.trim().split(/\s+/).map(Number);
+    const invalid = reason => { throw Error(`Invalid label at line ${i + 1}: ${reason}.`); };
     if (r.length !== 11 || !r.every(Number.isFinite) || r[0] !== 0 ||
         ![0, 2].includes(r[7]) || ![0, 2].includes(r[10]) ||
         [1, 2, 3, 4, 5, 6, 8, 9].some(k => r[k] < 0 || r[k] > 1) || r[3] === 0 || r[4] === 0)
-      throw Error(`Invalid label at line ${i + 1}.`);
+      invalid('use 11 finite fields, class 0, positive box dimensions, normalized coordinates, and visibility 0 or 2');
+    const [cx, cy, w, h] = r.slice(1, 5), x1 = cx - w / 2, x2 = cx + w / 2, y1 = cy - h / 2, y2 = cy + h / 2;
+    const ex = 0.0001 / canvas.width, ey = 0.0001 / canvas.height;
+    if (x1 < -ex || y1 < -ey || x2 > 1 + ex || y2 > 1 + ey) invalid('box extends outside the image');
+    for (const k of [5, 8]) {
+      if (r[k + 2] === 0) {
+        if (r[k] !== 0 || r[k + 1] !== 0) invalid('a missing point must be 0 0 0');
+      } else {
+        if (r[k] >= 1 || r[k + 1] >= 1) invalid('visible point coordinates must be less than 1');
+        if (r[k] < x1 - ex || r[k] > x2 + ex || r[k + 1] < y1 - ey || r[k + 1] > y2 + ey)
+          invalid('visible point lies outside its box');
+      }
+    }
+    if (r[7] === 2 && r[10] === 2 && r[5] > r[8]) invalid('visible left point must not be to the right of the visible right point');
     return r;
   }) : [];
 }
@@ -114,13 +128,21 @@ async function load(index) {
   let text = '';
   try { text = await (await entry.labels.getFileHandle(entry.name)).getFile().then(f => f.text()); }
   catch (error) { if (error.name !== 'NotFoundError') throw error; }
-  let nextRows;
-  try { nextRows = parse(text); }
-  catch (error) { throw Error(`${error.message} File not opened.`); }
   picture = await createImageBitmap(await entry.image.getFile());
   canvas.width = picture.width; canvas.height = picture.height;
-  rows = nextRows; current = index; selected = rows.length ? 0 : -1;
+  current = index;
   $('files').value = index; $('mode').value = 'edit';
+  try {
+    const nextRows = parse(text);
+    parse(formatRows(nextRows));
+    rows = nextRows;
+  } catch (error) {
+    objectList(); draw(true);
+    $('label').value = text; textDirty = true; $('reset').disabled = false; $('labelPanel').open = true;
+    message(`${error.message} Original text retained; correct it and Apply before saving.`);
+    return;
+  }
+  selected = rows.length ? 0 : -1;
   objectList(); draw(true); message(`${entry.path} — ${rows.length} cassettes`);
 }
 async function busy(action) {
@@ -199,7 +221,7 @@ $('reset').onclick = () => {
 $('apply').onclick = () => {
   if (current < 0) return;
   let next;
-  try { next = parse($('label').value); }
+  try { next = parse($('label').value); parse(formatRows(next)); }
   catch (error) { message(error.message); return; }
   if (formatRows(next) === labelText()) {
     syncLabel(true); message(dirty ? 'Label text matches — unsaved changes' : 'Label text matches this image'); return;
@@ -226,6 +248,7 @@ async function save() {
   if (rows.some(r => r[3] <= 0 || r[4] <= 0)) throw Error('Draw a nonzero box for every cassette before saving.');
   const entry = entries[current];
   const text = labelText();
+  parse(text);
   const file = await entry.labels.getFileHandle(entry.name, {create: true});
   const writable = await file.createWritable();
   await writable.write(text + (rows.length ? '\n' : '')); await writable.close();
