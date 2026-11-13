@@ -33,15 +33,19 @@ Import, Apply, and Save enforce the policy's mechanical rules: missing points ar
 
 Save uses this same format. Each row is one box and two front-lower corners; `2` marks a visible point, and `0 0 0` marks a point that cannot be located. Coordinates refer to the 1280×720 original, not the preview's extra footer. Corrections need no additional file format or preview export.
 
-## Correct model predictions
+## Historical epoch173 prediction drafts
 
-In the existing model environment, with the validation PNGs and model weights downloaded, run from the repo root:
+For the original baseline exporter, use the existing model environment with the validation PNGs and epoch173 weights downloaded, then run from the repo root:
 
 ```sh
 python scripts/export_pose_drafts.py
 ```
 
 This exports predictions for the validation images into `data_pred/`. Open that folder in the labeler and save corrections there. The exporter stops if `data_pred/` already exists; move the old folder before deliberately starting a new export so corrected labels are retained.
+
+This script fixes epoch173, input size 1280 and box confidence 0.25. It retains proposed endpoints with scores at least 0.01 and encodes them as draft `v=2` points. That draft cutoff differs from the current 0.50 display cutoff; neither the exported flag nor a passed geometry check proves that an actual lower-front corner is visible. Inspect the original image before accepting each point, and keep a genuinely unlocatable corner as `0 0 0`.
+
+For the selected PR35 model, use the [explicit reviewed-proposal command](../../docs/predict-pose-folder.md#assistant-reviewed-proposals). That runner writes JSON, PNG overlays and CSV, without directly importable YOLO TXT labels. Review its proposals alongside originals and the chosen versioned label working copy; do not run the historical exporter expecting PR35 output.
 
 Use the original images plus the matching label files. `data/annotated/` contains human-corrected previews with a footer, not editable model results. Live-camera S-key snapshots use JSON and are not imported by this labeler.
 
