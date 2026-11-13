@@ -103,7 +103,7 @@ def worker_training_labels(config, staging):
     return labels
 
 
-def run_worker(config):
+def run_worker(config, input_transform=None):
     recipe = get_recipe(config["recipe_id"])
     declared_recipe = recipe_identity(config["recipe_id"])
     require(all(config.get(key) == value for key, value in declared_recipe.items()),
@@ -146,6 +146,8 @@ def run_worker(config):
     started = time.perf_counter()
 
     def save_progress():
+        if input_transform is not None:
+            progress["input_corruption"] = input_transform.state()
         progress["worker_wall_seconds"] = time.perf_counter() - started
         progress["worker_peak_rss_mib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
         write_json(run / "training-progress.json", progress)
@@ -200,6 +202,8 @@ def run_worker(config):
 
         def preprocess_batch(self, batch):
             result = super().preprocess_batch(batch)
+            if input_transform is not None:
+                input_transform(result, epoch=self.epoch + 1)
             self.current_batch = {"shape": list(result["img"].shape),
                                   "image_ids": [Path(name).stem for name in result["im_file"]],
                                   "objects": len(result["cls"])}

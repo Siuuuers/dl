@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-occlusion-training-preparation",
+  "created_at_utc": "2026-11-13T12:58:08.953962+00:00",
+  "status": "prepared_not_trained",
+  "implementation_source_commit": "PENDING_IMPLEMENTATION_COMMIT",
+  "foundation_commit": "98e163f7bf504d945c1718cde839f66ea2d1b541",
+  "protocol_sha256": "c70563034d3ac969ff7837a594d53bc6316fda3897e1557b5d7828be52e94a62",
+  "source_files_sha256": {
+    "scripts/train_pose_comparison.py": "8f7a6efc99daf99b47dff55759459945acc30b44c792322295967502eedcaff0",
+    "scripts/pose_checkpoint.py": "f902c34720283480f948cca78bd2d6d24fd07bf6bc5a325945172d56d55f5bd5",
+    "scripts/stage_pose_training.py": "a733f5e80335204747139e87a723b7bb095123059dc5a58b86ee824a26e5afe6",
+    "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+    "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+    "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+    "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+    "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+    "scripts/occlusion_experiment.py": "a21beb92dc005b5601f81350b511c1c43cfb81de455016f03f801147a1583b60",
+    "scripts/train_pose_occlusion.py": "8956c6293f5c7d8b0920943de69b8d26a04e8e3ab12e3d8734c1312d3faf718b",
+    "scripts/pose_input_corruption.py": "82e117a19c04b6bc703a18cb92bd0cb742944790731b10ac0ae6d79887fabd31",
+    "experiments/occlusion-training-2026-11-13.json": "c70563034d3ac969ff7837a594d53bc6316fda3897e1557b5d7828be52e94a62"
+  },
+  "check_sources_sha256": {
+    "scripts/check_pose_input_corruption.py": "785ae6a2133da6cf757e9f87eec16fe07aa42f4b19c3abff5c65a3ae6c9478c3",
+    "scripts/check_occlusion_experiment.py": "e38752d4ff3967eff8e53a583eed7e55dfb23f771b66f7e59a80f56305c07b0f"
+  },
+  "evidence_files": {
+    "focused-checks.json": {
+      "sha256": "f35664c692bf259bd9984ad302c589aa92b07a80c2939cfd3029756ef7a1bc86",
+      "bytes": 15174
+    },
+    "packaging-checks.json": {
+      "sha256": "ccb0b08102efd336688483fada32282cfde83ac585cd1bfe6476a11986ef2cd9",
+      "bytes": 3281
+    },
+    "real-corruption-preview.png": {
+      "sha256": "4c78db0b265187705cf8ffd2b74f19469c4e2cddf1cb1dd624d99bcffd58aae2",
+      "bytes": 89244
+    }
+  },
+  "metadata_preflight": {
+    "status": "verified",
+    "effective_counts": {
+      "train": {
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 701,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "all_original_images_verified_here": false,
+    "epoch173_weight_bytes_verified_here": false
+  },
+  "real_integration": {
+    "source_training_images": 6,
+    "standard_pose_pipeline": true,
+    "actual_model_forward_backward": true,
+    "batch_shape": [
+      1,
+      3,
+      736,
+      1280
+    ],
+    "production_batch4_capacity_verified": false,
+    "optimizer_steps": 0,
+    "new_checkpoints_written": 0
+  },
+  "prior_unsuccessful_attempt": {
+    "scope": "four-image full-resolution CPU forward/backward",
+    "exit_code": 137,
+    "completed": false,
+    "operating_system_cause_established": false
+  },
+  "packaging_checks": {
+    "count": 8,
+    "status": "passed",
+    "synthetic_fixtures_only": true,
+    "gpu_or_model_training_validated": false
+  },
+  "historical_replay": {
+    "status": "complete",
+    "prediction_records": 94,
+    "new_inference": false,
+    "outputs_exactly_match_original": true,
+    "files_sha256": {
+      "predictions.jsonl": "416ea8e3b43edf8b7f8fee3ceefba25591fcf61541168b2fe00068055fab8ef7",
+      "prepared-cases.json": "9f0b3041acd73e9b2e9de6ff3a6b89e099f8ed2748c65346da253c0131c30c1b",
+      "reference-objects.json": "2ecf00b0275b6b4f3dc2d46ec282131cd1717cb3d33a70f3461cb4173296b543",
+      "scores.json": "99cbcb1a80ad27003dca7f95be007f895ee5db45ff9119b75e707381fb296bd5",
+      "summary.json": "39d7ff3266869dbd1e5c9b1094f45e138fe63f2ddeeef877a62e29ed0bbfb7e5"
+    }
+  },
+  "notebook": {
+    "path": "notebooks/baomai_occlusion_training.ipynb",
+    "sha256": "f505cfa92b4990e2949339d791d17d006023a78f7feb5d0cd070de7c83ec540a",
+    "code_cells_compiled": 7,
+    "source_commit_pin_finalized": false,
+    "gpu_execution_completed": false
+  },
+  "pending": [
+    "Verify all 157 original images and epoch173 weights in the GPU runtime.",
+    "Complete four candidate training batches at batch4 / input1280 with an optimizer update and applied masks.",
+    "Complete matched control and candidate from fresh epoch173, 30 epochs each.",
+    "Evaluate returned final-epoch checkpoints under the fixed clean and PR60 comparison rules."
+  ],
+  "model_accuracy_improved": false,
+  "selected_model_unchanged": "PR35 seed46",
+  "scope": "Preparation checks only. The synthetic packaging fixtures do not contain trained weights. No GPU experiment or new model accuracy result is represented."
+}
