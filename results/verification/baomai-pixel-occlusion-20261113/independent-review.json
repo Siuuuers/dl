@@ -1,0 +1,269 @@
+{
+  "blocking_findings": [],
+  "checks": {
+    "artifact_hashes_and_provenance": "passed",
+    "canonical_associations_recomputed": 94,
+    "conditional_confidence_comparisons": "passed",
+    "exact_published_intact_arrays": 4,
+    "full_image_counts_and_paired_baseline_weighting": "passed",
+    "input_rgb_hashes_rebuilt_independently": 94,
+    "named_paired_gains_and_losses": "passed",
+    "original_label_parse_and_reference_equality": "passed",
+    "target_condition_records_recomputed": 120,
+    "target_endpoint_return_flags_and_errors_checked": 240
+  },
+  "conditional_confidence_deltas": {
+    "center": {
+      "left": {
+        "conditional_denominator": 30,
+        "mean": -0.010423137744267782,
+        "median": -0.008877277374267578
+      },
+      "right": {
+        "conditional_denominator": 30,
+        "mean": -0.019284490744272867,
+        "median": -0.01483219861984253
+      }
+    },
+    "intact": {
+      "left": {
+        "conditional_denominator": 30,
+        "mean": 0.0,
+        "median": 0.0
+      },
+      "right": {
+        "conditional_denominator": 30,
+        "mean": 0.0,
+        "median": 0.0
+      }
+    },
+    "left": {
+      "left": {
+        "conditional_denominator": 30,
+        "mean": -0.008619757493336995,
+        "median": -0.0021093785762786865
+      },
+      "right": {
+        "conditional_denominator": 30,
+        "mean": -0.01634979248046875,
+        "median": -0.015569448471069336
+      }
+    },
+    "right": {
+      "left": {
+        "conditional_denominator": 30,
+        "mean": -0.003695821762084961,
+        "median": -0.0025783181190490723
+      },
+      "right": {
+        "conditional_denominator": 30,
+        "mean": -0.007787919044494629,
+        "median": -0.009202688932418823
+      }
+    }
+  },
+  "covered_endpoint_errors_over_10px_with_confidence_above_0_5": [
+    {
+      "case_id": "new_000008-row017-left",
+      "confidence": 0.9270468950271606,
+      "endpoint": "left",
+      "error_px": 18.108642262860947
+    },
+    {
+      "case_id": "new_000010-row019-left",
+      "confidence": 0.9543902277946472,
+      "endpoint": "left",
+      "error_px": 14.92768425213759
+    },
+    {
+      "case_id": "new_000008-row013-right",
+      "confidence": 0.9446942210197449,
+      "endpoint": "right",
+      "error_px": 10.065263455628159
+    },
+    {
+      "case_id": "new_000008-row015-right",
+      "confidence": 0.9216974377632141,
+      "endpoint": "right",
+      "error_px": 10.027189154230463
+    },
+    {
+      "case_id": "new_000008-row017-right",
+      "confidence": 0.8723232746124268,
+      "endpoint": "right",
+      "error_px": 15.134849150587685
+    },
+    {
+      "case_id": "new_000010-row020-right",
+      "confidence": 0.9570686221122742,
+      "endpoint": "right",
+      "error_px": 10.479886266100587
+    }
+  ],
+  "full_image_paired_count_deltas": {
+    "center": {
+      "fn": 0,
+      "fp": 19,
+      "prediction_count": 19,
+      "returned_endpoints": 0,
+      "tp": 0
+    },
+    "intact": {
+      "fn": 0,
+      "fp": 0,
+      "prediction_count": 0,
+      "returned_endpoints": 0,
+      "tp": 0
+    },
+    "left": {
+      "fn": 3,
+      "fp": 9,
+      "prediction_count": 6,
+      "returned_endpoints": -3,
+      "tp": -3
+    },
+    "right": {
+      "fn": 1,
+      "fp": 9,
+      "prediction_count": 8,
+      "returned_endpoints": -1,
+      "tp": -1
+    }
+  },
+  "interpretation_limits": [
+    "Thirty repeated targets in four familiar development images are not independent test images or a generalization estimate.",
+    "All covered target endpoints were returned above confidence 0.5; six covered-endpoint errors exceeded 10 px. Confidence here is not evidence of visual observability or reliably bounded coordinate error.",
+    "Center strips preserve target corner neighborhoods but remove real object/context pixels; their degradation prevents a clean attribution of all changes solely to hiding a corner.",
+    "Mask placement is derived from original reference boxes, and 51 of 90 masks cover other known endpoint centers; natural occlusion transfer remains unknown.",
+    "Original v2 coordinates are known before masking. The full-image visible_endpoints field denotes this reference count, not physically visible endpoints in masked input.",
+    "Original boxes remain fixed association anchors. Full-image misses do not by themselves identify endpoint localization failure, and unmatched proposals must not rescue official scores.",
+    "The right endpoint reference coordinates for new_000010 rows 16 and 22 differ from the older context study; compare this diagnostic with its own fresh intact controls.",
+    "No training, model improvement, deployment readiness, physical ground-truth validity, or natural hidden-corner accuracy is established by this diagnostic."
+  ],
+  "mask_semantics": {
+    "center_target_endpoint_radii_preserved": true,
+    "covered_target_endpoints": 60,
+    "masked_inputs": 90,
+    "masks_covering_other_known_endpoint_centers": 51,
+    "masks_intersecting_other_known_endpoint_radius_neighborhoods": 56,
+    "minimum_interior_margin_px": 5.840000000000032,
+    "original_coordinate_and_visibility_labels_unchanged": true,
+    "target_opposite_endpoint_radius_preserved": true
+  },
+  "prospective_code_commit": "3647d0937ab036974cda4867815a8fe20aef07d7",
+  "protocol_sha256": "a8723e77d0f23aa22b62c5788967c0a7593b453996c4e1956bd714c93a606305",
+  "review_status": "passed",
+  "reviewed_at_utc": "2026-11-13T11:57:28.918674+00:00",
+  "reviewed_input_sha256": {
+    "predictions.jsonl": "416ea8e3b43edf8b7f8fee3ceefba25591fcf61541168b2fe00068055fab8ef7",
+    "prepared-cases.json": "9f0b3041acd73e9b2e9de6ff3a6b89e099f8ed2748c65346da253c0131c30c1b",
+    "reference-objects.json": "2ecf00b0275b6b4f3dc2d46ec282131cd1717cb3d33a70f3461cb4173296b543",
+    "scores.json": "99cbcb1a80ad27003dca7f95be007f895ee5db45ff9119b75e707381fb296bd5",
+    "status.json": "32b04aeaaa76476c048a7da93ff799254a1018c0c31e78241da174f5c7bc00f2",
+    "summary.json": "39d7ff3266869dbd1e5c9b1094f45e138fe63f2ddeeef877a62e29ed0bbfb7e5"
+  },
+  "runner_sha256": "35385aa16dfd4aeba76738fd766d92761a451a885fa584be75c7b17a5653d361",
+  "scope": "Independent arithmetic and input-mask audit of a completed fixed diagnostic; no inference or repository scorer/runner import.",
+  "target_counts": {
+    "center": {
+      "denominator": 30,
+      "left_available": 30,
+      "left_available_error_over_10px": 0,
+      "left_within_10px": 30,
+      "left_within_5px": 25,
+      "matched": 30,
+      "pair_available": 30,
+      "pair_within_10px": 30,
+      "pair_within_5px": 22,
+      "right_available": 30,
+      "right_available_error_over_10px": 0,
+      "right_within_10px": 30,
+      "right_within_5px": 26
+    },
+    "intact": {
+      "denominator": 30,
+      "left_available": 30,
+      "left_available_error_over_10px": 0,
+      "left_within_10px": 30,
+      "left_within_5px": 28,
+      "matched": 30,
+      "pair_available": 30,
+      "pair_within_10px": 30,
+      "pair_within_5px": 27,
+      "right_available": 30,
+      "right_available_error_over_10px": 0,
+      "right_within_10px": 30,
+      "right_within_5px": 28
+    },
+    "left": {
+      "denominator": 30,
+      "left_available": 30,
+      "left_available_error_over_10px": 2,
+      "left_within_10px": 28,
+      "left_within_5px": 22,
+      "matched": 30,
+      "pair_available": 30,
+      "pair_within_10px": 28,
+      "pair_within_5px": 21,
+      "right_available": 30,
+      "right_available_error_over_10px": 1,
+      "right_within_10px": 29,
+      "right_within_5px": 27
+    },
+    "right": {
+      "denominator": 30,
+      "left_available": 30,
+      "left_available_error_over_10px": 0,
+      "left_within_10px": 30,
+      "left_within_5px": 28,
+      "matched": 30,
+      "pair_available": 30,
+      "pair_within_10px": 26,
+      "pair_within_5px": 22,
+      "right_available": 30,
+      "right_available_error_over_10px": 4,
+      "right_within_10px": 26,
+      "right_within_5px": 22
+    }
+  },
+  "unmatched_audit": {
+    "example": {
+      "best_box_iou": 0.07326410824772663,
+      "best_proposal_assigned_row": null,
+      "best_proposal_box_confidence": 0.1581297218799591,
+      "best_same_class_prediction_index": 38,
+      "case_id": "new_000008-row015-left",
+      "contributes_no_matched_endpoint_errors": true,
+      "designated_target_row": 15,
+      "matched_after_mask": false,
+      "matched_on_intact": true,
+      "proposal_keypoints": [
+        [
+          1232.3502197265625,
+          486.9151611328125,
+          0.8141151070594788
+        ],
+        [
+          1280.0,
+          484.5384826660156,
+          0.8029968738555908
+        ]
+      ],
+      "reference_keypoints": [
+        [
+          1236.6899968,
+          450.0,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "row": 33
+    },
+    "newly_unmatched_full_image_object_instances": 4,
+    "unmatched_designated_targets": 0
+  }
+}
