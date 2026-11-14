@@ -84,6 +84,8 @@ PDF SHA-256: `94c5956535b137d8009021162a65154747879c1b2fe6ec1eef012b3acdd34bc4`.
 
 Use [baomai_observed_fronts.ipynb](../notebooks/baomai_observed_fronts.ipynb), not the PR62 occlusion notebook. **The notebook is prepared but blocked by 26 training groups and 13 development-reference rows.** Resolving them requires reviewed labels and a newly pinned protocol; changing a color/status field or deleting a review record does not pass the inventory checks.
 
+The resumed notebook pins implementation commit `283beafb6e93b231e035a2a28cda82bd76d911d0`, which contains the exact recovered candidate and protocol above. Its source tree is identical to the reviewed interrupted implementation. The notebook is added in a later commit so the pinned implementation can be fetched independently. These fixed inputs still contain the recorded review holds; resolving them requires a new reviewed and pinned revision.
+
 After the physical questions are resolved, the handoff performs one four-batch candidate resource trial and one matched pair:
 
 - Reference: exact eight-file `annotations-2026-11-10` supervision used for retained PR35.
