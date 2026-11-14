@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "source_revision": "1b71e8158e0594ee4c72ba845fa7b514a78b9e0d",
+  "candidate_manifest": "data/candidates/remaining-fronts-2026-11-14/manifest.json",
+  "candidate_manifest_sha256": "0cc9ebf83388a01785522fe77fb5c524ec519d4e5a90e8448d7c456a8247600b",
+  "command": "python -B scripts/verify_pose_annotation_candidate.py --candidate data/candidates/remaining-fronts-2026-11-14/manifest.json",
+  "exit_code": 0,
+  "mechanical_receipt": {
+    "status": "verified",
+    "candidate_id": "remaining-fronts-2026-11-14",
+    "kind": "training_annotation_overlay",
+    "candidate_manifest_sha256": "0cc9ebf83388a01785522fe77fb5c524ec519d4e5a90e8448d7c456a8247600b",
+    "declared_source_revision": "1b71e8158e0594ee4c72ba845fa7b514a78b9e0d",
+    "source_revision_git_object_checked": false,
+    "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "review_sha256": "cb36c6ffe2001ec79a86c16c0620388c3c0356aaff7272764f25e9e85866df65",
+    "annotation_policy_sha256": "74dd943976a4abc22ecbf73551c69f715666060d5961b2bed81e6a9c73a3afc9",
+    "reference_labels_verified": 157,
+    "changed_train_labels": 17,
+    "removed_objects": 6,
+    "replaced_objects": 9,
+    "added_objects": 13,
+    "merged_endpoints": 2,
+    "counts": {
+      "train": {
+        "images": 137,
+        "objects": 3779,
+        "visible_endpoints": 6846,
+        "missing_endpoints": 712,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "validation_labels_unchanged": true,
+    "unchanged_rows_byte_preserved": true,
+    "full_row_maps_verified": true,
+    "image_bytes_verified": false,
+    "images_staged_by_check": false,
+    "dataset_built": false,
+    "visual_correctness_verified": false,
+    "mechanical_geometry_verified": true,
+    "code_sha256": {
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+    }
+  },
+  "independent_composition_verification": {
+    "status": "verified",
+    "reviewed_at_utc": "2026-11-14T07:06:21.653238+00:00",
+    "reviewer": "evidence_audit independent composition audit",
+    "source_revision": "1b71e8158e0594ee4c72ba845fa7b514a78b9e0d",
+    "scope": "Focused independent standard-library byte, token, row-map, inheritance and composition verification. No imports of production validator. No inference/training or visual re-adjudication.",
+    "candidate_manifest_sha256": "0cc9ebf83388a01785522fe77fb5c524ec519d4e5a90e8448d7c456a8247600b",
+    "candidate_review_sha256": "cb36c6ffe2001ec79a86c16c0620388c3c0356aaff7272764f25e9e85866df65",
+    "adjudication_sha256": "450d6d2e3eb92905f495d15a357d9be8643f0134afb4cb1da72cc791223fc9d6",
+    "parent_manifest_sha256": "1659dd0ae7d6b7662c58f7471c0a487962a2f71ebf1a18aec9a8ac750681a9e4",
+    "overlay_files": 17,
+    "parent_files_inherited_byte_identically": 10,
+    "parent_change_records_identical": 10,
+    "parent_decisions_identical": 15,
+    "frozen_source_labels_verified": 157,
+    "frozen_evaluation_labels_verified": 20,
+    "frozen_base_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "delta_from_parent": {
+      "objects": 6,
+      "restored_left_endpoints": 2,
+      "bbox_replacements": 3,
+      "deleted_rows": 0,
+      "additional_files": 7,
+      "visible_endpoints": 2,
+      "missing_endpoints": 10
+    },
+    "exact_new_operations": [
+      {
+        "image_id": "new_000029",
+        "added_candidate_rows": [
+          43,
+          44,
+          45,
+          46
+        ],
+        "boxes_xyxy": [
+          [
+            683,
+            470,
+            726,
+            499
+          ],
+          [
+            699,
+            491,
+            719,
+            518
+          ],
+          [
+            700,
+            513,
+            715,
+            537
+          ],
+          [
+            702,
+            534,
+            716,
+            549
+          ]
+        ],
+        "new_endpoint_flags": "both_missing"
+      },
+      {
+        "image_id": "new_000033",
+        "modified_source_rows": [
+          41,
+          42
+        ],
+        "operation": "restore_left_endpoints"
+      },
+      {
+        "image_id": "new_000037",
+        "modified_source_rows": [
+          11
+        ],
+        "operation": "bbox_only"
+      },
+      {
+        "image_id": "new_000040",
+        "modified_source_rows": [
+          14
+        ],
+        "operation": "bbox_only"
+      },
+      {
+        "image_id": "new_000121",
+        "added_candidate_rows": [
+          57
+        ],
+        "boxes_xyxy": [
+          [
+            568,
+            508,
+            605,
+            551
+          ]
+        ],
+        "new_endpoint_flags": "both_missing"
+      },
+      {
+        "image_id": "new_000129",
+        "added_candidate_rows": [
+          50
+        ],
+        "boxes_xyxy": [
+          [
+            700,
+            516,
+            729,
+            541
+          ]
+        ],
+        "new_endpoint_flags": "both_missing"
+      },
+      {
+        "image_id": "old_000042",
+        "modified_source_rows": [
+          10
+        ],
+        "operation": "bbox_only"
+      }
+    ],
+    "composed_counts": {
+      "train": {
+        "images": 137,
+        "objects": 3779,
+        "visible_endpoints": 6846,
+        "missing_endpoints": 712,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "parent_counts": {
+      "train": {
+        "images": 137,
+        "objects": 3773,
+        "visible_endpoints": 6844,
+        "missing_endpoints": 702,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "frozen_adjudicated_development_counts": {
+      "images": 20,
+      "objects": 663,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 99,
+      "empty_images": 3
+    },
+    "withdrawn_new015_additions_absent": true,
+    "protected_tracked_changes": [],
+    "all_candidate_bytes_reconstructed_from_manifest": true,
+    "all_row_maps_reconstructed": true,
+    "all_existing_visible_endpoint_tokens_preserved_in_new_delta": true,
+    "new_fronts_all_endpoints_missing": true,
+    "limitations": [
+      "Manual coordinate/identity correctness is root image adjudication evidence, not established by byte verification.",
+      "This candidate has not been trained; these checks do not establish performance improvement.",
+      "Current source revision/model settings are unchanged; only additional candidate and review artifacts are new."
+    ]
+  },
+  "original_receipt_sha256": {
+    "mechanical": "94a9abf7684ad44fe672e5ae2afc9601ba16a65d0c829905ccbd5f94bce76f2a",
+    "independent": "0874dfcb6146e4a3a90b9a307c4a6597cfa4635e72348c3fd44b0d377d404327"
+  },
+  "original_image_hash_checks": "input-verification.json",
+  "visual_evidence": "adjudication.json and reviewer records",
+  "limits": [
+    "Verification binds source identity and exact changes, not model accuracy.",
+    "Physical correctness is supported by the documented original-pixel review, not inferred from a validator pass.",
+    "No model inference or training was performed."
+  ]
+}

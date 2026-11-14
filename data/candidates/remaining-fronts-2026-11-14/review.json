@@ -1,0 +1,1442 @@
+{
+  "schema_version": 1,
+  "candidate_id": "remaining-fronts-2026-11-14",
+  "policy_id": "baomai-visible-front-v1",
+  "source_revision": "1b71e8158e0594ee4c72ba845fa7b514a78b9e0d",
+  "scope": "Exact ten-file border-fronts parent plus six observed omitted fronts, two observed left-endpoint restorations and three bounded box repairs in seven additional training originals. This is a proposed supervision revision; no training, promotion or accuracy claim.",
+  "inherited_review": {
+    "path": "data/candidates/border-fronts-2026-11-13/review.json",
+    "sha256": "6c956b358cbfa56dee0ab8fa8b27984db3a611cb0c877b86a51b9d8767938063",
+    "decisions_copied_exactly": 15,
+    "unresolved_records_remain_in_parent": true
+  },
+  "parent": {
+    "manifest": "data/candidates/border-fronts-2026-11-13/manifest.json",
+    "sha256": "1659dd0ae7d6b7662c58f7471c0a487962a2f71ebf1a18aec9a8ac750681a9e4",
+    "review": "data/candidates/border-fronts-2026-11-13/review.json",
+    "review_sha256": "6c956b358cbfa56dee0ab8fa8b27984db3a611cb0c877b86a51b9d8767938063",
+    "unchanged_overlay_files": 10,
+    "unchanged_change_records": 10,
+    "unchanged_decisions": 15
+  },
+  "review_cohort": {
+    "training_originals": 57,
+    "original_rows": 1590,
+    "original_missing_endpoint_slots": 203,
+    "selection": "All nonempty training originals outside the prior 80-image documented targeted-review union; groups fixed before image review.",
+    "full_label_certification": false
+  },
+  "new_original_sources": [
+    {
+      "image_id": "new_000029",
+      "image_path": "data/images/train/new_000029.png",
+      "image_sha256": "648c113c1cfb6bbb2342851d1ecf8b0d1d3f97f230344915129b468b4b4e2040",
+      "label_path": "data/labels/train/new_000029.txt",
+      "label_sha256": "9a66f0b5a6a7001c540a16604f9a88e595967c2902920e83c32a716d907d44f9"
+    },
+    {
+      "image_id": "new_000121",
+      "image_path": "data/images/train/new_000121.png",
+      "image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+      "label_path": "data/labels/train/new_000121.txt",
+      "label_sha256": "b8a8477d9bb7623ab95fef7c67783f64410e0546a78712ebfc80464ecebbe247"
+    },
+    {
+      "image_id": "new_000129",
+      "image_path": "data/images/train/new_000129.png",
+      "image_sha256": "ab3e56ede990b1e47a4db5edcf1efb3beca5893ed3c647e7a3958c90ae93ac0a",
+      "label_path": "data/labels/train/new_000129.txt",
+      "label_sha256": "31feaaa0f18ee29c43fc804e2bdc08c9b546a0d8900b444add5ef47ce62f62d0"
+    },
+    {
+      "image_id": "new_000033",
+      "image_path": "data/images/train/new_000033.png",
+      "image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+      "label_path": "data/labels/train/new_000033.txt",
+      "label_sha256": "224ba44d7a6ef8fcf970e7beb4ad541bbb5b9b0268138cbdcad64d7ba0008236"
+    },
+    {
+      "image_id": "new_000037",
+      "image_path": "data/images/train/new_000037.png",
+      "image_sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3",
+      "label_path": "data/labels/train/new_000037.txt",
+      "label_sha256": "50576476f4bbfd0bb0e4f898f05519cf6790ea4009736ec9fc2af7557d720bc7"
+    },
+    {
+      "image_id": "new_000040",
+      "image_path": "data/images/train/new_000040.png",
+      "image_sha256": "7c369247f88764c20652b980a5503dc936085fa110c4c1e59e8e850ef873591c",
+      "label_path": "data/labels/train/new_000040.txt",
+      "label_sha256": "caf8479f429ea50683fe2c820c1745144c83b46d81a750d726d805f8227571d7"
+    },
+    {
+      "image_id": "old_000042",
+      "image_path": "data/images/train/old_000042.png",
+      "image_sha256": "b4fb62065fd129594eefe15210fbae200f4c59932dab3574f73e03704af2c42e",
+      "label_path": "data/labels/train/old_000042.txt",
+      "label_sha256": "b0260b793f5196c174f7cb3142fb93a2b6d9c439150598446b75cfea9979af01"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "identity-065-add-top-left",
+      "image_id": "new_000065",
+      "review_status": "accepted_incremental",
+      "reason": "A distinct top-clipped front is visible above existing source row15. Its lower edge at approximately y12–17 is separated from row15 by a dark seam; source row15 covers the next face (y14–50) with its own lower corners near y43–49. The omitted front has positive observed extent and both lower corners remain in the frame.",
+      "reviewers": [
+        "train_identity_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "proposal_id": "identity-065-add-top-left",
+        "operation": "add",
+        "source_row_1based": null,
+        "candidate_appended_row_1based": 23,
+        "identity_confidence": "high",
+        "geometry_confidence": "manual pixel judgment; parent must independently review exact corner placement",
+        "box_xyxy_px": [
+          191,
+          0,
+          344,
+          18
+        ],
+        "corners_px": [
+          [
+            194,
+            12,
+            2
+          ],
+          [
+            340,
+            17,
+            2
+          ]
+        ],
+        "candidate_line": "0 0.20898438 0.01250000 0.11953125 0.02500000 0.15156250 0.01666667 2 0.26562500 0.02361111 2",
+        "adjacent_source_rows": [
+          {
+            "source_row_1based": 15,
+            "tokens": [
+              "0",
+              "0.20703125",
+              "0.04429861",
+              "0.11875000",
+              "0.04859722",
+              "0.14921875",
+              "0.06111111",
+              "2",
+              "0.26071094",
+              "0.06859722",
+              "2"
+            ],
+            "line": "0 0.20703125 0.04429861 0.11875000 0.04859722 0.14921875 0.06111111 2 0.26071094 0.06859722 2",
+            "box_xyxy_px": [
+              189.0,
+              14.400000000000002,
+              341.0,
+              49.3899984
+            ],
+            "corners_px": [
+              [
+                191.0,
+                43.999999200000005,
+                2
+              ],
+              [
+                333.7100032,
+                49.3899984,
+                2
+              ]
+            ]
+          }
+        ],
+        "source_image_path": "data/images/train/new_000065.png",
+        "boundary_uncertainty_note": "Manual original-pixel mark; blurred boundaries support approximately 1–2 px judgment, not a calibrated uncertainty interval."
+      }
+    },
+    {
+      "id": "identity-065-add-hand-occluded",
+      "image_id": "new_000065",
+      "review_status": "accepted_incremental",
+      "reason": "A separate white front fragment is visible below source row14 and its dark bottom seam. The triangular observed surface between rack and hand spans approximately x457–497,y641–673. It has a distinct front identity; do not extend its box across the hidden cassette. Both actual lower-front corners are unlocatable because the hand obscures the lower edge.",
+      "reviewers": [
+        "train_identity_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "proposal_id": "identity-065-add-hand-occluded",
+        "operation": "add",
+        "source_row_1based": null,
+        "candidate_appended_row_1based": 24,
+        "identity_confidence": "high",
+        "geometry_confidence": "medium; the face/hand boundary is blurred",
+        "box_xyxy_px": [
+          457,
+          641,
+          497,
+          673
+        ],
+        "corners_px": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "candidate_line": "0 0.37265625 0.91250000 0.03125000 0.04444444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+        "adjacent_source_rows": [
+          {
+            "source_row_1based": 14,
+            "tokens": [
+              "0",
+              "0.40095313",
+              "0.87188194",
+              "0.08159375",
+              "0.03123611",
+              "0.36155469",
+              "0.88120833",
+              "2",
+              "0.00000000",
+              "0.00000000",
+              "0"
+            ],
+            "line": "0 0.40095313 0.87188194 0.08159375 0.03123611 0.36155469 0.88120833 2 0.00000000 0.00000000 0",
+            "box_xyxy_px": [
+              461.00000639999996,
+              616.5099971999999,
+              565.4400064,
+              638.9999964
+            ],
+            "corners_px": [
+              [
+                462.7900032,
+                634.4699975999999,
+                2
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          }
+        ],
+        "source_image_path": "data/images/train/new_000065.png",
+        "boundary_uncertainty_note": "Manual original-pixel mark; blurred boundaries support approximately 1–2 px judgment, not a calibrated uncertainty interval."
+      }
+    },
+    {
+      "id": "identity-067-consolidate-25-12",
+      "image_id": "new_000067",
+      "review_status": "accepted_incremental",
+      "reason": "Source row25 is one tall aggregate box spanning four independently visible center-column fronts already represented by source rows3,5,8,12. It is not a fifth cassette. Its visible left point (613.549...,449.599...) is on the actual lower-left corner of the last front represented by row12; the corner remains exposed immediately left of the gripper. Preserve that exact donor token triplet on row12 before deleting the aggregate identity. The right corner of row12 remains hidden.",
+      "reviewers": [
+        "train_identity_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "proposal_id": "identity-067-consolidate-25-12",
+        "operation": "consolidate",
+        "remove_source_rows_1based": [
+          25
+        ],
+        "retain_source_row_1based": 12,
+        "source_rows": [
+          {
+            "source_row_1based": 3,
+            "tokens": [
+              "0",
+              "0.53600781",
+              "0.47222222",
+              "0.11107812",
+              "0.05555556",
+              "0.48530469",
+              "0.47731944",
+              "2",
+              "0.59154687",
+              "0.49127778",
+              "2"
+            ],
+            "line": "0 0.53600781 0.47222222 0.11107812 0.05555556 0.48530469 0.47731944 2 0.59154687 0.49127778 2",
+            "box_xyxy_px": [
+              615.0,
+              319.9999968,
+              757.1799936,
+              360.0
+            ],
+            "corners_px": [
+              [
+                621.1900032,
+                343.6699968,
+                2
+              ],
+              [
+                757.1799936,
+                353.7200016,
+                2
+              ]
+            ]
+          },
+          {
+            "source_row_1based": 5,
+            "tokens": [
+              "0",
+              "0.53407031",
+              "0.51875000",
+              "0.11032813",
+              "0.05416667",
+              "0.48230469",
+              "0.52700000",
+              "2",
+              "0.58923437",
+              "0.53850000",
+              "2"
+            ],
+            "line": "0 0.53407031 0.51875000 0.11032813 0.05416667 0.48230469 0.52700000 2 0.58923437 0.53850000 2",
+            "box_xyxy_px": [
+              612.9999936,
+              353.9999988,
+              754.2200000000001,
+              393.00000120000004
+            ],
+            "corners_px": [
+              [
+                617.3500032,
+                379.44,
+                2
+              ],
+              [
+                754.2199936,
+                387.71999999999997,
+                2
+              ]
+            ]
+          },
+          {
+            "source_row_1based": 8,
+            "tokens": [
+              "0",
+              "0.53248047",
+              "0.56666667",
+              "0.11027344",
+              "0.05833333",
+              "0.48068750",
+              "0.57586111",
+              "2",
+              "0.58761719",
+              "0.58570833",
+              "2"
+            ],
+            "line": "0 0.53248047 0.56666667 0.11027344 0.05833333 0.48068750 0.57586111 2 0.58761719 0.58570833 2",
+            "box_xyxy_px": [
+              611.0,
+              387.0000036,
+              752.1500032,
+              429.00000120000004
+            ],
+            "corners_px": [
+              [
+                615.28,
+                414.61999919999994,
+                2
+              ],
+              [
+                752.1500032,
+                421.7099976,
+                2
+              ]
+            ]
+          },
+          {
+            "source_row_1based": 12,
+            "tokens": [
+              "0",
+              "0.53453906",
+              "0.60578472",
+              "0.11389062",
+              "0.06015278",
+              "0.00000000",
+              "0.00000000",
+              "0",
+              "0.00000000",
+              "0.00000000",
+              "0"
+            ],
+            "line": "0 0.53453906 0.60578472 0.11389062 0.06015278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+            "box_xyxy_px": [
+              611.3199999999999,
+              414.5099976000001,
+              757.0999936,
+              457.8199992
+            ],
+            "corners_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          {
+            "source_row_1based": 25,
+            "tokens": [
+              "0",
+              "0.54005859",
+              "0.54918056",
+              "0.12144531",
+              "0.20805556",
+              "0.47933594",
+              "0.62444444",
+              "2",
+              "0.00000000",
+              "0.00000000",
+              "0"
+            ],
+            "line": "0 0.54005859 0.54918056 0.12144531 0.20805556 0.47933594 0.62444444 2 0.00000000 0.00000000 0",
+            "box_xyxy_px": [
+              613.5499968,
+              320.5100016,
+              768.9999935999999,
+              470.31000480000006
+            ],
+            "corners_px": [
+              [
+                613.5500032,
+                449.5999968,
+                2
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          }
+        ],
+        "identity_confidence": "high",
+        "geometry_confidence": "high for donor-point identity; existing row12 bbox is retained as bounded scope, not claimed fully redrawn",
+        "retain_candidate_line": "0 0.53453906 0.60578472 0.11389062 0.06015278 0.47933594 0.62444444 2 0.00000000 0.00000000 0",
+        "preserve_exact_tokens": {
+          "row12": [
+            "class",
+            "cx",
+            "cy",
+            "w",
+            "h",
+            "right_x",
+            "right_y",
+            "right_v"
+          ],
+          "row25": [
+            "left_x",
+            "left_y",
+            "left_v"
+          ]
+        },
+        "source_image_path": "data/images/train/new_000067.png"
+      }
+    },
+    {
+      "id": "identity-068-delete-15",
+      "image_id": "new_000068",
+      "review_status": "accepted_incremental",
+      "reason": "The entire source box falls on the solid foreground right gripper arm. No positive visible cassette front is present within or adjacent to this box at its presumed stack level. The visible rear white cassette fragment belongs to retained source row14 at x≈784–804,y440–462. Do not infer further fully hidden cassettes from stack spacing.",
+      "reviewers": [
+        "train_identity_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "proposal_id": "identity-068-delete-15",
+        "operation": "delete",
+        "source_row_1based": 15,
+        "source_rows": [
+          {
+            "source_row_1based": 15,
+            "tokens": [
+              "0",
+              "0.58135938",
+              "0.63784722",
+              "0.03735937",
+              "0.04322222",
+              "0.00000000",
+              "0.00000000",
+              "0",
+              "0.00000000",
+              "0.00000000",
+              "0"
+            ],
+            "line": "0 0.58135938 0.63784722 0.03735937 0.04322222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+            "box_xyxy_px": [
+              720.2300095999999,
+              443.6899992,
+              768.0500032,
+              474.8099976000001
+            ],
+            "corners_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          }
+        ],
+        "identity_confidence": "high",
+        "source_image_path": "data/images/train/new_000068.png"
+      }
+    },
+    {
+      "id": "identity-068-delete-16",
+      "image_id": "new_000068",
+      "review_status": "accepted_incremental",
+      "reason": "The entire source box falls on the solid foreground right gripper arm. No positive visible cassette front is present within or adjacent to this box at its presumed stack level. The visible rear white cassette fragment belongs to retained source row14 at x≈784–804,y440–462. Do not infer further fully hidden cassettes from stack spacing.",
+      "reviewers": [
+        "train_identity_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "proposal_id": "identity-068-delete-16",
+        "operation": "delete",
+        "source_row_1based": 16,
+        "source_rows": [
+          {
+            "source_row_1based": 16,
+            "tokens": [
+              "0",
+              "0.57994531",
+              "0.66205556",
+              "0.03398437",
+              "0.04419444",
+              "0.00000000",
+              "0.00000000",
+              "0",
+              "0.00000000",
+              "0.00000000",
+              "0"
+            ],
+            "line": "0 0.57994531 0.66205556 0.03398437 0.04419444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+            "box_xyxy_px": [
+              720.58,
+              460.7700048,
+              764.0799936000001,
+              492.5900016
+            ],
+            "corners_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          }
+        ],
+        "identity_confidence": "high",
+        "source_image_path": "data/images/train/new_000068.png"
+      }
+    },
+    {
+      "id": "new_000097-add-visible-front",
+      "image_id": "new_000097",
+      "review_status": "accepted_incremental",
+      "reason": "A white cassette front is visibly connected below a slotted upper surface in the gripper opening. No source label covers this front. Both actual physical lower-front corners are concealed by the gripper and/or finger; visible intersections with those occluders are not physical cassette corners.",
+      "reviewers": [
+        "train_occlusion_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "action": "append_omitted_visible_front",
+        "source_row_1based": null,
+        "candidate_row_1based": 45,
+        "before": null,
+        "after": "0 0.55273438 0.69236111 0.04140625 0.04305556 0 0 0 0 0 0",
+        "bbox_xyxy_original_px": [
+          681,
+          483,
+          734,
+          514
+        ],
+        "physical_endpoint_visibility": [
+          0,
+          0
+        ],
+        "confidence_identity": "high",
+        "boundary_uncertainty_original_px": 2,
+        "boundary_note": "Tight AABB of directly visible front surface; excludes the roof and bright upper lip. Blurred edges support approximately 1–2 pixel precision, not exact subpixel truth.",
+        "source_image_path": "data/images/train/new_000097.png"
+      }
+    },
+    {
+      "id": "new_000101-add-visible-front",
+      "image_id": "new_000101",
+      "review_status": "accepted_incremental",
+      "reason": "A white cassette front is visibly connected below a slotted upper surface in the gripper opening. No source label covers this front. Both actual physical lower-front corners are concealed by the gripper and/or finger; visible intersections with those occluders are not physical cassette corners.",
+      "reviewers": [
+        "train_occlusion_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "action": "append_omitted_visible_front",
+        "source_row_1based": null,
+        "candidate_row_1based": 53,
+        "before": null,
+        "after": "0 0.55156250 0.69305556 0.04375000 0.04444444 0 0 0 0 0 0",
+        "bbox_xyxy_original_px": [
+          678,
+          483,
+          734,
+          515
+        ],
+        "physical_endpoint_visibility": [
+          0,
+          0
+        ],
+        "confidence_identity": "high",
+        "boundary_uncertainty_original_px": 2,
+        "boundary_note": "Tight AABB of directly visible front surface; excludes the roof and bright upper lip. Blurred edges support approximately 1–2 pixel precision, not exact subpixel truth.",
+        "source_image_path": "data/images/train/new_000101.png"
+      }
+    },
+    {
+      "id": "new_000102-row53-visible-extent",
+      "image_id": "new_000102",
+      "review_status": "accepted_incremental",
+      "reason": "Source row 53 locates the exposed front but its width extends far into both solid gripper jaws. The front below the slotted upper surface is only visible in the central opening. Tighten to that observed front and preserve every source endpoint token.",
+      "reviewers": [
+        "train_occlusion_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "action": "replace_bbox_preserve_endpoint_tokens",
+        "source_row_1based": 53,
+        "candidate_row_1based": 53,
+        "before": "0 0.57851562 0.70277778 0.09296875 0.03888889 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+        "after": "0 0.55664062 0.70416667 0.02890625 0.02222222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+        "bbox_xyxy_original_px": [
+          694,
+          499,
+          731,
+          515
+        ],
+        "physical_endpoint_visibility": [
+          0,
+          0
+        ],
+        "confidence_identity": "high",
+        "boundary_uncertainty_original_px": 2,
+        "boundary_note": "The narrow front has blurred boundaries and an upper lip; proposed top is below that lip. No hidden width or lower corners are inferred.",
+        "source_image_path": "data/images/train/new_000102.png"
+      }
+    },
+    {
+      "id": "new_000103-delete-gripper-row50",
+      "image_id": "new_000103",
+      "review_status": "accepted_incremental",
+      "reason": "The entire source box is on the solid right gripper arm, below the visible cassette front. The original image shows no cassette front inside this box. Delete this non-target row independently from the omission addition; the prior annotator's intended identity is unknown.",
+      "reviewers": [
+        "train_occlusion_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "action": "delete_non_target_row",
+        "source_row_1based": 50,
+        "candidate_row_1based": null,
+        "before": "0 0.61266797 0.81864583 0.07117969 0.03462500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+        "after": null,
+        "bbox_xyxy_original_px": null,
+        "confidence_identity": "high",
+        "source_image_path": "data/images/train/new_000103.png"
+      }
+    },
+    {
+      "id": "new_000103-add-visible-front",
+      "image_id": "new_000103",
+      "review_status": "accepted_incremental",
+      "reason": "A small white front is directly visible beneath the slotted upper surface in the gripper opening. It has no source label at its actual location. Both physical lower corners are occluded. This new identity record is independent of the invalid old row 50.",
+      "reviewers": [
+        "train_occlusion_review",
+        "root"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "action": "append_omitted_visible_front_after_deletion",
+        "source_row_1based": null,
+        "candidate_row_1based": 50,
+        "before": null,
+        "after": "0 0.55781250 0.70694444 0.02500000 0.01666667 0 0 0 0 0 0",
+        "bbox_xyxy_original_px": [
+          698,
+          503,
+          730,
+          515
+        ],
+        "physical_endpoint_visibility": [
+          0,
+          0
+        ],
+        "confidence_identity": "high",
+        "boundary_uncertainty_original_px": 2,
+        "boundary_note": "Only the central front patch is enclosed; upper lip, slotted roof, hidden width, and solid gripper are excluded.",
+        "source_image_path": "data/images/train/new_000103.png"
+      }
+    },
+    {
+      "id": "identity-072-delete35",
+      "image_id": "new_000072",
+      "review_status": "accepted_incremental",
+      "reason": "Source row35 falls wholly on the solid foreground left gripper arm. There is no positive visible front surface at that presumed fifth level. Original pixels show four distinct center-column fronts: rows14/15/16 and the right fragment represented jointly by34/36. Do not infer another hidden cassette from spacing.",
+      "reviewers": [
+        "root",
+        "train_identity_review"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "operation": "delete",
+        "source_row_1based": 35,
+        "source": {
+          "row_1based": 35,
+          "line": "0 0.49820313 0.66394444 0.02653125 0.04075000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "box_xyxy_px": [
+            620.7200064,
+            463.36999679999997,
+            654.6800064,
+            492.7099968
+          ],
+          "corners_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        "confidence": "high",
+        "source_image_path": "data/images/train/new_000072.png"
+      }
+    },
+    {
+      "id": "identity-072-consolidate36-34",
+      "image_id": "new_000072",
+      "review_status": "accepted_incremental",
+      "reason": "The right sliver in row36 belongs to the same fourth center-column front as row34, below the separate third front retained as row16. Row34 broadly covers gripper and the preceding face; refit to the visible right fragment and preserve row36 exact right lower-corner tokens.",
+      "reviewers": [
+        "root",
+        "train_identity_review"
+      ],
+      "original_pixels_adjudicated_by_root": true,
+      "details": {
+        "operation": "consolidate",
+        "retain_source_row_1based": 34,
+        "remove_source_rows_1based": [
+          36
+        ],
+        "sources": [
+          {
+            "row_1based": 34,
+            "line": "0 0.51369531 0.63972222 0.06010938 0.03936111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+            "box_xyxy_px": [
+              619.0599936,
+              446.4299988,
+              696.0000000000001,
+              474.769998
+            ],
+            "corners_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          {
+            "row_1based": 36,
+            "line": "0 0.54589062 0.65284722 0.00762500 0.01355556 0.00000000 0.00000000 0 0.54669531 0.65141667 2",
+            "box_xyxy_px": [
+              693.8599936,
+              465.1699968,
+              703.6199936,
+              474.92999999999995
+            ],
+            "corners_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                699.7699968000001,
+                469.0200024,
+                2
+              ]
+            ]
+          }
+        ],
+        "observed_box_xyxy_px": [
+          686,
+          458,
+          702,
+          472
+        ],
+        "left_corner": [
+          0,
+          0,
+          0
+        ],
+        "right_corner_donor": {
+          "image_id": "new_000072",
+          "source_row_1based": 36,
+          "field_indices_zero_based": [
+            8,
+            9,
+            10
+          ],
+          "exact_tokens": [
+            "0.54669531",
+            "0.65141667",
+            "2"
+          ]
+        },
+        "candidate_line": "0 0.54218750 0.64583333 0.01250000 0.01944444 0.00000000 0.00000000 0 0.54669531 0.65141667 2",
+        "coordinate_note": "The bbox is a manual observed-fragment estimate around a blurred boundary. Inspect the candidate overlay alongside the raw crop; the donor point is unchanged. No statistically measured pixel uncertainty is claimed.",
+        "confidence": "high identity; bounded manual box judgment",
+        "source_image_path": "data/images/train/new_000072.png"
+      }
+    },
+    {
+      "id": "027-top-A",
+      "image_id": "new_000027",
+      "review_status": "accepted_incremental",
+      "reason": "The original image supports a separate top- and left-clipped front, absent from all ten source rows. Its rounded lower-right junction is visible and locatable with several pixels of manual uncertainty. The left physical lower corner lies outside the frame; the visible lower edge meeting x=0 is not a substitute corner.",
+      "reviewers": [
+        "reviewer A",
+        "reviewer B",
+        "root reconciler"
+      ],
+      "details": {
+        "id": "027-top-A",
+        "image_id": "new_000027",
+        "box_xyxy_px": [
+          0,
+          0,
+          86,
+          20
+        ],
+        "corners_px": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            82,
+            16,
+            2
+          ]
+        ],
+        "candidate_row": 11,
+        "reason": "The original image supports a separate top- and left-clipped front, absent from all ten source rows. Its rounded lower-right junction is visible and locatable with several pixels of manual uncertainty. The left physical lower corner lies outside the frame; the visible lower edge meeting x=0 is not a substitute corner.",
+        "reviewer_neighborhoods": {
+          "a_right": {
+            "x": [
+              78,
+              83
+            ],
+            "y": [
+              15,
+              19
+            ]
+          },
+          "b_right": {
+            "x": [
+              80,
+              85
+            ],
+            "y": [
+              14,
+              19
+            ]
+          }
+        },
+        "geometry_choice": "Select reviewer B's original-pixel nomination. The right point lies within both independently recorded plausible neighborhoods; the one-pixel box-bound difference is within the observed soft edge. No coordinates come from model predictions.",
+        "row_text": "0 0.033593750 0.013888889 0.067187500 0.027777778 0 0 0 0.064062500 0.022222222 2"
+      }
+    },
+    {
+      "id": "027-top-B",
+      "image_id": "new_000027",
+      "review_status": "accepted_incremental",
+      "reason": "A second distinct top-clipped front is separated from the first strip and the next rack bay. Both actual lower-front turns remain visible in-frame. Original pixels support the two soft junctions; top clipping does not make these lower corners missing.",
+      "reviewers": [
+        "reviewer A",
+        "reviewer B",
+        "root reconciler"
+      ],
+      "details": {
+        "id": "027-top-B",
+        "image_id": "new_000027",
+        "box_xyxy_px": [
+          86,
+          0,
+          317,
+          18
+        ],
+        "corners_px": [
+          [
+            89,
+            15,
+            2
+          ],
+          [
+            313,
+            13,
+            2
+          ]
+        ],
+        "candidate_row": 12,
+        "reason": "A second distinct top-clipped front is separated from the first strip and the next rack bay. Both actual lower-front turns remain visible in-frame. Original pixels support the two soft junctions; top clipping does not make these lower corners missing.",
+        "reviewer_neighborhoods": {
+          "a_left": {
+            "x": [
+              88,
+              93
+            ],
+            "y": [
+              13,
+              17
+            ]
+          },
+          "b_left": {
+            "x": [
+              87,
+              92
+            ],
+            "y": [
+              13,
+              18
+            ]
+          },
+          "a_right": {
+            "x": [
+              309,
+              314
+            ],
+            "y": [
+              11,
+              15
+            ]
+          },
+          "b_right": {
+            "x": [
+              310,
+              315
+            ],
+            "y": [
+              11,
+              16
+            ]
+          }
+        },
+        "geometry_choice": "Select reviewer B's original-pixel nomination. Both points lie within both independently recorded plausible neighborhoods. The one-pixel right-box-bound difference is within the soft edge. No averaging or hidden-corner inference is used.",
+        "row_text": "0 0.157421875 0.012500000 0.180468750 0.025000000 0.069531250 0.020833333 2 0.244531250 0.018055556 2"
+      }
+    },
+    {
+      "id": "010-row1-top",
+      "image_id": "old_000010",
+      "review_status": "accepted_incremental",
+      "reason": "The same front covered by source row1 visibly reaches the top image boundary. Extend only y_min from16.3056024 to0, preserving x bounds, y_max and all endpoint tokens. This selective repair does not newly certify the other inherited bounds or endpoints.",
+      "reviewers": [
+        "reviewer A",
+        "reviewer B",
+        "root reconciler"
+      ],
+      "details": {
+        "original_row": 1,
+        "before_bbox_xyxy_px": [
+          556.0,
+          16.3056024,
+          1002.56,
+          124.5021048
+        ],
+        "after_bbox_xyxy_px": [
+          556.0,
+          0,
+          1002.56,
+          124.5021048
+        ],
+        "endpoint_tokens_preserved": true,
+        "all_other_rows_byte_preserved": true
+      }
+    },
+    {
+      "id": "remaining-029-front-a",
+      "image_id": "new_000029",
+      "review_status": "accepted_incremental",
+      "reason": "A distinct smooth front band is visible between the jaws below the physical front represented by original row 35. Visible boundaries distinguish this band from its neighbors; identity is not inferred from stack spacing. The loose original row 35 box may overlap the new box and remains unchanged. Both actual lower-front corners are obscured, so both endpoint triplets remain exactly 0 0 0. This operation appends band A.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "operation": "append_visible_front",
+        "candidate_row": 43,
+        "bbox_xyxy_px": [
+          683,
+          470,
+          726,
+          499
+        ],
+        "keypoints_xyv_px": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "manual_boundary_uncertainty_px": [
+          2,
+          3
+        ],
+        "uncertainty_is_not_calibrated_interval": true,
+        "source_rows_unchanged": true
+      }
+    },
+    {
+      "id": "remaining-029-front-b",
+      "image_id": "new_000029",
+      "review_status": "accepted_incremental",
+      "reason": "A distinct smooth front band is visible between the jaws below the physical front represented by original row 35. Visible boundaries distinguish this band from its neighbors; identity is not inferred from stack spacing. The loose original row 35 box may overlap the new box and remains unchanged. Both actual lower-front corners are obscured, so both endpoint triplets remain exactly 0 0 0. This operation appends band B.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "operation": "append_visible_front",
+        "candidate_row": 44,
+        "bbox_xyxy_px": [
+          699,
+          491,
+          719,
+          518
+        ],
+        "keypoints_xyv_px": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "manual_boundary_uncertainty_px": [
+          2,
+          3
+        ],
+        "uncertainty_is_not_calibrated_interval": true,
+        "source_rows_unchanged": true
+      }
+    },
+    {
+      "id": "remaining-029-front-c",
+      "image_id": "new_000029",
+      "review_status": "accepted_incremental",
+      "reason": "A distinct smooth front band is visible between the jaws below the physical front represented by original row 35. Visible boundaries distinguish this band from its neighbors; identity is not inferred from stack spacing. The loose original row 35 box may overlap the new box and remains unchanged. Both actual lower-front corners are obscured, so both endpoint triplets remain exactly 0 0 0. This operation appends band C.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "operation": "append_visible_front",
+        "candidate_row": 45,
+        "bbox_xyxy_px": [
+          700,
+          513,
+          715,
+          537
+        ],
+        "keypoints_xyv_px": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "manual_boundary_uncertainty_px": [
+          2,
+          3
+        ],
+        "uncertainty_is_not_calibrated_interval": true,
+        "source_rows_unchanged": true
+      }
+    },
+    {
+      "id": "remaining-029-front-d",
+      "image_id": "new_000029",
+      "review_status": "accepted_incremental",
+      "reason": "A distinct smooth front band is visible between the jaws below the physical front represented by original row 35. Visible boundaries distinguish this band from its neighbors; identity is not inferred from stack spacing. The loose original row 35 box may overlap the new box and remains unchanged. Both actual lower-front corners are obscured, so both endpoint triplets remain exactly 0 0 0. This operation appends band D.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "operation": "append_visible_front",
+        "candidate_row": 46,
+        "bbox_xyxy_px": [
+          702,
+          534,
+          716,
+          549
+        ],
+        "keypoints_xyv_px": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "manual_boundary_uncertainty_px": [
+          2,
+          3
+        ],
+        "uncertainty_is_not_calibrated_interval": true,
+        "source_rows_unchanged": true
+      }
+    },
+    {
+      "id": "remaining-121-front",
+      "image_id": "new_000121",
+      "review_status": "accepted_incremental",
+      "reason": "A distinct smooth white front with a stepped upper boundary is visible between the thumb and left jaw in the bottom-middle compartment. Original rows 52/56 represent neighboring compartments, not this face. Both actual lower-front corners are obscured; retain exactly 0 0 0 for each rather than marking an occluder edge.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "operation": "append_visible_front",
+        "candidate_row": 57,
+        "bbox_xyxy_px": [
+          568,
+          508,
+          605,
+          551
+        ],
+        "keypoints_xyv_px": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "manual_boundary_uncertainty_px": [
+          2,
+          3
+        ],
+        "uncertainty_is_not_calibrated_interval": true,
+        "source_rows_unchanged": true
+      }
+    },
+    {
+      "id": "remaining-129-front",
+      "image_id": "new_000129",
+      "review_status": "accepted_incremental",
+      "reason": "A distinct smooth front is visible between the jaws above the finger and below the perforated upper surface. Original rows 1-49 cover the upper/middle shelves and do not represent this lower front. The chosen visible-front bounds exclude the perforated top; the upper transition carries approximately 4 px manual uncertainty. Neither actual lower-front corner is locatable, so both remain exactly 0 0 0.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "operation": "append_visible_front",
+        "candidate_row": 50,
+        "bbox_xyxy_px": [
+          700,
+          516,
+          729,
+          541
+        ],
+        "keypoints_xyv_px": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "manual_boundary_uncertainty_px": {
+          "upper_bound": 4,
+          "other_bounds": [
+            2,
+            3
+          ]
+        },
+        "uncertainty_is_not_calibrated_interval": true,
+        "source_rows_unchanged": true
+      }
+    },
+    {
+      "id": "remaining-033-row 41-left",
+      "image_id": "new_000033",
+      "review_status": "accepted_incremental",
+      "reason": "The actual lower-left front turn is exposed where the wax surface meets the dark inter-column gap and its lower boundary, immediately left of the gripper. Restore this observed missing left endpoint at (613,453)px; do not infer it from rack spacing. Preserve the right missing triplet, all box tokens and every other row.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "original_row": 41,
+        "candidate_row": 41,
+        "before_bbox_xyxy_px": [
+          601.9500032,
+          416.5199964,
+          729.9699968,
+          464.1399972
+        ],
+        "after_bbox_xyxy_px": [
+          601.9500032,
+          416.5199964,
+          729.9699968,
+          464.1399972
+        ],
+        "original_visible_endpoint_tokens_preserved": true,
+        "all_other_rows_byte_preserved": true,
+        "operation": "restore_observed_left_endpoint",
+        "after_left_xyv_px": [
+          613,
+          453,
+          2
+        ],
+        "right_missing_tokens_preserved": true,
+        "manual_point_placement_uncertainty_px": 2,
+        "review_dependence": "Root inspected the original/crops; group reviewer confirmed exact coordinates after exposure to root suggestions. These exact marks are not blind independent nominations.",
+        "uncertainty_is_not_calibrated_interval": true
+      }
+    },
+    {
+      "id": "remaining-033-row 42-left",
+      "image_id": "new_000033",
+      "review_status": "accepted_incremental",
+      "reason": "The actual lower-left front turn is exposed where the wax surface meets the dark inter-column gap and its lower boundary, immediately left of the gripper. Restore this observed missing left endpoint at (617,477)px; do not infer it from rack spacing. Preserve the right missing triplet, all box tokens and every other row.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "original_row": 42,
+        "candidate_row": 42,
+        "before_bbox_xyxy_px": [
+          605.1400064,
+          441.8500032,
+          731.7000064,
+          488.43
+        ],
+        "after_bbox_xyxy_px": [
+          605.1400064,
+          441.8500032,
+          731.7000064,
+          488.43
+        ],
+        "original_visible_endpoint_tokens_preserved": true,
+        "all_other_rows_byte_preserved": true,
+        "operation": "restore_observed_left_endpoint",
+        "after_left_xyv_px": [
+          617,
+          477,
+          2
+        ],
+        "right_missing_tokens_preserved": true,
+        "manual_point_placement_uncertainty_px": 2,
+        "review_dependence": "Root inspected the original/crops; group reviewer confirmed exact coordinates after exposure to root suggestions. These exact marks are not blind independent nominations.",
+        "uncertainty_is_not_calibrated_interval": true
+      }
+    },
+    {
+      "id": "remaining-037-row 11-bottom",
+      "image_id": "new_000037",
+      "review_status": "accepted_incremental",
+      "reason": "The same front visibly continues below original ymax 456 to approximatelyy469-471 beside the gripper. Extend only ymax to 471, preserving xmin, ymin, xmax and both endpoint triplets. This fixes omitted visible material without marking the obscured right corner.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "original_row": 11,
+        "candidate_row": 11,
+        "before_bbox_xyxy_px": [
+          478.0000064,
+          421.9200036,
+          640.38,
+          456.0000012
+        ],
+        "after_bbox_xyxy_px": [
+          478.0000064,
+          421.92000359964,
+          640.38,
+          470.99999999988
+        ],
+        "original_visible_endpoint_tokens_preserved": true,
+        "all_other_rows_byte_preserved": true,
+        "operation": "set_bbox_ymax",
+        "nominal_ymax_px": 471,
+        "manual_boundary_uncertainty_px": 2,
+        "independent_adjudication": "Group3 nomination and original-first cross-group review agreed; root accepted."
+      }
+    },
+    {
+      "id": "remaining-040-row 14-right",
+      "image_id": "new_000040",
+      "review_status": "accepted_incremental",
+      "reason": "Visible upper-right material of this same front extends beyond original xmax 632.10 to approximatelyx654-655 at y420-431, above the gripper and against the dark rack gap. Extend only xmax to 655. Preserve all other bounds and endpoint triplets; the physical lower-right corner remains obscured.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "original_row": 14,
+        "candidate_row": 14,
+        "before_bbox_xyxy_px": [
+          578.3300032,
+          412.1799984,
+          632.1,
+          451.26
+        ],
+        "after_bbox_xyxy_px": [
+          578.3300032,
+          412.1799984,
+          655.0,
+          451.26
+        ],
+        "original_visible_endpoint_tokens_preserved": true,
+        "all_other_rows_byte_preserved": true,
+        "operation": "set_bbox_xmax",
+        "nominal_xmax_px": 655,
+        "manual_boundary_uncertainty_px": 2,
+        "independent_adjudication": "Group1 original-pixel nomination and root original-image review agreed."
+      }
+    },
+    {
+      "id": "remaining-old042-row 10-box",
+      "image_id": "old_000042",
+      "review_status": "accepted_incremental",
+      "reason": "The narrow upper front face is identifiable separately from the surrounding rack and the next front. Refit the box to [575,294,873,327]px, removing the surrounding rack/neighbor material included by the original box. Preserve both original visible endpoint token triplets at approximately(582,326) and(862.25,317.97); the manual edge uncertainty is approximately 2-3 px.",
+      "reviewers": [
+        "original-first group reviewer",
+        "root original-image adjudication"
+      ],
+      "details": {
+        "original_row": 10,
+        "candidate_row": 10,
+        "before_bbox_xyxy_px": [
+          544.7400064,
+          293.3799984,
+          904.7400064,
+          338.9600016
+        ],
+        "after_bbox_xyxy_px": [
+          575.0,
+          294.00000000012,
+          873.0,
+          326.99999999988
+        ],
+        "original_visible_endpoint_tokens_preserved": true,
+        "all_other_rows_byte_preserved": true,
+        "operation": "replace_bbox",
+        "nominal_bbox_xyxy_px": [
+          575,
+          294,
+          873,
+          327
+        ],
+        "manual_boundary_uncertainty_px": [
+          2,
+          3
+        ],
+        "independent_adjudication": "Group3 nomination, original-first cross-group review and root accepted the bounded face extent."
+      }
+    }
+  ],
+  "held_scope": [
+    "No new_000015 top-strip additions: structural identity dissent prevented target acceptance.",
+    "No new_000038 addition: object existence supported but front/upper-surface extent remains unresolved.",
+    "No old-image top-bound amendments: ownership of upper strips by the same front was not established.",
+    "Other unresolved front/occluder identities and prior held cases remain outside this candidate."
+  ],
+  "limits": [
+    "Original-image assistant review and root adjudication are not independent human annotation certification.",
+    "Manual boundary/point uncertainty describes image-supported placement variation; it is not a calibrated confidence interval or subpixel ground truth.",
+    "The two new_000033 exact point confirmations were exposed to root suggestions and are not blind independent measurements.",
+    "Only the named accepted changes are applied. All ten inherited parent label files, change records and fifteen decisions are preserved unchanged; other historical candidates are not silently merged.",
+    "The original twenty-image training-validation split and separately adjudicated663-object development reference are unchanged.",
+    "Missing endpoints are not assumed erroneous: all twelve slots on six new front rows remain canonical0 0 0.",
+    "No model was trained or evaluated on this candidate; a label improvement is not a measured model improvement."
+  ],
+  "current_evidence": {
+    "path": "results/review/remaining-training-20261114/adjudication.json",
+    "review_directory": "results/review/remaining-training-20261114/",
+    "report": "docs/training-review-2026-11-14.md",
+    "binding": "Review coordinates and accepted reasons are self-contained here; the accompanying evidence preserves original-first observations, held cases and root adjudication."
+  }
+}
