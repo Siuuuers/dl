@@ -3,11 +3,13 @@
 Date: 2026-11-14, Asia/Hong_Kong. Source: published PR61 revision
 `1b71e8158e0594ee4c72ba845fa7b514a78b9e0d`.
 
-**Subsequent clarification:** the user requires the actual bottom corners of
-the whole white block's front face. The [target clarification](target-clarification-2026-11-14.md)
-records two concrete image questions, including physical unit membership in
-`old_000042`. The findings below remain the earlier review record; the untrained
-candidate needs those image interpretations resolved before a training comparison.
+**Subsequent correction:** the [ownership review](target-clarification-2026-11-14.md)
+confirms three separate fronts near the thumb in `new_000038`. The earlier held
+suggestion to move row 1's point to the lowest turn is withdrawn because those
+locations belong to different cassettes. A three-instance coverage/geometry
+repair remains open. The target and permission to show confidence-gated hidden
+estimates were already documented in PR55/56; no new requirement choice is needed.
+The candidate payload and earlier review evidence below remain unchanged.
 
 **The fixed 57-image original-first pass is complete.** Its separate training
 candidate adds six visible front faces, restores two directly observed corner
@@ -98,8 +100,9 @@ Other proposals remain held:
 
 - `new_000038` has a supported bottom-clipped front, but the upper transition
   between perforated top, rounded shoulder and front remains uncertain around
-  y=692–700. Its exact added box is not exported. Its existing row 1 also needs
-  a separately specified coupled box/visible-point correction.
+  y=692–700. Its exact added box is not exported. Separately, the thumb-adjacent
+  region has three fronts but only source row 1; the follow-up withdraws the
+  one-point A-to-B move and records a per-instance coverage/geometry repair.
 - Suggested first-row top expansions in `old_000013`, `old_000069`,
   `old_000079`, `old_000093` and `old_000101` were retracted because the excluded
   pixels may belong to a preceding projecting lip. An earlier decision on a

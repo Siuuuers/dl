@@ -1,147 +1,165 @@
-# Confirm the whole-block corner target before further training
+# Corrected cassette ownership and the established prediction contract
 
-Date: 2026-11-14, Asia/Hong_Kong. Source review: PR63 at
-`e2dce11e1f2d224495a33971f349eed56a7b253a`.
+Date: 2026-11-14, Asia/Hong_Kong. This corrects the interpretation published
+in PR63 at `2c6d5e7f80acca63a6cd478234af594bd7a5c759`.
 
-The user clarified that the required endpoints are the two actual corners
-along the bottom edge of the **front face of the whole white wax block**.
-A corner of a visible fragment is not a replacement for the physical corner.
-The user also requested confidence-gated points, a connecting line when both
-points are visible, and fewer missing outputs.
+**The target and permission to predict obscured corners were already settled.**
+The previous follow-up overlooked the PR55/56 decisions and incorrectly framed
+`new_000038` as one cassette with two alternative corner locations. The user
+pointed out three cassettes. Full-image review supports that correction. The
+proposed A-to-B move is withdrawn; no label had been changed by that proposal.
 
-**The current written target agrees with this clarification, but the physical
-interpretation of particular source labels still needs an original-image
-anchor.** The existing code already gates each endpoint and the connecting
-line. This follow-up records two image questions and the remaining meaning of
-runtime visibility. It changes no labels, predictions, model or renderer.
+The established task remains one physical cassette front, its actual two lower
+corners ordered by image X, direct confidence-gated model predictions, and a
+line when both predictions qualify. Inferred coordinates remain predictions;
+they do not automatically become observed training/reference truth. No new
+landmark choice, visibility-only output restriction or architecture decision is
+required to continue the existing work.
 
-The untrained [remaining-front candidate](../data/candidates/remaining-fronts-2026-11-14/README.md)
-remains a draft. Recheck its relevant decisions against the confirmed physical
-unit before preparing a training comparison. The earlier accepted/rejected
-review records remain historical evidence, not automatic certification under
-this unresolved image interpretation.
+## 1. Q1: three cassettes, not one tall front
 
-## 1. What the source branches establish
+![Full-context original crop and three separate front portions](../results/review/target-clarification-20261114/figures/new_000038-corrected-three-fronts.png)
 
-The live upstream heads were read on this date:
+The original has two subtle transverse boundaries accompanied by steps in the
+left silhouette. They separate three exposed front portions under the thumb:
 
-| Source | Verified meaning | Consequence |
-| --- | --- | --- |
-| [Current baomai README](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/README.md), [data instructions](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md), and [model card](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/metadata/model_card.json) | Actual lower-front left/right corners of the white wax block, ordered by image X. Upper lip, tray and rack corners are excluded. Independently unlocatable points use `0 0 0`. | This is the current two-point target. Agreement with this text does not prove a particular dot is on the right feature. |
-| [Historical two-point standard](https://github.com/an94-doll/embedding_vision/blob/6f7112a553e1759fc755bda1f18ee56cb34dd315/detect/data/data_last/picture/work/annotation_standard.json) | The identifier is `reference83_front_lip_junction_corners`; its description anchors the actual turns of a front long edge to a saved frame83 example. | The older wording is a possible source of different feature interpretations. It does not establish that every old label is incorrect. |
-| [Current yolo-pose instructions](https://github.com/an94-doll/embedding_vision/blob/72a99dafa1b14bfabd101e639b9ddb5f5aa38d52/annotations/README.md) | Front/back classes, five object-relative points, an edge midpoint and a whole-object box. | This is a different task. Do not import its point order, extrapolation rule or box definition into the two-point dataset. |
+| Feature | Approximate original-image Y |
+| --- | --- |
+| Upper/middle boundary, near previous A | 608–610 |
+| Middle/lower boundary | 625–629 |
+| Lowest cassette's lower turn, near previous B | 646–649 |
 
-The upstream `data/annotated/` PNGs are **reference annotation previews**, not
-model predictions. They were exported from the human-edited state; that
-provenance does not guarantee correct feature identity. Training uses original
-images and TXT labels, so correcting a preview alone would not change training.
+The frozen A coordinate `(489.43,608.26)` plausibly belongs to the upper
+cassette's lower-left corner. The suggested B coordinate near `(492,646)` lies
+at the lowest cassette's turn. **They must not be treated as replacement
+coordinates for the same object.** The brackets show approximate ownership,
+not approved endpoint or box geometry.
 
-The word "whole" resolves which physical corners are wanted; it does not by
-itself request hidden full-object bounding boxes. The existing
-[visible-front box policy](annotation-policy.md#2-box-the-observed-front-face-extent)
-is a separate local convention. A partly visible block may remain one object
-with one or both target corners unlocatable. A fragment endpoint must not be
-substituted for a whole-block corner.
+The [nearby new_000039 view](../results/review/target-clarification-20261114/figures/new_000039-neighbor-three-fronts.png)
+corroborates a three-unit stacking pattern. Identical physical instances or
+unchanged poses across these frames have not been established; no hidden
+coordinates are transferred. The seams in `new_000038` itself are the direct
+image evidence.
 
-## 2. Two concrete image questions
+### Concrete annotation repair item
 
-The visual reviewer first viewed the three complete originals before their
-label coordinates; the root
-then viewed the originals, crops and source labels. The root knew the nominated
-issues. This is not an independent human adjudication. The figures preserve an
-unmarked original crop and add markers only to a duplicate. Coordinates below
-are original-image pixels, not enlarged-display pixels.
+Only frozen row 1 represents this region. Its box is approximately
+`[489.43,608.26,617.9,638]`: the visible point is near the upper front's bottom,
+while the box extends across portions of the lower fronts and thumb. The issue
+is **three-instance coverage and box/point ownership**, not a 38 px point shift.
+Two local instances are absent or merged under the one-instance-per-cassette
+rule.
 
-### Q1 — A point above the apparent lower turn: new_000038
+Review the assignment of row 1 to the upper front, then define distinct middle
+and lower rows from their visible extents. Exact new boxes and left-corner
+locations are not approved yet: the boundaries are soft and partly hidden.
+All three right corners are obscured. Their natural-image reference slots must
+not be filled from a neighboring image or a model guess. This training-label
+rule does not prohibit model estimates at inference.
 
-![Original crop and two unconfirmed left-corner alternatives](../results/review/target-clarification-20261114/figures/question-1-new_000038-A-B.png)
+The separate bottom-left, image-clipped front identified in the earlier review
+is a different region and retains its own unresolved extent question.
 
-- **A:** frozen row 1 left point, approximately `(489.43, 608.26)`.
-- **B:** apparent lower-left turn, approximately `(492, 646)`.
-- B lies about 38 original pixels below A. Its soft/rounded transition leaves
-  roughly 2–4 px of manual placement uncertainty; this is not a calibrated
-  interval. The right corner is covered by the thumb.
+## 2. Q2: recover the existing physical target example
 
-**Question:** Does A, B, or another location identify the actual bottom-left
-corner of the intended whole block? B is the visual reviewer's interpretation
-of the lower turn; it is not an approved label.
+PR56 already provided an explicit full-front example and recorded that the
+user reaffirmed the existing guidance. The
+[source example](baomai-corner-examples-2026-11-12.md#2-a-clear-complete-front-new_000008-row-20)
+and [guidance audit](lower-front-guidance-audit-2026-11-12.md) explain that no
+new landmark choice is needed.
 
-This point correction was already held in the previous review. It would need
-a coordinated box/point decision, rather than moving a point to fit the old box.
+![Existing complete-front anchor with the original baomai lower-edge pair](images/baomai-original-008-front-20261112.png)
 
-### Q2 — One physical unit or two: old_000042
+This is `new_000008`, original row 20: left `(930.29,240.39)`, right
+`(1114.63,245.90)`. The two points belong to the same individual front's lower
+edge; its upper lip is separately visible. The original coordinates illustrate
+the intended feature, not subpixel ground truth. "Whole cassette" means the
+individual physical unit, not the connected white silhouette of a stack or the
+largest bright area in a crop.
 
-![Original crop and two existing labeled edges whose physical ownership needs confirmation](../results/review/target-clarification-20261114/figures/question-2-old_000042-unit-edges.png)
+At a shared stack seam, the lower corner of the front above and the upper
+shoulder of the next front are close but have different owners. This distinction
+was already documented in the PR56 source guide and directly explains the Q1
+mistake.
 
-| Marked edge | Existing source row | Existing endpoints |
-| --- | ---: | --- |
-| A, thin upper strip below the metal shelf | 10 | `(582,326)` to `(862.25,317.97)` |
-| B, lower edge of the broader white region below | 1 | `(590,374.50)` to `(847.46,367.47)` |
+### old_000042: successive edges in an oblique stack
 
-**Question:** Are A and B the bottom edges of two separate whole blocks, or
-parts of the same physical block? If they are one block, which edge belongs to
-its required front face? "Neither" or a user-marked alternative is also valid.
+![Repeated existing edge pairs through the full stack](../results/review/target-clarification-20261114/figures/old_000042-repeat-pattern.png)
 
-This is an instance-identity question as well as a point-placement question.
-The PR63 proposal narrowed row 10's box while preserving its point tokens;
-that operation cannot resolve whether row 10 identifies the intended whole
-block. Do not automatically merge/delete rows or move A to B from this crop.
+The earlier A/B edges are best interpreted as successive cassette-edge levels:
+source row 10, then row 1; row 2 continues the same pattern below. The complete
+stack, related old-image viewpoints, and isolated upstream cassette views favor
+separate units. The former broad question about redefining the target is
+withdrawn. Do not merge/delete row 10 or move its pair onto row 1 merely because
+the larger pale region between them looks continuous in a crop.
 
-### Supporting example — new_000033
+The isolated upstream [recessed-side example](https://github.com/an94-doll/embedding_vision/blob/72a99dafa1b14bfabd101e639b9ddb5f5aa38d52/images/01/frame_0001.jpg)
+and [opposite-side example](https://github.com/an94-doll/embedding_vision/blob/72a99dafa1b14bfabd101e639b9ddb5f5aa38d52/images/04/frame_0001.jpg)
+show both the three-recess short-end construction and the smooth sloped end.
+The broad recessed band in `old_000042` is not safely interpreted as one smooth
+front plane. Oblique surfaces and projected neighboring edges need per-object
+ownership. This visual correspondence does not certify every existing pixel
+coordinate or box extent, and it does not establish that isolated examples are
+the same physical specimens.
 
-The [supporting figure](../results/review/target-clarification-20261114/figures/reference-new_000033-rows39-41-42.png)
-shows a fully exposed existing pair on row 39 and the proposed left restorations
-on rows 41/42 at `(613,453)` and `(617,477)`. The latter are on exposed lower
-turns beside the column gap; their right sides are obscured by the gripper.
-Their consistency with the desired physical unit remains conditional on the
-user's image anchor. Existing boxes cannot independently settle that identity.
+The current [baomai instructions](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md)
+remain authoritative for the two-point task. The isolated yolo-pose images help
+identify construction; their five-point schema, object-relative identities and
+whole-object boxes are not imported. The local visible-front box rule remains
+separate from the physical endpoint definition.
 
-[Image provenance and unconfirmed coordinates](../results/review/target-clarification-20261114/observations.json)
-record source revision, hashes, crop rectangles, enlargement scales and figure
-hashes. These are diagnostic figures, not new annotation previews or training
-labels.
+## 3. Q3: the established inference behavior already permits estimates
 
-## 3. Confidence gating is already implemented
+PR1–63 were listed and their titles screened, then the relevant descriptions,
+source documents, implementations and selected comment timelines were read.
+This is a focused history recovery, not a claim to have audited every PR diff.
+The decisive existing decisions are:
 
-The [folder runner](../scripts/predict_pose_folder.py) and
-[live viewer](../scripts/view_d405_yolo.py) each apply this normal display rule
-after an object prediction survives detector postprocessing:
+| History | Decision carried forward |
+| --- | --- |
+| [PR1](https://github.com/Siuuuers/dl/pull/1), [PR2](https://github.com/Siuuuers/dl/pull/2), [PR10](https://github.com/Siuuuers/dl/pull/10) | Preserve baomai's two-lower-corner task; distinguish observed label truth and missing slots. |
+| [PR20](https://github.com/Siuuuers/dl/pull/20) | Keep raw prediction coordinates/scores separate from display flags in folder inference. |
+| [PR55](https://github.com/Siuuuers/dl/pull/55) | Investigate hidden-corner estimates with `estimated_from_context` provenance; the follow-up retains direct PR35 output because automatic geometry substitution is unsupported. |
+| [PR56](https://github.com/Siuuuers/dl/pull/56) | Reaffirm the existing physical target; change diagnostic wording from VISIBLE/HIDDEN to SHOWN/NOT SHOWN without changing the gates. |
+| [PR60](https://github.com/Siuuuers/dl/pull/60) | Test covered pixels while retaining known original coordinates for scoring; confidence does not guarantee hidden-corner accuracy. |
+| [PR61/62](https://github.com/Siuuuers/dl/pull/61) | Complete the synthetic-corruption comparison, retain PR35, and explicitly allow naturally hidden estimates without inventing training truth. |
+
+The [PR55 follow-up](https://github.com/Siuuuers/dl/blob/c55a7160df0b9ce0fa32a2bfb6df61dbf4cfd128/docs/context-model-anchors-2026-11-12.md)
+retains direct PR35 predictions. Context geometry remains a separate review
+proposal tool with manually supplied stack membership/ranks, unknown natural
+hidden-point errors and `accepted_for_training: false`. It is not an automatic
+fallback or geometry-fusion layer in the folder/live path.
+
+The [PR56 guidance](https://github.com/Siuuuers/dl/blob/543a6afb4bc22c8b340deeb0402396c942a693c6/docs/lower-front-guidance-audit-2026-11-12.md#4-reference-visibility-and-prediction-confidence)
+already distinguishes reference visibility from prediction confidence. The
+[completed PR61 result](https://github.com/Siuuuers/dl/blob/1b71e8158e0594ee4c72ba845fa7b514a78b9e0d/docs/occlusion-results-2026-11-14.md)
+expressly permits naturally hidden-corner estimates while keeping their unknown
+accuracy separate from observed supervision. The previous suggestion to impose
+an observed-corners-only output restriction is therefore withdrawn.
+
+### Minimal current contract
+
+For an object returned by detector postprocessing, the
+[folder runner](../scripts/predict_pose_folder.py) and
+[live viewer](../scripts/view_d405_yolo.py) use:
 
 `display(point) = score >= endpoint_threshold AND finite in-frame coordinates`
 
 `draw_line = display(left) AND display(right)`
 
-| Qualifying endpoints | Normal output |
-| --- | --- |
-| Neither | No endpoint or connecting line |
-| Left only | Left point only |
-| Right only | Right point only |
-| Both | Both points and one connecting line |
+Each endpoint is independent; the current endpoint cutoff is `0.50`. A
+confident hidden-corner estimate may be drawn and connected if both predictions
+qualify. These are predictions, not declarations of physical visibility. The
+runtime has no physical-visibility classifier. Diagnostic crosses for withheld
+coordinates remain separate from ordinary endpoint marks.
 
-The endpoint cutoff is inclusive (`>=`), with default `0.50`. Image bounds are
-half-open: `0 <= x < width`, `0 <= y < height`. The live path rejects nonfinite
-prediction output before rendering. The folder extractor converts nonfinite XY
-to missing coordinate values, which do not display. Both paths delegate the
-box cutoff to the prediction backend; it is separate from endpoint gating.
+For natural-image training/reference labels, a reliable observed corner can
+receive `v=2`; an unlocatable slot remains `0 0 0`. The model's score cannot
+convert its estimate into observed truth. In the separate synthetic-corruption
+experiment, a coordinate known before masking can remain a reconstruction
+target; this does not establish a naturally hidden coordinate.
 
-The live viewer's optional D diagnostics can show orange crosses at withheld
-coordinates. Those are explicitly diagnostic marks, not ordinary qualifying
-endpoints; they never make a connecting line eligible.
-
-**Neither renderer independently establishes physical visibility.** It does
-not read reference `v=2` labels at runtime. A high-scoring in-frame estimate of
-a hidden corner can pass the display gate. The score also does not certify
-correct feature identity or a pixel-error limit. Existing synthetic-occlusion
-[evidence](pixel-occlusion-2026-11-13.md) already shows covered corners passing
-the display cutoff, including some incorrect estimates.
-
-**Q3 — product decision:** When a physical corner is hidden but the model
-returns a confident estimate, should the ordinary result omit it, or may a
-separately identified estimate be shown? The observed training label and an
-inferred coordinate must remain distinguishable either way. If ordinary lines
-require two physically observable corners, score gating alone does not prove
-that requirement is met; visibility mistakes must be evaluated explicitly.
-No extra model or runtime mode is adopted by this note.
+No new output restriction, classifier, mode or permission question is added.
 
 ## 4. The point cutoff explains only one withheld locatable endpoint
 
@@ -189,31 +207,38 @@ not a count of proven false endpoints or physically occluded corners. Their
 coordinate error cannot be scored without independent reference evidence.
 
 These are diagnostics on the same twenty reused development images and their
-current annotation semantics. The physical-target questions above still apply.
+current annotation semantics. Their reference semantics remain version-specific; the corrected object-ownership findings do not recompute these scores.
 
-## 5. What to improve with the existing images
+## 5. Continue the existing task with corrected object ownership
 
-1. Resolve the physical unit and endpoint feature using Q1/Q2, then record the
-   confirmed originals as examples. The current single class and two-point
-   shape can remain; no architecture change follows from wording alone.
-2. Recheck related training and development labels against those examples,
-   keeping candidate annotations and scoring references separately versioned.
-   Prior development scores measure agreement with their specific reference;
-   they cannot certify a different physical interpretation.
-3. Separate missed objects, withheld endpoint proposals, wrong physical
-   features and inaccurate coordinates. Lowering an endpoint cutoff only
-   affects withheld endpoint proposals on objects already returned.
-4. Prepare one coherent correction candidate and a defined comparison after
-   the image questions are resolved. Another training run before that would
-   leave the target disagreement unresolved.
+The image-level repair is now specific: review the three fronts in
+`new_000038`, correct their instance ownership and visible extents, and retain
+unavailable corners independently. No broad physical-target or hidden-output
+permission question remains. A soft or occluded pixel location can still be
+held without reopening the established task definition.
 
-PR35 remains the historical reviewed-image comparator at `imgsz=1280`, box
-confidence `0.13`, NMS IoU `0.70`, and endpoint confidence `0.50`. Those settings
-and the generic epoch173 camera defaults are different workflows. In
-particular, supplying PR35 to the live viewer with `--weights` changes the
-weights but still inherits the baseline box cutoff unless `--conf 0.13` is also
-supplied. This note is not a live-camera validation or a model promotion.
+The [remaining-front candidate](../data/candidates/remaining-fronts-2026-11-14/README.md)
+remains untrained. It does not contain a `new_000038` override, so the withdrawn
+A-to-B proposal never entered its labels. Its six additions, two restored left
+slots and three box corrections retain their existing review scope; the
+`old_000042` box correction is not a new physical identity or coordinate
+certification.
 
-The work here consists of source/code review, original-image inspection, and
-arithmetic reuse of saved predictions.
-No new inference, training, threshold change or reference relabeling is implied.
+PR35 remains the reviewed-image comparator at input `1280`, box confidence
+`0.13`, NMS IoU `0.70`, endpoint confidence `0.50`. Direct predictions are the
+working output; a future model improvement needs a supported coherent annotation
+revision and the established controlled comparison. The generic epoch173 camera
+launcher remains a separate configuration; explicit PR35 weights also need the
+explicit reviewed confidence setting.
+
+[Corrected observations and image provenance](../results/review/target-clarification-20261114/resolution.json)
+record the user correction, approximate seam ranges, source and figure hashes,
+source-label identity, remaining repair item and recovered runtime contract.
+The old A/B figures and their observations are marked superseded historical
+review material. Earlier review/adjudication JSON remains intact; its held
+single-point suggestion is withdrawn by this resolution.
+
+This correction involved source/history review and original-image inspection.
+The previously checked saved-prediction arithmetic is unchanged. No new
+inference, training, source/candidate label edit, reference change or renderer
+change is claimed.

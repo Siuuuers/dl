@@ -2,7 +2,7 @@
 
 This proposed revision extends the exact [border-fronts parent](../border-fronts-2026-11-13/README.md) with accepted findings from the remaining 57-original review. **PR35 remains selected; this candidate has not been trained.**
 
-**2026-11-14 follow-up: physical-target confirmation pending.** The user clarified that the endpoints belong to the front face of the whole white wax block. The [original-image questions](../../../docs/target-clarification-2026-11-14.md) distinguish a misplaced point from uncertain physical unit membership, including `old_000042:10` below. Recheck the relevant candidate decisions against that confirmed image anchor before a training comparison. The label files and acceptance records below preserve the earlier review; they do not resolve the new image questions.
+**2026-11-14 correction:** the [follow-up review](../../../docs/target-clarification-2026-11-14.md) recovers the already settled PR55/56 target and prediction contract. `new_000038` contains three fronts near the thumb; the held A-to-B move conflated different cassettes and is withdrawn. This candidate has no `new_000038` override. Exact three-instance repair geometry remains a separate image-review item. The earlier broad target-confirmation requirement is removed; source labels, this candidate's payload and its historical review records are unchanged.
 
 [Whole-original review report](../../../docs/training-review-2026-11-14.md) · [Review evidence and adjudication](../../../results/review/remaining-training-20261114/README.md)
 
