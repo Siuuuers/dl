@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "kind": "original_pixel_box_extent_comparison",
+  "policy_id": "baomai-visible-front-v1",
+  "candidate_manifest_sha256": "565570c24165b59ad3ee2368ebd80a9c9ff4bb25d96da87bcdee93602bd75983",
+  "reviewers": [
+    "/root",
+    "/root/aperture_cases",
+    "/root/border_cases"
+  ],
+  "human_coordinate_approval_claimed": false,
+  "labels_changed": false,
+  "training_or_inference_performed": false,
+  "records": [
+    {
+      "image_id": "new_000037",
+      "source_image_path": "data/images/train/new_000037.png",
+      "source_image_sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3",
+      "source_label_sha256": "50576476f4bbfd0bb0e4f898f05519cf6790ea4009736ec9fc2af7557d720bc7",
+      "current_label_path": "data/candidates/aperture-reviewed-labels-2026-11-14/labels/train/new_000037.txt",
+      "current_label_sha256": "c8ee4304b899b43d3520dd9a7b82d89c98b29a3a8ce8032d012a183e5319770d",
+      "original_row": 1,
+      "current_row": 1,
+      "current_row_text": "0 0.43586719 0.87919444 0.09517188 0.03605556 0.38984375 0.89444444 2 0.00000000 0.00000000 0",
+      "original_row_text": "0 0.43586719 0.87919444 0.09517188 0.03605556 0.38984375 0.89444444 2 0.00000000 0.00000000 0",
+      "bbox_xyxy_px": [
+        497.0,
+        620.0399952,
+        618.8200064,
+        645.9999984000001
+      ],
+      "left_xyv_px": [
+        499.0,
+        643.9999968,
+        2.0
+      ],
+      "right_xyv_px": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "disposition": "held_inherited_extent_and_left_point_ownership",
+      "finding": "Most of the old rightward box extension covers thumb; no supported target-front fragment at its right side. Exact front partition and left-point ownership remain unresolved.",
+      "provenance": [
+        "results/review/remaining-training-20261114/reviewer-3.json",
+        "results/review/label-refinement-20261114/unresolved/ledger.json#new_000037-101"
+      ]
+    },
+    {
+      "image_id": "new_000038",
+      "source_image_path": "data/images/train/new_000038.png",
+      "source_image_sha256": "7bc1703c1ab6fa55d0e23517f2993759247fae35849f68e87f19cf4521c5adc1",
+      "source_label_sha256": "779961aa5d4fd688831c881c166467802fcaa508954f5184c17ae75f3dd2137b",
+      "current_label_path": "data/candidates/aperture-reviewed-labels-2026-11-14/labels/train/new_000038.txt",
+      "current_label_sha256": "2120ae253092cf8b12e35268621cac060b250041be86172bfff3035f642a842f",
+      "original_row": 1,
+      "current_row": 1,
+      "current_row_text": "0 0.39726563 0.83819444 0.03203125 0.03194444 0.38281250 0.85000000 2 0.00000000 0.00000000 0",
+      "original_row_text": "0 0.43255078 0.86545833 0.10036719 0.04130556 0.38236719 0.84480556 2 0.00000000 0.00000000 0",
+      "bbox_xyxy_px": [
+        488.0000064,
+        591.9999984,
+        529.0000064,
+        614.9999952
+      ],
+      "left_xyv_px": [
+        490.0,
+        612.0,
+        2.0
+      ],
+      "right_xyv_px": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "disposition": "retain_accepted_observed_front",
+      "finding": "The upper exposed front ends at the thumb boundary near x529. The narrow light strip around x614-622 follows the gripper bevel, not a second exposed portion of this front. The occlusion boundary is not an actual right lower-front corner.",
+      "accepted_manual_uncertainty_px_approx": {
+        "box": 3,
+        "left_point": 2
+      },
+      "provenance": [
+        "results/review/label-refinement-20261114/visual/new_000038-accepted-adjudication.json"
+      ]
+    }
+  ],
+  "rule": "Enclose all observed portions of one identified front; infer neither outer box limits nor actual corners from missing-point count.",
+  "figure": {
+    "path": "results/review/extent-comparison-20261114/box-extent-comparison.png",
+    "crop_xyxy_px": [
+      470,
+      565,
+      645,
+      665
+    ],
+    "interpolation": "nearest",
+    "annotations": "Exact saved row1 box and left point; no right point or line exists."
+  }
+}
