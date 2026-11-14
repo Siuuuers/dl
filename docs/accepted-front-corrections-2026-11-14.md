@@ -18,6 +18,12 @@ The additive [physical decision record](../results/review/physical-adjudication-
 
 No brightness requirement, white-shoulder requirement, minimum pixel height, or in-rack-only rule has been adopted. An identifiable cassette front can be dark, clipped or held away from the rack.
 
+## Contextual follow-up and notebook readiness
+
+The [contextual comparison review](context-comparison-review-2026-11-14.md) identifies the first uploaded markup as new030. The user's association of its exposed right shoulder with the upper diamond patch is supported by neighboring tier context. Row12's current top at y455.72 omits that upper extent; a nominal y443 top is proposed for review. The lower triangle's ownership still prevents certifying the complete instance, so this proposal does not change the pinned v1 labels.
+
+The second markup is new038, where rows1/16/17 already label **three thumb-side fronts**, each with a locatable left corner and missing right corner. No new addition is required, and that count does not change new037's accepted two-front annotation. The v1 notebook remains ready to run unchanged: new030, new117 and new128 keep exact PR35 labels in both arms. These clarifications change no held count or status and do not require a duplicate v2 experiment. Version the dataset only when an accepted label change is deliberately included.
+
 ## What the experiment changes
 
 For every training photo, the reference arm uses the exact effective PR35 label bytes. The candidate uses the full reviewed label bytes when that photo has no remaining physical hold; otherwise it uses the same PR35 bytes as the reference. The whole unresolved photo is preserved, rather than selectively deleting a doubtful object.

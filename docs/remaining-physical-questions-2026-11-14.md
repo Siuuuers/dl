@@ -4,6 +4,14 @@
 
 Row numbers below are the current rows in `complete-visible-fronts-2026-11-14`. Their mapping was checked after composition. PDF page numbers refer to the 166-page atlas; “unlabelled” means there is no existing row to point to. The frozen full-review notebook remains blocked under its original contract. The separate [accepted-corrections notebook](../notebooks/baomai_accepted_fronts.ipynb) tests supported corrections while retaining exact PR35 labels on every unresolved training photo in both arms. It does not certify the full review.
 
+## Contextual follow-up: new030 and new038
+
+The [contextual comparison review](context-comparison-review-2026-11-14.md) maps the first uploaded markup to **new_000030** and the second to **new_000038**. In new030, the user associates the exposed right shoulder with the upper diamond patch; neighboring tier context supports that association. Current row12 begins at y455.72 and omits the associated upper extent. A nominal top near y443 is proposed for review, but ownership of the lower triangle remains unsettled, so this does not certify the complete instance or apply a label edit to the pinned experiment.
+
+In new038, current rows **1, 16 and 17 already represent three separate thumb-side fronts**, each with a locatable left corner and missing right corner. The clarification supports those existing rows; no additional cassette is needed. Do not transfer that count to new037, whose accepted thumb-side annotation contains two fronts.
+
+The current experiment remains ready and unchanged. It retains exact PR35 labels for new030, new117 and new128 in both arms. This contextual clarification changes no held count or status and does not require a duplicate v2 experiment; a new dataset version is needed only if an accepted label change is included in a later run.
+
 ## 1. Upper structures: resolved non-target questions
 
 | Photo | Decision | Evidence |
