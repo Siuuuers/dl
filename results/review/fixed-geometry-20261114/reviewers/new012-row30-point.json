@@ -1,0 +1,53 @@
+{
+  "kind": "independent_observed_endpoint_review_proposal",
+  "status": "awaiting_root_adjudication",
+  "image_id": "new_000012",
+  "original_row": 30,
+  "field": "left_endpoint",
+  "source_image": {
+    "path": "data/images/train/new_000012.png",
+    "sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b"
+  },
+  "source_label": {
+    "path": "data/labels/train/new_000012.txt",
+    "sha256": "a1921b9a95054868abe1a226ec4996df5317c1190af13bbea2d45837cc796231",
+    "row_text": "0 0.30614480 0.87707667 0.11934180 0.05919889 0.25741406 0.89011111 2 0.36157812 0.89843056 2"
+  },
+  "before_xyv_px": [
+    329.4899968,
+    640.8799992,
+    2
+  ],
+  "recommended_xyv_px": [
+    330,
+    634,
+    2
+  ],
+  "manual_placement_range_px": {
+    "x": [
+      327,
+      332
+    ],
+    "y": [
+      631,
+      636
+    ]
+  },
+  "minimal_token_change_option": {
+    "keep_source_x_token": "0.25741406",
+    "new_y_px": 634,
+    "reason": "Source x329.49 already lies within the observed turn range; the material error is the approximately6.88px downward Y offset."
+  },
+  "recommendation": "propose_observed_point_correction",
+  "reason": "The owning front\u2019s left silhouette turns into its lower boundary around y633\u2013635. Below that turn a dark notch/next-front side transition continues downward. The source point at y640.88 sits on that lower transition, rather than the upper owning front\u2019s rounded lower-left junction. The displacement exceeds the approximate2\u20133px local blur/placement range. The candidate is directly observed; it is not inferred from equal dimensions, rank, a bounding rectangle or another frame.",
+  "evidence_files": [
+    "new012-row30-context.png",
+    "new012-row30-detail.png",
+    "new012-row30-point-comparison.png"
+  ],
+  "method": "Inspected full original and enlarged original-pixel context/detail before reading exact source tokens; parent supplied approximate source point and peer concern. This is an independent physical recheck, not blind to nomination.",
+  "not_reviewed": "The right endpoint and other rows are outside this short point check.",
+  "no_label_change": true,
+  "no_model_inference": true,
+  "no_cross_frame_coordinate_transfer": true
+}

@@ -2,6 +2,14 @@
 
 Date: 2026-11-14, Asia/Hong_Kong.
 
+**Later physical clarification:** the user has now confirmed identical cassette
+dimensions, no seated sliding/tilting, and equal rack widths. The
+[subsequent observed-label review](fixed-geometry-label-review-2026-11-14.md)
+records that constraint and the accepted numeric repairs. The hypothetical
+independent movement discussed below is therefore no longer an unresolved
+design assumption for these seated cassettes. Exact front/lip ownership and
+hidden-coordinate evidence remain separate questions.
+
 **Identifiable partly occluded fronts remain eligible objects under the current working convention, and the current model may predict hidden corners.** The small boxes in `new_000038` encode the observed front-face extent of each cassette. They do not encode its complete physical size. Rack structure and neighboring cassettes can support instance identification and conditional geometry estimates, but do not automatically establish exact hidden coordinates.
 
 The user's follow-up also resolves the `new_000006` A/B identity question: **A/source59 and B/source53 are two separate cassettes. Keep both.** Precise visible-face boxes remain a separate review task.

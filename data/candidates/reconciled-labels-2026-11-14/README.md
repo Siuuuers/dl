@@ -2,6 +2,11 @@
 
 **Status: reviewed, not released. No model has been trained on this revision.**
 
+**Current follow-up:** [fixed-geometry-labels-2026-11-14](../fixed-geometry-labels-2026-11-14/README.md)
+preserves this frozen parent and adds explicitly reviewed observed-bound and
+corner corrections. Use that version for the continuing review; this payload
+and its original ledger remain unchanged.
+
 **Later review status:** the [upstream-contract clarification](../../../docs/visible-and-hidden-2026-11-14.md)
 records the user's confirmation that `new_000006` original rows53/59 are separate
 cassettes. Its [field-specific addendum](../../../results/review/visible-and-hidden-20261114/review-status.json)
