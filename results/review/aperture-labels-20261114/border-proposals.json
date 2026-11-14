@@ -1,0 +1,2899 @@
+{
+  "schema_version": 1,
+  "reviewer": "border_cases independent visual reviewer",
+  "review_date": "2026-11-14",
+  "method": "Original-only full-scene sheets for every image, then native-pixel crops; current effective labels/mappings consulted afterwards. Repeated fixed geometry helps surface identity but never proves hidden coordinates or occupancy. No model inference, GPU run, or tracked edits.",
+  "parent_manifest": "data/candidates/fixed-geometry-labels-2026-11-14/manifest.json",
+  "parent_manifest_sha256": "509a6d755b4ac2b1af679679debccbf2b038e60fc98ebfa7843a38bddc4ad05d",
+  "annotation_policy_sha256": "74dd943976a4abc22ecbf73551c69f715666060d5961b2bed81e6a9c73a3afc9",
+  "reviewed_case_count": 20,
+  "reviewed_image_count": 19,
+  "full_dataset_certified": false,
+  "release_ready": false,
+  "manual_ranges_note": "Pixel ranges are visual annotation uncertainty, not numerical serialization tolerance. A nominee is not accepted until root independent adjudication. No held field is silently certified.",
+  "cases": [
+    {
+      "case_id": "new_000012-002",
+      "image_id": "new_000012",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000012.png",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "source_label": "data/labels/train/new_000012.txt",
+      "source_label_sha256": "a1921b9a95054868abe1a226ec4996df5317c1190af13bbea2d45837cc796231",
+      "current_label": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000012.txt",
+      "current_label_sha256": "f9af0caaee43bf2b105e659a015ae501fbd9a9bfa0451c9008998a4262b0ca95",
+      "original_case_region_xyxy_px": [
+        68,
+        106,
+        990,
+        720
+      ],
+      "disposition": "partial_change_with_holds",
+      "summary": "Six top-edge proposals follow the observed smooth front beneath the perforated roof/stepped projection. Shadowed row15 and aperture row23 remain unresolved. Every previously accepted field, including row30 left Y634, is preserved.",
+      "decisions": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_line": "0 0.14369691 0.56109181 0.14892039 0.07068500 0.08575781 0.57112500 2 0.21175000 0.58698611 2",
+          "current_line": "0 0.14369691 0.56109181 0.14892039 0.07068500 0.08575781 0.57112500 2 0.21175000 0.58698611 2",
+          "original": {
+            "bbox_xyxy_px": [
+              88.6229952,
+              378.53950319999996,
+              279.2410944,
+              429.4327032
+            ],
+            "left_endpoint_px": [
+              109.7699968,
+              411.21,
+              2
+            ],
+            "right_endpoint_px": [
+              271.03999999999996,
+              422.6299992,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              88.6229952,
+              378.53950319999996,
+              279.2410944,
+              429.4327032
+            ],
+            "left_endpoint_px": [
+              109.7699968,
+              411.21,
+              2
+            ],
+            "right_endpoint_px": [
+              271.03999999999996,
+              422.6299992,
+              2
+            ]
+          },
+          "action": "change_bbox",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "Native-pixel context shows the perforated upper plane ending at a stepped projecting lip; continuous smooth front material below that lip extends above the current horizontal top. The proposal uses the visible lower/front side of that transition, not the rear roof or inferred cassette size. Manual range records softness; root must independently adjudicate this exact surface assignment.",
+          "manual_ranges_px": {
+            "bbox.top": [
+              366,
+              373
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            70,
+            280,
+            300,
+            445
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              88.6229952,
+              370,
+              279.2410944,
+              429.4327032
+            ],
+            "left_endpoint_px": [
+              109.7699968,
+              411.21,
+              2
+            ],
+            "right_endpoint_px": [
+              271.03999999999996,
+              422.6299992,
+              2
+            ]
+          },
+          "after_line": "0 0.143696910000 0.555161599444 0.148920390000 0.082545421111 0.08575781 0.57112500 2 0.21175000 0.58698611 2",
+          "decision_id": "new_000012-002/D01"
+        },
+        {
+          "original_row": 4,
+          "parent_row": 4,
+          "original_line": "0 0.26323172 0.41201826 0.15751469 0.07612764 0.19922656 0.42305556 2 0.33491406 0.43952778 2",
+          "current_line": "0 0.26323172 0.41201826 0.15751469 0.07612764 0.19922656 0.42305556 2 0.33491406 0.43952778 2",
+          "original": {
+            "bbox_xyxy_px": [
+              236.1272,
+              269.2471968,
+              437.7460032,
+              324.05909760000003
+            ],
+            "left_endpoint_px": [
+              255.0099968,
+              304.6000032,
+              2
+            ],
+            "right_endpoint_px": [
+              428.6899968,
+              316.4600016,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              236.1272,
+              269.2471968,
+              437.7460032,
+              324.05909760000003
+            ],
+            "left_endpoint_px": [
+              255.0099968,
+              304.6000032,
+              2
+            ],
+            "right_endpoint_px": [
+              428.6899968,
+              316.4600016,
+              2
+            ]
+          },
+          "action": "change_bbox",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "Native-pixel context shows the perforated upper plane ending at a stepped projecting lip; continuous smooth front material below that lip extends above the current horizontal top. The proposal uses the visible lower/front side of that transition, not the rear roof or inferred cassette size. Manual range records softness; root must independently adjudicate this exact surface assignment.",
+          "manual_ranges_px": {
+            "bbox.top": [
+              260,
+              267
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            220,
+            180,
+            460,
+            340
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              236.1272,
+              264,
+              437.7460032,
+              324.05909760000003
+            ],
+            "left_endpoint_px": [
+              255.0099968,
+              304.6000032,
+              2
+            ],
+            "right_endpoint_px": [
+              428.6899968,
+              316.4600016,
+              2
+            ]
+          },
+          "after_line": "0 0.263231720000 0.408374373333 0.157514690000 0.083415413333 0.19922656 0.42305556 2 0.33491406 0.43952778 2",
+          "decision_id": "new_000012-002/D02"
+        },
+        {
+          "original_row": 10,
+          "parent_row": 10,
+          "original_line": "0 0.41274309 0.49494361 0.14823680 0.07791306 0.34978125 0.49537500 2 0.48231250 0.51402778 2",
+          "current_line": "0 0.41274309 0.48702132 0.14823680 0.06206848 0.34978125 0.49537500 2 0.48231250 0.51402778 2",
+          "original": {
+            "bbox_xyxy_px": [
+              433.43960319999996,
+              328.31069759999997,
+              623.1827072,
+              384.4081008
+            ],
+            "left_endpoint_px": [
+              447.71999999999997,
+              356.67,
+              2
+            ],
+            "right_endpoint_px": [
+              617.36,
+              370.10000160000004,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              433.43960319999996,
+              328.31069759999997,
+              623.1827072,
+              373.0000032
+            ],
+            "left_endpoint_px": [
+              447.71999999999997,
+              356.67,
+              2
+            ],
+            "right_endpoint_px": [
+              617.36,
+              370.10000160000004,
+              2
+            ]
+          },
+          "action": "change_bbox",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "Native-pixel context shows the perforated upper plane ending at a stepped projecting lip; continuous smooth front material below that lip extends above the current horizontal top. The proposal uses the visible lower/front side of that transition, not the rear roof or inferred cassette size. Manual range records softness; root must independently adjudicate this exact surface assignment.",
+          "manual_ranges_px": {
+            "bbox.top": [
+              312,
+              320
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            410,
+            230,
+            645,
+            390
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              433.43960319999996,
+              316,
+              623.1827072,
+              373.0000032
+            ],
+            "left_endpoint_px": [
+              447.71999999999997,
+              356.67,
+              2
+            ],
+            "right_endpoint_px": [
+              617.36,
+              370.10000160000004,
+              2
+            ]
+          },
+          "after_line": "0 0.412743090000 0.478472224444 0.148236800000 0.079166671111 0.34978125 0.49537500 2 0.48231250 0.51402778 2",
+          "decision_id": "new_000012-002/D03"
+        },
+        {
+          "original_row": 24,
+          "parent_row": 24,
+          "original_line": "0 0.68510574 0.57751903 0.14471492 0.08225528 0.62694531 0.57998611 2 0.75307031 0.59380556 2",
+          "current_line": "0 0.68927848 0.56819570 0.13636945 0.06360861 0.62694531 0.57998611 2 0.75307031 0.59380556 2",
+          "original": {
+            "bbox_xyxy_px": [
+              784.3177984,
+              386.2018008,
+              969.552896,
+              445.42560240000006
+            ],
+            "left_endpoint_px": [
+              802.4899968,
+              417.5899992,
+              2
+            ],
+            "right_endpoint_px": [
+              963.9299968,
+              427.54000319999994,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              795.0000064,
+              386.2018044,
+              969.5529024000001,
+              432.00000359999996
+            ],
+            "left_endpoint_px": [
+              802.4899968,
+              417.5899992,
+              2
+            ],
+            "right_endpoint_px": [
+              963.9299968,
+              427.54000319999994,
+              2
+            ]
+          },
+          "action": "change_bbox",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "Native-pixel context shows the perforated upper plane ending at a stepped projecting lip; continuous smooth front material below that lip extends above the current horizontal top. The proposal uses the visible lower/front side of that transition, not the rear roof or inferred cassette size. Manual range records softness; root must independently adjudicate this exact surface assignment.",
+          "manual_ranges_px": {
+            "bbox.top": [
+              371,
+              379
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            780,
+            280,
+            990,
+            450
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              795.0000064,
+              375,
+              969.5529024000001,
+              432.00000359999996
+            ],
+            "left_endpoint_px": [
+              802.4899968,
+              417.5899992,
+              2
+            ],
+            "right_endpoint_px": [
+              963.9299968,
+              427.54000319999994,
+              2
+            ]
+          },
+          "after_line": "0 0.689278480000 0.560416669167 0.136369450000 0.079166671667 0.62694531 0.57998611 2 0.75307031 0.59380556 2",
+          "decision_id": "new_000012-002/D04"
+        },
+        {
+          "original_row": 28,
+          "parent_row": 28,
+          "original_line": "0 0.20643887 0.96309674 0.11485773 0.05646486 0.15916406 0.97238889 2 0.25782812 0.97961111 2",
+          "current_line": "0 0.20643887 0.96309674 0.11485773 0.05646486 0.15916406 0.97238889 2 0.25782812 0.97961111 2",
+          "original": {
+            "bbox_xyxy_px": [
+              190.73280640000002,
+              673.1023032,
+              337.7507008,
+              713.7570024
+            ],
+            "left_endpoint_px": [
+              203.72999679999998,
+              700.1200008,
+              2
+            ],
+            "right_endpoint_px": [
+              330.0199936,
+              705.3199992,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              190.73280640000002,
+              673.1023032,
+              337.7507008,
+              713.7570024
+            ],
+            "left_endpoint_px": [
+              203.72999679999998,
+              700.1200008,
+              2
+            ],
+            "right_endpoint_px": [
+              330.0199936,
+              705.3199992,
+              2
+            ]
+          },
+          "action": "change_bbox",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "Native-pixel context shows the perforated upper plane ending at a stepped projecting lip; continuous smooth front material below that lip extends above the current horizontal top. The proposal uses the visible lower/front side of that transition, not the rear roof or inferred cassette size. Manual range records softness; root must independently adjudicate this exact surface assignment.",
+          "manual_ranges_px": {
+            "bbox.top": [
+              652,
+              660
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            170,
+            550,
+            355,
+            720
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              190.73280640000002,
+              656,
+              337.7507008,
+              713.7570024
+            ],
+            "left_endpoint_px": [
+              203.72999679999998,
+              700.1200008,
+              2
+            ],
+            "right_endpoint_px": [
+              330.0199936,
+              705.3199992,
+              2
+            ]
+          },
+          "after_line": "0 0.206438870000 0.951220140556 0.114857730000 0.080218058889 0.15916406 0.97238889 2 0.25782812 0.97961111 2",
+          "decision_id": "new_000012-002/D05"
+        },
+        {
+          "original_row": 30,
+          "parent_row": 30,
+          "original_line": "0 0.30614480 0.87707667 0.11934180 0.05919889 0.25741406 0.89011111 2 0.36157812 0.89843056 2",
+          "current_line": "0 0.30614480 0.87707667 0.11934180 0.05919889 0.25741406 0.88055556 2 0.36157812 0.89843056 2",
+          "original": {
+            "bbox_xyxy_px": [
+              315.486592,
+              610.183602,
+              468.24409599999996,
+              652.8068028
+            ],
+            "left_endpoint_px": [
+              329.4899968,
+              640.8799992,
+              2
+            ],
+            "right_endpoint_px": [
+              462.8199936,
+              646.8700032,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              315.486592,
+              610.183602,
+              468.24409599999996,
+              652.8068028
+            ],
+            "left_endpoint_px": [
+              329.4899968,
+              634.0000032,
+              2
+            ],
+            "right_endpoint_px": [
+              462.8199936,
+              646.8700032,
+              2
+            ]
+          },
+          "action": "change_bbox",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "Native-pixel context shows the perforated upper plane ending at a stepped projecting lip; continuous smooth front material below that lip extends above the current horizontal top. The proposal uses the visible lower/front side of that transition, not the rear roof or inferred cassette size. Manual range records softness; root must independently adjudicate this exact surface assignment.",
+          "manual_ranges_px": {
+            "bbox.top": [
+              591,
+              600
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            290,
+            490,
+            485,
+            675
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              315.486592,
+              595,
+              468.24409599999996,
+              652.8068028
+            ],
+            "left_endpoint_px": [
+              329.4899968,
+              634.0000032,
+              2
+            ],
+            "right_endpoint_px": [
+              462.8199936,
+              646.8700032,
+              2
+            ]
+          },
+          "after_line": "0 0.306144800000 0.866532501944 0.119341800000 0.080287226111 0.25741406 0.88055556 2 0.36157812 0.89843056 2",
+          "decision_id": "new_000012-002/D06"
+        },
+        {
+          "original_row": 15,
+          "parent_row": 15,
+          "original_line": "0 0.58434820 0.21319472 0.16405188 0.07369222 0.50776562 0.19643056 2 0.65781250 0.22916667 2",
+          "current_line": "0 0.58434820 0.20414653 0.16405188 0.05559583 0.50776562 0.19643056 2 0.65781250 0.22916667 2",
+          "original": {
+            "bbox_xyxy_px": [
+              642.9724928,
+              126.97099920000001,
+              852.9588991999999,
+              180.02939759999998
+            ],
+            "left_endpoint_px": [
+              649.9399936,
+              141.43000320000002,
+              2
+            ],
+            "right_endpoint_px": [
+              842.0,
+              165.0000024,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              642.9724928,
+              126.9710028,
+              852.9588991999999,
+              167.0000004
+            ],
+            "left_endpoint_px": [
+              649.9399936,
+              141.43000320000002,
+              2
+            ],
+            "right_endpoint_px": [
+              842.0,
+              165.0000024,
+              2
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "The rack shelf casts a broad shadow across the roof/lip/front transition. Clearly smooth front material exists above y126.97, but the gray band around y98\u2013114 has two plausible surface-plane boundaries. Fixed size does not pick which is the observed front extremum.",
+          "manual_ranges_px": {
+            "bbox.top_alternatives": [
+              98,
+              114
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            620,
+            20,
+            880,
+            195
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000012-002/D07"
+        },
+        {
+          "original_row": 23,
+          "parent_row": 23,
+          "original_line": "0 0.55104785 0.65415014 0.13767992 0.06185028 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.55104785 0.65415014 0.13767992 0.06185028 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              617.2260991999999,
+              448.72200000000004,
+              793.4563968,
+              493.25420160000004
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              617.2260991999999,
+              448.72200000000004,
+              793.4563968,
+              493.25420160000004
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "identity",
+            "bbox.left",
+            "bbox.top",
+            "bbox.right",
+            "bbox.bottom"
+          ],
+          "reason": "The always-open aperture shows real gray material with a horizontal tone/seam change around y480; missing grid is not the identity proof. The upper and lower gray bands could be different surfaces/fronts or one face plus shadow. Cannot certify one cassette occupying the entire old rectangle, or its per-instance bounds. Keep missing endpoints and legacy row pending physical assignment.",
+          "manual_ranges_px": {
+            "visible_gray_upper_region": [
+              661,
+              448,
+              752,
+              483
+            ],
+            "visible_gray_lower_region": [
+              674,
+              483,
+              739,
+              514
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            580,
+            380,
+            840,
+            550
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000012-002/D08"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000128-003",
+      "image_id": "new_000128",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000128.png",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "source_label": "data/labels/train/new_000128.txt",
+      "source_label_sha256": "ed67b6d46e877ea5faeb14876e86ad20425de3d8ef175e42a770c69bf3690dc0",
+      "current_label": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000128.txt",
+      "current_label_sha256": "15892f65054acf3d2f45af33cc970f8b6863ef470090a186a29ba3d2e6fe0d72",
+      "original_case_region_xyxy_px": [
+        366,
+        0,
+        1280,
+        555
+      ],
+      "disposition": "hold",
+      "summary": "All 21 currently held fields inspected fresh. No reopening of original12 deletion or any accepted bounds.",
+      "decisions": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_line": "0 0.39193359 0.00355556 0.18011719 0.00711111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.39193359 0.00355556 0.18011719 0.00711111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              386.39999359999996,
+              3.5999999999786203e-06,
+              616.9499968,
+              5.1200028
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              386.39999359999996,
+              3.5999999999786203e-06,
+              616.9499968,
+              5.1200028
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "identity",
+            "bbox.left",
+            "bbox.top",
+            "bbox.right",
+            "bbox.bottom"
+          ],
+          "reason": "The top 0\u20135 px band is visible, but the close crop permits either a preceding front terminal remnant or the current main front molding/lip. A full repeated front below proves alignment, not separate identity for this narrow band. Preserve without endorsing it.",
+          "manual_ranges_px": {
+            "band_y": [
+              0,
+              7
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            374,
+            0,
+            628,
+            80
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000128-003/D01"
+        },
+        {
+          "original_row": 6,
+          "parent_row": 6,
+          "original_line": "0 0.74791406 0.00354167 0.18025000 0.00708333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.74791406 0.00354167 0.18025000 0.00708333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              841.9699968,
+              3.5999999999786203e-06,
+              1072.6899968,
+              5.1000011999999995
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              841.9699968,
+              3.5999999999786203e-06,
+              1072.6899968,
+              5.1000011999999995
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "identity",
+            "bbox.left",
+            "bbox.top",
+            "bbox.right",
+            "bbox.bottom"
+          ],
+          "reason": "The top 0\u20135 px band is visible, but the close crop permits either a preceding front terminal remnant or the current main front molding/lip. A full repeated front below proves alignment, not separate identity for this narrow band. Preserve without endorsing it.",
+          "manual_ranges_px": {
+            "band_y": [
+              0,
+              7
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            829,
+            0,
+            1084,
+            80
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000128-003/D02"
+        },
+        {
+          "original_row": 9,
+          "parent_row": 9,
+          "original_line": "0 0.91662500 0.00375000 0.16675000 0.00750000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.91662500 0.00375000 0.16675000 0.00750000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              1066.56,
+              0.0,
+              1280.0,
+              5.3999999999999995
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              1066.56,
+              0.0,
+              1280.0,
+              5.3999999999999995
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "identity",
+            "bbox.left",
+            "bbox.top",
+            "bbox.right",
+            "bbox.bottom"
+          ],
+          "reason": "The top 0\u20135 px band is visible, but the close crop permits either a preceding front terminal remnant or the current main front molding/lip. A full repeated front below proves alignment, not separate identity for this narrow band. Preserve without endorsing it.",
+          "manual_ranges_px": {
+            "band_y": [
+              0,
+              7
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            1054,
+            0,
+            1280,
+            80
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000128-003/D03"
+        },
+        {
+          "original_row": 10,
+          "parent_row": 10,
+          "original_line": "0 0.91025391 0.08004861 0.17949219 0.09212500 0.83825781 0.08322222 2 0.00000000 0.00000000 0",
+          "current_line": "0 0.91025391 0.06143750 0.17949219 0.05490278 0.83825781 0.08322222 2 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              1050.2500032,
+              24.469999200000004,
+              1280.0000064,
+              90.7999992
+            ],
+            "left_endpoint_px": [
+              1072.9699968,
+              59.9199984,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              1050.2500032,
+              24.4699992,
+              1280.0000064,
+              64.0000008
+            ],
+            "left_endpoint_px": [
+              1072.9699968,
+              59.9199984,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "The same continuous gray/white main front is clearly visible above y24.47. A conditional top around y6\u20139 would improve coverage, but its actual minimum depends on assigning original9. This field remains a known-too-low legacy value, not a certified keep.",
+          "manual_ranges_px": {
+            "conditional_bbox.top": [
+              6,
+              9
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            1050,
+            0,
+            1280,
+            100
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000128-003/D04"
+        },
+        {
+          "original_row": 19,
+          "parent_row": 18,
+          "original_line": "0 0.55165625 0.61813194 0.13260938 0.05337500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.55165625 0.61813194 0.13260938 0.05337500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              621.2499968,
+              425.83999680000005,
+              790.9900031999998,
+              464.2699968
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              621.2499968,
+              425.83999680000005,
+              790.9900031999998,
+              464.2699968
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "identity",
+            "bbox.left",
+            "bbox.top",
+            "bbox.right",
+            "bbox.bottom"
+          ],
+          "reason": "A real pale band runs approximately x630\u2013790,y434\u2013444 beneath original18, immediately against the jaw. Its own lower seam is hidden; an upper remnant of a further front and the previous front underside/molding remain plausible. No hidden corners are restored.",
+          "manual_ranges_px": {
+            "visible_band": [
+              629,
+              433,
+              790,
+              445
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            600,
+            360,
+            835,
+            505
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000128-003/D05"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000065-010",
+      "image_id": "new_000065",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000065.png",
+      "source_image_sha256": "1942a485fd88f64fc0ded58a2f28d85431e7fb5d6cab14663e5c4689b49040c9",
+      "source_label": "data/labels/train/new_000065.txt",
+      "source_label_sha256": "461725552dc886dbb03bb57f61d8fad1c44240200119298c0484f9dc05bdbfeb",
+      "current_label": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000065.txt",
+      "current_label_sha256": "fa21820c98c1d6f5f0310508551fa27d2ac2258da9f2df3b11f0e964205b0853",
+      "original_case_region_xyxy_px": [
+        151,
+        694,
+        301,
+        720
+      ],
+      "disposition": "change",
+      "summary": "Nominate the bottom-clipped left front; both lower-front corners remain outside the image/unlocatable.",
+      "decisions": [
+        {
+          "original_row": null,
+          "parent_row": null,
+          "action": "add_object",
+          "fields": [
+            "identity",
+            "bbox",
+            "left_endpoint",
+            "right_endpoint"
+          ],
+          "before": null,
+          "original": null,
+          "original_line": null,
+          "current_line": null,
+          "reason": "The broad smooth front is positively visible below the perforated roof and stepped leading lip. It occupies original pixels down to the image boundary; it is not inferred from the stack. The left and right lower-front corners are outside the frame, so both remain canonical missing.",
+          "manual_ranges_px": {
+            "bbox.left": [
+              162,
+              169
+            ],
+            "bbox.top": [
+              688,
+              696
+            ],
+            "bbox.right": [
+              306,
+              312
+            ],
+            "bbox.bottom": [
+              720,
+              720
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            130,
+            635,
+            325,
+            720
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              165,
+              691,
+              309,
+              720
+            ],
+            "left_endpoint_px": [
+              0,
+              0,
+              0
+            ],
+            "right_endpoint_px": [
+              0,
+              0,
+              0
+            ]
+          },
+          "after_line": "0 0.185156250000 0.979861111111 0.112500000000 0.040277777778 0 0 0 0 0 0",
+          "decision_id": "new_000065-010/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000083-032",
+      "image_id": "new_000083",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000083.png",
+      "source_image_sha256": "1959899c2d0abf5c3c7b10c344840191d7946aeb8ed18ae8ee01f1bef0989673",
+      "source_label": "data/labels/train/new_000083.txt",
+      "source_label_sha256": "291bc5d9f5489cdce7889393210bf49957a24a3d9a524ebdc92e023833ecd94f",
+      "current_label": "data/labels/train/new_000083.txt",
+      "current_label_sha256": "291bc5d9f5489cdce7889393210bf49957a24a3d9a524ebdc92e023833ecd94f",
+      "original_case_region_xyxy_px": [
+        241,
+        669,
+        374,
+        720
+      ],
+      "disposition": "change",
+      "summary": "Retain original21 as one visible bottom-clipped front and expand its truncated right extent; no point restoration.",
+      "decisions": [
+        {
+          "original_row": 21,
+          "parent_row": 21,
+          "original_line": "0 0.23998437 0.97910417 0.07204688 0.04179167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.23998437 0.97910417 0.07204688 0.04179167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              261.0699904,
+              689.9100012,
+              353.28999680000004,
+              720.0000036
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              261.0699904,
+              689.9100012,
+              353.28999680000004,
+              720.0000036
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "change_bbox",
+          "fields": [
+            "bbox.left",
+            "bbox.top",
+            "bbox.right",
+            "bbox.bottom"
+          ],
+          "reason": "A distinct gray front begins beneath the lower contour of original16 and continues smoothly across x353.29 to the rack boundary near x428. The old right edge cuts through one uninterrupted target face. Its own bottom edge is outside the frame. Gray appearance does not make it background.",
+          "manual_ranges_px": {
+            "bbox.left": [
+              263,
+              270
+            ],
+            "bbox.top": [
+              692,
+              699
+            ],
+            "bbox.right": [
+              425,
+              431
+            ],
+            "bbox.bottom": [
+              720,
+              720
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            220,
+            600,
+            520,
+            720
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              266,
+              695,
+              428,
+              720
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "after_line": "0 0.271093750000 0.982638888889 0.126562500000 0.034722222222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "decision_id": "new_000083-032/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000049-064",
+      "image_id": "new_000049",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000049.png",
+      "source_image_sha256": "bd085b01cf8fbce5df55d5f91c6e7810f03848f307c409d2afcd5e6cde652b7a",
+      "source_label": "data/labels/train/new_000049.txt",
+      "source_label_sha256": "90b87aa4c27e575be365cbd7bbdc419e8f0ca5304941cc1b77de3589bd91f38c",
+      "current_label": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000049.txt",
+      "current_label_sha256": "9c3bc116f5c3f99d1d722a8a0ef5d30f289157cbd144a13d50ec046b655afc3e",
+      "original_case_region_xyxy_px": [
+        141,
+        0,
+        799,
+        496
+      ],
+      "disposition": "hold",
+      "summary": "All three source rows are still physically ambiguous; new native crops document the competing surfaces.",
+      "decisions": [
+        {
+          "original_row": 6,
+          "parent_row": 6,
+          "original_line": "0 0.54476172 0.62972917 0.12727344 0.06065278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.54476172 0.62972917 0.12727344 0.06065278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              615.84,
+              431.57000159999996,
+              778.7500032,
+              475.2400032
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              615.84,
+              431.57000159999996,
+              778.7500032,
+              475.2400032
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "identity",
+            "bbox"
+          ],
+          "reason": "The diamond reveals a gray band but no sufficiently independent lower-front contour to assign its material to the old single box. The jaw occludes both actual target corners. No grid absence or required support argument is used as a positive label.",
+          "manual_ranges_px": {},
+          "inspection_crop_xyxy_px": [
+            560,
+            355,
+            850,
+            530
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000049-064/D01"
+        },
+        {
+          "original_row": 18,
+          "parent_row": 18,
+          "original_line": "0 0.23337500 0.00275694 0.21503125 0.00551389 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.23337500 0.00275694 0.21503125 0.00551389 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              161.1,
+              -3.5999999999786203e-06,
+              436.34000000000003,
+              3.9699972
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              161.1,
+              -3.5999999999786203e-06,
+              436.34000000000003,
+              3.9699972
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "identity",
+            "bbox"
+          ],
+          "reason": "The 0\u20134 px source strip is contiguous with the clipped upper material over original19. Its left projection could be the same front lip or a preceding front; no separate seam can be followed across the crop.",
+          "manual_ranges_px": {},
+          "inspection_crop_xyxy_px": [
+            150,
+            0,
+            445,
+            70
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000049-064/D02"
+        },
+        {
+          "original_row": 21,
+          "parent_row": 21,
+          "original_line": "0 0.42833594 0.00997917 0.20860937 0.01995833 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.42833594 0.00997917 0.20860937 0.01995833 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              414.7600064,
+              3.6000000006031208e-06,
+              681.78,
+              14.3700012
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              414.7600064,
+              3.6000000006031208e-06,
+              681.78,
+              14.3700012
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "identity",
+            "bbox"
+          ],
+          "reason": "The sloping band at y0\u201314 above original22 has a visible bright rim but unresolved ownership: preceding front terminal strip versus the retained front upper molding. The image boundary removes the decisive continuation.",
+          "manual_ranges_px": {},
+          "inspection_crop_xyxy_px": [
+            410,
+            0,
+            690,
+            90
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000049-064/D03"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000049-067",
+      "image_id": "new_000049",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000049.png",
+      "source_image_sha256": "bd085b01cf8fbce5df55d5f91c6e7810f03848f307c409d2afcd5e6cde652b7a",
+      "source_label": "data/labels/train/new_000049.txt",
+      "source_label_sha256": "90b87aa4c27e575be365cbd7bbdc419e8f0ca5304941cc1b77de3589bd91f38c",
+      "current_label": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000049.txt",
+      "current_label_sha256": "9c3bc116f5c3f99d1d722a8a0ef5d30f289157cbd144a13d50ec046b655afc3e",
+      "original_case_region_xyxy_px": [
+        360,
+        714,
+        445,
+        720
+      ],
+      "disposition": "no_addition",
+      "summary": "The candidate area below the lowest center front is its dark basal shadow/rack region, with no independently exposed new front.",
+      "decisions": [
+        {
+          "action": "no_addition",
+          "original_row": null,
+          "parent_row": null,
+          "fields": [
+            "addition"
+          ],
+          "before": null,
+          "after": null,
+          "reason": "The actual lowest retained front has a continuous lower boundary around y711\u2013713. Pixels y714\u2013720 under x360\u2013445 form a narrow dark horizontal region immediately below that contour; no new side contour or separate front band is visible. Do not add an object for the basal shadow.",
+          "inspection_crop_xyxy_px": [
+            330,
+            675,
+            465,
+            720
+          ],
+          "decision_id": "new_000049-067/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "old_000057-068",
+      "image_id": "old_000057",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/old_000057.png",
+      "source_image_sha256": "b2cfe81d5bfe404c6f5cba7ac3b9e072f534b345e63afc924589473bcedf1428",
+      "source_label": "data/labels/train/old_000057.txt",
+      "source_label_sha256": "6c5dc6a4c95fabf29849f6599ddad4332b4f283755e79ba90513f1d521f40ed0",
+      "current_label": "data/labels/train/old_000057.txt",
+      "current_label_sha256": "6c5dc6a4c95fabf29849f6599ddad4332b4f283755e79ba90513f1d521f40ed0",
+      "original_case_region_xyxy_px": [
+        555,
+        0,
+        975,
+        25
+      ],
+      "disposition": "hold",
+      "summary": "No additional instance proposed; top bright strip identity remains unresolved.",
+      "decisions": [
+        {
+          "action": "hold",
+          "original_row": null,
+          "parent_row": null,
+          "fields": [
+            "addition"
+          ],
+          "before": null,
+          "after": null,
+          "reason": "At the frame top the bright curved stripe runs directly into the upper gray region of the established first front. The stripe can be molding/underside of that geometry or a terminal remnant above it; no separate complete seam establishes another front. Do not fill a slot from periodic spacing.",
+          "inspection_crop_xyxy_px": [
+            540,
+            0,
+            980,
+            130
+          ],
+          "decision_id": "old_000057-068/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000027-072",
+      "image_id": "new_000027",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000027.png",
+      "source_image_sha256": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8",
+      "source_label": "data/labels/train/new_000027.txt",
+      "source_label_sha256": "0d2dcd25ea55d8d623e16e06b7c6ece33e3b574aad4fe433eb0b46d543be5a37",
+      "current_label": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000027.txt",
+      "current_label_sha256": "90f25ee33b2255ca82ef7e4332ed9a1a2436728ea6d6eeda3329fe1e59c2a99f",
+      "original_case_region_xyxy_px": [
+        317,
+        0,
+        1280,
+        45
+      ],
+      "disposition": "change",
+      "summary": "Two positive-area clipped front fragments are observed beyond the two already accepted left fragments. Farther right, only rack/frame is visible.",
+      "decisions": [
+        {
+          "original_row": null,
+          "parent_row": null,
+          "action": "add_object",
+          "fields": [
+            "identity",
+            "bbox",
+            "left_endpoint",
+            "right_endpoint"
+          ],
+          "before": null,
+          "original": null,
+          "original_line": null,
+          "current_line": null,
+          "reason": "The white front fragment is bounded by distinct dark separators near x316 and x545 and has a continuous lower edge rising toward the right. It repeats the directly visible front surface of already retained original11/12, with comparable projected width. Both rounded lower junctions remain in-frame and locatable; these are not extended hidden corners.",
+          "manual_ranges_px": {
+            "bbox.left": [
+              317,
+              322
+            ],
+            "bbox.top": [
+              0,
+              0
+            ],
+            "bbox.right": [
+              539,
+              545
+            ],
+            "bbox.bottom": [
+              13,
+              17
+            ],
+            "left_endpoint.x": [
+              319,
+              324
+            ],
+            "left_endpoint.y": [
+              11,
+              15
+            ],
+            "right_endpoint.x": [
+              535,
+              541
+            ],
+            "right_endpoint.y": [
+              3,
+              7
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            305,
+            0,
+            565,
+            45
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              319,
+              0,
+              542,
+              15
+            ],
+            "left_endpoint_px": [
+              322,
+              13,
+              2
+            ],
+            "right_endpoint_px": [
+              538,
+              5,
+              2
+            ]
+          },
+          "after_line": "0 0.336328125000 0.010416666667 0.174218750000 0.020833333333 0.251562500000 0.018055555556 2 0.420312500000 0.006944444444 2",
+          "decision_id": "new_000027-072/D01"
+        },
+        {
+          "original_row": null,
+          "parent_row": null,
+          "action": "add_object",
+          "fields": [
+            "identity",
+            "bbox",
+            "left_endpoint",
+            "right_endpoint"
+          ],
+          "before": null,
+          "original": null,
+          "original_line": null,
+          "current_line": null,
+          "reason": "A second white band is visibly separated from the previous front by the dark vertical gap around x548\u2013557. Its lower-left junction is seen near (562,6); the far right end meets the top boundary and does not support a reliable actual corner location. Retain the independent missing right slot.",
+          "manual_ranges_px": {
+            "bbox.left": [
+              556,
+              561
+            ],
+            "bbox.top": [
+              0,
+              0
+            ],
+            "bbox.right": [
+              771,
+              778
+            ],
+            "bbox.bottom": [
+              6,
+              10
+            ],
+            "left_endpoint.x": [
+              559,
+              565
+            ],
+            "left_endpoint.y": [
+              4,
+              8
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            545,
+            0,
+            795,
+            45
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              558,
+              0,
+              774,
+              8
+            ],
+            "left_endpoint_px": [
+              562,
+              6,
+              2
+            ],
+            "right_endpoint_px": [
+              0,
+              0,
+              0
+            ]
+          },
+          "after_line": "0 0.520312500000 0.005555555556 0.168750000000 0.011111111111 0.439062500000 0.008333333333 2 0 0 0",
+          "decision_id": "new_000027-072/D02"
+        },
+        {
+          "action": "no_addition",
+          "original_row": null,
+          "parent_row": null,
+          "fields": [
+            "addition_x775_to1280"
+          ],
+          "before": null,
+          "after": null,
+          "reason": "Farther right the top frame shows dark metal rail, vertical supports and open rack holes, without an independently exposed front surface.",
+          "inspection_crop_xyxy_px": [
+            775,
+            0,
+            1280,
+            80
+          ],
+          "decision_id": "new_000027-072/D03"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000017-075",
+      "image_id": "new_000017",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000017.png",
+      "source_image_sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281",
+      "source_label": "data/labels/train/new_000017.txt",
+      "source_label_sha256": "3cdbe47ebc21c7315898dbc9f3c8829564e540911909f78043f35474177e8340",
+      "current_label": "data/labels/train/new_000017.txt",
+      "current_label_sha256": "3cdbe47ebc21c7315898dbc9f3c8829564e540911909f78043f35474177e8340",
+      "original_case_region_xyxy_px": [
+        290,
+        0,
+        790,
+        45
+      ],
+      "disposition": "hold",
+      "summary": "Top white structures require physical target identity, not a guessed set of extra rows.",
+      "decisions": [
+        {
+          "action": "hold",
+          "original_row": null,
+          "parent_row": null,
+          "fields": [
+            "addition"
+          ],
+          "before": null,
+          "after": null,
+          "reason": "The upper white segments around x300\u2013470,470\u2013615,615\u2013775 are real but substantially broader and structurally different from the established one-bay fronts below. The lower edge meets the upper rack rail. This frame does not establish whether the segments are a tray/cover/other plane or separately oriented cassette fronts. User identification of that physical top assembly would resolve this; equal widths of seated fronts alone does not.",
+          "inspection_crop_xyxy_px": [
+            280,
+            0,
+            800,
+            100
+          ],
+          "decision_id": "new_000017-075/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000126-078",
+      "image_id": "new_000126",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000126.png",
+      "source_image_sha256": "3f8b8e4788a59e7238276c40d0f528705f16cec6c9b0e18d81b31451bc34f3f5",
+      "source_label": "data/labels/train/new_000126.txt",
+      "source_label_sha256": "855cd2ebb60b3afa9f06903b1817d558a0b8f6aa99bfb637825a9a8deb9c09fc",
+      "current_label": "data/labels/train/new_000126.txt",
+      "current_label_sha256": "855cd2ebb60b3afa9f06903b1817d558a0b8f6aa99bfb637825a9a8deb9c09fc",
+      "original_case_region_xyxy_px": [
+        820,
+        625,
+        865,
+        655
+      ],
+      "disposition": "no_addition",
+      "summary": "Keep no extra cassette at the tiny white strip beside the gripper base.",
+      "decisions": [
+        {
+          "action": "no_addition",
+          "original_row": null,
+          "parent_row": null,
+          "fields": [
+            "addition"
+          ],
+          "before": null,
+          "after": null,
+          "reason": "The strip at roughly x827\u2013857,y631\u2013639 is the small planar junction directly behind the gripper arm and against the finger/base. It lacks a cassette-front band or independent pair of side/lower contours, and lies within the foreground fixture assembly in the full scene. No identifiable cassette front is exposed here.",
+          "inspection_crop_xyxy_px": [
+            790,
+            570,
+            910,
+            685
+          ],
+          "decision_id": "new_000126-078/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "old_000013-080",
+      "image_id": "old_000013",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/old_000013.png",
+      "source_image_sha256": "c9ec988666a1d224b9c270ab0a56cb69a685fbca6f97eef5ad4c714f8da96cc1",
+      "source_label": "data/labels/train/old_000013.txt",
+      "source_label_sha256": "7af95738769ed53124e90f6c867c6e05d2f54daebcef20644b1b141d8ed55715",
+      "current_label": "data/labels/train/old_000013.txt",
+      "current_label_sha256": "7af95738769ed53124e90f6c867c6e05d2f54daebcef20644b1b141d8ed55715",
+      "original_case_region_xyxy_px": [
+        507,
+        27,
+        1119,
+        187
+      ],
+      "disposition": "hold",
+      "summary": "Preserve row1 top as an unresolved legacy field; fresh crop does not settle the physical surface boundary.",
+      "decisions": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_line": "0 0.63507520 0.14882062 0.44664648 0.16553597 0.42375000 0.15909722 2 0.84928125 0.14772222 2",
+          "current_line": "0 0.63507520 0.14882062 0.44664648 0.16553597 0.42375000 0.15909722 2 0.84928125 0.14772222 2",
+          "original": {
+            "bbox_xyxy_px": [
+              527.0425088,
+              47.55789719999999,
+              1098.7500032,
+              166.7437956
+            ],
+            "left_endpoint_px": [
+              542.4,
+              114.5499984,
+              2
+            ],
+            "right_endpoint_px": [
+              1087.08,
+              106.3599984,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              527.0425088,
+              47.55789719999999,
+              1098.7500032,
+              166.7437956
+            ],
+            "left_endpoint_px": [
+              542.4,
+              114.5499984,
+              2
+            ],
+            "right_endpoint_px": [
+              1087.08,
+              106.3599984,
+              2
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "The smooth gray region extends toward a broad, rounded bright upper stripe. There is no sharp physical seam that uniquely assigns the stripe or chooses the front upper extremum; two surface assignments remain plausible. The proposed review concerns the top only: other source bounds/endpoints are not certified by this decision.",
+          "manual_ranges_px": {},
+          "inspection_crop_xyxy_px": [
+            500,
+            0,
+            1120,
+            190
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "old_000013-080/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "old_000069-081",
+      "image_id": "old_000069",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/old_000069.png",
+      "source_image_sha256": "ec45bb2478c63210f336194883c04fc4c50e8bd9bd00bb3c2b8bc845c8dc2441",
+      "source_label": "data/labels/train/old_000069.txt",
+      "source_label_sha256": "edec8426a0408a781627907c24776b63a098dd90ba454dca4775a6de230346cc",
+      "current_label": "data/labels/train/old_000069.txt",
+      "current_label_sha256": "edec8426a0408a781627907c24776b63a098dd90ba454dca4775a6de230346cc",
+      "original_case_region_xyxy_px": [
+        470,
+        0,
+        886,
+        138
+      ],
+      "disposition": "hold",
+      "summary": "Preserve row1 top as an unresolved legacy field; fresh crop does not settle the physical surface boundary.",
+      "decisions": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_line": "0 0.52975781 0.09288931 0.29237500 0.14111306 0.38534375 0.10347222 2 0.67594531 0.10618056 2",
+          "current_line": "0 0.52975781 0.09288931 0.29237500 0.14111306 0.38534375 0.10347222 2 0.67594531 0.10618056 2",
+          "original": {
+            "bbox_xyxy_px": [
+              490.9699968,
+              16.079601599999997,
+              865.2099968,
+              117.68100480000001
+            ],
+            "left_endpoint_px": [
+              493.24,
+              74.49999840000001,
+              2
+            ],
+            "right_endpoint_px": [
+              865.2099968,
+              76.4500032,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              490.9699968,
+              16.079601599999997,
+              865.2099968,
+              117.68100480000001
+            ],
+            "left_endpoint_px": [
+              493.24,
+              74.49999840000001,
+              2
+            ],
+            "right_endpoint_px": [
+              865.2099968,
+              76.4500032,
+              2
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "The smooth gray region extends toward a broad, rounded bright upper stripe. There is no sharp physical seam that uniquely assigns the stripe or chooses the front upper extremum; two surface assignments remain plausible. The proposed review concerns the top only: other source bounds/endpoints are not certified by this decision.",
+          "manual_ranges_px": {},
+          "inspection_crop_xyxy_px": [
+            475,
+            0,
+            890,
+            140
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "old_000069-081/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "old_000079-082",
+      "image_id": "old_000079",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/old_000079.png",
+      "source_image_sha256": "5e15d2c83899b0c59df5ee0602a71116cdf1a087fec7f5d63190cb19a34d1972",
+      "source_label": "data/labels/train/old_000079.txt",
+      "source_label_sha256": "7d4a02643c886e32d826a085bee0bf731977dbe9dcd28fe03fd5bfaf2200b315",
+      "current_label": "data/labels/train/old_000079.txt",
+      "current_label_sha256": "7d4a02643c886e32d826a085bee0bf731977dbe9dcd28fe03fd5bfaf2200b315",
+      "original_case_region_xyxy_px": [
+        303,
+        0,
+        730,
+        133
+      ],
+      "disposition": "hold",
+      "summary": "Preserve row1 top as an unresolved legacy field; fresh crop does not settle the physical surface boundary.",
+      "decisions": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_line": "0 0.40358984 0.08719049 0.30149219 0.13910292 0.25284375 0.07451389 2 0.55403125 0.10573611 2",
+          "current_line": "0 0.40358984 0.08719049 0.30149219 0.13910292 0.25284375 0.07451389 2 0.55403125 0.10573611 2",
+          "original": {
+            "bbox_xyxy_px": [
+              323.6399935999999,
+              12.7001016,
+              709.5499968,
+              112.854204
+            ],
+            "left_endpoint_px": [
+              323.64,
+              53.6500008,
+              2
+            ],
+            "right_endpoint_px": [
+              709.16,
+              76.1299992,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              323.6399935999999,
+              12.7001016,
+              709.5499968,
+              112.854204
+            ],
+            "left_endpoint_px": [
+              323.64,
+              53.6500008,
+              2
+            ],
+            "right_endpoint_px": [
+              709.16,
+              76.1299992,
+              2
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "The smooth gray region extends toward a broad, rounded bright upper stripe. There is no sharp physical seam that uniquely assigns the stripe or chooses the front upper extremum; two surface assignments remain plausible. The proposed review concerns the top only: other source bounds/endpoints are not certified by this decision.",
+          "manual_ranges_px": {},
+          "inspection_crop_xyxy_px": [
+            300,
+            0,
+            735,
+            135
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "old_000079-082/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "old_000093-083",
+      "image_id": "old_000093",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/old_000093.png",
+      "source_image_sha256": "3a086ebd2a71fc06d7da3cf02187b89e92a7f07afe24ee65031f4d06f36cd293",
+      "source_label": "data/labels/train/old_000093.txt",
+      "source_label_sha256": "578236f579b892118553a92cd8d50b110debf9d4bf058ac768e8702662b9111f",
+      "current_label": "data/labels/train/old_000093.txt",
+      "current_label_sha256": "578236f579b892118553a92cd8d50b110debf9d4bf058ac768e8702662b9111f",
+      "original_case_region_xyxy_px": [
+        87,
+        0,
+        578,
+        125
+      ],
+      "disposition": "keep",
+      "summary": "Keep row1 top at its existing approximately one-pixel frame margin.",
+      "decisions": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_line": "0 0.25981250 0.07332764 0.35203125 0.14453917 0.08379688 0.03547222 2 0.43582813 0.10500000 2",
+          "current_line": "0 0.25981250 0.07332764 0.35203125 0.14453917 0.08379688 0.03547222 2 0.43582813 0.10500000 2",
+          "original": {
+            "bbox_xyxy_px": [
+              107.25999999999999,
+              0.7617996000000016,
+              557.86,
+              104.830002
+            ],
+            "left_endpoint_px": [
+              107.26000640000001,
+              25.539998399999998,
+              2
+            ],
+            "right_endpoint_px": [
+              557.8600064,
+              75.6,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              107.25999999999999,
+              0.7617996000000016,
+              557.86,
+              104.830002
+            ],
+            "left_endpoint_px": [
+              107.26000640000001,
+              25.539998399999998,
+              2
+            ],
+            "right_endpoint_px": [
+              557.8600064,
+              75.6,
+              2
+            ]
+          },
+          "action": "keep",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "The gray first-front surface itself reaches the top image boundary on the left portion before the sloping bright upper stripe enters farther right. Thus the observed minimum is frame-clipped; the current y0.7617996 is within the approximately one-pixel visual boundary uncertainty. Retain without a cosmetic subpixel edit. This does not certify other fields.",
+          "inspection_crop_xyxy_px": [
+            85,
+            0,
+            585,
+            130
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              107.25999999999999,
+              0.7617996000000016,
+              557.86,
+              104.830002
+            ],
+            "left_endpoint_px": [
+              107.26000640000001,
+              25.539998399999998,
+              2
+            ],
+            "right_endpoint_px": [
+              557.8600064,
+              75.6,
+              2
+            ]
+          },
+          "after_line": "0 0.25981250 0.07332764 0.35203125 0.14453917 0.08379688 0.03547222 2 0.43582813 0.10500000 2",
+          "decision_id": "old_000093-083/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "old_000101-084",
+      "image_id": "old_000101",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/old_000101.png",
+      "source_image_sha256": "02139e7386588bb6a18cdb1fa2a6d73db2e93f67d990abcf7e9d6c646896acab",
+      "source_label": "data/labels/train/old_000101.txt",
+      "source_label_sha256": "e8330f9f830cbdea22bc2059dbdb2a8846fa5babfb00b9946130b13447d07a53",
+      "current_label": "data/labels/train/old_000101.txt",
+      "current_label_sha256": "e8330f9f830cbdea22bc2059dbdb2a8846fa5babfb00b9946130b13447d07a53",
+      "original_case_region_xyxy_px": [
+        420,
+        0,
+        837,
+        137
+      ],
+      "disposition": "hold",
+      "summary": "Preserve row1 top as an unresolved legacy field; fresh crop does not settle the physical surface boundary.",
+      "decisions": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_line": "0 0.49085352 0.09366569 0.29377734 0.13735500 0.34803125 0.09319444 2 0.63774219 0.10895833 2",
+          "current_line": "0 0.49085352 0.09366569 0.29377734 0.13735500 0.34803125 0.09319444 2 0.63774219 0.10895833 2",
+          "original": {
+            "bbox_xyxy_px": [
+              440.27500799999996,
+              17.991496799999997,
+              816.3100032,
+              116.8870968
+            ],
+            "left_endpoint_px": [
+              445.48,
+              67.0999968,
+              2
+            ],
+            "right_endpoint_px": [
+              816.3100032,
+              78.4499976,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              440.27500799999996,
+              17.991496799999997,
+              816.3100032,
+              116.8870968
+            ],
+            "left_endpoint_px": [
+              445.48,
+              67.0999968,
+              2
+            ],
+            "right_endpoint_px": [
+              816.3100032,
+              78.4499976,
+              2
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "bbox.top"
+          ],
+          "reason": "The smooth gray region extends toward a broad, rounded bright upper stripe. There is no sharp physical seam that uniquely assigns the stripe or chooses the front upper extremum; two surface assignments remain plausible. The proposed review concerns the top only: other source bounds/endpoints are not certified by this decision.",
+          "manual_ranges_px": {},
+          "inspection_crop_xyxy_px": [
+            415,
+            0,
+            840,
+            140
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "old_000101-084/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000024-086",
+      "image_id": "new_000024",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000024.png",
+      "source_image_sha256": "10634fdefefb5d13027150a2734150271d82d8d2c39461e97fcea1d134ee96fd",
+      "source_label": "data/labels/train/new_000024.txt",
+      "source_label_sha256": "b915725dd2212a85231df044fc3381be02b344a62e2e96399346de2b16fa1bf7",
+      "current_label": "data/labels/train/new_000024.txt",
+      "current_label_sha256": "b915725dd2212a85231df044fc3381be02b344a62e2e96399346de2b16fa1bf7",
+      "original_case_region_xyxy_px": [
+        382,
+        0,
+        963,
+        40
+      ],
+      "disposition": "partial_change_with_holds",
+      "summary": "Nominate three rack-only rows for deletion and tighten the real first white fragment. Central original3 ownership stays held.",
+      "decisions": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_line": "0 0.36005078 0.01337500 0.09183594 0.02675000 0.32175000 0.00725000 2 0.00000000 0.00000000 0",
+          "current_line": "0 0.36005078 0.01337500 0.09183594 0.02675000 0.32175000 0.00725000 2 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              402.08999680000005,
+              0.0,
+              519.64,
+              19.259999999999998
+            ],
+            "left_endpoint_px": [
+              411.84,
+              5.220000000000001,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              402.08999680000005,
+              0.0,
+              519.64,
+              19.259999999999998
+            ],
+            "left_endpoint_px": [
+              411.84,
+              5.220000000000001,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "change_bbox",
+          "fields": [
+            "bbox.left",
+            "bbox.top",
+            "bbox.right",
+            "bbox.bottom"
+          ],
+          "reason": "A real white front fragment is visible across the top left. Its observed lower edge lies around y3\u20136 and its right end fades into the rack near x505\u2013513. The old rectangle reaches down to y19.26 and right to x519.64 over metal rack. Existing left point is retained; no missing right point is reconstructed.",
+          "manual_ranges_px": {
+            "bbox.left": [
+              404,
+              410
+            ],
+            "bbox.top": [
+              0,
+              0
+            ],
+            "bbox.right": [
+              505,
+              513
+            ],
+            "bbox.bottom": [
+              5.3,
+              8
+            ]
+          },
+          "inspection_crop_xyxy_px": [
+            380,
+            0,
+            535,
+            55
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              407,
+              0,
+              510,
+              7
+            ],
+            "left_endpoint_px": [
+              411.84,
+              5.220000000000001,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "after_line": "0 0.358203125000 0.004861111111 0.080468750000 0.009722222222 0.32175000 0.00725000 2 0.00000000 0.00000000 0",
+          "decision_id": "new_000024-086/D01"
+        },
+        {
+          "original_row": 2,
+          "parent_row": 2,
+          "original_line": "0 0.44516797 0.01016667 0.09066406 0.02033333 0.40755469 0.00494444 2 0.00000000 0.00000000 0",
+          "current_line": "0 0.44516797 0.01016667 0.09066406 0.02033333 0.40755469 0.00494444 2 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              511.7900032,
+              3.59999999935412e-06,
+              627.84,
+              14.6400012
+            ],
+            "left_endpoint_px": [
+              521.6700032,
+              3.5599967999999995,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              511.7900032,
+              3.59999999935412e-06,
+              627.84,
+              14.6400012
+            ],
+            "left_endpoint_px": [
+              521.6700032,
+              3.5599967999999995,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "delete_object",
+          "fields": [
+            "identity"
+          ],
+          "reason": "Native pixels in the old box are the continuous dark metal upper rail and adjoining rack openings. The purported left point (521.67,3.56) is on that rail. No separately identifiable target front occupies this row; deletion is from material/identity evidence, not 14.64px height.",
+          "inspection_crop_xyxy_px": [
+            500,
+            0,
+            640,
+            60
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000024-086/D02"
+        },
+        {
+          "original_row": 3,
+          "parent_row": 3,
+          "original_line": "0 0.53063281 0.01015972 0.08857812 0.02031944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.53063281 0.01015972 0.08857812 0.02031944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              622.52,
+              0.0,
+              735.8999935999999,
+              14.6299968
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              622.52,
+              0.0,
+              735.8999935999999,
+              14.6299968
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "hold",
+          "fields": [
+            "identity",
+            "bbox",
+            "left_endpoint",
+            "right_endpoint"
+          ],
+          "reason": "The clipped white material at x623\u2013736 is real and overlaps established original15. At y0\u20138 it could be a preceding terminal fragment or original15 molding; the image boundary and soft transition prevent proving two identities or proving a duplicate. Preserve both missing points.",
+          "manual_ranges_px": {},
+          "inspection_crop_xyxy_px": [
+            610,
+            0,
+            750,
+            75
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000024-086/D03"
+        },
+        {
+          "original_row": 4,
+          "parent_row": 4,
+          "original_line": "0 0.61727344 0.00457639 0.08912500 0.00915278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.61727344 0.00457639 0.08912500 0.00915278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              733.0700032,
+              0.0,
+              847.1500031999999,
+              6.590001599999999
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              733.0700032,
+              0.0,
+              847.1500031999999,
+              6.590001599999999
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "delete_object",
+          "fields": [
+            "identity"
+          ],
+          "reason": "The old 0\u20136.59px rectangle over x733\u2013847 contains rack uprights/rail and dark/open areas, with only the neighboring central white face near its left margin. There is no independent cassette-front body in the nominated slot.",
+          "inspection_crop_xyxy_px": [
+            720,
+            0,
+            860,
+            60
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000024-086/D04"
+        },
+        {
+          "original_row": 5,
+          "parent_row": 5,
+          "original_line": "0 0.69373828 0.00193750 0.08464844 0.00387500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "current_line": "0 0.69373828 0.00193750 0.08464844 0.00387500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              833.8099968,
+              0.0,
+              942.1600000000001,
+              2.79
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              833.8099968,
+              0.0,
+              942.1600000000001,
+              2.79
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "delete_object",
+          "fields": [
+            "identity"
+          ],
+          "reason": "The old 0\u20132.79px rectangle over x834\u2013942 is metal rail/uprights and background toward the right, without a target face or separate lower-front contour. Thinness alone is not the reason for deletion.",
+          "inspection_crop_xyxy_px": [
+            825,
+            0,
+            955,
+            60
+          ],
+          "after": null,
+          "after_line": null,
+          "decision_id": "new_000024-086/D05"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000042-090",
+      "image_id": "new_000042",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000042.png",
+      "source_image_sha256": "3e71fbb644f9948abcc846b8d81863f99fe4931c90b4095d4fcd1085c870d98f",
+      "source_label": "data/labels/train/new_000042.txt",
+      "source_label_sha256": "b0c4737622d9000826cfe374afe1ec72a008755dfabdf7ab47fec47e611dc4da",
+      "current_label": "data/labels/train/new_000042.txt",
+      "current_label_sha256": "b0c4737622d9000826cfe374afe1ec72a008755dfabdf7ab47fec47e611dc4da",
+      "original_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "disposition": "partial_keep_with_hold",
+      "summary": "Retain three independently occluded missing endpoints; lower-right white wedge still lacks a secure front-plane assignment.",
+      "decisions": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_line": "0 0.33494922 0.90896528 0.09177344 0.03484722 0.29203125 0.92616667 2 0.00000000 0.00000000 0",
+          "current_line": "0 0.33494922 0.90896528 0.09177344 0.03484722 0.29203125 0.92616667 2 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              370.0,
+              641.9100023999999,
+              487.47000319999995,
+              667.0000008000001
+            ],
+            "left_endpoint_px": [
+              373.8,
+              666.8400024,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              370.0,
+              641.9100023999999,
+              487.47000319999995,
+              667.0000008000001
+            ],
+            "left_endpoint_px": [
+              373.8,
+              666.8400024,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "keep",
+          "fields": [
+            "right_endpoint"
+          ],
+          "reason": "The thumb crosses the right part of this front before the actual lower-right junction. The visible hand/white intersection is an occlusion point, not the target corner.",
+          "inspection_crop_xyxy_px": [
+            340,
+            600,
+            535,
+            710
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              370.0,
+              641.9100023999999,
+              487.47000319999995,
+              667.0000008000001
+            ],
+            "left_endpoint_px": [
+              373.8,
+              666.8400024,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "after_line": "0 0.33494922 0.90896528 0.09177344 0.03484722 0.29203125 0.92616667 2 0.00000000 0.00000000 0",
+          "decision_id": "new_000042-090/D01"
+        },
+        {
+          "original_row": 9,
+          "parent_row": 9,
+          "original_line": "0 0.54499219 0.57977778 0.11967187 0.04633333 0.48814063 0.60294444 2 0.00000000 0.00000000 0",
+          "current_line": "0 0.54499219 0.57977778 0.11967187 0.04633333 0.48814063 0.60294444 2 0.00000000 0.00000000 0",
+          "original": {
+            "bbox_xyxy_px": [
+              621.0000064,
+              400.76000280000005,
+              774.18,
+              434.1200004
+            ],
+            "left_endpoint_px": [
+              624.8200064,
+              434.1199968,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              621.0000064,
+              400.76000280000005,
+              774.18,
+              434.1200004
+            ],
+            "left_endpoint_px": [
+              624.8200064,
+              434.1199968,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "action": "keep",
+          "fields": [
+            "right_endpoint"
+          ],
+          "reason": "The right lower-front contour runs behind the right jaw. The visible jaw boundary cannot substitute for the actual lower-right cassette corner.",
+          "inspection_crop_xyxy_px": [
+            590,
+            375,
+            820,
+            470
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              621.0000064,
+              400.76000280000005,
+              774.18,
+              434.1200004
+            ],
+            "left_endpoint_px": [
+              624.8200064,
+              434.1199968,
+              2
+            ],
+            "right_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ]
+          },
+          "after_line": "0 0.54499219 0.57977778 0.11967187 0.04633333 0.48814063 0.60294444 2 0.00000000 0.00000000 0",
+          "decision_id": "new_000042-090/D02"
+        },
+        {
+          "original_row": 14,
+          "parent_row": 14,
+          "original_line": "0 0.66860937 0.66022917 0.12371875 0.04620833 0.00000000 0.00000000 0 0.72564844 0.68059722 2",
+          "current_line": "0 0.66860937 0.66022917 0.12371875 0.04620833 0.00000000 0.00000000 0 0.72564844 0.68059722 2",
+          "original": {
+            "bbox_xyxy_px": [
+              776.6399935999999,
+              458.73000360000003,
+              934.9999936,
+              492.00000120000004
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              928.8300032,
+              490.0299984,
+              2
+            ]
+          },
+          "before": {
+            "bbox_xyxy_px": [
+              776.6399935999999,
+              458.73000360000003,
+              934.9999936,
+              492.00000120000004
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              928.8300032,
+              490.0299984,
+              2
+            ]
+          },
+          "action": "keep",
+          "fields": [
+            "left_endpoint"
+          ],
+          "reason": "The left actual lower-front junction is behind the left/central jaw edge; only a front band to its right is visible. Keep the independent left missing slot.",
+          "inspection_crop_xyxy_px": [
+            750,
+            420,
+            965,
+            510
+          ],
+          "after": {
+            "bbox_xyxy_px": [
+              776.6399935999999,
+              458.73000360000003,
+              934.9999936,
+              492.00000120000004
+            ],
+            "left_endpoint_px": [
+              0.0,
+              0.0,
+              0
+            ],
+            "right_endpoint_px": [
+              928.8300032,
+              490.0299984,
+              2
+            ]
+          },
+          "after_line": "0 0.66860937 0.66022917 0.12371875 0.04620833 0.00000000 0.00000000 0 0.72564844 0.68059722 2",
+          "decision_id": "new_000042-090/D03"
+        },
+        {
+          "action": "hold",
+          "original_row": null,
+          "parent_row": null,
+          "fields": [
+            "addition"
+          ],
+          "before": null,
+          "after": null,
+          "reason": "The hand-covered lower-right cassette-shaped structure shows perforations up to the soft transition around y600\u2013609 and a bright wedge toward y649. The transition might expose a vertical front sliver or continue the upper/side rim. A bounded separate front extent cannot be reliably assigned from these pixels; no corner is restored.",
+          "inspection_crop_xyxy_px": [
+            910,
+            575,
+            1000,
+            670
+          ],
+          "decision_id": "new_000042-090/D04"
+        }
+      ]
+    },
+    {
+      "case_id": "old_000054-091",
+      "image_id": "old_000054",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/old_000054.png",
+      "source_image_sha256": "0762009e0caf58b364c210f1542b823577fa41d656d7e6ffc0e984594dc78c72",
+      "source_label": "data/labels/train/old_000054.txt",
+      "source_label_sha256": "07e0a47be8503149517bf160651cef87ef780548bb82479f3c92601f8e7ea2e7",
+      "current_label": "data/labels/train/old_000054.txt",
+      "current_label_sha256": "07e0a47be8503149517bf160651cef87ef780548bb82479f3c92601f8e7ea2e7",
+      "original_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        100
+      ],
+      "disposition": "hold",
+      "summary": "No additional top row nominated; existing first-front context reviewed fresh.",
+      "decisions": [
+        {
+          "action": "hold",
+          "original_row": null,
+          "parent_row": null,
+          "fields": [
+            "addition"
+          ],
+          "before": null,
+          "after": null,
+          "reason": "The top bright curved stripe merges into the established first-front profile. It may be an adjoining projecting lip or a cropped preceding terminal remnant; the original image supplies no independent lower contour for a further front. Preserve the existing count pending physical surface confirmation.",
+          "inspection_crop_xyxy_px": [
+            540,
+            0,
+            980,
+            130
+          ],
+          "decision_id": "old_000054-091/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "old_000068-092",
+      "image_id": "old_000068",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/old_000068.png",
+      "source_image_sha256": "a9206bf333b031f62c353f0cba8f358893fe70cab2097a908e49816b8f8388d2",
+      "source_label": "data/labels/train/old_000068.txt",
+      "source_label_sha256": "2a0570ba6fb0e6b1d426cdec0963eaa282a86d4ebaa7729e46fea1f824a16cfb",
+      "current_label": "data/labels/train/old_000068.txt",
+      "current_label_sha256": "2a0570ba6fb0e6b1d426cdec0963eaa282a86d4ebaa7729e46fea1f824a16cfb",
+      "original_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        100
+      ],
+      "disposition": "hold",
+      "summary": "No additional top row nominated; existing first-front context reviewed fresh.",
+      "decisions": [
+        {
+          "action": "hold",
+          "original_row": null,
+          "parent_row": null,
+          "fields": [
+            "addition"
+          ],
+          "before": null,
+          "after": null,
+          "reason": "The top bright curved stripe merges into the established first-front profile. It may be an adjoining projecting lip or a cropped preceding terminal remnant; the original image supplies no independent lower contour for a further front. Preserve the existing count pending physical surface confirmation.",
+          "inspection_crop_xyxy_px": [
+            470,
+            0,
+            900,
+            130
+          ],
+          "decision_id": "old_000068-092/D01"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000037-100",
+      "image_id": "new_000037",
+      "split": "train",
+      "status": "independent_agent_proposal_not_human_acceptance",
+      "case_scope": "currently held fields only; all previous accepted fields preserved",
+      "source_image": "data/images/train/new_000037.png",
+      "source_image_sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3",
+      "source_label": "data/labels/train/new_000037.txt",
+      "source_label_sha256": "50576476f4bbfd0bb0e4f898f05519cf6790ea4009736ec9fc2af7557d720bc7",
+      "current_label": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000037.txt",
+      "current_label_sha256": "c8ee4304b899b43d3520dd9a7b82d89c98b29a3a8ce8032d012a183e5319770d",
+      "original_case_region_xyxy_px": [
+        700,
+        0,
+        1280,
+        135
+      ],
+      "disposition": "hold",
+      "summary": "The top white assembly remains outside any approved new cassette-front label.",
+      "decisions": [
+        {
+          "action": "hold",
+          "original_row": null,
+          "parent_row": null,
+          "fields": [
+            "addition"
+          ],
+          "before": null,
+          "after": null,
+          "reason": "The broad upper white assembly sits above the perforated horizontal rack surface, with multiple visible planes. Its size/plane orientation differs from the front faces seated beneath the rail; the crop does not establish the requested front surface or a unique instance count. A physical identification of this assembly is needed, not an occupancy inference.",
+          "inspection_crop_xyxy_px": [
+            700,
+            0,
+            1280,
+            135
+          ],
+          "decision_id": "new_000037-100/D01"
+        }
+      ]
+    }
+  ],
+  "operation_counts": {
+    "change_bbox": 8,
+    "add_object": 3,
+    "delete_object": 3,
+    "keep": 4,
+    "no_addition": 3,
+    "hold": 21
+  },
+  "artifact_normalization": "Temporary renderer paths omitted or identified as temporary artifacts. Full source PNGs, frozen hashes, exact original/parent tokens and per-operation pixels remain reproducible evidence; durable selected crops are in evidence-index.json. Proposal snapshots are not acceptance records."
+}
