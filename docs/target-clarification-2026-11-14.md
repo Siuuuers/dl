@@ -3,6 +3,13 @@
 Date: 2026-11-14, Asia/Hong_Kong. This corrects the interpretation published
 in PR63 at `2c6d5e7f80acca63a6cd478234af594bd7a5c759`.
 
+**Subsequent label repair:** the [reconciled-label review](label-refinement-2026-11-14.md)
+now gives the three thumb-adjacent fronts individual rows and adds the separate
+bottom-clipped front. Its original-pixel rulers refine the coarse boundary ranges
+below, and its explicit accepted record contains the replacement geometry. The
+earlier observations remain a historical ownership correction; they are not the
+final coordinate specification. No model has been retrained on the new labels.
+
 **The target and permission to predict obscured corners were already settled.**
 The previous follow-up overlooked the PR55/56 decisions and incorrectly framed
 `new_000038` as one cassette with two alternative corner locations. The user

@@ -35,8 +35,6 @@ Keep box and point judgments independent during review. A point outside its box 
 
 First identify the physical lower-front corner pair, then order the pair by image X. Do not substitute an upper lip, tray corner, occluder boundary, brightest stripe or arbitrary lowest image edge. The target is a physical feature, so perspective can tilt its connecting line.
 
-On 2026-11-14 the user emphasized the front face of the **whole white wax block**. This is the individual cassette, not the connected silhouette of a stack. The [existing complete-front example](baomai-corner-examples-2026-11-12.md#2-a-clear-complete-front-new_000008-row-20) and [PR56 guidance audit](lower-front-guidance-audit-2026-11-12.md) already settle this feature. At a shared seam, preserve ownership by the front above rather than substituting the next front's upper shoulder. The [corrected three-front review](target-clarification-2026-11-14.md) applies that rule; it does not redefine the separate visible-extent box convention.
-
 Each endpoint is decided independently:
 
 - Use `v=2` when the actual corner is visible and reliably locatable from the original pixels.
@@ -93,8 +91,6 @@ Keep reference images, labels, split and checkpoint intact. Preserve original ro
 Validation has already been used for development and epoch selection. Any correction of its reference labels must be separately versioned and reported, not folded into a score comparison unnoticed. Independent final-test scenes and application tolerances are still required for an application-level acceptance claim.
 
 ## 8. Context-derived proposals
-
-Reference visibility rules in sections 1–7 do not impose an observed-only inference restriction. The established live/folder contract permits direct model estimates of obscured corners when endpoint confidence and image-bounds gates pass; it connects the two displayed predictions. These outputs are predictions, not certified physically visible points. PR55 retains direct PR35 output and keeps contextual geometry as a separate review tool; PR56 deliberately calls the diagnostic states SHOWN/NOT SHOWN. See the [recovered decision history](target-clarification-2026-11-14.md#3-q3-the-established-inference-behavior-already-permits-estimates).
 
 The user has requested investigation of hidden-corner estimates from neighboring cassettes and rack geometry. The [context-corner pilot](context-corners-2026-11-12.md) implements that proposal with separately recorded `estimated_from_context` coordinates, source anchors, method, physical assumptions and review status. A proposal may be useful even when the corner cannot be directly seen.
 

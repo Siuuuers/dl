@@ -3,6 +3,13 @@
 Date: 2026-11-14, Asia/Hong_Kong. Source: published PR61 revision
 `1b71e8158e0594ee4c72ba845fa7b514a78b9e0d`.
 
+**Latest follow-up:** [reconciled labels before the next GPU run](label-refinement-2026-11-14.md)
+combines the compatible accepted historical corrections and a now-reviewed
+`new_000038` three-front/clipped-front repair in a separate candidate. The exact
+17-file payload described below remains unchanged as historical evidence. The
+new revision retains explicit unresolved cases and is not a complete approved
+training release.
+
 **Subsequent correction:** the [ownership review](target-clarification-2026-11-14.md)
 confirms three separate fronts near the thumb in `new_000038`. The earlier held
 suggestion to move row 1's point to the lowest turn is withdrawn because those

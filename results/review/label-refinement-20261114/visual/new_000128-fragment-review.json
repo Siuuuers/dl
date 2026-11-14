@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "image_id": "new_000128",
+  "status": "review_needed",
+  "review_date": "2026-11-14",
+  "reviewer": "/root/visual_target_check",
+  "human_approved": false,
+  "source_image_path": "data/images/train/new_000128.png",
+  "source_label_path": "data/labels/train/new_000128.txt",
+  "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+  "source_label_sha256": "ed67b6d46e877ea5faeb14876e86ad20425de3d8ef175e42a770c69bf3690dc0",
+  "whole_original_viewed_first": true,
+  "model_predictions_used": false,
+  "accepted_operations": [],
+  "cases": [
+    {
+      "source_row": 1,
+      "status": "review_needed",
+      "issue_type": "instance_identity",
+      "source_before_text": "0 0.39193359 0.00355556 0.18011719 0.00711111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "source_bbox_xyxy_px_approx": [
+        386.4,
+        0,
+        616.95,
+        5.12
+      ],
+      "evidence": "A thin gray/white band intersects the image top. It is not possible to cleanly trace a separate independent front from the upper roof/lip material of the clearly visible row2 cassette below it.",
+      "decision": "No addition, deletion, point restoration, or certified-positive decision. Preserve the identity issue; small pixel height alone is not a deletion reason.",
+      "points": "Keep inherited missing states pending identity review; no actual lower-front corner can be newly certified.",
+      "figure": "new_000128-row1-fragment-review.png",
+      "raw_crop": "new_000128-top-left-raw.png",
+      "crop_xyxy": [
+        375,
+        0,
+        645,
+        82
+      ],
+      "scale": 4
+    },
+    {
+      "source_row": 12,
+      "status": "review_needed",
+      "issue_type": "instance_identity",
+      "source_before_text": "0 0.99607422 0.04968056 0.00785156 0.09119444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "source_bbox_xyxy_px_approx": [
+        1269.95,
+        2.94,
+        1280,
+        68.6
+      ],
+      "location_correction": "This is a narrow right-edge strip, not a bottom fragment.",
+      "evidence": "The strip overlaps the white surface already associated with row10 and adjacent dark rack/gap. The original pixels do not reveal a separable owning front boundary within the strip. Overlap alone does not prove a duplicate.",
+      "decision": "No addition, deletion, point restoration, or certified-positive decision. Record the unresolved physical ownership rather than infer an off-frame cassette.",
+      "points": "Keep inherited missing states pending identity review; no newly certified visible corner.",
+      "figure": "new_000128-row12-fragment-review.png",
+      "raw_crop": "new_000128-right-edge-raw.png",
+      "crop_xyxy": [
+        1190,
+        0,
+        1280,
+        145
+      ],
+      "scale": 5
+    }
+  ],
+  "context_comparison": {
+    "images": [
+      "new_000127",
+      "new_000129"
+    ],
+    "role": "Viewed whole nearby originals for cassette morphology only. Frame identity and counts were not transferred into new_000128; they do not resolve these cropped fragments."
+  },
+  "inclusion_rule": "One identifiable visible front may be retained even when both endpoints are missing; no minimum pixel-count or visible-area cutoff was applied.",
+  "no_source_mutations": true,
+  "accepted_candidate_operation_count_changed": false
+}
