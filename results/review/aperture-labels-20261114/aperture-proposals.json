@@ -1,0 +1,6200 @@
+{
+  "schema_version": 1,
+  "kind": "assistant_original_pixel_review_proposals",
+  "reviewer_task": "/root/aperture_cases",
+  "review_date_utc": "2026-11-14",
+  "coordinate_space": "Original 1280 x 720 pixels; xyxy boxes, image-X ordered lower front corners; xyv points",
+  "source_repo": "/workspace/scratch/aa0875036021/dl-review",
+  "parent_manifest_path": "data/candidates/fixed-geometry-labels-2026-11-14/manifest.json",
+  "parent_manifest_sha256": "509a6d755b4ac2b1af679679debccbf2b038e60fc98ebfa7843a38bddc4ad05d",
+  "annotation_policy_sha256": "74dd943976a4abc22ecbf73551c69f715666060d5961b2bed81e6a9c73a3afc9",
+  "source_data_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "assigned_case_file_sha256": "ce25bf0c63021498d69493a5cd4563379c158a3c07fc5dee7bd16b9eea2239d2",
+  "assigned_cases": 36,
+  "images": 24,
+  "release_ready": false,
+  "training_or_inference_run": false,
+  "tracked_files_modified": false,
+  "physical_review_is_human_approval": false,
+  "all_operations_require_parent_adjudication": true,
+  "notes": [
+    "Fixed dimensions help identify consistent physical relationships but do not authorize hidden v2 endpoints or amodal boxes.",
+    "Always-see-through opening confirmation settles new030 identity only; this batch relies on each image pixels.",
+    "Manual placement ranges express source-pixel review uncertainty, not statistical confidence.",
+    "A proposed add/delete with explicit identity uncertainty is a review hypothesis, not an instruction to apply automatically.",
+    "All source hashes and before tokens are frozen to the named effective parent."
+  ],
+  "disposition_counts": {
+    "delete_supported": 1,
+    "correct_and_close": 4,
+    "hold_possible_addition": 3,
+    "keep_no_addition_and_close": 3,
+    "correct_supported_fields_with_hold": 10,
+    "correct_and_add_for_adjudication": 2,
+    "correct_point_ownership_and_boxes": 1,
+    "add_for_adjudication": 2,
+    "correct_supported_fields_no_addition": 1,
+    "correct_supported_fields": 4,
+    "reviewed_no_supported_addition": 2,
+    "keep_with_specific_hold": 1,
+    "keep_and_close": 1,
+    "hold_identity_and_extent": 1
+  },
+  "proposed_operation_counts": {
+    "delete_object": 2,
+    "bbox_refinements": 48,
+    "left_endpoint_changes": 4,
+    "add_object_proposals": 6,
+    "right_endpoint_changes": 2
+  },
+  "mechanical_check": {
+    "all_36_cases_accounted_for": true,
+    "all_proposed_boxes_valid": true,
+    "all_visible_points_inside_proposed_boxes": true
+  },
+  "cases": [
+    {
+      "case_id": "new_000061-005",
+      "image_id": "new_000061",
+      "split": "train",
+      "original_rows_1based": [
+        1
+      ],
+      "region_xyxy_px": [
+        296,
+        656,
+        477,
+        720
+      ],
+      "image_path": "data/images/train/new_000061.png",
+      "image_sha256": "094be9e4df38d6580314f7572ac2d2716a057ad31c6ca02d4d2468e9d0dec01f",
+      "original_label_path": "data/labels/train/new_000061.txt",
+      "original_label_sha256": "830404974bc35ae8b10ae0b6f0852dd2a4cdb0e11a4ac9f884df0938c0214d6d",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000061.txt",
+      "parent_label_sha256": "ca2eb1dd7ccf46c8a891ade2983e4558239eeeb5eee8c0c62714184122a07fce",
+      "disposition": "delete_supported",
+      "reason": "The lower crop contains rack and a receding ribbed roof surface entering the image at the bottom. No front face is visible before the frame boundary; the parent box y676-717 mainly covers rack and roof. The target is the observed front, so this roof-only row is unsupported.",
+      "uncertainty": "No statement about the existence of the physical cassette below the frame; only the annotated front plane is absent from the visible image.",
+      "details": "Both points were already missing. Deletion is based on direct roof/front plane evidence, not on missing keypoints or low area.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_tokens": "0 0.30197266 0.96759722 0.10908594 0.05619444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.30197266 0.96759722 0.10908594 0.05619444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            316.71,
+            676.44,
+            456.34,
+            716.9
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "delete_object",
+          "original_row": 1,
+          "parent_row": 1,
+          "before_tokens": "0 0.30197266 0.96759722 0.10908594 0.05619444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.30197266 0.96759722 0.10908594 0.05619444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            316.71,
+            676.44,
+            456.34,
+            716.9
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "reason": "The lower crop contains rack and a receding ribbed roof surface entering the image at the bottom. No front face is visible before the frame boundary; the parent box y676-717 mainly covers rack and roof. The target is the observed front, so this roof-only row is unsupported."
+        }
+      ]
+    },
+    {
+      "case_id": "new_000070-015",
+      "image_id": "new_000070",
+      "split": "train",
+      "original_rows_1based": [
+        4
+      ],
+      "region_xyxy_px": [
+        765,
+        508,
+        924,
+        601
+      ],
+      "image_path": "data/images/train/new_000070.png",
+      "image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+      "original_label_path": "data/labels/train/new_000070.txt",
+      "original_label_sha256": "3a6a8e7723fb61242ce04aeba1fe021bded7290a28610b93a5e989dd53710527",
+      "parent_label_path": "data/labels/train/new_000070.txt",
+      "parent_label_sha256": "3a6a8e7723fb61242ce04aeba1fe021bded7290a28610b93a5e989dd53710527",
+      "disposition": "correct_and_close",
+      "reason": "A narrow smooth forward-facing white band is visible below the ribbed top and above the hand, at approximatelyx812-903,y545-558. It supports a small partial positive; the parent box includes a large area of hand and left jaw.",
+      "uncertainty": "The band is only several pixels high; boundaries have 2-3 px placement uncertainty. Neither physical full-cassette lower corner is visible.",
+      "details": "Keep both missing points and a positive observed-front strip. This is not a deletion of a small or occluded cassette.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 4,
+          "parent_row": 4,
+          "original_tokens": "0 0.65939453 0.76956250 0.09214844 0.07245833 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.65939453 0.76956250 0.09214844 0.07245833 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            785.05,
+            528.0,
+            903.0,
+            580.17
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 4,
+          "parent_row": 4,
+          "before_tokens": "0 0.65939453 0.76956250 0.09214844 0.07245833 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.65939453 0.76956250 0.09214844 0.07245833 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            785.05,
+            528.0,
+            903.0,
+            580.17
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            812,
+            545,
+            903,
+            558
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                809,
+                815
+              ],
+              "y1": [
+                542,
+                548
+              ],
+              "x2": [
+                900,
+                906
+              ],
+              "y2": [
+                555,
+                560
+              ]
+            }
+          },
+          "after_tokens": "0 0.66992188 0.76597222 0.07109375 0.01805556 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000094-016",
+      "image_id": "new_000094",
+      "split": "train",
+      "original_rows_1based": [],
+      "region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "image_path": "data/images/train/new_000094.png",
+      "image_sha256": "e49858124981ec769ed4eb53b53c76aea809981bbbcddf6446cb095ab53533f0",
+      "original_label_path": "data/labels/train/new_000094.txt",
+      "original_label_sha256": "596387f08647c2d68db28d589d95e7bd7b5980fa53a64b08bf019c6c6f4d2031",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000094.txt",
+      "parent_label_sha256": "c071cc23e091e4a7cca3aa4329fa64d546f21e84bf4d98cb8c8f51e709a76efb",
+      "disposition": "hold_possible_addition",
+      "reason": "The broad gray patch in the opening has an approximately horizontal change aroundy491 and pale material below, unlike the explicit open-grid examples098-100. Nevertheless the dark patch does not independently reveal enough front texture or side ownership to distinguish a cassette front from top/rim or other shadowed material.",
+      "uncertainty": "Potential omitted front(s) aroundx672-741,y451-510. The number and plane identity remain unresolved; user confirmation of new030 does not settle this image.",
+      "details": "No new label. A source-specific clarification or independent physical review is needed; absence of visible grid and support/stacking logic alone are insufficient.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000098-019",
+      "image_id": "new_000098",
+      "split": "train",
+      "original_rows_1based": [],
+      "region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "image_path": "data/images/train/new_000098.png",
+      "image_sha256": "163c6b9f585ffbd7ab0e409f6b633e1ac0dde303d793fcfdcd5958fee2d18739",
+      "original_label_path": "data/labels/train/new_000098.txt",
+      "original_label_sha256": "f69abcac44eaaf45799ba296ac53a0ddbebe884078372f4437ab5ae6ac426ff1",
+      "parent_label_path": "data/labels/train/new_000098.txt",
+      "parent_label_sha256": "f69abcac44eaaf45799ba296ac53a0ddbebe884078372f4437ab5ae6ac426ff1",
+      "disposition": "keep_no_addition_and_close",
+      "reason": "The original aperture explicitly shows rack bars and holes below the already labelled cassette fronts. The lower narrow gap shows hand and tool/housing transition, not a separate front with identifiable edges.",
+      "uncertainty": "No supported additional target is visible in the reviewed gap. This does not assert absence of completely occluded objects elsewhere.",
+      "details": "No new object or hidden endpoints. Existing labels remain unchanged.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000099-020",
+      "image_id": "new_000099",
+      "split": "train",
+      "original_rows_1based": [],
+      "region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "image_path": "data/images/train/new_000099.png",
+      "image_sha256": "941f9f0d904ed951ac0fd3538e2cd76eb9b14f73bc958f7d6d0fecb7b75a2439",
+      "original_label_path": "data/labels/train/new_000099.txt",
+      "original_label_sha256": "fbf741344db887c44c158e84a07ae28e4c0b29f4512ea21f30cdf49fdb161d8b",
+      "parent_label_path": "data/labels/train/new_000099.txt",
+      "parent_label_sha256": "fbf741344db887c44c158e84a07ae28e4c0b29f4512ea21f30cdf49fdb161d8b",
+      "disposition": "keep_no_addition_and_close",
+      "reason": "Rack bars and background holes are directly visible through the opening. The lower pale horizontal fragment occurs at the tool/housing/hand transition and lacks an independent target front.",
+      "uncertainty": "No observed additional front is supported. Do not treat this image as an empty scene; existing cassettes outside the gap remain labelled.",
+      "details": "No addition and no hidden-slot inference.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000100-021",
+      "image_id": "new_000100",
+      "split": "train",
+      "original_rows_1based": [],
+      "region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "image_path": "data/images/train/new_000100.png",
+      "image_sha256": "ea387daf6b24d49662841e1f3f8197ae2c991fecffb9cb64ca66b8689db76290",
+      "original_label_path": "data/labels/train/new_000100.txt",
+      "original_label_sha256": "b9342f4a65b682a5ddfbbc1015a98d7bdc9fabfe8f78f517c501e9d615aa4357",
+      "parent_label_path": "data/labels/train/new_000100.txt",
+      "parent_label_sha256": "b9342f4a65b682a5ddfbbc1015a98d7bdc9fabfe8f78f517c501e9d615aa4357",
+      "disposition": "keep_no_addition_and_close",
+      "reason": "The aperture visibly contains illuminated rack openings and metal grid, with hand below. No separate white cassette front is visible inside it or at the lower tool seam.",
+      "uncertainty": "No supported additional front in this reviewed region; unseen inventory is outside the annotation claim.",
+      "details": "No addition. Bright rack openings are not white-cassette targets.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000085-029",
+      "image_id": "new_000085",
+      "split": "train",
+      "original_rows_1based": [
+        14,
+        15,
+        16
+      ],
+      "region_xyxy_px": [
+        639,
+        401,
+        745,
+        543
+      ],
+      "image_path": "data/images/train/new_000085.png",
+      "image_sha256": "a33365e10beb89e4bf5ac531cb6ff36ab6d3c3b965f08c9db494a2243e46d74f",
+      "original_label_path": "data/labels/train/new_000085.txt",
+      "original_label_sha256": "b905c966b1e08cf42d5e8422e6c314bcc9ee525f0f49eae7331a58fb4c7793fb",
+      "parent_label_path": "data/labels/train/new_000085.txt",
+      "parent_label_sha256": "b905c966b1e08cf42d5e8422e6c314bcc9ee525f0f49eae7331a58fb4c7793fb",
+      "disposition": "correct_and_close",
+      "reason": "Three successive fronts are directly visible through and above the jaws. The upper instance also has a broad visible upper strip acrossx664-754, which the narrow parent box clips; the two lower fragments are confined to the opening. Their horizontal edges identify separate instances.",
+      "uncertainty": "Source blur gives approximately2-3 px placement ranges. The complete lower corners remain behind the jaws for all three, so all point tokens remainzero.",
+      "details": "Retain all three positives. Do not fill hidden outer corners despite equal physical size.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 14,
+          "parent_row": 14,
+          "original_tokens": "0 0.54080859 0.62207639 0.05100781 0.07231944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54080859 0.62207639 0.05100781 0.07231944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            659.59,
+            421.86,
+            724.88,
+            473.93
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 15,
+          "parent_row": 15,
+          "original_tokens": "0 0.54037891 0.66957639 0.04597656 0.04409722 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54037891 0.66957639 0.04597656 0.04409722 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            662.26,
+            466.22,
+            721.11,
+            497.97
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 16,
+          "parent_row": 16,
+          "original_tokens": "0 0.54135938 0.70249306 0.04185938 0.04748611 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54135938 0.70249306 0.04185938 0.04748611 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            666.15,
+            488.7,
+            719.73,
+            522.89
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 14,
+          "parent_row": 14,
+          "before_tokens": "0 0.54080859 0.62207639 0.05100781 0.07231944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.54080859 0.62207639 0.05100781 0.07231944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            659.59,
+            421.86,
+            724.88,
+            473.93
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            664,
+            433,
+            754,
+            458
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                661,
+                667
+              ],
+              "y1": [
+                431,
+                436
+              ],
+              "x2": [
+                751,
+                757
+              ],
+              "y2": [
+                456,
+                461
+              ]
+            }
+          },
+          "after_tokens": "0 0.55390625 0.61875000 0.07031250 0.03472222 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 15,
+          "parent_row": 15,
+          "before_tokens": "0 0.54037891 0.66957639 0.04597656 0.04409722 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.54037891 0.66957639 0.04597656 0.04409722 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            662.26,
+            466.22,
+            721.11,
+            497.97
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            685,
+            459,
+            720,
+            484
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                682,
+                688
+              ],
+              "y1": [
+                457,
+                462
+              ],
+              "x2": [
+                717,
+                723
+              ],
+              "y2": [
+                481,
+                486
+              ]
+            }
+          },
+          "after_tokens": "0 0.54882812 0.65486111 0.02734375 0.03472222 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 16,
+          "parent_row": 16,
+          "before_tokens": "0 0.54135938 0.70249306 0.04185938 0.04748611 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.54135938 0.70249306 0.04185938 0.04748611 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            666.15,
+            488.7,
+            719.73,
+            522.89
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            692,
+            483,
+            716,
+            504
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                689,
+                695
+              ],
+              "y1": [
+                481,
+                486
+              ],
+              "x2": [
+                713,
+                719
+              ],
+              "y2": [
+                501,
+                507
+              ]
+            }
+          },
+          "after_tokens": "0 0.55000000 0.68541667 0.01875000 0.02916667 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000061-038",
+      "image_id": "new_000061",
+      "split": "train",
+      "original_rows_1based": [
+        10
+      ],
+      "region_xyxy_px": [
+        565,
+        424,
+        785,
+        503
+      ],
+      "image_path": "data/images/train/new_000061.png",
+      "image_sha256": "094be9e4df38d6580314f7572ac2d2716a057ad31c6ca02d4d2468e9d0dec01f",
+      "original_label_path": "data/labels/train/new_000061.txt",
+      "original_label_sha256": "830404974bc35ae8b10ae0b6f0852dd2a4cdb0e11a4ac9f884df0938c0214d6d",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000061.txt",
+      "parent_label_sha256": "ca2eb1dd7ccf46c8a891ade2983e4558239eeeb5eee8c0c62714184122a07fce",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "Row10 has a definite left front strip and a shadowed smooth continuation in the opening, with a lower edge near484. The parent x2=764.62 covers the opaque right jaw.",
+      "uncertainty": "The small right wedge within the opening may belong to the gripper tooth. Maximum observed target extent is within x717-723; the exact cutoff needs parent adjudication. Do not restore a hidden right corner.",
+      "details": "The left lower point remains587,480. y2 extension captures the aperture edge while x2 removes clear jaw overreach.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 10,
+          "parent_row": 10,
+          "original_tokens": "0 0.52719531 0.64338889 0.14032812 0.05211111 0.45859375 0.66666667 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.52719531 0.64338889 0.14032812 0.05211111 0.45859375 0.66666667 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            585.0,
+            444.48,
+            764.62,
+            482.0
+          ],
+          "points_xyv_px": [
+            [
+              587.0,
+              480.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 10,
+          "parent_row": 10,
+          "before_tokens": "0 0.52719531 0.64338889 0.14032812 0.05211111 0.45859375 0.66666667 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.52719531 0.64338889 0.14032812 0.05211111 0.45859375 0.66666667 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            585.0,
+            444.48,
+            764.62,
+            482.0
+          ],
+          "before_points_xyv_px": [
+            [
+              587.0,
+              480.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            585.0,
+            444.48,
+            720,
+            486
+          ],
+          "after_points_xyv_px": [
+            [
+              587.0,
+              480.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                717,
+                723
+              ],
+              "y2": [
+                483,
+                488
+              ]
+            }
+          },
+          "after_tokens": "0 0.50976562 0.64616667 0.10546875 0.05766667 0.45859375 0.66666667 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000062-039",
+      "image_id": "new_000062",
+      "split": "train",
+      "original_rows_1based": [
+        8,
+        9
+      ],
+      "region_xyxy_px": [
+        579,
+        399,
+        784,
+        527
+      ],
+      "image_path": "data/images/train/new_000062.png",
+      "image_sha256": "d7b5230f6480ee91d78f8225cebc89bc50fc70f7d7795801f763bb422b236e30",
+      "original_label_path": "data/labels/train/new_000062.txt",
+      "original_label_sha256": "1dced3151419c51e9126cce1e2185f6cce5b38ac787ece4e398245de71e80d73",
+      "parent_label_path": "data/labels/train/new_000062.txt",
+      "parent_label_sha256": "1dced3151419c51e9126cce1e2185f6cce5b38ac787ece4e398245de71e80d73",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "Rows8-9 retain distinct left strips. The upper aperture band is smooth front-like material ending aroundy461-463; the broad parent boxes extend across opaque right-jaw material beyond any possible visible portion.",
+      "uncertainty": "The lower brown triangle cannot be conclusively classified from source pixels as row9 front rather than a background/tool plane. Keep row9 positive because its left strip is real, but retain this aperture-ownership hold. Upper-bound association also merits parent check near the jaw tip.",
+      "details": "Preserve original y1 and all left points. Neither proposed box contains an inferred hidden point; the uncertain lower patch does not create a new row.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 8,
+          "parent_row": 8,
+          "original_tokens": "0 0.53375391 0.60577778 0.12532031 0.04677778 0.47171875 0.62513889 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.53375391 0.60577778 0.12532031 0.04677778 0.47171875 0.62513889 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            603.0,
+            419.32,
+            763.41,
+            453.0
+          ],
+          "points_xyv_px": [
+            [
+              603.8,
+              450.1,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 9,
+          "parent_row": 9,
+          "original_tokens": "0 0.53127734 0.66728472 0.12505469 0.07237500 0.47107813 0.70347222 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.53127734 0.66728472 0.12505469 0.07237500 0.47107813 0.70347222 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            600.0,
+            454.39,
+            760.07,
+            506.5
+          ],
+          "points_xyv_px": [
+            [
+              602.98,
+              506.5,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 8,
+          "parent_row": 8,
+          "before_tokens": "0 0.53375391 0.60577778 0.12532031 0.04677778 0.47171875 0.62513889 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.53375391 0.60577778 0.12532031 0.04677778 0.47171875 0.62513889 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            603.0,
+            419.32,
+            763.41,
+            453.0
+          ],
+          "before_points_xyv_px": [
+            [
+              603.8,
+              450.1,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            603.0,
+            419.32,
+            719,
+            463
+          ],
+          "after_points_xyv_px": [
+            [
+              603.8,
+              450.1,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                716,
+                722
+              ],
+              "y2": [
+                460,
+                465
+              ]
+            }
+          },
+          "after_tokens": "0 0.51640625 0.61272222 0.09062500 0.06066667 0.47171875 0.62513889 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 9,
+          "parent_row": 9,
+          "before_tokens": "0 0.53127734 0.66728472 0.12505469 0.07237500 0.47107813 0.70347222 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.53127734 0.66728472 0.12505469 0.07237500 0.47107813 0.70347222 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            600.0,
+            454.39,
+            760.07,
+            506.5
+          ],
+          "before_points_xyv_px": [
+            [
+              602.98,
+              506.5,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            600.0,
+            454.39,
+            719,
+            506.5
+          ],
+          "after_points_xyv_px": [
+            [
+              602.98,
+              506.5,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                716,
+                722
+              ]
+            }
+          },
+          "after_tokens": "0 0.51523438 0.66728472 0.09296875 0.07237500 0.47107813 0.70347222 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000063-040",
+      "image_id": "new_000063",
+      "split": "train",
+      "original_rows_1based": [
+        8,
+        9
+      ],
+      "region_xyxy_px": [
+        581,
+        422,
+        781,
+        532
+      ],
+      "image_path": "data/images/train/new_000063.png",
+      "image_sha256": "e74372f2efbdea19e451e0cc900f16412c63813f66dbc8904d0f4c03b89a709e",
+      "original_label_path": "data/labels/train/new_000063.txt",
+      "original_label_sha256": "826c407e6e4e54b9a599a50893685ab303883cc323e38b53522283133c1ad61e",
+      "parent_label_path": "data/labels/train/new_000063.txt",
+      "parent_label_sha256": "826c407e6e4e54b9a599a50893685ab303883cc323e38b53522283133c1ad61e",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "Two real partial fronts are visible to the left of the jaw. Their existing right bounds are deep inside the opaque right jaw; any observable continuation in the opening ends beforex721.",
+      "uncertainty": "The upper aperture patch has a lower pale band and the lower patch is dark; a right-hand triangular region is gripper material or shadow. Preserve y bounds and flag detailed aperture ownership rather than claiming a full front from gray intensity alone.",
+      "details": "Retain the distinct rows and existing lower-left points; right corners stay missing.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 8,
+          "parent_row": 8,
+          "original_tokens": "0 0.53266406 0.63811111 0.12314063 0.04600000 0.47728906 0.65443056 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.53266406 0.63811111 0.12314063 0.04600000 0.47728906 0.65443056 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            603.0,
+            442.88,
+            760.62,
+            476.0
+          ],
+          "points_xyv_px": [
+            [
+              610.93,
+              471.19,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 9,
+          "parent_row": 9,
+          "original_tokens": "0 0.53101953 0.68711806 0.12297656 0.04668056 0.47369531 0.71045833 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.53101953 0.68711806 0.12297656 0.04668056 0.47369531 0.71045833 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            601.0,
+            477.92,
+            758.41,
+            511.53
+          ],
+          "points_xyv_px": [
+            [
+              606.33,
+              511.53,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 8,
+          "parent_row": 8,
+          "before_tokens": "0 0.53266406 0.63811111 0.12314063 0.04600000 0.47728906 0.65443056 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.53266406 0.63811111 0.12314063 0.04600000 0.47728906 0.65443056 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            603.0,
+            442.88,
+            760.62,
+            476.0
+          ],
+          "before_points_xyv_px": [
+            [
+              610.93,
+              471.19,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            603.0,
+            442.88,
+            721,
+            476.0
+          ],
+          "after_points_xyv_px": [
+            [
+              610.93,
+              471.19,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                718,
+                724
+              ]
+            }
+          },
+          "after_tokens": "0 0.51718750 0.63811111 0.09218750 0.04600000 0.47728906 0.65443056 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 9,
+          "parent_row": 9,
+          "before_tokens": "0 0.53101953 0.68711806 0.12297656 0.04668056 0.47369531 0.71045833 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.53101953 0.68711806 0.12297656 0.04668056 0.47369531 0.71045833 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            601.0,
+            477.92,
+            758.41,
+            511.53
+          ],
+          "before_points_xyv_px": [
+            [
+              606.33,
+              511.53,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            601.0,
+            477.92,
+            716,
+            511.53
+          ],
+          "after_points_xyv_px": [
+            [
+              606.33,
+              511.53,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                713,
+                719
+              ]
+            }
+          },
+          "after_tokens": "0 0.51445312 0.68711806 0.08984375 0.04668056 0.47369531 0.71045833 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000094-043",
+      "image_id": "new_000094",
+      "split": "train",
+      "original_rows_1based": [
+        23,
+        24,
+        28
+      ],
+      "region_xyxy_px": [
+        220,
+        672,
+        517,
+        720
+      ],
+      "image_path": "data/images/train/new_000094.png",
+      "image_sha256": "e49858124981ec769ed4eb53b53c76aea809981bbbcddf6446cb095ab53533f0",
+      "original_label_path": "data/labels/train/new_000094.txt",
+      "original_label_sha256": "596387f08647c2d68db28d589d95e7bd7b5980fa53a64b08bf019c6c6f4d2031",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000094.txt",
+      "parent_label_sha256": "c071cc23e091e4a7cca3aa4329fa64d546f21e84bf4d98cb8c8f51e709a76efb",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "The lower-left area has one broad front (row22, not changed here) reaching the frame and at most one additional narrow strip below its lower edge. Row24 has no independently distinct front separated from rows22/23. The middle-column row28 is a larger clipped front extending upward from aroundy700, but its parent box clips most of it and extends into the thumb.",
+      "uncertainty": "The remaining thin left-bottom strip is only a few pixels high and its row23 ownership should be independently adjudicated; the proposed row24 deletion is specifically lack of a third distinct front, not a small-box rule. Row28 boundaries have3px blur uncertainty.",
+      "details": "All reviewed rows keep both keypoints missing. Row22 is included as a contextual neighbor, not altered or relabelled. Parent should adjudicate the clipped row23/24 count before acceptance.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 23,
+          "parent_row": 23,
+          "original_tokens": "0 0.23761328 0.98096528 0.10014844 0.03806944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.23761328 0.98096528 0.10014844 0.03806944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            240.05,
+            692.59,
+            368.24,
+            720.0
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 24,
+          "parent_row": 24,
+          "original_tokens": "0 0.24129297 0.99428472 0.09757031 0.01143056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.24129297 0.99428472 0.09757031 0.01143056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            246.41,
+            711.77,
+            371.3,
+            720.0
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 28,
+          "parent_row": 28,
+          "original_tokens": "0 0.33959375 0.99565278 0.09643750 0.00869444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.33959375 0.99565278 0.09643750 0.00869444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            372.96,
+            713.74,
+            496.4,
+            720.0
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "context_rows_before": [
+        {
+          "original_row": 22,
+          "parent_row": 22,
+          "original_tokens": "0 0.23175391 0.96040278 0.10342969 0.07433333 0.18003906 0.99094444 2 0.27157031 0.99756944 2",
+          "parent_tokens": "0 0.23175391 0.96040278 0.10342969 0.07433333 0.18003906 0.99094444 2 0.27157031 0.99756944 2",
+          "bbox_xyxy_px": [
+            230.45,
+            664.73,
+            362.84,
+            718.25
+          ],
+          "points_xyv_px": [
+            [
+              230.45,
+              713.48,
+              2
+            ],
+            [
+              347.61,
+              718.25,
+              2
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 23,
+          "parent_row": 23,
+          "before_tokens": "0 0.23761328 0.98096528 0.10014844 0.03806944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.23761328 0.98096528 0.10014844 0.03806944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            240.05,
+            692.59,
+            368.24,
+            720.0
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            246,
+            715,
+            352,
+            720
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                242,
+                249
+              ],
+              "y1": [
+                713,
+                718
+              ],
+              "x2": [
+                348,
+                356
+              ],
+              "y2": [
+                720,
+                720
+              ]
+            }
+          },
+          "after_tokens": "0 0.23359375 0.99652778 0.08281250 0.00694444 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 28,
+          "parent_row": 28,
+          "before_tokens": "0 0.33959375 0.99565278 0.09643750 0.00869444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.33959375 0.99565278 0.09643750 0.00869444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            372.96,
+            713.74,
+            496.4,
+            720.0
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            360,
+            700,
+            468,
+            720
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                357,
+                363
+              ],
+              "y1": [
+                697,
+                703
+              ],
+              "x2": [
+                465,
+                471
+              ],
+              "y2": [
+                720,
+                720
+              ]
+            }
+          },
+          "after_tokens": "0 0.32343750 0.98611111 0.08437500 0.02777778 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "delete_object",
+          "original_row": 24,
+          "parent_row": 24,
+          "before_tokens": "0 0.24129297 0.99428472 0.09757031 0.01143056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.24129297 0.99428472 0.09757031 0.01143056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            246.41,
+            711.77,
+            371.3,
+            720.0
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "reason": "The lower-left area has one broad front (row22, not changed here) reaching the frame and at most one additional narrow strip below its lower edge. Row24 has no independently distinct front separated from rows22/23. The middle-column row28 is a larger clipped front extending upward from aroundy700, but its parent box clips most of it and extends into the thumb."
+        }
+      ]
+    },
+    {
+      "case_id": "new_000115-044",
+      "image_id": "new_000115",
+      "split": "train",
+      "original_rows_1based": [
+        22
+      ],
+      "region_xyxy_px": [
+        578,
+        408,
+        768,
+        488
+      ],
+      "image_path": "data/images/train/new_000115.png",
+      "image_sha256": "218087e388114bb1e6f5187f0d816708c32a6c288840cf79deb04d168c0bc5ac",
+      "original_label_path": "data/labels/train/new_000115.txt",
+      "original_label_sha256": "1d0e10d631d0c680110e39022eb80d97c971eb6cc36273224304b7fc580d8e55",
+      "parent_label_path": "data/labels/train/new_000115.txt",
+      "parent_label_sha256": "1d0e10d631d0c680110e39022eb80d97c971eb6cc36273224304b7fc580d8e55",
+      "disposition": "correct_and_add_for_adjudication",
+      "reason": "The original contains an upper partial front (row22) with a visible narrow left strip ending around607,474 and a separate lower front in the opening, divided by a horizontal seam aroundy474-476 and ending near503. The upper parent box cuts off its bottom and includes opaque jaw; the lower front is currently unlabelled.",
+      "uncertainty": "The aperture is shadowed and the right tooth occludes part of each surface; proposed addition is an independent source-pixel proposal, not a transfer from another frame. Parent should verify the two-face seam before acceptance. Bound placement2-3px.",
+      "details": "The source crop115-117-left-corners.png records the observed left junction separately from the opening so that point visibility can be judged independently.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 22,
+          "parent_row": 22,
+          "original_tokens": "0 0.52573828 0.62202778 0.11572656 0.05350000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.52573828 0.62202778 0.11572656 0.05350000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            598.88,
+            428.6,
+            747.01,
+            467.12
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 22,
+          "parent_row": 22,
+          "before_tokens": "0 0.52573828 0.62202778 0.11572656 0.05350000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.52573828 0.62202778 0.11572656 0.05350000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            598.88,
+            428.6,
+            747.01,
+            467.12
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            602,
+            444,
+            737,
+            476
+          ],
+          "after_points_xyv_px": [
+            [
+              607,
+              474,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2",
+            "left_endpoint"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                600,
+                605
+              ],
+              "y1": [
+                442,
+                446
+              ],
+              "x2": [
+                734,
+                740
+              ],
+              "y2": [
+                474,
+                478
+              ]
+            },
+            "left_endpoint": {
+              "x": [
+                605,
+                609
+              ],
+              "y": [
+                472,
+                476
+              ]
+            }
+          },
+          "point_reasons": {
+            "left": "Observed left front edge meets the lower seam at the end of the narrow strip; no hidden-corner inference."
+          },
+          "after_tokens": "0 0.52304688 0.63888889 0.10546875 0.04444444 0.47421875 0.65833333 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "add_object",
+          "provisional_instance_id": "lower_aperture_front",
+          "original_row": null,
+          "parent_row": null,
+          "before_tokens": null,
+          "after_bbox_xyxy_px": [
+            678,
+            475,
+            738,
+            503
+          ],
+          "after_points_xyv_px": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "after_tokens": "0 0.55312500 0.67916667 0.04687500 0.03888889 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "manual_placement_ranges_px": {
+            "x1": [
+              675,
+              681
+            ],
+            "y1": [
+              473,
+              478
+            ],
+            "x2": [
+              735,
+              741
+            ],
+            "y2": [
+              501,
+              505
+            ]
+          },
+          "reason": "Separate lower forward surface bounded by the upper seam and lower edge; both full-object outer lower corners are occluded.",
+          "identity_requires_independent_adjudication": true
+        }
+      ]
+    },
+    {
+      "case_id": "new_000116-045",
+      "image_id": "new_000116",
+      "split": "train",
+      "original_rows_1based": [
+        22
+      ],
+      "region_xyxy_px": [
+        573,
+        412,
+        762,
+        488
+      ],
+      "image_path": "data/images/train/new_000116.png",
+      "image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+      "original_label_path": "data/labels/train/new_000116.txt",
+      "original_label_sha256": "74f54273755069b7412b9a95016288a947c4bc03dbe1841bbc4afa1ebba9504d",
+      "parent_label_path": "data/labels/train/new_000116.txt",
+      "parent_label_sha256": "74f54273755069b7412b9a95016288a947c4bc03dbe1841bbc4afa1ebba9504d",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "The narrow left strip confirms row22 and exposes its lower-left junction near602,481. The parent box cuts off this strip and contains broad opaque jaw. A dark region below the opening may be a further front, but its plane identity is less secure than in115.",
+      "uncertainty": "Do not add a lower instance based on the neighboring frame. The lower brown/gray patch beyondabouty483 remains held as front versus hand/tool/background. Existing row22 aperture association has3px edge uncertainty.",
+      "details": "Right point remains missing. No lower addition is proposed for this image.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 22,
+          "parent_row": 22,
+          "original_tokens": "0 0.52170703 0.62490972 0.11588281 0.04776389 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.52170703 0.62490972 0.11588281 0.04776389 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            593.62,
+            432.74,
+            741.95,
+            467.13
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 22,
+          "parent_row": 22,
+          "before_tokens": "0 0.52170703 0.62490972 0.11588281 0.04776389 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.52170703 0.62490972 0.11588281 0.04776389 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            593.62,
+            432.74,
+            741.95,
+            467.13
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            596,
+            452,
+            737,
+            484
+          ],
+          "after_points_xyv_px": [
+            [
+              602,
+              481,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2",
+            "left_endpoint"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                593,
+                599
+              ],
+              "y1": [
+                450,
+                454
+              ],
+              "x2": [
+                734,
+                740
+              ],
+              "y2": [
+                481,
+                486
+              ]
+            },
+            "left_endpoint": {
+              "x": [
+                600,
+                604
+              ],
+              "y": [
+                479,
+                483
+              ]
+            }
+          },
+          "point_reasons": {
+            "left": "The visible left-side vertical front edge terminates at the lower seam before the dark gap; located directly in the source crop."
+          },
+          "after_tokens": "0 0.52070313 0.65000000 0.11015625 0.04444444 0.47031250 0.66805556 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000117-046",
+      "image_id": "new_000117",
+      "split": "train",
+      "original_rows_1based": [
+        22,
+        26
+      ],
+      "region_xyxy_px": [
+        576,
+        408,
+        796,
+        513
+      ],
+      "image_path": "data/images/train/new_000117.png",
+      "image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+      "original_label_path": "data/labels/train/new_000117.txt",
+      "original_label_sha256": "414856c55df84a3284b0ddfb010b138685c5ced744d3a0e71b589e6cb4205570",
+      "parent_label_path": "data/labels/train/new_000117.txt",
+      "parent_label_sha256": "414856c55df84a3284b0ddfb010b138685c5ced744d3a0e71b589e6cb4205570",
+      "disposition": "correct_point_ownership_and_boxes",
+      "reason": "The observed left strip fromabouty444 to473 is the upper retained front, original row22. The current lower-left point605.25,472.93 is assigned to row26, whose separate aperture front begins below that seam. Move this already measured visible junction to row22 and leave both lower-front corners of row26 missing.",
+      "uncertainty": "Aperture edges are blurred by2-3px. Parent should explicitly verify physical point ownership before accepting; the coordinate is not moved from a neighboring image and is not projected from geometry.",
+      "details": "Keep both object instances. No duplicate deletion. Row22 right and row26 right remain missing.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 22,
+          "parent_row": 22,
+          "original_tokens": "0 0.52288672 0.61850694 0.11353906 0.04712500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.52288672 0.61850694 0.11353906 0.04712500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            596.63,
+            428.36,
+            741.96,
+            462.29
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 26,
+          "parent_row": 26,
+          "original_tokens": "0 0.53777734 0.66442361 0.13622656 0.03973611 0.47285156 0.65684722 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.53777734 0.66442361 0.13622656 0.03973611 0.47285156 0.65684722 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            601.17,
+            464.08,
+            775.54,
+            492.69
+          ],
+          "points_xyv_px": [
+            [
+              605.25,
+              472.93,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 22,
+          "parent_row": 22,
+          "before_tokens": "0 0.52288672 0.61850694 0.11353906 0.04712500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.52288672 0.61850694 0.11353906 0.04712500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            596.63,
+            428.36,
+            741.96,
+            462.29
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            600,
+            444,
+            733,
+            475
+          ],
+          "after_points_xyv_px": [
+            [
+              605.25,
+              472.93,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2",
+            "left_endpoint"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                598,
+                603
+              ],
+              "y1": [
+                442,
+                446
+              ],
+              "x2": [
+                730,
+                736
+              ],
+              "y2": [
+                473,
+                477
+              ]
+            },
+            "left_endpoint": {
+              "x": [
+                603,
+                607
+              ],
+              "y": [
+                471,
+                475
+              ]
+            }
+          },
+          "point_reasons": {
+            "left": "Transfer the existing measured row26 coordinate to the front whose visible lower-left junction it actually marks."
+          },
+          "after_tokens": "0 0.52070313 0.63819444 0.10390625 0.04305556 0.47285156 0.65684722 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 26,
+          "parent_row": 26,
+          "before_tokens": "0 0.53777734 0.66442361 0.13622656 0.03973611 0.47285156 0.65684722 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.53777734 0.66442361 0.13622656 0.03973611 0.47285156 0.65684722 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            601.17,
+            464.08,
+            775.54,
+            492.69
+          ],
+          "before_points_xyv_px": [
+            [
+              605.25,
+              472.93,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            675,
+            474,
+            738,
+            502
+          ],
+          "after_points_xyv_px": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2",
+            "left_endpoint"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                672,
+                678
+              ],
+              "y1": [
+                472,
+                476
+              ],
+              "x2": [
+                735,
+                741
+              ],
+              "y2": [
+                500,
+                504
+              ]
+            },
+            "left_endpoint": {}
+          },
+          "point_reasons": {
+            "left": "The lower aperture front has no visible full-object left corner; the former point belongs to row22."
+          },
+          "after_tokens": "0 0.55195313 0.67777778 0.04921875 0.03888889 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000117-047",
+      "image_id": "new_000117",
+      "split": "train",
+      "original_rows_1based": [
+        23,
+        24
+      ],
+      "region_xyxy_px": [
+        722,
+        411,
+        927,
+        531
+      ],
+      "image_path": "data/images/train/new_000117.png",
+      "image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+      "original_label_path": "data/labels/train/new_000117.txt",
+      "original_label_sha256": "414856c55df84a3284b0ddfb010b138685c5ced744d3a0e71b589e6cb4205570",
+      "parent_label_path": "data/labels/train/new_000117.txt",
+      "parent_label_sha256": "414856c55df84a3284b0ddfb010b138685c5ced744d3a0e71b589e6cb4205570",
+      "disposition": "correct_and_close",
+      "reason": "Row23 is the broad visible front to the right of the tool; row24 is a separate narrow gray/white front band below its lower seam and above the hand. Both parent boxes extend into the tool, and row24 overlaps the upper face rather than following the visible lower band.",
+      "uncertainty": "The lower band is thin and its hand boundary has2-3px uncertainty. Its full lower corners remain covered.",
+      "details": "Preserve row23 right point902.23,487.24 and all current missing points. Small area does not invalidate row24.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 23,
+          "parent_row": 23,
+          "original_tokens": "0 0.64398047 0.64314583 0.12766406 0.08870833 0.00000000 0.00000000 0 0.70486719 0.67672222 2",
+          "parent_tokens": "0 0.64398047 0.64314583 0.12766406 0.08870833 0.00000000 0.00000000 0 0.70486719 0.67672222 2",
+          "bbox_xyxy_px": [
+            742.59,
+            431.13,
+            906.0,
+            495.0
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              902.23,
+              487.24,
+              2
+            ]
+          ]
+        },
+        {
+          "original_row": 24,
+          "parent_row": 24,
+          "original_tokens": "0 0.63810156 0.68434028 0.10837500 0.04918056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.63810156 0.68434028 0.10837500 0.04918056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            747.41,
+            475.02,
+            886.13,
+            510.43
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 23,
+          "parent_row": 23,
+          "before_tokens": "0 0.64398047 0.64314583 0.12766406 0.08870833 0.00000000 0.00000000 0 0.70486719 0.67672222 2",
+          "original_tokens": "0 0.64398047 0.64314583 0.12766406 0.08870833 0.00000000 0.00000000 0 0.70486719 0.67672222 2",
+          "before_bbox_xyxy_px": [
+            742.59,
+            431.13,
+            906.0,
+            495.0
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              902.23,
+              487.24,
+              2
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            790,
+            431.13,
+            906.0,
+            495.0
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              902.23,
+              487.24,
+              2
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                787,
+                793
+              ]
+            }
+          },
+          "after_tokens": "0 0.66250000 0.64314583 0.09062500 0.08870833 0.00000000 0.00000000 0 0.70486719 0.67672222 2"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 24,
+          "parent_row": 24,
+          "before_tokens": "0 0.63810156 0.68434028 0.10837500 0.04918056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.63810156 0.68434028 0.10837500 0.04918056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            747.41,
+            475.02,
+            886.13,
+            510.43
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            815,
+            486,
+            902,
+            507
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                812,
+                818
+              ],
+              "y1": [
+                484,
+                489
+              ],
+              "x2": [
+                899,
+                905
+              ],
+              "y2": [
+                504,
+                510
+              ]
+            }
+          },
+          "after_tokens": "0 0.67070312 0.68958333 0.06796875 0.02916667 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000124-048",
+      "image_id": "new_000124",
+      "split": "train",
+      "original_rows_1based": [
+        19
+      ],
+      "region_xyxy_px": [
+        670,
+        441,
+        743,
+        496
+      ],
+      "image_path": "data/images/train/new_000124.png",
+      "image_sha256": "66fa37215d19fc95a1c3d055351dff957049e4433645f8293606ecada34314ba",
+      "original_label_path": "data/labels/train/new_000124.txt",
+      "original_label_sha256": "fbcaec3107fed31febd98bf605c9f467ce9670966407543f0c750bc2dbfa5a57",
+      "parent_label_path": "data/labels/train/new_000124.txt",
+      "parent_label_sha256": "fbcaec3107fed31febd98bf605c9f467ce9670966407543f0c750bc2dbfa5a57",
+      "disposition": "add_for_adjudication",
+      "reason": "The known front19 has a visible lower edge above the jaw tips; below it the opening shows two shadowed forward surfaces separated aroundy467-470 and a distinct lower edge around494-496, with rack visible below. This supplies surface and seam evidence for two partial additions rather than inferring filled slots from stacking.",
+      "uncertainty": "Association of the upper shadowed patch with existing row19 versus a new front is the highest-impact uncertainty. Parent must independently verify the two new-instance mapping; both proposed boxes are provisional and neither is human-approved.",
+      "details": "Do not alter row19 or invent corners in this proposal. If parent cannot prove the upper patch is distinct from19, keep the addition(s) held rather than applying both mechanically.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 19,
+          "parent_row": 19,
+          "original_tokens": "0 0.54793750 0.60087500 0.12962500 0.08413889 0.48941406 0.60530556 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54793750 0.60087500 0.12962500 0.08413889 0.48941406 0.60530556 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            618.4,
+            402.34,
+            784.32,
+            462.92
+          ],
+          "points_xyv_px": [
+            [
+              626.45,
+              435.82,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "add_object",
+          "provisional_instance_id": "upper_aperture_front",
+          "original_row": null,
+          "parent_row": null,
+          "before_tokens": null,
+          "after_bbox_xyxy_px": [
+            676,
+            444,
+            736,
+            470
+          ],
+          "after_points_xyv_px": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "after_tokens": "0 0.55156250 0.63472222 0.04687500 0.03611111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "manual_placement_ranges_px": {
+            "x1": [
+              673,
+              679
+            ],
+            "y1": [
+              442,
+              447
+            ],
+            "x2": [
+              733,
+              739
+            ],
+            "y2": [
+              467,
+              473
+            ]
+          },
+          "reason": "First exposed shadowed front below the already labelled lower edge; visible horizontal boundary around467-470.",
+          "identity_requires_independent_adjudication": true
+        },
+        {
+          "operation": "add_object",
+          "provisional_instance_id": "lower_aperture_front",
+          "original_row": null,
+          "parent_row": null,
+          "before_tokens": null,
+          "after_bbox_xyxy_px": [
+            678,
+            468,
+            738,
+            496
+          ],
+          "after_points_xyv_px": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "after_tokens": "0 0.55312500 0.66944444 0.04687500 0.03888889 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "manual_placement_ranges_px": {
+            "x1": [
+              675,
+              681
+            ],
+            "y1": [
+              466,
+              471
+            ],
+            "x2": [
+              735,
+              741
+            ],
+            "y2": [
+              493,
+              498
+            ]
+          },
+          "reason": "Second forward surface down to the straight front/background edge, with rack below.",
+          "identity_requires_independent_adjudication": true
+        }
+      ]
+    },
+    {
+      "case_id": "new_000124-049",
+      "image_id": "new_000124",
+      "split": "train",
+      "original_rows_1based": [
+        39
+      ],
+      "region_xyxy_px": [
+        450,
+        640,
+        485,
+        665
+      ],
+      "image_path": "data/images/train/new_000124.png",
+      "image_sha256": "66fa37215d19fc95a1c3d055351dff957049e4433645f8293606ecada34314ba",
+      "original_label_path": "data/labels/train/new_000124.txt",
+      "original_label_sha256": "fbcaec3107fed31febd98bf605c9f467ce9670966407543f0c750bc2dbfa5a57",
+      "parent_label_path": "data/labels/train/new_000124.txt",
+      "parent_label_sha256": "fbcaec3107fed31febd98bf605c9f467ce9670966407543f0c750bc2dbfa5a57",
+      "disposition": "correct_supported_fields_no_addition",
+      "reason": "The reviewed pale wedge near the thumb is continuous with the retained last front, row39; there is no independently secure extra front seam below it. Its current right bound589.15 lies well inside the thumb; the observed visible extent ends nearx501 at the top of the retained box.",
+      "uncertainty": "A tiny lower wedge beyond the left corner could be lip or continuation rather than another front. No new instance is justified. Parent y bounds preserved due oblique front/roof boundary.",
+      "details": "Keep row39 left point and missing right point; no extra cassette is added at the thumb.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 39,
+          "parent_row": 39,
+          "original_tokens": "0 0.41046484 0.88379861 0.09961719 0.06390278 0.36065625 0.89844444 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.41046484 0.88379861 0.09961719 0.06390278 0.36065625 0.89844444 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            461.64,
+            613.33,
+            589.15,
+            659.34
+          ],
+          "points_xyv_px": [
+            [
+              461.64,
+              646.88,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 39,
+          "parent_row": 39,
+          "before_tokens": "0 0.41046484 0.88379861 0.09961719 0.06390278 0.36065625 0.89844444 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.41046484 0.88379861 0.09961719 0.06390278 0.36065625 0.89844444 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            461.64,
+            613.33,
+            589.15,
+            659.34
+          ],
+          "before_points_xyv_px": [
+            [
+              461.64,
+              646.88,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            461.64,
+            613.33,
+            501,
+            659.34
+          ],
+          "after_points_xyv_px": [
+            [
+              461.64,
+              646.88,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                498,
+                504
+              ]
+            }
+          },
+          "after_tokens": "0 0.37603125 0.88379861 0.03075000 0.06390278 0.36065625 0.89844444 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000127-050",
+      "image_id": "new_000127",
+      "split": "train",
+      "original_rows_1based": [
+        18
+      ],
+      "region_xyxy_px": [
+        672,
+        447,
+        745,
+        525
+      ],
+      "image_path": "data/images/train/new_000127.png",
+      "image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "original_label_path": "data/labels/train/new_000127.txt",
+      "original_label_sha256": "5650bce2219e81d85aaa899c0ebf85787a113f906c890585dc630d8735e62a31",
+      "parent_label_path": "data/labels/train/new_000127.txt",
+      "parent_label_sha256": "5650bce2219e81d85aaa899c0ebf85787a113f906c890585dc630d8735e62a31",
+      "disposition": "add_for_adjudication",
+      "reason": "Below the already labelled front18, the source opening contains a shadowed upper surface bounded aroundy451-497 and a lower pale forward surface ending at a straight edge near523, with rack/hand below. Two separated front-like planes are visible, rather than just a generic no-grid region.",
+      "uncertainty": "The count and ownership of the upper shadowed patch versus the bottom of row18 still require parent adjudication. The lower pale front has stronger direct edge evidence. Do not use neighboring frame counts to resolve it.",
+      "details": "Do not change parent row18 or claim either proposal is certain. Parent may accept the lower front while holding upper ownership if the source warrants that split.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 18,
+          "parent_row": 18,
+          "original_tokens": "0 0.54567578 0.61193056 0.12888281 0.05161111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54567578 0.61193056 0.12888281 0.05161111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            615.98,
+            422.01,
+            780.95,
+            459.17
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "add_object",
+          "provisional_instance_id": "upper_aperture_front",
+          "original_row": null,
+          "parent_row": null,
+          "before_tokens": null,
+          "after_bbox_xyxy_px": [
+            673,
+            450,
+            744,
+            498
+          ],
+          "after_points_xyv_px": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "after_tokens": "0 0.55351562 0.65833333 0.05546875 0.06666667 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "manual_placement_ranges_px": {
+            "x1": [
+              670,
+              676
+            ],
+            "y1": [
+              447,
+              453
+            ],
+            "x2": [
+              741,
+              747
+            ],
+            "y2": [
+              495,
+              501
+            ]
+          },
+          "reason": "Shadowed forward patch below the known white front, with a transition to a separate lower pale band.",
+          "identity_requires_independent_adjudication": true
+        },
+        {
+          "operation": "add_object",
+          "provisional_instance_id": "lower_aperture_front",
+          "original_row": null,
+          "parent_row": null,
+          "before_tokens": null,
+          "after_bbox_xyxy_px": [
+            695,
+            495,
+            728,
+            524
+          ],
+          "after_points_xyv_px": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "after_tokens": "0 0.55585938 0.70763889 0.02578125 0.04027778 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "manual_placement_ranges_px": {
+            "x1": [
+              692,
+              698
+            ],
+            "y1": [
+              492,
+              498
+            ],
+            "x2": [
+              725,
+              731
+            ],
+            "y2": [
+              521,
+              526
+            ]
+          },
+          "reason": "Pale lower forward plane with visible bottom/background edge and both outside corners occluded.",
+          "identity_requires_independent_adjudication": true
+        }
+      ]
+    },
+    {
+      "case_id": "new_000127-051",
+      "image_id": "new_000127",
+      "split": "train",
+      "original_rows_1based": [
+        1,
+        10
+      ],
+      "region_xyxy_px": [
+        367,
+        0,
+        1280,
+        31
+      ],
+      "image_path": "data/images/train/new_000127.png",
+      "image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "original_label_path": "data/labels/train/new_000127.txt",
+      "original_label_sha256": "5650bce2219e81d85aaa899c0ebf85787a113f906c890585dc630d8735e62a31",
+      "parent_label_path": "data/labels/train/new_000127.txt",
+      "parent_label_sha256": "5650bce2219e81d85aaa899c0ebf85787a113f906c890585dc630d8735e62a31",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "At the far right, row10 is the first clipped cassette front of its column and visibly continues from the top to the horizontal boundary near60; row11 is the next front below. The current row10 height10px discards most observed material. Row1 at top left is a separate thin clipped-plane ambiguity.",
+      "uncertainty": "Row1 may be a front sliver versus a roof/lip of row2; no change. For row10 the leftmost boundary near1240 is blurred and both full lower corners remain unavailable.",
+      "details": "No amodal completion: row10 enlargement follows actual visible white front pixels down to its observed lower seam. Keep both endpoints zero.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 1,
+          "parent_row": 1,
+          "original_tokens": "0 0.38781250 0.00731944 0.16992188 0.01463889 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.38781250 0.00731944 0.16992188 0.01463889 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            387.65,
+            -0.0,
+            605.15,
+            10.54
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 10,
+          "parent_row": 10,
+          "original_tokens": "0 0.98581641 0.00698611 0.02836719 0.01397222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.98581641 0.00698611 0.02836719 0.01397222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            1243.69,
+            0.0,
+            1280.0,
+            10.06
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "context_rows_before": [
+        {
+          "original_row": 2,
+          "parent_row": 2,
+          "original_tokens": "0 0.39037500 0.04834722 0.16712500 0.08094444 0.31325000 0.07566667 2 0.46560156 0.08055556 2",
+          "parent_tokens": "0 0.39037500 0.04834722 0.16712500 0.08094444 0.31325000 0.07566667 2 0.46560156 0.08055556 2",
+          "bbox_xyxy_px": [
+            392.72,
+            5.67,
+            606.64,
+            63.95
+          ],
+          "points_xyv_px": [
+            [
+              400.96,
+              54.48,
+              2
+            ],
+            [
+              595.97,
+              58.0,
+              2
+            ]
+          ]
+        },
+        {
+          "original_row": 11,
+          "parent_row": 11,
+          "original_tokens": "0 0.97082031 0.12547222 0.05835938 0.08208333 0.96981250 0.15584722 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.97082031 0.12547222 0.05835938 0.08208333 0.96981250 0.15584722 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            1205.3,
+            60.79,
+            1280.0,
+            119.89
+          ],
+          "points_xyv_px": [
+            [
+              1241.36,
+              112.21,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 10,
+          "parent_row": 10,
+          "before_tokens": "0 0.98581641 0.00698611 0.02836719 0.01397222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.98581641 0.00698611 0.02836719 0.01397222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            1243.69,
+            0.0,
+            1280.0,
+            10.06
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            1240,
+            0.0,
+            1280.0,
+            62
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                1237,
+                1243
+              ],
+              "y2": [
+                59,
+                65
+              ]
+            }
+          },
+          "after_tokens": "0 0.98437500 0.04305556 0.03125000 0.08611111 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000130-052",
+      "image_id": "new_000130",
+      "split": "train",
+      "original_rows_1based": [
+        54,
+        55,
+        56,
+        57
+      ],
+      "region_xyxy_px": [
+        592,
+        416,
+        796,
+        528
+      ],
+      "image_path": "data/images/train/new_000130.png",
+      "image_sha256": "936e0ca813c3a2a8c81c0c56a6a952093ffb4d42827e3d308cd1adfd8bac80c1",
+      "original_label_path": "data/labels/train/new_000130.txt",
+      "original_label_sha256": "18d7bc4d286efcf4e5206359956731f94788fc70234094d14a240d2daf697971",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000130.txt",
+      "parent_label_sha256": "ec6e7e6e9906b5efd16f29ec681b2b0ecc2cfda5e2c4b5224f3ae495cd4f2788",
+      "disposition": "correct_and_add_for_adjudication",
+      "reason": "Rows54-56 are three distinct partial fronts of the central-left column; rows55/56 occupy narrow strips between the jaw and divider. Row57 is the upper visible front of the adjacent column, and a second lower front below its y503-505 seam is currently missing. The current boxes for55-57 include substantial opaque-jaw area.",
+      "uncertainty": "The newly proposed right v2 points for54/55 need particularly careful parent confirmation that the horizontal lower seam meets the physical outer side, not an interior notch. Row56 lower-right junction meets the jaw and stays missing. Added lower front is supported by its separate seam and lower edge.",
+      "details": "All four current positives are retained. Parent can accept supported boxes while rejecting or holding specific point/addition proposals.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 54,
+          "parent_row": 54,
+          "original_tokens": "0 0.50967578 0.62514583 0.06246094 0.03731944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.50967578 0.62514583 0.06246094 0.03731944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            612.41,
+            436.67,
+            692.36,
+            463.54
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 55,
+          "parent_row": 55,
+          "original_tokens": "0 0.51166406 0.65127083 0.06210938 0.02837500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.51166406 0.65127083 0.06210938 0.02837500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            615.18,
+            458.7,
+            694.68,
+            479.13
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 56,
+          "parent_row": 56,
+          "original_tokens": "0 0.51238281 0.67564583 0.06179688 0.02937500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.51238281 0.67564583 0.06179688 0.02937500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            616.3,
+            475.89,
+            695.4,
+            497.04
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 57,
+          "parent_row": 57,
+          "original_tokens": "0 0.57433984 0.68365278 0.06338281 0.04297222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.57433984 0.68365278 0.06338281 0.04297222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            694.59,
+            476.76,
+            775.72,
+            507.7
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 54,
+          "parent_row": 54,
+          "before_tokens": "0 0.50967578 0.62514583 0.06246094 0.03731944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.50967578 0.62514583 0.06246094 0.03731944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            612.41,
+            436.67,
+            692.36,
+            463.54
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            615,
+            438,
+            692,
+            462
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              689,
+              459,
+              2
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2",
+            "right_endpoint"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                612,
+                618
+              ],
+              "y1": [
+                436,
+                440
+              ],
+              "x2": [
+                690,
+                694
+              ],
+              "y2": [
+                460,
+                464
+              ]
+            },
+            "right_endpoint": {
+              "x": [
+                687,
+                691
+              ],
+              "y": [
+                457,
+                461
+              ]
+            }
+          },
+          "point_reasons": {
+            "right": "Candidate observed lower-front seam/outer-side intersection beside the divider; parent must verify seam ownership."
+          },
+          "after_tokens": "0 0.51054687 0.62500000 0.06015625 0.03333333 0.00000000 0.00000000 0 0.53828125 0.63750000 2"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 55,
+          "parent_row": 55,
+          "before_tokens": "0 0.51166406 0.65127083 0.06210938 0.02837500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.51166406 0.65127083 0.06210938 0.02837500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            615.18,
+            458.7,
+            694.68,
+            479.13
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            672,
+            459,
+            695,
+            479
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              692,
+              475,
+              2
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2",
+            "right_endpoint"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                670,
+                675
+              ],
+              "y1": [
+                457,
+                461
+              ],
+              "x2": [
+                693,
+                697
+              ],
+              "y2": [
+                477,
+                481
+              ]
+            },
+            "right_endpoint": {
+              "x": [
+                690,
+                694
+              ],
+              "y": [
+                473,
+                477
+              ]
+            }
+          },
+          "point_reasons": {
+            "right": "Candidate observed lower-front seam/outer-side intersection beside the divider; not an inferred hidden width."
+          },
+          "after_tokens": "0 0.53398437 0.65138889 0.01796875 0.02777778 0.00000000 0.00000000 0 0.54062500 0.65972222 2"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 56,
+          "parent_row": 56,
+          "before_tokens": "0 0.51238281 0.67564583 0.06179688 0.02937500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.51238281 0.67564583 0.06179688 0.02937500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            616.3,
+            475.89,
+            695.4,
+            497.04
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            675,
+            476,
+            695,
+            494
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                672,
+                678
+              ],
+              "y1": [
+                474,
+                478
+              ],
+              "x2": [
+                693,
+                697
+              ],
+              "y2": [
+                492,
+                496
+              ]
+            }
+          },
+          "after_tokens": "0 0.53515625 0.67361111 0.01562500 0.02500000 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 57,
+          "parent_row": 57,
+          "before_tokens": "0 0.57433984 0.68365278 0.06338281 0.04297222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.57433984 0.68365278 0.06338281 0.04297222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            694.59,
+            476.76,
+            775.72,
+            507.7
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            697,
+            478,
+            731,
+            504
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                695,
+                699
+              ],
+              "y1": [
+                476,
+                480
+              ],
+              "x2": [
+                728,
+                734
+              ],
+              "y2": [
+                502,
+                506
+              ]
+            }
+          },
+          "after_tokens": "0 0.55781250 0.68194444 0.02656250 0.03611111 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "add_object",
+          "provisional_instance_id": "lower_right_aperture_front",
+          "original_row": null,
+          "parent_row": null,
+          "before_tokens": null,
+          "after_bbox_xyxy_px": [
+            699,
+            504,
+            726,
+            522
+          ],
+          "after_points_xyv_px": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "after_tokens": "0 0.55664062 0.71250000 0.02109375 0.02500000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "manual_placement_ranges_px": {
+            "x1": [
+              697,
+              701
+            ],
+            "y1": [
+              502,
+              506
+            ],
+            "x2": [
+              723,
+              729
+            ],
+            "y2": [
+              520,
+              524
+            ]
+          },
+          "reason": "Distinct lower white front beneath row57, visible between jaws until its lower edge near520-522; both full-cassette corners occluded.",
+          "identity_requires_independent_adjudication": true
+        }
+      ]
+    },
+    {
+      "case_id": "new_000034-058",
+      "image_id": "new_000034",
+      "split": "train",
+      "original_rows_1based": [
+        43
+      ],
+      "region_xyxy_px": [
+        514,
+        422,
+        677,
+        513
+      ],
+      "image_path": "data/images/train/new_000034.png",
+      "image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "original_label_path": "data/labels/train/new_000034.txt",
+      "original_label_sha256": "c37ae46de7de374770f53ac08463a4e6a6f32f592a30766f62e724a55c598e45",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000034.txt",
+      "parent_label_sha256": "9d554ed60af51c05c916169c48e9c925e969b317009528e3f84a5af00caeb06b",
+      "disposition": "correct_supported_fields",
+      "reason": "Row43 has a real left front and visible left corner. The right side is occluded by the left jaw, whose outer boundary limits the visible front to about x635; the parent x2=656.33 lies inside opaque plastic.",
+      "uncertainty": "Oblique front seams make wholesale y replacement unnecessary here; preserve parent y1/y2. Manual x2 placement range 632-638.",
+      "details": "Retain the left v2 point and missing right point.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 43,
+          "parent_row": 43,
+          "original_tokens": "0 0.46530859 0.64872222 0.09489844 0.06941667 0.42676562 0.67043056 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.46530859 0.64872222 0.09489844 0.06941667 0.42676562 0.67043056 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            534.86,
+            442.09,
+            656.33,
+            492.07
+          ],
+          "points_xyv_px": [
+            [
+              546.26,
+              482.71,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 43,
+          "parent_row": 43,
+          "before_tokens": "0 0.46530859 0.64872222 0.09489844 0.06941667 0.42676562 0.67043056 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.46530859 0.64872222 0.09489844 0.06941667 0.42676562 0.67043056 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            534.86,
+            442.09,
+            656.33,
+            492.07
+          ],
+          "before_points_xyv_px": [
+            [
+              546.26,
+              482.71,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            534.86,
+            442.09,
+            635,
+            492.07
+          ],
+          "after_points_xyv_px": [
+            [
+              546.26,
+              482.71,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                632,
+                638
+              ]
+            }
+          },
+          "after_tokens": "0 0.45697656 0.64872222 0.07823437 0.06941667 0.42676562 0.67043056 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000034-059",
+      "image_id": "new_000034",
+      "split": "train",
+      "original_rows_1based": [
+        44
+      ],
+      "region_xyxy_px": [
+        518,
+        445,
+        679,
+        536
+      ],
+      "image_path": "data/images/train/new_000034.png",
+      "image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "original_label_path": "data/labels/train/new_000034.txt",
+      "original_label_sha256": "c37ae46de7de374770f53ac08463a4e6a6f32f592a30766f62e724a55c598e45",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000034.txt",
+      "parent_label_sha256": "9d554ed60af51c05c916169c48e9c925e969b317009528e3f84a5af00caeb06b",
+      "disposition": "correct_supported_fields",
+      "reason": "Row44 is a distinct partial front ending against the left jaw. The parent right bound extends well inside the jaw; the source supports x2 near623.",
+      "uncertainty": "Keep the parent top/bottom bounds because the oblique lip/front boundary needs a separately supported y decision. x2 uncertainty 620-626.",
+      "details": "Do not delete the strip or restore its hidden right corner.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 44,
+          "parent_row": 44,
+          "original_tokens": "0 0.46761328 0.68131250 0.09407031 0.06895833 0.42809375 0.70598611 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.46761328 0.68131250 0.09407031 0.06895833 0.42809375 0.70598611 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            538.34,
+            465.72,
+            658.75,
+            515.37
+          ],
+          "points_xyv_px": [
+            [
+              547.96,
+              508.31,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 44,
+          "parent_row": 44,
+          "before_tokens": "0 0.46761328 0.68131250 0.09407031 0.06895833 0.42809375 0.70598611 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.46761328 0.68131250 0.09407031 0.06895833 0.42809375 0.70598611 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            538.34,
+            465.72,
+            658.75,
+            515.37
+          ],
+          "before_points_xyv_px": [
+            [
+              547.96,
+              508.31,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            538.34,
+            465.72,
+            623,
+            515.37
+          ],
+          "after_points_xyv_px": [
+            [
+              547.96,
+              508.31,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                620,
+                626
+              ]
+            }
+          },
+          "after_tokens": "0 0.45364844 0.68131250 0.06614062 0.06895833 0.42809375 0.70598611 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000034-060",
+      "image_id": "new_000034",
+      "split": "train",
+      "original_rows_1based": [
+        45
+      ],
+      "region_xyxy_px": [
+        521,
+        468,
+        682,
+        559
+      ],
+      "image_path": "data/images/train/new_000034.png",
+      "image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "original_label_path": "data/labels/train/new_000034.txt",
+      "original_label_sha256": "c37ae46de7de374770f53ac08463a4e6a6f32f592a30766f62e724a55c598e45",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000034.txt",
+      "parent_label_sha256": "9d554ed60af51c05c916169c48e9c925e969b317009528e3f84a5af00caeb06b",
+      "disposition": "correct_supported_fields",
+      "reason": "Row45 is the lowest visible front of this upper left column; source pixels show it ending at the outer jaw edge around x618, rather than x661.14.",
+      "uncertainty": "Parent y bounds retained because the front is oblique. x2 placement range615-621.",
+      "details": "Keep the distinct front and visible left corner.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 45,
+          "parent_row": 45,
+          "original_tokens": "0 0.46988281 0.71336806 0.09326562 0.06848611 0.43165625 0.73601389 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.46988281 0.71336806 0.09326562 0.06848611 0.43165625 0.73601389 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            541.76,
+            488.97,
+            661.14,
+            538.28
+          ],
+          "points_xyv_px": [
+            [
+              552.52,
+              529.93,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 45,
+          "parent_row": 45,
+          "before_tokens": "0 0.46988281 0.71336806 0.09326562 0.06848611 0.43165625 0.73601389 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.46988281 0.71336806 0.09326562 0.06848611 0.43165625 0.73601389 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            541.76,
+            488.97,
+            661.14,
+            538.28
+          ],
+          "before_points_xyv_px": [
+            [
+              552.52,
+              529.93,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            541.76,
+            488.97,
+            618,
+            538.28
+          ],
+          "after_points_xyv_px": [
+            [
+              552.52,
+              529.93,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                615,
+                621
+              ]
+            }
+          },
+          "after_tokens": "0 0.45303125 0.71336806 0.05956250 0.06848611 0.43165625 0.73601389 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000034-061",
+      "image_id": "new_000034",
+      "split": "train",
+      "original_rows_1based": [
+        54
+      ],
+      "region_xyxy_px": [
+        547,
+        607,
+        673,
+        685
+      ],
+      "image_path": "data/images/train/new_000034.png",
+      "image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "original_label_path": "data/labels/train/new_000034.txt",
+      "original_label_sha256": "c37ae46de7de374770f53ac08463a4e6a6f32f592a30766f62e724a55c598e45",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000034.txt",
+      "parent_label_sha256": "9d554ed60af51c05c916169c48e9c925e969b317009528e3f84a5af00caeb06b",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "The lower-row54 front is visible left of the jaw/housing. Its maximum observed right extent is about x627; x653 is opaque tool. The left lower corner remains visible at the parent point.",
+      "uncertainty": "The top of the front merges with a stepped roof/lip around y625-637. Preserve parent y1=627 while explicitly holding that plane boundary; no y reduction based solely on brightness.",
+      "details": "This supported x correction does not claim that the top-plane ambiguity is solved.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 54,
+          "parent_row": 54,
+          "original_tokens": "0 0.47695312 0.89652778 0.06640625 0.05138889 0.44765625 0.91666667 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.47695312 0.89652778 0.06640625 0.05138889 0.44765625 0.91666667 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            568.0,
+            627.0,
+            653.0,
+            664.0
+          ],
+          "points_xyv_px": [
+            [
+              573.0,
+              660.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 54,
+          "parent_row": 54,
+          "before_tokens": "0 0.47695312 0.89652778 0.06640625 0.05138889 0.44765625 0.91666667 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.47695312 0.89652778 0.06640625 0.05138889 0.44765625 0.91666667 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            568.0,
+            627.0,
+            653.0,
+            664.0
+          ],
+          "before_points_xyv_px": [
+            [
+              573.0,
+              660.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            568.0,
+            627.0,
+            627,
+            664.0
+          ],
+          "after_points_xyv_px": [
+            [
+              573.0,
+              660.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                624,
+                630
+              ]
+            }
+          },
+          "after_tokens": "0 0.46679688 0.89652778 0.04609375 0.05138889 0.44765625 0.91666667 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000034-063",
+      "image_id": "new_000034",
+      "split": "train",
+      "original_rows_1based": [
+        15,
+        48,
+        49,
+        50
+      ],
+      "region_xyxy_px": [
+        600,
+        0,
+        789,
+        541
+      ],
+      "image_path": "data/images/train/new_000034.png",
+      "image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "original_label_path": "data/labels/train/new_000034.txt",
+      "original_label_sha256": "c37ae46de7de374770f53ac08463a4e6a6f32f592a30766f62e724a55c598e45",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000034.txt",
+      "parent_label_sha256": "9d554ed60af51c05c916169c48e9c925e969b317009528e3f84a5af00caeb06b",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "The source opening contains three successive small front patches separated by visible horizontal edges, corresponding to retained rows48-50. Their parent boxes span the opaque jaws. Row15 at the image top is a separate unresolved clipped-identity/corner question.",
+      "uncertainty": "A thin top-border fragment in row15 has no securely identifiable lower-front junction; retain it pending independent adjudication. For rows48-50, 2-3 px seam placement uncertainty remains and the final tiny triangle should be checked independently.",
+      "details": "All aperture-row keypoints stay zero. Do not use equal width or adjacent fronts to invent the hidden outer corners. Row15 no change.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 15,
+          "parent_row": 15,
+          "original_tokens": "0 0.54257031 0.01681250 0.11528125 0.03362500 0.49121094 0.00483333 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54257031 0.01681250 0.11528125 0.03362500 0.49121094 0.00483333 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            620.71,
+            0.0,
+            768.27,
+            24.21
+          ],
+          "points_xyv_px": [
+            [
+              628.75,
+              3.48,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 48,
+          "parent_row": 48,
+          "original_tokens": "0 0.54942969 0.62184028 0.08920313 0.06768056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54942969 0.62184028 0.08920313 0.06768056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            646.18,
+            423.36,
+            760.36,
+            472.09
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 49,
+          "parent_row": 49,
+          "original_tokens": "0 0.55104297 0.65423611 0.08847656 0.06722222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.55104297 0.65423611 0.08847656 0.06722222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            648.71,
+            446.85,
+            761.96,
+            495.25
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 50,
+          "parent_row": 50,
+          "original_tokens": "0 0.55296094 0.68800000 0.08842187 0.07075000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.55296094 0.68800000 0.08842187 0.07075000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            651.2,
+            469.89,
+            764.38,
+            520.83
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 48,
+          "parent_row": 48,
+          "before_tokens": "0 0.54942969 0.62184028 0.08920313 0.06768056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.54942969 0.62184028 0.08920313 0.06768056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            646.18,
+            423.36,
+            760.36,
+            472.09
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            681,
+            444,
+            719,
+            473
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                678,
+                684
+              ],
+              "y1": [
+                442,
+                446
+              ],
+              "x2": [
+                716,
+                722
+              ],
+              "y2": [
+                470,
+                475
+              ]
+            }
+          },
+          "after_tokens": "0 0.54687500 0.63680556 0.02968750 0.04027778 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 49,
+          "parent_row": 49,
+          "before_tokens": "0 0.55104297 0.65423611 0.08847656 0.06722222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.55104297 0.65423611 0.08847656 0.06722222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            648.71,
+            446.85,
+            761.96,
+            495.25
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            684,
+            472,
+            720,
+            494
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                681,
+                687
+              ],
+              "y1": [
+                470,
+                474
+              ],
+              "x2": [
+                717,
+                723
+              ],
+              "y2": [
+                491,
+                496
+              ]
+            }
+          },
+          "after_tokens": "0 0.54843750 0.67083333 0.02812500 0.03055556 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 50,
+          "parent_row": 50,
+          "before_tokens": "0 0.55296094 0.68800000 0.08842187 0.07075000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.55296094 0.68800000 0.08842187 0.07075000 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            651.2,
+            469.89,
+            764.38,
+            520.83
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            698,
+            491,
+            713,
+            505
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                695,
+                701
+              ],
+              "y1": [
+                489,
+                493
+              ],
+              "x2": [
+                710,
+                716
+              ],
+              "y2": [
+                502,
+                507
+              ]
+            }
+          },
+          "after_tokens": "0 0.55117187 0.69166667 0.01171875 0.01944444 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000034-066",
+      "image_id": "new_000034",
+      "split": "train",
+      "original_rows_1based": [],
+      "region_xyxy_px": [
+        380,
+        705,
+        575,
+        720
+      ],
+      "image_path": "data/images/train/new_000034.png",
+      "image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "original_label_path": "data/labels/train/new_000034.txt",
+      "original_label_sha256": "c37ae46de7de374770f53ac08463a4e6a6f32f592a30766f62e724a55c598e45",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000034.txt",
+      "parent_label_sha256": "9d554ed60af51c05c916169c48e9c925e969b317009528e3f84a5af00caeb06b",
+      "disposition": "reviewed_no_supported_addition",
+      "reason": "The bottom region shows ribbed top surfaces in the lower rack; their forward white rims approach or pass the frame boundary. No distinct visible vertical front is established within x380-575,y705-720.",
+      "uncertainty": "A very thin boundary strip cannot certify a front; this is a no-addition disposition, not proof that no cassette exists outside the image.",
+      "details": "Do not create an amodal bottom-edge cassette. Existing lower-right partial rows are independent and retained.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000034-070",
+      "image_id": "new_000034",
+      "split": "train",
+      "original_rows_1based": [
+        15,
+        57
+      ],
+      "region_xyxy_px": [
+        557,
+        0,
+        789,
+        720
+      ],
+      "image_path": "data/images/train/new_000034.png",
+      "image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "original_label_path": "data/labels/train/new_000034.txt",
+      "original_label_sha256": "c37ae46de7de374770f53ac08463a4e6a6f32f592a30766f62e724a55c598e45",
+      "parent_label_path": "data/candidates/fixed-geometry-labels-2026-11-14/labels/train/new_000034.txt",
+      "parent_label_sha256": "9d554ed60af51c05c916169c48e9c925e969b317009528e3f84a5af00caeb06b",
+      "disposition": "keep_with_specific_hold",
+      "reason": "Row57 is already a narrow observed left-front strip with accepted x580-593 box and a lower-left junction visible near583,716. Retain that accepted correction and point. Row15 shares the clipped top-border uncertainty in case063.",
+      "uncertainty": "Only row15 remains held; the top few pixels do not establish whether its parent point marks the physical lower-front corner. Row57 no new contradiction found.",
+      "details": "This is not an instruction to revert row57 or to add hidden front width.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 15,
+          "parent_row": 15,
+          "original_tokens": "0 0.54257031 0.01681250 0.11528125 0.03362500 0.49121094 0.00483333 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54257031 0.01681250 0.11528125 0.03362500 0.49121094 0.00483333 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            620.71,
+            0.0,
+            768.27,
+            24.21
+          ],
+          "points_xyv_px": [
+            [
+              628.75,
+              3.48,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 57,
+          "parent_row": 57,
+          "original_tokens": "0 0.47851562 0.98263889 0.05390625 0.03472222 0.45546875 0.99444444 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.45820312 0.98472222 0.01015625 0.03055556 0.45546875 0.99444444 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            580.0,
+            698.0,
+            593.0,
+            720.0
+          ],
+          "points_xyv_px": [
+            [
+              583.0,
+              716.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000044-076",
+      "image_id": "new_000044",
+      "split": "train",
+      "original_rows_1based": [
+        2
+      ],
+      "region_xyxy_px": [
+        583,
+        369,
+        785,
+        454
+      ],
+      "image_path": "data/images/train/new_000044.png",
+      "image_sha256": "819fd1faf67258367c5740662e57d2cf0c50afb6c7f34fd60b9d0f4637e10e85",
+      "original_label_path": "data/labels/train/new_000044.txt",
+      "original_label_sha256": "32f5ceee0dde9f4b1f808428966abf0890a484a69520250d6b50fdfc6f3fd3df",
+      "parent_label_path": "data/labels/train/new_000044.txt",
+      "parent_label_sha256": "32f5ceee0dde9f4b1f808428966abf0890a484a69520250d6b50fdfc6f3fd3df",
+      "disposition": "keep_and_close",
+      "reason": "The right lower-front junction of row2 meets the right jaw tip and is not independently visible. The original contains a clear partial front and left corner, so the existing positive and right missing token are appropriate.",
+      "uncertainty": "The exact hidden right coordinate cannot be measured. This is an observability conclusion, not a claim that the cassette lacks a right corner.",
+      "details": "Keep the parent box and left point; do not restore the right point from cassette width or symmetry.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 2,
+          "parent_row": 2,
+          "original_tokens": "0 0.53437500 0.57111111 0.12656250 0.06055556 0.47265625 0.58750000 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.53437500 0.57111111 0.12656250 0.06055556 0.47265625 0.58750000 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            603.0,
+            389.4,
+            765.0,
+            433.0
+          ],
+          "points_xyv_px": [
+            [
+              605.0,
+              423.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000014-077",
+      "image_id": "new_000014",
+      "split": "train",
+      "original_rows_1based": [
+        21,
+        22
+      ],
+      "region_xyxy_px": [
+        580,
+        431,
+        800,
+        552
+      ],
+      "image_path": "data/images/train/new_000014.png",
+      "image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "original_label_path": "data/labels/train/new_000014.txt",
+      "original_label_sha256": "e173ac8ccd46fc6bf69b6e756815d0dec885737bf6b9e3412c285183db08e9f9",
+      "parent_label_path": "data/labels/train/new_000014.txt",
+      "parent_label_sha256": "e173ac8ccd46fc6bf69b6e756815d0dec885737bf6b9e3412c285183db08e9f9",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "Both retained partial instances occupy shadowed material inside the opening; their parent boxes plainly extend across the opaque jaws. The lower patch ends at a real straight edge near y518, with rack visible below. Hidden full-cassette corners remain missing.",
+      "uncertainty": "The seam assigning the shadowed upper opening to row21 rather than row22 remains blurred; proposed x bounds remove only unequivocal jaw overreach. The two-instance ownership still requires adjudication.",
+      "details": "Retain both positives and all zero visibility tokens; do not delete or manufacture endpoints. The visible edge is y518-520, not the lower parent limit y531.52.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 21,
+          "parent_row": 21,
+          "original_tokens": "0 0.54037109 0.65875694 0.13653906 0.06279167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54037109 0.65875694 0.13653906 0.06279167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            604.29,
+            451.7,
+            779.06,
+            496.91
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 22,
+          "parent_row": 22,
+          "original_tokens": "0 0.53611328 0.70656250 0.13428906 0.06331944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.53611328 0.70656250 0.13428906 0.06331944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            600.28,
+            485.93,
+            772.17,
+            531.52
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 21,
+          "parent_row": 21,
+          "before_tokens": "0 0.54037109 0.65875694 0.13653906 0.06279167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.54037109 0.65875694 0.13653906 0.06279167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            604.29,
+            451.7,
+            779.06,
+            496.91
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            652,
+            451.7,
+            757,
+            496.91
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                649,
+                655
+              ],
+              "x2": [
+                754,
+                760
+              ]
+            }
+          },
+          "after_tokens": "0 0.55039063 0.65875694 0.08203125 0.06279167 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 22,
+          "parent_row": 22,
+          "before_tokens": "0 0.53611328 0.70656250 0.13428906 0.06331944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.53611328 0.70656250 0.13428906 0.06331944 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            600.28,
+            485.93,
+            772.17,
+            531.52
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            669,
+            485.93,
+            746,
+            520
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                666,
+                673
+              ],
+              "x2": [
+                743,
+                749
+              ],
+              "y2": [
+                517,
+                522
+              ]
+            }
+          },
+          "after_tokens": "0 0.55273438 0.69856250 0.06015625 0.04731944 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000003-079",
+      "image_id": "new_000003",
+      "split": "train",
+      "original_rows_1based": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        59,
+        60,
+        61,
+        62
+      ],
+      "region_xyxy_px": [
+        519,
+        455,
+        892,
+        601
+      ],
+      "image_path": "data/images/train/new_000003.png",
+      "image_sha256": "dff9cbf866dccc910c44843e5771d5434cbe4d082682282a0cabfb77dd94b5f9",
+      "original_label_path": "data/labels/train/new_000003.txt",
+      "original_label_sha256": "2796247a56087d452cbf45a17b2ab01170c90c6462de5173261d01647b32eed6",
+      "parent_label_path": "data/labels/train/new_000003.txt",
+      "parent_label_sha256": "2796247a56087d452cbf45a17b2ab01170c90c6462de5173261d01647b32eed6",
+      "disposition": "correct_supported_fields",
+      "reason": "Nine distinct partial fronts remain identifiable from the original seams and rack columns. Existing boxes enter the opaque jaw far beyond the observed front; shrinking only the occluder-side bound is supported independently of cassette size. Do not delete these partial positives or restore their occluded corners.",
+      "uncertainty": "Fine top/bottom extents retain the parent coordinates; blur and thin top lips leave 2-4 px placement uncertainty. No identity split or missing-corner inference is proposed.",
+      "details": "Rows 53-57 are the five separate central fronts, row59 is the left strip next to the left jaw, rows60-61 are the two strips next to the right jaw inner edge, and row62 is the outer right strip above the hand. Every existing visible corner is retained; hidden corner tokens remain zero.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 53,
+          "parent_row": 53,
+          "original_tokens": "0 0.51793750 0.68479167 0.07703125 0.04988889 0.00000000 0.00000000 0 0.55312500 0.69861111 2",
+          "parent_tokens": "0 0.51793750 0.68479167 0.07703125 0.04988889 0.00000000 0.00000000 0 0.55312500 0.69861111 2",
+          "bbox_xyxy_px": [
+            613.66,
+            475.09,
+            712.26,
+            511.01
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              503.0,
+              2
+            ]
+          ]
+        },
+        {
+          "original_row": 54,
+          "parent_row": 54,
+          "original_tokens": "0 0.52869922 0.71838889 0.05232031 0.03416667 0.00000000 0.00000000 0 0.55312500 0.72638889 2",
+          "parent_tokens": "0 0.52869922 0.71838889 0.05232031 0.03416667 0.00000000 0.00000000 0 0.55312500 0.72638889 2",
+          "bbox_xyxy_px": [
+            643.25,
+            504.94,
+            710.22,
+            529.54
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              523.0,
+              2
+            ]
+          ]
+        },
+        {
+          "original_row": 55,
+          "parent_row": 55,
+          "original_tokens": "0 0.53119531 0.74588889 0.04542187 0.03183333 0.00000000 0.00000000 0 0.55312500 0.75277778 2",
+          "parent_tokens": "0 0.53119531 0.74588889 0.04542187 0.03183333 0.00000000 0.00000000 0 0.55312500 0.75277778 2",
+          "bbox_xyxy_px": [
+            650.86,
+            525.58,
+            709.0,
+            548.5
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              542.0,
+              2
+            ]
+          ]
+        },
+        {
+          "original_row": 56,
+          "parent_row": 56,
+          "original_tokens": "0 0.53203906 0.77154167 0.04373438 0.02975000 0.00000000 0.00000000 0 0.55312500 0.77500000 2",
+          "parent_tokens": "0 0.53203906 0.77154167 0.04373438 0.02975000 0.00000000 0.00000000 0 0.55312500 0.77500000 2",
+          "bbox_xyxy_px": [
+            653.02,
+            544.8,
+            709.0,
+            566.22
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              558.0,
+              2
+            ]
+          ]
+        },
+        {
+          "original_row": 57,
+          "parent_row": 57,
+          "original_tokens": "0 0.54122266 0.79413889 0.02536719 0.02544444 0.00000000 0.00000000 0 0.55312500 0.79583333 2",
+          "parent_tokens": "0 0.54122266 0.79413889 0.02536719 0.02544444 0.00000000 0.00000000 0 0.55312500 0.79583333 2",
+          "bbox_xyxy_px": [
+            676.53,
+            562.62,
+            709.0,
+            580.94
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              573.0,
+              2
+            ]
+          ]
+        },
+        {
+          "original_row": 59,
+          "parent_row": 59,
+          "original_tokens": "0 0.45156250 0.77500000 0.06093750 0.04722222 0.42578125 0.78888889 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.45156250 0.77500000 0.06093750 0.04722222 0.42578125 0.78888889 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            539.0,
+            541.0,
+            617.0,
+            575.0
+          ],
+          "points_xyv_px": [
+            [
+              545.0,
+              568.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 60,
+          "parent_row": 60,
+          "original_tokens": "0 0.58906250 0.75625000 0.05937500 0.03472222 0.56328125 0.76666667 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.58906250 0.75625000 0.05937500 0.03472222 0.56328125 0.76666667 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            716.0,
+            532.0,
+            792.0,
+            557.0
+          ],
+          "points_xyv_px": [
+            [
+              721.0,
+              552.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 61,
+          "parent_row": 61,
+          "original_tokens": "0 0.58828125 0.78402778 0.05781250 0.03194444 0.56250000 0.79444444 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.58828125 0.78402778 0.05781250 0.03194444 0.56250000 0.79444444 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            716.0,
+            553.0,
+            790.0,
+            576.0
+          ],
+          "points_xyv_px": [
+            [
+              720.0,
+              572.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 62,
+          "parent_row": 62,
+          "original_tokens": "0 0.65156250 0.78055556 0.05937500 0.04722222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.65156250 0.78055556 0.05937500 0.04722222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            796.0,
+            545.0,
+            872.0,
+            579.0
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 53,
+          "parent_row": 53,
+          "before_tokens": "0 0.51793750 0.68479167 0.07703125 0.04988889 0.00000000 0.00000000 0 0.55312500 0.69861111 2",
+          "original_tokens": "0 0.51793750 0.68479167 0.07703125 0.04988889 0.00000000 0.00000000 0 0.55312500 0.69861111 2",
+          "before_bbox_xyxy_px": [
+            613.66,
+            475.09,
+            712.26,
+            511.01
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              503.0,
+              2
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            646,
+            475.09,
+            712.26,
+            511.01
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              503.0,
+              2
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                644,
+                649
+              ]
+            }
+          },
+          "after_tokens": "0 0.53057031 0.68479167 0.05176562 0.04988889 0.00000000 0.00000000 0 0.55312500 0.69861111 2"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 54,
+          "parent_row": 54,
+          "before_tokens": "0 0.52869922 0.71838889 0.05232031 0.03416667 0.00000000 0.00000000 0 0.55312500 0.72638889 2",
+          "original_tokens": "0 0.52869922 0.71838889 0.05232031 0.03416667 0.00000000 0.00000000 0 0.55312500 0.72638889 2",
+          "before_bbox_xyxy_px": [
+            643.25,
+            504.94,
+            710.22,
+            529.54
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              523.0,
+              2
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            675,
+            504.94,
+            710.22,
+            529.54
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              523.0,
+              2
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                673,
+                678
+              ]
+            }
+          },
+          "after_tokens": "0 0.54110156 0.71838889 0.02751563 0.03416667 0.00000000 0.00000000 0 0.55312500 0.72638889 2"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 55,
+          "parent_row": 55,
+          "before_tokens": "0 0.53119531 0.74588889 0.04542187 0.03183333 0.00000000 0.00000000 0 0.55312500 0.75277778 2",
+          "original_tokens": "0 0.53119531 0.74588889 0.04542187 0.03183333 0.00000000 0.00000000 0 0.55312500 0.75277778 2",
+          "before_bbox_xyxy_px": [
+            650.86,
+            525.58,
+            709.0,
+            548.5
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              542.0,
+              2
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            678,
+            525.58,
+            709.0,
+            548.5
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              542.0,
+              2
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                676,
+                681
+              ]
+            }
+          },
+          "after_tokens": "0 0.54179687 0.74588889 0.02421875 0.03183333 0.00000000 0.00000000 0 0.55312500 0.75277778 2"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 56,
+          "parent_row": 56,
+          "before_tokens": "0 0.53203906 0.77154167 0.04373438 0.02975000 0.00000000 0.00000000 0 0.55312500 0.77500000 2",
+          "original_tokens": "0 0.53203906 0.77154167 0.04373438 0.02975000 0.00000000 0.00000000 0 0.55312500 0.77500000 2",
+          "before_bbox_xyxy_px": [
+            653.02,
+            544.8,
+            709.0,
+            566.22
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              558.0,
+              2
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            680,
+            544.8,
+            709.0,
+            566.22
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              558.0,
+              2
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                678,
+                683
+              ]
+            }
+          },
+          "after_tokens": "0 0.54257813 0.77154167 0.02265625 0.02975000 0.00000000 0.00000000 0 0.55312500 0.77500000 2"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 57,
+          "parent_row": 57,
+          "before_tokens": "0 0.54122266 0.79413889 0.02536719 0.02544444 0.00000000 0.00000000 0 0.55312500 0.79583333 2",
+          "original_tokens": "0 0.54122266 0.79413889 0.02536719 0.02544444 0.00000000 0.00000000 0 0.55312500 0.79583333 2",
+          "before_bbox_xyxy_px": [
+            676.53,
+            562.62,
+            709.0,
+            580.94
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              573.0,
+              2
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            683,
+            562.62,
+            709.0,
+            580.94
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              708.0,
+              573.0,
+              2
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                681,
+                685
+              ]
+            }
+          },
+          "after_tokens": "0 0.54375000 0.79413889 0.02031250 0.02544444 0.00000000 0.00000000 0 0.55312500 0.79583333 2"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 59,
+          "parent_row": 59,
+          "before_tokens": "0 0.45156250 0.77500000 0.06093750 0.04722222 0.42578125 0.78888889 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.45156250 0.77500000 0.06093750 0.04722222 0.42578125 0.78888889 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            539.0,
+            541.0,
+            617.0,
+            575.0
+          ],
+          "before_points_xyv_px": [
+            [
+              545.0,
+              568.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            539.0,
+            541.0,
+            585,
+            575.0
+          ],
+          "after_points_xyv_px": [
+            [
+              545.0,
+              568.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                582,
+                587
+              ]
+            }
+          },
+          "after_tokens": "0 0.43906250 0.77500000 0.03593750 0.04722222 0.42578125 0.78888889 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 60,
+          "parent_row": 60,
+          "before_tokens": "0 0.58906250 0.75625000 0.05937500 0.03472222 0.56328125 0.76666667 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.58906250 0.75625000 0.05937500 0.03472222 0.56328125 0.76666667 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            716.0,
+            532.0,
+            792.0,
+            557.0
+          ],
+          "before_points_xyv_px": [
+            [
+              721.0,
+              552.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            716.0,
+            532.0,
+            746,
+            557.0
+          ],
+          "after_points_xyv_px": [
+            [
+              721.0,
+              552.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                743,
+                748
+              ]
+            }
+          },
+          "after_tokens": "0 0.57109375 0.75625000 0.02343750 0.03472222 0.56328125 0.76666667 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 61,
+          "parent_row": 61,
+          "before_tokens": "0 0.58828125 0.78402778 0.05781250 0.03194444 0.56250000 0.79444444 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.58828125 0.78402778 0.05781250 0.03194444 0.56250000 0.79444444 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            716.0,
+            553.0,
+            790.0,
+            576.0
+          ],
+          "before_points_xyv_px": [
+            [
+              720.0,
+              572.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            716.0,
+            553.0,
+            748,
+            576.0
+          ],
+          "after_points_xyv_px": [
+            [
+              720.0,
+              572.0,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x2": [
+                745,
+                750
+              ]
+            }
+          },
+          "after_tokens": "0 0.57187500 0.78402778 0.02500000 0.03194444 0.56250000 0.79444444 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 62,
+          "parent_row": 62,
+          "before_tokens": "0 0.65156250 0.78055556 0.05937500 0.04722222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.65156250 0.78055556 0.05937500 0.04722222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            796.0,
+            545.0,
+            872.0,
+            579.0
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            841,
+            545.0,
+            872.0,
+            579.0
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                838,
+                844
+              ]
+            }
+          },
+          "after_tokens": "0 0.66914063 0.78055556 0.02421875 0.04722222 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000026-087",
+      "image_id": "new_000026",
+      "split": "train",
+      "original_rows_1based": [
+        43,
+        49,
+        50,
+        51,
+        53
+      ],
+      "region_xyxy_px": [
+        579,
+        412,
+        723,
+        548
+      ],
+      "image_path": "data/images/train/new_000026.png",
+      "image_sha256": "304d648d7382d01b3326039c38ebcc92bfa0341aa2b55be7c5e32aea0cce8179",
+      "original_label_path": "data/labels/train/new_000026.txt",
+      "original_label_sha256": "66f0911d42461834fa9c5a3a15f3fd737659eefdee828b12c12c610e7f11a90f",
+      "parent_label_path": "data/labels/train/new_000026.txt",
+      "parent_label_sha256": "66f0911d42461834fa9c5a3a15f3fd737659eefdee828b12c12c610e7f11a90f",
+      "disposition": "correct_supported_fields_with_hold",
+      "reason": "Five successive left front strips and their horizontal separating seams are visible. Rows49 and50 also have white pieces immediately left of the central rack divider on the other side of the jaw; a single box may span the jaw to include disconnected portions of the same front. Several parent y1 values start halfway down the visible strip, and row53 extends deeply through an opaque jaw.",
+      "uncertainty": "The tiny right-side patch assigned to row50 has 3-5 px ownership uncertainty near the gripper tooth. Parent reviewer should specifically adjudicate x2=692 for row50; left-strip top expansions and row53 right reduction are independently supported.",
+      "details": "Preserve all five lower-left points and missing right points. Equal cassette dimensions are not being used to place a hidden right endpoint.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 43,
+          "parent_row": 43,
+          "original_tokens": "0 0.50454688 0.61963889 0.07206250 0.03811111 0.47323437 0.62615278 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.50454688 0.61963889 0.07206250 0.03811111 0.47323437 0.62615278 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            599.7,
+            432.42,
+            691.94,
+            459.86
+          ],
+          "points_xyv_px": [
+            [
+              605.74,
+              450.83,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 49,
+          "parent_row": 49,
+          "original_tokens": "0 0.48354688 0.65436111 0.02548438 0.01541667 0.47297656 0.65404167 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.48354688 0.65436111 0.02548438 0.01541667 0.47297656 0.65404167 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            602.63,
+            465.59,
+            635.25,
+            476.69
+          ],
+          "points_xyv_px": [
+            [
+              605.41,
+              470.91,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 50,
+          "parent_row": 50,
+          "original_tokens": "0 0.48255469 0.68022222 0.02421875 0.01252778 0.47297656 0.67909722 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.48255469 0.68022222 0.02421875 0.01252778 0.47297656 0.67909722 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            602.17,
+            485.25,
+            633.17,
+            494.27
+          ],
+          "points_xyv_px": [
+            [
+              605.41,
+              488.95,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 51,
+          "parent_row": 51,
+          "original_tokens": "0 0.47830859 0.70158333 0.01644531 0.01413889 0.47243750 0.70126389 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.47830859 0.70158333 0.01644531 0.01413889 0.47243750 0.70126389 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            601.71,
+            500.05,
+            622.76,
+            510.23
+          ],
+          "points_xyv_px": [
+            [
+              604.72,
+              504.91,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 53,
+          "parent_row": 53,
+          "original_tokens": "0 0.50974219 0.72730556 0.07770313 0.01197222 0.47321875 0.72593056 2 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.50974219 0.72730556 0.07770313 0.01197222 0.47321875 0.72593056 2 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            602.74,
+            519.35,
+            702.2,
+            527.97
+          ],
+          "points_xyv_px": [
+            [
+              605.72,
+              522.67,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 43,
+          "parent_row": 43,
+          "before_tokens": "0 0.50454688 0.61963889 0.07206250 0.03811111 0.47323437 0.62615278 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.50454688 0.61963889 0.07206250 0.03811111 0.47323437 0.62615278 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            599.7,
+            432.42,
+            691.94,
+            459.86
+          ],
+          "before_points_xyv_px": [
+            [
+              605.74,
+              450.83,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            599.7,
+            432.42,
+            691.94,
+            454
+          ],
+          "after_points_xyv_px": [
+            [
+              605.74,
+              450.83,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "y2": [
+                452,
+                456
+              ]
+            }
+          },
+          "after_tokens": "0 0.50454688 0.61556944 0.07206250 0.02997222 0.47323437 0.62615278 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 49,
+          "parent_row": 49,
+          "before_tokens": "0 0.48354688 0.65436111 0.02548438 0.01541667 0.47297656 0.65404167 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.48354688 0.65436111 0.02548438 0.01541667 0.47297656 0.65404167 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            602.63,
+            465.59,
+            635.25,
+            476.69
+          ],
+          "before_points_xyv_px": [
+            [
+              605.41,
+              470.91,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            602.63,
+            453,
+            692,
+            473
+          ],
+          "after_points_xyv_px": [
+            [
+              605.41,
+              470.91,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "y1": [
+                451,
+                455
+              ],
+              "x2": [
+                690,
+                694
+              ],
+              "y2": [
+                471,
+                475
+              ]
+            }
+          },
+          "after_tokens": "0 0.50571484 0.64305556 0.06982031 0.02777778 0.47297656 0.65404167 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 50,
+          "parent_row": 50,
+          "before_tokens": "0 0.48255469 0.68022222 0.02421875 0.01252778 0.47297656 0.67909722 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.48255469 0.68022222 0.02421875 0.01252778 0.47297656 0.67909722 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            602.17,
+            485.25,
+            633.17,
+            494.27
+          ],
+          "before_points_xyv_px": [
+            [
+              605.41,
+              488.95,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            602.17,
+            473,
+            692,
+            492
+          ],
+          "after_points_xyv_px": [
+            [
+              605.41,
+              488.95,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.y1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "y1": [
+                471,
+                475
+              ],
+              "x2": [
+                689,
+                694
+              ],
+              "y2": [
+                490,
+                494
+              ]
+            }
+          },
+          "after_tokens": "0 0.50553516 0.67013889 0.07017969 0.02638889 0.47297656 0.67909722 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 51,
+          "parent_row": 51,
+          "before_tokens": "0 0.47830859 0.70158333 0.01644531 0.01413889 0.47243750 0.70126389 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.47830859 0.70158333 0.01644531 0.01413889 0.47243750 0.70126389 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            601.71,
+            500.05,
+            622.76,
+            510.23
+          ],
+          "before_points_xyv_px": [
+            [
+              604.72,
+              504.91,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            601.71,
+            492,
+            614,
+            510.23
+          ],
+          "after_points_xyv_px": [
+            [
+              604.72,
+              504.91,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.y1",
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "y1": [
+                490,
+                494
+              ],
+              "x2": [
+                612,
+                617
+              ]
+            }
+          },
+          "after_tokens": "0 0.47488672 0.69599306 0.00960156 0.02531944 0.47243750 0.70126389 2 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 53,
+          "parent_row": 53,
+          "before_tokens": "0 0.50974219 0.72730556 0.07770313 0.01197222 0.47321875 0.72593056 2 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.50974219 0.72730556 0.07770313 0.01197222 0.47321875 0.72593056 2 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            602.74,
+            519.35,
+            702.2,
+            527.97
+          ],
+          "before_points_xyv_px": [
+            [
+              605.72,
+              522.67,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            602.74,
+            510,
+            612,
+            527.97
+          ],
+          "after_points_xyv_px": [
+            [
+              605.72,
+              522.67,
+              2
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.y1",
+            "bbox.x2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "y1": [
+                508,
+                512
+              ],
+              "x2": [
+                610,
+                614
+              ]
+            }
+          },
+          "after_tokens": "0 0.47450781 0.72081250 0.00723437 0.02495833 0.47321875 0.72593056 2 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000028-088",
+      "image_id": "new_000028",
+      "split": "train",
+      "original_rows_1based": [],
+      "region_xyxy_px": [
+        701,
+        540,
+        715,
+        552
+      ],
+      "image_path": "data/images/train/new_000028.png",
+      "image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+      "original_label_path": "data/labels/train/new_000028.txt",
+      "original_label_sha256": "253065321fc436715da21174eb0f2c427de2aea21e81f5293571f13fbee1338d",
+      "parent_label_path": "data/labels/train/new_000028.txt",
+      "parent_label_sha256": "253065321fc436715da21174eb0f2c427de2aea21e81f5293571f13fbee1338d",
+      "disposition": "hold_possible_addition",
+      "reason": "The lower gap exposes a ribbed roof and a very narrow pale leading edge around x703-713,y544-551. A vertical lower-front surface cannot be distinguished securely from the roof lip at source resolution.",
+      "uncertainty": "Whether the 5-8 px band is a separate visible front, rather than the leading rim/top of a cassette. No supported two-dimensional front box or physical lower corners can be assigned.",
+      "details": "No addition. The original aperture above this strip visibly contains rack, so a hidden-slot or stacking rule cannot resolve the tiny lower fragment.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000035-089",
+      "image_id": "new_000035",
+      "split": "train",
+      "original_rows_1based": [],
+      "region_xyxy_px": [
+        708,
+        548,
+        718,
+        589
+      ],
+      "image_path": "data/images/train/new_000035.png",
+      "image_sha256": "bb929ec7cfd3e62de30a5f4d3c03d1d6aef60a48b45146e87055955ec8574ef2",
+      "original_label_path": "data/labels/train/new_000035.txt",
+      "original_label_sha256": "893474cad8423ca1f66131880af494fcc12c2f9aea7d90a33df3b02b60f8d496",
+      "parent_label_path": "data/labels/train/new_000035.txt",
+      "parent_label_sha256": "893474cad8423ca1f66131880af494fcc12c2f9aea7d90a33df3b02b60f8d496",
+      "disposition": "hold_possible_addition",
+      "reason": "A narrow pale sliver is visible at approximately x709-716,y555-588 below the opening, with a darker boundary beneath; its association with a cassette front rather than an exposed tool/rim plane is not secure at source resolution.",
+      "uncertainty": "Material and plane identity of the sliver; if confirmed as target its observed extent would be small and both full-cassette lower corners unavailable. Do not use that hypothetical extent as an accepted label.",
+      "details": "No addition; keep this as a specific image question rather than treating every filled-looking gap as a positive.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000032-099",
+      "image_id": "new_000032",
+      "split": "train",
+      "original_rows_1based": [
+        46,
+        47
+      ],
+      "region_xyxy_px": [
+        636,
+        406,
+        766,
+        492
+      ],
+      "image_path": "data/images/train/new_000032.png",
+      "image_sha256": "c04d97b09130d67712a2f6f166b2e41725a661a241e13a1fb9f4870229c49d70",
+      "original_label_path": "data/labels/train/new_000032.txt",
+      "original_label_sha256": "1b21102a050c8e6f0a889086b5ff2b0f597abed2067882cccfcf6e232ad2dd6c",
+      "parent_label_path": "data/labels/train/new_000032.txt",
+      "parent_label_sha256": "1b21102a050c8e6f0a889086b5ff2b0f597abed2067882cccfcf6e232ad2dd6c",
+      "disposition": "correct_and_close",
+      "reason": "Two separate fronts are visible: row46 has the broad front above the jaw tips, and row47 has the small white trapezoid between them, ending at y462-463. Rack/background starts below that edge. The current row47 rectangle mostly includes opaque jaws, while row46 bottom overlaps its neighbor.",
+      "uncertainty": "Approximately 2 px blur on front seams and aperture sides. Both full-cassette lower corners remain occluded for each row.",
+      "details": "Retain both positives with both points zero. Distinct front material and the lower edge support these changes without an amodal geometry estimate.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 46,
+          "parent_row": 46,
+          "original_tokens": "0 0.54803906 0.61068750 0.06925000 0.03779167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54803906 0.61068750 0.06925000 0.03779167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            657.17,
+            426.09,
+            745.81,
+            453.3
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        },
+        {
+          "original_row": 47,
+          "parent_row": 47,
+          "original_tokens": "0 0.54730469 0.63574306 0.06878125 0.03740278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54730469 0.63574306 0.06878125 0.03740278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            656.53,
+            444.27,
+            744.57,
+            471.2
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": [
+        {
+          "operation": "refine_object",
+          "original_row": 46,
+          "parent_row": 46,
+          "before_tokens": "0 0.54803906 0.61068750 0.06925000 0.03779167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.54803906 0.61068750 0.06925000 0.03779167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            657.17,
+            426.09,
+            745.81,
+            453.3
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            657.17,
+            426.09,
+            745.81,
+            445
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "y2": [
+                443,
+                447
+              ]
+            }
+          },
+          "after_tokens": "0 0.54803906 0.60492361 0.06925000 0.02626389 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        },
+        {
+          "operation": "refine_object",
+          "original_row": 47,
+          "parent_row": 47,
+          "before_tokens": "0 0.54730469 0.63574306 0.06878125 0.03740278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "original_tokens": "0 0.54730469 0.63574306 0.06878125 0.03740278 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "before_bbox_xyxy_px": [
+            656.53,
+            444.27,
+            744.57,
+            471.2
+          ],
+          "before_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "after_bbox_xyxy_px": [
+            683,
+            444.27,
+            719,
+            463
+          ],
+          "after_points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ],
+          "fields_changed": [
+            "bbox.x1",
+            "bbox.x2",
+            "bbox.y2"
+          ],
+          "manual_placement_ranges_px": {
+            "bbox": {
+              "x1": [
+                681,
+                686
+              ],
+              "x2": [
+                716,
+                722
+              ],
+              "y2": [
+                461,
+                465
+              ]
+            }
+          },
+          "after_tokens": "0 0.54765625 0.63004861 0.02812500 0.02601389 0.00000000 0.00000000 0 0.00000000 0.00000000 0"
+        }
+      ]
+    },
+    {
+      "case_id": "new_000041-102",
+      "image_id": "new_000041",
+      "split": "train",
+      "original_rows_1based": [
+        9
+      ],
+      "region_xyxy_px": [
+        596,
+        399,
+        804,
+        476
+      ],
+      "image_path": "data/images/train/new_000041.png",
+      "image_sha256": "4c0313f01daa3bd736f3acdf5b874847c6e46c05ec90dbb039b47416c7913b65",
+      "original_label_path": "data/labels/train/new_000041.txt",
+      "original_label_sha256": "96639042f00f9ad89b4e8afaee2802b2e839e540e05104a6a657f4719eaf8e82",
+      "parent_label_path": "data/labels/train/new_000041.txt",
+      "parent_label_sha256": "96639042f00f9ad89b4e8afaee2802b2e839e540e05104a6a657f4719eaf8e82",
+      "disposition": "hold_identity_and_extent",
+      "reason": "The left/front upper boundary is visible above the jaw, while the aperture below contains very shadowed gray/brown material with an internal horizontal transition. The source does not securely distinguish a complete extra front from lip/tool/background planes.",
+      "uncertainty": "Whether the aperture belongs to retained row9, and how far its observed front continues below the parent box. Missing endpoints are correct pending proof of an actual outer junction.",
+      "details": "Retain row9, with both points missing. Do not infer cassette identity merely from the absence of obvious grid or from stacking.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [
+        {
+          "original_row": 9,
+          "parent_row": 9,
+          "original_tokens": "0 0.54687500 0.60750000 0.13125000 0.04888889 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "parent_tokens": "0 0.54687500 0.60750000 0.13125000 0.04888889 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "bbox_xyxy_px": [
+            616.0,
+            419.8,
+            784.0,
+            455.0
+          ],
+          "points_xyv_px": [
+            [
+              0.0,
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0.0,
+              0
+            ]
+          ]
+        }
+      ],
+      "proposed_operations": []
+    },
+    {
+      "case_id": "new_000041-103",
+      "image_id": "new_000041",
+      "split": "train",
+      "original_rows_1based": [],
+      "region_xyxy_px": [
+        145,
+        0,
+        1280,
+        120
+      ],
+      "image_path": "data/images/train/new_000041.png",
+      "image_sha256": "4c0313f01daa3bd736f3acdf5b874847c6e46c05ec90dbb039b47416c7913b65",
+      "original_label_path": "data/labels/train/new_000041.txt",
+      "original_label_sha256": "96639042f00f9ad89b4e8afaee2802b2e839e540e05104a6a657f4719eaf8e82",
+      "parent_label_path": "data/labels/train/new_000041.txt",
+      "parent_label_sha256": "96639042f00f9ad89b4e8afaee2802b2e839e540e05104a6a657f4719eaf8e82",
+      "disposition": "reviewed_no_supported_addition",
+      "reason": "The top-border region primarily shows the horizontal rack roof, steel posts and cropped pale surfaces behind the rack. No isolated, confidently target-classified front face can be assigned as a new instance.",
+      "uncertainty": "Pale far/top surfaces do not by themselves identify a lower-front plane. No claim about unseen objects beyond the image.",
+      "details": "No additional labels or inferred endpoint positions.",
+      "physical_review_is_human_approval": false,
+      "apply_without_parent_adjudication": false,
+      "source_review_sequence": [
+        "original full image context",
+        "source pixel crop without label overlay",
+        "effective parent labels and row identities",
+        "proposed operations"
+      ],
+      "rows_before": [],
+      "proposed_operations": []
+    }
+  ],
+  "artifact_normalization": "Temporary renderer paths omitted or identified as temporary artifacts. Full source PNGs, frozen hashes, exact original/parent tokens and per-operation pixels remain reproducible evidence; durable selected crops are in evidence-index.json. Proposal snapshots are not acceptance records."
+}

@@ -1,0 +1,81 @@
+{
+  "status": "independent_reviewer_proposal_requires_root_adjudication",
+  "reviewer": "/root/fixed_review_030",
+  "image_id": "new_000006",
+  "source_image_sha256": "666bdac6bc39d2192ef430a28274ed2a042896cddee5b64e084f6fca2b5ab79a",
+  "source_label_sha256": "ad83726338174af215c15737268e9c4e118320100f7c2a38ca9652f268b7267b",
+  "sequence": [
+    "Reopened full original PNG",
+    "Raw nearest-neighbor thumb crop x445:595 y500:645",
+    "New original-coordinate ruler",
+    "Read source rows53/54/55/59",
+    "Proposed partial observed-extent correction; root precise extents not disclosed"
+  ],
+  "settled_user_facts": [
+    "A/source59 and B/source53 are two different successive cassettes; this is not reopened.",
+    "Cassettes have equal fixed dimensions, no sliding or tilt, and equal rack widths."
+  ],
+  "interpretation": "Fixed geometry supports successive physical ownership and an expected seam direction, but the weak A/B seam is not converted into an exact observed curve. All corner tokens remain untouched.",
+  "decisions": [
+    {
+      "original_row": 53,
+      "source_row_text": "0 0.40117188 0.78263889 0.08046875 0.06250000 0.36328125 0.80555556 2 0.00000000 0.00000000 0",
+      "source_bbox_xyxy_px": [
+        462.00000639999996,
+        541.0000008,
+        565.0000064,
+        586.0000008
+      ],
+      "proposed_bbox_xyxy_px": [
+        462.00000639999996,
+        541.0000008,
+        522,
+        586.0000008
+      ],
+      "proposal": "replace_bbox_single_edge_only",
+      "changed_edge": "right",
+      "before_px": 565.0000064,
+      "after_px": 522,
+      "manual_outer_material_envelope_range_px": [
+        519,
+        523
+      ],
+      "range_meaning": "Approximate rightmost relevant pale front/lip material immediately above the thumb, NOT a calibrated interval or a fully adjudicated B-only tight boundary. Roof material farther right at y541\u2013550 is not B front.",
+      "reason": "The inherited right x565 includes a large hand region. Even retaining a conservative envelope for the uncertain A/B division, B has no observed front material out to x565. Cap at x522 while leaving the other source bounds unchanged. A tighter B-only x499\u2013506 would depend on deciding the weak oblique seam, so it is not emitted.",
+      "remaining_fields": [
+        "bbox.left",
+        "bbox.top",
+        "bbox.bottom",
+        "bbox.right.tightness_after_conservative_cap"
+      ],
+      "remaining_reason": "The top still spans the roof/A region; exact A/B seam and complete B-only observed enclosure remain unresolved. This partial correction must not be recorded as a complete box certification.",
+      "endpoint_tokens_unchanged": true
+    },
+    {
+      "original_row": 59,
+      "source_row_text": "0 0.36894922 0.77983333 0.01632031 0.02302778 0.36648438 0.77800000 2 0.00000000 0.00000000 0",
+      "source_bbox_xyxy_px": [
+        461.81000320000004,
+        553.1899968,
+        482.70000000000005,
+        569.7699984
+      ],
+      "proposal": "keep_numeric_tokens_pending_boundary_adjudication",
+      "physical_identity": "User-confirmed separate upper cassette; keep instance.",
+      "reason": "The small source box does not fully describe the pale continuation around the upper front, but ownership between vertical front, projecting lip and the oblique A/B seam remains insufficiently precise to assign its complete bounds. Do not blindly expand it using equal manufactured width.",
+      "remaining_fields": [
+        "bbox.left",
+        "bbox.top",
+        "bbox.right",
+        "bbox.bottom"
+      ],
+      "endpoint_tokens_unchanged": true
+    }
+  ],
+  "not_claimed": [
+    "Amodal/full hidden box",
+    "New endpoint truth from the rack",
+    "Complete front B box certification",
+    "Human approval of exact numeric replacement"
+  ]
+}

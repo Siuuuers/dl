@@ -1,0 +1,666 @@
+{
+  "schema_version": 1,
+  "kind": "PR35-label-training-provenance-audit",
+  "created_at_utc": "2026-11-14T08:22:38.560496+00:00",
+  "scope": "Read-only artifact, receipt and label-byte audit. No model loading, training, inference, or fresh visual adjudication.",
+  "repository": "/workspace/scratch/aa0875036021/dl-review",
+  "local_revision": "be402f48f6b98bafdcac446fedea4bcd08ec7bdc",
+  "archive": {
+    "path": "/workspace/scratch/a2905ee84412/pr58-work/pr35/baomai-reviewed-annotations-seed46-results.zip",
+    "size_bytes": 39776456,
+    "sha256": "df53683ccf6f266a605b2844f42a98e808f75686cfab09f14d680c9d061e8a91",
+    "crc_ok": true,
+    "member_count": 13,
+    "payload_hashes_verified": 12,
+    "published_url": "https://github.com/Siuuuers/dl/blob/8e8bb99cabcb44ed0ec0acd14db911aa44013fd8/results/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip",
+    "git_binding": {
+      "revision": "8e8bb99cabcb44ed0ec0acd14db911aa44013fd8",
+      "path": "results/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip",
+      "checked": true,
+      "method": "Actual ZIP bytes reproduce the Git blob object ID in the immutable PR35 commit tree; no ZIP redownload.",
+      "committed_blob_oid": "a8f1307100977bd3b3f3ddd03f63ebcdd287b357",
+      "actual_archive_git_blob_oid": "a8f1307100977bd3b3f3ddd03f63ebcdd287b357",
+      "git_tree_record": "100644 blob a8f1307100977bd3b3f3ddd03f63ebcdd287b357\tresults/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip"
+    }
+  },
+  "selected_checkpoint": {
+    "arm": "candidate",
+    "recipe_id": "reviewed-annotations-seed46-v1",
+    "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+    "checkpoint": {
+      "path": "fit/weights/last.pt",
+      "sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+      "size_bytes": 21704814
+    },
+    "checkpoint_manifest_sha256": "c5f07c4445a7b33a679fd4fc896aaf9643d81b4f72d8ca8e4e7179cb0bc691e8",
+    "receipt_sha256": "da9e4c9614ac0fd198fcc3124745de855047dd8cd78a0d84344692b73bc3e49d",
+    "staging_manifest_sha256": "12f6cf212600e1e2a27fb1d434b34c490f77a290fe5cb78d26b1442423d11616",
+    "epochs": 30,
+    "seed": 46,
+    "checkpoint_selection": "final_epoch",
+    "completed_epochs": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "images_processed": 4110,
+    "optimizer_steps": 78,
+    "batches_completed": 1050,
+    "csv_epoch_rows": 30,
+    "loader_verification": [
+      {
+        "split": "train",
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "batches": 35,
+        "batch_size": 4
+      },
+      {
+        "split": "val",
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "batches": 3,
+        "batch_size": 8
+      }
+    ],
+    "inputs_reverified_after_worker": true,
+    "source_revision": "23d7db97ca626f5591dbd26e699c0f23d318ee73",
+    "source_files": [
+      {
+        "path": "scripts/train_pose_comparison.py",
+        "sha256": "d4ab5031029c150039843383d0d42d0a72a4062b97212be5633dd39993309abe",
+        "historical_git_bytes_match": true
+      },
+      {
+        "path": "scripts/pose_checkpoint.py",
+        "sha256": "8c92a452f632aec92bfd51bc8fbf9fc745a09978d840cdb294af0a37dea8696f",
+        "historical_git_bytes_match": true
+      },
+      {
+        "path": "scripts/stage_pose_training.py",
+        "sha256": "e28a4f1b705086e4461876df97627d57111932a7455e20ed116d35b4f4d38eae",
+        "historical_git_bytes_match": true
+      },
+      {
+        "path": "scripts/verify_pose_candidate.py",
+        "sha256": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+        "historical_git_bytes_match": true
+      },
+      {
+        "path": "scripts/verify_pose_box_candidate.py",
+        "sha256": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+        "historical_git_bytes_match": true
+      },
+      {
+        "path": "scripts/verify_pose_annotation_candidate.py",
+        "sha256": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+        "historical_git_bytes_match": true
+      },
+      {
+        "path": "scripts/evaluate_pose.py",
+        "sha256": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+        "historical_git_bytes_match": true
+      },
+      {
+        "path": "scripts/pose_scoring.py",
+        "sha256": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+        "historical_git_bytes_match": true
+      }
+    ],
+    "recorded_device": "NVIDIA A100-SXM4-40GB",
+    "hardware_independently_attested": false
+  },
+  "packaged_default": {
+    "path": "weights/cassette_lower_epoch173.pt",
+    "sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "size_bytes": 106838542,
+    "epoch": 173,
+    "bytes_verified": true,
+    "relationship": "Distinct earlier checkpoint; the PR35 receipt records it as initialization for both arms. Generic predict_pose_folder default still selects it without --checkpoint-manifest.",
+    "runtime_source": "scripts/predict_pose_folder.py",
+    "runtime_source_sha256": "239c3b1dd7f5fefc46b8b102277d86aec53d7e92dff99b890eaccfd74adfdefb",
+    "generic_confidence_default": 0.25,
+    "selected_review_workflow_confidence": 0.13,
+    "original_epoch173_training_rerun_or_173_epoch_receipt_audited": false
+  },
+  "dataset": {
+    "frozen_manifest_path": "data/manifest.json",
+    "frozen_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "overlay_manifest_path": "data/candidates/annotations-2026-11-10/manifest.json",
+    "overlay_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+    "historical_policy_sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+    "historical_policy_git_bytes_verified": true,
+    "changed_train_label_ids": [
+      "new_000065",
+      "new_000067",
+      "new_000068",
+      "new_000072",
+      "new_000097",
+      "new_000101",
+      "new_000102",
+      "new_000103"
+    ],
+    "counts": {
+      "reference": {
+        "train": {
+          "images": 137,
+          "objects": 3772,
+          "visible_endpoints": 6839,
+          "missing_endpoints": 705,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "candidate": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "unique_label_bytes_verified": 165,
+    "effective_labels_verified_per_arm": 157,
+    "validation_labels_identical": true,
+    "validation_images_identical": true,
+    "actual_original_pngs_freshly_hashed": 157,
+    "image_inventory_hashes_match_frozen_manifest": 157,
+    "data_yaml": {
+      "sha256": "0ed7638ff91a427aa2697f2224aba15ec3a43dfeb2f13cf7e77f9e6b4ab939de",
+      "mode": "Reconstructed bytes match recorded hash; original staged YAML is not a ZIP member."
+    },
+    "physical_policy_certification": {
+      "visually_certified": false,
+      "scope": "Mechanical schema/geometry and proposal provenance only; no new image adjudication."
+    }
+  },
+  "new_000038": {
+    "label_sha256": "779961aa5d4fd688831c881c166467802fcaa508954f5184c17ae75f3dd2137b",
+    "rows": 15,
+    "image_sha256": "7bc1703c1ab6fa55d0e23517f2993759247fae35849f68e87f19cf4521c5adc1",
+    "original_label_byte_identical_in_selected_training": true,
+    "no_selected_overlay_change": true,
+    "no_PR63_remaining_overlay_change": true,
+    "source_row1_text": "0 0.43255078 0.86545833 0.10036719 0.04130556 0.38236719 0.84480556 2 0.00000000 0.00000000 0",
+    "source_row1_geometry": {
+      "bbox_xyxy_px": [
+        489.4299968,
+        608.259996,
+        617.9000000000001,
+        637.9999992
+      ],
+      "endpoints_xyv_px": [
+        [
+          489.43000320000004,
+          608.2600031999999,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ]
+    },
+    "training_provenance_conclusion": "The selected PR35 candidate staging inventory records this exact complete 15-row source label file, including row1; no two extra rows for the thumb-adjacent stack were added by its eight-file overlay.",
+    "visual_conclusion_source": "results/review/target-clarification-20261114/resolution.json",
+    "visual_conclusion_source_sha256": "9186390acdd926390851cf314c795612feca50065167b6f0f33890e4ca3fbd22",
+    "visual_conclusion": "Published corrected review identifies three thumb-adjacent cassette fronts where only source row1 describes the region; two local instances are absent or merged and row1 box/point ownership is inconsistent.",
+    "visual_scope": "This audit verifies the review is attached to the same image/label hashes. It does not independently re-adjudicate those pixels or certify exact repair coordinates. The separate bottom-left frame-clipped front is not counted among these two instances.",
+    "exact_new_labels_ready": false
+  },
+  "later_accepted_corrections_absent_from_training": [
+    {
+      "image_id": "new_000029",
+      "trained_label_sha256": "9a66f0b5a6a7001c540a16604f9a88e595967c2902920e83c32a716d907d44f9",
+      "later_label_sha256": "747126a566c76b62df3ffb36a9b98aab0505510818e7d9ec9c986114fb3ff554",
+      "trained_rows": 42,
+      "later_rows": 46,
+      "correction_absent_from_pr35_training": true,
+      "operations": [
+        {
+          "kind": "append",
+          "candidate_row": 43,
+          "after": {
+            "bbox_xyxy_px": [
+              683.0,
+              470.00000000016,
+              726.0000000000001,
+              499.00000000032
+            ],
+            "endpoints_xyv_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "review_status": "accepted_incremental",
+          "reason": "A distinct smooth front band is visible between the jaws below the physical front represented by original row 35. Visible boundaries distinguish this band from its neighbors; identity is not inferred from stack spacing. The loose original row 35 box may overlap the new box and remains unchanged. Both actual lower-front corners are obscured, so both endpoint triplets remain exactly 0 0 0. This operation appends band A."
+        },
+        {
+          "kind": "append",
+          "candidate_row": 44,
+          "after": {
+            "bbox_xyxy_px": [
+              699.0,
+              490.99999999967997,
+              719.0,
+              517.99999999968
+            ],
+            "endpoints_xyv_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "review_status": "accepted_incremental",
+          "reason": "A distinct smooth front band is visible between the jaws below the physical front represented by original row 35. Visible boundaries distinguish this band from its neighbors; identity is not inferred from stack spacing. The loose original row 35 box may overlap the new box and remains unchanged. Both actual lower-front corners are obscured, so both endpoint triplets remain exactly 0 0 0. This operation appends band B."
+        },
+        {
+          "kind": "append",
+          "candidate_row": 45,
+          "after": {
+            "bbox_xyxy_px": [
+              700.0,
+              513.00000000036,
+              715.0,
+              537.0000000001199
+            ],
+            "endpoints_xyv_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "review_status": "accepted_incremental",
+          "reason": "A distinct smooth front band is visible between the jaws below the physical front represented by original row 35. Visible boundaries distinguish this band from its neighbors; identity is not inferred from stack spacing. The loose original row 35 box may overlap the new box and remains unchanged. Both actual lower-front corners are obscured, so both endpoint triplets remain exactly 0 0 0. This operation appends band C."
+        },
+        {
+          "kind": "append",
+          "candidate_row": 46,
+          "after": {
+            "bbox_xyxy_px": [
+              702.0,
+              533.9999999998801,
+              716.0000000000001,
+              548.9999999996401
+            ],
+            "endpoints_xyv_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "review_status": "accepted_incremental",
+          "reason": "A distinct smooth front band is visible between the jaws below the physical front represented by original row 35. Visible boundaries distinguish this band from its neighbors; identity is not inferred from stack spacing. The loose original row 35 box may overlap the new box and remains unchanged. Both actual lower-front corners are obscured, so both endpoint triplets remain exactly 0 0 0. This operation appends band D."
+        }
+      ]
+    },
+    {
+      "image_id": "new_000033",
+      "trained_label_sha256": "224ba44d7a6ef8fcf970e7beb4ad541bbb5b9b0268138cbdcad64d7ba0008236",
+      "later_label_sha256": "329c07de3ab1aa21069f81b1924b0ffb27948577e9e93fa6b1215655da6f6abc",
+      "trained_rows": 50,
+      "later_rows": 50,
+      "correction_absent_from_pr35_training": true,
+      "operations": [
+        {
+          "kind": "replace",
+          "original_row": 41,
+          "changed_fields": [
+            "left_endpoint"
+          ],
+          "before": {
+            "bbox_xyxy_px": [
+              601.9500032000001,
+              416.5199964,
+              729.9699968,
+              464.1399972
+            ],
+            "endpoints_xyv_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "after": {
+            "bbox_xyxy_px": [
+              601.9500032000001,
+              416.5199964,
+              729.9699968,
+              464.1399972
+            ],
+            "endpoints_xyv_px": [
+              [
+                613.0,
+                453.00000000024005,
+                2
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "review_status": "accepted_incremental",
+          "reason": "The actual lower-left front turn is exposed where the wax surface meets the dark inter-column gap and its lower boundary, immediately left of the gripper. Restore this observed missing left endpoint at (613,453)px; do not infer it from rack spacing. Preserve the right missing triplet, all box tokens and every other row."
+        },
+        {
+          "kind": "replace",
+          "original_row": 42,
+          "changed_fields": [
+            "left_endpoint"
+          ],
+          "before": {
+            "bbox_xyxy_px": [
+              605.1400064,
+              441.8500032,
+              731.7000064,
+              488.43000000000006
+            ],
+            "endpoints_xyv_px": [
+              [
+                0.0,
+                0.0,
+                0
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "after": {
+            "bbox_xyxy_px": [
+              605.1400064,
+              441.8500032,
+              731.7000064,
+              488.43000000000006
+            ],
+            "endpoints_xyv_px": [
+              [
+                617.0,
+                477.0,
+                2
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "review_status": "accepted_incremental",
+          "reason": "The actual lower-left front turn is exposed where the wax surface meets the dark inter-column gap and its lower boundary, immediately left of the gripper. Restore this observed missing left endpoint at (617,477)px; do not infer it from rack spacing. Preserve the right missing triplet, all box tokens and every other row."
+        }
+      ]
+    },
+    {
+      "image_id": "new_000037",
+      "trained_label_sha256": "50576476f4bbfd0bb0e4f898f05519cf6790ea4009736ec9fc2af7557d720bc7",
+      "later_label_sha256": "c8ee4304b899b43d3520dd9a7b82d89c98b29a3a8ce8032d012a183e5319770d",
+      "trained_rows": 15,
+      "later_rows": 15,
+      "correction_absent_from_pr35_training": true,
+      "operations": [
+        {
+          "kind": "replace",
+          "original_row": 11,
+          "changed_fields": [
+            "bbox"
+          ],
+          "before": {
+            "bbox_xyxy_px": [
+              478.0000064,
+              421.9200036,
+              640.38,
+              456.0000012
+            ],
+            "endpoints_xyv_px": [
+              [
+                480.0,
+                454.00000320000004,
+                2
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "after": {
+            "bbox_xyxy_px": [
+              478.0000064,
+              421.92000359964,
+              640.38,
+              470.99999999988
+            ],
+            "endpoints_xyv_px": [
+              [
+                480.0,
+                454.00000320000004,
+                2
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "review_status": "accepted_incremental",
+          "reason": "The same front visibly continues below original ymax 456 to approximatelyy469-471 beside the gripper. Extend only ymax to 471, preserving xmin, ymin, xmax and both endpoint triplets. This fixes omitted visible material without marking the obscured right corner."
+        }
+      ]
+    },
+    {
+      "image_id": "new_000040",
+      "trained_label_sha256": "caf8479f429ea50683fe2c820c1745144c83b46d81a750d726d805f8227571d7",
+      "later_label_sha256": "8d9e7ea2bae2e5731790bf747f5d9824cefdd624d6034f77a1fc1b4fd4e2e856",
+      "trained_rows": 36,
+      "later_rows": 36,
+      "correction_absent_from_pr35_training": true,
+      "operations": [
+        {
+          "kind": "replace",
+          "original_row": 14,
+          "changed_fields": [
+            "bbox"
+          ],
+          "before": {
+            "bbox_xyxy_px": [
+              578.3300032000001,
+              412.1799984,
+              632.1,
+              451.26000000000005
+            ],
+            "endpoints_xyv_px": [
+              [
+                581.88,
+                441.22000319999995,
+                2
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "after": {
+            "bbox_xyxy_px": [
+              578.3300032,
+              412.1799984,
+              655.0,
+              451.26000000000005
+            ],
+            "endpoints_xyv_px": [
+              [
+                581.88,
+                441.22000319999995,
+                2
+              ],
+              [
+                0.0,
+                0.0,
+                0
+              ]
+            ]
+          },
+          "review_status": "accepted_incremental",
+          "reason": "Visible upper-right material of this same front extends beyond original xmax 632.10 to approximatelyx654-655 at y420-431, above the gripper and against the dark rack gap. Extend only xmax to 655. Preserve all other bounds and endpoint triplets; the physical lower-right corner remains obscured."
+        }
+      ]
+    },
+    {
+      "image_id": "old_000042",
+      "trained_label_sha256": "b0260b793f5196c174f7cb3142fb93a2b6d9c439150598446b75cfea9979af01",
+      "later_label_sha256": "e0e371bc8f827f85d04d4ee5d2afcbf80f20631f725684e6bc89c02e34cef0c3",
+      "trained_rows": 10,
+      "later_rows": 10,
+      "correction_absent_from_pr35_training": true,
+      "operations": [
+        {
+          "kind": "replace",
+          "original_row": 10,
+          "changed_fields": [
+            "bbox"
+          ],
+          "before": {
+            "bbox_xyxy_px": [
+              544.7400064,
+              293.3799984,
+              904.7400064,
+              338.9600016
+            ],
+            "endpoints_xyv_px": [
+              [
+                582.0,
+                326.0000016,
+                2
+              ],
+              [
+                862.2499968,
+                317.96999999999997,
+                2
+              ]
+            ]
+          },
+          "after": {
+            "bbox_xyxy_px": [
+              575.0000000000001,
+              294.00000000012,
+              873.0000000000001,
+              326.99999999988
+            ],
+            "endpoints_xyv_px": [
+              [
+                582.0,
+                326.0000016,
+                2
+              ],
+              [
+                862.2499968,
+                317.96999999999997,
+                2
+              ]
+            ]
+          },
+          "review_status": "accepted_incremental",
+          "reason": "The narrow upper front face is identifiable separately from the surrounding rack and the next front. Refit the box to [575,294,873,327]px, removing the surrounding rack/neighbor material included by the original box. Preserve both original visible endpoint token triplets at approximately(582,326) and(862.25,317.97); the manual edge uncertainty is approximately 2-3 px."
+        }
+      ]
+    }
+  ],
+  "conclusion": "Yes: the selected model was trained with residual annotation defects now identified by later review, including the unchanged new_000038 file. The selected eight-file overlay did correct earlier defects, but did not certify every training row. Later edits do not change existing model weights until a new training experiment is completed.",
+  "limitations": [
+    "Hashes bind actual returned files and the data inventories recorded by the trainer. They do not independently attest the remote GPU process or prove every recorded event physically occurred.",
+    "The returned ZIP omits staged image/label copies and data.yaml. Actual current frozen/overlay source label bytes match every recorded staged label hash; image byte availability is reported above; YAML bytes were reconstructed.",
+    "Only a sample of batches is detailed in the receipt. Completion, loader counts, 30 CSV epochs and 4,110 image presentations are consistent, but this audit did not replay training.",
+    "Semantic defects and accepted repairs rely on their cited visual review; this provenance audit is not whole-dataset visual certification.",
+    "The effect of any particular erroneous row on predictions is not measured here; no claim that all labels or the whole model are unusable follows.",
+    "The earlier epoch173 original training run is not newly reconstructed or independently attested by this audit."
+  ]
+}

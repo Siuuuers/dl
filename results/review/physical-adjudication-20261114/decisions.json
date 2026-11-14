@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "kind": "physical_adjudication",
+  "review_date": "2026-11-14",
+  "scope": "Additive physical decisions following the user's four clarifications. The frozen full candidate and full review status remain unchanged. This record does not certify all annotations or authorize deployment.",
+  "source_candidate": {
+    "path": "data/candidates/complete-visible-fronts-2026-11-14/manifest.json",
+    "sha256": "9d138930b523fc8d124e116a58aa584a23c30a81d874551fcb5625a1978639a8"
+  },
+  "source_review_status": {
+    "path": "results/review/complete-labels-20261114/review-status.json",
+    "sha256": "257d18c2cbe69471fc5a0070748747a92534cda88d5065b14520b98ea37cc761"
+  },
+  "decisions": [
+    {
+      "case_id": "new_000037-100",
+      "image_id": "new_000037",
+      "status": "resolved",
+      "classification": "non_target",
+      "evidence_basis": "user_physical_identification",
+      "source_image": {
+        "path": "data/images/train/new_000037.png",
+        "sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3"
+      },
+      "review_region_xyxy_px": [700, 0, 1280, 135],
+      "explanation": "The user identifies the broad white upper assembly shown in review question 1 as wall, not a cassette. Close this exact upper-assembly question as non-target. No cassette instance is added and no existing row changes. This identification does not create a general rule excluding every object outside the rack."
+    },
+    {
+      "case_id": "new_000017-075",
+      "image_id": "new_000017",
+      "status": "resolved",
+      "classification": "non_target",
+      "evidence_basis": "independent_original_image_review",
+      "source_image": {
+        "path": "data/images/train/new_000017.png",
+        "sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281"
+      },
+      "review_region_xyxy_px": [290, 0, 790, 45],
+      "explanation": "Independent inspection of the original image supports a non-target fixture/backing: the upper white structure continues across multiple cassette columns along the rack's top bar, with long straight rail/panel geometry and posts, unlike the repeated individual cassette fronts below. The visually inferred non-target classification closes the front-addition question without adding or changing rows. The user did not explicitly identify this image's structure as a wall; its exact physical component name is not established."
+    }
+  ],
+  "clarifications": [
+    {
+      "clarification_id": "shadowed_cassette_material",
+      "case_id": "new_000030-001",
+      "image_id": "new_000030",
+      "current_rows": [12],
+      "evidence_basis": "user_physical_identification_and_original_image_review",
+      "source_image": {
+        "path": "data/images/train/new_000030.png",
+        "sha256": "1ca47b685707d4b9dd1bec727e8de7acd5f7bd32cbd6d2ecab308668b135cca3"
+      },
+      "review_region_xyxy_px": [550, 370, 840, 550],
+      "established": "The user identifies the material through the gripper's diamond opening as shadowed cassette material.",
+      "not_established": "The lower dark triangle below approximately y483 is not uniquely identified as a second front rather than a shadow, underside or molding of the same cassette. Material identity does not settle target-face ownership, instance count or corner visibility.",
+      "effect": "No label or case-status change. The existing front-count/ownership question remains unresolved."
+    },
+    {
+      "clarification_id": "aperture_cases_remain_unresolved",
+      "evidence_basis": "original_image_review",
+      "case_ids": [
+        "new_000030-001",
+        "new_000041-102",
+        "new_000042-central-aperture-count",
+        "new_000044-diamond-front-boundaries",
+        "new_000049-064",
+        "new_000062-039",
+        "new_000074-031",
+        "new_000124-048"
+      ],
+      "source_images": [
+        {"path": "data/images/train/new_000030.png", "sha256": "1ca47b685707d4b9dd1bec727e8de7acd5f7bd32cbd6d2ecab308668b135cca3"},
+        {"path": "data/images/train/new_000041.png", "sha256": "4c0313f01daa3bd736f3acdf5b874847c6e46c05ec90dbb039b47416c7913b65"},
+        {"path": "data/images/train/new_000042.png", "sha256": "3e71fbb644f9948abcc846b8d81863f99fe4931c90b4095d4fcd1085c870d98f"},
+        {"path": "data/images/train/new_000044.png", "sha256": "819fd1faf67258367c5740662e57d2cf0c50afb6c7f34fd60b9d0f4637e10e85"},
+        {"path": "data/images/train/new_000049.png", "sha256": "bd085b01cf8fbce5df55d5f91c6e7810f03848f307c409d2afcd5e6cde652b7a"},
+        {"path": "data/images/train/new_000062.png", "sha256": "d7b5230f6480ee91d78f8225cebc89bc50fc70f7d7795801f763bb422b236e30"},
+        {"path": "data/images/train/new_000074.png", "sha256": "6bed893f1ec42e95b3ab3a2dad82c30fa586ff06ff35f58836661dd56c10613a"},
+        {"path": "data/images/train/new_000124.png", "sha256": "66fa37215d19fc95a1c3d055351dff957049e4433645f8293606ecada34314ba"}
+      ],
+      "explanation": "Original-image review supports no additional aperture instance, split, box edit or new visible corner. In new_000044 two fronts are established by left-side strips, but ownership of the separated diamond bands remains uncertain. In new_000124 visible rack grid below the material and neighboring tier spacing support an additional-front hypothesis, but do not prove that the internal division is a front-to-front seam.",
+      "effect": "Preserve the pending statuses and labels in the pinned source review. No aperture issue is closed by this record."
+    },
+    {
+      "clarification_id": "thin_and_clipped_cases_remain_unresolved",
+      "evidence_basis": "parallel_original_image_review",
+      "case_ids": [
+        "new_000117-047",
+        "batch3-new116-row24-surface",
+        "new_000123-lower-right-24",
+        "new_000128-003"
+      ],
+      "source_images": [
+        {"path": "data/images/train/new_000117.png", "sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454"},
+        {"path": "data/images/train/new_000116.png", "sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61"},
+        {"path": "data/images/train/new_000123.png", "sha256": "a1074f6ed3af478deac20dfb04bbd0513216461d42acacdf73514780d2087160"},
+        {"path": "data/images/train/new_000128.png", "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"}
+      ],
+      "explanation": "The user's small-size and neighboring-cassette suggestions do not resolve whether these bands belong to separate lower/clipped fronts or adjoining molding, roof or underside. In particular, the current new_000116 row24 and new_000123 row24 boxes include occluder or preceding-front pixels and cannot be certified as tight observed-front geometry. Identity must be established before a definitive replacement or deletion.",
+      "effect": "No thin or clipped-front issue is closed and no row is removed because of its size. These are representative reviewed cases; every other pending case in the source status also remains unchanged."
+    },
+    {
+      "clarification_id": "annotation_policy_unchanged",
+      "evidence_basis": "reviewer_adjudication_of_user_suggestions",
+      "explanation": "No rule requiring white material beside the gripper, brightness threshold, minimum Y-height, minimum area or in-rack-only eligibility is adopted. Known neighboring size and position can constrain a physical interpretation, but cannot supply an unobserved face seam or lower corner. No hidden or unreliable corner is made visible, and no uncertain object row is silently removed to make its possible target pixels background.",
+      "effect": "The existing annotation policy remains in force. Training-release choices require a separate explicitly scoped experiment; this record does not modify the frozen full-review gate."
+    }
+  ],
+  "label_operations": []
+}

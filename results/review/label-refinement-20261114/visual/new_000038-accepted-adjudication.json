@@ -1,0 +1,681 @@
+{
+  "schema_version": 1,
+  "status": "accepted_incremental",
+  "review_status": "accepted_reviewed",
+  "image_id": "new_000038",
+  "scope": "Accepted incremental original-pixel correction; not certification of every label in this image or the full dataset.",
+  "policy": "baomai-visible-front-v1",
+  "image_size_px": [
+    1280,
+    720
+  ],
+  "source_image_path": "data/images/train/new_000038.png",
+  "source_label_path": "data/labels/train/new_000038.txt",
+  "source_image_sha256": "7bc1703c1ab6fa55d0e23517f2993759247fae35849f68e87f19cf4521c5adc1",
+  "source_label_sha256": "779961aa5d4fd688831c881c166467802fcaa508954f5184c17ae75f3dd2137b",
+  "source_row_count": 15,
+  "result_row_count": 18,
+  "source_trailing_newline": true,
+  "serialization": {
+    "class_token": "0",
+    "coordinate_decimal_places": 8,
+    "visible_flag_token": "2",
+    "missing_tokens": [
+      "0.00000000",
+      "0.00000000",
+      "0"
+    ],
+    "line_ending": "LF",
+    "trailing_newline": true,
+    "row1_untouched_token_indices_0based": [
+      0,
+      7,
+      8,
+      9,
+      10
+    ],
+    "rows_2_through_15": "Preserve each original source row text exactly."
+  },
+  "expected_result_label_sha256": "2120ae253092cf8b12e35268621cac060b250041be86172bfff3035f642a842f",
+  "operations": [
+    {
+      "id": "new_000038:row1:bbox",
+      "kind": "replace_bbox",
+      "source_row": 1,
+      "final_row": 1,
+      "bbox_xyxy_px": [
+        488,
+        592,
+        529,
+        615
+      ],
+      "before_bbox_xyxy_px": [
+        489.4299968,
+        608.259996,
+        617.9,
+        637.9999992
+      ],
+      "source_before_text": "0 0.43255078 0.86545833 0.10036719 0.04130556 0.38236719 0.84480556 2 0.00000000 0.00000000 0",
+      "source_before_tokens": [
+        "0",
+        "0.43255078",
+        "0.86545833",
+        "0.10036719",
+        "0.04130556",
+        "0.38236719",
+        "0.84480556",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_tokens": [
+        "0",
+        "0.39726563",
+        "0.83819444",
+        "0.03203125",
+        "0.03194444",
+        "0.38281250",
+        "0.85000000",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_text": "0 0.39726563 0.83819444 0.03203125 0.03194444 0.38281250 0.85000000 2 0.00000000 0.00000000 0",
+      "reason": "One row must own the upper of three distinct under-thumb fronts. The frozen box began near its bottom and extended across lower fronts and hand. Its old left point belongs to this upper cassette; refine only to its observed rounded lower-left turn, not the lowest cassette.",
+      "uncertainty": {
+        "point_placement_px_approx": 2,
+        "box_top_y_px_range": [
+          591,
+          596
+        ],
+        "box_boundary_px_approx": 3
+      },
+      "review": {
+        "status": "accepted_reviewed",
+        "proposed_by": "/root/visual_target_check",
+        "accepted_by": "/root",
+        "review_date": "2026-11-14",
+        "reviewer_type": "assistant",
+        "human_approved": false,
+        "root_review_independent": true,
+        "root_review_blind": false,
+        "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+        "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+      },
+      "status": "accepted_reviewed"
+    },
+    {
+      "id": "new_000038:row1:left",
+      "kind": "replace_endpoint",
+      "source_row": 1,
+      "final_row": 1,
+      "side": "left",
+      "xy_px": [
+        490,
+        612
+      ],
+      "visibility": 2,
+      "before_xy_px": [
+        489.4300032,
+        608.2600032
+      ],
+      "source_before_text": "0 0.43255078 0.86545833 0.10036719 0.04130556 0.38236719 0.84480556 2 0.00000000 0.00000000 0",
+      "source_before_tokens": [
+        "0",
+        "0.43255078",
+        "0.86545833",
+        "0.10036719",
+        "0.04130556",
+        "0.38236719",
+        "0.84480556",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_tokens": [
+        "0",
+        "0.39726563",
+        "0.83819444",
+        "0.03203125",
+        "0.03194444",
+        "0.38281250",
+        "0.85000000",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_text": "0 0.39726563 0.83819444 0.03203125 0.03194444 0.38281250 0.85000000 2 0.00000000 0.00000000 0",
+      "reason": "The actual upper-front lower-left turn is visible near (490,612). This is a small within-instance refinement; moving it to the lowest front around y647 is explicitly rejected.",
+      "uncertainty": {
+        "point_placement_px_approx": 2,
+        "meaning": "ordinary visible rounded-junction placement uncertainty; not a calibrated probability or hidden-point estimate"
+      },
+      "review": {
+        "status": "accepted_reviewed",
+        "proposed_by": "/root/visual_target_check",
+        "accepted_by": "/root",
+        "review_date": "2026-11-14",
+        "reviewer_type": "assistant",
+        "human_approved": false,
+        "root_review_independent": true,
+        "root_review_blind": false,
+        "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+        "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+      },
+      "status": "accepted_reviewed"
+    },
+    {
+      "id": "new_000038:add:under_thumb_middle",
+      "kind": "add_object",
+      "source_row": null,
+      "final_row": 16,
+      "addition_id": "under_thumb_middle",
+      "bbox_xyxy_px": [
+        490,
+        614,
+        518,
+        632
+      ],
+      "keypoints_px": [
+        [
+          491,
+          629,
+          2
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_before_text": null,
+      "source_before_tokens": null,
+      "after_text": "0 0.39375000 0.86527778 0.02187500 0.02500000 0.38359375 0.87361111 2 0.00000000 0.00000000 0",
+      "after_tokens": [
+        "0",
+        "0.39375000",
+        "0.86527778",
+        "0.02187500",
+        "0.02500000",
+        "0.38359375",
+        "0.87361111",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "reason": "A separately identifiable middle front lies between the transverse seam/left-contour steps around y611\u2013615 and y628\u2013632. Its left lower turn is visible; the thumb hides its right corner.",
+      "uncertainty": {
+        "point_placement_px_approx": 2,
+        "box_boundary_px_approx": 3
+      },
+      "review": {
+        "status": "accepted_reviewed",
+        "proposed_by": "/root/visual_target_check",
+        "accepted_by": "/root",
+        "review_date": "2026-11-14",
+        "reviewer_type": "assistant",
+        "human_approved": false,
+        "root_review_independent": true,
+        "root_review_blind": false,
+        "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+        "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+      },
+      "status": "accepted_reviewed"
+    },
+    {
+      "id": "new_000038:add:under_thumb_lowest",
+      "kind": "add_object",
+      "source_row": null,
+      "final_row": 17,
+      "addition_id": "under_thumb_lowest",
+      "bbox_xyxy_px": [
+        492,
+        631,
+        513,
+        650
+      ],
+      "keypoints_px": [
+        [
+          493,
+          647,
+          2
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_before_text": null,
+      "source_before_tokens": null,
+      "after_text": "0 0.39257812 0.88958333 0.01640625 0.02638889 0.38515625 0.89861111 2 0.00000000 0.00000000 0",
+      "after_tokens": [
+        "0",
+        "0.39257812",
+        "0.88958333",
+        "0.01640625",
+        "0.02638889",
+        "0.38515625",
+        "0.89861111",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "reason": "A separately identifiable lowest front ends at the visible terminal lower-left turn around y646\u2013649. This is a distinct cassette from frozen row1. Its right corner is hidden by the thumb.",
+      "uncertainty": {
+        "point_placement_px_approx": 2,
+        "box_boundary_px_approx": 3
+      },
+      "review": {
+        "status": "accepted_reviewed",
+        "proposed_by": "/root/visual_target_check",
+        "accepted_by": "/root",
+        "review_date": "2026-11-14",
+        "reviewer_type": "assistant",
+        "human_approved": false,
+        "root_review_independent": true,
+        "root_review_blind": false,
+        "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+        "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+      },
+      "status": "accepted_reviewed"
+    },
+    {
+      "id": "new_000038:add:bottom_left_clipped",
+      "kind": "add_object",
+      "source_row": null,
+      "final_row": 18,
+      "addition_id": "bottom_left_clipped",
+      "bbox_xyxy_px": [
+        309,
+        700,
+        405,
+        720
+      ],
+      "keypoints_px": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_before_text": null,
+      "source_before_tokens": null,
+      "after_text": "0 0.27890625 0.98611111 0.07500000 0.02777778 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_tokens": [
+        "0",
+        "0.27890625",
+        "0.98611111",
+        "0.07500000",
+        "0.02777778",
+        "0.00000000",
+        "0.00000000",
+        "0",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "reason": "One identifiable smooth front has positive visible area at the lower-left image boundary. Its upper surface/front transition is soft but its instance identity is clear. Both actual lower corners extend outside the frame, so both slots remain missing.",
+      "uncertainty": {
+        "point_placement_px_approx": null,
+        "box_top_y_px_range": [
+          697,
+          703
+        ],
+        "box_boundary_px_approx": 3,
+        "horizontal_box_boundary_px_approx": 2
+      },
+      "review": {
+        "status": "accepted_reviewed",
+        "proposed_by": "/root/visual_target_check",
+        "accepted_by": "/root",
+        "review_date": "2026-11-14",
+        "reviewer_type": "assistant",
+        "human_approved": false,
+        "root_review_independent": true,
+        "root_review_blind": false,
+        "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+        "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+      },
+      "status": "accepted_reviewed"
+    }
+  ],
+  "row_adjudications": [
+    {
+      "final_row": 1,
+      "source_row": 1,
+      "owner": "under_thumb_upper",
+      "status": "accepted_reviewed",
+      "source_before_text": "0 0.43255078 0.86545833 0.10036719 0.04130556 0.38236719 0.84480556 2 0.00000000 0.00000000 0",
+      "source_before_tokens": [
+        "0",
+        "0.43255078",
+        "0.86545833",
+        "0.10036719",
+        "0.04130556",
+        "0.38236719",
+        "0.84480556",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "after_text": "0 0.39726563 0.83819444 0.03203125 0.03194444 0.38281250 0.85000000 2 0.00000000 0.00000000 0",
+      "after_tokens": [
+        "0",
+        "0.39726563",
+        "0.83819444",
+        "0.03203125",
+        "0.03194444",
+        "0.38281250",
+        "0.85000000",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "bbox_xyxy_px": [
+        488,
+        592,
+        529,
+        615
+      ],
+      "keypoints_px": [
+        [
+          490,
+          612,
+          2
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "reason": "One row must own the upper of three distinct under-thumb fronts. The frozen box began near its bottom and extended across lower fronts and hand. Its old left point belongs to this upper cassette; refine only to its observed rounded lower-left turn, not the lowest cassette.",
+      "uncertainty": {
+        "point_placement_px_approx": 2,
+        "box_top_y_px_range": [
+          591,
+          596
+        ],
+        "box_boundary_px_approx": 3
+      },
+      "review": {
+        "status": "accepted_reviewed",
+        "proposed_by": "/root/visual_target_check",
+        "accepted_by": "/root",
+        "review_date": "2026-11-14",
+        "reviewer_type": "assistant",
+        "human_approved": false,
+        "root_review_independent": true,
+        "root_review_blind": false,
+        "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+        "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+      }
+    },
+    {
+      "final_row": 16,
+      "source_row": null,
+      "owner": "under_thumb_middle",
+      "status": "accepted_reviewed",
+      "source_before_text": null,
+      "source_before_tokens": null,
+      "after_text": "0 0.39375000 0.86527778 0.02187500 0.02500000 0.38359375 0.87361111 2 0.00000000 0.00000000 0",
+      "after_tokens": [
+        "0",
+        "0.39375000",
+        "0.86527778",
+        "0.02187500",
+        "0.02500000",
+        "0.38359375",
+        "0.87361111",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "bbox_xyxy_px": [
+        490,
+        614,
+        518,
+        632
+      ],
+      "keypoints_px": [
+        [
+          491,
+          629,
+          2
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "reason": "A separately identifiable middle front lies between the transverse seam/left-contour steps around y611\u2013615 and y628\u2013632. Its left lower turn is visible; the thumb hides its right corner.",
+      "uncertainty": {
+        "point_placement_px_approx": 2,
+        "box_boundary_px_approx": 3
+      },
+      "review": {
+        "status": "accepted_reviewed",
+        "proposed_by": "/root/visual_target_check",
+        "accepted_by": "/root",
+        "review_date": "2026-11-14",
+        "reviewer_type": "assistant",
+        "human_approved": false,
+        "root_review_independent": true,
+        "root_review_blind": false,
+        "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+        "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+      }
+    },
+    {
+      "final_row": 17,
+      "source_row": null,
+      "owner": "under_thumb_lowest",
+      "status": "accepted_reviewed",
+      "source_before_text": null,
+      "source_before_tokens": null,
+      "after_text": "0 0.39257812 0.88958333 0.01640625 0.02638889 0.38515625 0.89861111 2 0.00000000 0.00000000 0",
+      "after_tokens": [
+        "0",
+        "0.39257812",
+        "0.88958333",
+        "0.01640625",
+        "0.02638889",
+        "0.38515625",
+        "0.89861111",
+        "2",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "bbox_xyxy_px": [
+        492,
+        631,
+        513,
+        650
+      ],
+      "keypoints_px": [
+        [
+          493,
+          647,
+          2
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "reason": "A separately identifiable lowest front ends at the visible terminal lower-left turn around y646\u2013649. This is a distinct cassette from frozen row1. Its right corner is hidden by the thumb.",
+      "uncertainty": {
+        "point_placement_px_approx": 2,
+        "box_boundary_px_approx": 3
+      },
+      "review": {
+        "status": "accepted_reviewed",
+        "proposed_by": "/root/visual_target_check",
+        "accepted_by": "/root",
+        "review_date": "2026-11-14",
+        "reviewer_type": "assistant",
+        "human_approved": false,
+        "root_review_independent": true,
+        "root_review_blind": false,
+        "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+        "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+      }
+    },
+    {
+      "final_row": 18,
+      "source_row": null,
+      "owner": "bottom_left_clipped",
+      "status": "accepted_reviewed",
+      "source_before_text": null,
+      "source_before_tokens": null,
+      "after_text": "0 0.27890625 0.98611111 0.07500000 0.02777778 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_tokens": [
+        "0",
+        "0.27890625",
+        "0.98611111",
+        "0.07500000",
+        "0.02777778",
+        "0.00000000",
+        "0.00000000",
+        "0",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "bbox_xyxy_px": [
+        309,
+        700,
+        405,
+        720
+      ],
+      "keypoints_px": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "reason": "One identifiable smooth front has positive visible area at the lower-left image boundary. Its upper surface/front transition is soft but its instance identity is clear. Both actual lower corners extend outside the frame, so both slots remain missing.",
+      "uncertainty": {
+        "point_placement_px_approx": null,
+        "box_top_y_px_range": [
+          697,
+          703
+        ],
+        "box_boundary_px_approx": 3,
+        "horizontal_box_boundary_px_approx": 2
+      },
+      "review": {
+        "status": "accepted_reviewed",
+        "proposed_by": "/root/visual_target_check",
+        "accepted_by": "/root",
+        "review_date": "2026-11-14",
+        "reviewer_type": "assistant",
+        "human_approved": false,
+        "root_review_independent": true,
+        "root_review_blind": false,
+        "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+        "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+      }
+    }
+  ],
+  "unchanged_source_rows": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "expected_delta": {
+    "object_rows": 3,
+    "visible_endpoints": 2,
+    "missing_endpoint_slots": 4
+  },
+  "review": {
+    "status": "accepted_reviewed",
+    "proposed_by": "/root/visual_target_check",
+    "accepted_by": "/root",
+    "review_date": "2026-11-14",
+    "reviewer_type": "assistant",
+    "human_approved": false,
+    "root_review_independent": true,
+    "root_review_blind": false,
+    "basis": "Root inspected the original new_000038 frame, raw/wide crops, coordinate rulers and nominal overlays, then explicitly accepted all integer-pixel geometry in this record. Root had seen the proposal coordinates; this was not a blind review.",
+    "user_authorization": "Improve labels before the next GPU run and disclose uncertainty; no individual-coordinate human approval claimed."
+  },
+  "evidence": {
+    "original_pixels_only": true,
+    "model_predictions_used": false,
+    "hidden_coordinates_transferred": false,
+    "direct_visual_observations": "Three under-thumb fronts have distinct left-silhouette steps and weak transverse bands near y611\u2013615 and y628\u2013632; lowest terminal turn near y646\u2013649. A separate bottom-left front is clipped by the image bottom.",
+    "neighbor_role": "new_000039 morphology supported the interpretation only; no identity match or coordinate transfer was assumed.",
+    "retracted_proposal": "The former A-to-B replacement conflated upper and lowest cassettes; it remains rejected.",
+    "source_before_text_row1": "0 0.43255078 0.86545833 0.10036719 0.04130556 0.38236719 0.84480556 2 0.00000000 0.00000000 0",
+    "proposal_record": "visual-review-proposals.json",
+    "supersedes_for_this_image": [
+      "target-recovery/visual-check/recovery-observations.json",
+      "label-refinement/visual/visual-review-proposals.json"
+    ]
+  },
+  "uncertainty_statement": "Approximate 2-pixel observed-left placement and 3-pixel box-boundary uncertainty reflect rounding/blur. They are not calibrated confidence intervals, subpixel truth, or human approval.",
+  "figures": {
+    "three_fronts": {
+      "filename": "new_000038-accepted-three-fronts.png",
+      "crop_xyxy": [
+        475,
+        575,
+        550,
+        655
+      ],
+      "scale": 6,
+      "title": "Accepted cassette corrections: new_000038"
+    },
+    "bottom_front": {
+      "filename": "new_000038-accepted-bottom-front.png",
+      "crop_xyxy": [
+        285,
+        665,
+        430,
+        720
+      ],
+      "scale": 4,
+      "title": "Accepted clipped-front addition: new_000038"
+    }
+  },
+  "renderer": {
+    "filename": "render_new_000038_accepted_review.py",
+    "usage": "python render_new_000038_accepted_review.py --repo-root /path/to/dl --spec /path/to/new_000038-accepted-adjudication.json --out-dir /path/to/output"
+  }
+}

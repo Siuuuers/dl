@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "kind": "visibility_status_only_verification",
+  "status": "passed",
+  "candidate_manifest_sha256": "565570c24165b59ad3ee2368ebd80a9c9ff4bb25d96da87bcdee93602bd75983",
+  "parent_status_sha256": "9f0cc1d16fcd247f7f96bf8e0f470d5c43c3318fb33e156b3d1ce3689a15a4f0",
+  "current_status_sha256": "b54e97465abcb48d0b61d9d0f0b95be916a59af2307388a02531212a56971e4f",
+  "changed_case_ids": [
+    "new_000130-052"
+  ],
+  "closed_original_rows": [
+    54,
+    55
+  ],
+  "decision": "Accept existing canonical missing slots for new130 rows54/55; no coordinate change.",
+  "all_other_case_objects_unchanged": true,
+  "candidate_verify_command": "python -B scripts/compose_observed_pose_review.py --root . verify --candidate data/candidates/aperture-reviewed-labels-2026-11-14",
+  "candidate_verify_result": {
+    "status": "verified",
+    "changed_train_files": 71,
+    "incremental_operation_counts": {
+      "replace": 182,
+      "delete": 7,
+      "add": 4
+    },
+    "counts": {
+      "train": {
+        "images": 137,
+        "objects": 3770,
+        "visible_endpoints": 6854,
+        "missing_endpoints": 686,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "historical_parent_verified_unchanged": true,
+    "unreviewed_tokens_preserved": true,
+    "validation_unchanged": true
+  },
+  "independent_status_audit": {
+    "result": "passed",
+    "case_count": 88,
+    "resolved": 29,
+    "partial": 38,
+    "held": 21,
+    "unresolved_groups": 59,
+    "unresolved_training_photos": 46,
+    "amber_rows": 101,
+    "photos_with_amber_rows": 35,
+    "all_157_label_paths_hashes_and_actual_files_unchanged": true
+  },
+  "pdf_qa_path": "results/review/visibility-readiness-20261114/atlas-qa.json",
+  "pdf_sha256": "0f889946a87391c9fa93137279ae5ac29753e05bf8bb7f7d68194405f1a5e79c",
+  "page_count": 163,
+  "photo_pages": 157,
+  "readiness": {
+    "release_ready": false,
+    "training_recipe_id": null,
+    "candidate_kind": "training_observed_review_composition",
+    "candidate_kind_registered_for_training": false,
+    "legacy_pr62_supervision": "annotations-2026-11-10",
+    "controlled_incremental_experiment_allowed_by_policy": true,
+    "controlled_incremental_recipe_created": false
+  },
+  "training_or_inference_performed": false,
+  "model_weights_changed": false,
+  "verification_scope": "Candidate verification and exact preservation checks; bounded atlas QA. Historical mutation suite was not rerun because labels and composer are unchanged."
+}

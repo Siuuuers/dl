@@ -1,0 +1,538 @@
+{
+  "schema_version": 1,
+  "kind": "accepted_training_operation_sources",
+  "scope": "All emitted assistant-accepted training corrections at be402f4, deduplicated by original identity and field; no held, withdrawn, inferred or evaluation-reference operation included.",
+  "source_manifest": {
+    "path": "data/manifest.json",
+    "sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926"
+  },
+  "current_policy": {
+    "path": "docs/annotation-policy.md",
+    "sha256": "74dd943976a4abc22ecbf73551c69f715666060d5961b2bed81e6a9c73a3afc9"
+  },
+  "historical_policy": {
+    "path": "docs/policies/annotation-policy-pr35-2026-11-10.md",
+    "sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91"
+  },
+  "historical_code": [
+    {
+      "path": "scripts/evaluate_pose.py",
+      "sha256": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0"
+    },
+    {
+      "path": "scripts/pose_scoring.py",
+      "sha256": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+    },
+    {
+      "path": "scripts/pose_checkpoint.py",
+      "sha256": "f902c34720283480f948cca78bd2d6d24fd07bf6bc5a325945172d56d55f5bd5"
+    },
+    {
+      "path": "scripts/verify_pose_candidate.py",
+      "sha256": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491"
+    },
+    {
+      "path": "scripts/verify_pose_box_candidate.py",
+      "sha256": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5"
+    },
+    {
+      "path": "scripts/verify_pose_annotation_candidate.py",
+      "sha256": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979"
+    },
+    {
+      "path": "scripts/verify_pose_endpoint_candidate.py",
+      "sha256": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5"
+    },
+    {
+      "path": "scripts/verify_pose_composed_candidate.py",
+      "sha256": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32"
+    },
+    {
+      "path": "scripts/stage_pose_training.py",
+      "sha256": "a733f5e80335204747139e87a723b7bb095123059dc5a58b86ee824a26e5afe6"
+    }
+  ],
+  "historical_sources": [
+    {
+      "candidate_id": "dedup-2026-11-06",
+      "manifest": {
+        "path": "data/candidates/dedup-2026-11-06/manifest.json",
+        "sha256": "425d718e335be312019768e2fe040a3d5a44b2b4143f82b487fec623ba5bd215"
+      },
+      "acceptance": "primary_duplicate_decisions_with_independent_agreement"
+    },
+    {
+      "candidate_id": "box-refinement-2026-11-07",
+      "manifest": {
+        "path": "data/candidates/box-refinement-2026-11-07/manifest.json",
+        "sha256": "b61d012052001377089ad048ba13da14b8cd19d665ac8f0ef7828e45c530ec3e"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    },
+    {
+      "candidate_id": "annotations-2026-11-10",
+      "manifest": {
+        "path": "data/candidates/annotations-2026-11-10/manifest.json",
+        "sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    },
+    {
+      "candidate_id": "partial-fronts-2026-11-11",
+      "manifest": {
+        "path": "data/candidates/partial-fronts-2026-11-11/manifest.json",
+        "sha256": "4a4cb7db127b8da577b33fe510105383e1b7088e374cbbcb3128a39a5377932f"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    },
+    {
+      "candidate_id": "visible-extent-079-2026-11-11",
+      "manifest": {
+        "path": "data/candidates/visible-extent-079-2026-11-11/manifest.json",
+        "sha256": "e9488904b40f5ca27a9ba12993c41f55c35481f33893d39370e63f962003b3d6"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    },
+    {
+      "candidate_id": "visible-extent-2026-11-11",
+      "manifest": {
+        "path": "data/candidates/visible-extent-2026-11-11/manifest.json",
+        "sha256": "ab89253e4c2e886a6f1274fa50e400cf568c132e9cecc83d8f558d567b88c6d4"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    },
+    {
+      "candidate_id": "consistency-2026-11-11",
+      "manifest": {
+        "path": "data/candidates/consistency-2026-11-11/manifest.json",
+        "sha256": "2f59ec8a09466922eb2f20fd66c5f0f8a972a6c5694bbb41c17d51277ff3b9a9"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    },
+    {
+      "candidate_id": "endpoint-visibility-2026-11-12",
+      "manifest": {
+        "path": "data/candidates/endpoint-visibility-2026-11-12/manifest.json",
+        "sha256": "9c489bf57a526509de73e40cc73b02117398fba4ec97107bf047aa71e4951c41"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    },
+    {
+      "candidate_id": "composed-fronts-2026-11-12",
+      "manifest": {
+        "path": "data/candidates/composed-fronts-2026-11-12/manifest.json",
+        "sha256": "86522ed6549390e8e6fb147aeb8244c4aef0b2f1273f57cdd0fc07b85074b38a"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    },
+    {
+      "candidate_id": "border-fronts-2026-11-13",
+      "manifest": {
+        "path": "data/candidates/border-fronts-2026-11-13/manifest.json",
+        "sha256": "1659dd0ae7d6b7662c58f7471c0a487962a2f71ebf1a18aec9a8ac750681a9e4"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    },
+    {
+      "candidate_id": "remaining-fronts-2026-11-14",
+      "manifest": {
+        "path": "data/candidates/remaining-fronts-2026-11-14/manifest.json",
+        "sha256": "0cc9ebf83388a01785522fe77fb5c524ec519d4e5a90e8448d7c456a8247600b"
+      },
+      "acceptance": "accepted_incremental_operations_only"
+    }
+  ],
+  "historical_evidence": [
+    {
+      "path": "docs/training-pilot-2026-11-06.json",
+      "sha256": "3c087b21c6fd21db1864d9eff1f22b315b17cdcd63d974fe914c385d967037b5"
+    },
+    {
+      "path": "results/review/baomai-endpoint-recheck-20261112/adjudication.json",
+      "sha256": "da622a47e30895f782cf2ad6b3f5380021eb88690b500aaca0d0ba49845bee5f"
+    },
+    {
+      "path": "results/review/next-training-20261112/combined-operations-spec.json",
+      "sha256": "1492c39b5a6b3b890ab6807fc51a1ed1524f1bf57844dd285341b6b2344852b0"
+    },
+    {
+      "path": "results/review/baomai-review-recovery-20261112/correction-record.json",
+      "sha256": "6f199638487933a04a0f2d67958d06be642ff998bd14657bfc913fe3406e24e3"
+    }
+  ],
+  "dedup_acceptance": {
+    "path": "docs/training-pilot-2026-11-06.json",
+    "sha256": "3c087b21c6fd21db1864d9eff1f22b315b17cdcd63d974fe914c385d967037b5"
+  },
+  "frozen_files": [
+    {
+      "path": "metadata/model_card.json",
+      "sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566"
+    },
+    {
+      "path": "weights/base.json",
+      "sha256": "63cd8b6e13cecf901ea3440616ff2ba60ac1c434775836f3fb659ee3ae242c51"
+    },
+    {
+      "path": "weights/cassette_lower_epoch173.json",
+      "sha256": "f049aae1a4bc3e2c98b783cc691a8fd2e09c3b6c8ac69fd73447f2a1383b26a5"
+    },
+    {
+      "path": "weights/cassette_lower_epoch173.pt",
+      "sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/manifest.json",
+      "sha256": "edf2d01624b96d0a4e652b1fa1fdfbc861c453f825343c840972493a908e6ed2"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000007.txt",
+      "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000008.txt",
+      "sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000009.txt",
+      "sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000010.txt",
+      "sha256": "9a0cc16ca96d094b1c7849b829ec67625d7569666d5753bd660006c9eecbf3c6"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000011.txt",
+      "sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000053.txt",
+      "sha256": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000054.txt",
+      "sha256": "a141b368e31100930826c3c3b777c066c5050b52759161e2b12cf429bd9d0b20"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000055.txt",
+      "sha256": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000056.txt",
+      "sha256": "40a5932996a295d9e89a79a435e31cb5bdcbed0b230baf5bb700a644099fe7c7"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000057.txt",
+      "sha256": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000058.txt",
+      "sha256": "0d7cc2962aa94337a3e5340cda114a23bab0c8e3c590855ebbce1e1ca28c1b0c"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000059.txt",
+      "sha256": "60e6866fda66ad0d385094c32fd41f19eb451c5a16365b41da77cf5f0e01ade4"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000086.txt",
+      "sha256": "43f8e85d4a0af9dec2aba6e9e5ed39b5f149e33f0f17ec0cc5286d20225783b1"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000087.txt",
+      "sha256": "17d7537f9626058aca885a2afb4ebc1dfa2d8b89acb818e90c09ecbe1113eab1"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000088.txt",
+      "sha256": "6be98a964b6faf88345caf92b9efcb2d8c23eea054aaed7ab74f03717e5639ef"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000089.txt",
+      "sha256": "799e3e7301f4fd8f1b727dfc07e9a0891335a917c3994ebcc9d3786990219e7f"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000090.txt",
+      "sha256": "0b77064a84e23159fb42001114fa253296103092d5eaa3bc13cf38ac1cc4a859"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000146.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000147.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-10/labels/val/new_000148.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/manifest.json",
+      "sha256": "2e60b3e81195448cc565a1000b4305e3215baba2bf0ee0c976e6551c2e64937c"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000007.txt",
+      "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000008.txt",
+      "sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000009.txt",
+      "sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000010.txt",
+      "sha256": "9a0cc16ca96d094b1c7849b829ec67625d7569666d5753bd660006c9eecbf3c6"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000011.txt",
+      "sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000053.txt",
+      "sha256": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000054.txt",
+      "sha256": "a141b368e31100930826c3c3b777c066c5050b52759161e2b12cf429bd9d0b20"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000055.txt",
+      "sha256": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000056.txt",
+      "sha256": "40a5932996a295d9e89a79a435e31cb5bdcbed0b230baf5bb700a644099fe7c7"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000057.txt",
+      "sha256": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000058.txt",
+      "sha256": "0d7cc2962aa94337a3e5340cda114a23bab0c8e3c590855ebbce1e1ca28c1b0c"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000059.txt",
+      "sha256": "60e6866fda66ad0d385094c32fd41f19eb451c5a16365b41da77cf5f0e01ade4"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000086.txt",
+      "sha256": "43f8e85d4a0af9dec2aba6e9e5ed39b5f149e33f0f17ec0cc5286d20225783b1"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000087.txt",
+      "sha256": "17d7537f9626058aca885a2afb4ebc1dfa2d8b89acb818e90c09ecbe1113eab1"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000088.txt",
+      "sha256": "6be98a964b6faf88345caf92b9efcb2d8c23eea054aaed7ab74f03717e5639ef"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000089.txt",
+      "sha256": "799e3e7301f4fd8f1b727dfc07e9a0891335a917c3994ebcc9d3786990219e7f"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000090.txt",
+      "sha256": "1781643ded0bc4a9a0c71b655711845c3840f8276b1170835088c7fac2475e79"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000146.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000147.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-2026-11-11/labels/val/new_000148.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/manifest.json",
+      "sha256": "28ba06fe7183ebbfa6f295639194a67c4b473c17a8d67c28a9733eb359bdba92"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000007.txt",
+      "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000008.txt",
+      "sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000009.txt",
+      "sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000010.txt",
+      "sha256": "241c75463f8bf5d6d5c70de67deb89a4bf14209237855e0f21e6ebc6e35db01c"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000011.txt",
+      "sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000053.txt",
+      "sha256": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000054.txt",
+      "sha256": "a141b368e31100930826c3c3b777c066c5050b52759161e2b12cf429bd9d0b20"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000055.txt",
+      "sha256": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000056.txt",
+      "sha256": "40a5932996a295d9e89a79a435e31cb5bdcbed0b230baf5bb700a644099fe7c7"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000057.txt",
+      "sha256": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000058.txt",
+      "sha256": "0d7cc2962aa94337a3e5340cda114a23bab0c8e3c590855ebbce1e1ca28c1b0c"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000059.txt",
+      "sha256": "60e6866fda66ad0d385094c32fd41f19eb451c5a16365b41da77cf5f0e01ade4"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000086.txt",
+      "sha256": "43f8e85d4a0af9dec2aba6e9e5ed39b5f149e33f0f17ec0cc5286d20225783b1"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000087.txt",
+      "sha256": "17d7537f9626058aca885a2afb4ebc1dfa2d8b89acb818e90c09ecbe1113eab1"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000088.txt",
+      "sha256": "6be98a964b6faf88345caf92b9efcb2d8c23eea054aaed7ab74f03717e5639ef"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000089.txt",
+      "sha256": "799e3e7301f4fd8f1b727dfc07e9a0891335a917c3994ebcc9d3786990219e7f"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000090.txt",
+      "sha256": "1781643ded0bc4a9a0c71b655711845c3840f8276b1170835088c7fac2475e79"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000146.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000147.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-corners-2026-11-12/labels/val/new_000148.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/manifest.json",
+      "sha256": "75e8689f65f7f32ca7f4657f27d214aa1ba371347812de780c6e5e6ac21af61e"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000007.txt",
+      "sha256": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000008.txt",
+      "sha256": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000009.txt",
+      "sha256": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000010.txt",
+      "sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000011.txt",
+      "sha256": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000053.txt",
+      "sha256": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000054.txt",
+      "sha256": "a141b368e31100930826c3c3b777c066c5050b52759161e2b12cf429bd9d0b20"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000055.txt",
+      "sha256": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000056.txt",
+      "sha256": "40a5932996a295d9e89a79a435e31cb5bdcbed0b230baf5bb700a644099fe7c7"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000057.txt",
+      "sha256": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000058.txt",
+      "sha256": "0d7cc2962aa94337a3e5340cda114a23bab0c8e3c590855ebbce1e1ca28c1b0c"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000059.txt",
+      "sha256": "60e6866fda66ad0d385094c32fd41f19eb451c5a16365b41da77cf5f0e01ade4"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000086.txt",
+      "sha256": "43f8e85d4a0af9dec2aba6e9e5ed39b5f149e33f0f17ec0cc5286d20225783b1"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000087.txt",
+      "sha256": "17d7537f9626058aca885a2afb4ebc1dfa2d8b89acb818e90c09ecbe1113eab1"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000088.txt",
+      "sha256": "6be98a964b6faf88345caf92b9efcb2d8c23eea054aaed7ab74f03717e5639ef"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000089.txt",
+      "sha256": "799e3e7301f4fd8f1b727dfc07e9a0891335a917c3994ebcc9d3786990219e7f"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000090.txt",
+      "sha256": "1781643ded0bc4a9a0c71b655711845c3840f8276b1170835088c7fac2475e79"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000146.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000147.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/references/visible-front-adjudication-2026-11-12/labels/val/new_000148.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "expected_unique_operations": 119,
+  "expected_operation_counts": {
+    "bbox": 65,
+    "delete_object": 20,
+    "left_endpoint": 10,
+    "right_endpoint": 5,
+    "add_object": 19
+  },
+  "human_certification": false,
+  "acceptance_definition": "Accepted_incremental means an explicit original-image assistant review decision. Manifests retain proposed status because no human certification or model adoption is claimed. Dedup removal pairs have primary and independent visual agreement. Composed operations replay the accepted recovered boxes and latest ten-slot endpoint review. Held proposals never enter these emitted operation lists.",
+  "do_not_inherit": [
+    "additional-pilot-2026-11-07: all three sampled supplementary images remain quarantined",
+    "evaluation reference edits: separate 20-image development labels",
+    "old nine-slot endpoint recovery: superseded by accepted ten-slot endpoint candidate",
+    "withdrawn new015 structural-backer additions",
+    "withdrawn new038 row1 A-to-B move; later separate root-approved instance repair is an explicit new source"
+  ]
+}

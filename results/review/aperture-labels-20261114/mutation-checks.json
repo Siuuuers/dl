@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "candidate_manifest_sha256": "565570c24165b59ad3ee2368ebd80a9c9ff4bb25d96da87bcdee93602bd75983",
+  "composer_sha256": "8f99c87236b09ed40c85521b68ea2a39ca4062cfa74b8cd43bb376cb5009fd25",
+  "baseline_real_candidate_reconstruction": "pass",
+  "baseline_seconds": 1.518,
+  "method": "Full compose() was exercised against in-memory deep copies of the real accepted review; only the top-level review read was injected. Historical parent, source bytes, image checks, parser and geometry gates remained real. No mutant review, label or candidate file was written.",
+  "tests": [
+    {
+      "name": "added_bbox_pixel_mismatch",
+      "mutation": {
+        "operation_id": "observed-190",
+        "change": "reviewed added left x +1; text unchanged"
+      },
+      "expected_error_substring": "added box differs from reviewed pixels",
+      "rejected": true,
+      "actual_error": "added box differs from reviewed pixels",
+      "passed": true,
+      "seconds": 1.407
+    },
+    {
+      "name": "added_endpoint_pixel_mismatch",
+      "mutation": {
+        "operation_id": "observed-192",
+        "change": "reviewed added left point x +1; text unchanged"
+      },
+      "expected_error_substring": "added endpoint differs from reviewed pixels",
+      "rejected": true,
+      "actual_error": "added endpoint differs from reviewed pixels",
+      "passed": true,
+      "seconds": 1.495
+    },
+    {
+      "name": "addition_visibility_2point0",
+      "mutation": {
+        "operation_id": "observed-192",
+        "visibility_token": "2.0"
+      },
+      "expected_error_substring": "new visibility tokens must be literal 0 or 2",
+      "rejected": true,
+      "actual_error": "new visibility tokens must be literal 0 or 2",
+      "passed": true,
+      "seconds": 1.528
+    },
+    {
+      "name": "replacement_visibility_02",
+      "mutation": {
+        "operation_id": "observed-173",
+        "visibility_token": "02"
+      },
+      "expected_error_substring": "replacement visibility tokens must be literal 0 or 2",
+      "rejected": true,
+      "actual_error": "replacement visibility tokens must be literal 0 or 2",
+      "passed": true,
+      "seconds": 1.559
+    },
+    {
+      "name": "replacement_visibility_plus2",
+      "mutation": {
+        "operation_id": "observed-173",
+        "visibility_token": "+2"
+      },
+      "expected_error_substring": "replacement visibility tokens must be literal 0 or 2",
+      "rejected": true,
+      "actual_error": "replacement visibility tokens must be literal 0 or 2",
+      "passed": true,
+      "seconds": 1.482
+    },
+    {
+      "name": "top_only_unchanged_horizontal_token_rewrite",
+      "mutation": {
+        "operation_id": "observed-020",
+        "change": "unchanged x-center numeric value reformatted with trailing zero"
+      },
+      "expected_error_substring": "unreviewed horizontal bbox tokens changed",
+      "rejected": true,
+      "actual_error": "unreviewed horizontal bbox tokens changed",
+      "passed": true,
+      "seconds": 1.442
+    },
+    {
+      "name": "wrong_exact_before_row",
+      "mutation": {
+        "operation_id": "observed-001",
+        "change": "before token spelling altered"
+      },
+      "expected_error_substring": "exact parent row differs",
+      "rejected": true,
+      "actual_error": "exact parent row differs",
+      "passed": true,
+      "seconds": 1.369
+    },
+    {
+      "name": "wrong_parent_row_mapping",
+      "mutation": {
+        "operation_id": "observed-001",
+        "change": "parent row +1"
+      },
+      "expected_error_substring": "parent row map differs",
+      "rejected": true,
+      "actual_error": "parent row map differs",
+      "passed": true,
+      "seconds": 1.482
+    },
+    {
+      "name": "restoration_without_original_corner_evidence",
+      "mutation": {
+        "operation_id": "observed-173",
+        "change": "right actual-corner evidence removed"
+      },
+      "expected_error_substring": "hidden point cannot become visible from geometry alone",
+      "rejected": true,
+      "actual_error": "hidden point cannot become visible from geometry alone",
+      "passed": true,
+      "seconds": 1.404
+    },
+    {
+      "name": "addition_without_original_corner_evidence",
+      "mutation": {
+        "operation_id": "observed-192",
+        "change": "added left actual-corner evidence removed"
+      },
+      "expected_error_substring": "added visible point needs original evidence",
+      "rejected": true,
+      "actual_error": "added visible point needs original evidence",
+      "passed": true,
+      "seconds": 1.247
+    },
+    {
+      "name": "duplicate_stable_object_operation",
+      "mutation": {
+        "operation_id": "observed-001",
+        "change": "same stable identity repeated"
+      },
+      "expected_error_substring": "repeated object operation",
+      "rejected": true,
+      "actual_error": "repeated object operation; combine its reviewed fields",
+      "passed": true,
+      "seconds": 1.272
+    },
+    {
+      "name": "non_target_delete_without_discarded_point_provenance",
+      "mutation": {
+        "operation_id": "observed-047",
+        "change": "discarded metal-point left provenance removed"
+      },
+      "expected_error_substring": "every discarded locatable endpoint needs a disposition",
+      "rejected": true,
+      "actual_error": "every discarded locatable endpoint needs a disposition",
+      "passed": true,
+      "seconds": 1.271
+    },
+    {
+      "name": "replay_duplicate_against_inherited_new130_addition",
+      "mutation": {
+        "operation_id": "mutation-replay-new130-lower-aperture",
+        "fresh_addition_id": "mutation-new130-duplicate-with-unique-id",
+        "replayed_bbox_xyxy_px": [
+          699,
+          504,
+          726,
+          522
+        ],
+        "inherited_addition_id": "partial-130-add-lowest-front",
+        "inherited_parent_row": 59,
+        "inherited_before_text": "0 0.55664062 0.71041667 0.02109375 0.02361111 0 0 0 0 0 0",
+        "independently_calculated_iou": 0.8421051248178535,
+        "counts_adjusted_for_extra_object": true,
+        "expected_rejection": "near-parent overlap review gate, not duplicate stable ID or count mismatch"
+      },
+      "expected_error_substring": "addition overlaps a parent instance",
+      "rejected": true,
+      "actual_error": "addition overlaps a parent instance; review the complete parent labels, including inherited additions",
+      "passed": true,
+      "seconds": 1.279
+    }
+  ],
+  "overlap_gate_interpretation": "IoU >= 0.75 triggers explicit parent-row, before-text and distinct-front review evidence; it is not proof of duplicate or distinct physical identity, and lower overlap is not proof that an addition is safe. The check includes inherited added rows.",
+  "all_protected_files_unchanged_after_mutations": true,
+  "training_or_inference_performed": false
+}

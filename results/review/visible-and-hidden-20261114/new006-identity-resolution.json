@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "image_id": "new_000006",
+  "date": "2026-11-14",
+  "source_image_path": "data/images/train/new_000006.png",
+  "source_label_path": "data/labels/train/new_000006.txt",
+  "source_image_sha256": "666bdac6bc39d2192ef430a28274ed2a042896cddee5b64e084f6fca2b5ab79a",
+  "source_label_sha256": "ad83726338174af215c15737268e9c4e118320100f7c2a38ca9652f268b7267b",
+  "image_size_px": [
+    1280,
+    720
+  ],
+  "source_row_count": 60,
+  "status": "identity_resolved_geometry_review_needed",
+  "user_confirmation": "new_000006's A and B is two separated cassette, we can know by viewing the other cassette too.",
+  "decision": {
+    "instance_count_in_A_B_pair": 2,
+    "keep_original_rows": [
+      53,
+      59
+    ],
+    "merge_or_delete_either_row": false,
+    "identity_resolved_by": "user statement in current conversation, supported by contextual silhouette interpretation",
+    "scope": "Confirms two physical owners; does not approve any exact box extent or hidden right-corner coordinate."
+  },
+  "review": {
+    "reviewer": "/root/new006_adjudication",
+    "method": "Whole original viewed, followed by unaltered nearest-neighbor crop and original-coordinate ruler. Source labels were visible during detailed review. No model output or cross-frame coordinates used.",
+    "independence": "Not blind to the user confirmation or previous A/B question.",
+    "physical_findings": [
+      "The source A point lies near the upper left silhouette turn around y560; source B near the next turn around y580.",
+      "Source row53 box reaches x565 into the foreground hand and its y541 upper bound also covers the upper cassette region. It is not a tight observed box for the B owner.",
+      "Source row59 is only about21px wide; the pale front patch may continue rightward beyond its x482.7 edge. The boundary allocating that continuous pale area between the two owners is weak and oblique.",
+      "The dark/perforated roof to the rear is not itself the target front surface.",
+      "Neither actual lower-right corner is exposed. Neighbor size/spacing supports identity but does not directly reveal that corner in this frame."
+    ],
+    "supported_actions": [
+      "Record user-confirmed distinct identity.",
+      "Retain both source rows and both right missing slots.",
+      "Preserve current point tokens until a precise supported refinement is reviewed."
+    ],
+    "box_revision_status": "No exact replacement is accepted by this pass. Visible extent is separate from the resolved two-instance count.",
+    "held_extent_questions": [
+      "Trace the oblique inter-cassette seam from A into the thumb-occluded region to allocate visible pale material to59 versus53.",
+      "Determine the upper front-versus-roof/rounded-ledge transition of59 without equating brightness with material identity.",
+      "Refine53's overly broad hand-containing right extent only after its own front is mapped; no full hidden-width extrapolation."
+    ],
+    "target_contract": "Current local observed-front box convention only; no switch to a whole-hidden-object box was made while the user asks for upstream contract clarification."
+  },
+  "rows": [
+    {
+      "original_row": 59,
+      "marker": "A",
+      "owner": "upper cassette",
+      "source_row_text": "0 0.36894922 0.77983333 0.01632031 0.02302778 0.36648438 0.77800000 2 0.00000000 0.00000000 0",
+      "source_bbox_xyxy_px": [
+        461.81000320000004,
+        553.1899968,
+        482.70000000000005,
+        569.7699984
+      ],
+      "source_keypoints_xyv_px": [
+        [
+          469.1000064,
+          560.16,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "identity_status": "resolved_user_confirmed_distinct_instance",
+      "source_tokens_changed": false
+    },
+    {
+      "original_row": 53,
+      "marker": "B",
+      "owner": "next lower cassette",
+      "source_row_text": "0 0.40117188 0.78263889 0.08046875 0.06250000 0.36328125 0.80555556 2 0.00000000 0.00000000 0",
+      "source_bbox_xyxy_px": [
+        462.00000639999996,
+        541.0000008,
+        565.0000064,
+        586.0000008
+      ],
+      "source_keypoints_xyv_px": [
+        [
+          465.0,
+          580.0000031999999,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "identity_status": "resolved_user_confirmed_distinct_instance",
+      "source_tokens_changed": false
+    }
+  ],
+  "annotation_operations": [],
+  "new_training_or_inference": false,
+  "figures": [
+    {
+      "path": "new006-user-confirmed-two-fronts.png",
+      "sha256": "1929fe816df3f0e8a0a921b72b19b137822f05fadeaa69ad1cba2e1cb2fbb53a",
+      "crop_xyxy": [
+        440,
+        525,
+        550,
+        615
+      ],
+      "scale": 6,
+      "pixels": "original nearest-neighbor; source-point markers on separate panel"
+    },
+    {
+      "path": "new006-source-ruler.png",
+      "sha256": "5a9273c8635fa281b80a1feaf22c7cf451745aff226083da261573e66d3fe123",
+      "purpose": "diagnostic source boxes and original pixel coordinates; not proposed corrected boxes"
+    }
+  ],
+  "rendering": {
+    "pillow": "13.0.0",
+    "font_sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+  },
+  "remaining_other_new006_cases": "This resolves only A/B rows53/59. It does not adjudicate separate inherited rows51/52/60 identity questions."
+}

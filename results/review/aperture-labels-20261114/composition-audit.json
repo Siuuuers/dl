@@ -1,0 +1,44 @@
+{
+  "script": "scripts/compose_observed_pose_review.py",
+  "sha256_at_review": "f5ce3f7ba63f3146c28586c496d1f6a8dd4864e2cbee22c1ff802219fe6ea798",
+  "status": "read_only_review_no_tracked_edits",
+  "mapping_findings": "No current-parent row-shift bug found. Stable original/addition IDs are kept; deleted source IDs remain None; inherited additions shift with surviving rows; appended additions follow survivors; complete-bijection and exact-before-text checks protect row correspondence.",
+  "findings": [
+    {
+      "priority": "medium",
+      "location": "compose / action == add",
+      "finding": "Addition coordinates are not checked against reviewed pixel metadata, unlike replacement coordinates. Geometry/counts alone do not catch a valid in-frame typo.",
+      "recommendation": "Require all four added bbox coordinates and both added keypoint triplets to match explicit reviewed pixel values within the same tolerance."
+    },
+    {
+      "priority": "medium",
+      "location": "compose / added visible endpoint evidence gate",
+      "finding": "Literal string comparison == 2 does not match the parser accepting numeric equivalents such as 2.0 or 2e0; these representations skip the actual-corner-evidence gate.",
+      "demonstration": {
+        "text": "0 0.5 0.5 0.2 0.2 0.45 0.5 2.0 0 0 0",
+        "parser_visible_count": 1,
+        "literal_add_gate_would_request_left_evidence": false
+      },
+      "recommendation": "Require canonical visibility tokens 0 or 2, or branch on the validated numeric state."
+    },
+    {
+      "priority": "low",
+      "location": "replacement / bbox edits and main unreviewed_tokens_preserved report",
+      "finding": "An edit restricted to bbox.top can reformat unchanged x-center and width tokens because only reconstructed edges are checked. This is coordinate-preserving but the blanket byte/token-preservation claim is stronger than enforced.",
+      "demonstration": {
+        "accepted": true,
+        "unchanged_x_center_token": [
+          "0.5",
+          "0.500000"
+        ],
+        "unchanged_width_token": [
+          "0.2",
+          "0.200000"
+        ]
+      },
+      "recommendation": "For only vertical-edge edits preserve old cx/width tokens; for only horizontal-edge edits preserve old cy/height tokens, or narrow the reported guarantee to endpoint tokens and undeclared coordinate values."
+    }
+  ],
+  "observed_fix": "Explicit non-target deletion path now records exact discarded endpoint tokens and physical-feature reasons; do not zero false points first or revert this justified path.",
+  "testing": "Only direct parser/geometry and replacement helpers were exercised with synthetic numeric examples. No compose mutation, GPU or inference."
+}

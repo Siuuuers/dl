@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "kind": "independent_semantic_verification",
+  "status": "passed_after_duplicate_addition_removed",
+  "reviewer_task": "/root/aperture_cases",
+  "scope": "Final portable status, stable row identities, late holds, accepted closures, addition duplication and inherited-addition preservation. This is not a model accuracy or training-release assessment.",
+  "candidate_manifest": {
+    "path": "data/candidates/aperture-reviewed-labels-2026-11-14/manifest.json",
+    "sha256": "565570c24165b59ad3ee2368ebd80a9c9ff4bb25d96da87bcdee93602bd75983"
+  },
+  "accepted_review": {
+    "path": "results/review/aperture-labels-20261114/accepted-review.json",
+    "sha256": "3a20f2564cdbbca8e226261f556b37e5a86f6a6bcb6b82823269cc4b610c8520"
+  },
+  "review_status": {
+    "path": "results/review/aperture-labels-20261114/review-status.json",
+    "sha256": "9f0cc1d16fcd247f7f96bf8e0f470d5c43c3318fb33e156b3d1ce3689a15a4f0"
+  },
+  "operation_counts": {
+    "replace": 182,
+    "delete": 7,
+    "add": 4
+  },
+  "independently_counted_effective_labels": {
+    "train": {
+      "images": 137,
+      "objects": 3770,
+      "visible_endpoints": 6854,
+      "missing_endpoints": 686,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 664,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 101,
+      "empty_images": 3
+    }
+  },
+  "case_coverage": {
+    "incoming_cases": 87,
+    "all_87_present_exactly_once": true,
+    "missing_ids": [],
+    "duplicate_ids": [],
+    "baseline_status_counts": {
+      "partial": 39,
+      "held": 20,
+      "resolved": 28
+    },
+    "extra_case_ids": [
+      "new_000096-extra-lower-front"
+    ],
+    "extra_separately_marked_and_excluded_from_baseline_denominator": true,
+    "accepted_operation_references_bidirectionally_match": true
+  },
+  "closure_review": {
+    "resolved_cases_checked": 28,
+    "unjustified_closures_found": [],
+    "source_hold_explicitly_settled_by_root": {
+      "case_id": "new_000066-012",
+      "reason": "Independent source report requested confirmation of the bottom plane; root original-pixel adjudication explicitly confirms roof-only material before the frame and accepts exclusion."
+    },
+    "resolved_remaining_details_empty": true
+  },
+  "held_row_identity_review": {
+    "held_original_row_references": 104,
+    "all_map_to_live_candidate_rows": true,
+    "deleted_or_unmapped_held_ids": [],
+    "shifted_mappings": [
+      {
+        "case_id": "new_000128-003",
+        "original_row": 19,
+        "candidate_row": 18
+      },
+      {
+        "case_id": "new_000075-034",
+        "original_row": 20,
+        "candidate_row": 17
+      },
+      {
+        "case_id": "new_000061-038",
+        "original_row": 10,
+        "candidate_row": 9
+      },
+      {
+        "case_id": "new_000024-086",
+        "original_row": 3,
+        "candidate_row": 2
+      }
+    ],
+    "frozen_source_current_row_field_renamed_parent_row": true
+  },
+  "late_decision_review": {
+    "four_new124_new127_proposals_held_not_created": true,
+    "withheld_proposals_explicitly_recorded": [
+      "new_000124-upper_aperture_front",
+      "new_000124-lower_aperture_front",
+      "new_000127-upper_aperture_front",
+      "new_000127-lower_aperture_front"
+    ],
+    "new130_original54_and55_right_points_still_canonical_missing": true,
+    "new117_original24_identity_still_held": true,
+    "new117_original24_top_bottom_px": [
+      491,
+      503
+    ],
+    "new030_cassette_material_confirmed_and_not_reasked": true,
+    "new030_remaining_question_is_internal_seam_or_instance_count": true,
+    "new096_extra_case_separate": true
+  },
+  "duplicate_found_and_resolved": {
+    "image_id": "new_000130",
+    "case_id": "new_000130-052",
+    "rejected_proposal_id": "new_000130-lower_right_aperture_front",
+    "prior_snapshot_operation_id": "observed-191",
+    "prior_snapshot_manifest_sha256": "3c7f9e35fb18aa41636aee5d8af00cc16f6709527666d46f5130f4fd1fed13af",
+    "rejected_box_xyxy_px": [
+      699,
+      504,
+      726,
+      522
+    ],
+    "existing_stable_addition_id": "partial-130-add-lowest-front",
+    "existing_parent_row": 59,
+    "existing_candidate_row": 59,
+    "existing_box_xyxy_px_rounded": [
+      699,
+      503,
+      726,
+      520
+    ],
+    "same_physical_front_original_pixel_review": true,
+    "rejected_addition_absent_from_final_operations_and_row_map": true,
+    "existing_tokens_preserved_byte_for_byte": true,
+    "withheld_proposals_records_rejected_duplicate": true,
+    "cause": "The initial original-row-only review inventory omitted inherited additions; the complete-parent identity audit caught the duplicate before finalization."
+  },
+  "other_addition_review": {
+    "all_four_new_additions_compared_against_every_effective_parent_row": true,
+    "maximum_iou_with_any_parent_row": 0.0,
+    "addition_ids": [
+      "new_000115-lower_aperture_front",
+      "new_000065-010-D01",
+      "new_000027-072-D01",
+      "new_000027-072-D02"
+    ],
+    "full_original_context_and_source_pixel_crops_reviewed": true,
+    "physical_result": "new115 is separate from upper row22; new065 bottom-left front is distinct from its inherited top-left/hand additions; new027 two additional top-border fronts follow the two separate inherited fragments. No related duplicate or identity conflict found."
+  },
+  "inherited_additions_review": {
+    "inherited_additions_checked": 22,
+    "all_stable_ids_survive": true,
+    "all_inherited_label_tokens_unchanged": true,
+    "inherited_additions_targeted_by_accepted_deletion": [],
+    "new_conflicts_with_changed_boxes_or_additions": [],
+    "largest_other_overlap": {
+      "image_id": "new_000029",
+      "iou": 0.15151435326079585,
+      "interpretation": "Unchanged legacy overlap with a neighboring box, not introduced by this composition; this audit does not certify all unchanged legacy fronts."
+    }
+  },
+  "portable_status_review": {
+    "new094_remaining_details_match_only_retained_row23_hold": true,
+    "new117_remaining_details_preserve_row24_front_vs_underside_lip_hold": true,
+    "new130_status_describes_existing_front_retained_and_duplicate_excluded": true,
+    "late_status_evidence_hashes_match_accepted_review": true
+  },
+  "remaining_findings": [],
+  "release_ready": false,
+  "physical_review_is_human_approval": false,
+  "training_or_inference_run": false,
+  "frozen_files_modified_by_reviewer": false
+}

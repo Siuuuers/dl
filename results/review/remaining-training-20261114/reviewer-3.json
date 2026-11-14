@@ -1,0 +1,879 @@
+{
+  "schema_version": 1,
+  "task": "Remaining-training-original review group 3",
+  "reviewer": "/root/history_and_blindspots",
+  "date_hong_kong": "2026-11-14",
+  "inputs_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/group_3/inputs.json",
+  "inputs_sha256": "4ba568b7cb88d613fd04e3ab7afcaf675b4a978e48270e29624cfbb632dfab74",
+  "counts": {
+    "images": 19,
+    "source_rows": 529,
+    "source_missing_endpoint_slots": 66
+  },
+  "method": {
+    "all_full_originals_viewed_before_any_source_label_overlay": true,
+    "image_and_label_sha256_checked_against_inputs": true,
+    "label_overlays": "Rendered directly from source TXT, with one-based source row IDs; no model predictions used.",
+    "crops": "Only original pixels, nearest-neighbor enlargement; optional coordinate grids are review aids.",
+    "changes_applied": false,
+    "training_or_inference_performed": false,
+    "no_hidden_coordinate_estimation": true,
+    "source_rows_retained": true
+  },
+  "summary": {
+    "likely_omission_pending_extent": {
+      "new_000129": 1
+    },
+    "supported_extent_review_nominations": [
+      {
+        "id": "new_000037",
+        "row": 11
+      },
+      {
+        "id": "old_000042",
+        "row": 10
+      }
+    ],
+    "held_identity_cases": [
+      {
+        "id": "new_000006",
+        "rows": [
+          53,
+          59
+        ]
+      },
+      {
+        "id": "new_000041",
+        "rows": [
+          9
+        ]
+      }
+    ],
+    "accepted_changes": "None in this agent report; root independently adjudicates before modifying a separate candidate.",
+    "initial_high_confidence_omitted_front_nominations": {
+      "new_000015": 3
+    },
+    "current_high_confidence_omitted_front_nominations": {},
+    "superseded_held_nominations": {
+      "new_000015": {
+        "count": 3,
+        "reason": "Cross-view structural evidence supports rack-top backer/retainer, not three separate cassette fronts; no additions."
+      }
+    },
+    "current_reviewer_position": "Keep new_000015 unchanged; assess new_000129 visible-front addition and the two box-extent nominations separately. No three-front addition survives this review."
+  },
+  "prior_history_findings": [
+    {
+      "finding": "No blocking architecture question before this review: one cassette_front class, two actual lower-front corners, assistant-reviewed still images, misses first, provisional 10 px; calibration/robot control remain outside scope.",
+      "sources": [
+        "docs/annotation-policy.md",
+        "docs/model-quality.md"
+      ]
+    },
+    {
+      "finding": "Do not accidentally run the generic epoch173/.25 default or results-only PR62 branch. Current full workflow is PR61; PR35 candidate is explicitly selected by checkpoint manifest and conf.13.",
+      "sources": [
+        "docs/predict-pose-folder.md",
+        "scripts/predict_pose_folder.py"
+      ]
+    },
+    {
+      "finding": "1920 input, geometry/context anchors, partial-front, visible-extent, consistency, endpoint, composed-front and pixel-corruption experiments already exist. Their bounded negative/mixed outcomes do not prove all improvements impossible, but repeating them without new diagnosis is not justified.",
+      "sources": [
+        "docs/model-quality.md",
+        "docs/composed-results-2026-11-13.md",
+        "docs/occlusion-results-2026-11-14.md"
+      ]
+    },
+    {
+      "finding": "The additional 320 upstream frames are not automatically fresh independent evidence. Semantic qualification, unresolved boundaries, capture correlation and upstream use remain limits. Three reviewed proposals are still quarantined.",
+      "sources": [
+        "docs/additional-frame-intake-2026-11-07.json",
+        "docs/additional-annotation-pilot-2026-11-07.md"
+      ]
+    },
+    {
+      "finding": "Accepted pixel-supported labels are supervision evidence, not measured model gains. Reconcile coherent explicitly versioned training changes; never silently combine all historical candidate overlays or training/development labels.",
+      "sources": [
+        "data/candidates/border-fronts-2026-11-13/README.md",
+        "docs/annotation-policy.md"
+      ]
+    }
+  ],
+  "images": [
+    {
+      "id": "new_000002",
+      "split": "train",
+      "instances": 48,
+      "visible_endpoints": 86,
+      "missing_endpoints": 10,
+      "image_sha256": "7f02be1bbd1f2a0f2512f985d8583189d43c1ceb1be3fd44a3f368c5a9697234",
+      "label_sha256": "6000a15ba00f335d23be99a690235f8eaba97cc7751e0fb3f4217dad91109d2d",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000002.png",
+      "original_observation": "Dense upper and middle shelves; the gripper and fingers occlude parts of the lower middle/right fronts. No independently supported omitted front was established in this pass.",
+      "label_comparison": "All 48 source rows were displayed. Existing one-sided and two-sided missing slots coincide with occluded regions. Several boxes span gripper or hand material; some fronts have exposed portions on both sides, so a broad box alone is not enough evidence for correction.",
+      "held": [
+        {
+          "rows": [
+            33,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            47,
+            48
+          ],
+          "issue": "Partial-front extent and independent endpoint availability need bounded row-level adjudication if revised; do not fill hidden points or automatically shrink to one visible fragment."
+        }
+      ],
+      "detail_crops": [
+        {
+          "box": [
+            540,
+            425,
+            925,
+            620
+          ],
+          "scale": 2,
+          "stem": "new_000002-crop"
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000002.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000002-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "new_000004",
+      "split": "train",
+      "instances": 56,
+      "visible_endpoints": 107,
+      "missing_endpoints": 5,
+      "image_sha256": "e8580246300b9ac6f892cf4e54e948289d04ef6d3e99aabca2cdc64ffbbd2cfe",
+      "label_sha256": "c758af347306479195fead57ba506f0064cd256daad3a56b5dc9ae2c89f32ac2",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000004.png",
+      "original_observation": "Dense rack viewed from farther away; upper central stack is frame-clipped and lower-left front is partly obscured by the finger. Lower-shelf middle regions show tops or occlusion without a clearly independent unlabelled front.",
+      "label_comparison": "All 56 rows displayed. The very thin top row15 and finger-adjacent row56 are already labelled. No addition, deletion or endpoint replacement accepted.",
+      "held": [
+        {
+          "rows": [
+            15
+          ],
+          "issue": "A six-pixel top-border strip has both endpoints missing; clipping and blur do not support reliably replacing these with visible coordinates in this pass."
+        },
+        {
+          "rows": [
+            54,
+            55,
+            56
+          ],
+          "issue": "Retain one-sided missing states rather than using gripper/finger edges as physical corners."
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000004.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000004-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "new_000006",
+      "split": "train",
+      "instances": 60,
+      "visible_endpoints": 106,
+      "missing_endpoints": 14,
+      "image_sha256": "666bdac6bc39d2192ef430a28274ed2a042896cddee5b64e084f6fca2b5ab79a",
+      "label_sha256": "ad83726338174af215c15737268e9c4e118320100f7c2a38ca9652f268b7267b",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000006.png",
+      "original_observation": "Rotated rack; several top and lower fronts are clipped or partly covered. Original pixels show a thin exposed lower stack at the thumb edge and another partial front between jaws.",
+      "label_comparison": "All 60 rows displayed. Tiny row59 overlaps larger row53 in the same lower-stack area and warrants identity review; the marked row59 point appears along the visible side of the broad face, but blur prevents a confident duplicate deletion.",
+      "held": [
+        {
+          "rows": [
+            53,
+            59
+          ],
+          "issue": "Suspected redundant/upper-lip fragment versus separate front. Source row53 bbox [462,541,565,586], L=(465,580); row59 bbox [461.81,553.19,482.7,569.77], L=(469.1,560.16). Do not delete without independent original-pixel adjudication."
+        },
+        {
+          "rows": [
+            51,
+            52,
+            60
+          ],
+          "issue": "Closely spaced gripper-obscured fragments retain distinct source identities pending review; overlap alone does not prove duplicates."
+        }
+      ],
+      "detail_crops": [
+        {
+          "box": [
+            390,
+            490,
+            800,
+            660
+          ],
+          "scale": 2,
+          "stem": "new_000006-crop"
+        },
+        {
+          "box": [
+            440,
+            531,
+            575,
+            641
+          ],
+          "scale": 4,
+          "stem": "new_000006-front"
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000006.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000006-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "new_000015",
+      "split": "train",
+      "instances": 59,
+      "visible_endpoints": 113,
+      "missing_endpoints": 5,
+      "image_sha256": "bc802caa8df197bf91bad5f027cc7ef869d884bae7ee6f808951e11a64f961d9",
+      "label_sha256": "c4ba364d68443e3ac0a3cfcd657f24d451b2b2b58404c48b5307fbedfe348d78",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000015.png",
+      "original_observation": "Three distinct white front strips are visible at the top frame boundary above the metal shelf; each retains its lower left/right junctions in the frame. The rest of the rack includes three narrow left-visible lower-shelf fronts and one lower-left front near the thumb.",
+      "label_comparison": "All 59 rows displayed. None covers the three uppermost strips; upper source row15 begins around y34.54. Lower partial fronts are already represented in rows56–59.",
+      "proposals": [
+        {
+          "operation": "append_front",
+          "id": "top_A",
+          "bbox_xyxy": [
+            367,
+            0,
+            538,
+            14
+          ],
+          "left": [
+            370,
+            12,
+            2
+          ],
+          "right": [
+            535,
+            12,
+            2
+          ],
+          "confidence_description": "High confidence in separate identifiable-front omission; nominal coordinates require root adjudication."
+        },
+        {
+          "operation": "append_front",
+          "id": "top_B",
+          "bbox_xyxy": [
+            546,
+            0,
+            676,
+            15
+          ],
+          "left": [
+            548,
+            13,
+            2
+          ],
+          "right": [
+            673,
+            14,
+            2
+          ],
+          "confidence_description": "High confidence in separate identifiable-front omission; nominal coordinates require root adjudication."
+        },
+        {
+          "operation": "append_front",
+          "id": "top_C",
+          "bbox_xyxy": [
+            684,
+            0,
+            836,
+            18
+          ],
+          "left": [
+            686,
+            14,
+            2
+          ],
+          "right": [
+            833,
+            16,
+            2
+          ],
+          "confidence_description": "High confidence in separate identifiable-front omission; nominal coordinates require root adjudication."
+        }
+      ],
+      "uncertainty": "Approximate manual placement uncertainty 2–3 original pixels at the soft/rounded lower junctions and the face-to-metal edge. This is not a calibrated interval. Top clipping does not hide the nominated lower corners. Root received these independent nominations before supplying any root coordinates.",
+      "detail_crops": [
+        {
+          "box": [
+            350,
+            0,
+            860,
+            65
+          ],
+          "scale": 2,
+          "stem": "new_000015-crop"
+        },
+        {
+          "box": [
+            355,
+            0,
+            849,
+            36
+          ],
+          "scale": 3,
+          "stem": "new_000015-border"
+        },
+        {
+          "box": [
+            360,
+            0,
+            545,
+            27
+          ],
+          "scale": 5,
+          "stem": "new_000015-left"
+        },
+        {
+          "box": [
+            537,
+            0,
+            683,
+            29
+          ],
+          "scale": 5,
+          "stem": "new_000015-middle"
+        },
+        {
+          "box": [
+            673,
+            0,
+            847,
+            33
+          ],
+          "scale": 5,
+          "stem": "new_000015-right"
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000015.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000015-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate.",
+      "initial_proposals_status": "Superseded: held/not accepted after independent dissent and broader structural-context inspection. Original observations/nominations are preserved above as an audit trail, not the current decision.",
+      "followup_adjudication": {
+        "trigger": "Independent group1 reviewer observed the same rack-top white structure in new_000017 and questioned the three-cassette interpretation; root recalled the clearer new_000029 view and requested re-review.",
+        "new_evidence": [
+          {
+            "id": "new_000017",
+            "original_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000017.png",
+            "sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281",
+            "review": "Full original visually inspected after independent reviewer questioned new_000015 top-strip identity. No coordinates transferred between images."
+          },
+          {
+            "id": "new_000029",
+            "original_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000029.png",
+            "sha256": "648c113c1cfb6bbb2342851d1ecf8b0d1d3f97f230344915129b468b4b4e2040",
+            "review": "Full original visually inspected after independent reviewer questioned new_000015 top-strip identity. No coordinates transferred between images."
+          }
+        ],
+        "revised_judgment": "No new_000015 top-strip annotation is supported. New_000029 shows a broad white rack-top backer/retainer behind two metal fastening posts, extending across the rack. New_000017 shows the same arrangement. The three apparent new_000015 rectangles are portions separated by these posts; their widths do not match the five cassette columns and the right piece has the same profiled step. Structural surface is the better-supported interpretation.",
+        "operation": "Do not add any of the three nominated rows. Keep the 59 source rows unchanged for this finding.",
+        "keypoints": "The previously nominated lower junctions cannot be accepted as cassette corners because the proposed instance identity failed. Their pixel precision does not resolve class/physical-feature identity.",
+        "uncertainty": "Do not claim every detail of the rack construction is known; the image evidence is sufficient to withdraw the cassette-front additions.",
+        "original_error": "Initial review conflated white rectangular structural material with an identifiable cassette front; the independent dissent changed the decision.",
+        "updated_at_utc": "2026-11-14T07:01:13.390731+00:00"
+      }
+    },
+    {
+      "id": "new_000016",
+      "split": "train",
+      "instances": 40,
+      "visible_endpoints": 71,
+      "missing_endpoints": 9,
+      "image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+      "label_sha256": "1cd2487ca1184e7984737df411200a190c3230d3e495c3af6e7df47b1c30ab6d",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000016.png",
+      "original_observation": "Close rack view with a frame-clipped upper stack and heavy finger/jaw occlusion along the lower shelf. Visible front fragments around the jaws appear represented.",
+      "label_comparison": "All 40 rows displayed. Lower partial rows32–40 keep one missing side each; source boxes often extend into occluding material. No new object or reliably recoverable missing corner is established.",
+      "held": [
+        {
+          "rows": [
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "issue": "Visible-extent versus inherited broad-box convention needs careful image-specific review. Do not estimate hidden endpoints from the regular stack."
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000016.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000016-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "new_000032",
+      "split": "train",
+      "instances": 55,
+      "visible_endpoints": 102,
+      "missing_endpoints": 8,
+      "image_sha256": "c04d97b09130d67712a2f6f166b2e41725a661a241e13a1fb9f4870229c49d70",
+      "label_sha256": "1b21102a050c8e6f0a889086b5ff2b0f597abed2067882cccfcf6e232ad2dd6c",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000032.png",
+      "original_observation": "Dense rack, clipped upper stack and partly covered lowest middle-shelf fronts. The bottom shelf is mostly top surfaces and hands.",
+      "label_comparison": "All 55 rows displayed; no high-confidence omitted front found. Gripper-adjacent rows36/37/46/47/51/52 include independent missing endpoint states.",
+      "held": [
+        {
+          "rows": [
+            46,
+            47
+          ],
+          "issue": "Both-corner-missing rows are not automatically invalid: retain pending physical-fragment review; no hidden coordinates are nominated."
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000032.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000032-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "new_000037",
+      "split": "train",
+      "instances": 15,
+      "visible_endpoints": 26,
+      "missing_endpoints": 4,
+      "image_sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3",
+      "label_sha256": "50576476f4bbfd0bb0e4f898f05519cf6790ea4009736ec9fc2af7557d720bc7",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000037.png",
+      "original_observation": "Sparse shelves with central five-front stack, neighboring four-front stacks and two lower-shelf partial fronts. White material beyond the upper shelf may belong to another front, but its surface identity is not secure in this view.",
+      "label_comparison": "All 15 rows displayed. Row11 source bottom bound y456 cuts across visibly present front material whose sloped lower edge reaches about y470 near x620. The visible left corner remains near(480,454); the true right corner is obscured by the jaw.",
+      "proposals": [
+        {
+          "operation": "replace_bbox_bound",
+          "source_row": 11,
+          "original_bbox_xyxy": [
+            478,
+            421.92,
+            640.38,
+            456
+          ],
+          "replace": {
+            "ymax": 471
+          },
+          "preserve": "All other box bounds and both original endpoint triples.",
+          "confidence_description": "High confidence that source bottom bound excludes visible front material; exact new bound needs independent adjudication."
+        }
+      ],
+      "held": [
+        {
+          "rows": [],
+          "region": [
+            700,
+            0,
+            1280,
+            135
+          ],
+          "issue": "Upper white strip/front-versus-other-surface identity unresolved; no new row proposed."
+        },
+        {
+          "rows": [
+            1,
+            10,
+            11,
+            15
+          ],
+          "issue": "Retain existing missing endpoints; jaw/finger boundaries are not actual hidden lower corners."
+        }
+      ],
+      "uncertainty": "Nominal new ymax has about 2–3px manual uncertainty from the soft edge. No subpixel claim.",
+      "detail_crops": [
+        {
+          "box": [
+            700,
+            0,
+            1280,
+            135
+          ],
+          "scale": 2,
+          "stem": "new_000037-crop"
+        },
+        {
+          "box": [
+            460,
+            390,
+            650,
+            488
+          ],
+          "scale": 4,
+          "stem": "new_000037-lower"
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000037.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000037-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "new_000039",
+      "split": "train",
+      "instances": 30,
+      "visible_endpoints": 59,
+      "missing_endpoints": 1,
+      "image_sha256": "8d77c37330fd78456bb1391653bdac33665ad9c7facf79de1ab8d6739818c974",
+      "label_sha256": "34787911d2a3d65d17655e0be05a9f08bb698c3024f7b477121068539aa15b3d",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000039.png",
+      "original_observation": "Three visible columns in upper shelf, four nonempty columns in middle shelf, and a three-front lower-left stack. Main fronts appear present in the source labels.",
+      "label_comparison": "All 30 rows displayed; no supported omission or duplicate established. Row12 right corner is partly covered by a jaw; its missing state is retained.",
+      "held": [],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000039.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000039-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "new_000041",
+      "split": "train",
+      "instances": 14,
+      "visible_endpoints": 23,
+      "missing_endpoints": 5,
+      "image_sha256": "4c0313f01daa3bd736f3acdf5b874847c6e46c05ec90dbb039b47416c7913b65",
+      "label_sha256": "96639042f00f9ad89b4e8afaee2802b2e839e540e05104a6a657f4719eaf8e82",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000041.png",
+      "original_observation": "Sparse upper compartment with left, central and right stacks and a lower-left partial front. White material along top frame edge is not assigned a new front identity here.",
+      "label_comparison": "All 14 rows displayed. Source row9 below row8 is largely covered by the jaws; separate physical-front evidence within that region is uncertain, so neither deletion nor completion is accepted.",
+      "held": [
+        {
+          "rows": [
+            9
+          ],
+          "issue": "Object-identity/visible-extent ambiguity behind the jaws; both endpoints remain missing. Original pixels, not expected stack spacing, must settle whether a separate identifiable front is present."
+        },
+        {
+          "rows": [],
+          "region": [
+            145,
+            0,
+            1280,
+            120
+          ],
+          "issue": "Upper white strip/plane identity held; no automatic addition."
+        }
+      ],
+      "detail_crops": [
+        {
+          "box": [
+            145,
+            0,
+            1280,
+            120
+          ],
+          "scale": 2,
+          "stem": "new_000041-crop"
+        },
+        {
+          "box": [
+            600,
+            400,
+            805,
+            480
+          ],
+          "scale": 4,
+          "stem": "new_000041-lower"
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000041.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000041-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "new_000050",
+      "split": "train",
+      "instances": 35,
+      "visible_endpoints": 65,
+      "missing_endpoints": 5,
+      "image_sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77",
+      "label_sha256": "5a31c9c9891ae6240b0fcdd9e37e4ca0c0e1afe89b7aa6082b0635f7bf9404b2",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000050.png",
+      "original_observation": "Top shelf partly clipped, middle shelf readily visible, bottom central stack partly covered by thumb. A tiny last lower-left-visible front sits at the thumb boundary.",
+      "label_comparison": "All 35 rows displayed. Top strips23/28 are already represented with both corners missing. Tiny row35 is already present and is not deleted merely for its small area. No new omission or visible endpoint replacement accepted.",
+      "held": [
+        {
+          "rows": [
+            23,
+            28,
+            35
+          ],
+          "issue": "Thin/cropped or occluded examples require original-pixel evidence; small box area and missing slots alone do not establish bad labels."
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000050.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000050-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "new_000129",
+      "split": "train",
+      "instances": 49,
+      "visible_endpoints": 98,
+      "missing_endpoints": 0,
+      "image_sha256": "ab3e56ede990b1e47a4db5edcf1efb3beca5893ed3c647e7a3958c90ae93ac0a",
+      "label_sha256": "31feaaa0f18ee29c43fc804e2bdc08c9b546a0d8900b444add5ef47ce62f62d0",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/new_000129.png",
+      "original_observation": "Upper/middle shelves are densely filled. A separate white lower-shelf front fragment is visible between the two jaws, beneath its perforated top. Two loose pieces on the tabletop mainly show perforated surfaces and do not establish an additional target front in this pass.",
+      "label_comparison": "All 49 source rows cover upper/middle shelves; none covers the front fragment between jaws. No actual left or right lower corner can be reliably located in the fragment; the jaw/finger boundaries must not be used as corners.",
+      "proposals": [
+        {
+          "operation": "append_front_pending_extent",
+          "id": "between_jaws",
+          "region_xyxy": [
+            698,
+            510,
+            731,
+            543
+          ],
+          "nominal_visible_bbox_xyxy": [
+            700,
+            516,
+            729,
+            541
+          ],
+          "left": [
+            0,
+            0,
+            0
+          ],
+          "right": [
+            0,
+            0,
+            0
+          ],
+          "confidence_description": "Identifiable visible-front omission is likely; precise visible-front/top-surface transition and box extrema remain held for independent adjudication."
+        }
+      ],
+      "uncertainty": "Blur and the face-to-top transition make ymin especially uncertain, approximately y514–521 depending on the supported boundary. x extrema are approximately700–729 and lower visible end about y539–542. No final box accepted here and no hidden corner inferred.",
+      "detail_crops": [
+        {
+          "box": [
+            485,
+            425,
+            835,
+            590
+          ],
+          "scale": 2,
+          "stem": "new_000129-crop"
+        },
+        {
+          "box": [
+            682,
+            490,
+            746,
+            551
+          ],
+          "scale": 6,
+          "stem": "new_000129-front"
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/new_000129.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/new_000129-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate.",
+      "root_followup_received": {
+        "accepted_bbox_xyxy": [
+          700,
+          516,
+          729,
+          541
+        ],
+        "left": [
+          0,
+          0,
+          0
+        ],
+        "right": [
+          0,
+          0,
+          0
+        ],
+        "extent_uncertainty": "Approximately 4 px for upper boundary; do not include perforated top.",
+        "reviewer_agreement": "Consistent with this reviewer original nominal extent and missing-corner judgment. Root communicated this final version after an earlier tighter proposal."
+      }
+    },
+    {
+      "id": "old_000022",
+      "split": "train",
+      "instances": 10,
+      "visible_endpoints": 20,
+      "missing_endpoints": 0,
+      "image_sha256": "69dee9265ee96aff6f4ebbe5a6f05949b112fdf84c1797d56a90b3ccc53d3028",
+      "label_sha256": "73cc9acd12c9981e3997f1cf5b0a217180d48176ab19b274776b91f7e1cd189e",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/old_000022.png",
+      "original_observation": "Single central stack viewed from below with ten source-associated visible fronts, including upper lip/front strip. Adjacent compartments appear empty.",
+      "label_comparison": "All 10 rows displayed. No high-confidence omitted front, duplicate or missing endpoint error found. Gray front material and bright lower lips require physical-feature judgment; the pass does not certify exact bounds.",
+      "held": [
+        {
+          "rows": [
+            10
+          ],
+          "issue": "Thin upper strip and shelf relationship deserves care if bounds are revised; do not use brightness alone to decide target identity."
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/old_000022.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/old_000022-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "old_000027",
+      "split": "train",
+      "instances": 6,
+      "visible_endpoints": 12,
+      "missing_endpoints": 0,
+      "image_sha256": "98ceccf919b31f07d8d006afd548003944f9e5234194eb8b877cdf9116520d2c",
+      "label_sha256": "1846a3d79a30b37561a7c682a124dff22a2cc6e8d4b9b022263b3d49aa5440e1",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/old_000027.png",
+      "original_observation": "Single six-front central stack ending at top frame border; rest of rack empty.",
+      "label_comparison": "All 6 rows displayed. No separate omitted front established. Top boundary proximity and protruding lip do not by themselves justify a new object or automatic ymin shift.",
+      "held": [],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/old_000027.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/old_000027-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "old_000042",
+      "split": "train",
+      "instances": 10,
+      "visible_endpoints": 20,
+      "missing_endpoints": 0,
+      "image_sha256": "b4fb62065fd129594eefe15210fbae200f4c59932dab3574f73e03704af2c42e",
+      "label_sha256": "b0260b793f5196c174f7cb3142fb93a2b6d9c439150598446b75cfea9979af01",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/old_000042.png",
+      "original_observation": "Ten-front central stack beneath a broad horizontal rack shelf. The thin upper target strip is visibly narrower than its source rectangle.",
+      "label_comparison": "All 10 rows displayed. Row10 source bbox [544.74,293.38,904.74,338.96] spans metal-rack material on both sides of the central front. The visible target is approximately x575–873; its source endpoints remain inside that region.",
+      "proposals": [
+        {
+          "operation": "bbox_extent_review",
+          "source_row": 10,
+          "original_bbox_xyxy": [
+            544.74,
+            293.38,
+            904.74,
+            338.96
+          ],
+          "nominal_x_bounds": [
+            575,
+            873
+          ],
+          "nominal_visible_y_extent": [
+            294,
+            328
+          ],
+          "preserve": "Existing endpoint triples. A smallest accepted change may restrict x bounds only and hold y bounds.",
+          "confidence_description": "High confidence that source side extents include non-target rack; exact tight box requires root adjudication."
+        }
+      ],
+      "uncertainty": "Approximate 2–3px manual extent uncertainty from glare and the face/shelf boundary; nominal bbox is not automatically accepted.",
+      "detail_crops": [
+        {
+          "box": [
+            535,
+            280,
+            915,
+            385
+          ],
+          "scale": 3,
+          "stem": "old_000042-top"
+        }
+      ],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/old_000042.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/old_000042-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "old_000051",
+      "split": "train",
+      "instances": 10,
+      "visible_endpoints": 20,
+      "missing_endpoints": 0,
+      "image_sha256": "b3372a8c3b55f3567738c1d8e649f04c3cd3391ffa1a4ea8dcbe2b1097697661",
+      "label_sha256": "eecc530b01392e80cc6ede4467b7c9750b6399e29a1abb6a6ca571f8123d98de",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/old_000051.png",
+      "original_observation": "Ten visible central-stack fronts; adjacent compartments empty. Bright upper strip is clipped by the shelf/frame boundary.",
+      "label_comparison": "All 10 rows displayed. No additional instance or duplicate accepted. Lower-corner markings follow tilted physical features, so forcing equal endpoint Y is unwarranted.",
+      "held": [],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/old_000051.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/old_000051-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "old_000065",
+      "split": "train",
+      "instances": 8,
+      "visible_endpoints": 16,
+      "missing_endpoints": 0,
+      "image_sha256": "30fa897f2cedcc315b6adfbe7383d6691859dfb603419414eacbdccd5f0d6ca7",
+      "label_sha256": "46510512d2e61b435a98ac319de68c017c6f57036657532cffdb428ec16e8364",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/old_000065.png",
+      "original_observation": "Eight-source-row central stack viewed from below; top face is clipped and bottom front overlaps shelf edge.",
+      "label_comparison": "All 8 rows displayed. No high-confidence omission or duplicate found. Bright material at extreme top is insufficient to independently identify another face.",
+      "held": [],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/old_000065.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/old_000065-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "old_000073",
+      "split": "train",
+      "instances": 8,
+      "visible_endpoints": 16,
+      "missing_endpoints": 0,
+      "image_sha256": "7c362086c7daf6df8439f6cfa67cb920273a31132f64ff07739d97f733530c01",
+      "label_sha256": "6c567e678f299cb4a59b6dbd85c5d61f1bc53c20354feff87af8fd549dbfa93f",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/old_000073.png",
+      "original_observation": "Eight-source-row central stack, horizontally shifted view, strong reflections at rack edge.",
+      "label_comparison": "All 8 rows displayed. No high-confidence omitted front or endpoint-state change found. Reflection boundaries and physical face/lip junctions remain distinct.",
+      "held": [],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/old_000073.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/old_000073-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "old_000087",
+      "split": "train",
+      "instances": 8,
+      "visible_endpoints": 16,
+      "missing_endpoints": 0,
+      "image_sha256": "b598bfedf0fa51ffaecf67c57eb5e347512a34f3d833963d400765b9c5474e8e",
+      "label_sha256": "696dad50bed5e220d993253ec27dd5166b940862ebdb9cfd1bf3ed55933edea4",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/old_000087.png",
+      "original_observation": "Eight-source-row central stack at left side with large empty right rack compartments; top front clipped.",
+      "label_comparison": "All 8 rows displayed. Source labels cover the independently identifiable stack; no new instance or duplicate accepted.",
+      "held": [],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/old_000087.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/old_000087-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    },
+    {
+      "id": "old_000097",
+      "split": "train",
+      "instances": 8,
+      "visible_endpoints": 16,
+      "missing_endpoints": 0,
+      "image_sha256": "34c2fa0f76780c470fc0b34de255945e281506c3daab13ea3d974b562f1113ab",
+      "label_sha256": "e4e272c8053202f21b5baa3385ae72a8240736473bfacd6c6960f829932a0659",
+      "review_image_path": "/workspace/scratch/4e7cac56176b/annotation-review-20261114/originals/data/images/train/old_000097.png",
+      "original_observation": "Eight-source-row left central stack, similar perspective to087 but a distinct original image.",
+      "label_comparison": "All 8 rows displayed. No high-confidence omitted front or new endpoint change established. Similarity to087 is not proof of duplicate capture or independent scene provenance.",
+      "held": [],
+      "source_label_path": "/workspace/scratch/d89b8db135c2/dl/data/labels/train/old_000097.txt",
+      "source_overlay_path": "/workspace/scratch/aa0875036021/review/group3_assets/old_000097-source.png",
+      "scope": "Whole-original inspection before seeing labels, then whole source-label overlay; selected suspect regions enlarged. This is triage, not certification of each row/coordinate."
+    }
+  ],
+  "limits": [
+    "No claim that 529 source rows are fully correct or all 66 missing slots are erroneous.",
+    "Whole-image triage plus selected detailed crops cannot establish complete coordinate certification.",
+    "All suggestions require independent root adjudication; uncertainty is retained explicitly.",
+    "No new independent test scenes are created; all inputs belong to the existing training split."
+  ]
+}

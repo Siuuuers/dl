@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "reviewer": "/root/training_inventory",
+  "scope": "Independent actual origin, original-row mapping, exact-token and Decimal geometry checks; one real verifier execution plus two focused corruption probes. No training or inference.",
+  "candidate_manifest_sha256": "3ffeb48cf31c497a406c777b87695c31365ace27c23fc32abfac05b8530fe7bd",
+  "verifier_sha256": "110de745439ce07f800f5a1dedbd6a4ec21d0f3d9dd6b878db107974d88f3d94",
+  "origin_records_checked": 240,
+  "historical_field_operations": 119,
+  "local_operations": 5,
+  "operation_counts": {
+    "bbox": 66,
+    "delete_object": 20,
+    "left_endpoint": 11,
+    "right_endpoint": 5,
+    "add_object": 22
+  },
+  "changed_files": 40,
+  "untouched_rows_byte_preserved_inside_changed_files": 1358,
+  "modified_original_rows_checked": 75,
+  "deleted_original_rows_checked": 20,
+  "appended_rows_checked": 22,
+  "pr63_label_files_byte_identical": [
+    "new_000027.txt",
+    "new_000029.txt",
+    "new_000033.txt",
+    "new_000037.txt",
+    "new_000040.txt",
+    "new_000065.txt",
+    "new_000067.txt",
+    "new_000068.txt",
+    "new_000072.txt",
+    "new_000097.txt",
+    "new_000101.txt",
+    "new_000103.txt",
+    "new_000121.txt",
+    "new_000129.txt",
+    "old_000010.txt",
+    "old_000042.txt"
+  ],
+  "new102_mapping": {
+    "source15": null,
+    "source53": 52,
+    "source54": 53
+  },
+  "single_bound_checks": [
+    {
+      "image_id": "new_000037",
+      "original_row": 11,
+      "target_edge_index": 3,
+      "nominal_px": 471,
+      "maximum_serialization_error_px": 3.6e-10
+    },
+    {
+      "image_id": "new_000040",
+      "original_row": 14,
+      "target_edge_index": 2,
+      "nominal_px": 655,
+      "maximum_serialization_error_px": 0.0
+    },
+    {
+      "image_id": "old_000010",
+      "original_row": 1,
+      "target_edge_index": 1,
+      "nominal_px": 0,
+      "maximum_serialization_error_px": 0.0
+    }
+  ],
+  "sixteen_pilot_rows_exact_historical_tokens": true,
+  "pilot_maximum_pixel_roundtrip_error": 6.4e-06,
+  "new038_unchanged_original_rows_2_through_15_byte_identical": true,
+  "new038_four_accepted_rows_exact": true,
+  "new038_maximum_pixel_roundtrip_error": 6.4e-06,
+  "actual_verifier_receipt": {
+    "status": "verified",
+    "candidate_id": "reconciled-labels-2026-11-14",
+    "kind": "training_reconciled_overlay",
+    "candidate": "/workspace/scratch/aa0875036021/label-refinement/composition/candidate-v2",
+    "candidate_manifest_sha256": "3ffeb48cf31c497a406c777b87695c31365ace27c23fc32abfac05b8530fe7bd",
+    "changed_train_files": 40,
+    "counts": {
+      "train": {
+        "images": 137,
+        "objects": 3774,
+        "visible_endpoints": 6849,
+        "missing_endpoints": 699,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "operation_counts": {
+      "bbox": 66,
+      "delete_object": 20,
+      "left_endpoint": 11,
+      "right_endpoint": 5,
+      "add_object": 22
+    },
+    "release_ready": false,
+    "training_recipe_id": null,
+    "historical_validators_unchanged": true,
+    "original_images_and_labels_verified": 157,
+    "validation_unchanged": true,
+    "payload_scope": "All annotation, manifest and review bytes; optional root README.md is documentation only.",
+    "training_or_inference_performed": false
+  },
+  "focused_rejection_probes": [
+    {
+      "case": "unchanged_row_token_drift",
+      "rejected": true,
+      "error": "reconciled-label verification failed: candidate bytes differ: labels/train/new_000038.txt"
+    },
+    {
+      "case": "undeclared_validation_label",
+      "rejected": true,
+      "error": "reconciled-label verification failed: candidate bytes differ: labels/val/new_000007.txt"
+    }
+  ],
+  "limitations": [
+    "Checks establish provenance and composition, not physical correctness or model improvement.",
+    "No full remote training audit was repeated. Historical visual judgments retain their recorded uncertainty."
+  ]
+}

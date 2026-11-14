@@ -1,0 +1,122 @@
+{
+  "reviewed_case_ids": [
+    "new_000124-048",
+    "new_000127-050",
+    "new_000130-052"
+  ],
+  "operation_overrides": {
+    "new_000124-048:add_object:upper_aperture_front": "hold",
+    "new_000124-048:add_object:lower_aperture_front": "hold",
+    "new_000127-050:add_object:upper_aperture_front": "hold",
+    "new_000127-050:add_object:lower_aperture_front": "hold",
+    "new_000130-052:refine_object:54": "accept_bbox_hold_points",
+    "new_000130-052:refine_object:55": "accept_bbox_hold_points",
+    "new_000130-052:add_object:lower_right_aperture_front": "hold"
+  },
+  "case_reasons": {
+    "new_000124-048": "Root and independent second reviewer see exposed material and a lower edge, but the internal dark-to-pale transition does not independently establish two new front instances. Hold both additions and exact per-front boxes; no count from stack spacing.",
+    "new_000127-050": "Root and independent second reviewer see exposed material and a lower edge, but the internal dark-to-pale transition does not independently establish two new front instances. Hold both additions and exact per-front boxes; no count from stack spacing.",
+    "new_000130-052": "Accept observed strip box refinements, preserve missing right corners54/55, and retain the already-existing parent addition partial-130-add-lowest-front unchanged. Reject the proposed new lower-right addition as a duplicate of that inherited instance; it is not another physical front."
+  },
+  "case_notes": {
+    "new_000124-048": "Both proposed aperture additions remain unapplied. The visible lower surface is stronger evidence than the internal division; decide whether that division is a front seam or shadow/underside before assigning the count.",
+    "new_000127-050": "Both proposed aperture additions remain unapplied. The visible lower surface is stronger evidence than the internal division; decide whether that division is a front seam or shadow/underside before assigning the count.",
+    "new_000130-052": "Observed strip boxes are corrected. The lower-right front was already labelled by inherited partial-130-add-lowest-front and stays unchanged; its redundant new proposal is excluded. Proposed right corners54/55 stay missing pending physical-corner ownership."
+  },
+  "held_rows": {
+    "new_000117-047": [
+      24
+    ]
+  },
+  "held_case_ids": [
+    "new_000117-047",
+    "new_000124-048",
+    "new_000127-050",
+    "new_000130-052"
+  ],
+  "resolved_case_ids": [],
+  "additional_operations": [
+    {
+      "image_id": "new_000117",
+      "original_row": 23,
+      "bounds": {
+        "top": 443,
+        "bottom": 493
+      },
+      "override_proposal": true,
+      "case_ids": [
+        "new_000117-047"
+      ],
+      "manual_ranges_px": {
+        "top": [
+          440,
+          446
+        ],
+        "bottom": [
+          489,
+          493
+        ]
+      },
+      "reason": "Independent raw-pixel rereview confirms the old top431.13 is perforated roof, while the observed smooth front begins around443. The front lower contour lies around489-493; select conservative bottom493 instead of495. Root inspected fine raw ruler and accepted these physical partial bounds; other existing endpoint tokens stay exact."
+    },
+    {
+      "image_id": "new_000117",
+      "original_row": 24,
+      "bounds": {
+        "top": 491,
+        "bottom": 503
+      },
+      "override_proposal": true,
+      "case_ids": [
+        "new_000117-047"
+      ],
+      "manual_ranges_px": {
+        "top": [
+          489,
+          494
+        ],
+        "bottom": [
+          500,
+          505
+        ]
+      },
+      "reason": "Supersede provisional top486/bottom507: the visible narrow band begins below the main front near491 and ends at the hand around495-503. Retain the historical row, trim front/hand overreach, and explicitly hold whether this band is a separate cassette front or the upper front underside/lip. No count certification or new corner."
+    }
+  ],
+  "withheld_proposals": {
+    "new_000124-048": [
+      {
+        "proposal_id": "new_000124-upper_aperture_front",
+        "status": "held_not_created",
+        "reason": "The internal transition does not yet establish two separate front instances."
+      },
+      {
+        "proposal_id": "new_000124-lower_aperture_front",
+        "status": "held_not_created",
+        "reason": "The internal transition does not yet establish two separate front instances."
+      }
+    ],
+    "new_000127-050": [
+      {
+        "proposal_id": "new_000127-upper_aperture_front",
+        "status": "held_not_created",
+        "reason": "The internal transition does not yet establish two separate front instances."
+      },
+      {
+        "proposal_id": "new_000127-lower_aperture_front",
+        "status": "held_not_created",
+        "reason": "The internal transition does not yet establish two separate front instances."
+      }
+    ],
+    "new_000130-052": [
+      {
+        "proposal_id": "new_000130-lower_right_aperture_front",
+        "status": "rejected_duplicate_not_created",
+        "duplicate_of_parent_addition_id": "partial-130-add-lowest-front",
+        "parent_row": 59,
+        "reason": "Complete-parent audit identifies the same physical lower-right front already at approximately699,503,726,520. Preserve its exact tokens and stable identity."
+      }
+    ]
+  },
+  "artifact_normalization": "Temporary renderer paths omitted or identified as temporary artifacts. Full source PNGs, frozen hashes, exact original/parent tokens and per-operation pixels remain reproducible evidence; durable selected crops are in evidence-index.json. Proposal snapshots are not acceptance records."
+}

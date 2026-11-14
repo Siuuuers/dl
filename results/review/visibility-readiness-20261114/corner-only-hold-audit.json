@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_corner_only_hold_semantic_audit",
+  "scope": "Current review-status 87 baseline cases plus the separate new096 extra case. Policy/status semantics only; no whole-dataset physical rereview or older validation-hold adjudication.",
+  "review_status_sha256": "9f0cc1d16fcd247f7f96bf8e0f470d5c43c3318fb33e156b3d1ce3689a15a4f0",
+  "annotation_policy_sha256": "74dd943976a4abc22ecbf73551c69f715666060d5961b2bed81e6a9c73a3afc9",
+  "candidate_manifest_sha256": "565570c24165b59ad3ee2368ebd80a9c9ff4bb25d96da87bcdee93602bd75983",
+  "policy_evidence": [
+    {
+      "path": "docs/annotation-policy.md",
+      "section": "1. One identifiable visible front, one row",
+      "meaning": "An identifiable positive-area visible front remains an object even when neither actual lower-front corner is locatable. Point availability is independent of object presence."
+    },
+    {
+      "path": "docs/annotation-policy.md",
+      "section": "3. Locate the two actual lower-front corners",
+      "meaning": "Visible/reliably locatable actual corners usev2; occluded, off-frame or unreliable locations due to ambiguity/blur/glare use canonical0 0 0. Do not infer missing points."
+    }
+  ],
+  "renderer_evidence": {
+    "path": "scripts/render_label_atlas.py",
+    "box_rule": "AMBER iff current row is in held_rows; otherwise CYAN. Corner count is not used for box color.",
+    "line_rule": "A line is drawn only when both saved points havev2.",
+    "legend_meaning": "Solid cyan is a current saved annotation without a recorded row-level hold; it is not an application-accuracy guarantee."
+  },
+  "corner_only_closure_recommendations": [
+    {
+      "case_id": "new_000130-052",
+      "original_rows": [
+        54,
+        55
+      ],
+      "candidate_rows": [
+        54,
+        55
+      ],
+      "current_status": "partial",
+      "current_remaining_issue": "Proposed right corners54/55 await physical-corner ownership; the existing saved endpoints are already canonical missing.",
+      "accepted_identity_and_box_evidence": [
+        "accepted-review.json observed-186",
+        "accepted-review.json observed-187",
+        "late-decisions.json accept_bbox_hold_points for54/55"
+      ],
+      "current_point_state": "Both slots are0 0 0 for both rows.",
+      "closure_justified": true,
+      "recommended_disposition": "Resolved within observed-reference scope: retain canonical missing endpoints because the proposed junctions are not reliably established as physical lower-front corners; do not promote proposedv2 coordinates.",
+      "label_edits_required": false,
+      "status_only_change": "Remove54/55 from held_original_rows and close the case after explicitly recording accepted-missing semantics. The duplicate-addition proposal was already rejected and its inherited instance retained.",
+      "limits": "Does not locate hidden corners, certify every dataset row, change model confidence thresholds or authorize a training run."
+    }
+  ],
+  "other_current_corner_only_cases_found": [],
+  "important_non_closures": [
+    {
+      "case_id": "new_000034-070",
+      "original_rows": [
+        15
+      ],
+      "reason": "The disputed existing LEFT endpoint isv2, not canonical0. Whether it is the physical lower-front corner remains unresolved; top-fragment identity also overlaps case063."
+    },
+    {
+      "case_id": "new_000034-063",
+      "reason": "Top-fragment identity/point ownership and aperture seam/extents remain unresolved; zero endpoints do not settle those independent issues."
+    },
+    {
+      "case_id": "new_000061-038",
+      "reason": "Aperture material cutoff and observed right extent remain uncertain."
+    },
+    {
+      "case_ids": [
+        "new_000062-039",
+        "new_000063-040"
+      ],
+      "reason": "Front-versus-tool/background ownership inside the aperture remains unresolved, independently of correctly missing right corners."
+    },
+    {
+      "case_id": "new_000116-045",
+      "reason": "Upper22 can have one missing point and an acceptable box, but the case remains partial due to a possible separate lower front. held_original_rows is already empty."
+    },
+    {
+      "case_id": "new_000117-047",
+      "reason": "Row24 separate-front versus underside/lip identity remains unresolved."
+    },
+    {
+      "case_ids": [
+        "new_000124-048",
+        "new_000127-050"
+      ],
+      "reason": "The four uncreated proposal identities/counts remain unresolved."
+    },
+    {
+      "case_id": "new_000030-001",
+      "reason": "Material identity is confirmed, but front count, observed box and row27 boundary remain unsettled."
+    },
+    {
+      "case_id": "new_000097-025",
+      "reason": "Restored corner is settled, but a possible omitted lower front remains unresolved."
+    },
+    {
+      "case_ids": [
+        "new_000064-009",
+        "new_000084-037"
+      ],
+      "reason": "Existing point anatomy and/or front-fascia boundaries remain uncertain; this is not solely inability to locate an already-missing corner."
+    }
+  ],
+  "already_resolved_examples_supporting_cyan_with_missing_points": [
+    {
+      "case_id": "new_000032-099",
+      "original_rows": [
+        46,
+        47
+      ],
+      "saved_visibility": "both missing",
+      "reason": "Two identified partial fronts; endpoint absence is already a valid annotation decision."
+    },
+    {
+      "case_id": "new_000085-029",
+      "original_rows": [
+        14,
+        15,
+        16
+      ],
+      "saved_visibility": "both missing",
+      "reason": "Three identified observed fronts; hidden physical corners remain missing."
+    },
+    {
+      "case_id": "new_000044-076",
+      "original_rows": [
+        2
+      ],
+      "saved_visibility": "left visible, right missing",
+      "reason": "The right physical junction is occluded by the jaw; existing missing state is accepted."
+    }
+  ],
+  "if_recommendation_adopted_baseline_counts": {
+    "resolved": 29,
+    "partial": 38,
+    "held": 20,
+    "still_unresolved_baseline_groups": 58,
+    "extra_groups": 1
+  },
+  "actions_taken": {
+    "labels_modified": false,
+    "status_modified": false,
+    "training_started": false,
+    "model_inference": false
+  }
+}
