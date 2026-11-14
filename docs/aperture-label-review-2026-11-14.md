@@ -1,5 +1,7 @@
 # Cassette material, observed fronts, and all-photo label atlas
 
+> Historical review snapshot. The [complete visible-front sweep and prepared handoff](complete-label-review-2026-11-14.md) supersedes the current-status counts in this report; its original evidence remains preserved.
+
 **14 November 2026 — draft review candidate, not a training release.**
 
 The user's confirmation establishes that cassette material is present behind the always-see-through opening in `new_000030`. It does not by itself determine whether the internal transition near y482 divides two front faces. That row is retained, its two unavailable actual corners remain missing, and its count/extent questions are visible in the atlas.

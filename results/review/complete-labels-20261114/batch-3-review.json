@@ -1,0 +1,3863 @@
+{
+  "schema_version": 1,
+  "batch": 3,
+  "reviewer": "row_extent_workflow",
+  "scope": "All held decisions and all rows with a missing corner in assigned training photos; look for analogous inherited box errors.",
+  "images": [
+    {
+      "image_id": "new_000014",
+      "reviewed_partial_rows": [
+        5,
+        8,
+        11,
+        12,
+        13,
+        15,
+        16,
+        20,
+        21,
+        22,
+        30,
+        31,
+        32
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 15,
+          "original_row": 15,
+          "before_text": "0 0.40807031 0.64314583 0.13551562 0.06973611 0.35032031 0.65416667 2 0.00000000 0.00000000 0",
+          "reason": "Right outer bound reaches into the left jaw; the observed front ends at the jaw near x600.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000014.png",
+            "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+            "inspection_render_name": "new_000014-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            435.6,
+            437.95999800000004,
+            600,
+            488.1699972
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 16,
+          "original_row": 16,
+          "before_text": "0 0.40601563 0.68886111 0.13323438 0.06438889 0.35160938 0.69968056 2 0.00000000 0.00000000 0",
+          "reason": "Lower left front is visible up to the jaw near x599, not through the white jaw to the inherited right bound.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000014.png",
+            "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+            "inspection_render_name": "new_000014-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            434.43000320000004,
+            472.7999988,
+            599,
+            519.1599996000001
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 30,
+          "original_row": 30,
+          "before_text": "0 0.67401172 0.62807639 0.13763281 0.06695833 0.00000000 0.00000000 0 0.73247656 0.64423611 2",
+          "reason": "The minimum visible target extent is at the right side of the upper jaw near x788; the inherited left bound includes jaw material.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000014.png",
+            "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+            "inspection_render_name": "new_000014-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            788,
+            428.110002,
+            950.8199999999999,
+            476.3199996000001
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 31,
+          "original_row": 31,
+          "before_text": "0 0.66753125 0.67530556 0.13525000 0.06452778 0.00000000 0.00000000 0 0.72621875 0.68898611 2",
+          "reason": "The visible front begins beyond the widening right jaw near x810; the hidden left portion is not part of the observed outer extent.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000014.png",
+            "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+            "inspection_render_name": "new_000014-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            810,
+            462.9900024,
+            941.0000000000001,
+            509.450004
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 32,
+          "original_row": 32,
+          "before_text": "0 0.66126953 0.72099306 0.13294531 0.06223611 0.00000000 0.00000000 0 0.71685938 0.73201389 2",
+          "reason": "At this lower stack level the right jaw covers the front up to about x824; retain only the observed right-side face extent.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000014.png",
+            "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+            "inspection_render_name": "new_000014-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            824,
+            496.7100036,
+            931.5099968,
+            541.5200027999999
+          ]
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000014-077",
+          "status": "resolved",
+          "reason": "The visible horizontal transition in the opening around y485-488 separates the two already-labelled consecutive fronts. Their scale and alignment match the adjacent exposed stack under the confirmed fixed seating. Retain rows21/22 and their canonical missing points; existing nominal aperture bounds are usable with about3px manual uncertainty.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000014.png",
+        "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+        "reviewed_label_sha256": "e8b001f4e2d136a450254cc8b9b665e9569d57aa5ec09e0dc45b7fe75537d154",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000014.png",
+            "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+            "inspection_render_name": "new_000014-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000014.png",
+            "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+            "inspection_render_name": "new_000014-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_rows_reason": "Top/right clipped partial fronts retain their independent visible endpoints; the clipped observed extents and existing point ownership are consistent. Row20 can retain a broad envelope because its upper front continues visibly across the occluded lower-corner region."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000014.png",
+        "sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c"
+      },
+      "reviewed_label_sha256": "e8b001f4e2d136a450254cc8b9b665e9569d57aa5ec09e0dc45b7fe75537d154"
+    },
+    {
+      "image_id": "new_000015",
+      "reviewed_partial_rows": [
+        56,
+        57,
+        58,
+        59
+      ],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000015.png",
+        "source_image_sha256": "bc802caa8df197bf91bad5f027cc7ef869d884bae7ee6f808951e11a64f961d9",
+        "reviewed_label_sha256": "c4ba364d68443e3ac0a3cfcd657f24d451b2b2b58404c48b5307fbedfe348d78",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000015.png",
+            "source_image_sha256": "bc802caa8df197bf91bad5f027cc7ef869d884bae7ee6f808951e11a64f961d9",
+            "inspection_render_name": "new_000015-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000015.png",
+            "source_image_sha256": "bc802caa8df197bf91bad5f027cc7ef869d884bae7ee6f808951e11a64f961d9",
+            "inspection_render_name": "new_000015-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_rows_reason": "Rows56-58 are three distinct stepped face strips beside the jaw; row59 is a separate front beside the thumb. Their current boxes follow observed material, and the missing right endpoints remain appropriate."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000015.png",
+        "sha256": "bc802caa8df197bf91bad5f027cc7ef869d884bae7ee6f808951e11a64f961d9"
+      },
+      "reviewed_label_sha256": "c4ba364d68443e3ac0a3cfcd657f24d451b2b2b58404c48b5307fbedfe348d78"
+    },
+    {
+      "image_id": "new_000016",
+      "reviewed_partial_rows": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 33,
+          "original_row": 33,
+          "before_text": "0 0.37226562 0.84083271 0.07265625 0.03222347 0.33664844 0.85308333 2 0.00000000 0.00000000 0",
+          "reason": "The upper visible edge stops at the thumb near x519; the inherited right bound extends into skin.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000016.png",
+            "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+            "inspection_render_name": "new_000016-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            429.99999360000004,
+            593.7991020000001,
+            519,
+            617.0000004
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 39,
+          "original_row": 39,
+          "before_text": "0 0.50667934 0.72876500 0.11804618 0.04524777 0.44918750 0.74893056 2 0.00000000 0.00000000 0",
+          "reason": "The rightmost visible portion of this front is the narrow central opening near x718. The inherited right bound reaches into the right jaw.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000016.png",
+            "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+            "inspection_render_name": "new_000016-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            573.0,
+            508.4216028,
+            718,
+            540.9999972
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 40,
+          "original_row": 40,
+          "before_text": "0 0.74557668 0.89236111 0.05677836 0.06250000 0.00000000 0.00000000 0 0.77348438 0.91883333 2",
+          "reason": "The observed lower-right front begins at the roof/front transition near y631 and at the hand occlusion near x936. The old top/left included roof and hand.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000016.png",
+            "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+            "inspection_render_name": "new_000016-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            936,
+            631,
+            990.6763008,
+            664.9999991999999
+          ]
+        },
+        {
+          "action": "add",
+          "addition_id": "batch3-new016-lower-central-front",
+          "original_row": null,
+          "before_text": null,
+          "after_bbox_xyxy_px": [
+            575,
+            537,
+            718,
+            557
+          ],
+          "endpoint_changes": {
+            "left": [
+              0,
+              0,
+              0
+            ],
+            "right": [
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "A fourth front is visible below the third left-strip seam around y536-539, ending at the hand near y556; matching pale material appears in the central slot. The current complete labels have only rows37-39 in this stack. Both actual lower corners remain hidden.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000016.png",
+            "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+            "inspection_render_name": "new_000016-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "complete_current_labels_checked_for_duplicate": true
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000016-098",
+          "status": "resolved",
+          "reason": "The visible horizontal seams on the left establish three existing fronts and a separate fourth lower front. Their matching levels through the diamond/slot support common ownership under the fixed seating constraint. Retain missing right corners, trim the lower slot extent, and add only the actually visible fourth band.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000016.png",
+        "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+        "reviewed_label_sha256": "baaee60711dc7c09971089ff2bedc8a6ca8882a9724061fb62341ee109508fdf",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000016.png",
+            "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+            "inspection_render_name": "new_000016-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "extra_raw_crop": {
+          "source_image_path": "data/images/train/new_000016.png",
+          "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+          "inspection_render_name": "new_000016-central-ruler.png",
+          "rendered_crop_retained": false
+        }
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000016.png",
+        "sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e"
+      },
+      "reviewed_label_sha256": "baaee60711dc7c09971089ff2bedc8a6ca8882a9724061fb62341ee109508fdf"
+    },
+    {
+      "image_id": "new_000017",
+      "reviewed_partial_rows": [
+        52,
+        57,
+        58
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 57,
+          "original_row": 57,
+          "before_text": "0 0.40976563 0.83472222 0.05078125 0.03611111 0.38688281 0.84552778 2 0.00000000 0.00000000 0",
+          "reason": "Only the small white front to the left of the thumb is observed; the current right bound spans skin to x557.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000017.png",
+            "source_image_sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281",
+            "inspection_render_name": "new_000017-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            492.00000639999996,
+            587.9999988,
+            521,
+            613.999998
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 58,
+          "original_row": 58,
+          "before_text": "0 0.45937500 0.74583333 0.05156250 0.04444444 0.43750000 0.76388889 2 0.00000000 0.00000000 0",
+          "reason": "The rightmost target front ends at the jaw around x614; the old x621 bound includes the jaw.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000017.png",
+            "source_image_sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281",
+            "inspection_render_name": "new_000017-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            555.0,
+            520.9999992,
+            614,
+            552.9999959999999
+          ]
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000017-075",
+          "status": "held",
+          "reason": "The wide upper white assembly has a different plane and span from seated cassette fronts. The frame alone does not identify it as target fronts rather than covers/supports; fixed size of seated cassettes does not settle this distinct assembly.",
+          "remaining_rows": [],
+          "remaining_questions": [
+            "Are the broad white pieces lying across the top rack separate target cassette fronts, or tray/support/roof surfaces?"
+          ]
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000017.png",
+        "source_image_sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281",
+        "reviewed_label_sha256": "3cdbe47ebc21c7315898dbc9f3c8829564e540911909f78043f35474177e8340",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000017.png",
+            "source_image_sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281",
+            "inspection_render_name": "new_000017-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000017.png",
+            "source_image_sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281",
+            "inspection_render_name": "new_000017-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000017.png",
+        "sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281"
+      },
+      "reviewed_label_sha256": "3cdbe47ebc21c7315898dbc9f3c8829564e540911909f78043f35474177e8340"
+    },
+    {
+      "image_id": "new_000018",
+      "reviewed_partial_rows": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 23,
+          "original_row": 23,
+          "before_text": "0 0.66784375 0.61023611 0.12318749 0.05452778 0.00000000 0.00000000 0 0.72787500 0.63338889 2",
+          "reason": "Use the visible roof/front turn at approximately y410; mild softness permits a nominal front boundary with explicit placement uncertainty.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000018.png",
+            "source_image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+            "inspection_render_name": "new_000018-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            776.0000063999998,
+            410,
+            933.6799936,
+            458.99999999999994
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 22,
+          "original_row": 22,
+          "before_text": "0 0.53544922 0.66077083 0.13691406 0.06393056 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "reason": "The front below row21 is visible in the left sliver and the upper diamond. Its next lower seam is near y484-487; the old right bound includes the jaw and its bottom merges material from the next front.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000018.png",
+            "source_image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+            "inspection_render_name": "new_000018-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            597.7500031999999,
+            452.739996,
+            734,
+            486
+          ]
+        },
+        {
+          "action": "add",
+          "addition_id": "batch3-new018-middle-central-front",
+          "original_row": null,
+          "before_text": null,
+          "after_bbox_xyxy_px": [
+            600,
+            484,
+            720,
+            519
+          ],
+          "endpoint_changes": {
+            "left": [
+              0,
+              0,
+              0
+            ],
+            "right": [
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "A separate front extends between the left-strip seams near y484 and y516-519 and has corresponding material in the lower diamond/narrow slot. It is not represented by a separate current row. Both actual lower corners are occluded.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000018.png",
+            "source_image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+            "inspection_render_name": "new_000018-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "complete_current_labels_checked_for_duplicate": true
+        },
+        {
+          "action": "add",
+          "addition_id": "batch3-new018-lowest-central-front",
+          "original_row": null,
+          "before_text": null,
+          "after_bbox_xyxy_px": [
+            603,
+            518,
+            717,
+            547
+          ],
+          "endpoint_changes": {
+            "left": [
+              0,
+              0,
+              0
+            ],
+            "right": [
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "A further distinct visible band below the y517-520 seam ends at the dark gap near y546. Left sliver and central slot align at this level under fixed seating. The complete labels contain no corresponding row; corners remain hidden.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000018.png",
+            "source_image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+            "inspection_render_name": "new_000018-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "complete_current_labels_checked_for_duplicate": true
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000018-053",
+          "status": "resolved",
+          "reason": "Accepted a nominal roof/front boundary near y410 with4px manual uncertainty.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        },
+        {
+          "case_id": "new_000018-055",
+          "status": "resolved",
+          "reason": "The current row29 bounds are acceptable nominal limits of the observed lower front; its soft seams carry about3px placement uncertainty, not an alternative instance identity.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        },
+        {
+          "case_id": "new_000018-056",
+          "status": "resolved",
+          "reason": "The lower clipped front is independently visible below the row29 seam; retain the current top around y706.5 with3px uncertainty and both missing corners.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        },
+        {
+          "case_id": "new_000018-057",
+          "status": "resolved",
+          "reason": "The observed row31 seam near y547-550 is sufficient for the saved nominal top550; an exposed upper band supports its broad right extent despite the lower thumb occlusion.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        },
+        {
+          "case_id": "new_000018-062",
+          "status": "resolved",
+          "reason": "The smooth bottom-clipped front is supported; current left/right/bottom limits are usable nominal image-clipped extents with4px uncertainty. Missing actual corners remain missing.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        },
+        {
+          "case_id": "new_000018-065",
+          "status": "resolved",
+          "reason": "The left-side steps near y484/518 and matching central-slot material support two lower fronts beyond row22. Add their visible envelopes without inferred corners, and trim row22 to its own band.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000018.png",
+        "source_image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+        "reviewed_label_sha256": "d018009866c6efd6ea4485c0330367d64fc1a5b15fa6edf450d9ba25647d449c",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000018.png",
+            "source_image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+            "inspection_render_name": "new_000018-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "extra_raw_crop": {
+          "source_image_path": "data/images/train/new_000018.png",
+          "source_image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+          "inspection_render_name": "new_000018-central-ruler.png",
+          "rendered_crop_retained": false
+        }
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000018.png",
+        "sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7"
+      },
+      "reviewed_label_sha256": "d018009866c6efd6ea4485c0330367d64fc1a5b15fa6edf450d9ba25647d449c"
+    },
+    {
+      "image_id": "new_000027",
+      "reviewed_partial_rows": [
+        9,
+        10,
+        11,
+        14
+      ],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000027.png",
+        "source_image_sha256": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8",
+        "reviewed_label_sha256": "2f9e4aacdc514f5c0f587e716951192150e72af0f014d3c002710563f9100c60",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000027.png",
+            "source_image_sha256": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8",
+            "inspection_render_name": "new_000027-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000027.png",
+            "source_image_sha256": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8",
+            "inspection_render_name": "new_000027-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000027.png",
+            "source_image_sha256": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8",
+            "inspection_render_name": "new_000027-crop-2.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "All four partial rows inspected. Rows 9 and 10 have supported exposed upper portions that justify their envelope across internal gripper occlusion. Rows 11 and 14 are frame-clipped fronts; no hidden corners restored. Nominal boundaries within about 3 px."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000027.png",
+        "sha256": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8"
+      },
+      "reviewed_label_sha256": "2f9e4aacdc514f5c0f587e716951192150e72af0f014d3c002710563f9100c60"
+    },
+    {
+      "image_id": "new_000028",
+      "reviewed_partial_rows": [
+        55,
+        56,
+        57,
+        58,
+        59
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 55,
+          "original_row": 55,
+          "before_text": "0 0.63867188 0.64305556 0.05234375 0.04166667 0.00000000 0.00000000 0 0.66171875 0.64861111 2",
+          "reason": "Trim the outer left envelope to the observed front strip beside the sloping jaw; the previous minimum x lies on jaw/roof rather than the visible front. Keep the independently annotated right endpoint and the missing left endpoint.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            794,
+            448.000002,
+            851.0000063999998,
+            478.00000439999997
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 56,
+          "original_row": 56,
+          "before_text": "0 0.64101562 0.66597222 0.05078125 0.04027778 0.00000000 0.00000000 0 0.66328125 0.67222222 2",
+          "reason": "Trim the outer left envelope to the observed front strip beside the sloping jaw; the previous minimum x lies on jaw/roof rather than the visible front. Keep the independently annotated right endpoint and the missing left endpoint.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            799,
+            464.9999976,
+            852.9999936,
+            493.9999992
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 57,
+          "original_row": 57,
+          "before_text": "0 0.64257812 0.68819444 0.04921875 0.04027778 0.00000000 0.00000000 0 0.66406250 0.69444444 2",
+          "reason": "Trim the outer left envelope to the observed front strip beside the sloping jaw; the previous minimum x lies on jaw/roof rather than the visible front. Keep the independently annotated right endpoint and the missing left endpoint.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            804,
+            480.99999599999995,
+            853.9999936000002,
+            509.9999976
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 58,
+          "original_row": 58,
+          "before_text": "0 0.64492187 0.71041667 0.04765625 0.04027778 0.00000000 0.00000000 0 0.66562500 0.71666667 2",
+          "reason": "Trim the outer left envelope to the observed front strip beside the sloping jaw; the previous minimum x lies on jaw/roof rather than the visible front. Keep the independently annotated right endpoint and the missing left endpoint.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            809,
+            497.00000159999996,
+            855.9999935999999,
+            526.0000032
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 59,
+          "original_row": 59,
+          "before_text": "0 0.64687500 0.73194444 0.04687500 0.03888889 0.00000000 0.00000000 0 0.66718750 0.73888889 2",
+          "reason": "Trim the outer left envelope to the observed front strip beside the sloping jaw; the previous minimum x lies on jaw/roof rather than the visible front. Keep the independently annotated right endpoint and the missing left endpoint.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            813,
+            512.9999964,
+            858.0,
+            540.9999972
+          ]
+        },
+        {
+          "action": "add",
+          "addition_id": "batch3-new028-lower-slot-front",
+          "original_row": null,
+          "before_text": null,
+          "after_bbox_xyxy_px": [
+            702,
+            545,
+            716,
+            553
+          ],
+          "endpoint_changes": {
+            "left": [
+              0,
+              0,
+              0
+            ],
+            "right": [
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "The coordinate-enlarged original shows slatted roof continuing through about y543-544 and a pale two-dimensional front strip below it. Use only y545-553 for the visible front, bounded by the jaws and hand; neither outer lower corner is exposed.",
+          "uncertainty_px": 2,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-addition-ruler.png",
+            "rendered_crop_retained": false
+          },
+          "complete_current_labels_checked_for_duplicate": true
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000028-088",
+          "status": "resolved",
+          "reason": "The wider raw context distinguishes the roof above from a short two-dimensional pale front band below it. Accept its nominal observed envelope with 3 px uncertainty and no corner visibility, rather than extrapolating a full hidden cassette.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000028.png",
+        "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+        "reviewed_label_sha256": "253065321fc436715da21174eb0f2c427de2aea21e81f5293571f13fbee1338d",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-ruler.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000028.png",
+            "source_image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+            "inspection_render_name": "new_000028-fragment-context.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000028.png",
+        "sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded"
+      },
+      "reviewed_label_sha256": "253065321fc436715da21174eb0f2c427de2aea21e81f5293571f13fbee1338d"
+    },
+    {
+      "image_id": "new_000031",
+      "reviewed_partial_rows": [
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        30,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 36,
+          "original_row": 36,
+          "before_text": "0 0.38821438 0.74076819 0.12679609 0.05969972 0.33296875 0.74937500 2 0.00000000 0.00000000 0",
+          "reason": "Trim the inherited outer maximum x to the visible front strip at the thumb boundary. The old extremum crosses skin; the true right cassette corner remains occluded.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            415.7649088,
+            511.8611976,
+            491,
+            554.844996
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 37,
+          "original_row": 37,
+          "before_text": "0 0.35507813 0.77986111 0.04140625 0.04583333 0.33617188 0.78209722 2 0.00000000 0.00000000 0",
+          "reason": "Trim the inherited outer maximum x to the visible front strip at the thumb boundary. The old extremum crosses skin; the true right cassette corner remains occluded.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            428.0000064,
+            545.0000004,
+            475,
+            577.999998
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 38,
+          "original_row": 38,
+          "before_text": "0 0.35429688 0.81597222 0.03359375 0.03750000 0.33985156 0.82694444 2 0.00000000 0.00000000 0",
+          "reason": "Trim the inherited outer maximum x to the visible front strip at the thumb boundary. The old extremum crosses skin; the true right cassette corner remains occluded.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            432.00000639999996,
+            573.9999984,
+            466,
+            600.9999984000001
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 39,
+          "original_row": 39,
+          "before_text": "0 0.35351562 0.85069444 0.02734375 0.04027778 0.34105469 0.85793056 2 0.00000000 0.00000000 0",
+          "reason": "Trim the inherited outer maximum x to the visible front strip at the thumb boundary. The old extremum crosses skin; the true right cassette corner remains occluded.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            434.9999936,
+            597.999996,
+            459,
+            626.9999976
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 40,
+          "original_row": 40,
+          "before_text": "0 0.35234375 0.88402778 0.01875000 0.03750000 0.34484375 0.88847222 2 0.00000000 0.00000000 0",
+          "reason": "Trim the inherited outer maximum x to the visible front strip at the thumb boundary. The old extremum crosses skin; the true right cassette corner remains occluded.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            439.0,
+            623.0000016,
+            454,
+            650.0000016
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 27,
+          "original_row": 27,
+          "before_text": "0 0.67343750 0.66597222 0.06875000 0.05138889 0.00000000 0.00000000 0 0.69985938 0.67502778 2",
+          "reason": "The visible right-side front starts beside the widening jaw; trim the inherited minimum x that covers jaw material. Preserve the visible right physical corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            827,
+            460.99999800000006,
+            906.0000000000001,
+            497.99999879999996
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 28,
+          "original_row": 28,
+          "before_text": "0 0.67656250 0.70833333 0.04843750 0.04722222 0.00000000 0.00000000 0 0.69390625 0.71040278 2",
+          "reason": "The visible right-side front starts beside the widening jaw; trim the inherited minimum x that covers jaw material. Preserve the visible right physical corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            842,
+            492.9999984,
+            896.9999999999999,
+            526.9999968000001
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000031.png",
+        "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+        "reviewed_label_sha256": "658b8fb43647be4b3689bdea94e1d6b3f8f95b0949ce2fe7aecab854d36db68e",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "Other assigned partial rows retain their supported exposed portions, including narrow strips left of the jaw, frame clipping, and upper edges spanning internal occlusion. No missing corner is inferred.",
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-ruler.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000031.png",
+            "source_image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+            "inspection_render_name": "new_000031-thumb-context.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000031.png",
+        "sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750"
+      },
+      "reviewed_label_sha256": "658b8fb43647be4b3689bdea94e1d6b3f8f95b0949ce2fe7aecab854d36db68e"
+    },
+    {
+      "image_id": "new_000032",
+      "reviewed_partial_rows": [
+        36,
+        37,
+        46,
+        47,
+        51,
+        52
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 37,
+          "original_row": 37,
+          "before_text": "0 0.47998047 0.63736806 0.07089844 0.03765278 0.45064844 0.64551389 2 0.00000000 0.00000000 0",
+          "reason": "The neighboring left-column front is visible only to the left of the jaw. Its existing right edge covers the jaw and its bottom includes rack below the exposed front; tighten to nominal observed extrema. The central opening belongs to the adjacent row 47 instance.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000032.png",
+            "source_image_sha256": "c04d97b09130d67712a2f6f166b2e41725a661a241e13a1fb9f4870229c49d70",
+            "inspection_render_name": "new_000032-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            569.0,
+            445.35000240000005,
+            625,
+            466
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 52,
+          "original_row": 52,
+          "before_text": "0 0.61261328 0.63124306 0.06785156 0.04023611 0.00000000 0.00000000 0 0.64497656 0.63655556 2",
+          "reason": "The lowest right-column front is exposed only to the right of the jaw. Tighten the left and bottom extrema to the exposed face; the old box extends over the jaw and empty rack. Preserve the real visible right corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000032.png",
+            "source_image_sha256": "c04d97b09130d67712a2f6f166b2e41725a661a241e13a1fb9f4870229c49d70",
+            "inspection_render_name": "new_000032-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            776,
+            440.0100036,
+            827.5699968000001,
+            464
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000032.png",
+        "source_image_sha256": "c04d97b09130d67712a2f6f166b2e41725a661a241e13a1fb9f4870229c49d70",
+        "reviewed_label_sha256": "139eff9bc1ba748891b774707e7be7d06a86156fcfcb9e35b49a93b714a169b6",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000032.png",
+            "source_image_sha256": "c04d97b09130d67712a2f6f166b2e41725a661a241e13a1fb9f4870229c49d70",
+            "inspection_render_name": "new_000032-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "Rows 36, 46, 47 and 51 retain supported upper/front exposure. The small aperture envelope of row 47 is a different adjacent physical cassette from row 37.",
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000032.png",
+            "source_image_sha256": "c04d97b09130d67712a2f6f166b2e41725a661a241e13a1fb9f4870229c49d70",
+            "inspection_render_name": "new_000032-ruler.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000032.png",
+        "sha256": "c04d97b09130d67712a2f6f166b2e41725a661a241e13a1fb9f4870229c49d70"
+      },
+      "reviewed_label_sha256": "139eff9bc1ba748891b774707e7be7d06a86156fcfcb9e35b49a93b714a169b6"
+    },
+    {
+      "image_id": "new_000033",
+      "reviewed_partial_rows": [
+        4,
+        15,
+        32,
+        41,
+        42,
+        46,
+        47
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 32,
+          "original_row": 32,
+          "before_text": "0 0.42924219 0.66168056 0.10053125 0.06444444 0.38958594 0.67726389 2 0.00000000 0.00000000 0",
+          "reason": "Tighten the observed front bottom to its pale lower boundary; the old lower extremum includes rack/gripper below the visible left corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000033.png",
+            "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+            "inspection_render_name": "new_000033-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            485.09000320000007,
+            453.2100048,
+            613.7700032,
+            491
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 42,
+          "original_row": 42,
+          "before_text": "0 0.52220313 0.64602778 0.09887500 0.06469444 0.482031250000 0.662500000000 2 0.00000000 0.00000000 0",
+          "reason": "The same front is supported by the left side strip and central aperture. Tighten the maximum x to the aperture edge and the bottom to the exposed left strip; the old extrema cover jaw/rack.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000033.png",
+            "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+            "inspection_render_name": "new_000033-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            605.1400064,
+            441.8500032,
+            720,
+            480
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 47,
+          "original_row": 47,
+          "before_text": "0 0.61274609 0.62670833 0.09742969 0.06916667 0.00000000 0.00000000 0 0.65989844 0.63061111 2",
+          "reason": "Trim the lowest right front to observed material above/right of the jaw; the inherited left and lower extrema include the jaw and rack. Preserve the visible right physical corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000033.png",
+            "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+            "inspection_render_name": "new_000033-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            744,
+            426.3299964,
+            846.6699968,
+            462
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [
+        {
+          "issue_id": "batch3-new033-top-row4-surface",
+          "current_rows": [
+            4
+          ],
+          "status": "held",
+          "reason": "At the upper image boundary row 4 is an extremely shallow region overlapping row 5. The raw crop exposes a roof/leading-lip transition, but does not unambiguously establish that row 4 is a separate physical front rather than part of row 5. Its leftmost 14 px also lie on rack. Do not certify this as a full separate front without a second material/count review.",
+          "question": "Does the frame-clipped strip above row 5 represent a distinct cassette front, or the roof/lip of row 5?",
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000033.png",
+            "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+            "inspection_render_name": "new_000033-top-context.png",
+            "rendered_crop_retained": false
+          }
+        }
+      ],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000033.png",
+        "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+        "reviewed_label_sha256": "329c07de3ab1aa21069f81b1924b0ffb27948577e9e93fa6b1215655da6f6abc",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000033.png",
+            "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+            "inspection_render_name": "new_000033-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000033.png",
+            "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+            "inspection_render_name": "new_000033-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000033.png",
+            "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+            "inspection_render_name": "new_000033-crop-2.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000033.png",
+            "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+            "inspection_render_name": "new_000033-ruler.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000033.png",
+            "source_image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+            "inspection_render_name": "new_000033-top-context.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000033.png",
+        "sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e"
+      },
+      "reviewed_label_sha256": "329c07de3ab1aa21069f81b1924b0ffb27948577e9e93fa6b1215655da6f6abc"
+    },
+    {
+      "image_id": "new_000043",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000043.png",
+        "source_image_sha256": "1cc8fe54b7d8d3699f55d07a5a14fc6bc2effb03bd6fcb4e4fe2405c72f41ac1",
+        "reviewed_label_sha256": "efb1eac05155d583e50216f73e66c3ba658e7f6b8c9e19afdcc1bdb12ae363c9",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected; no assigned partial rows or open cases. No new hand/roof-box inconsistency observed."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000043.png",
+        "sha256": "1cc8fe54b7d8d3699f55d07a5a14fc6bc2effb03bd6fcb4e4fe2405c72f41ac1"
+      },
+      "reviewed_label_sha256": "efb1eac05155d583e50216f73e66c3ba658e7f6b8c9e19afdcc1bdb12ae363c9"
+    },
+    {
+      "image_id": "new_000045",
+      "reviewed_partial_rows": [
+        2,
+        3,
+        4,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 4,
+          "original_row": 4,
+          "before_text": "0 0.52896484 0.65247917 0.12042969 0.04504167 0.47031250 0.67083333 2 0.00000000 0.00000000 0",
+          "reason": "The lowest left-stack front is exposed in the left strip and central aperture. The previous right extremum extends across the right jaw; use the aperture extent as the observed maximum. Preserve the visible left corner and missing right corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000045.png",
+            "source_image_sha256": "86d57144e7a95328919a524d6866a5b63b714fb0c01059cfcd34692d13881fc8",
+            "inspection_render_name": "new_000045-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            599.9999935999999,
+            453.5700012,
+            714,
+            486.0000036
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000045.png",
+        "source_image_sha256": "86d57144e7a95328919a524d6866a5b63b714fb0c01059cfcd34692d13881fc8",
+        "reviewed_label_sha256": "196a1c6ccc464d18f3b78d38ab4aa5e3d86acd8cd7ea2fb0a4cf40d3b22d6263",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000045.png",
+            "source_image_sha256": "86d57144e7a95328919a524d6866a5b63b714fb0c01059cfcd34692d13881fc8",
+            "inspection_render_name": "new_000045-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000045.png",
+            "source_image_sha256": "86d57144e7a95328919a524d6866a5b63b714fb0c01059cfcd34692d13881fc8",
+            "inspection_render_name": "new_000045-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000045.png",
+            "source_image_sha256": "86d57144e7a95328919a524d6866a5b63b714fb0c01059cfcd34692d13881fc8",
+            "inspection_render_name": "new_000045-crop-2.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "Other assigned rows inspected: supported upper strips, right image clipping, and the three small lower-right fronts alongside the hand remain distinguishable. Boxes with upper exposure across the jaw retain their envelope."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000045.png",
+        "sha256": "86d57144e7a95328919a524d6866a5b63b714fb0c01059cfcd34692d13881fc8"
+      },
+      "reviewed_label_sha256": "196a1c6ccc464d18f3b78d38ab4aa5e3d86acd8cd7ea2fb0a4cf40d3b22d6263"
+    },
+    {
+      "image_id": "new_000050",
+      "reviewed_partial_rows": [
+        23,
+        28,
+        35
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 35,
+          "original_row": 35,
+          "before_text": "0 0.38710547 0.76666667 0.02577344 0.01388889 0.37578125 0.77083333 2 0.00000000 0.00000000 0",
+          "reason": "The current small lower-left patch omits most of the same visible lowest front. Raw wider context shows its front band from the seam near y540 across to the thumb near x561; extend to its full observed envelope without restoring the hidden right corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000050.png",
+            "source_image_sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77",
+            "inspection_render_name": "new_000050-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            475,
+            540,
+            561,
+            557
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000050.png",
+        "source_image_sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77",
+        "reviewed_label_sha256": "5a31c9c9891ae6240b0fcdd9e37e4ca0c0e1afe89b7aa6082b0635f7bf9404b2",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000050.png",
+            "source_image_sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77",
+            "inspection_render_name": "new_000050-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000050.png",
+            "source_image_sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77",
+            "inspection_render_name": "new_000050-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000050.png",
+            "source_image_sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77",
+            "inspection_render_name": "new_000050-ruler.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "Top-edge rows 23 and 28 are shallow clipped front slivers and retain zero visibility; they are not extended beyond the frame."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000050.png",
+        "sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77"
+      },
+      "reviewed_label_sha256": "5a31c9c9891ae6240b0fcdd9e37e4ca0c0e1afe89b7aa6082b0635f7bf9404b2"
+    },
+    {
+      "image_id": "new_000051",
+      "reviewed_partial_rows": [
+        8,
+        9,
+        12,
+        13,
+        14,
+        18
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 12,
+          "original_row": 12,
+          "before_text": "0 0.53076953 0.62438194 0.11228906 0.05868056 0.48046875 0.64254167 2 0.00000000 0.00000000 0",
+          "reason": "The left-stack lowest front is supported by a left strip and central aperture; the old maximum x lies well inside the jaw. Trim to the visible aperture boundary while retaining the left physical corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            607.5200000000001,
+            428.4299952,
+            716,
+            469
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 13,
+          "original_row": 13,
+          "before_text": "0 0.64496094 0.64029167 0.11929687 0.06272222 0.00000000 0.00000000 0 0.69589844 0.64506944 2",
+          "reason": "The lowest right front is exposed to the right of the widening jaw. The old outer minimum x and maximum y include jaw and rack; trim to observed front material and preserve the right corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            771,
+            438.4300032,
+            901.9,
+            468
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 18,
+          "original_row": 18,
+          "before_text": "0 0.08137891 0.04949306 0.13724219 0.05101389 0.00000000 0.00000000 0 0.14843750 0.07222222 2",
+          "reason": "The visible front continues to the left image boundary; x16 excludes an observed portion. Extend to the frame and keep the clipped left physical corner missing.",
+          "uncertainty_px": 2,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            0,
+            17.2700028,
+            192.0000064,
+            54.0000036
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 14,
+          "original_row": 14,
+          "before_text": "0 0.41110547 0.81521528 0.07221094 0.02790278 0.37671875 0.81472222 2 0.00000000 0.00000000 0",
+          "reason": "Wider thumb context shows this upper front at both sides of the thumb; the old y-range starts too low and its right limit falls within the occluding hand. Use the enclosing observed front envelope, including the right-side exposure, with bounded soft-edge uncertainty. Preserve the existing visible left lower corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            480,
+            558,
+            609,
+            589
+          ]
+        },
+        {
+          "action": "add",
+          "addition_id": "batch3-new051-middle-thumb-front",
+          "original_row": null,
+          "before_text": null,
+          "after_bbox_xyxy_px": [
+            481,
+            585,
+            501,
+            610
+          ],
+          "endpoint_changes": {
+            "left": [
+              482,
+              608,
+              2
+            ],
+            "right": [
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "A second front band below row 14 is visible left of the thumb. The actual lower-left junction is where the silhouette steps right at y607-608; use that observed junction, with the right corner hidden.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-addition-ruler.png",
+            "rendered_crop_retained": false
+          },
+          "complete_current_labels_checked_for_duplicate": true
+        },
+        {
+          "action": "add",
+          "addition_id": "batch3-new051-lowest-thumb-front",
+          "original_row": null,
+          "before_text": null,
+          "after_bbox_xyxy_px": [
+            484,
+            608,
+            494,
+            629
+          ],
+          "endpoint_changes": {
+            "left": [
+              485,
+              626,
+              2
+            ],
+            "right": [
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "Below the y607-608 side step, a third narrow front continues to its exposed lower-left corner near (485,626). Its right corner is hidden by the thumb, and the current labels contain no instance at this level.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-addition-ruler.png",
+            "rendered_crop_retained": false
+          },
+          "complete_current_labels_checked_for_duplicate": true
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000051.png",
+        "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+        "reviewed_label_sha256": "8255c57fefc16b653406363592e3387975db1f86324ab9e3698376395a7ff62a",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-crop-2.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000051.png",
+            "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+            "inspection_render_name": "new_000051-ruler.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000051.png",
+        "sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2"
+      },
+      "reviewed_label_sha256": "8255c57fefc16b653406363592e3387975db1f86324ab9e3698376395a7ff62a"
+    },
+    {
+      "image_id": "new_000061",
+      "reviewed_partial_rows": [
+        8,
+        9,
+        13,
+        14
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 14,
+          "original_row": 15,
+          "before_text": "0 0.64960938 0.65461806 0.08046875 0.05465278 0.00000000 0.00000000 0 0.68828125 0.67916667 2",
+          "reason": "Trim the left extent of the lowest right front to the visible start at the jaw. A fresh raw close-up confirms the observed right lower corner near y489 and the retained bottom y491; do not crop that real corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000061.png",
+            "source_image_sha256": "094be9e4df38d6580314f7572ac2d2716a057ad31c6ca02d4d2468e9d0dec01f",
+            "inspection_render_name": "new_000061-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            788,
+            451.65000239999995,
+            883.0000064000001,
+            491
+          ]
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000061-038",
+          "status": "resolved",
+          "reason": "The existing x720 cutoff is a reasonable nominal outer limit for the front visible through the aperture, within the stated x717-723 range. The small soft wedge is handled as 3 px manual uncertainty, not a separate physical object or a restored hidden corner. Retain row 9.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000061.png",
+        "source_image_sha256": "094be9e4df38d6580314f7572ac2d2716a057ad31c6ca02d4d2468e9d0dec01f",
+        "reviewed_label_sha256": "39d3a2989cabba30f6f24339ffede77d27efa2f589626bd4dd2ebf22765db532",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000061.png",
+            "source_image_sha256": "094be9e4df38d6580314f7572ac2d2716a057ad31c6ca02d4d2468e9d0dec01f",
+            "inspection_render_name": "new_000061-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000061.png",
+            "source_image_sha256": "094be9e4df38d6580314f7572ac2d2716a057ad31c6ca02d4d2468e9d0dec01f",
+            "inspection_render_name": "new_000061-ruler.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000061.png",
+            "source_image_sha256": "094be9e4df38d6580314f7572ac2d2716a057ad31c6ca02d4d2468e9d0dec01f",
+            "inspection_render_name": "new_000061-right-lower.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000061.png",
+        "sha256": "094be9e4df38d6580314f7572ac2d2716a057ad31c6ca02d4d2468e9d0dec01f"
+      },
+      "reviewed_label_sha256": "39d3a2989cabba30f6f24339ffede77d27efa2f589626bd4dd2ebf22765db532"
+    },
+    {
+      "image_id": "new_000063",
+      "reviewed_partial_rows": [
+        7,
+        8,
+        9,
+        13,
+        14
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 8,
+          "original_row": 8,
+          "before_text": "0 0.51718750 0.63811111 0.09218750 0.04600000 0.47728906 0.65443056 2 0.00000000 0.00000000 0",
+          "reason": "Tighten the observed front envelope to the exposed aperture/side material at the jaw boundary. Gray or pale gripper wedges do not define the front outer extent; retain the distinct physical row and existing visible corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000063.png",
+            "source_image_sha256": "e74372f2efbdea19e451e0cc900f16412c63813f66dbc8904d0f4c03b89a709e",
+            "inspection_render_name": "new_000063-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            603.0,
+            442.8799992,
+            716,
+            475.9999992
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 9,
+          "original_row": 9,
+          "before_text": "0 0.51445312 0.68711806 0.08984375 0.04668056 0.47369531 0.71045833 2 0.00000000 0.00000000 0",
+          "reason": "Tighten the observed front envelope to the exposed aperture/side material at the jaw boundary. Gray or pale gripper wedges do not define the front outer extent; retain the distinct physical row and existing visible corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000063.png",
+            "source_image_sha256": "e74372f2efbdea19e451e0cc900f16412c63813f66dbc8904d0f4c03b89a709e",
+            "inspection_render_name": "new_000063-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            600.9999935999999,
+            477.9200016,
+            709,
+            511.5300048
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 13,
+          "original_row": 13,
+          "before_text": "0 0.66277734 0.65704167 0.11819531 0.04425000 0.00000000 0.00000000 0 0.72031250 0.67638889 2",
+          "reason": "Tighten the observed front envelope to the exposed aperture/side material at the jaw boundary. Gray or pale gripper wedges do not define the front outer extent; retain the distinct physical row and existing visible corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000063.png",
+            "source_image_sha256": "e74372f2efbdea19e451e0cc900f16412c63813f66dbc8904d0f4c03b89a709e",
+            "inspection_render_name": "new_000063-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            800,
+            457.14000240000007,
+            923.9999935999999,
+            489.00000239999997
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 14,
+          "original_row": 14,
+          "before_text": "0 0.66012891 0.70721528 0.11724219 0.04390278 0.00000000 0.00000000 0 0.71718750 0.72638889 2",
+          "reason": "Tighten the observed front envelope to the exposed aperture/side material at the jaw boundary. Gray or pale gripper wedges do not define the front outer extent; retain the distinct physical row and existing visible corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000063.png",
+            "source_image_sha256": "e74372f2efbdea19e451e0cc900f16412c63813f66dbc8904d0f4c03b89a709e",
+            "inspection_render_name": "new_000063-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            805,
+            493.3900008,
+            920.0000064,
+            525.0000024
+          ]
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000063-040",
+          "status": "resolved",
+          "reason": "The left-side seams and fixed seating identify two distinct front rows, also represented by the aperture bands. Use nominal aperture maxima x716 and x709 with 4 px edge uncertainty, excluding clear jaw overreach; retain the visible lower-left corners and zero right visibility.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000063.png",
+        "source_image_sha256": "e74372f2efbdea19e451e0cc900f16412c63813f66dbc8904d0f4c03b89a709e",
+        "reviewed_label_sha256": "857feeb5249ff1597d56b64f37f16c8f283a32f2eaa50d1418cbefd50a910e05",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000063.png",
+            "source_image_sha256": "e74372f2efbdea19e451e0cc900f16412c63813f66dbc8904d0f4c03b89a709e",
+            "inspection_render_name": "new_000063-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000063.png",
+        "sha256": "e74372f2efbdea19e451e0cc900f16412c63813f66dbc8904d0f4c03b89a709e"
+      },
+      "reviewed_label_sha256": "857feeb5249ff1597d56b64f37f16c8f283a32f2eaa50d1418cbefd50a910e05"
+    },
+    {
+      "image_id": "new_000069",
+      "reviewed_partial_rows": [
+        1,
+        2,
+        6
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 1,
+          "original_row": 1,
+          "before_text": "0 0.95255859 0.97035417 0.09488281 0.05929167 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "reason": "The bottom-right frame fragment includes a visible front below the roof turn; remove the rack/roof area at the previous minimum x and minimum y. Both lower corners remain beyond the frame.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000069.png",
+            "source_image_sha256": "c628fd612bfa5c2779fafdd239d19ebdc680ba335a61e546f1941307df8b7b11",
+            "inspection_render_name": "new_000069-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            1182,
+            686,
+            1280,
+            720
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 2,
+          "original_row": 2,
+          "before_text": "0 0.84178125 0.98440278 0.12412500 0.03119444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "reason": "Only the thin front portion below the roof and beside the hand reaches the bottom of the image. Remove the old hand/roof outer extent; keep both physical corners missing.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000069.png",
+            "source_image_sha256": "c628fd612bfa5c2779fafdd239d19ebdc680ba335a61e546f1941307df8b7b11",
+            "inspection_render_name": "new_000069-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            1042,
+            704,
+            1156.9,
+            720
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 6,
+          "original_row": 6,
+          "before_text": "0 0.52265625 0.57306250 0.12812500 0.07390278 0.46015625 0.59027778 2 0.00000000 0.00000000 0",
+          "reason": "Tighten the lowest front lower envelope to the observed pale edge; the old bottom includes jaw/rack below it. The right corner remains masked by the jaw.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000069.png",
+            "source_image_sha256": "c628fd612bfa5c2779fafdd239d19ebdc680ba335a61e546f1941307df8b7b11",
+            "inspection_render_name": "new_000069-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            587.0,
+            385.9999992,
+            751.0000000000001,
+            434
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000069.png",
+        "source_image_sha256": "c628fd612bfa5c2779fafdd239d19ebdc680ba335a61e546f1941307df8b7b11",
+        "reviewed_label_sha256": "fb230f1cbc6c5cded1577172d0380597f3f135f64332553d4e1f8b11cb9d6cf4",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000069.png",
+            "source_image_sha256": "c628fd612bfa5c2779fafdd239d19ebdc680ba335a61e546f1941307df8b7b11",
+            "inspection_render_name": "new_000069-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000069.png",
+            "source_image_sha256": "c628fd612bfa5c2779fafdd239d19ebdc680ba335a61e546f1941307df8b7b11",
+            "inspection_render_name": "new_000069-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000069.png",
+        "sha256": "c628fd612bfa5c2779fafdd239d19ebdc680ba335a61e546f1941307df8b7b11"
+      },
+      "reviewed_label_sha256": "fb230f1cbc6c5cded1577172d0380597f3f135f64332553d4e1f8b11cb9d6cf4"
+    },
+    {
+      "image_id": "new_000070",
+      "reviewed_partial_rows": [
+        4,
+        5,
+        7,
+        9
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 4,
+          "original_row": 4,
+          "before_text": "0 0.66992188 0.76597222 0.07109375 0.01805556 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "reason": "Keep the thin observed front above the hand, removing skin below the pale band. Neither physical lower corner is exposed.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000070.png",
+            "source_image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+            "inspection_render_name": "new_000070-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            812.0000064,
+            544.9999968,
+            903.0000064,
+            553
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 5,
+          "original_row": 5,
+          "before_text": "0 0.74884766 0.79902778 0.09446094 0.06305556 0.00000000 0.00000000 0 0.79607812 0.82080556 2",
+          "reason": "The exposed front starts at the hand boundary and ends at the physical right edge. Remove inherited minimum x on skin and any clear lower background padding; retain the visible right corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000070.png",
+            "source_image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+            "inspection_render_name": "new_000070-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            915,
+            552.6,
+            1018.9800064000001,
+            598.0000031999999
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 7,
+          "original_row": 7,
+          "before_text": "0 0.74631250 0.83631944 0.09490625 0.06069444 0.00000000 0.00000000 0 0.79376563 0.85694444 2",
+          "reason": "The exposed front starts at the hand boundary and ends at the physical right edge. Remove inherited minimum x on skin and any clear lower background padding; retain the visible right corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000070.png",
+            "source_image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+            "inspection_render_name": "new_000070-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            939,
+            580.2999984,
+            1016.02,
+            622
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 9,
+          "original_row": 9,
+          "before_text": "0 0.74371094 0.87340278 0.09464062 0.05875000 0.00000000 0.00000000 0 0.79006250 0.89162500 2",
+          "reason": "The exposed front starts at the hand boundary and ends at the physical right edge. Remove inherited minimum x on skin and any clear lower background padding; retain the visible right corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000070.png",
+            "source_image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+            "inspection_render_name": "new_000070-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            961,
+            607.7000016,
+            1012.5200000000001,
+            646
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000070.png",
+        "source_image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+        "reviewed_label_sha256": "20cf9472cd2e0d2f97e24ba25d2357b75d1ea65757707edd4f91488bbce7f31d",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000070.png",
+            "source_image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+            "inspection_render_name": "new_000070-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000070.png",
+        "sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e"
+      },
+      "reviewed_label_sha256": "20cf9472cd2e0d2f97e24ba25d2357b75d1ea65757707edd4f91488bbce7f31d"
+    },
+    {
+      "image_id": "new_000081",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [
+        {
+          "case_id": "new_000081-036",
+          "status": "resolved",
+          "reason": "The raw context supports the single front and both actual lower corners. y575 is an acceptable nominal top of the rounded roof/front transition, within the previously stated y570-580 band. Retain row 14 with 5 px top-boundary uncertainty; no alternative physical count or surface remains.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000081.png",
+        "source_image_sha256": "2715f868c98a3cb349cb3dd5381dd43d4b99a3dade0121325d056790ebbea06b",
+        "reviewed_label_sha256": "23b70e1b67a3a91a30aa44aee2f6be5b9e21eb7c78d998204ccd24c7af2be84f",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000081.png",
+            "source_image_sha256": "2715f868c98a3cb349cb3dd5381dd43d4b99a3dade0121325d056790ebbea06b",
+            "inspection_render_name": "new_000081-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000081.png",
+            "source_image_sha256": "2715f868c98a3cb349cb3dd5381dd43d4b99a3dade0121325d056790ebbea06b",
+            "inspection_render_name": "new_000081-held-detail.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000081.png",
+        "sha256": "2715f868c98a3cb349cb3dd5381dd43d4b99a3dade0121325d056790ebbea06b"
+      },
+      "reviewed_label_sha256": "23b70e1b67a3a91a30aa44aee2f6be5b9e21eb7c78d998204ccd24c7af2be84f"
+    },
+    {
+      "image_id": "new_000084",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [
+        {
+          "case_id": "new_000084-037",
+          "status": "resolved",
+          "reason": "All 14 distant top-stack rows were inspected at original-pixel enlargement. Distinct lip/front transitions and lower row seams support the current nominal front envelopes and visible lower corners. Retain the current rows and points with approximately 3-5 px anatomy/soft-edge uncertainty; distance alone is not an unresolved instance issue.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000084.png",
+        "source_image_sha256": "3d017f02c02a9d37350c22d839ec821a661c8adb2d8051a26b877cffc3b4c606",
+        "reviewed_label_sha256": "b422b7eecd82af2e8d2387d614600ed4eab99b180f9b5b692d00dd2c93d9b2a6",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000084.png",
+            "source_image_sha256": "3d017f02c02a9d37350c22d839ec821a661c8adb2d8051a26b877cffc3b4c606",
+            "inspection_render_name": "new_000084-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000084.png",
+            "source_image_sha256": "3d017f02c02a9d37350c22d839ec821a661c8adb2d8051a26b877cffc3b4c606",
+            "inspection_render_name": "new_000084-held-detail.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000084.png",
+        "sha256": "3d017f02c02a9d37350c22d839ec821a661c8adb2d8051a26b877cffc3b4c606"
+      },
+      "reviewed_label_sha256": "b422b7eecd82af2e8d2387d614600ed4eab99b180f9b5b692d00dd2c93d9b2a6"
+    },
+    {
+      "image_id": "new_000085",
+      "reviewed_partial_rows": [
+        14,
+        15,
+        16,
+        18,
+        19
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 18,
+          "original_row": 18,
+          "before_text": "0 0.40151953 0.77501389 0.08741406 0.03330556 0.35937500 0.78888889 2 0.00000000 0.00000000 0",
+          "reason": "Trim the visible middle left-stack front to the thumb boundary; the old right extremum includes skin. Preserve the visible left physical corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000085.png",
+            "source_image_sha256": "a33365e10beb89e4bf5ac531cb6ff36ab6d3c3b965f08c9db494a2243e46d74f",
+            "inspection_render_name": "new_000085-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            458.00000000000006,
+            546.0199991999999,
+            564,
+            570.0000024
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 19,
+          "original_row": 19,
+          "before_text": "0 0.40030078 0.81406250 0.08653906 0.03298611 0.35859375 0.82777778 2 0.00000000 0.00000000 0",
+          "reason": "The lowest left-stack front is exposed only up to the advancing thumb. Remove inherited hand-inclusive maximum x and keep the true right corner missing.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000085.png",
+            "source_image_sha256": "a33365e10beb89e4bf5ac531cb6ff36ab6d3c3b965f08c9db494a2243e46d74f",
+            "inspection_render_name": "new_000085-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            457.0,
+            574.2500004,
+            537,
+            597.9999996
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000085.png",
+        "source_image_sha256": "a33365e10beb89e4bf5ac531cb6ff36ab6d3c3b965f08c9db494a2243e46d74f",
+        "reviewed_label_sha256": "a42b349a89f9c69127c573e4cb531508242ffef3073a07c8a5c5a02ae917f88b",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000085.png",
+            "source_image_sha256": "a33365e10beb89e4bf5ac531cb6ff36ab6d3c3b965f08c9db494a2243e46d74f",
+            "inspection_render_name": "new_000085-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000085.png",
+            "source_image_sha256": "a33365e10beb89e4bf5ac531cb6ff36ab6d3c3b965f08c9db494a2243e46d74f",
+            "inspection_render_name": "new_000085-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "Three central visible front bands 14-16 remain individually identifiable through/above the opening, with zero physical corner visibility. Their observed envelopes were retained."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000085.png",
+        "sha256": "a33365e10beb89e4bf5ac531cb6ff36ab6d3c3b965f08c9db494a2243e46d74f"
+      },
+      "reviewed_label_sha256": "a42b349a89f9c69127c573e4cb531508242ffef3073a07c8a5c5a02ae917f88b"
+    },
+    {
+      "image_id": "new_000095",
+      "reviewed_partial_rows": [
+        23,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 30,
+          "original_row": 30,
+          "before_text": "0 0.35228516 0.87394444 0.09335156 0.04447222 0.30679687 0.89618056 2 0.00000000 0.00000000 0",
+          "reason": "Trim the observed lower-left front to the thumb boundary. The inherited maximum x encloses skin outside the visible face; retain the physical left lower corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000095.png",
+            "source_image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+            "inspection_render_name": "new_000095-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            391.18000639999997,
+            613.2299976,
+            503,
+            645.249996
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 31,
+          "original_row": 31,
+          "before_text": "0 0.35518750 0.90334722 0.09189063 0.04458333 0.31042187 0.92563889 2 0.00000000 0.00000000 0",
+          "reason": "Trim the observed lower-left front to the thumb boundary. The inherited maximum x encloses skin outside the visible face; retain the physical left lower corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000095.png",
+            "source_image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+            "inspection_render_name": "new_000095-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            395.8299968,
+            634.3599996,
+            489,
+            666.4599972
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 32,
+          "original_row": 32,
+          "before_text": "0 0.35751563 0.93177083 0.08965625 0.04854167 0.31327344 0.95604167 2 0.00000000 0.00000000 0",
+          "reason": "Trim the observed lower-left front to the thumb boundary. The inherited maximum x encloses skin outside the visible face; retain the physical left lower corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000095.png",
+            "source_image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+            "inspection_render_name": "new_000095-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            400.24000639999997,
+            653.3999964,
+            476,
+            688.3499988000001
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 37,
+          "original_row": 37,
+          "before_text": "0 0.43569141 0.79220139 0.08486719 0.03440278 0.39411719 0.80940278 2 0.00000000 0.00000000 0",
+          "reason": "The enlarged original shows the tiny right pale region continuing as the gripper side, with thumb contacting it. It is not an exposed second portion of this front. Keep the visible left strip only; the true right corner remains hidden.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000095.png",
+            "source_image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+            "inspection_render_name": "new_000095-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            503.37000320000004,
+            558.0,
+            533,
+            582.7700016
+          ]
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000095-023",
+          "status": "resolved",
+          "reason": "The disputed x608-612 strip belongs to the vertical gripper side, continuous below the face and next to skin. Row 37 therefore uses its left-side visible envelope ending nominally x533; no separate right exposure or visible right corner is asserted.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000095.png",
+        "source_image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+        "reviewed_label_sha256": "6523e11ca43da3914c8efcdbdab3c3ac7ce72df6bde5396b5cb3ab40fa7255a4",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000095.png",
+            "source_image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+            "inspection_render_name": "new_000095-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000095.png",
+            "source_image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+            "inspection_render_name": "new_000095-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000095.png",
+            "source_image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+            "inspection_render_name": "new_000095-held-detail.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000095.png",
+        "sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72"
+      },
+      "reviewed_label_sha256": "6523e11ca43da3914c8efcdbdab3c3ac7ce72df6bde5396b5cb3ab40fa7255a4"
+    },
+    {
+      "image_id": "new_000096",
+      "reviewed_partial_rows": [
+        33,
+        39,
+        40,
+        41
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "add",
+          "addition_id": "batch3-new096-lowest-thumb-front",
+          "original_row": null,
+          "before_text": null,
+          "after_bbox_xyxy_px": [
+            508,
+            589,
+            522,
+            613
+          ],
+          "endpoint_changes": {
+            "left": [
+              511,
+              611,
+              2
+            ],
+            "right": [
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "The stepped left silhouette and separate seam below row 41 establish one further visible front band from about y590 to y612. Its left physical lower corner remains exposed next to the rack, while the right corner is covered by the thumb. Full current labels contain no instance for this band.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000096.png",
+            "source_image_sha256": "fd69bf9e5afe7725d68d65eec21dfc59da8d9efc16f0c98d562f3c9c069463d5",
+            "inspection_render_name": "new_000096-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "complete_current_labels_checked_for_duplicate": true
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000096-extra-lower-front",
+          "status": "resolved",
+          "reason": "The enlarged original resolves a separate full-height front strip below the row 41 seam, consistent with the repeated visible stack thickness. Add its observed narrow envelope and visible left lower corner.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000096.png",
+        "source_image_sha256": "fd69bf9e5afe7725d68d65eec21dfc59da8d9efc16f0c98d562f3c9c069463d5",
+        "reviewed_label_sha256": "7d68404751793409d0e8dd855608ff5cd428e4b2f99bfb1cca866d9f852be2c9",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000096.png",
+            "source_image_sha256": "fd69bf9e5afe7725d68d65eec21dfc59da8d9efc16f0c98d562f3c9c069463d5",
+            "inspection_render_name": "new_000096-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000096.png",
+            "source_image_sha256": "fd69bf9e5afe7725d68d65eec21dfc59da8d9efc16f0c98d562f3c9c069463d5",
+            "inspection_render_name": "new_000096-held-detail.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "Other assigned rows have supported exposed face portions; row 40 retains a narrow right-side exposure above the thumb, while row 41 correctly uses its left strip."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000096.png",
+        "sha256": "fd69bf9e5afe7725d68d65eec21dfc59da8d9efc16f0c98d562f3c9c069463d5"
+      },
+      "reviewed_label_sha256": "7d68404751793409d0e8dd855608ff5cd428e4b2f99bfb1cca866d9f852be2c9"
+    },
+    {
+      "image_id": "new_000100",
+      "reviewed_partial_rows": [
+        52
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 52,
+          "original_row": 52,
+          "before_text": "0 0.38708984 0.82722917 0.06257031 0.04081944 0.37181250 0.82623611 2 0.00000000 0.00000000 0",
+          "reason": "Replace the rack/hand/background-inclusive envelope with the actual front band below the roof turn and left of the thumb. Preserve the observed lower-left corner and missing right corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000100.png",
+            "source_image_sha256": "ea387daf6b24d49662841e1f3f8197ae2c991fecffb9cb64ca66b8689db76290",
+            "inspection_render_name": "new_000100-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            473,
+            574,
+            524,
+            599
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000100.png",
+        "source_image_sha256": "ea387daf6b24d49662841e1f3f8197ae2c991fecffb9cb64ca66b8689db76290",
+        "reviewed_label_sha256": "b9342f4a65b682a5ddfbbc1015a98d7bdc9fabfe8f78f517c501e9d615aa4357",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000100.png",
+            "source_image_sha256": "ea387daf6b24d49662841e1f3f8197ae2c991fecffb9cb64ca66b8689db76290",
+            "inspection_render_name": "new_000100-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000100.png",
+        "sha256": "ea387daf6b24d49662841e1f3f8197ae2c991fecffb9cb64ca66b8689db76290"
+      },
+      "reviewed_label_sha256": "b9342f4a65b682a5ddfbbc1015a98d7bdc9fabfe8f78f517c501e9d615aa4357"
+    },
+    {
+      "image_id": "new_000102",
+      "reviewed_partial_rows": [
+        4,
+        51,
+        52
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 4,
+          "original_row": 4,
+          "before_text": "0 0.45468750 0.00972222 0.09062500 0.01944444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "reason": "Although the top is frame-clipped, both actual lower front corners lie inside the image and are exposed at the lower seam. Restore visibility only for those observed physical corners.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000102.png",
+            "source_image_sha256": "107e5ff9d5870d203f8cae94c603fc422f8d52e83befc6603b2fb30fab67e73c",
+            "inspection_render_name": "new_000102-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "endpoint_changes": {
+            "left": [
+              527,
+              11,
+              2
+            ],
+            "right": [
+              637,
+              12,
+              2
+            ]
+          }
+        },
+        {
+          "action": "replace",
+          "current_row": 52,
+          "original_row": 53,
+          "before_text": "0 0.55664062 0.70416667 0.02890625 0.02222222 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "reason": "The central slot exposes a small front below the slatted roof; the old patch omits its upper and left observed parts. Expand only to the observed aperture/hand boundaries, keeping both hidden outer corners zero.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000102.png",
+            "source_image_sha256": "107e5ff9d5870d203f8cae94c603fc422f8d52e83befc6603b2fb30fab67e73c",
+            "inspection_render_name": "new_000102-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            690,
+            495,
+            733,
+            516
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000102.png",
+        "source_image_sha256": "107e5ff9d5870d203f8cae94c603fc422f8d52e83befc6603b2fb30fab67e73c",
+        "reviewed_label_sha256": "86f536e2022a26bc6dd3f4e0f1d09f59ef53248c002c951ed1ba1b709d7d3222",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000102.png",
+            "source_image_sha256": "107e5ff9d5870d203f8cae94c603fc422f8d52e83befc6603b2fb30fab67e73c",
+            "inspection_render_name": "new_000102-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000102.png",
+            "source_image_sha256": "107e5ff9d5870d203f8cae94c603fc422f8d52e83befc6603b2fb30fab67e73c",
+            "inspection_render_name": "new_000102-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000102.png",
+            "source_image_sha256": "107e5ff9d5870d203f8cae94c603fc422f8d52e83befc6603b2fb30fab67e73c",
+            "inspection_render_name": "new_000102-crop-2.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "The thumb-occluded lower-left front row 51 remains within about 3 px of its observed extent."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000102.png",
+        "sha256": "107e5ff9d5870d203f8cae94c603fc422f8d52e83befc6603b2fb30fab67e73c"
+      },
+      "reviewed_label_sha256": "86f536e2022a26bc6dd3f4e0f1d09f59ef53248c002c951ed1ba1b709d7d3222"
+    },
+    {
+      "image_id": "new_000116",
+      "reviewed_partial_rows": [
+        4,
+        8,
+        15,
+        19,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 4,
+          "original_row": 4,
+          "before_text": "0 0.31560547 0.02403472 0.17232031 0.04806944 0.24708594 0.01688889 2 0.00000000 0.00000000 0",
+          "reason": "Trim the frame-clipped top front to its actual pale strip; the inherited box includes rack at left and the neighboring lower front below.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            313,
+            0,
+            520,
+            17
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 15,
+          "original_row": 15,
+          "before_text": "0 0.84718750 0.03225000 0.19345313 0.06450000 0.78334375 0.01600000 2 0.00000000 0.00000000 0",
+          "reason": "Trim the frame-clipped right top front to its observed sloping lower seam; remove previous-column/rack and lower-neighbor inclusion.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            992,
+            0,
+            1220,
+            20
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 19,
+          "original_row": 19,
+          "before_text": "0 0.40967578 0.71386806 0.11153906 0.09448611 0.35844531 0.75204167 2 0.00000000 0.00000000 0",
+          "reason": "Use the visible front leading boundary rather than the slatted roof. Keep the hand-masked right corner missing.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            453.0,
+            499,
+            595.7699968,
+            544
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 21,
+          "original_row": 21,
+          "before_text": "0 0.52059766 0.59413889 0.11924219 0.07125000 0.46753125 0.62976389 2 0.00000000 0.00000000 0",
+          "reason": "The current minimum y includes the front above; this row begins at the observed seam near y419 and ends at its retained lower-left corner.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            590.0500032,
+            419,
+            742.6800063999999,
+            453.4300008
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 23,
+          "original_row": 23,
+          "before_text": "0 0.64674219 0.65024306 0.13307813 0.09118056 0.00000000 0.00000000 0 0.71171875 0.69305556 2",
+          "reason": "The single right-hand front is exposed beside the jaw below the roof turn. Replace jaw/roof-inclusive extrema with its observed envelope.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            788,
+            447,
+            918,
+            501
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 25,
+          "original_row": 25,
+          "before_text": "0 0.76659766 0.69890972 0.14180469 0.10773611 0.00000000 0.00000000 0 0.83593750 0.75000000 2",
+          "reason": "The front begins at its lip and notch beside the hand; the previous minimum x/y include hand and roof.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            931,
+            485,
+            1072.0000064,
+            541.999998
+          ]
+        },
+        {
+          "action": "add",
+          "addition_id": "batch3-new116-lower-central-front",
+          "original_row": null,
+          "before_text": null,
+          "after_bbox_xyxy_px": [
+            598,
+            481,
+            725,
+            511
+          ],
+          "endpoint_changes": {
+            "left": [
+              0,
+              0,
+              0
+            ],
+            "right": [
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "The raw central opening contains a second dark front band below the seam near y481, ending at the red hand near y511. The left side strip and repeated seated thickness support the same physical level; no current row labels that lower band. Neither true lower corner is reliably exposed.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-2.png",
+            "rendered_crop_retained": false
+          },
+          "complete_current_labels_checked_for_duplicate": true
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000116-045",
+          "status": "resolved",
+          "reason": "A distinct lower front band is supported by the transverse seam, the gray surface inside the see-through opening, the side strip, and the hand boundary below. Add its observed envelope with both corners missing. Current row 22 remains the upper band.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [
+        {
+          "issue_id": "batch3-new116-row24-surface",
+          "current_rows": [
+            24
+          ],
+          "status": "held",
+          "reason": "The paired direct original review reveals a thin under-front band, but it may be the upper cassette underside/lip or a separate lower front partly covered by the hand. Preserve the current instance pending component identification; do not delete on shape alone. Its current envelope is not certified.",
+          "question": "Is this thin under-front band a second cassette front or the underside/lip of the one above?",
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-central-detail.png",
+            "rendered_crop_retained": false
+          }
+        }
+      ],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000116.png",
+        "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+        "reviewed_label_sha256": "d4cc8ea40296a91ed973cded28acecea30a545d61f92003d898a037aea12f55f",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-crop-2.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-central-detail.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000116.png",
+            "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+            "inspection_render_name": "new_000116-top-detail.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000116.png",
+        "sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61"
+      },
+      "reviewed_label_sha256": "d4cc8ea40296a91ed973cded28acecea30a545d61f92003d898a037aea12f55f"
+    },
+    {
+      "image_id": "new_000117",
+      "reviewed_partial_rows": [
+        11,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 21,
+          "original_row": 21,
+          "before_text": "0 0.52184766 0.58506944 0.11661719 0.06416667 0.46991406 0.61715278 2 0.00000000 0.00000000 0",
+          "reason": "The prior top includes the upper neighbor. This distinct front begins at the visible seam near y414 and ends at the retained lower-left junction.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000117.png",
+            "source_image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+            "inspection_render_name": "new_000117-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            593.3300032000001,
+            414,
+            742.6000064,
+            444.3499980000001
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 25,
+          "original_row": 25,
+          "before_text": "0 0.76322266 0.68891667 0.13917969 0.09994444 0.00000000 0.00000000 0 0.82725781 0.72875000 2",
+          "reason": "Trim the rightmost front to its lip/notch and observed material beside the hand. The old left/top extrema include roof and skin.",
+          "uncertainty_px": 4,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000117.png",
+            "source_image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+            "inspection_render_name": "new_000117-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            921,
+            475,
+            1066.0000064,
+            530
+          ]
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000117-047",
+          "status": "held",
+          "reason": "The narrow gray band below the upper front has a real visible extent, but the source pixels still permit either a separate lower front partly hidden by the hand or the underside/beveled lip of the upper cassette. Repeated nominal size cannot establish which physical component this band is.",
+          "remaining_rows": [
+            24
+          ],
+          "remaining_questions": [
+            "Is the thin band immediately under the right front a separate cassette front, or the upper cassette underside/lip?"
+          ]
+        }
+      ],
+      "new_issues": [
+        {
+          "issue_id": "batch3-new117-top-row11-surface",
+          "current_rows": [
+            11
+          ],
+          "status": "held",
+          "reason": "The 0-8 px top strip overlaps the main front below; a preceding front remnant versus its upper molding cannot be established from the clipped anatomy alone. Retain without certifying a distinct instance.",
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000117.png",
+            "source_image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+            "inspection_render_name": "new_000117-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        }
+      ],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000117.png",
+        "source_image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+        "reviewed_label_sha256": "e5363407e23fa050e170679659497ba0ce3a7774b8b4d4f9b203811b0cda150b",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000117.png",
+            "source_image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+            "inspection_render_name": "new_000117-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000117.png",
+            "source_image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+            "inspection_render_name": "new_000117-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000117.png",
+            "source_image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+            "inspection_render_name": "new_000117-held-detail.png",
+            "rendered_crop_retained": false
+          }
+        ]
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000117.png",
+        "sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454"
+      },
+      "reviewed_label_sha256": "e5363407e23fa050e170679659497ba0ce3a7774b8b4d4f9b203811b0cda150b"
+    },
+    {
+      "image_id": "new_000119",
+      "reviewed_partial_rows": [
+        27,
+        32,
+        34,
+        35
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 34,
+          "original_row": 34,
+          "before_text": "0 0.55742188 0.63194444 0.03984375 0.03333333 0.53867969 0.64525000 2 0.00000000 0.00000000 0",
+          "reason": "Tighten the exposed front edge beside the jaw to the observed material. The right physical corner remains behind the jaw.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000119.png",
+            "source_image_sha256": "9a5e0e0fd881165121b54f76d4791e812cd22fec24da624413eca1a3ee259a41",
+            "inspection_render_name": "new_000119-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            688.0000064000001,
+            442.999998,
+            735,
+            466.99999560000003
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 35,
+          "original_row": 35,
+          "before_text": "0 0.65387500 0.62618750 0.07990625 0.05634722 0.00000000 0.00000000 0 0.68696094 0.63793056 2",
+          "reason": "The visible rightmost front begins at its notch beside the jaw, below the roof. The old extrema include jaw/roof and lower background.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000119.png",
+            "source_image_sha256": "9a5e0e0fd881165121b54f76d4791e812cd22fec24da624413eca1a3ee259a41",
+            "inspection_render_name": "new_000119-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            801,
+            435,
+            888.1,
+            465
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000119.png",
+        "source_image_sha256": "9a5e0e0fd881165121b54f76d4791e812cd22fec24da624413eca1a3ee259a41",
+        "reviewed_label_sha256": "cc4dcfc9355eb740e3929e71de0df8ba0606202037c094d2e93ed35155aab987",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000119.png",
+            "source_image_sha256": "9a5e0e0fd881165121b54f76d4791e812cd22fec24da624413eca1a3ee259a41",
+            "inspection_render_name": "new_000119-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "Rows 27 and 32 retain envelopes supported by upper exposure and narrow side exposure around the left jaw."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000119.png",
+        "sha256": "9a5e0e0fd881165121b54f76d4791e812cd22fec24da624413eca1a3ee259a41"
+      },
+      "reviewed_label_sha256": "cc4dcfc9355eb740e3929e71de0df8ba0606202037c094d2e93ed35155aab987"
+    },
+    {
+      "image_id": "new_000120",
+      "reviewed_partial_rows": [
+        4,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 52,
+          "original_row": 52,
+          "before_text": "0 0.40997266 0.76308333 0.06805469 0.04488889 0.38589844 0.76900000 2 0.00000000 0.00000000 0",
+          "reason": "Trim to the front below the roof turn and left of the thumb; the old left and lower extrema include rack/background.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000120.png",
+            "source_image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+            "inspection_render_name": "new_000120-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            493,
+            533,
+            563,
+            557
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 53,
+          "original_row": 53,
+          "before_text": "0 0.47762109 0.66936111 0.06816406 0.04225000 0.44910156 0.67975000 2 0.00000000 0.00000000 0",
+          "reason": "The observed front is the strip left of the jaw; the previous maximum x extends far across the jaw and lower padding includes the next level. Preserve its actual visible left lower corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000120.png",
+            "source_image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+            "inspection_render_name": "new_000120-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            573,
+            466.7299992,
+            614,
+            493
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 54,
+          "original_row": 54,
+          "before_text": "0 0.47898047 0.69640278 0.06753906 0.03247222 0.45117188 0.70506944 2 0.00000000 0.00000000 0",
+          "reason": "The observed front is the strip left of the jaw; the previous maximum x extends far across the jaw and lower padding includes the next level. Preserve its actual visible left lower corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000120.png",
+            "source_image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+            "inspection_render_name": "new_000120-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            575,
+            489.7200024,
+            610,
+            510
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 55,
+          "original_row": 55,
+          "before_text": "0 0.47887109 0.72131250 0.06702344 0.03298611 0.45168750 0.72579167 2 0.00000000 0.00000000 0",
+          "reason": "The observed front is the strip left of the jaw; the previous maximum x extends far across the jaw and lower padding includes the next level. Preserve its actual visible left lower corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000120.png",
+            "source_image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+            "inspection_render_name": "new_000120-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            576,
+            507.4700004,
+            607,
+            526
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000120.png",
+        "source_image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+        "reviewed_label_sha256": "895b30b0de80b83b7af42fae1ce1ea17c9d8129fb62282baacfab1fa4e1d912d",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000120.png",
+            "source_image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+            "inspection_render_name": "new_000120-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000120.png",
+            "source_image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+            "inspection_render_name": "new_000120-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "The top clipped row 4 and lowest triangular strip row 56 were inspected and retained, with missing physical corners unchanged."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000120.png",
+        "sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad"
+      },
+      "reviewed_label_sha256": "895b30b0de80b83b7af42fae1ce1ea17c9d8129fb62282baacfab1fa4e1d912d"
+    },
+    {
+      "image_id": "new_000121",
+      "reviewed_partial_rows": [
+        53,
+        56,
+        57
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 56,
+          "original_row": 56,
+          "before_text": "0 0.40676172 0.82022917 0.06652344 0.04501389 0.38428906 0.82615278 2 0.00000000 0.00000000 0",
+          "reason": "The lower-left front is exposed only in a narrow patch between rack and thumb. The old box encloses extensive skin and background; use the observed lip/front envelope and retained real left lower corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000121.png",
+            "source_image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+            "inspection_render_name": "new_000121-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            490,
+            570,
+            519,
+            600
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [
+        {
+          "issue_id": "batch3-new121-top-row53-surface",
+          "current_rows": [
+            53
+          ],
+          "status": "held",
+          "reason": "The extremely shallow top strip is visible, but its instance ownership relative to the main front below remains ambiguous between a preceding front terminal remnant and the same cassette molding. Preserve without certifying the separate count.",
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000121.png",
+            "source_image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+            "inspection_render_name": "new_000121-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        }
+      ],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000121.png",
+        "source_image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+        "reviewed_label_sha256": "00a45f5d5733aca96518709eb21ebfc43c829fdde3b2cbcfbd70a047e06029b5",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000121.png",
+            "source_image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+            "inspection_render_name": "new_000121-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000121.png",
+            "source_image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+            "inspection_render_name": "new_000121-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "The central row 57 has a supported single front between jaw and thumb and retains its observed envelope."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000121.png",
+        "sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a"
+      },
+      "reviewed_label_sha256": "00a45f5d5733aca96518709eb21ebfc43c829fdde3b2cbcfbd70a047e06029b5"
+    },
+    {
+      "image_id": "new_000122",
+      "reviewed_partial_rows": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        54,
+        55,
+        56,
+        57
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 44,
+          "original_row": 44,
+          "before_text": "0 0.46207031 0.61600000 0.07821875 0.05111111 0.42548438 0.62718056 2 0.00000000 0.00000000 0",
+          "reason": "The lower envelope should end at the exposed front seam rather than extend into the following row; preserve its physical left corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            541.3899968,
+            425.12000040000004,
+            641.5099968,
+            456
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 45,
+          "original_row": 45,
+          "before_text": "0 0.46171094 0.64938194 0.07728125 0.04226389 0.42652344 0.65619444 2 0.00000000 0.00000000 0",
+          "reason": "Trim the inherited jaw-inclusive maximum x and below-seam padding to the visible front strip. Do not restore the occluded right corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            541.5300032,
+            452.3399964,
+            615,
+            476
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 46,
+          "original_row": 46,
+          "before_text": "0 0.46084375 0.67770833 0.07575000 0.04088889 0.42510938 0.68504167 2 0.00000000 0.00000000 0",
+          "reason": "Trim the inherited jaw-inclusive maximum x and below-seam padding to the visible front strip. Do not restore the occluded right corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            541.4,
+            473.2299972,
+            611,
+            497
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 47,
+          "original_row": 47,
+          "before_text": "0 0.45996484 0.70542361 0.07263281 0.03804167 0.42471094 0.71237500 2 0.00000000 0.00000000 0",
+          "reason": "Trim the inherited jaw-inclusive maximum x and below-seam padding to the visible front strip. Do not restore the occluded right corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            542.2699968,
+            494.20999800000004,
+            608,
+            516
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 48,
+          "original_row": 48,
+          "before_text": "0 0.45942969 0.73131250 0.07192188 0.03929167 0.42575000 0.73954167 2 0.00000000 0.00000000 0",
+          "reason": "Trim the inherited jaw-inclusive maximum x and below-seam padding to the visible front strip. Do not restore the occluded right corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            542.04,
+            512.3999988,
+            605,
+            537
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 54,
+          "original_row": 54,
+          "before_text": "0 0.31520313 0.96164583 0.07053125 0.05001389 0.28938281 0.96837500 2 0.00000000 0.00000000 0",
+          "reason": "Align the observed lower front to its lip and left physical extent, excluding rack and background while retaining the hand-occluded right corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            369,
+            669,
+            448.60000640000004,
+            705
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 55,
+          "original_row": 55,
+          "before_text": "0 0.38519531 0.87899306 0.07079688 0.04756944 0.35488281 0.88515278 2 0.00000000 0.00000000 0",
+          "reason": "The upper partial front beside the hand begins at the lip near y610 and ends at its lower seam; the old right extremum covers skin.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            453,
+            610,
+            507,
+            641
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 56,
+          "original_row": 56,
+          "before_text": "0 0.38669531 0.90502778 0.07018750 0.03825000 0.35670313 0.90863889 2 0.00000000 0.00000000 0",
+          "reason": "Only the small lower front triangle to the left of the hand is visible. Remove the large inherited hand-inclusive extent and retain its observed left lower corner.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-1.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            450.04999680000003,
+            637.8500016,
+            476,
+            659
+          ]
+        }
+      ],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000122.png",
+        "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+        "reviewed_label_sha256": "b15ddb49afdcae04fd3a39d4f009140a480dbf66f14236a802f94d6251df30e1",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000122.png",
+            "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+            "inspection_render_name": "new_000122-crop-1.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "Central slot row 57 retains a supported front envelope with both physical corners hidden."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000122.png",
+        "sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9"
+      },
+      "reviewed_label_sha256": "b15ddb49afdcae04fd3a39d4f009140a480dbf66f14236a802f94d6251df30e1"
+    },
+    {
+      "image_id": "new_000128",
+      "reviewed_partial_rows": [
+        1,
+        6,
+        9,
+        10,
+        12,
+        13,
+        14,
+        18,
+        26,
+        27,
+        28,
+        33,
+        34,
+        35
+      ],
+      "image_review_complete": true,
+      "operations": [
+        {
+          "action": "replace",
+          "current_row": 10,
+          "original_row": 10,
+          "before_text": "0 0.91025391 0.06143750 0.17949219 0.05490278 0.83825781 0.08322222 2 0.00000000 0.00000000 0",
+          "reason": "The same main front is visibly continuous above the inherited y24.47 cutoff. Use y8 as a nominal observed upper boundary, with 3 px uncertainty; the separate tiny top-band ownership remains a documented question.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000128.png",
+            "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+            "inspection_render_name": "new_000128-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            1050.2500032,
+            8,
+            1280,
+            64.0000008
+          ]
+        },
+        {
+          "action": "replace",
+          "current_row": 18,
+          "original_row": 19,
+          "before_text": "0 0.55165625 0.61813194 0.13260938 0.05337500 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+          "reason": "A pale front band below the preceding seam is visible immediately above the jaw. Keep its actual observed material only; the old box includes the preceding face and the jaw. Both actual lower corners remain hidden.",
+          "uncertainty_px": 3,
+          "evidence_crop": {
+            "source_image_path": "data/images/train/new_000128.png",
+            "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+            "inspection_render_name": "new_000128-crop-0.png",
+            "rendered_crop_retained": false
+          },
+          "after_bbox_xyxy_px": [
+            630,
+            435,
+            791,
+            445
+          ]
+        }
+      ],
+      "case_dispositions": [
+        {
+          "case_id": "new_000128-003",
+          "status": "partial",
+          "reason": "Correct the known-too-low row 10 top and jaw-inclusive row 18 to their observed material. The repeated visible row pitch and seam support row 18 as an exposed next front. The tiny frame-edge bands 1, 6 and 9 still have a genuine preceding-front-remnant versus molding ownership ambiguity, not merely a soft coordinate.",
+          "remaining_rows": [
+            1,
+            6,
+            9
+          ],
+          "remaining_questions": [
+            "Do these 0-5 px frame-edge bands belong to separate preceding cassette fronts, or to the upper molding of the main fronts below?"
+          ]
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000128.png",
+        "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+        "reviewed_label_sha256": "15892f65054acf3d2f45af33cc970f8b6863ef470090a186a29ba3d2e6fe0d72",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/new_000128.png",
+            "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+            "inspection_render_name": "new_000128-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "additional_raw_crops": [
+          {
+            "source_image_path": "data/images/train/new_000128.png",
+            "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+            "inspection_render_name": "new_000128-top-detail.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000128.png",
+            "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+            "inspection_render_name": "new_000128-partial-detail.png",
+            "rendered_crop_retained": false
+          },
+          {
+            "source_image_path": "data/images/train/new_000128.png",
+            "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+            "inspection_render_name": "new_000128-right-detail.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "retained_review": "All remaining assigned side/front strips were inspected against full context. Their supported upper/side exposures justify the retained envelopes, with nominal edge uncertainty about 3-4 px; no hidden corner was filled."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000128.png",
+        "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+      },
+      "reviewed_label_sha256": "15892f65054acf3d2f45af33cc970f8b6863ef470090a186a29ba3d2e6fe0d72"
+    },
+    {
+      "image_id": "new_000131",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000131.png",
+        "source_image_sha256": "3cdcf73523b155a542606da63cfb301a33c3e14ee8cba7319ae342e6a4a806b4",
+        "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. Empty rack and gripper have no visible target cassette front; retain the empty label file."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000131.png",
+        "sha256": "3cdcf73523b155a542606da63cfb301a33c3e14ee8cba7319ae342e6a4a806b4"
+      },
+      "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "image_id": "new_000134",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000134.png",
+        "source_image_sha256": "eb9e1eec33178a5fd87faeeeb6e995529557b9053d160b1d25e17e2372741a57",
+        "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. Empty rack and gripper have no visible target cassette front; retain the empty label file."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000134.png",
+        "sha256": "eb9e1eec33178a5fd87faeeeb6e995529557b9053d160b1d25e17e2372741a57"
+      },
+      "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "image_id": "new_000139",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000139.png",
+        "source_image_sha256": "34473a966e8362bd66da9ff8797035cc31a9fea789d5938383450fcadcf2cd53",
+        "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. Empty rack and gripper have no visible target cassette front; retain the empty label file."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000139.png",
+        "sha256": "34473a966e8362bd66da9ff8797035cc31a9fea789d5938383450fcadcf2cd53"
+      },
+      "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "image_id": "new_000142",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000142.png",
+        "source_image_sha256": "f1080c61451f7512af4b41acf626ef41f8b0c8b71bf7a80798036f98abd2d26e",
+        "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. Empty rack and gripper have no visible target cassette front; retain the empty label file."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000142.png",
+        "sha256": "f1080c61451f7512af4b41acf626ef41f8b0c8b71bf7a80798036f98abd2d26e"
+      },
+      "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "image_id": "new_000150",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/new_000150.png",
+        "source_image_sha256": "ce2208884a7107b10515118626746e53f41595aa5aaaf97488bedfc10ddc9950",
+        "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. Empty rack and gripper have no visible target cassette front; retain the empty label file."
+      },
+      "source_original_image": {
+        "path": "data/images/train/new_000150.png",
+        "sha256": "ce2208884a7107b10515118626746e53f41595aa5aaaf97488bedfc10ddc9950"
+      },
+      "reviewed_label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "image_id": "old_000007",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/old_000007.png",
+        "source_image_sha256": "b56b7fcfd5424959e4309d869d796c71063439f3bf2b73ed531a5518163fe941",
+        "reviewed_label_sha256": "d748afa5c26d736876049d5b53a5edc6d599fdab41d932f5c86943da4e51ab4a",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. No assigned partial rows or open cases; the visible seated fronts are distinct and no analogous hand-inclusive or jaw-inclusive outer extent is present."
+      },
+      "source_original_image": {
+        "path": "data/images/train/old_000007.png",
+        "sha256": "b56b7fcfd5424959e4309d869d796c71063439f3bf2b73ed531a5518163fe941"
+      },
+      "reviewed_label_sha256": "d748afa5c26d736876049d5b53a5edc6d599fdab41d932f5c86943da4e51ab4a"
+    },
+    {
+      "image_id": "old_000021",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/old_000021.png",
+        "source_image_sha256": "796f3a6d1f85c242e2c47c47c265b83efb3d0efb69663e62cd906a5f35b87f17",
+        "reviewed_label_sha256": "6e9f363726c1a235ef85f8941fdff23b36b4837407fe586f02523aef299426df",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. No assigned partial rows or open cases; the visible seated fronts are distinct and no analogous hand-inclusive or jaw-inclusive outer extent is present."
+      },
+      "source_original_image": {
+        "path": "data/images/train/old_000021.png",
+        "sha256": "796f3a6d1f85c242e2c47c47c265b83efb3d0efb69663e62cd906a5f35b87f17"
+      },
+      "reviewed_label_sha256": "6e9f363726c1a235ef85f8941fdff23b36b4837407fe586f02523aef299426df"
+    },
+    {
+      "image_id": "old_000028",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/old_000028.png",
+        "source_image_sha256": "121c958a86eb586c419c2593175d56f6e909e54e308611d52af51c4c7ffe203e",
+        "reviewed_label_sha256": "dcb11a8be82e7f1417a88674654313d9aab83ea176205da8df2c2dbe8e870d32",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. No assigned partial rows or open cases; the visible seated fronts are distinct and no analogous hand-inclusive or jaw-inclusive outer extent is present."
+      },
+      "source_original_image": {
+        "path": "data/images/train/old_000028.png",
+        "sha256": "121c958a86eb586c419c2593175d56f6e909e54e308611d52af51c4c7ffe203e"
+      },
+      "reviewed_label_sha256": "dcb11a8be82e7f1417a88674654313d9aab83ea176205da8df2c2dbe8e870d32"
+    },
+    {
+      "image_id": "old_000042",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/old_000042.png",
+        "source_image_sha256": "b4fb62065fd129594eefe15210fbae200f4c59932dab3574f73e03704af2c42e",
+        "reviewed_label_sha256": "e0e371bc8f827f85d04d4ee5d2afcbf80f20631f725684e6bc89c02e34cef0c3",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. No assigned partial rows or open cases; the visible seated fronts are distinct and no analogous hand-inclusive or jaw-inclusive outer extent is present."
+      },
+      "source_original_image": {
+        "path": "data/images/train/old_000042.png",
+        "sha256": "b4fb62065fd129594eefe15210fbae200f4c59932dab3574f73e03704af2c42e"
+      },
+      "reviewed_label_sha256": "e0e371bc8f827f85d04d4ee5d2afcbf80f20631f725684e6bc89c02e34cef0c3"
+    },
+    {
+      "image_id": "old_000051",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/old_000051.png",
+        "source_image_sha256": "b3372a8c3b55f3567738c1d8e649f04c3cd3391ffa1a4ea8dcbe2b1097697661",
+        "reviewed_label_sha256": "eecc530b01392e80cc6ede4467b7c9750b6399e29a1abb6a6ca571f8123d98de",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. No assigned partial rows or open cases; the visible seated fronts are distinct and no analogous hand-inclusive or jaw-inclusive outer extent is present."
+      },
+      "source_original_image": {
+        "path": "data/images/train/old_000051.png",
+        "sha256": "b3372a8c3b55f3567738c1d8e649f04c3cd3391ffa1a4ea8dcbe2b1097697661"
+      },
+      "reviewed_label_sha256": "eecc530b01392e80cc6ede4467b7c9750b6399e29a1abb6a6ca571f8123d98de"
+    },
+    {
+      "image_id": "old_000073",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/old_000073.png",
+        "source_image_sha256": "7c362086c7daf6df8439f6cfa67cb920273a31132f64ff07739d97f733530c01",
+        "reviewed_label_sha256": "6c567e678f299cb4a59b6dbd85c5d61f1bc53c20354feff87af8fd549dbfa93f",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. No assigned partial rows or open cases; the visible seated fronts are distinct and no analogous hand-inclusive or jaw-inclusive outer extent is present."
+      },
+      "source_original_image": {
+        "path": "data/images/train/old_000073.png",
+        "sha256": "7c362086c7daf6df8439f6cfa67cb920273a31132f64ff07739d97f733530c01"
+      },
+      "reviewed_label_sha256": "6c567e678f299cb4a59b6dbd85c5d61f1bc53c20354feff87af8fd549dbfa93f"
+    },
+    {
+      "image_id": "old_000079",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [
+        {
+          "case_id": "old_000079-082",
+          "status": "resolved",
+          "reason": "The complete original and enlarged top crop show the same repeated front anatomy as the lower visible rows. Retain y12.7 as a nominal transition from the rounded upper bright stripe into the gray front, with 5 px manual boundary uncertainty. This is a curved-surface boundary convention, not an unresolved object count. No endpoint coordinate is altered.",
+          "remaining_rows": [],
+          "remaining_questions": []
+        }
+      ],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/old_000079.png",
+        "source_image_sha256": "5e15d2c83899b0c59df5ee0602a71116cdf1a087fec7f5d63190cb19a34d1972",
+        "reviewed_label_sha256": "7d4a02643c886e32d826a085bee0bf731977dbe9dcd28fe03fd5bfaf2200b315",
+        "full_context_inspected": true,
+        "crop_paths": [
+          {
+            "source_image_path": "data/images/train/old_000079.png",
+            "source_image_sha256": "5e15d2c83899b0c59df5ee0602a71116cdf1a087fec7f5d63190cb19a34d1972",
+            "inspection_render_name": "old_000079-crop-0.png",
+            "rendered_crop_retained": false
+          }
+        ],
+        "nominal_top_uncertainty_px": 5
+      },
+      "source_original_image": {
+        "path": "data/images/train/old_000079.png",
+        "sha256": "5e15d2c83899b0c59df5ee0602a71116cdf1a087fec7f5d63190cb19a34d1972"
+      },
+      "reviewed_label_sha256": "7d4a02643c886e32d826a085bee0bf731977dbe9dcd28fe03fd5bfaf2200b315"
+    },
+    {
+      "image_id": "old_000089",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/old_000089.png",
+        "source_image_sha256": "aea9263e41a677bf9c35d47712c6e4cbb91962756ea95d35a153c582d771f4e6",
+        "reviewed_label_sha256": "03ef759cac561ea9bdea161cf08d263e246963fd2c06e5c2052127e0a3e2b8f0",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. No assigned partial rows or open cases; the visible seated fronts are distinct and no analogous hand-inclusive or jaw-inclusive outer extent is present."
+      },
+      "source_original_image": {
+        "path": "data/images/train/old_000089.png",
+        "sha256": "aea9263e41a677bf9c35d47712c6e4cbb91962756ea95d35a153c582d771f4e6"
+      },
+      "reviewed_label_sha256": "03ef759cac561ea9bdea161cf08d263e246963fd2c06e5c2052127e0a3e2b8f0"
+    },
+    {
+      "image_id": "old_000100",
+      "reviewed_partial_rows": [],
+      "image_review_complete": true,
+      "operations": [],
+      "case_dispositions": [],
+      "new_issues": [],
+      "evidence": {
+        "original_image_path": "data/images/train/old_000100.png",
+        "source_image_sha256": "1fd64653917b0ad48f5adb05a697822bde2f6184605d8fc7dad6cb7a4078fc7c",
+        "reviewed_label_sha256": "09c8971e18c8ee75b1037fba4ec5dc51eae8b064b65dbedbfcd1719fed69ee3c",
+        "full_context_inspected": true,
+        "crop_paths": [],
+        "retained_review": "Full original inspected. No assigned partial rows or open cases; the visible seated fronts are distinct and no analogous hand-inclusive or jaw-inclusive outer extent is present."
+      },
+      "source_original_image": {
+        "path": "data/images/train/old_000100.png",
+        "sha256": "1fd64653917b0ad48f5adb05a697822bde2f6184605d8fc7dad6cb7a4078fc7c"
+      },
+      "reviewed_label_sha256": "09c8971e18c8ee75b1037fba4ec5dc51eae8b064b65dbedbfcd1719fed69ee3c"
+    }
+  ],
+  "completed_images": 46,
+  "assigned_images": 46,
+  "all_assigned_complete": true,
+  "input_candidate": {
+    "path": "data/candidates/aperture-reviewed-labels-2026-11-14/manifest.json",
+    "sha256": "565570c24165b59ad3ee2368ebd80a9c9ff4bb25d96da87bcdee93602bd75983"
+  }
+}

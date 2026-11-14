@@ -40,8 +40,9 @@ ANNOTATION_CONFIRMATION_RECIPE_ID = "reviewed-annotations-seed46-v1"
 ANNOTATION_RECIPE_IDS = (ANNOTATION_RECIPE_ID, ANNOTATION_CONFIRMATION_RECIPE_ID)
 ENDPOINT_RECIPE_ID = "reviewed-endpoints-seed46-v1"
 COMPOSED_RECIPE_ID = "reviewed-composed-seed46-v1"
+OBSERVED_RECIPE_ID = "reviewed-observed-fronts-seed46-v1"
 RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS,
-              ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID)
+              ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID, OBSERVED_RECIPE_ID)
 
 # Resolved defaults observed in the pinned trainer, in addition to RECIPE.
 # These are checked, not changed, by the runner. In particular RLE stays at 1.0.
@@ -82,13 +83,14 @@ def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
     recipe = {**RECIPE, **({"warmup_bias_lr": 0.0001}
                          if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS,
-                                          ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID) else {})}
+                                          ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID, OBSERVED_RECIPE_ID) else {})}
     for seed, fixed_id in BOX_REPEATABILITY_RECIPES.items():
         if recipe_id == fixed_id:
             recipe["seed"] = seed
     if recipe_id == ANNOTATION_RECIPE_ID:
         recipe["seed"] = 45
-    elif recipe_id in (ANNOTATION_CONFIRMATION_RECIPE_ID, ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID):
+    elif recipe_id in (ANNOTATION_CONFIRMATION_RECIPE_ID, ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID,
+                       OBSERVED_RECIPE_ID):
         recipe["seed"] = 46
     return recipe
 
@@ -97,12 +99,14 @@ def check_recipe_candidate_kind(recipe_id, kind):
     """Bind each new experiment to its intended overlay; retain legacy contracts."""
     _require(recipe_id in RECIPE_IDS, f"unsupported training recipe: {recipe_id}")
     _require(kind in ("training_label_overlay", "training_box_overlay", "training_annotation_overlay",
-                     "training_endpoint_overlay", "training_composed_overlay"),
+                     "training_endpoint_overlay", "training_composed_overlay", "training_observed_review_composition"),
              f"unsupported training candidate kind: {kind}")
     _require((recipe_id == ENDPOINT_RECIPE_ID) == (kind == "training_endpoint_overlay"),
              "reviewed-endpoints recipe and training_endpoint_overlay must be selected together")
     _require((recipe_id == COMPOSED_RECIPE_ID) == (kind == "training_composed_overlay"),
              "reviewed-composed recipe and training_composed_overlay must be selected together")
+    _require((recipe_id == OBSERVED_RECIPE_ID) == (kind == "training_observed_review_composition"),
+             "observed-fronts recipe and observed review composition must be selected together")
     _require((recipe_id in BOX_RECIPE_IDS) == (kind == "training_box_overlay"),
              "box-supervision recipe and training_box_overlay must be selected together")
     _require((recipe_id in ANNOTATION_RECIPE_IDS) == (kind == "training_annotation_overlay"),
@@ -251,6 +255,17 @@ def _check_staging(preflight, staging):
                  and control_proposal.get("candidate_id") == control["candidate_id"], "staged control is not the endpoint overlay")
         control_changes = {change["image_id"]: change for change in control_proposal["changes"]}
         _require(len(control_changes) == control["changed_train_labels"], "staged control changed-label count differs")
+    elif proposal.get("kind") == "training_observed_review_composition":
+        from verify_observed_training_candidate import verify_observed_training_candidate
+        verified = verify_observed_training_candidate(root, proposal_path)
+        control = verified["control"]
+        _require(source.get("candidate_kind") == proposal["kind"]
+                 and _same(source.get("control"), control)
+                 and source.get("training_protocol") == verified["training_protocol"],
+                 "staged PR35 control or observed training protocol differs")
+        control_path = _contained_path(root, control["manifest"])
+        control_proposal = _read_json(control_path)
+        control_changes = {change["image_id"]: change for change in control_proposal["changes"]}
     variants = _mapping(staging["variants"], "staged variants")
     _require(set(variants) == {"reference", "candidate"}, "staging requires both experiment arms")
     for arm, variant in variants.items():
@@ -289,13 +304,25 @@ def _check_staging(preflight, staging):
 
 
 def training_label_identity(staging, arm):
-    """Name the composed experiment's actual control/treatment labels explicitly."""
+    """Name the experiment's actual control/treatment labels explicitly."""
     source = _mapping(staging["source"], "staging source")
-    if source.get("candidate_kind") != "training_composed_overlay":
+    if source.get("candidate_kind") not in ("training_composed_overlay", "training_observed_review_composition"):
         return None
-    _require(arm in ("reference", "candidate"), "invalid composed training arm")
-    control = _mapping(source["control"], "staged endpoint control")
+    _require(arm in ("reference", "candidate"), "invalid controlled training arm")
+    control = _mapping(source["control"], "staged control")
     reference = arm == "reference"
+    if source["candidate_kind"] == "training_observed_review_composition":
+        return {
+            "kind": source["candidate_kind"],
+            "role": "pr35_annotation_control" if reference else "observed_fronts_treatment",
+            "label_manifest": control["manifest"] if reference else source["candidate_manifest"],
+            "label_manifest_sha256": control["manifest_sha256"] if reference else source["candidate_manifest_sha256"],
+            "label_candidate_id": control["candidate_id"] if reference else source["candidate_id"],
+            "control_manifest": control["manifest"], "control_manifest_sha256": control["manifest_sha256"],
+            "observed_manifest": source["candidate_manifest"],
+            "observed_manifest_sha256": source["candidate_manifest_sha256"],
+            "training_protocol": source["training_protocol"],
+        }
     return {
         "kind": "training_composed_overlay",
         "role": "endpoint_control" if reference else "composed_treatment",
@@ -395,10 +422,10 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
     proposal = _read_json(_contained_path(Path(preflight["root"]), staging["source"]["candidate_manifest"]))
     check_recipe_candidate_kind(identity.get("recipe_id", ORIGINAL_RECIPE_ID), proposal.get("kind"))
     labels = None
-    if proposal.get("kind") == "training_composed_overlay":
+    if proposal.get("kind") in ("training_composed_overlay", "training_observed_review_composition"):
         labels = training_label_identity(staging, receipt["arm"])
         _require(labels is not None and _same(receipt.get("training_labels"), labels),
-                 "completed composed checkpoint control/treatment label identity differs")
+                 "completed checkpoint control/treatment label identity differs")
     variant = variants[receipt["arm"]]
     _require(receipt["data_yaml_sha256"] == variant["data_yaml_sha256"], "training arm/YAML identity differs")
     settings = _mapping(receipt["training_settings"], "training settings")
@@ -442,8 +469,11 @@ def _check_receipt(preflight, manifest, base, receipt, staging):
              and all(_digest(value) for value in hashes.values()),
              "training code/recipe hashes are missing or invalid")
     if labels is not None:
-        _require({"scripts/stage_pose_training.py", "scripts/verify_pose_composed_candidate.py"} <= set(hashes),
-                 "composed training source lacks stager/verifier identities")
+        verifier = ("scripts/verify_observed_training_candidate.py"
+                    if labels["kind"] == "training_observed_review_composition"
+                    else "scripts/verify_pose_composed_candidate.py")
+        _require({"scripts/stage_pose_training.py", verifier} <= set(hashes),
+                 "controlled training source lacks stager/verifier identities")
     runtime = _mapping(receipt["runtime"], "training runtime")
     _require(runtime["ultralytics"] == ULTRALYTICS_VERSION
              and all(isinstance(runtime[key], str) and runtime[key] for key in ("python", "torch", "device")),

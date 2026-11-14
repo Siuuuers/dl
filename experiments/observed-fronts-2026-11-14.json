@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-observed-fronts-training-protocol",
+  "experiment_id": "observed-fronts-seed46-v1",
+  "status": "prospectively_prepared",
+  "training_readiness": "blocked_label_review",
+  "candidate": {
+    "path": "data/candidates/complete-visible-fronts-2026-11-14/manifest.json",
+    "sha256": "9d138930b523fc8d124e116a58aa584a23c30a81d874551fcb5625a1978639a8"
+  },
+  "control": {
+    "manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+    "sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7"
+  },
+  "recipe_id": "reviewed-observed-fronts-seed46-v1",
+  "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+  "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "review_status": {
+    "path": "results/review/complete-labels-20261114/review-status.json",
+    "sha256": "257d18c2cbe69471fc5a0070748747a92534cda88d5065b14520b98ea37cc761"
+  },
+  "coverage": {
+    "path": "results/review/complete-labels-20261114/coverage.json",
+    "sha256": "1d52b96ac7cf7f8a5b9a995957c1e38e8e9e592cb6420fc97ac1379577a2a64b"
+  },
+  "unresolved_case_ids": [
+    "new_000030-001",
+    "new_000128-003",
+    "new_000074-031",
+    "new_000062-039",
+    "new_000094-043",
+    "new_000117-047",
+    "new_000124-048",
+    "new_000127-051",
+    "new_000034-063",
+    "new_000049-064",
+    "new_000034-070",
+    "new_000017-075",
+    "new_000024-086",
+    "new_000037-100",
+    "new_000041-102",
+    "new_000001-row46-left-fragment",
+    "new_000005-top-border-15",
+    "batch3-new033-top-row4-surface",
+    "new_000042-central-aperture-count",
+    "new_000044-diamond-front-boundaries",
+    "new_000094-right-lower-thin-band",
+    "new_000115-top-border-11",
+    "batch3-new116-row24-surface",
+    "batch3-new117-top-row11-surface",
+    "batch3-new121-top-row53-surface",
+    "new_000123-lower-right-24"
+  ],
+  "roles": {
+    "reference": {
+      "arm": "reference",
+      "supervision": "pr35_annotation_control",
+      "candidate_manifest": "data/candidates/complete-visible-fronts-2026-11-14/manifest.json",
+      "candidate_manifest_sha256": "9d138930b523fc8d124e116a58aa584a23c30a81d874551fcb5625a1978639a8",
+      "candidate_id": "complete-visible-fronts-2026-11-14",
+      "recipe_id": "reviewed-observed-fronts-seed46-v1",
+      "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "candidate": {
+      "arm": "candidate",
+      "supervision": "observed_fronts_treatment",
+      "candidate_manifest": "data/candidates/complete-visible-fronts-2026-11-14/manifest.json",
+      "candidate_manifest_sha256": "9d138930b523fc8d124e116a58aa584a23c30a81d874551fcb5625a1978639a8",
+      "candidate_id": "complete-visible-fronts-2026-11-14",
+      "recipe_id": "reviewed-observed-fronts-seed46-v1",
+      "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3791,
+          "visible_endpoints": 6861,
+          "missing_endpoints": 721,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    }
+  },
+  "execution": {
+    "seed": 46,
+    "epochs": 30,
+    "initialization": "original_epoch173_independently_for_each_arm",
+    "checkpoint_selection": "final_epoch",
+    "checkpoint_path": "fit/weights/last.pt",
+    "resource_trial": {
+      "role": "candidate",
+      "batches": 4,
+      "initializes_full_runs": false
+    },
+    "same_runtime_required": true,
+    "automatic_promotion": false
+  },
+  "evaluation": {
+    "primary_box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "imgsz": 1280,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "radii_px": [
+      5,
+      10
+    ],
+    "primary_reference": "data/references/visible-front-completion-2026-11-14/manifest.json",
+    "primary_reference_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+    "training_validation_unchanged": true,
+    "references_reported_separately": true,
+    "counts": {
+      "images": 20,
+      "objects": 663,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 99,
+      "empty_images": 3
+    },
+    "objects_by_locatable_corners": {
+      "0": 20,
+      "1": 59,
+      "2": 584
+    },
+    "remaining_reference_rows": 13,
+    "PR35_checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+    "decision": "Inspect misses, duplicates/false detections, zero/one/two-locatable-corner coverage, both-corner successes within5/10 original pixels and empty scenes on the same reference. Include missed objects in denominators and inspect gained/lost identities. Compare the retained PR35 separately. No automatic promotion or threshold/seed/epoch search."
+  },
+  "limits": [
+    "Remaining physical questions block the training run; the notebook is a prepared handoff, not authorization to relabel uncertain geometry visible.",
+    "No new image, training, inference or accuracy result is created by this review.",
+    "The revised reference is for post-training development comparisons; the frozen original20-image validation split is identical in both arms.",
+    "The candidate is an immutable review composition; the separate hash-bound protocol controls training eligibility.",
+    "Original images were already used in development; independent deployment scenes and application tolerances remain necessary."
+  ]
+}

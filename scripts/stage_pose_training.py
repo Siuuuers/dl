@@ -52,6 +52,9 @@ def source_state(root, candidate):
     elif proposal.get("kind") == "training_composed_overlay":
         from verify_pose_composed_candidate import verify_composed_candidate
         receipt = verify_composed_candidate(root, candidate)
+    elif proposal.get("kind") == "training_observed_review_composition":
+        from verify_observed_training_candidate import verify_observed_training_candidate
+        receipt = verify_observed_training_candidate(root, candidate)
     else:
         receipt = verify_candidate(root, candidate)
     reference = json.loads((root / "data/manifest.json").read_text(encoding="utf-8"))
@@ -65,15 +68,18 @@ def source_state(root, candidate):
     records = sorted(reference["records"], key=lambda row: (row["split"], row["id"]))
     changes = {change["image_id"]: change for change in proposal["changes"]}
     control_path, control_changes = None, {}
-    if proposal.get("kind") == "training_composed_overlay":
+    if proposal.get("kind") in ("training_composed_overlay", "training_observed_review_composition"):
         control = receipt["control"]
-        require(proposal["control"] == {"manifest": control["manifest"], "sha256": control["manifest_sha256"]},
-                "composed control identity differs from its verification receipt")
+        if proposal["kind"] == "training_composed_overlay":
+            require(proposal["control"] == {"manifest": control["manifest"], "sha256": control["manifest_sha256"]},
+                    "composed control identity differs from its verification receipt")
         control_path = _relative_file(root, control["manifest"])
         require(file_sha256(control_path) == control["manifest_sha256"], "control manifest changed during preflight")
         control_proposal = json.loads(control_path.read_text(encoding="utf-8"))
-        require(control_proposal["kind"] == "training_endpoint_overlay"
-                and control_proposal["candidate_id"] == control["candidate_id"], "composed control is not the verified endpoint overlay")
+        expected_control_kind = ("training_endpoint_overlay" if proposal["kind"] == "training_composed_overlay"
+                                 else "training_annotation_overlay")
+        require(control_proposal["kind"] == expected_control_kind
+                and control_proposal["candidate_id"] == control["candidate_id"], "control is not the verified supervision overlay")
         control_changes = {change["image_id"]: change for change in control_proposal["changes"]}
         require(len(control_changes) == control["changed_train_labels"], "control changed-label count differs")
     plans, parsed = {arm: {} for arm in ARMS}, {arm: {} for arm in ARMS}
@@ -105,7 +111,9 @@ def source_state(root, candidate):
               "declared_candidate_source_revision": receipt["declared_source_revision"],
               "source_revision_git_object_checked": False}
     if control_path is not None:
-        source.update(candidate_kind="training_composed_overlay", control=receipt["control"])
+        source.update(candidate_kind=proposal["kind"], control=receipt["control"])
+    if proposal.get("kind") == "training_observed_review_composition":
+        source["training_protocol"] = receipt["training_protocol"]
     return {"root": root, "records": records, "plans": plans, "counts": counts, "source": source,
             "changed_train_labels": receipt["changed_train_labels"], "removed_objects": receipt["removed_objects"]}
 
@@ -170,20 +178,24 @@ def verify_outputs(output, state):
     return variants
 
 
-def code_hashes(*, composed=False):
+def code_hashes(*, composed=False, observed=False):
     scripts = Path(__file__).resolve().parent
     names = ("stage_pose_training.py", "verify_pose_candidate.py", "verify_pose_box_candidate.py",
              "verify_pose_annotation_candidate.py", "verify_pose_endpoint_candidate.py",
              "evaluate_pose.py", "pose_scoring.py")
     if composed:
         names += ("verify_pose_composed_candidate.py",)
+    if observed:
+        names += ("verify_observed_training_candidate.py", "compose_observed_pose_review.py",
+                  "verify_pose_composed_candidate.py")
     return {f"scripts/{name}": file_sha256(scripts / name) for name in names}
 
 
 def manifest_fields(output, state, variants):
     composed = state["source"].get("candidate_kind") == "training_composed_overlay"
+    observed = state["source"].get("candidate_kind") == "training_observed_review_composition"
     result = {"schema_version": 1, "status": "complete", "output_root": str(output),
-            "source": state["source"], "code_sha256": code_hashes(composed=composed), "variants": variants,
+            "source": state["source"], "code_sha256": code_hashes(composed=composed, observed=observed), "variants": variants,
             "verification": {"source_labels_verified": 157, "actual_original_pngs_verified": 157,
                              "copied_images_verified": 314, "copied_labels_verified": 314,
                              "changed_train_labels": state["changed_train_labels"],
@@ -206,6 +218,13 @@ def manifest_fields(output, state, variants):
             removed_training_objects_vs_control=state["counts"]["reference"]["train"]["objects"]
                 - state["counts"]["candidate"]["train"]["objects"],
             removed_training_objects_denominator="original source labels")
+    if observed:
+        result["verification"].update(
+            reference_labels_are_verified_pr35_control=True,
+            control_changed_train_labels=state["source"]["control"]["changed_train_labels"],
+            net_removed_training_objects_vs_control=state["counts"]["reference"]["train"]["objects"]
+                - state["counts"]["candidate"]["train"]["objects"],
+            training_readiness_verified=True)
     return result
 
 

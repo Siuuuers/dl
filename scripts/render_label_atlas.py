@@ -161,6 +161,9 @@ def main():
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--candidate", type=Path, required=True)
     parser.add_argument("--status", type=Path, required=True)
+    parser.add_argument("--reference", type=Path,
+                        default=Path("data/references/visible-front-adjudication-2026-11-12"),
+                        help="Separately versioned development reference directory")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--audit", type=Path, required=True)
     args = parser.parse_args()
@@ -168,7 +171,7 @@ def main():
     source_path = root / "data/manifest.json"
     source, train = read(source_path), read(candidate / "manifest.json")
     status = read(args.status)
-    reference_dir = root / "data/references/visible-front-adjudication-2026-11-12"
+    reference_dir = args.reference if args.reference.is_absolute() else root / args.reference
     reference = read(reference_dir / "manifest.json")
     if sha(source_path) != train["source_manifest_sha256"] or sha(source_path) != reference["source_manifest_sha256"]:
         raise ValueError("source manifests disagree")
@@ -253,7 +256,7 @@ def main():
     c.drawString(58, 660, "157 photos. Every current label.")
     wrapped(c, "137 training photos + 20 validation photos. Each photo has its own full page, with zoomable boxes, two lower-front landmarks, current row numbers, and visible review flags.", 60, 615, PAGE_W - 120, 19, 28)
     y = wrapped(c, "This is a review atlas of saved annotations. It is not model output, a confidence display, or a claim that every label is correct. Amber marks known unresolved rows. Unflagged rows are not automatically certified.", 60, 466, PAGE_W - 120, 16, 23)
-    y = wrapped(c, "The next GPU run remains pending. Training uses the new reviewed candidate only after the remaining material questions are resolved and a training recipe is explicitly prepared. Changing label files does not change the existing model weights.", 60, y - 20, PAGE_W - 120, 14, 21)
+    y = wrapped(c, "The next GPU run remains pending. Training may proceed only after the remaining material questions are resolved and the training handoff verifies its exact inputs. Changing label files does not change the existing model weights.", 60, y - 20, PAGE_W - 120, 14, 21)
     y = wrapped(c, "Training candidate: " + train["candidate_id"] + "\nValidation source: " + reference["reference_id"] + " (separate development reference).", 60, y - 20, PAGE_W - 120, 12, 18)
     wrapped(c, "Scope: the 157 working-set photos, including every empty-label photo. Excluded final-test, gap and unaccepted upstream images are outside this frozen inventory. Photos are native-resolution JPEG review copies; the original PNGs remain authoritative for individual-pixel decisions.", 60, 168, PAGE_W - 120, 11, 17, MUTED)
     c.showPage()
@@ -274,7 +277,7 @@ def main():
         c.drawString(82, y, title)
         y = wrapped(c, description, 82, y - 24, PAGE_W - 140, 12, 18) - 25
     y = wrapped(c, "Target: one individual cassette front, with the two actual corners along its lower edge. A visible partial front is still an object even if neither actual corner can be located. A roof, rack edge, gripper edge or an inferred hidden corner is not a substitute.", 48, y, PAGE_W - 96, 13, 20)
-    y = wrapped(c, "Known physical constraints help identify likely ownership and review priorities. Equal physical size does not imply equal pixel size under perspective, and support from above does not by itself establish every hidden lower front. The specific cassette identity you confirmed in new_000030 is recorded separately from its unresolved seam and exact extent.", 48, y - 12, PAGE_W - 96, 13, 20)
+    y = wrapped(c, "Known physical constraints help identify surface ownership and separate instances. Equal physical size does not imply equal pixel size under perspective. One box may span an occluder when separate visible patches belong to the same front; its outer bounds still follow observed material. A confirmed cassette count does not make its hidden actual corners visible.", 48, y - 12, PAGE_W - 96, 13, 20)
     wrapped(c, "Row IDs shown here are current output TXT row numbers. Historical IDs are preserved in the candidate row map; deletions can shift displayed numbers. Photo notes summarize recorded questions. Complete per-field reasons and reproducible provenance are in the review record below.", 48, 115, PAGE_W - 96, 11, 17, MUTED)
     c.setFont("Atlas", 10)
     c.drawString(48, 60, "Review record: github.com/Siuuuers/dl/pull/63")
@@ -302,9 +305,11 @@ def main():
     for offset, focus in enumerate(focuses, 5):
         iid = focus["image_id"]
         item = by_id[iid]
-        c.bookmarkPage("focus-" + iid)
-        c.addOutlineEntry("Review detail: " + iid, "focus-" + iid, 0)
-        heading(c, focus["title"], iid + " | Original pixels beside the current labels", offset, "FOCUSED QUESTION")
+        focus_key = f"focus-{iid}-{offset}"
+        c.bookmarkPage(focus_key)
+        c.addOutlineEntry(focus["title"] + " | " + iid, focus_key, 0)
+        heading(c, focus["title"], iid + " | Original pixels beside the current labels", offset,
+                focus.get("section", "FOCUSED QUESTION"))
         crop = focus["crop_xyxy_px"]
         iw, ih = crop[2] - crop[0], crop[3] - crop[1]
         raw = Image.open(item["image_path"]).convert("RGB").crop(crop)
@@ -334,7 +339,9 @@ def main():
         iid, split, page = record["id"], record["split"], page_numbers[record["id"]]
         c.bookmarkPage(iid)
         if split != last_split:
-            c.addOutlineEntry("Training photos" if split == "train" else "Validation / development photos", iid, 0)
+            split_key = "photo-section-" + split
+            c.bookmarkPage(split_key)
+            c.addOutlineEntry("Training photos" if split == "train" else "Validation / development photos", split_key, 0)
             last_split = split
         c.addOutlineEntry(iid, iid, 1)
         visible = sum(point[2] == 2 for obj in objects for point in obj["keypoints"])

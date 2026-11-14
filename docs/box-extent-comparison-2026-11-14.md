@@ -1,5 +1,7 @@
 # Why new037 and new038 row 1 have different boxes
 
+> Historical review snapshot. The [complete visible-front sweep and prepared handoff](complete-label-review-2026-11-14.md) supersedes the current-status counts in this report; its original evidence remains preserved.
+
 **The comparison exposes an inherited annotation inconsistency. Missing-corner count does not select a full-width versus visible-only box rule.** `new_000037` row 1 still has its original broad box; `new_000038` row 1 received an explicit observed-front correction. This review flags the unsupported new037 geometry without guessing replacement coordinates.
 
 ![Original pixels and the two saved row-1 boxes](../results/review/extent-comparison-20261114/box-extent-comparison.png)

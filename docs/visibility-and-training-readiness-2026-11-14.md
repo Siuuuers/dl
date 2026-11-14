@@ -1,5 +1,7 @@
 # Missing corners, atlas colours, and training readiness
 
+> Historical review snapshot. The [complete visible-front sweep and prepared handoff](complete-label-review-2026-11-14.md) supersedes the current-status counts in this report; its original evidence remains preserved.
+
 **Subsequent focused review:** the [new037/new038 comparison](box-extent-comparison-2026-11-14.md) adds a row-1 extent/landmark hold without changing labels. It supersedes this snapshot's current-status and atlas counts; the missing-corner rule and new130 closure below remain valid.
 
 **A supported visible cassette front can have a solid cyan box with zero, one or two locatable lower-front corners.** Corner availability and review status are separate decisions. This revision clarifies the atlas legend and closes one overly cautious missing-corner hold. It changes no training label, source image, validation reference or model weight.
