@@ -1,14 +1,16 @@
-# Next training comparison: known corners under pixel corruption
+# Training record: known corners under pixel corruption
 
-## Current decision
+## Completed result — 2026-11-14
 
-**There is still a concrete improvement opportunity. Keep PR35 while testing one change: training-only pixel corruption around known corners.** The model is useful for reviewed proposals, but its development results do not establish complete detection or reliable hidden-point accuracy.
+**The PR62 return has been evaluated; retain PR35. No repeat GPU run is needed.** The candidate improves fixed covered-side ten-pixel successes from 54/60 to 58/60, but fails the clean preservation gates: unmatched proposals 85→86, returned locatable endpoints 1,207→1,205, and empty-scene outputs 0→1. Visual review explains the endpoint-count loss as a box-match crossing and confirms a genuine background false output plus clean-corner displacement.
 
-The completed [PR60 diagnostic](pixel-occlusion-2026-11-13.md) found 28/30 left-covered and 26/30 right-covered endpoints within 10 px of their original references. All covered predictions remained above the display threshold, including six observations over 10 px error. Its largest covered-point error was 18.11 px at confidence 0.927. On the separate 20-image clean development reference, current PR35 has 20 missed objects, 85 unmatched proposals, and 529/584 versus 577/584 complete pairs within 5 versus 10 px. These findings justify an improvement experiment; they do not identify an optimal model or an irreducible error floor.
+Read the [completed result and decision](occlusion-results-2026-11-14.md), including raw evidence, exact PR35/control reproduction and offline replay. The frozen protocol below remains the historical experiment design. Operational settings remain PR35 / 1280 / 0.13 / NMS 0.70 / endpoint 0.50.
 
-**This handoff prepares training; it contains no newly trained model or measured accuracy gain.** The current workspace has no connected CUDA device. The runnable notebook uses the existing Colab workflow and the user's GPU runtime.
+## Original hypothesis
 
-## Run the prepared experiment
+The completed [PR60 diagnostic](pixel-occlusion-2026-11-13.md) found 28/30 left-covered and 26/30 right-covered endpoints within 10 px of their original references. All covered predictions remained above the display threshold, including six observations over 10 px error. Its largest covered-point error was 18.11 px at confidence 0.927. These findings justified testing training-only corruption of known corners while preserving clean-image behavior. They did not establish accurate naturally hidden coordinates or an irreducible error floor.
+
+## Reproduce the completed experiment (historical instructions)
 
 1. Open [the occlusion-training notebook in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/occlusion-training-20261113/notebooks/baomai_occlusion_training.ipynb).
 2. Select **Runtime → Change runtime type → GPU**, then **Runtime → Run all**. Authorize its Drive mount to preserve completed work. Keep the same runtime for both runs.
@@ -97,7 +99,7 @@ The four PR60 scenes and their failures already informed this hypothesis. They a
 
 ## Preparation and return verification
 
-The [preparation record](../results/verification/baomai-occlusion-preparation-20261113/README.md) distinguishes completed local checks from the GPU work still to run. Local source/label checks do not imply that this workspace restored all 157 image files or ran the full experiment.
+The [preparation record](../results/verification/baomai-occlusion-preparation-20261113/README.md) preserves the local checks performed before GPU training. The subsequent complete GPU return and its evaluation are recorded in the [result report](occlusion-results-2026-11-14.md). Preparation checks alone do not establish training completion or accuracy.
 
 The [wrapper](../scripts/train_pose_occlusion.py) reuses the existing resource monitor, recorded trainer and checkpoint writer through a small optional preprocessing hook. The [experiment verifier and packager](../scripts/occlusion_experiment.py) add role/protocol/transform binding without changing the PR60-pinned checkpoint or scoring helpers. Completed runs must include all **4,110 training-image presentations and 1,050 batches per role**, the actual mask exposure, and compatible source/runtime/settings.
 

@@ -1,0 +1,926 @@
+{
+  "kind": "additional-image-adjudication",
+  "date": "2026-11-14",
+  "reviewer": "primary assistant",
+  "source": "fixed original PNGs and frozen PR62 prediction arrays",
+  "clean_gained_identities": [
+    {
+      "id": "new_000007:15",
+      "crop": [
+        845,
+        0,
+        972,
+        51
+      ],
+      "current": {
+        "errors": [
+          14.6,
+          14.36
+        ],
+        "prediction_index": 52,
+        "canonical_matched": true,
+        "box_confidence": 0.30464377999305725
+      },
+      "candidate": {
+        "errors": [
+          5.7,
+          1.67
+        ],
+        "prediction_index": 51,
+        "canonical_matched": true,
+        "box_confidence": 0.47924530506134033
+      },
+      "original_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "observation": "The canonical ten-pixel gain includes a duplicate/confidence-ranking change. PR35 already emits a lower-ranked alternative with both endpoint errors below five pixels; a slightly higher-confidence, less accurate proposal wins its canonical association. The candidate ranks its more accurate proposal first, while retaining the poorer duplicate. This is a scored gain, not a newly available accurate pair; the alternative proposals do not replace the fixed canonical scores.",
+      "current_unmatched_alternative": {
+        "prediction_index": 53,
+        "box_confidence": 0.3003983497619629,
+        "reference_iou": 0.8508091928132149,
+        "endpoint_errors_px": [
+          4.757171150983218,
+          3.928007718678555
+        ],
+        "endpoint_scores": [
+          0.8056438565254211,
+          0.7999370098114014
+        ],
+        "canonical_assignment": null
+      },
+      "candidate_unmatched_duplicate": {
+        "prediction_index": 52,
+        "box_confidence": 0.3073602318763733,
+        "reference_iou": 0.6257094129334747,
+        "endpoint_errors_px": [
+          12.901214041411444,
+          13.34072438004126
+        ],
+        "endpoint_scores": [
+          0.8015831708908081,
+          0.8135939836502075
+        ],
+        "canonical_assignment": null
+      }
+    },
+    {
+      "id": "new_000007:53",
+      "crop": [
+        768,
+        349,
+        878,
+        432
+      ],
+      "current": {
+        "errors": [
+          3.58,
+          5.28
+        ],
+        "prediction_index": 42,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          4.2,
+          3.49
+        ],
+        "prediction_index": 42,
+        "canonical_matched": true
+      },
+      "original_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "observation": "Same lower-front edge remains identifiable. Right endpoint moves toward the reference while left shifts slightly away; both stay in the same physical front. A 5px threshold crossing."
+    },
+    {
+      "id": "new_000008:22",
+      "crop": [
+        872,
+        260,
+        1123,
+        377
+      ],
+      "current": {
+        "errors": [
+          6.03,
+          2.42
+        ],
+        "prediction_index": 12,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          4.31,
+          2.25
+        ],
+        "prediction_index": 11,
+        "canonical_matched": true
+      },
+      "original_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "observation": "Same exposed front and ordered corners. The left coordinate moves toward the frozen reference; no identity swap or new detection."
+    },
+    {
+      "id": "new_000009:13",
+      "crop": [
+        701,
+        0,
+        857,
+        45
+      ],
+      "current": {
+        "errors": [
+          4.64,
+          5.44
+        ],
+        "prediction_index": 52,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          3.94,
+          0.41
+        ],
+        "prediction_index": 53,
+        "canonical_matched": true
+      },
+      "original_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "observation": "The canonically selected pair improves across the five-pixel cutoff, but PR35 already emits an unmatched alternative with both endpoint errors below five pixels. Keep the numerical gain without describing a newly available accurate pair; no new object is discovered.",
+      "current_unmatched_alternative": {
+        "prediction_index": 55,
+        "box_confidence": 0.6511203050613403,
+        "reference_iou": 0.8646118653855129,
+        "endpoint_errors_px": [
+          3.3536270136834245,
+          2.722089949490662
+        ],
+        "endpoint_scores": [
+          0.9161497354507446,
+          0.9052530527114868
+        ],
+        "canonical_assignment": null
+      }
+    },
+    {
+      "id": "new_000009:56",
+      "crop": [
+        652,
+        440,
+        782,
+        543
+      ],
+      "current": {
+        "errors": [],
+        "prediction_index": 74,
+        "canonical_matched": false
+      },
+      "candidate": {
+        "errors": [],
+        "prediction_index": 74,
+        "canonical_matched": true
+      },
+      "original_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "observation": "Same occluded patch is proposed by both models. The new canonical box match does not create a measurable corner success because both reference slots are missing."
+    },
+    {
+      "id": "new_000011:4",
+      "crop": [
+        439,
+        0,
+        589,
+        48
+      ],
+      "current": {
+        "errors": [
+          0.53,
+          5.38
+        ],
+        "prediction_index": 55,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          1.44,
+          4.31
+        ],
+        "prediction_index": 55,
+        "canonical_matched": true
+      },
+      "original_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "observation": "The canonically selected right coordinate crosses the five-pixel cutoff on this top-border front. PR35 already emits an unmatched alternative with both endpoint errors below five pixels, so the gain does not establish a newly available accurate pair or a new physical corner definition.",
+      "current_unmatched_alternative": {
+        "prediction_index": 56,
+        "box_confidence": 0.7097037434577942,
+        "reference_iou": 0.8955233474027925,
+        "endpoint_errors_px": [
+          1.0456065174223645,
+          3.638923185082564
+        ],
+        "endpoint_scores": [
+          0.8993554711341858,
+          0.9110502600669861
+        ],
+        "canonical_assignment": null
+      }
+    },
+    {
+      "id": "new_000056:17",
+      "crop": [
+        25,
+        4,
+        245,
+        105
+      ],
+      "current": {
+        "errors": [
+          1.91,
+          7.07
+        ],
+        "prediction_index": 5,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          1.68,
+          4.37
+        ],
+        "prediction_index": 6,
+        "canonical_matched": true
+      },
+      "original_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "observation": "Same front above rack base. Right endpoint moves inward toward the frozen corner; chamfered boundary limits subpixel physical interpretation."
+    },
+    {
+      "id": "new_000056:18",
+      "crop": [
+        356,
+        3,
+        572,
+        99
+      ],
+      "current": {
+        "errors": [
+          6.16,
+          2.0
+        ],
+        "prediction_index": 8,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          4.5,
+          1.93
+        ],
+        "prediction_index": 8,
+        "canonical_matched": true
+      },
+      "original_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "observation": "Same front at rack base. Left coordinate approaches the fixed boundary; no association swap or new target."
+    },
+    {
+      "id": "new_000059:3",
+      "crop": [
+        770,
+        0,
+        1006,
+        84
+      ],
+      "current": {
+        "errors": [
+          5.46,
+          5.68
+        ],
+        "prediction_index": 16,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          4.59,
+          4.45
+        ],
+        "prediction_index": 16,
+        "canonical_matched": true
+      },
+      "original_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "observation": "Same top-row front. Small changes of both coordinates cross the 5px pair boundary. Keep as numerical gain without a large physical-accuracy claim."
+    },
+    {
+      "id": "new_000059:7",
+      "crop": [
+        607,
+        54,
+        828,
+        162
+      ],
+      "current": {
+        "errors": [
+          7.17,
+          2.79
+        ],
+        "prediction_index": 7,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          4.27,
+          3.81
+        ],
+        "prediction_index": 7,
+        "canonical_matched": true
+      },
+      "original_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "observation": "Same second-row front. Left endpoint moves toward the reference by several pixels while right changes within5px; no identity change."
+    },
+    {
+      "id": "new_000086:56",
+      "crop": [
+        618,
+        56,
+        774,
+        154
+      ],
+      "current": {
+        "errors": [
+          5.46,
+          1.8
+        ],
+        "prediction_index": 28,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          4.9,
+          2.0
+        ],
+        "prediction_index": 26,
+        "canonical_matched": true
+      },
+      "original_sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+      "observation": "Same front in soft image region. Small left-coordinate movement changes the5px classification; numerical gain is not evidence of new object completeness."
+    },
+    {
+      "id": "new_000087:53",
+      "crop": [
+        697,
+        0,
+        857,
+        62
+      ],
+      "current": {
+        "errors": [
+          2.76,
+          5.01
+        ],
+        "prediction_index": 25,
+        "canonical_matched": true
+      },
+      "candidate": {
+        "errors": [
+          2.76,
+          4.56
+        ],
+        "prediction_index": 45,
+        "canonical_matched": true
+      },
+      "original_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "observation": "Same top-border front. Right error changes5.0092\u21924.5578px; this is a small threshold crossing, not a broad physical improvement."
+    }
+  ],
+  "masked_changed_cases": [
+    {
+      "case_id": "new_000008-row013-right",
+      "row": 13,
+      "crop": [
+        698,
+        294,
+        925,
+        393
+      ],
+      "current": {
+        "errors": [
+          6.21,
+          10.07
+        ]
+      },
+      "candidate": {
+        "errors": [
+          5.92,
+          7.36
+        ]
+      },
+      "original_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "input_rgb_sha256": "a427e67f00c8ec61d440f4466682b2471ac1eb0b7d9b26dc534f7b5f14ec3afb",
+      "mask_rect_xyxy": [
+        857,
+        314,
+        912,
+        373
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000008-row014-left",
+      "row": 14,
+      "crop": [
+        694,
+        331,
+        917,
+        431
+      ],
+      "current": {
+        "errors": [
+          4.9,
+          4.87
+        ]
+      },
+      "candidate": {
+        "errors": [
+          5.24,
+          4.58
+        ]
+      },
+      "original_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "input_rgb_sha256": "f47106d0d986e1a6fe9573de0ab34cd90488532a54fd7b152c7b14783d265e23",
+      "mask_rect_xyxy": [
+        708,
+        351,
+        762,
+        411
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000008-row014-right",
+      "row": 14,
+      "crop": [
+        694,
+        331,
+        917,
+        431
+      ],
+      "current": {
+        "errors": [
+          2.74,
+          6.86
+        ]
+      },
+      "candidate": {
+        "errors": [
+          3.28,
+          4.21
+        ]
+      },
+      "original_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "input_rgb_sha256": "9fe3085be75b2e1b0ab41dd523c3bacb1a4f1f03ac2f86fe45d66e9c3ab6c18d",
+      "mask_rect_xyxy": [
+        850,
+        351,
+        904,
+        411
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000008-row015-center",
+      "row": 15,
+      "crop": [
+        691,
+        365,
+        910,
+        465
+      ],
+      "current": {
+        "errors": [
+          1.48,
+          4.78
+        ]
+      },
+      "candidate": {
+        "errors": [
+          1.31,
+          5.26
+        ]
+      },
+      "original_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "input_rgb_sha256": "b7b9deaaa2549c136d5ff9b722e0f84c21b3e557ebf5287455930a6fb4b31a7e",
+      "mask_rect_xyxy": [
+        774,
+        385,
+        827,
+        445
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000008-row015-left",
+      "row": 15,
+      "crop": [
+        691,
+        365,
+        910,
+        465
+      ],
+      "current": {
+        "errors": [
+          4.93,
+          5.34
+        ]
+      },
+      "candidate": {
+        "errors": [
+          4.86,
+          4.63
+        ]
+      },
+      "original_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "input_rgb_sha256": "eacc1b5274079c3a0442bb085e0274a118d8f4bec6039a887682428c1843685e",
+      "mask_rect_xyxy": [
+        704,
+        385,
+        757,
+        445
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000008-row015-right",
+      "row": 15,
+      "crop": [
+        691,
+        365,
+        910,
+        465
+      ],
+      "current": {
+        "errors": [
+          1.55,
+          10.03
+        ]
+      },
+      "candidate": {
+        "errors": [
+          1.65,
+          7.69
+        ]
+      },
+      "original_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "input_rgb_sha256": "d4f13880c7a05fa1388c23a73ec1db58823d61ad9739d42c5e17569230e044af",
+      "mask_rect_xyxy": [
+        843,
+        385,
+        896,
+        445
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000008-row017-center",
+      "row": 17,
+      "crop": [
+        684,
+        431,
+        895,
+        533
+      ],
+      "current": {
+        "errors": [
+          6.31,
+          4.78
+        ]
+      },
+      "candidate": {
+        "errors": [
+          3.72,
+          4.8
+        ]
+      },
+      "original_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "input_rgb_sha256": "c53662bfabebbdda49a0acfeae6926687bcf3437bc1b658443c43b7f700c1444",
+      "mask_rect_xyxy": [
+        764,
+        451,
+        815,
+        513
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000008-row017-left",
+      "row": 17,
+      "crop": [
+        684,
+        431,
+        895,
+        533
+      ],
+      "current": {
+        "errors": [
+          18.11,
+          18.74
+        ]
+      },
+      "candidate": {
+        "errors": [
+          4.52,
+          7.38
+        ]
+      },
+      "original_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "input_rgb_sha256": "5e83d4e564e9fa2a7dd9290bd21bb506adf9f43a1c542f18e70439454c681806",
+      "mask_rect_xyxy": [
+        698,
+        451,
+        749,
+        513
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000010-row016-left",
+      "row": 16,
+      "crop": [
+        783,
+        119,
+        1029,
+        236
+      ],
+      "current": {
+        "errors": [
+          4.08,
+          2.88
+        ]
+      },
+      "candidate": {
+        "errors": [
+          6.96,
+          2.61
+        ]
+      },
+      "original_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "input_rgb_sha256": "0b93dba10b5d14ac43205845d00a1caa5588c4accc4704c3f1ade6f3df3b8068",
+      "mask_rect_xyxy": [
+        795,
+        139,
+        857,
+        216
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000010-row018-center",
+      "row": 18,
+      "crop": [
+        767,
+        209,
+        1006,
+        321
+      ],
+      "current": {
+        "errors": [
+          5.65,
+          1.91
+        ]
+      },
+      "candidate": {
+        "errors": [
+          3.45,
+          2.14
+        ]
+      },
+      "original_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "input_rgb_sha256": "c1148a990384e47551e086848c4f166f93e732bfcd43cd58915ca892395cc9e1",
+      "mask_rect_xyxy": [
+        857,
+        229,
+        916,
+        301
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000010-row018-right",
+      "row": 18,
+      "crop": [
+        767,
+        209,
+        1006,
+        321
+      ],
+      "current": {
+        "errors": [
+          2.5,
+          1.18
+        ]
+      },
+      "candidate": {
+        "errors": [
+          5.2,
+          4.04
+        ]
+      },
+      "original_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "input_rgb_sha256": "bcda396ec775f55727ccfad671ce65514035783e3807f4e022103fd733a6d59d",
+      "mask_rect_xyxy": [
+        934,
+        229,
+        993,
+        301
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000010-row020-left",
+      "row": 20,
+      "crop": [
+        756,
+        292,
+        984,
+        399
+      ],
+      "current": {
+        "errors": [
+          7.14,
+          3.7
+        ]
+      },
+      "candidate": {
+        "errors": [
+          3.82,
+          3.66
+        ]
+      },
+      "original_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "input_rgb_sha256": "2fe8bcf4ce0719cb12b45e44873907d4fe789aaf4125a756e1dbb4979a9ad176",
+      "mask_rect_xyxy": [
+        769,
+        312,
+        825,
+        379
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000010-row020-right",
+      "row": 20,
+      "crop": [
+        756,
+        292,
+        984,
+        399
+      ],
+      "current": {
+        "errors": [
+          1.63,
+          10.48
+        ]
+      },
+      "candidate": {
+        "errors": [
+          2.31,
+          7.63
+        ]
+      },
+      "original_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "input_rgb_sha256": "47644e48873a0a9dc6247a445a74a9da5fb2e021de0a6bdc5d35435ef37530db",
+      "mask_rect_xyxy": [
+        915,
+        312,
+        971,
+        379
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000010-row021-right",
+      "row": 21,
+      "crop": [
+        749,
+        329,
+        976,
+        435
+      ],
+      "current": {
+        "errors": [
+          2.63,
+          6.11
+        ]
+      },
+      "candidate": {
+        "errors": [
+          1.97,
+          4.65
+        ]
+      },
+      "original_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "input_rgb_sha256": "5cc7e70f9de40dcfc928ac1c05515a30acc8d6876d7d809a207d3d1d5a288d57",
+      "mask_rect_xyxy": [
+        908,
+        349,
+        964,
+        415
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000010-row022-center",
+      "row": 22,
+      "crop": [
+        744,
+        365,
+        967,
+        469
+      ],
+      "current": {
+        "errors": [
+          2.49,
+          5.07
+        ]
+      },
+      "candidate": {
+        "errors": [
+          2.4,
+          3.64
+        ]
+      },
+      "original_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "input_rgb_sha256": "f130433131587906f222b464734735bc1de77ee502c686e9db352631f7bcb144",
+      "mask_rect_xyxy": [
+        828,
+        385,
+        883,
+        449
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000010-row022-left",
+      "row": 22,
+      "crop": [
+        744,
+        365,
+        967,
+        469
+      ],
+      "current": {
+        "errors": [
+          9.09,
+          0.81
+        ]
+      },
+      "candidate": {
+        "errors": [
+          4.57,
+          0.79
+        ]
+      },
+      "original_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "input_rgb_sha256": "5ec038c79d4ae92a2bc0fe409802db9b4f276fab5b96f9426b76c7e679f420be",
+      "mask_rect_xyxy": [
+        757,
+        385,
+        811,
+        449
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    },
+    {
+      "case_id": "new_000010-row022-right",
+      "row": 22,
+      "crop": [
+        744,
+        365,
+        967,
+        469
+      ],
+      "current": {
+        "errors": [
+          2.21,
+          6.01
+        ]
+      },
+      "candidate": {
+        "errors": [
+          2.18,
+          3.32
+        ]
+      },
+      "original_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "input_rgb_sha256": "0794fd99d060cbd0f1b5fc33108c062baf2263665343c59cae348dc98a986ddc",
+      "mask_rect_xyxy": [
+        899,
+        385,
+        954,
+        449
+      ],
+      "observation": "Inspected the unmodified source and both exact masked crops. Same intended front/corner identity retained; mask covers the declared region and predictions are compared to coordinates known before corruption. Numeric gains/losses do not establish natural-occlusion accuracy."
+    }
+  ],
+  "scope": "All clean gained match/pair identities plus all17 changed masked pair cases were visually inspected as unaltered source and exact analysis overlays. The remaining intact probe change010:18 and all clean losses/match changes/empty output are covered by visual-adjudication.json. This is assistant visual review, not independent metrology or label revision.",
+  "reference_changes": false,
+  "model_coordinates_accepted_as_new_labels": false,
+  "supplemental_raw_proposal_review": {
+    "date": "2026-11-14",
+    "scope": "All clean gained/lost five- or ten-pixel pair identities and the four supporting covered-side ten-pixel gains were checked against the emitted proposals.",
+    "purpose": "Distinguish changes in canonically selected predictions from accurate alternatives already emitted but left unmatched by confidence-ordered box association.",
+    "synthetic_supporting_gains": "No already-successful PR35 alternative was found for the four supporting covered-side ten-pixel gains among display-eligible proposals meeting the fixed IoU 0.50 criterion.",
+    "canonical_scores_changed": false,
+    "predictions_changed": false,
+    "thresholds_changed": false,
+    "interpretation": "Alternative-proposal diagnostics use the frozen references after evaluation. They are explanatory checks, not a replacement scoring rule, an oracle selection policy or evidence of natural hidden-coordinate accuracy."
+  }
+}

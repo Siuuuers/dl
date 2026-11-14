@@ -6,11 +6,11 @@ The agreed scope is one `cassette_front` class and its two lower-front corner sl
 
 ## Run
 
-The current instructions, [completed PR58 evaluation](composed-results-2026-11-13.md) and full working implementation, including verified candidate selection, are on `Siuuuers/dl` branch `codex/pr58-corner-review-20261113`. Use this branch while its PR is open. PR58 contains the returned results archive and checksum on a branch based on main; it does not contain this complete developed workflow. PR35, PR40, PR43, PR47 and PR52 are likewise results-only branches. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
+The current instructions, [completed PR62 evaluation](occlusion-results-2026-11-14.md) and full working implementation, including verified candidate selection, are on `Siuuuers/dl` branch `codex/occlusion-training-20261113` ([PR61](https://github.com/Siuuuers/dl/pull/61)). Use this branch while its PR is open. PR62 contains the returned GPU archive on a branch based on main; it does not contain this complete developed workflow. PR35, PR40, PR43, PR47, PR52 and PR58 are likewise results-only branches. The selected model still comes from PR35, as described below. For a fresh Linux checkout with Git and Git LFS installed:
 
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --single-branch \
-  --branch codex/pr58-corner-review-20261113 \
+  --branch codex/occlusion-training-20261113 \
   https://github.com/Siuuuers/dl.git dl-folder
 cd dl-folder
 git lfs install --local
@@ -24,7 +24,7 @@ The command recursively selects `.png`, `.jpg` and `.jpeg` files, including uppe
 
 ### Use the seed46 candidate explicitly
 
-The PR35 seed46 candidate remains the selected model after the [completed PR58 comparison](composed-results-2026-11-13.md). Selecting it here does not change the generic runtime default or approve unattended use. Candidate-only inference needs the returned candidate bundle and tracked repository metadata; it does not require downloading the original dataset or epoch173 weight payload.
+The PR35 seed46 candidate remains the selected model after the [completed PR62 comparison](occlusion-results-2026-11-14.md). Selecting it here does not change the generic runtime default or approve unattended use. Candidate-only inference needs the returned candidate bundle and tracked repository metadata; it does not require downloading the original dataset or epoch173 weight payload.
 
 From the checkout above, download the immutable [PR35 return archive](https://github.com/Siuuuers/dl/blob/8e8bb99cabcb44ed0ec0acd14db911aa44013fd8/results/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip) and verify it before extracting into a new folder:
 
@@ -66,7 +66,9 @@ The [PR47 fourteen-box consistency comparison](consistency-results-2026-11-12.md
 
 The [PR58 composed-front comparison](composed-results-2026-11-13.md) is complete. Its L4 candidate records 19 misses and 84 extras, with 531/584 pairs within 5 px and 578/584 within 10 px. The only additional match is an existing proposal crossing the IoU boundary. On the primary reference, it loses two existing pair successes against its matched endpoint control, while losing none against PR35; the distinct comparison and original-image evidence requirements for promotion are not met. Keep the PR35 bundle and command above. No repeat training run is required.
 
-The unchanged [2026-11-12 review-history inventory](../results/review/baomai-review-coverage-20261112/coverage.json) records 64 of 137 training image IDs. The separate six-image pilot in the [current report](composed-results-2026-11-13.md) brings the targeted-review union to **70 of 137**, leaving **67 outside those recorded passes: 57 nonempty and 10 empty label files**. The pilot inspected 117 existing rows, supports two omitted-front identities in `new_000027` and records one box-top proposal in `old_000010`. The [same-day continuation](readiness-and-border-review-2026-11-13.md) has now completed those two additions and the selective top-bound repair in a separately verified ten-file overlay extending the PR35 parent. The three new visible corner marks retain manual uncertainty; no new model has been trained. These counts do not certify complete annotation correctness or create independent test data. Continue from the recorded evidence and accumulate a coherent supported revision before proposing another training comparison.
+The [PR62 occlusion comparison](occlusion-results-2026-11-14.md) is complete. Its candidate improves the fixed synthetic covered-side ten-pixel score **54/60→58/60**, while clean-image extras increase **85→86** and an empty image acquires a background false output. The two-count scored endpoint-coverage loss comes from one box crossing the fixed association boundary, with its accurate corner coordinates still emitted; separate clean-corner displacement is real. The candidate fails the fixed promotion rule. Keep the PR35 bundle and command above; the returned PR62 checkpoints do not replace it.
+
+The unchanged [2026-11-12 review-history inventory](../results/review/baomai-review-coverage-20261112/coverage.json) records 64 of 137 training image IDs. The separate six-image pilot and the [ten empty-label originals reviewed on 2026-11-14](../results/review/baomai-empty-training-20261114/README.md) bring targeted-review membership to **80 of 137**. The remaining **57 nonempty images** contain **1,590 original rows and 203 missing endpoint slots**. The six-image pilot inspected 117 existing rows; its [follow-up](readiness-and-border-review-2026-11-13.md) completed two omitted-front additions in `new_000027` and a selective top-bound repair in `old_000010`, in a separate ten-file overlay extending the PR35 parent. The three new visible corner marks retain manual uncertainty; this border-front candidate has not been trained. These counts do not certify complete annotation correctness or create independent test data. Continue from the recorded evidence and accumulate a coherent supported revision before proposing another training comparison.
 
 ### Preserved epoch173 baseline
 

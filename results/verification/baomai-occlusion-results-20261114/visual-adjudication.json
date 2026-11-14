@@ -1,0 +1,1537 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-14",
+  "timezone": "Asia/Hong_Kong",
+  "kind": "targeted_visual_adjudication_of_pr62_clean_changes",
+  "reviewer": "assistant independent visual pass",
+  "source_files": [
+    {
+      "path": "evaluation/inputs.json",
+      "sha256": "009c9a535d61b32dc1e9b5324c8ac5cb3b04e82b294d98aa098de3736719b643"
+    },
+    {
+      "path": "evaluation/scores.json",
+      "sha256": "84febf3ec82c3bd66c49548d9b3133042c24ced284654cc82f07e23219580e28"
+    },
+    {
+      "path": "evaluation/current.json",
+      "sha256": "41d938e8de0f4d4fb9ff9fe0f5967143877017e80839ec1ad8aac5cb77614cff"
+    },
+    {
+      "path": "evaluation/candidate.json",
+      "sha256": "27b2cb4f56a20860f7d28596c50c4c96a39fdda8b6e69dd9ac6b74eb2ec9962b"
+    },
+    {
+      "path": "evaluation/summary.json",
+      "sha256": "68ae5e22f095f49932677150b1f65453320f769ef292c2a446fb36f77012a36b"
+    }
+  ],
+  "model_sha256": {
+    "current": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+    "candidate": "6e55e6f452a4288f37d4595b31a9f3017dc85af1bdb8b849adae53c322e59723"
+  },
+  "scope": {
+    "selection": "Nine current-to-candidate clean 5px pair losses, the related 056:3 match loss, the 009:56 match gain, and the new empty147 output. Cases were selected after inspecting scored differences; this is not a blinded random sample or an independent test.",
+    "full_original_images_inspected": 9,
+    "records": 11,
+    "training_or_inference_performed": false,
+    "labels_or_frozen_references_changed": false,
+    "operating_thresholds": {
+      "box_confidence": 0.13,
+      "endpoint_display_confidence": 0.5,
+      "matching_iou": 0.5,
+      "diagnostic_corner_distance_px": 5
+    },
+    "procedure": [
+      "Verify original image SHA-256 against frozen evaluation input.",
+      "Inspect complete unannotated originals before generated prediction overlays.",
+      "Inspect original crops and separate current/candidate overlays at 4x nearest-neighbour magnification; reference crosses mark existing coordinates only.",
+      "Compare fixed-scorer records with surviving corresponding proposals, keeping unmatched diagnostic errors separate from official metrics."
+    ],
+    "crop_recipe": {
+      "object_cases": "Frozen reference bbox expanded by 30 original pixels on each side and clamped to 1280x720; 4x nearest-neighbour magnification; unannotated/current/candidate panels use the same source crop.",
+      "empty_case_original_crop_xyxy": [
+        0,
+        0,
+        300,
+        160
+      ],
+      "temporary_analysis_crops_retained_outside_repository": true
+    }
+  },
+  "original_images": {
+    "new_000008": {
+      "path": "data/images/val/new_000008.png",
+      "sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_unannotated_original_inspected": true,
+      "hash_matches_frozen_evaluation_input": true
+    },
+    "new_000010": {
+      "path": "data/images/val/new_000010.png",
+      "sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_unannotated_original_inspected": true,
+      "hash_matches_frozen_evaluation_input": true
+    },
+    "new_000055": {
+      "path": "data/images/val/new_000055.png",
+      "sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_unannotated_original_inspected": true,
+      "hash_matches_frozen_evaluation_input": true
+    },
+    "new_000056": {
+      "path": "data/images/val/new_000056.png",
+      "sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_unannotated_original_inspected": true,
+      "hash_matches_frozen_evaluation_input": true
+    },
+    "new_000058": {
+      "path": "data/images/val/new_000058.png",
+      "sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_unannotated_original_inspected": true,
+      "hash_matches_frozen_evaluation_input": true
+    },
+    "new_000059": {
+      "path": "data/images/val/new_000059.png",
+      "sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_unannotated_original_inspected": true,
+      "hash_matches_frozen_evaluation_input": true
+    },
+    "new_000090": {
+      "path": "data/images/val/new_000090.png",
+      "sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_unannotated_original_inspected": true,
+      "hash_matches_frozen_evaluation_input": true
+    },
+    "new_000009": {
+      "path": "data/images/val/new_000009.png",
+      "sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_unannotated_original_inspected": true,
+      "hash_matches_frozen_evaluation_input": true
+    },
+    "new_000147": {
+      "path": "data/images/val/new_000147.png",
+      "sha256": "2db9797f9b2011e71e9e22c9408e93ab5f7970aff2cde1f1d44a7d89d9221eee",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_unannotated_original_inspected": true,
+      "hash_matches_frozen_evaluation_input": true
+    }
+  },
+  "records": [
+    {
+      "id": "new_000008:11",
+      "image_id": "new_000008",
+      "reference_row_one_based": 11,
+      "original_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "reference": {
+        "bbox_xyxy": [
+          549.0000064000001,
+          443.379996,
+          710.3700032,
+          500.99999760000003
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            550.0,
+            499.00000320000004,
+            2
+          ],
+          [
+            706.0,
+            499.9999968,
+            2
+          ]
+        ]
+      },
+      "status": "visible_corner_displacement",
+      "visual_finding": "The target front is partly covered by the large white foreground fixture, but its two exposed outer lower-edge corners can be inspected. Both current and candidate proposals refer to the same face. Candidate points move upward into the face relative to the exposed bottom edge, with the larger visible change at the left endpoint. This is a supported localization regression, not a lost object match.",
+      "interpretation_limit": "The edge remains blurred, so this pass does not establish a new exact physical coordinate. Nevertheless the direction and size of the upward shift are visually evident, unlike the small threshold-only cases.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": true,
+      "models": {
+        "current": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 28,
+          "scorer_iou": 0.5884954547860283,
+          "scorer_errors_px": [
+            4.148328085142536,
+            2.984054133583422
+          ],
+          "scorer_pair_within_5px": true,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 28,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              540.6310424804688,
+              456.74560546875,
+              713.0427856445312,
+              514.6192016601562
+            ],
+            "class_id": 0,
+            "confidence": 0.8121630549430847,
+            "keypoints": [
+              [
+                547.2449951171875,
+                495.89862060546875,
+                0.9413096308708191
+              ],
+              [
+                705.8042602539062,
+                497.0223693847656,
+                0.9245966076850891
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.5884954547860283,
+          "diagnostic_point_errors_px": [
+            4.148328085142536,
+            2.984054133583422
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        },
+        "candidate": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 28,
+          "scorer_iou": 0.6059758002886344,
+          "scorer_errors_px": [
+            7.611657532925937,
+            6.012498291899019
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 28,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              542.4216918945312,
+              456.7169189453125,
+              713.2373657226562,
+              513.15380859375
+            ],
+            "class_id": 0,
+            "confidence": 0.7842944264411926,
+            "keypoints": [
+              [
+                550.7223510742188,
+                491.4226989746094,
+                0.9154719710350037
+              ],
+              [
+                704.8132934570312,
+                494.10577392578125,
+                0.9157119989395142
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.6059758002886345,
+          "diagnostic_point_errors_px": [
+            7.611657532925937,
+            6.012498291899019
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        5.667969556860338,
+        3.0803480751169947
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        1.7906494140625,
+        -0.0286865234375,
+        0.194580078125,
+        -1.46539306640625
+      ]
+    },
+    {
+      "id": "new_000010:18",
+      "image_id": "new_000010",
+      "reference_row_one_based": 18,
+      "original_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "reference": {
+        "bbox_xyxy": [
+          789.1011008,
+          235.86339600000002,
+          983.1848,
+          294.9089976
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            800.4700032,
+            270.9,
+            2
+          ],
+          [
+            967.8700032,
+            278.1100008,
+            2
+          ]
+        ]
+      },
+      "status": "small_displacement_crossing_5px",
+      "visual_finding": "Both proposals identify the same exposed front in the tall right-hand stack. The left endpoint moves less than one original-image pixel between models and stays near the same soft lower-left boundary. It changes the fixed-reference result from 4.936 to 5.514 px; the right endpoint improves slightly.",
+      "interpretation_limit": "Preserve the numerical 5px loss. This visual pass cannot establish a materially different physical corner error from a subpixel movement along this blurred boundary; no annotation uncertainty distribution was measured.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": true,
+      "models": {
+        "current": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 1,
+          "scorer_iou": 0.8260491303695661,
+          "scorer_errors_px": [
+            4.936221454613921,
+            2.2608256559345006
+          ],
+          "scorer_pair_within_5px": true,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 1,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              787.96923828125,
+              227.90423583984375,
+              980.595458984375,
+              298.1700439453125
+            ],
+            "class_id": 0,
+            "confidence": 0.9316882491111755,
+            "keypoints": [
+              [
+                795.5426635742188,
+                271.19598388671875,
+                0.9527313709259033
+              ],
+              [
+                970.0945434570312,
+                278.513427734375,
+                0.9535995125770569
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.8260491303695658,
+          "diagnostic_point_errors_px": [
+            4.936221454613921,
+            2.2608256559345006
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        },
+        "candidate": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 1,
+          "scorer_iou": 0.8285260026005412,
+          "scorer_errors_px": [
+            5.5140758168888055,
+            2.109381229892798
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 1,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              787.86962890625,
+              227.74571228027344,
+              980.42138671875,
+              297.7083740234375
+            ],
+            "class_id": 0,
+            "confidence": 0.931856632232666,
+            "keypoints": [
+              [
+                795.0542602539062,
+                271.93670654296875,
+                0.9512661099433899
+              ],
+              [
+                969.9702758789062,
+                278.3058166503906,
+                0.9531189799308777
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.8285260026005413,
+          "diagnostic_point_errors_px": [
+            5.5140758168888055,
+            2.109381229892798
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        0.8872473481359807,
+        0.24196031320491423
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        -0.099609375,
+        -0.1585235595703125,
+        -0.174072265625,
+        -0.461669921875
+      ]
+    },
+    {
+      "id": "new_000055:20",
+      "image_id": "new_000055",
+      "reference_row_one_based": 20,
+      "original_image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "reference": {
+        "bbox_xyxy": [
+          160.00000640000002,
+          0.0,
+          287.00000639999996,
+          20.000001599999997
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            175.4099968,
+            15.289999199999999,
+            2
+          ],
+          [
+            281.69999359999997,
+            6.790003199999999,
+            2
+          ]
+        ]
+      },
+      "status": "small_displacement_crossing_5px",
+      "visual_finding": "This front touches the top image boundary. Its sloping lower edge and the right corner beside a dark rack divider are visible but soft. The candidate right endpoint moves farther right along that same local corner region; fixed-reference right error changes from 4.659 to 6.226 px. Object identity and matching remain intact.",
+      "interpretation_limit": "Top truncation and the soft oblique corner make the exact pixel interpretation sensitive. The coordinate change and fixed-reference regression are real, but this pass does not certify a separate gross physical failure or relabel the corner.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": true,
+      "models": {
+        "current": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 2,
+          "scorer_iou": 0.623737024693219,
+          "scorer_errors_px": [
+            1.5301951453759104,
+            4.65865923129992
+          ],
+          "scorer_pair_within_5px": true,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 2,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              166.87344360351562,
+              0.0,
+              289.06597900390625,
+              30.39764404296875
+            ],
+            "class_id": 0,
+            "confidence": 0.9062269926071167,
+            "keypoints": [
+              [
+                174.6529998779297,
+                16.619831085205078,
+                0.9681583642959595
+              ],
+              [
+                285.9895324707031,
+                8.60740852355957,
+                0.9821330904960632
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.6237370246932191,
+          "diagnostic_point_errors_px": [
+            1.5301951453759104,
+            4.65865923129992
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        },
+        "candidate": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 0,
+          "scorer_iou": 0.6205444584658696,
+          "scorer_errors_px": [
+            2.1975592078508233,
+            6.226019918402184
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 0,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              165.68316650390625,
+              0.0,
+              289.9685974121094,
+              30.545413970947266
+            ],
+            "class_id": 0,
+            "confidence": 0.9125543236732483,
+            "keypoints": [
+              [
+                173.82737731933594,
+                16.81465721130371,
+                0.9709880948066711
+              ],
+              [
+                287.73309326171875,
+                8.327869415283203,
+                0.9832752346992493
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.6205444584658695,
+          "diagnostic_point_errors_px": [
+            2.1975592078508233,
+            6.226019918402184
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        0.8482981956066454,
+        1.7658273825668744
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        -1.190277099609375,
+        0.0,
+        0.902618408203125,
+        0.14776992797851562
+      ]
+    },
+    {
+      "id": "new_000056:3",
+      "image_id": "new_000056",
+      "reference_row_one_based": 3,
+      "original_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "reference": {
+        "bbox_xyxy": [
+          560.1899968,
+          304.9700004,
+          721.1400000000001,
+          360.4899996
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            561.1900032,
+            356.7499992,
+            2
+          ],
+          [
+            718.3500032000001,
+            359.49000240000004,
+            2
+          ]
+        ]
+      },
+      "status": "box_match_threshold_loss",
+      "visual_finding": "The corresponding front remains visibly detected in both outputs. Candidate proposal 11 (zero-based) is the same face as current matched proposal 15. Its directly measured corners remain within 5 px, and both endpoint errors are slightly smaller. The candidate bbox falls below the fixed IoU gate, 0.508325 to 0.499087, causing scorer endpoints to become unavailable.",
+      "interpretation_limit": "This is an object-association/box-extent failure under the fixed rule, not evidence that either corner disappeared or moved outside 5 px. Diagnostic direct-point errors must not replace the published matched score or silently change the IoU threshold.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": true,
+      "models": {
+        "current": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 15,
+          "scorer_iou": 0.5083245966564839,
+          "scorer_errors_px": [
+            4.647108087955424,
+            1.417085631666544
+          ],
+          "scorer_pair_within_5px": true,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 15,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              559.762939453125,
+              326.7333984375,
+              723.355224609375,
+              370.656494140625
+            ],
+            "class_id": 0,
+            "confidence": 0.849492609500885,
+            "keypoints": [
+              [
+                564.6287841796875,
+                359.8757629394531,
+                0.9379702210426331
+              ],
+              [
+                717.7730102539062,
+                360.7843017578125,
+                0.9575523734092712
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.5083245966564839,
+          "diagnostic_point_errors_px": [
+            4.647108087955424,
+            1.417085631666544
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        },
+        "candidate": {
+          "scorer_matched": false,
+          "scorer_prediction_index_zero_based": null,
+          "scorer_iou": null,
+          "scorer_errors_px": [
+            null,
+            null
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": false,
+          "inspected_prediction_index_zero_based": 11,
+          "inspected_prediction_reason": "highest box IoU diagnostic proposal; not substituted into official scoring",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              558.7686767578125,
+              326.90570068359375,
+              723.5640869140625,
+              371.20318603515625
+            ],
+            "class_id": 0,
+            "confidence": 0.8667566776275635,
+            "keypoints": [
+              [
+                563.97607421875,
+                360.4538269042969,
+                0.9365073442459106
+              ],
+              [
+                718.1041259765625,
+                360.5946960449219,
+                0.9575194716453552
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.49908650901645224,
+          "diagnostic_point_errors_px": [
+            4.634709417497057,
+            1.1317259642404867
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        0.8718877453880798,
+        0.3815598880266803
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        -0.9942626953125,
+        0.17230224609375,
+        0.2088623046875,
+        0.54669189453125
+      ]
+    },
+    {
+      "id": "new_000056:8",
+      "image_id": "new_000056",
+      "reference_row_one_based": 8,
+      "original_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "reference": {
+        "bbox_xyxy": [
+          561.18,
+          388.24000199999995,
+          724.6400064,
+          437.1200028
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            562.1799936,
+            434.13999839999997,
+            2
+          ],
+          [
+            717.4700032,
+            436.1199984,
+            2
+          ]
+        ]
+      },
+      "status": "small_displacement_crossing_5px",
+      "visual_finding": "Both outputs identify the same front immediately above the foreground fixture. The lower-right corner lies close to the soft interface with that fixture. Candidate right endpoint movement is about half a pixel, changing fixed-reference error from 4.640 to 5.123 px; left error improves slightly.",
+      "interpretation_limit": "Preserve the scored loss and note the fixture-adjacent boundary ambiguity. There is no supported new-object or identity error. The image does not justify treating this half-pixel shift as a separately decisive physical regression.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": true,
+      "models": {
+        "current": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 4,
+          "scorer_iou": 0.64535313390714,
+          "scorer_errors_px": [
+            4.562434742912861,
+            4.640184686107008
+          ],
+          "scorer_pair_within_5px": true,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 4,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              559.4671020507812,
+              398.888427734375,
+              724.6726684570312,
+              446.9678955078125
+            ],
+            "class_id": 0,
+            "confidence": 0.9008945822715759,
+            "keypoints": [
+              [
+                566.07763671875,
+                436.51153564453125,
+                0.9291630983352661
+              ],
+              [
+                720.6962890625,
+                432.78497314453125,
+                0.9348399043083191
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.6453531339071399,
+          "diagnostic_point_errors_px": [
+            4.562434742912861,
+            4.640184686107008
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        },
+        "candidate": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 4,
+          "scorer_iou": 0.646377631743604,
+          "scorer_errors_px": [
+            4.507144280756238,
+            5.123193037950139
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 4,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              559.513916015625,
+              398.55230712890625,
+              724.865478515625,
+              447.34283447265625
+            ],
+            "class_id": 0,
+            "confidence": 0.9057809710502625,
+            "keypoints": [
+              [
+                565.9190063476562,
+                436.6567687988281,
+                0.9290022850036621
+              ],
+              [
+                721.1680908203125,
+                432.57440185546875,
+                0.9339429140090942
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.6463776317436041,
+          "diagnostic_point_errors_px": [
+            4.507144280756238,
+            5.123193037950139
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        0.21507269408356036,
+        0.5166596234005594
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        0.04681396484375,
+        -0.33612060546875,
+        0.19281005859375,
+        0.37493896484375
+      ]
+    },
+    {
+      "id": "new_000058:1",
+      "image_id": "new_000058",
+      "reference_row_one_based": 1,
+      "original_image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "reference": {
+        "bbox_xyxy": [
+          964.5699967999999,
+          0.0,
+          1155.3399936,
+          38.2900032
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            988.1299968000001,
+            19.3299984,
+            2
+          ],
+          [
+            1154.3399936,
+            23.13,
+            2
+          ]
+        ]
+      },
+      "status": "small_displacement_crossing_5px",
+      "visual_finding": "Both outputs identify the same top-cropped right-hand front. Candidate left endpoint moves slightly left along a soft lower-left edge, taking the fixed-reference error from 4.978 to 5.766 px. The right error improves.",
+      "interpretation_limit": "This is a small coordinate threshold crossing at a blurred/chamfered corner, not an association loss. Keep the metric result without claiming a new exact physical corner or a calibrated uncertainty bound.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": true,
+      "models": {
+        "current": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 13,
+          "scorer_iou": 0.8986818911860394,
+          "scorer_errors_px": [
+            4.977795810067958,
+            1.462198258014912
+          ],
+          "scorer_pair_within_5px": true,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 13,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              975.9202270507812,
+              0.0,
+              1157.872314453125,
+              39.62532424926758
+            ],
+            "class_id": 0,
+            "confidence": 0.8500067591667175,
+            "keypoints": [
+              [
+                983.1806640625,
+                19.86155891418457,
+                0.9540834426879883
+              ],
+              [
+                1152.9039306640625,
+                22.854778289794922,
+                0.9383559823036194
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.8986818911860396,
+          "diagnostic_point_errors_px": [
+            4.977795810067958,
+            1.462198258014912
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        },
+        "candidate": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 13,
+          "scorer_iou": 0.8798344575536862,
+          "scorer_errors_px": [
+            5.766106653000322,
+            1.341525014700845
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 13,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              975.6083984375,
+              0.0,
+              1157.912109375,
+              40.58709716796875
+            ],
+            "class_id": 0,
+            "confidence": 0.8590582013130188,
+            "keypoints": [
+              [
+                982.4088134765625,
+                20.048362731933594,
+                0.9526179432868958
+              ],
+              [
+                1153.7325439453125,
+                21.933883666992188,
+                0.9296496510505676
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.8798344575536861,
+          "diagnostic_point_errors_px": [
+            5.766106653000322,
+            1.341525014700845
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        0.7941341154601484,
+        1.2388086519599717
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        -0.31182861328125,
+        0.0,
+        0.039794921875,
+        0.9617729187011719
+      ]
+    },
+    {
+      "id": "new_000058:7",
+      "image_id": "new_000058",
+      "reference_row_one_based": 7,
+      "original_image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "reference": {
+        "bbox_xyxy": [
+          796.4999999999999,
+          77.57000280000001,
+          968.8400064,
+          122.1300036
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            803.5100032,
+            112.1199984,
+            2
+          ],
+          [
+            967.84,
+            112.4200008,
+            2
+          ]
+        ]
+      },
+      "status": "small_displacement_crossing_5px",
+      "visual_finding": "Both outputs refer to the same middle-stack front. Candidate left endpoint moves rightward inward along the visible lower edge, taking fixed-reference error from 3.694 to 5.176 px; the right endpoint improves.",
+      "interpretation_limit": "The inward change is visible when magnified, but it is small and occurs on a soft corner. Preserve it as a coordinate regression against the frozen reference, while avoiding a claim of gross target misidentification or measured annotation precision.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": true,
+      "models": {
+        "current": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 5,
+          "scorer_iou": 0.8199019932967231,
+          "scorer_errors_px": [
+            3.693838162816777,
+            1.3386625552701794
+          ],
+          "scorer_pair_within_5px": true,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 5,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              800.3492431640625,
+              75.2197265625,
+              970.4730224609375,
+              128.03778076171875
+            ],
+            "class_id": 0,
+            "confidence": 0.9000780582427979,
+            "keypoints": [
+              [
+                807.0333862304688,
+                111.01084899902344,
+                0.9446963667869568
+              ],
+              [
+                966.5189208984375,
+                112.20374298095703,
+                0.9438726902008057
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.8199019932967231,
+          "diagnostic_point_errors_px": [
+            3.693838162816777,
+            1.3386625552701794
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        },
+        "candidate": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 3,
+          "scorer_iou": 0.7673812575748267,
+          "scorer_errors_px": [
+            5.176087656815203,
+            0.8321563934670467
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 3,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              800.374267578125,
+              73.70722961425781,
+              973.0755615234375,
+              129.35108947753906
+            ],
+            "class_id": 0,
+            "confidence": 0.9073449969291687,
+            "keypoints": [
+              [
+                808.6250610351562,
+                111.3274917602539,
+                0.9437023401260376
+              ],
+              [
+                967.3916625976562,
+                113.12105560302734,
+                0.9449427127838135
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.7673812575748269,
+          "diagnostic_point_errors_px": [
+            5.176087656815203,
+            0.8321563934670467
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        1.6228651583285183,
+        1.2661518550966717
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        0.0250244140625,
+        -1.5124969482421875,
+        2.6025390625,
+        1.3133087158203125
+      ]
+    },
+    {
+      "id": "new_000059:2",
+      "image_id": "new_000059",
+      "reference_row_one_based": 2,
+      "original_image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "reference": {
+        "bbox_xyxy": [
+          971.8300032000001,
+          -3.599999998105119e-06,
+          1167.8900096,
+          45.8399988
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            996.0599936,
+            27.7999992,
+            2
+          ],
+          [
+            1166.8899968,
+            30.219998399999998,
+            2
+          ]
+        ]
+      },
+      "status": "small_displacement_crossing_5px",
+      "visual_finding": "Both outputs identify the same top-cropped right-hand front. Candidate left endpoint shifts farther left along the same soft edge, taking fixed-reference error from 4.876 to 6.187 px. The right endpoint improves.",
+      "interpretation_limit": "This is a coordinate change at a blurred/chamfered corner and a 5px threshold crossing. It does not recover or lose a physical object, and this pass cannot determine an exact replacement reference coordinate.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": true,
+      "models": {
+        "current": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 8,
+          "scorer_iou": 0.8453285822678773,
+          "scorer_errors_px": [
+            4.875578499928155,
+            3.8607371903651337
+          ],
+          "scorer_pair_within_5px": true,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 8,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              984.144775390625,
+              0.8678798675537109,
+              1169.484619140625,
+              49.704689025878906
+            ],
+            "class_id": 0,
+            "confidence": 0.8933543562889099,
+            "keypoints": [
+              [
+                991.2005004882812,
+                27.404281616210938,
+                0.9527314305305481
+              ],
+              [
+                1163.029296875,
+                30.236961364746094,
+                0.9466814994812012
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.8453285822678775,
+          "diagnostic_point_errors_px": [
+            4.875578499928155,
+            3.8607371903651337
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        },
+        "candidate": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 8,
+          "scorer_iou": 0.82677436137266,
+          "scorer_errors_px": [
+            6.187031089465254,
+            3.372586527683513
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 8,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              983.404052734375,
+              0.7842445373535156,
+              1169.990966796875,
+              51.04756546020508
+            ],
+            "class_id": 0,
+            "confidence": 0.8929768204689026,
+            "keypoints": [
+              [
+                989.8952026367188,
+                27.275875091552734,
+                0.9512847661972046
+              ],
+              [
+                1163.53515625,
+                29.87447738647461,
+                0.9449368715286255
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.8267743613726601,
+          "diagnostic_point_errors_px": [
+            6.187031089465254,
+            3.372586527683513
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        1.3115985349444685,
+        0.6223249487035792
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        -0.74072265625,
+        -0.08363533020019531,
+        0.50634765625,
+        1.3428764343261719
+      ]
+    },
+    {
+      "id": "new_000090:24",
+      "image_id": "new_000090",
+      "reference_row_one_based": 24,
+      "original_image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "reference": {
+        "bbox_xyxy": [
+          775.92,
+          311.6999988,
+          892.3699968000001,
+          345.14999639999996
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            782.9299967999999,
+            339.05000160000003,
+            2
+          ],
+          [
+            889.9900031999999,
+            343.1499984,
+            2
+          ]
+        ]
+      },
+      "status": "small_displacement_crossing_5px",
+      "visual_finding": "Both outputs identify the same lowest front of the upper-right stack. Candidate right endpoint shifts slightly left and down near its soft lower-right boundary; fixed-reference right error changes from 4.593 to 5.313 px. The face is still correctly associated.",
+      "interpretation_limit": "Preserve the numerical regression. The small movement relative to the blurred corner is not evidence of a gross new failure, and changing prediction rank/index alone is not a change in object identity.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": true,
+      "models": {
+        "current": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 22,
+          "scorer_iou": 0.8660545353158734,
+          "scorer_errors_px": [
+            2.144828783209249,
+            4.592818335086756
+          ],
+          "scorer_pair_within_5px": true,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 22,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              777.8768310546875,
+              310.23138427734375,
+              889.9898681640625,
+              343.06207275390625
+            ],
+            "class_id": 0,
+            "confidence": 0.906137228012085,
+            "keypoints": [
+              [
+                782.8009643554688,
+                336.9090576171875,
+                0.9597464203834534
+              ],
+              [
+                885.4336547851562,
+                342.5723571777344,
+                0.9707011580467224
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.8660545353158735,
+          "diagnostic_point_errors_px": [
+            2.144828783209249,
+            4.592818335086756
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        },
+        "candidate": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 30,
+          "scorer_iou": 0.8173764546329555,
+          "scorer_errors_px": [
+            2.333566630635278,
+            5.313497960495911
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": true,
+          "inspected_prediction_index_zero_based": 30,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              778.5391845703125,
+              308.09259033203125,
+              890.091796875,
+              343.190185546875
+            ],
+            "class_id": 0,
+            "confidence": 0.8885596990585327,
+            "keypoints": [
+              [
+                784.5028076171875,
+                337.32611083984375,
+                0.9120355248451233
+              ],
+              [
+                884.6959838867188,
+                343.60455322265625,
+                0.9010301828384399
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.8173764546329556,
+          "diagnostic_point_errors_px": [
+            2.333566630635278,
+            5.313497960495911
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            true,
+            true
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        1.7521997254837924,
+        1.2686950104552117
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        0.662353515625,
+        -2.1387939453125,
+        0.1019287109375,
+        0.12811279296875
+      ]
+    },
+    {
+      "id": "new_000009:56",
+      "image_id": "new_000009",
+      "reference_row_one_based": 56,
+      "original_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "reference": {
+        "bbox_xyxy": [
+          677.0000064,
+          470.99999879999996,
+          756.0000064000001,
+          512.9999964
+        ],
+        "class_id": 0,
+        "keypoints": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "status": "existing_proposal_box_match_gain",
+      "visual_finding": "The relevant front patch is heavily obscured between the two prongs of the foreground fixture. Both models already produce a box in this same visible patch. Candidate proposal 74 widens, raising IoU from 0.423989 to 0.539514 and creating a match. Neither actual lower corner is reliably locatable from the supplied reference; both reference slots are missing.",
+      "interpretation_limit": "This is an existing-proposal box match gain, not established discovery of an additional physical object or measured hidden-corner recovery. Both models endpoint scores for this proposal remain below 0.50; do not invent reference coordinates or score them as correct.",
+      "frozen_reference_unchanged": true,
+      "scored_5px_pair_loss": false,
+      "models": {
+        "current": {
+          "scorer_matched": false,
+          "scorer_prediction_index_zero_based": null,
+          "scorer_iou": null,
+          "scorer_errors_px": [
+            null,
+            null
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": false,
+          "inspected_prediction_index_zero_based": 74,
+          "inspected_prediction_reason": "highest box IoU diagnostic proposal; not substituted into official scoring",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              680.122314453125,
+              468.44134521484375,
+              734.36767578125,
+              498.018798828125
+            ],
+            "class_id": 0,
+            "confidence": 0.1372963786125183,
+            "keypoints": [
+              [
+                685.7332153320312,
+                488.05535888671875,
+                0.23275227844715118
+              ],
+              [
+                728.6211547851562,
+                492.3642272949219,
+                0.25466328859329224
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.42398945067712634,
+          "diagnostic_point_errors_px": [
+            null,
+            null
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            false,
+            false
+          ]
+        },
+        "candidate": {
+          "scorer_matched": true,
+          "scorer_prediction_index_zero_based": 74,
+          "scorer_iou": 0.5395138807921003,
+          "scorer_errors_px": [
+            null,
+            null
+          ],
+          "scorer_pair_within_5px": false,
+          "scorer_pair_within_10px": false,
+          "inspected_prediction_index_zero_based": 74,
+          "inspected_prediction_reason": "scorer match",
+          "inspected_prediction": {
+            "bbox_xyxy": [
+              681.6918334960938,
+              469.1388854980469,
+              745.0177612304688,
+              500.2722473144531
+            ],
+            "class_id": 0,
+            "confidence": 0.15930992364883423,
+            "keypoints": [
+              [
+                687.2874145507812,
+                487.8808288574219,
+                0.2884056568145752
+              ],
+              [
+                734.660888671875,
+                492.9236145019531,
+                0.26346907019615173
+              ]
+            ]
+          },
+          "inspected_prediction_iou": 0.5395138807921003,
+          "diagnostic_point_errors_px": [
+            null,
+            null
+          ],
+          "diagnostic_points_pass_display_cutoff": [
+            false,
+            false
+          ]
+        }
+      },
+      "candidate_minus_current_keypoint_displacement_px": [
+        1.5639680120416397,
+        6.065583192881704
+      ],
+      "candidate_minus_current_bbox_coordinates_px": [
+        1.56951904296875,
+        0.697540283203125,
+        10.65008544921875,
+        2.253448486328125
+      ]
+    },
+    {
+      "id": "new_000147:empty-output",
+      "image_id": "new_000147",
+      "reference_row_one_based": null,
+      "original_image_sha256": "2db9797f9b2011e71e9e22c9408e93ab5f7970aff2cde1f1d44a7d89d9221eee",
+      "status": "background_false_positive_and_displayed_pair",
+      "visual_finding": "The complete original contains an empty rack and a foreground white fixture. The candidate box lies entirely in the upper-left wall/pipe background, outside the rack. The magnified unannotated region contains no cassette wax front or corresponding lower-front edge. This is a genuine background false positive, not a box-matching artifact or an unlabelled target supported by the pixels.",
+      "current_predictions": [],
+      "candidate_predictions": [
+        {
+          "bbox_xyxy": [
+            0.0,
+            0.0,
+            229.67723083496094,
+            108.95496368408203
+          ],
+          "class_id": 0,
+          "confidence": 0.1333799660205841,
+          "keypoints": [
+            [
+              0.0,
+              46.256107330322266,
+              0.9477799534797668
+            ],
+            [
+              204.39889526367188,
+              61.52642822265625,
+              0.8296383023262024
+            ]
+          ]
+        }
+      ],
+      "candidate_displayed_pair": true,
+      "current_endpoint_errors_px": null,
+      "candidate_endpoint_errors_px": null,
+      "interpretation_limit": "No target exists in the inspected proposal region to define a localization error. The box score is only slightly above the fixed 0.13 operating cutoff, but both endpoint scores exceed 0.50 and the accepted line would be drawn. This single result is not an unseen-scene false-positive-rate estimate.",
+      "frozen_reference_unchanged": true
+    }
+  ],
+  "summary": {
+    "clean_5px_pair_losses_reviewed": 9,
+    "box_gate_loss_with_both_diagnostic_corners_still_within_5px": 1,
+    "clear_visual_corner_displacement_cases": [
+      "new_000008:11"
+    ],
+    "other_small_coordinate_5px_threshold_crossings": 7,
+    "existing_proposal_match_gains_without_measurable_corner_truth": [
+      "new_000009:56"
+    ],
+    "genuine_background_false_positive_cases": [
+      "new_000147"
+    ],
+    "interpretation": "The clean regression count mixes one box-gate artifact with eight coordinate changes. One coordinate case has a clear visible upward displacement; the other seven are small changes across the fixed 5px threshold on soft/ambiguous edges. Keep every published scored loss, but do not describe all nine as nine missing physical edges or all eight as equally decisive visual failures."
+  },
+  "limits": [
+    "This pass reviews only the named clean-development changes. It does not re-review all predictions, all gains, artificial occlusion cases or the full dataset.",
+    "The available development images have been repeatedly used. No independent generalization or natural-hidden-corner accuracy is established.",
+    "Soft boundaries, chamfers, frame truncation and fixture adjacency limit manual localization. No numerical annotation uncertainty interval is assigned without repeated independent labels.",
+    "No validation label, missing corner, display cutoff, association rule or promotion criterion is changed to favor either model.",
+    "Diagnostic errors for an unmatched proposal explain a metric mechanism and do not replace the official matched scores.",
+    "Objects with missing reference corners cannot supply hidden-corner errors; confidence does not create ground truth."
+  ]
+}
