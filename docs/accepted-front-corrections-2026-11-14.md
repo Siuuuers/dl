@@ -75,3 +75,7 @@ Report missed objects, duplicates and other extra predictions, empty-scene outpu
 Inspect gained and lost object identities. Thin boxes are particularly sensitive to small boundary changes: for two otherwise identical boxes of height h displaced vertically by d, their IoU is (h-d)/(h+d) when 0 <= d < h. A hypothetical five-pixel box displaced by two pixels gives IoU 3/7, below 0.50, even though the displacement is small. A changed match alone is not proof of a newly recovered or lost physical object.
 
 These photos and thresholds have already been used in development. One paired seed can test this correction set under its stated conditions; it cannot supply independent deployment evidence. PR35 stays selected until the completed comparison supports a reviewed change.
+
+## Verified handoff
+
+The notebook fetches implementation commit 57a2d2a146976a8a59aaaafb5fb61d66439ae325. Its input preflight passed against the actual originals, initialization weights and both reference revisions. Seventy-five focused and compatibility checks passed, including real dataset staging and negative cases for altered legacy labels, omitted review cases, recipe swaps and reference-scope changes. The [preparation record](../results/verification/pr63-accepted-fronts-20261114.json) records exact artifact identities and test logs. Training has not yet run.
