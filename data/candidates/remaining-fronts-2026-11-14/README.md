@@ -2,6 +2,8 @@
 
 This proposed revision extends the exact [border-fronts parent](../border-fronts-2026-11-13/README.md) with accepted findings from the remaining 57-original review. **PR35 remains selected; this candidate has not been trained.**
 
+**2026-11-14 follow-up: physical-target confirmation pending.** The user clarified that the endpoints belong to the front face of the whole white wax block. The [original-image questions](../../../docs/target-clarification-2026-11-14.md) distinguish a misplaced point from uncertain physical unit membership, including `old_000042:10` below. Recheck the relevant candidate decisions against that confirmed image anchor before a training comparison. The label files and acceptance records below preserve the earlier review; they do not resolve the new image questions.
+
 [Whole-original review report](../../../docs/training-review-2026-11-14.md) · [Review evidence and adjudication](../../../results/review/remaining-training-20261114/README.md)
 
 ## Accepted changes

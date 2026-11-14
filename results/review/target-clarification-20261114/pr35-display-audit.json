@@ -1,0 +1,527 @@
+{
+  "schema_version": 1,
+  "kind": "PR35-display-eligibility-decomposition",
+  "new_inference": false,
+  "new_training": false,
+  "inputs": {
+    "repository_commit": "e2dce11e1f2d224495a33971f349eed56a7b253a",
+    "archive": "results/verification/baomai-endpoint-results-20261112/evidence.zip",
+    "archive_sha256": "11ff224e4d575abfc1241ad54509944d338bda10f36d71ec933d787e667151d3",
+    "prediction_member": "evaluation/predictions-current.jsonl",
+    "prediction_sha256": "45587e9bd1c194fe44730a5b5404408856aa80bfb4e582632acaefb19e95c700",
+    "model_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+    "reference_manifest": "data/references/visible-front-adjudication-2026-11-12/manifest.json",
+    "reference_manifest_sha256": "75e8689f65f7f32ca7f4657f27d214aa1ba371347812de780c6e5e6ac21af61e",
+    "reference_label_sha256": {
+      "new_000007": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+      "new_000008": "12c471af8e53ea65c10f007df1087c79ea9d37b6eb9eac7a80aebb505a06df57",
+      "new_000009": "a7f6d12c8e49a60f489ec4ec9130de61626718739267c29e31cfe7c633e43ef9",
+      "new_000010": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d",
+      "new_000011": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838",
+      "new_000053": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded",
+      "new_000054": "a141b368e31100930826c3c3b777c066c5050b52759161e2b12cf429bd9d0b20",
+      "new_000055": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0",
+      "new_000056": "40a5932996a295d9e89a79a435e31cb5bdcbed0b230baf5bb700a644099fe7c7",
+      "new_000057": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f",
+      "new_000058": "0d7cc2962aa94337a3e5340cda114a23bab0c8e3c590855ebbce1e1ca28c1b0c",
+      "new_000059": "60e6866fda66ad0d385094c32fd41f19eb451c5a16365b41da77cf5f0e01ade4",
+      "new_000086": "43f8e85d4a0af9dec2aba6e9e5ed39b5f149e33f0f17ec0cc5286d20225783b1",
+      "new_000087": "17d7537f9626058aca885a2afb4ebc1dfa2d8b89acb818e90c09ecbe1113eab1",
+      "new_000088": "6be98a964b6faf88345caf92b9efcb2d8c23eea054aaed7ab74f03717e5639ef",
+      "new_000089": "799e3e7301f4fd8f1b727dfc07e9a0891335a917c3994ebcc9d3786990219e7f",
+      "new_000090": "1781643ded0bc4a9a0c71b655711845c3840f8276b1170835088c7fac2475e79",
+      "new_000146": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "new_000147": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "new_000148": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "frozen_replay": "results/review/corner-adjudication-20261112/replay.json",
+    "frozen_replay_sha256": "0d205f1a795e63a399e38125b46dfef735a578cab4e0785886413a58f3da71c5",
+    "helpers_sha256": {
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953"
+    }
+  },
+  "procedure": {
+    "box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "matching_iou": 0.5,
+    "image_size": [
+      1280,
+      720
+    ],
+    "association": "Unchanged score_image: box-confidence-descending greedy one-to-one matching at IoU >=0.50; endpoint scores do not affect matching. All per-image and aggregate scores/quality exactly equal frozen latest adjudication replay.",
+    "matching_identity_canonical_sha256": "779f298f6e76499e98f4de24ca69662d529fa2a7993816bfc1bc0ae18534ef26",
+    "endpoint_display_eligibility": "confidence >=0.50 and finite XY and 0 <= x < width and 0 <= y < height",
+    "reference_semantics": "v2 means reference-locatable; v0 has no scored coordinate. Neither is newly visually certified here.",
+    "image_bytes_opened": false,
+    "labels_hash_verified": 20
+  },
+  "summary": {
+    "score": {
+      "gold_count": 663,
+      "prediction_count": 728,
+      "tp": 643,
+      "fn": 20,
+      "fp": 85,
+      "duplicate_fp": 31,
+      "other_fp": 54,
+      "visible_endpoints": 1227,
+      "returned_endpoints": 1207,
+      "missing_endpoints": 20,
+      "endpoint_coverage": 0.9837000814995925,
+      "conditional_median_error_px": 1.5576506345021846,
+      "conditional_p95_error_px": 5.104711216301922,
+      "image_count": 20
+    },
+    "quality": {
+      "gold_count": 663,
+      "prediction_count": 728,
+      "tp": 643,
+      "fn": 20,
+      "fp": 85,
+      "visible_endpoints": 1227,
+      "returned_visible_endpoints": 1207,
+      "both_visible_objects": 584,
+      "both_visible_objects_with_both_returned": 578,
+      "unlocatable_reference_endpoints": 99,
+      "unlocatable_on_matched_objects": 78,
+      "returned_on_unlocatable_reference": 70,
+      "image_count": 20,
+      "object_precision": 0.8832417582417582,
+      "object_recall": 0.9698340874811463,
+      "visible_endpoint_coverage": 0.9837000814995925,
+      "both_visible_objects_returned_fraction": 0.9897260273972602,
+      "returned_on_unlocatable_reference_fraction": 0.8974358974358975,
+      "radii": [
+        {
+          "radius_px": 5,
+          "visible_endpoints_within_radius": 1139,
+          "both_visible_objects_within_radius": 529,
+          "visible_endpoint_success_rate": 0.928280358598207,
+          "both_visible_object_success_rate": 0.9058219178082192
+        },
+        {
+          "radius_px": 10,
+          "visible_endpoints_within_radius": 1203,
+          "both_visible_objects_within_radius": 577,
+          "visible_endpoint_success_rate": 0.980440097799511,
+          "both_visible_object_success_rate": 0.988013698630137
+        }
+      ]
+    },
+    "display_decomposition": {
+      "matched_locatable_slots": 1208,
+      "matched_locatable_displayed": 1207,
+      "unmatched_objects": 20,
+      "unmatched_locatable_slots": 19,
+      "unmatched_reference_v0_slots": 21,
+      "matched_reference_v0_slots": 78,
+      "matched_reference_v0_displayed": 70,
+      "matched_reference_v0_not_displayed": 8,
+      "matched_reference_v0_out_of_frame": 5,
+      "matched_reference_v0_below_confidence": 3,
+      "matched_locatable_not_displayed": 1,
+      "matched_locatable_below_confidence": 1,
+      "matched_locatable_nonfinite": 0,
+      "matched_locatable_out_of_frame": 0,
+      "matched_reference_v0_nonfinite": 0
+    },
+    "rendered_counts": {
+      "all_predictions_with_both_displayed": 715,
+      "all_displayed_endpoints": 1438,
+      "matched_lines": 637,
+      "matched_lines_with_at_least_one_reference_v0": 59
+    },
+    "minimum_endpoint_confidence_on_matched_locatable_slots": 0.22002056241035461,
+    "withheld_locatable_inframe_below_confidence_within_5px": 0,
+    "withheld_locatable_inframe_below_confidence_within_10px": 1,
+    "diagnostic_implications": {
+      "matched_two_locatable_objects_with_a_withheld_endpoint": 0,
+      "only_withheld_locatable_endpoint_belongs_to_one_locatable_corner_object": true,
+      "lowering_endpoint_threshold_cannot_recover_the_six_unmatched_two_locatable_objects": true
+    }
+  },
+  "matched_locatable_not_displayed": [
+    {
+      "image_id": "new_000008",
+      "reference_row_one_based": 1,
+      "prediction_index_zero_based": 37,
+      "side": "right",
+      "box_iou": 0.5909054916196641,
+      "box_confidence": 0.2326340526342392,
+      "reference_xy": [
+        738.6099968000001,
+        5.8199976
+      ],
+      "prediction_xy": [
+        747.2276611328125,
+        5.489200592041016
+      ],
+      "endpoint_confidence": 0.22002056241035461,
+      "finite": true,
+      "in_image": true,
+      "passes_display_threshold": false,
+      "coordinate_error_px": 8.62401097016358
+    }
+  ],
+  "unmatched_reference_objects": [
+    {
+      "image_id": "new_000007",
+      "reference_row_one_based": 7,
+      "locatable_endpoint_count": 0
+    },
+    {
+      "image_id": "new_000007",
+      "reference_row_one_based": 14,
+      "locatable_endpoint_count": 0
+    },
+    {
+      "image_id": "new_000008",
+      "reference_row_one_based": 36,
+      "locatable_endpoint_count": 0
+    },
+    {
+      "image_id": "new_000009",
+      "reference_row_one_based": 8,
+      "locatable_endpoint_count": 1
+    },
+    {
+      "image_id": "new_000009",
+      "reference_row_one_based": 53,
+      "locatable_endpoint_count": 1
+    },
+    {
+      "image_id": "new_000009",
+      "reference_row_one_based": 56,
+      "locatable_endpoint_count": 0
+    },
+    {
+      "image_id": "new_000009",
+      "reference_row_one_based": 57,
+      "locatable_endpoint_count": 1
+    },
+    {
+      "image_id": "new_000011",
+      "reference_row_one_based": 15,
+      "locatable_endpoint_count": 0
+    },
+    {
+      "image_id": "new_000053",
+      "reference_row_one_based": 1,
+      "locatable_endpoint_count": 1
+    },
+    {
+      "image_id": "new_000055",
+      "reference_row_one_based": 26,
+      "locatable_endpoint_count": 1
+    },
+    {
+      "image_id": "new_000056",
+      "reference_row_one_based": 4,
+      "locatable_endpoint_count": 2
+    },
+    {
+      "image_id": "new_000057",
+      "reference_row_one_based": 1,
+      "locatable_endpoint_count": 0
+    },
+    {
+      "image_id": "new_000059",
+      "reference_row_one_based": 1,
+      "locatable_endpoint_count": 0
+    },
+    {
+      "image_id": "new_000086",
+      "reference_row_one_based": 15,
+      "locatable_endpoint_count": 2
+    },
+    {
+      "image_id": "new_000086",
+      "reference_row_one_based": 57,
+      "locatable_endpoint_count": 1
+    },
+    {
+      "image_id": "new_000087",
+      "reference_row_one_based": 15,
+      "locatable_endpoint_count": 2
+    },
+    {
+      "image_id": "new_000088",
+      "reference_row_one_based": 15,
+      "locatable_endpoint_count": 2
+    },
+    {
+      "image_id": "new_000088",
+      "reference_row_one_based": 57,
+      "locatable_endpoint_count": 1
+    },
+    {
+      "image_id": "new_000089",
+      "reference_row_one_based": 15,
+      "locatable_endpoint_count": 2
+    },
+    {
+      "image_id": "new_000090",
+      "reference_row_one_based": 15,
+      "locatable_endpoint_count": 2
+    }
+  ],
+  "per_image": [
+    {
+      "image_id": "new_000007",
+      "matched_locatable_slots": 104,
+      "matched_locatable_displayed": 104,
+      "unmatched_objects": 2,
+      "unmatched_locatable_slots": 0,
+      "unmatched_reference_v0_slots": 4
+    },
+    {
+      "image_id": "new_000008",
+      "matched_locatable_slots": 64,
+      "matched_locatable_displayed": 63,
+      "matched_reference_v0_slots": 6,
+      "matched_reference_v0_displayed": 2,
+      "matched_reference_v0_not_displayed": 4,
+      "matched_reference_v0_out_of_frame": 3,
+      "matched_reference_v0_below_confidence": 1,
+      "matched_locatable_not_displayed": 1,
+      "matched_locatable_below_confidence": 1,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 0,
+      "unmatched_reference_v0_slots": 2
+    },
+    {
+      "image_id": "new_000009",
+      "matched_locatable_slots": 102,
+      "matched_locatable_displayed": 102,
+      "matched_reference_v0_slots": 4,
+      "matched_reference_v0_displayed": 4,
+      "unmatched_objects": 4,
+      "unmatched_locatable_slots": 3,
+      "unmatched_reference_v0_slots": 5
+    },
+    {
+      "image_id": "new_000010",
+      "matched_locatable_slots": 52,
+      "matched_locatable_displayed": 52,
+      "matched_reference_v0_slots": 12,
+      "matched_reference_v0_displayed": 10,
+      "matched_reference_v0_not_displayed": 2,
+      "matched_reference_v0_out_of_frame": 2
+    },
+    {
+      "image_id": "new_000011",
+      "matched_locatable_slots": 112,
+      "matched_locatable_displayed": 112,
+      "matched_reference_v0_slots": 8,
+      "matched_reference_v0_displayed": 6,
+      "matched_reference_v0_not_displayed": 2,
+      "matched_reference_v0_below_confidence": 2,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 0,
+      "unmatched_reference_v0_slots": 2
+    },
+    {
+      "image_id": "new_000053",
+      "matched_locatable_slots": 42,
+      "matched_locatable_displayed": 42,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 1,
+      "unmatched_reference_v0_slots": 1
+    },
+    {
+      "image_id": "new_000054",
+      "matched_locatable_slots": 44,
+      "matched_locatable_displayed": 44
+    },
+    {
+      "image_id": "new_000055",
+      "matched_locatable_slots": 49,
+      "matched_locatable_displayed": 49,
+      "matched_reference_v0_slots": 1,
+      "matched_reference_v0_displayed": 1,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 1,
+      "unmatched_reference_v0_slots": 1
+    },
+    {
+      "image_id": "new_000056",
+      "matched_locatable_slots": 36,
+      "matched_locatable_displayed": 36,
+      "matched_reference_v0_slots": 4,
+      "matched_reference_v0_displayed": 4,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 2,
+      "unmatched_reference_v0_slots": 0
+    },
+    {
+      "image_id": "new_000057",
+      "matched_locatable_slots": 42,
+      "matched_locatable_displayed": 42,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 0,
+      "unmatched_reference_v0_slots": 2
+    },
+    {
+      "image_id": "new_000058",
+      "matched_locatable_slots": 35,
+      "matched_locatable_displayed": 35,
+      "matched_reference_v0_slots": 1,
+      "matched_reference_v0_displayed": 1
+    },
+    {
+      "image_id": "new_000059",
+      "matched_locatable_slots": 35,
+      "matched_locatable_displayed": 35,
+      "matched_reference_v0_slots": 1,
+      "matched_reference_v0_displayed": 1,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 0,
+      "unmatched_reference_v0_slots": 2
+    },
+    {
+      "image_id": "new_000086",
+      "matched_locatable_slots": 104,
+      "matched_locatable_displayed": 104,
+      "matched_reference_v0_slots": 6,
+      "matched_reference_v0_displayed": 6,
+      "unmatched_objects": 2,
+      "unmatched_locatable_slots": 3,
+      "unmatched_reference_v0_slots": 1
+    },
+    {
+      "image_id": "new_000087",
+      "matched_locatable_slots": 105,
+      "matched_locatable_displayed": 105,
+      "matched_reference_v0_slots": 5,
+      "matched_reference_v0_displayed": 5,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 2,
+      "unmatched_reference_v0_slots": 0
+    },
+    {
+      "image_id": "new_000088",
+      "matched_locatable_slots": 103,
+      "matched_locatable_displayed": 103,
+      "matched_reference_v0_slots": 7,
+      "matched_reference_v0_displayed": 7,
+      "unmatched_objects": 2,
+      "unmatched_locatable_slots": 3,
+      "unmatched_reference_v0_slots": 1
+    },
+    {
+      "image_id": "new_000089",
+      "matched_locatable_slots": 94,
+      "matched_locatable_displayed": 94,
+      "matched_reference_v0_slots": 12,
+      "matched_reference_v0_displayed": 12,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 2,
+      "unmatched_reference_v0_slots": 0
+    },
+    {
+      "image_id": "new_000090",
+      "matched_locatable_slots": 85,
+      "matched_locatable_displayed": 85,
+      "matched_reference_v0_slots": 11,
+      "matched_reference_v0_displayed": 11,
+      "unmatched_objects": 1,
+      "unmatched_locatable_slots": 2,
+      "unmatched_reference_v0_slots": 0
+    },
+    {
+      "image_id": "new_000146"
+    },
+    {
+      "image_id": "new_000147"
+    },
+    {
+      "image_id": "new_000148"
+    }
+  ],
+  "limits": [
+    "This is an arithmetic audit of existing predictions and frozen annotations, not new inference, physical image review, a threshold search, or a deployment accuracy guarantee.",
+    "Scorer matched does not independently certify physical identity or correct corner semantics.",
+    "Reference v0 includes unavailable or uncertain coordinates; it does not prove physical occlusion, a false predicted endpoint, or bad prediction accuracy. Coordinate error is undefined for these slots.",
+    "Latest reference has 1227 locatable endpoints and 99 v0 slots; historical pre-adjudication reference has 1228/98 and must not be silently mixed.",
+    "No endpoint threshold can recover a detector instance absent from these already-filtered predictions. The 20 reference-unmatched objects may include IoU-association and annotation ambiguities.",
+    "All current metrics derive from 20 reused development images; correct labels for the user-confirmed whole-white-block target remain a separate visual question.",
+    "Only normal confidence-gated endpoint/line rendering is counted, excluding optional diagnostic crosses."
+  ],
+  "reference_v0_displayed_evidence": {
+    "count": 70,
+    "source_json_key": "models.current.reference_unlocatable_displayed_endpoints",
+    "source": "results/review/corner-adjudication-20261112/replay.json",
+    "canonical_sha256": "bb88ed95542864601ffa3fa4055ed19fb12be67e95161b38d3496a1ebc4f96a4",
+    "recomputed_list_exactly_equals_frozen": true,
+    "examples": [
+      {
+        "image_id": "new_000008",
+        "row_one_based": 35,
+        "side": "right",
+        "prediction_index_zero_based": 30,
+        "prediction_xy": [
+          1278.6846923828125,
+          516.36474609375
+        ],
+        "endpoint_confidence": 0.8755946159362793,
+        "coordinate_error_px": null
+      },
+      {
+        "image_id": "new_000008",
+        "row_one_based": 8,
+        "side": "right",
+        "prediction_index_zero_based": 31,
+        "prediction_xy": [
+          1278.773681640625,
+          81.47785949707031
+        ],
+        "endpoint_confidence": 0.9129143953323364,
+        "coordinate_error_px": null
+      },
+      {
+        "image_id": "new_000009",
+        "row_one_based": 49,
+        "side": "right",
+        "prediction_index_zero_based": 28,
+        "prediction_xy": [
+          675.6201171875,
+          435.5635986328125
+        ],
+        "endpoint_confidence": 0.9154160618782043,
+        "coordinate_error_px": null
+      }
+    ]
+  },
+  "verification": {
+    "root_independent_recount": "passed",
+    "production_scoring_imports": false,
+    "method": "Standard-library label parsing and independent confidence-ordered greedy IoU association; source hashes and every listed summary count checked. Physical image content was not re-adjudicated.",
+    "counts": {
+      "matched": 643,
+      "matched_lines": 637,
+      "lines_with_reference_v0": 59,
+      "matched_two_locatable": 578,
+      "matched_two_locatable_displayed": 578,
+      "matched_locatable": 1208,
+      "matched_locatable_displayed": 1207,
+      "unmatched_objects": 20,
+      "unmatched_locatable": 19,
+      "reference_objects": 663,
+      "predictions": 728,
+      "matched_reference_v0": 78,
+      "matched_reference_v0_displayed": 70
+    },
+    "withheld": [
+      {
+        "image_id": "new_000008",
+        "row_one_based": 1,
+        "prediction_index": 37,
+        "side": "right",
+        "endpoint_confidence": 0.22002056241035461,
+        "coordinate_error_px": 8.62401097016358
+      }
+    ]
+  }
+}

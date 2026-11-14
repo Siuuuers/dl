@@ -3,6 +3,12 @@
 Date: 2026-11-14, Asia/Hong_Kong. Source: published PR61 revision
 `1b71e8158e0594ee4c72ba845fa7b514a78b9e0d`.
 
+**Subsequent clarification:** the user requires the actual bottom corners of
+the whole white block's front face. The [target clarification](target-clarification-2026-11-14.md)
+records two concrete image questions, including physical unit membership in
+`old_000042`. The findings below remain the earlier review record; the untrained
+candidate needs those image interpretations resolved before a training comparison.
+
 **The fixed 57-image original-first pass is complete.** Its separate training
 candidate adds six visible front faces, restores two directly observed corner
 slots, and repairs three boxes. No model was trained on these changes. Retain

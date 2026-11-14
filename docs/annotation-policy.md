@@ -35,6 +35,8 @@ Keep box and point judgments independent during review. A point outside its box 
 
 First identify the physical lower-front corner pair, then order the pair by image X. Do not substitute an upper lip, tray corner, occluder boundary, brightest stripe or arbitrary lowest image edge. The target is a physical feature, so perspective can tilt its connecting line.
 
+On 2026-11-14 the user emphasized the front face of the **whole white wax block**. A visible fragment's edge does not become a target corner because the rest is obscured. The [image clarification](target-clarification-2026-11-14.md) records unresolved concrete examples; textual agreement with this policy does not certify existing annotations. This endpoint clarification does not by itself replace the separate visible-extent box rule in section 2.
+
 Each endpoint is decided independently:
 
 - Use `v=2` when the actual corner is visible and reliably locatable from the original pixels.
