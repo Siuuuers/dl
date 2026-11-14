@@ -260,7 +260,7 @@ def main():
     c.bookmarkPage("guide")
     c.addOutlineEntry("How to read the labels", "guide", 0)
     heading(c, "How to read the labels", "Use image ID + current row number when reporting a correction", 2, "GUIDE")
-    legend = [(CYAN, "Solid cyan box", "Current saved front-face annotation. It can contain an occluder between visible pieces of the same front."),
+    legend = [(CYAN, "Solid cyan box", "No recorded review question for this row. Zero, one or two actual corners may be locatable; corner count does not determine box colour."),
               (AMBER, "Dashed amber box", "A recorded identity, extent or landmark question remains for this row. Some fields may already be corrected."),
               (GREEN, "Green point", "Saved lower-left front corner, ordered by image x. This point is marked locatable (v=2) in the label."),
               (MAGENTA, "Pink point", "Saved lower-right front corner, ordered by image x. Missing or unreliable corners (v=0) are not drawn."),
