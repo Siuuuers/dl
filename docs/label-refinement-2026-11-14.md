@@ -2,6 +2,13 @@
 
 Date: 2026-11-14, Asia/Hong_Kong.
 
+**Follow-up:** [visible-front labels and hidden predictions](visible-and-hidden-2026-11-14.md)
+distinguishes explicit upstream requirements from the adopted box convention.
+The user has confirmed that `new_000006` A/source59 and B/source53 are two
+separate cassettes; that instance-count question below is now resolved. Their
+precise observed box extents remain under review. The hash-bound candidate and
+ledger below remain unchanged as a historical snapshot.
+
 **The selected PR35 model was trained with annotation defects identified by later reviews.** Its actual returned training archive records the eight-file `annotations-2026-11-10` overlay. That overlay leaves `new_000038` unchanged, including its single, overly broad row for the three fronts beside the thumb. Later accepted repairs in other images are also absent from those training inputs. Label corrections made after training do not change the existing weights.
 
 This continuation assembles the compatible, previously accepted training corrections and the new three-front repair into one explicitly versioned **review candidate**. Original labels and original validation remain frozen. This is preparation for further review, not a new training result or a claim that every annotation is correct. No GPU job, inference, model promotion or change of runtime defaults is part of this work.

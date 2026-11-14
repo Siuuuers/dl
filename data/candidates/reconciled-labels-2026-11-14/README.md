@@ -2,6 +2,13 @@
 
 **Status: reviewed, not released. No model has been trained on this revision.**
 
+**Later review status:** the [upstream-contract clarification](../../../docs/visible-and-hidden-2026-11-14.md)
+records the user's confirmation that `new_000006` original rows53/59 are separate
+cassettes. Its [field-specific addendum](../../../results/review/visible-and-hidden-20261114/review-status.json)
+closes that identity question while retaining the box-extent review. This does
+not alter this candidate's frozen labels or ledger. The observed-front box
+convention and permission to predict hidden corners are explained separately.
+
 This overlay unifies the compatible accepted historical training corrections and the newly reviewed `new_000038` three-front/clipped-front repair. Its 40 TXT files replace the matching original training files only when constructing this explicit revision; all other original labels remain byte-identical. It is not a complete images-and-labels folder for the HTML editor or an input accepted by an old training recipe.
 
 [Full explanation and figures](../../../docs/label-refinement-2026-11-14.md) · [Manifest and original row maps](manifest.json) · [Exact operations and provenance](review.json) · [Evidence index](../../../results/review/label-refinement-20261114/README.md)
