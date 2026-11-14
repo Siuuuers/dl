@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-occlusion-training-protocol",
+  "experiment_id": "occlusion-seed46-v1",
+  "status": "prospectively_declared",
+  "declared_at_utc": "2026-11-13T12:43:11.378762+00:00",
+  "declared_timezone": "Asia/Hong_Kong",
+  "foundation_revision": "98e163f7bf504d945c1718cde839f66ea2d1b541",
+  "hypothesis": "Training-only corruption of pixels at known source corners may improve masked-input localization while preserving clean lower-front detection and endpoint accuracy. No improvement is assumed.",
+  "recipe_id": "reviewed-annotations-seed46-v1",
+  "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+  "recipe_identity_scope": "The recipe ID/hash describe the unchanged base numerical trainer settings. This protocol and each receipt additionally bind the experimental role and input-corruption specification.",
+  "candidate_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+  "candidate_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+  "candidate_id": "annotations-2026-11-10",
+  "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "historical_policy": {
+    "path": "docs/policies/annotation-policy-pr35-2026-11-10.md",
+    "sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91"
+  },
+  "current_policy": {
+    "path": "docs/annotation-policy.md",
+    "sha256": "74dd943976a4abc22ecbf73551c69f715666060d5961b2bed81e6a9c73a3afc9"
+  },
+  "roles": {
+    "control": {
+      "label_arm": "candidate",
+      "pixel_corruption_applied": false
+    },
+    "candidate": {
+      "label_arm": "candidate",
+      "pixel_corruption_applied": true
+    }
+  },
+  "training_counts": {
+    "train": {
+      "images": 137,
+      "objects": 3771,
+      "visible_endpoints": 6841,
+      "missing_endpoints": 701,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 664,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 101,
+      "empty_images": 3
+    }
+  },
+  "augmentation": {
+    "id": "known-source-corner-corruption-v1",
+    "seed": 46013,
+    "probability": 0.5,
+    "max_masks_per_image": 1,
+    "side_fraction_range": [
+      0.15,
+      0.35
+    ],
+    "outside_fraction": 0.05,
+    "vertical_pad_fraction": 0.15,
+    "minimum_pad_px": 3,
+    "fill_gray_range": [
+      64,
+      192
+    ],
+    "point_radius_px": 3
+  },
+  "target_contract": {
+    "name": "known-source-geometry-under-pixel-corruption-v1",
+    "source_files": "All canonical image and label files remain byte-identical. Both experimental roles use the exact PR35 annotation composition.",
+    "boxes": "Retain the transformed pre-corruption source-visible-front box. It is a reconstruction target, not a newly measured visible extent or full amodal object box.",
+    "keypoints": "Retain all transformed known source coordinates and flags; source v2 denotes observation before corruption. Never create coordinates for source v0 slots.",
+    "score": "Learned endpoint availability under this supervision; not an independently calibrated physical-visibility probability.",
+    "validation": "Only training preprocess receives the transform. Validation and evaluation input pixels stay unchanged unless explicitly part of the separately fixed PR60 diagnostic."
+  },
+  "execution": {
+    "seed": 46,
+    "epochs": 30,
+    "resource_trial_batches": 4,
+    "independent_epoch173_initialization": true,
+    "trial_initializes_full_runs": false,
+    "resume": false,
+    "checkpoint_selection": "final_epoch",
+    "checkpoint_path": "fit/weights/last.pt",
+    "same_clean_source": true,
+    "same_runtime": true,
+    "same_numeric_recipe": true,
+    "same_effective_label_inventory": true,
+    "automatic_promotion": false
+  },
+  "evaluation": {
+    "imgsz": 1280,
+    "box_confidence": 0.13,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "endpoint_confidence": 0.5,
+    "radii_px": [
+      5,
+      10
+    ],
+    "primary_reference": {
+      "path": "data/references/visible-front-adjudication-2026-11-12/manifest.json",
+      "sha256": "75e8689f65f7f32ca7f4657f27d214aa1ba371347812de780c6e5e6ac21af61e"
+    },
+    "clean_denominators": {
+      "images": 20,
+      "objects": 663,
+      "locatable_endpoints": 1227,
+      "two_corner_objects": 584
+    },
+    "synthetic_probe": {
+      "protocol_path": "experiments/pixel-occlusion-2026-11-13.json",
+      "protocol_sha256": "a8723e77d0f23aa22b62c5788967c0a7593b453996c4e1956bd714c93a606305",
+      "archive_path": "results/verification/baomai-pixel-occlusion-20261113/evaluation.zip",
+      "archive_sha256": "f2dfbc58479ec48172137ceec5b07c5d74f5fb60428dd0c42bd12590d43a780e",
+      "cases_member": "evaluation/prepared-cases.json",
+      "cases_sha256": "9f0b3041acd73e9b2e9de6ff3a6b89e099f8ed2748c65346da253c0131c30c1b",
+      "targets_per_condition": 30,
+      "covered_endpoint_observations": 60,
+      "conditions": [
+        "intact",
+        "left",
+        "right",
+        "center"
+      ],
+      "scope": "Reused development regression probe; these scenes and failures informed the hypothesis. Not an untouched test."
+    },
+    "PR35": {
+      "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+      "clean": {
+        "matched": 643,
+        "missed": 20,
+        "unmatched_proposals": 85,
+        "duplicate_proposals": 31,
+        "returned_locatable_endpoints": 1207,
+        "pairs_within_5px": 529,
+        "pairs_within_10px": 577,
+        "empty_image_outputs": 0
+      },
+      "covered_within_10px": {
+        "left": 28,
+        "right": 26
+      },
+      "covered_within_5px": {
+        "left": 22,
+        "right": 22
+      }
+    },
+    "decision": {
+      "comparators": [
+        "matched_control",
+        "operational_PR35"
+      ],
+      "minimum_additional_covered_10px_successes_over_60": 2,
+      "minimum_distinct_supporting_objects": 2,
+      "minimum_supporting_covered_error_reduction_px": 2,
+      "covered_side_10px_counts_may_decrease": false,
+      "preserve_covered_5px_counts": true,
+      "preserve_target_match_and_return_coverage": true,
+      "preserve_opposite_side_10px_counts": true,
+      "preserve_center_pair_5px_and_10px_counts": true,
+      "clean_nonregression": [
+        "misses",
+        "unmatched proposals",
+        "duplicate proposals",
+        "locatable endpoint coverage",
+        "5px pair successes",
+        "10px pair successes",
+        "empty-image outputs"
+      ],
+      "review_all_changed_match_and_success_identities": true,
+      "preserve_supported_clean_object_and_corner_successes": true,
+      "failure_decision": "Retain PR35; no threshold, seed, epoch, radius or target-subset search to manufacture acceptance.",
+      "interpretation": "Prospective practical minimum for a development candidate, not a statistical-significance or deployment claim."
+    }
+  },
+  "limits": [
+    "One seed and one matched pair; finalize epoch30 for both.",
+    "The 137/20 split and source labels remain fixed; revised development references are for post-training evaluation only.",
+    "No naturally hidden corner is filled with a model or geometric guess.",
+    "Synthetic masking exposure, skipped attempts and collateral known coordinates must be reported.",
+    "Natural hidden-corner error remains unknown where independent coordinates do not exist.",
+    "Independent representative scenes and an application acceptance contract remain necessary for deployment readiness."
+  ]
+}
