@@ -29,3 +29,7 @@ The branch `an94-doll/embedding_vision:baomai` and the earliest imported version
 ## Acceptance gate
 
 Review the PDF first. After physical confirmation, validate all labels in a **separate versioned candidate**, verify counts and corner visibility, and only then consider merging the draft or preparing a newly pinned training experiment. This PR itself performs **no training and no model promotion**.
+
+## Temporal split risk
+
+The user identified the `new_` images as frames from video, not independent photographs. The frozen split contains nearby numbered train/validation examples, including `new_000006` (train) beside `new_000007` (val), and `new_000085` (train) beside `new_000086` (val). Close frame numbers do not prove sampling timestamps, but the repeated scene and video origin create a concrete temporal-correlation risk. The existing paired experiment still measures a controlled within-sequence difference; its validation results must not be presented as independent performance on new videos. For a future external claim, hold out an independent acquisition session or entire video, if any exists, and group related frames together.
