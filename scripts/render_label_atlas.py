@@ -42,6 +42,47 @@ def read(path):
     return json.loads(path.read_text())
 
 
+def apply_adjudication(root, status, candidate, status_path, adjudication_path):
+    """Apply verified physical closures to the displayed ledger only."""
+    from verify_incremental_pose_candidate import verify_adjudication
+
+    decisions = verify_adjudication(root, adjudication_path)
+    for descriptor, loaded_path in (
+            (decisions["source_candidate"], candidate / "manifest.json"),
+            (decisions["source_review_status"], status_path)):
+        if (root / descriptor["path"]).resolve() != loaded_path.resolve():
+            raise ValueError("adjudication source does not match atlas input")
+        if sha(loaded_path) != descriptor["sha256"]:
+            raise ValueError("adjudication source hash does not match atlas input")
+    by_case = {case["case_id"]: case for case in status["cases"]}
+    accepted_notes = defaultdict(list)
+    for decision in decisions["decisions"]:
+        case = by_case[decision["case_id"]]
+        case["status"] = decision["status"]
+        accepted_notes[decision["image_id"]].append(
+            "Resolved physical question: " + decision["explanation"])
+
+    for focus in status.get("focus_pages", []):
+        iid, crop = focus["image_id"], focus["crop_xyxy_px"]
+        if iid == "new_000037" and crop == [700, 0, 1280, 135]:
+            focus.update(
+                title="Resolved 1: upper assembly is wall",
+                section="USER CONFIRMATION",
+                observation="You identified this broad white assembly as wall. This exact region is non-target; no cassette row is added or changed. The accepted two-front correction beside the thumb is a separate decision.",
+                question="The upper-assembly question in new_000037 is resolved. Position outside the rack is a supporting cue, not a rule excluding every held or off-rack cassette front.")
+        elif iid == "new_000030":
+            focus.update(
+                title="Question 2: material confirmed; count open",
+                section="MATERIAL CONFIRMED",
+                observation="You confirmed shadowed cassette material through the gripper's opening. Its material identity is established; whether the lower triangle below about y483 is a second target front or another surface of the same cassette remains open. The proposed extra instance is still withheld.",
+                question="Which physical front owns the lower triangle? A visible white shoulder can help identify a cassette, but is not required. No hidden corner becomes locatable through this clarification.")
+        elif iid == "new_000117":
+            focus["observation"] = "The thin band in row24 below the larger right-hand front is visible, but its instance ownership is unclear. The same question remains in new116 and new123. No minimum-height or minimum-area exclusion has been adopted."
+        elif iid == "new_000128":
+            focus["observation"] = "Row1 is a strip about five pixels high at the top frame; rows6 and9 have similar questions. Neighboring cassette size and position help test ownership, but do not establish a separate clipped front or an invisible corner. No size-based exclusion is adopted."
+    return decisions, accepted_notes
+
+
 def wrapped(c, text, x, y, width, size=11, leading=15, color=INK):
     c.setFont("Atlas", size)
     c.setFillColor(color)
@@ -161,8 +202,10 @@ def main():
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--candidate", type=Path, required=True)
     parser.add_argument("--status", type=Path, required=True)
+    parser.add_argument("--adjudication", type=Path,
+                        help="Verified additive physical decisions; applied in memory only")
     parser.add_argument("--reference", type=Path,
-                        default=Path("data/references/visible-front-adjudication-2026-11-12"),
+                        default=Path("data/references/visible-front-completion-2026-11-14"),
                         help="Separately versioned development reference directory")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--audit", type=Path, required=True)
@@ -171,6 +214,13 @@ def main():
     source_path = root / "data/manifest.json"
     source, train = read(source_path), read(candidate / "manifest.json")
     status = read(args.status)
+    source_pending_cases = sum(case["status"] != "resolved" for case in status["cases"])
+    adjudication, accepted_notes = None, defaultdict(list)
+    if args.adjudication:
+        adjudication_path = (args.adjudication if args.adjudication.is_absolute()
+                             else root / args.adjudication)
+        adjudication, accepted_notes = apply_adjudication(
+            root, status, candidate, args.status, adjudication_path)
     reference_dir = args.reference if args.reference.is_absolute() else root / args.reference
     reference = read(reference_dir / "manifest.json")
     if sha(source_path) != train["source_manifest_sha256"] or sha(source_path) != reference["source_manifest_sha256"]:
@@ -238,6 +288,8 @@ def main():
             raise ValueError(f"review flag targets absent row: {iid}")
         items.append({"record": record, "image_path": image_path, "label_path": label_path,
                       "objects": objects, "label_sha256": expected})
+    training_objects = sum(len(item["objects"]) for item in items
+                           if item["record"]["split"] == "train")
     focuses = status.get("focus_pages", [])
     first_photo = 5 + len(focuses)
     page_numbers = {item["record"]["id"]: first_photo + index for index, item in enumerate(items)}
@@ -256,7 +308,10 @@ def main():
     c.drawString(58, 660, "157 photos. Every current label.")
     wrapped(c, "137 training photos + 20 validation photos. Each photo has its own full page, with zoomable boxes, two lower-front landmarks, current row numbers, and visible review flags.", 60, 615, PAGE_W - 120, 19, 28)
     y = wrapped(c, "This is a review atlas of saved annotations. It is not model output, a confidence display, or a claim that every label is correct. Amber marks known unresolved rows. Unflagged rows are not automatically certified.", 60, 466, PAGE_W - 120, 16, 23)
-    y = wrapped(c, "The next GPU run remains pending. Training may proceed only after the remaining material questions are resolved and the training handoff verifies its exact inputs. Changing label files does not change the existing model weights.", 60, y - 20, PAGE_W - 120, 14, 21)
+    handoff_text = ("The full-review dataset is still blocked by unresolved physical questions. A separately specified accepted-corrections experiment may proceed under its own pinned protocol and verification. This PDF shows the full %s-object training candidate; the experiment's smaller label set is separate. Changing labels does not change existing model weights." % format(training_objects, ",")
+                    if adjudication else
+                    "The next GPU run remains pending. Training may proceed only after the remaining material questions are resolved and the training handoff verifies its exact inputs. Changing label files does not change the existing model weights.")
+    y = wrapped(c, handoff_text, 60, y - 20, PAGE_W - 120, 14, 21)
     y = wrapped(c, "Training candidate: " + train["candidate_id"] + "\nValidation source: " + reference["reference_id"] + " (separate development reference).", 60, y - 20, PAGE_W - 120, 12, 18)
     wrapped(c, "Scope: the 157 working-set photos, including every empty-label photo. Excluded final-test, gap and unaccepted upstream images are outside this frozen inventory. Photos are native-resolution JPEG review copies; the original PNGs remain authoritative for individual-pixel decisions.", 60, 168, PAGE_W - 120, 11, 17, MUTED)
     c.showPage()
@@ -326,7 +381,9 @@ def main():
             if panel:
                 annotation(c, item["objects"], left, bottom, w, h, item["record"]["original_size"], held[iid], crop, focus.get("current_rows"))
         y = wrapped(c, focus["observation"], 35, bottom - 32, PAGE_W - 70, 15, 22)
-        wrapped(c, focus["question"], 35, y - 18, PAGE_W - 70, 17, 25)
+        end_y = wrapped(c, focus["question"], 35, y - 18, PAGE_W - 70, 17, 25)
+        if end_y < 108:
+            raise ValueError(f"focus explanation overlaps footer: page {offset}")
         c.setFont("Atlas", 11)
         c.setFillColor(MUTED)
         c.drawString(35, 76, f"Full photo: page {page_numbers[iid]}. Crop bounds in original pixels: {crop}.")
@@ -363,7 +420,9 @@ def main():
         if not objects:
             text = "Empty-label photo. No cassette instances are annotated in this saved label file. Included deliberately in the complete review inventory."
         elif notes[iid]:
-            text = " ".join(notes[iid])
+            text = " ".join(notes[iid] + accepted_notes[iid])
+        elif accepted_notes[iid]:
+            text = " ".join(accepted_notes[iid]) + " This closure does not independently certify every box or landmark."
         else:
             text = "No unresolved case is recorded for this image in the loaded review ledgers. This status is not independent certification of every box or landmark."
         excerpt, abbreviated = note_excerpt(text, PAGE_W - 2 * MARGIN)
@@ -382,9 +441,22 @@ def main():
     audit = {"schema_version": 1, "kind": "all_photo_label_atlas", "pdf_filename": args.output.name,
              "pdf_sha256": sha(args.output), "pdf_bytes": args.output.stat().st_size,
              "page_count": first_photo + len(items) - 1, "photo_pages": len(items),
+             "source_manifest": {"path": source_path.relative_to(root).as_posix(), "sha256": sha(source_path)},
              "training_candidate": {"path": (candidate / "manifest.json").relative_to(root).as_posix(), "sha256": sha(candidate / "manifest.json")},
              "validation_reference": {"path": (reference_dir / "manifest.json").relative_to(root).as_posix(), "sha256": sha(reference_dir / "manifest.json")},
+             "review_status": {"path": args.status.resolve().relative_to(root).as_posix(), "sha256": sha(args.status)},
              "review_status_sha256": sha(args.status), "generator_sha256": sha(Path(__file__)),
+             "adjudication": ({"path": adjudication_path.relative_to(root).as_posix(),
+                                "sha256": sha(adjudication_path),
+                                "resolved_case_ids": [item["case_id"] for item in adjudication["decisions"]],
+                                "application": "In-memory review status and explanatory text only; full candidate labels unchanged"}
+                               if adjudication else None),
+             "display_scope": {"training_objects": training_objects,
+                               "source_pending_case_groups": source_pending_cases,
+                               "displayed_pending_case_groups": sum(case["status"] != "resolved" for case in status["cases"]),
+                               "separate_incremental_experiment_labels_displayed": False,
+                               "full_review_gate_bypassed": False},
+             "focus_pages": [{"page": page, **focus} for page, focus in enumerate(focuses, 5)],
              "rendering": {"photo_resize": False, "photo_jpeg_quality": 96, "photo_jpeg_subsampling": 0,
                            "annotations": "PDF vectors", "focus_crops": "lossless original PNG pixels",
                            "model_inference": False, "lines_require_both_saved_v2": True},

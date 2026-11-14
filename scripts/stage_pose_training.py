@@ -55,6 +55,9 @@ def source_state(root, candidate):
     elif proposal.get("kind") == "training_observed_review_composition":
         from verify_observed_training_candidate import verify_observed_training_candidate
         receipt = verify_observed_training_candidate(root, candidate)
+    elif proposal.get("kind") == "training_incremental_observed_overlay":
+        from verify_incremental_pose_candidate import verify_incremental_candidate
+        receipt = verify_incremental_candidate(root, candidate)
     else:
         receipt = verify_candidate(root, candidate)
     reference = json.loads((root / "data/manifest.json").read_text(encoding="utf-8"))
@@ -68,7 +71,8 @@ def source_state(root, candidate):
     records = sorted(reference["records"], key=lambda row: (row["split"], row["id"]))
     changes = {change["image_id"]: change for change in proposal["changes"]}
     control_path, control_changes = None, {}
-    if proposal.get("kind") in ("training_composed_overlay", "training_observed_review_composition"):
+    if proposal.get("kind") in ("training_composed_overlay", "training_observed_review_composition",
+                                "training_incremental_observed_overlay"):
         control = receipt["control"]
         if proposal["kind"] == "training_composed_overlay":
             require(proposal["control"] == {"manifest": control["manifest"], "sha256": control["manifest_sha256"]},
@@ -112,8 +116,10 @@ def source_state(root, candidate):
               "source_revision_git_object_checked": False}
     if control_path is not None:
         source.update(candidate_kind=proposal["kind"], control=receipt["control"])
-    if proposal.get("kind") == "training_observed_review_composition":
+    if proposal.get("kind") in ("training_observed_review_composition", "training_incremental_observed_overlay"):
         source["training_protocol"] = receipt["training_protocol"]
+    if proposal.get("kind") == "training_incremental_observed_overlay":
+        source["retained_legacy_image_ids"] = receipt["retained_legacy_image_ids"]
     return {"root": root, "records": records, "plans": plans, "counts": counts, "source": source,
             "changed_train_labels": receipt["changed_train_labels"], "removed_objects": receipt["removed_objects"]}
 
@@ -178,24 +184,27 @@ def verify_outputs(output, state):
     return variants
 
 
-def code_hashes(*, composed=False, observed=False):
+def code_hashes(*, composed=False, observed=False, incremental=False):
     scripts = Path(__file__).resolve().parent
     names = ("stage_pose_training.py", "verify_pose_candidate.py", "verify_pose_box_candidate.py",
              "verify_pose_annotation_candidate.py", "verify_pose_endpoint_candidate.py",
              "evaluate_pose.py", "pose_scoring.py")
     if composed:
         names += ("verify_pose_composed_candidate.py",)
-    if observed:
+    if observed or incremental:
         names += ("verify_observed_training_candidate.py", "compose_observed_pose_review.py",
                   "verify_pose_composed_candidate.py")
+    if incremental:
+        names += ("verify_incremental_pose_candidate.py", "compose_incremental_pose_candidate.py")
     return {f"scripts/{name}": file_sha256(scripts / name) for name in names}
 
 
 def manifest_fields(output, state, variants):
     composed = state["source"].get("candidate_kind") == "training_composed_overlay"
     observed = state["source"].get("candidate_kind") == "training_observed_review_composition"
+    incremental = state["source"].get("candidate_kind") == "training_incremental_observed_overlay"
     result = {"schema_version": 1, "status": "complete", "output_root": str(output),
-            "source": state["source"], "code_sha256": code_hashes(composed=composed, observed=observed), "variants": variants,
+            "source": state["source"], "code_sha256": code_hashes(composed=composed, observed=observed, incremental=incremental), "variants": variants,
             "verification": {"source_labels_verified": 157, "actual_original_pngs_verified": 157,
                              "copied_images_verified": 314, "copied_labels_verified": 314,
                              "changed_train_labels": state["changed_train_labels"],
@@ -218,13 +227,19 @@ def manifest_fields(output, state, variants):
             removed_training_objects_vs_control=state["counts"]["reference"]["train"]["objects"]
                 - state["counts"]["candidate"]["train"]["objects"],
             removed_training_objects_denominator="original source labels")
-    if observed:
+    if observed or incremental:
         result["verification"].update(
             reference_labels_are_verified_pr35_control=True,
             control_changed_train_labels=state["source"]["control"]["changed_train_labels"],
             net_removed_training_objects_vs_control=state["counts"]["reference"]["train"]["objects"]
                 - state["counts"]["candidate"]["train"]["objects"],
             training_readiness_verified=True)
+    if incremental:
+        result["verification"].update(
+            retained_photo_labels_identical_between_arms=True,
+            retained_legacy_images=len(state["source"]["retained_legacy_image_ids"]),
+            full_dataset_certified=False,
+            training_readiness_scope="controlled_incremental_experiment_only")
     return result
 
 

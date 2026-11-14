@@ -1,5 +1,9 @@
 # Complete visible-front sweep and prepared training handoff
 
+**Follow-up after the user’s physical clarification:** the upper structures in new037 (user-confirmed wall) and new017 (visually inferred fixture) are now recorded as non-target. The current physical review has **24 remaining groups across 21 training photos**. Use the separate [accepted-corrections experiment and notebook](accepted-front-corrections-2026-11-14.md) to compare supported corrections while retaining exact legacy labels on unresolved photos in both arms.
+
+The report below preserves the original full-review candidate and its blocked 26-group protocol. It remains a provenance record; its full-review notebook is not the new limited experiment’s entry point. The refreshed atlas applies the additive physical decisions while showing the same full candidate labels.
+
 **The analogous-label sweep is complete. Accepted repairs are composed; physical questions remain, so GPU training is blocked.** The user-confirmed two cassettes beside the thumb in `new_000037` now have separate cyan boxes. This report supersedes the earlier extent-comparison status without rewriting its historical evidence.
 
 ![Original pixels, the preceding label, and the accepted two-front correction](../results/review/complete-labels-20261114/new037-two-fronts.png)

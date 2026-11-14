@@ -1,19 +1,17 @@
-# Remaining physical questions before training
+# Remaining physical questions and the limited training experiment
 
-**Training: 26 pending groups across 23 photos — 15 previously open groups and 11 newly identified groups.** These are questions about physical components, front ownership or instance count. A missing corner alone is not an unresolved label.
+**Current physical review: 24 pending groups across 21 training photos — 13 previously open groups and 11 newly identified groups.** These are questions about physical components, front ownership or instance count. A missing corner alone is not an unresolved label.
 
-Row numbers below are the current rows in `complete-visible-fronts-2026-11-14`. Their mapping was checked after composition. PDF page numbers refer to the 166-page atlas; “unlabelled” means there is no existing row to point to. The notebook remains blocked until the training questions and separate reference holds are resolved.
+Row numbers below are the current rows in `complete-visible-fronts-2026-11-14`. Their mapping was checked after composition. PDF page numbers refer to the 166-page atlas; “unlabelled” means there is no existing row to point to. The frozen full-review notebook remains blocked under its original contract. The separate [accepted-corrections notebook](../notebooks/baomai_accepted_fronts.ipynb) tests supported corrections while retaining exact PR35 labels on every unresolved training photo in both arms. It does not certify the full review.
 
-## 1. Broad white assemblies above the rack
+## 1. Upper structures: resolved non-target questions
 
-**Question to ask:** “Are these broad white pieces above the rack part of our target cassette population, or are they covers, trays or supports? If they are target cassettes, please identify each physical cassette and the face that should be labelled.”
+| Photo | Decision | Evidence |
+| --- | --- | --- |
+| new_000037 (focus p.6 / full p.39) | Broad upper assembly is wall; add no cassette. | The user identifies this exact structure. |
+| new_000017 (p.21) | Continuous upper fixture/backing is non-target; add no cassette. | Independent original-image inference; not a user-confirmed wall identification. |
 
-| Photo | Row or region | Specific distinction |
-|---|---|---|
-| new_000017 (p.21) | Unlabelled broad upper assembly | Target cassette fronts versus tray/support/roof surfaces; establish the units and front plane. |
-| new_000037 (p.39) | Unlabelled broad upper assembly | The same distinction. The confirmed two cassettes beside the thumb do not identify this separate upper assembly. |
-
-**2 prior groups.** An answer changes whether to add instances and which surfaces are targets.
+The [additive adjudication record](../results/review/physical-adjudication-20261114/decisions.json) closes these two groups without changing a label row or the original review ledger. This is not a general rule excluding targets held outside the rack. The thumb-side two-front correction in new037 remains accepted.
 
 ## 2. Material visible through the gripper: which face, and how many fronts?
 
@@ -68,7 +66,7 @@ Row numbers below are the current rows in `complete-visible-fronts-2026-11-14`. 
 
 ## Development reference — separate follow-up
 
-There are **13 held reference rows across 9 photos**, separate from the 26 training groups:
+There are **13 held reference rows across 9 photos**, separate from the 24 remaining training groups:
 
 | Photo | Held reference row(s) |
 |---|---|
@@ -86,6 +84,6 @@ Their saved reasons are generic physical-front identity, seam ownership or targe
 
 ## Evidence and counts
 
-The [three batch review records](../results/review/complete-labels-20261114/) preserve each original image identity, exact input label, proposed edit and case disposition. The [review status](../results/review/complete-labels-20261114/review-status.json) is the complete machine-readable inventory. The [development review](../results/review/complete-labels-20261114/development-reference-review.json) records the separate reference decisions.
+The [three batch review records](../results/review/complete-labels-20261114/) preserve each original image identity, exact input label, proposed edit and case disposition. The [frozen review status](../results/review/complete-labels-20261114/review-status.json) preserves the original 26-group inventory. Apply the two explicit [physical adjudications](../results/review/physical-adjudication-20261114/decisions.json) for the current 24-group inventory. The [development review](../results/review/complete-labels-20261114/development-reference-review.json) records the separate reference decisions.
 
-Family totals are **2 + 8 + 15 + 1 = 26 groups**. new034 has two prior groups for the same row15 question; new049 has one prior group spanning two families and is counted once. The 23-photo total counts each training photo once. These group counts differ from the 27 amber training rows: a group can cover multiple rows or an unlabelled region.
+Remaining family totals are **0 + 8 + 15 + 1 = 24 groups**. new034 has two prior groups for the same row15 question; new049 has one prior group spanning two families and is counted once. The 21-photo total counts each unresolved training photo once. These group counts differ from the 27 amber training rows: a group can cover multiple rows or an unlabelled region.
