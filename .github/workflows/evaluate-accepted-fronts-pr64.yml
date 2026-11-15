@@ -1,0 +1,118 @@
+name: Evaluate accepted-fronts PR64 against PR35
+
+on:
+  push:
+    branches:
+      - codex/evaluate-accepted-fronts-pr64-20261115
+    paths:
+      - .github/workflows/evaluate-accepted-fronts-pr64.yml
+      - scripts/measure_accepted_fronts_pr64.py
+
+permissions:
+  contents: read
+
+jobs:
+  measure:
+    if: github.repository == 'Siuuuers/dl'
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - name: Check out reviewed evaluator and frozen reference
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+
+      - name: Select pinned Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch and verify the PR64 and PR35 checkpoint archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/baomai-measure/pr64 /tmp/baomai-measure/pr35
+          git fetch --depth=1 origin 8df5a4b611ac793892e589b3a3ee2789fa5506f7
+          git show 8df5a4b611ac793892e589b3a3ee2789fa5506f7:results/gpu/baomai-accepted-fronts-l4-001/baomai-accepted-fronts-seed46-results.zip > /tmp/baomai-measure/pr64.zip
+          echo '700597d31088c516f8ac6ebd1692883878fc95c7d5dccc548100188769c715ee  /tmp/baomai-measure/pr64.zip' | sha256sum -c -
+          git fetch --depth=1 origin 8e8bb99cabcb44ed0ec0acd14db911aa44013fd8
+          git show 8e8bb99cabcb44ed0ec0acd14db911aa44013fd8:results/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip > /tmp/baomai-measure/pr35.zip
+          echo 'df53683ccf6f266a605b2844f42a98e808f75686cfab09f14d680c9d061e8a91  /tmp/baomai-measure/pr35.zip' | sha256sum -c -
+          unzip -tq /tmp/baomai-measure/pr64.zip | tail -1
+          unzip -tq /tmp/baomai-measure/pr35.zip | tail -1
+
+      - name: Audit the returned training losses and provenance (not accuracy)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/measure_accepted_fronts_pr64.py audit \
+            --archive /tmp/baomai-measure/pr64.zip \
+            --sha256 700597d31088c516f8ac6ebd1692883878fc95c7d5dccc548100188769c715ee \
+            --output /tmp/baomai-measure/training-audit.json
+          unzip -q /tmp/baomai-measure/pr64.zip -d /tmp/baomai-measure/pr64
+          unzip -q /tmp/baomai-measure/pr35.zip -d /tmp/baomai-measure/pr35
+
+      - name: Hydrate exact original photos and model initialization from Git LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include='data/images/train/*.png,data/images/val/*.png,weights/cassette_lower_epoch173.pt' --exclude=''
+
+      - name: Install pinned CPU inference environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.10.0+cpu' 'torchvision==0.25.0+cpu'
+          python -m pip install 'ultralytics==8.4.182' 'numpy==2.2.6' 'Pillow==11.3.0' 'opencv-python==4.11.0.86' 'psutil'
+          python - <<'PY'
+          import torch,ultralytics,numpy,PIL,cv2
+          print("Inference runtime:",torch.__version__,ultralytics.__version__,numpy.__version__,PIL.__version__,cv2.__version__)
+          assert not torch.cuda.is_available()
+          PY
+
+      - name: Run exact clean-image inference for all three checkpoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/evaluate_pose.py --root . --output /tmp/baomai-measure/eval-pr35 \
+            --checkpoint-manifest /tmp/baomai-measure/pr35/candidate/checkpoint-manifest.json \
+            --device cpu --threads 4 --conf 0.13 --endpoint-conf 0.50 --matching-iou 0.50 --overlays 0
+          python scripts/evaluate_pose.py --root . --output /tmp/baomai-measure/eval-reference \
+            --checkpoint-manifest /tmp/baomai-measure/pr64/reference/checkpoint-manifest.json \
+            --device cpu --threads 4 --conf 0.13 --endpoint-conf 0.50 --matching-iou 0.50 --overlays 0
+          python scripts/evaluate_pose.py --root . --output /tmp/baomai-measure/eval-candidate \
+            --checkpoint-manifest /tmp/baomai-measure/pr64/candidate/checkpoint-manifest.json \
+            --device cpu --threads 4 --conf 0.13 --endpoint-conf 0.50 --matching-iou 0.50 --overlays 0
+
+      - name: Score both independently versioned development references
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/measure_accepted_fronts_pr64.py score \
+            --root . \
+            --pr35 /tmp/baomai-measure/eval-pr35/predictions.jsonl \
+            --reference /tmp/baomai-measure/eval-reference/predictions.jsonl \
+            --candidate /tmp/baomai-measure/eval-candidate/predictions.jsonl \
+            --pr35-manifest /tmp/baomai-measure/pr35/candidate/checkpoint-manifest.json \
+            --reference-manifest /tmp/baomai-measure/pr64/reference/checkpoint-manifest.json \
+            --candidate-manifest /tmp/baomai-measure/pr64/candidate/checkpoint-manifest.json \
+            --output /tmp/baomai-measure/comparison.json
+          cat /tmp/baomai-measure/training-audit.json | head -c 3000
+          echo
+
+      - name: Preserve measurement reports and exact prediction arrays
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baomai-pr64-evaluation-receipts
+          path: |
+            /tmp/baomai-measure/training-audit.json
+            /tmp/baomai-measure/comparison.json
+            /tmp/baomai-measure/eval-pr35/predictions.jsonl
+            /tmp/baomai-measure/eval-reference/predictions.jsonl
+            /tmp/baomai-measure/eval-candidate/predictions.jsonl
+          if-no-files-found: warn
+          retention-days: 30
