@@ -1,0 +1,93 @@
+name: Export reviewed labels and selected PR35 + measure against baomai
+
+on:
+  push:
+    branches:
+      - codex/export-reviewed-labels-pr35-20261115
+    paths:
+      - .github/workflows/export-reviewed-labels-pr35.yml
+      - scripts/export_upstream_labels_pr35.py
+      - scripts/report_pr35_vs_baomai.py
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    if: github.repository == 'Siuuuers/dl'
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - name: Check out reviewed source and exact label candidate
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+      - name: Use Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch exact PR35 result archive and check identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/baomai-export
+          git fetch --depth=1 origin 8e8bb99cabcb44ed0ec0acd14db911aa44013fd8
+          git show 8e8bb99cabcb44ed0ec0acd14db911aa44013fd8:results/gpu/baomai-reviewed-annotations-seed46-l4-001/baomai-reviewed-annotations-seed46-results.zip > /tmp/baomai-export/pr35.zip
+          echo 'df53683ccf6f266a605b2844f42a98e808f75686cfab09f14d680c9d061e8a91  /tmp/baomai-export/pr35.zip' | sha256sum -c -
+          unzip -q /tmp/baomai-export/pr35.zip -d /tmp/baomai-export/pr35
+      - name: Build self-contained additive upstream ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/export_upstream_labels_pr35.py \
+            --root . --pr35-zip /tmp/baomai-export/pr35.zip \
+            --output /tmp/baomai-export/BAOMAI_reviewed92_PR35_selected_commit.zip
+          unzip -tq /tmp/baomai-export/BAOMAI_reviewed92_PR35_selected_commit.zip
+          unzip -l /tmp/baomai-export/BAOMAI_reviewed92_PR35_selected_commit.zip | tail -4
+      - name: Download frozen validation PNGs and original epoch173 weights
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include='data/images/val/*.png,weights/cassette_lower_epoch173.pt' --exclude=''
+      - name: Install same pinned CPU runtime used for completed PR64 evaluation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.10.0+cpu' 'torchvision==0.25.0+cpu'
+          python -m pip install 'ultralytics==8.4.182' 'numpy==2.2.6' 'Pillow==11.3.0' 'opencv-python==4.11.0.86' 'psutil'
+      - name: Evaluate original epoch173 and selected PR35 at same thresholds
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/evaluate_pose.py --root . --output /tmp/baomai-export/original-inference \
+            --device cpu --threads 4 --conf 0.13 0.15 0.25 --endpoint-conf 0.50 --matching-iou 0.50 --overlays 0
+          python scripts/evaluate_pose.py --root . --output /tmp/baomai-export/pr35-inference \
+            --checkpoint-manifest /tmp/baomai-export/pr35/candidate/checkpoint-manifest.json \
+            --device cpu --threads 4 --conf 0.13 0.15 0.25 --endpoint-conf 0.50 --matching-iou 0.50 --overlays 0
+      - name: Fair replay on both versioned 663-object references
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/report_pr35_vs_baomai.py \
+            --root . \
+            --original /tmp/baomai-export/original-inference/predictions.jsonl \
+            --selected /tmp/baomai-export/pr35-inference/predictions.jsonl \
+            --manifest /tmp/baomai-export/pr35/candidate/checkpoint-manifest.json \
+            --output /tmp/baomai-export/pr35-comparison
+      - name: Save final commit ZIP and measured comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baomai-review92-pr35-upstream-commit-and-baseline-metrics
+          path: |
+            /tmp/baomai-export/BAOMAI_reviewed92_PR35_selected_commit.zip
+            /tmp/baomai-export/BAOMAI_reviewed92_PR35_selected_commit.receipt.json
+            /tmp/baomai-export/pr35-comparison/README.md
+            /tmp/baomai-export/pr35-comparison/comparison.json
+            /tmp/baomai-export/original-inference/predictions.jsonl
+            /tmp/baomai-export/pr35-inference/predictions.jsonl
+          if-no-files-found: warn
+          retention-days: 30
