@@ -1,0 +1,76 @@
+{
+  "status": "verified_read_only_development_replay",
+  "github": {
+    "repository": "Siuuuers/dl",
+    "artifact_id": 14162004655,
+    "artifact_url": "https://github.com/Siuuuers/dl/actions/runs/43717526943/artifacts/14162004655",
+    "workflow_run_id": 43717526943,
+    "workflow_head_sha": "aaa2643232c8dc8370ad92ed007c7cc77e2cdd6a",
+    "report_revision": "d71303a2a3e2c6abed278fe91ba0f0a910fea63d",
+    "pr64_revision": "8df5a4b611ac793892e589b3a3ee2789fa5506f7",
+    "artifact_created_at": "2026-11-15T13:11:28Z",
+    "artifact_expires_at": "2026-12-15T13:11:27Z",
+    "artifact_digest": "sha256:a60c9404d8ca07a1ccbb724f999e7d7aacb73d373a1f2769edef1e6e9bacc915"
+  },
+  "references": {
+    "historical_completion_2026_11_14": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+    "reviewed_2026_11_18": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96"
+  },
+  "inputs": [
+    {
+      "path": "results/review/sequence-refinement-20261118/model-replay/pr66-evaluation-receipts.zip",
+      "size_bytes": 226565,
+      "sha256": "a60c9404d8ca07a1ccbb724f999e7d7aacb73d373a1f2769edef1e6e9bacc915"
+    },
+    {
+      "path": "results/review/sequence-refinement-20261118/model-replay/measure_accepted_fronts_pr64.py",
+      "size_bytes": 10911,
+      "sha256": "01fcb42ecce388b63302f569c63f75c3525d1451aa5a20b1fa4f00cf543bda71"
+    },
+    {
+      "path": "scripts/replay_sequence_reference.py",
+      "size_bytes": 24040,
+      "sha256": "73281f93b9f465f38a2b9105ce86fe660c6050fe6e64601c8323a073809bce12"
+    }
+  ],
+  "archive_members": [
+    {
+      "path": "comparison.json",
+      "size_bytes": 260601,
+      "sha256": "6a1d97579dae36f786cd6c2c1c4b8a1d517cd9d6031ae263185f359b1de31084"
+    },
+    {
+      "path": "eval-candidate/predictions.jsonl",
+      "size_bytes": 223267,
+      "sha256": "0614037f598a1418ff23ab52a2afbcdbf5f46524dc3edae53ea7293d7128d776"
+    },
+    {
+      "path": "eval-pr35/predictions.jsonl",
+      "size_bytes": 217125,
+      "sha256": "97debc8ca8f26d47bd3fc4f3171f206533d42ad8a8c66e9f63b8018b4e47cfd8"
+    },
+    {
+      "path": "eval-reference/predictions.jsonl",
+      "size_bytes": 218708,
+      "sha256": "fdfb31d3c18c2c1a0f1a75753409ecf9707e62f0fca8ab6bbb7ffe155efa24eb"
+    },
+    {
+      "path": "training-audit.json",
+      "size_bytes": 7164,
+      "sha256": "4523959dd662d02faf8749833454876e1394b384898184926fe2ed2eb96910c5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "results/review/sequence-refinement-20261118/model-replay/sequence-reference-replay.json",
+      "size_bytes": 1067335,
+      "sha256": "54770a5371fd73dc2fe39d84f33d22ae35c5a0451e80119f80f2112f0cb18c55"
+    },
+    {
+      "path": "results/review/sequence-refinement-20261118/model-replay/affected-row-status.json",
+      "size_bytes": 17393,
+      "sha256": "34575bed146027b6a477f159325c4400105eec32b59c0c249da9f166b902d5a0"
+    }
+  ],
+  "reproduction": "Run python scripts/replay_sequence_reference.py --root . --verify-only from the repository. The preserved ZIP is sufficient after GitHub artifact expiration; no weights, network, inference or training are required."
+}

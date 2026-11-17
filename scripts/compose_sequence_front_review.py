@@ -4,6 +4,7 @@
 import argparse
 from collections import Counter, defaultdict
 from copy import deepcopy
+from datetime import date
 import hashlib
 import json
 from pathlib import Path
@@ -33,6 +34,22 @@ DEVELOPMENT = {
     "path": "data/references/visible-front-completion-2026-11-14/manifest.json",
     "sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
 }
+
+
+def settings(review):
+    """Keep the first review reproducible; later passes bind their own parents."""
+    config = {"candidate_id": CANDIDATE_ID, "review_date": "2026-11-17",
+              "parent": PARENT, "parent_status": PARENT_STATUS,
+              "adjudication": ADJUDICATION, "development": DEVELOPMENT,
+              "status_path": STATUS}
+    overrides = review.get("composition", {})
+    require(isinstance(overrides, dict) and set(overrides) <= set(config),
+            "unknown composition settings")
+    config.update(overrides)
+    require(config["candidate_id"] == "sequence-refined-fronts-" + config["review_date"],
+            "candidate identity must match its review date")
+    date.fromisoformat(config["review_date"])
+    return config
 
 
 def digest(payload):
@@ -79,16 +96,17 @@ def check_corner_change(op, before, after):
                 f"explicit {side} corner evidence required for {op['image_id']}:{op.get('base_row')}")
 
 
-def compose_status(root, review, review_path, files):
-    inherited = json.loads(bound(root, PARENT_STATUS).read_text())
+def compose_status(root, review, review_path, files, config, reference):
+    inherited = json.loads(bound(root, config["parent_status"]).read_text())
     cases = deepcopy(inherited["cases"])
     by_id = {case["case_id"]: case for case in cases}
-    adjudication = json.loads(bound(root, ADJUDICATION).read_text())
+    adjudication = (json.loads(bound(root, config["adjudication"]).read_text())
+                    if config["adjudication"] else {"decisions": []})
     for decision in adjudication["decisions"]:
         case = by_id[decision["case_id"]]
         case["status"] = "resolved"
         case["atlas_note"] = decision["explanation"]
-        case["latest_review_path"] = ADJUDICATION["path"]
+        case["latest_review_path"] = config["adjudication"]["path"]
         for field in ("remaining_questions", "remaining_details"):
             if field in case:
                 case["pre_sequence_" + field] = case[field]
@@ -138,8 +156,18 @@ def compose_status(root, review, review_path, files):
         case["held_current_rows"] = sorted({row for row in held if row is not None})
     focuses = deepcopy(review["focus_pages"])
     require(isinstance(focuses, list), "focus_pages must be a list")
+    reference_files = {item["image_id"]: item for item in reference["files"]}
     for focus in focuses:
-        item = by_image[focus["image_id"]]
+        iid = focus["image_id"]
+        item = by_image.get(iid)
+        if item is None:
+            require(iid in reference_files and "base_rows" not in focus,
+                    "development focuses must select current reference rows")
+            selected = focus.get("current_rows")
+            require(selected is None or set(selected) <=
+                    set(range(1, reference_files[iid]["row_count"] + 1)),
+                    "focus selects absent development row")
+            continue
         if "base_rows" in focus:
             mapping = {m["base_row"]: m["candidate_row"] for m in item["row_map"]
                        if m.get("base_row") is not None}
@@ -151,9 +179,9 @@ def compose_status(root, review, review_path, files):
     pending = [case for case in cases if case["status"] != "resolved"]
     return {
         "schema_version": 1, "kind": "sequence_front_review_status",
-        "review_revision": CANDIDATE_ID, "candidate_id": CANDIDATE_ID,
-        "parent_status": PARENT_STATUS, "source_candidate": PARENT,
-        "inherited_physical_adjudication": ADJUDICATION,
+        "review_revision": config["candidate_id"], "candidate_id": config["candidate_id"],
+        "parent_status": config["parent_status"], "source_candidate": config["parent"],
+        "inherited_physical_adjudication": config["adjudication"],
         "accepted_review_path": review_path.relative_to(root).as_posix(),
         "release_ready": False, "training_recipe_id": None,
         "full_dataset_certified": False, "case_counts_are_not_accuracy": True,
@@ -167,13 +195,14 @@ def compose_status(root, review, review_path, files):
 
 
 def compose(root, review_path):
-    parent_path = bound(root, PARENT)
+    review = json.loads(review_path.read_text())
+    config = settings(review)
+    parent_path = bound(root, config["parent"])
     parent = json.loads(parent_path.read_text())
     bound(root, parent["annotation_policy"])
-    bound(root, DEVELOPMENT)
+    reference = json.loads(bound(root, config["development"]).read_text())
     source_hash, records, by_id, original_bytes, original_objects, original_counts = read_reference(
         root, parent["source_manifest_sha256"])
-    review = json.loads(review_path.read_text())
     for item in review.get("review_sources", []):
         bound(root, item)
     require(isinstance(review["operations"], list) and review["operations"], "no accepted operations")
@@ -205,7 +234,13 @@ def compose(root, review_path):
         require(key not in seen, "multiple operations on one base object; combine them")
         seen.add(key)
         grouped[iid].append(op)
-    parent_files = {item["image_id"]: item for item in parent["changes"]}
+    parent_files = {item["image_id"]: item for item in
+                    (parent["files"] if parent.get("kind") == KIND else parent["changes"])}
+    if parent.get("kind") == KIND:
+        require(set(parent_files) == {r["id"] for r in records if r["split"] == "train"},
+                "the previous sequence review must contain every training file")
+        require(parent["review_status"] == config["parent_status"],
+                "parent review status is not the parent's pinned status")
     files, payloads, operation_log, effective, base_objects = [], {}, [], dict(original_objects), dict(original_objects)
     for record in sorted(records, key=lambda item: item["id"]):
         iid, size = record["id"], record["original_size"]
@@ -261,6 +296,8 @@ def compose(root, review_path):
         updated_map = []
         for entry in mapping:
             old = entry["candidate_row"]
+            if parent.get("kind") == KIND:
+                entry["parent_row"] = old
             entry["base_row"] = old
             entry["candidate_row"] = (None if old is None or old in removed
                                       else old - sum(number < old for number in removed))
@@ -297,19 +334,19 @@ def compose(root, review_path):
     require(result_counts["val"] == original_counts["val"], "original training validation changed")
     if "expected_counts" in review:
         require(result_counts == review["expected_counts"], "approved expected counts differ")
-    status = compose_status(root, review, review_path, files)
+    status = compose_status(root, review, review_path, files, config, reference)
     status_bytes = encoded(status)
     manifest = {
-        "schema_version": 1, "kind": KIND, "candidate_id": CANDIDATE_ID,
-        "status": "awaiting_pdf_review", "review_date": "2026-11-17",
-        "source_manifest_sha256": source_hash, "parent": PARENT,
+        "schema_version": 1, "kind": KIND, "candidate_id": config["candidate_id"],
+        "status": "awaiting_pdf_review", "review_date": config["review_date"],
+        "source_manifest_sha256": source_hash, "parent": config["parent"],
         "annotation_policy": parent["annotation_policy"], "review": descriptor(root, review_path),
         "review_sources": review.get("review_sources", []),
-        "review_status": {"path": STATUS, "sha256": digest(status_bytes)},
+        "review_status": {"path": config["status_path"], "sha256": digest(status_bytes)},
         "release_ready": False, "training_recipe_id": None, "full_dataset_certified": False,
         "pdf_review_before_merge": True, "expected_counts": result_counts,
         "baseline_counts": baseline_counts,
-        "development_reference": DEVELOPMENT,
+        "development_reference": config["development"],
         "development_reference_is_separate": True,
         "operation_counts": dict(Counter(op["operation"] for op in operation_log)),
         "changed_images_from_full_review": [item["image_id"] for item in files if item["changed_from_full_review"]],
@@ -327,6 +364,12 @@ def compose(root, review_path):
                    "Video continuity supports identity; it does not make hidden target-frame corners visible.",
                    "PR35 remains selected. No model training, inference or promotion is performed."]
     }
+    if parent.get("kind") == KIND:
+        manifest["changed_images_from_parent"] = manifest.pop("changed_images_from_full_review")
+        for item in files:
+            item["changed_from_parent"] = item.pop("changed_from_full_review")
+        manifest["limits"][1] = ("Original training-validation labels remain unchanged; the separately "
+                                  "versioned development reference is explicitly pinned above.")
     payloads["manifest.json"] = encoded(manifest)
     return payloads, status_bytes, manifest
 
@@ -341,7 +384,9 @@ def main():
     review_path = (args.review if args.review.is_absolute() else root / args.review).resolve()
     require(review_path.is_relative_to(root), "review must be in the repository")
     payloads, status_bytes, manifest = compose(root, review_path)
-    output, status_path = root / OUTPUT, root / STATUS
+    output = root / "data/candidates" / manifest["candidate_id"]
+    status_path = (root / manifest["review_status"]["path"]).resolve()
+    require(status_path.is_relative_to(root), "status path escapes repository")
     actual = {p.relative_to(output).as_posix() for p in output.rglob("*") if p.is_file()} if output.exists() else set()
     require(actual <= set(payloads) | {"README.md"}, "unexpected files in the dated preview directory")
     if not args.verify_only:
@@ -355,10 +400,11 @@ def main():
     require(status_path.read_bytes() == status_bytes, "saved status differs from composition")
     for relative, payload in payloads.items():
         require((output / relative).read_bytes() == payload, "saved preview differs: " + relative)
-    print(json.dumps({"status": "verified_review_only", "candidate_id": CANDIDATE_ID,
+    print(json.dumps({"status": "verified_review_only", "candidate_id": manifest["candidate_id"],
                       "candidate_sha256": digest(payloads["manifest.json"]),
                       "complete_training_files": len(manifest["files"]),
-                      "changed_images_from_full_review": manifest["changed_images_from_full_review"],
+                      "changed_images_from_parent": manifest.get("changed_images_from_parent",
+                                                                manifest.get("changed_images_from_full_review")),
                       "operation_counts": manifest["operation_counts"], "counts": manifest["expected_counts"],
                       "remaining_case_groups": manifest["remaining_case_groups"],
                       "remaining_training_images": manifest["remaining_training_images"],

@@ -7,6 +7,7 @@ PNGs remain the pixel authority; this script never invokes a prediction model.
 """
 import argparse
 from collections import defaultdict
+from datetime import date
 import hashlib
 from io import BytesIO
 import json
@@ -220,12 +221,12 @@ def main():
     sequence_review = train.get("kind") == SEQUENCE_KIND
     review_url = "https://github.com/Siuuuers/dl/pull/65" if sequence_review else "https://github.com/Siuuuers/dl/pull/63"
     if sequence_review:
-        if (train.get("review_date") != "2026-11-17"
+        if (train.get("candidate_id") != "sequence-refined-fronts-" + train.get("review_date", "")
                 or train.get("status") != "awaiting_pdf_review"
                 or train.get("release_ready") is not False
                 or train.get("training_recipe_id") is not None):
             raise ValueError("unexpected sequence-review scope")
-        REVIEW_DATE = "17 November 2026"
+        REVIEW_DATE = date.fromisoformat(train["review_date"]).strftime("%d %B %Y").lstrip("0")
         if (status.get("kind") != "sequence_front_review_status"
                 or status.get("candidate_id") != train["candidate_id"]
                 or args.status.resolve() != (root / train["review_status"]["path"]).resolve()
@@ -257,11 +258,12 @@ def main():
                             {record["id"] for record in source["records"] if record["split"] == "train"}):
         raise ValueError("sequence review requires all 137 training label files")
     if sequence_review:
+        base_name = "previous-review" if "changed_images_from_parent" in train else "full-review"
         for operation in train["operations"]:
             source_row, output_row = operation.get("base_row"), operation["output_row"]
             action = (f"Added current row {output_row}" if operation["operation"] == "add" else
-                      f"Deleted full-review row {source_row}" if operation["operation"] == "delete" else
-                      f"Refined full-review row {source_row}, current row {output_row}")
+                      f"Deleted {base_name} row {source_row}" if operation["operation"] == "delete" else
+                      f"Refined {base_name} row {source_row}, current row {output_row}")
             accepted_notes[operation["image_id"]].append(action + ": " + operation["reason"])
     val_files = {item["image_id"]: item for item in reference["files"]}
     held, notes = defaultdict(set), defaultdict(list)
@@ -283,18 +285,30 @@ def main():
             if target is not None:
                 held[iid].add(target)
         notes[iid].append(case["atlas_note"])
-    for case in reference["queue_dispositions"]:
-        if case["disposition"] != "retained_unresolved":
-            continue
-        iid = case["image_id"]
-        target = val_files[iid]["retained_source_to_revised_row_one_based"][case["source_row_one_based"] - 1]
-        if target is not None:
-            held[iid].add(target)
-        notes[iid].append("Row %s: %s" % (target, " ".join(case["unresolved_issues"])))
-    for case in reference.get("new_review_unresolved", []):
-        if "uncertainty" in case["decision"] or "unresolved" in case["decision"]:
-            held["new_000010"].update(case["rows"])
-            notes["new_000010"].append("Rows %s: %s" % (", ".join(map(str, case["rows"])), case["reason"]))
+    if reference.get("remaining_rows_are_authoritative"):
+        for case in reference["remaining_current_rows"]:
+            iid, row = case["image_id"], case["row"]
+            held[iid].add(row)
+            notes[iid].append("Row %s: %s" % (row, case["reason"]))
+        for operation in reference["operations"]:
+            row, output = operation.get("base_row"), operation["output_row"]
+            action = (f"Added reference row {output}" if operation["operation"] == "add" else
+                      f"Deleted previous reference row {row}" if operation["operation"] == "delete" else
+                      f"Refined reference row {row}, current row {output}")
+            accepted_notes[operation["image_id"]].append(action + ": " + operation["reason"])
+    else:
+        for case in reference["queue_dispositions"]:
+            if case["disposition"] != "retained_unresolved":
+                continue
+            iid = case["image_id"]
+            target = val_files[iid]["retained_source_to_revised_row_one_based"][case["source_row_one_based"] - 1]
+            if target is not None:
+                held[iid].add(target)
+            notes[iid].append("Row %s: %s" % (target, " ".join(case["unresolved_issues"])))
+        for case in reference.get("new_review_unresolved", []):
+            if "uncertainty" in case["decision"] or "unresolved" in case["decision"]:
+                held["new_000010"].update(case["rows"])
+                notes["new_000010"].append("Rows %s: %s" % (", ".join(map(str, case["rows"])), case["reason"]))
     records = sorted(source["records"], key=lambda record: (record["split"] != "train", record["id"]))
     if len(records) != 157 or len({record["id"] for record in records}) != 157:
         raise ValueError("all 157 distinct frozen photos are required")
@@ -502,7 +516,8 @@ def main():
         audit["sequence_review"] = {
             "complete_training_files": len(training_files),
             "actual_changes_displayed_on_photo_pages": True,
-            "changed_images_from_full_review": train["changed_images_from_full_review"],
+            "changed_images_from_parent": train.get("changed_images_from_parent",
+                                                    train.get("changed_images_from_full_review")),
             "release_ready": False, "training_recipe_id": None,
             "pdf_review_before_merge": True, "review_url": review_url,
         }
