@@ -1,0 +1,3137 @@
+{
+  "schema_version": 1,
+  "kind": "sequence_front_review_status",
+  "review_revision": "sequence-refined-fronts-2026-11-17",
+  "candidate_id": "sequence-refined-fronts-2026-11-17",
+  "parent_status": {
+    "path": "results/review/complete-labels-20261114/review-status.json",
+    "sha256": "257d18c2cbe69471fc5a0070748747a92534cda88d5065b14520b98ea37cc761"
+  },
+  "source_candidate": {
+    "path": "data/candidates/complete-visible-fronts-2026-11-14/manifest.json",
+    "sha256": "9d138930b523fc8d124e116a58aa584a23c30a81d874551fcb5625a1978639a8"
+  },
+  "inherited_physical_adjudication": {
+    "path": "results/review/physical-adjudication-20261114/decisions.json",
+    "sha256": "07f545434877c4d9d44eb90b8e1c0ae4aa1c13882a500ccd81bfd2b54f9dbbc6"
+  },
+  "accepted_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+  "release_ready": false,
+  "training_recipe_id": null,
+  "full_dataset_certified": false,
+  "case_counts_are_not_accuracy": true,
+  "user_confirmations": [
+    {
+      "image_id": "new_000030",
+      "fact": "Cassette material is present behind the always-see-through diamond opening.",
+      "not_established": "Whether its internal y481-487 transition separates two front instances; actual hidden corners and complete physical extent."
+    },
+    {
+      "image_id": "new_000006",
+      "fact": "A/original59 and B/original53 are separate cassettes; fixed physical dimensions and stationary rack arrangement.",
+      "not_established": "Exact hidden full width or unseen lower-front corners."
+    },
+    {
+      "image_id": "new_000037",
+      "fact": "There are two separate cassettes in the thumb-side region; the prior review omitted one.",
+      "scope_limit": "This identifies two instances, not their hidden corner coordinates or the separate top-of-frame assembly."
+    },
+    {
+      "source": "User conversation,17 November2026",
+      "fact": "The new image series comes from continuous video; compare adjacent frames and neighboring cassette tiers."
+    },
+    {
+      "source": "User conversation,17 November2026",
+      "fact": "Delete full-reviewed new116 row24."
+    },
+    {
+      "source": "User conversation,17 November2026",
+      "fact": "Full-reviewed new127 rows37/38 persist innew128."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "new_000037-row1-visible-extent",
+      "image_id": "new_000037",
+      "split": "train",
+      "status": "resolved",
+      "additional_discovery": true,
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Two-front identity confirmed by user; visible-only boxes proposed for both fronts and unreliable old left junction becomes canonical missing. Nominal seam placement is recorded as manual pixel uncertainty rather than unresolved count.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        480,
+        575,
+        635,
+        665
+      ],
+      "evidence_path": "results/review/extent-comparison-20261114/comparison.json",
+      "labels_changed": false,
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000030-001",
+      "image_id": "new_000030",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [
+        12
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Two adjacent fronts have visible aperture fragments. Nominal shared boundary474 uses the registered fourth-tier context, instead of interpreting tone step483 as an instance boundary. Exact seam is soft by about4px; no hidden corner is restored and no wholly occluded continuation below is added.",
+      "remaining_details": [],
+      "source_case_kind": "legacy_fields",
+      "source_case_region_xyxy_px": [
+        258,
+        63,
+        1188,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [],
+      "sequence_decision_reason": "Two adjacent fronts have visible aperture fragments. Nominal shared boundary474 uses the registered fourth-tier context, instead of interpreting tone step483 as an instance boundary. Exact seam is soft by about4px; no hidden corner is restored and no wholly occluded continuation below is added.",
+      "pre_sequence_remaining_questions": [
+        "Is the lower dark triangle below approximately483 another front, or the underside/shadow of the same cassette?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "Root adjudication: accept the observed row27 border correction and other independent side-box corrections, but do not add a lower aperture row or split-dependent replacement of12. Cassette material is confirmed; the lower dark triangle may be a second front or the same cassette underside/shadow. The visible tone change alone does not decide count.",
+          "questions": [
+            "Is the lower dark triangle below approximately483 another front, or the underside/shadow of the same cassette?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        12
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000012-002",
+      "image_id": "new_000012",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-022",
+        "observed-023",
+        "observed-024",
+        "observed-025",
+        "observed-026",
+        "observed-027"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Fresh close originals support nominal top98 for15 despite a soft shadow boundary. For23, the upper face ends at a visible horizontal molded seam near482, followed by a separate smooth face with its own lower edge at515\u2013517. Replace the upper observed box and add the lower fragment with both endpoints missing. These are visible-surface decisions; no hidden full-size box or endpoint is inferred.",
+      "remaining_details": [],
+      "source_case_kind": "legacy_fields",
+      "source_case_region_xyxy_px": [
+        68,
+        106,
+        990,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000128-003",
+      "image_id": "new_000128",
+      "split": "train",
+      "status": "pending",
+      "accepted_operation_ids": [],
+      "held_original_rows": [
+        6,
+        9
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "The left-column duplicate strip (original row 1) is removed using sequence continuity. Original rows 6 and 9 remain unresolved because their possible preceding-front contours fall within a few pixels of the border. Their ownership must not be inferred from the left-column result.",
+      "remaining_details": [
+        {
+          "reason": "The left-column duplicate strip (original row 1) is removed using sequence continuity. Original rows 6 and 9 remain unresolved because their possible preceding-front contours fall within a few pixels of the border. Their ownership must not be inferred from the left-column result.",
+          "questions": [
+            "Do the two remaining top-border strips (original rows6/9, current5/8) contain a separate preceding front or only the next front molding?"
+          ]
+        }
+      ],
+      "source_case_kind": "legacy_fields",
+      "source_case_region_xyxy_px": [
+        366,
+        0,
+        1280,
+        555
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [
+        "Do the two remaining top-border strips (original rows6/9, current5/8) contain a separate preceding front or only the next front molding?"
+      ],
+      "sequence_decision_reason": "The left-column duplicate strip (original row 1) is removed using sequence continuity. Original rows 6 and 9 remain unresolved because their possible preceding-front contours fall within a few pixels of the border. Their ownership must not be inferred from the left-column result.",
+      "pre_sequence_remaining_questions": [
+        "Do these 0-5 px frame-edge bands belong to separate preceding cassette fronts, or to the upper molding of the main fronts below?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "Correct the known-too-low row 10 top and jaw-inclusive row 18 to their observed material. The repeated visible row pitch and seam support row 18 as an exposed next front. The tiny frame-edge bands 1, 6 and 9 still have a genuine preceding-front-remnant versus molding ownership ambiguity, not merely a soft coordinate.",
+          "questions": [
+            "Do these 0-5 px frame-edge bands belong to separate preceding cassette fronts, or to the upper molding of the main fronts below?"
+          ]
+        }
+      ],
+      "previous_held_original_rows": [
+        1,
+        6,
+        9
+      ],
+      "held_current_rows": [
+        5,
+        8
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000061-005",
+      "image_id": "new_000061",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-064"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "No statement about the existence of the physical cassette below the frame; only the annotated front plane is absent from the visible image.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        296,
+        656,
+        477,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000064-009",
+      "image_id": "new_000064",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-070",
+        "observed-071",
+        "observed-072",
+        "observed-073",
+        "observed-074",
+        "observed-075",
+        "observed-076",
+        "observed-077",
+        "observed-078",
+        "observed-079",
+        "observed-080",
+        "observed-081",
+        "observed-082",
+        "observed-083"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Across all three stacks, the lower bright edge is the projecting front lower contour. The darker band below recedes toward the stepped upper/roof surface of the following unit; terminal rows23/28/33 show the same front contour directly above rack. Retain existing physical junctions and box bottoms, using contour/plane continuity rather than brightness alone.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        309,
+        0,
+        734,
+        149
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000065-010",
+      "image_id": "new_000065",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-191"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Nominate the bottom-clipped left front; both lower-front corners remain outside the image/unlocatable.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        151,
+        694,
+        301,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000066-011",
+      "image_id": "new_000066",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-084"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Focused new066 crop shows a continuous upper projecting molding leading into its clear front body; the homologous more isolated profile in new073 confirms this surface assignment. Keep the upper lip with the main front. The separate lower strip is divided by a dark gap and its own contour, so split/add one lower front.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        406,
+        595,
+        565,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000066-012",
+      "image_id": "new_000066",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-085"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Resolved within scope: root confirmed roof plane with no vertical front visible before the bottom border; original15 deleted.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        62,
+        695,
+        282,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000067-013",
+      "image_id": "new_000067",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-087",
+        "observed-088",
+        "observed-089"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The clipped bottom-left front is identifiable. Retain nominal top680 within about4px of the rounded roof/front transition; the remaining uncertainty is ordinary manual edge placement. Both actual lower corners are off-frame/occluded and remain0.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        142,
+        534,
+        575,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000069-014",
+      "image_id": "new_000069",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-090",
+        "observed-091"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Keep both separate third/fourth fronts. Localized top and rack overreach corrections preserve all source points.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        533,
+        335,
+        777,
+        460
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000070-015",
+      "image_id": "new_000070",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-092"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The band is only several pixels high; boundaries have 2-3 px placement uncertainty. Neither physical full-cassette lower corner is visible.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        765,
+        508,
+        924,
+        601
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000094-016",
+      "image_id": "new_000094",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The enlarged original shows an upper smooth aperture face ending at a horizontal molded seam near490, followed by a separate lower smooth face whose lower contour is visible above the hand near509. Add these two directly observed fragments, both with missing outside corners.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000095-017",
+      "image_id": "new_000095",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The opening at x672-742,y445-510 shows rack grid in its upper part and perforated roof below; skin enters at the bottom. No independent vertical front is supported in the opening. This is a bounded visual observation, not proof that no cassette exists behind it.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000096-018",
+      "image_id": "new_000096",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The opening contains a perforated horizontal roof and rack divider, with skin below. No separate vertical front face is visible there; no extra row proposed.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000098-019",
+      "image_id": "new_000098",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "No supported additional target is visible in the reviewed gap. This does not assert absence of completely occluded objects elsewhere.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000099-020",
+      "image_id": "new_000099",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "No observed additional front is supported. Do not treat this image as an empty scene; existing cassettes outside the gap remain labelled.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000100-021",
+      "image_id": "new_000100",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "No supported additional front in this reviewed region; unseen inventory is outside the annotation claim.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000095-023",
+      "image_id": "new_000095",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-164",
+        "observed-165",
+        "observed-166",
+        "observed-167",
+        "observed-168",
+        "observed-169"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The disputed x608-612 strip belongs to the vertical gripper side, continuous below the face and next to skin. Row 37 therefore uses its left-side visible envelope ending nominally x533; no separate right exposure or visible right corner is asserted.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        471,
+        416,
+        650,
+        626
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000096-024",
+      "image_id": "new_000096",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-170",
+        "observed-171",
+        "observed-172"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Three hand-occluded fronts remain separate; source endpoints are unchanged.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        479,
+        496,
+        637,
+        610
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000097-025",
+      "image_id": "new_000097",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-173",
+        "observed-174",
+        "observed-175",
+        "observed-176",
+        "observed-177"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "A horizontal seam near534 separates a new smooth face from original40. The thumb and jaw cut both lower corners. Proposed addition[558,535,603,551] is based on the observed fragment, not fixed-size completion; full parent confirms no duplicate. The prior original36 right-corner restoration is retained.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        530,
+        393,
+        682,
+        552
+      ],
+      "additional_unresolved_region": {
+        "image_id": "new_000097",
+        "kind": "possible_omitted_front",
+        "region_xyxy_px": [
+          550,
+          530,
+          610,
+          555
+        ],
+        "reason": "Exposed material below row40 appears bounded by a separate seam near y533 and thumb below; check count before adding."
+      },
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000085-029",
+      "image_id": "new_000085",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-158",
+        "observed-159",
+        "observed-160"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Source blur gives approximately2-3 px placement ranges. The complete lower corners remain behind the jaws for all three, so all point tokens remainzero.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        639,
+        401,
+        745,
+        543
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000073-030",
+      "image_id": "new_000073",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-098",
+        "observed-099"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Upper/lower aperture bands follow two established fronts separated near460; observed extents corrected and missing corners retained. Bottom15 is a recognizable clipped front with nominal rounded top698\u00b15px, not an unresolved identity.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000074-031",
+      "image_id": "new_000074",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-100",
+        "observed-101",
+        "observed-102",
+        "observed-103"
+      ],
+      "held_original_rows": [
+        11
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "075 fully exposes the same four-front central column;074 first two are rows4/7, upper and lower aperture are third/fourth.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [],
+      "sequence_decision_reason": "075 fully exposes the same four-front central column;074 first two are rows4/7, upper and lower aperture are third/fourth.",
+      "pre_sequence_remaining_questions": [
+        "Does the dark lower diamond contain a separate lower front, or only underside/background?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The upper thin front band is identifiable and permits manual top/side bounds. The darker diamond patch below the seam near460 may be its underside or a lower front; this still affects bottom/possible extra-instance ownership. The earlier roof-only deletion remains accepted.",
+          "questions": [
+            "Does the dark lower diamond contain a separate lower front, or only underside/background?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        11
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000083-032",
+      "image_id": "new_000083",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-137"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Retain original21 as one visible bottom-clipped front and expand its truncated right extent; no point restoration.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        241,
+        669,
+        374,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000071-033",
+      "image_id": "new_000071",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-093",
+        "observed-094",
+        "observed-095",
+        "observed-096",
+        "observed-097"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The legacy whole-image flag is localized to original rows4,7,10,11,12. All identities retained. The other upper/lower full fronts were visually checked for this broad flag, but this is not a certification of every endpoint or pixel boundary.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000075-034",
+      "image_id": "new_000075",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-104",
+        "observed-105",
+        "observed-106",
+        "observed-107"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Current14/16/20 have supported face identity and nominal observed extents after minor jaw trims. Held current17 is one clear front with rounded upper transition; retain top547 within4px manual placement uncertainty. All prior deletions and mappings remain untouched.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000080-035",
+      "image_id": "new_000080",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-108",
+        "observed-109",
+        "observed-110",
+        "observed-111",
+        "observed-112",
+        "observed-113",
+        "observed-114",
+        "observed-115",
+        "observed-116",
+        "observed-117",
+        "observed-118",
+        "observed-119",
+        "observed-120",
+        "observed-121"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Row14 is one identifiable front with a rounded roof/front transition. Retain nominaltop632 within4px of the visible surface turn; this is manual placement uncertainty, not competing instance identity. Actual lower corners remain supported.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000081-036",
+      "image_id": "new_000081",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-122",
+        "observed-123",
+        "observed-124",
+        "observed-125",
+        "observed-126",
+        "observed-127",
+        "observed-128",
+        "observed-129",
+        "observed-130",
+        "observed-131",
+        "observed-132",
+        "observed-133",
+        "observed-134",
+        "observed-135",
+        "observed-136"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The raw context supports the single front and both actual lower corners. y575 is an acceptable nominal top of the rounded roof/front transition, within the previously stated y570-580 band. Retain row 14 with 5 px top-boundary uncertainty; no alternative physical count or surface remains.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000084-037",
+      "image_id": "new_000084",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-138",
+        "observed-139",
+        "observed-140",
+        "observed-141",
+        "observed-142",
+        "observed-143",
+        "observed-144",
+        "observed-145",
+        "observed-146",
+        "observed-147",
+        "observed-148",
+        "observed-149",
+        "observed-150",
+        "observed-151",
+        "observed-152",
+        "observed-153",
+        "observed-154",
+        "observed-155",
+        "observed-156",
+        "observed-157"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "All 14 distant top-stack rows were inspected at original-pixel enlargement. Distinct lip/front transitions and lower row seams support the current nominal front envelopes and visible lower corners. Retain the current rows and points with approximately 3-5 px anatomy/soft-edge uncertainty; distance alone is not an unresolved instance issue.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000061-038",
+      "image_id": "new_000061",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-065"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The existing x720 cutoff is a reasonable nominal outer limit for the front visible through the aperture, within the stated x717-723 range. The small soft wedge is handled as 3 px manual uncertainty, not a separate physical object or a restored hidden corner. Retain row 9.",
+      "remaining_details": [],
+      "source_case_kind": "unchanged_uncertain_extent",
+      "source_case_region_xyxy_px": [
+        565,
+        424,
+        785,
+        503
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000062-039",
+      "image_id": "new_000062",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-066",
+        "observed-067"
+      ],
+      "held_original_rows": [
+        9
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Adjacent061/063 and same central-column sequence establish five fronts. Existing rows5/6/7 are first/second/third; upper aperture is fourth row8; lower brown patch belongs fifth row9 also visible as the left strip. Existing row9 box [600,454.4,719,506.5] encloses both fragments. Keep visible left corner603,506.5 and missing right; add nothing.",
+      "remaining_details": [],
+      "source_case_kind": "unchanged_uncertain_extent",
+      "source_case_region_xyxy_px": [
+        579,
+        399,
+        784,
+        527
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [],
+      "sequence_decision_reason": "Adjacent061/063 and same central-column sequence establish five fronts. Existing rows5/6/7 are first/second/third; upper aperture is fourth row8; lower brown patch belongs fifth row9 also visible as the left strip. Existing row9 box [600,454.4,719,506.5] encloses both fragments. Keep visible left corner603,506.5 and missing right; add nothing.",
+      "pre_sequence_remaining_questions": [
+        "Identify the brown lower diamond patch before tightening row9 top/right."
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The row8 pale continuation has a usable nominal bottom466. The lower brown patch could belong to row9 front, roof/underside, or background, so its ownership cannot be decided merely from the absence of visible grid. Row9 retains its existing uncertain top/right bounds and visible left corner.",
+          "questions": [
+            "Identify the brown lower diamond patch before tightening row9 top/right."
+          ]
+        }
+      ],
+      "held_current_rows": [
+        9
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000063-040",
+      "image_id": "new_000063",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-068",
+        "observed-069"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The left-side seams and fixed seating identify two distinct front rows, also represented by the aperture bands. Use nominal aperture maxima x716 and x709 with 4 px edge uncertainty, excluding clear jaw overreach; retain the visible lower-left corners and zero right visibility.",
+      "remaining_details": [],
+      "source_case_kind": "unchanged_uncertain_extent",
+      "source_case_region_xyxy_px": [
+        581,
+        422,
+        781,
+        532
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000094-043",
+      "image_id": "new_000094",
+      "split": "train",
+      "status": "pending",
+      "accepted_operation_ids": [
+        "observed-161",
+        "observed-162",
+        "observed-163"
+      ],
+      "held_original_rows": [
+        23
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Frames095/096 establish three physical cassettes in the lower-left stack, but the five target-frame border pixels in094 do not distinguish the next front from the lower lip of row22. Keep row23 explicitly held; this is not a size-based exclusion.",
+      "remaining_details": [
+        {
+          "reason": "Frames095/096 establish three physical cassettes in the lower-left stack, but the five target-frame border pixels in094 do not distinguish the next front from the lower lip of row22. Keep row23 explicitly held; this is not a size-based exclusion.",
+          "questions": [
+            "Does current row23 contain any next-front material at the bottom border, or only row22 molding?"
+          ]
+        }
+      ],
+      "source_case_kind": "outside_scope_unresolved",
+      "source_case_region_xyxy_px": [
+        220,
+        672,
+        517,
+        720
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [
+        "Does current row23 contain any next-front material at the bottom border, or only row22 molding?"
+      ],
+      "sequence_decision_reason": "Frames095/096 establish three physical cassettes in the lower-left stack, but the five target-frame border pixels in094 do not distinguish the next front from the lower lip of row22. Keep row23 explicitly held; this is not a size-based exclusion.",
+      "pre_sequence_remaining_questions": [
+        "Is the y715\u2013720 strip a separate clipped front or only the lower lip of current22?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The retained five-pixel strip23 at the bottom border cannot be separated confidently from the rounded lower lip/underside of22. There is no reliably visible second front seam above the frame. Preserve the earlier deletion of unsupported24, and keep23 explicit pending identity clarification.",
+          "questions": [
+            "Is the y715\u2013720 strip a separate clipped front or only the lower lip of current22?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        23
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000115-044",
+      "image_id": "new_000115",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-178",
+        "observed-190"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Resolved within scope: separate lower aperture front added, upper22 box corrected and visible left corner607474 restored.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        578,
+        408,
+        768,
+        488
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000116-045",
+      "image_id": "new_000116",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-179"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "A distinct lower front band is supported by the transverse seam, the gray surface inside the see-through opening, the side strip, and the hand boundary below. Add its observed envelope with both corners missing. Current row 22 remains the upper band.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        573,
+        412,
+        762,
+        488
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000117-046",
+      "image_id": "new_000117",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-180",
+        "observed-183"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Resolved within scope: existing left corner605.25,472.93 transferred from lower26 to upper22 using the exact old coordinate tokens. Lower26 stays a separate front with both corners missing.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        576,
+        408,
+        796,
+        513
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000117-047",
+      "image_id": "new_000117",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-181",
+        "observed-182"
+      ],
+      "held_original_rows": [
+        24
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "delete lower-molding strip, not a separate cassette",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        722,
+        411,
+        927,
+        531
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [],
+      "sequence_decision_reason": "delete lower-molding strip, not a separate cassette",
+      "pre_sequence_remaining_questions": [
+        "Is the thin band immediately under the right front a separate cassette front, or the upper cassette underside/lip?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The narrow gray band below the upper front has a real visible extent, but the source pixels still permit either a separate lower front partly hidden by the hand or the underside/beveled lip of the upper cassette. Repeated nominal size cannot establish which physical component this band is.",
+          "questions": [
+            "Is the thin band immediately under the right front a separate cassette front, or the upper cassette underside/lip?"
+          ]
+        }
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [
+        {
+          "proposal_id": "new_000124-upper_aperture_front",
+          "status": "held_not_created",
+          "reason": "The internal transition does not yet establish two separate front instances."
+        },
+        {
+          "proposal_id": "new_000124-lower_aperture_front",
+          "status": "held_not_created",
+          "reason": "The internal transition does not yet establish two separate front instances."
+        }
+      ],
+      "case_id": "new_000124-048",
+      "image_id": "new_000124",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [
+        19
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "existing19 owns upper aperture; add exactlyone lower aperture front to restore ten-front count; existing19left corner changed to0 after parent independent visual QA",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        670,
+        441,
+        743,
+        496
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [],
+      "sequence_decision_reason": "existing19 owns upper aperture; add exactlyone lower aperture front to restore ten-front count; existing19left corner changed to0 after parent independent visual QA",
+      "pre_sequence_remaining_questions": [
+        "How many physical fronts occupy the aperture, and which visible band belongs to existing19?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The aperture has real front-like surfaces but its internal dark division still admits a tier seam versus roof/underside/shadow interpretation. Existing19 ownership and the proposed two extra identities cannot both be established from this image. Both prior aperture additions remain unapplied.",
+          "questions": [
+            "How many physical fronts occupy the aperture, and which visible band belongs to existing19?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        19
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000124-049",
+      "image_id": "new_000124",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-184"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The tiny wedge below original39 has no independent face seam or front body. Treat it as adjoining molding/underside of the existing front, keep one instance, refine nominal front bounds, and do not create an occupancy-based extra object.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        450,
+        640,
+        485,
+        665
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [
+        {
+          "proposal_id": "new_000127-upper_aperture_front",
+          "status": "held_not_created",
+          "reason": "The internal transition does not yet establish two separate front instances."
+        },
+        {
+          "proposal_id": "new_000127-lower_aperture_front",
+          "status": "held_not_created",
+          "reason": "The internal transition does not yet establish two separate front instances."
+        }
+      ],
+      "case_id": "new_000127-050",
+      "image_id": "new_000127",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "keep valid37/38; refine18/37 ownership boundary and tip extent",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        672,
+        447,
+        745,
+        525
+      ],
+      "previous_status": "resolved",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [],
+      "sequence_decision_reason": "keep valid37/38; refine18/37 ownership boundary and tip extent",
+      "pre_sequence_remaining_questions": [],
+      "pre_sequence_remaining_details": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000127-051",
+      "image_id": "new_000127",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-185"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The three-front left column is fully visible in new_000126 and new_000129. Its same lower two fronts correspond to current rows 2 and 3 in this frame. Their actual visible lower contours align the preceding front above the target frame; the pale top strip follows the upper molding of row 2. A diagnostic planar alignment from 126 predicts the preceding front lower corners near y=-14 to -12 px, and its extrapolation checked against the independently visible first front in 129 differs by about 2 px. The target strip does not establish additional visible front material. Remove this duplicate molding row; both stored corners were already missing. The diagnostic alignment is ownership evidence, not a source of target-frame corner coordinates.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        367,
+        0,
+        1280,
+        31
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [],
+      "sequence_decision_reason": "The three-front left column is fully visible in new_000126 and new_000129. Its same lower two fronts correspond to current rows 2 and 3 in this frame. Their actual visible lower contours align the preceding front above the target frame; the pale top strip follows the upper molding of row 2. A diagnostic planar alignment from 126 predicts the preceding front lower corners near y=-14 to -12 px, and its extrapolation checked against the independently visible first front in 129 differs by about 2 px. The target strip does not establish additional visible front material. Remove this duplicate molding row; both stored corners were already missing. The diagnostic alignment is ownership evidence, not a source of target-frame corner coordinates.",
+      "pre_sequence_remaining_questions": [
+        "Is the y0\u20135 pale top strip an independent upper front, or the upper lip of2?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "Row10 is an identifiable clipped front and the existing blurred left boundary is a reasonable nominal extent. Row1 still has only a few top-border pixels, insufficient to decide an upper front sliver versus the upper lip of2; no hidden endpoint or count is manufactured.",
+          "questions": [
+            "Is the y0\u20135 pale top strip an independent upper front, or the upper lip of2?"
+          ]
+        }
+      ],
+      "previous_held_original_rows": [
+        1
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [
+        {
+          "proposal_id": "new_000130-lower_right_aperture_front",
+          "status": "rejected_duplicate_not_created",
+          "duplicate_of_parent_addition_id": "partial-130-add-lowest-front",
+          "parent_row": 59,
+          "reason": "Complete-parent audit identifies the same physical lower-right front already at approximately699,503,726,520. Preserve its exact tokens and stable identity."
+        }
+      ],
+      "case_id": "new_000130-052",
+      "image_id": "new_000130",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-186",
+        "observed-187",
+        "observed-188",
+        "observed-189"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Resolved within observed-reference scope. Front identities and observed boxes are accepted. Original/current rows54/55 keep both actual corners missing because the proposed junctions are not reliably identifiable. The inherited lower-front label remains unchanged; its duplicate proposal remains rejected.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        592,
+        416,
+        796,
+        528
+      ],
+      "visibility_disposition": {
+        "original_rows": [
+          54,
+          55
+        ],
+        "decision": "accepted_keep_canonical_missing",
+        "reason": "Annotation policy section3 requires0 for actual corners that cannot be reliably located because of ambiguity. Rejected proposed v2 coordinates do not leave the saved missing-point state unresolved. This does not locate or certify hidden physical corners.",
+        "label_bytes_changed": false,
+        "source_decision": "results/review/aperture-labels-20261114/late-independent-review.json"
+      },
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000018-053",
+      "image_id": "new_000018",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-040"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Accepted a nominal roof/front boundary near y410 with4px manual uncertainty.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        736,
+        399,
+        954,
+        499
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000018-054",
+      "image_id": "new_000018",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-042"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The detailed raw crop separates the horizontal roof/front lip from the broad frontal shadow; preserve the source left edge and point tokens.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        298,
+        630,
+        489,
+        712
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000018-055",
+      "image_id": "new_000018",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-043"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The current row29 bounds are acceptable nominal limits of the observed lower front; its soft seams carry about3px placement uncertainty, not an alternative instance identity.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        307,
+        664,
+        491,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000018-056",
+      "image_id": "new_000018",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-044"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The lower clipped front is independently visible below the row29 seam; retain the current top around y706.5 with3px uncertainty and both missing corners.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        312,
+        686,
+        495,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000018-057",
+      "image_id": "new_000018",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-045"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The observed row31 seam near y547-550 is sufficient for the saved nominal top550; an exposed upper band supports its broad right extent despite the lower thumb occlusion.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        423,
+        529,
+        624,
+        614
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000034-058",
+      "image_id": "new_000034",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-057"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Fresh slot detail distinguishes the uniform dark recess from the visibly white lower band. For43 the observed outer-jaw boundary supports right625, rather than carrying a dark slot to635. Its own sloped face seams support top454/bottom487.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        514,
+        422,
+        677,
+        513
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000034-059",
+      "image_id": "new_000034",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-058"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The lower white slot band directly belongs to44 and requires right635; left-face and slot bounds support482\u2013511. This includes real disconnected visible material without restoring a hidden endpoint.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        518,
+        445,
+        679,
+        536
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000034-060",
+      "image_id": "new_000034",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-059"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The slot ends above45. The visible strip is bounded by the outer jaw near616 and smooth-front seams503\u2013533. Ordinary3px contour uncertainty is acceptable.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        521,
+        468,
+        682,
+        559
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000034-061",
+      "image_id": "new_000034",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-063"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Wider roof/front context shows ribbing ending near620\u2013623 and the projecting lip stepping into the smooth face near627. Retain the existing nominal top627 with approximately4px uncertainty; no remaining material/count alternative warrants a hold.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        547,
+        607,
+        673,
+        685
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000018-062",
+      "image_id": "new_000018",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-041"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The smooth bottom-clipped front is supported; current left/right/bottom limits are usable nominal image-clipped extents with4px uncertainty. Missing actual corners remain missing.",
+      "remaining_details": [],
+      "source_case_kind": "identity",
+      "source_case_region_xyxy_px": [
+        182,
+        695,
+        367,
+        720
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000034-063",
+      "image_id": "new_000034",
+      "split": "train",
+      "status": "pending",
+      "accepted_operation_ids": [
+        "observed-060",
+        "observed-061",
+        "observed-062"
+      ],
+      "held_original_rows": [
+        15
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Same ten-front tall-column context in032/035 supports a clipped preceding tier, but exact y0\u20134 fragment endpoints and whether628.75,3.48 is a true physical corner remain uncertain. Other resolved portions remain resolved.",
+      "remaining_details": [
+        {
+          "reason": "Same ten-front tall-column context in032/035 supports a clipped preceding tier, but exact y0\u20134 fragment endpoints and whether628.75,3.48 is a true physical corner remain uncertain. Other resolved portions remain resolved.",
+          "questions": [
+            "Which of the first few border pixels belong to the clipped preceding front, and what visible extent is supported?"
+          ]
+        }
+      ],
+      "source_case_kind": "identity",
+      "source_case_region_xyxy_px": [
+        600,
+        0,
+        789,
+        541
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [
+        "Which of the first few border pixels belong to the clipped preceding front, and what visible extent is supported?"
+      ],
+      "sequence_decision_reason": "Same ten-front tall-column context in032/035 supports a clipped preceding tier, but exact y0\u20134 fragment endpoints and whether628.75,3.48 is a true physical corner remain uncertain. Other resolved portions remain resolved.",
+      "pre_sequence_remaining_questions": [
+        "Does the thin top-border bright strip belong to an upper cassette front, and does source point628.75,3.48 mark its actual lower-left corner rather than the lip of16?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "Rows48\u201350 are three visibly separate smooth white bands; the final triangle is below the seam and is not the dark tooth. Resolve their nominal bounds. Row15 is still a genuine clipped-border identity/corner question.",
+          "questions": [
+            "Does the thin top-border bright strip belong to an upper cassette front, and does source point628.75,3.48 mark its actual lower-left corner rather than the lip of16?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        15
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000049-064",
+      "image_id": "new_000049",
+      "split": "train",
+      "status": "pending",
+      "accepted_operation_ids": [],
+      "held_original_rows": [
+        18
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Aperture splits handled in apertures-review.json; uppercentralrow21 supported and tightened here. Upperleftrow18 remains unadjudicated: prior tier projects mostly outside the frame, and its0\u20134px stripe is not securely separable from the molding ofrow19. Avoid deleting it by mere overlap or creating a fabricated corner.",
+      "remaining_details": [
+        {
+          "reason": "Aperture splits handled in apertures-review.json; uppercentralrow21 supported and tightened here. Upperleftrow18 remains unadjudicated: prior tier projects mostly outside the frame, and its0\u20134px stripe is not securely separable from the molding ofrow19. Avoid deleting it by mere overlap or creating a fabricated corner.",
+          "questions": [
+            "Does upper-left row18 contain a separate clipped front remnant or only the upper molding of row19?"
+          ]
+        }
+      ],
+      "source_case_kind": "identity",
+      "source_case_region_xyxy_px": [
+        141,
+        0,
+        799,
+        496
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [
+        "Does upper-left row18 contain a separate clipped front remnant or only the upper molding of row19?"
+      ],
+      "sequence_decision_reason": "Aperture splits handled in apertures-review.json; uppercentralrow21 supported and tightened here. Upperleftrow18 remains unadjudicated: prior tier projects mostly outside the frame, and its0\u20134px stripe is not securely separable from the molding ofrow19. Avoid deleting it by mere overlap or creating a fabricated corner.",
+      "pre_sequence_remaining_questions": [
+        "Which aperture gray band is target front material, and where is its physical lower contour?",
+        "Are the two top-clipped strips separate cassette remnants or molding of the clear fronts below?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The three genuine alternatives persist after focused raw inspection: aperture6 gray band does not expose a unique complete lower front contour/material boundary; clipped strips18/21 cannot be separated from the molding of the first clear fronts. Other scoped partial rows have supported visible extents.",
+          "questions": [
+            "Which aperture gray band is target front material, and where is its physical lower contour?",
+            "Are the two top-clipped strips separate cassette remnants or molding of the clear fronts below?"
+          ]
+        }
+      ],
+      "previous_held_original_rows": [
+        6,
+        18,
+        21
+      ],
+      "previous_held_addition_ids": [],
+      "held_current_rows": [
+        18
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000018-065",
+      "image_id": "new_000018",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The left-side steps near y484/518 and matching central-slot material support two lower fronts beyond row22. Add their visible envelopes without inferred corners, and trim row22 to its own band.",
+      "remaining_details": [],
+      "source_case_kind": "possible_omission",
+      "source_case_region_xyxy_px": [
+        602,
+        450,
+        617,
+        550
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000034-066",
+      "image_id": "new_000034",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "A very thin boundary strip cannot certify a front; this is a no-addition disposition, not proof that no cassette exists outside the image.",
+      "remaining_details": [],
+      "source_case_kind": "possible_omission",
+      "source_case_region_xyxy_px": [
+        380,
+        705,
+        575,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000049-067",
+      "image_id": "new_000049",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The candidate area below the lowest center front is its dark basal shadow/rack region, with no independently exposed new front.",
+      "remaining_details": [],
+      "source_case_kind": "possible_omission",
+      "source_case_region_xyxy_px": [
+        360,
+        714,
+        445,
+        720
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "old_000057-068",
+      "image_id": "old_000057",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "No addition: the only proposed extra target is a clipped rounded lip/underside band, not a separately identifiable positive-area front surface. The established first front owns the gray surface below. Repetition supports surface classification, not a hidden coordinate or an extra row.",
+      "remaining_details": [],
+      "source_case_kind": "possible_omission",
+      "source_case_region_xyxy_px": [
+        555,
+        0,
+        975,
+        25
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000034-070",
+      "image_id": "new_000034",
+      "split": "train",
+      "status": "pending",
+      "accepted_operation_ids": [],
+      "held_original_rows": [
+        15
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Do not certify or move the current visible point from temporal projection alone; target few border pixels remain insufficient for precise corner classification.",
+      "remaining_details": [
+        {
+          "reason": "Do not certify or move the current visible point from temporal projection alone; target few border pixels remain insufficient for precise corner classification.",
+          "questions": [
+            "Is the saved left point of row15 an actual physical lower-front corner that can be located in this frame?"
+          ]
+        }
+      ],
+      "source_case_kind": "point_localization",
+      "source_case_region_xyxy_px": [
+        557,
+        0,
+        789,
+        720
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [
+        "Is the saved left point of row15 an actual physical lower-front corner that can be located in this frame?"
+      ],
+      "sequence_decision_reason": "Do not certify or move the current visible point from temporal projection alone; target few border pixels remain insufficient for precise corner classification.",
+      "pre_sequence_remaining_questions": [
+        "Confirm the instance identity of the y0\u20134 strip and its physical lower-left junction."
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The first few border pixels do not independently separate an upper front from the upper lip of16. The existing row15 point therefore cannot yet be certified or relocated. Row57 was inspected and has no newly identified contradiction.",
+          "questions": [
+            "Confirm the instance identity of the y0\u20134 strip and its physical lower-left junction."
+          ]
+        }
+      ],
+      "held_current_rows": [
+        15
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000027-072",
+      "image_id": "new_000027",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-192",
+        "observed-193"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Two positive-area clipped front fragments are observed beyond the two already accepted left fragments. Farther right, only rack/frame is visible.",
+      "remaining_details": [],
+      "source_case_kind": "bbox_or_possible_omission",
+      "source_case_region_xyxy_px": [
+        317,
+        0,
+        1280,
+        45
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000001-073",
+      "image_id": "new_000001",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-001",
+        "observed-002"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Both fronts remain distinct. Four supported edges are proposed; all point tokens are preserved.",
+      "remaining_details": [],
+      "source_case_kind": "bbox_or_possible_omission",
+      "source_case_region_xyxy_px": [
+        594,
+        463,
+        771,
+        569
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000013-074",
+      "image_id": "new_000013",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-028"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Keep the partly visible positive and its supported left corner; tighten to observed strip.",
+      "remaining_details": [],
+      "source_case_kind": "bbox_or_possible_omission",
+      "source_case_region_xyxy_px": [
+        561,
+        455,
+        697,
+        533
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000017-075",
+      "image_id": "new_000017",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Independent inspection of the original image supports a non-target fixture/backing: the upper white structure continues across multiple cassette columns along the rack's top bar, with long straight rail/panel geometry and posts, unlike the repeated individual cassette fronts below. The visually inferred non-target classification closes the front-addition question without adding or changing rows. The user did not explicitly identify this image's structure as a wall; its exact physical component name is not established.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        290,
+        0,
+        790,
+        45
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/physical-adjudication-20261114/decisions.json",
+      "remaining_questions": [],
+      "pre_sequence_remaining_questions": [
+        "Are the broad white pieces lying across the top rack separate target cassette fronts, or tray/support/roof surfaces?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The wide upper white assembly has a different plane and span from seated cassette fronts. The frame alone does not identify it as target fronts rather than covers/supports; fixed size of seated cassettes does not settle this distinct assembly.",
+          "questions": [
+            "Are the broad white pieces lying across the top rack separate target cassette fronts, or tray/support/roof surfaces?"
+          ]
+        }
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000044-076",
+      "image_id": "new_000044",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The exact hidden right coordinate cannot be measured. This is an observability conclusion, not a claim that the cassette lacks a right corner.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        583,
+        369,
+        785,
+        454
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000014-077",
+      "image_id": "new_000014",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-029",
+        "observed-030"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The visible horizontal transition in the opening around y485-488 separates the two already-labelled consecutive fronts. Their scale and alignment match the adjacent exposed stack under the confirmed fixed seating. Retain rows21/22 and their canonical missing points; existing nominal aperture bounds are usable with about3px manual uncertainty.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        580,
+        431,
+        800,
+        552
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000126-078",
+      "image_id": "new_000126",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Keep no extra cassette at the tiny white strip beside the gripper base.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        820,
+        625,
+        865,
+        655
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000003-079",
+      "image_id": "new_000003",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-011",
+        "observed-012",
+        "observed-013",
+        "observed-014",
+        "observed-015",
+        "observed-016",
+        "observed-017",
+        "observed-018",
+        "observed-019"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Five central fronts, left strip, two inner-right strips and outer-right strip each have supported identity and observed bounds. Retain existing nominal boundaries with2\u20134px manual uncertainty; soft lips do not create an alternative instance interpretation. Actual visible corners are retained; hidden sides remain0.",
+      "remaining_details": [],
+      "source_case_kind": "bbox",
+      "source_case_region_xyxy_px": [
+        519,
+        455,
+        892,
+        601
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "old_000013-080",
+      "image_id": "old_000013",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Physical repetition and continuous gray body support the upper ownership; adopt nominal top15 with reported transition uncertainty. This resolves the held top field only.",
+      "remaining_details": [],
+      "source_case_kind": "bbox_top_ownership",
+      "source_case_region_xyxy_px": [
+        507,
+        27,
+        1119,
+        187
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "old_000069-081",
+      "image_id": "old_000069",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The smooth upper face transitions continuously through the rounded bright molding. The established front is identifiable and the inherited nominal top16.08 lies at the visible surface turn; retain it with about5px manual boundary tolerance. No separate instance is established by the curve.",
+      "remaining_details": [],
+      "source_case_kind": "bbox_top_ownership",
+      "source_case_region_xyxy_px": [
+        470,
+        0,
+        886,
+        138
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "old_000079-082",
+      "image_id": "old_000079",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The complete original and enlarged top crop show the same repeated front anatomy as the lower visible rows. Retain y12.7 as a nominal transition from the rounded upper bright stripe into the gray front, with 5 px manual boundary uncertainty. This is a curved-surface boundary convention, not an unresolved object count. No endpoint coordinate is altered.",
+      "remaining_details": [],
+      "source_case_kind": "bbox_top_ownership",
+      "source_case_region_xyxy_px": [
+        303,
+        0,
+        730,
+        133
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "old_000093-083",
+      "image_id": "old_000093",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Keep row1 top at its existing approximately one-pixel frame margin.",
+      "remaining_details": [],
+      "source_case_kind": "bbox_top_ownership",
+      "source_case_region_xyxy_px": [
+        87,
+        0,
+        578,
+        125
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "old_000101-084",
+      "image_id": "old_000101",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Retain existing nominal top17.99 within ordinary ~5px soft transition; front ownership is supported by continuous material and repeated side profile. No other field is newly certified.",
+      "remaining_details": [],
+      "source_case_kind": "bbox_top_ownership",
+      "source_case_region_xyxy_px": [
+        420,
+        0,
+        837,
+        137
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000024-086",
+      "image_id": "new_000024",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-046",
+        "observed-047",
+        "observed-048",
+        "observed-049"
+      ],
+      "held_original_rows": [
+        3
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Ten physical fronts already represented in current12\u201321; top stripe belongs first front molding.",
+      "remaining_details": [],
+      "source_case_kind": "uncertain_existing_extents",
+      "source_case_region_xyxy_px": [
+        382,
+        0,
+        963,
+        40
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [],
+      "sequence_decision_reason": "Ten physical fronts already represented in current12\u201321; top stripe belongs first front molding.",
+      "pre_sequence_remaining_questions": [
+        "Does the clipped stripe at x623\u2013736,y0\u201314 belong to a preceding cassette or the upper molding of the first clear front?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The tiny top stripe of row2 remains inseparable from the upper molding of clear current12 versus a preceding front terminal remnant. No independent seam is visible to prove count; retain both missing states and do not delete by overlap alone.",
+          "questions": [
+            "Does the clipped stripe at x623\u2013736,y0\u201314 belong to a preceding cassette or the upper molding of the first clear front?"
+          ]
+        }
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000026-087",
+      "image_id": "new_000026",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-050",
+        "observed-051",
+        "observed-052",
+        "observed-053",
+        "observed-054"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Fresh enlarged original pixels distinguish the pale cassette fragment at x682\u2013687 from the dark rack/tooth at x689\u2013692. Use a nominal right687 with3px uncertainty; mild boundary softness does not require a hold. The visible left strip and the fragment share the front band.",
+      "remaining_details": [],
+      "source_case_kind": "uncertain_existing_points",
+      "source_case_region_xyxy_px": [
+        579,
+        412,
+        723,
+        548
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000028-088",
+      "image_id": "new_000028",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The wider raw context distinguishes the roof above from a short two-dimensional pale front band below it. Accept its nominal observed envelope with 3 px uncertainty and no corner visibility, rather than extrapolating a full hidden cassette.",
+      "remaining_details": [],
+      "source_case_kind": "ambiguous_fragment",
+      "source_case_region_xyxy_px": [
+        701,
+        540,
+        715,
+        552
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000035-089",
+      "image_id": "new_000035",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Focused slit crop distinguishes a separate pale plane terminating at its own lower contour; the jaws continue below it. Add one observed fragment, both actual corners missing. No additional front inferred from occupancy.",
+      "remaining_details": [],
+      "source_case_kind": "ambiguous_fragment",
+      "source_case_region_xyxy_px": [
+        708,
+        548,
+        718,
+        589
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000042-090",
+      "image_id": "new_000042",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Add the identifiable smooth front wedge beneath the perforated roof, adopting a nominal soft transition y608. The side silhouette and rack-plane geometry settle the face assignment; both actual corners remain missing.",
+      "remaining_details": [],
+      "source_case_kind": "possible_omission",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "old_000054-091",
+      "image_id": "old_000054",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "No addition: the only proposed extra target is a clipped rounded lip/underside band, not a separately identifiable positive-area front surface. The established first front owns the gray surface below. Repetition supports surface classification, not a hidden coordinate or an extra row.",
+      "remaining_details": [],
+      "source_case_kind": "possible_omission",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        100
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "old_000068-092",
+      "image_id": "old_000068",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The top bright curve merges continuously into the established first-front profile and has no independent face body, side boundary or lower contour supporting another instance. Resolve as keep existing count/no addition; a hypothetical clipped preceding unit is not a positive without observed front identity.",
+      "remaining_details": [],
+      "source_case_kind": "possible_omission",
+      "source_case_region_xyxy_px": [
+        0,
+        0,
+        1280,
+        100
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000002-093",
+      "image_id": "new_000002",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-003",
+        "observed-004",
+        "observed-005",
+        "observed-006",
+        "observed-007",
+        "observed-008",
+        "observed-009",
+        "observed-010"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The narrow left strips are consistent visible front material separated from the larger central faces by the jaw. Their nominal left bounds are refined; top33 and bottom45 are retained within3\u20134px manual edge uncertainty. Accepted right45 point remains supported.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        413,
+        435,
+        1056,
+        677
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000006-096",
+      "image_id": "new_000006",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-020",
+        "observed-021"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "User-confirmed A/original59 and B/original53 are separate. A existing nominal547/526 extent is retained; B observed bounds refined. The remaining soft front/hand edges are manual3\u20135px placement uncertainty, not alternative identity. Existing visible endpoint interpretation retained; hidden right corners remain missing.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        441,
+        521,
+        586,
+        607
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-1-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000016-098",
+      "image_id": "new_000016",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-031",
+        "observed-032",
+        "observed-033",
+        "observed-034",
+        "observed-035",
+        "observed-036",
+        "observed-037",
+        "observed-038",
+        "observed-039"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The visible horizontal seams on the left establish three existing fronts and a separate fourth lower front. Their matching levels through the diamond/slot support common ownership under the fixed seating constraint. Retain missing right corners, trim the lower slot extent, and add only the actually visible fourth band.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        395,
+        416,
+        1011,
+        716
+      ],
+      "additional_unresolved_region": {
+        "image_id": "new_000016",
+        "kind": "possible_omitted_front",
+        "region_xyxy_px": [
+          568,
+          537,
+          725,
+          559
+        ],
+        "reason": "A separate horizontal seam below row39 and exposed left strip may indicate another front, but the lower left is hand-covered and aperture row ownership is uncertain. No addition without review."
+      },
+      "previous_status": "partial",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000032-099",
+      "image_id": "new_000032",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-055",
+        "observed-056"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Approximately 2 px blur on front seams and aperture sides. Both full-cassette lower corners remain occluded for each row.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        636,
+        406,
+        766,
+        492
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000037-100",
+      "image_id": "new_000037",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The user identifies the broad white upper assembly shown in review question 1 as wall, not a cassette. Close this exact upper-assembly question as non-target. No cassette instance is added and no existing row changes. This identification does not create a general rule excluding every object outside the rack.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        700,
+        0,
+        1280,
+        135
+      ],
+      "previous_status": "held",
+      "latest_review_path": "results/review/physical-adjudication-20261114/decisions.json",
+      "remaining_questions": [],
+      "pre_sequence_remaining_questions": [
+        "Is the large white assembly above the upper rack part of the target cassette population, and which visible plane is its front?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "The separate broad assembly above the rack does not establish the target front plane or unique cassette count. The new user confirmation applies to the thumb-side region only.",
+          "questions": [
+            "Is the large white assembly above the upper rack part of the target cassette population, and which visible plane is its front?"
+          ]
+        }
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000041-102",
+      "image_id": "new_000041",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [
+        9
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Five-front same central column confirms row9 fourth plus missing fifth lower aperture front.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        596,
+        399,
+        804,
+        476
+      ],
+      "previous_status": "partial",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "remaining_questions": [],
+      "sequence_decision_reason": "Five-front same central column confirms row9 fourth plus missing fifth lower aperture front.",
+      "pre_sequence_remaining_questions": [
+        "Does the lower gray region in the diamond below abouty460 belong to the same front, another front, or a non-front surface?"
+      ],
+      "pre_sequence_remaining_details": [
+        {
+          "reason": "Upper front extension to about460 supported. Below the horizontal shade/contour change near460, aperture material continues toward490; one cannot establish whether it is the same fascia, another target front, or non-front material from this view.",
+          "questions": [
+            "Does the lower gray region in the diamond below abouty460 belong to the same front, another front, or a non-front surface?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        9
+      ]
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000041-103",
+      "image_id": "new_000041",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Pale far/top surfaces do not by themselves identify a lower-front plane. No claim about unseen objects beyond the image.",
+      "remaining_details": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        145,
+        0,
+        1280,
+        120
+      ],
+      "held_current_rows": []
+    },
+    {
+      "withheld_proposals": [],
+      "case_id": "new_000067-124",
+      "image_id": "new_000067",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [
+        "observed-086"
+      ],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "Consolidated identity and donated left point remain unchanged; tighten only the broad inherited bounds after raw review.",
+      "remaining_details": [],
+      "source_case_kind": "legacy_bbox",
+      "source_case_region_xyxy_px": [
+        591,
+        394,
+        778,
+        478
+      ],
+      "held_current_rows": []
+    },
+    {
+      "case_id": "new_000096-extra-lower-front",
+      "image_id": "new_000096",
+      "split": "train",
+      "status": "resolved",
+      "accepted_operation_ids": [],
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "The enlarged original resolves a separate full-height front strip below the row 41 seam, consistent with the repeated visible stack thickness. Add its observed narrow envelope and visible left lower corner.",
+      "source_case_region_xyxy_px": [
+        504,
+        588,
+        530,
+        617
+      ],
+      "additional_discovery": true,
+      "previous_status": "held",
+      "latest_review_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "remaining_questions": [],
+      "remaining_details": [],
+      "held_current_rows": []
+    },
+    {
+      "case_id": "new_000001-row46-left-fragment",
+      "image_id": "new_000001",
+      "split": "train",
+      "status": "resolved",
+      "additional_discovery": true,
+      "held_original_rows": [
+        46
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "neighboring-frame gripper silhouette resolves tiny triangle as background cassette front; retain two-fragment ownership and tighten box",
+      "remaining_questions": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": null,
+      "evidence_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "neighboring-frame gripper silhouette resolves tiny triangle as background cassette front; retain two-fragment ownership and tighten box",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "A tiny pale triangle near x754-759,y459-471 may be an exposed front beside the jaw or the jaw bevel. The full-width rectangle requires ownership of this disconnected fragment; root should adjudicate from the supplied raw detail before either certifying or trimming it."
+      ],
+      "remaining_details": [],
+      "held_current_rows": [
+        46
+      ]
+    },
+    {
+      "case_id": "new_000005-top-border-15",
+      "image_id": "new_000005",
+      "split": "train",
+      "status": "pending",
+      "additional_discovery": true,
+      "held_original_rows": [
+        15
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Neighboring004 and stable ten-front tall-column arrangement make a preceding clipped tier plausible. Current15 y0\u201323 is definitely too tall; target actual possible remnant is only0\u20133. The trace and endpoint along the top few blurred pixels are not stable enough for an exact replacement/point certification in this quick pass. No deletion based only on small size or overlap.",
+      "remaining_questions": [
+        "What visible extent belongs to the possible 0-3px front remnant, and is the saved point an actual locatable corner?"
+      ],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        735,
+        0,
+        900,
+        25
+      ],
+      "evidence_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "Neighboring004 and stable ten-front tall-column arrangement make a preceding clipped tier plausible. Current15 y0\u201323 is definitely too tall; target actual possible remnant is only0\u20133. The trace and endpoint along the top few blurred pixels are not stable enough for an exact replacement/point certification in this quick pass. No deletion based only on small size or overlap.",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "Is the y0\u20133 bright strip an independently visible upper cassette front, or the upper lip of row16? If the former, its box should be a thin border fragment rather than y0\u201323."
+      ],
+      "remaining_details": [
+        {
+          "reason": "Neighboring004 and stable ten-front tall-column arrangement make a preceding clipped tier plausible. Current15 y0\u201323 is definitely too tall; target actual possible remnant is only0\u20133. The trace and endpoint along the top few blurred pixels are not stable enough for an exact replacement/point certification in this quick pass. No deletion based only on small size or overlap.",
+          "questions": [
+            "What visible extent belongs to the possible 0-3px front remnant, and is the saved point an actual locatable corner?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        15
+      ]
+    },
+    {
+      "case_id": "batch3-new033-top-row4-surface",
+      "image_id": "new_000033",
+      "split": "train",
+      "status": "resolved",
+      "additional_discovery": true,
+      "held_original_rows": [
+        4
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Six-front stack context establishes first clipped front. Soft nominal bbox boundaries, about2\u20133px uncertainty.",
+      "remaining_questions": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": null,
+      "evidence_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "Six-front stack context establishes first clipped front. Soft nominal bbox boundaries, about2\u20133px uncertainty.",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "Does the frame-clipped strip above row 5 represent a distinct cassette front, or the roof/lip of row 5?"
+      ],
+      "remaining_details": [],
+      "held_current_rows": [
+        4
+      ]
+    },
+    {
+      "case_id": "new_000042-central-aperture-count",
+      "image_id": "new_000042",
+      "split": "train",
+      "status": "resolved",
+      "additional_discovery": true,
+      "held_original_rows": [
+        9
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Five-front same central column confirms gray fifth front below row9. Dark tip below475 excluded.",
+      "remaining_questions": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        675,
+        437,
+        723,
+        480
+      ],
+      "evidence_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "Five-front same central column confirms gray fifth front below row9. Dark tip below475 excluded.",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "Inside the central diamond, a dark band near y443-449 is followed by a gray patch down to roughlyy474, below the visible main row9 face. This may be another front or the underside/lower molding associated with row9. The physical front count requires root adjudication from the raw crop; no addition is currently proposed for it."
+      ],
+      "remaining_details": [],
+      "held_current_rows": [
+        9
+      ]
+    },
+    {
+      "case_id": "new_000044-diamond-front-boundaries",
+      "image_id": "new_000044",
+      "split": "train",
+      "status": "resolved",
+      "additional_discovery": true,
+      "held_original_rows": [
+        3,
+        4
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Upper aperture belongs existing third front row3; lower aperture belongs existing fourth front row4. Do not add a fifth. Row4 existing box and left visible corner remain.",
+      "remaining_questions": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        595,
+        424,
+        725,
+        493
+      ],
+      "evidence_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "Upper aperture belongs existing third front row3; lower aperture belongs existing fourth front row4. Do not add a fifth. Row4 existing box and left visible corner remain.",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "Does the gray band above the dark seam represent the lower part of row3 and the lower patch row4 front, or is some of the latter a roof/underside?"
+      ],
+      "remaining_details": [],
+      "held_current_rows": [
+        3,
+        4
+      ]
+    },
+    {
+      "case_id": "new_000094-right-lower-thin-band",
+      "image_id": "new_000094",
+      "split": "train",
+      "status": "resolved",
+      "additional_discovery": true,
+      "held_original_rows": [],
+      "held_addition_ids": [],
+      "atlas_note": "add fourth front fragment at observed plane; both corners0",
+      "remaining_questions": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        815,
+        492,
+        935,
+        515
+      ],
+      "evidence_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "add fourth front fragment at observed plane; both corners0",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "Does this band have a separate front plane below21, or is it only that cassette lower lip?"
+      ],
+      "remaining_details": [],
+      "held_current_rows": []
+    },
+    {
+      "case_id": "new_000115-top-border-11",
+      "image_id": "new_000115",
+      "split": "train",
+      "status": "pending",
+      "additional_discovery": true,
+      "held_original_rows": [
+        11
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "The same fourth-column fronts can be followed into the wider 118/119 views. A diagnostic alignment using three lower front contours places the preceding lower-left corner only about 5 px above the target border. The target strip is 0-6 px deep, with blur and rounded molding of similar scale; this does not decisively establish whether any independent preceding front material remains. Keep the inherited row pending, without certifying a separate instance.",
+      "remaining_questions": [
+        "Is the top strip in row11 independent preceding-front material or the molding of the next front?"
+      ],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        755,
+        0,
+        990,
+        15
+      ],
+      "evidence_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "The same fourth-column fronts can be followed into the wider 118/119 views. A diagnostic alignment using three lower front contours places the preceding lower-left corner only about 5 px above the target border. The target strip is 0-6 px deep, with blur and rounded molding of similar scale; this does not decisively establish whether any independent preceding front material remains. Keep the inherited row pending, without certifying a separate instance.",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "Is this a separately visible upper cassette front, or a lip belonging to current12?"
+      ],
+      "remaining_details": [
+        {
+          "reason": "The same fourth-column fronts can be followed into the wider 118/119 views. A diagnostic alignment using three lower front contours places the preceding lower-left corner only about 5 px above the target border. The target strip is 0-6 px deep, with blur and rounded molding of similar scale; this does not decisively establish whether any independent preceding front material remains. Keep the inherited row pending, without certifying a separate instance.",
+          "questions": [
+            "Is the top strip in row11 independent preceding-front material or the molding of the next front?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        11
+      ]
+    },
+    {
+      "case_id": "batch3-new116-row24-surface",
+      "image_id": "new_000116",
+      "split": "train",
+      "status": "resolved",
+      "additional_discovery": true,
+      "held_original_rows": [
+        24
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "delete false second front; user confirmation plus115\u2013117 single-cassette continuity",
+      "remaining_questions": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": null,
+      "evidence_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "delete false second front; user confirmation plus115\u2013117 single-cassette continuity",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "Is this thin under-front band a second cassette front or the underside/lip of the one above?"
+      ],
+      "remaining_details": [],
+      "held_current_rows": []
+    },
+    {
+      "case_id": "batch3-new117-top-row11-surface",
+      "image_id": "new_000117",
+      "split": "train",
+      "status": "pending",
+      "additional_discovery": true,
+      "held_original_rows": [
+        11
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "Adjacent wider views establish stack identity, but near-border extrapolation and the blurred molded transition do not cleanly separate tiny preceding-front material from the next front upper molding at y0-8. No source-frame corner can establish a visible target-frame endpoint. Preserve the held row without certification.",
+      "remaining_questions": [
+        "Is the top strip in row11 independent preceding-front material or the molding of the next front?"
+      ],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": null,
+      "evidence_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "Adjacent wider views establish stack identity, but near-border extrapolation and the blurred molded transition do not cleanly separate tiny preceding-front material from the next front upper molding at y0-8. No source-frame corner can establish a visible target-frame endpoint. Preserve the held row without certification.",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "The 0-8 px top strip overlaps the main front below; a preceding front remnant versus its upper molding cannot be established from the clipped anatomy alone. Retain without certifying a distinct instance."
+      ],
+      "remaining_details": [
+        {
+          "reason": "Adjacent wider views establish stack identity, but near-border extrapolation and the blurred molded transition do not cleanly separate tiny preceding-front material from the next front upper molding at y0-8. No source-frame corner can establish a visible target-frame endpoint. Preserve the held row without certification.",
+          "questions": [
+            "Is the top strip in row11 independent preceding-front material or the molding of the next front?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        11
+      ]
+    },
+    {
+      "case_id": "batch3-new121-top-row53-surface",
+      "image_id": "new_000121",
+      "split": "train",
+      "status": "pending",
+      "additional_discovery": true,
+      "held_original_rows": [
+        53
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "The adjacent wider views clarify the tall column, but the 0-4 px band in 121 is strongly blurred and clipped. The molding/front transition cannot be located with enough confidence to identify an independent visible remnant. Keep pending rather than using the known stack count as a label.",
+      "remaining_questions": [
+        "Is the top strip in row53 independent preceding-front material or the molding of the next front?"
+      ],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": null,
+      "evidence_path": "results/review/complete-labels-20261114/batch-3-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "The adjacent wider views clarify the tall column, but the 0-4 px band in 121 is strongly blurred and clipped. The molding/front transition cannot be located with enough confidence to identify an independent visible remnant. Keep pending rather than using the known stack count as a label.",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "The extremely shallow top strip is visible, but its instance ownership relative to the main front below remains ambiguous between a preceding front terminal remnant and the same cassette molding. Preserve without certifying the separate count."
+      ],
+      "remaining_details": [
+        {
+          "reason": "The adjacent wider views clarify the tall column, but the 0-4 px band in 121 is strongly blurred and clipped. The molding/front transition cannot be located with enough confidence to identify an independent visible remnant. Keep pending rather than using the known stack count as a label.",
+          "questions": [
+            "Is the top strip in row53 independent preceding-front material or the molding of the next front?"
+          ]
+        }
+      ],
+      "held_current_rows": [
+        53
+      ]
+    },
+    {
+      "case_id": "new_000123-lower-right-24",
+      "image_id": "new_000123",
+      "split": "train",
+      "status": "resolved",
+      "additional_discovery": true,
+      "held_original_rows": [
+        24
+      ],
+      "held_addition_ids": [],
+      "atlas_note": "retain fourth front as tight visible strip using122/124 four-front correspondence",
+      "remaining_questions": [],
+      "source_case_kind": "identity_or_extent",
+      "source_case_region_xyxy_px": [
+        780,
+        485,
+        935,
+        530
+      ],
+      "evidence_path": "results/review/complete-labels-20261114/batch-2-review.json",
+      "accepted_operation_ids": [],
+      "previous_status": "held",
+      "sequence_decision_reason": "retain fourth front as tight visible strip using122/124 four-front correspondence",
+      "latest_review_path": "results/review/sequence-refinement-20261117/accepted-review.json",
+      "pre_sequence_remaining_questions": [
+        "Is the band above the hand a separate lower front or only the underside of current23? Separate-front option: nominal observed band [803,505,925,519]; underside option: delete current24."
+      ],
+      "remaining_details": [],
+      "held_current_rows": [
+        24
+      ]
+    }
+  ],
+  "focus_pages": [
+    {
+      "image_id": "new_000030",
+      "title": "Two fronts through the opening",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        610,
+        390,
+        820,
+        520
+      ],
+      "observation": "Frames029 and031 identify two successive fronts below the three clear central fronts. The former combined row12 now represents the upper front; a new row records the lower aperture front. The shared boundary near474 is nominal, with about4px uncertainty.",
+      "question": "Check surface ownership against031. The darker change near483 lies within the lower front; it is not the boundary used to count another cassette. Both real corner pairs remain hidden."
+    },
+    {
+      "image_id": "new_000041",
+      "title": "A fifth front was missing",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        600,
+        385,
+        810,
+        510
+      ],
+      "observation": "Frames040 and043 expose five fronts in this column. Rows6-8 are the first three; row9 is the fourth. The visible lower aperture patch belongs to the fifth and is now labeled.",
+      "question": "The new box follows the observed patch, not the full width of a hidden cassette. The two actual lower corners remain missing."
+    },
+    {
+      "image_id": "new_000042",
+      "title": "Darkness alone does not identify a front",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        600,
+        390,
+        800,
+        505
+      ],
+      "observation": "The same five-front column resolves the gray aperture patch below row9. Its observed front ends near474-475 in this frame.",
+      "question": "Compare with041: the dark tip below475 is excluded here. A dark opening is not automatically cassette material."
+    },
+    {
+      "image_id": "new_000044",
+      "title": "Two existing rows, one corrected extent",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        580,
+        410,
+        785,
+        510
+      ],
+      "observation": "The two left strips already establish the third and fourth fronts. Temporal context assigns the upper aperture continuation to row3 and the lower patch to row4.",
+      "question": "The row3 box expands to include its own visible continuation. No duplicate front is added; its visible left corner and missing right corner are preserved."
+    },
+    {
+      "image_id": "new_000049",
+      "title": "Separate the two aperture fronts",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        605,
+        405,
+        800,
+        510
+      ],
+      "observation": "Frame050 exposes five fronts in the corresponding column. The upper aperture fragment is the third front, the lower patch is the fourth. The fifth is fully occluded in049.",
+      "question": "Only the two fronts with visible target-frame fragments are labeled. The unrelated top-border question remains marked separately."
+    },
+    {
+      "image_id": "new_000074",
+      "title": "Use the neighboring view to count",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        605,
+        395,
+        795,
+        510
+      ],
+      "observation": "Frame075 exposes four fronts in this central column. The upper and lower aperture fragments in074 belong to the third and fourth, so the old combined row11 is split.",
+      "question": "Both new extents follow visible patches. Equal physical cassette height is supporting context, not a rule imposing equal pixel height."
+    },
+    {
+      "image_id": "new_000116",
+      "title": "Remove the false second front",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        735,
+        410,
+        935,
+        535
+      ],
+      "observation": "Your confirmed full-review row24 is deleted. Frames115-117 show one broad front in this right-hand slot; the narrow lower band is its molding over the hand. The equivalent false row24 is also deleted in117.",
+      "question": "The deletion follows physical ownership. There is no rule that small or thin targets should always be omitted."
+    },
+    {
+      "image_id": "new_000123",
+      "title": "Keep the real thin front",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        755,
+        420,
+        960,
+        540
+      ],
+      "observation": "Frames122 and124 show four cassettes in this right-hand stack. Here the hand hides most of the fourth front; full-review row24 is retained and tightened to the visible sloped strip.",
+      "question": "This differs from116/117: the narrow strip belongs to a separate cassette. Its hidden lower corners stay missing."
+    },
+    {
+      "image_id": "new_000124",
+      "title": "Add one front, avoid a duplicate",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        590,
+        370,
+        815,
+        510
+      ],
+      "observation": "The tall column has ten fronts in122 and123. Existing row19 in124 owns the upper aperture triangle; one lower aperture front was missing. The old interior left point of row19 is now missing because the true corner is occluded.",
+      "question": "Check the upper and lower patch ownership. Adding both historical withheld proposals would count the upper patch twice."
+    },
+    {
+      "image_id": "new_000128",
+      "title": "The two fronts from127 persist",
+      "section": "SEQUENCE REVIEW",
+      "crop_xyxy_px": [
+        605,
+        395,
+        815,
+        550
+      ],
+      "observation": "The six-front central stack persists from127. Three fronts are broadly visible; a fourth appears above and through the gripper; the fifth and sixth appear in the broad patch and narrow lower stem.",
+      "question": "The two missing fronts are now current rows36/37, with target-frame bounds. Former row18 is now17 and includes the upper triangle. A corner seen in127 is not automatically visible in128."
+    },
+    {
+      "image_id": "new_000027",
+      "title": "A tighter cyan box",
+      "section": "BOX EXTENT",
+      "crop_xyxy_px": [
+        65,
+        395,
+        245,
+        490
+      ],
+      "observation": "The old row1 rectangle included roof transition, rack at the left, and lower support padding. The revised envelope follows the broad visible front; both saved lower corners are preserved.",
+      "question": "Cyan means no recorded hold, not a guarantee of perfect geometry. Sloping faces can still have overlapping axis-aligned boxes."
+    },
+    {
+      "image_id": "new_000033",
+      "title": "A real clipped front can be small",
+      "section": "FRAME BORDER",
+      "crop_xyxy_px": [
+        365,
+        0,
+        565,
+        105
+      ],
+      "observation": "Frame032 exposes six fronts in this column. The first is clipped here while the other five remain below. Row4 is retained, with its wide rack-inclusive box tightened to the visible remnant.",
+      "question": "Small size alone does not justify deletion. Compare with024, where the extra stripe duplicated the molding of an already represented front."
+    }
+  ],
+  "remaining_all_case_groups": 9,
+  "remaining_all_training_images": 8,
+  "all_case_group_counts": {
+    "resolved": 91,
+    "pending": 9
+  },
+  "change_scope": "Supported sequence and visible-front extent corrections; PDF review before merge."
+}
