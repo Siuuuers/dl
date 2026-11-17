@@ -38,7 +38,7 @@ DEVELOPMENT = {
 
 def settings(review):
     """Keep the first review reproducible; later passes bind their own parents."""
-    config = {"candidate_id": CANDIDATE_ID, "review_date": "2026-11-17",
+    config = {"candidate_id": CANDIDATE_ID, "review_date": "2026-11-17", "review_round": 1,
               "parent": PARENT, "parent_status": PARENT_STATUS,
               "adjudication": ADJUDICATION, "development": DEVELOPMENT,
               "status_path": STATUS}
@@ -46,8 +46,11 @@ def settings(review):
     require(isinstance(overrides, dict) and set(overrides) <= set(config),
             "unknown composition settings")
     config.update(overrides)
-    require(config["candidate_id"] == "sequence-refined-fronts-" + config["review_date"],
-            "candidate identity must match its review date")
+    require(type(config["review_round"]) is int and config["review_round"] >= 1,
+            "review_round must be a positive integer")
+    suffix = "" if config["review_round"] == 1 else "-r" + str(config["review_round"])
+    require(config["candidate_id"] == "sequence-refined-fronts-" + config["review_date"] + suffix,
+            "candidate identity must match its review date and round")
     date.fromisoformat(config["review_date"])
     return config
 
