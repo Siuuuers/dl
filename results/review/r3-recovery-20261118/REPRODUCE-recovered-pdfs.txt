@@ -1,0 +1,99 @@
+Recovered cassette review PDFs — reproduction note
+
+These are a new review revision made from the immutable r3 PDFs, recovered
+11-field labels, and a separately accepted original-image refinement of
+new_000101 row 52. They are not the missing original r3 authoring files.
+
+Run command (replace the workspace prefix with the restored workspace root):
+
+python /path/to/workspace/dl/scripts/build_recovered_review_pdfs.py \
+  --workspace /path/to/workspace \
+  --current-labels /path/to/workspace/dl/data/reviews/fronts-2026-11-18/labels \
+  --current-manifest /path/to/workspace/dl/data/reviews/fronts-2026-11-18/manifest.json
+
+Arguments
+
+--workspace is the root containing the input layout below. It defaults to the
+current working directory. The script itself may be stored elsewhere.
+--current-labels selects the final authoritative labels directory. Supply it
+for this delivered revision; omitting it uses the script's provisional row52
+fallback instead of the authoritative final token formatting.
+--current-manifest records the current review-manifest SHA256 in the audit.
+It defaults to manifest.json beside --current-labels. This argument changes
+provenance metadata only; it does not change PDF geometry or training inputs.
+
+Required input layout, relative to --workspace
+
+recovered_pdfs/cassette-front-changes-2026-11-18-r3.pdf
+recovered_pdfs/cassette-label-atlas-2026-11-18-r3.pdf
+audit_r3_originals/new_000101.png
+audit_r3_recovery/recovered_final/labels/train/new_000101.txt
+dl/data/candidates/sequence-refined-fronts-2026-11-18-r2/labels/train/new_000101.txt
+dl/data/reviews/fronts-2026-11-18/labels/train/new_000101.txt
+dl/data/reviews/fronts-2026-11-18/manifest.json
+dl/scripts/ (the repository helpers and their local imports)
+
+The original changes PDF, atlas PDF, and original PNG hashes are checked by
+the builder before it writes outputs. The final new101 file must differ from
+the immutable recovery only in row52 box tokens. The two existing corner
+token groups must remain identical. The accepted nominal bbox is
+[485,543,550,571] in the original 1280-by-720 image.
+
+Runtime used for this reproduction
+
+Python 3.12.14
+PyMuPDF 1.26.6
+pypdf 6.21.4
+reportlab 4.4.9
+Pillow 13.0.0
+DejaVu Sans fonts at /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf and
+/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+
+Repository helpers used (SHA256)
+
+187c4fa6f5516b277964ca62858658d03752ffd932d6c29cceb90853d817b415
+  dl/scripts/render_label_atlas.py
+5c0f850ee68a28627b0e483bc6f04a5b2d68888212c8d29c4f708fd6f2e9e5b1
+  dl/scripts/render_front_refinement_review.py
+3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0
+  dl/scripts/evaluate_pose.py
+
+Final manifest SHA256
+
+256b750a0466b281750085f90acfa3056ee9320f44b45067a0e63415afc6ac35
+
+The manifest received a text-only correction resolving a stale row52-open
+statement. Neither PDF contained the superseded manifest hash. A rerun with
+the explicit arguments above reproduced both delivered PDFs byte-for-byte.
+
+Outputs, under output/pdf/
+
+cassette-front-changes-2026-11-18-recovered.pdf
+  76 pages; SHA256
+  b53e8eea8aeea924ba9bc2d097cb64a92d6dbff9b17b1dae4beb6609752176b7
+cassette-label-atlas-2026-11-18-recovered.pdf
+  166 pages; SHA256
+  b6119c57c70e472204f332b7f54da94fbe8ab0b9d69ea78043ed569b6b42634c
+recovered-pdf-audit.json
+  Generated input hashes, final label tokens, counts, runtime, and navigation
+  preservation checks. Includes the updated current-review manifest hash.
+recovered-pdf-qa.json
+  Recorded visual and independent vector checks of the delivered PDFs.
+  This is a QA record, not an automatically regenerated builder output.
+
+Scope and verification
+
+The source PDFs are preserved. Existing page numbers, internal links, and
+bookmarks are retained. Changes pages 1/50 and atlas pages 1/79 are replaced;
+changes page 3 receives one index-text update. Additional detail/provenance
+pages are appended. New101 page 79 uses the verified original PNG pixels.
+
+Visual QA covers changes pages 1, 3, 50, 75, 76 and atlas pages 1, 79, 166. The atlas
+vector check confirms all 53 new101 boxes, 103 visible corners, and 3 missing
+corners against the final label file. Reported tiny coordinate differences
+measure PDF conversion consistency, not physical annotation accuracy.
+
+The final review records 889 replacements, 12 deletions, and 0 additions. It
+keeps 3,789 training fronts and 662 development fronts. The only recorded
+amber rows remain new_000007:7,14. This review does not alter the v2 training
+candidate, either predefined evaluation reference, or model promotion.

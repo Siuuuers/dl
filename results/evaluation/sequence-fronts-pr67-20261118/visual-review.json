@@ -1,0 +1,222 @@
+{
+  "kind": "pr67-focused-original-pixel-review",
+  "reference": "primary666",
+  "scope": "All changed detection identities between candidate and matched control; full original images and local crops; representative extra-output increases in new010/new089/new090.",
+  "source_image_directory": "data/images/val",
+  "raw_pixels_preserved": true,
+  "label_changes": false,
+  "gained": [
+    {
+      "id": "new_000009:53",
+      "finding": "An existing proposal contracts toward the small visible front strip beside the gripper. Best IoU improves from 0.31595 to 0.55802. This is improved box agreement for already-proposed material, not first discovery of an object."
+    },
+    {
+      "id": "new_000056:14",
+      "finding": "Existing thumb-adjacent front proposal changes its box; IoU 0.499891 becomes 0.508073. It crosses the fixed matching boundary."
+    },
+    {
+      "id": "new_000087:15",
+      "finding": "Existing high-confidence front proposal; all box edges move no more than 0.58716 px. IoU 0.495163 becomes 0.505702. This is the sole additional 10-px two-corner success relative to the control; it is enabled by the matching gate."
+    }
+  ],
+  "lost": [
+    {
+      "id": "new_000008:33",
+      "finding": "No qualifying candidate proposal for the visible front at the right image edge at fixed confidence0.13. The nearest-overlap candidate proposal follows the lower neighboring front; best IoU0.08335 versus control0.60125."
+    },
+    {
+      "id": "new_000009:56",
+      "finding": "No candidate output overlaps this frozen aperture-region target at threshold0.13. The target identity/surface ownership is itself sensitive to the ongoing user annotation decisions; count as a scored loss, not certified physical deterioration."
+    },
+    {
+      "id": "new_000010:31,32",
+      "finding": "Candidate still outputs both regions, contracting toward exposed white material beside the thumb. Best IoUs fall to0.37137/0.29430. Frozen reference boxes span a larger extent. Whether separate visible pieces justify the broad box requires same-front ownership adjudication; do not assume broad-over-occluder is wrong."
+    },
+    {
+      "id": "new_000011:61",
+      "finding": "The gripper aperture has shifted/changed-extent proposals; candidate best overlap0.16362 versus control0.65376. The candidate box mainly follows the upper visible surface. Requires front/ledge ownership review rather than describing all nearby white material as the same front."
+    },
+    {
+      "id": "new_000056:15",
+      "finding": "A front proposal remains; candidate narrows its thumb-adjacent extent. IoU0.51794 becomes0.45100. Extent disagreement, not absent detection."
+    },
+    {
+      "id": "new_000090:41,42",
+      "finding": "Candidate still produces boxes along exposed material beside the gripper but narrows their right extents. Best IoUs0.49087/0.47234. Review whether any additional separated visible material belongs to each same front before changing either gold or interpretation."
+    }
+  ],
+  "extra_output_delta": [
+    {
+      "image_id": "new_000007",
+      "reference_extras": 5,
+      "candidate_extras": 4,
+      "delta": -1
+    },
+    {
+      "image_id": "new_000008",
+      "reference_extras": 7,
+      "candidate_extras": 7,
+      "delta": 0
+    },
+    {
+      "image_id": "new_000009",
+      "reference_extras": 23,
+      "candidate_extras": 18,
+      "delta": -5
+    },
+    {
+      "image_id": "new_000010",
+      "reference_extras": 4,
+      "candidate_extras": 13,
+      "delta": 9
+    },
+    {
+      "image_id": "new_000011",
+      "reference_extras": 9,
+      "candidate_extras": 7,
+      "delta": -2
+    },
+    {
+      "image_id": "new_000053",
+      "reference_extras": 0,
+      "candidate_extras": 1,
+      "delta": 1
+    },
+    {
+      "image_id": "new_000054",
+      "reference_extras": 3,
+      "candidate_extras": 2,
+      "delta": -1
+    },
+    {
+      "image_id": "new_000055",
+      "reference_extras": 3,
+      "candidate_extras": 4,
+      "delta": 1
+    },
+    {
+      "image_id": "new_000056",
+      "reference_extras": 2,
+      "candidate_extras": 3,
+      "delta": 1
+    },
+    {
+      "image_id": "new_000057",
+      "reference_extras": 0,
+      "candidate_extras": 0,
+      "delta": 0
+    },
+    {
+      "image_id": "new_000058",
+      "reference_extras": 2,
+      "candidate_extras": 1,
+      "delta": -1
+    },
+    {
+      "image_id": "new_000059",
+      "reference_extras": 4,
+      "candidate_extras": 2,
+      "delta": -2
+    },
+    {
+      "image_id": "new_000086",
+      "reference_extras": 0,
+      "candidate_extras": 1,
+      "delta": 1
+    },
+    {
+      "image_id": "new_000087",
+      "reference_extras": 2,
+      "candidate_extras": 5,
+      "delta": 3
+    },
+    {
+      "image_id": "new_000088",
+      "reference_extras": 0,
+      "candidate_extras": 2,
+      "delta": 2
+    },
+    {
+      "image_id": "new_000089",
+      "reference_extras": 8,
+      "candidate_extras": 15,
+      "delta": 7
+    },
+    {
+      "image_id": "new_000090",
+      "reference_extras": 11,
+      "candidate_extras": 20,
+      "delta": 9
+    },
+    {
+      "image_id": "new_000146",
+      "reference_extras": 0,
+      "candidate_extras": 0,
+      "delta": 0
+    },
+    {
+      "image_id": "new_000147",
+      "reference_extras": 0,
+      "candidate_extras": 0,
+      "delta": 0
+    },
+    {
+      "image_id": "new_000148",
+      "reference_extras": 0,
+      "candidate_extras": 0,
+      "delta": 0
+    }
+  ],
+  "extra_counts": {
+    "reference": {
+      "total": 83,
+      "duplicate_subset": 29,
+      "other_unmatched": 54
+    },
+    "candidate": {
+      "total": 105,
+      "duplicate_subset": 28,
+      "other_unmatched": 77
+    }
+  },
+  "extra_confidence_bands": {
+    "reference": {
+      "0.13_to_0.25": 29,
+      "0.25_to_0.5": 35,
+      "0.5_to_1": 19
+    },
+    "candidate": {
+      "0.13_to_0.25": 45,
+      "0.25_to_0.5": 39,
+      "0.5_to_1": 21
+    }
+  },
+  "representative_extras": [
+    {
+      "image_id": "new_000089",
+      "candidate_prediction_index_zero_based": 67,
+      "finding": "A new proposal is on the non-target keyboard at the bottom right. The control returns no proposal there.",
+      "bbox_confidence": 0.14576205611228943,
+      "endpoint_confidences": [
+        0.8770790100097656,
+        0.9326260685920715
+      ],
+      "figure": "figures/case_keyboard_extra.png"
+    },
+    {
+      "image_id": "new_000010",
+      "finding": "Most extra-output growth is around thumb-occluded fronts and the gripper aperture. Narrower unmatched fragments and repeated overlapping local proposals coexist; do not label every output as background."
+    },
+    {
+      "image_id": "new_000090",
+      "finding": "Extra-output growth clusters along partial fronts near the gripper; the keyboard also has one additional extra output. Matching-duplicate count falls overall, so the result is not simply more NMS duplicates."
+    }
+  ],
+  "recommendation": "Retain PR35 as selected; the fixed experiment fails to support broad replacement. Keep improvements and regressions separate. Next bounded step is raw-pixel ownership/extent review of the explicit changed cases, then replay unchanged predictions on a separately versioned reference if labels change. No GPU training or parameter search is needed for that replay.",
+  "limits": [
+    "These are reused development frames.",
+    "The 584/584 two-corner10px result covers only the584 cases with two locatable reference corners, not all666fronts or entire scenes.",
+    "A box may legitimately span a gripper/thumb if separated visible pieces are established to belong to the same front; broad coverage alone is not an annotation defect.",
+    "Keyboard false-positive case is visually adjudicated; all105 unmatched predictions have not individually been classified."
+  ]
+}

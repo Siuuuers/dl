@@ -1,5 +1,7 @@
 # Run the sequence-front comparison
 
+**Completed:** [PR67 returned both trained arms](https://github.com/Siuuuers/dl/pull/67), and the [fixed comparison is complete](../results/evaluation/sequence-fronts-pr67-20261118/README.md). Retain PR35; do not rerun the notebook merely to obtain these results. The instructions below preserve the historical experiment for reproduction. Current use is summarized in [current-model.md](current-model.md).
+
 Use the new [baomai_sequence_fronts.ipynb](../notebooks/baomai_sequence_fronts.ipynb) for one controlled comparison of the 18 November r2 labels. **PR35 remains the selected model.** This preparation does not establish a model improvement; the returned models still need evaluation.
 
 ## Run outside this workspace

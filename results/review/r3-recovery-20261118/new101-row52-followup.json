@@ -1,0 +1,89 @@
+{
+  "kind": "original_pixel_review_followup",
+  "image_id": "new_000101",
+  "split": "train",
+  "row": 52,
+  "operation": "replace_box",
+  "before_line": "0 0.40273437 0.77569444 0.05390625 0.04305556 0.38050781 0.78863889 2 0.00000000 0.00000000 0",
+  "after_line": "0 0.404296875 0.773611111 0.050781250 0.038888889 0.38050781 0.78863889 2 0.00000000 0.00000000 0",
+  "before_label_sha256": "e63b33a70c9551925e5b8b920bc171ec1a60dd89eb3b4360c57c540c6c73a965",
+  "after_label_sha256": "113490db75be25b7d7a35dd14e98b84accdab2933b22558e8892c79d4c0fce4c",
+  "after_box_xyxy_px": [
+    485,
+    543,
+    550,
+    571
+  ],
+  "point_tokens_unchanged": true,
+  "source_image_path": "data/images/train/new_000101.png",
+  "source_image_sha256": "5b13f5c4d0c5ab94fd5954000a299cd7dc2c1ec486cc6d1d13a623f8fcc0094c",
+  "reason": "Trim the rack/support margin to the left and below the observed front. Preserve the visible upper lip and thumb-side extent. This is a newly inspected correction, not recovered r3 geometry.",
+  "review": {
+    "kind": "read_only_physical_review_proposal",
+    "image_id": "new_000101",
+    "parent_row": 52,
+    "source_image_path": "/workspace/scratch/1444d6017bf0/audit_r3_originals/new_000101.png",
+    "source_image_sha256": "5b13f5c4d0c5ab94fd5954000a299cd7dc2c1ec486cc6d1d13a623f8fcc0094c",
+    "original_size": [
+      1280,
+      720
+    ],
+    "source_label_line_provided": "0 0.40273437 0.77569444 0.05390625 0.04305556 0.38050781 0.78863889 2 0.00000000 0.00000000 0",
+    "current_bbox_xyxy_px": [
+      480.9999936,
+      542.9999952,
+      549.9999936,
+      573.9999984
+    ],
+    "current_visible_left_px": [
+      487.04999680000003,
+      567.8200008
+    ],
+    "current_right_token": "0.00000000 0.00000000 0",
+    "disposition": "propose_bbox_only_refinement",
+    "proposed_bbox_xyxy_px": [
+      485,
+      543,
+      550,
+      571
+    ],
+    "proposed_label_applied": false,
+    "recovered_r3_operation": false,
+    "change_reasons": {
+      "left": "The original x481 extent includes the dark rack/support margin left of the visible front; the observed rounded outer-face contour is around x484-487. Nominal485 conservatively retains the visible transition.",
+      "bottom": "The original y574 extent includes the lower support/separator band beneath the white front/lip. The soft transition is around y569-572; nominal571 retains the front edge without the excess band.",
+      "top": "Keep543; the visible raised front lip reaches this height and nearby differences fall within soft-boundary uncertainty.",
+      "right": "Keep550; the visible upper-front fragment reaches the thumb occlusion here. Do not extend to inferred hidden width."
+    },
+    "boundary_review_intervals_px": {
+      "left": [
+        484,
+        487
+      ],
+      "bottom": [
+        569,
+        572
+      ]
+    },
+    "interval_semantics": "Uncalibrated manual review intervals, not confidence intervals or physical metrology.",
+    "confidence": {
+      "instance_identity": "high",
+      "correction_direction": "moderate",
+      "exact_soft_edge_coordinate": "moderate"
+    },
+    "point_decision": "Preserve the independently located left corner and canonical missing right corner; no point is snapped or inferred.",
+    "point_within_proposed_box": true,
+    "observed_sources": [
+      "full original image",
+      "native-source crop",
+      "nearest-neighbor coordinate diagnostic with current box only"
+    ],
+    "diagnostic_path": "/workspace/scratch/1444d6017bf0/audit_annotations/new101-row52-review.png",
+    "limits": [
+      "This closes the missing review record with a new proposal, not by claiming the r3 ledger contained it.",
+      "No original images, label files, training inputs, model weights or remote records were modified.",
+      "Exact boundary coordinates remain uncertain by a few native pixels."
+    ]
+  },
+  "release_ready": false
+}
