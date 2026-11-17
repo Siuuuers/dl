@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "kind": "sequence_front_notebook_final_handoff_verification",
+  "status": "ready_for_controlled_external_run",
+  "implementation_commit": "5718111dc1c78a9d8127c88f6a5eb0b39c5cfc47",
+  "annotation_commit": "cff28170b7fc82b859850607f06ac8d690dc5d03",
+  "notebook": {
+    "path": "notebooks/baomai_sequence_fronts.ipynb",
+    "sha256": "eb65d0519b2cacde190b5c4bf72d7203387b3a20f5c156489a95ee191186cf80",
+    "source_ref": "5718111dc1c78a9d8127c88f6a5eb0b39c5cfc47",
+    "protocol_path": "experiments/sequence-front-corrections-2026-11-18.json",
+    "protocol_sha256": "bce355c812b661372e484e6c80f3b57f40e0e5b115b3cbeb45178f71da1d51b6"
+  },
+  "candidate": {
+    "path": "data/candidates/sequence-front-corrections-2026-11-18/manifest.json",
+    "sha256": "01b2c9853bb12e42eb1015935a6c02d050a303c0387f907ffd402f41344a2536"
+  },
+  "references": {
+    "primary": {
+      "path": "data/references/sequence-refined-reference-2026-11-18/manifest.json",
+      "sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      }
+    },
+    "diagnostic": {
+      "path": "data/references/visible-front-completion-2026-11-14/manifest.json",
+      "sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      }
+    }
+  },
+  "checks": {
+    "code_cells_compiled": 7,
+    "embedded_input_preflight_compiled": true,
+    "all_execution_counts_null": true,
+    "all_outputs_empty": true,
+    "no_unset_pin_placeholders": true,
+    "source_and_protocol_pins_match": true,
+    "phase2_files_byte_equal_to_implementation_commit": 92,
+    "change_since_independent_review_is_only_SOURCE_REF_literal": true,
+    "reviewed_script_hashes_unchanged": true
+  },
+  "preflight_receipt": {
+    "path": "results/verification/sequence-front-training-20261118/preflight.json",
+    "sha256": "8d501b3ca8965a182b2ff551eb71b91b90f3d87fba9bb8ad874633364a606381",
+    "focused_checks_passed": 3
+  },
+  "independent_code_review": {
+    "path": "results/verification/sequence-front-training-20261118/prior-code-review.json",
+    "sha256": "b511d1cdcc36f0a95a5fafe19b1122e99ced38054b29538130de695776c6e026",
+    "reviewed_notebook_sha256": "7ae204dba2433144fe68e66256c49f348bcb8a357fc06e2c80303b2acb453e85",
+    "review_snapshot": "Draft with SOURCE_REF intentionally unset; exact final transition verified by reconstructing that draft hash from the final notebook.",
+    "zip_restart_regression": {
+      "result": "pass",
+      "uses_real_notebook_backup_restore_helpers": true,
+      "uses_actual_packaging_branch": true,
+      "uses_real_verify_archive": true,
+      "synthetic_model_bundle_fixture": true,
+      "package_results_calls": 0,
+      "restored_zip_byte_identical": true,
+      "drive_completion_marker_unchanged": true,
+      "limitations": "A small synthetic ZIP substitutes for actual model artifacts. This checks the restart/return path; it is not GPU training, actual Drive service access or model-validation evidence."
+    }
+  },
+  "training_counts": {
+    "reference": {
+      "train": {
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 701,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "candidate": {
+      "train": {
+        "images": 137,
+        "objects": 3791,
+        "visible_endpoints": 6859,
+        "missing_endpoints": 723,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    }
+  },
+  "held_training_photos": [
+    "new_000005",
+    "new_000030",
+    "new_000034",
+    "new_000041",
+    "new_000094",
+    "new_000115",
+    "new_000117",
+    "new_000121",
+    "new_000128"
+  ],
+  "remaining_training_case_groups": 10,
+  "changed_training_photos": 84,
+  "full_dataset_certified": false,
+  "weights_verified_locally": false,
+  "gpu_training_performed": false,
+  "inference_performed": false,
+  "live_colab_or_drive_service_used": false,
+  "selected_model": "PR35_unchanged",
+  "limits": [
+    "Local preparation and a synthetic ZIP restart fixture passed; no GPU trial, full training or model improvement is claimed.",
+    "The notebook must download and verify actual epoch173 bytes in the external runtime before GPU work.",
+    "Both frozen development references must be reported separately after the completed pair returns."
+  ]
+}

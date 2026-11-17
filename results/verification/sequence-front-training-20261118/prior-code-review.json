@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "kind": "independent_sequence_notebook_code_review",
+  "result": "pass_after_one_fix",
+  "reviewer": "aperture_corrections",
+  "reviewed_files": [
+    {
+      "path": "notebooks/baomai_sequence_fronts.ipynb",
+      "sha256_at_review": "7ae204dba2433144fe68e66256c49f348bcb8a357fc06e2c80303b2acb453e85"
+    },
+    {
+      "path": "scripts/compose_sequence_front_training.py",
+      "sha256_at_review": "8a3a4227c5882c08319967a090b3bfa5b1701c3980b11ef363640a01513f1f26"
+    },
+    {
+      "path": "scripts/verify_incremental_pose_candidate.py",
+      "sha256_at_review": "fb8f6ad86dfa8a02664e2e0708e3a50e8edd890f1165d911ddffe502d0b032fc"
+    },
+    {
+      "path": "scripts/check_sequence_front_training.py",
+      "sha256_at_review": "917b333912c67f4dd954ad5a62603960b163f2b6b2eb106c3161133b61b5e1dd"
+    }
+  ],
+  "scope": "Read-only review of the new v2 handoff and its composition/verification contract. Existing staging, checkpoint, trainer and ZIP helpers were inspected as dependencies; no v1 changes requested.",
+  "reviewed_contracts": [
+    "compose_sequence selects exact PR35 overlay bytes for all nine whole held photos, including new030/new034/new041; candidate differs only on eligible training photographs.",
+    "Original image/label identity, complete 137-photo training cohort, 13 negative scenes and original 20-photo validation labels remain bound and verified.",
+    "The 666-object 18 November primary reference and 663-object historical completion diagnostic have separate immutable descriptors, counts and unresolved-row inventories; neither supplies training-validation supervision.",
+    "Both arms retain the existing seed46, 30-epoch recipe and independently initialize from verified original epoch173; the resource trial does not initialize either full run.",
+    "The notebook fetches the pinned implementation revision, pulls the explicit original image/epoch173 LFS paths, checks a clean checkout and checks source/protocol/recipe identities before training.",
+    "Completed-arm restore, checkpoint collection and paired-result packaging retain source, runtime, recipe, staging and final-epoch identity checks."
+  ],
+  "corrected_blocker": {
+    "location": "notebooks/baomai_sequence_fronts.ipynb, code cell12 (results packaging)",
+    "failure": "On a fresh runtime after a previous completed package, restored arms were repackaged instead of restoring the existing completed ZIP. The new package timestamp changed its hash, and save_to_drive rejected it against the existing completion marker before the download cell.",
+    "fix_observed": "restore_from_drive(RESULTS_ZIP.relative_to(RUN_BASE).as_posix()) immediately follows RESULTS_ZIP assignment and precedes existing ZIP validation or fresh packaging.",
+    "regression_check": {
+      "result": "pass",
+      "uses_real_notebook_backup_restore_helpers": true,
+      "uses_actual_packaging_branch": true,
+      "uses_real_verify_archive": true,
+      "synthetic_model_bundle_fixture": true,
+      "package_results_calls": 0,
+      "restored_zip_byte_identical": true,
+      "drive_completion_marker_unchanged": true,
+      "limitations": "A small synthetic ZIP substitutes for actual model artifacts. This checks the restart/return path; it is not GPU training, actual Drive service access or model-validation evidence."
+    }
+  },
+  "additional_verification": {
+    "all_notebook_code_cells_ast_parse": true,
+    "three_requested_scripts_ast_parse": true,
+    "published_protocol_sha256_matches_notebook": true
+  },
+  "pins_at_review": {
+    "SOURCE_REF": "PENDING_IMPLEMENTATION_COMMIT",
+    "PROTOCOL_PATH": "experiments/sequence-front-corrections-2026-11-18.json",
+    "PROTOCOL_SHA256": "bce355c812b661372e484e6c80f3b57f40e0e5b115b3cbeb45178f71da1d51b6",
+    "EXPERIMENT_ID": "sequence-front-corrections-seed46-v2",
+    "RECIPE_SHA256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8"
+  },
+  "counts_at_review": {
+    "control_train": {
+      "images": 137,
+      "objects": 3771,
+      "visible_endpoints": 6841,
+      "missing_endpoints": 701,
+      "empty_images": 13
+    },
+    "candidate_train": {
+      "images": 137,
+      "objects": 3791,
+      "visible_endpoints": 6859,
+      "missing_endpoints": 723,
+      "empty_images": 13
+    },
+    "primary_reference": {
+      "images": 20,
+      "objects": 666,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 105,
+      "empty_images": 3
+    },
+    "diagnostic_reference": {
+      "images": 20,
+      "objects": 663,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 99,
+      "empty_images": 3
+    }
+  },
+  "publication_followup": "SOURCE_REF is deliberately still PENDING_IMPLEMENTATION_COMMIT at this review snapshot. Root must replace it with the published implementation commit before delivering the notebook; its existing assertion prevents an unpinned run.",
+  "remaining_blockers": [],
+  "validation_limits": [
+    "No GPU training performed.",
+    "No live Colab/LFS network execution performed.",
+    "Local staging and forgery checks were executed by the implementation owner; they were not redundantly rerun in this independent code review."
+  ],
+  "canonical_files_modified": false
+}
