@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-18",
+  "status": "passed_for_pdf_review",
+  "release_ready": false,
+  "training_candidate": {
+    "path": "data/candidates/sequence-refined-fronts-2026-11-18/manifest.json",
+    "sha256": "fb52d6946e598e977289ca025ac386c5044e9f15e9461b6e55f7c00a6b9c9171"
+  },
+  "development_reference": {
+    "path": "data/references/sequence-refined-reference-2026-11-18/manifest.json",
+    "sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96"
+  },
+  "artifacts": [
+    {
+      "filename": "cassette-label-atlas-sequence-refined-2026-11-18.pdf",
+      "sha256": "a2a77e4cb39b0f600109c3266f5f0234090fb360dd97a3ad954e16ba8348e605",
+      "bytes": 53194262,
+      "page_count": 174
+    },
+    {
+      "filename": "cassette-sequence-focused-review-2026-11-18.pdf",
+      "sha256": "187f399a85fae4c8f8210f54270cd7ef055520dc409ae866c9dd821fed790ca3",
+      "bytes": 1009612,
+      "page_count": 15
+    }
+  ],
+  "audit_sources": [
+    {
+      "path": "results/review/sequence-refinement-20261118/atlas-audit.json",
+      "sha256": "e93a5f850923366907f61fb7edd928e3c0128860fc50f2c34e949d43271e7102"
+    },
+    {
+      "path": "results/review/sequence-refinement-20261118/digest-audit.json",
+      "sha256": "4572d5d92cbd3d6e9e5de403be60c3e4e3de6dac88c3c3a3dc884ad8317bb14f"
+    },
+    {
+      "path": "results/review/sequence-refinement-20261118/independent-verification.json",
+      "sha256": "87fb86896189c26f99fb5951ae78b5581d0df416ef443cd26f1a2aac2a762843"
+    },
+    {
+      "path": "results/review/sequence-refinement-20261118/model-replay/source-inventory.json",
+      "sha256": "2689772d0406aa97ec21e53e17167523687b87381df1cafa629426f4df023a8b"
+    },
+    {
+      "path": "results/review/sequence-refinement-20261118/model-replay/sequence-reference-replay.json",
+      "sha256": "54770a5371fd73dc2fe39d84f33d22ae35c5a0451e80119f80f2112f0cb18c55"
+    }
+  ],
+  "mechanical_verification": {
+    "independent_method": "Independent byte-level replay from accepted operation ledgers and immutable parent files; no composer, renderer, or shared validator called. Independent schema/geometry/identity/hold calculations.",
+    "all_157_original_images_verified": true,
+    "all_157_original_label_files_unchanged": true,
+    "all_157_current_label_files_geometry_and_rowmaps_verified": true,
+    "training_objects": 3798,
+    "development_objects": 666,
+    "existing_rows_replaced": 34,
+    "visible_fronts_added": 6,
+    "existing_rows_deleted": 0,
+    "existing_endpoint_coordinates_changed": 4,
+    "existing_endpoint_visibility_states_changed": 0,
+    "new_000010_row33_is_upper_and_row34_is_lower": true,
+    "commands": [
+      {
+        "command": "python scripts/compose_sequence_front_review.py --root . --verify-only",
+        "exit_code": 0
+      },
+      {
+        "command": "python scripts/compose_sequence_front_review.py --root . --review results/review/sequence-refinement-20261118/accepted-review.json --verify-only",
+        "exit_code": 0
+      },
+      {
+        "command": "python scripts/compose_sequence_reference.py --root . --review results/review/sequence-refinement-20261118/development-reference-review.json --verify-only",
+        "exit_code": 0
+      },
+      {
+        "command": "python scripts/replay_sequence_reference.py --root . --verify-only",
+        "exit_code": 0
+      }
+    ],
+    "legacy_2026_11_17_manifest_byte_identity": "43c76de4da21d0d951f2c7fface58564087da542b89565310beb3ffe4738ba7c",
+    "historical_model_score_reconciliation": {
+      "scalar_checks": 3951,
+      "max_absolute_difference": 0.0
+    }
+  },
+  "visual_verification": {
+    "full_atlas_intro_pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "full_atlas_changed_photo_pages": [
+      18,
+      19,
+      36,
+      40,
+      44,
+      51,
+      64,
+      68,
+      87,
+      157,
+      158,
+      167,
+      169
+    ],
+    "focused_digest_intro_pages": [
+      1,
+      2
+    ],
+    "focused_digest_comparison_pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "full_atlas_comparison_pages": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "comparison_image_payloads_identical_between_atlas_and_digest": true,
+    "rendering": "Final PDF pages rendered with Poppler; original/current crop comparisons and changed full-photo pages visually inspected. Focused pages also reviewed independently.",
+    "observations": [
+      "No overlapping or clipped text was observed in the inspected pages. Labels remain readable when zoomed.",
+      "All 13 changed photos display the current saved labels, including the 010 row33/34 order.",
+      "The 026 comparison displays row48 and all three additions; the small 086/088 fronts remain cyan with tight boxes.",
+      "Current held-row indices and full-atlas cross-references are listed on digest page2.",
+      "The remaining 010 row30 question is correctly described as bottom-border.",
+      "Footnote summaries refer readers to the full operation ledger for longer reasons."
+    ]
+  },
+  "review_limits": [
+    "This QA verifies provenance, label syntax, geometry, reproducibility and PDF presentation; it is not certification of every physical annotation.",
+    "Nine training case groups remain across eight photos, covering nine distinct rows. Eight development rows remain held across seven photos.",
+    "Manual surface extents have a few original-pixel uncertainty where edges are soft. Neighboring video frames support identity, not fabricated hidden corners.",
+    "The preserved predictions were rescored without new training or inference. PR35 remains selected; no checkpoint is promoted.",
+    "The existing accepted-fronts notebook is still pinned to its earlier 3788-object candidate. A separate reviewed training protocol is required to consume these labels.",
+    "Under the existing whole-photo hold policy, new_000034 corrections would be outside a future treatment while row15 remains held.",
+    "The user requested PDF review before merge. This package remains review-only."
+  ]
+}

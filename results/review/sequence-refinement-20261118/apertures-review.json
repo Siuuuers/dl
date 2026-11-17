@@ -1,0 +1,459 @@
+{
+  "review_id": "user-aperture-boundaries-2026-11-18",
+  "status": "proposed_for_root_adjudication",
+  "annotation_policy": "baomai-visible-front-v1",
+  "source_candidate": "data/candidates/sequence-refined-fronts-2026-11-17/manifest.json",
+  "development_reference": "data/references/visible-front-completion-2026-11-14/manifest.json",
+  "attachment_mapping": [
+    {
+      "file": "01-426677.jpg",
+      "image_id": "new_000030",
+      "kind": "annotated crop",
+      "orange_location_px": "approximatelyy484 in central aperture",
+      "sha256": "2ef79270bb9d881e0dbabf30a1335989fdca3f7f05e07e4edaca3ad27e37689b"
+    },
+    {
+      "file": "02-426688.jpg",
+      "image_id": "new_000010",
+      "kind": "annotated crop",
+      "orange_location_px": "approximatelyy462 in central aperture",
+      "sha256": "13919ca69b18d92077822af8fb6db29e6b3ee309cc6b01aed384c755319b92f1"
+    },
+    {
+      "file": "03-426691.jpg",
+      "image_id": "new_000030",
+      "kind": "plain close-up",
+      "orange_location_px": "approximatelyy483\u2013485",
+      "sha256": "f8270c09787f025c6d9fc4e1a348036df447411016d9b7f3cb4725a808004c9e"
+    },
+    {
+      "file": "04-426671.jpg",
+      "image_id": "new_000041",
+      "kind": "plain close-up",
+      "orange_location_px": "approximatelyy470\u2013474 across tilted interface",
+      "sha256": "a6d34ffb8cf9d7fbb9cf262a20a009a3ae0566b489abb3b784d08610a395a427"
+    }
+  ],
+  "attachment_mapping_caution": "The four attachments contain030 twice,010 once,and041 once. No attachment directly depicts009.009 uses source pixels plus explicit user statement. Orange strokes are not pixel-exact ground truth.",
+  "operations": [
+    {
+      "operation_id": "user-aperture-000030-30",
+      "operation": "replace",
+      "image_id": "new_000030",
+      "split": "train",
+      "base_row": 30,
+      "before_line": "0 0.548437500 0.677083333 0.034375000 0.037500000 0 0 0 0 0 0",
+      "after_line": "0 0.550000000 0.683333333 0.028125000 0.025000000 0 0 0 0 0 0",
+      "after_bbox_xyxy_px": [
+        686,
+        483,
+        722,
+        501
+      ],
+      "reason": "Tighten the fifth central-column front to its actually visible lower-face patch. User orange marks identify the next front near the observed483 tone/contour onset. Do not force it to touch fourth-front row12 bottom474: unobscured031 has a molded transition between the preceding lower-front edge and the next face onset. Keep row12 unchanged; revise prior prose which incorrectly treated483 as an interior tonal change of the fifth face. No actual hidden corner becomes visible.",
+      "evidence_image_ids": [
+        "new_000030",
+        "new_000031"
+      ],
+      "manual_boundary_uncertainty_px": 3,
+      "source_image_sha256": "1ca47b685707d4b9dd1bec727e8de7acd5f7bd32cbd6d2ecab308668b135cca3",
+      "base_label_path": "data/candidates/sequence-refined-fronts-2026-11-17/labels/train/new_000030.txt",
+      "base_label_sha256": "d229dc98594d55a9009cd60b51cc0cbbdfacff25b938082ebf8c9da66349baea",
+      "status": "proposed_for_root_adjudication"
+    },
+    {
+      "operation_id": "user-aperture-000041-15",
+      "operation": "replace",
+      "image_id": "new_000041",
+      "split": "train",
+      "base_row": 15,
+      "before_line": "0 0.547265625 0.660416667 0.033593750 0.043055556 0 0 0 0 0 0",
+      "after_line": "0 0.548437500 0.668750000 0.026562500 0.026388889 0 0 0 0 0 0",
+      "after_bbox_xyxy_px": [
+        685,
+        472,
+        719,
+        491
+      ],
+      "reason": "Tighten the fifth central-column front to its lower visible face at the marked transition near472. Retain preceding row9 bottom460. Unobscured upper-center five-front columns in040 and043 show a lip/recessed transition between successive front faces, so the boxes need not meet. The prior lower box began at an estimate of the preceding lower edge, not the observed lower-face onset.",
+      "evidence_image_ids": [
+        "new_000040",
+        "new_000041",
+        "new_000042",
+        "new_000043"
+      ],
+      "manual_boundary_uncertainty_px": 3,
+      "source_image_sha256": "4c0313f01daa3bd736f3acdf5b874847c6e46c05ec90dbb039b47416c7913b65",
+      "base_label_path": "data/candidates/sequence-refined-fronts-2026-11-17/labels/train/new_000041.txt",
+      "base_label_sha256": "d8def82e1bd478c2cd7d5b1743ebc6a9f1e1036308770c6e5af996ada8242cbf",
+      "status": "proposed_for_root_adjudication"
+    },
+    {
+      "operation_id": "user-aperture-000009-56",
+      "operation": "replace",
+      "image_id": "new_000009",
+      "split": "val",
+      "base_row": 56,
+      "before_line": "0 0.55976563 0.68333333 0.06171875 0.05833333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_line": "0 0.547656250 0.670138889 0.029687500 0.031944444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_bbox_xyxy_px": [
+        682,
+        471,
+        720,
+        494
+      ],
+      "reason": "Split the former combined aperture row into the visible upper front and the separate lower stem front confirmed by user. Retain this row for the upper bright face and remove the old box padding over the gripper to its right/below. The front-face onset is below the shallow upper surface visible near467; its lower contour is near491\u2013494. Both true lower corners remain hidden.",
+      "evidence_image_ids": [
+        "new_000009",
+        "new_000011"
+      ],
+      "manual_boundary_uncertainty_px": 3,
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "base_label_path": "data/references/visible-front-completion-2026-11-14/labels/val/new_000009.txt",
+      "base_label_sha256": "8965d5c660a5801a7a701576e0e631b4cfc9d36b6e2ce30b68afad39ae2dfdd7",
+      "status": "proposed_for_root_adjudication"
+    },
+    {
+      "operation_id": "user-aperture-000009-new009-lower-stem-front",
+      "operation": "add",
+      "image_id": "new_000009",
+      "split": "val",
+      "base_row": null,
+      "before_line": null,
+      "after_line": "0 0.554296875 0.695833333 0.011718750 0.022222222 0 0 0 0 0 0",
+      "after_bbox_xyxy_px": [
+        702,
+        493,
+        717,
+        509
+      ],
+      "reason": "Add the separate lower front visible as a short bright stem below the upper aperture front. The source pixels show a distinct transverse boundary near492\u2013494 and a second positive-area surface ending near508 before the finger/background. User confirms two fronts; the wider011 view supports adjacent exposed fronts in this lower stack. Do not add any entirely hidden continuation.",
+      "evidence_image_ids": [
+        "new_000009",
+        "new_000011"
+      ],
+      "manual_boundary_uncertainty_px": 2,
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "base_label_path": "data/references/visible-front-completion-2026-11-14/labels/val/new_000009.txt",
+      "base_label_sha256": "8965d5c660a5801a7a701576e0e631b4cfc9d36b6e2ce30b68afad39ae2dfdd7",
+      "status": "proposed_for_root_adjudication",
+      "addition_id": "new009-lower-stem-front",
+      "corner_evidence": {
+        "left": {
+          "state": "unlocatable_in_target_frame",
+          "reason": "The visible patch is inside the gripper opening; the physical full-front lower corner is occluded by a jaw. No contextual point is exported."
+        },
+        "right": {
+          "state": "unlocatable_in_target_frame",
+          "reason": "The visible patch is inside the gripper opening; the physical full-front lower corner is occluded by a jaw. No contextual point is exported."
+        }
+      }
+    },
+    {
+      "operation_id": "user-aperture-000010-13",
+      "operation": "replace",
+      "image_id": "new_000010",
+      "split": "val",
+      "base_row": 13,
+      "before_line": "0 0.52648062 0.63669056 0.13416312 0.06335972 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_line": "0 0.528906250 0.619444444 0.129687500 0.044444444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_bbox_xyxy_px": [
+        594,
+        430,
+        760,
+        462
+      ],
+      "reason": "Tighten fourth central front to the exposed shoulder beneath row12 plus the upper aperture face. Its top shoulder appears from~430; the actual lower-face boundary is near461\u2013462, matching the user mark. Old bottom481 extended across the fifth front and old left588 included rack. Actual corners remain hidden.",
+      "evidence_image_ids": [
+        "new_000010",
+        "new_000012"
+      ],
+      "manual_boundary_uncertainty_px": 3,
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "base_label_path": "data/references/visible-front-completion-2026-11-14/labels/val/new_000010.txt",
+      "base_label_sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d",
+      "status": "proposed_for_root_adjudication"
+    },
+    {
+      "operation_id": "user-aperture-000010-14",
+      "operation": "replace",
+      "image_id": "new_000010",
+      "split": "val",
+      "base_row": 14,
+      "before_line": "0 0.52519672 0.68050514 0.13158016 0.05891528 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_line": "0 0.552734375 0.665972222 0.061718750 0.045833333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_bbox_xyxy_px": [
+        668,
+        463,
+        747,
+        496
+      ],
+      "reason": "Tighten fifth central front to the dark aperture face below the user-marked split near462. The old full-width588\u2013756 extent represented hidden width and jaw material; only the aperture face is independently visible at this tier. End near496 before the next bright stem front, not511. Both actual full-front corners remain occluded.",
+      "evidence_image_ids": [
+        "new_000010",
+        "new_000012"
+      ],
+      "manual_boundary_uncertainty_px": 2,
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "base_label_path": "data/references/visible-front-completion-2026-11-14/labels/val/new_000010.txt",
+      "base_label_sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d",
+      "status": "proposed_for_root_adjudication"
+    },
+    {
+      "operation_id": "user-aperture-000010-new010-sixth-front-stem",
+      "operation": "add",
+      "image_id": "new_000010",
+      "split": "val",
+      "base_row": null,
+      "before_line": null,
+      "after_line": "0 0.555468750 0.715277778 0.025000000 0.050000000 0 0 0 0 0 0",
+      "after_bbox_xyxy_px": [
+        695,
+        497,
+        727,
+        533
+      ],
+      "reason": "Add the sixth central-column front visible through the narrow lower opening. Distinct bright front material occupies497\u2013533 and has a transverse lower seam around531\u2013533. Neighbor012 directly exposes continued fronts below the same first five: its rows35/36 follow10\u201314 in the column between the six-front left stack and ten-front right stack. This is target-frame visible material, not a count inferred for a hidden object.",
+      "evidence_image_ids": [
+        "new_000010",
+        "new_000012"
+      ],
+      "manual_boundary_uncertainty_px": 2,
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "base_label_path": "data/references/visible-front-completion-2026-11-14/labels/val/new_000010.txt",
+      "base_label_sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d",
+      "status": "proposed_for_root_adjudication",
+      "addition_id": "new010-sixth-front-stem",
+      "corner_evidence": {
+        "left": {
+          "state": "unlocatable_in_target_frame",
+          "reason": "The visible patch is inside the gripper opening; the physical full-front lower corner is occluded by a jaw. No contextual point is exported."
+        },
+        "right": {
+          "state": "unlocatable_in_target_frame",
+          "reason": "The visible patch is inside the gripper opening; the physical full-front lower corner is occluded by a jaw. No contextual point is exported."
+        }
+      }
+    },
+    {
+      "operation_id": "user-aperture-000010-new010-seventh-front-stem",
+      "operation": "add",
+      "image_id": "new_000010",
+      "split": "val",
+      "base_row": null,
+      "before_line": null,
+      "after_line": "0 0.556640625 0.758333333 0.025781250 0.033333333 0 0 0 0 0 0",
+      "after_bbox_xyxy_px": [
+        696,
+        534,
+        729,
+        558
+      ],
+      "reason": "Add the seventh central-column front visible below the horizontal stem seam. The bright surface occupies approximately534\u2013558, ending at the finger/background;012 row36 corroborates the next physical cassette in the same stack. The jaw covers both real lower corners. Do not add further012 continuation because it is not visible in010.",
+      "evidence_image_ids": [
+        "new_000010",
+        "new_000012"
+      ],
+      "manual_boundary_uncertainty_px": 2,
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "base_label_path": "data/references/visible-front-completion-2026-11-14/labels/val/new_000010.txt",
+      "base_label_sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d",
+      "status": "proposed_for_root_adjudication",
+      "addition_id": "new010-seventh-front-stem",
+      "corner_evidence": {
+        "left": {
+          "state": "unlocatable_in_target_frame",
+          "reason": "The visible patch is inside the gripper opening; the physical full-front lower corner is occluded by a jaw. No contextual point is exported."
+        },
+        "right": {
+          "state": "unlocatable_in_target_frame",
+          "reason": "The visible patch is inside the gripper opening; the physical full-front lower corner is occluded by a jaw. No contextual point is exported."
+        }
+      }
+    },
+    {
+      "operation_id": "user-aperture-000010-10",
+      "operation": "replace",
+      "image_id": "new_000010",
+      "split": "val",
+      "base_row": 10,
+      "before_line": "0 0.53340910 0.48002583 0.14547836 0.08532861 0.46964062 0.48626389 2 0.60084375 0.49305556 2",
+      "after_line": "0 0.535156250 0.456944444 0.139062500 0.080555556 0.46964062 0.48626389 2 0.60084375 0.49305556 2",
+      "after_bbox_xyxy_px": [
+        596,
+        300,
+        774,
+        358
+      ],
+      "reason": "Tighten the first clear central front to its raised molded front rim and actual lower contour near355\u2013357. The old bottom376 included the second front, while top314.9 cropped the raised front nose. Exclude the broad ribbed roof above the molded front rim; preserve both actual lower-corner tokens.",
+      "evidence_image_ids": [
+        "new_000010"
+      ],
+      "manual_boundary_uncertainty_px": 3,
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "base_label_path": "data/references/visible-front-completion-2026-11-14/labels/val/new_000010.txt",
+      "base_label_sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d",
+      "status": "proposed_for_root_adjudication"
+    },
+    {
+      "operation_id": "user-aperture-000010-11",
+      "operation": "replace",
+      "image_id": "new_000010",
+      "split": "val",
+      "base_row": 11,
+      "before_line": "0 0.53014570 0.54113625 0.14152531 0.06795667 0.46748438 0.54183333 2 0.59414844 0.54811111 2",
+      "after_line": "0 0.532031250 0.523611111 0.132812500 0.055555556 0.46748438 0.54183333 2 0.59414844 0.54811111 2",
+      "after_bbox_xyxy_px": [
+        596,
+        357,
+        766,
+        397
+      ],
+      "reason": "Tighten the second clear central front to its observed upper face onset and lower contour near395\u2013396. Old365\u2013414 vertical limits cropped its upper portion and included the following front. Both existing actual lower-corner tokens are preserved.",
+      "evidence_image_ids": [
+        "new_000010"
+      ],
+      "manual_boundary_uncertainty_px": 2,
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "base_label_path": "data/references/visible-front-completion-2026-11-14/labels/val/new_000010.txt",
+      "base_label_sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d",
+      "status": "proposed_for_root_adjudication"
+    },
+    {
+      "operation_id": "user-aperture-000010-12",
+      "operation": "replace",
+      "image_id": "new_000010",
+      "split": "val",
+      "base_row": 12,
+      "before_line": "0 0.52781594 0.58989417 0.13684937 0.06552778 0.47050781 0.59311111 2 0.59271094 0.59576389 2",
+      "after_line": "0 0.530468750 0.573611111 0.129687500 0.050000000 0.47050781 0.59311111 2 0.59271094 0.59576389 2",
+      "after_bbox_xyxy_px": [
+        596,
+        395,
+        762,
+        431
+      ],
+      "reason": "Tighten the third clear central front to visible face material and its lower contour near428\u2013430. Old401\u2013448 vertical limits included the next front and omitted the top of this one. Preserve both actual lower-corner tokens.",
+      "evidence_image_ids": [
+        "new_000010"
+      ],
+      "manual_boundary_uncertainty_px": 2,
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "base_label_path": "data/references/visible-front-completion-2026-11-14/labels/val/new_000010.txt",
+      "base_label_sha256": "65a81914d32d9153963d6bbb05bd4e57012e7aee9126d1388e3f6cbb3a3eac9d",
+      "status": "proposed_for_root_adjudication"
+    }
+  ],
+  "resolved_reference_holds": [
+    {
+      "image_id": "new_000009",
+      "row": 56,
+      "reason": "User-confirmed two visible fronts split and tightened; neither true corner is visible."
+    },
+    {
+      "image_id": "new_000010",
+      "row": 13,
+      "reason": "Upper shoulder/aperture front extent resolved from target pixels and user seam clarification."
+    },
+    {
+      "image_id": "new_000010",
+      "row": 14,
+      "reason": "Separate lower aperture front tightened; further stem fronts are separately labeled."
+    }
+  ],
+  "training_case_notes": [
+    {
+      "case_id": "new_000030-001",
+      "status": "resolved",
+      "reason": "The two distinct fronts remain. Row12 ends near474; lower row30 now begins near483 at its own visible front-face onset. A molded transition may lie between, so boxes need not touch. Prior claim that483 was merely interior tone within lower front is superseded by user-assisted surface review."
+    },
+    {
+      "case_id": "new_000041-102",
+      "status": "resolved",
+      "reason": "The two aperture fronts remain. Row9 ends460; lower row15 starts472 at observed next-face onset. Neither corner pair is restored."
+    }
+  ],
+  "unchanged_rechecks": [
+    {
+      "image_id": "new_000030",
+      "row": 12,
+      "reason": "Fourth front bottom474 retained; lower-face fifth onset483 does not imply upper face must extend through intervening molded transition."
+    },
+    {
+      "image_id": "new_000041",
+      "row": 9,
+      "reason": "Fourth front bottom460 retained; its fifth visible face begins near472 after transition."
+    },
+    {
+      "image_id": "new_000042",
+      "row": 16,
+      "reason": "Existing450\u2013475 captures visible fifth face. Dark tip below475 is non-front; no analogous beginning correction supported."
+    },
+    {
+      "image_id": "new_000049",
+      "row": 27,
+      "reason": "Existing466 onset matches visible lower-face change; keep."
+    },
+    {
+      "image_id": "new_000074",
+      "row": 20,
+      "reason": "Existing460 onset matches visible lower-face appearance; keep."
+    }
+  ],
+  "evidence_limits": [
+    "Context-derived maps are diagnostic only and create no v2 point.",
+    "030/041 seam bands are softly resolved. Exact physical geometry between face edges is partly shadowed; the observed next-face onset plus user identification sets the tight lower box.",
+    "The new candidates are review proposals, not independent human certification of all currentlabels."
+  ],
+  "focus_recommendations": [
+    {
+      "image_id": "new_000009",
+      "crop_xyxy_px": [
+        665,
+        450,
+        770,
+        525
+      ],
+      "title": "Two fronts inside one old box"
+    },
+    {
+      "image_id": "new_000010",
+      "crop_xyxy_px": [
+        580,
+        410,
+        800,
+        565
+      ],
+      "title": "The split and two further visible fronts"
+    },
+    {
+      "image_id": "new_000030",
+      "crop_xyxy_px": [
+        610,
+        425,
+        820,
+        515
+      ],
+      "title": "Two front boxes need not touch"
+    },
+    {
+      "image_id": "new_000041",
+      "crop_xyxy_px": [
+        600,
+        410,
+        810,
+        505
+      ],
+      "title": "Keep the molded transition out of the lower box"
+    }
+  ],
+  "validation": {
+    "exact_before_lines_checked": true,
+    "schema_and_geometry_checked": true,
+    "operations": 11,
+    "train_replacements": 2,
+    "reference_replacements": 6,
+    "reference_additions": 3,
+    "all_retained_point_tokens_unchanged": true
+  }
+}

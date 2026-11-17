@@ -1,0 +1,74 @@
+{
+  "kind": "bounded-row1-followup",
+  "parent_manifest": "data/candidates/sequence-refined-fronts-2026-11-18/manifest.json",
+  "parent_manifest_sha256": "fb52d6946e598e977289ca025ac386c5044e9f15e9461b6e55f7c00a6b9c9171",
+  "operations": [
+    {
+      "operation": "replace",
+      "image_id": "new_000031",
+      "split": "train",
+      "base_row": 1,
+      "current_row": 1,
+      "before_line": "0 0.10833473 0.58852250 0.15403148 0.07037111 0.05054688 0.60327778 2 0.17862500 0.61080556 2",
+      "after_line": "0 0.109375000 0.575000000 0.151562500 0.080555556 0.05054688 0.60327778 2 0.17862500 0.61080556 2",
+      "before_bbox_px": [
+        40.0883072,
+        398.4026004,
+        237.24860159999997,
+        449.06979959999995
+      ],
+      "after_bbox_px": [
+        43,
+        385,
+        237,
+        443
+      ],
+      "reason": "The current top y398.4 cuts through the raised front lip and upper face. Target-frame pixels show the lip rising to about y385 toward the center/right; expand upward to include it while avoiding the ribbed roof above. Tighten left margin and lower extent, which reaches the next tier. This is an asymmetric front-envelope correction, not a blanket shrink.",
+      "evidence_image_ids": [
+        "new_000031"
+      ],
+      "keypoint_tokens_preserved": true,
+      "corner_evidence": "Existing actual lower-corner tokens are preserved exactly; both lie inside the proposed bbox.",
+      "uncertainty": "Approximately2-3 native pixels at blurred front/lip edges. Surface identity and correction direction are directly visible.",
+      "decision": "accept_geometry_refinement",
+      "evidence_preview": "tmp/round2-20261118/middle/row1-final-031.png"
+    },
+    {
+      "operation": "replace",
+      "image_id": "new_000034",
+      "split": "train",
+      "base_row": 1,
+      "current_row": 1,
+      "before_line": "0 0.21914844 0.27799306 0.12629687 0.09312500 0.16987500 0.30705556 2 0.27684375 0.29233333 2",
+      "after_line": "0 0.221484375 0.276388889 0.117968750 0.069444444 0.16987500 0.30705556 2 0.27684375 0.29233333 2",
+      "before_bbox_px": [
+        199.6800064,
+        166.6300032,
+        361.34000000000003,
+        233.68000320000002
+      ],
+      "after_bbox_px": [
+        208,
+        174,
+        359,
+        224
+      ],
+      "reason": "The existing box includes open rack above the front and the following cassette below. The raised front lip slopes from about y183 on the left to y174 on the right, and the lower contour runs from about y221 on the left to y210 on the right. Tighten around that visible envelope; preserve actual lower-corner tokens.",
+      "evidence_image_ids": [
+        "new_000034"
+      ],
+      "keypoint_tokens_preserved": true,
+      "corner_evidence": "Existing actual lower-corner tokens are preserved exactly; both lie inside the proposed bbox.",
+      "uncertainty": "Approximately2-3 native pixels at blurred front/lip edges. Surface identity and correction direction are directly visible.",
+      "decision": "accept_geometry_refinement",
+      "evidence_preview": "tmp/round2-20261118/middle/row1-final-034.png"
+    }
+  ],
+  "status": "Separate proposed append; original156-operation middle-proposals.json remains unchanged.",
+  "validation": {
+    "before_exact": true,
+    "points_unchanged": true,
+    "visible_points_inside_box": true,
+    "no_canonical_edits": true
+  }
+}

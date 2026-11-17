@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "kind": "video_continuity_label_proposal",
+  "status": "draft_for_physical_review_not_training_authorized",
+  "based_on_commit": "bc34ffe28c43e6d2d3ef49f5563eaa1e6ca2af08",
+  "base_candidate": "data/candidates/complete-visible-fronts-2026-11-14/manifest.json",
+  "source_branch": "codex/remaining-training-review-20261114",
+  "original_train_images": 137,
+  "source_full_candidate_objects": 3791,
+  "proposed_full_candidate_objects": 3792,
+  "pdf_review": {
+    "name": "cassette-label-atlas-video-review-2026-11-14.pdf",
+    "sha256": "0a35560436dbbf63b3bb1355c28807559a242c461e785d5dbe7216c0bc62331f",
+    "pages": 175,
+    "addendum": {
+      "name": "cassette-video-review-addendum-2026-11-14.pdf",
+      "sha256": "8aaf816d0747b21a0238187176f0cf51c9eced9d53e43b0317e2551487a51f54",
+      "pages": 9
+    },
+    "distribution": "shared_as_conversation_attachment; original 166 pages unchanged"
+  },
+  "operations": [
+    {
+      "image_id": "new_000116",
+      "source_label_path": "data/candidates/complete-visible-fronts-2026-11-14/labels/train/new_000116.txt",
+      "source_git_blob_sha": "adcbad327ab76f0e6aae14f05caeddb16ac4a2c8",
+      "proposed_label_path": "data/candidates/video-continuity-proposal-2026-11-14/labels/train/new_000116.txt",
+      "proposed_git_blob_sha": "a1997b08b9cf397f00c077139f5eff8462f92297",
+      "source_rows": 26,
+      "proposed_rows": 25,
+      "action": "delete_original_row_24",
+      "pixel_box_xyxy": [
+        747,
+        480,
+        889,
+        515
+      ],
+      "reason": "user identifies row as non-target; compared with adjacent video frames and gripper/hand surface; do not transfer deletion to new117"
+    },
+    {
+      "image_id": "new_000128",
+      "source_label_path": "data/candidates/complete-visible-fronts-2026-11-14/labels/train/new_000128.txt",
+      "source_git_blob_sha": "c1502a08a692e6fbfe161699fc35fd7397734bd7",
+      "proposed_label_path": "data/candidates/video-continuity-proposal-2026-11-14/labels/train/new_000128.txt",
+      "proposed_git_blob_sha": "f97d059c0be9f6bc5368e189249e29d4ce61324e",
+      "source_rows": 36,
+      "proposed_rows": 38,
+      "action": "append_rows_37_and_38",
+      "source_correspondence": "new_000127 existing rows 37 and 38",
+      "boxes_xyxy": [
+        [
+          675,
+          458,
+          744,
+          500
+        ],
+        [
+          697,
+          504,
+          724,
+          530
+        ]
+      ],
+      "both_corners_missing": true,
+      "reason": "tracked across two video frames, gripper opening and tier correspondence; proposed front-plane identity to confirm on PDF"
+    }
+  ],
+  "limits": [
+    "All other training labels remain byte-identical to the saved full-review candidate.",
+    "These two preview files are not a complete stand-alone training dataset.",
+    "The pinned accepted-fronts notebook and experiment recipe are unchanged; no model run or model promotion.",
+    "Other unresolved aperture and clipped-edge questions remain open.",
+    "No inferred hidden corner is introduced."
+  ]
+}

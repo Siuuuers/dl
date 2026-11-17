@@ -7,6 +7,7 @@ PNGs remain the pixel authority; this script never invokes a prediction model.
 """
 import argparse
 from collections import defaultdict
+from datetime import date
 import hashlib
 from io import BytesIO
 import json
@@ -32,6 +33,8 @@ CYAN = colors.HexColor("#16d9ec")
 AMBER = colors.HexColor("#ffb632")
 GREEN = colors.HexColor("#48f293")
 MAGENTA = colors.HexColor("#ff69dd")
+REVIEW_DATE = "14 November 2026"
+SEQUENCE_KIND = "review_sequence_front_refinement"
 
 
 def sha(path):
@@ -136,7 +139,7 @@ def heading(c, title, subtitle, page, section):
     c.setStrokeColor(colors.HexColor("#dce3e9"))
     c.line(MARGIN, 34, PAGE_W - MARGIN, 34)
     c.setFont("Atlas", 9)
-    c.drawString(MARGIN, 19, "Cassette label atlas  |  14 November 2026  |  Review labels; no model predictions")
+    c.drawString(MARGIN, 19, f"Cassette label atlas  |  {REVIEW_DATE}  |  Review labels; no model predictions")
     c.drawRightString(PAGE_W - MARGIN, 19, str(page))
 
 
@@ -198,6 +201,7 @@ def annotation(c, objects, left, bottom, width, height, image_size, held_rows, c
 
 
 def main():
+    global REVIEW_DATE
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--candidate", type=Path, required=True)
@@ -214,6 +218,22 @@ def main():
     source_path = root / "data/manifest.json"
     source, train = read(source_path), read(candidate / "manifest.json")
     status = read(args.status)
+    sequence_review = train.get("kind") == SEQUENCE_KIND
+    review_url = "https://github.com/Siuuuers/dl/pull/65" if sequence_review else "https://github.com/Siuuuers/dl/pull/63"
+    if sequence_review:
+        if (train.get("candidate_id") != "sequence-refined-fronts-" + train.get("review_date", "")
+                or train.get("status") != "awaiting_pdf_review"
+                or train.get("release_ready") is not False
+                or train.get("training_recipe_id") is not None):
+            raise ValueError("unexpected sequence-review scope")
+        REVIEW_DATE = date.fromisoformat(train["review_date"]).strftime("%d %B %Y").lstrip("0")
+        if (status.get("kind") != "sequence_front_review_status"
+                or status.get("candidate_id") != train["candidate_id"]
+                or args.status.resolve() != (root / train["review_status"]["path"]).resolve()
+                or sha(args.status) != train["review_status"]["sha256"]):
+            raise ValueError("sequence-review status differs from candidate")
+        if args.adjudication:
+            raise ValueError("sequence status already includes its inherited adjudications")
     source_pending_cases = sum(case["status"] != "resolved" for case in status["cases"])
     adjudication, accepted_notes = None, defaultdict(list)
     if args.adjudication:
@@ -223,12 +243,28 @@ def main():
             root, status, candidate, args.status, adjudication_path)
     reference_dir = args.reference if args.reference.is_absolute() else root / args.reference
     reference = read(reference_dir / "manifest.json")
+    if sequence_review and (
+            (reference_dir / "manifest.json").resolve() != (root / train["development_reference"]["path"]).resolve()
+            or sha(reference_dir / "manifest.json") != train["development_reference"]["sha256"]):
+        raise ValueError("sequence review must retain its separately pinned development reference")
     if sha(source_path) != train["source_manifest_sha256"] or sha(source_path) != reference["source_manifest_sha256"]:
         raise ValueError("source manifests disagree")
     font_dir = Path("/usr/share/fonts/truetype/dejavu")
     for name, filename in (("Atlas", "DejaVuSans.ttf"), ("AtlasBold", "DejaVuSans-Bold.ttf")):
         pdfmetrics.registerFont(TTFont(name, str(font_dir / filename)))
-    changes = {item["image_id"]: item for item in train["changes"]}
+    training_files = train["files"] if sequence_review else train["changes"]
+    changes = {item["image_id"]: item for item in training_files}
+    if sequence_review and (len(training_files) != 137 or set(changes) !=
+                            {record["id"] for record in source["records"] if record["split"] == "train"}):
+        raise ValueError("sequence review requires all 137 training label files")
+    if sequence_review:
+        base_name = "previous-review" if "changed_images_from_parent" in train else "full-review"
+        for operation in train["operations"]:
+            source_row, output_row = operation.get("base_row"), operation["output_row"]
+            action = (f"Added current row {output_row}" if operation["operation"] == "add" else
+                      f"Deleted {base_name} row {source_row}" if operation["operation"] == "delete" else
+                      f"Refined {base_name} row {source_row}, current row {output_row}")
+            accepted_notes[operation["image_id"]].append(action + ": " + operation["reason"])
     val_files = {item["image_id"]: item for item in reference["files"]}
     held, notes = defaultdict(set), defaultdict(list)
     for case in status["cases"]:
@@ -249,18 +285,30 @@ def main():
             if target is not None:
                 held[iid].add(target)
         notes[iid].append(case["atlas_note"])
-    for case in reference["queue_dispositions"]:
-        if case["disposition"] != "retained_unresolved":
-            continue
-        iid = case["image_id"]
-        target = val_files[iid]["retained_source_to_revised_row_one_based"][case["source_row_one_based"] - 1]
-        if target is not None:
-            held[iid].add(target)
-        notes[iid].append("Row %s: %s" % (target, " ".join(case["unresolved_issues"])))
-    for case in reference.get("new_review_unresolved", []):
-        if "uncertainty" in case["decision"] or "unresolved" in case["decision"]:
-            held["new_000010"].update(case["rows"])
-            notes["new_000010"].append("Rows %s: %s" % (", ".join(map(str, case["rows"])), case["reason"]))
+    if reference.get("remaining_rows_are_authoritative"):
+        for case in reference["remaining_current_rows"]:
+            iid, row = case["image_id"], case["row"]
+            held[iid].add(row)
+            notes[iid].append("Row %s: %s" % (row, case["reason"]))
+        for operation in reference["operations"]:
+            row, output = operation.get("base_row"), operation["output_row"]
+            action = (f"Added reference row {output}" if operation["operation"] == "add" else
+                      f"Deleted previous reference row {row}" if operation["operation"] == "delete" else
+                      f"Refined reference row {row}, current row {output}")
+            accepted_notes[operation["image_id"]].append(action + ": " + operation["reason"])
+    else:
+        for case in reference["queue_dispositions"]:
+            if case["disposition"] != "retained_unresolved":
+                continue
+            iid = case["image_id"]
+            target = val_files[iid]["retained_source_to_revised_row_one_based"][case["source_row_one_based"] - 1]
+            if target is not None:
+                held[iid].add(target)
+            notes[iid].append("Row %s: %s" % (target, " ".join(case["unresolved_issues"])))
+        for case in reference.get("new_review_unresolved", []):
+            if "uncertainty" in case["decision"] or "unresolved" in case["decision"]:
+                held["new_000010"].update(case["rows"])
+                notes["new_000010"].append("Rows %s: %s" % (", ".join(map(str, case["rows"])), case["reason"]))
     records = sorted(source["records"], key=lambda record: (record["split"] != "train", record["id"]))
     if len(records) != 157 or len({record["id"] for record in records}) != 157:
         raise ValueError("all 157 distinct frozen photos are required")
@@ -295,7 +343,7 @@ def main():
     page_numbers = {item["record"]["id"]: first_photo + index for index, item in enumerate(items)}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     c = canvas.Canvas(str(args.output), pagesize=(PAGE_W, PAGE_H), pageCompression=1, invariant=1)
-    c.setTitle("Cassette label atlas - all 157 working photos - 14 November 2026")
+    c.setTitle(f"Cassette label atlas - all 157 working photos - {REVIEW_DATE}")
     c.setAuthor("Siuuuers/dl - assisted annotation review")
     c.setSubject("Current training candidate and separate validation development reference; not predictions or a certified release")
     c.bookmarkPage("cover")
@@ -308,7 +356,9 @@ def main():
     c.drawString(58, 660, "157 photos. Every current label.")
     wrapped(c, "137 training photos + 20 validation photos. Each photo has its own full page, with zoomable boxes, two lower-front landmarks, current row numbers, and visible review flags.", 60, 615, PAGE_W - 120, 19, 28)
     y = wrapped(c, "This is a review atlas of saved annotations. It is not model output, a confidence display, or a claim that every label is correct. Amber marks known unresolved rows. Unflagged rows are not automatically certified.", 60, 466, PAGE_W - 120, 16, 23)
-    handoff_text = ("The full-review dataset is still blocked by unresolved physical questions. A separately specified accepted-corrections experiment may proceed under its own pinned protocol and verification. This PDF shows the full %s-object training candidate; the experiment's smaller label set is separate. Changing labels does not change existing model weights." % format(training_objects, ",")
+    handoff_text = ("This PDF directly displays the new %s-object sequence-refined training labels, plus the separately pinned development reference. Review these pages before merging PR65. Remaining physical questions are still marked. The earlier PR64 comparison did not support promotion; PR35 remains selected. This review authorizes no new training recipe or model replacement." % format(training_objects, ",")
+                    if sequence_review else
+                    "The full-review dataset is still blocked by unresolved physical questions. A separately specified accepted-corrections experiment may proceed under its own pinned protocol and verification. This PDF shows the full %s-object training candidate; the experiment's smaller label set is separate. Changing labels does not change existing model weights." % format(training_objects, ",")
                     if adjudication else
                     "The next GPU run remains pending. Training may proceed only after the remaining material questions are resolved and the training handoff verifies its exact inputs. Changing label files does not change the existing model weights.")
     y = wrapped(c, handoff_text, 60, y - 20, PAGE_W - 120, 14, 21)
@@ -335,8 +385,8 @@ def main():
     y = wrapped(c, "Known physical constraints help identify surface ownership and separate instances. Equal physical size does not imply equal pixel size under perspective. One box may span an occluder when separate visible patches belong to the same front; its outer bounds still follow observed material. A confirmed cassette count does not make its hidden actual corners visible.", 48, y - 12, PAGE_W - 96, 13, 20)
     wrapped(c, "Row IDs shown here are current output TXT row numbers. Historical IDs are preserved in the candidate row map; deletions can shift displayed numbers. Photo notes summarize recorded questions. Complete per-field reasons and reproducible provenance are in the review record below.", 48, 115, PAGE_W - 96, 11, 17, MUTED)
     c.setFont("Atlas", 10)
-    c.drawString(48, 60, "Review record: github.com/Siuuuers/dl/pull/63")
-    c.linkURL("https://github.com/Siuuuers/dl/pull/63", (48, 54, 480, 74), relative=0, thickness=0)
+    c.drawString(48, 60, "Review record: " + review_url.removeprefix("https://"))
+    c.linkURL(review_url, (48, 54, 480, 74), relative=0, thickness=0)
     c.showPage()
     for part in range(2):
         c.bookmarkPage(f"index{part}")
@@ -403,7 +453,8 @@ def main():
         c.addOutlineEntry(iid, iid, 1)
         visible = sum(point[2] == 2 for obj in objects for point in obj["keypoints"])
         summary = f"{len(objects)} objects | {visible} locatable corners | {2 * len(objects) - visible} missing corners | Original 1280 x 720"
-        heading(c, iid, summary, page, "TRAINING CANDIDATE" if split == "train" else "VALIDATION / DEVELOPMENT")
+        heading(c, iid, summary, page, ("TRAINING LABEL REVIEW" if sequence_review else "TRAINING CANDIDATE")
+                if split == "train" else "VALIDATION / DEVELOPMENT")
         image_w = PAGE_W - 2 * MARGIN
         image_h = image_w * record["original_size"][1] / record["original_size"][0]
         bottom = PAGE_H - 72 - image_h
@@ -461,6 +512,15 @@ def main():
                            "annotations": "PDF vectors", "focus_crops": "lossless original PNG pixels",
                            "model_inference": False, "lines_require_both_saved_v2": True},
              "pages": audit_pages}
+    if sequence_review:
+        audit["sequence_review"] = {
+            "complete_training_files": len(training_files),
+            "actual_changes_displayed_on_photo_pages": True,
+            "changed_images_from_parent": train.get("changed_images_from_parent",
+                                                    train.get("changed_images_from_full_review")),
+            "release_ready": False, "training_recipe_id": None,
+            "pdf_review_before_merge": True, "review_url": review_url,
+        }
     args.audit.parent.mkdir(parents=True, exist_ok=True)
     args.audit.write_text(json.dumps(audit, indent=2) + "\n")
     print(json.dumps({key: audit[key] for key in ("pdf_filename", "pdf_sha256", "pdf_bytes", "page_count", "photo_pages")}, indent=2))
