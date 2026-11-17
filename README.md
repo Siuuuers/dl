@@ -2,6 +2,8 @@
 
 ## 目前使用方式：先產生提案，再覆核完整原圖
 
+**最新訓練入口，2026-11-18：[新版受控比較說明](docs/sequence-front-training.md)與 [baomai_sequence_fronts.ipynb](notebooks/baomai_sequence_fronts.ipynb)。** 使用最新 r2 標籤準備一組獨立的 30 輪配對實驗；完整覆核有 3,797 個正面，實際訓練候選有 3,791 個。兩組均保留 137 張訓練圖及 13 張空圖；仍有問題的九張完整照片在兩組中使用完全相同的 PR35 標籤，其餘有 84 張圖的標籤不同。可在 Colab 選 GPU 後執行全部儲存格，回傳新版 ZIP，再分別用 18 日與歷史 14 日開發參考評估。模型目前仍選 PR35；尚未執行這次新 GPU 實驗。以下 17 日及更早段落保留為歷史紀錄，目前新訓練入口以本段為準。
+
 **目前標註覆核，2026-11-17：[連續影片修訂與新版PDF](docs/sequence-label-review-2026-11-17.md)。** PR65已整理為一個[完整137檔訓練標籤目錄](data/candidates/sequence-refined-fronts-2026-11-17/README.md)，保留13張空圖，共3,795個物件。本輪17張圖有20列修訂、9列新增、5列刪除；原有24組問題降為9組，涉及8張圖。新版173頁圖冊直接顯示修訂後標籤，先看第5–16頁，再按索引檢查全部照片；依本次要求，先完成PDF覆核再合併。框包住可見正面，隱藏角點維持缺失。
 
 **模型仍選用PR35；舊訓練已完成。** [PR64](https://github.com/Siuuuers/dl/pull/64)的兩組30輪訓練已回傳，[PR66結果](https://github.com/Siuuuers/dl/blob/d71303a2a3e2c6abed278fe91ba0f0a910fea63d/docs/accepted-fronts-results-2026-11-15.md)不支持換模型。舊 `baomai_accepted_fronts.ipynb` 固定使用先前3,788物件的試驗，不會讀取本次3,795物件標籤；本次整理不是要求重跑舊notebook。新的受控比較需在PDF覆核後明確固定輸入版本與未決列處理方式。
