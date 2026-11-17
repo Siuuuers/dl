@@ -1,0 +1,115 @@
+{
+  "kind": "independent_current_review_integration_audit",
+  "status": "verified",
+  "source_head": "9304d4feb8aac481638ff08829dfb6e86e437c95",
+  "current_manifest_sha256": "256b750a0466b281750085f90acfa3056ee9320f44b45067a0e63415afc6ac35",
+  "recovery_manifest_sha256": "6e70cb78b7ae6a71d9a61021c42a94bc7c24ccb2eaeeba673ba326c2434aa3d7",
+  "label_files_verified": 157,
+  "original_label_files_unchanged_verified": 157,
+  "counts": {
+    "train": {
+      "images": 137,
+      "objects": 3789,
+      "locatable_corners": 6856,
+      "missing_corners": 722,
+      "empty_images": 13,
+      "changed_images": 59
+    },
+    "val": {
+      "images": 20,
+      "objects": 662,
+      "locatable_corners": 1226,
+      "missing_corners": 98,
+      "empty_images": 3,
+      "changed_images": 5
+    }
+  },
+  "operation_counts_from_r2": {
+    "delete": 12,
+    "replace": 889
+  },
+  "changes_from_verified_pdf_recovery": [
+    {
+      "image_id": "new_000101",
+      "current_row": 52,
+      "token_indices_changed": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "followup_bbox_xyxy_px": [
+    485.0,
+    542.99999988,
+    550.0,
+    570.9999999600001
+  ],
+  "followup_point_tokens_identical": true,
+  "all_immutable_source_label_paths_and_protocol_files_clean_in_git": true,
+  "hydrated_lfs_image_files": [
+    "data/images/val/new_000007.png",
+    "data/images/val/new_000008.png",
+    "data/images/val/new_000009.png",
+    "data/images/val/new_000010.png",
+    "data/images/val/new_000011.png",
+    "data/images/val/new_000053.png",
+    "data/images/val/new_000054.png",
+    "data/images/val/new_000055.png",
+    "data/images/val/new_000056.png",
+    "data/images/val/new_000057.png",
+    "data/images/val/new_000058.png",
+    "data/images/val/new_000059.png",
+    "data/images/val/new_000086.png",
+    "data/images/val/new_000087.png",
+    "data/images/val/new_000088.png",
+    "data/images/val/new_000089.png",
+    "data/images/val/new_000090.png",
+    "data/images/val/new_000146.png",
+    "data/images/val/new_000147.png",
+    "data/images/val/new_000148.png"
+  ],
+  "hydrated_images_match_original_sha256": true,
+  "release_ready": false,
+  "training_recipe_id": null,
+  "recovery_rerun_performed": false,
+  "findings": [
+    {
+      "severity": "minor",
+      "path": "data/reviews/fronts-2026-11-18/manifest.json",
+      "finding": "Current manifest carries stale open101row52 limit after separately applied followup. Historical recovery evidence should retain it; current limits should identify resolved followup and retained few-pixel uncertainty.",
+      "status": "resolved",
+      "resolution": "Current manifest now separates the completed original-pixel followup from historical recovery status and retains contour uncertainty."
+    },
+    {
+      "severity": "informational",
+      "finding": "Historical recovery manifest is copied into results while its label_path values describe the original recovered output tree. Reproduce/resolve historical rows using current review labels with101row52 reverted via followup.before_line, or rerun the pinned recovery script; do not interpret results/.../labels as an existing published label tree."
+    }
+  ],
+  "scope_limits": [
+    "No physical re-adjudication of labels was performed.",
+    "Git cleanliness checks cover the enumerated immutable input/configuration paths, plus original label hashes and20 hydrated image bytes.",
+    "Historical review records remain historical; current reviewer status is assessed separately."
+  ],
+  "pr67_report_spot_review": {
+    "fixed_comparison_sha256": "9488febf4409f15929901026d432957071ade8f0579a4c2a206cec96038a6f52",
+    "exploratory_metrics_sha256": "5131e58fa62d967784edc5cf2d13740f0d484907b1a9cdf70f77fd7e8af1c1ba",
+    "headline_rows_agree_with_read_REPORT_and_exploratory_README": true,
+    "detection_and_subgroup_arithmetic_checked": true,
+    "three_models_same_fresh_inference_runtime": true,
+    "same_predictions_used_for_exploratory_replay": true,
+    "findings": [],
+    "limit": "No new inference or replay and no independent physical adjudication of prediction overlays in this spot review."
+  },
+  "bounded_documentation_followup": {
+    "previous_manifest_sha256": "8b25b3df278f2488576d6900fee3551dc0e732b64b4ff4095e0fc9fe65f27386",
+    "current_manifest_sha256": "256b750a0466b281750085f90acfa3056ee9320f44b45067a0e63415afc6ac35",
+    "reviewed_current_limit_sentences": [
+      "The new_000101 row52 user-request completeness check is resolved by the separately linked original-pixel follow-up; its soft contour still has a few pixels of uncertainty.",
+      "The new101 row52 refinement has a few pixels of physical contour uncertainty; subpixel PDF recovery agreement is not physical accuracy."
+    ],
+    "full_audit_rerun": false,
+    "change_scope": "Bounded read of the corrected101row52 limit only; label verification from the prior audited snapshot remains applicable."
+  }
+}

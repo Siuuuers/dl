@@ -1,5 +1,7 @@
 # Predict cassette objects in a folder of images
 
+**Current entry point:** [Current model and command](current-model.md). PR67 is evaluated; retain PR35. Use the current working branch for the reviewed source and label evidence. Historical checkouts and measurements below remain reproduction records.
+
 Use `scripts/predict_pose_folder.py` to run the default epoch173 model or an explicitly selected, verified completed checkpoint on a folder of original still images. It writes annotated PNGs, structured predictions and an image summary. No annotation TXT files, camera, desktop display or training run are needed.
 
 The agreed scope is one `cassette_front` class and its two lower-front corner slots. The user has delegated assistant review and supported label amendments, with missed objects first. For that review workflow, use the **PR35 seed46 candidate at image size 1280 and box confidence 0.13**, NMS IoU **0.70** and endpoint display confidence **0.50**. The generic runtime default remains epoch173 at 0.25. The [completed proposal-filter review](proposal-filter-review-2026-11-11.md) explains this bounded choice, its added review cost and the corrected reference; no universal optimum is claimed.
