@@ -196,7 +196,8 @@ def code_hashes(*, composed=False, observed=False, incremental=False):
                   "verify_pose_composed_candidate.py")
     if incremental:
         names += ("verify_incremental_pose_candidate.py", "compose_incremental_pose_candidate.py",
-                  "verify_front_review_r4.py", "verify_front_review_r5.py", "front_review_experiment.py")
+                  "verify_front_review_r4.py", "verify_front_review_r5.py", "verify_front_review_r6.py",
+                  "front_review_experiment.py")
     return {f"scripts/{name}": file_sha256(scripts / name) for name in names}
 
 

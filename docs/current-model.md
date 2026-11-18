@@ -2,11 +2,11 @@
 
 Updated 19 November 2026, Asia/Hong_Kong.
 
-**Use PR35 for reviewed image-space proposals. PR70's r4 candidate does not replace it.** The round 5 annotations and next notebook are prepared separately; r5 has not been trained.
+**Use PR35 for reviewed image-space proposals. PR70's r4 candidate does not replace it.** The round 6 all-photo review and next notebook are prepared separately; r6 has not been trained.
 
 ## One selected command
 
-Use branch `codex/front-review-r5-20261119`, which contains the latest review and comparison. Follow the [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to obtain the verified PR35 candidate bundle. Keep its manifest and companion files together.
+Use branch `codex/front-review-r6-20261119`, which contains the latest review and comparison. Follow the [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to obtain the verified PR35 candidate bundle. Keep its manifest and companion files together.
 
 ```bash
 .venv/bin/python scripts/predict_pose_folder.py \
@@ -38,13 +38,13 @@ All three models produce no outputs on the three empty development images, but n
 
 ## Current annotation pass and next notebook
 
-The [r5 handoff](front-review-r5.md) records **135 edited rows, two requested deletions and one added front across 17 photographs**. It preserves immutable r4 base-row identities and a map to current row numbers. The focused PDF shows every current label on those photos, with changed rows in magenta and unresolved rows in amber. The [labeling guide](front-labeling-guide.md) explains the physical corner, visible envelope and inspection-filter rules.
+The [r6 handoff](front-review-r6.md) records a fresh visual pass over **all 157 original photographs and 4,450 inherited fronts**. There are **223 replaced rows, one deletion and one addition across 50 photographs**. The complete review contains 3,787 training fronts and 663 development fronts. The 177-page PDF shows all current labels on all photos; magenta highlights the specific changed field, and amber flags unresolved fields. Immutable r5 base-row identities map to current rows. The [labeling guide](front-labeling-guide.md) explains the physical corner, visible envelope and inspection-filter rules.
 
-`new_000023` base rows 24-26 retain an explicit physical-landmark question: the farther gray tips belong to the cassette, but may be lateral/projecting material instead of the required lower-front junction. Its entire photo keeps exact PR35 supervision in both next-run arms. The two specifically requested deletions in `new_000014` close its previous hold; its supported r5 labels are now included in the treatment.
+**44 training photographs remain held**, including all 31 old-series photos where a broad bright band cannot confidently be assigned to the front rim or projecting support. The complete ledger records the other surface-ownership and possible-instance questions. Every whole held photo keeps exact PR35 supervision in both arms. Supported changes elsewhere on a held photo remain reviewable but do not enter the treatment difference. No photo becomes an empty negative because of uncertainty.
 
-The [r5 notebook](../notebooks/baomai_front_review_r5.ipynb) compares the accepted review against the PR35 control using the existing numerical recipe. Both arms independently start from epoch173, with seed 46, 30 epochs, batch 4, input 1280, FP32, AdamW and learning rate 0.0001. The final epoch is selected in advance. There are 94 training photos with different label bytes between the arms. Original training validation and the fixed 666/663 scoring references remain unchanged.
+The [r6 notebook](../notebooks/baomai_front_review_r6.ipynb) compares eligible reviewed labels against the PR35 control using the existing numerical recipe. Both arms independently start from epoch173, with seed 46, 30 epochs, batch 4, input 1280, FP32, AdamW and learning rate 0.0001. The final epoch is selected in advance. Candidate/control contain 3,779/3,771 training fronts; **79 training photos have different label bytes**. Original 664-front training validation and the fixed 666/663 scoring references remain unchanged. The current 663-front development review is a separate exploratory identity despite matching the historical reference's count.
 
-This tests the disclosed accumulated supervision package and whole-photo hold, not one isolated correction. It is ready for a controlled experiment, with `full_dataset_certified: false`. Preparing it does not establish improvement. Earlier [r3 recovery](../data/reviews/fronts-2026-11-18/README.md) and [r4 review](front-review-r4.md) remain separate historical records.
+This tests the disclosed accumulated supervision package and whole-photo holds. It does not isolate one correction or directly compare r5 against r6. It is ready for a controlled experiment, with `full_dataset_certified: false`. Preparing it does not establish improvement. Earlier [r3 recovery](../data/reviews/fronts-2026-11-18/README.md), [r4 review](front-review-r4.md) and [r5 review](front-review-r5.md) remain separate historical records.
 
 ## What would change the conclusion
 

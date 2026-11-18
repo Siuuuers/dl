@@ -1,0 +1,93 @@
+{
+  "status": "verified",
+  "training_run": false,
+  "review": {
+    "path": "data/reviews/fronts-2026-11-19-r6/manifest.json",
+    "sha256": "6d6591b8fa19614cbd10d3f2edb3a7b45848dcb2a2e0a2dea578452067d65094"
+  },
+  "candidate_manifest_sha256": "4ab074c475bb120a7d7fada06d83cf3a7dedf8c41d3831099a6e96254d0eecda",
+  "protocol_sha256": "80559e1b9d29815eca01753b5a17ce571f613899861970af127e3c32495b0eed",
+  "original_images_verified": 157,
+  "all_original_label_bytes_unchanged": true,
+  "staged_counts": {
+    "reference": {
+      "train": {
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 701,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "candidate": {
+      "train": {
+        "images": 137,
+        "objects": 3779,
+        "visible_endpoints": 6850,
+        "missing_endpoints": 708,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    }
+  },
+  "original_validation_photos_byte_identical_in_both_arms": 20,
+  "held_training_photos_exact_pr35_in_both_arms": 44,
+  "held_old_series_photos": 31,
+  "reviewed_development_photos_different_from_original_but_not_staged": [
+    "new_000007",
+    "new_000008",
+    "new_000009",
+    "new_000010",
+    "new_000011",
+    "new_000053",
+    "new_000054",
+    "new_000055",
+    "new_000056",
+    "new_000057",
+    "new_000058",
+    "new_000059",
+    "new_000086",
+    "new_000087",
+    "new_000088",
+    "new_000089",
+    "new_000090"
+  ],
+  "frozen_reference_object_counts": {
+    "primary": 666,
+    "diagnostic": 663
+  },
+  "prior_round_verifiers": {
+    "r4": "verified",
+    "r5": "verified"
+  },
+  "negative_checks": {
+    "candidate_rehash_cannot_bypass_review_replay": "r6 candidate differs from exact reviewed/held composition",
+    "stale_field_highlighting_rejected": "r6 field-highlighting metadata differs from exact label changes: new_000002"
+  },
+  "staging_manifest_sha256": "109240a2f600e4fd34dff3a5ed516e2fddf6947712a22f846e3e5e1d2f2fb4e5",
+  "source_files_sha256": {
+    "scripts/check_front_review_r6.py": "a74444fdcf358d0bd788d3c9d0e5f0e0ea352266980a0d69be1a28e6f7d75da6",
+    "scripts/front_review_experiment.py": "96d2db1f1ce8809ae366ffc3c3584f5229b2e3d0d8e4914eccdf3d3048a7e4b6",
+    "scripts/verify_front_review_r6.py": "2591cc62d1c9238971358d8d1a9f20f324684a4f125aa63b29a1326c4bd00c82",
+    "scripts/stage_pose_training.py": "e4ae4d4e10be8541f14b80a928b8bc8d6ca1a43339b7092e466432b51f671b0c",
+    "scripts/train_pose_comparison.py": "cffc20075d9425476b18d5a673133cae78a43e67911c20ca5f0a5c0afe0348ef",
+    "scripts/verify_incremental_pose_candidate.py": "d1c9c24baebd1ad334c3aee50bc7f1491e2242859c9ea6664ace151fc42bd611"
+  },
+  "limitations": [
+    "Mechanical and provenance verification does not certify physical annotation correctness.",
+    "No model has been trained or evaluated by this integration check."
+  ]
+}

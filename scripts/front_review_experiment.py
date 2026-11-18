@@ -75,6 +75,7 @@ class FrontReviewExperiment:
     experiment_version: int
     serialization_repairs: tuple
     protocol_limits: tuple
+    review_development_labels: bool = False
 
     @property
     def candidate(self):
@@ -106,8 +107,9 @@ class FrontReviewExperiment:
                         for case in cases), f"r{self.round_number} case ledger has an invalid identity or state")
         op_map = {}
         for op in operations:
-            require(op["image_id"] in by_id and by_id[op["image_id"]]["split"] == "train",
-                    f"this r{self.round_number} pass only changes requested training photographs")
+            require(op["image_id"] in by_id and (self.review_development_labels
+                    or by_id[op["image_id"]]["split"] == "train"),
+                    f"r{self.round_number} operation is outside its permitted review split")
             op_map.setdefault(op["image_id"], []).append(op)
         repairs = set(self.serialization_repairs)
         require({(item["image_id"], item["base_row"]) for item in review["additional_serialization_repairs"]} == repairs,
@@ -146,7 +148,7 @@ class FrontReviewExperiment:
             objects = parse_pose_labels(expected.decode(), *record["original_size"], str(label))
             check_geometry(objects, *record["original_size"], str(label))
             require(len(objects) == item["objects"], f"r{self.round_number} per-photo count differs: {image_id}")
-            if record["split"] == "val":
+            if record["split"] == "val" and not self.review_development_labels:
                 require(expected == before_path.read_bytes(), f"r{self.round_number} changed development review bytes")
             parsed[image_id] = objects
             reviewed[image_id] = {"path": label.relative_to(root).as_posix(), "sha256": digest(expected), "bytes": expected}
@@ -258,9 +260,12 @@ class FrontReviewExperiment:
                 "diagnostic_reference_required": True, "unresolved_reference_rows": primary["remaining_current_rows"],
                 "diagnostic_unresolved_reference_rows": diagnostic["remaining_current_rows"],
                 "training_validation_unchanged": True, "references_reported_separately": True,
-                "current_review_reference": self.parent, "current_review_reference_is_exploratory": True,
+                "current_review_reference": self.review if self.review_development_labels else self.parent,
+                "current_review_reference_is_exploratory": True,
                 "PR35_checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
-                "decision": "Compare both fresh final-epoch arms and retained PR35 on the unchanged 666-front primary and 663-front historical diagnostic references. Report misses first, then extras/duplicates, empty scenes, zero/one/two-locatable-corner coverage and both-corner successes at 5/10 original pixels with misses retained in denominators. Inspect gained/lost identities. Conflicting rankings are inconclusive. The separate 662-front review may be replayed as exploratory evidence only; never substitute it silently. No threshold, seed or epoch search and no automatic promotion.",
+                "decision": ("Compare both fresh final-epoch arms and retained PR35 on the unchanged 666-front primary and 663-front historical diagnostic references. Report misses first, then extras/duplicates, empty scenes, zero/one/two-locatable-corner coverage and both-corner successes at 5/10 original pixels with misses retained in denominators. Inspect gained/lost identities. Conflicting rankings are inconclusive. The separately versioned current development review may be replayed as exploratory evidence only; report its own hash, counts and unresolved rows, and never substitute it silently. No threshold, seed or epoch search and no automatic promotion."
+                             if self.review_development_labels else
+                             "Compare both fresh final-epoch arms and retained PR35 on the unchanged 666-front primary and 663-front historical diagnostic references. Report misses first, then extras/duplicates, empty scenes, zero/one/two-locatable-corner coverage and both-corner successes at 5/10 original pixels with misses retained in denominators. Inspect gained/lost identities. Conflicting rankings are inconclusive. The separate 662-front review may be replayed as exploratory evidence only; never substitute it silently. No threshold, seed or epoch search and no automatic promotion."),
             },
             "limits": list(self.protocol_limits),
         }

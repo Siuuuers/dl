@@ -1,0 +1,2917 @@
+{
+  "review_group": "c",
+  "base_review": {
+    "path": "data/reviews/fronts-2026-11-19-r5/manifest.json",
+    "sha256": "666a7d85ec2783ab1a7c65a544abcfd444c37c07096703d04720dc132ea56636"
+  },
+  "baseline_revision": "f6a8e9560c188fffe0a89eeee8e19c435d116800",
+  "images": 30,
+  "base_fronts": 1304,
+  "operations": 33,
+  "cases": 3,
+  "qa_receipt": {
+    "review_group": "c",
+    "baseline_revision": "f6a8e9560c188fffe0a89eeee8e19c435d116800",
+    "baseline_manifest_sha256": "666a7d85ec2783ab1a7c65a544abcfd444c37c07096703d04720dc132ea56636",
+    "original_images_visually_reviewed": 30,
+    "baseline_fronts_reviewed": 1304,
+    "operations": 33,
+    "changed_images": 10,
+    "box_corrections": 5,
+    "left_corrections": 10,
+    "right_corrections": 18,
+    "unresolved_cases": 3,
+    "post_edit_visual_qa": "All33 proposed operations were replayed and visually compared with the same unmodified original crops. Final114:3,117:5,123:18 refinements were re-rendered and re-viewed.",
+    "validation": "All before-line identities replay exactly against immutable r5; row counts unchanged; changed available endpoints lie within their boxes to serialization tolerance.",
+    "limitations": "This visual pass does not establish model performance or pixel-perfect ground truth. Ambiguous rounded contours and three specific unresolved material/visibility cases are preserved."
+  },
+  "original_review_notes": [
+    {
+      "image_id": "new_000094",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "base_object_count": 38,
+      "source_image_sha256": "e49858124981ec769ed4eb53b53c76aea809981bbbcddf6446cb095ab53533f0",
+      "base_label_sha256": "ab7b6d67ad7f1debc1034bfec7e88bf145810f1e1777612a1634a718e895c744",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000094_full.png",
+          "sha256": "1213a95d6bc2aea315df619e390c6377db25338e9f113db1227c4773916ee693"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000094_tile1.png",
+          "sha256": "319a39142e310425caf31d03b0ff4d98a507b13c69968025533a0ae7fbdf23c2"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000094_tile2.png",
+          "sha256": "554c9f361eb45a124a24331260ef9f7651a3e31bbc968efb6dc20e2cb5697438"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000094_tile3.png",
+          "sha256": "380f09d7214047a7f8b97e2b4b59d8ddac7a23472e0fff51b0a6758acd55a201"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000094_tile4.png",
+          "sha256": "ddc1ad773bb12909bee4a8e60bfec7c48c139bff4984196b778573b0176709e5"
+        },
+        {
+          "view_id": "shard-c/94_cornerzoom.png",
+          "sha256": "d74650b9991fe8a823caa6e1adbc2c6e02fb28f383ee005e11d03aeadf1c7f99"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed all fronts, including partial gripper-aperture fronts 35/36 and thumb-side slivers 37/38. Unavailable endpoints remain absent; top-stack rounded corners are within the source blur. No defensible correction found.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000095",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "base_object_count": 43,
+      "source_image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+      "base_label_sha256": "ad2beff7313c1312b336cde4c5d329bff70194231f459b689eb8ac6671ac1530",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000095_full.png",
+          "sha256": "42c6206306ff54950330c1f71e3f7396a6df98308c8f98193e5fdb5ad5ac6842"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000095_tile1.png",
+          "sha256": "5b6c0460052744fa3fec84604fd73657dab82295ea386a0648291e771d3ad706"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000095_tile2.png",
+          "sha256": "d881d6ac368144e5b2ab61fde97cf6677e26cb119d63175cefcc7e7957d186ff"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000095_tile3.png",
+          "sha256": "8b89697f47c17a58bfd73f319737c1291424a02746be48c670c0609821f93ae0"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000095_tile4.png",
+          "sha256": "ebb00e928ea9bb05876bc85cba825cc95013dc017c569c6098c996f37f6d9391"
+        },
+        {
+          "view_id": "shard-c/95_rightstack.png",
+          "sha256": "7c528b460e40c1a76caab64be095f30e48fdabe43aec83b08ae4d7f7c1b296b5"
+        },
+        {
+          "view_id": "shard-c/95_cornerzoom.png",
+          "sha256": "d30f7eadf90772f8cebbbc55bc0e8dd7b2fa176a6b2dd5c4d1a46c811b1dd666"
+        },
+        {
+          "view_id": "shard-c/95_middle.png",
+          "sha256": "d5838073f1b5e02d7c27a5936dda4bb111d75e1cd165db40723bb89e559fccec"
+        }
+      ],
+      "changed_base_rows": [
+        10,
+        11,
+        12,
+        13,
+        16,
+        17,
+        18
+      ],
+      "case_ids": [],
+      "notes": "Corrected right endpoints 10–13 and left endpoints 16–18 to their own physical front turns. Retained the box extents where small gaps cannot be cleanly separated from blurred front contours. Row20 below19 is visibly present above the gripper but both endpoints remain unavailable; partial lower fronts34–39 remain.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/95_middle_after.png",
+          "sha256": "22b080aec82cd101a8289d3138e6a534674f9b1dcb2523b18d0ba10f8678e8c1"
+        },
+        {
+          "view_id": "shard-c/95_left_after.png",
+          "sha256": "535c14e14e200629145609a2b7edbdfcd531cdfbc8fed790dbcdd18ae1a4b7cf"
+        }
+      ]
+    },
+    {
+      "image_id": "new_000096",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "base_object_count": 46,
+      "source_image_sha256": "fd69bf9e5afe7725d68d65eec21dfc59da8d9efc16f0c98d562f3c9c069463d5",
+      "base_label_sha256": "046e103801b804eb1267ec1e3b852e42e968b770819a2172a17a99cec3c0f308",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000096_full.png",
+          "sha256": "beb164afc6268fb5850fa6149499b72e0f588125206d828536336176cf5a8357"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000096_tile1.png",
+          "sha256": "be39eaaa315b2f6daafe8416774a5b8e3d7d2dd849ee7b99f52976caeda7b702"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000096_tile2.png",
+          "sha256": "2982aab6533e2f5e10d16875d8bdd3c552ae1857d670c1f3c800d7c4170cebcc"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000096_tile3.png",
+          "sha256": "571cca18c2303d2d455050ff4717d2097530981f54b7a5ead9fa76d2decd7534"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000096_tile4.png",
+          "sha256": "bf7fe1afc3744958f073b6feceed1d826ae09245539f9a0ee9e18064cd39c32a"
+        },
+        {
+          "view_id": "shard-c/96_rightstack.png",
+          "sha256": "bda58007cb84224a61d50cf8812595d6974a1618755f3dd4e98f5913951ec922"
+        },
+        {
+          "view_id": "shard-c/96_cornerzoom.png",
+          "sha256": "4d83ba52723e4b718bbb5eb88ede54d97e77411fd932592a24c50ac5990b5866"
+        },
+        {
+          "view_id": "shard-c/96_middle.png",
+          "sha256": "959df9c7c0118854eb4ffd3b44e256637c842ce901871d5ea7e12e396188f73d"
+        }
+      ],
+      "changed_base_rows": [
+        42,
+        43,
+        44
+      ],
+      "case_ids": [],
+      "notes": "Corrected right endpoints42–44 after image-specific contour inspection; row45 remains within the rounded-corner blur. Kept the small row46 front sliver.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/96_corner_after.png",
+          "sha256": "cd74ca849400524ee74dac343f55eb0ca45a6835214797d56aabc8bba9d82829"
+        }
+      ]
+    },
+    {
+      "image_id": "new_000097",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "base_object_count": 46,
+      "source_image_sha256": "b9a3b5b278331904e32ed61df31ca03f9b515d08a1177a10a7788eb3b6d5b5f0",
+      "base_label_sha256": "fc2098d787166f6a8ecb96b9149cf056fb4fe704ef54b4f2f4e34759c155ce62",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000097_full.png",
+          "sha256": "8e5f0887251d0ee7b33a2de773d0f0265dfc81ced2bd56a6c1984e305ae9636e"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000097_tile1.png",
+          "sha256": "67c33f41db618de03321596203942955c8628e0d3897eff99904a3760355ea53"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000097_tile2.png",
+          "sha256": "f05c84122b25ea619b832dc7a228c918657adddb3cac1993fd2baba3b230043f"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000097_tile3.png",
+          "sha256": "f12cef2debb19705968b5db1491760d58ffd5182e80d612c8d173a69162ca623"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000097_tile4.png",
+          "sha256": "687a0d7ecc0d7fbded0483a837057fed14c80f7e0ec1e18f605beb4a3a544baf"
+        },
+        {
+          "view_id": "shard-c/97_top.png",
+          "sha256": "0d46d533b1b572b0192aa577979e8264bd0cf4f2445f3fb589cc1f7b82a47104"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed top-stack41–44 at higher zoom; retained contours. Row39 spans visible front fragments around a gripper occlusion; its axis-aligned box necessarily contains occluder pixels. Rows45/46 are visible aperture/thumb-side front fragments.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000098",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "base_object_count": 56,
+      "source_image_sha256": "163c6b9f585ffbd7ab0e409f6b633e1ac0dde303d793fcfdcd5958fee2d18739",
+      "base_label_sha256": "29651f6ba7048c13a5b3da41378fdb1f38b1594d8141a0fa0f915440fc99c1dd",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000098_full.png",
+          "sha256": "66578dd16f7805c7ec06940f42d55ba899b502093758eda9fe80b0bea59dd78e"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000098_tile1.png",
+          "sha256": "e47176fa04d2c34bd50bb12f23fc21520565e54a5847bd1420ec659036a5eda1"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000098_tile2.png",
+          "sha256": "dd264d137f5af7204cef910774feeb9f2d3fa227e02b4bf2b92e19d575451006"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000098_tile3.png",
+          "sha256": "3f22561708b407203118d70429b083705954543b42f3d17f0813015183e47839"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000098_tile4.png",
+          "sha256": "77a0f806bff2e45f29eb5827e280bc4f5d8d315a4aa73d9802709da905c7c9b7"
+        },
+        {
+          "view_id": "shard-c/98_52.png",
+          "sha256": "2b70367e16adb1173fae2bec7b887827aef9426d8e984a1a4839865dd856a313"
+        }
+      ],
+      "changed_base_rows": [
+        52
+      ],
+      "case_ids": [],
+      "notes": "Corrected row52 box to include the visible upper front strip beside the thumb and stop at its visible right extent. Its right endpoint remains unavailable. Retained top-clipped row53.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/98_52_after.png",
+          "sha256": "619807f891b043696e1c8c2e2b4fdc490eadc6ff845da15cb72c9253a6b140d7"
+        }
+      ]
+    },
+    {
+      "image_id": "new_000099",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "base_object_count": 56,
+      "source_image_sha256": "941f9f0d904ed951ac0fd3538e2cd76eb9b14f73bc958f7d6d0fecb7b75a2439",
+      "base_label_sha256": "f74b6e7f7438e71598ff04c60ef7911c1f374edec8be1d06ff6fdaa0d9411677",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000099_full.png",
+          "sha256": "b7c9b9838ed65fe0b66da08fd8dc5d77fd18f87e733a6800c9c032bdd37bb7cd"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000099_tile1.png",
+          "sha256": "025818ff0c2970593f686840ceb9e11914a9f357e8129f464365e43c45126018"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000099_tile2.png",
+          "sha256": "4fcbb609b1df8a25c702d94bf05a9afe1b98311009bd8e6fe1a990c9fa64a04a"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000099_tile3.png",
+          "sha256": "ae470192ac3325832162f89bd50100376d5e2eb3e9f185935c279e6c69d32c3c"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000099_tile4.png",
+          "sha256": "ed67b9f25c3e0aee6236ecfae127771e17d8d4af8f442bcd0eafebb6b7952cc7"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Row52 already contains the visible front beside the thumb. Row43 includes visible fragments on both sides of the jaw, so the axis-aligned box spans the jaw without treating the jaw as target material.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000100",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "base_object_count": 56,
+      "source_image_sha256": "ea387daf6b24d49662841e1f3f8197ae2c991fecffb9cb64ca66b8689db76290",
+      "base_label_sha256": "1da554b1fed6de6a56aaf028f0b9cb68a11e68c83a372e4d45eb7f11e36784bd",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000100_full.png",
+          "sha256": "0200f983b6c168544db4187c22bf0df6e9e0ed60f36dc1b5d3d1294a1a6342fd"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000100_tile1.png",
+          "sha256": "29ed1810633c741274d5d779df7ecf2d39666942522a6900e1512de0416b344f"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000100_tile2.png",
+          "sha256": "e72d6e0e4783c42540d2004757d53a14b9fab6592da4b17b279f1beb6f7be330"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000100_tile3.png",
+          "sha256": "9e64a7d6428b029d6068cc5a4403b2b476fdab1ef36c630ffaebce709646cb59"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000100_tile4.png",
+          "sha256": "c95cc2cdcb1e5b393e5852917b06a52f4b3ce75550658e0c99e853b2477760de"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed dense upper and lower stacks, including rows44–51. Row52 is a partial front beside the thumb with right endpoint unavailable; no defensible correction found.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000101",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "base_object_count": 53,
+      "source_image_sha256": "5b13f5c4d0c5ab94fd5954000a299cd7dc2c1ec486cc6d1d13a623f8fcc0094c",
+      "base_label_sha256": "113490db75be25b7d7a35dd14e98b84accdab2933b22558e8892c79d4c0fce4c",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000101_full.png",
+          "sha256": "b47ccffabfcdee9b7d256b7c57de8c8bca2b9286875694496fe45c32570bb846"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000101_tile1.png",
+          "sha256": "f303bec6738bc6400595c7945e4e4fe587a207a6bcd249933a851994e90e640d"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000101_tile2.png",
+          "sha256": "8b02e82f946c1e4355b5a20ea033ec988549fafb6031463c5c635549970c8c8b"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000101_tile3.png",
+          "sha256": "d5631d7dcf1d89e05411e0a7941a174a74a846c83da84d9c15b88ea60977197f"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000101_tile4.png",
+          "sha256": "13e18af00ac53eb022b189411043f81667f95da8db66f297b8b248b8d48e8f38"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Row53 is a visible aperture-front fragment with both physical endpoints unavailable; row52 is partly hidden by the thumb. Reviewed all other fronts without a defensible correction.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000102",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "base_object_count": 53,
+      "source_image_sha256": "107e5ff9d5870d203f8cae94c603fc422f8d52e83befc6603b2fb30fab67e73c",
+      "base_label_sha256": "891f7edfb5041dc8a5a3b5e1b3cfd586f76c85e00c6a443a5c30984ac27b91b5",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000102_full.png",
+          "sha256": "c124b6331288080a5914576b8626d44ebef3a4a4a8ee429eefcbd382d158a7b3"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000102_tile1.png",
+          "sha256": "16d97ab188c6d815f5df35b667ff059674340d87677e0bf088ac906018891bee"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000102_tile2.png",
+          "sha256": "c8eacb2d170218486545eb0e599939d07452121a6d138672b7f115aefdfcba2a"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000102_tile3.png",
+          "sha256": "d9e8da818e3ba395f0506a76ac6c21d18cae65e0c0d98d1d464c96d523b16852"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000102_tile4.png",
+          "sha256": "f1ce2c52f0b5168240ea33a28f09cd014f87eb581e7e4b1e186e64e3ff8b7e3b"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Row53 is clipped by the top frame and row52 is a small aperture-front fragment with both endpoints unavailable. Row1 left endpoint is inset from box x_min because its front is angled, not because the box corner defines the physical endpoint.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000103",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "base_object_count": 50,
+      "source_image_sha256": "f7ea432fc066632198842da8da68ec8c7f42482ba1ff1cca4de66edf85e7c83a",
+      "base_label_sha256": "d5f441107dde91471b21e5117acf659121a1eafbb831a222456d23a0b1cfb682",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000103_full.png",
+          "sha256": "908a696ea0420a7d87bc566c737b66801a9823ce501fac558c7d919e4a7ad1ee"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000103_tile1.png",
+          "sha256": "e249cc6ad5c8d2db15cd1510db3cc4bdb55d432742c1db70d154d99c302ace83"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000103_tile2.png",
+          "sha256": "f9ab3f85dd9ae9999291817ffaf26c9108d9e3641931cfff7f8a87940bdb11ce"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000103_tile3.png",
+          "sha256": "8db177900da0c245bacc8477df23893572e3b5638d637ce9eb44e079b63968f0"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000103_tile4.png",
+          "sha256": "97b9621208f1c81f3bd3d3632685ee84718500844b65f543c015b5ff06fcf5bc"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed rows22–25 boxes and all other fronts. Row50 is a thin visible aperture-front fragment with both endpoints unavailable; row49 is partially thumb-occluded. Retained the evidence-supported geometry.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000111",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "base_object_count": 34,
+      "source_image_sha256": "44f6a9de5ac112c7f5bf7d6b0b90c60cf5adf5ff83d697acffe0b0c2b4ac209b",
+      "base_label_sha256": "477f7b860a287a972831f89d0290af3845f970f0ca8ea03a83b1eda02af03d4a",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000111_full.png",
+          "sha256": "ec1212342c0ec703120548765bf78a0daf6de6886f0ee5c627659cafd1967b08"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000111_tile1.png",
+          "sha256": "1bc017de287e1044d12bed2304ab6e0cbc72442cda3c1481f60817b09208633d"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000111_tile2.png",
+          "sha256": "274b70cbb08ffd0a67978638e7fedb1769f3255577ece1190f4e66cefb9a059c"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000111_tile3.png",
+          "sha256": "573a3d54cfe0ab9822459835cf313eb0f3b8508b5008acf324c043b872bb55dc"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000111_tile4.png",
+          "sha256": "ff6eb0813b25386cacfc9249c254fd56536bafefdcde705b64e4fd8f67b93c40"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed sloping front contours. Background triangles inside axis-aligned boxes are unavoidable when the front is tilted. Row26 right, row33 both, and row34 left remain unavailable at gripper occlusions.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000112",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "base_object_count": 36,
+      "source_image_sha256": "f14bbd3494e04f5c83676900de4ae31bbf27189765859748c4be6803e34ad1f4",
+      "base_label_sha256": "c29d4cf5198b942704fac9d4b25e51faa73b51682105d56be2dc3b028b47e662",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000112_full.png",
+          "sha256": "80ff408628f176366699f3ea9bb9d43bcd072598128874c1fb94fc08fca7e1c6"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000112_tile1.png",
+          "sha256": "afa92ee5e70371d2821951b334fd3ad96c819e748411c20a120f6820b84f7404"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000112_tile2.png",
+          "sha256": "0d7b5c07492caa4d99f3e4f353e857b7216bdbaec7e48a436a68f5c0d2ae937f"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000112_tile3.png",
+          "sha256": "9c5cc50f12f0357f29b6cd75190a66bb59015084992a6162e12a695f65c1d0ac"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000112_tile4.png",
+          "sha256": "257632013d0643060d73b246a3d37bca2f50ec4c8c60be7df94c1f2ef3f3933a"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed all tilted fronts and their independent lower endpoints. Row36 right corner is visible while the left is blocked; preserved this asymmetry and other geometry.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000113",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "base_object_count": 29,
+      "source_image_sha256": "b53b06d414d0a4c6239a4a460a5d7a04bf9629bcd2ecf082d6fe29b440525029",
+      "base_label_sha256": "e917d09774c9809e0776477239ad19ae087a581ef29d81c9139de0f45c9ac440",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000113_full.png",
+          "sha256": "7a7b0e5fd6bbba6a9c6dce02e90fb77b8db1615b6bc84d39913eaab138a65249"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000113_tile1.png",
+          "sha256": "b6708799db87a052f510c396fea23cb9f6a6df6a1974dda729b27c60fdcbe085"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000113_tile2.png",
+          "sha256": "9295ca6dc3f576e4555e5ef01b6eef5e47195a94b1956c050152f16f16ffb8a9"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000113_tile3.png",
+          "sha256": "9ac6d8d59fa44f007df86e0ddbac9312c362fe2203843dc40152fee8eb234aac"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000113_tile4.png",
+          "sha256": "5c630b7b97ede2cb849b67ba3ba5a045d73e9af0f7a911ceb0fdd90c498bb45e"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Row21 lies between the jaws with both endpoints unavailable; row22 right is blocked. Row29 is a visible separate front. Upper-stack endpoint offsets remain within source blur.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000114",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "base_object_count": 26,
+      "source_image_sha256": "42ef4edb56e6cc801466aa4350b009d27ecd2524cf240778efbb3d865c3c2667",
+      "base_label_sha256": "f3ef767014d0b758ba3a1da99a9cbf0ace4a61579c21254e7ea3269407deab68",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes_and_uncertainty",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000114_full.png",
+          "sha256": "c647e460c8d2e254a82dc7eb45a406c53c3600d03b914f0531ec1a026bf3b66d"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000114_tile1.png",
+          "sha256": "f58fa06c55a7df83caa96b211639b694ceb4779f06b348606b989c03e42f9814"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000114_tile2.png",
+          "sha256": "c39a4e9a22c1305429473ef502e7b70f292b819dcefe6fb4884616b36e0a5f4d"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000114_tile3.png",
+          "sha256": "0a15dac2b9bcea403407ce450537f45d929bf881456db8d22c2262b42a1994e7"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000114_tile4.png",
+          "sha256": "11cf36b6b40e24a2fe3ebe3dde6ebcb16502323d9627ed8edfe5f7db8fdf5372"
+        },
+        {
+          "view_id": "shard-c/114_uppercorners.png",
+          "sha256": "1be1d9c9ae5ff921df932008f8845f515e302760e2a6396d55c2ada76414ffb3"
+        },
+        {
+          "view_id": "shard-c/114_26.png",
+          "sha256": "baa31cee67e3857bf2c898cf08ebf2f5d21358f0fefba6b89c69581d7192d214"
+        }
+      ],
+      "changed_base_rows": [
+        1,
+        2,
+        3
+      ],
+      "case_ids": [
+        "r6-c-114-26-box_top"
+      ],
+      "notes": "Corrected right endpoints1–3 to the visible physical lower-front turns. Rows4–6 remain within the rounded-corner uncertainty. Preserved row26 top because material ownership of the projecting strip cannot be resolved from this original.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/114_rights_after.png",
+          "sha256": "a2f0a1ecef986bd2f7bde6a7e59e307848d2ff9d1c7baa374a0c431084c51383"
+        }
+      ]
+    },
+    {
+      "image_id": "new_000115",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "base_object_count": 24,
+      "source_image_sha256": "218087e388114bb1e6f5187f0d816708c32a6c288840cf79deb04d168c0bc5ac",
+      "base_label_sha256": "c491c1956488b5ae5a8f8c677feedc84b4fb418e8fe7c71dacebaa7043e24499",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000115_full.png",
+          "sha256": "fddb69924521351e512616846a526f87be92960e1a84dfee515009d2a32b5f62"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000115_tile1.png",
+          "sha256": "af9519da5bada95f20e1e6faca95dcbbec944c77ccff313f1ec56dba37dd788e"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000115_tile2.png",
+          "sha256": "0a51b8368c2b291ee75960dbbb63e1f3b732500d6fa96f7470734e0ae4651594"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000115_tile3.png",
+          "sha256": "5d218197ef49b416493f066c377be6d915487ca68322430940122d7158d2537e"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000115_tile4.png",
+          "sha256": "ec381b1b3aace64b5a0fd885f427b6427604d300154a99a2f2c6e4cf9da6c58f"
+        },
+        {
+          "view_id": "shard-c/115_leftstack_rights.png",
+          "sha256": "c989c7c4405d36b56ea6818758510e53afcbcdbd294a930dedb78e1876f5f7e2"
+        }
+      ],
+      "changed_base_rows": [
+        2,
+        3
+      ],
+      "case_ids": [],
+      "notes": "Corrected right endpoints2/3; row1 difference is within the rounded source contour. Rows22/23 left endpoints remain hidden by hand/jaw; row24 is a distinct aperture-front fragment.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/115_rights_after.png",
+          "sha256": "6617bbf478fcf90dd6d96c912302d3b983d8199d045317ce379d915fc6e92e2a"
+        }
+      ]
+    },
+    {
+      "image_id": "new_000116",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "base_object_count": 25,
+      "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+      "base_label_sha256": "44c9e893c8d9c942cfd4f2791a76a7e125417f8b09a82fd461d48ca6b5daa2d9",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000116_full.png",
+          "sha256": "706139a6587d66c4cff197468492a5f5bcbb834ccb6e3f9b380e34dd20171254"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000116_tile1.png",
+          "sha256": "6d6d19d77f1f6b1531ab646685a072cc03cb844cce2e686d44d2b7f3424b2cec"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000116_tile2.png",
+          "sha256": "889518aa8e4c7a4c45bd14708e89ba4cfb32970573ee7ed04e01d0cbc1f1cc1f"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000116_tile3.png",
+          "sha256": "30ef4b69598afefad90a20df9d3bcd4920bbaac348b2ad804b5bfc9393569d1a"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000116_tile4.png",
+          "sha256": "057e94d42467fbb5735c61fe4e619c06ce76edd3c7cbedc2b0a53c902bf95e88"
+        },
+        {
+          "view_id": "shard-c/116_toprights.png",
+          "sha256": "64149b5d2a3c8dc481f2b07cc05324340aabf9cd9d2cbafedb89aadbaffa8e2e"
+        },
+        {
+          "view_id": "shard-c/116_2225.png",
+          "sha256": "3928361e1119537f2b302edf74156106a3d529f974b225c3410b346e5f62851f"
+        }
+      ],
+      "changed_base_rows": [
+        1,
+        3
+      ],
+      "case_ids": [],
+      "notes": "Corrected right endpoints1/3 to physical turns. Row2 remains within contour uncertainty. Rows22/25 are visible gray front strips through the gripper aperture; their boxes may span occluder pixels between fragments.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/116_rights_after.png",
+          "sha256": "c370314db431430ad1df3e6c4fafa6475569774fb9566c0be6035762be87d4dd"
+        }
+      ]
+    },
+    {
+      "image_id": "new_000117",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "base_object_count": 24,
+      "source_image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+      "base_label_sha256": "ab256f2b3c98d6a53b705faaf06fea54f879ee670aae5ae67d660b64c2531009",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000117_full.png",
+          "sha256": "3143a9b777046743ce4751ef03d3ce7fa2da1133002a429ff695089fac0c6d2f"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000117_tile1.png",
+          "sha256": "c10d46fc7a43a42809adc92beb2758fb4dc4961d342faf3c83b03b6b141f0bbd"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000117_tile2.png",
+          "sha256": "454ac16c3b01a50a88b2e096918344180e71c4e5545fe098d04ab85f184c2fbc"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000117_tile3.png",
+          "sha256": "1ce331f67bb15c58605d5e8a66f3d6d99234aac038a034f182892b64c8cee77e"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000117_tile4.png",
+          "sha256": "ff4567d105de1c139d7af39e3e9a4ca70d7a097d2d31b04257ad051705f6f755"
+        },
+        {
+          "view_id": "shard-c/117_toprights.png",
+          "sha256": "a6f7057b35c52055e0248a57cdf91028251eb9ae10c38f4ae1d0703abfee7e8c"
+        },
+        {
+          "view_id": "shard-c/117_midrights.png",
+          "sha256": "98b77ed0bd3fddec6fba124d67c424a99959d58efd95a6036cd00ada38f10210"
+        }
+      ],
+      "changed_base_rows": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "case_ids": [],
+      "notes": "Corrected right endpoints1–3 and5. Rows6/7 remain within rounded-corner blur. Rows21/24 are distinct visible gripper-aperture fronts with unavailable endpoints preserved.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/117_rights_after.png",
+          "sha256": "1a933ace1f4d4d6bae69595411bca15e7bb8f9db505a5407de1033ea59a2a209"
+        },
+        {
+          "view_id": "shard-c/117_mid_after.png",
+          "sha256": "8687be1724838ca67cb04bbe36fb86859f81f60f848a7b8ca6c4865d35551cc5"
+        }
+      ]
+    },
+    {
+      "image_id": "new_000118",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "base_object_count": 33,
+      "source_image_sha256": "346aee491ea67198875060780ba55503b05b74305555c419d0ecd0a2a58b9630",
+      "base_label_sha256": "3f3f68dc8f2f1350a41950e1cef09fe277da591553d9c1c8c1bcc115c0cc77e0",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000118_full.png",
+          "sha256": "28e31e264a15859d226319a6b3dcb35135014151acdfc25eaa9823c888054da6"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000118_tile1.png",
+          "sha256": "c3b0640ffdc6ba40156d5d5554f9f650c2b10496b4f9665eebd690fb0ff7b677"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000118_tile2.png",
+          "sha256": "9e877433d0308fd6ee95b5f8e4c0aae6b0a616bcd1c14c11371be0513dc7b9ee"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000118_tile3.png",
+          "sha256": "8f22ae128177e6f668aa3914b67d8521b148caf046b86e4958a0f5f5766eaf31"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000118_tile4.png",
+          "sha256": "1a18ad3f45737b074ad6c68c42e14150863edfdd9a6f2fa61c3f22766a9dc972"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed upper-stack turns and lower fronts. Row25 has visible front fragments around the jaw; row32 right remains hidden and row33 is a clear visible front.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000119",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "base_object_count": 35,
+      "source_image_sha256": "9a5e0e0fd881165121b54f76d4791e812cd22fec24da624413eca1a3ee259a41",
+      "base_label_sha256": "6ded9c604bddfe47bb45c46e9864e08b27931fda28bda22bbffc3d600741af7c",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000119_full.png",
+          "sha256": "a69f20f26204ccb7bafecd1495c0609a3c1b66394d5b06ab5e9a9766163177bd"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000119_tile1.png",
+          "sha256": "2868802df8a19d308b8c2a970b5093600103a186d5d8c43164cfb49439531e05"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000119_tile2.png",
+          "sha256": "7fa4dfb50bd3edb1b9424cc38660e29493e0a1ac91ca8f2a0799a1606a7b9ed8"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000119_tile3.png",
+          "sha256": "37530dee85a62341b74b28db88fc551e063023dd1ed218fc2df276149b695864"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000119_tile4.png",
+          "sha256": "e7648892ea649afbc76fbd88b52290e9053d083260d9545364a506f6464745cc"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Rechecked specifically requested left endpoints1–9,14,17 against physical front contours; retained the r5 points where supported. Row27 spans visible front fragments around the jaw, and row35 left remains blocked.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000120",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "base_object_count": 56,
+      "source_image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+      "base_label_sha256": "7280d8f45d1973de4229fe60b6004e106937bb77f0d22df451da9725303ae94a",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000120_full.png",
+          "sha256": "c0411b90c4a4f4ccf516ade0743c5fb4a1a9b893ebb61845e8eeca3fe6b05f80"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000120_tile1.png",
+          "sha256": "64e2295fc86d63a8ffe5745fd95b745842c15d187600d20a0a7427f9f6bd4442"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000120_tile2.png",
+          "sha256": "3ecbb000162cd52f89fc8884ba1dcff71d9dac3262d4ac39ef3611f4bf1d606e"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000120_tile3.png",
+          "sha256": "a12a157e9196e39c2f094f4a5f76d828ab0cf1f5789c076e3fe10006b50e5909"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000120_tile4.png",
+          "sha256": "45be614e2473edbb1694da1d1e0d7fe473e97ff3a6b63f314c2577df14dddbf8"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed dense upper/lower stacks. Rows53–56 are visible partial fronts outside the jaw. Exposed waffle tops inside the aperture do not establish another observable front and were not added.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000121",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "base_object_count": 56,
+      "source_image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+      "base_label_sha256": "85a54787152b8c411c8c097015559f86e73d6f173773269a8b0b8af4d49df4cd",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000121_full.png",
+          "sha256": "abd842f1fdb8e944ea91ce9de609609907f89beb2c5e9f1b862068062d3292d5"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000121_tile1.png",
+          "sha256": "bed27dfe9358d5e454f0fa5ed3a224d51c813f882c48b8e7936c78fb7f1c4678"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000121_tile2.png",
+          "sha256": "3e9f9ec45b2ea95d8e4ce59f759a83960d15f51744dd0fc80cf01ce43159517b"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000121_tile3.png",
+          "sha256": "db6a134c7b4842fd70baa4c3fec52df6a231672405860364efcd7cdeb4079795"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000121_tile4.png",
+          "sha256": "0e540d484777928fe379e5caecc9d2a29b813c6184fc3bbe74ced8948ff6fcee"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Row55 is a small thumb-side front with left endpoint visible and right unavailable; row56 is a visible white front patch between jaw and thumb with both endpoints unavailable. Other geometry retained after review.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000122",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ],
+      "base_object_count": 57,
+      "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+      "base_label_sha256": "244c59ccb6e55d938442242dc81163372f6db3bd5a81e749bdabcfbd7016be40",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_uncertainty",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000122_full.png",
+          "sha256": "81b4d7e5c018168bb1e660e7cd46bb2bdf92054c93fc00759efcd9ffdcd7ebca"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000122_tile1.png",
+          "sha256": "34b304eeee82150fbd33cbe5dbbd1e67d938af2ae26f877b4a9717f0650fe018"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000122_tile2.png",
+          "sha256": "19e3472cb504000c6cea2704618ddc1d45c2c430287ca5dafd4d7335885f270f"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000122_tile3.png",
+          "sha256": "fd00d1ff37c348adb8cebe512131b99fde8819fe56a390db40ba733eb70b4d70"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000122_tile4.png",
+          "sha256": "8a9359dbb1da3d4784138a9da545f2f23e3a61fb90b6b921d8a36b31f31e5596"
+        },
+        {
+          "view_id": "shard-c/122_lower.png",
+          "sha256": "272fba3a6f5c82051250ebc76bf2bfacfb757b59effca20e7d6721c1477fa438"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [
+        "r6-c-122-54-right_visibility"
+      ],
+      "notes": "Reviewed all fronts and enlarged lower fragments. Row54 right endpoint visibility at the thumb contact remains unresolved, so preserved canonical unavailable encoding. Rows55/56 are thumb-side fronts; row57 is a visible aperture front with both endpoints unavailable.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000123",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "base_object_count": 46,
+      "source_image_sha256": "a1074f6ed3af478deac20dfb04bbd0513216461d42acacdf73514780d2087160",
+      "base_label_sha256": "1c78570f8917d66645bdb3f891bd1dcb0bbd8daeba77ad4dbadd9580dc78cfc0",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000123_full.png",
+          "sha256": "476b23402623a92699879f0391d010f8a79f21ee216e616fad123a1b8a092d60"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000123_tile1.png",
+          "sha256": "5019df573bbb7d34de715426c8daf28c3da4ade5f1278543d4f8f8c9b451ecff"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000123_tile2.png",
+          "sha256": "ffbae59bdd43053853a560c12cf9005f1f7b20d503293e0b4cb41a514bb042ef"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000123_tile3.png",
+          "sha256": "b7b9483507a362839def0d9c4757296c676ac4fffa9aa0a939be1a2a955de09c"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000123_tile4.png",
+          "sha256": "786e39920d6cb0555fd73fef082f07ebcd40212b8b8e96528b0c97a6eece165d"
+        },
+        {
+          "view_id": "shard-c/123_lefts.png",
+          "sha256": "39ee5fcaf8034cc477830e76961a17a85357e16b0feb63713dd341bb895a2fd9"
+        }
+      ],
+      "changed_base_rows": [
+        16,
+        17,
+        18
+      ],
+      "case_ids": [],
+      "notes": "Corrected left endpoints16–18 beside the intercolumn gap. Retained slope-driven axis-aligned box background, partial thumb-occluded fronts34–42, and independently assessed gray front strips around rows19/20; no inferred hidden corners were added.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/123_lefts_after.png",
+          "sha256": "9dda28b99d714fba6e5a10019561d6eac5c4fc025527fd01f639620fcb7b9924"
+        }
+      ]
+    },
+    {
+      "image_id": "new_000124",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "base_object_count": 44,
+      "source_image_sha256": "66fa37215d19fc95a1c3d055351dff957049e4433645f8293606ecada34314ba",
+      "base_label_sha256": "a098fe50d161d51272ac33501cc9e929609cfe3586ed438ca56d1fd8c702c270",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000124_full.png",
+          "sha256": "98848c4b5338c244df9c2a79600317f75dab0d6544d936d6ffddf35594c390b0"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000124_tile1.png",
+          "sha256": "381a188e2d3e903ad99b0907ad8fc04cabfec37e10587249e644c38a2af5186d"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000124_tile2.png",
+          "sha256": "067c0a8873b5dfa84b6ca59450e0bc8d3995b92b6b132aaf5b5824ec7696704b"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000124_tile3.png",
+          "sha256": "4b276ee1fb736d335b9776a40276d1047308e60e4983e7cf63dcae6ba6b1b081"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000124_tile4.png",
+          "sha256": "ab788f233c01a8763c93b142aef9e4c7d935bd8e060580a2c5987f8a6d6cb12b"
+        },
+        {
+          "view_id": "shard-c/124_lefts.png",
+          "sha256": "23092ce5568ae7681052c7f86c493ffbdd8a2ff2441b3bff5032df6487de96b2"
+        }
+      ],
+      "changed_base_rows": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "case_ids": [],
+      "notes": "Corrected left endpoints15–18 to lower-front turns. Row19 both endpoints and row44 aperture-front endpoints remain unavailable. Reviewed partially thumb-occluded lower fronts24–39 and retained their geometry.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/124_lefts_after.png",
+          "sha256": "20c037faefafb3295b77d37d3ed7004fa92a466b2ef7d63de609c7c1f1da936a"
+        }
+      ]
+    },
+    {
+      "image_id": "new_000125",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ],
+      "base_object_count": 54,
+      "source_image_sha256": "7c222cd020ba60723fe876a0ccf7256f6d146df488477dc7e0ca865e4dd32a5a",
+      "base_label_sha256": "455265246fc64906f668be2fd053358654e34e6c487c0dac893c6a955a445793",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000125_full.png",
+          "sha256": "c59c6f5e76e52b9a0aa5fd37b963a50820dd41b203abb54fd104a3f4cfc90249"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000125_tile1.png",
+          "sha256": "eeec527553d71c113a5d0285aed831adea2bfa0a646f730434e62a9bbf95ad6a"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000125_tile2.png",
+          "sha256": "aa299d69f88bb3abbefd6d0ab2c4f811c5540f73a63782dde018cd277d23c192"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000125_tile3.png",
+          "sha256": "a783a55da1fb1c7d751ee3ce3b5b6f375f735e6db69e5f126ddebb1e54fdb8a2"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000125_tile4.png",
+          "sha256": "9991fa8f319b6d36180cddb9afc42f6be5d14145aa7efdd3ef2fb47d5cc40b8f"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Rows53/54 are separate visible aperture-front fragments. Row43 is visible outside the jaw and through a jaw slot, so its box spans intervening jaw pixels. No defensible correction found elsewhere.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000126",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "base_object_count": 47,
+      "source_image_sha256": "3f8b8e4788a59e7238276c40d0f528705f16cec6c9b0e18d81b31451bc34f3f5",
+      "base_label_sha256": "855cd2ebb60b3afa9f06903b1817d558a0b8f6aa99bfb637825a9a8deb9c09fc",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000126_full.png",
+          "sha256": "259a3007ab8cfae1b94736df8043239de27022574477b9cc9437c96611790e2b"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000126_tile1.png",
+          "sha256": "8d6be106278b9862231385651bcd1323a4162afcd9681576ba7fb2541416e7b0"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000126_tile2.png",
+          "sha256": "21ee3a4f59e12f807c9b9aae0e03074a76a595a3bbad2d16a08a39d94914a7b8"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000126_tile3.png",
+          "sha256": "50b17344ea46d2ea7633b8e2f3e0e7d4ecd57d49fc00d9988902fb9f2c3601cf"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000126_tile4.png",
+          "sha256": "a94e184bad1693d5512aedd2652eec1730a407300dd6ff8f6f80954cb62ba1f8"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed all upper and middle fronts. Waffle top visible behind the gripper does not establish another observable front. Row1/2 left markers can be hidden by small overlay row tags; their coordinates were checked separately and retained.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000127",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "base_object_count": 37,
+      "source_image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "base_label_sha256": "96307df6078eb86ddc06d93fb1be8f2b85ea81be201f72c1d5dfcf3bc6a0141f",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_uncertainty",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000127_full.png",
+          "sha256": "bbbf7fb3251925228e752661fc858abb195ca3e3c2a540620e112ed5457bbab3"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000127_tile1.png",
+          "sha256": "82c71d32e4eaca5fb43d83f86530adb046fdf96051c6b4c679cd83907eed71b9"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000127_tile2.png",
+          "sha256": "546d278a080d7d4052b3afddf50201241feacdc21bf302167dd0c54782c54fd8"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000127_tile3.png",
+          "sha256": "7143e46648395dacf4283f1d1a8b741a7c63471b849bdd710410551d36d78763"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000127_tile4.png",
+          "sha256": "d9c47159d2a2a7aa94b962fba43693a34be0cc814dcab0c9afbbfcab46d4bf16"
+        },
+        {
+          "view_id": "shard-c/127_3335.png",
+          "sha256": "486ba1a9869f6aeafe0b788af8f610a1cb79ffb82b9b3f18a4c5e4ff90401b18"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [
+        "r6-c-127-33-box_top"
+      ],
+      "notes": "Reviewed all fronts and enlarged rows33–35. Row33 front/top-strip ownership at its upper boundary remains unresolved and is flagged without a geometric guess. Rows11–13 right endpoints are hidden; rows36/37 are distinct aperture-front fragments with both endpoints unavailable.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000128",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "base_object_count": 35,
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "base_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000128_full.png",
+          "sha256": "598336ad28cf28abd1ee8530c111ed99952a783195e7602e2432a2e7db09578a"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000128_tile1.png",
+          "sha256": "c4f8f1d99d667d3df5a91c64b790395fc0cd34fb1521880ec3c6664c4cadcafa"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000128_tile2.png",
+          "sha256": "678e245ee595feba865b4cbadc4ccae9ca18b750662fd67e3914e7eaa39cb63b"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000128_tile3.png",
+          "sha256": "cfd6c9f3fa5f567a6f8d8bd88748689a0bf5d48bce30e026682b1e152d9c1fe9"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000128_tile4.png",
+          "sha256": "3f34128d963efdf4b5f4c2c0e09554a5b0193a2eaf1118ad8d1dfebe7ee670ac"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed all35 fronts. Rows9–11 are partly gripper-occluded, rows34/35 are visible aperture-front fragments, and row25 is a partial front above the finger. Existing available and unavailable endpoints retained independently.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000129",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "base_object_count": 50,
+      "source_image_sha256": "ab3e56ede990b1e47a4db5edcf1efb3beca5893ed3c647e7a3958c90ae93ac0a",
+      "base_label_sha256": "2d0ba38d26f1dcc66ea1daa832eb2d7b744442e0b673297e5bb006493401c2a0",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_no_change",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000129_full.png",
+          "sha256": "9ea18fb16211c239769b8e3d1e5101fff3762bfd71a470011a7e719cac6b2790"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000129_tile1.png",
+          "sha256": "b38c87d466294f64fce31c96e6c990a0b76ab0d557f79dbc1c751c8e5d026a6a"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000129_tile2.png",
+          "sha256": "8d2e13accce8e80de19ce41017323187af0bc84c73190b3478a928ddae9133b9"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000129_tile3.png",
+          "sha256": "15e20367aa150c995ea7e2c4c9e74794e7e9773074f51c776153be0ae397cd10"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000129_tile4.png",
+          "sha256": "312ca2ae4e616915b2b3f290edf6c9690cf18a78cf5b214430e37ff0a94cc6fd"
+        }
+      ],
+      "changed_base_rows": [],
+      "case_ids": [],
+      "notes": "Reviewed all50 fronts including the small triangular front visible through the gripper aperture at row50. Dense upper/lower stack boundaries and endpoints retained; no additional front established by exposed top surfaces alone.",
+      "after_visual_qa_evidence": []
+    },
+    {
+      "image_id": "new_000130",
+      "split": "train",
+      "base_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ],
+      "base_object_count": 59,
+      "source_image_sha256": "936e0ca813c3a2a8c81c0c56a6a952093ffb4d42827e3d308cd1adfd8bac80c1",
+      "base_label_sha256": "30f5ea81ecbe1c2642db9985d9ea690866cc5b699bdbf2118912189db17698c2",
+      "reviewer": "review_infrastructure",
+      "review_group": "c",
+      "visual_review_status": "reviewed_with_changes",
+      "scope": [
+        "whole-frame visible-front presence and duplicates",
+        "box material and visible extent",
+        "left physical lower-front corner",
+        "right physical lower-front corner",
+        "occlusion and unavailable endpoint encoding"
+      ],
+      "method": "Visually inspected full original coverage using four overlapping raw-plus-thin-overlay zoom tiles, with image-specific higher-zoom original comparisons where needed. No filter or automated image-quality judgment used.",
+      "evidence": [
+        {
+          "view_id": "shard-c/sheets/new_000130_full.png",
+          "sha256": "5037d8cd60cb83c5cf962a4a17af9e5fb430789060ede57fc0a2369cf37c00e0"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000130_tile1.png",
+          "sha256": "a98438578a2a458adef9cad4063c11cb6c362bfac692927fbdc844992f81c34e"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000130_tile2.png",
+          "sha256": "cee624113b6a1cebeb891fd9e1eb6ca1b821c81c0e6b6309c6569d45c3a16d9d"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000130_tile3.png",
+          "sha256": "da40738b463942901ebec9df556045471455a622fe6a654b27a89ddcb3ef2642"
+        },
+        {
+          "view_id": "shard-c/sheets/new_000130_tile4.png",
+          "sha256": "a9984b85c6d6b3ff6d1c7a9f8a2dc637040c93bad4123794e45aad79d395863d"
+        },
+        {
+          "view_id": "shard-c/130_topfaces.png",
+          "sha256": "f14f98652a44f8072a4e7dabb2134c21d0f14219f05c608a7de382b3b393fb25"
+        },
+        {
+          "view_id": "shard-c/130_2528.png",
+          "sha256": "f1c6a75f62254618f4705e55df49e93679a36bcf027c08e3bbed3cafaaeb5c7c"
+        },
+        {
+          "view_id": "shard-c/130_4449.png",
+          "sha256": "e76ba5a1c2cae6cbb4064008c28db06c7eb09e769db31ab621b657ca90d7744e"
+        }
+      ],
+      "changed_base_rows": [
+        25,
+        28,
+        44,
+        49
+      ],
+      "case_ids": [],
+      "notes": "Corrected box tops25,28,44,49 to stop at the visible front rims and exclude receding top surfaces. Other box extents and independently placed endpoints retained. Reviewed lower visible front fragments52–59 around the gripper, without inferring hidden endpoints.",
+      "after_visual_qa_evidence": [
+        {
+          "view_id": "shard-c/130_2528_after.png",
+          "sha256": "62193fdbda70a851153a768df34ad95dd30c62dfaa1ebc9e78b9a8721cac4563"
+        },
+        {
+          "view_id": "shard-c/130_4449_after.png",
+          "sha256": "e30946fd86b918a92ab8f93cdf60d0b7ddb4a0e13468faf3ccb4d09c5d1ed8e9"
+        }
+      ]
+    }
+  ]
+}
