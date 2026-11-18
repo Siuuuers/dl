@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "created_at": "2026-11-18T17:34:58.114323+08:00",
+  "source_commit": "c8d8f30a5770c3cee25d0bd431df4f565ca5471f",
+  "review": {
+    "path": "data/reviews/fronts-2026-11-18-r4/manifest.json",
+    "sha256": "ec40bab297e928c5a19a82dbc418548e2c35d4fff9764bf0e2c8879cc40ec773"
+  },
+  "candidate": {
+    "path": "data/candidates/front-review-2026-11-18-r4/manifest.json",
+    "sha256": "29894356d2ef7c6a89fd9917a37527b183ace8df9407c723c429d645c48fbab0"
+  },
+  "protocol": {
+    "path": "experiments/front-review-2026-11-18-r4.json",
+    "sha256": "409e853e49d755a19becd0778272eda24b8dfabbbb2c77554b5e24dfb7a48928"
+  },
+  "commands": [
+    {
+      "command": "python -B scripts/check_front_review_r4.py",
+      "exit_code": 0,
+      "tests_passed": 3,
+      "log": {
+        "path": "results/verification/front-review-r4-20261118/training-checks.log",
+        "sha256": "341ce750e107bbaca33e9cca96cbab3f03ac1e3fb8e37ce156db811229e53d45"
+      }
+    },
+    {
+      "command": "python -B scripts/verify_incremental_pose_candidate.py --candidate data/candidates/sequence-front-corrections-2026-11-18/manifest.json",
+      "exit_code": 0,
+      "result": {
+        "path": "results/verification/front-review-r4-20261118/legacy-v2-check.json",
+        "sha256": "107add36cedcac771b351cf43df6feba330b5c34bca17342b3c5d412eaaf07ad"
+      }
+    }
+  ],
+  "candidate_verification": {
+    "path": "results/verification/front-review-r4-20261118/candidate-verification.json",
+    "sha256": "db758b6d4bbc19d4b6e894c612c7a513472a38f446b423b57dd000bc508a5838"
+  },
+  "real_staging": {
+    "original_pngs_verified": 157,
+    "copied_images_verified": 314,
+    "copied_labels_verified": 314,
+    "training_photos": 137,
+    "training_negatives": 13,
+    "changed_train_photos_vs_pr35": 94,
+    "held_photo_bytes_identical": [
+      "new_000014"
+    ],
+    "training_validation_fronts": 664,
+    "separate_review_fronts": 662,
+    "fixed_scoring_fronts": [
+      666,
+      663
+    ]
+  },
+  "notebook": {
+    "path": "notebooks/baomai_front_review_r4.ipynb",
+    "sha256": "be1edbda4cc8d89ca0a2d28126e2a2c5d73ee4c4df85ece8de4df3abbaed9ab1",
+    "code_cells_compile": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+    ],
+    "embedded_preflight_compiles": true,
+    "pinned_source_commit": "c8d8f30a5770c3cee25d0bd431df4f565ca5471f",
+    "outputs_empty": true,
+    "gpu_execution_performed": false
+  },
+  "training_code_sha256": {
+    "scripts/train_pose_comparison.py": "d99e1cff1ecd7a56aa108770cc94d502dc085c48c65bfb6f5e7c85f5ba986064",
+    "scripts/pose_checkpoint.py": "e0f85a76fd5234a98e66783d3408e22175ba334c6209f91aca8680221a2f8d5d",
+    "scripts/stage_pose_training.py": "751a9dd94b83fe92af1f592da791390ba0ac18c2a54f7b0be1c16c9583ab174d",
+    "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+    "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+    "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+    "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+    "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+    "scripts/verify_observed_training_candidate.py": "28fea1d483058988ea567d9382ed82f73e511cd9b692af7bb8c23c3463134426",
+    "scripts/compose_observed_pose_review.py": "8f99c87236b09ed40c85521b68ea2a39ca4062cfa74b8cd43bb376cb5009fd25",
+    "scripts/verify_incremental_pose_candidate.py": "7e9b8e738c9639a1b49de311b10af00824bb4e7186fc851ce850e77559614ed1",
+    "scripts/compose_incremental_pose_candidate.py": "9b51b8a96407af15fa820b959d30ccffe3da21ca53b4ba1f91294bb46360a789",
+    "scripts/verify_front_review_r4.py": "9795db99a0f5b2cc2828cc2b5d3e41a76ea27da5dee5c9f9e488102d4d261836",
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+  },
+  "pdf_audit": {
+    "path": "results/review/front-review-20261118-r4/pdf-audit.json",
+    "sha256": "00c92409e341467f75bc952e3f6324aec56188859cf6c418e707907418331fbd"
+  },
+  "pdf_qa": {
+    "path": "results/review/front-review-20261118-r4/pdf-visual-qa.json",
+    "sha256": "ca1b34d291ec8f5ba0884358c2088d1aac055cffec77278f77a271de2139309a"
+  },
+  "training_run": false,
+  "model_promoted": false,
+  "full_dataset_certified": false,
+  "limits": [
+    "CPU verification covers data reconstruction, actual staging and fail-closed contract checks, not a completed GPU training run.",
+    "Rendered geometry consistency is not physical annotation accuracy."
+  ]
+}

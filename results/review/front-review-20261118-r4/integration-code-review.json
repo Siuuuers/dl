@@ -1,0 +1,67 @@
+{
+  "status": "read_only_review_complete_no_blocking_bug_found",
+  "scope": [
+    "scripts/verify_front_review_r4.py",
+    "scripts/stage_pose_training.py integration diff",
+    "scripts/train_pose_comparison.py integration diff",
+    "scripts/verify_incremental_pose_candidate.py integration diff"
+  ],
+  "file_sha256": {
+    "scripts/verify_front_review_r4.py": "91fb9cbd1c1e504181f40950ffa4fe586567a5d7a580d0f3e4179eb11e9d02b3",
+    "scripts/stage_pose_training.py": "751a9dd94b83fe92af1f592da791390ba0ac18c2a54f7b0be1c16c9583ab174d",
+    "scripts/train_pose_comparison.py": "d99e1cff1ecd7a56aa108770cc94d502dc085c48c65bfb6f5e7c85f5ba986064",
+    "scripts/verify_incremental_pose_candidate.py": "7e9b8e738c9639a1b49de311b10af00824bb4e7186fc851ce850e77559614ed1"
+  },
+  "actual_group_b_operations_reconstructed": [
+    {
+      "image_id": "new_000018",
+      "parsed_rows": 36,
+      "output_sha256": "8b40b1e4feb874c9e3ba7151898d3339f62f3ad7f5eb6506629adab645347822",
+      "stable_row_map_valid": true
+    },
+    {
+      "image_id": "new_000019",
+      "parsed_rows": 63,
+      "output_sha256": "bf0470dbc56bf441d3b763c7146eba40c4e77addc9661da415cb5fb2518108f8",
+      "stable_row_map_valid": true
+    },
+    {
+      "image_id": "new_000020",
+      "parsed_rows": 54,
+      "output_sha256": "45c5118ccf76d6949829c6a3430e7b5aecf7982836e4f82488c9501641b433f8",
+      "stable_row_map_valid": true
+    },
+    {
+      "image_id": "new_000023",
+      "parsed_rows": 36,
+      "output_sha256": "bfa79c1d06a994c9a40b2cf302799f1b61e07d9217c3325b9d992a03305803e8",
+      "stable_row_map_valid": true
+    },
+    {
+      "image_id": "new_000025",
+      "parsed_rows": 57,
+      "output_sha256": "7cfccc213222fec8cdc1e24da41ea49826dfd3bc5077a36a7549e196e409e785",
+      "stable_row_map_valid": true
+    },
+    {
+      "image_id": "new_000026",
+      "parsed_rows": 56,
+      "output_sha256": "f38f32738201a516641610ed3b2a5ee6e8047a95616ea341fc28a2ca9f3ff53e",
+      "stable_row_map_valid": true
+    }
+  ],
+  "review_sha_placeholder_expected": true,
+  "not_executed": [
+    "full read_review/compose/build verification pending root final manifest",
+    "staging with all157 images",
+    "training"
+  ],
+  "findings": [],
+  "review_notes": [
+    "The new dispatch path returns the receipt fields expected by both staging and checkpoint validation.",
+    "PR35 control is historically verified; pending train cases retain the whole control photograph in both arms; original development/training-validation labels stay in both arms.",
+    "Fixed 666/663 references stay separate from the optional 662 review. The PARENT descriptor for the optional review names r3 explicitly; its dev labels are required identical in r4.",
+    "The new verifier is included in staging and training source hashes. Generic package_gpu_results binds both arms through candidate/protocol hashes, so no extra hard-coded protocol-kind branch is needed.",
+    "removed_objects in the inherited receipt/staging schema is a net source-count difference, not the number of delete operations; use operations counts for the user-facing change report."
+  ]
+}
