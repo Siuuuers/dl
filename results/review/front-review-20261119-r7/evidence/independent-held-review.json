@@ -1,0 +1,109 @@
+{
+  "baseline": "497da71bfdc07b49571a9eee3748b575817fca02 (preserved r6)",
+  "scope": "Targeted independent original-pixel review of remaining new-user examples. No source labels modified.",
+  "coordinate_system": "1280x720 original-image pixels; current r6 row IDs",
+  "findings": [
+    {
+      "image_id": "new_000114",
+      "row": 26,
+      "decision": "support_bounded_box_trim",
+      "before_bbox": [
+        898,
+        412,
+        1033,
+        468
+      ],
+      "proposed_bbox": [
+        898,
+        412,
+        1030,
+        466
+      ],
+      "points_unchanged": true,
+      "reason": "Rightmost visible white front and its lower dark rim fit inside x1030/y466. The trimmed outer margin is dark rack/shadow. Existing visible corners remain contained.",
+      "held_component": "Top remains412; own strip vs projecting upper surface at412\u2013420 still unresolved.",
+      "evidence": "/workspace/scratch/c011d9b625f0/example-audit/new_000114-r7-independent-grid.png"
+    },
+    {
+      "image_id": "new_000023",
+      "rows": [
+        24,
+        25,
+        26
+      ],
+      "decision": "conditional_front_wall_bottom_trims_not_independent_rack_only_proof",
+      "proposed_bottoms": [
+        409,
+        445,
+        479
+      ],
+      "reason": "Main frontal lower seams and current corners fit within proposed bottoms, but visible gray right projections descend to approximately420/455/490. Excluding those pixels requires classifying them as side/lip outside cassette_front. Existing tapered-tip ownership HOLD remains relevant.",
+      "recommendation": "Use these only if main-face target convention adjudicates their projecting material; otherwise retain held extents. Do not describe removed pixels as all bare rack.",
+      "evidence": "/workspace/scratch/c011d9b625f0/example-audit/new_000023-r7-independent-grid.png"
+    },
+    {
+      "image_id": "new_000023",
+      "row": 27,
+      "decision": "support_terminal_bottom_trim",
+      "before_bbox": [
+        806,
+        472,
+        956,
+        513
+      ],
+      "proposed_bbox": [
+        806,
+        472,
+        956,
+        509
+      ],
+      "points_unchanged": true,
+      "reason": "Lowest terminal front ends at approximatelyy507\u2013508; below is exposed rack. No descending same-instance tip reaches513.",
+      "caution": "Right side is tight already and may round out tox956\u2013959. Do not reduce right edge solely to remove overlap.",
+      "evidence": "/workspace/scratch/c011d9b625f0/example-audit/new_000023-r7-independent-grid.png"
+    },
+    {
+      "image_id": "new_000017",
+      "row": 58,
+      "decision": "support_visible_left_corner_correction",
+      "before_left": [
+        560,
+        550,
+        2
+      ],
+      "proposed_left": [
+        558,
+        546,
+        2
+      ],
+      "reasonable_blur_range": "x558\u2013559, y546; no subpixel precision claimed",
+      "right_stays_missing": true,
+      "reason": "The upper frontal wall has a distinct lower-left turn near558,546; inherited point560,550 is on the pale band below this seam. The visible junction is independently localizable despite uncertain material/instances below.",
+      "box_extent": "Preserve held extent unless separately adjudicated; trimming bottom553\u2192548 requires determining ownership of pale band.",
+      "additional_instances": "Do not add proposed boxes for separate lower white fragments: no independently visible lower edges establish separate cassettes.",
+      "evidence": "/workspace/scratch/c011d9b625f0/example-audit/new_000017-r7-independent-grid.png"
+    },
+    {
+      "image_id": "new_000007",
+      "split": "val",
+      "row": 26,
+      "decision": "conservative_box_candidate_for_parent_adjudication",
+      "before_bbox": [
+        647.5699968,
+        228.5799984,
+        722.3399936,
+        250
+      ],
+      "proposed_bbox": [
+        652,
+        231,
+        721,
+        248
+      ],
+      "reason": "Exclude dark rack on left and excessive outer margins while preserving current corner coordinates. User blue lower edge~246 would exclude left corner247.51.",
+      "endpoint_update": "Not established by this auditor.",
+      "metric_rule": "Review labels may change, frozen PR35 validation target must not silently change.",
+      "evidence": "/workspace/scratch/c011d9b625f0/example-audit/new_000007-row26-grid.png"
+    }
+  ]
+}

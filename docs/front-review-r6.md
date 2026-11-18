@@ -1,5 +1,7 @@
 # Round 6: every original photo, one physical definition
 
+**Historical baseline, preserved before the follow-up.** The interrupted r6 notebook was not generated or run. [Round 7](front-review-r7.md) records the subsequent six marked examples, corrects a mistaken deletion, restores the user-confirmed original box and supplies the current notebook. The figures below describe r6 at its saved revision.
+
 The complete pass inspected **all 157 original photographs and all 4,450 inherited r5 fronts**, including the 16 empty scenes. It changes **50 photographs**: **223 row replacements, one deletion and one addition**. The complete review still contains 4,450 fronts: **3,787 in training photographs and 663 in development photographs**. No training or model replacement was performed. **PR35 remains selected.**
 
 This round uses the immutable r5 / PR71 row numbers. The [operations](../results/review/front-review-20261119-r6/operations.json), [current row maps](../results/review/front-review-20261119-r6/row-maps.json), [all-photo coverage](../results/review/front-review-20261119-r6/request-coverage.json) and [uncertainty ledger](../results/review/front-review-20261119-r6/review-status.json) record the decisions. The [review manifest](../data/reviews/fronts-2026-11-19-r6/manifest.json) binds the original pixels, labels and evidence by hash.
@@ -74,7 +76,7 @@ All 157 originals received a visual pass. Selected difficult decisions received 
 
 ## The next notebook
 
-[Open the r6 notebook in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r6-20261119/notebooks/baomai_front_review_r6.ipynb). Choose **Runtime → Change runtime type → GPU**, then **Runtime → Run all**. Return the final ZIP, including unfavorable results. The notebook pins an actual source commit and the [r6 protocol](../experiments/front-review-2026-11-19-r6.json).
+The following is the archived planned [r6 protocol](../experiments/front-review-2026-11-19-r6.json). Its notebook was not generated before the interruption. Use the [current r7 notebook](../notebooks/baomai_front_review_r7.ipynb) and its separately pinned source/protocol for the next run.
 
 | Input or decision | Reference arm | Candidate arm |
 | --- | --- | --- |

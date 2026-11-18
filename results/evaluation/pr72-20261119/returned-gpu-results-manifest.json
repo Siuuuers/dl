@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-paired-training-results",
+  "created_at_utc": "2026-11-18T18:33:40.137659+00:00",
+  "source": {
+    "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+    "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "checkpoint_bytes_verified": false,
+    "candidate_id": "front-review-2026-11-19-r5",
+    "candidate_manifest": "data/candidates/front-review-2026-11-19-r5/manifest.json",
+    "candidate_manifest_sha256": "3b425e73414e83c82b533ce9a9cf7d665df479f42014b2d7dfa95a1a5ea96b1d",
+    "declared_candidate_source_revision": "dba4d685fa7a62dbda1ec32e5f40a44b42bd6054",
+    "source_revision_git_object_checked": false,
+    "candidate_kind": "training_incremental_observed_overlay",
+    "control": {
+      "manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+      "manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+      "candidate_id": "annotations-2026-11-10",
+      "kind": "training_annotation_overlay",
+      "changed_train_labels": 8,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "training_protocol": {
+      "path": "experiments/front-review-2026-11-19-r5.json",
+      "sha256": "25ed684fd677ba4863f5cd605f48e3b9e1bc78893ae7c4267616c6779be1cd1c"
+    },
+    "retained_legacy_image_ids": [
+      "new_000023"
+    ]
+  },
+  "training_source": {
+    "revision": "7685802bc76d6f76f5afd5067833ed19284222dd",
+    "working_tree_status": "",
+    "files_sha256": {
+      "scripts/train_pose_comparison.py": "74c38312e8715dccc30971600bb5014b64e4059be797adf394e9f7adfe76eed6",
+      "scripts/pose_checkpoint.py": "e0f85a76fd5234a98e66783d3408e22175ba334c6209f91aca8680221a2f8d5d",
+      "scripts/stage_pose_training.py": "8c82362e26ce014ec4f5bd572e3586fa69319d1243060a89595950ff5d4dfab3",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+      "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+      "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+      "scripts/verify_observed_training_candidate.py": "28fea1d483058988ea567d9382ed82f73e511cd9b692af7bb8c23c3463134426",
+      "scripts/compose_observed_pose_review.py": "8f99c87236b09ed40c85521b68ea2a39ca4062cfa74b8cd43bb376cb5009fd25",
+      "scripts/verify_incremental_pose_candidate.py": "a71cb691dbb1e11e1b15f28c997ae05c04dd9f920c7fd799ccad755dddc3dc48",
+      "scripts/compose_incremental_pose_candidate.py": "9b51b8a96407af15fa820b959d30ccffe3da21ca53b4ba1f91294bb46360a789",
+      "scripts/verify_front_review_r4.py": "b46393cb5a186fd687ed6e2a4e1141711e319e138f361bd6fcbe254effb0afa0",
+      "scripts/verify_front_review_r5.py": "74b0108ed6bcd109dae0cb278b23fd6cc8f44cbbfb20c65d4ce1fa9e53570d94",
+      "scripts/front_review_experiment.py": "843dcd284cc64cfdc3e4613354ab01c300ad7dfc627afb0406dcd33d314942f9",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+    }
+  },
+  "runtime": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "ultralytics": "8.4.182",
+    "device": "cuda:0",
+    "torch_cuda": "13.0",
+    "threads": 4,
+    "interop_threads": 1,
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "packages": {
+      "torchvision": "0.29.1+cu130",
+      "numpy": "2.4.6",
+      "Pillow": "11.3.0",
+      "opencv-python": "5.0.0.93",
+      "psutil": "5.9.5"
+    },
+    "device_name": "NVIDIA L4",
+    "device_capability": [
+      8,
+      9
+    ],
+    "backend": {
+      "model_channels_last": true,
+      "float32_matmul_precision": "highest",
+      "cuda_matmul_allow_tf32": false,
+      "cudnn_allow_tf32": true,
+      "cudnn_version": 92800,
+      "deterministic_algorithms_enabled": true,
+      "deterministic_warn_only": true,
+      "cudnn_deterministic": true,
+      "cudnn_benchmark": false
+    }
+  },
+  "shared_training_settings": {
+    "task": "pose",
+    "mode": "train",
+    "epochs": 30,
+    "time": null,
+    "patience": 0,
+    "batch": 4,
+    "imgsz": 1280,
+    "save": true,
+    "save_period": 10,
+    "cache": false,
+    "device": "0",
+    "workers": 0,
+    "exist_ok": false,
+    "pretrained": true,
+    "cls_remap": true,
+    "optimizer": "AdamW",
+    "verbose": false,
+    "seed": 46,
+    "deterministic": true,
+    "single_cls": false,
+    "rect": true,
+    "cos_lr": false,
+    "close_mosaic": 0,
+    "resume": false,
+    "amp": false,
+    "fraction": 1.0,
+    "profile": false,
+    "freeze": 0,
+    "multi_scale": 0.0,
+    "compile": false,
+    "channels_last": null,
+    "overlap_mask": true,
+    "mask_ratio": 4,
+    "dropout": 0.0,
+    "val": true,
+    "split": "val",
+    "save_json": false,
+    "conf": null,
+    "iou": 0.7,
+    "max_det": 300,
+    "quantize": null,
+    "dnn": false,
+    "plots": false,
+    "nms": null,
+    "source": null,
+    "vid_stride": 1,
+    "stream_buffer": false,
+    "visualize": false,
+    "augment": false,
+    "agnostic_nms": false,
+    "classes": null,
+    "retina_masks": false,
+    "embed": null,
+    "show": false,
+    "save_frames": false,
+    "save_txt": false,
+    "save_conf": false,
+    "save_crop": false,
+    "show_labels": true,
+    "show_conf": true,
+    "show_boxes": true,
+    "line_width": null,
+    "format": "torchscript",
+    "optimize": false,
+    "dynamic": false,
+    "simplify": true,
+    "opset": null,
+    "workspace": null,
+    "lr0": 0.0001,
+    "lrf": 0.01,
+    "momentum": 0.937,
+    "weight_decay": 0.0005,
+    "warmup_epochs": 3.0,
+    "warmup_momentum": 0.8,
+    "warmup_bias_lr": 0.0001,
+    "distill_model": null,
+    "dis": 6.0,
+    "box": 7.5,
+    "cls": 0.5,
+    "cls_pw": 0.0,
+    "dfl": 1.5,
+    "pose": 12.0,
+    "kobj": 1.0,
+    "rle": 1.0,
+    "angle": 1.0,
+    "dlog": 1.0,
+    "dgrad": 0.5,
+    "dlam": 1.0,
+    "nbs": 64,
+    "hsv_h": 0.01,
+    "hsv_s": 0.2,
+    "hsv_v": 0.2,
+    "degrees": 5.0,
+    "translate": 0.05,
+    "scale": 0.15,
+    "shear": 0.0,
+    "perspective": 0.0,
+    "flipud": 0.0,
+    "fliplr": 0.5,
+    "bgr": 0.0,
+    "mosaic": 0.0,
+    "mixup": 0.0,
+    "cutmix": 0.0,
+    "copy_paste": 0.0,
+    "copy_paste_mode": "flip",
+    "auto_augment": "randaugment",
+    "erasing": 0.4,
+    "cfg": null,
+    "tracker": "tracktrack.yaml"
+  },
+  "arms": {
+    "reference": {
+      "checkpoint_manifest": "reference/checkpoint-manifest.json",
+      "checkpoint_identity": {
+        "kind": "baomai-trained-checkpoint",
+        "purpose": "paired-finetune",
+        "arm": "reference",
+        "checkpoint_sha256": "272b5ef736dba02d22aeff21dd6b5249bc811c6aba9a9609d49da4759d89509d",
+        "checkpoint_size_bytes": 21704814,
+        "training_receipt_sha256": "45fd419296f8a7cb6e05110d02d284a93db4de31954290410e52461fb588da3e",
+        "staging_manifest_sha256": "7462319b02736fb6286b5fcbb636670c2eab9687a4c90e2411bfd82b9efb0f65",
+        "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+        "completed_epochs": 30,
+        "selection": "final_epoch",
+        "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+        "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+        "training_labels": {
+          "kind": "training_incremental_observed_overlay",
+          "role": "pr35_annotation_control",
+          "label_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+          "label_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+          "label_candidate_id": "annotations-2026-11-10",
+          "control_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+          "control_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+          "incremental_manifest": "data/candidates/front-review-2026-11-19-r5/manifest.json",
+          "incremental_manifest_sha256": "3b425e73414e83c82b533ce9a9cf7d665df479f42014b2d7dfa95a1a5ea96b1d",
+          "training_protocol": {
+            "path": "experiments/front-review-2026-11-19-r5.json",
+            "sha256": "25ed684fd677ba4863f5cd605f48e3b9e1bc78893ae7c4267616c6779be1cd1c"
+          },
+          "full_dataset_certified": false,
+          "retained_legacy_image_ids": [
+            "new_000023"
+          ]
+        },
+        "manifest_sha256": "2749b5fb5f8a1b6471fa895fdc4a652f8383e60db91cb61c52ace21ed62ffde2"
+      }
+    },
+    "candidate": {
+      "checkpoint_manifest": "candidate/checkpoint-manifest.json",
+      "checkpoint_identity": {
+        "kind": "baomai-trained-checkpoint",
+        "purpose": "paired-finetune",
+        "arm": "candidate",
+        "checkpoint_sha256": "f5c8e09067a5902e49d8e4076a29c31d01ed32394e002827f37c8be12898ddaf",
+        "checkpoint_size_bytes": 21704814,
+        "training_receipt_sha256": "c8ef116a8ee63332e2872a7813b1a7dcf43826fe554ee39c02d9d071f120ec3d",
+        "staging_manifest_sha256": "d972807788376753faaedc1c11abea6843d4207561d2f365e8dcdee5a150606f",
+        "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+        "completed_epochs": 30,
+        "selection": "final_epoch",
+        "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+        "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+        "training_labels": {
+          "kind": "training_incremental_observed_overlay",
+          "role": "accepted_fronts_treatment",
+          "label_manifest": "data/candidates/front-review-2026-11-19-r5/manifest.json",
+          "label_manifest_sha256": "3b425e73414e83c82b533ce9a9cf7d665df479f42014b2d7dfa95a1a5ea96b1d",
+          "label_candidate_id": "front-review-2026-11-19-r5",
+          "control_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+          "control_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+          "incremental_manifest": "data/candidates/front-review-2026-11-19-r5/manifest.json",
+          "incremental_manifest_sha256": "3b425e73414e83c82b533ce9a9cf7d665df479f42014b2d7dfa95a1a5ea96b1d",
+          "training_protocol": {
+            "path": "experiments/front-review-2026-11-19-r5.json",
+            "sha256": "25ed684fd677ba4863f5cd605f48e3b9e1bc78893ae7c4267616c6779be1cd1c"
+          },
+          "full_dataset_certified": false,
+          "retained_legacy_image_ids": [
+            "new_000023"
+          ]
+        },
+        "manifest_sha256": "0040b49217b02ed2dea15267b752106c23900fa63fba484d3bd570766e30794d"
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "candidate/checkpoint-manifest.json",
+      "sha256": "0040b49217b02ed2dea15267b752106c23900fa63fba484d3bd570766e30794d",
+      "size_bytes": 801
+    },
+    {
+      "path": "candidate/fit/results.csv",
+      "sha256": "520d24148be5d17c1ddb0cfe4eee1b7d9d78dbef8f9571236ef671afc56f8759",
+      "size_bytes": 6057
+    },
+    {
+      "path": "candidate/fit/weights/last.pt",
+      "sha256": "f5c8e09067a5902e49d8e4076a29c31d01ed32394e002827f37c8be12898ddaf",
+      "size_bytes": 21704814
+    },
+    {
+      "path": "candidate/staging-manifest.json",
+      "sha256": "d972807788376753faaedc1c11abea6843d4207561d2f365e8dcdee5a150606f",
+      "size_bytes": 210564
+    },
+    {
+      "path": "candidate/train.log",
+      "sha256": "cc122236956c5a5a44f30dd2e73b001a8195c35c1238e9cfbde3525cc19032b6",
+      "size_bytes": 229229
+    },
+    {
+      "path": "candidate/training-receipt.json",
+      "sha256": "c8ef116a8ee63332e2872a7813b1a7dcf43826fe554ee39c02d9d071f120ec3d",
+      "size_bytes": 18371
+    },
+    {
+      "path": "reference/checkpoint-manifest.json",
+      "sha256": "2749b5fb5f8a1b6471fa895fdc4a652f8383e60db91cb61c52ace21ed62ffde2",
+      "size_bytes": 801
+    },
+    {
+      "path": "reference/fit/results.csv",
+      "sha256": "dc65e8170206d85ebcbd2e97ea6c94fa144ac78ce4bf5523ac5b66e55df9417a",
+      "size_bytes": 6037
+    },
+    {
+      "path": "reference/fit/weights/last.pt",
+      "sha256": "272b5ef736dba02d22aeff21dd6b5249bc811c6aba9a9609d49da4759d89509d",
+      "size_bytes": 21704814
+    },
+    {
+      "path": "reference/staging-manifest.json",
+      "sha256": "7462319b02736fb6286b5fcbb636670c2eab9687a4c90e2411bfd82b9efb0f65",
+      "size_bytes": 210564
+    },
+    {
+      "path": "reference/train.log",
+      "sha256": "944153f4c6515eff6099cd0275132acdad8f0ec4f5ceba2b171bba9d8ce82fc6",
+      "size_bytes": 229276
+    },
+    {
+      "path": "reference/training-receipt.json",
+      "sha256": "45fd419296f8a7cb6e05110d02d284a93db4de31954290410e52461fb588da3e",
+      "size_bytes": 18395
+    }
+  ],
+  "verification_scope": "Artifact integrity and paired-run eligibility; no model loading, inference, or accuracy approval."
+}

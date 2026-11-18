@@ -1,0 +1,356 @@
+{
+  "scope": "Read-only independent original-pixel review of current uploaded 04-426875.jpg and 06-426884.jpg; no label edits.",
+  "coordinate_system": "Original 1280 x 720 camera pixels. Bbox order xmin,ymin,xmax,ymax; endpoints x,y,visibility. All base_row IDs refer to immutable r5 labels, not shifted r6 display IDs.",
+  "method": "Inspected both uploaded suggestions, both unmodified full frames, raw nearest-neighbor crops, current r6 overlays, and proposed overlays. Magnification adds no evidence or precision.",
+  "confidence_note": "Coordinates are nominal contour estimates. Approximately 2 original pixels of ambiguity is a descriptive estimate from blur, not a measured error bound.",
+  "mappings": {
+    "04-426875.jpg": {
+      "image": "new_000003",
+      "screenshot_to_r5_base_rows": {
+        "52": 52,
+        "53": 53,
+        "54": 54,
+        "55": 55,
+        "56": 57,
+        "57": 58,
+        "58": 59,
+        "59*": 60
+      },
+      "r6_deleted_r5_base_row": 56
+    },
+    "06-426884.jpg": {
+      "image": "new_000095",
+      "r5_base_rows": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
+  },
+  "new_000003": {
+    "critical_finding": "Do not retain the r6 deletion of r5 base56 as a settled rack-only finding. The unmodified image contains a fifth pale front at approximately x682..705,y553..569, separated above by an observed seam near y552 and below from the dark rack rail at y570+. Replace the erroneous old extent with the supported visible extent; do not infer this target solely from spacing.",
+    "recommended_action": "Change prior delete56 to replace56; rebox the five fragments at their observed seams and move their right points off the rack where rounded lower-front turns are locally distinguishable.",
+    "strongest_evidence": [
+      "new3-column-coordinate.png",
+      "new_000003-raw.png",
+      "new_000003-r6.png",
+      "new_000003-proposed.png"
+    ],
+    "proposals": [
+      {
+        "base_row": 52,
+        "bbox": [
+          646,
+          475,
+          706,
+          504
+        ],
+        "left": [
+          0,
+          0,
+          0
+        ],
+        "right": [
+          704,
+          501,
+          2
+        ]
+      },
+      {
+        "base_row": 53,
+        "bbox": [
+          674,
+          503,
+          706,
+          521
+        ],
+        "left": [
+          0,
+          0,
+          0
+        ],
+        "right": [
+          704,
+          519,
+          2
+        ]
+      },
+      {
+        "base_row": 54,
+        "bbox": [
+          677,
+          520,
+          705,
+          537
+        ],
+        "left": [
+          0,
+          0,
+          0
+        ],
+        "right": [
+          703,
+          535,
+          2
+        ]
+      },
+      {
+        "base_row": 55,
+        "bbox": [
+          679,
+          536,
+          705,
+          554
+        ],
+        "left": [
+          0,
+          0,
+          0
+        ],
+        "right": [
+          703,
+          551,
+          2
+        ]
+      },
+      {
+        "base_row": 56,
+        "bbox": [
+          682,
+          553,
+          706,
+          569
+        ],
+        "left": [
+          0,
+          0,
+          0
+        ],
+        "right": [
+          704,
+          568,
+          2
+        ]
+      },
+      {
+        "base_row": 57,
+        "bbox": [
+          461,
+          536,
+          534,
+          567
+        ],
+        "left": [
+          462,
+          561,
+          2
+        ],
+        "right": [
+          531,
+          565,
+          2
+        ]
+      },
+      {
+        "base_row": 58,
+        "bbox": [
+          540,
+          541,
+          585,
+          569
+        ],
+        "left": [
+          542,
+          566,
+          2
+        ],
+        "right": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "base_row": 59,
+        "bbox": [
+          711,
+          526,
+          741,
+          553
+        ],
+        "left": [
+          0,
+          0,
+          0
+        ],
+        "right": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "base_row": 60,
+        "bbox": [
+          711,
+          554,
+          742,
+          570
+        ],
+        "left": [
+          0,
+          0,
+          0
+        ],
+        "right": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "row_notes": {
+      "52-56": "Gripper hides every lower-left corner; keep left 0 0 0. Current x708 right points lie in the dark vertical rail. Suggested right points near x703..704 follow lower-front turns before the rail. Existing base52-55 bottoms extend into lower distinct fronts; base56 old box incorrectly continues onto bottom rack.",
+      "57": "Screenshot56. Current bottom572 and right point(531,568) include lower dark rack. Visible front slopes from lower-left around(462,561) to lower-right around(531,565). Bounding box must still include its own raised upper rim.",
+      "58": "Screenshot57. Current bottom575 and left point(545,568) are low near rack. Suggested visible extent stops around569; lower-left outer turn around(542,566). Gripper continues to hide right corner.",
+      "59": "Screenshot58. Raised own front rim reaches y526 (current y532 truncates it); rack at x705..710 and gripper near x742 are not target. Existing left point(721,552) is inset. True left outer corner is not independently distinguishable from the occluding vertical rail; recommend unavailable rather than declaring the occluder intersection the physical corner. User orange neighborhood around(713,550) is a useful candidate, but source pixels do not settle actual ownership.",
+      "60": "Screenshot59*. Prior r6 crop above the bottom rack was directionally correct. Tighten gripper/right margin and retain missing left/right corners; neither hidden outer corner is resolved. User orange near(712,567) may indicate the visible segment/rail intersection rather than the full front actual lower-left corner."
+    },
+    "uncertainty": "Strong evidence for five separate visible fronts and rack excess. Moderate pixel-contour confidence on tiny fragments. Base59/base60 endpoint availability remains unresolved: the point convention should not silently turn an occlusion edge into a physical corner."
+  },
+  "new_000095": {
+    "critical_finding": "Current r6 fixed the right endpoints but retained low r5 left endpoints and broad overlapping boxes. Uploaded orange regions correctly prompt moving the left points upward to visible lower-front turns; their rough circle centers are not precise coordinates.",
+    "strongest_evidence": [
+      "new_000095-raw.png",
+      "new_000095-r6.png",
+      "95-left-10.png",
+      "95-left-11.png",
+      "95-left-12.png",
+      "95-left-13.png",
+      "new_000095-proposed.png"
+    ],
+    "proposals": [
+      {
+        "base_row": 10,
+        "bbox": [
+          473,
+          271,
+          622,
+          319
+        ],
+        "left": [
+          477,
+          311,
+          2
+        ],
+        "right": [
+          616,
+          315,
+          2
+        ]
+      },
+      {
+        "base_row": 11,
+        "bbox": [
+          477,
+          318,
+          622,
+          351
+        ],
+        "left": [
+          481,
+          345,
+          2
+        ],
+        "right": [
+          618,
+          347,
+          2
+        ]
+      },
+      {
+        "base_row": 12,
+        "bbox": [
+          481,
+          350,
+          623,
+          382
+        ],
+        "left": [
+          484,
+          377,
+          2
+        ],
+        "right": [
+          618,
+          378,
+          2
+        ]
+      },
+      {
+        "base_row": 13,
+        "bbox": [
+          485,
+          381,
+          624,
+          414
+        ],
+        "left": [
+          488,
+          409,
+          2
+        ],
+        "right": [
+          620,
+          409,
+          2
+        ]
+      },
+      {
+        "base_row": 14,
+        "bbox": [
+          489,
+          413,
+          624,
+          445
+        ],
+        "left": [
+          491.6352,
+          441.63,
+          2
+        ],
+        "right": [
+          618.048,
+          442.58,
+          2
+        ]
+      }
+    ],
+    "row_notes": {
+      "10": "Change left(480,314) to approximately(477,311). Include own raised top/front rim with bbox top271/left473; exclude right dark divider beyond approximately622. Keep corrected r6 right(616,315).",
+      "11": "Change left(484,348) to approximately(481,345). Proposed bbox[477,318,622,351] follows this face instead of overlapping the previous front lower strip. Keep r6 right(618,347).",
+      "12": "Change left(487,380) to approximately(484,377), bbox[481,350,623,382]. Keep r6 right(618,378).",
+      "13": "Change left(491,412) to approximately(488,409), bbox[485,381,624,414]. Keep r6 right(620,409).",
+      "14": "Uploaded crop does not show this front complete lower-left target; no new point claim. Keep independently existing two point coordinates, trim/reposition bbox[489,413,624,445] to observed face/own rim and exclude the dark divider."
+    },
+    "uncertainty": "Moderate confidence on corner moves and rack trims. Proposed bbox boundaries are nominal visible extents; root should cross-view final overlays. Shadow cast ON the front remains part of the visible target; only rack/neighbor/background excess is removed."
+  },
+  "general_bbox_rule": "A rectangular AABB around a sloped or partly occluded visible front inevitably encloses some background/occluder pixels. This is not justification to add a deliberate margin. Trim extents to the visible target material and own front rim without chopping off material to eliminate every dark pixel.",
+  "files_sha256": {
+    "new3-right-detail.png": "25c0f9a6f963026c000b0f96bb545d18e96b54816bc2ec9706792bf6a01ac8b1",
+    "new_000095-raw.png": "0b37fcc8a10dba6be5793e871752545e0452ffefc09de7f24496a29d6b02df7d",
+    "new_000003-r6.png": "f859e87dc262fe9f683f9cb19c511e808c6abdb0a39ed44008441dc21c3784c2",
+    "new3-left-detail.png": "7235fd9ce0bb794dbee5aabb6ef0d5dc8605f4bda9276367f777740a5b03bfe5",
+    "95-left-13.png": "4c44a825a1f9ddde835a3bd4b61156e0e501536139f785daf40606ee5443a682",
+    "new_000095-proposed.png": "ce4741ac9ee5264060c24f1afac5d4fbd49c25f89b91326e038a08571a5e55e7",
+    "95-left-12.png": "b50987a83503ba60b4105bcda304d26bf2950b646bb07249e74a7444198d1adb",
+    "new_000003-proposed.png": "7031ee581098d0d1855904f9454afe08d7e5cddd24efe89a4a389753cb480b58",
+    "new3-column-coordinate.png": "f05f41a8874b3169c0b7c983b6741cf751f7c0e28090b476172b162d79691918",
+    "new_000095-r6.png": "a0234efdcb611d051f62d2f73beb25416e0579b6e9a78499bbf27005e7e19702",
+    "new_000003-raw.png": "8c2ab023666f94eaefbcab349dae9c44e0ba22d1d3b8a71665df513e8012eefa",
+    "95-left-10.png": "4cb4ee1aba91de8f8ba5dcac1ee70be434e462a622d24d74d03f594b15ec7665",
+    "95-left-11.png": "55f74832784ea184965896b738a28b7e41bbbaad49d18d8cc613298274ac9341"
+  }
+}
