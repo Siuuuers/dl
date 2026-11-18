@@ -1,0 +1,42 @@
+--- pr70/measure_pr70.py
++++ pr72/measure_pr72.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Score the fixed PR70 r4 comparison from saved predictions, without training."""
++"""Score the fixed PR72 r5 comparison from saved predictions, without training."""
+ 
+ import argparse
+ import hashlib
+@@ -8,11 +8,11 @@
+ import sys
+ from pathlib import Path
+ 
+-PROTOCOL_SHA = "409e853e49d755a19becd0778272eda24b8dfabbbb2c77554b5e24dfb7a48928"
++PROTOCOL_SHA = "25ed684fd677ba4863f5cd605f48e3b9e1bc78893ae7c4267616c6779be1cd1c"
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "5d556cbfd72eca0cead764ae262bc1c9540e4a5a88060cb6ba4aa7e30b7408a7",
+-    "candidate": "c0648b207d13fb6a8539fd9ecd6099fe56a34bf9e797279dcfabc60b717fa27b",
++    "reference": "272b5ef736dba02d22aeff21dd6b5249bc811c6aba9a9609d49da4759d89509d",
++    "candidate": "f5c8e09067a5902e49d8e4076a29c31d01ed32394e002827f37c8be12898ddaf",
+ }
+ SCORER_SHA = {
+     "evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+@@ -55,7 +55,7 @@
+     from diagnose_pose_quality import aggregate_quality, quality_for_image
+     from rescore_reference_amendment import load_api, verify_amendment
+ 
+-    protocol_path = root / "experiments/front-review-2026-11-18-r4.json"
++    protocol_path = root / "experiments/front-review-2026-11-19-r5.json"
+     require(sha(protocol_path) == PROTOCOL_SHA, "The preregistered protocol changed")
+     protocol = json.loads(protocol_path.read_text())
+     for name, expected in SCORER_SHA.items():
+@@ -82,7 +82,7 @@
+     runtimes = [model["metadata"]["runtime"] for model in models.values()]
+     require(all(runtime == runtimes[0] for runtime in runtimes), "Inference runtimes differ")
+     report = {
+-        "schema_version":1,"kind":"pr70-r4-fixed-development-comparison","status":"measured",
++        "schema_version":1,"kind":"pr72-r5-fixed-development-comparison","status":"measured",
+         "protocol":{"path":str(protocol_path.relative_to(root)),"sha256":PROTOCOL_SHA},
+         "measurement_script_sha256":sha(__file__), "scorers_sha256":SCORER_SHA,
+         "models":{role:{key:value for key,value in model.items() if key != "predictions"}

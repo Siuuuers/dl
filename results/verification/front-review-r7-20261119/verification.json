@@ -1,0 +1,72 @@
+{
+  "status": "verified",
+  "training_run": false,
+  "review": {
+    "path": "data/reviews/fronts-2026-11-19-r7/manifest.json",
+    "sha256": "dab46852de4dece61520190807a5ca48d4b51b9daf7e3b793d83645e6d088845"
+  },
+  "parent": {
+    "path": "data/reviews/fronts-2026-11-19-r6/manifest.json",
+    "sha256": "6d6591b8fa19614cbd10d3f2edb3a7b45848dcb2a2e0a2dea578452067d65094"
+  },
+  "candidate_manifest_sha256": "375734cacfba40d5851bd979a1d17cb50818708b5ed2775e5607dc3fc1cdc908",
+  "protocol_sha256": "f3954ea32f24c58c0f71a296153428aca8fd6f7bcd28a6595ea1c3802d82907f",
+  "original_images_verified": 157,
+  "all_original_label_bytes_unchanged": true,
+  "staged_counts": {
+    "reference": {
+      "train": {
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 701,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "candidate": {
+      "train": {
+        "images": 137,
+        "objects": 3780,
+        "visible_endpoints": 6850,
+        "missing_endpoints": 710,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    }
+  },
+  "original_validation_photos_byte_identical_in_both_arms": 20,
+  "held_training_photos_exact_pr35_in_both_arms": 44,
+  "held_old_series_photos": 31,
+  "old_000013_review_restored_exact_original_bytes": true,
+  "frozen_reference_object_counts": {
+    "primary": 666,
+    "diagnostic": 663
+  },
+  "changed_training_photos_vs_control": 79,
+  "staging_manifest_sha256": "a2c20166a0121fc79bc970a32f7fc94f64712c9e48689c0bd5560329440f26d3",
+  "source_files_sha256": {
+    "scripts/check_front_review_r7.py": "62595a7d177a9a1a7bf33663971c682b29d3f9594ea77a71671da419e58c9c67",
+    "scripts/verify_front_review_r7.py": "afc116835e371dd459bcf62274ed90124196cc7ccb15f580524322b0d7c85fee",
+    "scripts/front_review_experiment.py": "96d2db1f1ce8809ae366ffc3c3584f5229b2e3d0d8e4914eccdf3d3048a7e4b6",
+    "scripts/stage_pose_training.py": "328a6b2e6e4a538342f6ef994807b6f8c0196e3622db08fc1c505e41d9d20876",
+    "scripts/train_pose_comparison.py": "eb780006b6519b3b015b6a778249bac4fa194b5d6b82c072dcf191100fc55a4e",
+    "scripts/verify_incremental_pose_candidate.py": "0f81188c117f0af357ceabac647eac5350b9598d5c6739563b9c1a28515ae968"
+  },
+  "limits": [
+    "Mechanical verification binds the saved decisions; it is not independent physical certification.",
+    "This check stages labels and images. It runs no model training."
+  ]
+}
