@@ -49,3 +49,9 @@ Only `new_000007` rows 7 and 14 retain recorded amber holds. Cyan means no recor
 Inspect the named partial-front extent/ownership cases in the report before another fine-tune. A box may span an occluder if separated visible pieces belong to the same front; broad occluder coverage alone is not an annotation error. Preserve unlocatable natural-image corner slots as `0 0 0` and never turn a model estimate into observed truth.
 
 Correcting a reference permits a separate saved-prediction replay without GPU training. Improving training labels requires a later, explicitly selected controlled experiment. Neither changes the fact that new-session generalization remains unmeasured. The current 10 px corner criterion and miss-first priority are established; the acceptable number of missed/extra fronts per scene remains an application acceptance decision.
+
+## Prepared r4 annotation experiment
+
+The [r4 handoff](front-review-r4.md) adds the latest requested labeling pass and a [separate Colab notebook](../notebooks/baomai_front_review_r4.ipynb). It records 521 visual replacements, three additions and three specific deletions, plus two inherited numerical box repairs. The focused PDF contains every label on all 33 changed photographs. One clipped-edge row in new_000014 remains unresolved; the complete photo keeps exact PR35 supervision in both training arms.
+
+The prepared candidate has 3,789 training fronts and differs from PR35 on 94 training photos. Both arms start independently from epoch173 with the established seed46/30-epoch recipe. Original training validation and the fixed 666/663 scoring references remain separate and unchanged. This is a prepared comparison, not a trained result; the selected PR35 checkpoint and command above remain current.

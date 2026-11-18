@@ -501,6 +501,9 @@ def verify_incremental_candidate(root, candidate=None):
     root = Path(root).resolve()
     candidate = Path(DEFAULT_CANDIDATE) if candidate is None else Path(candidate)
     candidate = (candidate if candidate.is_absolute() else root / candidate).resolve()
+    if candidate == root / "data/candidates/front-review-2026-11-18-r4/manifest.json":
+        from verify_front_review_r4 import verify_candidate as verify_r4_candidate
+        return verify_r4_candidate(root, candidate)
     if candidate == root / SEQUENCE_CANDIDATE:
         return verify_sequence_candidate(root, candidate)
     require(candidate == root / DEFAULT_CANDIDATE, "incremental candidate path differs")
