@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/inference_contract",
+  "status": "independent_recommendations_for_parent_resolution",
+  "base_commit": "dba4d685fa7a62dbda1ec32e5f40a44b42bd6054",
+  "candidate_source": "r5/groups/a/cross-review-candidates.json",
+  "candidate_source_sha256": "521a5957f9b735ed6a21ea0d9fad438b1662747256b934e4c9160c7ad0b3d727",
+  "source_hashes": {
+    "new_000014": {
+      "image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "r4_label_sha256": "a6be2118bbb83dfd4b6073372609cea5b17784c5ef21183ee3299be766e9352a"
+    },
+    "new_000016": {
+      "image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+      "r4_label_sha256": "152cff574eef7927e374ea6272d887dc1d0ebb8008f028721d2cd224651e9fb0"
+    },
+    "new_000018": {
+      "image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+      "r4_label_sha256": "8b40b1e4feb874c9e3ba7151898d3339f62f3ad7f5eb6506629adab645347822"
+    }
+  },
+  "cases": [
+    {
+      "image_id": "new_000014",
+      "base_row": 13,
+      "inspected": [
+        "original full image",
+        "cross-014-edge.png",
+        "cross-014-proposal.png",
+        "Group A 014_edge13.png"
+      ],
+      "candidate_box": [
+        1260,
+        93,
+        1280,
+        140
+      ],
+      "candidate_left": [
+        1263,
+        137,
+        2
+      ],
+      "recommendation": {
+        "box": "support narrowed positive-area front box",
+        "left": [
+          0,
+          0,
+          0
+        ],
+        "right": "retain existing canonical missing"
+      },
+      "reason": "The bright patch to the right of the divider is identifiable visible front material. At its lower-left boundary, the apparent junction merges with the diagonal divider and horizontal dark support band. The proposed point lies in that transition; I cannot independently identify two physical cassette-front edges meeting there. Retain the visible object but resolve that point as unavailable.",
+      "uncertainty": "This is physical landmark ownership/availability uncertainty, not only a measured two-pixel coordinate error. No hidden corner should be extrapolated from the cropped neighboring geometry."
+    },
+    {
+      "image_id": "new_000016",
+      "base_row": 40,
+      "inspected": [
+        "original full image",
+        "cross-016-row40.png",
+        "cross-016-proposal.png",
+        "cross-016-alternative.png"
+      ],
+      "candidate_box": [
+        927,
+        624,
+        995,
+        665
+      ],
+      "recommendation": {
+        "bbox_original_pixels": [
+          912,
+          613,
+          995,
+          665
+        ],
+        "left": "preserve existing missing token group",
+        "right": "preserve existing locatable token group"
+      },
+      "reason": "The perforated upper surface ends at a bright transverse rim near y=613\u2013616. A smooth front strip remains visible above and left of the proposed x=927,y=624 corner before the thumb crosses it. The candidate clips that material; the alternative includes this front rim while excluding the rear perforated surface above it. The candidate right and bottom extents remain supported.",
+      "uncertainty": "The rim/face boundary is soft, but the observed candidate clipping is about ten original pixels and exceeds a small rounding or softness adjustment. Parent should resolve the material-boundary disagreement before accepting the final box.",
+      "needs_parent_resolution": true
+    },
+    {
+      "image_id": "new_000018",
+      "base_row": 14,
+      "inspected": [
+        "original full image",
+        "Group A 018_right14.png",
+        "cross-018-row14.png"
+      ],
+      "candidate_right": [
+        597,
+        553,
+        2
+      ],
+      "candidate_source": "root task message",
+      "recommendation": {
+        "right": [
+          0,
+          0,
+          0
+        ],
+        "left": "preserve independently reviewed left point",
+        "object": "retain visible front"
+      },
+      "reason": "A pale vertical tip beside the divider remains visible, but its lower edge meets the thumb without revealing the physical lower-front corner. The candidate point lies on that side strip. Visibility of material alone does not establish the corner; mark this point unavailable without deleting the front.",
+      "uncertainty": "The true lower-right junction is obscured at the thumb boundary; no fixed offset, neighboring-row height, or previous visibility bit resolves it."
+    }
+  ],
+  "limits": [
+    "Original color images were inspected before the monotonic grayscale helper.",
+    "No other Group A rows, corner fields or full-image annotation quality are certified.",
+    "No Group A files or repository labels were changed.",
+    "Recommendations do not release labels for training or change hold policy."
+  ]
+}
