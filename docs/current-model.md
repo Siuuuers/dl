@@ -1,12 +1,12 @@
 # Current cassette workflow
 
-Updated 18 November 2026, Asia/Hong_Kong.
+Updated 19 November 2026, Asia/Hong_Kong.
 
-**Use PR35 for reviewed image-space proposals. PR67 is evaluated and does not replace it.** The later label review is a separate artifact; it has not trained a new model.
+**Use PR35 for reviewed image-space proposals. PR70's r4 candidate does not replace it.** The round 5 annotations and next notebook are prepared separately; r5 has not been trained.
 
 ## One selected command
 
-Use branch `codex/pr67-and-r3-review-20261118`, which contains the evaluator and current review. Follow the [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to obtain the verified PR35 candidate bundle. Keep its manifest and companion files together.
+Use branch `codex/front-review-r5-20261119`, which contains the latest review and comparison. Follow the [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to obtain the verified PR35 candidate bundle. Keep its manifest and companion files together.
 
 ```bash
 .venv/bin/python scripts/predict_pose_folder.py \
@@ -18,40 +18,36 @@ Use branch `codex/pr67-and-r3-review-20261118`, which contains the evaluator and
 
 The selected checkpoint is PR35 seed46, final epoch 30, SHA-256 `420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1`. Input size is 1280. The generic runtime default remains epoch173 at confidence 0.25, so use the explicit manifest and command above.
 
-Review the whole original image, including regions without proposals. The target is one visible cassette front and its two actual lower-front corners, ordered by image X. Each predicted endpoint is displayed independently when its score is at least 0.50 and its position is finite and in frame; both qualifying points are connected. A displayed estimate can be obscured in the image. Its confidence does not prove visibility, object identity, or pixel accuracy.
+Review the whole original image, including regions without proposals. The target is one visible cassette front and its actual lower-front corners, ordered by image X. Each predicted endpoint is displayed independently when its score is at least 0.50 and its position is finite and in frame; two qualifying points are connected. A displayed estimate can be obscured in the image. Its confidence does not prove visibility, object identity or coordinate accuracy.
 
-## Completed model comparison
+## Latest completed comparison: PR70
 
-The [PR67 report](../results/evaluation/sequence-fronts-pr67-20261118/README.md) contains fresh, same-runtime inference for all three models and both predefined references. Settings were fixed before scoring.
+The [PR70 audit](../results/evaluation/pr70-20261119/README.md) verifies both completed L4 runs and compares fresh PR35, control and r4-candidate predictions in one CPU runtime. Training source, starting weights, 30 completed epochs, all original images and the fixed scoring references were checked. No settings were tuned after viewing the result.
 
-| Primary reference: 666 fronts | Missed | Unmatched proposals | Both corners within 5 px | Both within 10 px |
+| Primary reference: 666 fronts | Scored misses | Unmatched outputs | Both corners within 5 px | Both within 10 px |
 | --- | ---: | ---: | ---: | ---: |
 | Retained PR35 | 18 | 80 | 533/584 | 582/584 |
-| PR67 matched control | 20 | 83 | 531/584 | 583/584 |
-| PR67 candidate | 25 | 105 | 532/584 | 584/584 |
+| Fresh PR70 control | 20 | 83 | 531/584 | 583/584 |
+| PR70 r4 candidate | 30 | 107 | 541/584 | 580/584 |
 
-The 584 denominator contains only fronts with two locatable reference corners. It excludes the partial/zero-corner fronts responsible for most scored misses. The candidate's extra 10 px success versus control comes from an existing proposal crossing matching IoU 0.50, not a newly discovered front. Several scored losses likewise involve box extent/ownership disagreements; others include a genuinely missing edge-front proposal and a new keyboard false proposal. The report preserves these distinctions.
+The pair denominator includes the 584 fronts with two locatable reference corners, including scored misses. It excludes the 82 fronts with zero or one locatable corner. The candidate improves the five-pixel pair count while losing matched-front coverage and adding unmatched outputs. The required 663-front historical comparison has 15/17/26 misses and 80/83/106 unmatched outputs in the same model order.
 
-The required historical 663-front comparison also retains PR35. A [separate exploratory replay](../results/evaluation/sequence-fronts-pr67-20261118/r3-exploratory/README.md) uses the recovered 662-front reference: PR35/control/candidate have 14/16/21 misses and 80/83/105 unmatched proposals. Each loses four scored misses because four previously unmatched reference rows were deleted. No matched physical identity is gained or lost by changing this reference.
+A scored miss means no match at the fixed IoU of 0.50, not necessarily no prediction. In `new_000010:15` and `new_000057:11`, strong proposals remain but their box extents cross below the matching threshold. Other cases need physical extent/ownership review. The report also shows a visible missed edge front and additional keyboard/rack proposals. These distinctions prevent either a high corner score or a matching failure from becoming a misleading general claim.
 
-These reused video frames support a development comparison. They do not establish unseen-session or unattended complete-scene accuracy. No new training run, threshold sweep, or model promotion follows from this report.
+All three models produce no outputs on the three empty development images, but none yields an error-free nonempty scene under this association rule. These repeatedly used scenes do not establish new-session reliability or unattended complete-scene accuracy. **No model is promoted.** The [previous PR67 audit](../results/evaluation/sequence-fronts-pr67-20261118/README.md) remains a separate historical comparison.
 
-## Current label review
+## Current annotation pass and next notebook
 
-The [complete review bundle](../data/reviews/fronts-2026-11-18/README.md) contains 137 training-review files and 20 separately revised development-reference files. It preserves 3,789 training fronts and 662 development fronts, all 16 empty images, and the 11-field pose format.
+The [r5 handoff](front-review-r5.md) records **135 edited rows, two requested deletions and one added front across 17 photographs**. It preserves immutable r4 base-row identities and a map to current row numbers. The focused PDF shows every current label on those photos, with changed rows in magenta and unresolved rows in amber. The [labeling guide](front-labeling-guide.md) explains the physical corner, visible envelope and inspection-filter rules.
 
-The interrupted r3 geometry was reconstructed from the two saved vector PDFs, with independently checked before/current panels agreeing within 0.001 original-image pixel. This is rendering agreement, not physical annotation precision or recovery of the missing original authoring bytes. A separate original-pixel review additionally refines `new_000101` row 52 to `[485,543,550,571]`; both point tokens stay unchanged. The combined review has 889 replacements and 12 deletions from r2.
+`new_000023` base rows 24-26 retain an explicit physical-landmark question: the farther gray tips belong to the cassette, but may be lateral/projecting material instead of the required lower-front junction. Its entire photo keeps exact PR35 supervision in both next-run arms. The two specifically requested deletions in `new_000014` close its previous hold; its supported r5 labels are now included in the treatment.
 
-Only `new_000007` rows 7 and 14 retain recorded amber holds. Cyan means no recorded open hold, not certification. Review the updated change PDF and full atlas before merging this label revision. No training recipe currently selects it, and PR67 retains its original 664-front training validation plus its 666/663 predefined scoring references.
+The [r5 notebook](../notebooks/baomai_front_review_r5.ipynb) compares the accepted review against the PR35 control using the existing numerical recipe. Both arms independently start from epoch173, with seed 46, 30 epochs, batch 4, input 1280, FP32, AdamW and learning rate 0.0001. The final epoch is selected in advance. There are 94 training photos with different label bytes between the arms. Original training validation and the fixed 666/663 scoring references remain unchanged.
 
-## Next bounded improvement
+This tests the disclosed accumulated supervision package and whole-photo hold, not one isolated correction. It is ready for a controlled experiment, with `full_dataset_certified: false`. Preparing it does not establish improvement. Earlier [r3 recovery](../data/reviews/fronts-2026-11-18/README.md) and [r4 review](front-review-r4.md) remain separate historical records.
 
-Inspect the named partial-front extent/ownership cases in the report before another fine-tune. A box may span an occluder if separated visible pieces belong to the same front; broad occluder coverage alone is not an annotation error. Preserve unlocatable natural-image corner slots as `0 0 0` and never turn a model estimate into observed truth.
+## What would change the conclusion
 
-Correcting a reference permits a separate saved-prediction replay without GPU training. Improving training labels requires a later, explicitly selected controlled experiment. Neither changes the fact that new-session generalization remains unmeasured. The current 10 px corner criterion and miss-first priority are established; the acceptable number of missed/extra fronts per scene remains an application acceptance decision.
+First resolve target-surface ownership in the named ambiguous cases. A box may span an occluder when its separated visible pieces belong to one front; interior gripper coverage alone does not make it wrong. Keep an unlocatable natural-image corner as `0 0 0` and do not use model confidence as observed truth.
 
-## Prepared r4 annotation experiment
-
-The [r4 handoff](front-review-r4.md) adds the latest requested labeling pass and a [separate Colab notebook](../notebooks/baomai_front_review_r4.ipynb). It records 521 visual replacements, three additions and three specific deletions, plus two inherited numerical box repairs. The focused PDF contains every label on all 33 changed photographs. One clipped-edge row in new_000014 remains unresolved; the complete photo keeps exact PR35 supervision in both training arms.
-
-The prepared candidate has 3,789 training fronts and differs from PR35 on 94 training photos. Both arms start independently from epoch173 with the established seed46/30-epoch recipe. Original training validation and the fixed 666/663 scoring references remain separate and unchanged. This is a prepared comparison, not a trained result; the selected PR35 checkpoint and command above remain current.
+The next run should be judged on missed and extra fronts, partial-front coverage, scene-level failures and corner accuracy together. Any later reference amendment must receive a separate identity and replay, preserving the fixed comparisons above. The current ten-pixel corner criterion and miss-first priority are established; acceptable missed/extra fronts per scene still depend on the application. New-session performance remains unmeasured.

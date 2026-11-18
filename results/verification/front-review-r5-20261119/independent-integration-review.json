@@ -1,0 +1,261 @@
+{
+  "schema": "front-review-integration-code-review-v1",
+  "reviewed_at_utc": "2026-11-18T16:49:00.604859+00:00",
+  "reviewer": "independent evaluation subagent",
+  "status": "passed_with_source_commit_pin_pending",
+  "scope": "Read-only provenance, candidate composition, staging, r4 regression and r5 notebook integration review. No shared repository files changed by this reviewer.",
+  "blocking_code_findings": [],
+  "pending_handoff_gate": {
+    "kind": "intentional source pin placeholder",
+    "current_notebook_SOURCE_REF": "REPLACE_WITH_SOURCE_COMMIT",
+    "required_action": "Commit the reviewed source/data/protocol first, replace SOURCE_REF with that full immutable commit in the handoff notebook, and commit the notebook separately.",
+    "verification_required": "Confirm the pinned source tree contains the exact review, candidate, protocol and registered verifier/helper bytes reviewed here. Recompile the notebook code cells and keep outputs empty after the pin edit.",
+    "current_behavior": "The first code cell asserts a full 40-character hexadecimal commit before creating or reusing the run workspace, so the draft fails closed.",
+    "not_a_training_result": true
+  },
+  "reviewed_file_sha256": {
+    "scripts/front_review_experiment.py": "843dcd284cc64cfdc3e4613354ab01c300ad7dfc627afb0406dcd33d314942f9",
+    "scripts/verify_front_review_r4.py": "b46393cb5a186fd687ed6e2a4e1141711e319e138f361bd6fcbe254effb0afa0",
+    "scripts/verify_front_review_r5.py": "74b0108ed6bcd109dae0cb278b23fd6cc8f44cbbfb20c65d4ce1fa9e53570d94",
+    "scripts/verify_incremental_pose_candidate.py": "a71cb691dbb1e11e1b15f28c997ae05c04dd9f920c7fd799ccad755dddc3dc48",
+    "scripts/train_pose_comparison.py": "74c38312e8715dccc30971600bb5014b64e4059be797adf394e9f7adfe76eed6",
+    "scripts/stage_pose_training.py": "8c82362e26ce014ec4f5bd572e3586fa69319d1243060a89595950ff5d4dfab3",
+    "scripts/check_front_review_r5.py": "3d3e005ceae185b48944504e6f3f699e4095d043f412b64eb9fe0ea0cefab74a",
+    "notebooks/baomai_front_review_r5.ipynb": "bd10d4f53d3b02f8208bbbfbd1b30b36e25757cb63970cd03c336770eb3f382b",
+    "data/reviews/fronts-2026-11-19-r5/manifest.json": "666a7d85ec2783ab1a7c65a544abcfd444c37c07096703d04720dc132ea56636",
+    "data/candidates/front-review-2026-11-19-r5/manifest.json": "3b425e73414e83c82b533ce9a9cf7d665df479f42014b2d7dfa95a1a5ea96b1d",
+    "experiments/front-review-2026-11-19-r5.json": "25ed684fd677ba4863f5cd605f48e3b9e1bc78893ae7c4267616c6779be1cd1c",
+    "results/review/front-review-20261119-r5/review-status.json": "d32a7661721b5773aa59525890d7ca9e59b959d521dc8f93fbafb2f82a1aee34"
+  },
+  "immutable_r4_and_fixed_reference_checks": {
+    "baseline_commit": "c8d8f30a5770c3cee25d0bd431df4f565ca5471f",
+    "bound_files": [
+      {
+        "path": "experiments/front-review-2026-11-18-r4.json",
+        "sha256": "409e853e49d755a19becd0778272eda24b8dfabbbb2c77554b5e24dfb7a48928",
+        "matches_frozen_c8d8f30": true
+      },
+      {
+        "path": "data/candidates/front-review-2026-11-18-r4/manifest.json",
+        "sha256": "29894356d2ef7c6a89fd9917a37527b183ace8df9407c723c429d645c48fbab0",
+        "matches_frozen_c8d8f30": true
+      },
+      {
+        "path": "data/reviews/fronts-2026-11-18-r4/manifest.json",
+        "sha256": "ec40bab297e928c5a19a82dbc418548e2c35d4fff9764bf0e2c8879cc40ec773",
+        "matches_frozen_c8d8f30": true
+      },
+      {
+        "path": "data/references/sequence-refined-reference-2026-11-18/manifest.json",
+        "sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+        "matches_frozen_c8d8f30": true
+      },
+      {
+        "path": "data/references/visible-front-completion-2026-11-14/manifest.json",
+        "sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+        "matches_frozen_c8d8f30": true
+      },
+      {
+        "path": "metadata/model_card.json",
+        "sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+        "matches_frozen_c8d8f30": true
+      },
+      {
+        "path": "data/manifest.json",
+        "sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+        "matches_frozen_c8d8f30": true
+      }
+    ],
+    "label_sets": [
+      {
+        "path": "data/reviews/fronts-2026-11-18-r4",
+        "label_files_byte_identical": 157
+      },
+      {
+        "path": "data/references/sequence-refined-reference-2026-11-18",
+        "label_files_byte_identical": 20
+      },
+      {
+        "path": "data/references/visible-front-completion-2026-11-14",
+        "label_files_byte_identical": 20
+      }
+    ],
+    "total_labels_byte_identical": 197
+  },
+  "checks": [
+    {
+      "area": "Operation ledger and review evidence",
+      "result": "pass",
+      "detail": "The shared helper preserves exact before-line replay against pinned parent row identities, validates all 157 original image hashes, label geometry/counts and deletion/addition row maps, and hash-binds all ten optional review-evidence descriptors."
+    },
+    {
+      "area": "Candidate and whole-photo hold",
+      "result": "pass",
+      "detail": "Candidate is recomposed and compared for exact equality. Pending new_000023 base24\u201326 derive one held photograph with exact PR35 labels in both arms; supported edits on that photograph stay in review only. new_000014 is released after its two recorded user-adjudicated removals."
+    },
+    {
+      "area": "Split and fixed references",
+      "result": "pass",
+      "detail": "All 137 original training photos including 13 negatives remain. Original 20-photo 664-front training-validation labels remain identical between arms. Primary 666 and required historical 663 references remain independently hash-bound; the separate 662-front reviewed development reference is exploratory only."
+    },
+    {
+      "area": "Version isolation and provenance",
+      "result": "pass",
+      "detail": "R4 retains its original review, parent, candidate and protocol identities through its thin configured wrapper. Exact-path dispatch selects the new r5 wrapper. Both wrappers and the shared helper are registered in staging code hashes and training source hashes. Annotation source_revision identifies inherited review provenance, while notebook SOURCE_REF will bind the actual training source tree."
+    },
+    {
+      "area": "Initialization and numerical recipe",
+      "result": "pass",
+      "detail": "Both full arms initialize independently from the verified original epoch173 checkpoint with the established seed46/30epoch/batch4/1280/FP32/AdamW/lr0.0001 recipe and final-epoch selection. The four-batch resource trial does not initialize either full arm."
+    },
+    {
+      "area": "Notebook bootstrap and recovery",
+      "result": "pass",
+      "detail": "Bootstrap verifies protocol SHA and exactly 157 tracked original PNGs, uses original camera data, checks clean pinned source, and verifies input hashes before installing the trainer. Separate r5 workspace/Drive identities and per-bundle metadata prevent silently reusing incompatible prior runs. Completed arms must match source, recipe, label and runtime identities before reuse; packaging revalidates both arms and member hashes."
+    },
+    {
+      "area": "Narrative and acceptance boundaries",
+      "result": "pass",
+      "detail": "Notebook preserves PR35 selection and full_dataset_certified=false; distinguishes physical visibility from endpoint confidence, matching FN/FP from physically absent proposals, original training validation from fixed scoring references, and five-pixel pair improvement from whole-scene coverage. It discloses the changed whole-photo hold and repeated-development-set limitation."
+    }
+  ],
+  "notebook_static_validation": {
+    "compiled_code_cells": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+    ],
+    "code_cell_count": 7,
+    "all_outputs_empty": true,
+    "SOURCE_REF": "REPLACE_WITH_SOURCE_COMMIT",
+    "reviewed_notebook_sha256": "bd10d4f53d3b02f8208bbbfbd1b30b36e25757cb63970cd03c336770eb3f382b"
+  },
+  "independent_bounded_preflight_execution": {
+    "method": "Extracted the exact notebook input_preflight string and executed it in a temporary isolated copy of current data/docs/results-review/metadata/scripts/experiments with verified original epoch173 weights. The temporary copy was removed afterwards. No dependency install, GPU run, inference, training or shared-worktree mutation occurred.",
+    "completion_evidence": "The embedded preflight emitted its final ready_for_controlled_incremental_experiment JSON after all assertions; stderr is empty.",
+    "extracted_script": {
+      "path": "r5/eval/integration/embedded-preflight.py",
+      "sha256": "f410cf74f9f52923e952999195086e1d2c2a7e1b973c5315f54100efeb50825a"
+    },
+    "stdout": {
+      "path": "r5/eval/integration/embedded-preflight.stdout",
+      "sha256": "469edeab778ce1947dd7cf5fb1343b660c85f12f1080dc3fcea2368497fd8609"
+    },
+    "stderr": {
+      "path": "r5/eval/integration/embedded-preflight.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "original_initial_weights_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "result": {
+      "status": "ready_for_controlled_incremental_experiment",
+      "full_dataset_certified": false,
+      "original_images": 157,
+      "training_counts": {
+        "reference": {
+          "train": {
+            "images": 137,
+            "objects": 3771,
+            "visible_endpoints": 6841,
+            "missing_endpoints": 701,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "candidate": {
+          "train": {
+            "images": 137,
+            "objects": 3788,
+            "visible_endpoints": 6849,
+            "missing_endpoints": 727,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        }
+      },
+      "complete_review_training_counts": {
+        "images": 137,
+        "objects": 3788,
+        "visible_endpoints": 6849,
+        "missing_endpoints": 727,
+        "empty_images": 13
+      },
+      "weights_verified": true,
+      "changed_training_photos": 94,
+      "retained_legacy_training_photos": [
+        "new_000023"
+      ],
+      "remaining_training_cases": 3,
+      "remaining_primary_reference_rows": 8,
+      "remaining_historical_reference_rows": 13,
+      "evaluation_references": {
+        "primary": {
+          "counts": {
+            "images": 20,
+            "objects": 666,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 105,
+            "empty_images": 3
+          },
+          "objects_by_locatable_corners": {
+            "0": 23,
+            "1": 59,
+            "2": 584
+          }
+        },
+        "diagnostic": {
+          "counts": {
+            "images": 20,
+            "objects": 663,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 99,
+            "empty_images": 3
+          },
+          "objects_by_locatable_corners": {
+            "0": 20,
+            "1": 59,
+            "2": 584
+          }
+        }
+      }
+    }
+  },
+  "inspected_actual_staging_and_mutation_test_evidence": [
+    {
+      "path": "r5/r4-regression.log",
+      "sha256": "0a63afb86e1c681d5d1320589a8a9b51ab508fb36ee4bc179598d65e59a19afb",
+      "tests_passed": 3,
+      "executed_by": "parent integration workflow; results and test source inspected by this reviewer",
+      "output": "test_actual_staging_holds_and_separate_references (__main__.R4Checks.test_actual_staging_holds_and_separate_references) ... ok\ntest_protocol_cannot_substitute_latest_review_or_promote (__main__.R4Checks.test_protocol_cannot_substitute_latest_review_or_promote) ... ok\ntest_self_consistent_candidate_cannot_release_held_photo (__main__.R4Checks.test_self_consistent_candidate_cannot_release_held_photo) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 9.343s\n\nOK\n"
+    },
+    {
+      "path": "r5/r5-checks.log",
+      "sha256": "edb18e262327c35adbdd649a23e5c95c65dc98212c93b9d37c795fd5aeeaa5a4",
+      "tests_passed": 2,
+      "executed_by": "parent integration workflow; results and test source inspected by this reviewer",
+      "output": "test_actual_staging_and_stable_count_changes (__main__.R5Checks.test_actual_staging_and_stable_count_changes) ... ok\ntest_candidate_only_coordinate_edit_cannot_replace_review (__main__.R5Checks.test_candidate_only_coordinate_edit_cannot_replace_review) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 6.206s\n\nOK\n"
+    }
+  ],
+  "limitations": [
+    "The source pin remains deliberately incomplete at this review; the notebook is not yet the runnable final handoff.",
+    "This review verifies code, provenance and bounded input/staging behavior. It does not certify every physical annotation or resolve the pending new_000023 landmark question.",
+    "No GPU execution or new training was performed; future runtime availability and resource behavior remain to be established by the notebook resource trial.",
+    "Controlled experiment readiness is distinct from release_ready or full-dataset certification."
+  ]
+}
