@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "status": "verified",
+  "review_id": "fronts-2026-11-19-r9-recovery",
+  "verification_method": "Independent direct readback of saved labels, operations, status, source hashes, and materialized staged bytes; requested builder --verify-only also exited 0.",
+  "review": {
+    "path": "data/reviews/fronts-2026-11-19-r9-recovery/manifest.json",
+    "sha256": "ba0b4f7f6fa9e86d43678098a834329a3a679621df0cab6fa2140e41b55526b2"
+  },
+  "candidate": {
+    "path": "data/candidates/front-review-2026-11-19-r9-recovery/manifest.json",
+    "sha256": "7c3b14024d00195773290caf275077e2bb4466aab1930cac764b2d7ce852e12b"
+  },
+  "input_protocol": {
+    "path": "experiments/front-review-2026-11-19-r9-recovery-inputs.json",
+    "sha256": "d3dbf18eaa7874e752b941607afc0720a478869e77a2430b2e93c0dcf050eab6"
+  },
+  "training_input_inventory": {
+    "path": "results/review/front-review-20261119-r9-recovery/training-input-inventory.json",
+    "sha256": "80770f59eea566f98139ef9a45d859aae10648f3fd01a0e1bc1f5f655098a831"
+  },
+  "builder_verification": {
+    "path": "results/review/front-review-20261119-r9-recovery/verification.json",
+    "sha256": "9d3aeafda6e26cf844c476bed9e7025cb711ed63b2cc0d778997ea71067e5185"
+  },
+  "actual_counts": {
+    "original_photos": 157,
+    "original_split": {
+      "train": 137,
+      "val": 20
+    },
+    "changed_review_rows": 25,
+    "changed_review_photos": 9,
+    "field_group_changes": {
+      "box": 23,
+      "left": 8,
+      "right": 9
+    },
+    "review_rows_by_split": {
+      "train": 3788,
+      "val": 663
+    },
+    "unchanged_r8_rows_preserved_byte_for_byte": 4426,
+    "unresolved_cases": 61,
+    "held_training_cases": 55,
+    "held_training_photos": 36,
+    "unresolved_development_cases": 6,
+    "unresolved_development_photos": 6,
+    "focused_photos": 47,
+    "omitted_unchanged_resolved_photos": 110,
+    "materialized_inventory_records": 314,
+    "materialized_images": 314,
+    "materialized_labels": 314,
+    "changed_training_photos_vs_pr35": 58
+  },
+  "checks": {
+    "all_157_original_image_and_label_hashes_match": true,
+    "all_r8_label_hashes_match": true,
+    "exactly_declared_row_replacements_only": true,
+    "all_unchanged_rows_byte_identical": true,
+    "instance_counts_and_row_identities_unchanged": true,
+    "all_class_ids_remain_zero": true,
+    "all_pose_rows_have_11_finite_fields": true,
+    "inherited_case_identities_preserved": true,
+    "case_mutations_have_audit_update_records": true,
+    "held_training_labels_exact_pr35_in_both_materialized_arms": true,
+    "all_20_original_validation_labels_exact_in_both_arms": true,
+    "old_000013_exact_original_in_review_and_both_arms": true,
+    "repository_inventory_byte_identical_to_staging_receipt": true,
+    "all_inventory_hashes_match_actual_materialized_regular_files": true,
+    "frozen_666_and_663_reference_manifests_and_label_hashes_match": true,
+    "review_candidate_and_protocol_explicitly_pending_review_not_release_ready": true
+  },
+  "new_cases": [
+    {
+      "case_id": "old_000010-r9-recovery-top-extent",
+      "image_id": "old_000010",
+      "base_rows": [
+        1
+      ],
+      "fields": [
+        "box"
+      ],
+      "status": "held"
+    },
+    {
+      "case_id": "old_000042-r9-recovery-top-extent",
+      "image_id": "old_000042",
+      "base_rows": [
+        10
+      ],
+      "fields": [
+        "box"
+      ],
+      "status": "held"
+    },
+    {
+      "case_id": "r9-recovery-secondary-new_000002-row45-box",
+      "image_id": "new_000002",
+      "base_rows": [
+        45
+      ],
+      "fields": [
+        "box"
+      ],
+      "status": "held"
+    }
+  ],
+  "staged_counts": {
+    "reference": {
+      "train": {
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 701,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "candidate": {
+      "train": {
+        "images": 137,
+        "objects": 3770,
+        "visible_endpoints": 6847,
+        "missing_endpoints": 693,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    }
+  },
+  "training_run": false,
+  "model_promotion": false,
+  "limits": [
+    "Mechanical verification confirms faithful integration and actual staged files; it does not certify every physical annotation boundary.",
+    "The missing interrupted r9 ledger was not recovered; these artifacts explicitly document reconstruction from saved r8 and audited changes.",
+    "A passed input gate is not evidence of model improvement or approval to release."
+  ]
+}
