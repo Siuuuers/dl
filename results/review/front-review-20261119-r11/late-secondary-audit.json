@@ -1,0 +1,642 @@
+{
+  "schema_version": 1,
+  "kind": "bounded-secondary-physical-adjudication",
+  "source_review": "fronts-2026-11-19-r10",
+  "source_revision": "8230b8d592c792002bf97405d950264d22292a47",
+  "reviewed_audit": {
+    "path": "results/review/front-review-20261119-r11/late-audit.json",
+    "sha256": "8e143f777e190fe3a8f5f31b44b886fbb51bad8311ef20e15f0c64db19478530"
+  },
+  "review_method": "Independently inspect original-pixel ruler crops and immutable r10/current overlays for the new090 addition, new087 right-corner restoration, new094 right-corner removal, and17 representative interpreted operations in127/128. Inspect raw/r10/serialized-proposed crops for all20 selected operations. Verify exact before tokens/source hashes and replay the five affected photos through strict geometry validation. This bounded audit does not independently adjudicate every late operation.",
+  "decisions": [
+    {
+      "image_id": "new_000087",
+      "operation_id": "r11-late-new_000087-row33",
+      "action": "replace",
+      "evaluated_after_line": "0 0.4476250000 0.60143750 0.0617812500 0.03695833 0.41829687 0.60716667 2 0.4769531250 0.6159722222 2",
+      "evaluated_after_line_sha256": "d964200d852c6ec88c8c60ab4a481ac305aeef173b4c75805a73ef471a222386",
+      "source_label_sha256": "a712243e2488df06e6de457a128b6512cf129c765aa7cbdaf1d5f84878188383",
+      "source_image_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "decision": "accept",
+      "reason": "The raw lower stack exposes a continuous white lower-front edge meeting the dark right separator at approximately(610.5,443.5). This actual corner is visible, so restoring v2 is supported. The accompanying xmax612.5 trim removes the adjoining rack margin while preserving the white rim and unchanged left point.",
+      "evidence": [
+        {
+          "path": "data/images/val/new_000087.png",
+          "sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000087-33.png",
+          "sha256": "b7590c043fb5160789a8842b8fc110aa2403847df737dafe40a4cb2c4f9d70a0"
+        }
+      ],
+      "base_row": 33,
+      "evaluated_before_line": "0 0.44875000 0.60143750 0.06403125 0.03695833 0.41829687 0.60716667 2 0.00000000 0.00000000 0",
+      "evaluated_before_line_sha256": "dc05835ea2bc24c01528b4863a87e97ed6c4b753cff522c9ec556c396388fa89"
+    },
+    {
+      "image_id": "new_000090",
+      "operation_id": "r11-new_000090-front-above-base48",
+      "action": "add",
+      "evaluated_after_line": "0 0.5539062500 0.6381944444 0.0546875000 0.0458333333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "evaluated_after_line_sha256": "34a0ae4b435ab09ac95248a94ba9e958543a0f48b91f1bd065c631f2ba66badb",
+      "source_label_sha256": "d263d972a9ff99b71ee611f37796e30bab3dc199d4f764246e5649b3da6be894",
+      "source_image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "decision": "accept",
+      "reason": "Accept the additional independent frontal plane above base48. The raw aperture crop shows its own lower horizontal boundary around y475, with the existing lower48 fragment beneath that separator and a connected upper frontal rim. The proposed x674..744,y443..476 envelope follows the visible upper piece. Both actual lower corner junctions disappear behind opaque gripper jaws, so000/000 is appropriate; the addition does not infer hidden endpoints.",
+      "evidence": [
+        {
+          "path": "data/images/val/new_000090.png",
+          "sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000090-addition.png",
+          "sha256": "4273f940b4ee054c7f181207579f8d2f1be4317eaa315964269e6cb8d936765d"
+        }
+      ],
+      "addition_id": "r11-new_000090-front-above-base48",
+      "after_base_row": 47
+    },
+    {
+      "image_id": "new_000094",
+      "operation_id": "r11-late-new_000094-row18",
+      "action": "replace",
+      "evaluated_after_line": "0 0.54626953 0.60902778 0.13141406 0.04305556 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "evaluated_after_line_sha256": "d337c73e0bce5c846f6b3377b33d798ffdff771f81b75c8375f508e89a37da49",
+      "source_label_sha256": "5ad2e2dc57a5530e457f5eb38dae5e5ef27a8f9d3575348a9b65041967cd0dad",
+      "source_image_sha256": "e49858124981ec769ed4eb53b53c76aea809981bbbcddf6446cb095ab53533f0",
+      "decision": "accept",
+      "reason": "The inherited right point(775.46,439.74) lies on the dark divider/occluded region next to the gripper rather than an exposed lower-front junction. The gripper covers that lower corner, so canonical000 removes a false visibility claim. The visible front box and already missing left corner remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000094.png",
+          "sha256": "e49858124981ec769ed4eb53b53c76aea809981bbbcddf6446cb095ab53533f0"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000094-18.png",
+          "sha256": "9fb5cecd0329e56c8195d677c104e855262cb6d6360395c9c5414ef0e7596508"
+        }
+      ],
+      "base_row": 18,
+      "evaluated_before_line": "0 0.54626953 0.60902778 0.13141406 0.04305556 0.00000000 0.00000000 0 0.60582813 0.61075000 2",
+      "evaluated_before_line_sha256": "58e6bc174040cc99a3cd26084aaa32e7224dd8ea467b7ffbdae385f9ff0e37a8"
+    },
+    {
+      "image_id": "new_000127",
+      "operation_id": "r11-late-new_000127-row3",
+      "action": "replace",
+      "evaluated_after_line": "0 0.55353125 0.04680556 0.16825000 0.08666667 0.47850000 0.07406944 2 0.6335937500 0.07998611 2",
+      "evaluated_after_line_sha256": "51a2aafd747947d38ae465f9fb41c3f5ca2d082ee865b6de1d43f392973555cd",
+      "source_label_sha256": "96307df6078eb86ddc06d93fb1be8f2b85ea81be201f72c1d5dfcf3bc6a0141f",
+      "source_image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "decision": "accept",
+      "reason": "Accept the transparent interpretation of the requested point as the image-right landmark. The broad visible front has a separate left lower corner; moving that left slot to xmax would cross the existing right point and destroy endpoint identity. The proposed right-point X moves to the visible lower-front turn near the right rim, while preserving both point Y values, the left slot, and the accepted box.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000127.png",
+          "sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-gripper.png",
+          "sha256": "f9f3c0568b6c2613899bf6e912dc57cb512b468cf67e91022453c4e6cc22e0d5"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-right.png",
+          "sha256": "da46dba02b530495c4327406bc8ad1b65bdc6877b6867a56b49da53d4d86c305"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-top.png",
+          "sha256": "54936b0299e31730f5d5bd06cd8b010510b7986c777764923bece61e91a6e896"
+        }
+      ],
+      "base_row": 3,
+      "evaluated_before_line": "0 0.55353125 0.04680556 0.16825000 0.08666667 0.47850000 0.07406944 2 0.62851563 0.07998611 2",
+      "evaluated_before_line_sha256": "870bc21ba90c2fdb341bfdc7c2cd0a6fc51c974ba86210fbee2c8f25781ef5ae"
+    },
+    {
+      "image_id": "new_000127",
+      "operation_id": "r11-late-new_000127-row6",
+      "action": "replace",
+      "evaluated_after_line": "0 0.71149219 0.12419444 0.15834375 0.07880556 0.63510938 0.15745833 2 0.7875000000 0.15859722 2",
+      "evaluated_after_line_sha256": "890eed60820c2ffed4a66703e69411ce0dc2116f386763b18ab9c5a803673ac4",
+      "source_label_sha256": "96307df6078eb86ddc06d93fb1be8f2b85ea81be201f72c1d5dfcf3bc6a0141f",
+      "source_image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "decision": "accept",
+      "reason": "Accept the transparent interpretation of the requested point as the image-right landmark. The broad visible front has a separate left lower corner; moving that left slot to xmax would cross the existing right point and destroy endpoint identity. The proposed right-point X moves to the visible lower-front turn near the right rim, while preserving both point Y values, the left slot, and the accepted box.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000127.png",
+          "sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-gripper.png",
+          "sha256": "f9f3c0568b6c2613899bf6e912dc57cb512b468cf67e91022453c4e6cc22e0d5"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-right.png",
+          "sha256": "da46dba02b530495c4327406bc8ad1b65bdc6877b6867a56b49da53d4d86c305"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-top.png",
+          "sha256": "54936b0299e31730f5d5bd06cd8b010510b7986c777764923bece61e91a6e896"
+        }
+      ],
+      "base_row": 6,
+      "evaluated_before_line": "0 0.71149219 0.12419444 0.15834375 0.07880556 0.63510938 0.15745833 2 0.78215625 0.15859722 2",
+      "evaluated_before_line_sha256": "59881f25d51e244f6416520aa1dabd108b5b991198cbf3dcd87c71ea6ccaea36"
+    },
+    {
+      "image_id": "new_000127",
+      "operation_id": "r11-late-new_000127-row11",
+      "action": "replace",
+      "evaluated_after_line": "0 0.4136718775 0.60625000 0.1179687450 0.06805556 0.35901563 0.63670833 2 0.00000000 0.00000000 0",
+      "evaluated_after_line_sha256": "d0a411808e8220c5e57049eb2465ad36f10355d1f064954d8640dfdf218c6001",
+      "source_label_sha256": "96307df6078eb86ddc06d93fb1be8f2b85ea81be201f72c1d5dfcf3bc6a0141f",
+      "source_image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "decision": "accept",
+      "reason": "The raw crop shows a dark right separator beyond the visible front, supporting the xmax605 trim. The requested left corner already exists as v2 at the locatable lower-front junction and is correctly retained; no extra point or speculative right corner is added.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000127.png",
+          "sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-gripper.png",
+          "sha256": "f9f3c0568b6c2613899bf6e912dc57cb512b468cf67e91022453c4e6cc22e0d5"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-right.png",
+          "sha256": "da46dba02b530495c4327406bc8ad1b65bdc6877b6867a56b49da53d4d86c305"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-top.png",
+          "sha256": "54936b0299e31730f5d5bd06cd8b010510b7986c777764923bece61e91a6e896"
+        }
+      ],
+      "base_row": 11,
+      "evaluated_before_line": "0 0.41750391 0.60625000 0.12563281 0.06805556 0.35901563 0.63670833 2 0.00000000 0.00000000 0",
+      "evaluated_before_line_sha256": "47129c5d62fb45e71cb508deef82ab08dec2d71900ea38e2610228b3cb5d4660"
+    },
+    {
+      "image_id": "new_000127",
+      "operation_id": "r11-late-new_000127-row17",
+      "action": "replace",
+      "evaluated_after_line": "0 0.5445312500 0.61597222 0.1218750000 0.04861111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "evaluated_after_line_sha256": "698e1d17fb3f75fd1c9ec6e6d4be6940a45df773909d7c8f121911cf43d722f7",
+      "source_label_sha256": "96307df6078eb86ddc06d93fb1be8f2b85ea81be201f72c1d5dfcf3bc6a0141f",
+      "source_image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "decision": "accept",
+      "reason": "The visible upper frontal strip ends before the right dark divider/gripper-covered region. Tightening xmax to775 follows that boundary while the true lower corners remain hidden; both missing points stay000.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000127.png",
+          "sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-gripper.png",
+          "sha256": "f9f3c0568b6c2613899bf6e912dc57cb512b468cf67e91022453c4e6cc22e0d5"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-right.png",
+          "sha256": "da46dba02b530495c4327406bc8ad1b65bdc6877b6867a56b49da53d4d86c305"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-top.png",
+          "sha256": "54936b0299e31730f5d5bd06cd8b010510b7986c777764923bece61e91a6e896"
+        }
+      ],
+      "base_row": 17,
+      "evaluated_before_line": "0 0.54687500 0.61597222 0.12656250 0.04861111 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "evaluated_before_line_sha256": "9765f90af2bcc929fcb1336eba9945e7fedb59b1257a6c05f7949e63bb8e8664"
+    },
+    {
+      "image_id": "new_000127",
+      "operation_id": "r11-late-new_000127-row18",
+      "action": "replace",
+      "evaluated_after_line": "0 0.7065937500 0.20316667 0.1477500000 0.08169444 0.63672656 0.23779167 2 0.77767188 0.23941667 2",
+      "evaluated_after_line_sha256": "dfc86e08b2d019b22524902af37d43b345f0207c2de66fb0373dc2b7602eba37",
+      "source_label_sha256": "96307df6078eb86ddc06d93fb1be8f2b85ea81be201f72c1d5dfcf3bc6a0141f",
+      "source_image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000127.png",
+          "sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-gripper.png",
+          "sha256": "f9f3c0568b6c2613899bf6e912dc57cb512b468cf67e91022453c4e6cc22e0d5"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-right.png",
+          "sha256": "da46dba02b530495c4327406bc8ad1b65bdc6877b6867a56b49da53d4d86c305"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-top.png",
+          "sha256": "54936b0299e31730f5d5bd06cd8b010510b7986c777764923bece61e91a6e896"
+        }
+      ],
+      "base_row": 18,
+      "evaluated_before_line": "0 0.71076172 0.20316667 0.15608594 0.08169444 0.63672656 0.23779167 2 0.77767188 0.23941667 2",
+      "evaluated_before_line_sha256": "7fcde2535d044abe9bbdbe81f1fb74b8c15e872c2972f6d6835f14e76be047c8"
+    },
+    {
+      "image_id": "new_000127",
+      "operation_id": "r11-late-new_000127-row24",
+      "action": "replace",
+      "evaluated_after_line": "0 0.6784335950 0.56591667 0.1275078100 0.05936111 0.61734375 0.58751389 2 0.74027344 0.58695833 2",
+      "evaluated_after_line_sha256": "5792d598d29a1faaf88713d7096d61986eecade13b519cb4eef30ad33d36c9bc",
+      "source_label_sha256": "96307df6078eb86ddc06d93fb1be8f2b85ea81be201f72c1d5dfcf3bc6a0141f",
+      "source_image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000127.png",
+          "sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-gripper.png",
+          "sha256": "f9f3c0568b6c2613899bf6e912dc57cb512b468cf67e91022453c4e6cc22e0d5"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-right.png",
+          "sha256": "da46dba02b530495c4327406bc8ad1b65bdc6877b6867a56b49da53d4d86c305"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-top.png",
+          "sha256": "54936b0299e31730f5d5bd06cd8b010510b7986c777764923bece61e91a6e896"
+        }
+      ],
+      "base_row": 24,
+      "evaluated_before_line": "0 0.67969141 0.56591667 0.13002344 0.05936111 0.61734375 0.58751389 2 0.74027344 0.58695833 2",
+      "evaluated_before_line_sha256": "8df49ac12ad14e0d894dc7b86dfc8ec5bc230cc60b5a2d8a03336745a113c623"
+    },
+    {
+      "image_id": "new_000127",
+      "operation_id": "r11-late-new_000127-row28",
+      "action": "replace",
+      "evaluated_after_line": "0 0.8148437785 0.499999952 0.1312499430 0.080555542 0.75173438 0.53119444 2 0.87853906 0.53611111 2",
+      "evaluated_after_line_sha256": "5b3e21eb2676fef5e13023786cb846d7f18b2abe93a325065b8210aa74700a6d",
+      "source_label_sha256": "96307df6078eb86ddc06d93fb1be8f2b85ea81be201f72c1d5dfcf3bc6a0141f",
+      "source_image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000127.png",
+          "sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-gripper.png",
+          "sha256": "f9f3c0568b6c2613899bf6e912dc57cb512b468cf67e91022453c4e6cc22e0d5"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-right.png",
+          "sha256": "da46dba02b530495c4327406bc8ad1b65bdc6877b6867a56b49da53d4d86c305"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-top.png",
+          "sha256": "54936b0299e31730f5d5bd06cd8b010510b7986c777764923bece61e91a6e896"
+        }
+      ],
+      "base_row": 28,
+      "evaluated_before_line": "0 0.817578201 0.499999952 0.136718788 0.080555542 0.75173438 0.53119444 2 0.87853906 0.53611111 2",
+      "evaluated_before_line_sha256": "88cd908656e0d2e81b84c6007dcdc412b9461c7bb8fd90d3a0b5f100721bd50a"
+    },
+    {
+      "image_id": "new_000127",
+      "operation_id": "r11-late-new_000127-row35",
+      "action": "replace",
+      "evaluated_after_line": "0 0.9121094343 0.702777667 0.1242186315 0.049999957 0.85885156 0.72152778 2 0.97166406 0.72247222 2",
+      "evaluated_after_line_sha256": "28197769e704f812c7f123802407a7ac72621693169cd85f3719cf143ecd273a",
+      "source_label_sha256": "96307df6078eb86ddc06d93fb1be8f2b85ea81be201f72c1d5dfcf3bc6a0141f",
+      "source_image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000127.png",
+          "sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-gripper.png",
+          "sha256": "f9f3c0568b6c2613899bf6e912dc57cb512b468cf67e91022453c4e6cc22e0d5"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-right.png",
+          "sha256": "da46dba02b530495c4327406bc8ad1b65bdc6877b6867a56b49da53d4d86c305"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000127-top.png",
+          "sha256": "54936b0299e31730f5d5bd06cd8b010510b7986c777764923bece61e91a6e896"
+        }
+      ],
+      "base_row": 35,
+      "evaluated_before_line": "0 0.919531383 0.702777667 0.139062529 0.049999957 0.85885156 0.72152778 2 0.97166406 0.72247222 2",
+      "evaluated_before_line_sha256": "7692ea0dde6005178dffd90326abc3ae13492c46e7c43098c1a252e72c3a5dfa"
+    },
+    {
+      "image_id": "new_000128",
+      "operation_id": "r11-late-new_000128-row3",
+      "action": "replace",
+      "evaluated_after_line": "0 0.56671484 0.04415278 0.17899219 0.08830556 0.48685156 0.07247222 2 0.6515625000 0.08037500 2",
+      "evaluated_after_line_sha256": "253cad0561d4f98b520d5987f050e7d8eafbc1cb8b24fc31c3296c7dd6d93199",
+      "source_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "decision": "accept",
+      "reason": "Accept the transparent interpretation of the requested point as the image-right landmark. The broad visible front has a separate left lower corner; moving that left slot to xmax would cross the existing right point and destroy endpoint identity. The proposed right-point X moves to the visible lower-front turn near the right rim, while preserving both point Y values, the left slot, and the accepted box.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000128.png",
+          "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-14.png",
+          "sha256": "f7364178c2eb68eb280a220fa7573aad3b4a8a79a007ef2a95c1a05ca42fd0a3"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-right.png",
+          "sha256": "8433c703ee577067d04bc27221deb7a7f26504bb71d8d2281b38a3252950c4be"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-top.png",
+          "sha256": "d35c03f5f91c2887bb903b01fa576a9db7f3fe8552ab30dcefb59fe3868cc6f9"
+        }
+      ],
+      "base_row": 3,
+      "evaluated_before_line": "0 0.56671484 0.04415278 0.17899219 0.08830556 0.48685156 0.07247222 2 0.64521875 0.08037500 2",
+      "evaluated_before_line_sha256": "c2ab6bbebfba864bdf1d8746130745931f52621cadb380646f699f2cf905dee1"
+    },
+    {
+      "image_id": "new_000128",
+      "operation_id": "r11-late-new_000128-row5",
+      "action": "replace",
+      "evaluated_after_line": "0 0.74083203 0.04430556 0.17458594 0.08861111 0.65682812 0.07254167 2 0.8242187500 0.08033333 2",
+      "evaluated_after_line_sha256": "85dd2cad8f93f97eab64b1661b269558e62c5771900bcab014d62b3341faa0ab",
+      "source_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "decision": "accept",
+      "reason": "Accept the transparent interpretation of the requested point as the image-right landmark. The broad visible front has a separate left lower corner; moving that left slot to xmax would cross the existing right point and destroy endpoint identity. The proposed right-point X moves to the visible lower-front turn near the right rim, while preserving both point Y values, the left slot, and the accepted box.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000128.png",
+          "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-14.png",
+          "sha256": "f7364178c2eb68eb280a220fa7573aad3b4a8a79a007ef2a95c1a05ca42fd0a3"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-right.png",
+          "sha256": "8433c703ee577067d04bc27221deb7a7f26504bb71d8d2281b38a3252950c4be"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-top.png",
+          "sha256": "d35c03f5f91c2887bb903b01fa576a9db7f3fe8552ab30dcefb59fe3868cc6f9"
+        }
+      ],
+      "base_row": 5,
+      "evaluated_before_line": "0 0.74083203 0.04430556 0.17458594 0.08861111 0.65682812 0.07254167 2 0.81739063 0.08033333 2",
+      "evaluated_before_line_sha256": "01fb918635b576cadaf9f1985275ef0e7f23acfa7a886826a2f6255807bb9617"
+    },
+    {
+      "image_id": "new_000128",
+      "operation_id": "r11-late-new_000128-row6",
+      "action": "replace",
+      "evaluated_after_line": "0 0.7355976550 0.12370139 0.1600546900 0.08420833 0.65863281 0.15861111 2 0.81398438 0.16165278 2",
+      "evaluated_after_line_sha256": "87004bebe93714b1a222ac2704652c7f544e88acbf8b10e75bbe5475a52fd57d",
+      "source_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000128.png",
+          "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-14.png",
+          "sha256": "f7364178c2eb68eb280a220fa7573aad3b4a8a79a007ef2a95c1a05ca42fd0a3"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-right.png",
+          "sha256": "8433c703ee577067d04bc27221deb7a7f26504bb71d8d2281b38a3252950c4be"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-top.png",
+          "sha256": "d35c03f5f91c2887bb903b01fa576a9db7f3fe8552ab30dcefb59fe3868cc6f9"
+        }
+      ],
+      "base_row": 6,
+      "evaluated_before_line": "0 0.74013281 0.12370139 0.16912500 0.08420833 0.65863281 0.15861111 2 0.81398438 0.16165278 2",
+      "evaluated_before_line_sha256": "6e475ae4fc7bffa52c53484fe70401364d687dbfdce28ed05f4fd13d038ba7f6"
+    },
+    {
+      "image_id": "new_000128",
+      "operation_id": "r11-late-new_000128-row14",
+      "action": "replace",
+      "evaluated_after_line": "0 0.5578125415 0.574999983 0.1312499170 0.063888890 0.49605469 0.60119444 2 0.62080469 0.60291667 2",
+      "evaluated_after_line_sha256": "78668839684549a282ccea6cd47b604df7863555eb97f8795194b3b49c51c1cd",
+      "source_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000128.png",
+          "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-14.png",
+          "sha256": "f7364178c2eb68eb280a220fa7573aad3b4a8a79a007ef2a95c1a05ca42fd0a3"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-right.png",
+          "sha256": "8433c703ee577067d04bc27221deb7a7f26504bb71d8d2281b38a3252950c4be"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-top.png",
+          "sha256": "d35c03f5f91c2887bb903b01fa576a9db7f3fe8552ab30dcefb59fe3868cc6f9"
+        }
+      ],
+      "base_row": 14,
+      "evaluated_before_line": "0 0.559765730 0.574999983 0.135156294 0.063888890 0.49605469 0.60119444 2 0.62080469 0.60291667 2",
+      "evaluated_before_line_sha256": "4bdb86a342dc7732d2173c33799783fe437f886736a42b2774fd4371502670aa"
+    },
+    {
+      "image_id": "new_000128",
+      "operation_id": "r11-late-new_000128-row18",
+      "action": "replace",
+      "evaluated_after_line": "0 0.7147890600 0.34940972 0.1469843800 0.07170833 0.64488281 0.37791667 2 0.78600781 0.38248611 2",
+      "evaluated_after_line_sha256": "2319de7e4ede23cb7cc4a8afd659ace7f170eae2d1adf382927afa246368470e",
+      "source_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000128.png",
+          "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-14.png",
+          "sha256": "f7364178c2eb68eb280a220fa7573aad3b4a8a79a007ef2a95c1a05ca42fd0a3"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-right.png",
+          "sha256": "8433c703ee577067d04bc27221deb7a7f26504bb71d8d2281b38a3252950c4be"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-top.png",
+          "sha256": "d35c03f5f91c2887bb903b01fa576a9db7f3fe8552ab30dcefb59fe3868cc6f9"
+        }
+      ],
+      "base_row": 18,
+      "evaluated_before_line": "0 0.71762109 0.34940972 0.15264844 0.07170833 0.64488281 0.37791667 2 0.78600781 0.38248611 2",
+      "evaluated_before_line_sha256": "ec42f885fc66ab69a93bcc6079259c8fe075edf7cf0afe004963c871636aa692"
+    },
+    {
+      "image_id": "new_000128",
+      "operation_id": "r11-late-new_000128-row23",
+      "action": "replace",
+      "evaluated_after_line": "0 0.6862148425 0.62492361 0.1275703150 0.05520833 0.00000000 0.00000000 0 0.74818750 0.64975000 2",
+      "evaluated_after_line_sha256": "399da3c75e2e6044a0314ae33861df0d63b73813e724fbf5b635aac036881ae7",
+      "source_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000128.png",
+          "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-14.png",
+          "sha256": "f7364178c2eb68eb280a220fa7573aad3b4a8a79a007ef2a95c1a05ca42fd0a3"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-right.png",
+          "sha256": "8433c703ee577067d04bc27221deb7a7f26504bb71d8d2281b38a3252950c4be"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-top.png",
+          "sha256": "d35c03f5f91c2887bb903b01fa576a9db7f3fe8552ab30dcefb59fe3868cc6f9"
+        }
+      ],
+      "base_row": 23,
+      "evaluated_before_line": "0 0.68752734 0.62492361 0.13019531 0.05520833 0.00000000 0.00000000 0 0.74818750 0.64975000 2",
+      "evaluated_before_line_sha256": "5aa03f6a3d4e55fc14cc2a2d16bc907ded166eedc2c0672a009e6cb69bc0f0bb"
+    },
+    {
+      "image_id": "new_000128",
+      "operation_id": "r11-late-new_000128-row26",
+      "action": "replace",
+      "evaluated_after_line": "0 0.8359375747 0.518750002 0.1359373505 0.084722241 0.77261719 0.55116667 2 0.90131250 0.55701389 2",
+      "evaluated_after_line_sha256": "9ba35489363e09bf22abeb3798c331e2f2abbb20951c3cac248f08263e530cad",
+      "source_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000128.png",
+          "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-14.png",
+          "sha256": "f7364178c2eb68eb280a220fa7573aad3b4a8a79a007ef2a95c1a05ca42fd0a3"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-right.png",
+          "sha256": "8433c703ee577067d04bc27221deb7a7f26504bb71d8d2281b38a3252950c4be"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-top.png",
+          "sha256": "d35c03f5f91c2887bb903b01fa576a9db7f3fe8552ab30dcefb59fe3868cc6f9"
+        }
+      ],
+      "base_row": 26,
+      "evaluated_before_line": "0 0.838672008 0.518750002 0.141406217 0.084722241 0.77261719 0.55116667 2 0.90131250 0.55701389 2",
+      "evaluated_before_line_sha256": "d9258f6a876b7546603cee51dbc248d7586a6f9794b1e3a44e6df726cb7dea6f"
+    },
+    {
+      "image_id": "new_000128",
+      "operation_id": "r11-late-new_000128-row30",
+      "action": "replace",
+      "evaluated_after_line": "0 0.8035156647 0.718749949 0.1210936705 0.043055490 0.00000000 0.00000000 0 0.86175000 0.73480556 2",
+      "evaluated_after_line_sha256": "1aed1db9b9d3466db86e19fbc2c702777ccd2a4d23eea5db611adffcc587d01e",
+      "source_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000128.png",
+          "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-14.png",
+          "sha256": "f7364178c2eb68eb280a220fa7573aad3b4a8a79a007ef2a95c1a05ca42fd0a3"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-right.png",
+          "sha256": "8433c703ee577067d04bc27221deb7a7f26504bb71d8d2281b38a3252950c4be"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-top.png",
+          "sha256": "d35c03f5f91c2887bb903b01fa576a9db7f3fe8552ab30dcefb59fe3868cc6f9"
+        }
+      ],
+      "base_row": 30,
+      "evaluated_before_line": "0 0.808203208 0.718749949 0.130468757 0.043055490 0.00000000 0.00000000 0 0.86175000 0.73480556 2",
+      "evaluated_before_line_sha256": "2bc01831c2731cbc8bbbcf9f563ec303750133e2cd592300419b924e180be0d7"
+    },
+    {
+      "image_id": "new_000128",
+      "operation_id": "r11-late-new_000128-row33",
+      "action": "replace",
+      "evaluated_after_line": "0 0.9292969898 0.724305484 0.1304685205 0.051388984 0.87488281 0.74270833 2 0.99242969 0.74665278 2",
+      "evaluated_after_line_sha256": "15ea987b0739fa791cbd9d07e6b8b7e87f03fb7299fc36389b8475756580eb4c",
+      "source_label_sha256": "7f5f125b39b8f5c7e29f7e6d0dc8a3ef70bce0dcde2155802c61cfc7520fcca4",
+      "source_image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "decision": "accept",
+      "reason": "Accept the image-right interpretation of the directional box instruction. This is a broad front with a visible left corner far from the right edge; setting xmax to that left point would collapse the box across clearly visible material. The proposed xmax instead removes the narrow dark right rack/side strip while retaining the visible right-front turn and its own pale rim. Point tokens and other box edges remain unchanged.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000128.png",
+          "sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-14.png",
+          "sha256": "f7364178c2eb68eb280a220fa7573aad3b4a8a79a007ef2a95c1a05ca42fd0a3"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-right.png",
+          "sha256": "8433c703ee577067d04bc27221deb7a7f26504bb71d8d2281b38a3252950c4be"
+        },
+        {
+          "path": "tmp/r11-middle/late-new_000128-top.png",
+          "sha256": "d35c03f5f91c2887bb903b01fa576a9db7f3fe8552ab30dcefb59fe3868cc6f9"
+        }
+      ],
+      "base_row": 33,
+      "evaluated_before_line": "0 0.932031365 0.724305484 0.135937271 0.051388984 0.87488281 0.74270833 2 0.99242969 0.74665278 2",
+      "evaluated_before_line_sha256": "64a7cc7b11025c86eaa395eec103a833aa15f050890d0b1db24082e78cfef76f"
+    }
+  ],
+  "summary": {
+    "operations_checked": 20,
+    "accepted": 20,
+    "changes_requested": 0,
+    "photos_checked": 5,
+    "additions_checked": 1,
+    "visibility_changes_checked": 2,
+    "representative_interpretation_operations_checked": 17
+  },
+  "interpretation_caveat": "Acceptance of127/128 uses the explicitly documented image-right interpretation of contradictory point names; it does not claim the literal left-point wording was applied. Visible front width and ordered corner identities supply the physical basis.",
+  "limitations": [
+    "The original image supports the added090 front and visible lower separator but gripper occlusion prevents observation of its true corners.",
+    "Coordinates retain approximately1\u20133pixel localization uncertainty in blurred edges; strict serialization precision is not subpixel physical certainty."
+  ]
+}

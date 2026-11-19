@@ -1,0 +1,2483 @@
+{
+  "schema_version": 1,
+  "review_id": "front-review-20261119-r11-late2-audit",
+  "source_review": "fronts-2026-11-19-r10",
+  "source_revision": "8230b8d592c792002bf97405d950264d22292a47",
+  "scope": {
+    "requested_image_ids": [
+      "new_000111",
+      "new_000112",
+      "new_000113",
+      "new_000114",
+      "new_000115",
+      "new_000116",
+      "new_000117",
+      "new_000118",
+      "new_000119",
+      "new_000120",
+      "new_000121",
+      "new_000122",
+      "new_000125"
+    ],
+    "fields": [
+      "xmin",
+      "xmax"
+    ],
+    "source_identity": "r10 base row"
+  },
+  "reviewed_image_ids": [
+    "new_000111",
+    "new_000112",
+    "new_000113",
+    "new_000114",
+    "new_000115",
+    "new_000116",
+    "new_000117",
+    "new_000118",
+    "new_000119",
+    "new_000120",
+    "new_000121",
+    "new_000122",
+    "new_000125"
+  ],
+  "review_method": [
+    "Read every assigned original and immutable r10 overlay in full context.",
+    "Inspect enlarged unannotated pixel crops to separate pale frontal rim from continuous dark rack uprights.",
+    "Choose row-specific horizontal bounds manually; retain the other three extrema and all point tokens.",
+    "Read back every proposed changed boundary beside the same raw pixels."
+  ],
+  "boundary_policy": "Visible front face plus its own frontal rim; exclude rack uprights, perforated rear rack, hand/gripper and adjacent cassettes. A single AABB can naturally enclose occluder pixels between visible parts of one physical front. Do not infer invisible corners or snap boxes to landmarks.",
+  "proposed_operations": [
+    {
+      "operation_id": "r11-late2-new_000111-row4-xmax",
+      "action": "replace",
+      "image_id": "new_000111",
+      "split": "train",
+      "base_row": 4,
+      "before_line": "0 0.343359464 0.082638772 0.100781312 0.051388888 0.29677344 0.10484722 2 0.39125781 0.10284722 2",
+      "after_line": "0 0.342578154000 0.082638772 0.099218692000 0.051388888 0.29677344 0.10484722 2 0.39125781 0.10284722 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 504 to 502 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000111.txt",
+      "source_label_sha256": "3164907023d821b1b4f678fc5153c1508d85c7ea2b9314307c15efad8c280c8d",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            375.00007424,
+            40.99991616,
+            504.0001536,
+            77.99991552
+          ],
+          "after_xyxy": [
+            375.00007424,
+            40.99991616,
+            502.0,
+            77.99991552
+          ],
+          "visible_right_extent_x_px": 502,
+          "source_crop_xyxy": [
+            477,
+            37,
+            516,
+            81
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000111.png",
+        "tmp/r11-late2/new_000111-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000111-row28-xmax",
+      "action": "replace",
+      "image_id": "new_000111",
+      "split": "train",
+      "base_row": 28,
+      "before_line": "0 0.463281331 0.506249929 0.082812520 0.048611121 0.42596875 0.52594444 2 0.50070313 0.52373611 2",
+      "after_line": "0 0.462500035500 0.506249929 0.081249929000 0.048611121 0.42596875 0.52594444 2 0.50070313 0.52373611 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 646 to 644 pixels at the visible right rim of this lower central front. The inherited right extension reaches the continuous dark vertical rack spine; that spine continues through the gaps and belongs to the support. Preserve the visible pale face and its own narrow frontal rim, all other extents, and both landmark tokens.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000111.txt",
+      "source_label_sha256": "3164907023d821b1b4f678fc5153c1508d85c7ea2b9314307c15efad8c280c8d",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            540.00009088,
+            346.99994532,
+            646.00011648,
+            381.99995244
+          ],
+          "after_xyxy": [
+            540.00009088,
+            346.99994532,
+            644.0,
+            381.99995244
+          ],
+          "visible_right_extent_x_px": 644,
+          "source_crop_xyxy": [
+            619,
+            343,
+            658,
+            385
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000111.png",
+        "tmp/r11-late2/new_000111-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000111-row29-xmax",
+      "action": "replace",
+      "image_id": "new_000111",
+      "split": "train",
+      "base_row": 29,
+      "before_line": "0 0.467187566 0.542361121 0.079687531 0.037500004 0.43031250 0.55681944 2 0.50380469 0.55184722 2",
+      "after_line": "0 0.466406275250 0.542361121 0.078124949500 0.037500004 0.43031250 0.55681944 2 0.50380469 0.55184722 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 649 to 647 pixels at the visible right rim of this lower central front. The inherited right extension reaches the continuous dark vertical rack spine; that spine continues through the gaps and belongs to the support. Preserve the visible pale face and its own narrow frontal rim, all other extents, and both landmark tokens.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000111.txt",
+      "source_label_sha256": "3164907023d821b1b4f678fc5153c1508d85c7ea2b9314307c15efad8c280c8d",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            547.00006464,
+            377.00000568,
+            649.00010432,
+            404.00000856
+          ],
+          "after_xyxy": [
+            547.00006464,
+            377.00000568,
+            647.0,
+            404.00000856
+          ],
+          "visible_right_extent_x_px": 647,
+          "source_crop_xyxy": [
+            622,
+            374,
+            661,
+            408
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000111.png",
+        "tmp/r11-late2/new_000111-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000111-row30-xmax",
+      "action": "replace",
+      "image_id": "new_000111",
+      "split": "train",
+      "base_row": 30,
+      "before_line": "0 0.469140657 0.573611100 0.078906230 0.041666655 0.43437500 0.59027778 2 0.50349219 0.58218056 2",
+      "after_line": "0 0.468359396000 0.573611100 0.077343708000 0.041666655 0.43437500 0.59027778 2 0.50349219 0.58218056 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 651 to 649 pixels at the visible right rim of this lower central front. The inherited right extension reaches the continuous dark vertical rack spine; that spine continues through the gaps and belongs to the support. Preserve the visible pale face and its own narrow frontal rim, all other extents, and both landmark tokens.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000111.txt",
+      "source_label_sha256": "3164907023d821b1b4f678fc5153c1508d85c7ea2b9314307c15efad8c280c8d",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            550.00005376,
+            397.9999962,
+            651.00002816,
+            427.9999878
+          ],
+          "after_xyxy": [
+            550.00005376,
+            397.9999962,
+            649.0,
+            427.9999878
+          ],
+          "visible_right_extent_x_px": 649,
+          "source_crop_xyxy": [
+            624,
+            394,
+            663,
+            431
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000111.png",
+        "tmp/r11-late2/new_000111-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000112-row5-xmax",
+      "action": "replace",
+      "image_id": "new_000112",
+      "split": "train",
+      "base_row": 5,
+      "before_line": "0 0.344921985 0.166666523 0.089843798 0.047222237 0.30376562 0.18693056 2 0.38702344 0.18204167 2",
+      "after_line": "0 0.344140668000 0.166666523 0.088281164000 0.047222237 0.30376562 0.18693056 2 0.38702344 0.18204167 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 499 to 497 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000112.txt",
+      "source_label_sha256": "c29d4cf5198b942704fac9d4b25e51faa73b51682105d56be2dc3b028b47e662",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            384.00011008,
+            102.99989124,
+            499.00017152,
+            136.99990188
+          ],
+          "after_xyxy": [
+            384.00011008,
+            102.99989124,
+            497.0,
+            136.99990188
+          ],
+          "visible_right_extent_x_px": 497,
+          "source_crop_xyxy": [
+            472,
+            99,
+            511,
+            140
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000112.png",
+        "tmp/r11-late2/new_000112-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000113-row1-xmax",
+      "action": "replace",
+      "image_id": "new_000113",
+      "split": "train",
+      "base_row": 1,
+      "before_line": "0 0.307421948 0.102777633 0.119531270 0.069444472 0.25671875 0.13387500 2 0.36278125 0.12102778 2",
+      "after_line": "0 0.306640656500 0.102777633 0.117968687000 0.069444472 0.25671875 0.13387500 2 0.36278125 0.12102778 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 470 to 468 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000113.txt",
+      "source_label_sha256": "e917d09774c9809e0776477239ad19ae087a581ef29d81c9139de0f45c9ac440",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            317.00008064,
+            48.99988584,
+            470.00010624,
+            98.99990568
+          ],
+          "after_xyxy": [
+            317.00008064,
+            48.99988584,
+            468.0,
+            98.99990568
+          ],
+          "visible_right_extent_x_px": 468,
+          "source_crop_xyxy": [
+            443,
+            45,
+            482,
+            102
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000113.png",
+        "tmp/r11-late2/new_000113-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000113-row2-xmax",
+      "action": "replace",
+      "image_id": "new_000113",
+      "split": "train",
+      "base_row": 2,
+      "before_line": "0 0.315234419 0.155555501 0.111718799 0.063888938 0.26592969 0.18416667 2 0.36700781 0.17033333 2",
+      "after_line": "0 0.314453134750 0.155555501 0.110156230500 0.063888938 0.26592969 0.18416667 2 0.36700781 0.17033333 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 475 to 473 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000113.txt",
+      "source_label_sha256": "e917d09774c9809e0776477239ad19ae087a581ef29d81c9139de0f45c9ac440",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            332.00002496,
+            88.99994304,
+            475.00008768,
+            134.9999784
+          ],
+          "after_xyxy": [
+            332.00002496,
+            88.99994304,
+            473.0,
+            134.9999784
+          ],
+          "visible_right_extent_x_px": 473,
+          "source_crop_xyxy": [
+            448,
+            85,
+            487,
+            138
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000113.png",
+        "tmp/r11-late2/new_000113-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000113-row6-xmax",
+      "action": "replace",
+      "image_id": "new_000113",
+      "split": "train",
+      "base_row": 6,
+      "before_line": "0 0.425000046 0.089583238 0.117187529 0.070833356 0.37126563 0.12022222 2 0.47821094 0.10656944 2",
+      "after_line": "0 0.424218765750 0.089583238 0.115624968500 0.070833356 0.37126563 0.12022222 2 0.47821094 0.10656944 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 619 to 617 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000113.txt",
+      "source_label_sha256": "e917d09774c9809e0776477239ad19ae087a581ef29d81c9139de0f45c9ac440",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            469.00004032,
+            38.9999232,
+            619.00007744,
+            89.99993952
+          ],
+          "after_xyxy": [
+            469.00004032,
+            38.9999232,
+            617.0,
+            89.99993952
+          ],
+          "visible_right_extent_x_px": 617,
+          "source_crop_xyxy": [
+            592,
+            35,
+            631,
+            93
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000113.png",
+        "tmp/r11-late2/new_000113-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000113-row7-xmax",
+      "action": "replace",
+      "image_id": "new_000113",
+      "split": "train",
+      "base_row": 7,
+      "before_line": "0 0.428906295 0.141666616 0.114062513 0.063888842 0.37608594 0.16963889 2 0.47951563 0.15954167 2",
+      "after_line": "0 0.427734394250 0.141666616 0.111718711500 0.063888842 0.37608594 0.16963889 2 0.47951563 0.15954167 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 622 to 619 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000113.txt",
+      "source_label_sha256": "e917d09774c9809e0776477239ad19ae087a581ef29d81c9139de0f45c9ac440",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            476.00004928,
+            78.9999804,
+            622.00006592,
+            124.99994664
+          ],
+          "after_xyxy": [
+            476.00004928,
+            78.9999804,
+            619.0,
+            124.99994664
+          ],
+          "visible_right_extent_x_px": 619,
+          "source_crop_xyxy": [
+            595,
+            75,
+            634,
+            128
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000113.png",
+        "tmp/r11-late2/new_000113-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000114-row1-xmax",
+      "action": "replace",
+      "image_id": "new_000114",
+      "split": "train",
+      "base_row": 1,
+      "before_line": "0 0.256640641 0.053472070 0.139843749 0.079166658 0.19426562 0.08827778 2 0.31768750 0.07669444 2",
+      "after_line": "0 0.255468758250 0.053472070 0.137499983500 0.079166658 0.19426562 0.08827778 2 0.31768750 0.07669444 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 418 to 415 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000114.txt",
+      "source_label_sha256": "acb66b094ab030450a46e0bc919179f5b0954b29bdba8b6a1067155aafb082f9",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            239.00002112,
+            9.99989352,
+            418.00001984,
+            66.99988728
+          ],
+          "after_xyxy": [
+            239.00002112,
+            9.99989352,
+            415.0,
+            66.99988728
+          ],
+          "visible_right_extent_x_px": 415,
+          "source_crop_xyxy": [
+            391,
+            6,
+            430,
+            70
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000114.png",
+        "tmp/r11-late2/new_000114-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000114-row2-xmax",
+      "action": "replace",
+      "image_id": "new_000114",
+      "split": "train",
+      "base_row": 2,
+      "before_line": "0 0.266406291 0.117361104 0.134375006 0.076388891 0.20605469 0.15112500 2 0.32357812 0.13788889 2",
+      "after_line": "0 0.265234394000 0.117361104 0.132031212000 0.076388891 0.20605469 0.15112500 2 0.32357812 0.13788889 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 427 to 424 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000114.txt",
+      "source_label_sha256": "acb66b094ab030450a46e0bc919179f5b0954b29bdba8b6a1067155aafb082f9",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            255.00004864,
+            56.99999412,
+            427.00005632,
+            111.99999564
+          ],
+          "after_xyxy": [
+            255.00004864,
+            56.99999412,
+            424.0,
+            111.99999564
+          ],
+          "visible_right_extent_x_px": 424,
+          "source_crop_xyxy": [
+            400,
+            53,
+            439,
+            115
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000114.png",
+        "tmp/r11-late2/new_000114-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000114-row3-xmax",
+      "action": "replace",
+      "image_id": "new_000114",
+      "split": "train",
+      "base_row": 3,
+      "before_line": "0 0.273828199 0.177777640 0.128906263 0.075000007 0.21380469 0.20901389 2 0.33009375 0.19798611 2",
+      "after_line": "0 0.272656283750 0.177777640 0.126562432500 0.075000007 0.21380469 0.20901389 2 0.33009375 0.19798611 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 433 to 430 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000114.txt",
+      "source_label_sha256": "acb66b094ab030450a46e0bc919179f5b0954b29bdba8b6a1067155aafb082f9",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            268.0000864,
+            100.99989828,
+            433.00010304,
+            154.99990332
+          ],
+          "after_xyxy": [
+            268.0000864,
+            100.99989828,
+            430.0,
+            154.99990332
+          ],
+          "visible_right_extent_x_px": 430,
+          "source_crop_xyxy": [
+            406,
+            97,
+            445,
+            158
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000114.png",
+        "tmp/r11-late2/new_000114-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000114-row4-xmax",
+      "action": "replace",
+      "image_id": "new_000114",
+      "split": "train",
+      "base_row": 4,
+      "before_line": "0 0.395312601 0.038888887 0.139062556 0.077777775 0.33010156 0.07308333 2 0.45631250 0.06040278 2",
+      "after_line": "0 0.393750036500 0.038888887 0.135937427000 0.077777775 0.33010156 0.07308333 2 0.45631250 0.06040278 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 595 to 591 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000114.txt",
+      "source_label_sha256": "acb66b094ab030450a46e0bc919179f5b0954b29bdba8b6a1067155aafb082f9",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            417.00009344,
+            -3.6e-07,
+            595.00016512,
+            55.99999764
+          ],
+          "after_xyxy": [
+            417.00009344,
+            -3.6e-07,
+            591.0,
+            55.99999764
+          ],
+          "visible_right_extent_x_px": 591,
+          "source_crop_xyxy": [
+            568,
+            0,
+            607,
+            59
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000114.png",
+        "tmp/r11-late2/new_000114-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000114-row5-xmax",
+      "action": "replace",
+      "image_id": "new_000114",
+      "split": "train",
+      "base_row": 5,
+      "before_line": "0 0.400390640 0.102083287 0.136718734 0.076388891 0.33660937 0.13537500 2 0.46230469 0.12291667 2",
+      "after_line": "0 0.399609386500 0.102083287 0.135156227000 0.076388891 0.33660937 0.13537500 2 0.46230469 0.12291667 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 600 to 598 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000114.txt",
+      "source_label_sha256": "acb66b094ab030450a46e0bc919179f5b0954b29bdba8b6a1067155aafb082f9",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            425.00002944,
+            45.99996588,
+            600.00000896,
+            100.9999674
+          ],
+          "after_xyxy": [
+            425.00002944,
+            45.99996588,
+            598.0,
+            100.9999674
+          ],
+          "visible_right_extent_x_px": 598,
+          "source_crop_xyxy": [
+            573,
+            42,
+            612,
+            104
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000114.png",
+        "tmp/r11-late2/new_000114-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000114-row6-xmax",
+      "action": "replace",
+      "image_id": "new_000114",
+      "split": "train",
+      "base_row": 6,
+      "before_line": "0 0.405859464 0.161805478 0.132031278 0.073611124 0.34436719 0.19380556 2 0.46406250 0.18223611 2",
+      "after_line": "0 0.404687537500 0.161805478 0.129687425000 0.073611124 0.34436719 0.19380556 2 0.46406250 0.18223611 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 604 to 601 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000114.txt",
+      "source_label_sha256": "acb66b094ab030450a46e0bc919179f5b0954b29bdba8b6a1067155aafb082f9",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            435.000096,
+            89.99993952,
+            604.00013184,
+            142.9999488
+          ],
+          "after_xyxy": [
+            435.000096,
+            89.99993952,
+            601.0,
+            142.9999488
+          ],
+          "visible_right_extent_x_px": 601,
+          "source_crop_xyxy": [
+            577,
+            86,
+            616,
+            146
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000114.png",
+        "tmp/r11-late2/new_000114-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000115-row3-xmax",
+      "action": "replace",
+      "image_id": "new_000115",
+      "split": "train",
+      "base_row": 3,
+      "before_line": "0 0.219921931 0.221527668 0.147656248 0.079166658 0.15372656 0.25604167 2 0.28209375 0.24509722 2",
+      "after_line": "0 0.218359403500 0.221527668 0.144531193000 0.079166658 0.15372656 0.25604167 2 0.28209375 0.24509722 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 376 to 372 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000115.txt",
+      "source_label_sha256": "5553b3dba9ac38c25ce5cabd220693cfb1872eb1a567118e9dbfa1be663c1985",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            187.00007296,
+            130.99992408,
+            376.0000704,
+            187.99991784
+          ],
+          "after_xyxy": [
+            187.00007296,
+            130.99992408,
+            372.0,
+            187.99991784
+          ],
+          "visible_right_extent_x_px": 372,
+          "source_crop_xyxy": [
+            349,
+            127,
+            388,
+            191
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000115.png",
+        "tmp/r11-late2/new_000115-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000115-row5-xmax",
+      "action": "replace",
+      "image_id": "new_000115",
+      "split": "train",
+      "base_row": 5,
+      "before_line": "0 0.355859472 0.063194400 0.158593816 0.087500056 0.28085938 0.10120833 2 0.42722656 0.09184722 2",
+      "after_line": "0 0.353515657000 0.063194400 0.153906186000 0.087500056 0.28085938 0.10120833 2 0.42722656 0.09184722 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 557 to 551 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000115.txt",
+      "source_label_sha256": "5553b3dba9ac38c25ce5cabd220693cfb1872eb1a567118e9dbfa1be663c1985",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            354.00008192,
+            13.99994784,
+            557.0001664,
+            76.99998816
+          ],
+          "after_xyxy": [
+            354.00008192,
+            13.99994784,
+            551.0,
+            76.99998816
+          ],
+          "visible_right_extent_x_px": 551,
+          "source_crop_xyxy": [
+            530,
+            10,
+            569,
+            80
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000115.png",
+        "tmp/r11-late2/new_000115-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000115-row6-xmax",
+      "action": "replace",
+      "image_id": "new_000115",
+      "split": "train",
+      "base_row": 6,
+      "before_line": "0 0.361718772 0.134722102 0.154687472 0.088888940 0.29000000 0.17283333 2 0.43342187 0.16186111 2",
+      "after_line": "0 0.360546893000 0.134722102 0.152343714000 0.088888940 0.29000000 0.17283333 2 0.43342187 0.16186111 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 562 to 559 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000115.txt",
+      "source_label_sha256": "5553b3dba9ac38c25ce5cabd220693cfb1872eb1a567118e9dbfa1be663c1985",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            364.00004608,
+            64.99989504,
+            562.00001024,
+            128.99993184
+          ],
+          "after_xyxy": [
+            364.00004608,
+            64.99989504,
+            559.0,
+            128.99993184
+          ],
+          "visible_right_extent_x_px": 559,
+          "source_crop_xyxy": [
+            535,
+            61,
+            574,
+            132
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000115.png",
+        "tmp/r11-late2/new_000115-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000115-row7-xmax",
+      "action": "replace",
+      "image_id": "new_000115",
+      "split": "train",
+      "base_row": 7,
+      "before_line": "0 0.368359426 0.204860968 0.150781236 0.079166658 0.29918750 0.23998611 2 0.43776563 0.22636111 2",
+      "after_line": "0 0.367187529000 0.204860968 0.148437442000 0.079166658 0.29918750 0.23998611 2 0.43776563 0.22636111 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 568 to 565 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000115.txt",
+      "source_label_sha256": "5553b3dba9ac38c25ce5cabd220693cfb1872eb1a567118e9dbfa1be663c1985",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            375.00007424,
+            118.99990008,
+            568.00005632,
+            175.99989384
+          ],
+          "after_xyxy": [
+            375.00007424,
+            118.99990008,
+            565.0,
+            175.99989384
+          ],
+          "visible_right_extent_x_px": 565,
+          "source_crop_xyxy": [
+            541,
+            115,
+            580,
+            179
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000115.png",
+        "tmp/r11-late2/new_000115-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000116-row5-xmax",
+      "action": "replace",
+      "image_id": "new_000116",
+      "split": "train",
+      "base_row": 5,
+      "before_line": "0 0.340234449 0.062499862 0.166406287 0.091666707 0.26046094 0.09956944 2 0.41272656 0.08258333 2",
+      "after_line": "0 0.338281277750 0.062499862 0.162499944500 0.091666707 0.26046094 0.09956944 2 0.41272656 0.08258333 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 542 to 537 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000116.txt",
+      "source_label_sha256": "94bacfe88194f496b885e5f7a21a9088c1090a98d0ce169cb9d017dc16c00a28",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            329.00007104,
+            11.99988612,
+            542.0001184,
+            77.99991516
+          ],
+          "after_xyxy": [
+            329.00007104,
+            11.99988612,
+            537.0,
+            77.99991516
+          ],
+          "visible_right_extent_x_px": 537,
+          "source_crop_xyxy": [
+            515,
+            8,
+            554,
+            81
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000116.png",
+        "tmp/r11-late2/new_000116-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000116-row7-xmax",
+      "action": "replace",
+      "image_id": "new_000116",
+      "split": "train",
+      "base_row": 7,
+      "before_line": "0 0.355468741 0.209027667 0.154687472 0.087500056 0.28407031 0.24638889 2 0.42482813 0.22415278 2",
+      "after_line": "0 0.353906252500 0.209027667 0.151562495000 0.087500056 0.28407031 0.24638889 2 0.42482813 0.22415278 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 554 to 550 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000116.txt",
+      "source_label_sha256": "94bacfe88194f496b885e5f7a21a9088c1090a98d0ce169cb9d017dc16c00a28",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            356.0000064,
+            118.99990008,
+            553.99997056,
+            181.9999404
+          ],
+          "after_xyxy": [
+            356.0000064,
+            118.99990008,
+            550.0,
+            181.9999404
+          ],
+          "visible_right_extent_x_px": 550,
+          "source_crop_xyxy": [
+            526,
+            115,
+            565,
+            185
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000116.png",
+        "tmp/r11-late2/new_000116-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000117-row1-xmax",
+      "action": "replace",
+      "image_id": "new_000117",
+      "split": "train",
+      "base_row": 1,
+      "before_line": "0 0.194140648 0.088888844 0.160156242 0.094444475 0.12349219 0.13002778 2 0.26132031 0.11300000 2",
+      "after_line": "0 0.192968763500 0.088888844 0.157812473000 0.094444475 0.12349219 0.13002778 2 0.26132031 0.11300000 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 351 to 348 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000117.txt",
+      "source_label_sha256": "ab256f2b3c98d6a53b705faaf06fea54f879ee670aae5ae67d660b64c2531009",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            146.00003456,
+            29.99995668,
+            351.00002432,
+            97.99997868
+          ],
+          "after_xyxy": [
+            146.00003456,
+            29.99995668,
+            348.0,
+            97.99997868
+          ],
+          "visible_right_extent_x_px": 348,
+          "source_crop_xyxy": [
+            324,
+            26,
+            363,
+            101
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000117.png",
+        "tmp/r11-late2/new_000117-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000117-row2-xmax",
+      "action": "replace",
+      "image_id": "new_000117",
+      "split": "train",
+      "base_row": 2,
+      "before_line": "0 0.208593767 0.163194313 0.153124978 0.090277824 0.13839062 0.20193056 2 0.27355469 0.18300000 2",
+      "after_line": "0 0.207421889000 0.163194313 0.150781222000 0.090277824 0.13839062 0.20193056 2 0.27355469 0.18300000 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 365 to 362 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000117.txt",
+      "source_label_sha256": "ab256f2b3c98d6a53b705faaf06fea54f879ee670aae5ae67d660b64c2531009",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            169.00003584,
+            84.99988872,
+            365.00000768,
+            149.999922
+          ],
+          "after_xyxy": [
+            169.00003584,
+            84.99988872,
+            362.0,
+            149.999922
+          ],
+          "visible_right_extent_x_px": 362,
+          "source_crop_xyxy": [
+            338,
+            81,
+            377,
+            153
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000117.png",
+        "tmp/r11-late2/new_000117-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000117-row3-xmax",
+      "action": "replace",
+      "image_id": "new_000117",
+      "split": "train",
+      "base_row": 3,
+      "before_line": "0 0.218359397 0.231249854 0.147656221 0.084722193 0.15382813 0.26719444 2 0.27834375 0.24827778 2",
+      "after_line": "0 0.217187518250 0.231249854 0.145312463500 0.084722193 0.15382813 0.26719444 2 0.27834375 0.24827778 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 374 to 371 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000117.txt",
+      "source_label_sha256": "ab256f2b3c98d6a53b705faaf06fea54f879ee670aae5ae67d660b64c2531009",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            185.00004672,
+            135.9999054,
+            374.0000096,
+            196.99988436
+          ],
+          "after_xyxy": [
+            185.00004672,
+            135.9999054,
+            371.0,
+            196.99988436
+          ],
+          "visible_right_extent_x_px": 371,
+          "source_crop_xyxy": [
+            347,
+            132,
+            386,
+            200
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000117.png",
+        "tmp/r11-late2/new_000117-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000117-row5-xmax",
+      "action": "replace",
+      "image_id": "new_000117",
+      "split": "train",
+      "base_row": 5,
+      "before_line": "0 0.351953210 0.067361003 0.161718750 0.084722193 0.27461719 0.10259722 2 0.41935937 0.09312500 2",
+      "after_line": "0 0.348828167500 0.067361003 0.155468665000 0.084722193 0.27461719 0.10259722 2 0.41935937 0.09312500 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 554 to 546 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000117.txt",
+      "source_label_sha256": "ab256f2b3c98d6a53b705faaf06fea54f879ee670aae5ae67d660b64c2531009",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            347.0001088,
+            17.99993268,
+            554.0001088,
+            78.99991164
+          ],
+          "after_xyxy": [
+            347.0001088,
+            17.99993268,
+            546.0,
+            78.99991164
+          ],
+          "visible_right_extent_x_px": 546,
+          "source_crop_xyxy": [
+            527,
+            14,
+            566,
+            82
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000117.png",
+        "tmp/r11-late2/new_000117-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000117-row6-xmax",
+      "action": "replace",
+      "image_id": "new_000117",
+      "split": "train",
+      "base_row": 6,
+      "before_line": "0 0.360156304 0.140277685 0.159375009 0.086111077 0.28473437 0.17733333 2 0.42734375 0.16219444 2",
+      "after_line": "0 0.357812524750 0.140277685 0.154687450500 0.086111077 0.28473437 0.17733333 2 0.42734375 0.16219444 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 563 to 557 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000117.txt",
+      "source_label_sha256": "ab256f2b3c98d6a53b705faaf06fea54f879ee670aae5ae67d660b64c2531009",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            359.00006336,
+            69.99994548,
+            563.00007488,
+            131.99992092
+          ],
+          "after_xyxy": [
+            359.00006336,
+            69.99994548,
+            557.0,
+            131.99992092
+          ],
+          "visible_right_extent_x_px": 557,
+          "source_crop_xyxy": [
+            536,
+            66,
+            575,
+            135
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000117.png",
+        "tmp/r11-late2/new_000117-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000117-row7-xmax",
+      "action": "replace",
+      "image_id": "new_000117",
+      "split": "train",
+      "base_row": 7,
+      "before_line": "0 0.365625007 0.206944390 0.154687472 0.080555542 0.29750000 0.24070833 2 0.43213281 0.23030556 2",
+      "after_line": "0 0.363671885500 0.206944390 0.150781229000 0.080555542 0.29750000 0.24070833 2 0.43213281 0.23030556 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 567 to 562 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000117.txt",
+      "source_label_sha256": "ab256f2b3c98d6a53b705faaf06fea54f879ee670aae5ae67d660b64c2531009",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            369.00002688,
+            119.99996568,
+            566.99999104,
+            177.99995592
+          ],
+          "after_xyxy": [
+            369.00002688,
+            119.99996568,
+            562.0,
+            177.99995592
+          ],
+          "visible_right_extent_x_px": 562,
+          "source_crop_xyxy": [
+            539,
+            116,
+            578,
+            181
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000117.png",
+        "tmp/r11-late2/new_000117-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000118-row3-xmax",
+      "action": "replace",
+      "image_id": "new_000118",
+      "split": "train",
+      "base_row": 3,
+      "before_line": "0 0.262109344 0.286805442 0.102343725 0.056944423 0.21495312 0.31005556 2 0.30553906 0.30081944 2",
+      "after_line": "0 0.260937490750 0.286805442 0.100000018500 0.056944423 0.21495312 0.31005556 2 0.30553906 0.30081944 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 401 to 398 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000118.txt",
+      "source_label_sha256": "1d60af5e4a9ba2c741d249660525c92deb341fc8c49d1bf40d61721bacf6df99",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            269.99997632,
+            185.99992596,
+            400.99994432,
+            226.99991052
+          ],
+          "after_xyxy": [
+            269.99997632,
+            185.99992596,
+            398.0,
+            226.99991052
+          ],
+          "visible_right_extent_x_px": 398,
+          "source_crop_xyxy": [
+            373,
+            182,
+            412,
+            230
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000118.png",
+        "tmp/r11-late2/new_000118-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000118-row5-xmax",
+      "action": "replace",
+      "image_id": "new_000118",
+      "split": "train",
+      "base_row": 5,
+      "before_line": "0 0.346875049 0.073610980 0.117187556 0.069444472 0.29514062 0.10215278 2 0.39872656 0.09356944 2",
+      "after_line": "0 0.346093760500 0.073610980 0.115624979000 0.069444472 0.29514062 0.10215278 2 0.39872656 0.09356944 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 519 to 517 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000118.txt",
+      "source_label_sha256": "1d60af5e4a9ba2c741d249660525c92deb341fc8c49d1bf40d61721bacf6df99",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            369.00002688,
+            27.99989568,
+            519.00009856,
+            77.99991552
+          ],
+          "after_xyxy": [
+            369.00002688,
+            27.99989568,
+            517.0,
+            77.99991552
+          ],
+          "visible_right_extent_x_px": 517,
+          "source_crop_xyxy": [
+            492,
+            24,
+            531,
+            81
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000118.png",
+        "tmp/r11-late2/new_000118-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000118-row7-xmax",
+      "action": "replace",
+      "image_id": "new_000118",
+      "split": "train",
+      "base_row": 7,
+      "before_line": "0 0.358203160 0.178472178 0.110156277 0.065277821 0.30664844 0.20445833 2 0.40652344 0.19522222 2",
+      "after_line": "0 0.357421885750 0.178472178 0.108593728500 0.065277821 0.30664844 0.20445833 2 0.40652344 0.19522222 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 529 to 527 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000118.txt",
+      "source_label_sha256": "1d60af5e4a9ba2c741d249660525c92deb341fc8c49d1bf40d61721bacf6df99",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            388.00002752,
+            104.9999526,
+            529.00006208,
+            151.99998372
+          ],
+          "after_xyxy": [
+            388.00002752,
+            104.9999526,
+            527.0,
+            151.99998372
+          ],
+          "visible_right_extent_x_px": 527,
+          "source_crop_xyxy": [
+            502,
+            101,
+            541,
+            155
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000118.png",
+        "tmp/r11-late2/new_000118-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000118-row8-xmax",
+      "action": "replace",
+      "image_id": "new_000118",
+      "split": "train",
+      "base_row": 8,
+      "before_line": "0 0.363281307 0.226388857 0.107812455 0.063888938 0.31407812 0.25197222 2 0.40949219 0.24076389 2",
+      "after_line": "0 0.362500039750 0.226388857 0.106249920500 0.063888938 0.31407812 0.25197222 2 0.40949219 0.24076389 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 534 to 532 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000118.txt",
+      "source_label_sha256": "1d60af5e4a9ba2c741d249660525c92deb341fc8c49d1bf40d61721bacf6df99",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            396.00010176,
+            139.99995936,
+            534.00004416,
+            185.99999472
+          ],
+          "after_xyxy": [
+            396.00010176,
+            139.99995936,
+            532.0,
+            185.99999472
+          ],
+          "visible_right_extent_x_px": 532,
+          "source_crop_xyxy": [
+            507,
+            136,
+            546,
+            189
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000118.png",
+        "tmp/r11-late2/new_000118-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000119-row7-xmax",
+      "action": "replace",
+      "image_id": "new_000119",
+      "split": "train",
+      "base_row": 7,
+      "before_line": "0 0.390625032 0.234027670 0.095312565 0.054166656 0.34986719 0.25443056 2 0.43335938 0.24355556 2",
+      "after_line": "0 0.389843749750 0.234027670 0.093750000500 0.054166656 0.34986719 0.25443056 2 0.43335938 0.24355556 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 561 to 559 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000119.txt",
+      "source_label_sha256": "1aa185c54c45f235fc8abc6afc72e62d20be7bc860403ade8fc8aa625c0fa794",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            438.99999936,
+            148.99992624,
+            561.00008256,
+            187.99991856
+          ],
+          "after_xyxy": [
+            438.99999936,
+            148.99992624,
+            559.0,
+            187.99991856
+          ],
+          "visible_right_extent_x_px": 559,
+          "source_crop_xyxy": [
+            534,
+            145,
+            573,
+            191
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000119.png",
+        "tmp/r11-late2/new_000119-readback.png"
+      ]
+    },
+    {
+      "operation_id": "r11-late2-new_000119-row8-xmax",
+      "action": "replace",
+      "image_id": "new_000119",
+      "split": "train",
+      "base_row": 8,
+      "before_line": "0 0.394140653 0.272222163 0.092968806 0.052777772 0.35416406 0.29208333 2 0.43525781 0.28366667 2",
+      "after_line": "0 0.393359375000 0.272222163 0.091406250000 0.052777772 0.35416406 0.29208333 2 0.43525781 0.28366667 2",
+      "changed_groups": [
+        "box"
+      ],
+      "requested_fields_applied": [
+        "xmax"
+      ],
+      "reason": "Reduce xmax from 564 to 562 pixels at the outer edge of this front and its frontal rim. The extra right strip belongs to the continuous dark rack upright between stacks, visible through successive row gaps. The chosen x still contains the curved pale front/rim projection and the existing right landmark; xmin, both y extents, and all point/visibility tokens stay unchanged.",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000119.txt",
+      "source_label_sha256": "1aa185c54c45f235fc8abc6afc72e62d20be7bc860403ade8fc8aa625c0fa794",
+      "pixel_witnesses": [
+        {
+          "field": "box",
+          "r10_xyxy": [
+            445.0,
+            176.99995944,
+            564.00007168,
+            214.99995528
+          ],
+          "after_xyxy": [
+            445.0,
+            176.99995944,
+            562.0,
+            214.99995528
+          ],
+          "visible_right_extent_x_px": 562,
+          "source_crop_xyxy": [
+            537,
+            173,
+            576,
+            218
+          ],
+          "other_three_extrema": "retained",
+          "right_spurious_strip": "continuous dark rack upright beyond the front/rim"
+        }
+      ],
+      "uncertainty": {
+        "boundary_precision_px": 2,
+        "subpixel_accuracy_claimed": false
+      },
+      "evidence": [
+        "data/images/train/new_000119.png",
+        "tmp/r11-late2/new_000119-readback.png"
+      ]
+    }
+  ],
+  "status_updates": [],
+  "new_cases": [],
+  "photo_reviews": [
+    {
+      "image_id": "new_000111",
+      "split": "train",
+      "source_image_sha256": "44f6a9de5ac112c7f5bf7d6b0b90c60cf5adf5ff83d697acffe0b0c2b4ac209b",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000111.txt",
+      "source_label_sha256": "3164907023d821b1b4f678fc5153c1508d85c7ea2b9314307c15efad8c280c8d",
+      "current_instance_count": 34,
+      "proposed_instance_count": 34,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "changed-boundary raw/r10/proposed readback crops"
+      ],
+      "changed_rows": [
+        4,
+        28,
+        29,
+        30
+      ],
+      "operation_ids": [
+        "r11-late2-new_000111-row4-xmax",
+        "r11-late2-new_000111-row28-xmax",
+        "r11-late2-new_000111-row29-xmax",
+        "r11-late2-new_000111-row30-xmax"
+      ],
+      "disposition": "amended_xmax",
+      "notes": "Correct only the listed rack-inclusive right margins. Existing left borders include the front's own upper lip/projection; no further xmin shift is supported by the raw image.",
+      "evidence": [
+        "data/images/train/new_000111.png",
+        "tmp/r11-late2/new_000111-axes-375-30.png",
+        "tmp/r11-late2/new_000111-axes-490-35.png",
+        "tmp/r11-late2/new_000111-axes-625-340.png",
+        "tmp/r11-late2/new_000111-readback.png"
+      ]
+    },
+    {
+      "image_id": "new_000112",
+      "split": "train",
+      "source_image_sha256": "f14bbd3494e04f5c83676900de4ae31bbf27189765859748c4be6803e34ad1f4",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000112.txt",
+      "source_label_sha256": "c29d4cf5198b942704fac9d4b25e51faa73b51682105d56be2dc3b028b47e662",
+      "current_instance_count": 36,
+      "proposed_instance_count": 36,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "changed-boundary raw/r10/proposed readback crops"
+      ],
+      "changed_rows": [
+        5
+      ],
+      "operation_ids": [
+        "r11-late2-new_000112-row5-xmax"
+      ],
+      "disposition": "amended_xmax",
+      "notes": "Correct only the listed rack-inclusive right margins. Existing left borders include the front's own upper lip/projection; no further xmin shift is supported by the raw image.",
+      "evidence": [
+        "data/images/train/new_000112.png",
+        "tmp/r11-late2/new_000112-axes-375-55.png",
+        "tmp/r11-late2/new_000112-axes-480-70.png",
+        "tmp/r11-late2/new_000112-axes-610-345.png",
+        "tmp/r11-late2/new_000112-readback.png"
+      ]
+    },
+    {
+      "image_id": "new_000113",
+      "split": "train",
+      "source_image_sha256": "b53b06d414d0a4c6239a4a460a5d7a04bf9629bcd2ecf082d6fe29b440525029",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000113.txt",
+      "source_label_sha256": "e917d09774c9809e0776477239ad19ae087a581ef29d81c9139de0f45c9ac440",
+      "current_instance_count": 29,
+      "proposed_instance_count": 29,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "changed-boundary raw/r10/proposed readback crops"
+      ],
+      "changed_rows": [
+        1,
+        2,
+        6,
+        7
+      ],
+      "operation_ids": [
+        "r11-late2-new_000113-row1-xmax",
+        "r11-late2-new_000113-row2-xmax",
+        "r11-late2-new_000113-row6-xmax",
+        "r11-late2-new_000113-row7-xmax"
+      ],
+      "disposition": "amended_xmax",
+      "notes": "Correct only the listed rack-inclusive right margins. Existing left borders include the front's own upper lip/projection; no further xmin shift is supported by the raw image.",
+      "evidence": [
+        "data/images/train/new_000113.png",
+        "tmp/r11-late2/new_000113-axes-455-40.png",
+        "tmp/r11-late2/new_000113-axes-600-0.png",
+        "tmp/r11-late2/new_000113-readback.png"
+      ]
+    },
+    {
+      "image_id": "new_000114",
+      "split": "train",
+      "source_image_sha256": "42ef4edb56e6cc801466aa4350b009d27ecd2524cf240778efbb3d865c3c2667",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000114.txt",
+      "source_label_sha256": "acb66b094ab030450a46e0bc919179f5b0954b29bdba8b6a1067155aafb082f9",
+      "current_instance_count": 26,
+      "proposed_instance_count": 26,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "changed-boundary raw/r10/proposed readback crops"
+      ],
+      "changed_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "operation_ids": [
+        "r11-late2-new_000114-row1-xmax",
+        "r11-late2-new_000114-row2-xmax",
+        "r11-late2-new_000114-row3-xmax",
+        "r11-late2-new_000114-row4-xmax",
+        "r11-late2-new_000114-row5-xmax",
+        "r11-late2-new_000114-row6-xmax"
+      ],
+      "disposition": "amended_xmax",
+      "notes": "Correct only the listed rack-inclusive right margins. Existing left borders include the front's own upper lip/projection; no further xmin shift is supported by the raw image.",
+      "evidence": [
+        "data/images/train/new_000114.png",
+        "tmp/r11-late2/new_000114-axes-395-0.png",
+        "tmp/r11-late2/new_000114-axes-575-0.png",
+        "tmp/r11-late2/new_000114-readback.png"
+      ]
+    },
+    {
+      "image_id": "new_000115",
+      "split": "train",
+      "source_image_sha256": "218087e388114bb1e6f5187f0d816708c32a6c288840cf79deb04d168c0bc5ac",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000115.txt",
+      "source_label_sha256": "5553b3dba9ac38c25ce5cabd220693cfb1872eb1a567118e9dbfa1be663c1985",
+      "current_instance_count": 24,
+      "proposed_instance_count": 24,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "changed-boundary raw/r10/proposed readback crops"
+      ],
+      "changed_rows": [
+        3,
+        5,
+        6,
+        7
+      ],
+      "operation_ids": [
+        "r11-late2-new_000115-row3-xmax",
+        "r11-late2-new_000115-row5-xmax",
+        "r11-late2-new_000115-row6-xmax",
+        "r11-late2-new_000115-row7-xmax"
+      ],
+      "disposition": "amended_xmax",
+      "notes": "Correct only the listed rack-inclusive right margins. Existing left borders include the front's own upper lip/projection; no further xmin shift is supported by the raw image.",
+      "evidence": [
+        "data/images/train/new_000115.png",
+        "tmp/r11-late2/new_000115-axes-335-20.png",
+        "tmp/r11-late2/new_000115-axes-530-0.png",
+        "tmp/r11-late2/new_000115-readback.png"
+      ]
+    },
+    {
+      "image_id": "new_000116",
+      "split": "train",
+      "source_image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000116.txt",
+      "source_label_sha256": "94bacfe88194f496b885e5f7a21a9088c1090a98d0ce169cb9d017dc16c00a28",
+      "current_instance_count": 25,
+      "proposed_instance_count": 25,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "changed-boundary raw/r10/proposed readback crops"
+      ],
+      "changed_rows": [
+        5,
+        7
+      ],
+      "operation_ids": [
+        "r11-late2-new_000116-row5-xmax",
+        "r11-late2-new_000116-row7-xmax"
+      ],
+      "disposition": "amended_xmax",
+      "notes": "Correct only the listed rack-inclusive right margins. Existing left borders include the front's own upper lip/projection; no further xmin shift is supported by the raw image.",
+      "evidence": [
+        "data/images/train/new_000116.png",
+        "tmp/r11-late2/new_000116-axes-310-20.png",
+        "tmp/r11-late2/new_000116-axes-520-0.png",
+        "tmp/r11-late2/new_000116-readback.png"
+      ]
+    },
+    {
+      "image_id": "new_000117",
+      "split": "train",
+      "source_image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000117.txt",
+      "source_label_sha256": "ab256f2b3c98d6a53b705faaf06fea54f879ee670aae5ae67d660b64c2531009",
+      "current_instance_count": 24,
+      "proposed_instance_count": 24,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "changed-boundary raw/r10/proposed readback crops"
+      ],
+      "changed_rows": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "operation_ids": [
+        "r11-late2-new_000117-row1-xmax",
+        "r11-late2-new_000117-row2-xmax",
+        "r11-late2-new_000117-row3-xmax",
+        "r11-late2-new_000117-row5-xmax",
+        "r11-late2-new_000117-row6-xmax",
+        "r11-late2-new_000117-row7-xmax"
+      ],
+      "disposition": "amended_xmax",
+      "notes": "Correct only the listed rack-inclusive right margins. Existing left borders include the front's own upper lip/projection; no further xmin shift is supported by the raw image.",
+      "evidence": [
+        "data/images/train/new_000117.png",
+        "tmp/r11-late2/new_000117-axes-325-25.png",
+        "tmp/r11-late2/new_000117-axes-525-0.png",
+        "tmp/r11-late2/new_000117-readback.png"
+      ]
+    },
+    {
+      "image_id": "new_000118",
+      "split": "train",
+      "source_image_sha256": "346aee491ea67198875060780ba55503b05b74305555c419d0ecd0a2a58b9630",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000118.txt",
+      "source_label_sha256": "1d60af5e4a9ba2c741d249660525c92deb341fc8c49d1bf40d61721bacf6df99",
+      "current_instance_count": 33,
+      "proposed_instance_count": 33,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "changed-boundary raw/r10/proposed readback crops"
+      ],
+      "changed_rows": [
+        3,
+        5,
+        7,
+        8
+      ],
+      "operation_ids": [
+        "r11-late2-new_000118-row3-xmax",
+        "r11-late2-new_000118-row5-xmax",
+        "r11-late2-new_000118-row7-xmax",
+        "r11-late2-new_000118-row8-xmax"
+      ],
+      "disposition": "amended_xmax",
+      "notes": "Correct only the listed rack-inclusive right margins. Existing left borders include the front's own upper lip/projection; no further xmin shift is supported by the raw image.",
+      "evidence": [
+        "data/images/train/new_000118.png",
+        "tmp/r11-late2/new_000118-axes-375-105.png",
+        "tmp/r11-late2/new_000118-axes-495-0.png",
+        "tmp/r11-late2/new_000118-readback.png"
+      ]
+    },
+    {
+      "image_id": "new_000119",
+      "split": "train",
+      "source_image_sha256": "9a5e0e0fd881165121b54f76d4791e812cd22fec24da624413eca1a3ee259a41",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000119.txt",
+      "source_label_sha256": "1aa185c54c45f235fc8abc6afc72e62d20be7bc860403ade8fc8aa625c0fa794",
+      "current_instance_count": 35,
+      "proposed_instance_count": 35,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "changed-boundary raw/r10/proposed readback crops"
+      ],
+      "changed_rows": [
+        7,
+        8
+      ],
+      "operation_ids": [
+        "r11-late2-new_000119-row7-xmax",
+        "r11-late2-new_000119-row8-xmax"
+      ],
+      "disposition": "amended_xmax",
+      "notes": "Correct only the listed rack-inclusive right margins. Existing left borders include the front's own upper lip/projection; no further xmin shift is supported by the raw image.",
+      "evidence": [
+        "data/images/train/new_000119.png",
+        "tmp/r11-late2/new_000119-axes-430-25.png",
+        "tmp/r11-late2/new_000119-readback.png"
+      ]
+    },
+    {
+      "image_id": "new_000120",
+      "split": "train",
+      "source_image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000120.txt",
+      "source_label_sha256": "7280d8f45d1973de4229fe60b6004e106937bb77f0d22df451da9725303ae94a",
+      "current_instance_count": 56,
+      "proposed_instance_count": 56,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "enlarged raw-pixel whole-stack views"
+      ],
+      "changed_rows": [],
+      "operation_ids": [],
+      "disposition": "reviewed_preserved",
+      "notes": "The current x bounds follow the connected frontal lips and visible faces at this resolution. Apparent one- or two-pixel differences are within the blur transition, and no row-specific farther shift is supported well enough to replace the parent values. Keep the r10 label bytes; this is not a claim of pixel-perfect ground truth.",
+      "evidence": [
+        "data/images/train/new_000120.png",
+        "tmp/r11-late2/new_000120-axes-435-52.png"
+      ]
+    },
+    {
+      "image_id": "new_000121",
+      "split": "train",
+      "source_image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000121.txt",
+      "source_label_sha256": "85a54787152b8c411c8c097015559f86e73d6f173773269a8b0b8af4d49df4cd",
+      "current_instance_count": 56,
+      "proposed_instance_count": 56,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "enlarged raw-pixel whole-stack views"
+      ],
+      "changed_rows": [],
+      "operation_ids": [],
+      "disposition": "reviewed_preserved",
+      "notes": "The current x bounds follow the connected frontal lips and visible faces at this resolution. Apparent one- or two-pixel differences are within the blur transition, and no row-specific farther shift is supported well enough to replace the parent values. Keep the r10 label bytes; this is not a claim of pixel-perfect ground truth.",
+      "evidence": [
+        "data/images/train/new_000121.png",
+        "tmp/r11-late2/new_000121-axes-445-122.png"
+      ]
+    },
+    {
+      "image_id": "new_000122",
+      "split": "train",
+      "source_image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000122.txt",
+      "source_label_sha256": "244c59ccb6e55d938442242dc81163372f6db3bd5a81e749bdabcfbd7016be40",
+      "current_instance_count": 57,
+      "proposed_instance_count": 57,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "enlarged raw-pixel whole-stack views"
+      ],
+      "changed_rows": [],
+      "operation_ids": [],
+      "disposition": "reviewed_preserved",
+      "notes": "The current x bounds follow the connected frontal lips and visible faces at this resolution. Apparent one- or two-pixel differences are within the blur transition, and no row-specific farther shift is supported well enough to replace the parent values. Keep the r10 label bytes; this is not a claim of pixel-perfect ground truth.",
+      "evidence": [
+        "data/images/train/new_000122.png",
+        "tmp/r11-late2/new_000122-axes-312-210.png"
+      ]
+    },
+    {
+      "image_id": "new_000125",
+      "split": "train",
+      "source_image_sha256": "7c222cd020ba60723fe876a0ccf7256f6d146df488477dc7e0ca865e4dd32a5a",
+      "source_label_path": "data/reviews/fronts-2026-11-19-r10/labels/train/new_000125.txt",
+      "source_label_sha256": "455265246fc64906f668be2fd053358654e34e6c487c0dac893c6a955a445793",
+      "current_instance_count": 54,
+      "proposed_instance_count": 54,
+      "reviewed_fields": [
+        "xmin",
+        "xmax"
+      ],
+      "full_photo_compared": true,
+      "inspected_views": [
+        "full original pixels and immutable r10 overlay",
+        "enlarged raw-pixel boundary crops with source-coordinate rulers",
+        "enlarged raw-pixel whole-stack views"
+      ],
+      "changed_rows": [],
+      "operation_ids": [],
+      "disposition": "reviewed_preserved",
+      "notes": "The current x bounds follow the connected frontal lips and visible faces at this resolution. Apparent one- or two-pixel differences are within the blur transition, and no row-specific farther shift is supported well enough to replace the parent values. Keep the r10 label bytes; this is not a claim of pixel-perfect ground truth.",
+      "evidence": [
+        "data/images/train/new_000125.png",
+        "tmp/r11-late2/new_000125-axes-420-126.png",
+        "tmp/r11-late2/new_000125-axes-680-45.png"
+      ]
+    }
+  ],
+  "request_coverage": [
+    {
+      "image_id": "new_000111",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "amended_xmax",
+      "changed_rows": [
+        4,
+        28,
+        29,
+        30
+      ],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000112",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "amended_xmax",
+      "changed_rows": [
+        5
+      ],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000113",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "amended_xmax",
+      "changed_rows": [
+        1,
+        2,
+        6,
+        7
+      ],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000114",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "amended_xmax",
+      "changed_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000115",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "amended_xmax",
+      "changed_rows": [
+        3,
+        5,
+        6,
+        7
+      ],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000116",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "amended_xmax",
+      "changed_rows": [
+        5,
+        7
+      ],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000117",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "amended_xmax",
+      "changed_rows": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000118",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "amended_xmax",
+      "changed_rows": [
+        3,
+        5,
+        7,
+        8
+      ],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000119",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "amended_xmax",
+      "changed_rows": [
+        7,
+        8
+      ],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000120",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "reviewed_preserved",
+      "changed_rows": [],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000121",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "reviewed_preserved",
+      "changed_rows": [],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000122",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "reviewed_preserved",
+      "changed_rows": [],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    },
+    {
+      "image_id": "new_000125",
+      "request": "general xmin/xmax visual inspection",
+      "disposition": "reviewed_preserved",
+      "changed_rows": [],
+      "preserved_fields": [
+        "ymin",
+        "ymax",
+        "left",
+        "right",
+        "visibility",
+        "instance identity"
+      ]
+    }
+  ],
+  "summary": {
+    "photos_reviewed": 13,
+    "r10_instances": 489,
+    "proposed_operations": 33,
+    "changed_photos": 9,
+    "operation_counts": {
+      "replace": 33
+    },
+    "field_group_changes": {
+      "box": 33
+    },
+    "instance_additions": 0,
+    "instance_deletions": 0,
+    "old_series_modified": false,
+    "actual_label_files_modified": false,
+    "training_run": false
+  },
+  "limitations": [
+    "Manual boundaries have approximately two source pixels of uncertainty under blur; decimal serialization is not subpixel evidence.",
+    "General feedback does not specify row-by-row offsets; unsupported tiny shifts are left unchanged, with explicit reviewed-preserved records.",
+    "This audit only assesses the thirteen requested photos and does not certify unseen data."
+  ],
+  "verification": {
+    "all_original_image_sha256_match": true,
+    "all_parent_before_lines_and_label_hashes_match": true,
+    "all_edits_xmax_only": true,
+    "all_retained_tokens_exact": true,
+    "all_existing_visible_points_within_modified_boxes": true,
+    "after_geometry_readback_complete": true
+  }
+}

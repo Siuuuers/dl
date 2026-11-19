@@ -1,0 +1,478 @@
+{
+  "schema_version": 1,
+  "kind": "pr79-r10-fixed-comparison-summary",
+  "decision": "retain_PR35",
+  "reason": "Candidate adds scored misses and unmatched outputs on both frozen references; five-pixel corner gains do not offset the detection regression and ten-pixel corner losses.",
+  "training": {
+    "reference": {
+      "epochs": 30,
+      "batches_completed": 1050,
+      "images_processed": 4110,
+      "optimizer_steps": 78,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "execution": {
+        "exit_code": 0,
+        "stop_reason": null,
+        "wall_seconds": 384.89481619299994,
+        "sampled_peak_process_tree_rss_mib": 3016.53125,
+        "rss_sampling_interval_seconds": 0.2,
+        "max_seconds": 21600,
+        "max_rss_mib": 12000
+      },
+      "final_epoch_csv": {
+        "epoch": "30",
+        "time": "369.023",
+        "train/box_loss": "1.2993",
+        "train/pose_loss": "0.01527",
+        "train/kobj_loss": "0.25649",
+        "train/cls_loss": "0.3006",
+        "train/l1_loss": "0.00561",
+        "train/rle_loss": "0.15291",
+        "metrics/precision(B)": "0.9682",
+        "metrics/recall(B)": "0.91699",
+        "metrics/mAP50(B)": "0.9392",
+        "metrics/mAP50-95(B)": "0.57519",
+        "metrics/precision(P)": "0.98584",
+        "metrics/recall(P)": "0.93825",
+        "metrics/mAP50(P)": "0.96043",
+        "metrics/mAP50-95(P)": "0.96036",
+        "val/box_loss": "1.43758",
+        "val/pose_loss": "0.01246",
+        "val/kobj_loss": "0.21596",
+        "val/cls_loss": "0.31581",
+        "val/l1_loss": "0.00459",
+        "val/rle_loss": "0",
+        "lr/pg0": "4.3e-06",
+        "lr/pg1": "4.3e-06",
+        "lr/pg2": "4.3e-06"
+      }
+    },
+    "candidate": {
+      "epochs": 30,
+      "batches_completed": 1050,
+      "images_processed": 4110,
+      "optimizer_steps": 78,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3778,
+          "visible_endpoints": 6846,
+          "missing_endpoints": 710,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "execution": {
+        "exit_code": 0,
+        "stop_reason": null,
+        "wall_seconds": 379.80800734699994,
+        "sampled_peak_process_tree_rss_mib": 2981.30078125,
+        "rss_sampling_interval_seconds": 0.2,
+        "max_seconds": 21600,
+        "max_rss_mib": 12000
+      },
+      "final_epoch_csv": {
+        "epoch": "30",
+        "time": "366.302",
+        "train/box_loss": "1.23757",
+        "train/pose_loss": "0.01466",
+        "train/kobj_loss": "0.23913",
+        "train/cls_loss": "0.29215",
+        "train/l1_loss": "0.00481",
+        "train/rle_loss": "0.1497",
+        "metrics/precision(B)": "0.95405",
+        "metrics/recall(B)": "0.92169",
+        "metrics/mAP50(B)": "0.93997",
+        "metrics/mAP50-95(B)": "0.51529",
+        "metrics/precision(P)": "0.98127",
+        "metrics/recall(P)": "0.93373",
+        "metrics/mAP50(P)": "0.96093",
+        "metrics/mAP50-95(P)": "0.96068",
+        "val/box_loss": "1.48086",
+        "val/pose_loss": "0.01294",
+        "val/kobj_loss": "0.20592",
+        "val/cls_loss": "0.36399",
+        "val/l1_loss": "0.00479",
+        "val/rle_loss": "0",
+        "lr/pg0": "4.3e-06",
+        "lr/pg1": "4.3e-06",
+        "lr/pg2": "4.3e-06"
+      }
+    }
+  },
+  "references": {
+    "primary": {
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_5px": 533,
+          "both_corners_10px": 582,
+          "both_corners_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 0,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "reference": {
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_5px": 533,
+          "both_corners_10px": 582,
+          "both_corners_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 0,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "candidate": {
+          "tp": 635,
+          "fn": 31,
+          "fp": 95,
+          "duplicate_fp": 29,
+          "other_fp": 66,
+          "both_corners_5px": 535,
+          "both_corners_10px": 579,
+          "both_corners_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4,
+          "error_free_nonempty_scenes": 0,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 44,
+              "misses": 15
+            },
+            "2": {
+              "gold": 584,
+              "matched": 581,
+              "misses": 3
+            }
+          }
+        }
+      }
+    },
+    "diagnostic": {
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_5px": 533,
+          "both_corners_10px": 582,
+          "both_corners_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7,
+          "error_free_nonempty_scenes": 0,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "reference": {
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_5px": 533,
+          "both_corners_10px": 582,
+          "both_corners_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7,
+          "error_free_nonempty_scenes": 0,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "candidate": {
+          "tp": 636,
+          "fn": 27,
+          "fp": 94,
+          "duplicate_fp": 29,
+          "other_fp": 65,
+          "both_corners_5px": 535,
+          "both_corners_10px": 579,
+          "both_corners_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4,
+          "error_free_nonempty_scenes": 0,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 59,
+              "matched": 44,
+              "misses": 15
+            },
+            "2": {
+              "gold": 584,
+              "matched": 581,
+              "misses": 3
+            }
+          }
+        }
+      }
+    }
+  },
+  "prediction_consistency": {
+    "pr35_vs_prior_pr76_audit": {
+      "images_compared": 20,
+      "ordered_prediction_arrays_identical": 20,
+      "differing_image_ids": [],
+      "all_identical": true
+    },
+    "r10_reference_vs_pr35": {
+      "images_compared": 20,
+      "ordered_prediction_arrays_identical": 20,
+      "differing_image_ids": [],
+      "all_identical": true
+    }
+  },
+  "training_difference": {
+    "changed_label_files": 77,
+    "changed_paths": [
+      "labels/train/new_000001.txt",
+      "labels/train/new_000003.txt",
+      "labels/train/new_000004.txt",
+      "labels/train/new_000005.txt",
+      "labels/train/new_000006.txt",
+      "labels/train/new_000012.txt",
+      "labels/train/new_000013.txt",
+      "labels/train/new_000016.txt",
+      "labels/train/new_000017.txt",
+      "labels/train/new_000018.txt",
+      "labels/train/new_000019.txt",
+      "labels/train/new_000023.txt",
+      "labels/train/new_000024.txt",
+      "labels/train/new_000026.txt",
+      "labels/train/new_000027.txt",
+      "labels/train/new_000028.txt",
+      "labels/train/new_000031.txt",
+      "labels/train/new_000032.txt",
+      "labels/train/new_000033.txt",
+      "labels/train/new_000034.txt",
+      "labels/train/new_000035.txt",
+      "labels/train/new_000036.txt",
+      "labels/train/new_000039.txt",
+      "labels/train/new_000042.txt",
+      "labels/train/new_000043.txt",
+      "labels/train/new_000050.txt",
+      "labels/train/new_000051.txt",
+      "labels/train/new_000061.txt",
+      "labels/train/new_000062.txt",
+      "labels/train/new_000063.txt",
+      "labels/train/new_000064.txt",
+      "labels/train/new_000065.txt",
+      "labels/train/new_000066.txt",
+      "labels/train/new_000067.txt",
+      "labels/train/new_000068.txt",
+      "labels/train/new_000069.txt",
+      "labels/train/new_000070.txt",
+      "labels/train/new_000071.txt",
+      "labels/train/new_000072.txt",
+      "labels/train/new_000073.txt",
+      "labels/train/new_000075.txt",
+      "labels/train/new_000079.txt",
+      "labels/train/new_000080.txt",
+      "labels/train/new_000081.txt",
+      "labels/train/new_000082.txt",
+      "labels/train/new_000083.txt",
+      "labels/train/new_000084.txt",
+      "labels/train/new_000085.txt",
+      "labels/train/new_000094.txt",
+      "labels/train/new_000095.txt",
+      "labels/train/new_000096.txt",
+      "labels/train/new_000097.txt",
+      "labels/train/new_000098.txt",
+      "labels/train/new_000099.txt",
+      "labels/train/new_000100.txt",
+      "labels/train/new_000101.txt",
+      "labels/train/new_000102.txt",
+      "labels/train/new_000103.txt",
+      "labels/train/new_000111.txt",
+      "labels/train/new_000112.txt",
+      "labels/train/new_000113.txt",
+      "labels/train/new_000114.txt",
+      "labels/train/new_000115.txt",
+      "labels/train/new_000116.txt",
+      "labels/train/new_000117.txt",
+      "labels/train/new_000118.txt",
+      "labels/train/new_000119.txt",
+      "labels/train/new_000120.txt",
+      "labels/train/new_000121.txt",
+      "labels/train/new_000122.txt",
+      "labels/train/new_000123.txt",
+      "labels/train/new_000124.txt",
+      "labels/train/new_000125.txt",
+      "labels/train/new_000127.txt",
+      "labels/train/new_000128.txt",
+      "labels/train/new_000129.txt",
+      "labels/train/new_000130.txt"
+    ],
+    "held_train_photos_identical_to_PR35": 15,
+    "held_ids": [
+      "new_000002",
+      "new_000014",
+      "new_000015",
+      "new_000020",
+      "new_000025",
+      "new_000029",
+      "new_000030",
+      "new_000037",
+      "new_000038",
+      "new_000040",
+      "new_000041",
+      "new_000044",
+      "new_000045",
+      "new_000049",
+      "new_000074"
+    ],
+    "excluded_old_train_photos_identical_to_PR35": 31,
+    "excluded_ids": [
+      "old_000003",
+      "old_000004",
+      "old_000007",
+      "old_000010",
+      "old_000013",
+      "old_000018",
+      "old_000021",
+      "old_000022",
+      "old_000027",
+      "old_000028",
+      "old_000038",
+      "old_000039",
+      "old_000042",
+      "old_000046",
+      "old_000050",
+      "old_000051",
+      "old_000054",
+      "old_000057",
+      "old_000061",
+      "old_000065",
+      "old_000068",
+      "old_000069",
+      "old_000073",
+      "old_000077",
+      "old_000079",
+      "old_000087",
+      "old_000089",
+      "old_000093",
+      "old_000097",
+      "old_000100",
+      "old_000101"
+    ],
+    "all_original_images_identical": true,
+    "validation_labels_identical": true
+  }
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "role": "pr35",
+    "command": [
+      "/workspace/scratch/c773d0baa46c/pr79-venv/bin/python",
+      "-B",
+      "/workspace/scratch/c773d0baa46c/pr79-audit/scripts/evaluate_pose.py",
+      "--root",
+      "/workspace/scratch/c773d0baa46c/pr79-audit",
+      "--output",
+      "/workspace/scratch/c773d0baa46c/pr79-audit/results/evaluation/pr79-r10-20261119/inference/eval-pr35",
+      "--checkpoint-manifest",
+      "/workspace/scratch/c773d0baa46c/pr79-return/pr35-returned/candidate/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.13",
+      "--endpoint-conf",
+      "0.50",
+      "--matching-iou",
+      "0.50",
+      "--overlays",
+      "0"
+    ],
+    "exit_code": 0
+  },
+  {
+    "role": "reference",
+    "command": [
+      "/workspace/scratch/c773d0baa46c/pr79-venv/bin/python",
+      "-B",
+      "/workspace/scratch/c773d0baa46c/pr79-audit/scripts/evaluate_pose.py",
+      "--root",
+      "/workspace/scratch/c773d0baa46c/pr79-audit",
+      "--output",
+      "/workspace/scratch/c773d0baa46c/pr79-audit/results/evaluation/pr79-r10-20261119/inference/eval-reference",
+      "--checkpoint-manifest",
+      "/workspace/scratch/c773d0baa46c/pr79-return/returned/reference/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.13",
+      "--endpoint-conf",
+      "0.50",
+      "--matching-iou",
+      "0.50",
+      "--overlays",
+      "0"
+    ],
+    "exit_code": 0
+  },
+  {
+    "role": "candidate",
+    "command": [
+      "/workspace/scratch/c773d0baa46c/pr79-venv/bin/python",
+      "-B",
+      "/workspace/scratch/c773d0baa46c/pr79-audit/scripts/evaluate_pose.py",
+      "--root",
+      "/workspace/scratch/c773d0baa46c/pr79-audit",
+      "--output",
+      "/workspace/scratch/c773d0baa46c/pr79-audit/results/evaluation/pr79-r10-20261119/inference/eval-candidate",
+      "--checkpoint-manifest",
+      "/workspace/scratch/c773d0baa46c/pr79-return/returned/candidate/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.13",
+      "--endpoint-conf",
+      "0.50",
+      "--matching-iou",
+      "0.50",
+      "--overlays",
+      "0"
+    ],
+    "exit_code": 0
+  }
+]
