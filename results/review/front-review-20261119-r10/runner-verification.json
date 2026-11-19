@@ -1,0 +1,149 @@
+{
+  "status": "verified",
+  "training_run": false,
+  "review": {
+    "path": "data/reviews/fronts-2026-11-19-r10/manifest.json",
+    "sha256": "ee1d8f6c390cb5563ac248772eb2a02020ac38de909a180d1c09dd289d0a5ba5"
+  },
+  "parent": {
+    "path": "data/reviews/fronts-2026-11-19-r9-recovery/manifest.json",
+    "sha256": "ba0b4f7f6fa9e86d43678098a834329a3a679621df0cab6fa2140e41b55526b2"
+  },
+  "candidate_manifest_sha256": "1dee0aacc04f345f6f04dcc5a601ebc9a816fe7894d340c4045162b27a7c63d5",
+  "protocol_sha256": "0b73d423fcaff8f7b7d72da0e6bc33acb5814f2d8435fffa0e163b3efd1bd48f",
+  "original_images_verified": 157,
+  "all_original_label_bytes_unchanged": true,
+  "staged_counts": {
+    "reference": {
+      "train": {
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 701,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "candidate": {
+      "train": {
+        "images": 137,
+        "objects": 3778,
+        "visible_endpoints": 6846,
+        "missing_endpoints": 710,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    }
+  },
+  "complete_review_counts": {
+    "train": {
+      "images": 137,
+      "objects": 3790,
+      "visible_endpoints": 6841,
+      "missing_endpoints": 739,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 661,
+      "visible_endpoints": 1226,
+      "missing_endpoints": 96,
+      "empty_images": 3
+    }
+  },
+  "original_validation_photos_byte_identical_in_both_arms": 20,
+  "held_training_photos_exact_pr35_in_both_arms": 15,
+  "held_training_image_ids": [
+    "new_000002",
+    "new_000014",
+    "new_000015",
+    "new_000020",
+    "new_000025",
+    "new_000029",
+    "new_000030",
+    "new_000037",
+    "new_000038",
+    "new_000040",
+    "new_000041",
+    "new_000044",
+    "new_000045",
+    "new_000049",
+    "new_000074"
+  ],
+  "excluded_training_photos_exact_pr35_in_both_arms": 31,
+  "excluded_training_image_ids": [
+    "old_000003",
+    "old_000004",
+    "old_000007",
+    "old_000010",
+    "old_000013",
+    "old_000018",
+    "old_000021",
+    "old_000022",
+    "old_000027",
+    "old_000028",
+    "old_000038",
+    "old_000039",
+    "old_000042",
+    "old_000046",
+    "old_000050",
+    "old_000051",
+    "old_000054",
+    "old_000057",
+    "old_000061",
+    "old_000065",
+    "old_000068",
+    "old_000069",
+    "old_000073",
+    "old_000077",
+    "old_000079",
+    "old_000087",
+    "old_000089",
+    "old_000093",
+    "old_000097",
+    "old_000100",
+    "old_000101"
+  ],
+  "confirmed_old_review_photos_byte_identical_to_r9": 31,
+  "old_000013_review_exact_original_bytes": true,
+  "frozen_reference_object_counts": {
+    "primary": 666,
+    "diagnostic": 663
+  },
+  "fixed_training_recipe": {
+    "seed": 46,
+    "epochs": 30,
+    "batch": 4,
+    "imgsz": 1280,
+    "amp": false,
+    "optimizer": "AdamW",
+    "lr0": 0.0001
+  },
+  "changed_training_photos_vs_control": 77,
+  "staging_manifest_sha256": "5a1b8a054728e64661a9a4a6858ce7341b17325f6d9dac1419b452636b79a758",
+  "source_files_sha256": {
+    "scripts/check_front_review_r10.py": "78e27691a2dfc76558d5460cb55509c099c7d0cedb48c8a1dc450d5bc5db883c",
+    "scripts/verify_front_review_r10.py": "cc1fec49a90fcce865a55860986247a179d04dd61246e63bc043b343600f2d0d",
+    "scripts/build_front_review_r10.py": "37ff963e6068604698595ce363b50df4215157519ec881558afc8ff94b76ecef",
+    "scripts/front_review_experiment.py": "58fc3f020edfe834c4d051ba98a954661ffaf7bdf2ce2dbc0caf2fbec3a7f524",
+    "scripts/stage_pose_training.py": "da43b9580f8cfecefdea2dbdd685da54bc0650051815bbfbcb8d665b31fd761d",
+    "scripts/train_pose_comparison.py": "92122a24abe042ed08c6e546030340569167882d587c8c83b3b4509055061a0e",
+    "scripts/verify_incremental_pose_candidate.py": "c58d0e960d24a7f15dee75fe71336f3983a7d165482a68aca8d6417fcd7363bd"
+  },
+  "limits": [
+    "Mechanical checks bind the saved review decisions; they do not certify every physical boundary.",
+    "This check stages images and labels and runs no model training."
+  ]
+}
