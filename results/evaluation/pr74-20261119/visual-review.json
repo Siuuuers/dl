@@ -1,0 +1,102 @@
+{
+  "kind": "pr74-original-pixel-case-review",
+  "scope": "Descriptive inspection after fixed scoring; no reference, training label, operating point or checkpoint was changed.",
+  "source_commit": "826bc2061e7262378e482d73567b3c8b6f47f5c1",
+  "primary_reference_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+  "figures_inspected": [
+    "new_000008-rows-33.png",
+    "new_000009-rows-53-56.png",
+    "new_000010-rows-15.png",
+    "new_000010-rows-31-32.png",
+    "new_000011-rows-61.png",
+    "new_000056-rows-15.png",
+    "new_000057-rows-11.png",
+    "new_000089-top-rack.png",
+    "new_000090-keyboard.png",
+    "new_000090-rows-42.png",
+    "new_000090-rows-43.png"
+  ],
+  "full_originals_inspected": [
+    "new_000089"
+  ],
+  "observations": [
+    {
+      "identity": "new_000010:15",
+      "finding": "Strong candidate proposal remains on the visible white cassette region; changed vertical extent causes best overlap 0.4973156, immediately below fixed 0.50. This is an extent-based scored miss, not absence of a proposal.",
+      "reference_changed": false
+    },
+    {
+      "identity": "new_000057:11",
+      "finding": "The candidate proposal remains on the white front at high confidence. The frozen gold lower bound extends into visible rack/background beneath the front. Candidate best overlap is 0.4805504. The fixed miss is retained; the score alone does not adjudicate which extent is physically correct.",
+      "reference_changed": false
+    },
+    {
+      "identity": "new_000009:56",
+      "finding": "No saved candidate proposal intersects the gold extent around the small white region through the gripper opening. This statement is limited to the fixed retained output set, not raw pre-threshold network proposals.",
+      "reference_changed": false
+    },
+    {
+      "identity": "new_000009:53",
+      "finding": "Existing proposals cover the small visible region at the gripper edge in both arms; one candidate extent crosses the IoU threshold. It is a gained match, not proof of discovery of a previously absent proposal.",
+      "reference_changed": false
+    },
+    {
+      "identity": "new_000008:33",
+      "finding": "Control retains a low-confidence box with qualifying overlap. Candidate outputs mainly cover neighboring visible regions and have only weak overlap with this frozen extent. Physical front boundary near the obstruction remains difficult to judge from pixels.",
+      "reference_changed": false
+    },
+    {
+      "identities": [
+        "new_000010:31",
+        "new_000010:32",
+        "new_000056:15",
+        "new_000090:42",
+        "new_000090:43"
+      ],
+      "finding": "These reviewed targets include substantial occlusion or partial visible extent. Candidate boxes often shrink toward the visible white area while frozen boxes extend farther across the occluder or rack. All frozen match outcomes are retained; neither the score nor visual intuition alone establishes hidden bounds.",
+      "reference_changed": false
+    },
+    {
+      "identity": "new_000011:61",
+      "finding": "The candidate retains boxes over the gripper opening but their extent has little overlap with the frozen lower target row. Overlap alone does not resolve row or front ownership.",
+      "reference_changed": false
+    }
+  ],
+  "unlabeled_region_observations": [
+    {
+      "image_id": "new_000090",
+      "region": "keyboard",
+      "crop_xyxy": [
+        1130,
+        600,
+        1280,
+        720
+      ],
+      "counts": {
+        "reference": 3,
+        "candidate": 3
+      },
+      "visual_assessment": "The inspected crop shows the blue-lit peripheral/device area outside the rack, not a cassette front. Counts are all retained boxes intersecting this crop, including overlaps."
+    },
+    {
+      "image_id": "new_000089",
+      "region": "top-rack",
+      "crop_xyxy": [
+        380,
+        0,
+        730,
+        26
+      ],
+      "counts": {
+        "reference": 1,
+        "candidate": 2
+      },
+      "visual_assessment": "Unlabeled top-of-frame strip at the rack boundary. The frozen reference has no front here. Physical identity of the strip is not independently resolved by this crop; do not count these proposals as adjudicated background errors."
+    }
+  ],
+  "limits": [
+    "All figures use original PNG pixels with deterministic nearest-neighbor magnification; no image generation or restoration.",
+    "Mechanical match categories and original-pixel observations are distinct. No subjective reclassification was used to remove a miss or unmatched output.",
+    "These selected cases diagnose observed changes; they are not a full physical adjudication of all 666 reference fronts."
+  ]
+}
