@@ -120,6 +120,10 @@ def source_state(root, candidate):
         source["training_protocol"] = receipt["training_protocol"]
     if proposal.get("kind") == "training_incremental_observed_overlay":
         source["retained_legacy_image_ids"] = receipt["retained_legacy_image_ids"]
+        if proposal.get("excluded_training_image_ids"):
+            require(proposal["excluded_training_image_ids"] == receipt["excluded_training_image_ids"],
+                    "treatment exclusions differ from the verified composition")
+            source["excluded_training_image_ids"] = receipt["excluded_training_image_ids"]
     return {"root": root, "records": records, "plans": plans, "counts": counts, "source": source,
             "changed_train_labels": receipt["changed_train_labels"], "removed_objects": receipt["removed_objects"]}
 
@@ -197,6 +201,7 @@ def code_hashes(*, composed=False, observed=False, incremental=False):
     if incremental:
         names += ("verify_incremental_pose_candidate.py", "compose_incremental_pose_candidate.py",
                   "verify_front_review_r4.py", "verify_front_review_r5.py", "verify_front_review_r6.py", "verify_front_review_r7.py", "verify_front_review_r8.py",
+                  "verify_front_review_r10.py", "build_front_review_r10.py",
                   "front_review_experiment.py")
     return {f"scripts/{name}": file_sha256(scripts / name) for name in names}
 
@@ -242,6 +247,10 @@ def manifest_fields(output, state, variants):
             retained_legacy_images=len(state["source"]["retained_legacy_image_ids"]),
             full_dataset_certified=False,
             training_readiness_scope="controlled_incremental_experiment_only")
+        if state["source"].get("excluded_training_image_ids"):
+            result["verification"].update(
+                excluded_photo_labels_identical_between_arms=True,
+                excluded_training_images=len(state["source"]["excluded_training_image_ids"]))
     return result
 
 

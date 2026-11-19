@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "review_id": "front-review-20261119-r10-new025-independent-count-check",
+  "source_review": "fronts-2026-11-19-r9-recovery",
+  "image_id": "new_000025",
+  "scope": "Read-only secondary inspection of the two user-proposed lower fronts below r9 row57; no annotation or late-audit changes.",
+  "evidence": {
+    "raw_photo": {
+      "path": "data/images/train/new_000025.png",
+      "sha256": "1000be2046fce410ea5e929942008682a781dc02918c92d4c526b881b54776ac",
+      "bytes": 837756
+    },
+    "raw_coordinate_crop": {
+      "path": "tmp/r10-early/025-gripper.png",
+      "sha256": "dc7ecc716841c0fbd7a435b3245b333f367e9cad3337c389e3c2a64de6f383a4",
+      "bytes": 26649
+    },
+    "user_screenshot": {
+      "path": "/workspace/scratch/c773d0baa46c/upload/08-427845.jpg",
+      "sha256": "fe9e8945ed1dd44e0fd9a7cd789f8ca6489ecb5cbd7046c7dfe10524cd23136f",
+      "bytes": 92986
+    },
+    "r9_labels": {
+      "path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/train/new_000025.txt",
+      "sha256": "fd5beab59ec67177aade9d715ac9e1cc9d9d6be7c48b9a5a99b0873769455a94",
+      "bytes": 5814
+    },
+    "original_labels": {
+      "path": "data/labels/train/new_000025.txt",
+      "sha256": "507f77cf66d348665005a5de2931bd54f0c60a1a01154c5ca687cd37abb10e7b",
+      "bytes": 5264
+    }
+  },
+  "observed_r9_rows": [
+    {
+      "base_row": 55,
+      "line": "0 0.546093750 0.647222222 0.031250000 0.025000000 0.00000000 0.00000000 0 0 0 0",
+      "box_px_rounded": [
+        679,
+        457,
+        719,
+        475
+      ]
+    },
+    {
+      "base_row": 57,
+      "line": "0 0.544531250 0.665972222 0.026562500 0.018055556 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "box_px_rounded": [
+        680,
+        473,
+        714,
+        486
+      ]
+    }
+  ],
+  "pixel_observations": [
+    {
+      "region_px": [
+        678,
+        451,
+        719,
+        461
+      ],
+      "observation": "A transverse change around y455\u2013458 separates the upper visible band from the middle band."
+    },
+    {
+      "region_px": [
+        682,
+        465,
+        714,
+        477
+      ],
+      "observation": "Another transverse change around y469\u2013472 separates the middle band from the lower tapering pale material."
+    },
+    {
+      "region_px": [
+        686,
+        473,
+        713,
+        497
+      ],
+      "observation": "The lower pale wedge is contiguous at this image resolution. I cannot identify a separate physical front-face boundary near y485; r9 row57 already labels its upper portion."
+    },
+    {
+      "region_px": [
+        699,
+        494,
+        715,
+        511
+      ],
+      "observation": "The taper reaches the V-shaped gripper closure near y497. Material immediately below this lacks an independently established cassette front or cassette ownership."
+    }
+  ],
+  "screenshot_mapping": {
+    "method": "Approximate correspondence using current row55 40\u00d718-pixel box and row57 34\u00d713-pixel box, gripper outlines, and native crop. Screenshot is a scaled marked crop, not independent photographic evidence.",
+    "r9_row55_correspondence": "supported",
+    "r9_row57_correspondence": "supported",
+    "first_user_added_box_native_y_approx": [
+      486,
+      497
+    ],
+    "second_user_added_box_native_y_approx": [
+      497,
+      510
+    ],
+    "coordinate_precision": "Approximate screenshot correspondence; native pixel witnesses are authoritative."
+  },
+  "count_conclusion": {
+    "independently_distinguishable_additional_fronts_beyond_existing_r9_row57": 0,
+    "supports_two_additional_instances": false,
+    "supports_one_additional_instance": false,
+    "does_not_establish_true_hidden_instance_count": true,
+    "reason": "No resolved separator distinguishes the first proposed addition from the pale material already assigned to r9 row57, and the second proposed region crosses the gripper closure with uncertain ownership. This supports keeping a count/ownership question open, not asserting that hidden cassettes are absent."
+  },
+  "recommended_status": "unresolved_count_and_ownership",
+  "recommended_action": "Do not add one or two instances from this image alone; retain the bounded unresolved case and review row57 visible extent/ownership separately.",
+  "annotation_mutations": 0
+}

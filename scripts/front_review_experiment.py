@@ -76,6 +76,7 @@ class FrontReviewExperiment:
     serialization_repairs: tuple
     protocol_limits: tuple
     review_development_labels: bool = False
+    excluded_training_image_ids: tuple = ()
 
     @property
     def candidate(self):
@@ -168,6 +169,14 @@ class FrontReviewExperiment:
         pending = [case for case in status["cases"] if case["split"] == "train" and case["status"] != "resolved"]
         remaining = sorted(case["case_id"] for case in pending)
         retained = sorted({case["image_id"] for case in pending})
+        excluded = sorted(self.excluded_training_image_ids)
+        require(len(excluded) == len(set(excluded))
+                and set(excluded) <= {r["id"] for r in records if r["split"] == "train"}
+                and not set(excluded).intersection(retained),
+                "Excluded treatment photos must be distinct resolved training photos")
+        if excluded:
+            require(review.get("excluded_training_image_ids") == excluded,
+                    "Review and experiment treatment exclusions differ")
         verify_historical_control(root, records, source_bytes)
         control_path = bound(root, {"path": PR35_CONTROL["manifest"], "sha256": PR35_CONTROL["sha256"]})
         control_manifest = json.loads(control_path.read_text())
@@ -183,16 +192,18 @@ class FrontReviewExperiment:
                 parsed[image_id] = gold[image_id]
                 continue
             held = image_id in retained
-            chosen = control[image_id] if held else reviewed[image_id]
+            outside_treatment = image_id in excluded
+            chosen = control[image_id] if held or outside_treatment else reviewed[image_id]
             payload = chosen["bytes"]
             objects = parse_pose_labels(payload.decode(), *record["original_size"], chosen["path"])
             check_geometry(objects, *record["original_size"], chosen["path"])
             parsed[image_id] = objects
             if payload != control[image_id]["bytes"]:
-                require(not held, f"held r{self.round_number} photo differs between arms")
+                require(not held and not outside_treatment, f"held/excluded r{self.round_number} photo differs between arms")
                 changed.append(image_id)
             sources.append({"image_id": image_id, "source_image_sha256": record["image_sha256"],
-                            "selection": "pr35_retained_legacy" if held else f"accepted_r{self.round_number}_review",
+                            "selection": ("pr35_retained_legacy" if held else "pr35_excluded_from_treatment"
+                                          if outside_treatment else f"accepted_r{self.round_number}_review"),
                             "effective_label": {key: chosen[key] for key in ("path", "sha256")},
                             "control_label": {key: control[image_id][key] for key in ("path", "sha256")},
                             "reviewed_label": {key: reviewed[image_id][key] for key in ("path", "sha256")},
@@ -219,6 +230,9 @@ class FrontReviewExperiment:
                     "unresolved_case_ids": remaining, "retained_legacy_image_ids": retained,
                     "image_sources": sources, "changed_images_vs_control": changed,
                     "expected_counts": counts, "changes": changes}
+        if excluded:
+            manifest["excluded_training_image_ids"] = excluded
+            manifest["scope"] += " The user-confirmed old cohort is excluded from this treatment and uses exact PR35 labels in both arms; exclusion is not an unresolved hold."
         payloads["manifest.json"] = encoded(manifest)
         return payloads, manifest, {"control": control_receipt, "complete_review_counts": review["expected_counts"]}
 
@@ -230,7 +244,7 @@ class FrontReviewExperiment:
         primary = read_reference_manifest(root, SEQUENCE_PRIMARY_REFERENCE)
         diagnostic = read_reference_manifest(root, DIAGNOSTIC_REFERENCE)
         descriptor = {"path": self.candidate, "sha256": digest(encoded(manifest))}
-        return {
+        document = {
             "schema_version": 1, "kind": f"baomai-r{self.round_number}-fronts-training-protocol",
             "experiment_id": self.experiment_id, "status": "prospectively_prepared",
             "training_readiness": "ready_for_controlled_incremental_experiment", "full_dataset_certified": False,
@@ -269,6 +283,9 @@ class FrontReviewExperiment:
             },
             "limits": list(self.protocol_limits),
         }
+        if self.excluded_training_image_ids:
+            document["excluded_training_image_ids"] = list(sorted(self.excluded_training_image_ids))
+        return document
 
 
     def verify_candidate(self, root, candidate=None):

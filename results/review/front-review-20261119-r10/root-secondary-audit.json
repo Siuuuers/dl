@@ -1,0 +1,771 @@
+{
+  "schema_version": 1,
+  "kind": "bounded-secondary-physical-adjudication",
+  "source_review": "fronts-2026-11-19-r9-recovery",
+  "source_proposal_path": "results/review/front-review-20261119-r10/root-audit.json",
+  "source_proposal_sha256": "9700814f96c9164d3fbf1396e22015a21ef9e03be6a017eead1a6a7b1b48518d",
+  "scope": "Secondary check of 13 specifically requested root proposals only. This report does not claim independent full-photo coverage and is not a primary audit input.",
+  "decisions": [
+    {
+      "image_id": "new_000004",
+      "base_row": 36,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "box",
+        "left",
+        "right"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/train/new_000004.txt",
+      "source_label_sha256": "df2eed5587cbea28a20ccd2ec104e3b234a02efb2022d8c86510148994f68098",
+      "source_image_path": "data/images/train/new_000004.png",
+      "source_image_sha256": "e8580246300b9ac6f892cf4e54e948289d04ef6d3e99aabca2cdc64ffbbd2cfe",
+      "evaluated_before_line": "0 0.4386718750 0.6019444444 0.0742187500 0.0433333333 0.4031250000 0.6027777778 2 0.4742187500 0.6222222222 2",
+      "evaluated_after_line": "0 0.436328125 0.600555556 0.067968750 0.040555556 0.407031250 0.604166667 2 0.467187500 0.618055556 2",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          515.0,
+          417.8,
+          602.0,
+          447.0
+        ],
+        "left_xyv_px": [
+          521.0,
+          435.0,
+          2
+        ],
+        "right_xyv_px": [
+          598.0,
+          445.0,
+          2
+        ]
+      },
+      "reason": "The lower white front ends before the dark vertical divider. The proposed right endpoint at (598,445) is on that lower white turn and the box ends near (602,447), before the divider/gripper continuation. The left point at (521,435) is inset from the visible left silhouette. These positions are reasonable within edge blur; no further pixel adjustment is supported.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/10-427852.jpg",
+        "sha256": "3eb43f7187dd9dd22355854e5459dd5db3b08052e3b5dede3017717bb43a83f8",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/004-grid-510-415.png",
+          "sha256": "4fdeb8f7abb04a68b6d091babc25e6ae739be866a1df9941e098cb03dfea007b"
+        },
+        {
+          "path": "tmp/r10-root/004-detail-510-413.png",
+          "sha256": "f44009335939570bfc3b5c6f5b0c88ac0438a9f9d1d126cb3dd9872c0bc28c1b"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000008",
+      "base_row": 6,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "box",
+        "left"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/val/new_000008.txt",
+      "source_label_sha256": "899497c89d2492caae918340aa2c0ee257884cc735522d9924c6604941be21bf",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "evaluated_before_line": "0 0.8449218750 0.0708333334 0.1820312500 0.0833333334 0.7562500000 0.1000000000 2 0.9218750000 0.1097222222 2",
+      "evaluated_after_line": "0 0.839453125 0.070833333 0.171093750 0.083333333 0.762500000 0.098611111 2 0.9218750000 0.1097222222 2",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          965.0,
+          21.0,
+          1184.0,
+          81.0
+        ],
+        "left_xyv_px": [
+          976.0,
+          71.0,
+          2
+        ],
+        "right_xyv_px": [
+          1180.0,
+          79.0,
+          2
+        ]
+      },
+      "reason": "The left side strip and the inset white front junction are separately visible. Moving the left point from (968,72) to (976,71) follows the front-face junction. The proposed right box edge at x=1184 retains this cassette rim while excluding the adjoining front; the right point (1180,79) remains on the terminal lower front turn.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/03-427836.jpg",
+        "sha256": "82c49b0ebc238f737e290bbbfde339cbee9889c1ac8904d0e11a59f08aa64abd",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/008-grid-965-14.png",
+          "sha256": "57ad3d3c572c159ebce9c79b4530e977f2850839bd8e98f01321affd19394f3c"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1074-350.png",
+          "sha256": "81f6a1adc8275e0a7f0bfa5b94a006edccde27f014716003df59150bb55cdf35"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1040-360.png",
+          "sha256": "376fbe84315e153d0f07afb9d4426cbf0b821a738483b072d5047e1abdecf7bd"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1020-470.png",
+          "sha256": "478e398a8ceadedba429bb071b741b8b638697cc4b36d2ee786f50f88326fbdb"
+        },
+        {
+          "path": "tmp/r10-root/new_000008-proposed.png",
+          "sha256": "77f6946630d9c46f2807eb888b0c783019f0e7acaac3d5c0a7af64099640d331"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000008",
+      "base_row": 8,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "box",
+        "left"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/val/new_000008.txt",
+      "source_label_sha256": "899497c89d2492caae918340aa2c0ee257884cc735522d9924c6604941be21bf",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "evaluated_before_line": "0 0.9609375000 0.0750000000 0.0781250000 0.0833333333 0.9257812500 0.1111111111 2 0.00000000 0.00000000 0",
+      "evaluated_after_line": "0 0.962109375 0.075000000 0.075781250 0.083333333 0.937500000 0.109722222 2 0.00000000 0.00000000 0",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          1183.0,
+          24.0,
+          1280.0,
+          84.0
+        ],
+        "left_xyv_px": [
+          1200.0,
+          79.0,
+          2
+        ],
+        "right_xyv_px": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "reason": "The side strip at x about 1184..1196 is visible before the inset front face. The proposed (1200,79) agrees with the user indicated front-face convention, within the blurred junction. The box still includes the owned visible rim at x=1183 and the frame-clipped right point stays missing. Do not substitute the farther outer silhouette for this endpoint.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/03-427836.jpg",
+        "sha256": "82c49b0ebc238f737e290bbbfde339cbee9889c1ac8904d0e11a59f08aa64abd",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/008-grid-965-14.png",
+          "sha256": "57ad3d3c572c159ebce9c79b4530e977f2850839bd8e98f01321affd19394f3c"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1074-350.png",
+          "sha256": "81f6a1adc8275e0a7f0bfa5b94a006edccde27f014716003df59150bb55cdf35"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1040-360.png",
+          "sha256": "376fbe84315e153d0f07afb9d4426cbf0b821a738483b072d5047e1abdecf7bd"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1020-470.png",
+          "sha256": "478e398a8ceadedba429bb071b741b8b638697cc4b36d2ee786f50f88326fbdb"
+        },
+        {
+          "path": "tmp/r10-root/new_000008-proposed.png",
+          "sha256": "77f6946630d9c46f2807eb888b0c783019f0e7acaac3d5c0a7af64099640d331"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000008",
+      "base_row": 28,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "left"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/val/new_000008.txt",
+      "source_label_sha256": "899497c89d2492caae918340aa2c0ee257884cc735522d9924c6604941be21bf",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "evaluated_before_line": "0 0.9140625000 0.4850069444 0.1437500000 0.0827638889 0.8476562500 0.5111111111 2 0.9835937500 0.5222222222 2",
+      "evaluated_after_line": "0 0.9140625000 0.4850069444 0.1437500000 0.0827638889 0.853125000 0.511111111 2 0.9835937500 0.5222222222 2",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          1078.0,
+          319.41,
+          1262.0,
+          379.0
+        ],
+        "left_xyv_px": [
+          1092.0,
+          368.0,
+          2
+        ],
+        "right_xyv_px": [
+          1259.0,
+          376.0,
+          2
+        ]
+      },
+      "reason": "The side-face-to-front-face transition bends into the lower front near (1092,368). The earlier (1085,368) was on the side strip. The move is supported by the raw zoom and the red-point user convention; no box or right-point change is needed.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/03-427836.jpg",
+        "sha256": "82c49b0ebc238f737e290bbbfde339cbee9889c1ac8904d0e11a59f08aa64abd",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/new_000008-crop-1010-305.png",
+          "sha256": "c0622c91300fda73c340e15dc239e0ba4d36144b82fb757d053874378d1c59c8"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1074-350.png",
+          "sha256": "81f6a1adc8275e0a7f0bfa5b94a006edccde27f014716003df59150bb55cdf35"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1040-360.png",
+          "sha256": "376fbe84315e153d0f07afb9d4426cbf0b821a738483b072d5047e1abdecf7bd"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1020-470.png",
+          "sha256": "478e398a8ceadedba429bb071b741b8b638697cc4b36d2ee786f50f88326fbdb"
+        },
+        {
+          "path": "tmp/r10-root/new_000008-proposed.png",
+          "sha256": "77f6946630d9c46f2807eb888b0c783019f0e7acaac3d5c0a7af64099640d331"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000008",
+      "base_row": 29,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "left"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/val/new_000008.txt",
+      "source_label_sha256": "899497c89d2492caae918340aa2c0ee257884cc735522d9924c6604941be21bf",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "evaluated_before_line": "0 0.9031250000 0.5492847222 0.1375000000 0.0597638889 0.83906250 0.56426389 2 0.9695312500 0.5750000000 2",
+      "evaluated_after_line": "0 0.9031250000 0.5492847222 0.1375000000 0.0597638889 0.846093750 0.563888889 2 0.9695312500 0.5750000000 2",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          1068.0,
+          373.97,
+          1244.0,
+          417.0
+        ],
+        "left_xyv_px": [
+          1083.0,
+          406.0,
+          2
+        ],
+        "right_xyv_px": [
+          1241.0,
+          414.0,
+          2
+        ]
+      },
+      "reason": "The raw left edge shows a side strip ending in the inset lower front turn near (1083,406), beyond the earlier x=1074. The proposed point is a reasonable placement within blur, without changing the box or right point.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/03-427836.jpg",
+        "sha256": "82c49b0ebc238f737e290bbbfde339cbee9889c1ac8904d0e11a59f08aa64abd",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/new_000008-crop-1010-305.png",
+          "sha256": "c0622c91300fda73c340e15dc239e0ba4d36144b82fb757d053874378d1c59c8"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1074-350.png",
+          "sha256": "81f6a1adc8275e0a7f0bfa5b94a006edccde27f014716003df59150bb55cdf35"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1040-360.png",
+          "sha256": "376fbe84315e153d0f07afb9d4426cbf0b821a738483b072d5047e1abdecf7bd"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1020-470.png",
+          "sha256": "478e398a8ceadedba429bb071b741b8b638697cc4b36d2ee786f50f88326fbdb"
+        },
+        {
+          "path": "tmp/r10-root/new_000008-proposed.png",
+          "sha256": "77f6946630d9c46f2807eb888b0c783019f0e7acaac3d5c0a7af64099640d331"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000008",
+      "base_row": 30,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "left"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/val/new_000008.txt",
+      "source_label_sha256": "899497c89d2492caae918340aa2c0ee257884cc735522d9924c6604941be21bf",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "evaluated_before_line": "0 0.8910156250 0.5978750000 0.1335937500 0.0570277778 0.8273437500 0.6125000000 2 0.9546875000 0.6222222222 2",
+      "evaluated_after_line": "0 0.8910156250 0.5978750000 0.1335937500 0.0570277778 0.832812500 0.613888889 2 0.9546875000 0.6222222222 2",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          1055.0,
+          409.94,
+          1226.0,
+          451.0
+        ],
+        "left_xyv_px": [
+          1066.0,
+          442.0,
+          2
+        ],
+        "right_xyv_px": [
+          1222.0,
+          448.0,
+          2
+        ]
+      },
+      "reason": "The curved lower-left front junction is inset from the outer side contour and is near (1066,442). The proposed point tracks that junction; no additional one-pixel tuning is justified.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/03-427836.jpg",
+        "sha256": "82c49b0ebc238f737e290bbbfde339cbee9889c1ac8904d0e11a59f08aa64abd",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/new_000008-crop-1010-305.png",
+          "sha256": "c0622c91300fda73c340e15dc239e0ba4d36144b82fb757d053874378d1c59c8"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1074-350.png",
+          "sha256": "81f6a1adc8275e0a7f0bfa5b94a006edccde27f014716003df59150bb55cdf35"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1040-360.png",
+          "sha256": "376fbe84315e153d0f07afb9d4426cbf0b821a738483b072d5047e1abdecf7bd"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1020-470.png",
+          "sha256": "478e398a8ceadedba429bb071b741b8b638697cc4b36d2ee786f50f88326fbdb"
+        },
+        {
+          "path": "tmp/r10-root/new_000008-proposed.png",
+          "sha256": "77f6946630d9c46f2807eb888b0c783019f0e7acaac3d5c0a7af64099640d331"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000008",
+      "base_row": 31,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "left"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/val/new_000008.txt",
+      "source_label_sha256": "899497c89d2492caae918340aa2c0ee257884cc735522d9924c6604941be21bf",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "evaluated_before_line": "0 0.8804687500 0.6440208333 0.1296875000 0.0536250000 0.81815625 0.65915278 2 0.9429687500 0.6666666667 2",
+      "evaluated_after_line": "0 0.8804687500 0.6440208333 0.1296875000 0.0536250000 0.823437500 0.662500000 2 0.9429687500 0.6666666667 2",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          1044.0,
+          444.39,
+          1210.0,
+          483.0
+        ],
+        "left_xyv_px": [
+          1054.0,
+          477.0,
+          2
+        ],
+        "right_xyv_px": [
+          1207.0,
+          480.0,
+          2
+        ]
+      },
+      "reason": "The lower-left side-to-front junction is near (1054,477). The proposal follows the same physical front-face identity as adjacent tiers rather than the outer silhouette. Local blur does not support a more precise correction.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/03-427836.jpg",
+        "sha256": "82c49b0ebc238f737e290bbbfde339cbee9889c1ac8904d0e11a59f08aa64abd",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/new_000008-crop-1010-305.png",
+          "sha256": "c0622c91300fda73c340e15dc239e0ba4d36144b82fb757d053874378d1c59c8"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1074-350.png",
+          "sha256": "81f6a1adc8275e0a7f0bfa5b94a006edccde27f014716003df59150bb55cdf35"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1040-360.png",
+          "sha256": "376fbe84315e153d0f07afb9d4426cbf0b821a738483b072d5047e1abdecf7bd"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1020-470.png",
+          "sha256": "478e398a8ceadedba429bb071b741b8b638697cc4b36d2ee786f50f88326fbdb"
+        },
+        {
+          "path": "tmp/r10-root/new_000008-proposed.png",
+          "sha256": "77f6946630d9c46f2807eb888b0c783019f0e7acaac3d5c0a7af64099640d331"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000008",
+      "base_row": 32,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "box",
+        "left",
+        "right"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/val/new_000008.txt",
+      "source_label_sha256": "899497c89d2492caae918340aa2c0ee257884cc735522d9924c6604941be21bf",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "evaluated_before_line": "0 0.8728515625 0.6940208350 0.1300781250 0.0619583300 0.81457813 0.70941667 2 0.92987500 0.72125000 2",
+      "evaluated_after_line": "0 0.869921875 0.689854167 0.124218750 0.053625000 0.820312500 0.711111111 2 0.928125000 0.713888889 2",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          1034.0,
+          477.39,
+          1193.0,
+          516.0
+        ],
+        "left_xyv_px": [
+          1050.0,
+          512.0,
+          2
+        ],
+        "right_xyv_px": [
+          1188.0,
+          514.0,
+          2
+        ]
+      },
+      "reason": "The white front terminates near y=514..516. The darker triangular/gray features farther below continue into the rack. The proposed box bottom y=516 and right point (1188,514) exclude that rack continuation while keeping the owned front/rim; the inset left point (1050,512) follows the front-face turn. Box extrema are supported within about two pixels.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/03-427836.jpg",
+        "sha256": "82c49b0ebc238f737e290bbbfde339cbee9889c1ac8904d0e11a59f08aa64abd",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/008-grid-1020-470.png",
+          "sha256": "478e398a8ceadedba429bb071b741b8b638697cc4b36d2ee786f50f88326fbdb"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1074-350.png",
+          "sha256": "81f6a1adc8275e0a7f0bfa5b94a006edccde27f014716003df59150bb55cdf35"
+        },
+        {
+          "path": "tmp/r10-root/008-grid-1040-360.png",
+          "sha256": "376fbe84315e153d0f07afb9d4426cbf0b821a738483b072d5047e1abdecf7bd"
+        },
+        {
+          "path": "tmp/r10-root/new_000008-proposed.png",
+          "sha256": "77f6946630d9c46f2807eb888b0c783019f0e7acaac3d5c0a7af64099640d331"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000013",
+      "base_row": 26,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "box",
+        "right"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/train/new_000013.txt",
+      "source_label_sha256": "89978e8fbdff4a3ab6730600e5324740b0177acca77ede60141f24408e76617a",
+      "source_image_path": "data/images/train/new_000013.png",
+      "source_image_sha256": "f6a83ea036d86a496964c965f4ab30b0b823722fe180deda93f5d1348f88cd07",
+      "evaluated_before_line": "0 0.7558593750 0.3358402778 0.0820312500 0.0338750000 0.71685938 0.35087500 2 0.7953125000 0.3513888889 2",
+      "evaluated_after_line": "0 0.757812500 0.337229167 0.085937500 0.036652778 0.71685938 0.35087500 2 0.797656250 0.351388889 2",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          915.0,
+          229.61,
+          1025.0,
+          256.0
+        ],
+        "left_xyv_px": [
+          917.58,
+          252.63,
+          2
+        ],
+        "right_xyv_px": [
+          1021.0,
+          253.0,
+          2
+        ]
+      },
+      "reason": "The shaded right rim belongs to this front before the darker rack continuation. Expanding the right box edge to x=1025 and bottom to y=256 preserves it. The right endpoint (1021,253) is reasonable at the blurred lower front turn and matches the user orange hint; the evidence does not support a contradictory precise offset.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/04-427838.jpg",
+        "sha256": "11060cf82609a103f9752b8058b1dea7623c6091deb47edb9f616705a4811f83",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/013-grid-908-220.png",
+          "sha256": "9213224eae201f1fcbeaa5027238851433b1e9b5d7e27cceef97889f76c1532c"
+        },
+        {
+          "path": "tmp/r10-root/013-grid-675-420.png",
+          "sha256": "e4bac879932926814ff87afa8aa0fc6002bdbd87dc762b5fa52be1dd585f8163"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000013",
+      "base_row": 29,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "box"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/train/new_000013.txt",
+      "source_label_sha256": "89978e8fbdff4a3ab6730600e5324740b0177acca77ede60141f24408e76617a",
+      "source_image_path": "data/images/train/new_000013.png",
+      "source_image_sha256": "f6a83ea036d86a496964c965f4ab30b0b823722fe180deda93f5d1348f88cd07",
+      "evaluated_before_line": "0 0.57109375 0.61250000 0.08281250 0.03611111 0.53281250 0.62500000 2 0.00000000 0.00000000 0",
+      "evaluated_after_line": "0 0.569921875 0.610416667 0.075781250 0.031944444 0.53281250 0.62500000 2 0.00000000 0.00000000 0",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          681.0,
+          428.0,
+          778.0,
+          451.0
+        ],
+        "left_xyv_px": [
+          682.0,
+          450.0,
+          2
+        ],
+        "right_xyv_px": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "reason": "The visible upper part extends to x about 778 beside the gripper even though the lower-right part is occluded. Bounds [681,428,778,451] include that owned protrusion and stop before left rack/bottom-tier excess. The missing right point is appropriate.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/04-427838.jpg",
+        "sha256": "11060cf82609a103f9752b8058b1dea7623c6091deb47edb9f616705a4811f83",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/013-grid-675-420.png",
+          "sha256": "e4bac879932926814ff87afa8aa0fc6002bdbd87dc762b5fa52be1dd585f8163"
+        },
+        {
+          "path": "tmp/r10-root/013-grid-908-220.png",
+          "sha256": "9213224eae201f1fcbeaa5027238851433b1e9b5d7e27cceef97889f76c1532c"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000013",
+      "base_row": 30,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "box"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/train/new_000013.txt",
+      "source_label_sha256": "89978e8fbdff4a3ab6730600e5324740b0177acca77ede60141f24408e76617a",
+      "source_image_path": "data/images/train/new_000013.png",
+      "source_image_sha256": "f6a83ea036d86a496964c965f4ab30b0b823722fe180deda93f5d1348f88cd07",
+      "evaluated_before_line": "0 0.55781250 0.64027778 0.05625000 0.03333333 0.53281250 0.65138889 2 0.00000000 0.00000000 0",
+      "evaluated_after_line": "0 0.561328125 0.638888889 0.058593750 0.027777778 0.53281250 0.65138889 2 0.00000000 0.00000000 0",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          681.0,
+          450.0,
+          756.0,
+          470.0
+        ],
+        "left_xyv_px": [
+          682.0,
+          469.0,
+          2
+        ],
+        "right_xyv_px": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "reason": "The owned front extends to x about 756 immediately above the gripper notch, with its lower band near y=469..470. Bounds [681,450,756,470] retain that visible extremum while removing excess below. The right corner remains occluded.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/04-427838.jpg",
+        "sha256": "11060cf82609a103f9752b8058b1dea7623c6091deb47edb9f616705a4811f83",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/013-grid-675-420.png",
+          "sha256": "e4bac879932926814ff87afa8aa0fc6002bdbd87dc762b5fa52be1dd585f8163"
+        },
+        {
+          "path": "tmp/r10-root/013-grid-908-220.png",
+          "sha256": "9213224eae201f1fcbeaa5027238851433b1e9b5d7e27cceef97889f76c1532c"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000013",
+      "base_row": 31,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "box"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/train/new_000013.txt",
+      "source_label_sha256": "89978e8fbdff4a3ab6730600e5324740b0177acca77ede60141f24408e76617a",
+      "source_image_path": "data/images/train/new_000013.png",
+      "source_image_sha256": "f6a83ea036d86a496964c965f4ab30b0b823722fe180deda93f5d1348f88cd07",
+      "evaluated_before_line": "0 0.55781250 0.66666667 0.05625000 0.03333333 0.53281250 0.67777778 2 0.00000000 0.00000000 0",
+      "evaluated_after_line": "0 0.558984375 0.666666667 0.053906250 0.027777778 0.53281250 0.67777778 2 0.00000000 0.00000000 0",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          681.0,
+          470.0,
+          750.0,
+          490.0
+        ],
+        "left_xyv_px": [
+          682.0,
+          488.0,
+          2
+        ],
+        "right_xyv_px": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "reason": "The visible front reaches x about 750 at the sloped gripper boundary and its bottom rim near y=489..490. Bounds [681,470,750,490] are supported independently of the hidden right endpoint.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/04-427838.jpg",
+        "sha256": "11060cf82609a103f9752b8058b1dea7623c6091deb47edb9f616705a4811f83",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/013-grid-675-420.png",
+          "sha256": "e4bac879932926814ff87afa8aa0fc6002bdbd87dc762b5fa52be1dd585f8163"
+        },
+        {
+          "path": "tmp/r10-root/013-grid-908-220.png",
+          "sha256": "9213224eae201f1fcbeaa5027238851433b1e9b5d7e27cceef97889f76c1532c"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    },
+    {
+      "image_id": "new_000013",
+      "base_row": 32,
+      "decision": "supported_within_visible_edge_tolerance",
+      "reviewed_groups": [
+        "box"
+      ],
+      "source_label_path": "data/reviews/fronts-2026-11-19-r9-recovery/labels/train/new_000013.txt",
+      "source_label_sha256": "89978e8fbdff4a3ab6730600e5324740b0177acca77ede60141f24408e76617a",
+      "source_image_path": "data/images/train/new_000013.png",
+      "source_image_sha256": "f6a83ea036d86a496964c965f4ab30b0b823722fe180deda93f5d1348f88cd07",
+      "evaluated_before_line": "0 0.55625000 0.69444444 0.05312500 0.03611111 0.53281250 0.70555556 2 0.00000000 0.00000000 0",
+      "evaluated_after_line": "0 0.557812500 0.692361111 0.051562500 0.026388889 0.53281250 0.70555556 2 0.00000000 0.00000000 0",
+      "proposed_pixel_geometry": {
+        "box_xyxy_px": [
+          681.0,
+          489.0,
+          747.0,
+          508.0
+        ],
+        "left_xyv_px": [
+          682.0,
+          508.0,
+          2
+        ],
+        "right_xyv_px": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "reason": "The visible front terminates around y=506 with a narrow owned rim to about y=508; the broader darker structure below is outside the front. Bounds [681,489,747,508] follow the four visible extrema around the gripper. Keeping the right endpoint missing is appropriate.",
+      "coordinate_uncertainty_px": 2,
+      "user_reference": {
+        "path": "/workspace/scratch/c773d0baa46c/upload/04-427838.jpg",
+        "sha256": "11060cf82609a103f9752b8058b1dea7623c6091deb47edb9f616705a4811f83",
+        "role": "physical identity and correction intent; raw PNG determines coordinates"
+      },
+      "evidence": [
+        {
+          "path": "tmp/r10-root/013-grid-675-420.png",
+          "sha256": "e4bac879932926814ff87afa8aa0fc6002bdbd87dc762b5fa52be1dd585f8163"
+        },
+        {
+          "path": "tmp/r10-root/013-grid-908-220.png",
+          "sha256": "9213224eae201f1fcbeaa5027238851433b1e9b5d7e27cceef97889f76c1532c"
+        }
+      ],
+      "recommended_operation": null,
+      "new_hold_recommended": false
+    }
+  ],
+  "summary": {
+    "operations_checked": 13,
+    "concrete_errors_found": 0,
+    "recommended_operations": 0,
+    "new_holds": 0
+  },
+  "limitations": [
+    "Source images are 1280 by 720 with local blur. Approximately two pixel tolerance is appropriate for the inspected boundaries.",
+    "User marks guide physical identity and intended correction; screenshot coordinates were not copied into labels.",
+    "No actual labels or primary root audit were edited."
+  ]
+}

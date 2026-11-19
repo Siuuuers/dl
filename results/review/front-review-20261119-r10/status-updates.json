@@ -1,0 +1,2160 @@
+[
+  {
+    "case_id": "r6-a-01-new_000007",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/root-audit.json",
+      "sha256": "8cc807cd24e608cfd0236ef0086767eaed1b68ed920fd478acf69fbc8a4b2e1a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        7,
+        14
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The top frame-clipped slivers remain unresolved; neighboring row8/9 box fixes do not establish their complete extents or hidden corners."
+    },
+    "decision": {
+      "case_id": "r6-a-01-new_000007",
+      "status": "resolved",
+      "reason": "User explicitly removed r9 rows7 and14; the two ambiguous frame slivers are deleted with an exact old-to-new row map."
+    }
+  },
+  {
+    "case_id": "r6-a-02-new_000008",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/root-audit.json",
+      "sha256": "8cc807cd24e608cfd0236ef0086767eaed1b68ed920fd478acf69fbc8a4b2e1a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        32
+      ],
+      "fields": [
+        "box",
+        "right"
+      ],
+      "reason": "The left divider excess was reduced in row32, but the gray projection and lower-right turn remain unresolved; preserve the inherited right point and exploratory development-only handling."
+    },
+    "decision": {
+      "case_id": "r6-a-02-new_000008",
+      "status": "resolved",
+      "reason": "Original pixels and the user front-corner clarification separate the row32 white front from the lower rack projection. The box and actual lower-front points are corrected."
+    }
+  },
+  {
+    "case_id": "r9-recovery-secondary-new_000002-row45-box",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/root-audit.json",
+      "sha256": "8cc807cd24e608cfd0236ef0086767eaed1b68ed920fd478acf69fbc8a4b2e1a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        45
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The right-front surface is visible above the top of the blue screen rectangle, so copying the rectangle would wrongly remove visible material. A narrow left-side sliver remains difficult to assign confidently across the gripper, and the lowest right protrusion meets the hand. Preserve both landmark triplets, including missing left, and hold the complete box rather than invent a hidden boundary."
+    },
+    "decision": {
+      "case_id": "r9-recovery-secondary-new_000002-row45-box",
+      "status": "held",
+      "reason": "The clear divider/hand excess is reduced, but the narrow left strip beside the gripper still has uncertain physical ownership. Hold the whole training photo at exact PR35 in both arms; the missing left point remains valid."
+    }
+  },
+  {
+    "case_id": "old_000010-r9-recovery-top-extent",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/root-audit.json",
+      "sha256": "8cc807cd24e608cfd0236ef0086767eaed1b68ed920fd478acf69fbc8a4b2e1a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        1
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The first front meets the top image edge and an upper bright lip. Original row1 begins at y16.3056 whereas the inherited r8 row1 begins at y0. The original crop does not make the ownership of the additional upper strip decisive enough for this recovery pass. Retain the r8 review box provisionally and exact PR35 supervision for this whole training photograph; the existing lower-front points are not held by a new landmark-definition choice."
+    },
+    "decision": {
+      "case_id": "old_000010-r9-recovery-top-extent",
+      "status": "resolved",
+      "reason": "User confirms all old_* photos are correct and excludes them from this review. Preserve every r9 old_* label byte. The old cohort is separately excluded from the treatment and uses exact PR35 supervision in both arms."
+    }
+  },
+  {
+    "case_id": "old_000042-r9-recovery-top-extent",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/root-audit.json",
+      "sha256": "8cc807cd24e608cfd0236ef0086767eaed1b68ed920fd478acf69fbc8a4b2e1a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        10
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The thin upper front at row10 meets a continuous horizontal rack member and saturated side reflections. The inherited r8 box contracts the original width and bottom. The trim is plausible, but exact upper/side ownership of that narrow strip remains a local extent question in this recovery pass. Retain the r8 review box provisionally and exact PR35 supervision for this whole training photograph; the lower-front landmark definition is already established."
+    },
+    "decision": {
+      "case_id": "old_000042-r9-recovery-top-extent",
+      "status": "resolved",
+      "reason": "User confirms all old_* photos are correct and excludes them from this review. Preserve every r9 old_* label byte. The old cohort is separately excluded from the treatment and uses exact PR35 supervision in both arms."
+    }
+  },
+  {
+    "case_id": "r6-a-03-new_000014",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/root-audit.json",
+      "sha256": "8cc807cd24e608cfd0236ef0086767eaed1b68ed920fd478acf69fbc8a4b2e1a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        36,
+        37,
+        38
+      ],
+      "fields": [
+        "box",
+        "right"
+      ],
+      "reason": "Right tapered gray tips admit competing front-versus-side ownership interpretations. The user proposal does not establish a uniform inward or outward rule. Retain the inherited right points for explicit adjudication."
+    },
+    "decision": {
+      "case_id": "r6-a-03-new_000014",
+      "status": "held",
+      "fields": [
+        "right"
+      ],
+      "reason": "Secondary original-pixel review confirms visible terminal contours but cannot locate an independent front-to-side crease for rows36-38. Do not invent a uniform inward offset; retain the coordinates as an explicitly unresolved review proposal and exact PR35 on this training photo in both arms.",
+      "secondary_evidence": [
+        "tmp/r10-root/014-detail-1070-405.png",
+        "tmp/r10-root/014-grid-1210-420.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-04-new_000015",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [],
+      "fields": [
+        "box"
+      ],
+      "reason": "The pale strip in the narrow gripper slot does not expose a complete ownership boundary. It could be a lower front or support; no new instance is supported."
+    },
+    "decision": {
+      "case_id": "r6-a-04-new_000015",
+      "status": "held",
+      "reason": "The pale strip in the narrow gripper slot still lacks an independent front boundary; it may be support or a further front, so add no speculative instance.",
+      "image_id": "new_000015",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "4c4486f314cd900d1db9c33846a9242cc72b95feb7c58865b14e8954c0f33d65",
+      "evidence": [
+        "data/images/train/new_000015.png",
+        "tmp/r10-early/new_000015-r9.png",
+        "tmp/r10-early/015-upper.png",
+        "tmp/r10-early/015-middle.png",
+        "tmp/r10-early/015-gripper.png"
+      ],
+      "base_rows": [],
+      "fields": [
+        "box"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-05-new_000016",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        25,
+        26,
+        27
+      ],
+      "fields": [
+        "box",
+        "right"
+      ],
+      "reason": "The tapered gray projections are visible, but the front-to-side/rim transition at the right is not sharp enough to replace the three right landmarks or apply a uniform box trim."
+    },
+    "decision": {
+      "case_id": "r6-a-05-new_000016",
+      "status": "resolved",
+      "reason": "The front-face lower-edge turns support the inherited right points under the clarified front-face definition; individually trim the three box bottoms to the visible front material. No blanket tip-definition hold remains.",
+      "base_rows": [
+        25,
+        26,
+        27
+      ],
+      "fields": [
+        "box",
+        "right"
+      ],
+      "image_id": "new_000016",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "5938ff62372f17c0702a531760660abf17ca940cb1f2d750208e2431a6cd505d",
+      "evidence": [
+        "data/images/train/new_000016.png",
+        "tmp/r10-early/new_000016-r9.png",
+        "tmp/r10-early/016-upper.png",
+        "tmp/r10-early/016-right.png",
+        "tmp/r10-early/016-lower.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-07-new_000017",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        58
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The pale band below the narrow fragment has no unambiguous separation from an adjacent front. Preserve the existing fragment and missing right landmark."
+    },
+    "decision": {
+      "case_id": "r6-a-07-new_000017",
+      "status": "resolved",
+      "reason": "Original-pixel enlargement and the user example establish the separator below row58: bound row58 itself and add the distinct lower visible fragment with both lower corners missing. The unresolved blanket ownership hold is no longer needed.",
+      "base_rows": [
+        58
+      ],
+      "fields": [
+        "box"
+      ],
+      "image_id": "new_000017",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "67d74ecdcd19e7a9e80f55cb88b1be1030c119de2a799fa1f0b45797bc68b29d",
+      "evidence": [
+        "data/images/train/new_000017.png",
+        "tmp/r10-early/new_000017-r9.png",
+        "tmp/r10-early/017-upper.png",
+        "tmp/r10-early/017-middle.png",
+        "tmp/r10-early/017-gripper.png",
+        "../upload/05-427839.jpg"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-06-new_000018",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        23,
+        24,
+        25,
+        26
+      ],
+      "fields": [
+        "box",
+        "right"
+      ],
+      "reason": "The four front-end gray areas remain difficult to separate from side/rim material. Their visible right landmarks cannot safely be moved as a repeated pattern."
+    },
+    "decision": {
+      "case_id": "r6-a-06-new_000018",
+      "status": "resolved",
+      "reason": "The clarified front-face rule and enlarged original show the inherited right points at the lower-front turns before the descending side surfaces; the visible front/rim AABBs remain supported. The prior gray-tip definition hold is unnecessary.",
+      "base_rows": [
+        23,
+        24,
+        25,
+        26
+      ],
+      "fields": [
+        "box",
+        "right"
+      ],
+      "image_id": "new_000018",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "25b693f88b7c4747d26df57dd92d2f45a2d42ac6c54ca4d7e6b2d7e2065ebe47",
+      "evidence": [
+        "data/images/train/new_000018.png",
+        "tmp/r10-early/new_000018-r9.png",
+        "tmp/r10-early/018-right.png",
+        "tmp/r10-early/018-gripper.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-08-new_000020",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        45
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The central pale band continues behind the gripper; its complete box extent cannot be assigned to a single front from the available pixels."
+    },
+    "decision": {
+      "case_id": "r6-a-08-new_000020",
+      "status": "held",
+      "reason": "The middle portion of the lowest front is visible through the gripper, but assigning the very thin upper lip on both sides to that same front remains uncertain; retain the existing box and canonical missing corners.",
+      "base_rows": [
+        45
+      ],
+      "fields": [
+        "box"
+      ],
+      "image_id": "new_000020",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "b51573375e63f2160e4049b3a877a0a54d8f49fc7d1bf01a2e3d7437a7435bed",
+      "evidence": [
+        "data/images/train/new_000020.png",
+        "tmp/r10-early/new_000020-r9.png",
+        "tmp/r10-early/020-upper.png",
+        "tmp/r10-early/020-middle.png",
+        "tmp/r10-early/020-gripper.png",
+        "tmp/r10-early/020-row44.png",
+        "../upload/06-427841.jpg"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-09-new_000020",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [],
+      "fields": [
+        "box"
+      ],
+      "reason": "The tiny pale triangle at the bottom of the gripper slot could be support or an additional front. Do not add an instance."
+    },
+    "decision": {
+      "case_id": "r6-a-09-new_000020",
+      "status": "resolved",
+      "reason": "The lower gripper-window triangle is consistent with the rack/background visible through the opening and has no separate frontal surface or owned rim; close the possible-instance question without adding an instance.",
+      "image_id": "new_000020",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "b51573375e63f2160e4049b3a877a0a54d8f49fc7d1bf01a2e3d7437a7435bed",
+      "evidence": [
+        "data/images/train/new_000020.png",
+        "tmp/r10-early/new_000020-r9.png",
+        "tmp/r10-early/020-upper.png",
+        "tmp/r10-early/020-middle.png",
+        "tmp/r10-early/020-gripper.png",
+        "tmp/r10-early/020-row44.png",
+        "../upload/06-427841.jpg"
+      ],
+      "base_rows": [],
+      "fields": [
+        "box"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-10-new_000023",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        24,
+        25,
+        26
+      ],
+      "fields": [
+        "box",
+        "right"
+      ],
+      "reason": "The gray projections extend below the bright front surfaces. Their material ownership is unresolved, so neither the proposed higher front ends nor lower projection ends can be declared ground truth."
+    },
+    "decision": {
+      "case_id": "r6-a-10-new_000023",
+      "status": "resolved",
+      "reason": "The front-face lower corners are the inherited inset turns, before the descending side projections. Individually bound each front/rim to its observed tier; the amended boxes and retained points resolve the old material-definition hold.",
+      "base_rows": [
+        24,
+        25,
+        26
+      ],
+      "fields": [
+        "box",
+        "right"
+      ],
+      "image_id": "new_000023",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "46cd3f29b3f43d20d5b342ee01d94201000e63aebd98aa795073731a71c880c6",
+      "evidence": [
+        "data/images/train/new_000023.png",
+        "tmp/r10-early/new_000023-r9.png",
+        "tmp/r10-early/023-upper.png",
+        "tmp/r10-early/023-right.png",
+        "tmp/r10-early/023-gripper.png",
+        "tmp/r10-early/023-lower.png",
+        "../upload/07-427843.jpg"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-11-new_000023",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        22,
+        23
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The gray central window is occluded by both fingers. The two row extents and the possible lower separate fragment are not fully observable."
+    },
+    "decision": {
+      "case_id": "r6-a-11-new_000023",
+      "status": "resolved",
+      "reason": "Retain the existing two visible gripper-window fragment envelopes under the user clarified visible-front rule; both lower corners remain canonical missing because the gripper hides them. Missing corners alone do not require a hold.",
+      "base_rows": [
+        22,
+        23
+      ],
+      "fields": [
+        "box"
+      ],
+      "image_id": "new_000023",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "46cd3f29b3f43d20d5b342ee01d94201000e63aebd98aa795073731a71c880c6",
+      "evidence": [
+        "data/images/train/new_000023.png",
+        "tmp/r10-early/new_000023-r9.png",
+        "tmp/r10-early/023-upper.png",
+        "tmp/r10-early/023-right.png",
+        "tmp/r10-early/023-gripper.png",
+        "tmp/r10-early/023-lower.png",
+        "../upload/07-427843.jpg"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-12-new_000025",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        57
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The pale triangle immediately below the existing gripper-slot fragment lacks a distinct separator. Do not expand the row or add an instance."
+    },
+    "decision": {
+      "case_id": "r6-a-12-new_000025",
+      "status": "held",
+      "base_rows": [
+        57
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Current r9 row57 is[680,473,714,486], below the established separator near470. Its pale continuation to497 lacks a distinct separator near485, and material below497 meets the gripper closure. Retain57; do not add the two schematic blue rectangles as separate fronts. Both missing endpoints remain appropriate.",
+      "image_id": "new_000025",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "fd5beab59ec67177aade9d715ac9e1cc9d9d6be7c48b9a5a99b0873769455a94",
+      "evidence": [
+        "data/images/train/new_000025.png",
+        "tmp/r10-early/new_000025-r9.png",
+        "tmp/r10-early/025-upper.png",
+        "tmp/r10-early/025-middle.png",
+        "tmp/r10-early/025-lower.png",
+        "tmp/r10-early/025-gripper.png"
+      ],
+      "count_secondary_evidence": {
+        "path": "results/review/front-review-20261119-r10/new025-secondary-evidence.json",
+        "sha256": "e5aa67ec05d1ce5f409c1a716b9462ff05cdc96694530dc5063fb31f74838d5a"
+      }
+    }
+  },
+  {
+    "case_id": "r6-a-13-new_000028",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        63
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The narrow strip at the lower gripper opening remains consistent with either a cassette fragment or a support element. No new ownership witness is visible."
+    },
+    "decision": {
+      "case_id": "r6-a-13-new_000028",
+      "status": "resolved",
+      "base_rows": [
+        63
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The pale strip y545–553 is continuously below the ribbed cassette top visible at y526–543 in the same slot, supporting a cassette frontal rim. Retain exact existing box and both missing corners; no extra instance is inferred.",
+      "image_id": "new_000028",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "b6a91896761d45f262ddb22f9b4aab0b9749d7e63dc6a85a1b923b6a9d21699f",
+      "evidence": [
+        "data/images/train/new_000028.png",
+        "tmp/r10-early/new_000028-r9.png",
+        "tmp/r10-early/028-upper.png",
+        "tmp/r10-early/028-middle.png",
+        "tmp/r10-early/028-lower.png",
+        "tmp/r10-early/028-slot.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-015-new_000029",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        25,
+        26,
+        27
+      ],
+      "fields": [
+        "right"
+      ],
+      "reason": "The main frontal surfaces are visible, but the rounded or slanted gray right extremities do not locate the physical lower-right corners precisely. Preserve the three right-landmark holds."
+    },
+    "decision": {
+      "case_id": "r8-015-new_000029",
+      "status": "resolved",
+      "base_rows": [
+        25,
+        26,
+        27
+      ],
+      "fields": [
+        "right"
+      ],
+      "reason": "The original right points25–27 lie on the visible lower front-edge turns before the downward gray projections, within the approximately3px edge blur. Retain those original tokens; no common inward offset is supported.",
+      "image_id": "new_000029",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "de8bad0ed360b56edb540e3e68bc0654049eeba8feb1b5ed76727cb337f50a43",
+      "evidence": [
+        "data/images/train/new_000029.png",
+        "tmp/r10-early/new_000029-r9.png",
+        "tmp/r10-early/029-upper-left.png",
+        "tmp/r10-early/029-upper-right.png",
+        "tmp/r10-early/029-lower.png",
+        "tmp/r10-early/029-lower-right.png",
+        "tmp/r10-early/029-slot.png",
+        "tmp/r10-early/029-thumb.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-a-14-new_000030",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        12,
+        30
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The central opening exposes disconnected gray surfaces without a reliable seam connecting them to a single row. Keep both existing rows and hold their boxes."
+    },
+    "decision": {
+      "case_id": "r6-a-14-new_000030",
+      "status": "held",
+      "base_rows": [
+        12,
+        30
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The gripper opening contains dark surfaces and a faint line near y483, but their ownership and the left extent of front12 are not uniquely visible. Retain both rows and missing corners; do not derive precise extents from the schematic blue rectangle.",
+      "image_id": "new_000030",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "df0504c634fbcefd6db5156db6f333e794785f7e8b3ed6753b6a709fab2d6874",
+      "evidence": [
+        "data/images/train/new_000030.png",
+        "tmp/r10-early/new_000030-r9.png",
+        "tmp/r10-early/030-left-upper.png",
+        "tmp/r10-early/030-right.png",
+        "tmp/r10-early/030-slot.png",
+        "tmp/r10-early/030-frame.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-039-new_000040",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        34,
+        35
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The narrow stacked strips behind the gripper are visible, but their right extent can continue into rack or gripper material. The missing right landmarks remain appropriate."
+    },
+    "decision": {
+      "case_id": "r8-039-new_000040",
+      "status": "held",
+      "base_rows": [
+        34,
+        35
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The left front strips are clear. The pale pixels inside the gripper slit around x631–638 may be the same fronts or gripper material, determining each right box edge. Retain existing envelopes and missing right corners pending that ownership decision.",
+      "image_id": "new_000040",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "d1f66883537a9fe0cc5a30a31ebb7dc5bb0d710c7ab7b320d489eedf07639672",
+      "evidence": [
+        "data/images/train/new_000040.png",
+        "tmp/r10-early/new_000040-r9.png",
+        "tmp/r10-early/040-upper.png",
+        "tmp/r10-early/040-upper-divider.png",
+        "tmp/r10-early/040-middle.png",
+        "tmp/r10-early/040-lower.png",
+        "tmp/r10-early/040-held.png",
+        "tmp/r10-early/040-row14.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-040-new_000041",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        9,
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The gray surface in the gripper window and its lower narrow fragment do not have a fully traceable seam. Do not merge, delete, or expand these two rows."
+    },
+    "decision": {
+      "case_id": "r8-040-new_000041",
+      "status": "held",
+      "base_rows": [
+        9,
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The dark gripper-window surface has a faint line near472, but the row9 envelope and separate row15 ownership are not independently traceable. Retain both rows with missing endpoints; no seam or extent is inferred through the gripper.",
+      "image_id": "new_000041",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "dd584ea61efc37f0091ea7d356f7376354bbead05c255ee6f503b874553fdf47",
+      "evidence": [
+        "data/images/train/new_000041.png",
+        "tmp/r10-early/new_000041-r9.png",
+        "tmp/r10-early/041-upper.png",
+        "tmp/r10-early/041-slot.png",
+        "tmp/r10-early/041-bottom.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-041-new_000042",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        9,
+        16
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The upper narrow front and lower slot fragment are heavily occluded. Preserve the known visible left point on row 9 and missing points on row 16."
+    },
+    "decision": {
+      "case_id": "r8-041-new_000042",
+      "status": "resolved",
+      "base_rows": [
+        9,
+        16
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Front9 has a visible upper strip and left lower-front turn before gripper occlusion. The distinct pale band16 lies between transverse separators near450 and475. Retain both current boxes, the visible left point9, and correctly missing points16.",
+      "image_id": "new_000042",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "b52a526052a8ff66b2786d8c78f75af07539a436bcac028e211dc5d0c8170438",
+      "evidence": [
+        "data/images/train/new_000042.png",
+        "tmp/r10-early/new_000042-r9.png",
+        "tmp/r10-early/042-upper.png",
+        "tmp/r10-early/042-slot.png",
+        "tmp/r10-early/042-bottom-left.png",
+        "tmp/r10-early/042-lower-left-rim.png",
+        "tmp/r10-early/042-hand-side.png",
+        "tmp/r10-early/042-hand-context.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-042-new_000042",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/early-audit.json",
+      "sha256": "29ac77419538a27380d87d8da9ef624441cd114ef89791498d05538986a88d95"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The hand-side pale triangle has an unclear upper connection to a rear/top surface. Retain the box hold and both missing lower corners."
+    },
+    "decision": {
+      "case_id": "r8-042-new_000042",
+      "status": "resolved",
+      "base_rows": [
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The pale hand-side triangle is continuously below a ribbed cassette top and bounded by hand/rack occlusion. Its owned upper lip supports a small left/top expansion to959/603; retain both missing lower corners without extrapolating hidden geometry.",
+      "image_id": "new_000042",
+      "split": "train",
+      "source_review_status_sha256": "6c17b3f2228bb5e30d02c1539da9f3bb73193a5159e2768c518dbd5a0fd95e73",
+      "source_label_sha256": "b52a526052a8ff66b2786d8c78f75af07539a436bcac028e211dc5d0c8170438",
+      "evidence": [
+        "data/images/train/new_000042.png",
+        "tmp/r10-early/new_000042-r9.png",
+        "tmp/r10-early/042-upper.png",
+        "tmp/r10-early/042-slot.png",
+        "tmp/r10-early/042-bottom-left.png",
+        "tmp/r10-early/042-lower-left-rim.png",
+        "tmp/r10-early/042-hand-side.png",
+        "tmp/r10-early/042-hand-context.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-b-058-13-14-rim_ownership",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        13,
+        14
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The narrow bright strip between rows 13 and 14 has ambiguous lip ownership. The current keypoints are not overridden by an inferred rectangular box corner."
+    },
+    "decision": {
+      "case_id": "r6-b-058-13-14-rim_ownership",
+      "image_id": "new_000058",
+      "status": "resolved",
+      "reason": "Current13 preserves original side/lower bounds and extends only upward to its visible own frontal lip; current14 is the exact original box. Their visible horizontal seam distinguishes the adjacent fronts. Resolve the stale shared-rim hold without a box change.",
+      "base_rows": [
+        13,
+        14
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/val/new_000058.png",
+        "tmp/r10-middle/new_000058-full.jpg",
+        "tmp/r10-middle/new_000058-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-b-059-13-14-rim_ownership",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        13,
+        14
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The bright separator between rows 13 and 14 still cannot be assigned confidently to the upper or lower frontal rim. Keep the boundary hold."
+    },
+    "decision": {
+      "case_id": "r6-b-059-13-14-rim_ownership",
+      "image_id": "new_000059",
+      "status": "resolved",
+      "reason": "Current13/14 map to original14/15; the lower/side seam bounds remain original, with only current13's own raised upper lip included. The original identity and visible seam support both boxes. Resolve the previous rim-ownership hold.",
+      "base_rows": [
+        13,
+        14
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/val/new_000059.png",
+        "tmp/r10-middle/new_000059-full.jpg",
+        "tmp/r10-middle/new_000059-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-b-089-below47-possible_front",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        47
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The pale triangular patch below base47 in the gripper aperture (approximately x684–733,y483–495) may be a separate front fragment or a projecting lower part of the existing front. The original does not establish an independent front boundary. Preserve base47 and add no speculative instance; no count is inferred from neighboring frames or repeated spacing. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed. The pale patch below row47 cannot safely be counted as an extra instance from this view."
+    },
+    "decision": {
+      "case_id": "r6-b-089-below47-possible_front",
+      "image_id": "new_000089",
+      "status": "held",
+      "reason": "The pale triangular patch near x684–733,y483–495 below47 is visible, but no independent frontal seam proves a separate cassette rather than a projection/continuation of47. Preserve47 and add no speculative instance; retain this exact ownership/count question.",
+      "base_rows": [
+        47
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/val/new_000089.png",
+        "tmp/r10-middle/new_000089-full.jpg",
+        "tmp/r10-middle/new_000089-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-016-new_000056",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The left frontal surface is visible and the right side is split by the gripper. The upper seam and ownership of the separated right patch are insufficient to replace the complete box."
+    },
+    "decision": {
+      "case_id": "r8-016-new_000056",
+      "image_id": "new_000056",
+      "status": "resolved",
+      "reason": "The original row12 front is visible at the left and through the aligned aperture. Its current box covers those visible front/rim pieces, and the hidden corner remains zero. The uncertainty does not require a hold merely for occlusion.",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/val/new_000056.png",
+        "tmp/r10-middle/new_000056-full.jpg",
+        "tmp/r10-middle/new_000056-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-019-new_000061",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        9
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. Rightmost visible fragment through the gripper opening cannot be confidently separated from the finger edge at this resolution. Preserve r7 tokens as an explicit unresolved visible-extent case; the missing physical right endpoint is retained. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-019-new_000061",
+      "image_id": "new_000061",
+      "status": "resolved",
+      "reason": "The original corresponding front has a visible left strip and aligned aperture face. The current clipped visible envelope is supported and the occluded right endpoint remains missing. Resolve the old general gripper-boundary hold.",
+      "base_rows": [
+        9
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000061.png",
+        "tmp/r10-middle/new_000061-full.jpg",
+        "tmp/r10-middle/new_000061-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-020-new_000062",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        9
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The rightmost visible fragment in the gripper opening has an ambiguous ownership boundary. Preserve r7 tokens as unresolved; do not infer a hidden right endpoint. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-020-new_000062",
+      "image_id": "new_000062",
+      "status": "resolved",
+      "reason": "The visible left frontal strip and same-level aperture patch identify the original front and support its current clipped box. Hidden endpoints remain zero; no unresolved identity/count issue remains in this case.",
+      "base_rows": [
+        9
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000062.png",
+        "tmp/r10-middle/new_000062-full.jpg",
+        "tmp/r10-middle/new_000062-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-021-new_000063",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        8
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The right visible-extreme through the gripper opening is ambiguous, so retain r7 tokens as unresolved; missing physical right endpoint remains missing. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-021-new_000063",
+      "image_id": "new_000063",
+      "status": "resolved",
+      "reason": "Visible left-strip seams identify the two original fronts8/9, with corresponding levels in the aperture. Their current envelopes cover visible face/rim fragments without inferring hidden corners. Resolve the inherited general occlusion holds.",
+      "base_rows": [
+        8
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000063.png",
+        "tmp/r10-middle/new_000063-full.jpg",
+        "tmp/r10-middle/new_000063-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-022-new_000063",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        9
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The right visible-extreme is partly hidden by the hand/gripper; no defensible witness separates the edge from the occluder, so preserve r7 as unresolved. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-022-new_000063",
+      "image_id": "new_000063",
+      "status": "resolved",
+      "reason": "Visible left-strip seams identify the two original fronts8/9, with corresponding levels in the aperture. Their current envelopes cover visible face/rim fragments without inferring hidden corners. Resolve the inherited general occlusion holds.",
+      "base_rows": [
+        9
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000063.png",
+        "tmp/r10-middle/new_000063-full.jpg",
+        "tmp/r10-middle/new_000063-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-023-new_000065",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. Partly occluded front has a potentially visible upper-right sliver, but its rightmost material boundary against the finger is uncertain. Preserve r7 tokens as unresolved instead of inventing an extrema witness. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-023-new_000065",
+      "image_id": "new_000065",
+      "status": "resolved",
+      "reason": "The visible frontal patch has its own horizontal boundary and original/adjacent face identity; current clipping follows the gripper or thumb rather than a hidden outer corner. Retain the supported box and missing corners, and resolve the old boundary hold.",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000065.png",
+        "tmp/r10-middle/new_000065-full.jpg",
+        "tmp/r10-middle/new_000065-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-024-new_000065",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        24
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. Small hand-occluded triangular front fragment; preserve existing fragment box and absent physical endpoints because the blurred top-lip/occluder boundary does not support a precise amendment. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-024-new_000065",
+      "image_id": "new_000065",
+      "status": "resolved",
+      "reason": "The visible frontal patch has its own horizontal boundary and original/adjacent face identity; current clipping follows the gripper or thumb rather than a hidden outer corner. Retain the supported box and missing corners, and resolve the old boundary hold.",
+      "base_rows": [
+        24
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000065.png",
+        "tmp/r10-middle/new_000065-full.jpg",
+        "tmp/r10-middle/new_000065-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-025-new_000066",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        8
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The lower/side extrema meet the gripper and cannot be separated reliably throughout the visible fragments; preserve r7 as unresolved, with both physical lower corners still missing. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-025-new_000066",
+      "image_id": "new_000066",
+      "status": "resolved",
+      "reason": "The original front identity and visible own frontal rim/face patches establish this clipped instance. Current boxes exclude hand/gripper area while retaining visible extrema. Resolve the general boundary hold; no endpoint is inferred behind the occluder.",
+      "base_rows": [
+        8
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000066.png",
+        "tmp/r10-middle/new_000066-full.jpg",
+        "tmp/r10-middle/new_000066-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-026-new_000066",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. Small visible patch through the gripper opening has ambiguous occluder boundary; preserve r7 fragment and missing endpoints as unresolved. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-026-new_000066",
+      "image_id": "new_000066",
+      "status": "resolved",
+      "reason": "The original front identity and visible own frontal rim/face patches establish this clipped instance. Current boxes exclude hand/gripper area while retaining visible extrema. Resolve the general boundary hold; no endpoint is inferred behind the occluder.",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000066.png",
+        "tmp/r10-middle/new_000066-full.jpg",
+        "tmp/r10-middle/new_000066-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-027-new_000066",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        14
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. Hand-occluded lower front has a blurred lip/hand boundary at the right extremum; retain existing fragment tokens as unresolved instead of assigning a false witness. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-027-new_000066",
+      "image_id": "new_000066",
+      "status": "resolved",
+      "reason": "The original front identity and visible own frontal rim/face patches establish this clipped instance. Current boxes exclude hand/gripper area while retaining visible extrema. Resolve the general boundary hold; no endpoint is inferred behind the occluder.",
+      "base_rows": [
+        14
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000066.png",
+        "tmp/r10-middle/new_000066-full.jpg",
+        "tmp/r10-middle/new_000066-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-028-new_000067",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. Rightmost visible front fragment through the gripper has ambiguous ownership at the finger edge; preserve r7 tokens as unresolved and retain the absent physical right corner. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-028-new_000067",
+      "image_id": "new_000067",
+      "status": "resolved",
+      "reason": "The raw crop shows the original front and, for the lower thumb fragment, a separate horizontal seam from the preceding face. Current box clipping is supported. Keep the current missing occluded corners and resolve the old boundary hold.",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000067.png",
+        "tmp/r10-middle/new_000067-full.jpg",
+        "tmp/r10-middle/new_000067-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-029-new_000067",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. Small hand-occluded fragment has a blurred boundary; preserve existing fragment and absent endpoints as unresolved. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-029-new_000067",
+      "image_id": "new_000067",
+      "status": "resolved",
+      "reason": "The raw crop shows the original front and, for the lower thumb fragment, a separate horizontal seam from the preceding face. Current box clipping is supported. Keep the current missing occluded corners and resolve the old boundary hold.",
+      "base_rows": [
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000067.png",
+        "tmp/r10-middle/new_000067-full.jpg",
+        "tmp/r10-middle/new_000067-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-030-new_000072",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        16
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The inherited wide rectangle crosses the gripper. A right-side front fragment is visible, but whether a narrow top strip connects across the gripper cannot be determined reliably. Preserve exact r7 tokens and missing left point; do not claim visible-only horizontal extent verified. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-030-new_000072",
+      "image_id": "new_000072",
+      "status": "resolved",
+      "reason": "The original front16 is visible above/along the gripper with a distinct right-side face strip; the current box encloses the visible own rim/face pieces. The absent middle is occlusion, not an unresolved additional instance. Resolve the hold.",
+      "base_rows": [
+        16
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000072.png",
+        "tmp/r10-middle/new_000072-full.jpg",
+        "tmp/r10-middle/new_000072-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-031-new_000073",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The fragment in the gripper opening is too ambiguous to identify all four front extrema independently of the gripper surfaces. Preserve exact r7 tokens and both missing corners. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-031-new_000073",
+      "image_id": "new_000073",
+      "status": "resolved",
+      "reason": "Original front identity is preserved. The aperture face12 and the visible right-front13 have identifiable own frontal boundaries, clipped where the gripper covers them. Current boxes and missing hidden points are supported; resolve the old boundary questions.",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000073.png",
+        "tmp/r10-middle/new_000073-full.jpg",
+        "tmp/r10-middle/new_000073-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-032-new_000073",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        13
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. Independent root review confirms clear right rack inclusion, but the upper-left lip at the gripper boundary may belong to the preceding front. Four own-object extrema cannot be certified, so preserve r7 box and point slots as an explicit unresolved ownership case. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-032-new_000073",
+      "image_id": "new_000073",
+      "status": "resolved",
+      "reason": "Original front identity is preserved. The aperture face12 and the visible right-front13 have identifiable own frontal boundaries, clipped where the gripper covers them. Current boxes and missing hidden points are supported; resolve the old boundary questions.",
+      "base_rows": [
+        13
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000073.png",
+        "tmp/r10-middle/new_000073-full.jpg",
+        "tmp/r10-middle/new_000073-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-033-new_000074",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        11
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The gripper hides the lower contour and the inherited right extent may clip a thin visible front strip. Preserve exact tokens because all four visible extrema cannot be separated confidently from the gripper junction. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-033-new_000074",
+      "image_id": "new_000074",
+      "status": "held",
+      "reason": "Current11 and the added aperture patch20 may represent separate fronts or split visible portions of one original front. The gripper hides the separating seam. Retain the specific box/ownership question with current geometry; missing corner triplets are not the uncertainty.",
+      "base_rows": [
+        11
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000074.png",
+        "tmp/r10-middle/new_000074-full.jpg",
+        "tmp/r10-middle/new_000074-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-034-new_000074",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        20
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The fragment in the gripper opening lacks reliably separable front extrema; preserve both missing corners and baseline tokens. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-034-new_000074",
+      "image_id": "new_000074",
+      "status": "held",
+      "reason": "The added lower aperture polygon20 has no independently visible front seam separating it from original/current11 or the gripper interior. Keep it held for object-ownership/count review and preserve current labels pending that evidence.",
+      "base_rows": [
+        20
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000074.png",
+        "tmp/r10-middle/new_000074-full.jpg",
+        "tmp/r10-middle/new_000074-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-035-new_000079",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The upper-left visible extent at the finger boundary may extend a few pixels outside the inherited box, but this intersection is blurred. Preserve exact r7 tokens and missing points; no hidden extent inferred. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-035-new_000079",
+      "image_id": "new_000079",
+      "status": "resolved",
+      "reason": "The third lower front has a distinct top seam and visible triangular/right face beside the finger. The current box follows its visible extrema rather than the original hand-overlapping region. Resolve the boundary hold.",
+      "base_rows": [
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000079.png",
+        "tmp/r10-middle/new_000079-full.jpg",
+        "tmp/r10-middle/new_000079-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-036-new_000082",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        29
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. A tiny white fragment between finger and gripper is visible, but the blurred left boundary cannot be assigned precisely enough to certify all four extrema. Preserve r7 tokens and both missing points. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-036-new_000082",
+      "image_id": "new_000082",
+      "status": "resolved",
+      "reason": "The small white patch29 lies below a distinct horizontal seam of26 and is bounded by finger and gripper. It is a supported visible lower frontal fragment; both lower corners remain occluded. Resolve the hold without inventing points.",
+      "base_rows": [
+        29
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000082.png",
+        "tmp/r10-middle/new_000082-full.jpg",
+        "tmp/r10-middle/new_000082-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-037-new_000085",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The gripper opening shows a small front fragment, but front material cannot be separated confidently from the gripper on all four sides. Preserve exact r7 tokens and both missing corners. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-037-new_000085",
+      "image_id": "new_000085",
+      "status": "resolved",
+      "reason": "The two aperture fronts correspond to the original separate instances15/16 and show distinct horizontal white-face levels. Current boxes clip to the visible frontal fragments. Their missing corners are proper occlusion labels, so resolve the old boundary holds.",
+      "base_rows": [
+        15
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000085.png",
+        "tmp/r10-middle/new_000085-full.jpg",
+        "tmp/r10-middle/new_000085-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-038-new_000085",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        16
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The small lower gripper-gap fragment lacks independently identifiable front extrema. Preserve exact baseline tokens and both missing corners. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed."
+    },
+    "decision": {
+      "case_id": "r8-038-new_000085",
+      "image_id": "new_000085",
+      "status": "resolved",
+      "reason": "The two aperture fronts correspond to the original separate instances15/16 and show distinct horizontal white-face levels. Current boxes clip to the visible frontal fragments. Their missing corners are proper occlusion labels, so resolve the old boundary holds.",
+      "base_rows": [
+        16
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000085.png",
+        "tmp/r10-middle/new_000085-full.jpg",
+        "tmp/r10-middle/new_000085-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-043-new_000044",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        2,
+        3,
+        4
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The three fronts continue behind the gripper. Their left lower corners are visible, but the right extents and connected slot patches remain uncertain."
+    },
+    "decision": {
+      "case_id": "r8-043-new_000044",
+      "image_id": "new_000044",
+      "status": "held",
+      "reason": "The visible fronts and original endpoint identities are supported, but the gripper obscures which thin upper strip belongs to rows3/4. Keep the current geometry and a narrow box seam-ownership hold for those rows; the missing right corners themselves are not a reason to hold.",
+      "base_rows": [
+        3,
+        4
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000044.png",
+        "tmp/r10-middle/new_000044-full.jpg",
+        "tmp/r10-middle/new_000044-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-044-new_000044",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        19,
+        20,
+        21
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The lower-right stack is clipped by the image edge and overlaps another column. The pale left projections cannot be assigned to these fronts confidently."
+    },
+    "decision": {
+      "case_id": "r8-044-new_000044",
+      "image_id": "new_000044",
+      "status": "resolved",
+      "reason": "The original lower-right fronts19–21 have separate visible frontal steps and consistent original endpoints. Frame clipping explains the missing portions; the current/original boxes preserve the observed rims. Resolve the previous generic overlap hold without changing labels.",
+      "base_rows": [
+        19,
+        20,
+        21
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000044.png",
+        "tmp/r10-middle/new_000044-full.jpg",
+        "tmp/r10-middle/new_000044-bottomright.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-045-new_000045",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        2,
+        3,
+        4
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The visible left fronts are interrupted by the gripper. No reliable right front boundary or hidden lower-right corner can be recovered."
+    },
+    "decision": {
+      "case_id": "r8-045-new_000045",
+      "image_id": "new_000045",
+      "status": "held",
+      "reason": "Rows2–4 remain separate original fronts. Gripper coverage hides the relevant upper-rim continuation of rows3/4, so the complete four-extrema visible envelopes cannot both be adjudicated beyond the current geometry. Retain only this specific box ownership question, not a missing-point hold.",
+      "base_rows": [
+        3,
+        4
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000045.png",
+        "tmp/r10-middle/new_000045-full.jpg",
+        "tmp/r10-middle/new_000045-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-046-new_000045",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        10
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The own raised frontal lip is visibly above the inherited top at y=359. Correct only the supported top to approximately y=338; retain all other extrema and both point triplets. The indistinct lower seam and image-edge clipping keep the case held."
+    },
+    "decision": {
+      "case_id": "r8-046-new_000045",
+      "image_id": "new_000045",
+      "status": "resolved",
+      "reason": "The original lower-right fronts19–21 have distinct visible frontal steps, and row10's current top338 includes its own raised lip while all other bounds stay original. The reviewed pixels support the current boxes; resolve the previous boundary hold.",
+      "base_rows": [
+        10
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000045.png",
+        "tmp/r10-middle/new_000045-full.jpg",
+        "tmp/r10-middle/new_000045-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-047-new_000045",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        19,
+        20,
+        21
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The lower-right clipped fronts overlap another cassette column. Do not extend their boxes into neighboring pale projections or infer cropped corners."
+    },
+    "decision": {
+      "case_id": "r8-047-new_000045",
+      "image_id": "new_000045",
+      "status": "resolved",
+      "reason": "The original lower-right fronts19–21 have distinct visible frontal steps, and row10's current top338 includes its own raised lip while all other bounds stay original. The reviewed pixels support the current boxes; resolve the previous boundary hold.",
+      "base_rows": [
+        19,
+        20,
+        21
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000045.png",
+        "tmp/r10-middle/new_000045-full.jpg",
+        "tmp/r10-middle/new_000045-bottomright.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-048-new_000049",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        6,
+        26
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The gripper window exposes gray material in two vertical bands, but their full frontal extents and seam remain occluded."
+    },
+    "decision": {
+      "case_id": "r8-048-new_000049",
+      "image_id": "new_000049",
+      "status": "held",
+      "reason": "Current26 is an added pale aperture patch below current6. The raw crop does not establish whether it is an independent lower front, a continuation/projection of6, or gripper interior. Preserve6/26 for review and retain a specific box/count ownership hold; do not infer an added or deleted instance.",
+      "base_rows": [
+        6,
+        26
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000049.png",
+        "tmp/r10-middle/new_000049-full.jpg",
+        "tmp/r10-middle/new_000049-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-049-new_000049",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        18
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The top-left front is cut by the frame, and the pale left projection could belong to a neighboring cassette or the rack. The original full box is not independently verified."
+    },
+    "decision": {
+      "case_id": "r8-049-new_000049",
+      "image_id": "new_000049",
+      "status": "resolved",
+      "reason": "Current18 is the original19 clipped top front. The full image and crop establish that physical mapping and frame truncation, so the boundary is the image edge rather than a projected hidden corner. Resolve this clipped-edge hold.",
+      "base_rows": [
+        18
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000049.png",
+        "tmp/r10-middle/new_000049-full.jpg",
+        "tmp/r10-middle/new_000049-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-050-new_000051",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The right boundary remains hidden within the gripper gap. The left lower corner is visible; the right lower corner must remain missing."
+    },
+    "decision": {
+      "case_id": "r8-050-new_000051",
+      "image_id": "new_000051",
+      "status": "resolved",
+      "reason": "The raw crop shows distinct visible frontal strips and horizontal seams, including the thumb-side fragments. Current boxes include the visible own lip/face envelope and exclude hidden/gripper regions. Original object identity plus these pixels supports resolution; retain missing occluded endpoints.",
+      "base_rows": [
+        12
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000051.png",
+        "tmp/r10-middle/new_000051-full.jpg",
+        "tmp/r10-middle/new_000051-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-051-new_000051",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        13
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The visible main front and right lower corner are supported. The left part is hidden by the gripper and the complete upper/left boundary is not traceable enough to clear the box hold."
+    },
+    "decision": {
+      "case_id": "r8-051-new_000051",
+      "image_id": "new_000051",
+      "status": "resolved",
+      "reason": "The raw crop shows distinct visible frontal strips and horizontal seams, including the thumb-side fragments. Current boxes include the visible own lip/face envelope and exclude hidden/gripper regions. Original object identity plus these pixels supports resolution; retain missing occluded endpoints.",
+      "base_rows": [
+        13
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000051.png",
+        "tmp/r10-middle/new_000051-full.jpg",
+        "tmp/r10-middle/new_000051-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-052-new_000051",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        14
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The thumb obscures the upper seam of the broad white lower front. No complete four-extrema replacement is justified."
+    },
+    "decision": {
+      "case_id": "r8-052-new_000051",
+      "image_id": "new_000051",
+      "status": "resolved",
+      "reason": "The raw crop shows distinct visible frontal strips and horizontal seams, including the thumb-side fragments. Current boxes include the visible own lip/face envelope and exclude hidden/gripper regions. Original object identity plus these pixels supports resolution; retain missing occluded endpoints.",
+      "base_rows": [
+        14
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000051.png",
+        "tmp/r10-middle/new_000051-full.jpg",
+        "tmp/r10-middle/new_000051-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-053-new_000051",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        23
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The narrow thumb-side fragment lacks a visible upper separator. Preserve the existing left point and missing right point without expanding the box."
+    },
+    "decision": {
+      "case_id": "r8-053-new_000051",
+      "image_id": "new_000051",
+      "status": "resolved",
+      "reason": "The raw crop shows distinct visible frontal strips and horizontal seams, including the thumb-side fragments. Current boxes include the visible own lip/face envelope and exclude hidden/gripper regions. Original object identity plus these pixels supports resolution; retain missing occluded endpoints.",
+      "base_rows": [
+        23
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000051.png",
+        "tmp/r10-middle/new_000051-full.jpg",
+        "tmp/r10-middle/new_000051-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r8-054-new_000051",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/middle-audit.json",
+      "sha256": "91ed9f774a2e45e0ad6dd33735e8db578d68be885dc4f69676baf0c967e8dd7a"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        24
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The next lower thumb-side fragment is narrow and partly occluded. Its upper and lower ownership remain uncertain; no inferred point should be introduced."
+    },
+    "decision": {
+      "case_id": "r8-054-new_000051",
+      "image_id": "new_000051",
+      "status": "resolved",
+      "reason": "The raw crop shows distinct visible frontal strips and horizontal seams, including the thumb-side fragments. Current boxes include the visible own lip/face envelope and exclude hidden/gripper regions. Original object identity plus these pixels supports resolution; retain missing occluded endpoints.",
+      "base_rows": [
+        24
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "data/images/train/new_000051.png",
+        "tmp/r10-middle/new_000051-full.jpg",
+        "tmp/r10-middle/new_000051-held.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-c-114-26-box_top",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/late-audit.json",
+      "sha256": "96b1cfba7a94bc7a07c76b6f3ba0dc0e5f4fc66e7c77f32cbd40eacca30446c9"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        26
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The proposed top near419-420 remains held because the upper strip ownership is unresolved. Independently supported right/bottom rack margins are removed; endpoints unchanged. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed. The lower physical corners remain supported separately from the upper-front/rim extent question."
+    },
+    "decision": {
+      "case_id": "r6-c-114-26-box_top",
+      "status": "resolved",
+      "reason": "Original y_min≈417 restored after checking the raised frontal rim on the original pixels. The r9 right/bottom rack-margin trims and original lower-front corner points remain. The user-confirmed target convention resolves the former semantic hold.",
+      "base_rows": [
+        26
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "tmp/r10-late/new_000114-row26-top-detail.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-c-122-54-right_visibility",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/late-audit.json",
+      "sha256": "96b1cfba7a94bc7a07c76b6f3ba0dc0e5f4fc66e7c77f32cbd40eacca30446c9"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        54
+      ],
+      "fields": [
+        "right"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The thumb contacts the rounded right end. This original does not securely establish whether the physical lower-right endpoint is exposed. Preserve canonical unavailable 0 0 0 rather than supply an inferred coordinate. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed. The right slot is already canonical missing. This is valid under the upstream cannot-reliably-locate rule; this audit retains the disclosed thumb-contact hold conservatively rather than converting the missing slot to a visible point."
+    },
+    "decision": {
+      "case_id": "r6-c-122-54-right_visibility",
+      "status": "resolved",
+      "reason": "The thumb/rounded end prevents reliable localization of the actual lower-right front corner. Its existing 0 0 0 label is correct and is retained. Correctly unavailable corners do not require a hold; the visible front box and left corner were checked.",
+      "base_rows": [
+        54
+      ],
+      "fields": [
+        "right"
+      ],
+      "evidence": [
+        "tmp/r10-late/new_000122-thumb-corner-detail.png"
+      ]
+    }
+  },
+  {
+    "case_id": "r6-c-127-33-box_top",
+    "audit": {
+      "path": "results/review/front-review-20261119-r10/late-audit.json",
+      "sha256": "96b1cfba7a94bc7a07c76b6f3ba0dc0e5f4fc66e7c77f32cbd40eacca30446c9"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        33
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "Original crop with surrounding front/gripper context was compared with r8 overlay. The sloping upper-left contour and projecting upper strip cannot be assigned cleanly to front versus top/lip in the original. Preserve the inherited upper box extent; do not trim at a brightness transition alone. No definite current endpoint on a white gripper surface was established in the targeted held rows; no exact restoration or new coordinate is proposed. The lower physical corners remain supported separately from the upper-front/rim extent question."
+    },
+    "decision": {
+      "case_id": "r6-c-127-33-box_top",
+      "status": "resolved",
+      "reason": "The original-pixel crop and the confirmed front-plus-frontal-rim target support the current top envelope around y409. Retain the current box: it includes the attached raised frontal rim, avoids the neighboring front included by the original left padding, and reaches the clipped image edge. Original physical lower corners remain unchanged. This resolves the stale target-ownership question without replacing it by another hold.",
+      "base_rows": [
+        33
+      ],
+      "fields": [
+        "box"
+      ],
+      "evidence": [
+        "tmp/r10-late/new_000127-row33-top-detail.png"
+      ]
+    }
+  }
+]
