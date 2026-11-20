@@ -1,0 +1,415 @@
+{
+  "schema_version": 1,
+  "source_review": "fronts-2026-11-20-r12",
+  "reviewed_image_ids": [
+    "new_000005"
+  ],
+  "photo_reviews": [
+    {
+      "image_id": "new_000005",
+      "original_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "inspection": {
+        "full_original": true,
+        "numbered_source_overlay": true,
+        "targeted_original_crops": [
+          {
+            "name": "top",
+            "xyxy": [
+              325,
+              0,
+              1040,
+              270
+            ]
+          },
+          {
+            "name": "bottom",
+            "xyxy": [
+              370,
+              345,
+              990,
+              540
+            ]
+          },
+          {
+            "name": "right-top-grid",
+            "xyxy": [
+              990,
+              95,
+              1035,
+              252
+            ]
+          },
+          {
+            "name": "right-bottom-grid",
+            "xyxy": [
+              830,
+              470,
+              875,
+              540
+            ]
+          },
+          {
+            "name": "row34-grid",
+            "xyxy": [
+              500,
+              490,
+              590,
+              535
+            ]
+          }
+        ],
+        "decision": "Inspect immutable source rows and physical front ownership before applying single-coordinate anchors. Unsupported repeated-column projections and interior point moves are explicitly retained."
+      }
+    }
+  ],
+  "proposed_operations": [
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 2,
+      "before_line": "0 0.32304688 0.30000000 0.09609375 0.04722222 0.27835156 0.31777778 2 0.36733594 0.31413889 2",
+      "after_line": "0 0.3211679725 0.2986111106 0.0923359350 0.0499999989 0.27835156 0.31777778 2 0.36733594 0.31413889 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Trim the right rack margin to its own visible right-front turn and include the upper frontal seam at row1 left-corner Y; retain the lower edge and both points."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 5,
+      "before_line": "0 0.4121093750 0.1520833333 0.1007812500 0.0430555556 0.3632812500 0.1722222222 2 0.4601562500 0.1638888889 2",
+      "after_line": "0 0.4121093750 0.1458333334 0.1007812500 0.0555555555 0.3632812500 0.1722222222 2 0.4601562500 0.1638888889 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Interpret physical-top ymax as pixel ymin: include the sloping upper frontal rim at preceding row4 right-corner Y85; pixel ymax at that value would invert the box."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 9,
+      "before_line": "0 0.4207031250 0.3313958333 0.0960937500 0.0455416667 0.3742187500 0.3527777778 2 0.4664062500 0.3472222222 2",
+      "after_line": "0 0.4207031250 0.3319444444 0.0960937500 0.0444444445 0.3742187500 0.3527777778 2 0.4664062500 0.3472222222 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Interpret physical-top ymax as pixel ymin: use the preceding cassette lower-left seam at y223, keeping this front's own lower corners and bottom."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 17,
+      "before_line": "0 0.6308593750 0.1297986111 0.1085937500 0.0598472222 0.5781250000 0.1583333333 2 0.68342969 0.15404167 2",
+      "after_line": "0 0.6308593750 0.1312500000 0.1085937500 0.0569444444 0.5781250000 0.1583333333 2 0.68342969 0.15404167 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Align the upper frontal seam with immutable r12 row16 right-corner Y. The physical-top ymax wording maps to pixel ymin; own lower corners and bottom remain supported."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 18,
+      "before_line": "0 0.6292968750 0.1776180556 0.1070312500 0.0586527778 0.5773437500 0.2055555556 2 0.68207031 0.20295833 2",
+      "after_line": "0 0.6292968750 0.1804930572 0.1070312500 0.0529027745 0.5773437500 0.2055555556 2 0.68207031 0.20295833 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Align the upper frontal seam with immutable r12 row17 right-corner Y. The physical-top ymax wording maps to pixel ymin; own lower corners and bottom remain supported."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 19,
+      "before_line": "0 0.6277343750 0.2258958333 0.1054687500 0.0593194444 0.5765625000 0.2541666667 2 0.67843750 0.25211111 2",
+      "after_line": "0 0.6277343750 0.2292569427 0.1054687500 0.0525972255 0.5765625000 0.2541666667 2 0.67843750 0.25211111 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Align the upper frontal seam with immutable r12 row18 right-corner Y. The physical-top ymax wording maps to pixel ymin; own lower corners and bottom remain supported."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 20,
+      "before_line": "0 0.6269531250 0.2731041667 0.1039062500 0.0593472222 0.5765625000 0.3013888889 2 0.67762500 0.29683333 2",
+      "after_line": "0 0.6269531250 0.2774444439 0.1039062500 0.0506666678 0.5765625000 0.3013888889 2 0.67762500 0.29683333 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Align the upper frontal seam with immutable r12 row19 right-corner Y. The physical-top ymax wording maps to pixel ymin; own lower corners and bottom remain supported."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 21,
+      "before_line": "0 0.6261718750 0.3185486111 0.1023437500 0.0573472222 0.5773437500 0.3458333333 2 0.67581250 0.34005556 2",
+      "after_line": "0 0.6261718750 0.3220277761 0.1023437500 0.0503888922 0.5773437500 0.3458333333 2 0.67581250 0.34005556 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Align the upper frontal seam with immutable r12 row20 right-corner Y. The physical-top ymax wording maps to pixel ymin; own lower corners and bottom remain supported."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 31,
+      "before_line": "0 0.43593750 0.62083333 0.08906250 0.03333333 0.39474219 0.63356944 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.4347656250 0.6208333300 0.0867187500 0.0333333300 0.39474219 0.63356944 2 0.00000000 0.00000000 0",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Trim the thin right excess to the neighbouring column boundary at source row38 xmin612. The gripper still hides the actual right corner, which remains zero."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 34,
+      "before_line": "0 0.428019528 0.71953472 0.054898435 0.02518056 0.40057031 0.73212500 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.4280195280 0.7146111100 0.0548984350 0.0350277800 0.40057031 0.73212500 2 0.00000000 0.00000000 0",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Include the gray upper frontal rim at source row33 lower-left seam y501.91. Translate physical-top ymax to pixel ymin and retain the exposed fragment's own lower-left corner and hidden right slot."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 42,
+      "before_line": "0 0.535445315 0.651701385 0.06464063 0.03826389 0.00000000 0.00000000 0 0.56776563 0.66573611 2",
+      "after_line": "0 0.5366640650 0.6517013850 0.0670781300 0.0382638900 0.00000000 0.00000000 0 0.56776563 0.66573611 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Include the visible right frontal rim up to the supported preceding row41 right-point X729.86; this is a horizontal extent adjustment, not a copied lower corner."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 44,
+      "before_line": "0 0.54865625 0.718625 0.0379375 0.04052778 0.00000000 0.00000000 0 0.56762500 0.73273611 2",
+      "after_line": "0 0.5493906250 0.7155486100 0.0394062500 0.0343750000 0.00000000 0.00000000 0 0.56762500 0.73273611 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Align the right frontal rim with preceding row43 right-point X728.44 and trim the lower excess to its own visible right-point Y527.57. Physical-bottom ymin means pixel ymax; the hidden left point remains zero."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 46,
+      "before_line": "0 0.61918359 0.61736111 0.09461718 0.04305556 0.57734375 0.62916667 2 0.66406250 0.63055556 2",
+      "after_line": "0 0.6212304650 0.6131944450 0.0905234300 0.0347222300 0.57734375 0.62916667 2 0.66406250 0.63055556 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Remove the left rack margin to preceding row45 left-point X737.24 and trim the lower edge to its own right-point Y454, which still contains its left point Y453. Translate physical-bottom ymin to pixel ymax."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 48,
+      "before_line": "0 0.61837109 0.68958333 0.08986719 0.03472222 0.576562500 0.701388889 2 0.66171875 0.70138889 2",
+      "after_line": "0 0.6183710900 0.6868055550 0.0898671900 0.0291666700 0.576562500 0.701388889 2 0.66171875 0.70138889 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Trim the lower border to its own visible corner seam at y505; both left and right corners share that Y. Translate physical-bottom ymin to pixel ymax."
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "action": "replace",
+      "base_row": 49,
+      "before_line": "0 0.61887891 0.72500000 0.08932031 0.03333333 0.576953125 0.735416667 2 0.66171875 0.739583333 2",
+      "after_line": "0 0.61887891 0.72500000 0.08932031 0.03333333 0.576953125 0.735416667 2 0.66171875 0.7333333333 2",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "source_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "changed_groups": [
+        "right"
+      ],
+      "reason": "Move only right-point Y to source row52 left-point Y528, where the visible lower-front turn meets the right edge. The old y532.5 lies below the pale front in the dark rack. The explicit anchor implies decreasing pixel Y despite the written +ve sign; preserve X847 and visibility2."
+    }
+  ],
+  "request_dispositions": [
+    {
+      "image_id": "new_000005",
+      "request": "2 xmax to rpt and ymin to 1 lpt",
+      "base_rows": [
+        2
+      ],
+      "status": "applied",
+      "reason": "Use own right-point X and immutable row1 left-point Y; all other fields retain physical ownership."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "9 ymax to 8 lpt",
+      "base_rows": [
+        9
+      ],
+      "status": "interpreted",
+      "reason": "Physical top aligns to preceding lower seam: pixel ymin223; a literal ymax would exclude the front."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "5 ymax to 4 rpt",
+      "base_rows": [
+        5
+      ],
+      "status": "interpreted",
+      "reason": "Physical top maps to pixel ymin85, enclosing the sloping owned rim."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "17 to 21 ymax to 16 to 20 rpt respectively",
+      "base_rows": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "status": "interpreted",
+      "reason": "Use the preceding source-row right-corner Y for each pixel ymin. Preserve every target front's own lower landmarks."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "23 to 25 xmax to 22 xmax",
+      "base_rows": [
+        23,
+        24,
+        25
+      ],
+      "status": "not_supported",
+      "reason": "Row22 has a distinct protruding upper right rim. The lower right edges visibly taper left; a common x1021 would include red/dark background outside rows23\u201325. Retain each supported source extent."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "31 xmax to 38 xmin",
+      "base_rows": [
+        31
+      ],
+      "status": "applied",
+      "reason": "The source adjacent-column xmin612 supports trimming the right excess. Keep the gripper-hidden point zero."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "34 ymax to 33 lpt",
+      "base_rows": [
+        34
+      ],
+      "status": "interpreted",
+      "reason": "Physical top maps to pixel ymin501.91, including the gray upper frontal rim; bottom stays at its own lower seam."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "42 xmax to 41 rpt",
+      "base_rows": [
+        42
+      ],
+      "status": "applied",
+      "reason": "Horizontal boundary alignment to source row41 right-point X; preserve own corner."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "44 xmax to 43 rpt",
+      "base_rows": [
+        44
+      ],
+      "status": "applied",
+      "reason": "Horizontal boundary alignment to source row43 right-point X; preserve own corner."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "44 ymin to rpt",
+      "base_rows": [
+        44
+      ],
+      "status": "interpreted",
+      "reason": "Physical bottom maps to pixel ymax at own right-corner Y527.57."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "49 rpt y +ve to 52 lpt",
+      "base_rows": [
+        49
+      ],
+      "status": "interpreted",
+      "reason": "Explicit targetY528 moves upward from532.5 in image coordinates, contrary to literal +ve; original pixels support that target lower-front junction. Change Y only."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "46 xmin to 45 lpt",
+      "base_rows": [
+        46
+      ],
+      "status": "applied",
+      "reason": "Use source row45 left-point X737.24 to exclude the rack margin, preserving own lower-left point."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "46,48 ymin to rpt",
+      "base_rows": [
+        46,
+        48
+      ],
+      "status": "interpreted",
+      "reason": "Physical bottom maps to pixel ymax at each own right corner; both left corners remain inside/on their respective boxes."
+    },
+    {
+      "image_id": "new_000005",
+      "request": "51 lpt to 50 lpt",
+      "base_rows": [
+        51
+      ],
+      "status": "not_supported",
+      "reason": "Copying the full point would jump into row50. Even an X-only alignment to858.17 would move inside row51's visible lower seam, away from its actual junction at(853,504). Retain the supported corner."
+    }
+  ],
+  "status_updates": [],
+  "new_cases": []
+}

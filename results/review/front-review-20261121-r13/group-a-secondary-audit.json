@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "kind": "bounded-secondary-physical-adjudication",
+  "source_review": "fronts-2026-11-20-r12",
+  "reviewed_audit": {
+    "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+    "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+  },
+  "reviewer": "root-independent-physical-review",
+  "decisions": [
+    {
+      "image_id": "new_000026",
+      "base_row": 28,
+      "evaluated_before_line": "0 0.6585937500 0.4347222222 0.0750000000 0.0333333333 0.62533594 0.44916667 2 0.69528906 0.44669444 2",
+      "evaluated_after_line": "0 0.65703125 0.4347222222 0.071875 0.0333333333 0.62533594 0.44916667 2 0.69296875 0.44669444 2",
+      "source_label_sha256": "526c8ee11da020979f68d5c83384aa423a8bf7a85e50be6ddf261042157ff9ad",
+      "source_image_sha256": "304d648d7382d01b3326039c38ebcc92bfa0341aa2b55be7c5e32aea0cce8179",
+      "decision": "accept",
+      "reason": "Independent root inspection of enlarged original-pixel and numbered proposed crops supports the changed front edge/corner while preserving the target identity. Align the right extent to the original r12 row27 xmax, approximately887 px, which follows row28's visible pale right edge. Move only right-point X to the same supported887 px edge; retain row28's own lower-front Y and visibility. Do not cascade the unsupported row27 expansion."
+    }
+  ],
+  "summary": {
+    "operations_checked": 1,
+    "accepted": 1,
+    "new_physical_holds": 0
+  },
+  "additional_rejections_reviewed": [
+    "026 row27 must not align to row26 xmax893: source pixel at ownY300 is dark rack."
+  ]
+}

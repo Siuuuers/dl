@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "source_review": "fronts-2026-11-20-r12",
+  "reviewed_image_ids": [
+    "new_000043",
+    "new_000053",
+    "new_000056"
+  ],
+  "photo_reviews": [
+    {
+      "image_id": "new_000043",
+      "original_image_sha256": "1cc8fe54b7d8d3699f55d07a5a14fc6bc2effb03bd6fcb4e4fe2405c72f41ac1",
+      "source_label_sha256": "0af24a027b580edead6a1b79acee37fdceed7a2a6b3d12e3f94b1bf49be15fc6",
+      "inspection": "Inspected the complete 1280x720 original, numbered r12 overlay, enlarged original-pixel crops for every requested region, and the final proposed overlay. Front/rim ownership and each target own corner govern requested alignments.",
+      "geometry_validation": "parse_pose_labels and check_geometry passed on the complete proposed file",
+      "reviewed_rows": 31
+    },
+    {
+      "image_id": "new_000053",
+      "original_image_sha256": "dfc3621b0387b0da774001334c12c65574ae0084131b154d2f6216e420573d72",
+      "source_label_sha256": "0d0e8be90b96de52f52d9d82703362c611bdb27470423f7145d56f1d8e64dd4b",
+      "inspection": "Inspected the complete 1280x720 original, numbered r12 overlay, enlarged original-pixel crops for every requested region, and the final proposed overlay. Front/rim ownership and each target own corner govern requested alignments.",
+      "geometry_validation": "parse_pose_labels and check_geometry passed on the complete proposed file",
+      "reviewed_rows": 22
+    },
+    {
+      "image_id": "new_000056",
+      "original_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "source_label_sha256": "b586c0a03f2d35324bef05267bd4f0f1e68b261fc6ff6357b9998433a7ac8c73",
+      "inspection": "Inspected the complete 1280x720 original, numbered r12 overlay, enlarged original-pixel crops for every requested region, and the final proposed overlay. Front/rim ownership and each target own corner govern requested alignments.",
+      "geometry_validation": "parse_pose_labels and check_geometry passed on the complete proposed file",
+      "reviewed_rows": 22
+    }
+  ],
+  "proposed_operations": [
+    {
+      "image_id": "new_000043",
+      "split": "train",
+      "action": "replace",
+      "base_row": 13,
+      "before_line": "0 0.64967193 0.560416632 0.06496864 0.029166653 0.62230469 0.56848611 2 0.68215625 0.56959722 2",
+      "after_line": "0 0.64967193 0.55771526275 0.06496864 0.0237639145 0.62230469 0.56848611 2 0.68215625 0.56959722 2",
+      "source_label_sha256": "0af24a027b580edead6a1b79acee37fdceed7a2a6b3d12e3f94b1bf49be15fc6",
+      "source_image_sha256": "1cc8fe54b7d8d3699f55d07a5a14fc6bc2effb03bd6fcb4e4fe2405c72f41ac1",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Interpret physical-bottom ymin wording as pixel ymax: trim the lower rack margin from y413.99997012 to its own visible right corner y410.1099984. Preserve pixel ymin392.99997996 and both actual corners."
+    },
+    {
+      "image_id": "new_000056",
+      "split": "val",
+      "action": "replace",
+      "base_row": 14,
+      "before_line": "0 0.37221875 0.897916667 0.0899375 0.062500000 0.32725000 0.92436111 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.370312500 0.897916667 0.093750000 0.062500000 0.323437500 0.92436111 2 0.00000000 0.00000000 0",
+      "source_label_sha256": "b586c0a03f2d35324bef05267bd4f0f1e68b261fc6ff6357b9998433a7ac8c73",
+      "source_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "changed_groups": [
+        "box",
+        "left"
+      ],
+      "reason": "Move xmin and left-point X from418.88 to row15 xmin414.0, matching the visible left front turn. Preserve the target corner Y665.5399992, xmax534 and the independently missing right corner."
+    }
+  ],
+  "request_dispositions": [
+    {
+      "image_id": "new_000043",
+      "request": "13 ymin to rpt",
+      "base_rows": [
+        13
+      ],
+      "status": "interpreted",
+      "reason": "The right point lies on the lower front edge. As in r12 physical-bottom wording, amend pixel ymax414\u2192410.11; changing pixel ymin to that point would collapse the front. Both corners remain inside the corrected box."
+    },
+    {
+      "image_id": "new_000053",
+      "request": "11 xmax and rpt to 7 xmax",
+      "base_rows": [
+        11
+      ],
+      "status": "not_supported",
+      "reason": "Row7 xmax535.64 lies about4.27 pixels left of row11 current right boundary/point539.91. The lower front visible rim occupies x536\u2013540 at y128\u2013142 before the dark rack. Aligning to the upper cassette would clip that supported front extent and move its corner inward; preserve row11 own geometry."
+    },
+    {
+      "image_id": "new_000053",
+      "request": "6 ymin to rpt",
+      "base_rows": [
+        6
+      ],
+      "status": "not_supported",
+      "reason": "This front is sloped: its right corner is at y49.36 and left corner at y67.08. Pixel ymin\u219249.36 would cut away much of the visible face; interpreting it as ymax\u219249.36 would exclude the left corner. No exact requested interpretation encloses the visible front, so preserve the supported box and both points."
+    },
+    {
+      "image_id": "new_000056",
+      "request": "14 xmin and lpt to 15 xmin",
+      "base_rows": [
+        14
+      ],
+      "status": "applied",
+      "reason": "Use row15 source xmin414.0 for row14 xmin and left-point X only. The original pixels show this left turn; preserve row14 Y665.54 and the missing right corner."
+    }
+  ],
+  "status_updates": [],
+  "new_cases": []
+}

@@ -1,0 +1,91 @@
+--- pr79/measure_pr79.py
++++ pr82/measure_pr82.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Score the fixed PR79 r10 comparison from saved predictions, without training."""
++"""Score the fixed PR82 r12 comparison from saved predictions, without training."""
+ 
+ import argparse
+ import hashlib
+@@ -8,11 +8,11 @@
+ import sys
+ from pathlib import Path
+ 
+-PROTOCOL_SHA = "0b73d423fcaff8f7b7d72da0e6bc33acb5814f2d8435fffa0e163b3efd1bd48f"
++PROTOCOL_SHA = "6c23b00d5251b9cd98630a796a328dc9cc5574296ccb47bac83cbb1ffa3e7f0a"
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "0d927417d7a6017a5976b76cb712229ae2aad3828776f69c4f070d55bee93399",
+-    "candidate": "7e3fe8e0616ff85a01e29f5783294396b8f0a692bfb5e38888a7a5e30d786480",
++    "reference": "48c3b22b2d58b93d9575995bccf9989f2b43e3402731ffa9dc6b1e5c9f0f4f34",
++    "candidate": "d3009de544b3d26f8f97497e388d9841f4cd7929004715337e8a223a6c6032a5",
+ }
+ SCORER_SHA = {
+     "evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+@@ -49,13 +49,13 @@
+ def run(args):
+     root = args.root.resolve()
+     sys.path.insert(0, str(root / "scripts"))
+-    from evaluate_pose import preflight_dataset, _read_replay
++    from evaluate_pose import preflight_dataset, _read_replay, parse_pose_labels
+     from pose_checkpoint import select_checkpoint
+     from pose_scoring import aggregate_scores, score_image, _box_iou
+     from diagnose_pose_quality import aggregate_quality, quality_for_image
+     from rescore_reference_amendment import load_api, verify_amendment
+ 
+-    protocol_path = root / "experiments/front-review-2026-11-19-r10.json"
++    protocol_path = root / "experiments/front-review-2026-11-20-r12.json"
+     require(sha(protocol_path) == PROTOCOL_SHA, "The preregistered protocol changed")
+     protocol = json.loads(protocol_path.read_text())
+     for name, expected in SCORER_SHA.items():
+@@ -82,7 +82,7 @@
+     runtimes = [model["metadata"]["runtime"] for model in models.values()]
+     require(all(runtime == runtimes[0] for runtime in runtimes), "Inference runtimes differ")
+     report = {
+-        "schema_version":1,"kind":"pr79-r10-fixed-development-comparison","status":"measured",
++        "schema_version":1,"kind":"pr82-r12-fixed-development-comparison","status":"measured",
+         "protocol":{"path":str(protocol_path.relative_to(root)),"sha256":PROTOCOL_SHA},
+         "measurement_script_sha256":sha(__file__), "scorers_sha256":SCORER_SHA,
+         "models":{role:{key:value for key,value in model.items() if key != "predictions"}
+@@ -97,13 +97,28 @@
+             "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+             "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+             "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
++            "The separately pinned current r12 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
+         ],
+     }
+-    for label in ("primary","diagnostic"):
++    for label in ("primary", "diagnostic", "current_r12_exploratory"):
+         setting = protocol["evaluation"]
+-        path = root / setting[label+"_reference"]
+-        require(sha(path) == setting[label+"_reference_sha256"], f"Reference changed: {label}")
+-        manifest,gold,*_ = verify_amendment(root,path.parent,preflight,api)
++        exploratory = label == "current_r12_exploratory"
++        if exploratory:
++            from verify_front_review_r12 import read_review
++            descriptor = setting["current_review_reference"]
++            path = root / descriptor["path"]
++            require(sha(path) == descriptor["sha256"], "Current r12 review changed")
++            review, status, _, _, _, _, reviewed = read_review(root)
++            gold = {image_id: parse_pose_labels(reviewed[image_id]["bytes"].decode(),
++                    record["width"], record["height"], reviewed[image_id]["path"])
++                    for image_id, record in records.items()}
++            manifest = {"reference_id": review["review_id"], "counts": review["expected_counts"]["val"]}
++            uncertain = [case for case in status["cases"] if case["split"] == "val" and case["status"] != "resolved"]
++        else:
++            path = root / setting[label+"_reference"]
++            require(sha(path) == setting[label+"_reference_sha256"], f"Reference changed: {label}")
++            manifest,gold,*_ = verify_amendment(root,path.parent,preflight,api)
++            uncertain = setting["unresolved_reference_rows" if label == "primary" else "diagnostic_unresolved_reference_rows"]
+         per_model = {}
+         traces = {}
+         for role,model in models.items():
+@@ -165,7 +180,7 @@
+                                   "lost":sorted(set(a["success_identities"][str(radius)])-set(b["success_identities"][str(radius)]))}
+                                   for radius in [5,10]}}
+         report["references"][label]={"reference_id":manifest["reference_id"],"manifest_sha256":sha(path),
+-            "counts":manifest["counts"],"remaining_uncertain_rows":setting[("unresolved_reference_rows" if label=="primary" else "diagnostic_unresolved_reference_rows")],
++            "counts":manifest["counts"], "exploratory":exploratory, "remaining_uncertain_rows":uncertain,
+             "models":per_model,"candidate_deltas":deltas,"matching_traces":traces}
+     require(not args.output.exists(), "Choose a fresh output; previous evidence is preserved")
+     args.output.write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")

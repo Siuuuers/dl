@@ -1,6 +1,16 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前入口：PR35 推論、r12 修訂標籤與新 notebook
+## 目前入口：PR35 推論、r13 完整圖冊與新 notebook
+
+**2026-11-21：PR82 的 r12 訓練結果已完成核對及三模型固定條件評估。** 結果依標註定義而不同：候選模型在固定666個正面的主要參考中漏29個（新對照組20個），在訓練回傳前已固定的r12覆核參考中漏20個（新對照組41個）。兩種結果使用相同預測資料，完整保留於[PR82評估](results/evaluation/pr82-r12-20261121/README.md)。目前仍選用PR35。
+
+**本輪8張指定照片已覆核，7張照片共28列修訂已存成實際YOLO標籤。** 包含27個框、1個左點及2個右點欄位，沒有新增或刪除物件。4張訓練照片及3張開發覆核照片有變更；完整標籤仍有157檔。照片053的兩項要求會裁掉可見正面，保留現有標註。[本輪說明與未採用要求](docs/front-review-r13.md)。
+
+**新PDF包含全部110張有標註的new系列照片，共4,182個目前物件，另加2頁可點選索引。** 排除全部old系列照片及空標註照片；這些照片仍保留於資料集。洋紅色表示本輪修訂，青色表示沿用，琥珀色表示既有未決問題。[圖冊交付及驗證](results/review/front-review-20261121-r13/pdf-delivery.json)。
+
+**新訓練入口：[baomai_front_review_r13.ipynb](notebooks/baomai_front_review_r13.ipynb)。** 選GPU、Run all，完成後回傳 `baomai-front-review-r13-results.zip`。兩組各自從epoch173開始，維持seed46、30輪、batch4、1280輸入、FP32、AdamW0.0001的相同配方；137張訓練圖與13張空圖保持完整。15張未決訓練照片及另外31張舊系列處理排除照片在兩組保留相同PR35標籤；原始驗證與固定666／663評分參考維持不變。[目前模型與操作](docs/current-model.md)。尚未執行r13訓練，也未自動替換模型。
+
+## 先前 r12 交付（歷史快照）
 
 **2026-11-20：本輪46張指定照片已覆核，實際修訂45張。** 共修改597個既有列（543個框、84個左點、66個右點欄位），並在 `new_000023` 末尾新增第37列可辨識正面片段；沒有刪除既有物件。修訂已存成[完整157檔YOLO標籤](data/reviews/fronts-2026-11-20-r12/manifest.json)。全部原圖、原始標籤及未指定照片的r11覆核標籤保持完整。[本輪說明與未決問題](docs/front-review-r12.md)。
 
@@ -18,7 +28,7 @@
 
 **新訓練入口：[baomai_front_review_r10.ipynb](notebooks/baomai_front_review_r10.ipynb)。** Notebook固定來源commit與實驗雜湊，從epoch173獨立開始兩組seed46、30輪的受控比較。15張仍有問題的新訓練照片及另外31張本輪不處理的舊照片，在兩組中均使用完全相同的PR35標籤；保留全部137張訓練圖與13張空圖。兩組實際有77份訓練標籤不同，物件數為3,771／3,778。原始20張驗證圖及固定666／663評分參考維持不變。[實際訓練入口驗證](results/review/front-review-20261119-r10/runner-verification.json)已通過；尚未執行r10 GPU訓練。
 
-**目前仍選用PR35。** [已完成PR76評估](results/evaluation/pr76-recovery-20261119/README.md)不支持替換模型。現行推論設定為PR35 seed46、1280輸入、框門檻0.13、NMS IoU0.70、端點門檻0.50，操作請用[目前模型入口](docs/current-model.md)。舊版PDF與notebook保留供追溯，目前入口以上方r12為準。
+**目前仍選用PR35。** [已完成PR76評估](results/evaluation/pr76-recovery-20261119/README.md)不支持替換模型。現行推論設定為PR35 seed46、1280輸入、框門檻0.13、NMS IoU0.70、端點門檻0.50，操作請用[目前模型入口](docs/current-model.md)。舊版PDF與notebook保留供追溯，目前入口以上方r13為準。
 
 <details>
 <summary>先前覆核與實驗紀錄</summary>
