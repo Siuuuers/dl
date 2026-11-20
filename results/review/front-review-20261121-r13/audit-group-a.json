@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "source_review": "fronts-2026-11-20-r12",
+  "reviewed_image_ids": [
+    "new_000009",
+    "new_000011",
+    "new_000012",
+    "new_000026"
+  ],
+  "photo_reviews": [
+    {
+      "image_id": "new_000009",
+      "original_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_sha256": "91b57a4f418e1c1c2c78f8bec715ee126e63fd754e100f7d334f9376b1377a37",
+      "inspection": "Inspected the original full frame, numbered r12 overlay, and enlarged original/overlay crop(506,222)-(620,294). The requested own-corner X anchors remove narrow rack strips from rows26/27. Their front tiers and vertical extent remain unchanged. Final proposed full-frame overlay visually inspected after parser and geometry validation.",
+      "changed_base_rows": [
+        26,
+        27
+      ],
+      "source_row_count": 57
+    },
+    {
+      "image_id": "new_000011",
+      "original_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "source_label_sha256": "9e702b7cddc9b37d8d641410df1ecdc79eb5f712b7193345ef83b29023213e4a",
+      "inspection": "Inspected the original full frame, numbered r12 overlay, and enlarged original/overlay crops(463,0)-(578,116) and(649,10)-(758,124). All requested right corners and row8 left corner are visible. This also makes the earlier incomplete row16 instruction concrete. Final proposed full-frame overlay visually inspected after parser and geometry validation.",
+      "changed_base_rows": [
+        4,
+        8,
+        16,
+        17,
+        18,
+        19
+      ],
+      "source_row_count": 60
+    },
+    {
+      "image_id": "new_000012",
+      "original_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "source_label_sha256": "8d131c35bb12e290433ca208c228415d018a373201f902dac615dcb8513870c4",
+      "inspection": "Inspected the original full frame, numbered r12 overlay, and enlarged original/overlay crop(439,455)-(604,579). Upper-left seams of rows35/36 continue from the immediately higher front left corners. The hand/gripper still hides both right corners, which remain exact zeros. Final proposed full-frame overlay visually inspected after parser and geometry validation.",
+      "changed_base_rows": [
+        35,
+        36
+      ],
+      "source_row_count": 40
+    },
+    {
+      "image_id": "new_000026",
+      "original_image_sha256": "304d648d7382d01b3326039c38ebcc92bfa0341aa2b55be7c5e32aea0cce8179",
+      "source_label_sha256": "526c8ee11da020979f68d5c83384aa423a8bf7a85e50be6ddf261042157ff9ad",
+      "inspection": "Inspected the original full frame, numbered r12 overlay, enlarged original/overlay crop(780,238)-(910,335), and nearest-neighbour coordinate-grid crop(867,263)-(906,331). At row27's lower corner Y300, X893 is on dark rack, so that proposed expansion is unsupported. Row28's original X889.97 lies beyond the visible pale edge; original row27 xmax887 is supported. Immutable r12 anchors are used, with no sequential cascade. Final proposed full-frame overlay visually inspected after parser and geometry validation.",
+      "changed_base_rows": [
+        28
+      ],
+      "source_row_count": 56
+    }
+  ],
+  "proposed_operations": [
+    {
+      "image_id": "new_000009",
+      "split": "val",
+      "action": "replace",
+      "base_row": 26,
+      "before_line": "0 0.44006250 0.349486113 0.07223438 0.045361105 0.40850000 0.35820833 2 0.47380469 0.36440278 2",
+      "after_line": "0 0.441152345 0.349486113 0.06530469 0.045361105 0.40850000 0.35820833 2 0.47380469 0.36440278 2",
+      "source_label_sha256": "91b57a4f418e1c1c2c78f8bec715ee126e63fd754e100f7d334f9376b1377a37",
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Trim the left rack fringe to this front's visible lower-left corner X while preserving its vertical extent. Trim the right rack fringe to this front's visible lower-right corner X."
+    },
+    {
+      "image_id": "new_000009",
+      "split": "val",
+      "action": "replace",
+      "base_row": 27,
+      "before_line": "0 0.43948437 0.38234028 0.07185938 0.03637500 0.40851562 0.38643056 2 0.47268750 0.39326389 2",
+      "after_line": "0 0.44060156 0.38234028 0.06417188 0.03637500 0.40851562 0.38643056 2 0.47268750 0.39326389 2",
+      "source_label_sha256": "91b57a4f418e1c1c2c78f8bec715ee126e63fd754e100f7d334f9376b1377a37",
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Trim the left rack fringe to this front's visible lower-left corner X while preserving its vertical extent. Trim the right rack fringe to this front's visible lower-right corner X."
+    },
+    {
+      "image_id": "new_000011",
+      "split": "val",
+      "action": "replace",
+      "base_row": 4,
+      "before_line": "0 0.404726565 0.007638886 0.07053125 0.015277783 0.36946094 0.01376389 2 0.43639063 0.00862500 2",
+      "after_line": "0 0.402925785 0.007638886 0.06692969 0.015277783 0.36946094 0.01376389 2 0.43639063 0.00862500 2",
+      "source_label_sha256": "9e702b7cddc9b37d8d641410df1ecdc79eb5f712b7193345ef83b29023213e4a",
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Remove the narrow right rack margin; the requested own lower-right corner is visibly supported."
+    },
+    {
+      "image_id": "new_000011",
+      "split": "val",
+      "action": "replace",
+      "base_row": 8,
+      "before_line": "0 0.4121093750 0.131944444 0.0695312500 0.036111111 0.38018750 0.14673611 2 0.44444531 0.13815278 2",
+      "after_line": "0 0.412316405 0.131944444 0.06425781 0.036111111 0.38018750 0.14673611 2 0.44444531 0.13815278 2",
+      "source_label_sha256": "9e702b7cddc9b37d8d641410df1ecdc79eb5f712b7193345ef83b29023213e4a",
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Remove the narrow right rack margin; the requested own lower-right corner is visibly supported. Trim the left rack margin to this front's own visible lower-left corner X."
+    },
+    {
+      "image_id": "new_000011",
+      "split": "val",
+      "action": "replace",
+      "base_row": 16,
+      "before_line": "0 0.5492187500 0.0474097222 0.0703125000 0.0440694444 0.51597656 0.06616667 2 0.58240625 0.06186111 2",
+      "after_line": "0 0.548234375 0.0474097222 0.06834375 0.0440694444 0.51597656 0.06616667 2 0.58240625 0.06186111 2",
+      "source_label_sha256": "9e702b7cddc9b37d8d641410df1ecdc79eb5f712b7193345ef83b29023213e4a",
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Remove the narrow right rack margin; the requested own lower-right corner is visibly supported."
+    },
+    {
+      "image_id": "new_000011",
+      "split": "val",
+      "action": "replace",
+      "base_row": 17,
+      "before_line": "0 0.5493085937 0.0795486111 0.0701328125 0.0436805556 0.51680469 0.09965278 2 0.58110156 0.09475000 2",
+      "after_line": "0 0.547671873725 0.0795486111 0.06685937255 0.0436805556 0.51680469 0.09965278 2 0.58110156 0.09475000 2",
+      "source_label_sha256": "9e702b7cddc9b37d8d641410df1ecdc79eb5f712b7193345ef83b29023213e4a",
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Remove the narrow right rack margin; the requested own lower-right corner is visibly supported."
+    },
+    {
+      "image_id": "new_000011",
+      "split": "val",
+      "action": "replace",
+      "base_row": 18,
+      "before_line": "0 0.5494609375 0.1115069444 0.0698281250 0.0436527778 0.51825781 0.13090278 2 0.58159375 0.12573611 2",
+      "after_line": "0 0.5480703125 0.1115069444 0.067046875 0.0436527778 0.51825781 0.13090278 2 0.58159375 0.12573611 2",
+      "source_label_sha256": "9e702b7cddc9b37d8d641410df1ecdc79eb5f712b7193345ef83b29023213e4a",
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Remove the narrow right rack margin; the requested own lower-right corner is visibly supported."
+    },
+    {
+      "image_id": "new_000011",
+      "split": "val",
+      "action": "replace",
+      "base_row": 19,
+      "before_line": "0 0.5496132812 0.1418958333 0.0695234375 0.0412083333 0.51889844 0.16244444 2 0.58136719 0.15394444 2",
+      "after_line": "0 0.548109376225 0.1418958333 0.06651562755 0.0412083333 0.51889844 0.16244444 2 0.58136719 0.15394444 2",
+      "source_label_sha256": "9e702b7cddc9b37d8d641410df1ecdc79eb5f712b7193345ef83b29023213e4a",
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Remove the narrow right rack margin; the requested own lower-right corner is visibly supported."
+    },
+    {
+      "image_id": "new_000012",
+      "split": "train",
+      "action": "replace",
+      "base_row": 35,
+      "before_line": "0 0.40884445 0.72361111 0.11043610 0.05277778 0.36074219 0.74008333 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.41082031 0.72361111 0.10648438 0.05277778 0.36074219 0.74008333 2 0.00000000 0.00000000 0",
+      "source_label_sha256": "8d131c35bb12e290433ca208c228415d018a373201f902dac615dcb8513870c4",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Use the immutable r12 row14 lower-left corner X as the upper-left frontal seam anchor for row35; preserve its independently located lower corner and occluded right point."
+    },
+    {
+      "image_id": "new_000012",
+      "split": "train",
+      "action": "replace",
+      "base_row": 36,
+      "before_line": "0 0.40859461 0.76944444 0.10781078 0.05000000 0.36274219 0.78812500 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.411621095 0.76944444 0.10175781 0.05000000 0.36274219 0.78812500 2 0.00000000 0.00000000 0",
+      "source_label_sha256": "8d131c35bb12e290433ca208c228415d018a373201f902dac615dcb8513870c4",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "changed_groups": [
+        "box"
+      ],
+      "reason": "Use the immutable r12 row35 lower-left corner X as the upper-left frontal seam anchor for row36; preserve its independently located lower corner and occluded right point."
+    },
+    {
+      "image_id": "new_000026",
+      "split": "train",
+      "action": "replace",
+      "base_row": 28,
+      "before_line": "0 0.6585937500 0.4347222222 0.0750000000 0.0333333333 0.62533594 0.44916667 2 0.69528906 0.44669444 2",
+      "after_line": "0 0.65703125 0.4347222222 0.071875 0.0333333333 0.62533594 0.44916667 2 0.69296875 0.44669444 2",
+      "source_label_sha256": "526c8ee11da020979f68d5c83384aa423a8bf7a85e50be6ddf261042157ff9ad",
+      "source_image_sha256": "304d648d7382d01b3326039c38ebcc92bfa0341aa2b55be7c5e32aea0cce8179",
+      "changed_groups": [
+        "box",
+        "right"
+      ],
+      "reason": "Align the right extent to the original r12 row27 xmax, approximately887 px, which follows row28's visible pale right edge. Move only right-point X to the same supported887 px edge; retain row28's own lower-front Y and visibility. Do not cascade the unsupported row27 expansion."
+    }
+  ],
+  "request_dispositions": [
+    {
+      "image_id": "new_000009",
+      "request": "26,27 xmax to rpt",
+      "base_rows": [
+        26,
+        27
+      ],
+      "status": "applied",
+      "reason": "Set each xmax to its own visible right-point X:606.47 and605.04 px. Preserve Y and point coordinates."
+    },
+    {
+      "image_id": "new_000009",
+      "request": "26,27 xmin to lpt",
+      "base_rows": [
+        26,
+        27
+      ],
+      "status": "applied",
+      "reason": "Set each xmin to its own visible left-point X:522.88 and522.90 px."
+    },
+    {
+      "image_id": "new_000011",
+      "request": "4,8,16 to19 xmax to rpt",
+      "base_rows": [
+        4,
+        8,
+        16,
+        17,
+        18,
+        19
+      ],
+      "status": "applied",
+      "reason": "All six own lower-right corner X anchors are visible; trim the narrow rack margins without changing points or vertical extent."
+    },
+    {
+      "image_id": "new_000011",
+      "request": "8 xmin to lpt",
+      "base_rows": [
+        8
+      ],
+      "status": "applied",
+      "reason": "Trim xmin to own left-point X486.64 px; retain its Y105.65 and visibility2."
+    },
+    {
+      "image_id": "new_000012",
+      "request": "35 xmin to14 ltp",
+      "base_rows": [
+        35
+      ],
+      "status": "applied",
+      "reason": "Interpret ltp as lpt; X457.70 is the supported upper-left seam reference. Own lower point stays461.75,532.86; right remains missing."
+    },
+    {
+      "image_id": "new_000012",
+      "request": "36 xmin to35 ltp",
+      "base_rows": [
+        36
+      ],
+      "status": "applied",
+      "reason": "Interpret ltp as lpt; immutable r12 row35 left-point X461.75 defines the upper-left seam. Own lower point stays464.31,567.45; right remains missing."
+    },
+    {
+      "image_id": "new_000026",
+      "request": "28 xmax and rpt to27 xmax",
+      "base_rows": [
+        28
+      ],
+      "status": "applied",
+      "reason": "Set xmax and only right-point X to immutable r12 row27 xmax887 px, supported by the visible pale front edge. Preserve right-point Y321.62 and visibility2."
+    },
+    {
+      "image_id": "new_000026",
+      "request": "27 xmax and rpt to26 xmax",
+      "base_rows": [
+        27
+      ],
+      "status": "not_supported",
+      "reason": "Row26 xmax893 px is on dark rack at row27 lower-right Y300, beyond row27's pale frontal edge. Retain row27 xmax887 and right point(886.5,300); do not transfer an upper tier's protrusion to another front. No new uncertainty or hold is created."
+    }
+  ],
+  "status_updates": [],
+  "new_cases": [],
+  "verification": {
+    "all_assigned_originals_opened": true,
+    "all_assigned_numbered_overlays_opened": true,
+    "targeted_original_pixel_crops_inspected": true,
+    "all_proposed_overlays_inspected": true,
+    "parse_pose_labels_passed": 4,
+    "check_geometry_passed": 4,
+    "unchanged_rows_byte_preserved": true,
+    "new_hold_count": 0,
+    "row_additions": 0,
+    "row_deletions": 0,
+    "stable_r12_cross_row_anchors": true
+  }
+}

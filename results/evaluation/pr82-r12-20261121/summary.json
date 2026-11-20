@@ -1,0 +1,623 @@
+{
+  "schema_version": 1,
+  "kind": "pr82-r12-summary",
+  "decision": "retain_PR35; mixed reference-sensitive result, no model promotion",
+  "pr_url": "https://github.com/Siuuuers/dl/pull/82",
+  "pr_head": "1edab4635ff3dc052cc7a67d09d09c773361fb41",
+  "archive": {
+    "size_bytes": 39781223,
+    "sha256": "24b15853253ba20762939ae16e236a1ee99736df58f5ca96a06a57c5f996e572",
+    "crc_passed": true,
+    "indexed_members_verified": 12
+  },
+  "training": {
+    "actual_difference": {
+      "changed_label_files": 78,
+      "changed_paths": [
+        "labels/train/new_000001.txt",
+        "labels/train/new_000003.txt",
+        "labels/train/new_000004.txt",
+        "labels/train/new_000005.txt",
+        "labels/train/new_000006.txt",
+        "labels/train/new_000012.txt",
+        "labels/train/new_000013.txt",
+        "labels/train/new_000016.txt",
+        "labels/train/new_000017.txt",
+        "labels/train/new_000018.txt",
+        "labels/train/new_000019.txt",
+        "labels/train/new_000023.txt",
+        "labels/train/new_000024.txt",
+        "labels/train/new_000026.txt",
+        "labels/train/new_000027.txt",
+        "labels/train/new_000028.txt",
+        "labels/train/new_000031.txt",
+        "labels/train/new_000032.txt",
+        "labels/train/new_000033.txt",
+        "labels/train/new_000034.txt",
+        "labels/train/new_000035.txt",
+        "labels/train/new_000036.txt",
+        "labels/train/new_000039.txt",
+        "labels/train/new_000042.txt",
+        "labels/train/new_000043.txt",
+        "labels/train/new_000050.txt",
+        "labels/train/new_000051.txt",
+        "labels/train/new_000061.txt",
+        "labels/train/new_000062.txt",
+        "labels/train/new_000063.txt",
+        "labels/train/new_000064.txt",
+        "labels/train/new_000065.txt",
+        "labels/train/new_000066.txt",
+        "labels/train/new_000067.txt",
+        "labels/train/new_000068.txt",
+        "labels/train/new_000069.txt",
+        "labels/train/new_000070.txt",
+        "labels/train/new_000071.txt",
+        "labels/train/new_000072.txt",
+        "labels/train/new_000073.txt",
+        "labels/train/new_000075.txt",
+        "labels/train/new_000079.txt",
+        "labels/train/new_000080.txt",
+        "labels/train/new_000081.txt",
+        "labels/train/new_000082.txt",
+        "labels/train/new_000083.txt",
+        "labels/train/new_000084.txt",
+        "labels/train/new_000085.txt",
+        "labels/train/new_000094.txt",
+        "labels/train/new_000095.txt",
+        "labels/train/new_000096.txt",
+        "labels/train/new_000097.txt",
+        "labels/train/new_000098.txt",
+        "labels/train/new_000099.txt",
+        "labels/train/new_000100.txt",
+        "labels/train/new_000101.txt",
+        "labels/train/new_000102.txt",
+        "labels/train/new_000103.txt",
+        "labels/train/new_000111.txt",
+        "labels/train/new_000112.txt",
+        "labels/train/new_000113.txt",
+        "labels/train/new_000114.txt",
+        "labels/train/new_000115.txt",
+        "labels/train/new_000116.txt",
+        "labels/train/new_000117.txt",
+        "labels/train/new_000118.txt",
+        "labels/train/new_000119.txt",
+        "labels/train/new_000120.txt",
+        "labels/train/new_000121.txt",
+        "labels/train/new_000122.txt",
+        "labels/train/new_000123.txt",
+        "labels/train/new_000124.txt",
+        "labels/train/new_000125.txt",
+        "labels/train/new_000126.txt",
+        "labels/train/new_000127.txt",
+        "labels/train/new_000128.txt",
+        "labels/train/new_000129.txt",
+        "labels/train/new_000130.txt"
+      ],
+      "held_train_photos_identical_to_PR35": 15,
+      "held_ids": [
+        "new_000002",
+        "new_000014",
+        "new_000015",
+        "new_000020",
+        "new_000025",
+        "new_000029",
+        "new_000030",
+        "new_000037",
+        "new_000038",
+        "new_000040",
+        "new_000041",
+        "new_000044",
+        "new_000045",
+        "new_000049",
+        "new_000074"
+      ],
+      "excluded_old_train_photos_identical_to_PR35": 31,
+      "excluded_ids": [
+        "old_000003",
+        "old_000004",
+        "old_000007",
+        "old_000010",
+        "old_000013",
+        "old_000018",
+        "old_000021",
+        "old_000022",
+        "old_000027",
+        "old_000028",
+        "old_000038",
+        "old_000039",
+        "old_000042",
+        "old_000046",
+        "old_000050",
+        "old_000051",
+        "old_000054",
+        "old_000057",
+        "old_000061",
+        "old_000065",
+        "old_000068",
+        "old_000069",
+        "old_000073",
+        "old_000077",
+        "old_000079",
+        "old_000087",
+        "old_000089",
+        "old_000093",
+        "old_000097",
+        "old_000100",
+        "old_000101"
+      ],
+      "all_original_images_identical": true,
+      "validation_labels_identical": true
+    },
+    "arms": {
+      "reference": {
+        "checkpoint_sha256": "48c3b22b2d58b93d9575995bccf9989f2b43e3402731ffa9dc6b1e5c9f0f4f34",
+        "epochs": 30,
+        "batches_completed": 1050,
+        "images_processed": 4110,
+        "optimizer_steps": 78,
+        "counts": {
+          "train": {
+            "images": 137,
+            "objects": 3771,
+            "visible_endpoints": 6841,
+            "missing_endpoints": 701,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "execution": {
+          "exit_code": 0,
+          "stop_reason": null,
+          "wall_seconds": 458.21272864599996,
+          "sampled_peak_process_tree_rss_mib": 2989.5,
+          "rss_sampling_interval_seconds": 0.2,
+          "max_seconds": 21600,
+          "max_rss_mib": 12000
+        }
+      },
+      "candidate": {
+        "checkpoint_sha256": "d3009de544b3d26f8f97497e388d9841f4cd7929004715337e8a223a6c6032a5",
+        "epochs": 30,
+        "batches_completed": 1050,
+        "images_processed": 4110,
+        "optimizer_steps": 78,
+        "counts": {
+          "train": {
+            "images": 137,
+            "objects": 3777,
+            "visible_endpoints": 6845,
+            "missing_endpoints": 709,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "execution": {
+          "exit_code": 0,
+          "stop_reason": null,
+          "wall_seconds": 454.93114077099995,
+          "sampled_peak_process_tree_rss_mib": 3040.48046875,
+          "rss_sampling_interval_seconds": 0.2,
+          "max_seconds": 21600,
+          "max_rss_mib": 12000
+        }
+      }
+    }
+  },
+  "operating_point": {
+    "box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "imgsz": 1280,
+    "radii_px": [
+      5,
+      10
+    ]
+  },
+  "references": {
+    "primary": {
+      "id": "sequence-refined-reference-2026-11-18",
+      "sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "exploratory": false,
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corner_successes": {
+            "5": 533,
+            "10": 582
+          },
+          "both_corner_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 0
+        },
+        "reference": {
+          "tp": 646,
+          "fn": 20,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "both_corner_successes": {
+            "5": 531,
+            "10": 583
+          },
+          "both_corner_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4,
+          "error_free_nonempty_scenes": 0
+        },
+        "candidate": {
+          "tp": 637,
+          "fn": 29,
+          "fp": 97,
+          "duplicate_fp": 31,
+          "other_fp": 66,
+          "both_corner_successes": {
+            "5": 528,
+            "10": 581
+          },
+          "both_corner_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 45,
+              "misses": 14
+            },
+            "2": {
+              "gold": 584,
+              "matched": 582,
+              "misses": 2
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 5,
+          "error_free_nonempty_scenes": 0
+        }
+      },
+      "candidate_vs_control": {
+        "counts": {
+          "tp": -9,
+          "fn": 9,
+          "fp": 14,
+          "duplicate_fp": 2,
+          "other_fp": 12,
+          "returned_endpoints": -8
+        },
+        "gained_matches": 3,
+        "lost_matches": 12
+      }
+    },
+    "diagnostic": {
+      "id": "visible-front-completion-2026-11-14",
+      "sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "exploratory": false,
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corner_successes": {
+            "5": 533,
+            "10": 582
+          },
+          "both_corner_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7,
+          "error_free_nonempty_scenes": 0
+        },
+        "reference": {
+          "tp": 646,
+          "fn": 17,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "both_corner_successes": {
+            "5": 531,
+            "10": 583
+          },
+          "both_corner_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 5,
+          "error_free_nonempty_scenes": 0
+        },
+        "candidate": {
+          "tp": 638,
+          "fn": 25,
+          "fp": 96,
+          "duplicate_fp": 31,
+          "other_fp": 65,
+          "both_corner_successes": {
+            "5": 528,
+            "10": 581
+          },
+          "both_corner_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 59,
+              "matched": 45,
+              "misses": 14
+            },
+            "2": {
+              "gold": 584,
+              "matched": 582,
+              "misses": 2
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 5,
+          "error_free_nonempty_scenes": 0
+        }
+      },
+      "candidate_vs_control": {
+        "counts": {
+          "tp": -8,
+          "fn": 8,
+          "fp": 13,
+          "duplicate_fp": 2,
+          "other_fp": 11,
+          "returned_endpoints": -8
+        },
+        "gained_matches": 3,
+        "lost_matches": 11
+      }
+    },
+    "current_r12_exploratory": {
+      "id": "fronts-2026-11-20-r12",
+      "sha256": "2ccac69fd2cff2c5748a6063c743271b5dd92c3f1f7493542486d1eddb31602f",
+      "counts": {
+        "images": 20,
+        "objects": 662,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 98,
+        "empty_images": 3
+      },
+      "exploratory": true,
+      "models": {
+        "pr35": {
+          "tp": 626,
+          "fn": 36,
+          "fp": 102,
+          "duplicate_fp": 21,
+          "other_fp": 81,
+          "both_corner_successes": {
+            "5": 534,
+            "10": 573
+          },
+          "both_corner_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 39,
+              "misses": 19
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 1
+        },
+        "reference": {
+          "tp": 621,
+          "fn": 41,
+          "fp": 108,
+          "duplicate_fp": 17,
+          "other_fp": 91,
+          "both_corner_successes": {
+            "5": 530,
+            "10": 571
+          },
+          "both_corner_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 37,
+              "misses": 21
+            },
+            "2": {
+              "gold": 584,
+              "matched": 573,
+              "misses": 11
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 1
+        },
+        "candidate": {
+          "tp": 642,
+          "fn": 20,
+          "fp": 92,
+          "duplicate_fp": 29,
+          "other_fp": 63,
+          "both_corner_successes": {
+            "5": 541,
+            "10": 581
+          },
+          "both_corner_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 12,
+              "misses": 8
+            },
+            "1": {
+              "gold": 58,
+              "matched": 47,
+              "misses": 11
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 8,
+          "error_free_nonempty_scenes": 1
+        }
+      },
+      "candidate_vs_control": {
+        "counts": {
+          "tp": 21,
+          "fn": -21,
+          "fp": -16,
+          "duplicate_fp": 12,
+          "other_fp": -28,
+          "returned_endpoints": 29
+        },
+        "gained_matches": 23,
+        "lost_matches": 2
+      }
+    }
+  },
+  "recommendation": "Preserve this mixed result. Continue physically supported annotation amendments under a fixed two-arm recipe; retain frozen references and report current reviewed geometry separately. Agree the box/front/corner definition before any future prospective reference replacement. Prioritize partial fronts and duplicate outputs; obtain new capture sessions for independent evaluation before deployment. No threshold or architecture search is justified by this one run.",
+  "post_return_r13_diagnostic": {
+    "path": "post-r13-diagnostic.json",
+    "sha256": "47b9f8427bb3c355eb75418d5d6ec88823e56ad86f960c49339faaa65e027bc6",
+    "reference": {
+      "path": "data/reviews/fronts-2026-11-21-r13/manifest.json",
+      "sha256": "e76da567c1b6ca58b814afe3dc2e04710ce2a725b506f3b35f2fe17887caa4a5",
+      "id": "fronts-2026-11-21-r13",
+      "counts": {
+        "images": 20,
+        "objects": 662,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 98,
+        "empty_images": 3
+      },
+      "timing": "amended_after_PR82_return"
+    },
+    "changed_development_labels": [
+      "new_000009",
+      "new_000011",
+      "new_000056"
+    ],
+    "all_match_and_5px_10px_success_identities_unchanged_from_pre_return_r12": true,
+    "only_count_change": "Fresh control duplicate subset17\u219216; other unmatched outputs+1; total unmatched outputs unchanged at108.",
+    "new_training_or_inference": false
+  }
+}

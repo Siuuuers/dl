@@ -1,0 +1,451 @@
+{
+  "schema_version": 1,
+  "kind": "bounded-visual-output-review",
+  "scope": "Six explicitly selected current-reference gained/lost examples, including both current-reference losses; all gained/lost identities and coordinates remain in fixed-comparison.json. This is not a complete physical adjudication of every unmatched output.",
+  "cases": [
+    {
+      "image_id": "new_000008",
+      "row": 33,
+      "reference_id": "fronts-2026-11-20-r12",
+      "change": "lost",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "inspection": "Original-pixel crop compared with current r12 geometry and both fixed-output sets. No label was changed from this model comparison.",
+      "observation": "A pale partial front at the right image edge is boxed in the current review. The control overlaps that location; the candidate proposals are mostly on the adjacent tiers. Candidate best IoU is 0.08958. This loss is retained under both the frozen primary and current r12 references.",
+      "measurement": {
+        "identity": "new_000008:33",
+        "change": "lost",
+        "models": {
+          "reference": {
+            "matched": {
+              "gold_index": 32,
+              "prediction_index": 40,
+              "iou": 0.601250559774305
+            },
+            "best_prediction_index": 40,
+            "best_iou": 0.601250559774305,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                1224.116943359375,
+                409.2288818359375,
+                1280.0,
+                476.438720703125
+              ],
+              "confidence": 0.14263692498207092,
+              "keypoints": [
+                [
+                  1237.6689453125,
+                  456.86199951171875,
+                  0.8707022666931152
+                ],
+                [
+                  1280.0,
+                  450.9741516113281,
+                  0.8344933986663818
+                ]
+              ]
+            }
+          },
+          "candidate": {
+            "matched": null,
+            "best_prediction_index": 37,
+            "best_iou": 0.08958389578396528,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                1219.539794921875,
+                447.7664489746094,
+                1280.0,
+                495.4192810058594
+              ],
+              "confidence": 0.18125741183757782,
+              "keypoints": [
+                [
+                  1228.501708984375,
+                  487.8487854003906,
+                  0.8129146099090576
+                ],
+                [
+                  1280.0,
+                  482.58221435546875,
+                  0.7603811621665955
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "image_id": "new_000009",
+      "row": 55,
+      "reference_id": "fronts-2026-11-20-r12",
+      "change": "lost",
+      "source_image_path": "data/images/val/new_000009.png",
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "inspection": "Original-pixel crop compared with current r12 geometry and both fixed-output sets. No label was changed from this model comparison.",
+      "observation": "The current review boxes a small pale front fragment between larger top/side faces. The control has an overlapping output; no retained candidate output overlaps the reviewed box. This is current r12 row55; the corresponding frozen-row result is reported as row56, so reference row numbers must stay explicit.",
+      "measurement": {
+        "identity": "new_000009:55",
+        "change": "lost",
+        "models": {
+          "reference": {
+            "matched": {
+              "gold_index": 54,
+              "prediction_index": 74,
+              "iou": 0.5472804379054492
+            },
+            "best_prediction_index": 74,
+            "best_iou": 0.5472804379054492,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                680.3130493164062,
+                468.3240966796875,
+                734.1447143554688,
+                497.99041748046875
+              ],
+              "confidence": 0.14290684461593628,
+              "keypoints": [
+                [
+                  686.1779174804688,
+                  488.2135009765625,
+                  0.23545531928539276
+                ],
+                [
+                  728.7355346679688,
+                  492.66082763671875,
+                  0.2565505802631378
+                ]
+              ]
+            }
+          },
+          "candidate": {
+            "matched": null,
+            "best_prediction_index": 0,
+            "best_iou": 0.0,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                518.0882568359375,
+                15.195655822753906,
+                619.1929931640625,
+                49.23579406738281
+              ],
+              "confidence": 0.9437820911407471,
+              "keypoints": [
+                [
+                  520.6036376953125,
+                  38.6328239440918,
+                  0.9571731686592102
+                ],
+                [
+                  614.3509521484375,
+                  45.73941421508789,
+                  0.9574254751205444
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "image_id": "new_000007",
+      "row": 6,
+      "reference_id": "fronts-2026-11-20-r12",
+      "change": "gained",
+      "source_image_path": "data/images/val/new_000007.png",
+      "source_image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "inspection": "Original-pixel crop compared with current r12 geometry and both fixed-output sets. No label was changed from this model comparison.",
+      "observation": "The current review isolates one cassette front in the middle stack. The candidate fits that narrower extent, while a larger control box spans additional surrounding area. The control best IoU is 0.49853, just below the unchanged 0.50 cutoff; this is an extent/threshold crossing, not proof that the control saw no cassette.",
+      "measurement": {
+        "identity": "new_000007:6",
+        "change": "gained",
+        "models": {
+          "reference": {
+            "matched": null,
+            "best_prediction_index": 37,
+            "best_iou": 0.4985278144720786,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                640.072998046875,
+                30.5421142578125,
+                725.60595703125,
+                67.2358169555664
+              ],
+              "confidence": 0.8316316604614258,
+              "keypoints": [
+                [
+                  647.5097045898438,
+                  54.58646774291992,
+                  0.8721248507499695
+                ],
+                [
+                  719.7035522460938,
+                  51.556941986083984,
+                  0.8600966930389404
+                ]
+              ]
+            }
+          },
+          "candidate": {
+            "matched": {
+              "gold_index": 5,
+              "prediction_index": 26,
+              "iou": 0.7461229921688908
+            },
+            "best_prediction_index": 26,
+            "best_iou": 0.7461229921688908,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                643.6737060546875,
+                31.995101928710938,
+                723.8843994140625,
+                58.13908386230469
+              ],
+              "confidence": 0.9038804173469543,
+              "keypoints": [
+                [
+                  648.4304809570312,
+                  53.1170654296875,
+                  0.9070698022842407
+                ],
+                [
+                  720.5025024414062,
+                  51.05431365966797,
+                  0.9306122660636902
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "image_id": "new_000056",
+      "row": 16,
+      "reference_id": "fronts-2026-11-20-r12",
+      "change": "gained",
+      "source_image_path": "data/images/val/new_000056.png",
+      "source_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "inspection": "Original-pixel crop compared with current r12 geometry and both fixed-output sets. No label was changed from this model comparison.",
+      "observation": "A thin front fragment is clipped at the bottom image edge beside the hand. The candidate has a lower-front proposal matching this region; the control proposal mainly covers the preceding tier. Control best IoU is 0.07804. Hidden or out-of-frame corners are not certified by the prediction.",
+      "measurement": {
+        "identity": "new_000056:16",
+        "change": "gained",
+        "models": {
+          "reference": {
+            "matched": null,
+            "best_prediction_index": 21,
+            "best_iou": 0.07803594591808224,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                410.45501708984375,
+                674.7374267578125,
+                508.95611572265625,
+                710.4654541015625
+              ],
+              "confidence": 0.45517295598983765,
+              "keypoints": [
+                [
+                  415.61480712890625,
+                  701.406494140625,
+                  0.8376672863960266
+                ],
+                [
+                  497.1375732421875,
+                  703.334228515625,
+                  0.8215528130531311
+                ]
+              ]
+            }
+          },
+          "candidate": {
+            "matched": {
+              "gold_index": 15,
+              "prediction_index": 23,
+              "iou": 0.6051098677599656
+            },
+            "best_prediction_index": 23,
+            "best_iou": 0.6051098677599656,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                412.8782653808594,
+                701.4306640625,
+                481.2270202636719,
+                720.0
+              ],
+              "confidence": 0.2929803729057312,
+              "keypoints": [
+                [
+                  419.5971984863281,
+                  719.0643920898438,
+                  0.7658883333206177
+                ],
+                [
+                  470.3018493652344,
+                  720.0,
+                  0.6550104022026062
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "image_id": "new_000090",
+      "row": 41,
+      "reference_id": "fronts-2026-11-20-r12",
+      "change": "gained",
+      "source_image_path": "data/images/val/new_000090.png",
+      "source_image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "inspection": "Original-pixel crop compared with current r12 geometry and both fixed-output sets. No label was changed from this model comparison.",
+      "observation": "The current review covers the exposed narrow frontal strip beside a larger occluder. Candidate boxes are narrower than the control boxes, which extend farther into the foreground occluder region. This supports a changed extent explanation for the reference-sensitive score.",
+      "measurement": {
+        "identity": "new_000090:41",
+        "change": "gained",
+        "models": {
+          "reference": {
+            "matched": null,
+            "best_prediction_index": 52,
+            "best_iou": 0.3412972748810723,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                569.720703125,
+                484.9200439453125,
+                664.15966796875,
+                516.8525390625
+              ],
+              "confidence": 0.2803456783294678,
+              "keypoints": [
+                [
+                  574.7214965820312,
+                  508.44012451171875,
+                  0.8584170937538147
+                ],
+                [
+                  650.6729736328125,
+                  516.0591430664062,
+                  0.8482204675674438
+                ]
+              ]
+            }
+          },
+          "candidate": {
+            "matched": {
+              "gold_index": 40,
+              "prediction_index": 42,
+              "iou": 0.57668443279749
+            },
+            "best_prediction_index": 54,
+            "best_iou": 0.7714772852878307,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                569.8489990234375,
+                488.7322998046875,
+                610.8441162109375,
+                512.540771484375
+              ],
+              "confidence": 0.3369453549385071,
+              "keypoints": [
+                [
+                  573.726318359375,
+                  506.63128662109375,
+                  0.7569955587387085
+                ],
+                [
+                  617.1919555664062,
+                  509.17230224609375,
+                  0.7051981091499329
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "image_id": "new_000011",
+      "row": 59,
+      "reference_id": "fronts-2026-11-20-r12",
+      "change": "gained",
+      "source_image_path": "data/images/val/new_000011.png",
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "inspection": "Original-pixel crop compared with current r12 geometry and both fixed-output sets. No label was changed from this model comparison.",
+      "observation": "The current review covers the narrow exposed cassette end at the rack/foreground boundary. The candidate has a tighter proposal in that region; control proposals are wider. This is a geometry comparison on reused development imagery, not independent deployment evidence.",
+      "measurement": {
+        "identity": "new_000011:59",
+        "change": "gained",
+        "models": {
+          "reference": {
+            "matched": null,
+            "best_prediction_index": 59,
+            "best_iou": 0.30339427086849297,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                747.463134765625,
+                443.42950439453125,
+                813.698486328125,
+                481.64715576171875
+              ],
+              "confidence": 0.4123958647251129,
+              "keypoints": [
+                [
+                  752.237548828125,
+                  468.463134765625,
+                  0.6550829410552979
+                ],
+                [
+                  807.4102783203125,
+                  466.23687744140625,
+                  0.652059018611908
+                ]
+              ]
+            }
+          },
+          "candidate": {
+            "matched": {
+              "gold_index": 58,
+              "prediction_index": 67,
+              "iou": 0.7594930320501532
+            },
+            "best_prediction_index": 67,
+            "best_iou": 0.7594930320501532,
+            "best_prediction": {
+              "class_id": 0,
+              "bbox_xyxy": [
+                775.7559814453125,
+                446.248779296875,
+                810.0511474609375,
+                475.7340087890625
+              ],
+              "confidence": 0.14882732927799225,
+              "keypoints": [
+                [
+                  771.29248046875,
+                  468.556640625,
+                  0.5638440847396851
+                ],
+                [
+                  806.5609130859375,
+                  468.8087158203125,
+                  0.6091930866241455
+                ]
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

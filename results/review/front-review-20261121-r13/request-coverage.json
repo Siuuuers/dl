@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "review_id": "fronts-2026-11-21-r13",
+  "base_review": {
+    "path": "data/reviews/fronts-2026-11-20-r12/manifest.json",
+    "sha256": "2ccac69fd2cff2c5748a6063c743271b5dd92c3f1f7493542486d1eddb31602f"
+  },
+  "source_revision": "eb8284dcab71074275d9d22fc0fd974839d66863",
+  "reviewed_image_ids": [
+    "new_000005",
+    "new_000009",
+    "new_000011",
+    "new_000012",
+    "new_000026",
+    "new_000043",
+    "new_000053",
+    "new_000056"
+  ],
+  "excluded_old_image_ids": [
+    "old_000003",
+    "old_000004",
+    "old_000007",
+    "old_000010",
+    "old_000013",
+    "old_000018",
+    "old_000021",
+    "old_000022",
+    "old_000027",
+    "old_000028",
+    "old_000038",
+    "old_000039",
+    "old_000042",
+    "old_000046",
+    "old_000050",
+    "old_000051",
+    "old_000054",
+    "old_000057",
+    "old_000061",
+    "old_000065",
+    "old_000068",
+    "old_000069",
+    "old_000073",
+    "old_000077",
+    "old_000079",
+    "old_000087",
+    "old_000089",
+    "old_000093",
+    "old_000097",
+    "old_000100",
+    "old_000101"
+  ],
+  "audits": [
+    {
+      "path": "results/review/front-review-20261121-r13/audit-root.json",
+      "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+    },
+    {
+      "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+      "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+    },
+    {
+      "path": "results/review/front-review-20261121-r13/audit-group-b.json",
+      "sha256": "7a7ee1f6d8f55246136f56a94903d7b0a0204c7cfad4a4f50378d9dd1ec32ab6"
+    }
+  ],
+  "visual_review_complete_for_requested_photos": true,
+  "full_dataset_certified": false,
+  "scope": "Every requested photo inspected in its original scene and r12 overlay with targeted detail crops; unrequested new and all old label bytes inherited unchanged.",
+  "images": [
+    {
+      "image_id": "new_000005",
+      "original_image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "source_label_sha256": "824c2087abfa068f6e2f6adeab87d6fc57a70a7e28375f4a8f1d80ede278cecf",
+      "inspection": {
+        "full_original": true,
+        "numbered_source_overlay": true,
+        "targeted_original_crops": [
+          {
+            "name": "top",
+            "xyxy": [
+              325,
+              0,
+              1040,
+              270
+            ]
+          },
+          {
+            "name": "bottom",
+            "xyxy": [
+              370,
+              345,
+              990,
+              540
+            ]
+          },
+          {
+            "name": "right-top-grid",
+            "xyxy": [
+              990,
+              95,
+              1035,
+              252
+            ]
+          },
+          {
+            "name": "right-bottom-grid",
+            "xyxy": [
+              830,
+              470,
+              875,
+              540
+            ]
+          },
+          {
+            "name": "row34-grid",
+            "xyxy": [
+              500,
+              490,
+              590,
+              535
+            ]
+          }
+        ],
+        "decision": "Inspect immutable source rows and physical front ownership before applying single-coordinate anchors. Unsupported repeated-column projections and interior point moves are explicitly retained."
+      }
+    },
+    {
+      "image_id": "new_000009",
+      "original_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_sha256": "91b57a4f418e1c1c2c78f8bec715ee126e63fd754e100f7d334f9376b1377a37",
+      "inspection": "Inspected the original full frame, numbered r12 overlay, and enlarged original/overlay crop(506,222)-(620,294). The requested own-corner X anchors remove narrow rack strips from rows26/27. Their front tiers and vertical extent remain unchanged. Final proposed full-frame overlay visually inspected after parser and geometry validation.",
+      "changed_base_rows": [
+        26,
+        27
+      ],
+      "source_row_count": 57
+    },
+    {
+      "image_id": "new_000011",
+      "original_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "source_label_sha256": "9e702b7cddc9b37d8d641410df1ecdc79eb5f712b7193345ef83b29023213e4a",
+      "inspection": "Inspected the original full frame, numbered r12 overlay, and enlarged original/overlay crops(463,0)-(578,116) and(649,10)-(758,124). All requested right corners and row8 left corner are visible. This also makes the earlier incomplete row16 instruction concrete. Final proposed full-frame overlay visually inspected after parser and geometry validation.",
+      "changed_base_rows": [
+        4,
+        8,
+        16,
+        17,
+        18,
+        19
+      ],
+      "source_row_count": 60
+    },
+    {
+      "image_id": "new_000012",
+      "original_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "source_label_sha256": "8d131c35bb12e290433ca208c228415d018a373201f902dac615dcb8513870c4",
+      "inspection": "Inspected the original full frame, numbered r12 overlay, and enlarged original/overlay crop(439,455)-(604,579). Upper-left seams of rows35/36 continue from the immediately higher front left corners. The hand/gripper still hides both right corners, which remain exact zeros. Final proposed full-frame overlay visually inspected after parser and geometry validation.",
+      "changed_base_rows": [
+        35,
+        36
+      ],
+      "source_row_count": 40
+    },
+    {
+      "image_id": "new_000026",
+      "original_image_sha256": "304d648d7382d01b3326039c38ebcc92bfa0341aa2b55be7c5e32aea0cce8179",
+      "source_label_sha256": "526c8ee11da020979f68d5c83384aa423a8bf7a85e50be6ddf261042157ff9ad",
+      "inspection": "Inspected the original full frame, numbered r12 overlay, enlarged original/overlay crop(780,238)-(910,335), and nearest-neighbour coordinate-grid crop(867,263)-(906,331). At row27's lower corner Y300, X893 is on dark rack, so that proposed expansion is unsupported. Row28's original X889.97 lies beyond the visible pale edge; original row27 xmax887 is supported. Immutable r12 anchors are used, with no sequential cascade. Final proposed full-frame overlay visually inspected after parser and geometry validation.",
+      "changed_base_rows": [
+        28
+      ],
+      "source_row_count": 56
+    },
+    {
+      "image_id": "new_000043",
+      "original_image_sha256": "1cc8fe54b7d8d3699f55d07a5a14fc6bc2effb03bd6fcb4e4fe2405c72f41ac1",
+      "source_label_sha256": "0af24a027b580edead6a1b79acee37fdceed7a2a6b3d12e3f94b1bf49be15fc6",
+      "inspection": "Inspected the complete 1280x720 original, numbered r12 overlay, enlarged original-pixel crops for every requested region, and the final proposed overlay. Front/rim ownership and each target own corner govern requested alignments.",
+      "geometry_validation": "parse_pose_labels and check_geometry passed on the complete proposed file",
+      "reviewed_rows": 31
+    },
+    {
+      "image_id": "new_000053",
+      "original_image_sha256": "dfc3621b0387b0da774001334c12c65574ae0084131b154d2f6216e420573d72",
+      "source_label_sha256": "0d0e8be90b96de52f52d9d82703362c611bdb27470423f7145d56f1d8e64dd4b",
+      "inspection": "Inspected the complete 1280x720 original, numbered r12 overlay, enlarged original-pixel crops for every requested region, and the final proposed overlay. Front/rim ownership and each target own corner govern requested alignments.",
+      "geometry_validation": "parse_pose_labels and check_geometry passed on the complete proposed file",
+      "reviewed_rows": 22
+    },
+    {
+      "image_id": "new_000056",
+      "original_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "source_label_sha256": "b586c0a03f2d35324bef05267bd4f0f1e68b261fc6ff6357b9998433a7ac8c73",
+      "inspection": "Inspected the complete 1280x720 original, numbered r12 overlay, enlarged original-pixel crops for every requested region, and the final proposed overlay. Front/rim ownership and each target own corner govern requested alignments.",
+      "geometry_validation": "parse_pose_labels and check_geometry passed on the complete proposed file",
+      "reviewed_rows": 22
+    }
+  ],
+  "request_dispositions": [
+    {
+      "image_id": "new_000005",
+      "request": "2 xmax to rpt and ymin to 1 lpt",
+      "base_rows": [
+        2
+      ],
+      "status": "applied",
+      "reason": "Use own right-point X and immutable row1 left-point Y; all other fields retain physical ownership.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "9 ymax to 8 lpt",
+      "base_rows": [
+        9
+      ],
+      "status": "interpreted",
+      "reason": "Physical top aligns to preceding lower seam: pixel ymin223; a literal ymax would exclude the front.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "5 ymax to 4 rpt",
+      "base_rows": [
+        5
+      ],
+      "status": "interpreted",
+      "reason": "Physical top maps to pixel ymin85, enclosing the sloping owned rim.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "17 to 21 ymax to 16 to 20 rpt respectively",
+      "base_rows": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "status": "interpreted",
+      "reason": "Use the preceding source-row right-corner Y for each pixel ymin. Preserve every target front's own lower landmarks.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "23 to 25 xmax to 22 xmax",
+      "base_rows": [
+        23,
+        24,
+        25
+      ],
+      "status": "not_supported",
+      "reason": "Row22 has a distinct protruding upper right rim. The lower right edges visibly taper left; a common x1021 would include red/dark background outside rows23–25. Retain each supported source extent.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "31 xmax to 38 xmin",
+      "base_rows": [
+        31
+      ],
+      "status": "applied",
+      "reason": "The source adjacent-column xmin612 supports trimming the right excess. Keep the gripper-hidden point zero.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "34 ymax to 33 lpt",
+      "base_rows": [
+        34
+      ],
+      "status": "interpreted",
+      "reason": "Physical top maps to pixel ymin501.91, including the gray upper frontal rim; bottom stays at its own lower seam.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "42 xmax to 41 rpt",
+      "base_rows": [
+        42
+      ],
+      "status": "applied",
+      "reason": "Horizontal boundary alignment to source row41 right-point X; preserve own corner.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "44 xmax to 43 rpt",
+      "base_rows": [
+        44
+      ],
+      "status": "applied",
+      "reason": "Horizontal boundary alignment to source row43 right-point X; preserve own corner.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "44 ymin to rpt",
+      "base_rows": [
+        44
+      ],
+      "status": "interpreted",
+      "reason": "Physical bottom maps to pixel ymax at own right-corner Y527.57.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "49 rpt y +ve to 52 lpt",
+      "base_rows": [
+        49
+      ],
+      "status": "interpreted",
+      "reason": "Explicit targetY528 moves upward from532.5 in image coordinates, contrary to literal +ve; original pixels support that target lower-front junction. Change Y only.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "46 xmin to 45 lpt",
+      "base_rows": [
+        46
+      ],
+      "status": "applied",
+      "reason": "Use source row45 left-point X737.24 to exclude the rack margin, preserving own lower-left point.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "46,48 ymin to rpt",
+      "base_rows": [
+        46,
+        48
+      ],
+      "status": "interpreted",
+      "reason": "Physical bottom maps to pixel ymax at each own right corner; both left corners remain inside/on their respective boxes.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000005",
+      "request": "51 lpt to 50 lpt",
+      "base_rows": [
+        51
+      ],
+      "status": "not_supported",
+      "reason": "Copying the full point would jump into row50. Even an X-only alignment to858.17 would move inside row51's visible lower seam, away from its actual junction at(853,504). Retain the supported corner.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-root.json",
+        "sha256": "d6c0786ac23b4454528f3490ca6a6b90b9f1b63838ec9165659d950f20415369"
+      }
+    },
+    {
+      "image_id": "new_000009",
+      "request": "26,27 xmax to rpt",
+      "base_rows": [
+        26,
+        27
+      ],
+      "status": "applied",
+      "reason": "Set each xmax to its own visible right-point X:606.47 and605.04 px. Preserve Y and point coordinates.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+        "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+      }
+    },
+    {
+      "image_id": "new_000009",
+      "request": "26,27 xmin to lpt",
+      "base_rows": [
+        26,
+        27
+      ],
+      "status": "applied",
+      "reason": "Set each xmin to its own visible left-point X:522.88 and522.90 px.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+        "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+      }
+    },
+    {
+      "image_id": "new_000011",
+      "request": "4,8,16 to19 xmax to rpt",
+      "base_rows": [
+        4,
+        8,
+        16,
+        17,
+        18,
+        19
+      ],
+      "status": "applied",
+      "reason": "All six own lower-right corner X anchors are visible; trim the narrow rack margins without changing points or vertical extent.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+        "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+      }
+    },
+    {
+      "image_id": "new_000011",
+      "request": "8 xmin to lpt",
+      "base_rows": [
+        8
+      ],
+      "status": "applied",
+      "reason": "Trim xmin to own left-point X486.64 px; retain its Y105.65 and visibility2.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+        "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+      }
+    },
+    {
+      "image_id": "new_000012",
+      "request": "35 xmin to14 ltp",
+      "base_rows": [
+        35
+      ],
+      "status": "applied",
+      "reason": "Interpret ltp as lpt; X457.70 is the supported upper-left seam reference. Own lower point stays461.75,532.86; right remains missing.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+        "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+      }
+    },
+    {
+      "image_id": "new_000012",
+      "request": "36 xmin to35 ltp",
+      "base_rows": [
+        36
+      ],
+      "status": "applied",
+      "reason": "Interpret ltp as lpt; immutable r12 row35 left-point X461.75 defines the upper-left seam. Own lower point stays464.31,567.45; right remains missing.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+        "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+      }
+    },
+    {
+      "image_id": "new_000026",
+      "request": "28 xmax and rpt to27 xmax",
+      "base_rows": [
+        28
+      ],
+      "status": "applied",
+      "reason": "Set xmax and only right-point X to immutable r12 row27 xmax887 px, supported by the visible pale front edge. Preserve right-point Y321.62 and visibility2.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+        "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+      }
+    },
+    {
+      "image_id": "new_000026",
+      "request": "27 xmax and rpt to26 xmax",
+      "base_rows": [
+        27
+      ],
+      "status": "not_supported",
+      "reason": "Row26 xmax893 px is on dark rack at row27 lower-right Y300, beyond row27's pale frontal edge. Retain row27 xmax887 and right point(886.5,300); do not transfer an upper tier's protrusion to another front. No new uncertainty or hold is created.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-a.json",
+        "sha256": "8d58adeff305391040ec26f238c56671ac8c9027e36ef99392f5147df8e73b20"
+      }
+    },
+    {
+      "image_id": "new_000043",
+      "request": "13 ymin to rpt",
+      "base_rows": [
+        13
+      ],
+      "status": "interpreted",
+      "reason": "The right point lies on the lower front edge. As in r12 physical-bottom wording, amend pixel ymax414→410.11; changing pixel ymin to that point would collapse the front. Both corners remain inside the corrected box.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-b.json",
+        "sha256": "7a7ee1f6d8f55246136f56a94903d7b0a0204c7cfad4a4f50378d9dd1ec32ab6"
+      }
+    },
+    {
+      "image_id": "new_000053",
+      "request": "11 xmax and rpt to 7 xmax",
+      "base_rows": [
+        11
+      ],
+      "status": "not_supported",
+      "reason": "Row7 xmax535.64 lies about4.27 pixels left of row11 current right boundary/point539.91. The lower front visible rim occupies x536–540 at y128–142 before the dark rack. Aligning to the upper cassette would clip that supported front extent and move its corner inward; preserve row11 own geometry.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-b.json",
+        "sha256": "7a7ee1f6d8f55246136f56a94903d7b0a0204c7cfad4a4f50378d9dd1ec32ab6"
+      }
+    },
+    {
+      "image_id": "new_000053",
+      "request": "6 ymin to rpt",
+      "base_rows": [
+        6
+      ],
+      "status": "not_supported",
+      "reason": "This front is sloped: its right corner is at y49.36 and left corner at y67.08. Pixel ymin→49.36 would cut away much of the visible face; interpreting it as ymax→49.36 would exclude the left corner. No exact requested interpretation encloses the visible front, so preserve the supported box and both points.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-b.json",
+        "sha256": "7a7ee1f6d8f55246136f56a94903d7b0a0204c7cfad4a4f50378d9dd1ec32ab6"
+      }
+    },
+    {
+      "image_id": "new_000056",
+      "request": "14 xmin and lpt to 15 xmin",
+      "base_rows": [
+        14
+      ],
+      "status": "applied",
+      "reason": "Use row15 source xmin414.0 for row14 xmin and left-point X only. The original pixels show this left turn; preserve row14 Y665.54 and the missing right corner.",
+      "audit_source": {
+        "path": "results/review/front-review-20261121-r13/audit-group-b.json",
+        "sha256": "7a7ee1f6d8f55246136f56a94903d7b0a0204c7cfad4a4f50378d9dd1ec32ab6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "kind": "bounded-secondary-physical-adjudication",
+  "source_review": "fronts-2026-11-20-r12",
+  "reviewed_audit": {
+    "path": "results/review/front-review-20261121-r13/audit-group-b.json",
+    "sha256": "7a7ee1f6d8f55246136f56a94903d7b0a0204c7cfad4a4f50378d9dd1ec32ab6"
+  },
+  "reviewer": "root-independent-physical-review",
+  "decisions": [
+    {
+      "image_id": "new_000043",
+      "base_row": 13,
+      "evaluated_before_line": "0 0.64967193 0.560416632 0.06496864 0.029166653 0.62230469 0.56848611 2 0.68215625 0.56959722 2",
+      "evaluated_after_line": "0 0.64967193 0.55771526275 0.06496864 0.0237639145 0.62230469 0.56848611 2 0.68215625 0.56959722 2",
+      "source_label_sha256": "0af24a027b580edead6a1b79acee37fdceed7a2a6b3d12e3f94b1bf49be15fc6",
+      "source_image_sha256": "1cc8fe54b7d8d3699f55d07a5a14fc6bc2effb03bd6fcb4e4fe2405c72f41ac1",
+      "decision": "accept",
+      "reason": "Independent root inspection of enlarged original-pixel and numbered proposed crops supports the changed front edge/corner while preserving the target identity. Interpret physical-bottom ymin wording as pixel ymax: trim the lower rack margin from y413.99997012 to its own visible right corner y410.1099984. Preserve pixel ymin392.99997996 and both actual corners."
+    },
+    {
+      "image_id": "new_000056",
+      "base_row": 14,
+      "evaluated_before_line": "0 0.37221875 0.897916667 0.0899375 0.062500000 0.32725000 0.92436111 2 0.00000000 0.00000000 0",
+      "evaluated_after_line": "0 0.370312500 0.897916667 0.093750000 0.062500000 0.323437500 0.92436111 2 0.00000000 0.00000000 0",
+      "source_label_sha256": "b586c0a03f2d35324bef05267bd4f0f1e68b261fc6ff6357b9998433a7ac8c73",
+      "source_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "decision": "accept",
+      "reason": "Independent root inspection of enlarged original-pixel and numbered proposed crops supports the changed front edge/corner while preserving the target identity. Move xmin and left-point X from418.88 to row15 xmin414.0, matching the visible left front turn. Preserve the target corner Y665.5399992, xmax534 and the independently missing right corner."
+    }
+  ],
+  "summary": {
+    "operations_checked": 2,
+    "accepted": 2,
+    "new_physical_holds": 0
+  },
+  "additional_rejections_reviewed": [
+    "053 row11-to-row7X535.64 clips visible frontal rim extending to about540.",
+    "053 row6 ownRy49.36 cannot serve either pixel top or bottom while enclosing its sloping front and lower-left cornerY67.08."
+  ]
+}
