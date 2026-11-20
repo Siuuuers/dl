@@ -1,6 +1,16 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前入口：PR35 推論、r10 完整新照片覆核
+## 目前入口：PR35 推論、r12 修訂標籤與新 notebook
+
+**2026-11-20：本輪46張指定照片已覆核，實際修訂45張。** 共修改597個既有列（543個框、84個左點、66個右點欄位），並在 `new_000023` 末尾新增第37列可辨識正面片段；沒有刪除既有物件。修訂已存成[完整157檔YOLO標籤](data/reviews/fronts-2026-11-20-r12/manifest.json)。全部原圖、原始標籤及未指定照片的r11覆核標籤保持完整。[本輪說明與未決問題](docs/front-review-r12.md)。
+
+**本輪PDF只有45張實際變更的照片，加上可點選索引。** 每張照片顯示全部目前標籤，洋紅色表示本輪變更、青色表示沿用、琥珀色表示未決欄位。照片019的部分文字參照指向不同層或欄，暫無可支持的變更，因此未加入PDF。圖冊、雜湊與交付紀錄見[PDF交付資訊](results/review/front-review-20261120-r12/pdf-delivery.json)。
+
+**新訓練入口：[baomai_front_review_r12.ipynb](notebooks/baomai_front_review_r12.ipynb)。** 兩組各自從epoch173開始，以相同seed46及30輪比較PR35與可用的r12監督標籤。15張有未決物理標註的訓練照片，以及另外31張本輪排除處理的舊照片，均在兩組保留完全相同的PR35標籤。保留137張訓練圖與13張空圖，兩組78份訓練標籤不同，物件數為3,771／3,777。原始20張驗證圖及固定666／663評分參考維持不變。[實際訓練入口驗證](results/review/front-review-20261120-r12/runner-verification.json)已通過；尚未執行r12 GPU訓練。[PR80](https://github.com/Siuuuers/dl/pull/80)是已完成的r11回傳結果。
+
+**目前仍選用PR35。** 本輪標註修訂及notebook準備尚不能證明新模型較好。推論操作請用[目前模型入口](docs/current-model.md)，下一步執行上述r12 notebook並回傳新版ZIP。
+
+## 先前 r10 交付（歷史快照）
 
 **2026-11-19：已逐圖覆核全部126張 `new_*` 原圖；31張 `old_*` 覆核標籤維持原樣。** 本輪修訂65張照片的269個既有列，包含134個框、124個左點及47個右點欄位；新增2個可辨識正面，依使用者指示刪除 `new_000007` 的r9第7／14列。全部157張原圖與原始標籤保持完整。[完整說明與判定依據](docs/front-review-r10.md)記錄框的可見極值、正面角點、逐列身份及保留問題。
 
@@ -8,7 +18,7 @@
 
 **新訓練入口：[baomai_front_review_r10.ipynb](notebooks/baomai_front_review_r10.ipynb)。** Notebook固定來源commit與實驗雜湊，從epoch173獨立開始兩組seed46、30輪的受控比較。15張仍有問題的新訓練照片及另外31張本輪不處理的舊照片，在兩組中均使用完全相同的PR35標籤；保留全部137張訓練圖與13張空圖。兩組實際有77份訓練標籤不同，物件數為3,771／3,778。原始20張驗證圖及固定666／663評分參考維持不變。[實際訓練入口驗證](results/review/front-review-20261119-r10/runner-verification.json)已通過；尚未執行r10 GPU訓練。
 
-**目前仍選用PR35。** [已完成PR76評估](results/evaluation/pr76-recovery-20261119/README.md)不支持替換模型。現行推論設定為PR35 seed46、1280輸入、框門檻0.13、NMS IoU0.70、端點門檻0.50，操作請用[目前模型入口](docs/current-model.md)。舊版PDF與notebook保留供追溯，本輪入口以上方r10為準。
+**目前仍選用PR35。** [已完成PR76評估](results/evaluation/pr76-recovery-20261119/README.md)不支持替換模型。現行推論設定為PR35 seed46、1280輸入、框門檻0.13、NMS IoU0.70、端點門檻0.50，操作請用[目前模型入口](docs/current-model.md)。舊版PDF與notebook保留供追溯，目前入口以上方r12為準。
 
 <details>
 <summary>先前覆核與實驗紀錄</summary>
