@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "status": "prepared_and_input_preflight_passed",
+  "notebook": {
+    "path": "notebooks/baomai_front_review_r13.ipynb",
+    "sha256": "de0146574fff097da7edf45bbd8fdb591569add7dff513fdb63df5b970fbea96"
+  },
+  "source_revision": "5c2817f1c1eaa1bbce7060facb82732c3d249e10",
+  "protocol": {
+    "path": "experiments/front-review-2026-11-21-r13.json",
+    "sha256": "b77ab22c5655146b05a870458fcad080f4e6e9dcc890ae248564b86147a9f22d"
+  },
+  "code_cells_compiled": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14
+  ],
+  "embedded_input_preflight": {
+    "sha256": "b176431d4198d08cca698310e48bc3d9d1780951412e1e6b3b808d645569a63f",
+    "execution": "Executed the exact extracted cell4 input_preflight with Python3 against the actual original PNGs and epoch173 checkpoint in this checkout. Source repinning did not change this preflight code.",
+    "exit_code": 0,
+    "original_images_verified": 157,
+    "weights_verified": true,
+    "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "requested_photos": 8,
+    "changed_photos": 7,
+    "all_nonempty_new_photos_in_pdf": 110,
+    "staged_counts": {
+      "reference": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "candidate": {
+        "train": {
+          "images": 137,
+          "objects": 3777,
+          "visible_endpoints": 6845,
+          "missing_endpoints": 709,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "held_training_photos": 15,
+    "excluded_old_photos": 31,
+    "fixed_reference_fronts": {
+      "primary": 666,
+      "diagnostic": 663
+    }
+  },
+  "committed_payload_paths_checked": [
+    "experiments/front-review-2026-11-21-r13.json",
+    "scripts/build_front_review_r13.py",
+    "scripts/verify_front_review_r13.py",
+    "scripts/verify_incremental_pose_candidate.py",
+    "scripts/stage_pose_training.py",
+    "scripts/train_pose_comparison.py",
+    "scripts/pose_checkpoint.py",
+    "scripts/package_gpu_results.py",
+    "data/reviews/fronts-2026-11-21-r13/manifest.json",
+    "data/candidates/front-review-2026-11-21-r13/manifest.json"
+  ],
+  "all_checked_payload_bytes_match_pinned_commit": true,
+  "publication_source_tree": {
+    "sha": "3ad1558fe7ff381bd915fbc386b6a74f67e439af",
+    "verified_against_fetched_github_commit": true,
+    "matches_locally_preflighted_payload_tree": true
+  },
+  "results_zip": "baomai-front-review-r13-results.zip",
+  "new_training_run": false,
+  "gpu_trial_executed_during_preparation": false,
+  "limits": [
+    "The local check verifies actual data, source pins and notebook syntax; CUDA installation and resource/training cells run when this notebook is executed on a GPU runtime.",
+    "PR82 evaluation is a completed r12 result; r13 preparation makes no new model-quality or automatic-promotion claim."
+  ]
+}
