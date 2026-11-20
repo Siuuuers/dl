@@ -1,0 +1,130 @@
+[
+  {
+    "case_id": "r8-033-new_000074",
+    "audit": {
+      "path": "results/review/front-review-20261120-r12/audit-middle.json",
+      "sha256": "fa4659a972cad8a511956fd202071ae4e72873c816d3765cba925dd0f3386f3e"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        11
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The exposed right strip supports xmax782, but the gripper hides whether the lower aperture patch20 is part of11 or another object. Preserve ymax460; the new text provides a direction without a decisive ownership separator, so retain this identity hold."
+    },
+    "decision": {
+      "case_id": "r8-033-new_000074",
+      "image_id": "new_000074",
+      "status": "held",
+      "base_rows": [
+        11
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "r12 original-pixel review accepts the visible upper/right strip (image ymin418,xmax788) using the user physical-edge interpretation. The lower boundary remains at460: the gripper still prevents assigning the lower aperture patch to this front or a separate front. Keep the existing whole-photo training quarantine."
+    }
+  },
+  {
+    "case_id": "r8-034-new_000074",
+    "audit": {
+      "path": "results/review/front-review-20261120-r12/audit-middle.json",
+      "sha256": "fa4659a972cad8a511956fd202071ae4e72873c816d3765cba925dd0f3386f3e"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        20
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The lower aperture patch remains visually inseparable in identity from the gripper-obscured front11. Do not delete, merge, or enlarge another box to subsume it without a visible separator or explicit ownership confirmation. Retain the existing whole-image hold."
+    },
+    "decision": {
+      "case_id": "r8-034-new_000074",
+      "image_id": "new_000074",
+      "status": "held",
+      "base_rows": [
+        20
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "r12 retains the lower aperture fragment and its missing corners. There is still no independent frontal separator resolving its ownership relative to row11; do not merge/delete it or enlarge row11 downward."
+    }
+  },
+  {
+    "case_id": "r6-b-089-below47-possible_front",
+    "audit": {
+      "path": "results/review/front-review-20261120-r12/audit-middle.json",
+      "sha256": "fa4659a972cad8a511956fd202071ae4e72873c816d3765cba925dd0f3386f3e"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        47
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The isolated pale triangular patch below base47 remains visible but has no independent frontal seam separating it from the existing front. Horizontal boundary corrections do not settle that object-count question. No speculative extra instance is added in089."
+    },
+    "decision": {
+      "case_id": "r6-b-089-below47-possible_front",
+      "image_id": "new_000089",
+      "status": "held",
+      "base_rows": [
+        47
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "r12 reviews the new blue extra-box request against enlarged original pixels. A pale triangular patch below row47 remains without an independently attributable front separator. Tighten the supported row47 visible frontal box, retain missing corners, and keep this possible-extra-front ambiguity held; no new instance."
+    }
+  },
+  {
+    "case_id": "r11-late-new_000124-row25-horizontal-direction",
+    "audit": {
+      "path": "results/review/front-review-20261120-r12/audit-late.json",
+      "sha256": "21705ff1bfa86534858bfe119b8047299c2fe7ec7f39b9343896f2fbd1fc77e8"
+    },
+    "before": {
+      "status": "held",
+      "base_rows": [
+        25
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The requested positive shift of both box edges conflicts with the observed front: current xmin212.67 coincides with the visible left point, while xmax338.29 already extends beyond the pale front into the dark rack/spine. The original pixels do not support moving both edges farther right. Preserve the exact parent row for user review; root independently confirmed the conflict in original and grid crops."
+    },
+    "decision": {
+      "case_id": "r11-late-new_000124-row25-horizontal-direction",
+      "image_id": "new_000124",
+      "status": "resolved",
+      "base_rows": [
+        25
+      ],
+      "fields": [
+        "box"
+      ],
+      "reason": "The new user instruction specifies xmax alone at row29 left-x330.64. Original and8x grid crops support trimming row25 right bound from338.29 to330.64 while preserving xmin212.67 and both endpoints. This supersedes the prior ambiguous request to shift both horizontal edges right; no unresolved physical ambiguity remains for this case.",
+      "evidence": [
+        {
+          "path": "data/images/train/new_000124.png",
+          "sha256": "66fa37215d19fc95a1c3d055351dff957049e4433645f8293606ecada34314ba",
+          "region_xyxy": [
+            190,
+            590,
+            350,
+            700
+          ]
+        }
+      ]
+    }
+  }
+]
