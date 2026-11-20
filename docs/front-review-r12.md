@@ -64,7 +64,7 @@ An incomplete instruction alone does not create a new training hold. A correctly
 3. Let both complete arms finish. Each starts independently from epoch 173 with seed 46, 30 epochs, batch 4, input 1280, FP32, AdamW and learning rate0.0001. Final-epoch selection is fixed.
 4. Return **`baomai-front-review-r12-results.zip`**. Compatible completed arms and the final ZIP are verified and backed up to Drive; a rerun can reuse them.
 
-This is a new r12 experiment. [PR80](https://github.com/Siuuuers/dl/pull/80) already contains the completed r11 return. Preparing this notebook runs no training and makes no model-quality claim.
+This is a new r12 experiment. [PR80](https://github.com/Siuuuers/dl/pull/80) already contains the completed r11 return. Preparing this notebook runs no training and makes no model-quality claim. The notebook pins source commit `4f4423a511b42bc804cbcbeb7a772823cef2eb3b`; its [verification receipt](../results/review/front-review-20261120-r12/notebook-verification.json) records all seven compiled code cells and the successful input preflight against the actual 157 PNGs and epoch173 bytes.
 
 ### Actual training inputs
 
