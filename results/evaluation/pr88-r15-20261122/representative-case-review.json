@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "kind": "bounded-r14-to-r15-candidate-visual-review",
+  "comparison_sha256": "6231a16b09d81634d8d7323a0e5853b1256d4d0d6ce0b6ebfb1bd1a3c9b1a91a",
+  "reference_manifest_sha256": "6012d09767851151312537c2046022b972bf6519f36d110675d3e82f74694e93",
+  "panel_path": "representative-cases.png",
+  "panel_sha256": "d629e14f68aea12dea627114ac38d29f0f9c44d04de4d91bb3a8fb3721b30a31",
+  "cases": [
+    {
+      "id": "new_000011",
+      "row": 56,
+      "image": "images/val/new_000011.png",
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          604.0,
+          452.00000016,
+          626.0,
+          470.00000015999996
+        ],
+        "keypoints": [
+          [
+            609.0,
+            468.0,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "models": {
+        "r14": {
+          "matched": false,
+          "best_iou": 0.4962182990375268,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              601.2210693359375,
+              452.838623046875,
+              637.5838623046875,
+              473.2552490234375
+            ],
+            "confidence": 0.2562028765678406,
+            "keypoints": [
+              [
+                606.9610595703125,
+                465.8750305175781,
+                0.6612654328346252
+              ],
+              [
+                645.331298828125,
+                469.493896484375,
+                0.622829020023346
+              ]
+            ]
+          },
+          "endpoint_errors_px": [
+            2.9449572793231718,
+            null
+          ]
+        },
+        "r15": {
+          "matched": true,
+          "best_iou": 0.5043379576098912,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              601.289306640625,
+              452.94091796875,
+              636.9002685546875,
+              473.256103515625
+            ],
+            "confidence": 0.2554667890071869,
+            "keypoints": [
+              [
+                607.0128173828125,
+                465.91119384765625,
+                0.6601814031600952
+              ],
+              [
+                645.1090698242188,
+                469.45257568359375,
+                0.623912513256073
+              ]
+            ]
+          },
+          "endpoint_errors_px": [
+            2.8830549589144607,
+            null
+          ]
+        }
+      },
+      "visual_assessment": "The gripper covers the right side of this small front. Both candidates produce nearly the same proposal. The box IoU crosses the fixed 0.50 boundary from 0.496218 to 0.504338; this is a newly scored match, not a newly appearing proposal. Only its left reference corner is locatable, so it never enters the two-corner denominator. The predicted right corner has no verified reference coordinate."
+    },
+    {
+      "id": "new_000090",
+      "row": 19,
+      "image": "images/val/new_000090.png",
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          673.0,
+          282.00000023999996,
+          781.0000000000001,
+          313.99999992
+        ],
+        "keypoints": [
+          [
+            673.5,
+            306.9100008,
+            2
+          ],
+          [
+            779.52,
+            312.2599968,
+            2
+          ]
+        ]
+      },
+      "models": {
+        "r14": {
+          "matched": true,
+          "best_iou": 0.8784017482182633,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              669.5235595703125,
+              282.3499755859375,
+              776.982666015625,
+              315.68072509765625
+            ],
+            "confidence": 0.9325863718986511,
+            "keypoints": [
+              [
+                672.1727905273438,
+                306.9745178222656,
+                0.9413214921951294
+              ],
+              [
+                774.5432739257812,
+                312.9595031738281,
+                0.9554827213287354
+              ]
+            ]
+          },
+          "endpoint_errors_px": [
+            1.3287766668897025,
+            5.025645389881259
+          ]
+        },
+        "r15": {
+          "matched": true,
+          "best_iou": 0.8794097238426603,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              669.5208740234375,
+              282.295166015625,
+              776.9869384765625,
+              315.6998291015625
+            ],
+            "confidence": 0.9339492321014404,
+            "keypoints": [
+              [
+                672.0776977539062,
+                306.9488830566406,
+                0.9413887858390808
+              ],
+              [
+                774.5921630859375,
+                313.0246887207031,
+                0.9556125998497009
+              ]
+            ]
+          },
+          "endpoint_errors_px": [
+            1.422833619621351,
+            4.986815655825414
+          ]
+        }
+      },
+      "visual_assessment": "This front remains matched in both generations. Its right-corner error moves from 5.025645 to 4.986816 pixels, just crossing the five-pixel success radius; the visual location is nearly unchanged."
+    },
+    {
+      "id": "new_000090",
+      "row": 46,
+      "image": "images/val/new_000090.png",
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          678.9999999999999,
+          116.99999964,
+          788.0,
+          153.99999971999998
+        ],
+        "keypoints": [
+          [
+            679.5,
+            144.2100024,
+            2
+          ],
+          [
+            785.0899968,
+            151.4499984,
+            2
+          ]
+        ]
+      },
+      "models": {
+        "r14": {
+          "matched": true,
+          "best_iou": 0.9449316585375114,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              678.3958740234375,
+              116.82334899902344,
+              792.91259765625,
+              154.0933074951172
+            ],
+            "confidence": 0.9201565384864807,
+            "keypoints": [
+              [
+                681.2000122070312,
+                144.43458557128906,
+                0.941882312297821
+              ],
+              [
+                789.5735473632812,
+                151.04595947265625,
+                0.9403868317604065
+              ]
+            ]
+          },
+          "endpoint_errors_px": [
+            1.7147825240774734,
+            4.501718905963449
+          ]
+        },
+        "r15": {
+          "matched": true,
+          "best_iou": 0.8912035981007128,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              678.2503051757812,
+              115.786376953125,
+              794.7625122070312,
+              154.62643432617188
+            ],
+            "confidence": 0.922219455242157,
+            "keypoints": [
+              [
+                680.7848510742188,
+                144.177978515625,
+                0.9671804904937744
+              ],
+              [
+                790.1942138671875,
+                151.4652862548828,
+                0.9682167768478394
+              ]
+            ]
+          },
+          "endpoint_errors_px": [
+            1.2852500970984362,
+            5.104239961784236
+          ]
+        }
+      },
+      "visual_assessment": "This front remains matched in both generations. Its right-corner error moves from 4.501719 to 5.104240 pixels, losing five-pixel success while retaining ten-pixel success."
+    },
+    {
+      "id": "new_000008",
+      "row": 10,
+      "image": "images/val/new_000008.png",
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          548.0,
+          411.41000001599997,
+          712.0,
+          454.000000032
+        ],
+        "keypoints": [
+          [
+            550.0,
+            451.000000008,
+            2
+          ],
+          [
+            709.0,
+            450.0,
+            2
+          ]
+        ]
+      },
+      "models": {
+        "r14": {
+          "matched": true,
+          "best_iou": 0.7806365421682354,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              545.61279296875,
+              413.8817443847656,
+              708.209228515625,
+              461.0905456542969
+            ],
+            "confidence": 0.8316724896430969,
+            "keypoints": [
+              [
+                549.0791625976562,
+                452.2645568847656,
+                0.9085674285888672
+              ],
+              [
+                702.53857421875,
+                439.8612365722656,
+                0.9090485572814941
+              ]
+            ]
+          },
+          "endpoint_errors_px": [
+            1.5643035562608965,
+            12.022668047075335
+          ]
+        },
+        "r15": {
+          "matched": true,
+          "best_iou": 0.7831956814358997,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              545.6796875,
+              413.79803466796875,
+              708.0869140625,
+              461.0152587890625
+            ],
+            "confidence": 0.8376604318618774,
+            "keypoints": [
+              [
+                549.0307006835938,
+                452.1987609863281,
+                0.908979594707489
+              ],
+              [
+                702.4196166992188,
+                439.83673095703125,
+                0.9094623923301697
+              ]
+            ]
+          },
+          "endpoint_errors_px": [
+            1.541612483066965,
+            12.107579527922486
+          ]
+        }
+      },
+      "visual_assessment": "This front remains detected. The right endpoint stays above/left of the reviewed target, with error 12.022668 then 12.107580 pixels; its confidence remains about 0.91. It is the sole r15 two-corner failure at ten pixels on this reference, illustrating that endpoint confidence does not guarantee coordinate accuracy."
+    }
+  ],
+  "limits": [
+    "Only four explicitly selected cases were visually inspected; they do not adjudicate every unmatched output or label.",
+    "Original full-frame context, an unmodified crop, and r14/r15 overlays were inspected without altering source images or labels.",
+    "No thresholds, annotations, weights or model selection were changed by this inspection."
+  ]
+}

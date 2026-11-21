@@ -1,12 +1,12 @@
 # Current model and training entry
 
-21 November 2026, Asia/Hong_Kong.
+22 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected. The new training entry is the r15 notebook.** The [r15 handoff](front-review-r15.md) saves 141 amended rows and one requested deletion across 24 photographs. Its 25-page PDF shows all 947 current labels on those photographs. The [completed PR86 audit](../results/evaluation/pr86-r14-20261121/README.md) finds a mixed result: the r14 candidate fits the reviewed geometry better but regresses on the frozen primary reference. No r15 GPU training or model promotion has occurred during preparation.
+**PR35 remains selected. The new training entry is the r16 notebook.** The [r16 handoff](front-review-r16.md) saves 83 revised rows and the requested photo066 row22 deletion across 15 changed photos. All 17 requested photos were reviewed;007/008 retain their existing bytes with explicit dispositions. The 16-page PDF shows all 612 current labels on the changed photos. The [PR88 audit](../results/evaluation/pr88-r15-20261122/README.md) finds reference-sensitive results and retains PR35. No r16 GPU training or promotion has occurred during preparation.
 
 ## Run inference
 
-Use branch `codex/front-review-r15-20261121`. Follow the [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to obtain the verified PR35 candidate bundle, keeping its manifest and companion files together.
+Use branch `codex/front-review-r16-20261122`. Follow the [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to obtain the verified PR35 candidate bundle, keeping its manifest and companion files together.
 
 | Setting | Value |
 | --- | --- |
@@ -17,20 +17,22 @@ Use branch `codex/front-review-r15-20261121`. Follow the [folder guide](predict-
 | NMS IoU | 0.70 |
 | Endpoint confidence | 0.50 |
 
-Inspect the complete original image, including regions without proposals. A confident endpoint can be an estimate behind an occluder; confidence does not prove physical visibility or coordinate accuracy.
+Inspect the complete original image, including regions without proposals. A confident endpoint can still be inaccurate or lie behind an occluder.
 
-## Run the r15 comparison
+## Run the r16 comparison
 
-The [complete r15 review](../data/reviews/fronts-2026-11-21-r15/manifest.json) contains all 157 annotation files. The [r15 training candidate](../data/candidates/front-review-2026-11-21-r15/manifest.json) applies eligible supervision explicitly. The original `data/labels/` folder remains the preserved source dataset.
+The [complete r16 review](../data/reviews/fronts-2026-11-22-r16/manifest.json) contains all 157 annotation files under its `labels/` directory. The [r16 training candidate](../data/candidates/front-review-2026-11-22-r16/manifest.json) applies eligible supervision explicitly. `data/labels/` remains the preserved original dataset.
 
-[Open r15 in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r15-20261121/notebooks/baomai_front_review_r15.ipynb). Select GPU, Run all, then return **`baomai-front-review-r15-results.zip`**. Both arms start independently from original epoch 173 with seed 46, 30 epochs, batch 4, input 1280, FP32, AdamW and learning rate 0.0001. The resource trial does not initialize a full arm; final-epoch selection is fixed.
+[Open r16 in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r16-20261122/notebooks/baomai_front_review_r16.ipynb). Select GPU, choose Run all, then return **`baomai-front-review-r16-results.zip`**. Both arms initialize independently from original epoch173: seed46, 30 epochs, batch4, 1280 input, FP32, AdamW, learning rate0.0001. The resource trial cannot initialize a full arm; final-epoch selection is fixed.
 
-All 137 training photos and 13 empty scenes remain. Reference/candidate contain 3,771/3,786 training fronts, with 92 differing training label files. The prior 17 displayed-case approvals are inherited, with no new release in this round. Photo015's undrawn possible-instance question is the sole hold. It and the separate 31 old-series treatment exclusions use exact PR35 supervision in both arms. [Actual input verification](../results/review/front-review-20261121-r15/verification.json).
+All 137 training photos and 13 empty scenes remain. Reference/candidate contain 3,771/3,785 fronts, with 92 differing training-label files. The prior 17 displayed-case approvals are inherited, with no new release. Photo015's undrawn possible-instance question remains the sole hold. It and the separate 31 old-series treatment exclusions use exact PR35 supervision in both arms. [Actual input verification](../results/review/front-review-20261122-r16/verification.json).
 
-Original 664-front trainer validation and fixed 666/663 scoring references stay unchanged. The 662-front r15 development review is a separately versioned exploratory diagnostic. The [notebook preflight and source receipt](../results/review/front-review-20261121-r15/notebook-verification.json) records the preparation checks; returned r15 models will need their own fixed evaluation.
+Original 664-front trainer validation and frozen 666/663 scoring references remain unchanged. The 662-front r16 development review is an exploratory diagnostic. The [notebook preflight and source receipt](../results/review/front-review-20261122-r16/notebook-verification.json) records preparation checks; the returned r16 checkpoints will need their own evaluation.
 
-## Remaining evidence limits
+## Evidence limits and future physical geometry
 
-The [case ledger](../results/review/front-review-20261121-r15/review-status.json) retains photo015's unboxed question. Its supported existing-row amendments are saved in the review and PDF but withheld from training. Eight unsupported wording clauses and all other interpretations are explicit in the [request dispositions](../results/review/front-review-20261121-r15/request-coverage.json).
+The [case ledger](../results/review/front-review-20261122-r16/review-status.json) retains photo015's undrawn question. Its existing review bytes are saved but withheld from the training treatment. All literal, partial, interpreted and unchanged amendments are explicit in the [request dispositions](../results/review/front-review-20261122-r16/request-coverage.json).
 
-The PR86 report distinguishes frozen, pre-return r14 and post-return r15 scoring. A change in reference geometry is not new model learning. Repeated development scenes and image-pixel scores do not establish reliability on unseen camera sessions or millimetre robotic positioning.
+The PR88 report separates the frozen benchmark, pre-return r15 review and post-return r16 replay. A change in reference geometry is not new model learning. Repeated development scenes do not establish unseen-session reliability.
+
+The supplied dataset and inspected camera paths provide RGB frames. Ten pixels is a per-corner image-space criterion, not a gripper tolerance in millimetres. The [robot-grasp guide](robot-grasp-readiness.md) records what is and is not established by the repository. Hardware details are not a gate for this notebook; a future robot integration needs actual gripper clearances, supported depth or plane geometry, and installation-specific calibration.

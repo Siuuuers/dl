@@ -1,8 +1,8 @@
 # Decide whether the two-corner model is good enough
 
-**Current result, 18 November 2026:** [PR67 has been evaluated](../results/evaluation/sequence-fronts-pr67-20261118/README.md), and PR35 remains selected. The [current workflow](current-model.md) distinguishes the recovered label review, the trained inputs, and each scoring reference. The dated measurements below retain their historical references.
+**Current result, 22 November 2026:** [PR88 has been audited and evaluated](../results/evaluation/pr88-r15-20261122/README.md), and PR35 remains selected. The r15 candidate improves the reviewed reference but regresses on the frozen primary; the r16 reference replay is separately named and adds no training evidence. The [current workflow](current-model.md) uses the saved r16 annotations and new pinned notebook. The dated measurements below retain their historical references. Ten pixels remains an image-space development criterion, not a gripper millimetre tolerance; [the camera/input review](robot-grasp-readiness.md) establishes the current RGB-only evidence.
 
-## Current decision: 2026-11-14
+## Historical decision: 2026-11-14
 
 The [completed PR62 occlusion comparison](occlusion-results-2026-11-14.md) retains **PR35 seed46 / 1280 / confidence 0.13 / NMS 0.70 / endpoint cutoff 0.50** for assistant-reviewed still images. The matched control exactly reproduces PR35's clean and probe prediction arrays. The candidate improves covered-side ten-pixel successes **54/60→58/60**, but fails the fixed clean-image preservation rule: unmatched proposals **85→86**, scored locatable endpoints **1,207→1,205**, and outputs on the three empty images **0→1**. The coverage decrease comes from one box crossing the fixed association threshold while its emitted corners remain accurate; the background false output and a clean-corner displacement are genuine errors. The completed experiment needs no repeat GPU run.
 

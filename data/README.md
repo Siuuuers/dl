@@ -1,6 +1,6 @@
 # 第173轮模型对应训练数据
 
-**目前覆核版本是 [r15 完整標籤](reviews/fronts-2026-11-21-r15/manifest.json)**，實際標籤位於 `reviews/fronts-2026-11-21-r15/labels/`；[r15 訓練候選](candidates/front-review-2026-11-21-r15/manifest.json)另列可用監督。下方 `labels/` 與數字是原始 epoch 173 資料快照。[目前操作與新 notebook](../docs/front-review-r15.md)。
+**目前覆核版本是 [r16 完整標籤](reviews/fronts-2026-11-22-r16/manifest.json)**，實際標籤位於 `reviews/fronts-2026-11-22-r16/labels/`；[r16 訓練候選](candidates/front-review-2026-11-22-r16/manifest.json)另列可用監督。下方 `labels/` 與數字是原始 epoch 173 資料快照。[目前操作與新 notebook](../docs/front-review-r16.md)。
 
 这里保存 `weights/cassette_lower_epoch173.pt` 实际训练、验证和选模使用的数据快照。图片、YOLO标签与当时冻结的文件逐字节一致；标注预览来自用户修正后的编辑器导出，SHA-256也与训练冻结清单一致。预览显示人工标注，不是模型预测。
 

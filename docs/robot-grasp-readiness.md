@@ -4,7 +4,7 @@
 
 ## What the existing project actually provides
 
-Source inspected: `Siuuuers/dl` at `c4f82c039fee3087e8a3fb36fe6c9f735acdb5dc`.
+Source rechecked on 2026-11-22 (Hong Kong): `Siuuuers/dl` at the r15 handoff `833a1ae37f9840b105b73f2e7f36952cb3946f7a`, including its tracked data inventory and camera/recording paths. The [upstream baomai tree](https://github.com/an94-doll/embedding_vision/tree/351eb3cf960ccc34829e2bc72e1fa4645acc6295) and its [capture implementation](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/scripts/view_d405_yolo.py) were checked as well.
 
 | Component | Observed implementation | Consequence |
 | --- | --- | --- |
@@ -13,6 +13,18 @@ Source inspected: `Siuuuers/dl` at `c4f82c039fee3087e8a3fb36fe6c9f735acdb5dc`.
 | [RawVideoRecorder](../scripts/d405_recording.py) | Saves color MP4, timing CSV and metadata; the raw mode means unannotated color. | It is not a lossless depth recording. Video timing is separate from playback frame rate. |
 | Camera/robot geometry | The inspected camera paths do not obtain intrinsics, depth, stream extrinsics, camera-to-robot transforms or TCP calibration. No robot driver or metric-depth/calibration artifact was found in the inspected tracked tree. | Millimetres, orientation and robot-base coordinates remain unestablished. |
 | [Model quality](model-quality.md) | Frozen two-corner development evaluation and a controlled training comparison. | Continue measuring pair availability and pixel error; neither currently certifies grasp performance. |
+
+## The current answer: 10 pixels and RGB input
+
+The earlier 10 px value is a development scoring threshold in original-image pixels, not a maximum gripper positioning error, an agreed physical tolerance, or a guarantee that every prediction is within 10 px. A pair passes that diagnostic only when both reviewed endpoints are eligible and both predicted endpoints meet the configured confidence/validity and error conditions. Missed eligible fronts remain in its denominator. The [PR88 evaluation](../results/evaluation/pr88-r15-20261122/README.md) reports the exact scoring references separately.
+
+The supplied baomai dataset contains color images and 2D labels. Both the current and inspected upstream `D405Capture` enable the color stream and retrieve `get_color_frame()` only. Their color timestamps do not establish a synchronized depth record. No paired metric-depth or camera/robot calibration artifact was identified in the inspected inventories. Therefore the supported input for the present notebook and model is RGB; future deployed depth availability remains unspecified.
+
+The [D405 hardware supports stereo depth](https://www.realsenseai.com/products/stereo-depth-camera-d405/), but that capability does not establish that this dataset captured it. Do not infer a depth map, calibration, or robot accuracy from a device name or its advertised precision.
+
+There is no defensible numeric maximum gripper error in millimetres from these files alone. Keep 5 px and 10 px as image diagnostics while training. For a later grasping task, derive the allowable contact-point and angular errors from the real gripper engagement/clearance, then budget perception, depth/plane, camera-to-robot calibration, TCP and motion errors against it and validate independent physical trials. The related upstream grasp-vision README mentions a historical 2 mm requirement but explicitly says millimetre accuracy still needs measured closed-loop acceptance; that requirement has not been established for this project.
+
+For scale intuition only, an ideal distortion-corrected camera with a *hypothetical* focal length of 800 px gives 10 px horizontal error = 2.5 mm at 200 mm optical-axis depth, or 5 mm at 400 mm depth, with depth and calibration treated as exact. These are arithmetic examples, not measured D405 intrinsics, total grasp errors, or recommended tolerance values. [RealSense projection/deprojection](https://dev.realsenseai.com/docs/projection-in-realsense-sdk-2-0/)
 
 ## Geometry that the model cannot supply by itself
 

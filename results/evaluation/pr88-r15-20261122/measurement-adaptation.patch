@@ -1,0 +1,151 @@
+--- results/evaluation/pr86-r14-20261121/audit_return.py
++++ results/evaluation/pr88-r15-20261122/audit_return.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Verify PR86 r14 archive, completed bundles and actual staged source bytes."""
++"""Verify PR88 r15 archive, completed bundles and actual staged source bytes."""
+ 
+ import argparse
+ import csv
+@@ -10,10 +10,10 @@
+ import sys
+ import zipfile
+ 
+-ARCHIVE_SHA = "8df7ef283d2b05a642fd22ae74b52d1758277ee06dba185bbf42f26243936f51"
+-SOURCE_REVISION = "4d805995e41e3520b10d0b2f743b1219c8356ca9"
+-PROTOCOL_PATH = "experiments/front-review-2026-11-21-r14.json"
+-PROTOCOL_SHA = "a82e3b13e25ef9d4fdd405848bb4bafac16d658b92b9d1fadcc263ee3055cc12"
++ARCHIVE_SHA = "6a323797cc05eac71a61b5a8d328dfad1c242b4506cbac51eb7e91f84971d22a"
++SOURCE_REVISION = "fe7ae1095d24ebb6afea2c57194c88b369e86921"
++PROTOCOL_PATH = "experiments/front-review-2026-11-21-r15.json"
++PROTOCOL_SHA = "3b3a7f2373fb3297ffcab4d193a4e9bb07fe8970508d228c602dc78a0fb3056b"
+ 
+ 
+ def sha(path):
+@@ -38,7 +38,7 @@
+     from pose_checkpoint import select_checkpoint
+     from stage_pose_training import yaml_bytes
+ 
+-    require(archive.stat().st_size == 39781759 and sha(archive) == ARCHIVE_SHA, "Wrong PR86 archive")
++    require(archive.stat().st_size == 39781855 and sha(archive) == ARCHIVE_SHA, "Wrong PR88 archive")
+     with zipfile.ZipFile(archive) as z:
+         require(z.testzip() is None, "ZIP CRC failure")
+         members = z.namelist()
+@@ -65,8 +65,8 @@
+         require(sha(root / "data" / record["label"]) == record["label_sha256"], "Original label differs: " + record["id"])
+     report = {
+         "schema_version": 1,
+-        "kind": "pr86-r14-return-audit",
+-        "pr": {"number": 86, "head_sha": "218f10ce7e964c958d0fb26159b01334951e5d7a", "url": "https://github.com/Siuuuers/dl/pull/86"},
++        "kind": "pr88-r15-return-audit",
++        "pr": {"number": 88, "head_sha": "e05a985cb2ee21be82adc164c85c99a5ad15fa82", "url": "https://github.com/Siuuuers/dl/pull/88"},
+         "archive": {"size_bytes": archive.stat().st_size, "sha256": sha(archive), "crc_passed": True, "indexed_members_verified": len(index["files"])},
+         "training_source": index["training_source"],
+         "recorded_source_files_verified_against_git_revision": True,
+@@ -131,6 +131,7 @@
+     }
+     initial = root / original["model_checkpoint"]
+     report["initial_checkpoint_bytes_reverified"] = initial.is_file() and sha(initial) == original["model_sha256"]
++    require(report["initial_checkpoint_bytes_reverified"], "Initial checkpoint bytes differ")
+     report["note"] = "No training repeated. Model comparison is recorded separately. Equal held supervision controls treatment difference; it does not certify physical label correctness."
+     require(not args.output.exists(), "Choose a fresh audit output")
+     args.output.write_text(json.dumps(report, indent=2) + "\n")
+--- results/evaluation/pr86-r14-20261121/run_pr86_inference.py
++++ results/evaluation/pr88-r15-20261122/run_pr88_inference.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Reproduce the three fixed PR86 CPU inferences without training or tuning."""
++"""Reproduce the three fixed PR88 CPU inferences without training or tuning."""
+ import argparse
+ import hashlib
+ import json
+@@ -12,12 +12,12 @@
+     "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+     "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+     "scripts/pose_checkpoint.py": "e0f85a76fd5234a98e66783d3408e22175ba334c6209f91aca8680221a2f8d5d",
+-    "experiments/front-review-2026-11-21-r14.json": "a82e3b13e25ef9d4fdd405848bb4bafac16d658b92b9d1fadcc263ee3055cc12",
++    "experiments/front-review-2026-11-21-r15.json": "3b3a7f2373fb3297ffcab4d193a4e9bb07fe8970508d228c602dc78a0fb3056b",
+ }
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "befc8e56f8c1256526a719be63cff83e52b585823fa63c8564777990c29d59ce",
+-    "candidate": "8cfe61eaed49e78d2d6dbc61c584e812ad970ab62506a59a27ceef67e6ff39ba",
++    "reference": "32d2e1ea714b73797937f428fcedffac61dd86af03040013524526160496f457",
++    "candidate": "32783de8ca001cd959b3fa67e814061577537151f442c48977e81003704cada4",
+ }
+ 
+ 
+--- results/evaluation/pr86-r14-20261121/measure_pr86.py
++++ results/evaluation/pr88-r15-20261122/measure_pr88.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Score the fixed PR86 r14 comparison from saved predictions, without training."""
++"""Score the fixed PR88 r15 comparison from saved predictions, without training."""
+ 
+ import argparse
+ import hashlib
+@@ -10,11 +10,11 @@
+ import tempfile
+ from pathlib import Path
+ 
+-PROTOCOL_SHA = "a82e3b13e25ef9d4fdd405848bb4bafac16d658b92b9d1fadcc263ee3055cc12"
++PROTOCOL_SHA = "3b3a7f2373fb3297ffcab4d193a4e9bb07fe8970508d228c602dc78a0fb3056b"
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "befc8e56f8c1256526a719be63cff83e52b585823fa63c8564777990c29d59ce",
+-    "candidate": "8cfe61eaed49e78d2d6dbc61c584e812ad970ab62506a59a27ceef67e6ff39ba",
++    "reference": "32d2e1ea714b73797937f428fcedffac61dd86af03040013524526160496f457",
++    "candidate": "32783de8ca001cd959b3fa67e814061577537151f442c48977e81003704cada4",
+ }
+ SCORER_SHA = {
+     "evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+@@ -44,7 +44,7 @@
+         return select_checkpoint(preflight, checkpoint_path, require_weights=False)
+     require(log_path == Path("train.log") and (base / "train-log.txt").is_file(),
+             "Missing original or preserved training log")
+-    with tempfile.TemporaryDirectory(prefix="pr86-preserved-receipt-") as tmp:
++    with tempfile.TemporaryDirectory(prefix="pr88-preserved-receipt-") as tmp:
+         target = Path(tmp)
+         shutil.copytree(base, target, dirs_exist_ok=True)
+         shutil.copyfile(base / "train-log.txt", target / log_path)
+@@ -76,7 +76,7 @@
+     from diagnose_pose_quality import aggregate_quality, quality_for_image
+     from rescore_reference_amendment import load_api, verify_amendment
+ 
+-    protocol_path = root / "experiments/front-review-2026-11-21-r14.json"
++    protocol_path = root / "experiments/front-review-2026-11-21-r15.json"
+     require(sha(protocol_path) == PROTOCOL_SHA, "The preregistered protocol changed")
+     protocol = json.loads(protocol_path.read_text())
+     for name, expected in SCORER_SHA.items():
+@@ -103,7 +103,7 @@
+     runtimes = [model["metadata"]["runtime"] for model in models.values()]
+     require(all(runtime == runtimes[0] for runtime in runtimes), "Inference runtimes differ")
+     report = {
+-        "schema_version":1,"kind":"pr86-r14-fixed-development-comparison","status":"measured",
++        "schema_version":1,"kind":"pr88-r15-fixed-development-comparison","status":"measured",
+         "protocol":{"path":str(protocol_path.relative_to(root)),"sha256":PROTOCOL_SHA},
+         "measurement_script_sha256":sha(__file__), "scorers_sha256":SCORER_SHA,
+         "models":{role:{key:value for key,value in model.items() if key != "predictions"}
+@@ -118,17 +118,17 @@
+             "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+             "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+             "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+-            "The separately pinned current r14 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
++            "The separately pinned current r15 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
+         ],
+     }
+-    for label in ("primary", "diagnostic", "current_r14_exploratory"):
++    for label in ("primary", "diagnostic", "current_r15_exploratory"):
+         setting = protocol["evaluation"]
+-        exploratory = label == "current_r14_exploratory"
++        exploratory = label == "current_r15_exploratory"
+         if exploratory:
+-            from verify_front_review_r14 import read_review
++            from verify_front_review_r15 import read_review
+             descriptor = setting["current_review_reference"]
+             path = root / descriptor["path"]
+-            require(sha(path) == descriptor["sha256"], "Current r14 review changed")
++            require(sha(path) == descriptor["sha256"], "Current r15 review changed")
+             review, status, _, _, _, _, reviewed = read_review(root)
+             gold = {image_id: parse_pose_labels(reviewed[image_id]["bytes"].decode(),
+                     record["width"], record["height"], reviewed[image_id]["path"])

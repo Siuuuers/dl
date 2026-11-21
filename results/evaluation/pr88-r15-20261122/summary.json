@@ -1,0 +1,989 @@
+{
+  "schema_version": 1,
+  "status": "measured",
+  "decision": "retain_PR35_selected",
+  "reason": "The r15 candidate improves the repeatedly reviewed r15 reference but regresses against the fixed primary and historical references. One additional match versus the r14 candidate on identical r15 labels and unchanged aggregate corner-pair counts do not establish an unseen-session or physical positioning improvement.",
+  "comparison_sha256": "6231a16b09d81634d8d7323a0e5853b1256d4d0d6ce0b6ebfb1bd1a3c9b1a91a",
+  "references": {
+    "primary": {
+      "reference_id": "sequence-refined-reference-2026-11-18",
+      "manifest_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "exploratory": false,
+      "models": {
+        "pr35": {
+          "detection": {
+            "tp": 648,
+            "fn": 18,
+            "fp": 80,
+            "duplicate_fp": 32,
+            "other_fp": 48
+          },
+          "pairs_within_radius": {
+            "5": 533,
+            "10": 582
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "reference": {
+          "detection": {
+            "tp": 646,
+            "fn": 20,
+            "fp": 83,
+            "duplicate_fp": 29,
+            "other_fp": 54
+          },
+          "pairs_within_radius": {
+            "5": 531,
+            "10": 583
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4
+        },
+        "candidate": {
+          "detection": {
+            "tp": 631,
+            "fn": 35,
+            "fp": 101,
+            "duplicate_fp": 29,
+            "other_fp": 72
+          },
+          "pairs_within_radius": {
+            "5": 521,
+            "10": 575
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 44,
+              "misses": 15
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4
+        }
+      },
+      "candidate_deltas": {
+        "reference": {
+          "counts": {
+            "tp": -15,
+            "fn": 15,
+            "fp": 18,
+            "duplicate_fp": 0,
+            "other_fp": 18,
+            "returned_endpoints": -19
+          },
+          "gained_matches": [
+            "new_000008:1",
+            "new_000009:53",
+            "new_000087:15"
+          ],
+          "lost_matches": [
+            "new_000007:15",
+            "new_000008:33",
+            "new_000008:34",
+            "new_000008:35",
+            "new_000009:56",
+            "new_000010:15",
+            "new_000010:26",
+            "new_000010:31",
+            "new_000010:32",
+            "new_000011:61",
+            "new_000056:15",
+            "new_000057:11",
+            "new_000057:12",
+            "new_000057:13",
+            "new_000057:7",
+            "new_000089:49",
+            "new_000090:41",
+            "new_000090:42"
+          ],
+          "corner_identity_changes": {
+            "5": {
+              "gained": [
+                "new_000007:18",
+                "new_000007:53",
+                "new_000009:13",
+                "new_000010:19",
+                "new_000056:17",
+                "new_000056:18",
+                "new_000056:3",
+                "new_000056:4",
+                "new_000059:12",
+                "new_000059:3",
+                "new_000059:7",
+                "new_000086:56",
+                "new_000087:15",
+                "new_000089:34"
+              ],
+              "lost": [
+                "new_000008:15",
+                "new_000008:19",
+                "new_000008:20",
+                "new_000008:22",
+                "new_000008:30",
+                "new_000008:32",
+                "new_000010:27",
+                "new_000011:4",
+                "new_000055:20",
+                "new_000055:25",
+                "new_000056:2",
+                "new_000056:8",
+                "new_000057:11",
+                "new_000057:12",
+                "new_000057:13",
+                "new_000057:7",
+                "new_000058:1",
+                "new_000058:10",
+                "new_000059:2",
+                "new_000059:8",
+                "new_000087:53",
+                "new_000088:21",
+                "new_000088:52",
+                "new_000090:24"
+              ]
+            },
+            "10": {
+              "gained": [
+                "new_000087:15"
+              ],
+              "lost": [
+                "new_000007:15",
+                "new_000008:10",
+                "new_000008:3",
+                "new_000010:15",
+                "new_000010:26",
+                "new_000057:11",
+                "new_000057:12",
+                "new_000057:13",
+                "new_000057:7"
+              ]
+            }
+          }
+        },
+        "pr35": {
+          "counts": {
+            "tp": -17,
+            "fn": 17,
+            "fp": 21,
+            "duplicate_fp": -3,
+            "other_fp": 24,
+            "returned_endpoints": -21
+          },
+          "gained_matches": [
+            "new_000008:1",
+            "new_000009:53",
+            "new_000087:15"
+          ],
+          "lost_matches": [
+            "new_000007:15",
+            "new_000008:33",
+            "new_000008:34",
+            "new_000008:35",
+            "new_000009:56",
+            "new_000010:15",
+            "new_000010:26",
+            "new_000010:31",
+            "new_000010:32",
+            "new_000011:61",
+            "new_000056:14",
+            "new_000056:15",
+            "new_000057:11",
+            "new_000057:12",
+            "new_000057:13",
+            "new_000057:7",
+            "new_000089:49",
+            "new_000090:41",
+            "new_000090:42",
+            "new_000090:43"
+          ],
+          "corner_identity_changes": {
+            "5": {
+              "gained": [
+                "new_000007:18",
+                "new_000007:53",
+                "new_000009:13",
+                "new_000010:19",
+                "new_000056:17",
+                "new_000056:18",
+                "new_000056:4",
+                "new_000059:12",
+                "new_000059:3",
+                "new_000059:7",
+                "new_000086:56",
+                "new_000087:15",
+                "new_000089:34"
+              ],
+              "lost": [
+                "new_000008:10",
+                "new_000008:11",
+                "new_000008:15",
+                "new_000008:19",
+                "new_000008:20",
+                "new_000008:21",
+                "new_000008:30",
+                "new_000008:32",
+                "new_000010:27",
+                "new_000055:20",
+                "new_000055:25",
+                "new_000056:2",
+                "new_000056:8",
+                "new_000057:11",
+                "new_000057:12",
+                "new_000057:13",
+                "new_000057:7",
+                "new_000058:1",
+                "new_000058:10",
+                "new_000058:7",
+                "new_000059:2",
+                "new_000059:8",
+                "new_000088:21",
+                "new_000088:52",
+                "new_000090:24"
+              ]
+            },
+            "10": {
+              "gained": [
+                "new_000087:15"
+              ],
+              "lost": [
+                "new_000008:10",
+                "new_000008:3",
+                "new_000010:15",
+                "new_000010:26",
+                "new_000057:11",
+                "new_000057:12",
+                "new_000057:13",
+                "new_000057:7"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "diagnostic": {
+      "reference_id": "visible-front-completion-2026-11-14",
+      "manifest_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "exploratory": false,
+      "models": {
+        "pr35": {
+          "detection": {
+            "tp": 648,
+            "fn": 15,
+            "fp": 80,
+            "duplicate_fp": 32,
+            "other_fp": 48
+          },
+          "pairs_within_radius": {
+            "5": 533,
+            "10": 582
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7
+        },
+        "reference": {
+          "detection": {
+            "tp": 646,
+            "fn": 17,
+            "fp": 83,
+            "duplicate_fp": 29,
+            "other_fp": 54
+          },
+          "pairs_within_radius": {
+            "5": 531,
+            "10": 583
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 5
+        },
+        "candidate": {
+          "detection": {
+            "tp": 631,
+            "fn": 32,
+            "fp": 101,
+            "duplicate_fp": 29,
+            "other_fp": 72
+          },
+          "pairs_within_radius": {
+            "5": 521,
+            "10": 575
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 10,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 44,
+              "misses": 15
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4
+        }
+      },
+      "candidate_deltas": {
+        "reference": {
+          "counts": {
+            "tp": -15,
+            "fn": 15,
+            "fp": 18,
+            "duplicate_fp": 0,
+            "other_fp": 18,
+            "returned_endpoints": -19
+          },
+          "gained_matches": [
+            "new_000008:1",
+            "new_000009:53",
+            "new_000087:15"
+          ],
+          "lost_matches": [
+            "new_000007:15",
+            "new_000008:33",
+            "new_000008:34",
+            "new_000008:35",
+            "new_000010:14",
+            "new_000010:15",
+            "new_000010:26",
+            "new_000010:31",
+            "new_000010:32",
+            "new_000011:61",
+            "new_000056:15",
+            "new_000057:11",
+            "new_000057:12",
+            "new_000057:13",
+            "new_000057:7",
+            "new_000089:49",
+            "new_000090:41",
+            "new_000090:42"
+          ],
+          "corner_identity_changes": {
+            "5": {
+              "gained": [
+                "new_000007:18",
+                "new_000007:53",
+                "new_000009:13",
+                "new_000010:19",
+                "new_000056:17",
+                "new_000056:18",
+                "new_000056:3",
+                "new_000056:4",
+                "new_000059:12",
+                "new_000059:3",
+                "new_000059:7",
+                "new_000086:56",
+                "new_000087:15",
+                "new_000089:34"
+              ],
+              "lost": [
+                "new_000008:15",
+                "new_000008:19",
+                "new_000008:20",
+                "new_000008:22",
+                "new_000008:30",
+                "new_000008:32",
+                "new_000010:27",
+                "new_000011:4",
+                "new_000055:20",
+                "new_000055:25",
+                "new_000056:2",
+                "new_000056:8",
+                "new_000057:11",
+                "new_000057:12",
+                "new_000057:13",
+                "new_000057:7",
+                "new_000058:1",
+                "new_000058:10",
+                "new_000059:2",
+                "new_000059:8",
+                "new_000087:53",
+                "new_000088:21",
+                "new_000088:52",
+                "new_000090:24"
+              ]
+            },
+            "10": {
+              "gained": [
+                "new_000087:15"
+              ],
+              "lost": [
+                "new_000007:15",
+                "new_000008:10",
+                "new_000008:3",
+                "new_000010:15",
+                "new_000010:26",
+                "new_000057:11",
+                "new_000057:12",
+                "new_000057:13",
+                "new_000057:7"
+              ]
+            }
+          }
+        },
+        "pr35": {
+          "counts": {
+            "tp": -17,
+            "fn": 17,
+            "fp": 21,
+            "duplicate_fp": -3,
+            "other_fp": 24,
+            "returned_endpoints": -21
+          },
+          "gained_matches": [
+            "new_000008:1",
+            "new_000009:53",
+            "new_000087:15"
+          ],
+          "lost_matches": [
+            "new_000007:15",
+            "new_000008:33",
+            "new_000008:34",
+            "new_000008:35",
+            "new_000010:14",
+            "new_000010:15",
+            "new_000010:26",
+            "new_000010:31",
+            "new_000010:32",
+            "new_000011:61",
+            "new_000056:14",
+            "new_000056:15",
+            "new_000057:11",
+            "new_000057:12",
+            "new_000057:13",
+            "new_000057:7",
+            "new_000089:49",
+            "new_000090:41",
+            "new_000090:42",
+            "new_000090:43"
+          ],
+          "corner_identity_changes": {
+            "5": {
+              "gained": [
+                "new_000007:18",
+                "new_000007:53",
+                "new_000009:13",
+                "new_000010:19",
+                "new_000056:17",
+                "new_000056:18",
+                "new_000056:4",
+                "new_000059:12",
+                "new_000059:3",
+                "new_000059:7",
+                "new_000086:56",
+                "new_000087:15",
+                "new_000089:34"
+              ],
+              "lost": [
+                "new_000008:10",
+                "new_000008:11",
+                "new_000008:15",
+                "new_000008:19",
+                "new_000008:20",
+                "new_000008:21",
+                "new_000008:30",
+                "new_000008:32",
+                "new_000010:27",
+                "new_000055:20",
+                "new_000055:25",
+                "new_000056:2",
+                "new_000056:8",
+                "new_000057:11",
+                "new_000057:12",
+                "new_000057:13",
+                "new_000057:7",
+                "new_000058:1",
+                "new_000058:10",
+                "new_000058:7",
+                "new_000059:2",
+                "new_000059:8",
+                "new_000088:21",
+                "new_000088:52",
+                "new_000090:24"
+              ]
+            },
+            "10": {
+              "gained": [
+                "new_000087:15"
+              ],
+              "lost": [
+                "new_000008:10",
+                "new_000008:3",
+                "new_000010:15",
+                "new_000010:26",
+                "new_000057:11",
+                "new_000057:12",
+                "new_000057:13",
+                "new_000057:7"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "current_r15_exploratory": {
+      "reference_id": "fronts-2026-11-21-r15",
+      "manifest_sha256": "6012d09767851151312537c2046022b972bf6519f36d110675d3e82f74694e93",
+      "counts": {
+        "images": 20,
+        "objects": 662,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 98,
+        "empty_images": 3
+      },
+      "exploratory": true,
+      "models": {
+        "pr35": {
+          "detection": {
+            "tp": 627,
+            "fn": 35,
+            "fp": 101,
+            "duplicate_fp": 21,
+            "other_fp": 80
+          },
+          "pairs_within_radius": {
+            "5": 538,
+            "10": 573
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 39,
+              "misses": 19
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "reference": {
+          "detection": {
+            "tp": 623,
+            "fn": 39,
+            "fp": 106,
+            "duplicate_fp": 16,
+            "other_fp": 90
+          },
+          "pairs_within_radius": {
+            "5": 533,
+            "10": 572
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 37,
+              "misses": 21
+            },
+            "2": {
+              "gold": 584,
+              "matched": 575,
+              "misses": 9
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "candidate": {
+          "detection": {
+            "tp": 646,
+            "fn": 16,
+            "fp": 86,
+            "duplicate_fp": 29,
+            "other_fp": 57
+          },
+          "pairs_within_radius": {
+            "5": 549,
+            "10": 583
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 58,
+              "matched": 49,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 584,
+              "misses": 0
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 8
+        }
+      },
+      "candidate_deltas": {
+        "reference": {
+          "counts": {
+            "tp": 23,
+            "fn": -23,
+            "fp": -20,
+            "duplicate_fp": 13,
+            "other_fp": -33,
+            "returned_endpoints": 29
+          },
+          "gained_matches": [
+            "new_000007:1",
+            "new_000007:14",
+            "new_000007:15",
+            "new_000007:30",
+            "new_000007:6",
+            "new_000007:8",
+            "new_000007:9",
+            "new_000008:1",
+            "new_000008:5",
+            "new_000009:19",
+            "new_000009:50",
+            "new_000009:51",
+            "new_000009:52",
+            "new_000010:24",
+            "new_000010:31",
+            "new_000010:32",
+            "new_000011:55",
+            "new_000011:56",
+            "new_000011:58",
+            "new_000011:59",
+            "new_000056:16",
+            "new_000089:42",
+            "new_000089:43",
+            "new_000090:39",
+            "new_000090:40",
+            "new_000090:41",
+            "new_000090:42"
+          ],
+          "lost_matches": [
+            "new_000008:33",
+            "new_000008:34",
+            "new_000009:55",
+            "new_000089:49"
+          ],
+          "corner_identity_changes": {
+            "5": {
+              "gained": [
+                "new_000007:1",
+                "new_000007:13",
+                "new_000007:14",
+                "new_000007:15",
+                "new_000007:16",
+                "new_000007:30",
+                "new_000007:6",
+                "new_000007:7",
+                "new_000007:8",
+                "new_000007:9",
+                "new_000008:17",
+                "new_000008:21",
+                "new_000008:25",
+                "new_000008:27",
+                "new_000008:28",
+                "new_000008:30",
+                "new_000008:31",
+                "new_000009:12",
+                "new_000009:19",
+                "new_000010:28",
+                "new_000010:5",
+                "new_000056:18",
+                "new_000056:19",
+                "new_000056:3",
+                "new_000056:4",
+                "new_000059:11",
+                "new_000059:2",
+                "new_000059:6",
+                "new_000086:56",
+                "new_000089:34"
+              ],
+              "lost": [
+                "new_000008:10",
+                "new_000010:19",
+                "new_000011:4",
+                "new_000011:49",
+                "new_000055:20",
+                "new_000055:25",
+                "new_000058:1",
+                "new_000058:10",
+                "new_000059:1",
+                "new_000059:7",
+                "new_000087:53",
+                "new_000088:21",
+                "new_000088:52",
+                "new_000090:24"
+              ]
+            },
+            "10": {
+              "gained": [
+                "new_000007:1",
+                "new_000007:14",
+                "new_000007:15",
+                "new_000007:30",
+                "new_000007:6",
+                "new_000007:8",
+                "new_000007:9",
+                "new_000008:18",
+                "new_000008:19",
+                "new_000008:29",
+                "new_000008:5",
+                "new_000009:19"
+              ],
+              "lost": [
+                "new_000008:10"
+              ]
+            }
+          }
+        },
+        "pr35": {
+          "counts": {
+            "tp": 19,
+            "fn": -19,
+            "fp": -15,
+            "duplicate_fp": 8,
+            "other_fp": -23,
+            "returned_endpoints": 23
+          },
+          "gained_matches": [
+            "new_000007:1",
+            "new_000007:14",
+            "new_000007:15",
+            "new_000007:30",
+            "new_000007:8",
+            "new_000007:9",
+            "new_000008:1",
+            "new_000008:5",
+            "new_000009:50",
+            "new_000009:51",
+            "new_000009:52",
+            "new_000010:24",
+            "new_000010:31",
+            "new_000010:32",
+            "new_000011:55",
+            "new_000011:56",
+            "new_000011:58",
+            "new_000011:59",
+            "new_000056:16",
+            "new_000089:42",
+            "new_000089:43",
+            "new_000090:40",
+            "new_000090:41",
+            "new_000090:42"
+          ],
+          "lost_matches": [
+            "new_000008:33",
+            "new_000008:34",
+            "new_000009:55",
+            "new_000089:49",
+            "new_000090:43"
+          ],
+          "corner_identity_changes": {
+            "5": {
+              "gained": [
+                "new_000007:1",
+                "new_000007:13",
+                "new_000007:14",
+                "new_000007:15",
+                "new_000007:16",
+                "new_000007:30",
+                "new_000007:7",
+                "new_000007:8",
+                "new_000007:9",
+                "new_000008:21",
+                "new_000008:25",
+                "new_000008:27",
+                "new_000008:28",
+                "new_000008:30",
+                "new_000008:31",
+                "new_000009:12",
+                "new_000010:28",
+                "new_000056:18",
+                "new_000056:19",
+                "new_000056:4",
+                "new_000059:11",
+                "new_000059:2",
+                "new_000059:6",
+                "new_000086:56",
+                "new_000089:34"
+              ],
+              "lost": [
+                "new_000008:10",
+                "new_000008:11",
+                "new_000010:19",
+                "new_000011:49",
+                "new_000055:20",
+                "new_000055:25",
+                "new_000058:1",
+                "new_000058:10",
+                "new_000058:7",
+                "new_000059:1",
+                "new_000059:7",
+                "new_000088:21",
+                "new_000088:52",
+                "new_000090:24"
+              ]
+            },
+            "10": {
+              "gained": [
+                "new_000007:1",
+                "new_000007:13",
+                "new_000007:14",
+                "new_000007:15",
+                "new_000007:30",
+                "new_000007:8",
+                "new_000007:9",
+                "new_000008:18",
+                "new_000008:19",
+                "new_000008:29",
+                "new_000008:5"
+              ],
+              "lost": [
+                "new_000008:10"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "same_r15_review_candidate_generation_comparison": {
+    "prior_report_path": "results/evaluation/pr86-r14-20261121/post-r15-diagnostic.json",
+    "prior_report_sha256": "eb1af903b993ba70f161ac0bd3a0ee21d1df5df8d18dbd4e621425a15b68fc5f",
+    "reference_sha256": "6012d09767851151312537c2046022b972bf6519f36d110675d3e82f74694e93",
+    "detection": {
+      "tp": 1,
+      "fn": -1,
+      "fp": -1,
+      "duplicate_fp": -1,
+      "other_fp": 0
+    },
+    "gained_matches": [
+      "new_000011:56"
+    ],
+    "lost_matches": [],
+    "corner_success_changes": {
+      "5": {
+        "gained": [
+          "new_000090:19"
+        ],
+        "lost": [
+          "new_000090:46"
+        ]
+      },
+      "10": {
+        "gained": [],
+        "lost": []
+      }
+    }
+  }
+}
