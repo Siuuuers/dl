@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "kind": "pr84-prediction-consistency",
+  "comparison_unit": "Exact ordered prediction arrays, including every numeric box, confidence and keypoint; header provenance is separate.",
+  "comparisons": {
+    "fresh_pr35_vs_preserved_pr82_pr35": {
+      "same_image_ids": [
+        "new_000146",
+        "new_000147",
+        "new_000148"
+      ],
+      "different_image_ids": [
+        "new_000007",
+        "new_000008",
+        "new_000009",
+        "new_000010",
+        "new_000011",
+        "new_000053",
+        "new_000054",
+        "new_000055",
+        "new_000056",
+        "new_000057",
+        "new_000058",
+        "new_000059",
+        "new_000086",
+        "new_000087",
+        "new_000088",
+        "new_000089",
+        "new_000090"
+      ],
+      "all_20_prediction_arrays_equal": false,
+      "same_ordered_prediction_counts_all_images": true,
+      "comparison_alignment": "Same ordered list indices; maximum displacement below is measured, not rounded before equality tests.",
+      "max_coordinate_absolute_difference_px": 0.0001220703125,
+      "max_confidence_absolute_difference": 1.6391277313232422e-06
+    },
+    "fresh_r13_control_vs_preserved_r12_control": {
+      "same_image_ids": [
+        "new_000146",
+        "new_000147",
+        "new_000148"
+      ],
+      "different_image_ids": [
+        "new_000007",
+        "new_000008",
+        "new_000009",
+        "new_000010",
+        "new_000011",
+        "new_000053",
+        "new_000054",
+        "new_000055",
+        "new_000056",
+        "new_000057",
+        "new_000058",
+        "new_000059",
+        "new_000086",
+        "new_000087",
+        "new_000088",
+        "new_000089",
+        "new_000090"
+      ],
+      "all_20_prediction_arrays_equal": false,
+      "same_ordered_prediction_counts_all_images": true,
+      "comparison_alignment": "Same ordered list indices; maximum displacement below is measured, not rounded before equality tests.",
+      "max_coordinate_absolute_difference_px": 0.0001220703125,
+      "max_confidence_absolute_difference": 1.4603137969970703e-06
+    },
+    "fresh_r13_control_vs_selected_pr35": {
+      "same_image_ids": [
+        "new_000146",
+        "new_000147",
+        "new_000148"
+      ],
+      "different_image_ids": [
+        "new_000007",
+        "new_000008",
+        "new_000009",
+        "new_000010",
+        "new_000011",
+        "new_000053",
+        "new_000054",
+        "new_000055",
+        "new_000056",
+        "new_000057",
+        "new_000058",
+        "new_000059",
+        "new_000086",
+        "new_000087",
+        "new_000088",
+        "new_000089",
+        "new_000090"
+      ],
+      "all_20_prediction_arrays_equal": false
+    },
+    "fresh_r13_candidate_vs_preserved_r12_candidate": {
+      "same_image_ids": [
+        "new_000146",
+        "new_000147",
+        "new_000148"
+      ],
+      "different_image_ids": [
+        "new_000007",
+        "new_000008",
+        "new_000009",
+        "new_000010",
+        "new_000011",
+        "new_000053",
+        "new_000054",
+        "new_000055",
+        "new_000056",
+        "new_000057",
+        "new_000058",
+        "new_000059",
+        "new_000086",
+        "new_000087",
+        "new_000088",
+        "new_000089",
+        "new_000090"
+      ],
+      "all_20_prediction_arrays_equal": false
+    }
+  },
+  "note": "Fresh predictions are not bit-identical to prior saved arrays despite equal recorded main runtime versions. Comparisons use this one fresh runtime for all three models; raw floats are retained, not rounded to force equality.",
+  "same_r13_reference_identity_comparison": {
+    "pr35": {
+      "detection_delta_vs_previous": {
+        "tp": 0,
+        "fn": 0,
+        "fp": 0,
+        "duplicate_fp": 0,
+        "other_fp": 0
+      },
+      "matched_identities_equal": true,
+      "corner_identity_changes": {
+        "5": {
+          "gained": [],
+          "lost": []
+        },
+        "10": {
+          "gained": [],
+          "lost": []
+        }
+      }
+    },
+    "reference": {
+      "detection_delta_vs_previous": {
+        "tp": 0,
+        "fn": 0,
+        "fp": 0,
+        "duplicate_fp": 0,
+        "other_fp": 0
+      },
+      "matched_identities_equal": true,
+      "corner_identity_changes": {
+        "5": {
+          "gained": [],
+          "lost": []
+        },
+        "10": {
+          "gained": [],
+          "lost": []
+        }
+      }
+    },
+    "candidate": {
+      "detection_delta_vs_previous": {
+        "tp": 0,
+        "fn": 0,
+        "fp": 2,
+        "duplicate_fp": 2,
+        "other_fp": 0
+      },
+      "matched_identities_equal": true,
+      "corner_identity_changes": {
+        "5": {
+          "gained": [
+            "new_000090:46"
+          ],
+          "lost": [
+            "new_000008:15"
+          ]
+        },
+        "10": {
+          "gained": [],
+          "lost": []
+        }
+      }
+    }
+  }
+}

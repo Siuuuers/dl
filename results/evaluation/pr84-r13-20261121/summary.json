@@ -1,0 +1,731 @@
+{
+  "schema_version": 1,
+  "kind": "pr84-r13-summary",
+  "decision": "retain_PR35; mixed reference-sensitive result, no model promotion",
+  "pr_url": "https://github.com/Siuuuers/dl/pull/84",
+  "pr_head": "e881e38b63b8299dce22bae6b472134c131c1ff7",
+  "archive": {
+    "size_bytes": 39781828,
+    "sha256": "6143530679a6c9a972119852b9f4922d8e7143bb01cfbd6edc52d0ecd8e70f4c",
+    "crc_passed": true,
+    "indexed_members_verified": 12
+  },
+  "training": {
+    "actual_difference": {
+      "changed_label_files": 78,
+      "changed_paths": [
+        "labels/train/new_000001.txt",
+        "labels/train/new_000003.txt",
+        "labels/train/new_000004.txt",
+        "labels/train/new_000005.txt",
+        "labels/train/new_000006.txt",
+        "labels/train/new_000012.txt",
+        "labels/train/new_000013.txt",
+        "labels/train/new_000016.txt",
+        "labels/train/new_000017.txt",
+        "labels/train/new_000018.txt",
+        "labels/train/new_000019.txt",
+        "labels/train/new_000023.txt",
+        "labels/train/new_000024.txt",
+        "labels/train/new_000026.txt",
+        "labels/train/new_000027.txt",
+        "labels/train/new_000028.txt",
+        "labels/train/new_000031.txt",
+        "labels/train/new_000032.txt",
+        "labels/train/new_000033.txt",
+        "labels/train/new_000034.txt",
+        "labels/train/new_000035.txt",
+        "labels/train/new_000036.txt",
+        "labels/train/new_000039.txt",
+        "labels/train/new_000042.txt",
+        "labels/train/new_000043.txt",
+        "labels/train/new_000050.txt",
+        "labels/train/new_000051.txt",
+        "labels/train/new_000061.txt",
+        "labels/train/new_000062.txt",
+        "labels/train/new_000063.txt",
+        "labels/train/new_000064.txt",
+        "labels/train/new_000065.txt",
+        "labels/train/new_000066.txt",
+        "labels/train/new_000067.txt",
+        "labels/train/new_000068.txt",
+        "labels/train/new_000069.txt",
+        "labels/train/new_000070.txt",
+        "labels/train/new_000071.txt",
+        "labels/train/new_000072.txt",
+        "labels/train/new_000073.txt",
+        "labels/train/new_000075.txt",
+        "labels/train/new_000079.txt",
+        "labels/train/new_000080.txt",
+        "labels/train/new_000081.txt",
+        "labels/train/new_000082.txt",
+        "labels/train/new_000083.txt",
+        "labels/train/new_000084.txt",
+        "labels/train/new_000085.txt",
+        "labels/train/new_000094.txt",
+        "labels/train/new_000095.txt",
+        "labels/train/new_000096.txt",
+        "labels/train/new_000097.txt",
+        "labels/train/new_000098.txt",
+        "labels/train/new_000099.txt",
+        "labels/train/new_000100.txt",
+        "labels/train/new_000101.txt",
+        "labels/train/new_000102.txt",
+        "labels/train/new_000103.txt",
+        "labels/train/new_000111.txt",
+        "labels/train/new_000112.txt",
+        "labels/train/new_000113.txt",
+        "labels/train/new_000114.txt",
+        "labels/train/new_000115.txt",
+        "labels/train/new_000116.txt",
+        "labels/train/new_000117.txt",
+        "labels/train/new_000118.txt",
+        "labels/train/new_000119.txt",
+        "labels/train/new_000120.txt",
+        "labels/train/new_000121.txt",
+        "labels/train/new_000122.txt",
+        "labels/train/new_000123.txt",
+        "labels/train/new_000124.txt",
+        "labels/train/new_000125.txt",
+        "labels/train/new_000126.txt",
+        "labels/train/new_000127.txt",
+        "labels/train/new_000128.txt",
+        "labels/train/new_000129.txt",
+        "labels/train/new_000130.txt"
+      ],
+      "held_train_photos_identical_to_PR35": 15,
+      "held_ids": [
+        "new_000002",
+        "new_000014",
+        "new_000015",
+        "new_000020",
+        "new_000025",
+        "new_000029",
+        "new_000030",
+        "new_000037",
+        "new_000038",
+        "new_000040",
+        "new_000041",
+        "new_000044",
+        "new_000045",
+        "new_000049",
+        "new_000074"
+      ],
+      "excluded_old_train_photos_identical_to_PR35": 31,
+      "excluded_ids": [
+        "old_000003",
+        "old_000004",
+        "old_000007",
+        "old_000010",
+        "old_000013",
+        "old_000018",
+        "old_000021",
+        "old_000022",
+        "old_000027",
+        "old_000028",
+        "old_000038",
+        "old_000039",
+        "old_000042",
+        "old_000046",
+        "old_000050",
+        "old_000051",
+        "old_000054",
+        "old_000057",
+        "old_000061",
+        "old_000065",
+        "old_000068",
+        "old_000069",
+        "old_000073",
+        "old_000077",
+        "old_000079",
+        "old_000087",
+        "old_000089",
+        "old_000093",
+        "old_000097",
+        "old_000100",
+        "old_000101"
+      ],
+      "all_original_images_identical": true,
+      "validation_labels_identical": true
+    },
+    "arms": {
+      "reference": {
+        "checkpoint_sha256": "200a791cacbb9511515b06f2216685d831cebd8adfa225800362ebd074dae9bd",
+        "selection": "final_epoch",
+        "epochs": 30,
+        "batches_completed": 1050,
+        "images_processed": 4110,
+        "optimizer_steps": 78,
+        "counts": {
+          "train": {
+            "images": 137,
+            "objects": 3771,
+            "visible_endpoints": 6841,
+            "missing_endpoints": 701,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "final_epoch_csv": {
+          "epoch": "30",
+          "time": "439.457",
+          "train/box_loss": "1.29654",
+          "train/pose_loss": "0.01512",
+          "train/kobj_loss": "0.25769",
+          "train/cls_loss": "0.29766",
+          "train/l1_loss": "0.00559",
+          "train/rle_loss": "0.15073",
+          "metrics/precision(B)": "0.96808",
+          "metrics/recall(B)": "0.91365",
+          "metrics/mAP50(B)": "0.93881",
+          "metrics/mAP50-95(B)": "0.57249",
+          "metrics/precision(P)": "0.98807",
+          "metrics/recall(P)": "0.93825",
+          "metrics/mAP50(P)": "0.96042",
+          "metrics/mAP50-95(P)": "0.96021",
+          "val/box_loss": "1.40503",
+          "val/pose_loss": "0.01202",
+          "val/kobj_loss": "0.21662",
+          "val/cls_loss": "0.33143",
+          "val/l1_loss": "0.00451",
+          "val/rle_loss": "0",
+          "lr/pg0": "4.3e-06",
+          "lr/pg1": "4.3e-06",
+          "lr/pg2": "4.3e-06"
+        },
+        "runtime": {
+          "python": "3.13.16",
+          "torch": "2.14.1+cu130",
+          "ultralytics": "8.4.182",
+          "device": "cuda:0",
+          "torch_cuda": "13.0",
+          "threads": 4,
+          "interop_threads": 1,
+          "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+          "packages": {
+            "torchvision": "0.29.1+cu130",
+            "numpy": "2.4.6",
+            "Pillow": "11.3.0",
+            "opencv-python": "5.0.0.93",
+            "psutil": "5.9.5"
+          },
+          "device_name": "NVIDIA L4",
+          "device_capability": [
+            8,
+            9
+          ],
+          "backend": {
+            "model_channels_last": true,
+            "float32_matmul_precision": "highest",
+            "cuda_matmul_allow_tf32": false,
+            "cudnn_allow_tf32": true,
+            "cudnn_version": 92800,
+            "deterministic_algorithms_enabled": true,
+            "deterministic_warn_only": true,
+            "cudnn_deterministic": true,
+            "cudnn_benchmark": false
+          }
+        },
+        "execution": {
+          "exit_code": 0,
+          "stop_reason": null,
+          "wall_seconds": 454.80130827,
+          "sampled_peak_process_tree_rss_mib": 3045.3671875,
+          "rss_sampling_interval_seconds": 0.2,
+          "max_seconds": 21600,
+          "max_rss_mib": 12000
+        },
+        "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+        "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8"
+      },
+      "candidate": {
+        "checkpoint_sha256": "fef17fac7cf2b56435b655087740c5fe2a583ea4f2ca4531076df3d641942d0b",
+        "selection": "final_epoch",
+        "epochs": 30,
+        "batches_completed": 1050,
+        "images_processed": 4110,
+        "optimizer_steps": 78,
+        "counts": {
+          "train": {
+            "images": 137,
+            "objects": 3777,
+            "visible_endpoints": 6845,
+            "missing_endpoints": 709,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "final_epoch_csv": {
+          "epoch": "30",
+          "time": "438.705",
+          "train/box_loss": "1.22926",
+          "train/pose_loss": "0.01403",
+          "train/kobj_loss": "0.24128",
+          "train/cls_loss": "0.29216",
+          "train/l1_loss": "0.00474",
+          "train/rle_loss": "0.1403",
+          "metrics/precision(B)": "0.95472",
+          "metrics/recall(B)": "0.92082",
+          "metrics/mAP50(B)": "0.93503",
+          "metrics/mAP50-95(B)": "0.51241",
+          "metrics/precision(P)": "0.98251",
+          "metrics/recall(P)": "0.93058",
+          "metrics/mAP50(P)": "0.96068",
+          "metrics/mAP50-95(P)": "0.96041",
+          "val/box_loss": "1.48061",
+          "val/pose_loss": "0.01405",
+          "val/kobj_loss": "0.20892",
+          "val/cls_loss": "0.36803",
+          "val/l1_loss": "0.00481",
+          "val/rle_loss": "0",
+          "lr/pg0": "4.3e-06",
+          "lr/pg1": "4.3e-06",
+          "lr/pg2": "4.3e-06"
+        },
+        "runtime": {
+          "python": "3.13.16",
+          "torch": "2.14.1+cu130",
+          "ultralytics": "8.4.182",
+          "device": "cuda:0",
+          "torch_cuda": "13.0",
+          "threads": 4,
+          "interop_threads": 1,
+          "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+          "packages": {
+            "torchvision": "0.29.1+cu130",
+            "numpy": "2.4.6",
+            "Pillow": "11.3.0",
+            "opencv-python": "5.0.0.93",
+            "psutil": "5.9.5"
+          },
+          "device_name": "NVIDIA L4",
+          "device_capability": [
+            8,
+            9
+          ],
+          "backend": {
+            "model_channels_last": true,
+            "float32_matmul_precision": "highest",
+            "cuda_matmul_allow_tf32": false,
+            "cudnn_allow_tf32": true,
+            "cudnn_version": 92800,
+            "deterministic_algorithms_enabled": true,
+            "deterministic_warn_only": true,
+            "cudnn_deterministic": true,
+            "cudnn_benchmark": false
+          }
+        },
+        "execution": {
+          "exit_code": 0,
+          "stop_reason": null,
+          "wall_seconds": 451.955709468,
+          "sampled_peak_process_tree_rss_mib": 2943.51953125,
+          "rss_sampling_interval_seconds": 0.2,
+          "max_seconds": 21600,
+          "max_rss_mib": 12000
+        },
+        "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+        "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8"
+      }
+    }
+  },
+  "fixed_comparison_sha256": "19bdf3f49af5d6a16e36fbb5ab801bdf7a8c01ec31f98a9a2c551bd62847ebeb",
+  "references": {
+    "primary": {
+      "manifest_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "exploratory": false,
+      "models": {
+        "pr35": {
+          "matched": 648,
+          "misses": 18,
+          "unmatched_outputs": 80,
+          "duplicate_subset": 32,
+          "pairs_within_5px": 533,
+          "pairs_within_10px": 582,
+          "pair_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 0,
+          "empty_scene_outputs": 0
+        },
+        "reference": {
+          "matched": 646,
+          "misses": 20,
+          "unmatched_outputs": 83,
+          "duplicate_subset": 29,
+          "pairs_within_5px": 531,
+          "pairs_within_10px": 583,
+          "pair_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "miss_free_nonempty_scenes": 4,
+          "error_free_nonempty_scenes": 0,
+          "empty_scene_outputs": 0
+        },
+        "candidate": {
+          "matched": 638,
+          "misses": 28,
+          "unmatched_outputs": 98,
+          "duplicate_subset": 32,
+          "pairs_within_5px": 529,
+          "pairs_within_10px": 581,
+          "pair_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 46,
+              "misses": 13
+            },
+            "2": {
+              "gold": 584,
+              "matched": 582,
+              "misses": 2
+            }
+          },
+          "miss_free_nonempty_scenes": 5,
+          "error_free_nonempty_scenes": 0,
+          "empty_scene_outputs": 0
+        }
+      }
+    },
+    "diagnostic": {
+      "manifest_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "exploratory": false,
+      "models": {
+        "pr35": {
+          "matched": 648,
+          "misses": 15,
+          "unmatched_outputs": 80,
+          "duplicate_subset": 32,
+          "pairs_within_5px": 533,
+          "pairs_within_10px": 582,
+          "pair_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "miss_free_nonempty_scenes": 7,
+          "error_free_nonempty_scenes": 0,
+          "empty_scene_outputs": 0
+        },
+        "reference": {
+          "matched": 646,
+          "misses": 17,
+          "unmatched_outputs": 83,
+          "duplicate_subset": 29,
+          "pairs_within_5px": 531,
+          "pairs_within_10px": 583,
+          "pair_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "miss_free_nonempty_scenes": 5,
+          "error_free_nonempty_scenes": 0,
+          "empty_scene_outputs": 0
+        },
+        "candidate": {
+          "matched": 639,
+          "misses": 24,
+          "unmatched_outputs": 97,
+          "duplicate_subset": 32,
+          "pairs_within_5px": 529,
+          "pairs_within_10px": 581,
+          "pair_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 59,
+              "matched": 46,
+              "misses": 13
+            },
+            "2": {
+              "gold": 584,
+              "matched": 582,
+              "misses": 2
+            }
+          },
+          "miss_free_nonempty_scenes": 5,
+          "error_free_nonempty_scenes": 0,
+          "empty_scene_outputs": 0
+        }
+      }
+    },
+    "current_r13_exploratory": {
+      "manifest_sha256": "e76da567c1b6ca58b814afe3dc2e04710ce2a725b506f3b35f2fe17887caa4a5",
+      "counts": {
+        "images": 20,
+        "objects": 662,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 98,
+        "empty_images": 3
+      },
+      "exploratory": true,
+      "models": {
+        "pr35": {
+          "matched": 626,
+          "misses": 36,
+          "unmatched_outputs": 102,
+          "duplicate_subset": 21,
+          "pairs_within_5px": 534,
+          "pairs_within_10px": 573,
+          "pair_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 39,
+              "misses": 19
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 1,
+          "empty_scene_outputs": 0
+        },
+        "reference": {
+          "matched": 621,
+          "misses": 41,
+          "unmatched_outputs": 108,
+          "duplicate_subset": 16,
+          "pairs_within_5px": 530,
+          "pairs_within_10px": 571,
+          "pair_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 37,
+              "misses": 21
+            },
+            "2": {
+              "gold": 584,
+              "matched": 573,
+              "misses": 11
+            }
+          },
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 1,
+          "empty_scene_outputs": 0
+        },
+        "candidate": {
+          "matched": 642,
+          "misses": 20,
+          "unmatched_outputs": 94,
+          "duplicate_subset": 31,
+          "pairs_within_5px": 541,
+          "pairs_within_10px": 581,
+          "pair_denominator": 584,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 12,
+              "misses": 8
+            },
+            "1": {
+              "gold": 58,
+              "matched": 47,
+              "misses": 11
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "miss_free_nonempty_scenes": 8,
+          "error_free_nonempty_scenes": 1,
+          "empty_scene_outputs": 0
+        }
+      }
+    }
+  },
+  "new_training_performed": false,
+  "new_inference_performed": true,
+  "same_r13_reference_comparison_to_pr82": {
+    "previous_evidence_path": "results/evaluation/pr82-r12-20261121/post-r13-diagnostic.json",
+    "previous_evidence_sha256": "47b9f8427bb3c355eb75418d5d6ec88823e56ad86f960c49339faaa65e027bc6",
+    "models": {
+      "pr35": {
+        "detection_delta_vs_previous": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "duplicate_fp": 0,
+          "other_fp": 0
+        },
+        "matched_identities_equal": true,
+        "corner_identity_changes": {
+          "5": {
+            "gained": [],
+            "lost": []
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        }
+      },
+      "reference": {
+        "detection_delta_vs_previous": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "duplicate_fp": 0,
+          "other_fp": 0
+        },
+        "matched_identities_equal": true,
+        "corner_identity_changes": {
+          "5": {
+            "gained": [],
+            "lost": []
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        }
+      },
+      "candidate": {
+        "detection_delta_vs_previous": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 2,
+          "duplicate_fp": 2,
+          "other_fp": 0
+        },
+        "matched_identities_equal": true,
+        "corner_identity_changes": {
+          "5": {
+            "gained": [
+              "new_000090:46"
+            ],
+            "lost": [
+              "new_000008:15"
+            ]
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        }
+      }
+    },
+    "interpretation": "On identical r13 review geometry, r13 candidate preserves all r12 candidate matched identities and 10px success identities; 5px successes swap one identity each way and total541 persists. Two additional unmatched outputs make the total94 rather than92."
+  },
+  "limits": [
+    "The reused development frames do not establish reliability in unseen capture sessions.",
+    "Unmatched outputs are matching outcomes, not all independently adjudicated background false positives.",
+    "Unlocatable reference corners have no verified coordinate; their predicted coordinates cannot be scored for accuracy.",
+    "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+    "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+    "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+    "The separately pinned current r13 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
+    "Fresh PR35/control predictions have small measured numeric differences from prior stored arrays; they are not called bit-identical. Counts and matched/pair identities are unchanged for these baselines on the same reference.",
+    "No later r14 label revision is used to decide this result."
+  ]
+}
