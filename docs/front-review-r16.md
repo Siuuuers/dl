@@ -1,10 +1,12 @@
-# Round 16: saved amendments and the next notebook
+# Round 16: saved amendments (historical record)
 
 22 November 2026, Asia/Hong_Kong.
 
+**Handoff recovery:** the r16 source and labels were committed as `8d72f7b7869aae4e71cbe9066fb28dd54ba7f9a2`; the r16 notebook source pin and publication were interrupted. Use the [r17 handoff and notebook](front-review-r17.md), which include these saved labels and the next amendments. The annotation and PR88 results below remain the historical r16 record.
+
 **The amendments are saved as actual YOLO labels.** All 17 requested photographs were inspected against the original images and immutable r15 rows. This pass revises 83 rows and deletes the expressly requested photo066 row22: 84 operations across 15 photos. Replacements change 77 box groups, four left-point groups and five right-point groups; some rows change several fields. No instances are added. The [complete review](../data/reviews/fronts-2026-11-22-r16/manifest.json) retains all 157 label files. [Exact amendment summary](../results/review/front-review-20261122-r16/amendment-summary.json).
 
-**Use [baomai_front_review_r16.ipynb](../notebooks/baomai_front_review_r16.ipynb) for the next comparison.** It explicitly selects the composed r16 training candidate. Current reviewed annotations are under `data/reviews/fronts-2026-11-22-r16/labels/`; `data/labels/` remains the preserved original dataset. The PDF is generated from these saved annotations.
+**The r16 training candidate is saved.** The current executable handoff is [r17](front-review-r17.md). Current reviewed annotations are under `data/reviews/fronts-2026-11-22-r16/labels/`; `data/labels/` remains the preserved original dataset. The PDF is generated from these saved annotations.
 
 **PR35 remains selected.** The completed PR88 r15 result improves agreement with the reviewed labels but still regresses against the frozen primary reference. This handoff prepares the next controlled annotation experiment; no r16 GPU training or model promotion has occurred.
 
@@ -81,14 +83,9 @@ Only development label files009/010 change in r16. Replaying the same PR88 predi
 
 The [post-r16 diagnostic](../results/evaluation/pr88-r15-20261122/post-r16-diagnostic.json) reproduces byte-for-byte and does not replace the pre-return or frozen results. It is a baseline for evaluating the next return on the same labels.
 
-## Run the r16 notebook
+## Historical r16 training inputs
 
-[Open r16 in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r16-20261122/notebooks/baomai_front_review_r16.ipynb).
-
-1. Select **Runtime → Change runtime type → GPU**.
-2. Choose **Run all** and connect Drive when requested.
-3. Let the separate resource trial and both independently initialized arms complete. Compatible completed work can be recovered from Drive.
-4. Return **`baomai-front-review-r16-results.zip`**.
+The interrupted r16 notebook was not finalized. Run the [current r17 notebook](front-review-r17.md#run-the-notebook), which preserves this baseline and adds the later amendments. The table below describes the saved r16 inputs, not the r17 counts.
 
 | Actual training input | Reference | Candidate |
 | --- | ---: | ---: |
@@ -103,7 +100,7 @@ Exactly 92 training-label files differ. Both arms independently initialize from 
 
 The complete review contains3,787 training fronts. The eligible candidate has3,785 because photo015's separate undrawn possible-front question remains the sole training hold, with exact PR35 labels in both arms. The31 old-series photos remain separately excluded from the annotation treatment, also with exact PR35 labels in both arms. None of these photos is removed. The17 prior displayed-case approvals are inherited unchanged, with no new release this round.
 
-The [materialized-input receipt](../results/review/front-review-20261122-r16/verification.json) checks actual photos, label bytes, counts and held/excluded cohorts. The [notebook verification](../results/review/front-review-20261122-r16/notebook-verification.json) records its source pin, syntax and extracted input preflight. Original664-front trainer validation and frozen666/663 scoring references remain fixed; the662-front r16 development review is a separately versioned exploratory diagnostic. CUDA installation, Drive interaction and full GPU training are not executed during preparation.
+The [materialized-input receipt](../results/review/front-review-20261122-r16/verification.json) checks actual photos, label bytes, counts and held/excluded cohorts. The notebook source pin and verification receipt were not finalized before interruption; see the r17 handoff for the current completed preparation. Original664-front trainer validation and frozen666/663 scoring references remain fixed; the662-front r16 development review is a separately versioned exploratory diagnostic. CUDA installation, Drive interaction and full GPU training are not executed during preparation.
 
 ## What10px means, and which camera input is supported
 
@@ -126,4 +123,4 @@ python3 -B results/evaluation/pr88-r15-20261122/measure_post_r16.py \
 
 For manual editing, create a fresh working folder with `data/images/` copied as `images/` and the r16 review's `labels/` copied as `labels/`. Open that folder in the [HTML labeler](../tools/cassette_labeler/README.md). Preserve this pinned revision and save later corrections in a new revision.
 
-The next training evidence is the paired r16 return. A later generalization evaluation should reserve whole new camera sessions; repeatedly reused development views and pixel scores do not establish unseen-session reliability or physical grasp accuracy.
+The next training evidence is the paired r17 return from the superseding notebook. A later generalization evaluation should reserve whole new camera sessions; repeatedly reused development views and pixel scores do not establish unseen-session reliability or physical grasp accuracy.
