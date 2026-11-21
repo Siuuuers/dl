@@ -1,0 +1,103 @@
+--- pr82-r12/measure_pr82.py
++++ pr84-r13/measure_pr84.py
+@@ -1,18 +1,20 @@
+ #!/usr/bin/env python3
+-"""Score the fixed PR82 r12 comparison from saved predictions, without training."""
++"""Score the fixed PR84 r13 comparison from saved predictions, without training."""
+ 
+ import argparse
+ import hashlib
+ import json
+ import math
+ import sys
++import shutil
++import tempfile
+ from pathlib import Path
+ 
+-PROTOCOL_SHA = "6c23b00d5251b9cd98630a796a328dc9cc5574296ccb47bac83cbb1ffa3e7f0a"
++PROTOCOL_SHA = "b77ab22c5655146b05a870458fcad080f4e6e9dcc890ae248564b86147a9f22d"
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "48c3b22b2d58b93d9575995bccf9989f2b43e3402731ffa9dc6b1e5c9f0f4f34",
+-    "candidate": "d3009de544b3d26f8f97497e388d9841f4cd7929004715337e8a223a6c6032a5",
++    "reference": "200a791cacbb9511515b06f2216685d831cebd8adfa225800362ebd074dae9bd",
++    "candidate": "fef17fac7cf2b56435b655087740c5fe2a583ea4f2ca4531076df3d641942d0b",
+ }
+ SCORER_SHA = {
+     "evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+@@ -28,6 +30,25 @@
+ def require(condition, message):
+     if not condition:
+         raise ValueError(message)
++
++
++def select_preserved_checkpoint(preflight, checkpoint_path):
++    """Restore an archived .txt log into a temporary bundle for strict replay."""
++    from pose_checkpoint import select_checkpoint
++    checkpoint_path = checkpoint_path.resolve()
++    base = checkpoint_path.parent
++    manifest = json.loads(checkpoint_path.read_text())
++    receipt = json.loads((base / manifest["training_receipt"]["path"]).read_text())
++    log_path = Path(receipt["log"]["path"])
++    if (base / log_path).is_file():
++        return select_checkpoint(preflight, checkpoint_path, require_weights=False)
++    require(log_path == Path("train.log") and (base / "train-log.txt").is_file(),
++            "Missing original or preserved training log")
++    with tempfile.TemporaryDirectory(prefix="pr84-preserved-receipt-") as tmp:
++        target = Path(tmp)
++        shutil.copytree(base, target, dirs_exist_ok=True)
++        shutil.copyfile(base / "train-log.txt", target / log_path)
++        return select_checkpoint(preflight, target / checkpoint_path.name, require_weights=False)
+ 
+ 
+ def success_rows(gold, predictions, score, width, height, radius):
+@@ -55,7 +76,7 @@
+     from diagnose_pose_quality import aggregate_quality, quality_for_image
+     from rescore_reference_amendment import load_api, verify_amendment
+ 
+-    protocol_path = root / "experiments/front-review-2026-11-20-r12.json"
++    protocol_path = root / "experiments/front-review-2026-11-21-r13.json"
+     require(sha(protocol_path) == PROTOCOL_SHA, "The preregistered protocol changed")
+     protocol = json.loads(protocol_path.read_text())
+     for name, expected in SCORER_SHA.items():
+@@ -67,7 +88,7 @@
+     for role in MODEL_SHA:
+         pred_path = getattr(args,role)
+         checkpoint_path = getattr(args,role+"_manifest")
+-        selected = select_checkpoint(preflight,checkpoint_path,require_weights=False)
++        selected = select_preserved_checkpoint(preflight,checkpoint_path)
+         require(selected["model_sha256"] == MODEL_SHA[role], f"Wrong model: {role}")
+         header, rows, thresholds = _read_replay(pred_path,selected,[.13])
+         require(thresholds == [.13] and len(rows) == 20, f"Incomplete inference: {role}")
+@@ -82,7 +103,7 @@
+     runtimes = [model["metadata"]["runtime"] for model in models.values()]
+     require(all(runtime == runtimes[0] for runtime in runtimes), "Inference runtimes differ")
+     report = {
+-        "schema_version":1,"kind":"pr82-r12-fixed-development-comparison","status":"measured",
++        "schema_version":1,"kind":"pr84-r13-fixed-development-comparison","status":"measured",
+         "protocol":{"path":str(protocol_path.relative_to(root)),"sha256":PROTOCOL_SHA},
+         "measurement_script_sha256":sha(__file__), "scorers_sha256":SCORER_SHA,
+         "models":{role:{key:value for key,value in model.items() if key != "predictions"}
+@@ -97,17 +118,17 @@
+             "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+             "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+             "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+-            "The separately pinned current r12 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
++            "The separately pinned current r13 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
+         ],
+     }
+-    for label in ("primary", "diagnostic", "current_r12_exploratory"):
++    for label in ("primary", "diagnostic", "current_r13_exploratory"):
+         setting = protocol["evaluation"]
+-        exploratory = label == "current_r12_exploratory"
++        exploratory = label == "current_r13_exploratory"
+         if exploratory:
+-            from verify_front_review_r12 import read_review
++            from verify_front_review_r13 import read_review
+             descriptor = setting["current_review_reference"]
+             path = root / descriptor["path"]
+-            require(sha(path) == descriptor["sha256"], "Current r12 review changed")
++            require(sha(path) == descriptor["sha256"], "Current r13 review changed")
+             review, status, _, _, _, _, reviewed = read_review(root)
+             gold = {image_id: parse_pose_labels(reviewed[image_id]["bytes"].decode(),
+                     record["width"], record["height"], reviewed[image_id]["path"])
