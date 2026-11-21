@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "source_review_manifest_sha256": "6012d09767851151312537c2046022b972bf6519f36d110675d3e82f74694e93",
+  "source_request_coverage_sha256": "b3a3f69c3f173c487050e3220930779791e684b870dd44430ea0e73de09f26e3",
+  "photo_notes": {
+    "new_000001": [
+      "Row47 xmin is retained: its left point is missing, so 0 0 0 cannot supply a physical X anchor. Row51 xmax1008 preserves its projecting rim."
+    ],
+    "new_000002": [
+      "Rows8/9/11-13/22-24/47: physical top means pixel ymin. Row32 left point is retained; the literal mixed-axis target crosses to the right of its right point."
+    ],
+    "new_000007": [
+      "Cross-row point references align X only; each lower junction retains its own Y and visibility."
+    ],
+    "new_000008": [
+      "Rows18-21 use immutable r14 X anchors; changes do not cascade down the stack."
+    ],
+    "new_000010": [
+      "Row23 xmax925 keeps the projecting white rim beyond its lower right point919."
+    ],
+    "new_000015": [
+      "The supported existing-row changes are saved; training still uses exact PR35 labels while the separate unboxed question remains open."
+    ],
+    "new_000017": [
+      "Row23 physical top maps to ymin; row57 physical bottom maps to ymax. Row59 self-assignment is a recorded no-op."
+    ],
+    "new_000028": [
+      "D63 is a deleted historical identity, not a current label. Row31 physical top maps to ymin. Row36 keeps its sloping front; forcing ymax to right Y would clip the left side."
+    ],
+    "new_000032": [
+      "Rows11-14/26-28 physical tops use previous r14 left-point Y as pixel ymin. All anchors are immutable."
+    ],
+    "new_000033": [
+      "Rows1/31 xmin are retained: the requested row6/25 anchors belong to other stacks; row1 would invert and row31 would span another front."
+    ],
+    "new_000040": [
+      "Row32 right point is retained. Row1 is another stack; copying its point, or only X, would leave the actual right junction."
+    ],
+    "new_000042": [
+      "Row8 xmin is amended. Its xmax788 is retained to enclose the projecting rim beyond the lower right junction779."
+    ],
+    "new_000049": [
+      "Row18: xmin147, xmax416, left(178,40)px. Directional requests are bounded by this clipped front. Other listed xmins use their own left X."
+    ],
+    "new_000050": [
+      "Row20 left point is retained near(145,22). The literal(284,15) target lies beyond its right point and on the opposite side. Row9 xmax is amended."
+    ],
+    "new_000051": [
+      "Row8 xmax moves left to760px; its hidden right point stays missing. Row11 xmax follows its own right X."
+    ],
+    "new_000054": [
+      "Approximate left trims retain each projecting upper rim; actual lower-corner points remain independently observed."
+    ],
+    "new_000055": [
+      "Rows20/21 xmax290 and row10 xmax313 retain their own white rims. Literal lower-tier anchors315/319 would include rack/background."
+    ],
+    "new_000059": [
+      "Row16 xmax follows the neighboring r14 row17 right bound455.57px, keeping the narrow visible rim."
+    ],
+    "new_000062": [
+      "Rows6-8 physical tops map to pixel ymin using immutable previous-row left Y. Bottoms and corners remain unchanged."
+    ],
+    "new_000066": [
+      "Row8 xmin uses baseline row3 xmin620, not its newly edited623. Hidden left/right points remain missing."
+    ]
+  }
+}

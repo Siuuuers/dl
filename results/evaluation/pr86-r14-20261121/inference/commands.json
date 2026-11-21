@@ -1,0 +1,83 @@
+[
+  {
+    "role": "pr35",
+    "command": [
+      "/workspace/scratch/54ace234fafa/r15/evaluation/runtime/bin/python",
+      "-B",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/source/scripts/evaluate_pose.py",
+      "--root",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/source",
+      "--output",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/inference/eval-pr35",
+      "--checkpoint-manifest",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/seed46-results/candidate/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.13",
+      "--endpoint-conf",
+      "0.50",
+      "--matching-iou",
+      "0.50",
+      "--overlays",
+      "0"
+    ],
+    "exit_code": 0
+  },
+  {
+    "role": "reference",
+    "command": [
+      "/workspace/scratch/54ace234fafa/r15/evaluation/runtime/bin/python",
+      "-B",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/source/scripts/evaluate_pose.py",
+      "--root",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/source",
+      "--output",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/inference/eval-reference",
+      "--checkpoint-manifest",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/r14-return/reference/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.13",
+      "--endpoint-conf",
+      "0.50",
+      "--matching-iou",
+      "0.50",
+      "--overlays",
+      "0"
+    ],
+    "exit_code": 0
+  },
+  {
+    "role": "candidate",
+    "command": [
+      "/workspace/scratch/54ace234fafa/r15/evaluation/runtime/bin/python",
+      "-B",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/source/scripts/evaluate_pose.py",
+      "--root",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/source",
+      "--output",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/inference/eval-candidate",
+      "--checkpoint-manifest",
+      "/workspace/scratch/54ace234fafa/r15/evaluation/r14-return/candidate/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.13",
+      "--endpoint-conf",
+      "0.50",
+      "--matching-iou",
+      "0.50",
+      "--overlays",
+      "0"
+    ],
+    "exit_code": 0
+  }
+]

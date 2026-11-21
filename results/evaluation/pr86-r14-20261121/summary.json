@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "status": "measured",
+  "decision": "retain_PR35",
+  "reason": "The r14 candidate regresses on both frozen references. It improves the reviewed-target miss/extra counts and 5px pair total versus the prior r13 candidate, but loses 10px pair successes; no automatic promotion.",
+  "comparison_sha256": "b5c546d8f1da26d09e3b3016e7c2f44e50f254cf44fd76cc16c73e96e16c057d",
+  "references": {
+    "primary": {
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "models": {
+        "pr35": {
+          "matched": 648,
+          "misses": 18,
+          "unmatched_outputs": 80,
+          "duplicate_subset": 32,
+          "pair_denominator": 584,
+          "pair_successes": {
+            "5": 533,
+            "10": 582
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "reference": {
+          "matched": 646,
+          "misses": 20,
+          "unmatched_outputs": 83,
+          "duplicate_subset": 29,
+          "pair_denominator": 584,
+          "pair_successes": {
+            "5": 531,
+            "10": 583
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4
+        },
+        "candidate": {
+          "matched": 631,
+          "misses": 35,
+          "unmatched_outputs": 101,
+          "duplicate_subset": 29,
+          "pair_denominator": 584,
+          "pair_successes": {
+            "5": 520,
+            "10": 575
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4
+        }
+      }
+    },
+    "diagnostic": {
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "models": {
+        "pr35": {
+          "matched": 648,
+          "misses": 15,
+          "unmatched_outputs": 80,
+          "duplicate_subset": 32,
+          "pair_denominator": 584,
+          "pair_successes": {
+            "5": 533,
+            "10": 582
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7
+        },
+        "reference": {
+          "matched": 646,
+          "misses": 17,
+          "unmatched_outputs": 83,
+          "duplicate_subset": 29,
+          "pair_denominator": 584,
+          "pair_successes": {
+            "5": 531,
+            "10": 583
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 5
+        },
+        "candidate": {
+          "matched": 631,
+          "misses": 32,
+          "unmatched_outputs": 101,
+          "duplicate_subset": 29,
+          "pair_denominator": 584,
+          "pair_successes": {
+            "5": 520,
+            "10": 575
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4
+        }
+      }
+    },
+    "current_r14_exploratory": {
+      "counts": {
+        "images": 20,
+        "objects": 662,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 98,
+        "empty_images": 3
+      },
+      "models": {
+        "pr35": {
+          "matched": 628,
+          "misses": 34,
+          "unmatched_outputs": 100,
+          "duplicate_subset": 21,
+          "pair_denominator": 584,
+          "pair_successes": {
+            "5": 540,
+            "10": 575
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "reference": {
+          "matched": 624,
+          "misses": 38,
+          "unmatched_outputs": 105,
+          "duplicate_subset": 16,
+          "pair_denominator": 584,
+          "pair_successes": {
+            "5": 535,
+            "10": 574
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "candidate": {
+          "matched": 644,
+          "misses": 18,
+          "unmatched_outputs": 88,
+          "duplicate_subset": 30,
+          "pair_denominator": 584,
+          "pair_successes": {
+            "5": 547,
+            "10": 580
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7
+        }
+      }
+    }
+  },
+  "same_r14_review_candidate_generation_comparison": {
+    "reference_manifest_sha256": "95b3c8bd4746281f9474ecd787a063634ee1b6750d758f4454ddaaaa7479ef0f",
+    "prior_pr84_replay_sha256": "c59997359229c25bd7ad5e4a7e9a8a4dacabed2476f003fa89e2034d52f17090",
+    "prior_uses_cached_arrays": true,
+    "misses": {
+      "r13": 19,
+      "r14": 18
+    },
+    "unmatched_outputs": {
+      "r13": 93,
+      "r14": 88
+    },
+    "gained_matches": [
+      "new_000010:31",
+      "new_000010:32",
+      "new_000011:55",
+      "new_000089:43"
+    ],
+    "lost_matches": [
+      "new_000007:13",
+      "new_000008:34",
+      "new_000089:49"
+    ],
+    "pair_identity_changes": {
+      "5": {
+        "r13_total": 543,
+        "r14_total": 547,
+        "gained": [
+          "new_000008:16",
+          "new_000008:24",
+          "new_000008:25",
+          "new_000008:28",
+          "new_000008:30",
+          "new_000008:31",
+          "new_000054:22",
+          "new_000056:18",
+          "new_000059:11",
+          "new_000059:2"
+        ],
+        "lost": [
+          "new_000007:13",
+          "new_000008:19",
+          "new_000008:4",
+          "new_000055:20",
+          "new_000058:7",
+          "new_000059:1"
+        ]
+      },
+      "10": {
+        "r13_total": 582,
+        "r14_total": 580,
+        "gained": [],
+        "lost": [
+          "new_000007:13",
+          "new_000008:20"
+        ]
+      }
+    }
+  }
+}
