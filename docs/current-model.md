@@ -2,11 +2,11 @@
 
 22 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected. The current training entry is the r17 notebook.** The [r17 handoff](front-review-r17.md) continues from the saved r16 labels and applies the next requests for photographs 067–075, 079 and 080. The earlier notebook handoff was interrupted before its source pin was finished; the labels were already saved. The [PR88 audit](../results/evaluation/pr88-r15-20261122/README.md) retains PR35. No r17 GPU training or promotion has occurred during preparation.
+**PR35 remains selected. The current training entry is the r18 notebook.** The [PR90 audit](../results/evaluation/pr90-r17-20261122/README.md) verifies both returned r17 runs and reports their reference-dependent rankings. The [r18 handoff](front-review-r18.md) applies confident coordinate corrections from the requested 081–130 review. No r18 GPU training or model promotion occurred during preparation.
 
 ## Run inference
 
-Use branch `codex/front-review-r17-20261122`. Follow the [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to obtain the verified PR35 candidate bundle, keeping its manifest and companion files together.
+Use branch `codex/front-review-r18-20261122`. Follow the [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to obtain the verified PR35 candidate bundle, retaining its manifest and companion files.
 
 | Setting | Value |
 | --- | --- |
@@ -17,22 +17,26 @@ Use branch `codex/front-review-r17-20261122`. Follow the [folder guide](predict-
 | NMS IoU | 0.70 |
 | Endpoint confidence | 0.50 |
 
-Inspect the complete original image, including regions without proposals. A confident endpoint can still be inaccurate or lie behind an occluder.
+Inspect the complete original image, including regions without proposals. An endpoint confidence score does not certify its pixel accuracy or physical visibility.
 
-## Run the r17 comparison
+## What PR90 established
 
-The [complete r17 review](../data/reviews/fronts-2026-11-22-r17/manifest.json) contains all 157 annotation files under its `labels/` directory. The [r17 training candidate](../data/candidates/front-review-2026-11-22-r17/manifest.json) applies eligible supervision explicitly. `data/labels/` remains the preserved original dataset.
+On the frozen 666-front primary reference, PR35 / fresh control / r17 candidate have 18 / 20 / 34 misses and 80 / 83 / 103 unmatched outputs. Five-pixel corner-pair successes are 533 / 531 / 521 out of 584 eligible fronts. The historical 663-front comparison agrees with this ranking.
 
-[Open r17 in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r17-20261122/notebooks/baomai_front_review_r17.ipynb). Select GPU, choose Run all, then return **`baomai-front-review-r17-results.zip`**. Both arms initialize independently from original epoch 173: seed 46, 30 epochs, batch 4, 1280 input, FP32, AdamW, learning rate 0.0001. The resource trial cannot initialize a full arm; final-epoch selection is fixed.
+On the pre-return 662-front reviewed reference, misses are 35 / 38 / 15 and unmatched outputs are 101 / 105 / 88; five-pixel pairs are 538 / 534 / 549. This favorable exploratory result does not replace the frozen selection rule. Compared with r15 on identical reviewed labels, r17 gains one match but adds two unmatched outputs and one duplicate, with unchanged aggregate five- and ten-pixel corner-pair counts. [Measured results and reproducible evidence](../results/evaluation/pr90-r17-20261122/README.md).
 
-All 137 training photos and 13 empty scenes remain. Reference/candidate contain 3,771/3,784 fronts, with 92 differing training-label files; the notebook prints the endpoint counts before training. The prior 17 displayed-case approvals are inherited. Photo 015's undrawn possible-instance question remains the sole hold. It and the separate 31 old-series treatment exclusions use exact PR35 supervision in both arms. [Actual input verification](../results/review/front-review-20261122-r17/verification.json).
+## Run the r18 comparison
 
-Original 664-front trainer validation and frozen 666/663 scoring references remain unchanged. The 662-front current development review is exploratory and keeps the same label bytes as r16. The [notebook preflight and source receipt](../results/review/front-review-20261122-r17/notebook-verification.json) records preparation checks; the returned r17 checkpoints will need their own evaluation.
+The [complete r18 review](../data/reviews/fronts-2026-11-22-r18/manifest.json) contains all 157 annotation files under its `labels/` directory. The [r18 training candidate](../data/candidates/front-review-2026-11-22-r18/manifest.json) explicitly selects eligible supervision. Original `data/labels/` bytes remain preserved.
+
+[Open r18 in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r18-20261122/notebooks/baomai_front_review_r18.ipynb). Select GPU, choose Run all, then return **`baomai-front-review-r18-results.zip`**. Both arms initialize independently from original epoch 173: seed 46, 30 epochs, batch 4, 1280 input, FP32, AdamW, learning rate 0.0001. The resource trial cannot initialize a full arm; final-epoch selection is fixed.
+
+Both arms retain 137 training photos and 13 empty scenes. Reference / candidate contain 3,771 / 3,784 fronts. The notebook prints exact changed-file and endpoint counts before training. Photo 015 and the separate 31 old-series treatment exclusions retain exact PR35 supervision in both arms. No new holds or uncertainty flags are introduced. [Actual input verification](../results/review/front-review-20261122-r18/verification.json).
+
+Original 664-front trainer validation and frozen 666 / 663 scoring references remain unchanged. The 662-front r18 development review is separately versioned exploratory evidence. Its corrections do not alter the PR90 audit. [Notebook source and preflight receipt](../results/review/front-review-20261122-r18/notebook-verification.json).
 
 ## Evidence limits and future physical geometry
 
-The [case ledger](../results/review/front-review-20261122-r17/review-status.json) retains photo 015's undrawn question. Its existing review bytes are saved but withheld from the training treatment. Amendment interpretations are explicit in the [request dispositions](../results/review/front-review-20261122-r17/request-coverage.json).
+The new comparison measures PR35 supervision against the complete eligible r18 set; it does not isolate this amendment round. Repeated development scenes do not establish reliability in an unseen capture session. A new independently labeled capture session would supply that missing evidence.
 
-The PR88 report separates the frozen benchmark, pre-return r15 review and post-return r16 replay. A change in reference geometry is not new model learning. Repeated development scenes do not establish unseen-session reliability.
-
-The supplied dataset and inspected camera paths provide RGB frames. Ten pixels is a per-corner image-space criterion, not a gripper tolerance in millimetres. The [robot-grasp guide](robot-grasp-readiness.md) records what is and is not established by the repository. Hardware details are not a gate for this notebook; a future robot integration needs actual gripper clearances, supported depth or plane geometry, and installation-specific calibration.
+The supplied dataset and inspected camera paths provide RGB frames. Pixel radii do not establish a gripper tolerance in millimetres. The [robot-grasp guide](robot-grasp-readiness.md) records the calibration and physical measurements needed for later robot integration; they are not prerequisites for this annotation notebook.

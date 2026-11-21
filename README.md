@@ -1,18 +1,16 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前入口：PR35 推論、r17 修訂與新 notebook
+## 目前入口：PR35 推論、r18 修訂與新 notebook
 
-**2026-11-22：先前 r16 修訂已確實儲存；本輪接續處理 067–075、079、080 共 11 張訓練照片。** r16 的 83 列修訂及照片 066 第 22 列刪除已在 GitHub commit `8d72f7b7869aae4e71cbe9066fb28dd54ba7f9a2`。當時中斷的是 notebook 來源版本固定與交付，不是標註儲存。[目前完整 r17 標籤](data/reviews/fronts-2026-11-22-r17/manifest.json)保留全部 157 份標籤；[本輪說明](docs/front-review-r17.md)與[逐列修訂統計](results/review/front-review-20261122-r17/amendment-summary.json)記錄最新結果。本輪實際修訂 139 列、刪除 1 列，涉及 11 張照片；146 份未指定標籤與 r16 完全相同。
+**2026-11-22：PR90 已評估，繼續選用 PR35；r18 已覆核 081–130 範圍內全部 40 張有標籤的現有照片。** 本輪在 14 張照片修訂 36 列：12 個框、22 個左點 X、2 個右點 X；沒有新增或刪除物件，也沒有改變可見性、新增保留案例或不確定標記。其餘 26 張覆核照片沿用 r17。[完整 r18 標籤](data/reviews/fronts-2026-11-22-r18/manifest.json)保留全部 157 份標籤；[本輪說明](docs/front-review-r18.md)列出所有實際變更；[輸入驗證](results/review/front-review-20261122-r18/verification.json)確認保存結果。
 
-**目前訓練入口：[baomai_front_review_r17.ipynb](notebooks/baomai_front_review_r17.ipynb)，或[直接在 Colab 開啟](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r17-20261122/notebooks/baomai_front_review_r17.ipynb)。** 選 GPU、Run all，完成後回傳 `baomai-front-review-r17-results.zip`。兩組各自從 epoch173 開始，使用相同 seed46、30 輪、batch4、1280 輸入、FP32、AdamW 與初始學習率 0.0001；參考／候選分別有 3,771／3,784 個訓練物件，92 份訓練標籤不同；訓練前會顯示完整物件與角點數量。
+**目前訓練入口：[baomai_front_review_r18.ipynb](notebooks/baomai_front_review_r18.ipynb)，或[直接在 Colab 開啟](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r18-20261122/notebooks/baomai_front_review_r18.ipynb)。** 選 GPU、Run all，完成後回傳 `baomai-front-review-r18-results.zip`。兩組各自從 epoch173 開始，固定 seed46、30 輪、batch4、1280、FP32、AdamW 與學習率 0.0001。參考／候選有 3,771／3,784 個訓練物件，92 份訓練標籤不同；保留全部 137 張訓練圖與 13 張空圖。[Notebook 固定版本驗證](results/review/front-review-20261122-r18/notebook-verification.json)。
 
-兩組保留 137 張訓練圖與 13 張空圖。照片 015 未畫框的額外正面問題仍是唯一訓練保留；31 張 old 系列另列為處理排除，兩組都使用相同 PR35 標籤。17 組先前顯示案例的確認沿用。本輪 11 張均屬訓練集，原始 20 張／664 個訓練驗證標籤、固定 666／663 評分參考及 r16 的 662 個開發覆核標籤保持完整。[輸入驗證](results/review/front-review-20261122-r17/verification.json)；[notebook 固定版本驗證](results/review/front-review-20261122-r17/notebook-verification.json)。
+**PR90 的候選在固定 666 參考下有 34 個漏檢／103 個未配對輸出，PR35 為 18／80；在回傳前固定的 662 覆核參考下，候選為 15／88，PR35 為 35／101。** 不同參考的排名相反，不能只採有利數字。相同覆核標籤下，r17 比 r15 多配對 1 個，但多 2 個未配對輸出與 1 個重複，雙角點成功總數未提升。[完整 PR90 稽核](results/evaluation/pr90-r17-20261122/README.md)已保存回傳、來源、訓練收據、重新推論與重播證據。
 
-**目前仍選用 PR35；尚未執行 r17 GPU 訓練或替換模型。** [PR88 評估](results/evaluation/pr88-r15-20261122/README.md)保留固定參考及覆核參考的不同結論。新的 r17 比較測試完整修訂標籤對 PR35 監督的影響，不單獨隔離 r16→r17 的改動。[目前推論操作](docs/current-model.md)；[r16 標註紀錄](docs/front-review-r16.md)。
+本輪範圍有 35 張訓練照片與 5 張開發照片（086–090）；091–093、104–110 不在現有準備資料中。原始 20 張／664 個訓練驗證標籤及固定 666／663 評分參考維持不變。r18 的 662 個開發覆核標籤獨立版本化，只作探索分析。照片 015 與另列的 31 張 old 系列在兩組中繼續使用相同 PR35 標籤。
 
-標註編號以修改前的 r16 為準，跨列參照不連鎖套用修改後座標；照片 074 刪除第 13 列後的對應見[列號映射](results/review/front-review-20261122-r17/row-maps.json)。PDF 直接讀取已存標籤，顯示每張變更照片的全部現存物件。
-
-目前資料與採集程式提供 RGB。10px 是原圖角點評分門檻，尚不能轉成夾爪毫米容差；[實體幾何說明](docs/robot-grasp-readiness.md)保留後續機械定位所需的資料。
+PDF 只包含 14 張實際變更照片，每張顯示所有現存標籤；洋紅色只標變更欄位，青色標沿用幾何，沒有琥珀或問號標記。[PDF 交付與驗證](results/review/front-review-20261122-r18/pdf-delivery.json)。尚未執行 r18 GPU 訓練或替換模型。[目前推論操作](docs/current-model.md)；[前一輪 r17 紀錄](docs/front-review-r17.md)。
 
 ## 先前 r12 交付（歷史快照）
 
@@ -32,7 +30,7 @@
 
 **新訓練入口：[baomai_front_review_r10.ipynb](notebooks/baomai_front_review_r10.ipynb)。** Notebook固定來源commit與實驗雜湊，從epoch173獨立開始兩組seed46、30輪的受控比較。15張仍有問題的新訓練照片及另外31張本輪不處理的舊照片，在兩組中均使用完全相同的PR35標籤；保留全部137張訓練圖與13張空圖。兩組實際有77份訓練標籤不同，物件數為3,771／3,778。原始20張驗證圖及固定666／663評分參考維持不變。[實際訓練入口驗證](results/review/front-review-20261119-r10/runner-verification.json)已通過；尚未執行r10 GPU訓練。
 
-**目前仍選用PR35。** [已完成PR76評估](results/evaluation/pr76-recovery-20261119/README.md)不支持替換模型。現行推論設定為PR35 seed46、1280輸入、框門檻0.13、NMS IoU0.70、端點門檻0.50，操作請用[目前模型入口](docs/current-model.md)。舊版PDF與notebook保留供追溯，目前入口以上方r17為準。
+**目前仍選用PR35。** [已完成PR76評估](results/evaluation/pr76-recovery-20261119/README.md)不支持替換模型。現行推論設定為PR35 seed46、1280輸入、框門檻0.13、NMS IoU0.70、端點門檻0.50，操作請用[目前模型入口](docs/current-model.md)。舊版PDF與notebook保留供追溯，目前入口以上方r18為準。
 
 <details>
 <summary>先前覆核與實驗紀錄</summary>

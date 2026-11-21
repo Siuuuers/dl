@@ -360,15 +360,18 @@ def intro(c, data, page_numbers, ids, page, index_count):
     text(c, f'{s["highlighted_current_rows"]} edited rows', 775, HEIGHT - 125, 27, INK, True)
     case_word = "case" if s["held_cases"] == 1 else "cases"
     photo_word = "photograph" if s["held_photos"] == 1 else "photographs"
-    text(c, f'{s["changed_photos"]} photos changed / {counts["replace"]} row replacements / {counts["add"]} additions / {counts["delete"]} removal{"" if counts["delete"] == 1 else "s"} / '
-         f'{s["held_cases"]} displayed held {case_word} in {s["held_photos"]} {photo_word}', 30, HEIGHT - 148, 11)
+    scope_note = f'{s["changed_photos"]} photos changed / {counts["replace"]} row replacements / {counts["add"]} additions / {counts["delete"]} removal{"" if counts["delete"] == 1 else "s"}'
+    if not data.get('changes_only'):
+        scope_note += f' / {s["held_cases"]} displayed held {case_word} in {s["held_photos"]} {photo_word}'
+    text(c, scope_note, 30, HEIGHT - 148, 11)
     c.setFillColor(INK); c.roundRect(30, HEIGHT - 195, WIDTH - 60, 34, 4, fill=1, stroke=0)
     text(c, f'CYAN  unchanged vs r{data["parent_round"]}', 42, HEIGHT - 182, 10.5, CYAN, True)
     text(c, 'MAGENTA  changed fields', 352, HEIGHT - 182, 10.5, MAGENTA, True)
-    text(c, '*  edited row    -  removal    ?  open question', 715, HEIGHT - 182, 10.5, white, True)
+    text(c, '*  edited row' if data.get('changes_only') else '*  edited row    -  removal    ?  open question',
+         715, HEIGHT - 182, 10.5, white, True)
     text(c, 'Circle = left front corner. Square = right. Missing points have no marker; their row numbers are listed below each photograph.',
          30, HEIGHT - 214, 10)
-    text(c, f'A dashed Dn marker shows a deleted r{data["parent_round"]} row. Bracketed numbers show r{data["parent_round"]} identities when current row numbers shift.',
+    text(c, f'Row numbers retain their r{data["parent_round"]} identities. Every magenta field is read directly from the saved amended label.' if data.get('changes_only') else f'A dashed Dn marker shows a deleted r{data["parent_round"]} row. Bracketed numbers show r{data["parent_round"]} identities when current row numbers shift.',
          30, HEIGHT - 231, 10)
     text(c, 'PHOTO INDEX  /  click a photograph name', 30, HEIGHT - 254, 10, MUTED, True)
     width = (WIDTH - 60) / INDEX_COLUMNS
@@ -385,7 +388,7 @@ def intro(c, data, page_numbers, ids, page, index_count):
     if data.get('amendment_questions'):
         text(c, 'Pending amendment: ' + '; '.join(data['amendment_questions'].values()),
              30, 95, 10, INK)
-    if s['held_photos_omitted']:
+    if s['held_photos_omitted'] and not data.get('changes_only'):
         text(c, 'Unchanged unresolved photographs remain in the saved ledger: ' + ', '.join(s['held_photos_omitted']) + '.',
              30, 79, 10, MUTED)
     text(c, 'Unchanged photos, old-series photos and empty scenes are omitted from this PDF only. The full saved dataset is retained.',
@@ -429,7 +432,9 @@ def footer(c, iid, data):
         notes.append(prefix + ': ' + reason)
     notes.extend(data.get('amendment_notes', {}).get(iid, []))
     if not notes:
-        notes = ['No remaining held case on this photograph.']
+        notes = ([f'Only magenta fields changed from r{data["parent_round"]}.',
+                  'Saved label coordinates are rendered exactly.'] if data.get('changes_only') else
+                 ['No remaining held case on this photograph.'])
     blocks = [changed_lines, missing_lines, notes]
     rendered = []
     for (x, width), values in zip(columns, blocks):
@@ -534,9 +539,16 @@ def verify_saved_pdf(root, output, data):
             'all_bookmark_destinations_verified': True, 'embedded_image_receipts': receipts}
 
 
-def build(root, review_root, ledger_root, output, qa_output):
+def build(root, review_root, ledger_root, output, qa_output, changes_only=False):
     register_fonts()
     data = load_inputs(root, review_root, ledger_root)
+    data['changes_only'] = changes_only
+    if changes_only:
+        if any(op['action'] != 'replace' for op in data['operations']):
+            raise ValueError('The changes-only view requires coordinate replacements with stable row identities')
+        data['held'], data['cases'], data['amendment_questions'] = {}, {}, {}
+        for key in ('held_photos', 'held_cases', 'held_training_photos'):
+            data['summary'][key] = 0
     provenance = PROVENANCE.format(round=data['round_number'], parent=data['parent_round'])
     groups = index_groups(data)
     index_count = len(groups)
@@ -565,7 +577,8 @@ def build(root, review_root, ledger_root, output, qa_output):
         title_note = f'{split} / {len(item["rows"])} current fronts / {len(edits)} marked current row{"" if len(edits) == 1 else "s"}'
         if deleted: title_note += f' / {len(deleted)} deleted r{data["parent_round"]} row{"" if len(deleted) == 1 else "s"}'
         open_cases = len(data['cases'].get(iid, []))
-        title_note += f' / {open_cases} held case{"" if open_cases == 1 else "s"}'
+        if not changes_only:
+            title_note += f' / {open_cases} held case{"" if open_cases == 1 else "s"}'
         if iid in data.get('amendment_questions', {}):
             title_note += ' / 1 pending amendment'
         header(c, iid, title_note, page_numbers[iid], data)
@@ -589,6 +602,7 @@ def build(root, review_root, ledger_root, output, qa_output):
                         for block in ('changed_fields_block', 'availability_trace_block', 'case_notes_block')
                         if page[block]['truncated']]
     qa = {'schema_version': 1, 'summary': data['summary'], 'provenance': provenance,
+          'changes_only_display': changes_only,
           'pdf': str(output), 'pdf_sha256': digest(output), 'page_count': len(data['ids']) + index_count,
           'review_manifest': {'path': data['manifest_path'].relative_to(root).as_posix(), 'sha256': digest(data['manifest_path'])},
           'parent_review': data['parent'], 'input_descriptors': data['input_descriptors'],
@@ -612,19 +626,21 @@ def build(root, review_root, ledger_root, output, qa_output):
 
 
 def main(default_review=DEFAULT_REVIEW, default_ledger=DEFAULT_LEDGER,
-         default_output='output/pdf/front-review-r16-changed-photos.pdf'):
+         default_output='output/pdf/front-review-r16-changed-photos.pdf', default_changes_only=False):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--review-root', type=Path, default=Path(default_review))
     parser.add_argument('--ledger-root', type=Path, default=Path(default_ledger))
     parser.add_argument('--output', type=Path, default=Path(default_output))
     parser.add_argument('--qa-output', type=Path)
+    parser.add_argument('--changes-only', action='store_true', default=default_changes_only,
+                        help='Highlight only saved replacements, without review-status display')
     args = parser.parse_args(); root = args.root.resolve()
     def resolve(path):
         return path.resolve() if path.is_absolute() else (root / path).resolve()
     output = resolve(args.output)
     qa_output = resolve(args.qa_output) if args.qa_output else output.with_suffix('.qa.json')
-    result = build(root, resolve(args.review_root), resolve(args.ledger_root), output, qa_output)
+    result = build(root, resolve(args.review_root), resolve(args.ledger_root), output, qa_output, args.changes_only)
     print(json.dumps({'pdf': str(output), 'qa': str(qa_output), **result['summary'],
                       'unresolved_tag_collisions': result['unresolved_tag_collisions'],
                       'clipped_tags': result['clipped_tags'], 'deletion_tag_count': result['deletion_tag_count']}, indent=2))
