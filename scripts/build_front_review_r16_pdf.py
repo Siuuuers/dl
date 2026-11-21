@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Render changed nonempty r16 photographs with exact fields and r15 row identities.
+"""Render changed photographs with exact fields and immutable parent row identities.
 
 Run after the r16 review manifest and ledger have been built:
     python scripts/build_front_review_r16_pdf.py --root .
 
 Optional --output and --qa-output paths select the PDF and its audit receipt.
-All current labels are displayed on each included photo. Deleted r15 identities
+All current labels are displayed on each included photo. Deleted parent identities
 are dashed Dn ghosts, never current rows or training annotations. Original PNG
 pixels, manifest hashes and exact parent-to-current operation replay are checked.
 """
@@ -14,6 +14,7 @@ from collections import Counter, defaultdict
 import hashlib
 import json
 from pathlib import Path
+import re
 import sys
 
 sys.dont_write_bytecode = True
@@ -33,10 +34,10 @@ from build_front_review_r9_pdf import (
 
 DEFAULT_REVIEW = 'data/reviews/fronts-2026-11-22-r16'
 DEFAULT_LEDGER = 'results/review/front-review-20261122-r16'
-PROVENANCE = ('Only new-series photographs with nonempty saved labels changed in round 16 are displayed, with every current front. '
+PROVENANCE = ('Only new-series photographs with nonempty saved labels changed in round {round} are displayed, with every current front. '
               'Unchanged photographs, old-series photographs and empty scenes are excluded from this PDF only. '
-              'Magenta identifies fields changed since round 15; cyan identifies retained fields. '
-              'Original PNG pixels and exact r15 row provenance are preserved.')
+              'Magenta identifies fields changed since round {parent}; cyan identifies retained fields. '
+              'Original PNG pixels and exact r{parent} row provenance are preserved.')
 INDEX_ROWS_PER_COLUMN = 17
 INDEX_COLUMNS = 2
 INDEX_PAGE_CAPACITY = INDEX_ROWS_PER_COLUMN * INDEX_COLUMNS
@@ -53,8 +54,15 @@ def load_inputs(root, review_root, ledger_root):
     manifest = read_json(manifest_path)
     parent_path = bound(manifest['parent'])
     parent = read_json(parent_path)
-    if manifest.get('review_id') != 'fronts-2026-11-22-r16' or parent.get('review_id') != 'fronts-2026-11-21-r15':
-        raise ValueError('Expected the r16 review with its immutable r15 parent')
+    def review_round(value):
+        match = re.fullmatch(r'fronts-\d{4}-\d{2}-\d{2}-r(\d+)', value)
+        if not match:
+            raise ValueError('Expected a dated front review identity')
+        return int(match[1])
+    round_number = review_round(manifest.get('review_id', ''))
+    parent_round = review_round(parent.get('review_id', ''))
+    if round_number != parent_round + 1:
+        raise ValueError('Expected the immediately preceding immutable review')
     source_path = root / 'data/manifest.json'
     if digest(source_path) != manifest['source_manifest_sha256']:
         raise ValueError('Original source manifest differs')
@@ -102,7 +110,7 @@ def load_inputs(root, review_root, ledger_root):
         if (path.read_bytes() != old_path.read_bytes()) != (iid in changed_ids):
             raise ValueError(f'Declared changed-photo byte comparison differs: {iid}')
         if path.read_bytes() != expected or maps[iid] != row_map:
-            raise ValueError(f'Exact r15-to-r16 replay or row identity differs: {iid}')
+            raise ValueError(f'Exact parent-to-current replay or row identity differs: {iid}')
         raw, rows = parse_labels(path)
         if len(rows) != f['objects']:
             raise ValueError(f'Instance count differs: {iid}')
@@ -117,7 +125,7 @@ def load_inputs(root, review_root, ledger_root):
             action = op.get('action', 'replace')
             if action == 'delete':
                 if op['base_row'] not in row_map['deleted_base_rows']:
-                    raise ValueError(f'Deleted r15 identity remains current: {iid}')
+                    raise ValueError(f'Deleted parent identity remains current: {iid}')
                 image_deleted.append({'base_row': op['base_row'],
                                       'values': parse_line(op['before_line'], f'{iid}:deleted'),
                                       'reason': op['reason']})
@@ -171,7 +179,7 @@ def load_inputs(root, review_root, ledger_root):
         expected_rows = [lookup[r] for r in case['base_rows'] if r in lookup]
         rows = case.get('current_rows', expected_rows)
         if rows != expected_rows or len(rows) != len(case['base_rows']):
-            raise ValueError(f'Unresolved case lost or changed its r15 identity: {case["case_id"]}')
+            raise ValueError(f'Unresolved case lost or changed its parent identity: {case["case_id"]}')
         for row in rows:
             held.setdefault(iid, {}).setdefault(row, set()).update(case['fields'])
         c = dict(case, current_rows=rows)
@@ -180,12 +188,16 @@ def load_inputs(root, review_root, ledger_root):
         case_map[iid].append(c)
     amendment_notes_path = ledger_root / 'pdf-amendment-notes.json'
     amendment_notes = {}
+    amendment_questions = {}
     amendment_notes_descriptor = None
     if amendment_notes_path.exists():
         display = read_json(amendment_notes_path)
         if display.get('source_review_manifest_sha256') != digest(manifest_path):
             raise ValueError('Optional PDF amendment notes are stale')
         amendment_notes = display['photo_notes']
+        amendment_questions = display.get('pending_questions', {})
+        if not set(amendment_questions).issubset(ids):
+            raise ValueError('Pending amendment questions must name included photographs')
         if not set(amendment_notes).issubset(ids) or any(not isinstance(v, list) for v in amendment_notes.values()):
             raise ValueError('Amendment notes must name included photographs and list strings')
         amendment_notes_descriptor = {'path': amendment_notes_path.relative_to(root).as_posix(), 'sha256': digest(amendment_notes_path)}
@@ -212,15 +224,17 @@ def load_inputs(root, review_root, ledger_root):
                'included_objects': sum(len(files[i]['rows']) for i in ids),
                'row_number_changes': sum(r != m.get('base_row', r) for i in ids for r, m in identity_maps[i].items())}
     return {'manifest': manifest, 'manifest_path': manifest_path, 'parent': manifest['parent'],
+            'round_number': round_number, 'parent_round': parent_round,
             'records': records, 'files': files, 'ids': ids, 'edits': edits, 'deleted': deleted,
             'identities': identity_maps, 'held': held, 'cases': dict(case_map), 'summary': summary,
             'operations': operations, 'display_case_notes': notes_descriptor,
-            'amendment_notes': amendment_notes, 'display_amendment_notes': amendment_notes_descriptor,
+            'amendment_notes': amendment_notes, 'amendment_questions': amendment_questions,
+            'display_amendment_notes': amendment_notes_descriptor,
             'numeric_only_differences': numeric_only_differences,
             'input_descriptors': {key: manifest[key] for key in ('operations', 'review_status', 'row_maps')}}
 
 
-def draw_photo(c, image, rows, edits, held, identities, deleted):
+def draw_photo(c, image, rows, edits, held, identities, deleted, parent_round=15):
     area = (30, 145, WIDTH - 60, HEIGHT - 241)
     scale = min(area[2] / image.width, area[3] / image.height)
     iw, ih = image.width * scale, image.height * scale
@@ -272,7 +286,7 @@ def draw_photo(c, image, rows, edits, held, identities, deleted):
                                      'rect': [qx, qy, qx + box_width, qy + box_height]})
             keypoints.extend((qx + box_width * fx, qy + box_height * fy)
                              for fx in (0, .5, 1) for fy in (0, .5, 1))
-        specs.append({'row': row, 'current_row': row, 'r15_base_row': base,
+        specs.append({'row': row, 'current_row': row, f'r{parent_round}_base_row': base,
                       'addition_id': identity.get('addition_id'), 'kind': 'current',
                       'label': label, 'anchor': list(point(left, top)),
                       'width': tag_width,
@@ -291,7 +305,7 @@ def draw_photo(c, image, rows, edits, held, identities, deleted):
         cx, cy = qx + rw / 2, qy + rh / 2
         c.line(cx - 3, cy - 3, cx + 3, cy + 3); c.line(cx - 3, cy + 3, cx + 3, cy - 3)
         label = f'D{base}'
-        specs.append({'row': -base, 'current_row': None, 'r15_base_row': base, 'kind': 'deleted',
+        specs.append({'row': -base, 'current_row': None, f'r{parent_round}_base_row': base, 'kind': 'deleted',
                       'label': label, 'anchor': list(point(left, top)),
                       'width': pdfmetrics.stringWidth(label, 'Review-Bold', TAG_SIZE) + 5,
                       'box_height': max(0, rh), 'tag_color': 'magenta', 'held': False})
@@ -323,12 +337,12 @@ def draw_photo(c, image, rows, edits, held, identities, deleted):
             'clipped_tag_rows': clipped, 'displayed_rows': list(range(1, len(rows) + 1))}
 
 
-def header(c, title, subtitle, page):
+def header(c, title, subtitle, page, data):
     c.setFillColor(white); c.rect(0, 0, WIDTH, HEIGHT, fill=1, stroke=0)
-    text(c, 'CASSETTE FRONT REVIEW / ROUND 16', 30, HEIGHT - 29, 10, MUTED, True)
+    text(c, f'CASSETTE FRONT REVIEW / ROUND {data["round_number"]}', 30, HEIGHT - 29, 10, MUTED, True)
     text(c, title, 30, HEIGHT - 59, 24, INK, True)
     text(c, subtitle, 30, HEIGHT - 80, 10.5, MUTED)
-    text(c, 'Original camera pixels / Current r16 rows [r15 base] / Rendering does not move coordinates', 30, 20, 9, MUTED)
+    text(c, f'Original camera pixels / Current r{data["round_number"]} rows [r{data["parent_round"]} base] / Rendering does not move coordinates', 30, 20, 9, MUTED)
     text(c, f'{page:03d}', WIDTH - 56, 20, 10, MUTED)
 
 
@@ -339,22 +353,22 @@ def index_groups(data):
 
 def intro(c, data, page_numbers, ids, page, index_count):
     s = data['summary']; counts = s['operation_counts']
-    header(c, 'Changed photographs / Round 16',
-           'Only photos with saved label changes in this pass. Every current front on each included photo is shown.', page)
+    header(c, f'Changed photographs / Round {data["round_number"]}',
+           'Only photos with saved label changes in this pass. Every current front on each included photo is shown.', page, data)
     text(c, f'{s["included_photos"]} photographs', 30, HEIGHT - 125, 27, INK, True)
     text(c, f'{s["included_objects"]} current fronts', 390, HEIGHT - 125, 27, INK, True)
     text(c, f'{s["highlighted_current_rows"]} edited rows', 775, HEIGHT - 125, 27, INK, True)
     case_word = "case" if s["held_cases"] == 1 else "cases"
     photo_word = "photograph" if s["held_photos"] == 1 else "photographs"
     text(c, f'{s["changed_photos"]} photos changed / {counts["replace"]} row replacements / {counts["add"]} additions / {counts["delete"]} removal{"" if counts["delete"] == 1 else "s"} / '
-         f'{s["held_cases"]} displayed open {case_word} in {s["held_photos"]} {photo_word}', 30, HEIGHT - 148, 11)
+         f'{s["held_cases"]} displayed held {case_word} in {s["held_photos"]} {photo_word}', 30, HEIGHT - 148, 11)
     c.setFillColor(INK); c.roundRect(30, HEIGHT - 195, WIDTH - 60, 34, 4, fill=1, stroke=0)
-    text(c, 'CYAN  unchanged vs r15', 42, HEIGHT - 182, 10.5, CYAN, True)
+    text(c, f'CYAN  unchanged vs r{data["parent_round"]}', 42, HEIGHT - 182, 10.5, CYAN, True)
     text(c, 'MAGENTA  changed fields', 352, HEIGHT - 182, 10.5, MAGENTA, True)
     text(c, '*  edited row    -  removal    ?  open question', 715, HEIGHT - 182, 10.5, white, True)
     text(c, 'Circle = left front corner. Square = right. Missing points have no marker; their row numbers are listed below each photograph.',
          30, HEIGHT - 214, 10)
-    text(c, 'A dashed Dn marker shows a deleted r15 row. Bracketed numbers show r15 identities when current row numbers shift.',
+    text(c, f'A dashed Dn marker shows a deleted r{data["parent_round"]} row. Bracketed numbers show r{data["parent_round"]} identities when current row numbers shift.',
          30, HEIGHT - 231, 10)
     text(c, 'PHOTO INDEX  /  click a photograph name', 30, HEIGHT - 254, 10, MUTED, True)
     width = (WIDTH - 60) / INDEX_COLUMNS
@@ -362,22 +376,25 @@ def intro(c, data, page_numbers, ids, page, index_count):
     for i, iid in enumerate(ids):
         column, row = divmod(i, index_rows)
         x, y = 30 + column * width, HEIGHT - 274 - row * 23.0
-        flags = (' *' if iid in data['edits'] else '') + (' -' if iid in data['deleted'] else '') + (' ?' if iid in data['cases'] else '')
+        flags = (' *' if iid in data['edits'] else '') + (' -' if iid in data['deleted'] else '') + (' ?' if iid in data['cases'] or iid in data.get('amendment_questions', {}) else '')
         text(c, iid + flags, x, y, 12, INK, True)
         label = 'empty' if not data['files'][iid]['rows'] else f'{len(data["files"][iid]["rows"])} fronts'
         text(c, label, x + 170, y, 11, MUTED)
         text(c, str(page_numbers[iid]), x + width - 43, y, 11, MUTED)
         c.linkRect('', 'photo-' + iid, (x, y - 3, x + width - 17, y + 10), relative=0, thickness=0)
+    if data.get('amendment_questions'):
+        text(c, 'Pending amendment: ' + '; '.join(data['amendment_questions'].values()),
+             30, 95, 10, INK)
     if s['held_photos_omitted']:
         text(c, 'Unchanged unresolved photographs remain in the saved ledger: ' + ', '.join(s['held_photos_omitted']) + '.',
              30, 79, 10, MUTED)
     text(c, 'Unchanged photos, old-series photos and empty scenes are omitted from this PDF only. The full saved dataset is retained.',
          30, 63, 10, MUTED)
-    text(c, 'Cross-row anchors refer to immutable r15 rows. Index numbers link to photo pages; click the page header to return.',
+    text(c, f'Cross-row anchors refer to immutable r{data["parent_round"]} rows. Index numbers link to photo pages; click the page header to return.',
          30, 47, 10, MUTED)
 
 
-def row_trace(identities):
+def row_trace(identities, parent_round):
     shifted = [(current, v['base_row']) for current, v in sorted(identities.items())
                if 'base_row' in v and current != v['base_row']]
     groups = []
@@ -386,7 +403,7 @@ def row_trace(identities):
             groups[-1].append((current, base))
         else:
             groups.append([(current, base)])
-    return '; '.join(f'r15 {ranges(b for _, b in g)} -> {ranges(r for r, _ in g)}' for g in groups)
+    return '; '.join(f'r{parent_round} {ranges(b for _, b in g)} -> {ranges(r for r, _ in g)}' for g in groups)
 
 
 def footer(c, iid, data):
@@ -397,12 +414,12 @@ def footer(c, iid, data):
     text(c, 'CHANGED FIELDS / CURRENT ROWS', columns[0][0], 126, 9.5, MUTED, True)
     changed_lines = [f'{g.capitalize()}: {ranges(r for r, gs in edits.items() if g in gs)}' for g in GROUPS]
     if additions: changed_lines.append('Added current rows: ' + ranges(additions))
-    if deleted: changed_lines.append('Deleted r15 rows: ' + ranges(d['base_row'] for d in deleted))
+    if deleted: changed_lines.append(f'Deleted r{data["parent_round"]} rows: ' + ranges(d['base_row'] for d in deleted))
     text(c, 'POINT AVAILABILITY / ROW PROVENANCE', columns[1][0], 126, 9.5, MUTED, True)
     missing = {side: [i for i, v in enumerate(rows, 1) if not v[start + 2]]
                for side, start in (('left', 5), ('right', 8))}
     missing_lines = [f'0 0 0 left: {ranges(missing["left"])}', f'0 0 0 right: {ranges(missing["right"])}']
-    trace = row_trace(identities)
+    trace = row_trace(identities, data['parent_round'])
     if trace: missing_lines.append(trace)
     text(c, 'REVIEW NOTES', columns[2][0], 126, 9.5, MUTED, True)
     notes = []
@@ -431,7 +448,7 @@ def footer(c, iid, data):
         rendered.append({'lines': lines, 'font_size': size, 'truncated': overflow})
     return {'changed_fields_block': rendered[0], 'availability_trace_block': rendered[1],
             'case_notes_block': rendered[2], 'missing_point_rows': missing,
-            'added_current_rows': additions, 'deleted_r15_rows': [d['base_row'] for d in deleted],
+            'added_current_rows': additions, f'deleted_r{data["parent_round"]}_rows': [d['base_row'] for d in deleted],
             'row_trace': trace}
 
 
@@ -520,14 +537,15 @@ def verify_saved_pdf(root, output, data):
 def build(root, review_root, ledger_root, output, qa_output):
     register_fonts()
     data = load_inputs(root, review_root, ledger_root)
+    provenance = PROVENANCE.format(round=data['round_number'], parent=data['parent_round'])
     groups = index_groups(data)
     index_count = len(groups)
     page_numbers = {iid: n + index_count + 1 for n, iid in enumerate(data['ids'])}
     index_for_photo = {iid: n + 1 for n, ids in enumerate(groups) for iid in ids}
     output.parent.mkdir(parents=True, exist_ok=True)
     c = canvas.Canvas(str(output), pagesize=(WIDTH, HEIGHT), pageCompression=1)
-    c.setTitle('Cassette front review r16 - changed photographs')
-    c.setAuthor('Siuuuers/dl'); c.setSubject(PROVENANCE)
+    c.setTitle(f'Cassette front review r{data["round_number"]} - changed photographs')
+    c.setAuthor('Siuuuers/dl'); c.setSubject(provenance)
     for n, ids in enumerate(groups, 1):
         c.bookmarkPage(f'index-{n}'); c.addOutlineEntry(f'Photo index {n} of {index_count}', f'index-{n}', level=0)
         intro(c, data, page_numbers, ids, n, index_count); c.showPage()
@@ -545,13 +563,15 @@ def build(root, review_root, ledger_root, output, qa_output):
         deleted = data['deleted'].get(iid, [])
         split = 'TRAIN REVIEW' if item['split'] == 'train' else 'DEVELOPMENT REVIEW'
         title_note = f'{split} / {len(item["rows"])} current fronts / {len(edits)} marked current row{"" if len(edits) == 1 else "s"}'
-        if deleted: title_note += f' / {len(deleted)} deleted r15 row{"" if len(deleted) == 1 else "s"}'
+        if deleted: title_note += f' / {len(deleted)} deleted r{data["parent_round"]} row{"" if len(deleted) == 1 else "s"}'
         open_cases = len(data['cases'].get(iid, []))
-        title_note += f' / {open_cases} open case{"" if open_cases == 1 else "s"}'
-        header(c, iid, title_note, page_numbers[iid])
+        title_note += f' / {open_cases} held case{"" if open_cases == 1 else "s"}'
+        if iid in data.get('amendment_questions', {}):
+            title_note += ' / 1 pending amendment'
+        header(c, iid, title_note, page_numbers[iid], data)
         c.bookmarkPage('photo-' + iid); c.addOutlineEntry(iid, 'photo-' + iid, level=0)
         c.linkRect('', f'index-{index_for_photo[iid]}', (30, HEIGHT - 33, 310, HEIGHT - 17), relative=0, thickness=0)
-        visual = draw_photo(c, image, item['rows'], edits, held, data['identities'][iid], deleted)
+        visual = draw_photo(c, image, item['rows'], edits, held, data['identities'][iid], deleted, data['parent_round'])
         foot = footer(c, iid, data)
         pages.append({**visual, **foot, 'page': page_numbers[iid], 'image_id': iid,
                       'split': item['split'], 'label_sha256': item['sha256'],
@@ -568,7 +588,7 @@ def build(root, review_root, ledger_root, output, qa_output):
                         for page in pages
                         for block in ('changed_fields_block', 'availability_trace_block', 'case_notes_block')
                         if page[block]['truncated']]
-    qa = {'schema_version': 1, 'summary': data['summary'], 'provenance': PROVENANCE,
+    qa = {'schema_version': 1, 'summary': data['summary'], 'provenance': provenance,
           'pdf': str(output), 'pdf_sha256': digest(output), 'page_count': len(data['ids']) + index_count,
           'review_manifest': {'path': data['manifest_path'].relative_to(root).as_posix(), 'sha256': digest(data['manifest_path'])},
           'parent_review': data['parent'], 'input_descriptors': data['input_descriptors'],
@@ -591,12 +611,13 @@ def build(root, review_root, ledger_root, output, qa_output):
     return qa
 
 
-def main():
+def main(default_review=DEFAULT_REVIEW, default_ledger=DEFAULT_LEDGER,
+         default_output='output/pdf/front-review-r16-changed-photos.pdf'):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument('--review-root', type=Path, default=Path(DEFAULT_REVIEW))
-    parser.add_argument('--ledger-root', type=Path, default=Path(DEFAULT_LEDGER))
-    parser.add_argument('--output', type=Path, default=Path('output/pdf/front-review-r16-changed-photos.pdf'))
+    parser.add_argument('--review-root', type=Path, default=Path(default_review))
+    parser.add_argument('--ledger-root', type=Path, default=Path(default_ledger))
+    parser.add_argument('--output', type=Path, default=Path(default_output))
     parser.add_argument('--qa-output', type=Path)
     args = parser.parse_args(); root = args.root.resolve()
     def resolve(path):

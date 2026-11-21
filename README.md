@@ -1,18 +1,18 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前入口：PR35 推論、r16 修訂與新 notebook
+## 目前入口：PR35 推論、r17 修訂與新 notebook
 
-**2026-11-22：本輪17張指定照片已覆核，83列修訂及照片066第22列刪除已存成實際YOLO標籤。** 實際變更15張；007/008的文字要求已判讀，但部分參照不符合自身角點位置或已經滿足，因此保持原標籤。完整覆核保留全部157份標籤，142份檔案與r15位元組相同。[目前完整標籤](data/reviews/fronts-2026-11-22-r16/manifest.json)；[本輪說明與逐項判定](docs/front-review-r16.md)。
+**2026-11-22：先前 r16 修訂已確實儲存；本輪接續處理 067–075、079、080 共 11 張訓練照片。** r16 的 83 列修訂及照片 066 第 22 列刪除已在 GitHub commit `8d72f7b7869aae4e71cbe9066fb28dd54ba7f9a2`。當時中斷的是 notebook 來源版本固定與交付，不是標註儲存。[目前完整 r17 標籤](data/reviews/fronts-2026-11-22-r17/manifest.json)保留全部 157 份標籤；[本輪說明](docs/front-review-r17.md)與[逐列修訂統計](results/review/front-review-20261122-r17/amendment-summary.json)記錄最新結果。本輪實際修訂 139 列、刪除 1 列，涉及 11 張照片；146 份未指定標籤與 r16 完全相同。
 
-**新PDF共16頁：1頁可點選索引及15張變更照片，顯示全部612個目前物件。** 洋紅色表示修訂欄位、青色表示沿用；照片066的D22虛線是歷史刪除標記，不是目前標籤。未修改照片、old系列及空圖不進入這份PDF，但仍在完整資料集。[PDF交付與驗證](results/review/front-review-20261122-r16/pdf-delivery.json)。
+**目前訓練入口：[baomai_front_review_r17.ipynb](notebooks/baomai_front_review_r17.ipynb)，或[直接在 Colab 開啟](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r17-20261122/notebooks/baomai_front_review_r17.ipynb)。** 選 GPU、Run all，完成後回傳 `baomai-front-review-r17-results.zip`。兩組各自從 epoch173 開始，使用相同 seed46、30 輪、batch4、1280 輸入、FP32、AdamW 與初始學習率 0.0001；參考／候選分別有 3,771／3,784 個訓練物件，92 份訓練標籤不同；訓練前會顯示完整物件與角點數量。
 
-**PR88的r15訓練回傳已核對並完成固定條件評估，目前仍選用PR35。** r15候選在固定666個正面的主要參考中漏35個、未配對輸出101個（新對照組20／83）；在回傳前已固定的r15覆核參考中漏16個、未配對輸出86個（新對照組39／106）。相對上一代候選，在完全相同的r15標籤下只多一個跨越IoU門檻的配對，5px/10px角點成功總數相同。後續r16標籤重播另列。[完整PR88評估](results/evaluation/pr88-r15-20261122/README.md)。
+兩組保留 137 張訓練圖與 13 張空圖。照片 015 未畫框的額外正面問題仍是唯一訓練保留；31 張 old 系列另列為處理排除，兩組都使用相同 PR35 標籤。17 組先前顯示案例的確認沿用。本輪 11 張均屬訓練集，原始 20 張／664 個訓練驗證標籤、固定 666／663 評分參考及 r16 的 662 個開發覆核標籤保持完整。[輸入驗證](results/review/front-review-20261122-r17/verification.json)；[notebook 固定版本驗證](results/review/front-review-20261122-r17/notebook-verification.json)。
 
-**新訓練入口：[baomai_front_review_r16.ipynb](notebooks/baomai_front_review_r16.ipynb)，或[直接在Colab開啟](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r16-20261122/notebooks/baomai_front_review_r16.ipynb)。** 選GPU、Run all，完成後回傳 `baomai-front-review-r16-results.zip`。兩組各自從epoch173開始，維持seed46、30輪、batch4、1280輸入、FP32、AdamW0.0001；兩組均有137張訓練圖與13張空圖，正面數3,771／3,785，92份訓練標籤不同。
+**目前仍選用 PR35；尚未執行 r17 GPU 訓練或替換模型。** [PR88 評估](results/evaluation/pr88-r15-20261122/README.md)保留固定參考及覆核參考的不同結論。新的 r17 比較測試完整修訂標籤對 PR35 監督的影響，不單獨隔離 r16→r17 的改動。[目前推論操作](docs/current-model.md)；[r16 標註紀錄](docs/front-review-r16.md)。
 
-既有17組顯示標註的確認照樣沿用，本輪沒有新增解除保留的照片。照片015未畫框的額外正面問題仍是唯一訓練保留；31張old系列另列為處理排除，兩組都保留相同PR35監督。原始20張／664個驗證標籤與固定666／663評分參考保持完整。[實體輸入驗證](results/review/front-review-20261122-r16/verification.json)；[notebook固定版本驗證](results/review/front-review-20261122-r16/notebook-verification.json)。尚未執行r16 GPU訓練。[目前推論操作](docs/current-model.md)；[先前r15歷史交付](docs/front-review-r15.md)。
+標註編號以修改前的 r16 為準，跨列參照不連鎖套用修改後座標；照片 074 刪除第 13 列後的對應見[列號映射](results/review/front-review-20261122-r17/row-maps.json)。PDF 直接讀取已存標籤，顯示每張變更照片的全部現存物件。
 
-**目前資料與採集程式提供RGB；10px是原圖角點評分門檻，不是夾爪毫米容差。** 未提供配對深度、實際相機／機械臂標定或夾爪接觸餘量，因此不能從PNG或D405名稱推定毫米精度。這不阻擋本輪標註與訓練。[原始碼查核與後續幾何需求](docs/robot-grasp-readiness.md)。
+目前資料與採集程式提供 RGB。10px 是原圖角點評分門檻，尚不能轉成夾爪毫米容差；[實體幾何說明](docs/robot-grasp-readiness.md)保留後續機械定位所需的資料。
 
 ## 先前 r12 交付（歷史快照）
 
@@ -32,7 +32,7 @@
 
 **新訓練入口：[baomai_front_review_r10.ipynb](notebooks/baomai_front_review_r10.ipynb)。** Notebook固定來源commit與實驗雜湊，從epoch173獨立開始兩組seed46、30輪的受控比較。15張仍有問題的新訓練照片及另外31張本輪不處理的舊照片，在兩組中均使用完全相同的PR35標籤；保留全部137張訓練圖與13張空圖。兩組實際有77份訓練標籤不同，物件數為3,771／3,778。原始20張驗證圖及固定666／663評分參考維持不變。[實際訓練入口驗證](results/review/front-review-20261119-r10/runner-verification.json)已通過；尚未執行r10 GPU訓練。
 
-**目前仍選用PR35。** [已完成PR76評估](results/evaluation/pr76-recovery-20261119/README.md)不支持替換模型。現行推論設定為PR35 seed46、1280輸入、框門檻0.13、NMS IoU0.70、端點門檻0.50，操作請用[目前模型入口](docs/current-model.md)。舊版PDF與notebook保留供追溯，目前入口以上方r16為準。
+**目前仍選用PR35。** [已完成PR76評估](results/evaluation/pr76-recovery-20261119/README.md)不支持替換模型。現行推論設定為PR35 seed46、1280輸入、框門檻0.13、NMS IoU0.70、端點門檻0.50，操作請用[目前模型入口](docs/current-model.md)。舊版PDF與notebook保留供追溯，目前入口以上方r17為準。
 
 <details>
 <summary>先前覆核與實驗紀錄</summary>

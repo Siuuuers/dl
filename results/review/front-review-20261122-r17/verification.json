@@ -1,0 +1,166 @@
+{
+  "status": "verified",
+  "training_run": false,
+  "automatic_promotion": false,
+  "review": {
+    "path": "data/reviews/fronts-2026-11-22-r17/manifest.json",
+    "sha256": "7fee59fce6a3857314721438f7c605349181b448cbcaf313b2ebf950e8ba2197"
+  },
+  "candidate": {
+    "path": "data/candidates/front-review-2026-11-22-r17/manifest.json",
+    "sha256": "639c17d9f5107f7774f520718536afa4b9164a0ce0dbb6d4cd5a3a890dd2d176"
+  },
+  "training_protocol": {
+    "path": "experiments/front-review-2026-11-22-r17.json",
+    "sha256": "320d9e97805ddea968dd04b033037272c0fe41d77f1c149c2b05bc654f4ca12a"
+  },
+  "materialized_input_directory": "/workspace/scratch/c1b4200206bd/r17-training-inputs",
+  "materialized_staging_manifest_sha256": "96f16ca518090e3051f53e6e09810fe009e4a4499ffcc16858e09045d96bd816",
+  "materialized_counts": {
+    "reference": {
+      "train": {
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 701,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "candidate": {
+      "train": {
+        "images": 137,
+        "objects": 3784,
+        "visible_endpoints": 6837,
+        "missing_endpoints": 731,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    }
+  },
+  "materialized_file_verification": {
+    "source_labels_verified": 157,
+    "actual_original_pngs_verified": 157,
+    "copied_images_verified": 314,
+    "copied_labels_verified": 314,
+    "changed_train_labels": 92,
+    "removed_training_objects": -12,
+    "validation_images_and_labels_identical": true,
+    "source_files_rewritten": false,
+    "symlinks_present": false,
+    "trainer_loader_executed": false,
+    "reference_labels_are_verified_pr35_control": true,
+    "control_changed_train_labels": 8,
+    "net_removed_training_objects_vs_control": -13,
+    "training_readiness_verified": true,
+    "retained_photo_labels_identical_between_arms": true,
+    "retained_legacy_images": 1,
+    "full_dataset_certified": false,
+    "training_readiness_scope": "controlled_incremental_experiment_only",
+    "excluded_photo_labels_identical_between_arms": true,
+    "excluded_training_images": 31
+  },
+  "geometry": {
+    "passed": true,
+    "serialization_tolerance_original_px": 0.0001,
+    "box_edges_within_closed_image_bounds": true,
+    "visible_endpoints_within_boxes": true,
+    "visible_endpoints_strictly_in_frame": true,
+    "coordinates_clamped_or_rewritten": false
+  },
+  "code_sha256": {
+    "scripts/stage_pose_training.py": "e0719bd70209a60b8ef41193e9d15fa3c046c0a7919119cb103714b4e79fdd86",
+    "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+    "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+    "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+    "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+    "scripts/verify_observed_training_candidate.py": "28fea1d483058988ea567d9382ed82f73e511cd9b692af7bb8c23c3463134426",
+    "scripts/compose_observed_pose_review.py": "8f99c87236b09ed40c85521b68ea2a39ca4062cfa74b8cd43bb376cb5009fd25",
+    "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+    "scripts/verify_incremental_pose_candidate.py": "1e15649eb9c2d19a8bd7c09ce95b6bccc4eeae9d6bcc99ec57efb657c610b271",
+    "scripts/compose_incremental_pose_candidate.py": "9b51b8a96407af15fa820b959d30ccffe3da21ca53b4ba1f91294bb46360a789",
+    "scripts/verify_front_review_r4.py": "b46393cb5a186fd687ed6e2a4e1141711e319e138f361bd6fcbe254effb0afa0",
+    "scripts/verify_front_review_r5.py": "74b0108ed6bcd109dae0cb278b23fd6cc8f44cbbfb20c65d4ce1fa9e53570d94",
+    "scripts/verify_front_review_r6.py": "2591cc62d1c9238971358d8d1a9f20f324684a4f125aa63b29a1326c4bd00c82",
+    "scripts/verify_front_review_r7.py": "afc116835e371dd459bcf62274ed90124196cc7ccb15f580524322b0d7c85fee",
+    "scripts/verify_front_review_r8.py": "49675f497acb6fab08d473d506f30dea7b1fa20633bfc10a77c0c6ba03e64c30",
+    "scripts/verify_front_review_r10.py": "cc1fec49a90fcce865a55860986247a179d04dd61246e63bc043b343600f2d0d",
+    "scripts/build_front_review_r10.py": "37ff963e6068604698595ce363b50df4215157519ec881558afc8ff94b76ecef",
+    "scripts/verify_front_review_r11.py": "3836f9cc414d3d8d964e777e2b3cddf6b58fdfe23c618e67f1afbe1e4b93b023",
+    "scripts/build_front_review_r11.py": "be37437dea7e2298a4247d328f472dab1a808854a392f987e78fa97578d35c45",
+    "scripts/verify_front_review_r12.py": "937fc14a80a1a805f483c73ce2a506c794ca17f501b56bd37285c69e2f1890a5",
+    "scripts/build_front_review_r12.py": "f372b76d3bbfd614201518720cefd428993e9de58a5958ea227d9001951453d3",
+    "scripts/verify_front_review_r13.py": "b9c00e1facf3017f59090aff6f50d0cced1ada1aa953ed9c666c2fdc9f44e668",
+    "scripts/build_front_review_r13.py": "e2ced3f074fb56fc2fbf82bf42cb8e32cdbc75b8569231775aa454758ecc7d02",
+    "scripts/verify_front_review_r14.py": "b28d421ddcb7d5ffd54b3511335fe206dd422b4f67bc701a0e05c48b360c7b56",
+    "scripts/build_front_review_r14.py": "d561f7694b44367b25c5ec4dce460b5c22f3a58c017ee6de3d99e5bb11ed00de",
+    "scripts/verify_front_review_r15.py": "79a2c550a68d1d9c6a9308fa362ac34f8e2a230a59913dd12a2e6d9fd810d48d",
+    "scripts/build_front_review_r15.py": "9cbb731008484b4d610acd59b6793c74440270ce007e03d60d72f42bd8316f03",
+    "scripts/verify_front_review_r16.py": "e6fe5938ddde0a91d603c12e3cc846463d10cdd1e2844867663d24046c0ce334",
+    "scripts/build_front_review_r16.py": "fe2ee797e4d1506062689de839e700bf8bd307047f82221639539112aa92ba28",
+    "scripts/verify_front_review_r17.py": "8ae0320b5ad4bb099fe947bab60b1b38a7999721138a32bf3540f9f8f50d8b7a",
+    "scripts/build_front_review_r17.py": "52c7a842b70a3697ee3309a14b012c8ab8028763b26b620da5588b3225eabe23",
+    "scripts/front_review_experiment.py": "58fc3f020edfe834c4d051ba98a954661ffaf7bdf2ce2dbc0caf2fbec3a7f524"
+  },
+  "scope": {
+    "changed_photos": 11,
+    "operation_counts": {
+      "replace": 139,
+      "delete": 1
+    },
+    "unrequested_review_files_identical_to_r16": 146,
+    "development_review_files_identical_to_r16": 20,
+    "old_review_files_preserved": 31,
+    "held_training_photo_ids": [
+      "new_000015"
+    ],
+    "deleted_r16_rows": {
+      "new_000074": [
+        13
+      ]
+    },
+    "inherited_displayed_case_approvals": 17
+  },
+  "scoring_references": {
+    "primary_reference": "data/references/sequence-refined-reference-2026-11-18/manifest.json",
+    "primary_reference_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+    "primary_counts": {
+      "images": 20,
+      "objects": 666,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 105,
+      "empty_images": 3
+    },
+    "diagnostic_reference": "data/references/visible-front-completion-2026-11-14/manifest.json",
+    "diagnostic_reference_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+    "diagnostic_counts": {
+      "images": 20,
+      "objects": 663,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 99,
+      "empty_images": 3
+    },
+    "current_review_reference": {
+      "path": "data/reviews/fronts-2026-11-22-r16/manifest.json",
+      "sha256": "1645f999fa8be08e9c8a317ffccd88e54285a81aac181a8e1ec8c9b328b81993"
+    }
+  },
+  "limits": [
+    "Exact replay and materialized input checks do not establish infallible physical annotation.",
+    "GPU installation, Drive interaction and model training were not executed."
+  ]
+}
