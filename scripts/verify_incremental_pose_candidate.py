@@ -501,6 +501,9 @@ def verify_incremental_candidate(root, candidate=None):
     root = Path(root).resolve()
     candidate = Path(DEFAULT_CANDIDATE) if candidate is None else Path(candidate)
     candidate = (candidate if candidate.is_absolute() else root / candidate).resolve()
+    if candidate == root / "data/candidates/front-review-2026-11-22-r18/manifest.json":
+        from verify_front_review_r18 import verify_candidate as verify_r18_candidate
+        return verify_r18_candidate(root, candidate)
     if candidate == root / "data/candidates/front-review-2026-11-22-r17/manifest.json":
         from verify_front_review_r17 import verify_candidate as verify_r17_candidate
         return verify_r17_candidate(root, candidate)
