@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "logs": [
+    {
+      "role": "pr35",
+      "original_path": "train.log",
+      "preserved_path": "checkpoint-receipts/pr35/train-log.txt",
+      "sha256": "d672ec357af70801aaf1b17022781d20628e58e821034ea765949d0b6fc0351d",
+      "byte_identical_to_original": true
+    },
+    {
+      "role": "reference",
+      "original_path": "train.log",
+      "preserved_path": "checkpoint-receipts/reference/train-log.txt",
+      "sha256": "5b6e7711d39c6bce4509a42f5487dc5044cfe14a8a104423b15a49db586b4d90",
+      "byte_identical_to_original": true
+    },
+    {
+      "role": "candidate",
+      "original_path": "train.log",
+      "preserved_path": "checkpoint-receipts/candidate/train-log.txt",
+      "sha256": "2e262a1524fd75cfb7162aa6e3cf13c9de5d1142acc4660af889226230a0dac7",
+      "byte_identical_to_original": true
+    }
+  ],
+  "reason": "Preserve exact returned training logs despite repository *.log ignore rule. The scorer restores the original log name in a temporary directory for strict receipt checks."
+}
