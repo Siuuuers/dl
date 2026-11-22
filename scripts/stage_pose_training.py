@@ -212,6 +212,7 @@ def code_hashes(*, composed=False, observed=False, incremental=False):
                   "verify_front_review_r18.py", "build_front_review_r18.py",
                   "verify_front_review_r19.py", "build_front_review_r19.py",
                   "front_review_r20.py",
+                  "front_review_r21.py",
                   "front_review_experiment.py")
     return {f"scripts/{name}": file_sha256(scripts / name) for name in names}
 

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "notebook": {
+    "revision": "bf13f8c293c316b62ede247324ef1e4e45c979a7",
+    "path": "notebooks/baomai_front_review_r20.ipynb",
+    "sha256": "7bea79f1f115a57764d7eaa0f8f13be876debcdf853d4f947f54fce5f8700c3f",
+    "source_and_protocol_pins_verified": true
+  },
+  "cell_index_zero_based": 6,
+  "check": "Decoded code AST and isolated join-expression evaluation with dummy package versions; no pip/install executed",
+  "expression_source": "constraints.write_text(''.join((f'{name}=={version(name)}\\n' for name in ('torch', 'torchvision'))), encoding='utf-8')",
+  "result_lines": [
+    "torch==2.14.1+cu130",
+    "torchvision==0.29.1+cu130"
+  ],
+  "actual_newline_count": 2,
+  "literal_backslash_n_present": false,
+  "finding": "The pinned r20 notebook writes actual newlines correctly. JSON escaping is not a constraints-file bug."
+}

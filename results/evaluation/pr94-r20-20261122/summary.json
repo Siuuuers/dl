@@ -1,0 +1,552 @@
+{
+  "schema_version": 1,
+  "kind": "pr94-r20-audit-summary",
+  "recommendation": "retain_PR35",
+  "reason": "Candidate has more fixed-primary matching misses and fewer corner successes; its ranking reverses on the separately pinned pre-return r20 review. Identity tracing demonstrates substantial reference-box sensitivity, so the fixed metrics are not interpreted as a count of physically absent detector outputs.",
+  "pr": {
+    "number": 94,
+    "head_sha": "b547a541d6473e6432ee3a5628d0581200d337ec",
+    "url": "https://github.com/Siuuuers/dl/pull/94"
+  },
+  "archive": {
+    "size_bytes": 39782532,
+    "sha256": "d9647d3a84904d4a5de5b1b6f826ff50366f462c6cb61f7f67448d58e71c38ef",
+    "crc_passed": true,
+    "indexed_members_verified": 12
+  },
+  "training_source_revision": "7207bcf4728140e03ef3fe3e6bce6918692d0a9e",
+  "protocol_sha256": "caa524e65dc4fc44cee520e150f7a3b60f5dddabfd31a7f4a2142a137ff0482f",
+  "notebook": {
+    "revision": "bf13f8c293c316b62ede247324ef1e4e45c979a7",
+    "path": "notebooks/baomai_front_review_r20.ipynb",
+    "sha256": "7bea79f1f115a57764d7eaa0f8f13be876debcdf853d4f947f54fce5f8700c3f",
+    "source_and_protocol_pins_verified": true
+  },
+  "fixed_comparison_sha256": "c45ce3a04eb543abaf4a95ddc98312bf4c535818d80841b7cecf2ed136469ebe",
+  "reference_sensitivity_sha256": "7d40aeb98522e3e11e4be242ac19e8d3365d829a118312fa5b959f251d9b5e1e",
+  "thresholds": {
+    "box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "imgsz": 1280,
+    "radii_px": [
+      5,
+      10
+    ]
+  },
+  "training": {
+    "reference": {
+      "epochs": 30,
+      "batches_completed": 1050,
+      "images_processed": 4110,
+      "optimizer_steps": 78,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "checkpoint_sha256": "6253c516991e33887a56edfe8aee76981fb445acfb1698941e6b44d5a3427496",
+      "execution": {
+        "exit_code": 0,
+        "stop_reason": null,
+        "wall_seconds": 460.459170437,
+        "sampled_peak_process_tree_rss_mib": 2984.09765625,
+        "rss_sampling_interval_seconds": 0.2,
+        "max_seconds": 21600,
+        "max_rss_mib": 12000
+      }
+    },
+    "candidate": {
+      "epochs": 30,
+      "batches_completed": 1050,
+      "images_processed": 4110,
+      "optimizer_steps": 78,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6838,
+          "missing_endpoints": 730,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "checkpoint_sha256": "8cfdc473004c835eef50a58befef7316faa9d22d77a396d6ac3a75ef0c5c50ac",
+      "execution": {
+        "exit_code": 0,
+        "stop_reason": null,
+        "wall_seconds": 449.358720554,
+        "sampled_peak_process_tree_rss_mib": 3026.98046875,
+        "rss_sampling_interval_seconds": 0.2,
+        "max_seconds": 21600,
+        "max_rss_mib": 12000
+      }
+    }
+  },
+  "training_device": "NVIDIA L4",
+  "references": {
+    "primary": {
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "manifest_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "exploratory": false,
+      "remaining_uncertain_rows": 8,
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 533,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 582,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 0
+        },
+        "reference": {
+          "tp": 646,
+          "fn": 20,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 531,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 583,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4,
+          "error_free_nonempty_scenes": 0
+        },
+        "candidate": {
+          "tp": 631,
+          "fn": 35,
+          "fp": 103,
+          "duplicate_fp": 29,
+          "other_fp": 74,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 520,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 574,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 45,
+              "misses": 14
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4,
+          "error_free_nonempty_scenes": 0
+        }
+      },
+      "candidate_match_changes": {
+        "reference": {
+          "gained": 2,
+          "lost": 17
+        },
+        "pr35": {
+          "gained": 2,
+          "lost": 19
+        }
+      }
+    },
+    "diagnostic": {
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "manifest_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "exploratory": false,
+      "remaining_uncertain_rows": 13,
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 533,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 582,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7,
+          "error_free_nonempty_scenes": 0
+        },
+        "reference": {
+          "tp": 646,
+          "fn": 17,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 531,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 583,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 5,
+          "error_free_nonempty_scenes": 0
+        },
+        "candidate": {
+          "tp": 631,
+          "fn": 32,
+          "fp": 103,
+          "duplicate_fp": 29,
+          "other_fp": 74,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 520,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 574,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 10,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 45,
+              "misses": 14
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4,
+          "error_free_nonempty_scenes": 0
+        }
+      },
+      "candidate_match_changes": {
+        "reference": {
+          "gained": 2,
+          "lost": 17
+        },
+        "pr35": {
+          "gained": 2,
+          "lost": 19
+        }
+      }
+    },
+    "current_r20_exploratory": {
+      "counts": {
+        "images": 20,
+        "objects": 662,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 98,
+        "empty_images": 3
+      },
+      "manifest_sha256": "0aac0accef28e13fab3db1939b8d9d559859b4c9e187bd0b0ee3158c31dd6eb7",
+      "exploratory": true,
+      "remaining_uncertain_rows": 0,
+      "models": {
+        "pr35": {
+          "tp": 625,
+          "fn": 37,
+          "fp": 103,
+          "duplicate_fp": 21,
+          "other_fp": 82,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 538,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 573,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 37,
+              "misses": 21
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 1
+        },
+        "reference": {
+          "tp": 624,
+          "fn": 38,
+          "fp": 105,
+          "duplicate_fp": 16,
+          "other_fp": 89,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 534,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 573,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 37,
+              "misses": 21
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "error_free_nonempty_scenes": 1
+        },
+        "candidate": {
+          "tp": 648,
+          "fn": 14,
+          "fp": 86,
+          "duplicate_fp": 30,
+          "other_fp": 56,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 549,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 583,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 58,
+              "matched": 51,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 584,
+              "misses": 0
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 10,
+          "error_free_nonempty_scenes": 1
+        }
+      },
+      "candidate_match_changes": {
+        "reference": {
+          "gained": 27,
+          "lost": 3
+        },
+        "pr35": {
+          "gained": 26,
+          "lost": 3
+        }
+      }
+    }
+  },
+  "new_training_performed": false,
+  "r21_labels_used": false,
+  "model_promoted": false,
+  "definition_sensitivity": {
+    "pr35": {
+      "fixed_primary_misses": 18,
+      "fixed_miss_categories": {
+        "deleted_from_r20_reference": 6,
+        "still_unmatched_in_r20": 11,
+        "same_output_crosses_iou_with_reference_box_change": 1
+      },
+      "r20_misses": 37
+    },
+    "reference": {
+      "fixed_primary_misses": 20,
+      "fixed_miss_categories": {
+        "deleted_from_r20_reference": 6,
+        "still_unmatched_in_r20": 12,
+        "same_output_crosses_iou_with_reference_box_change": 2
+      },
+      "r20_misses": 38
+    },
+    "candidate": {
+      "fixed_primary_misses": 35,
+      "fixed_miss_categories": {
+        "deleted_from_r20_reference": 6,
+        "same_output_crosses_iou_with_reference_box_change": 16,
+        "still_unmatched_in_r20": 13
+      },
+      "r20_misses": 14
+    },
+    "lineage": {
+      "primary_objects": 666,
+      "retained_primary_objects": 660,
+      "removed_primary_identities": 6,
+      "added_r20_identities": 2,
+      "r20_objects": 662
+    }
+  },
+  "root_decision": "Retain PR35; the candidate does not establish replacement under the fixed primary comparison, and original-pixel diagnostics show residual errors despite favorable r20 matching."
+}
