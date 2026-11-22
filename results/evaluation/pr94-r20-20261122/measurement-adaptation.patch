@@ -1,0 +1,204 @@
+--- pr92-r18/audit_return.py
++++ pr94-r20/audit_return.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Verify PR92 r18 archive, completed bundles and actual staged source bytes."""
++"""Verify PR94 r20 archive, completed bundles and actual staged source bytes."""
+ 
+ import argparse
+ import csv
+@@ -10,10 +10,10 @@
+ import sys
+ import zipfile
+ 
+-ARCHIVE_SHA = "167782e60b0a24d5ba041222a669aff2cb782ef684b3f64c7106cf9bcbb18445"
+-SOURCE_REVISION = "b6dbcc75efd5994bfdb3de456862608b2cc3aa40"
+-PROTOCOL_PATH = "experiments/front-review-2026-11-22-r18.json"
+-PROTOCOL_SHA = "788715d37250483c367513490e20945871cb77628437ed2ca27c72ea96587137"
++ARCHIVE_SHA = "d9647d3a84904d4a5de5b1b6f826ff50366f462c6cb61f7f67448d58e71c38ef"
++SOURCE_REVISION = "7207bcf4728140e03ef3fe3e6bce6918692d0a9e"
++PROTOCOL_PATH = "experiments/front-review-2026-11-22-r20.json"
++PROTOCOL_SHA = "caa524e65dc4fc44cee520e150f7a3b60f5dddabfd31a7f4a2142a137ff0482f"
+ 
+ 
+ def sha(path):
+@@ -37,8 +37,9 @@
+     from evaluate_pose import preflight_dataset
+     from pose_checkpoint import select_checkpoint
+     from stage_pose_training import yaml_bytes
++    from package_gpu_results import collect_arm, check_pair, shared_settings
+ 
+-    require(archive.stat().st_size == 39783562 and sha(archive) == ARCHIVE_SHA, "Wrong PR92 archive")
++    require(archive.stat().st_size == 39782532 and sha(archive) == ARCHIVE_SHA, "Wrong PR94 archive")
+     with zipfile.ZipFile(archive) as z:
+         require(z.testzip() is None, "ZIP CRC failure")
+         members = z.namelist()
+@@ -59,20 +60,41 @@
+     require(sha(protocol_path) == PROTOCOL_SHA, "Protocol differs")
+     protocol = json.loads(protocol_path.read_text())
+     preflight = preflight_dataset(root, require_weights=False)
++    paired = {role: collect_arm(preflight, bundle / role, role) for role in ("reference", "candidate")}
++    check_pair(paired["reference"], paired["candidate"])
++    for role, validated in paired.items():
++        require(index["arms"][role]["checkpoint_identity"] == validated["identity"], "Archive checkpoint identity differs: " + role)
++        require(index["training_source"] == validated["receipt"]["source"], "Archive training source differs: " + role)
++        require(index["runtime"] == validated["receipt"]["runtime"], "Archive runtime differs: " + role)
++        require(index["shared_training_settings"] == shared_settings(validated["receipt"]), "Archive settings differ: " + role)
++        require(index["source"] == validated["staging"]["source"], "Archive dataset source differs: " + role)
++    require(index["source"]["training_protocol"] == {"path": PROTOCOL_PATH, "sha256": PROTOCOL_SHA}, "Archive protocol identity differs")
++    notebook_revision = "bf13f8c293c316b62ede247324ef1e4e45c979a7"
++    notebook_path = "notebooks/baomai_front_review_r20.ipynb"
++    notebook_sha = "7bea79f1f115a57764d7eaa0f8f13be876debcdf853d4f947f54fce5f8700c3f"
++    notebook_bytes = subprocess.run(["git", "-C", str(root), "show", notebook_revision + ":" + notebook_path], capture_output=True, check=True).stdout
++    require(hashlib.sha256(notebook_bytes).hexdigest() == notebook_sha, "Pinned r20 notebook differs")
++    notebook = json.loads(notebook_bytes)
++    notebook_code = "\n".join("".join(c["source"]) for c in notebook["cells"] if c["cell_type"] == "code")
++    require('SOURCE_REVISION = "' + SOURCE_REVISION + '"' in notebook_code and 'PROTOCOL_SHA256 = "' + PROTOCOL_SHA + '"' in notebook_code, "Notebook does not pin this source/protocol")
+     original = json.loads((root / "data/manifest.json").read_text())
+     for record in original["records"]:
+         require(sha(root / "data" / record["image"]) == record["image_sha256"], "Original image differs: " + record["id"])
+         require(sha(root / "data" / record["label"]) == record["label_sha256"], "Original label differs: " + record["id"])
+     report = {
+         "schema_version": 1,
+-        "kind": "pr92-r18-return-audit",
+-        "pr": {"number": 92, "head_sha": "f794bdd3d2842771e2cc29c624e8c2f26dba2ef8", "url": "https://github.com/Siuuuers/dl/pull/92"},
++        "kind": "pr94-r20-return-audit",
++        "pr": {"number": 94, "head_sha": "b547a541d6473e6432ee3a5628d0581200d337ec", "url": "https://github.com/Siuuuers/dl/pull/94"},
+         "archive": {"size_bytes": archive.stat().st_size, "sha256": sha(archive), "crc_passed": True, "indexed_members_verified": len(index["files"])},
+         "training_source": index["training_source"],
+         "recorded_source_files_verified_against_git_revision": True,
++        "paired_runtime_source_dataset_and_settings_verified": True,
++        "notebook": {"revision": notebook_revision, "path": notebook_path, "sha256": notebook_sha,
++                     "source_and_protocol_pins_verified": True},
+         "protocol_sha256": PROTOCOL_SHA,
+         "original_validation": original["split_summary"]["val"],
+         "original_images_verified": len(original["records"]),
++        "audit_script_sha256": sha(__file__),
+         "runtime": index["runtime"],
+         "arms": {},
+     }
+--- pr92-r18/run_pr92_inference.py
++++ pr94-r20/run_pr94_inference.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Reproduce the three fixed PR92 CPU inferences without training or tuning."""
++"""Reproduce the three fixed PR94 CPU inferences without training or tuning."""
+ import argparse
+ import hashlib
+ import json
+@@ -12,12 +12,12 @@
+     "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+     "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+     "scripts/pose_checkpoint.py": "e0f85a76fd5234a98e66783d3408e22175ba334c6209f91aca8680221a2f8d5d",
+-    "experiments/front-review-2026-11-22-r18.json": "788715d37250483c367513490e20945871cb77628437ed2ca27c72ea96587137",
++    "experiments/front-review-2026-11-22-r20.json": "caa524e65dc4fc44cee520e150f7a3b60f5dddabfd31a7f4a2142a137ff0482f",
+ }
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "3ac9f977089edc9b4a6abde38466a21f93c7bdbfc8633212c92d856e7623fe6a",
+-    "candidate": "baf2c0eb852c1fbbae5dc6aaf1c68a0fd6ed7d75ed7be892557b9d01fda4d9a1",
++    "reference": "6253c516991e33887a56edfe8aee76981fb445acfb1698941e6b44d5a3427496",
++    "candidate": "8cfdc473004c835eef50a58befef7316faa9d22d77a396d6ac3a75ef0c5c50ac",
+ }
+ 
+ 
+--- pr92-r18/measure_pr92.py
++++ pr94-r20/measure_pr94.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Score the fixed PR92 r18 comparison from saved predictions, without training."""
++"""Score the fixed PR94 r20 comparison from saved predictions, without training."""
+ 
+ import argparse
+ import hashlib
+@@ -10,16 +10,11 @@
+ import tempfile
+ from pathlib import Path
+ 
+-PROTOCOL_SHA = "788715d37250483c367513490e20945871cb77628437ed2ca27c72ea96587137"
++PROTOCOL_SHA = "caa524e65dc4fc44cee520e150f7a3b60f5dddabfd31a7f4a2142a137ff0482f"
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "3ac9f977089edc9b4a6abde38466a21f93c7bdbfc8633212c92d856e7623fe6a",
+-    "candidate": "baf2c0eb852c1fbbae5dc6aaf1c68a0fd6ed7d75ed7be892557b9d01fda4d9a1",
+-}
+-PREVIOUS_R17_MODEL_SHA = {
+-    "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "7474bfe23f5db6d9b63678059cf4b29e1a7c962bdf736940a240b4c2ddba8c42",
+-    "candidate": "bab1050d4a8adbaeda4fe371203b58b35581074c909d63328317acfd36457b2b",
++    "reference": "6253c516991e33887a56edfe8aee76981fb445acfb1698941e6b44d5a3427496",
++    "candidate": "8cfdc473004c835eef50a58befef7316faa9d22d77a396d6ac3a75ef0c5c50ac",
+ }
+ SCORER_SHA = {
+     "evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+@@ -49,7 +44,7 @@
+         return select_checkpoint(preflight, checkpoint_path, require_weights=False)
+     require(log_path == Path("train.log") and (base / "train-log.txt").is_file(),
+             "Missing original or preserved training log")
+-    with tempfile.TemporaryDirectory(prefix="pr92-preserved-receipt-") as tmp:
++    with tempfile.TemporaryDirectory(prefix="pr94-preserved-receipt-") as tmp:
+         target = Path(tmp)
+         shutil.copytree(base, target, dirs_exist_ok=True)
+         shutil.copyfile(base / "train-log.txt", target / log_path)
+@@ -73,7 +68,7 @@
+ 
+ 
+ def run(args):
+-    model_sha = PREVIOUS_R17_MODEL_SHA if args.previous_r17 else MODEL_SHA
++    model_sha = MODEL_SHA
+     root = args.root.resolve()
+     sys.path.insert(0, str(root / "scripts"))
+     from evaluate_pose import preflight_dataset, _read_replay, parse_pose_labels
+@@ -82,7 +77,7 @@
+     from diagnose_pose_quality import aggregate_quality, quality_for_image
+     from rescore_reference_amendment import load_api, verify_amendment
+ 
+-    protocol_path = root / "experiments/front-review-2026-11-22-r18.json"
++    protocol_path = root / "experiments/front-review-2026-11-22-r20.json"
+     require(sha(protocol_path) == PROTOCOL_SHA, "The preregistered protocol changed")
+     protocol = json.loads(protocol_path.read_text())
+     for name, expected in SCORER_SHA.items():
+@@ -109,8 +104,8 @@
+     runtimes = [model["metadata"]["runtime"] for model in models.values()]
+     require(all(runtime == runtimes[0] for runtime in runtimes), "Inference runtimes differ")
+     report = {
+-        "schema_version":1,"kind":"pr92-r18-fixed-development-comparison","status":"measured",
+-        "model_set":"previous_pr90_r17" if args.previous_r17 else "returned_pr92_r18",
++        "schema_version":1,"kind":"pr94-r20-fixed-development-comparison","status":"measured",
++        "model_set":"returned_pr94_r20",
+         "protocol":{"path":str(protocol_path.relative_to(root)),"sha256":PROTOCOL_SHA},
+         "measurement_script_sha256":sha(__file__), "scorers_sha256":SCORER_SHA,
+         "models":{role:{key:value for key,value in model.items() if key != "predictions"}
+@@ -125,19 +120,18 @@
+             "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+             "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+             "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+-            "The separately pinned current r18 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
++            "The separately pinned current r20 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
+         ],
+     }
+-    for label in ("primary", "diagnostic", "current_r18_exploratory"):
++    for label in ("primary", "diagnostic", "current_r20_exploratory"):
+         setting = protocol["evaluation"]
+-        exploratory = label == "current_r18_exploratory"
++        exploratory = label == "current_r20_exploratory"
+         if exploratory:
+-            from build_front_review_r18 import experiment
+-            from verify_front_review_r18 import verify_scope
+-            verify_scope(root)
++            from front_review_r20 import experiment, verify_candidate
++            verify_candidate(root)
+             descriptor = setting["current_review_reference"]
+             path = root / descriptor["path"]
+-            require(sha(path) == descriptor["sha256"], "Current r18 review changed")
++            require(sha(path) == descriptor["sha256"], "Current r20 review changed")
+             review, status, _, _, _, _, reviewed = experiment(root).read_review(root)
+             gold = {image_id: parse_pose_labels(reviewed[image_id]["bytes"].decode(),
+                     record["width"], record["height"], reviewed[image_id]["path"])
+@@ -229,6 +223,5 @@
+     for role in MODEL_SHA:
+         parser.add_argument("--"+role,type=Path,required=True)
+         parser.add_argument("--"+role+"-manifest",type=Path,required=True)
+-    parser.add_argument("--previous-r17", action="store_true", help="Replay preserved PR90 model outputs on the same pinned r18 references")
+     parser.add_argument("--output",type=Path,required=True)
+     run(parser.parse_args())

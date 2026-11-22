@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scope": "Representative original-pixel visual diagnostics only; no labels changed",
+  "inspected_cases": [
+    {
+      "file": "representative-cases/new_000057-primary-row12.png",
+      "image_id": "new_000057",
+      "primary_row": 12,
+      "r20_row": 11,
+      "observation": "The candidate output visibly overlaps the same white cassette front between vertical rack rails. The fixed box extends below it into darker rack material. Changing reference geometry alone changes IoU0.473908 to0.767834; unchanged target corner errors are0.184px and0.930px. This fixed miss does not mean there is no detection on the cassette.",
+      "render_sha256": "47099c8de8274a7aa856342d9986879c6662de91e906f6745053cad9bdedd7ab"
+    },
+    {
+      "file": "representative-cases/new_000090-primary-row41.png",
+      "image_id": "new_000090",
+      "primary_row": 41,
+      "r20_row": 41,
+      "observation": "The fixed box spans the white cassette front and a broad gray vertical rack region to its right. The r20 box is narrower. The same candidate output crosses IoU0.5, but its box still extends into the rack strip and the returned right point is over rack material. Only the left reference point is locatable; a matched box is not proof of a physically valid right corner.",
+      "render_sha256": "43109dac1caed5e2cbbfd4631db960b7ceff10519d85a287b72897f27bb37b6a"
+    },
+    {
+      "file": "representative-cases/new_000010-primary-row32.png",
+      "image_id": "new_000010",
+      "primary_row": 32,
+      "r20_row": 32,
+      "observation": "A hand occludes most of the front. The fixed box spans a wide area over the hand while the r20 box covers a much narrower visible sliver. The same output changes IoU0.183625 to0.541570. Both reference corners are unlocatable; no corner accuracy claim is available, and the output still extends into the occluder.",
+      "render_sha256": "7adafd7cb5d005795dc7e8c283c20b87e33dd71b9bb0ace8efa285f073b5c8d2"
+    },
+    {
+      "file": "representative-cases/new_000011-primary-row58.png",
+      "image_id": "new_000011",
+      "primary_row": 58,
+      "r20_row": 57,
+      "observation": "The converse case: a narrow visible front sits beside a broad gray rack strip. The candidate box extends into that strip. Tightening the reference changes IoU0.514757 to0.285193, exposing a residual oversized-box error. Its locatable left point is still2.556px from the r20 reference point.",
+      "render_sha256": "e34418bcecb17e70cbb38e4b3f389064c6ef32bfcb1be8735c79d61cc670c02f"
+    }
+  ]
+}

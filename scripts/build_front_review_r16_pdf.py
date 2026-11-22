@@ -347,8 +347,9 @@ def header(c, title, subtitle, page, data):
 
 
 def index_groups(data):
-    return [data['ids'][start:start + INDEX_PAGE_CAPACITY]
-            for start in range(0, len(data['ids']), INDEX_PAGE_CAPACITY)]
+    capacity = (18 * INDEX_COLUMNS) if data.get('compact_index') else INDEX_PAGE_CAPACITY
+    return [data['ids'][start:start + capacity]
+            for start in range(0, len(data['ids']), capacity)]
 
 
 def intro(c, data, page_numbers, ids, page, index_count):
@@ -539,10 +540,13 @@ def verify_saved_pdf(root, output, data):
             'all_bookmark_destinations_verified': True, 'embedded_image_receipts': receipts}
 
 
-def build(root, review_root, ledger_root, output, qa_output, changes_only=False):
+def build(root, review_root, ledger_root, output, qa_output, changes_only=False, compact_index=False):
     register_fonts()
     data = load_inputs(root, review_root, ledger_root)
     data['changes_only'] = changes_only
+    if compact_index and not changes_only:
+        raise ValueError('The compact index requires the changes-only view without pending-case notes')
+    data['compact_index'] = compact_index
     if changes_only:
         if any(op['action'] != 'replace' for op in data['operations']):
             raise ValueError('The changes-only view requires coordinate replacements with stable row identities')
@@ -603,6 +607,7 @@ def build(root, review_root, ledger_root, output, qa_output, changes_only=False)
                         if page[block]['truncated']]
     qa = {'schema_version': 1, 'summary': data['summary'], 'provenance': provenance,
           'changes_only_display': changes_only,
+          'compact_index': compact_index,
           'pdf': str(output), 'pdf_sha256': digest(output), 'page_count': len(data['ids']) + index_count,
           'review_manifest': {'path': data['manifest_path'].relative_to(root).as_posix(), 'sha256': digest(data['manifest_path'])},
           'parent_review': data['parent'], 'input_descriptors': data['input_descriptors'],
@@ -635,12 +640,15 @@ def main(default_review=DEFAULT_REVIEW, default_ledger=DEFAULT_LEDGER,
     parser.add_argument('--qa-output', type=Path)
     parser.add_argument('--changes-only', action='store_true', default=default_changes_only,
                         help='Highlight only saved replacements, without review-status display')
+    parser.add_argument('--compact-index', action='store_true',
+                        help='Use 18 index rows per column in the changes-only view')
     args = parser.parse_args(); root = args.root.resolve()
     def resolve(path):
         return path.resolve() if path.is_absolute() else (root / path).resolve()
     output = resolve(args.output)
     qa_output = resolve(args.qa_output) if args.qa_output else output.with_suffix('.qa.json')
-    result = build(root, resolve(args.review_root), resolve(args.ledger_root), output, qa_output, args.changes_only)
+    result = build(root, resolve(args.review_root), resolve(args.ledger_root), output, qa_output,
+                   args.changes_only, args.compact_index)
     print(json.dumps({'pdf': str(output), 'qa': str(qa_output), **result['summary'],
                       'unresolved_tag_collisions': result['unresolved_tag_collisions'],
                       'clipped_tags': result['clipped_tags'], 'deletion_tag_count': result['deletion_tag_count']}, indent=2))
