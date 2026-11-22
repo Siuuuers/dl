@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "kind": "materialized_paired_input_verification",
+  "created_at_utc": "2026-11-22T06:29:37.963410+00:00",
+  "protocol": {
+    "path": "experiments/front-review-2026-11-22-r20.json",
+    "sha256": "caa524e65dc4fc44cee520e150f7a3b60f5dddabfd31a7f4a2142a137ff0482f"
+  },
+  "staging": {
+    "status": "staged",
+    "output": "/workspace/scratch/7c6d03c19e2f/r20-staging",
+    "staging_manifest_sha256": "f4c01e7aa0d8b50b55a30eb96f2af176264c16f369dbe7b3456d2773a56d7810",
+    "counts": {
+      "reference": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "candidate": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6838,
+          "missing_endpoints": 730,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "actual_original_pngs_verified": 157,
+    "geometry_gate_passed": true,
+    "physical_policy_visually_certified": false,
+    "training_run": false
+  },
+  "readback": {
+    "status": "verified",
+    "output": "/workspace/scratch/7c6d03c19e2f/r20-staging",
+    "staging_manifest_sha256": "f4c01e7aa0d8b50b55a30eb96f2af176264c16f369dbe7b3456d2773a56d7810",
+    "counts": {
+      "reference": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "candidate": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6838,
+          "missing_endpoints": 730,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "actual_original_pngs_verified": 157,
+    "geometry_gate_passed": true,
+    "physical_policy_visually_certified": false,
+    "training_run": false
+  },
+  "verification": {
+    "source_labels_verified": 157,
+    "actual_original_pngs_verified": 157,
+    "copied_images_verified": 314,
+    "copied_labels_verified": 314,
+    "changed_train_labels": 92,
+    "removed_training_objects": -12,
+    "validation_images_and_labels_identical": true,
+    "source_files_rewritten": false,
+    "symlinks_present": false,
+    "trainer_loader_executed": false,
+    "reference_labels_are_verified_pr35_control": true,
+    "control_changed_train_labels": 8,
+    "net_removed_training_objects_vs_control": -13,
+    "training_readiness_verified": true,
+    "retained_photo_labels_identical_between_arms": true,
+    "retained_legacy_images": 1,
+    "full_dataset_certified": false,
+    "training_readiness_scope": "controlled_incremental_experiment_only",
+    "excluded_photo_labels_identical_between_arms": true,
+    "excluded_training_images": 31
+  },
+  "mechanical_geometry_gate": {
+    "passed": true,
+    "serialization_tolerance_original_px": 0.0001,
+    "box_edges_within_closed_image_bounds": true,
+    "visible_endpoints_within_boxes": true,
+    "visible_endpoints_strictly_in_frame": true,
+    "coordinates_clamped_or_rewritten": false
+  },
+  "source_preservation": {
+    "files_checked": 476,
+    "source_file_hash_inventory_sha256": "cc57e1f6205b2bf236cc1160701d8e4678ca3734425705e34b4f40f7ed43625d",
+    "original_images_labels_initializer_and_accepted_r19_unchanged": true,
+    "frozen_reference_manifests_unchanged": true
+  },
+  "review_amendment": {
+    "changed_photos": 37,
+    "changed_rows": 315,
+    "horizontal_box_fields_only": true,
+    "all_points_preserved": true,
+    "vertical_box_fields_preserved": true,
+    "new_cases": 0,
+    "new_holds": 0
+  },
+  "gpu_training_performed": false,
+  "drive_interaction_executed": false,
+  "trainer_loader_executed": false
+}
