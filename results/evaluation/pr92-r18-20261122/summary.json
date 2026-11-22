@@ -1,0 +1,562 @@
+{
+  "schema_version": 1,
+  "kind": "pr92-r18-audit-summary",
+  "decision": "retain_PR35",
+  "reason": "The r18 candidate regresses on the frozen primary and historical references despite better agreement with the separately pinned r18 exploratory review.",
+  "pr": {
+    "number": 92,
+    "head_sha": "f794bdd3d2842771e2cc29c624e8c2f26dba2ef8",
+    "url": "https://github.com/Siuuuers/dl/pull/92"
+  },
+  "archive": {
+    "size_bytes": 39783562,
+    "sha256": "167782e60b0a24d5ba041222a669aff2cb782ef684b3f64c7106cf9bcbb18445",
+    "crc_passed": true,
+    "indexed_members_verified": 12
+  },
+  "training_source_revision": "b6dbcc75efd5994bfdb3de456862608b2cc3aa40",
+  "protocol_sha256": "788715d37250483c367513490e20945871cb77628437ed2ca27c72ea96587137",
+  "fixed_comparison_sha256": "d11664c6e87a197b4365cc445c39831fbe77dab74475f4872a0a1ae50b9db6a6",
+  "thresholds": {
+    "box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "imgsz": 1280,
+    "radii_px": [
+      5,
+      10
+    ]
+  },
+  "training": {
+    "reference": {
+      "epochs": 30,
+      "batches_completed": 1050,
+      "images_processed": 4110,
+      "optimizer_steps": 78,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "checkpoint_sha256": "3ac9f977089edc9b4a6abde38466a21f93c7bdbfc8633212c92d856e7623fe6a"
+    },
+    "candidate": {
+      "epochs": 30,
+      "batches_completed": 1050,
+      "images_processed": 4110,
+      "optimizer_steps": 78,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6837,
+          "missing_endpoints": 731,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "checkpoint_sha256": "baf2c0eb852c1fbbae5dc6aaf1c68a0fd6ed7d75ed7be892557b9d01fda4d9a1"
+    }
+  },
+  "training_device": "NVIDIA A100-SXM4-40GB",
+  "references": {
+    "primary": {
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "manifest_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "exploratory": false,
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 533,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 582,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "reference": {
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 533,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 582,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "candidate": {
+          "tp": 632,
+          "fn": 34,
+          "fp": 103,
+          "duplicate_fp": 31,
+          "other_fp": 72,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 522,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 575,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 45,
+              "misses": 14
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 5
+        }
+      }
+    },
+    "diagnostic": {
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "manifest_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "exploratory": false,
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 533,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 582,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7
+        },
+        "reference": {
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 533,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 582,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7
+        },
+        "candidate": {
+          "tp": 632,
+          "fn": 31,
+          "fp": 103,
+          "duplicate_fp": 31,
+          "other_fp": 72,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 522,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 575,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 10,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 45,
+              "misses": 14
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 5
+        }
+      }
+    },
+    "current_r18_exploratory": {
+      "counts": {
+        "images": 20,
+        "objects": 662,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 98,
+        "empty_images": 3
+      },
+      "manifest_sha256": "85e48b568c5a36c9bbde0cf751fffd797754e513e29ccc9d1a724590a4800923",
+      "exploratory": true,
+      "models": {
+        "pr35": {
+          "tp": 626,
+          "fn": 36,
+          "fp": 102,
+          "duplicate_fp": 21,
+          "other_fp": 81,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 538,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 573,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 38,
+              "misses": 20
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "reference": {
+          "tp": 626,
+          "fn": 36,
+          "fp": 102,
+          "duplicate_fp": 21,
+          "other_fp": 81,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 538,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 573,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 38,
+              "misses": 20
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6
+        },
+        "candidate": {
+          "tp": 647,
+          "fn": 15,
+          "fp": 88,
+          "duplicate_fp": 30,
+          "other_fp": 58,
+          "both_corners_within_px": {
+            "5": {
+              "successes": 551,
+              "eligible": 584
+            },
+            "10": {
+              "successes": 583,
+              "eligible": 584
+            }
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 58,
+              "matched": 50,
+              "misses": 8
+            },
+            "2": {
+              "gold": 584,
+              "matched": 584,
+              "misses": 0
+            }
+          },
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 10
+        }
+      }
+    }
+  },
+  "same_reference_candidate_delta_vs_r17": {
+    "detection": {
+      "tp": -1,
+      "fn": 1,
+      "fp": 1,
+      "duplicate_fp": 0,
+      "other_fp": 1
+    },
+    "gained_matches": [],
+    "lost_matches": [
+      "new_000011:55"
+    ],
+    "corner_success_changes": {
+      "5": {
+        "gained": [
+          "new_000008:4",
+          "new_000058:4",
+          "new_000059:1",
+          "new_000059:7",
+          "new_000090:19"
+        ],
+        "lost": [
+          "new_000008:28",
+          "new_000090:45",
+          "new_000090:46"
+        ]
+      },
+      "10": {
+        "gained": [],
+        "lost": []
+      }
+    }
+  },
+  "reference_only_effect_on_unchanged_r17_predictions": {
+    "from": {
+      "id": "fronts-2026-11-22-r16",
+      "sha256": "1645f999fa8be08e9c8a317ffccd88e54285a81aac181a8e1ec8c9b328b81993"
+    },
+    "to": {
+      "id": "fronts-2026-11-22-r18",
+      "sha256": "85e48b568c5a36c9bbde0cf751fffd797754e513e29ccc9d1a724590a4800923"
+    },
+    "models": {
+      "pr35": {
+        "detection": {
+          "tp": -1,
+          "fn": 1,
+          "fp": 1,
+          "duplicate_fp": 0,
+          "other_fp": 1
+        },
+        "gained_matches": [],
+        "lost_matches": [
+          "new_000090:43"
+        ],
+        "corner_success_changes": {
+          "5": {
+            "gained": [],
+            "lost": []
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        }
+      },
+      "reference": {
+        "detection": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "duplicate_fp": 0,
+          "other_fp": 0
+        },
+        "gained_matches": [],
+        "lost_matches": [],
+        "corner_success_changes": {
+          "5": {
+            "gained": [],
+            "lost": []
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        }
+      },
+      "candidate": {
+        "detection": {
+          "tp": 1,
+          "fn": -1,
+          "fp": -1,
+          "duplicate_fp": 0,
+          "other_fp": -1
+        },
+        "gained_matches": [
+          "new_000090:43"
+        ],
+        "lost_matches": [],
+        "corner_success_changes": {
+          "5": {
+            "gained": [],
+            "lost": []
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        }
+      }
+    }
+  },
+  "fresh_control_and_pr35_arrays_exactly_equal_images": 20,
+  "cross_generation_training_hardware_changed": true,
+  "new_training_performed": false,
+  "r19_labels_used": false,
+  "model_promoted": false
+}

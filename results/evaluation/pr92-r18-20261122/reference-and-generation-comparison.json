@@ -1,0 +1,1278 @@
+{
+  "schema_version": 1,
+  "kind": "pr92-r18-reference-and-generation-separation",
+  "measurement_script_sha256": "70bea48cce6c02a33b89ff94fa9c2f0bcb1e1203ff035911d3aad8db1b3e19f1",
+  "inputs": {
+    "prior_pr90_fixed_sha256": "d05b76458bf9a1d443217b9cca7c1897b03d2a42a7fed39c56406ac7b4a19b61",
+    "previous_r17_on_r18_sha256": "8d59dd72a09ffff0ed38f1817cc17bea8d3e44ee0c10a46cfac5f17ff86dab27",
+    "pr92_fixed_sha256": "d11664c6e87a197b4365cc445c39831fbe77dab74475f4872a0a1ae50b9db6a6"
+  },
+  "prior_frozen_reference_results_reproduced_exactly": true,
+  "thresholds": {
+    "box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "imgsz": 1280,
+    "radii_px": [
+      5,
+      10
+    ]
+  },
+  "reference_only_effect_on_unchanged_r17_predictions": {
+    "from": {
+      "id": "fronts-2026-11-22-r16",
+      "sha256": "1645f999fa8be08e9c8a317ffccd88e54285a81aac181a8e1ec8c9b328b81993"
+    },
+    "to": {
+      "id": "fronts-2026-11-22-r18",
+      "sha256": "85e48b568c5a36c9bbde0cf751fffd797754e513e29ccc9d1a724590a4800923"
+    },
+    "models": {
+      "pr35": {
+        "detection": {
+          "tp": -1,
+          "fn": 1,
+          "fp": 1,
+          "duplicate_fp": 0,
+          "other_fp": 1
+        },
+        "gained_matches": [],
+        "lost_matches": [
+          "new_000090:43"
+        ],
+        "corner_success_changes": {
+          "5": {
+            "gained": [],
+            "lost": []
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        }
+      },
+      "reference": {
+        "detection": {
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "duplicate_fp": 0,
+          "other_fp": 0
+        },
+        "gained_matches": [],
+        "lost_matches": [],
+        "corner_success_changes": {
+          "5": {
+            "gained": [],
+            "lost": []
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        }
+      },
+      "candidate": {
+        "detection": {
+          "tp": 1,
+          "fn": -1,
+          "fp": -1,
+          "duplicate_fp": 0,
+          "other_fp": -1
+        },
+        "gained_matches": [
+          "new_000090:43"
+        ],
+        "lost_matches": [],
+        "corner_success_changes": {
+          "5": {
+            "gained": [],
+            "lost": []
+          },
+          "10": {
+            "gained": [],
+            "lost": []
+          }
+        }
+      }
+    }
+  },
+  "same_reference_model_deltas": {
+    "primary": {
+      "reference_manifest_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "models": {
+        "pr35": {
+          "detection": {
+            "tp": 0,
+            "fn": 0,
+            "fp": 0,
+            "duplicate_fp": 0,
+            "other_fp": 0
+          },
+          "gained_matches": [],
+          "lost_matches": [],
+          "corner_success_changes": {
+            "5": {
+              "gained": [],
+              "lost": []
+            },
+            "10": {
+              "gained": [],
+              "lost": []
+            }
+          }
+        },
+        "reference": {
+          "detection": {
+            "tp": 2,
+            "fn": -2,
+            "fp": -3,
+            "duplicate_fp": 3,
+            "other_fp": -6
+          },
+          "gained_matches": [
+            "new_000056:14",
+            "new_000090:43"
+          ],
+          "lost_matches": [],
+          "corner_success_changes": {
+            "5": {
+              "gained": [
+                "new_000008:10",
+                "new_000008:11",
+                "new_000008:21",
+                "new_000056:3",
+                "new_000058:7"
+              ],
+              "lost": [
+                "new_000008:22",
+                "new_000011:4",
+                "new_000087:53"
+              ]
+            },
+            "10": {
+              "gained": [],
+              "lost": [
+                "new_000007:15"
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "detection": {
+            "tp": 0,
+            "fn": 0,
+            "fp": 0,
+            "duplicate_fp": 2,
+            "other_fp": -2
+          },
+          "gained_matches": [],
+          "lost_matches": [],
+          "corner_success_changes": {
+            "5": {
+              "gained": [
+                "new_000058:4",
+                "new_000059:2",
+                "new_000059:8",
+                "new_000090:19"
+              ],
+              "lost": [
+                "new_000007:53",
+                "new_000090:45",
+                "new_000090:46"
+              ]
+            },
+            "10": {
+              "gained": [],
+              "lost": []
+            }
+          }
+        }
+      }
+    },
+    "diagnostic": {
+      "reference_manifest_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "models": {
+        "pr35": {
+          "detection": {
+            "tp": 0,
+            "fn": 0,
+            "fp": 0,
+            "duplicate_fp": 0,
+            "other_fp": 0
+          },
+          "gained_matches": [],
+          "lost_matches": [],
+          "corner_success_changes": {
+            "5": {
+              "gained": [],
+              "lost": []
+            },
+            "10": {
+              "gained": [],
+              "lost": []
+            }
+          }
+        },
+        "reference": {
+          "detection": {
+            "tp": 2,
+            "fn": -2,
+            "fp": -3,
+            "duplicate_fp": 3,
+            "other_fp": -6
+          },
+          "gained_matches": [
+            "new_000056:14",
+            "new_000090:43"
+          ],
+          "lost_matches": [],
+          "corner_success_changes": {
+            "5": {
+              "gained": [
+                "new_000008:10",
+                "new_000008:11",
+                "new_000008:21",
+                "new_000056:3",
+                "new_000058:7"
+              ],
+              "lost": [
+                "new_000008:22",
+                "new_000011:4",
+                "new_000087:53"
+              ]
+            },
+            "10": {
+              "gained": [],
+              "lost": [
+                "new_000007:15"
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "detection": {
+            "tp": 0,
+            "fn": 0,
+            "fp": 0,
+            "duplicate_fp": 2,
+            "other_fp": -2
+          },
+          "gained_matches": [],
+          "lost_matches": [],
+          "corner_success_changes": {
+            "5": {
+              "gained": [
+                "new_000058:4",
+                "new_000059:2",
+                "new_000059:8",
+                "new_000090:19"
+              ],
+              "lost": [
+                "new_000007:53",
+                "new_000090:45",
+                "new_000090:46"
+              ]
+            },
+            "10": {
+              "gained": [],
+              "lost": []
+            }
+          }
+        }
+      }
+    },
+    "current_r18_exploratory": {
+      "reference_manifest_sha256": "85e48b568c5a36c9bbde0cf751fffd797754e513e29ccc9d1a724590a4800923",
+      "models": {
+        "pr35": {
+          "detection": {
+            "tp": 0,
+            "fn": 0,
+            "fp": 0,
+            "duplicate_fp": 0,
+            "other_fp": 0
+          },
+          "gained_matches": [],
+          "lost_matches": [],
+          "corner_success_changes": {
+            "5": {
+              "gained": [],
+              "lost": []
+            },
+            "10": {
+              "gained": [],
+              "lost": []
+            }
+          }
+        },
+        "reference": {
+          "detection": {
+            "tp": 2,
+            "fn": -2,
+            "fp": -3,
+            "duplicate_fp": 5,
+            "other_fp": -8
+          },
+          "gained_matches": [
+            "new_000007:6",
+            "new_000090:39"
+          ],
+          "lost_matches": [],
+          "corner_success_changes": {
+            "5": {
+              "gained": [
+                "new_000007:6",
+                "new_000008:11",
+                "new_000008:17",
+                "new_000010:5",
+                "new_000056:3",
+                "new_000058:7"
+              ],
+              "lost": [
+                "new_000011:4",
+                "new_000087:53"
+              ]
+            },
+            "10": {
+              "gained": [
+                "new_000007:6"
+              ],
+              "lost": [
+                "new_000007:13"
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "detection": {
+            "tp": -1,
+            "fn": 1,
+            "fp": 1,
+            "duplicate_fp": 0,
+            "other_fp": 1
+          },
+          "gained_matches": [],
+          "lost_matches": [
+            "new_000011:55"
+          ],
+          "corner_success_changes": {
+            "5": {
+              "gained": [
+                "new_000008:4",
+                "new_000058:4",
+                "new_000059:1",
+                "new_000059:7",
+                "new_000090:19"
+              ],
+              "lost": [
+                "new_000008:28",
+                "new_000090:45",
+                "new_000090:46"
+              ]
+            },
+            "10": {
+              "gained": [],
+              "lost": []
+            }
+          }
+        }
+      }
+    }
+  },
+  "training_runtimes": {
+    "r17": {
+      "pr35": {
+        "python": "3.13.16",
+        "torch": "2.14.1+cu130",
+        "ultralytics": "8.4.182",
+        "device": "cuda:0",
+        "torch_cuda": "13.0",
+        "threads": 4,
+        "interop_threads": 1,
+        "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+        "packages": {
+          "torchvision": "0.29.1+cu130",
+          "numpy": "2.4.6",
+          "Pillow": "11.3.0",
+          "opencv-python": "5.0.0.93",
+          "psutil": "5.9.5"
+        },
+        "device_name": "NVIDIA A100-SXM4-40GB",
+        "device_capability": [
+          8,
+          0
+        ],
+        "backend": {
+          "model_channels_last": true,
+          "float32_matmul_precision": "highest",
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_allow_tf32": true,
+          "cudnn_version": 92800,
+          "deterministic_algorithms_enabled": true,
+          "deterministic_warn_only": true,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false
+        }
+      },
+      "reference": {
+        "python": "3.13.16",
+        "torch": "2.14.1+cu130",
+        "ultralytics": "8.4.182",
+        "device": "cuda:0",
+        "torch_cuda": "13.0",
+        "threads": 4,
+        "interop_threads": 1,
+        "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+        "packages": {
+          "torchvision": "0.29.1+cu130",
+          "numpy": "2.4.6",
+          "Pillow": "11.3.0",
+          "opencv-python": "5.0.0.93",
+          "psutil": "5.9.5"
+        },
+        "device_name": "NVIDIA L4",
+        "device_capability": [
+          8,
+          9
+        ],
+        "backend": {
+          "model_channels_last": true,
+          "float32_matmul_precision": "highest",
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_allow_tf32": true,
+          "cudnn_version": 92800,
+          "deterministic_algorithms_enabled": true,
+          "deterministic_warn_only": true,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false
+        }
+      },
+      "candidate": {
+        "python": "3.13.16",
+        "torch": "2.14.1+cu130",
+        "ultralytics": "8.4.182",
+        "device": "cuda:0",
+        "torch_cuda": "13.0",
+        "threads": 4,
+        "interop_threads": 1,
+        "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+        "packages": {
+          "torchvision": "0.29.1+cu130",
+          "numpy": "2.4.6",
+          "Pillow": "11.3.0",
+          "opencv-python": "5.0.0.93",
+          "psutil": "5.9.5"
+        },
+        "device_name": "NVIDIA L4",
+        "device_capability": [
+          8,
+          9
+        ],
+        "backend": {
+          "model_channels_last": true,
+          "float32_matmul_precision": "highest",
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_allow_tf32": true,
+          "cudnn_version": 92800,
+          "deterministic_algorithms_enabled": true,
+          "deterministic_warn_only": true,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false
+        }
+      }
+    },
+    "r18": {
+      "pr35": {
+        "python": "3.13.16",
+        "torch": "2.14.1+cu130",
+        "ultralytics": "8.4.182",
+        "device": "cuda:0",
+        "torch_cuda": "13.0",
+        "threads": 4,
+        "interop_threads": 1,
+        "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+        "packages": {
+          "torchvision": "0.29.1+cu130",
+          "numpy": "2.4.6",
+          "Pillow": "11.3.0",
+          "opencv-python": "5.0.0.93",
+          "psutil": "5.9.5"
+        },
+        "device_name": "NVIDIA A100-SXM4-40GB",
+        "device_capability": [
+          8,
+          0
+        ],
+        "backend": {
+          "model_channels_last": true,
+          "float32_matmul_precision": "highest",
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_allow_tf32": true,
+          "cudnn_version": 92800,
+          "deterministic_algorithms_enabled": true,
+          "deterministic_warn_only": true,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false
+        }
+      },
+      "reference": {
+        "python": "3.13.16",
+        "torch": "2.14.1+cu130",
+        "ultralytics": "8.4.182",
+        "device": "cuda:0",
+        "torch_cuda": "13.0",
+        "threads": 4,
+        "interop_threads": 1,
+        "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+        "packages": {
+          "torchvision": "0.29.1+cu130",
+          "numpy": "2.4.6",
+          "Pillow": "11.3.0",
+          "opencv-python": "5.0.0.93",
+          "psutil": "5.9.5"
+        },
+        "device_name": "NVIDIA A100-SXM4-40GB",
+        "device_capability": [
+          8,
+          0
+        ],
+        "backend": {
+          "model_channels_last": true,
+          "float32_matmul_precision": "highest",
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_allow_tf32": true,
+          "cudnn_version": 92800,
+          "deterministic_algorithms_enabled": true,
+          "deterministic_warn_only": true,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false
+        }
+      },
+      "candidate": {
+        "python": "3.13.16",
+        "torch": "2.14.1+cu130",
+        "ultralytics": "8.4.182",
+        "device": "cuda:0",
+        "torch_cuda": "13.0",
+        "threads": 4,
+        "interop_threads": 1,
+        "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+        "packages": {
+          "torchvision": "0.29.1+cu130",
+          "numpy": "2.4.6",
+          "Pillow": "11.3.0",
+          "opencv-python": "5.0.0.93",
+          "psutil": "5.9.5"
+        },
+        "device_name": "NVIDIA A100-SXM4-40GB",
+        "device_capability": [
+          8,
+          0
+        ],
+        "backend": {
+          "model_channels_last": true,
+          "float32_matmul_precision": "highest",
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_allow_tf32": true,
+          "cudnn_version": 92800,
+          "deterministic_algorithms_enabled": true,
+          "deterministic_warn_only": true,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false
+        }
+      }
+    }
+  },
+  "representative_cases": [
+    {
+      "image_id": "new_000011",
+      "row": 55,
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          602.0,
+          435.00000024,
+          635.0,
+          453.0000002399999
+        ],
+        "keypoints": [
+          [
+            608.0,
+            452.00000159999996,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "models": {
+        "r17": {
+          "matched": {
+            "gold_index": 54,
+            "prediction_index": 55,
+            "iou": 0.5057203134951315
+          },
+          "best_iou_prediction_index": 55,
+          "best_iou": 0.5057203134951315,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              602.497802734375,
+              435.0123596191406,
+              654.085693359375,
+              457.2402038574219
+            ],
+            "confidence": 0.7917512655258179,
+            "keypoints": [
+              [
+                606.2633666992188,
+                452.1626892089844,
+                0.8185818195343018
+              ],
+              [
+                660.8656005859375,
+                452.3209228515625,
+                0.7053412199020386
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            1.7442369333033414,
+            null
+          ]
+        },
+        "r18": {
+          "matched": null,
+          "best_iou_prediction_index": 56,
+          "best_iou": 0.4945160524945432,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              602.609375,
+              435.01300048828125,
+              654.812255859375,
+              457.36334228515625
+            ],
+            "confidence": 0.7748846411705017,
+            "keypoints": [
+              [
+                606.1361083984375,
+                452.3329162597656,
+                0.8195217251777649
+              ],
+              [
+                661.0366821289062,
+                452.4059753417969,
+                0.7067058086395264
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            1.8933895724499246,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "row": 10,
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          548.0,
+          411.41000001599997,
+          712.0,
+          454.000000032
+        ],
+        "keypoints": [
+          [
+            550.0,
+            451.000000008,
+            2
+          ],
+          [
+            709.0,
+            450.0,
+            2
+          ]
+        ]
+      },
+      "models": {
+        "r17": {
+          "matched": {
+            "gold_index": 9,
+            "prediction_index": 26,
+            "iou": 0.783327398625138
+          },
+          "best_iou_prediction_index": 26,
+          "best_iou": 0.783327398625138,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              545.7760009765625,
+              413.818359375,
+              708.3446044921875,
+              461.07965087890625
+            ],
+            "confidence": 0.8349096775054932,
+            "keypoints": [
+              [
+                549.01123046875,
+                452.171142578125,
+                0.9090063571929932
+              ],
+              [
+                702.5463256835938,
+                439.96697998046875,
+                0.9094190001487732
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            1.5327231013746092,
+            11.929434307399346
+          ]
+        },
+        "r18": {
+          "matched": {
+            "gold_index": 9,
+            "prediction_index": 27,
+            "iou": 0.7835160950651747
+          },
+          "best_iou_prediction_index": 27,
+          "best_iou": 0.7835160950651747,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              545.837158203125,
+              413.806396484375,
+              708.111572265625,
+              461.03668212890625
+            ],
+            "confidence": 0.8314062356948853,
+            "keypoints": [
+              [
+                549.1658935546875,
+                452.11871337890625,
+                0.9086328744888306
+              ],
+              [
+                702.416748046875,
+                439.82464599609375,
+                0.9095593094825745
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            1.3954401342789098,
+            12.119283616746293
+          ]
+        }
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "row": 4,
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          750.0,
+          19.22000004,
+          963.0000000000001,
+          73.000000008
+        ],
+        "keypoints": [
+          [
+            752.0,
+            64.000000008,
+            2
+          ],
+          [
+            960.0,
+            69.999999984,
+            2
+          ]
+        ]
+      },
+      "models": {
+        "r17": {
+          "matched": {
+            "gold_index": 3,
+            "prediction_index": 17,
+            "iou": 0.7588055081100104
+          },
+          "best_iou_prediction_index": 17,
+          "best_iou": 0.7588055081100104,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              752.2806396484375,
+              10.570182800292969,
+              963.4251708984375,
+              80.72112274169922
+            ],
+            "confidence": 0.9195818901062012,
+            "keypoints": [
+              [
+                757.201171875,
+                65.41761016845703,
+                0.961156964302063
+              ],
+              [
+                957.10498046875,
+                71.21310424804688,
+                0.96015465259552
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            5.3909004294572185,
+            3.1389106457125666
+          ]
+        },
+        "r18": {
+          "matched": {
+            "gold_index": 3,
+            "prediction_index": 13,
+            "iou": 0.7613598366717894
+          },
+          "best_iou_prediction_index": 13,
+          "best_iou": 0.7613598366717894,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              751.745849609375,
+              10.680679321289062,
+              963.6138916015625,
+              80.66961669921875
+            ],
+            "confidence": 0.9224913716316223,
+            "keypoints": [
+              [
+                756.7144165039062,
+                65.61060333251953,
+                0.9614689350128174
+              ],
+              [
+                957.8924560546875,
+                71.0761489868164,
+                0.96070796251297
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            4.981944002220117,
+            2.366397717562736
+          ]
+        }
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "row": 28,
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          1078.0,
+          319.409999964,
+          1262.0,
+          378.999999972
+        ],
+        "keypoints": [
+          [
+            1092.0,
+            367.99999991999994,
+            2
+          ],
+          [
+            1259.0,
+            375.999999984,
+            2
+          ]
+        ]
+      },
+      "models": {
+        "r17": {
+          "matched": {
+            "gold_index": 27,
+            "prediction_index": 11,
+            "iou": 0.8787900626184564
+          },
+          "best_iou_prediction_index": 11,
+          "best_iou": 0.8787900626184564,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              1080.9638671875,
+              319.4088134765625,
+              1262.5,
+              386.05828857421875
+            ],
+            "confidence": 0.9238867163658142,
+            "keypoints": [
+              [
+                1088.66162109375,
+                371.5018310546875,
+                0.947190523147583
+              ],
+              [
+                1255.397705078125,
+                376.7420959472656,
+                0.9417140483856201
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            4.8381396236117595,
+            3.677938977588066
+          ]
+        },
+        "r18": {
+          "matched": {
+            "gold_index": 27,
+            "prediction_index": 12,
+            "iou": 0.8770479664459291
+          },
+          "best_iou_prediction_index": 12,
+          "best_iou": 0.8770479664459291,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              1080.73193359375,
+              319.54010009765625,
+              1262.1787109375,
+              386.24163818359375
+            ],
+            "confidence": 0.9228745102882385,
+            "keypoints": [
+              [
+                1088.2606201171875,
+                371.3858642578125,
+                0.9471368193626404
+              ],
+              [
+                1255.23486328125,
+                376.5395812988281,
+                0.9423258304595947
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            5.044505845179856,
+            3.803603883975192
+          ]
+        }
+      }
+    },
+    {
+      "image_id": "new_000090",
+      "row": 19,
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          673.0,
+          282.00000023999996,
+          781.0000000000001,
+          313.99999992
+        ],
+        "keypoints": [
+          [
+            673.5,
+            306.9100008,
+            2
+          ],
+          [
+            779.52,
+            312.2599968,
+            2
+          ]
+        ]
+      },
+      "models": {
+        "r17": {
+          "matched": {
+            "gold_index": 18,
+            "prediction_index": 11,
+            "iou": 0.8810749618286462
+          },
+          "best_iou_prediction_index": 11,
+          "best_iou": 0.8810749618286462,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              669.49609375,
+              282.2130126953125,
+              776.92724609375,
+              315.69464111328125
+            ],
+            "confidence": 0.9334934949874878,
+            "keypoints": [
+              [
+                672.1023559570312,
+                306.90838623046875,
+                0.9412882328033447
+              ],
+              [
+                774.5140380859375,
+                313.0503234863281,
+                0.955679178237915
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            1.3976449755502305,
+            5.067965169194288
+          ]
+        },
+        "r18": {
+          "matched": {
+            "gold_index": 18,
+            "prediction_index": 11,
+            "iou": 0.8841750129929247
+          },
+          "best_iou_prediction_index": 11,
+          "best_iou": 0.8841750129929247,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              669.6361694335938,
+              282.2598876953125,
+              776.9668579101562,
+              315.57861328125
+            ],
+            "confidence": 0.9351879954338074,
+            "keypoints": [
+              [
+                672.3553466796875,
+                306.95281982421875,
+                0.941778838634491
+              ],
+              [
+                774.7088623046875,
+                313.0899963378906,
+                0.9560702443122864
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            1.1454539242315591,
+            4.882206996446928
+          ]
+        }
+      }
+    },
+    {
+      "image_id": "new_000090",
+      "row": 45,
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          680.0,
+          90.00000036000002,
+          790.0,
+          123.00000012
+        ],
+        "keypoints": [
+          [
+            681.0,
+            114.9199992,
+            2
+          ],
+          [
+            786.7500031999999,
+            119.7100008,
+            2
+          ]
+        ]
+      },
+      "models": {
+        "r17": {
+          "matched": {
+            "gold_index": 44,
+            "prediction_index": 26,
+            "iou": 0.8334331261741069
+          },
+          "best_iou_prediction_index": 26,
+          "best_iou": 0.8334331261741069,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              680.2437744140625,
+              86.76812744140625,
+              794.6041259765625,
+              124.69894409179688
+            ],
+            "confidence": 0.9176212549209595,
+            "keypoints": [
+              [
+                683.0068969726562,
+                114.32696533203125,
+                0.9466296434402466
+              ],
+              [
+                791.3155517578125,
+                120.84686279296875,
+                0.9445540308952332
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            2.0926835946733098,
+            4.704964274551016
+          ]
+        },
+        "r18": {
+          "matched": {
+            "gold_index": 44,
+            "prediction_index": 26,
+            "iou": 0.8204827891624861
+          },
+          "best_iou_prediction_index": 26,
+          "best_iou": 0.8204827891624861,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              680.1234130859375,
+              86.80751037597656,
+              796.8387451171875,
+              124.63619995117188
+            ],
+            "confidence": 0.9166402816772461,
+            "keypoints": [
+              [
+                682.6181030273438,
+                114.23164367675781,
+                0.9401663541793823
+              ],
+              [
+                792.8974609375,
+                120.88832092285156,
+                0.9443976879119873
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            1.7584341709251,
+            6.259366976481445
+          ]
+        }
+      }
+    },
+    {
+      "image_id": "new_000090",
+      "row": 46,
+      "gold": {
+        "class_id": 0,
+        "bbox_xyxy": [
+          678.9999999999999,
+          116.99999964,
+          788.0,
+          153.99999971999998
+        ],
+        "keypoints": [
+          [
+            679.5,
+            144.2100024,
+            2
+          ],
+          [
+            785.0899968,
+            151.4499984,
+            2
+          ]
+        ]
+      },
+      "models": {
+        "r17": {
+          "matched": {
+            "gold_index": 45,
+            "prediction_index": 23,
+            "iou": 0.8921449413817926
+          },
+          "best_iou_prediction_index": 23,
+          "best_iou": 0.8921449413817926,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              678.250244140625,
+              115.75958251953125,
+              794.576904296875,
+              154.62054443359375
+            ],
+            "confidence": 0.9200648069381714,
+            "keypoints": [
+              [
+                680.8367309570312,
+                144.0836639404297,
+                0.9671059250831604
+              ],
+              [
+                790.00732421875,
+                151.49786376953125,
+                0.9681334495544434
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            1.3426879972101795,
+            4.917560374493735
+          ]
+        },
+        "r18": {
+          "matched": {
+            "gold_index": 45,
+            "prediction_index": 22,
+            "iou": 0.8921036770580817
+          },
+          "best_iou_prediction_index": 22,
+          "best_iou": 0.8921036770580817,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              678.26318359375,
+              115.80532836914062,
+              794.783447265625,
+              154.603515625
+            ],
+            "confidence": 0.9202413558959961,
+            "keypoints": [
+              [
+                680.9468994140625,
+                144.15122985839844,
+                0.9669175148010254
+              ],
+              [
+                790.1241455078125,
+                151.5187530517578,
+                0.9680009484291077
+              ]
+            ]
+          },
+          "locatable_corner_errors_px": [
+            1.448092582005969,
+            5.03461819947736
+          ]
+        }
+      }
+    }
+  ],
+  "limits": [
+    "Both PR92 arms have the same A100 training runtime; previous PR90 arms trained on L4.",
+    "Cross-generation differences combine changed training supervision with changed training hardware.",
+    "The previous model outputs are preserved inference arrays, not newly loaded prior weights.",
+    "The pre-return r18 exploratory reference is distinct from both frozen references and all r19 edits."
+  ],
+  "fresh_control_and_pr35_prediction_arrays": {
+    "images": 20,
+    "exactly_equal_images": 20,
+    "maximum_coordinate_difference_px": 0,
+    "maximum_confidence_difference": 0,
+    "scope": "Observed outputs at the fixed inference operating point; checkpoint artifact hashes differ."
+  }
+}
