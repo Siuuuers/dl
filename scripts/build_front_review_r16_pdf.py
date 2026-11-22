@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Render changed photographs with exact fields and immutable parent row identities.
+"""Render saved annotations with exact fields and immutable parent row identities.
 
 Run after the r16 review manifest and ledger have been built:
     python scripts/build_front_review_r16_pdf.py --root .
 
 Optional --output and --qa-output paths select the PDF and its audit receipt.
+Use --all-nonempty to include unchanged and old-series labeled photographs too.
 All current labels are displayed on each included photo. Deleted parent identities
 are dashed Dn ghosts, never current rows or training annotations. Original PNG
 pixels, manifest hashes and exact parent-to-current operation replay are checked.
@@ -38,12 +39,16 @@ PROVENANCE = ('Only new-series photographs with nonempty saved labels changed in
               'Unchanged photographs, old-series photographs and empty scenes are excluded from this PDF only. '
               'Magenta identifies fields changed since round {parent}; cyan identifies retained fields. '
               'Original PNG pixels and exact r{parent} row provenance are preserved.')
+ALL_NONEMPTY_PROVENANCE = ('All photographs with nonempty saved labels in round {round} are displayed, including unchanged and old-series photographs. '
+                          'Only empty scenes are excluded from this PDF; the full saved dataset is retained. '
+                          'Magenta identifies fields changed since round {parent}; cyan identifies retained fields. '
+                          'Original PNG pixels and exact r{parent} row provenance are preserved.')
 INDEX_ROWS_PER_COLUMN = 17
 INDEX_COLUMNS = 2
 INDEX_PAGE_CAPACITY = INDEX_ROWS_PER_COLUMN * INDEX_COLUMNS
 
 
-def load_inputs(root, review_root, ledger_root):
+def load_inputs(root, review_root, ledger_root, all_nonempty=False):
     def bound(descriptor):
         path = (root / descriptor['path']).resolve()
         if not path.is_relative_to(root) or digest(path) != descriptor['sha256']:
@@ -68,9 +73,9 @@ def load_inputs(root, review_root, ledger_root):
         raise ValueError('Original source manifest differs')
     source = read_json(source_path)
     records = {r['id']: r for r in source['records']}
-    ids = manifest['pdf_image_ids']
+    ids = [] if all_nonempty else manifest['pdf_image_ids']
     changed_ids = manifest['changed_image_ids']
-    if ids != sorted(set(ids)) or not ids or any(not i.startswith('new_') or i not in records for i in ids):
+    if not all_nonempty and (ids != sorted(set(ids)) or not ids or any(not i.startswith('new_') or i not in records for i in ids)):
         raise ValueError('The PDF inventory must contain sorted unique new-series photographs')
     if changed_ids != sorted(set(changed_ids)) or any(not i.startswith('new_') or i not in records for i in changed_ids):
         raise ValueError('Changed photograph identities must be sorted unique new-series photographs')
@@ -95,6 +100,7 @@ def load_inputs(root, review_root, ledger_root):
         raise ValueError('Changed photographs differ from the exact operation inventory')
     maps = read_json(maps_path)
     files, edits, deleted, identity_maps = {}, {}, {}, {}
+    removed_points = defaultdict(lambda: defaultdict(list))
     numeric_only_differences = []
     for iid, record in records.items():
         f, old = listed[iid], parent_files[iid]
@@ -142,6 +148,9 @@ def load_inputs(root, review_root, ledger_root):
                 if declared != changed:
                     numeric_only_differences.append({'image_id': iid, 'base_row': op['base_row'],
                                                      'declared': sorted(declared), 'actual': sorted(changed)})
+                for side, start in (('left', 5), ('right', 8)):
+                    if before[start + 2] and not after[start + 2]:
+                        removed_points[iid][side].append(row)
             else:
                 raise ValueError(f'Unsupported operation: {action}')
             after = parse_line(op['after_line'], f'{iid}:after')
@@ -153,7 +162,11 @@ def load_inputs(root, review_root, ledger_root):
         if image_deleted:
             deleted[iid] = image_deleted
     expected_ids = sorted(iid for iid, item in files.items() if iid in changed_ids and iid.startswith('new_') and item['rows'])
-    if ids != expected_ids:
+    if all_nonempty:
+        ids = sorted(iid for iid, item in files.items() if item['rows'])
+        if not ids:
+            raise ValueError('The full review PDF requires at least one nonempty saved label')
+    elif ids != expected_ids:
         raise ValueError('PDF inventory must contain exactly changed nonempty new-series photographs once')
     status = read_json(status_path)
     cases = status if isinstance(status, list) else status['cases']
@@ -206,13 +219,15 @@ def load_inputs(root, review_root, ledger_root):
                                  for g, sl in GROUPS.items()
                                  if parse_line(op['before_line'], 'before')[sl] != parse_line(op['after_line'], 'after')[sl])
     summary = {'source_photos': len(records), 'included_photos': len(ids),
-               'excluded_old_photos': sum(i.startswith('old_') for i in records),
+               'excluded_old_photos': sum(i.startswith('old_') and i not in ids for i in records),
+               'included_old_photos': sum(i.startswith('old_') for i in ids),
                'omitted_new_photos': sum(i.startswith('new_') and i not in ids for i in records),
                'excluded_empty_new_photos': sum(i.startswith('new_') and not files[i]['rows'] for i in records),
+               'excluded_empty_photos': sum(not files[i]['rows'] and i not in ids for i in records),
                'empty_photos': sum(not files[i]['rows'] for i in ids),
                'positive_photos': sum(bool(files[i]['rows']) for i in ids),
                'changed_photos': sum(bool(by_image[i]) for i in ids),
-               'excluded_unchanged_nonempty_new_photos': sum(i.startswith('new_') and bool(files[i]['rows']) and i not in changed_ids for i in records),
+               'excluded_unchanged_nonempty_new_photos': sum(i.startswith('new_') and bool(files[i]['rows']) and i not in ids for i in records),
                'operation_counts': {a: op_counts[a] for a in ('replace', 'add', 'delete')},
                'changed_fields_in_replacements': {g: replacement_fields[g] for g in GROUPS},
                'highlighted_current_rows': sum(len(e) for e in edits.values()),
@@ -224,6 +239,7 @@ def load_inputs(root, review_root, ledger_root):
                'included_objects': sum(len(files[i]['rows']) for i in ids),
                'row_number_changes': sum(r != m.get('base_row', r) for i in ids for r, m in identity_maps[i].items())}
     return {'manifest': manifest, 'manifest_path': manifest_path, 'parent': manifest['parent'],
+            'all_nonempty': all_nonempty,
             'round_number': round_number, 'parent_round': parent_round,
             'records': records, 'files': files, 'ids': ids, 'edits': edits, 'deleted': deleted,
             'identities': identity_maps, 'held': held, 'cases': dict(case_map), 'summary': summary,
@@ -231,6 +247,8 @@ def load_inputs(root, review_root, ledger_root):
             'amendment_notes': amendment_notes, 'amendment_questions': amendment_questions,
             'display_amendment_notes': amendment_notes_descriptor,
             'numeric_only_differences': numeric_only_differences,
+            'removed_points': {iid: {side: sorted(rows) for side, rows in sides.items()}
+                               for iid, sides in removed_points.items()},
             'input_descriptors': {key: manifest[key] for key in ('operations', 'review_status', 'row_maps')}}
 
 
@@ -354,8 +372,11 @@ def index_groups(data):
 
 def intro(c, data, page_numbers, ids, page, index_count):
     s = data['summary']; counts = s['operation_counts']
-    header(c, f'Changed photographs / Round {data["round_number"]}',
-           'Only photos with saved label changes in this pass. Every current front on each included photo is shown.', page, data)
+    title = 'All labeled photographs' if data.get('all_nonempty') else 'Changed photographs'
+    subtitle = ('Every nonempty saved label is shown, including unchanged and old-series photographs.'
+                if data.get('all_nonempty') else
+                'Only photos with saved label changes in this pass. Every current front on each included photo is shown.')
+    header(c, f'{title} / Round {data["round_number"]}', subtitle, page, data)
     text(c, f'{s["included_photos"]} photographs', 30, HEIGHT - 125, 27, INK, True)
     text(c, f'{s["included_objects"]} current fronts', 390, HEIGHT - 125, 27, INK, True)
     text(c, f'{s["highlighted_current_rows"]} edited rows', 775, HEIGHT - 125, 27, INK, True)
@@ -392,7 +413,10 @@ def intro(c, data, page_numbers, ids, page, index_count):
     if s['held_photos_omitted'] and not data.get('changes_only'):
         text(c, 'Unchanged unresolved photographs remain in the saved ledger: ' + ', '.join(s['held_photos_omitted']) + '.',
              30, 79, 10, MUTED)
-    text(c, 'Unchanged photos, old-series photos and empty scenes are omitted from this PDF only. The full saved dataset is retained.',
+    scope_footer = ('Only empty scenes are omitted from this PDF. All nonempty saved labels are displayed; training eligibility is unchanged.'
+                    if data.get('all_nonempty') else
+                    'Unchanged photos, old-series photos and empty scenes are omitted from this PDF only. The full saved dataset is retained.')
+    text(c, scope_footer,
          30, 63, 10, MUTED)
     text(c, f'Cross-row anchors refer to immutable r{data["parent_round"]} rows. Index numbers link to photo pages; click the page header to return.',
          30, 47, 10, MUTED)
@@ -540,12 +564,13 @@ def verify_saved_pdf(root, output, data):
             'all_bookmark_destinations_verified': True, 'embedded_image_receipts': receipts}
 
 
-def build(root, review_root, ledger_root, output, qa_output, changes_only=False, compact_index=False):
+def build(root, review_root, ledger_root, output, qa_output, changes_only=False, compact_index=False,
+          all_nonempty=False):
     register_fonts()
-    data = load_inputs(root, review_root, ledger_root)
+    data = load_inputs(root, review_root, ledger_root, all_nonempty)
     data['changes_only'] = changes_only
-    if compact_index and not changes_only:
-        raise ValueError('The compact index requires the changes-only view without pending-case notes')
+    if compact_index and not (changes_only or all_nonempty):
+        raise ValueError('The compact index requires the changes-only or all-nonempty view')
     data['compact_index'] = compact_index
     if changes_only:
         if any(op['action'] != 'replace' for op in data['operations']):
@@ -553,14 +578,16 @@ def build(root, review_root, ledger_root, output, qa_output, changes_only=False,
         data['held'], data['cases'], data['amendment_questions'] = {}, {}, {}
         for key in ('held_photos', 'held_cases', 'held_training_photos'):
             data['summary'][key] = 0
-    provenance = PROVENANCE.format(round=data['round_number'], parent=data['parent_round'])
+    provenance = (ALL_NONEMPTY_PROVENANCE if all_nonempty else PROVENANCE).format(
+        round=data['round_number'], parent=data['parent_round'])
     groups = index_groups(data)
     index_count = len(groups)
     page_numbers = {iid: n + index_count + 1 for n, iid in enumerate(data['ids'])}
     index_for_photo = {iid: n + 1 for n, ids in enumerate(groups) for iid in ids}
     output.parent.mkdir(parents=True, exist_ok=True)
     c = canvas.Canvas(str(output), pagesize=(WIDTH, HEIGHT), pageCompression=1)
-    c.setTitle(f'Cassette front review r{data["round_number"]} - changed photographs')
+    title = 'all labeled photographs' if all_nonempty else 'changed photographs'
+    c.setTitle(f'Cassette front review r{data["round_number"]} - {title}')
     c.setAuthor('Siuuuers/dl'); c.setSubject(provenance)
     for n, ids in enumerate(groups, 1):
         c.bookmarkPage(f'index-{n}'); c.addOutlineEntry(f'Photo index {n} of {index_count}', f'index-{n}', level=0)
@@ -594,6 +621,8 @@ def build(root, review_root, ledger_root, output, qa_output, changes_only=False,
                       'split': item['split'], 'label_sha256': item['sha256'],
                       'original_image_sha256': record['image_sha256'], 'embedded_original_size': list(image.size),
                       'changed_fields': {str(k): sorted(v) for k, v in edits.items()},
+                      'removed_point_rows': {side: data['removed_points'].get(iid, {}).get(side, [])
+                                             for side in ('left', 'right')},
                       'held_fields': {str(k): sorted(v) for k, v in held.items()},
                       'case_ids': [case['case_id'] for case in data['cases'].get(iid, [])]})
         c.showPage()
@@ -607,11 +636,13 @@ def build(root, review_root, ledger_root, output, qa_output, changes_only=False,
                         if page[block]['truncated']]
     qa = {'schema_version': 1, 'summary': data['summary'], 'provenance': provenance,
           'changes_only_display': changes_only,
+          'all_nonempty_display': all_nonempty,
           'compact_index': compact_index,
           'pdf': str(output), 'pdf_sha256': digest(output), 'page_count': len(data['ids']) + index_count,
           'review_manifest': {'path': data['manifest_path'].relative_to(root).as_posix(), 'sha256': digest(data['manifest_path'])},
           'parent_review': data['parent'], 'input_descriptors': data['input_descriptors'],
-          'included_image_ids': data['ids'], 'excluded_old_image_ids': sorted(i for i in data['files'] if i.startswith('old_')),
+          'included_image_ids': data['ids'], 'excluded_old_image_ids': sorted(i for i in data['files'] if i.startswith('old_') and i not in data['ids']),
+          'excluded_empty_image_ids': sorted(i for i in data['files'] if not data['files'][i]['rows'] and i not in data['ids']),
           'omitted_new_image_ids': sorted(i for i in data['files'] if i.startswith('new_') and i not in data['ids']), 'index_link_count': len(data['ids']),
           'unresolved_tag_collisions': sum(len(p['tag_overlap_pairs']) for p in pages),
           'clipped_tags': sum(len(p['clipped_tag_rows']) for p in pages),
@@ -640,15 +671,17 @@ def main(default_review=DEFAULT_REVIEW, default_ledger=DEFAULT_LEDGER,
     parser.add_argument('--qa-output', type=Path)
     parser.add_argument('--changes-only', action='store_true', default=default_changes_only,
                         help='Highlight only saved replacements, without review-status display')
+    parser.add_argument('--all-nonempty', action='store_true',
+                        help='Display every nonempty saved label, including unchanged and old-series photos')
     parser.add_argument('--compact-index', action='store_true',
-                        help='Use 18 index rows per column in the changes-only view')
+                        help='Use 18 index rows per column in the changes-only or all-nonempty view')
     args = parser.parse_args(); root = args.root.resolve()
     def resolve(path):
         return path.resolve() if path.is_absolute() else (root / path).resolve()
     output = resolve(args.output)
     qa_output = resolve(args.qa_output) if args.qa_output else output.with_suffix('.qa.json')
     result = build(root, resolve(args.review_root), resolve(args.ledger_root), output, qa_output,
-                   args.changes_only, args.compact_index)
+                   args.changes_only, args.compact_index, args.all_nonempty)
     print(json.dumps({'pdf': str(output), 'qa': str(qa_output), **result['summary'],
                       'unresolved_tag_collisions': result['unresolved_tag_collisions'],
                       'clipped_tags': result['clipped_tags'], 'deletion_tag_count': result['deletion_tag_count']}, indent=2))

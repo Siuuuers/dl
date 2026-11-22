@@ -1,0 +1,83 @@
+[
+  {
+    "role": "pr35",
+    "command": [
+      "/workspace/scratch/c1b4200206bd/r19/evaluation/venv/bin/python",
+      "-B",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/source/scripts/evaluate_pose.py",
+      "--root",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/source",
+      "--output",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/inference/eval-pr35",
+      "--checkpoint-manifest",
+      "/workspace/scratch/c1b4200206bd/r19/evaluation/pr35-return/candidate/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.13",
+      "--endpoint-conf",
+      "0.50",
+      "--matching-iou",
+      "0.50",
+      "--overlays",
+      "0"
+    ],
+    "exit_code": 0
+  },
+  {
+    "role": "reference",
+    "command": [
+      "/workspace/scratch/c1b4200206bd/r19/evaluation/venv/bin/python",
+      "-B",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/source/scripts/evaluate_pose.py",
+      "--root",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/source",
+      "--output",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/inference/eval-reference",
+      "--checkpoint-manifest",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/returned/reference/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.13",
+      "--endpoint-conf",
+      "0.50",
+      "--matching-iou",
+      "0.50",
+      "--overlays",
+      "0"
+    ],
+    "exit_code": 0
+  },
+  {
+    "role": "candidate",
+    "command": [
+      "/workspace/scratch/c1b4200206bd/r19/evaluation/venv/bin/python",
+      "-B",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/source/scripts/evaluate_pose.py",
+      "--root",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/source",
+      "--output",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/inference/eval-candidate",
+      "--checkpoint-manifest",
+      "/workspace/scratch/7c6d03c19e2f/r22/pr96-evaluation/returned/candidate/checkpoint-manifest.json",
+      "--device",
+      "cpu",
+      "--threads",
+      "4",
+      "--conf",
+      "0.13",
+      "--endpoint-conf",
+      "0.50",
+      "--matching-iou",
+      "0.50",
+      "--overlays",
+      "0"
+    ],
+    "exit_code": 0
+  }
+]

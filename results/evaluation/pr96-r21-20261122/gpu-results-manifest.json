@@ -1,0 +1,389 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-paired-training-results",
+  "created_at_utc": "2026-11-22T09:58:01.566436+00:00",
+  "source": {
+    "reference_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+    "model_card_sha256": "636f0952e9f36e7e26b091bd0ab9b857f841317673507611e998af1ada719566",
+    "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "checkpoint_bytes_verified": false,
+    "candidate_id": "front-review-2026-11-22-r21",
+    "candidate_manifest": "data/candidates/front-review-2026-11-22-r21/manifest.json",
+    "candidate_manifest_sha256": "0e826a412a9775f43a7b889bf851b147f603dc82436435394bad9729ff5a62fd",
+    "declared_candidate_source_revision": "bf13f8c293c316b62ede247324ef1e4e45c979a7",
+    "source_revision_git_object_checked": false,
+    "candidate_kind": "training_incremental_observed_overlay",
+    "control": {
+      "manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+      "manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+      "candidate_id": "annotations-2026-11-10",
+      "kind": "training_annotation_overlay",
+      "changed_train_labels": 8,
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3771,
+          "visible_endpoints": 6841,
+          "missing_endpoints": 701,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "training_protocol": {
+      "path": "experiments/front-review-2026-11-22-r21.json",
+      "sha256": "6e79440caa989de5327531ebde2242aa3ba7f25de7497ebac8542ee766400122"
+    },
+    "retained_legacy_image_ids": [
+      "new_000015"
+    ],
+    "excluded_training_image_ids": [
+      "old_000003",
+      "old_000004",
+      "old_000007",
+      "old_000010",
+      "old_000013",
+      "old_000018",
+      "old_000021",
+      "old_000022",
+      "old_000027",
+      "old_000028",
+      "old_000038",
+      "old_000039",
+      "old_000042",
+      "old_000046",
+      "old_000050",
+      "old_000051",
+      "old_000054",
+      "old_000057",
+      "old_000061",
+      "old_000065",
+      "old_000068",
+      "old_000069",
+      "old_000073",
+      "old_000077",
+      "old_000079",
+      "old_000087",
+      "old_000089",
+      "old_000093",
+      "old_000097",
+      "old_000100",
+      "old_000101"
+    ]
+  },
+  "training_source": {
+    "revision": "c4fb76afe280552ed13ed3c9b78608deceb7b3c4",
+    "working_tree_status": "",
+    "files_sha256": {
+      "scripts/train_pose_comparison.py": "92122a24abe042ed08c6e546030340569167882d587c8c83b3b4509055061a0e",
+      "scripts/pose_checkpoint.py": "e0f85a76fd5234a98e66783d3408e22175ba334c6209f91aca8680221a2f8d5d",
+      "scripts/stage_pose_training.py": "e0674205a749b37e622cdd422e484c557e11e8979c9d9d3ee782d9a216d1b36b",
+      "scripts/verify_pose_candidate.py": "03395b9a82a4c120647a1cac51c89fd214d8cf9b15c04e2196a40f39077d8491",
+      "scripts/verify_pose_box_candidate.py": "f8613b9b310f25930a9d47169650473d3fbc0a1032868dd80222d956d26e1ea5",
+      "scripts/verify_pose_annotation_candidate.py": "0dc3d263b4aad594e1019de8f8318dcd963d9c0c2f4604ad2dee408c83af7979",
+      "scripts/verify_pose_endpoint_candidate.py": "9adcf9805ba9ee6fbe252c05903bab5a997e9e7c5063362d77e1f5fcccdb53d5",
+      "scripts/verify_pose_composed_candidate.py": "e538dfce5de0b1fb10047bbce0598882ee1083825ed6061469c85a3daf08bd32",
+      "scripts/verify_observed_training_candidate.py": "28fea1d483058988ea567d9382ed82f73e511cd9b692af7bb8c23c3463134426",
+      "scripts/compose_observed_pose_review.py": "8f99c87236b09ed40c85521b68ea2a39ca4062cfa74b8cd43bb376cb5009fd25",
+      "scripts/verify_incremental_pose_candidate.py": "f4cc34dd495611e0e446e5b02307b7b5dedc1b7dafafa0674251ae6f2058e57b",
+      "scripts/compose_incremental_pose_candidate.py": "9b51b8a96407af15fa820b959d30ccffe3da21ca53b4ba1f91294bb46360a789",
+      "scripts/verify_front_review_r4.py": "b46393cb5a186fd687ed6e2a4e1141711e319e138f361bd6fcbe254effb0afa0",
+      "scripts/verify_front_review_r5.py": "74b0108ed6bcd109dae0cb278b23fd6cc8f44cbbfb20c65d4ce1fa9e53570d94",
+      "scripts/verify_front_review_r6.py": "2591cc62d1c9238971358d8d1a9f20f324684a4f125aa63b29a1326c4bd00c82",
+      "scripts/verify_front_review_r7.py": "afc116835e371dd459bcf62274ed90124196cc7ccb15f580524322b0d7c85fee",
+      "scripts/verify_front_review_r8.py": "49675f497acb6fab08d473d506f30dea7b1fa20633bfc10a77c0c6ba03e64c30",
+      "scripts/front_review_experiment.py": "58fc3f020edfe834c4d051ba98a954661ffaf7bdf2ce2dbc0caf2fbec3a7f524",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018"
+    }
+  },
+  "runtime": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "ultralytics": "8.4.182",
+    "device": "cuda:0",
+    "torch_cuda": "13.0",
+    "threads": 4,
+    "interop_threads": 1,
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "packages": {
+      "torchvision": "0.29.1+cu130",
+      "numpy": "2.4.6",
+      "Pillow": "11.3.0",
+      "opencv-python": "5.0.0.93",
+      "psutil": "5.9.5"
+    },
+    "device_name": "NVIDIA L4",
+    "device_capability": [
+      8,
+      9
+    ],
+    "backend": {
+      "model_channels_last": true,
+      "float32_matmul_precision": "highest",
+      "cuda_matmul_allow_tf32": false,
+      "cudnn_allow_tf32": true,
+      "cudnn_version": 92800,
+      "deterministic_algorithms_enabled": true,
+      "deterministic_warn_only": true,
+      "cudnn_deterministic": true,
+      "cudnn_benchmark": false
+    }
+  },
+  "shared_training_settings": {
+    "task": "pose",
+    "mode": "train",
+    "epochs": 30,
+    "time": null,
+    "patience": 0,
+    "batch": 4,
+    "imgsz": 1280,
+    "save": true,
+    "save_period": 10,
+    "cache": false,
+    "device": "0",
+    "workers": 0,
+    "exist_ok": false,
+    "pretrained": true,
+    "cls_remap": true,
+    "optimizer": "AdamW",
+    "verbose": false,
+    "seed": 46,
+    "deterministic": true,
+    "single_cls": false,
+    "rect": true,
+    "cos_lr": false,
+    "close_mosaic": 0,
+    "resume": false,
+    "amp": false,
+    "fraction": 1.0,
+    "profile": false,
+    "freeze": 0,
+    "multi_scale": 0.0,
+    "compile": false,
+    "channels_last": null,
+    "overlap_mask": true,
+    "mask_ratio": 4,
+    "dropout": 0.0,
+    "val": true,
+    "split": "val",
+    "save_json": false,
+    "conf": null,
+    "iou": 0.7,
+    "max_det": 300,
+    "quantize": null,
+    "dnn": false,
+    "plots": false,
+    "nms": null,
+    "source": null,
+    "vid_stride": 1,
+    "stream_buffer": false,
+    "visualize": false,
+    "augment": false,
+    "agnostic_nms": false,
+    "classes": null,
+    "retina_masks": false,
+    "embed": null,
+    "show": false,
+    "save_frames": false,
+    "save_txt": false,
+    "save_conf": false,
+    "save_crop": false,
+    "show_labels": true,
+    "show_conf": true,
+    "show_boxes": true,
+    "line_width": null,
+    "format": "torchscript",
+    "optimize": false,
+    "dynamic": false,
+    "simplify": true,
+    "opset": null,
+    "workspace": null,
+    "lr0": 0.0001,
+    "lrf": 0.01,
+    "momentum": 0.937,
+    "weight_decay": 0.0005,
+    "warmup_epochs": 3.0,
+    "warmup_momentum": 0.8,
+    "warmup_bias_lr": 0.0001,
+    "distill_model": null,
+    "dis": 6.0,
+    "box": 7.5,
+    "cls": 0.5,
+    "cls_pw": 0.0,
+    "dfl": 1.5,
+    "pose": 12.0,
+    "kobj": 1.0,
+    "rle": 1.0,
+    "angle": 1.0,
+    "dlog": 1.0,
+    "dgrad": 0.5,
+    "dlam": 1.0,
+    "nbs": 64,
+    "hsv_h": 0.01,
+    "hsv_s": 0.2,
+    "hsv_v": 0.2,
+    "degrees": 5.0,
+    "translate": 0.05,
+    "scale": 0.15,
+    "shear": 0.0,
+    "perspective": 0.0,
+    "flipud": 0.0,
+    "fliplr": 0.5,
+    "bgr": 0.0,
+    "mosaic": 0.0,
+    "mixup": 0.0,
+    "cutmix": 0.0,
+    "copy_paste": 0.0,
+    "copy_paste_mode": "flip",
+    "auto_augment": "randaugment",
+    "erasing": 0.4,
+    "cfg": null,
+    "tracker": "tracktrack.yaml"
+  },
+  "arms": {
+    "reference": {
+      "checkpoint_manifest": "reference/checkpoint-manifest.json",
+      "checkpoint_identity": {
+        "kind": "baomai-trained-checkpoint",
+        "purpose": "paired-finetune",
+        "arm": "reference",
+        "checkpoint_sha256": "3b6054b0da543752ba7202995bce8834dc5daf02ea7e2463ea409da365e6acc6",
+        "checkpoint_size_bytes": 21704750,
+        "training_receipt_sha256": "4df71159722fa6cf0d7b42519750d189c168e79b0534bd1cddf028167ca4a3c2",
+        "staging_manifest_sha256": "c63f9b07f443b13276eb8fe016a1b0721c4401190120c5cca2f672a9f03262e8",
+        "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+        "completed_epochs": 30,
+        "selection": "final_epoch",
+        "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+        "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+        "training_labels": {
+          "kind": "training_incremental_observed_overlay",
+          "role": "pr35_annotation_control",
+          "label_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+          "label_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+          "label_candidate_id": "annotations-2026-11-10",
+          "control_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+          "control_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+          "incremental_manifest": "data/candidates/front-review-2026-11-22-r21/manifest.json",
+          "incremental_manifest_sha256": "0e826a412a9775f43a7b889bf851b147f603dc82436435394bad9729ff5a62fd",
+          "training_protocol": {
+            "path": "experiments/front-review-2026-11-22-r21.json",
+            "sha256": "6e79440caa989de5327531ebde2242aa3ba7f25de7497ebac8542ee766400122"
+          },
+          "full_dataset_certified": false,
+          "retained_legacy_image_ids": [
+            "new_000015"
+          ]
+        },
+        "manifest_sha256": "69a145565382d184a908e2f97b243cab23af65e833e901204028ba10d5127242"
+      }
+    },
+    "candidate": {
+      "checkpoint_manifest": "candidate/checkpoint-manifest.json",
+      "checkpoint_identity": {
+        "kind": "baomai-trained-checkpoint",
+        "purpose": "paired-finetune",
+        "arm": "candidate",
+        "checkpoint_sha256": "a14467eb1e15258ab8a5f473e1f1abd600766e11d068dba4cd041714384de1d4",
+        "checkpoint_size_bytes": 21704750,
+        "training_receipt_sha256": "b1c1437d71668163d48c560367d38d674270724fcb26603a91cf44af0018d3e4",
+        "staging_manifest_sha256": "ba4074ec7a9a32665a3022f987f334330acafe3a071cac222865fea3dbac1419",
+        "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+        "completed_epochs": 30,
+        "selection": "final_epoch",
+        "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+        "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+        "training_labels": {
+          "kind": "training_incremental_observed_overlay",
+          "role": "accepted_fronts_treatment",
+          "label_manifest": "data/candidates/front-review-2026-11-22-r21/manifest.json",
+          "label_manifest_sha256": "0e826a412a9775f43a7b889bf851b147f603dc82436435394bad9729ff5a62fd",
+          "label_candidate_id": "front-review-2026-11-22-r21",
+          "control_manifest": "data/candidates/annotations-2026-11-10/manifest.json",
+          "control_manifest_sha256": "28fc8f5da95605089d61fb062132200ed296c3a10b216f1a61dbda1798ea4ba7",
+          "incremental_manifest": "data/candidates/front-review-2026-11-22-r21/manifest.json",
+          "incremental_manifest_sha256": "0e826a412a9775f43a7b889bf851b147f603dc82436435394bad9729ff5a62fd",
+          "training_protocol": {
+            "path": "experiments/front-review-2026-11-22-r21.json",
+            "sha256": "6e79440caa989de5327531ebde2242aa3ba7f25de7497ebac8542ee766400122"
+          },
+          "full_dataset_certified": false,
+          "retained_legacy_image_ids": [
+            "new_000015"
+          ]
+        },
+        "manifest_sha256": "62fb9a5d1157a8505e8bd86aa2c739a9dfc625263c0baadfa53c2f58ad95622e"
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "candidate/checkpoint-manifest.json",
+      "sha256": "62fb9a5d1157a8505e8bd86aa2c739a9dfc625263c0baadfa53c2f58ad95622e",
+      "size_bytes": 801
+    },
+    {
+      "path": "candidate/fit/results.csv",
+      "sha256": "f00410a22859199fe65cb499aa9b88bce5d4c227374aa28ead82344ffd823763",
+      "size_bytes": 6042
+    },
+    {
+      "path": "candidate/fit/weights/last.pt",
+      "sha256": "a14467eb1e15258ab8a5f473e1f1abd600766e11d068dba4cd041714384de1d4",
+      "size_bytes": 21704750
+    },
+    {
+      "path": "candidate/staging-manifest.json",
+      "sha256": "ba4074ec7a9a32665a3022f987f334330acafe3a071cac222865fea3dbac1419",
+      "size_bytes": 214054
+    },
+    {
+      "path": "candidate/train.log",
+      "sha256": "27fef3822b53ba46a9406612fe9e7aec91c89d0a9b6a04661e0b82d993eec5d9",
+      "size_bytes": 228888
+    },
+    {
+      "path": "candidate/training-receipt.json",
+      "sha256": "b1c1437d71668163d48c560367d38d674270724fcb26603a91cf44af0018d3e4",
+      "size_bytes": 18669
+    },
+    {
+      "path": "reference/checkpoint-manifest.json",
+      "sha256": "69a145565382d184a908e2f97b243cab23af65e833e901204028ba10d5127242",
+      "size_bytes": 801
+    },
+    {
+      "path": "reference/fit/results.csv",
+      "sha256": "1add8fd8ea9f1942dad143b767ef40269c64a8fe5fef37414ca564a9c95dba7d",
+      "size_bytes": 6045
+    },
+    {
+      "path": "reference/fit/weights/last.pt",
+      "sha256": "3b6054b0da543752ba7202995bce8834dc5daf02ea7e2463ea409da365e6acc6",
+      "size_bytes": 21704750
+    },
+    {
+      "path": "reference/staging-manifest.json",
+      "sha256": "c63f9b07f443b13276eb8fe016a1b0721c4401190120c5cca2f672a9f03262e8",
+      "size_bytes": 214054
+    },
+    {
+      "path": "reference/train.log",
+      "sha256": "e11ffb79ec530ee5bd1c94d842945f6ad99c3e73240d8c19fcca583b925842e6",
+      "size_bytes": 228889
+    },
+    {
+      "path": "reference/training-receipt.json",
+      "sha256": "4df71159722fa6cf0d7b42519750d189c168e79b0534bd1cddf028167ca4a3c2",
+      "size_bytes": 18690
+    }
+  ],
+  "verification_scope": "Artifact integrity and paired-run eligibility; no model loading, inference, or accuracy approval."
+}

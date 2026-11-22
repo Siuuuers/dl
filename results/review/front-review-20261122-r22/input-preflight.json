@@ -1,0 +1,146 @@
+{
+  "status": "ready_for_controlled_incremental_experiment",
+  "training_counts": {
+    "reference": {
+      "train": {
+        "images": 137,
+        "objects": 3771,
+        "visible_endpoints": 6841,
+        "missing_endpoints": 701,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    },
+    "candidate": {
+      "train": {
+        "images": 137,
+        "objects": 3784,
+        "visible_endpoints": 6836,
+        "missing_endpoints": 732,
+        "empty_images": 13
+      },
+      "val": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      }
+    }
+  },
+  "complete_review_counts": {
+    "train": {
+      "images": 137,
+      "objects": 3786,
+      "visible_endpoints": 6836,
+      "missing_endpoints": 736,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 662,
+      "visible_endpoints": 1226,
+      "missing_endpoints": 98,
+      "empty_images": 3
+    }
+  },
+  "weights_verified": true,
+  "changed_training_photos": 92,
+  "held_training_photos": [
+    "new_000015"
+  ],
+  "old_photos_excluded_from_treatment": 31,
+  "reviewed_training_photos": 93,
+  "reviewed_development_photos": 17,
+  "new_cases": 0,
+  "new_holds": 0,
+  "point_repairs": 60,
+  "point_transitions": {
+    "reposition": 58,
+    "remove": 2
+  },
+  "visible_point_x_changes": 58,
+  "visible_point_y_changes": 7,
+  "named_horizontal_edges_corrected": 37,
+  "requested_right_point_deletions": 2,
+  "vertical_box_changes": [
+    {
+      "image_id": "new_000094",
+      "base_row": 23,
+      "before_xyxy": [
+        344.88999680000006,
+        630.2800043999999,
+        475.0,
+        655.990002
+      ],
+      "after_xyxy": [
+        342.5,
+        605.00000000016,
+        475.0,
+        655.990002
+      ],
+      "adjudication": {
+        "reason": "Restore the own front lip and upper face, which are clipped by the old top edge; preserve the visible lower extent.",
+        "independent_review": "Root independently inspected the original-pixel coordinate crop x330-490,y575-660 and the raw/current/proposed full-front overlay. The own lip starts near y605, while the previous bottom near655.99 already encloses the lower face.",
+        "coordinate_interpretation": "Image Y increases downward. The requested literal ymax increase to row30 ymax is numerically inconsistent(old655.99, reference635). Resolve the visible defect by decreasing ymin to605; retain ymax655.99 and extend xmin to342.5 for the own notch."
+      }
+    }
+  ],
+  "instance_counts_preserved": true,
+  "classes_and_rows_preserved": true,
+  "confirmed_reference_rows_preserved": true,
+  "changed_photos_this_round": 66,
+  "changed_rows_this_round": 357,
+  "changed_box_rows_this_round": 352,
+  "changes_by_split": {
+    "train": {
+      "rows": 285,
+      "boxes": 280,
+      "point_repairs": 54
+    },
+    "val": {
+      "rows": 72,
+      "boxes": 72,
+      "point_repairs": 6
+    }
+  },
+  "unrequested_review_files_preserved_from_r21": 47,
+  "full_nonempty_review_photos": 141,
+  "full_nonempty_review_instances": 4448,
+  "evaluation_references": {
+    "primary": {
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "objects_by_locatable_corners": {
+        "0": 23,
+        "1": 59,
+        "2": 584
+      }
+    },
+    "diagnostic": {
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "objects_by_locatable_corners": {
+        "0": 20,
+        "1": 59,
+        "2": 584
+      }
+    }
+  }
+}

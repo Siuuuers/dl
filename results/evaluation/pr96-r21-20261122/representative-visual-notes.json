@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scope": "Representative original-pixel visual diagnostics only; no labels or predictions changed",
+  "inspected_cases": [
+    {
+      "file": "representative-cases/new_000057-primary-row12.png",
+      "image_id": "new_000057",
+      "primary_row": 12,
+      "r21_row": 11,
+      "observation": "The candidate output lies on the same white cassette front. The fixed box extends below it into darker material. Reference geometry alone changes IoU from 0.473685 to 0.767729. Target corners are unchanged, with candidate errors 0.338 px and 0.723 px. This fixed miss does not indicate absence of a detector output on that cassette.",
+      "render_sha256": "4a4b928229716dd0dbef9bdf2398a4a46e4e2ad6fd33bb76c7c4cc9bc20dec23"
+    },
+    {
+      "file": "representative-cases/new_000090-primary-row41.png",
+      "image_id": "new_000090",
+      "primary_row": 41,
+      "r21_row": 41,
+      "observation": "The fixed box spans the white cassette front and a broad gray vertical rack region to its right. The r21 box is narrower. The same output crosses the IoU 0.5 threshold, but its box still extends into the rack strip and its returned right point is over rack material. Only the left reference point is locatable; a box match does not certify a physically valid right corner.",
+      "render_sha256": "5b234d7e4b547ccccbd2f8994eac9eb19288f90d3089a03e9cb9573607a4ad96"
+    },
+    {
+      "file": "representative-cases/new_000010-primary-row32.png",
+      "image_id": "new_000010",
+      "primary_row": 32,
+      "r21_row": 32,
+      "observation": "A hand occludes most of the front. The fixed box spans a wide area over the hand, while the r21 box covers a much narrower visible sliver. The same prediction changes IoU from 0.185174 to 0.538225 and still extends into the occluder. Both reference corners are unlocatable; their accuracy cannot be scored.",
+      "render_sha256": "1925bf0ba7cb3501e120dd2516e3f76c42425e321f272cc63aec55ba0d2cac71"
+    },
+    {
+      "file": "representative-cases/new_000011-primary-row58.png",
+      "image_id": "new_000011",
+      "primary_row": 58,
+      "r21_row": 57,
+      "observation": "A narrow visible front sits beside a broad gray rack strip. The candidate box extends into the strip. Tightening the reference changes IoU from 0.513749 to 0.284208, exposing a residual oversized-box error. The locatable left point is 2.636 px from the r21 reference point.",
+      "render_sha256": "4f04207b4f38ee6babc071367b8c1642897b098d21e0f904afce996dc71f6a67"
+    }
+  ]
+}
