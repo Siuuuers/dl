@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "kind": "pr97-r23-measured-summary",
+  "recommendation": "Retain PR35. Do not promote the r23 candidate. Frozen-reference detection is worse and ranking reverses on the pre-return r23 exploratory reference.",
+  "measurement_date_local": "2026-11-23",
+  "timezone": "Asia/Hong_Kong",
+  "fixed_comparison_sha256": "7b4e02c0cd0eb49c8991e92d68008b3d9e4b969350702ae664bf949e0e31d9ba",
+  "prior_pr96_evidence": {
+    "path": "results/evaluation/pr96-r21-20261122/fixed-comparison.json",
+    "sha256": "df5bf0f3aad40421cd5e923eba33c72ddbe413bd5a8e7dba76ecfc6b2d0142f5"
+  },
+  "models": {
+    "pr35": {
+      "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+      "predictions_sha256": "1e22f28ca8828f05bf38570c8da7bda70a9b7814cfd475f2203cd2dd330b8090"
+    },
+    "reference": {
+      "checkpoint_sha256": "dae9539320c954677f6874d9ede087ba98955d816f49ecf711da12187bf7c890",
+      "predictions_sha256": "225cb52b2b09b1d3a82a4e8a86ddce23b9951e06053f60aa3c29a35bf8025f4d"
+    },
+    "candidate": {
+      "checkpoint_sha256": "e1d9104b9add3e39bbd9b0d728c58d258e42cf1501ac9615a14e61e5e1c8716e",
+      "predictions_sha256": "c51d96aba91d1f0338809737e70f9ada3a0506f4d89102106f9347d3489b40d3"
+    }
+  },
+  "references": {
+    "primary": {
+      "reference_id": "sequence-refined-reference-2026-11-18",
+      "manifest_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "unresolved_rows": 8,
+      "models": {
+        "pr35": {
+          "gold_count": 666,
+          "prediction_count": 728,
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_5px": 533,
+          "both_corners_10px": 582,
+          "both_corner_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "reference": {
+          "gold_count": 666,
+          "prediction_count": 729,
+          "tp": 646,
+          "fn": 20,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "both_corners_5px": 531,
+          "both_corners_10px": 583,
+          "both_corner_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "candidate": {
+          "gold_count": 666,
+          "prediction_count": 740,
+          "tp": 630,
+          "fn": 36,
+          "fp": 110,
+          "duplicate_fp": 32,
+          "other_fp": 78,
+          "both_corners_5px": 521,
+          "both_corners_10px": 575,
+          "both_corner_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 43,
+              "misses": 16
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          }
+        }
+      }
+    },
+    "diagnostic": {
+      "reference_id": "visible-front-completion-2026-11-14",
+      "manifest_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "unresolved_rows": 13,
+      "models": {
+        "pr35": {
+          "gold_count": 663,
+          "prediction_count": 728,
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_5px": 533,
+          "both_corners_10px": 582,
+          "both_corner_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 7,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "reference": {
+          "gold_count": 663,
+          "prediction_count": 729,
+          "tp": 646,
+          "fn": 17,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "both_corners_5px": 531,
+          "both_corners_10px": 583,
+          "both_corner_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 5,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "candidate": {
+          "gold_count": 663,
+          "prediction_count": 740,
+          "tp": 631,
+          "fn": 32,
+          "fp": 109,
+          "duplicate_fp": 32,
+          "other_fp": 77,
+          "both_corners_5px": 521,
+          "both_corners_10px": 575,
+          "both_corner_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 4,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 59,
+              "matched": 43,
+              "misses": 16
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          }
+        }
+      }
+    },
+    "current_r23_exploratory": {
+      "reference_id": "fronts-2026-11-22-r23",
+      "manifest_sha256": "d93be83707ee3090d05808333410c924c8a32df82df87f4579f0c3aead4176d0",
+      "counts": {
+        "images": 20,
+        "objects": 662,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 98,
+        "empty_images": 3
+      },
+      "unresolved_rows": 0,
+      "models": {
+        "pr35": {
+          "gold_count": 662,
+          "prediction_count": 728,
+          "tp": 625,
+          "fn": 37,
+          "fp": 103,
+          "duplicate_fp": 21,
+          "other_fp": 82,
+          "both_corners_5px": 545,
+          "both_corners_10px": 573,
+          "both_corner_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 37,
+              "misses": 21
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          }
+        },
+        "reference": {
+          "gold_count": 662,
+          "prediction_count": 729,
+          "tp": 624,
+          "fn": 38,
+          "fp": 105,
+          "duplicate_fp": 16,
+          "other_fp": 89,
+          "both_corners_5px": 541,
+          "both_corners_10px": 573,
+          "both_corner_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 6,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 37,
+              "misses": 21
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          }
+        },
+        "candidate": {
+          "gold_count": 662,
+          "prediction_count": 740,
+          "tp": 645,
+          "fn": 17,
+          "fp": 95,
+          "duplicate_fp": 33,
+          "other_fp": 62,
+          "both_corners_5px": 556,
+          "both_corners_10px": 583,
+          "both_corner_denominator": 584,
+          "empty_scene_outputs": 0,
+          "miss_free_nonempty_scenes": 9,
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 58,
+              "matched": 48,
+              "misses": 10
+            },
+            "2": {
+              "gold": 584,
+              "matched": 584,
+              "misses": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "r23_candidate_minus_prior_r21_candidate": {
+    "primary": {
+      "same_reference_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "detection": {
+        "tp": -1,
+        "fn": 1,
+        "fp": 10,
+        "duplicate_fp": 5,
+        "other_fp": 5
+      },
+      "both_corners_5px": 3,
+      "both_corners_10px": 1
+    },
+    "diagnostic": {
+      "same_reference_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "detection": {
+        "tp": -1,
+        "fn": 1,
+        "fp": 10,
+        "duplicate_fp": 5,
+        "other_fp": 5
+      },
+      "both_corners_5px": 3,
+      "both_corners_10px": 1
+    }
+  },
+  "prior_exploratory_comparison_note": "The old r21 and pre-return r23 exploratory endpoint references differ. Their raw corner-score changes are not used as an isolated model effect. Prior r21 comparisons above use only identical frozen references.",
+  "limitation": "Accumulated eligible supervision is the treatment. r23 versus r21 includes the intervening r22 amendments; it does not isolate the four r23 training-corner edits. Reused development frames provide no independent capture-session estimate."
+}

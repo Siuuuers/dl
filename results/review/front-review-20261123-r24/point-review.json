@@ -1,0 +1,1244 @@
+{
+  "schema_version": 1,
+  "kind": "focused_front_face_corner_review",
+  "source_revision": "ee2ca5f260af96621aed4bf5803680b9b6403349",
+  "source_review": {
+    "path": "data/reviews/fronts-2026-11-22-r23/manifest.json",
+    "sha256": "d93be83707ee3090d05808333410c924c8a32df82df87f4579f0c3aead4176d0"
+  },
+  "date": "2026-11-23",
+  "timezone": "Asia/Hong_Kong",
+  "review_method": "Assistant visual proposals followed by a separate original-pixel inspection; no automatic brightness threshold or fixed offset.",
+  "scope": "Both endpoints of the 21 user-named rows plus the single adjacent row new_000012:5. Two accepted standards are preserved.",
+  "coordinate_system": "Original 1280 x 720 pixels; x right, y down. Before/after coordinates are decoded from the exact saved tokens.",
+  "uncertainty_note": "Visual placement intervals are qualitative, not calibrated statistical bounds. Most corners approximately 1–2 pixels; shadowed new_000016 right corners 25–27 approximately 2–3 pixels.",
+  "split_handling": "new_000010 remains development-only. Its revised points are review/exploratory only; trainer validation and frozen references remain unchanged.",
+  "preserved_standards": [
+    {
+      "image_id": "new_000010",
+      "row": 16,
+      "line": "0 0.707226562500 0.21875 0.148046875000 0.0930555556 0.63742969 0.24188889 2 0.77812500 0.25972222 2",
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "decision": "Both endpoints and every other token preserved exactly; inspected as the user-accepted landmark standard."
+    },
+    {
+      "image_id": "new_000016",
+      "row": 24,
+      "line": "0 0.642773437500 0.5770833333 0.130078125000 0.0486111111 0.5789062500 0.5972222222 2 0.7046875000 0.5986111111 2",
+      "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+      "decision": "Both endpoints and every other token preserved exactly; inspected as the user-accepted landmark standard."
+    }
+  ],
+  "rows": [
+    {
+      "image_id": "new_000010",
+      "row": 15,
+      "split": "val",
+      "scope": "user_named",
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "before_line": "0 0.7160156250 0.1486111111 0.1492187500 0.0916666667 0.6421875000 0.1722222222 2 0.78750000 0.19166667 2",
+      "after_line": "0 0.7160156250 0.1486111111 0.1492187500 0.0916666667 0.644531250000 0.169444444444 2 0.78750000 0.19166667 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            822.0,
+            123.999999984
+          ],
+          "after_pixel_xy": [
+            825.0,
+            121.99999999968
+          ],
+          "selected_pixel_xy": [
+            825,
+            122
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is left/below the lighter lower front-face turn, against the darker side/rail-side strip. Follow the lower face edge to the bend at approximately(825,122).",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            1008.0,
+            138.0000024
+          ],
+          "after_pixel_xy": [
+            1008.0,
+            138.0000024
+          ],
+          "selected_pixel_xy": [
+            1008.0,
+            138.0000024
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point already marks the visible rounded lower-right face turn; moving it would mainly select a different location within the1–2px blurred edge.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000010",
+      "row": 17,
+      "split": "val",
+      "scope": "user_named",
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "before_line": "0 0.6976562500 0.28413888945 0.1453125000 0.0844999989 0.6257812500 0.3111111111 2 0.7679687500 0.3236111111 2",
+      "after_line": "0 0.6976562500 0.28413888945 0.1453125000 0.0844999989 0.628906250000 0.309722222222 2 0.7679687500 0.3236111111 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            801.0,
+            223.999999992
+          ],
+          "after_pixel_xy": [
+            805.0,
+            222.99999999984
+          ],
+          "selected_pixel_xy": [
+            805,
+            223
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point lies on the darker left transition. The lower white front face meets the vertical face boundary several pixels farther right.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            983.0,
+            232.999999992
+          ],
+          "after_pixel_xy": [
+            983.0,
+            232.999999992
+          ],
+          "selected_pixel_xy": [
+            983.0,
+            232.999999992
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point follows the light lower front edge into its right turn. Retain within rounded/blurred-edge uncertainty.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000010",
+      "row": 18,
+      "split": "val",
+      "scope": "user_named",
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "before_line": "0 0.689648437500 0.349305555575 0.141796875000 0.07638888895 0.6195312500 0.3750000000 2 0.7593750000 0.3847222222 2",
+      "after_line": "0 0.689648437500 0.349305555575 0.141796875000 0.07638888895 0.623437500000 0.373611111111 2 0.7593750000 0.3847222222 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            793.0,
+            270.0
+          ],
+          "after_pixel_xy": [
+            798.0,
+            268.99999999991996
+          ],
+          "selected_pixel_xy": [
+            798,
+            269
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point lies toward the dark upright strip rather than the lower front-face bend. The visible light face turns into its lower edge near(798,269).",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            972.0,
+            276.999999984
+          ],
+          "after_pixel_xy": [
+            972.0,
+            276.999999984
+          ],
+          "selected_pixel_xy": [
+            972.0,
+            276.999999984
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is at the visible light-face lower/right transition, consistent with accepted010:16. No reliable alternate location is required.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000010",
+      "row": 19,
+      "split": "val",
+      "scope": "user_named",
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "before_line": "0 0.6828125000 0.410416666675 0.1390625000 0.07083333335 0.6140625000 0.4347222222 2 0.7500000000 0.4416666667 2",
+      "after_line": "0 0.6828125000 0.410416666675 0.1390625000 0.07083333335 0.617968750000 0.433333333333 2 0.7500000000 0.4416666667 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            786.0,
+            312.999999984
+          ],
+          "after_pixel_xy": [
+            791.0,
+            311.99999999976
+          ],
+          "selected_pixel_xy": [
+            791,
+            312
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is left of the visible light front face on the shadowed side/rail-side strip. The lower face turn is near(791,312).",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            960.0,
+            318.000000024
+          ],
+          "after_pixel_xy": [
+            960.0,
+            318.000000024
+          ],
+          "selected_pixel_xy": [
+            960.0,
+            318.000000024
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is at the visible lower-right turn and stays on the cassette-side transition. No clear correction beyond1–2px ambiguity.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000012",
+      "row": 4,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "before_line": "0 0.265039062500 0.3965277778 0.147265625000 0.0902777778 0.1937500000 0.4208333333 2 0.33491406 0.43952778 2",
+      "after_line": "0 0.265039062500 0.3965277778 0.147265625000 0.0902777778 0.1937500000 0.4208333333 2 0.330468750000 0.431944444444 2",
+      "point_reviews": {
+        "left": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            248.0,
+            302.999999976
+          ],
+          "after_pixel_xy": [
+            248.0,
+            302.999999976
+          ],
+          "selected_pixel_xy": [
+            248.0,
+            302.999999976
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point marks the rounded visible lower-left front-face turn. The stepped dark shape farther right/below belongs to the inter-cassette shadow/neighboring geometry; it is not a reason to shift the landmark inward.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        },
+        "right": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            428.6899968,
+            316.4600016
+          ],
+          "after_pixel_xy": [
+            423.0,
+            310.99999999967997
+          ],
+          "selected_pixel_xy": [
+            423,
+            311
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is below and outside the front lower edge in the darker side/rack-side transition. The white front face turns upward near(423,311); the projecting side can continue farther right/lower.",
+          "independent_review": "Independent original-pixel inspection confirms the old point extends into the darker side/rack transition; the new point follows the lower front edge into its visible turn."
+        }
+      }
+    },
+    {
+      "image_id": "new_000012",
+      "row": 5,
+      "split": "train",
+      "scope": "adjacent_context",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "before_line": "0 0.270507812500 0.4631944444 0.137890625000 0.0680555556 0.2039062500 0.4791666667 2 0.3375000000 0.4958333333 2",
+      "after_line": "0 0.270507812500 0.4631944444 0.137890625000 0.0680555556 0.2039062500 0.4791666667 2 0.334375000000 0.491666666667 2",
+      "point_reviews": {
+        "left": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            261.0,
+            345.00000002400003
+          ],
+          "after_pixel_xy": [
+            261.0,
+            345.00000002400003
+          ],
+          "selected_pixel_xy": [
+            261.0,
+            345.00000002400003
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved(261,345)marks the rounded lower-left light-face turn. The diagonal dark wedge farther right/below is the gap above the next cassette. Retain the point; moving into that wedge would select neighboring geometry.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        },
+        "right": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            432.0,
+            356.999999976
+          ],
+          "after_pixel_xy": [
+            428.0,
+            354.00000000024
+          ],
+          "selected_pixel_xy": [
+            428,
+            354
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Independently rechecked whole-face original and coordinate-grid crop. Saved(432,357)lies beyond/below the light lower front edge in the darker side/rack-side extension. Trace that edge to the visible turn at approximately(428,354). This supports the proposed coordinate within about1–2pixels of rounding/blur uncertainty.",
+          "independent_review": "Independent original-pixel inspection confirms the old point extends into the darker side/rack transition; the new point follows the lower front edge into its visible turn."
+        }
+      }
+    },
+    {
+      "image_id": "new_000012",
+      "row": 6,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "before_line": "0 0.2753906250 0.5180555556 0.1398437500 0.0638888889 0.21313281 0.53488889 2 0.34281250 0.54720833 2",
+      "after_line": "0 0.2753906250 0.5180555556 0.1398437500 0.0638888889 0.21313281 0.53488889 2 0.338281250000 0.544444444444 2",
+      "point_reviews": {
+        "left": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            272.8099968,
+            385.12000079999996
+          ],
+          "after_pixel_xy": [
+            272.8099968,
+            385.12000079999996
+          ],
+          "selected_pixel_xy": [
+            272.8099968,
+            385.12000079999996
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point remains on the rounded lower-left light-face boundary. Small placement differences are within blur/rounding; retain rather than use the dark triangular gap as a substitute corner.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        },
+        "right": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            438.8,
+            393.98999760000004
+          ],
+          "after_pixel_xy": [
+            433.0,
+            391.99999999967997
+          ],
+          "selected_pixel_xy": [
+            433,
+            392
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is in the grey vertical strip outside the bright front face. The lower front edge rounds upward near(433,392).",
+          "independent_review": "Independent original-pixel inspection confirms the old point extends into the darker side/rack transition; the new point follows the lower front edge into its visible turn."
+        }
+      }
+    },
+    {
+      "image_id": "new_000012",
+      "row": 7,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "before_line": "0 0.280664062500 0.5694444444 0.134765625000 0.0638888889 0.21943750 0.58431944 2 0.34558594 0.59747222 2",
+      "after_line": "0 0.280664062500 0.5694444444 0.134765625000 0.0638888889 0.21943750 0.58431944 2 0.339843750000 0.594444444444 2",
+      "point_reviews": {
+        "left": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            280.88,
+            420.7099968
+          ],
+          "after_pixel_xy": [
+            280.88,
+            420.7099968
+          ],
+          "selected_pixel_xy": [
+            280.88,
+            420.7099968
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is at the lower-left light boundary before the inter-cassette shadow. Retain within approximately1–2px placement uncertainty.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        },
+        "right": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            442.35000319999995,
+            430.1799984
+          ],
+          "after_pixel_xy": [
+            435.0,
+            427.99999999968
+          ],
+          "selected_pixel_xy": [
+            435,
+            428
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is on the darker side/rack-side strip. Trace the horizontal lower front edge to the white-to-shadow turn near(435,428).",
+          "independent_review": "Independent original-pixel inspection confirms the old point extends into the darker side/rack transition; the new point follows the lower front edge into its visible turn."
+        }
+      }
+    },
+    {
+      "image_id": "new_000012",
+      "row": 8,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "before_line": "0 0.2851562500 0.6173611111 0.1296875000 0.0597222222 0.22558594 0.63356944 2 0.34771094 0.64220833 2",
+      "after_line": "0 0.2851562500 0.6173611111 0.1296875000 0.0597222222 0.22558594 0.63356944 2 0.342968750000 0.640277777778 2",
+      "point_reviews": {
+        "left": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            288.75000320000004,
+            456.16999680000004
+          ],
+          "after_pixel_xy": [
+            288.75000320000004,
+            456.16999680000004
+          ],
+          "selected_pixel_xy": [
+            288.75000320000004,
+            456.16999680000004
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is on the visible rounded lower-left transition. A large inward movement would follow the neighboring gap rather than the front-face corner; small movements are not decisively supported.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        },
+        "right": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            445.07000320000003,
+            462.3899976
+          ],
+          "after_pixel_xy": [
+            439.0,
+            461.00000000016
+          ],
+          "selected_pixel_xy": [
+            439,
+            461
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point is on the darker vertical strip beyond the front face. The visible lower face corner is inward at approximately(439,461).",
+          "independent_review": "Independent original-pixel inspection confirms the old point extends into the darker side/rack transition; the new point follows the lower front edge into its visible turn."
+        }
+      }
+    },
+    {
+      "image_id": "new_000012",
+      "row": 9,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "before_line": "0 0.289062500000 0.6652777778 0.123437500000 0.0555555556 0.22984375 0.68176389 2 0.34920313 0.69062500 2",
+      "after_line": "0 0.289062500000 0.6652777778 0.123437500000 0.0555555556 0.228125000000 0.677777777778 2 0.343750000000 0.687500000000 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            294.20000000000005,
+            490.8700008
+          ],
+          "after_pixel_xy": [
+            292.0,
+            488.00000000015996
+          ],
+          "selected_pixel_xy": [
+            292,
+            488
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point sits below the white cassette boundary in the dark gap. Move to the visible rounded lower-left front turn, approximately(292,488).",
+          "independent_review": "Independent raw and overlay inspection confirms the old point lies below the bright material boundary; the new point follows the actual rounded front-bottom turn."
+        },
+        "right": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            446.9800064,
+            497.25000000000006
+          ],
+          "after_pixel_xy": [
+            440.0,
+            495.0
+          ],
+          "selected_pixel_xy": [
+            440,
+            495
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Saved point sits in the dark material outside the cassette. The bright lower face edge turns upward near(440,495).",
+          "independent_review": "Independent original-pixel inspection confirms the old point extends into the darker side/rack transition; the new point follows the lower front edge into its visible turn."
+        }
+      }
+    },
+    {
+      "image_id": "new_000014",
+      "row": 21,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "before_line": "0 0.735546875000 0.206944444 0.153906250000 0.102777778 0.66157813 0.23065278 2 0.808593750 0.251388889 2",
+      "after_line": "0 0.735546875000 0.206944444 0.153906250000 0.102777778 0.664062500000 0.229166666667 2 0.808593750 0.251388889 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            846.8200064,
+            166.0700016
+          ],
+          "after_pixel_xy": [
+            850.0,
+            165.00000000024
+          ],
+          "selected_pixel_xy": [
+            850,
+            165
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The old left point sits in the dim outer transition. Follow the sloping lower front edge left to the brighter rounded turn near x850,y165; the rack/side contour continues farther left.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            1035.0,
+            181.00000008
+          ],
+          "after_pixel_xy": [
+            1035.0,
+            181.00000008
+          ],
+          "selected_pixel_xy": [
+            1035.0,
+            181.00000008
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The current right point already lies at the rounded lower-front endpoint. An inward movement is not demonstrated beyond the 1–2 px visual ambiguity.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000014",
+      "row": 22,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "before_line": "0 0.7265625000 0.2770833333 0.1484375000 0.0902777778 0.65390625 0.29815278 2 0.796875000 0.319444444 2",
+      "after_line": "0 0.7265625000 0.2770833333 0.1484375000 0.0902777778 0.657031250000 0.297222222222 2 0.796875000 0.319444444 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            837.0,
+            214.6700016
+          ],
+          "after_pixel_xy": [
+            841.0,
+            213.99999999984
+          ],
+          "selected_pixel_xy": [
+            841,
+            214
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The left side/rack boundary is farther left than the front-bottom turn. The lower face edge turns upward at approximately x841,y214; the old x837 is on the grey side transition.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            1020.0,
+            229.99999968
+          ],
+          "after_pixel_xy": [
+            1020.0,
+            229.99999968
+          ],
+          "selected_pixel_xy": [
+            1020.0,
+            229.99999968
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The right point is already at the lower bright face/grey background turn; possible subpixel or 1 px refinements do not justify rewriting it.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000014",
+      "row": 23,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "before_line": "0 0.715625000 0.342361111 0.148437500 0.087500000 0.6437500000 0.3638888889 2 0.786718750 0.377777778 2",
+      "after_line": "0 0.715625000 0.342361111 0.148437500 0.087500000 0.647656250000 0.362500000000 2 0.786718750 0.377777778 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            824.0,
+            262.000000008
+          ],
+          "after_pixel_xy": [
+            829.0,
+            261.0
+          ],
+          "selected_pixel_xy": [
+            829,
+            261
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The old left point is on the grey outside transition. The lower front edge bends into the brighter left face around x829,y261.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            1007.0,
+            272.00000016
+          ],
+          "after_pixel_xy": [
+            1007.0,
+            272.00000016
+          ],
+          "selected_pixel_xy": [
+            1007.0,
+            272.00000016
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The apparent alternative a few pixels down-left lies on the same small rounded corner arc. The existing endpoint is within the approximately 1–2 px visual corner interval; retain rather than shifting along an ambiguous arc.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000014",
+      "row": 24,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "before_line": "0 0.7070312500 0.4055555556 0.1390625000 0.0777777778 0.63899219 0.42470833 2 0.773437500 0.438888889 2",
+      "after_line": "0 0.7070312500 0.4055555556 0.1390625000 0.0777777778 0.642187500000 0.423611111111 2 0.773437500 0.438888889 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            817.9100031999999,
+            305.7899976
+          ],
+          "after_pixel_xy": [
+            822.0,
+            304.99999999992
+          ],
+          "selected_pixel_xy": [
+            822,
+            305
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The left front-bottom turn lies inward of the old grey contour. The bright lower-edge fleck farther right is not itself the corner; the geometric turn is around x822,y305.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            990.0,
+            316.00000008
+          ],
+          "after_pixel_xy": [
+            990.0,
+            316.00000008
+          ],
+          "selected_pixel_xy": [
+            990.0,
+            316.00000008
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The current right point lies within the rounded lower-right front turn. The bright edge and blur do not support a meaningful replacement.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000014",
+      "row": 25,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "before_line": "0 0.697070312500 0.4631944444 0.136328125000 0.0736111111 0.6296875000 0.4819444444 2 0.763671875000 0.496527777778 2",
+      "after_line": "0 0.697070312500 0.4631944444 0.136328125000 0.0736111111 0.632812500000 0.481944444444 2 0.763671875000 0.496527777778 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            806.0,
+            346.999999968
+          ],
+          "after_pixel_xy": [
+            810.0,
+            346.99999999967997
+          ],
+          "selected_pixel_xy": [
+            810,
+            347
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The dark rack gap/grey outer wall extends left of the visible front corner. The front lower edge turns at approximately x810,y347, inward of the current x806.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            977.5,
+            357.50000000016
+          ],
+          "after_pixel_xy": [
+            977.5,
+            357.50000000016
+          ],
+          "selected_pixel_xy": [
+            977.5,
+            357.50000000016
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The right point lies in the visible lower-front corner interval, before the grey rack/background. Retain despite rounding.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000014",
+      "row": 31,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "before_line": "0 0.821875000000 0.5208333333 0.131250000000 0.0888888889 0.758593750000 0.547916666667 2 0.8851562500 0.5625000000 2",
+      "after_line": "0 0.821875000000 0.5208333333 0.131250000000 0.0888888889 0.763281250000 0.547222222222 2 0.8851562500 0.5625000000 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            971.0,
+            394.50000000024
+          ],
+          "after_pixel_xy": [
+            977.0,
+            393.99999999984
+          ],
+          "selected_pixel_xy": [
+            977,
+            394
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The current left point is on a dim projecting transition alongside the neighbour. The bright front-bottom boundary starts turning upward around x977,y394.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            1133.0,
+            405.0
+          ],
+          "after_pixel_xy": [
+            1133.0,
+            405.0
+          ],
+          "selected_pixel_xy": [
+            1133.0,
+            405.0
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The right point is already on the lower-front endpoint. The neighbouring dark rack/shadow below is excluded.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000014",
+      "row": 32,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "before_line": "0 0.8128906250 0.5805555556 0.1257812500 0.0694444444 0.7507812500 0.5986111111 2 0.8734375000 0.6138888889 2",
+      "after_line": "0 0.8128906250 0.5805555556 0.1257812500 0.0694444444 0.755468750000 0.598611111111 2 0.8734375000 0.6138888889 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            961.0,
+            430.99999999199997
+          ],
+          "after_pixel_xy": [
+            967.0,
+            430.99999999991996
+          ],
+          "selected_pixel_xy": [
+            967,
+            431
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The old left point lies on the grey side strip. The lower front-face edge meets its left rounded turn near x967,y431, before the grey wall continues left.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            1118.0,
+            442.00000000800003
+          ],
+          "after_pixel_xy": [
+            1118.0,
+            442.00000000800003
+          ],
+          "selected_pixel_xy": [
+            1118.0,
+            442.00000000800003
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The right endpoint is slightly soft but remains within the visible rounded front-corner interval. No confident displacement beyond roughly 1–2 px.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000016",
+      "row": 18,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+      "before_line": "0 0.676757812500 0.2166666667 0.158203125000 0.0861111111 0.5984375000 0.2472222222 2 0.7531250000 0.2583333333 2",
+      "after_line": "0 0.676757812500 0.2166666667 0.158203125000 0.0861111111 0.601562500000 0.245833333333 2 0.7531250000 0.2583333333 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            766.0,
+            177.999999984
+          ],
+          "after_pixel_xy": [
+            770.0,
+            176.99999999976
+          ],
+          "selected_pixel_xy": [
+            770,
+            177
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The lower front-face edge begins its upward turn near x770,y177. Current x766 lies in the darker outside side/rack transition.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            964.0,
+            185.99999997600003
+          ],
+          "after_pixel_xy": [
+            964.0,
+            185.99999997600003
+          ],
+          "selected_pixel_xy": [
+            964.0,
+            185.99999997600003
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The right point already follows the lower front edge into its bright rounded corner; retain.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000016",
+      "row": 19,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+      "before_line": "0 0.6699218750 0.2888888889 0.1539062500 0.0750000000 0.5937500000 0.3152777778 2 0.7445312500 0.3236111111 2",
+      "after_line": "0 0.6699218750 0.2888888889 0.1539062500 0.0750000000 0.596875000000 0.313888888889 2 0.7445312500 0.3236111111 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            760.0,
+            227.000000016
+          ],
+          "after_pixel_xy": [
+            764.0,
+            226.00000000008
+          ],
+          "selected_pixel_xy": [
+            764,
+            226
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "Trace the lower edge to the brighter left curve near x764,y226. Current x760 lies on the darker outer side strip rather than that turn.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "retained",
+          "before_pixel_xy": [
+            953.0,
+            232.999999992
+          ],
+          "after_pixel_xy": [
+            953.0,
+            232.999999992
+          ],
+          "selected_pixel_xy": [
+            953.0,
+            232.999999992
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The right point already meets the lower front-edge turn and does not extend to the rack/side projection; retain.",
+          "independent_review": "Independent inspection of the raw face and nearby context supports the existing front-face turn; retain the exact tokens within the rounded/blurred boundary interval."
+        }
+      }
+    },
+    {
+      "image_id": "new_000016",
+      "row": 25,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+      "before_line": "0 0.802929687500 0.4069444446 0.150390625000 0.0805555552 0.728906250 0.444444444 2 0.876562500 0.444444444 2",
+      "after_line": "0 0.802929687500 0.4069444446 0.150390625000 0.0805555552 0.734375000000 0.440277777778 2 0.870312500000 0.444444444444 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            933.0,
+            319.99999968
+          ],
+          "after_pixel_xy": [
+            940.0,
+            317.00000000015996
+          ],
+          "selected_pixel_xy": [
+            940,
+            317
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The current point lies on the grey lower-left outside transition. The front lower edge and left face join near x940,y317, above and inward of the outer projection.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            1122.0,
+            319.99999968
+          ],
+          "after_pixel_xy": [
+            1114.0,
+            319.99999999967997
+          ],
+          "selected_pixel_xy": [
+            1114,
+            320
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            2,
+            3
+          ],
+          "reason": "The front lower-edge trace reaches the change into the grey right projection near x1114,y320. Current x1122 follows the outer silhouette. Shadow makes this face-to-side junction less sharp; independently inspect the wide grid.",
+          "independent_review": "Independent raw and overlay inspection traces the lower front edge to the bend before the grey side projection. The inward correction is supported; the shadowed transition leaves approximately 2–3 pixels of placement uncertainty."
+        }
+      }
+    },
+    {
+      "image_id": "new_000016",
+      "row": 26,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+      "before_line": "0 0.792773437500 0.4743055554 0.145703125000 0.0569444448 0.721093750 0.498611111 2 0.862500000 0.498611111 2",
+      "after_line": "0 0.792773437500 0.4743055554 0.145703125000 0.0569444448 0.727343750000 0.495833333333 2 0.856250000000 0.500000000000 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            923.0,
+            358.99999992
+          ],
+          "after_pixel_xy": [
+            931.0,
+            356.99999999976
+          ],
+          "selected_pixel_xy": [
+            931,
+            357
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The front face begins inside the dark left strip. Its lower rounded turn is around x931,y357; current x923,y359 lies on the outer grey strip.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            1104.0,
+            358.99999992
+          ],
+          "after_pixel_xy": [
+            1096.0,
+            360.0
+          ],
+          "selected_pixel_xy": [
+            1096,
+            360
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            2,
+            3
+          ],
+          "reason": "The lower front edge changes into the darker right side near x1096,y360. Current x1104,y359 is at the outer side projection. The shadowed bevel is softer than the left corner; independently inspect the wide grid.",
+          "independent_review": "Independent raw and overlay inspection traces the lower front edge to the bend before the grey side projection. The inward correction is supported; the shadowed transition leaves approximately 2–3 pixels of placement uncertainty."
+        }
+      }
+    },
+    {
+      "image_id": "new_000016",
+      "row": 27,
+      "split": "train",
+      "scope": "user_named",
+      "source_image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+      "before_line": "0 0.784570312500 0.5277777780 0.141796875000 0.0555555551 0.714843750 0.551388889 2 0.851562500 0.552777778 2",
+      "after_line": "0 0.784570312500 0.5277777780 0.141796875000 0.0555555551 0.721093750000 0.550000000000 2 0.846875000000 0.552777777778 2",
+      "point_reviews": {
+        "left": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            915.0,
+            397.00000008000006
+          ],
+          "after_pixel_xy": [
+            923.0,
+            396.00000000000006
+          ],
+          "selected_pixel_xy": [
+            923,
+            396
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            1,
+            2
+          ],
+          "reason": "The old point is in the dark left gap/side transition. The visible lower front corner is at the brighter turn near x923,y396.",
+          "independent_review": "Independent original-pixel inspection confirms the front-bottom turn lies inward of the old darker side transition, consistent with the accepted standards. The box is not used as a snapping target."
+        },
+        "right": {
+          "decision": "corrected",
+          "before_pixel_xy": [
+            1090.0,
+            398.00000016
+          ],
+          "after_pixel_xy": [
+            1084.0,
+            398.00000000015996
+          ],
+          "selected_pixel_xy": [
+            1084,
+            398
+          ],
+          "visibility": 2,
+          "visual_uncertainty_pixels": [
+            2,
+            3
+          ],
+          "reason": "The lower front-edge endpoint is near x1084,y398 where it meets the shadowed right side; the old x1090 lies farther along that grey projection. Independently inspect the wide grid because the corner is rounded and shadowed.",
+          "independent_review": "Independent raw and overlay inspection traces the lower front edge to the bend before the grey side projection. The inward correction is supported; the shadowed transition leaves approximately 2–3 pixels of placement uncertainty."
+        }
+      }
+    }
+  ]
+}
