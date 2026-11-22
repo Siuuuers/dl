@@ -1,40 +1,18 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前入口：r21 可見盒身邊界修訂與新 notebook
+## 目前入口：r23 正面下角點修訂與新 notebook
 
-**2026-11-22：r21 同時移除框外多餘支架及補回被截掉的可見盒身。** 已覆核 081–130 範圍內全部 40 張現有照片、1,715 列，修訂 **35 張照片的 261 個框**：137 個訓練列、124 個開發列。使用者指定的 **46 條邊界全部完成**。另有 **56 個原本位於支架的角點 X** 經逐例獨立覆核後修正；所有 Y、可見性、類別及物件身份維持原樣。新標準 `094:31–32` 與先前 `086:3`、`087:5` 完全不變。[本輪說明](docs/front-review-r21.md)；[邊界定義](docs/annotation-boundaries-r21.md)。
+**2026-11-22：r22 已完成並保存，r23 再修正四個指定右角點。** `new_000001:27`、`new_000002:25–27` 改為正面下沿的實際角點；四個標準列 `001:1,19,25`、`002:28` 保持不變。框、左點、可見性、物件身份及其他 155 份標籤均維持 r22 原樣。[本輪說明](docs/front-review-r23.md)；[角點定義](docs/annotation-boundaries-r23.md)；[原圖與修訂比較](results/review/front-review-20261122-r23/front-face-corner-comparison.png)。
 
-**訓練入口：[baomai_front_review_r21.ipynb](notebooks/baomai_front_review_r21.ipynb)，或[直接在 Colab 開啟](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r21-20261122/notebooks/baomai_front_review_r21.ipynb)。** 選 GPU、Run all，完成後回傳 **`baomai-front-review-r21-results.zip`**。Notebook 固定完整來源 commit 與實驗雜湊；[版本驗證](results/review/front-review-20261122-r21/notebook-verification.json)。
+**訓練入口：[baomai_front_review_r23.ipynb](notebooks/baomai_front_review_r23.ipynb)，或[直接在 Colab 開啟](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r23-20261122/notebooks/baomai_front_review_r23.ipynb)。** 選 GPU、Run all，完成後回傳 **`baomai-front-review-r23-results.zip`**。Notebook 固定完整來源 commit 與實驗雜湊；[版本驗證](results/review/front-review-20261122-r23/notebook-verification.json)。
 
-框應包住該盒子自己的可見正面、邊緣與側面輪廓；下角點不是整個輪廓的最左／最右位置，也不能統一加固定像素邊距。此次有 112 條邊向內修剪、169 條邊向外補回。081、116、117、122、125 保留 r20 全部標籤；另外 117 張範圍外照片也完全不變。[完整 157 份 r21 標籤](data/reviews/fronts-2026-11-22-r21/manifest.json)；[逐列修訂紀錄](results/review/front-review-20261122-r21/operations.json)。
+兩組均從原始 epoch 173 獨立開始，保持 seed 46、30 輪、batch 4、1280、FP32 及最後一輪模型。保留全部 137 張訓練圖與 13 張空圖；015 與 31 張舊圖在兩組仍用完全相同的 PR35 標籤。原始 664 驗證及固定 666／663 評分參考保持不變。[實際輸入](results/review/front-review-20261122-r23/verification.json)。
 
-**PDF 共 36 頁：一頁可點選索引及 35 張變更照片，顯示全部 1,531 個現存列編號。** 洋紅色標變更欄位，青色標沿用欄位；點與框分別標示，顯示不移動標註座標。[PDF 交付](results/review/front-review-20261122-r21/pdf-delivery.json)；[獨立 PDF 檢查](results/review/front-review-20261122-r21/pdf-visual-review.json)。
+**r22 完整 PDF 仍是已完成的 r22 快照：141 張非空照片、4,448 個正面。** r23 的四點比較另行顯示；不覆寫已完成的 PDF 與結果。[r22 交接](docs/front-review-r22.md)；[PDF 交付](results/review/front-review-20261122-r22/pdf-delivery.json)。
 
-**PR94 的 r20 回傳已完成評估；目前仍選 PR35。** 在固定 666 參考中，PR35／同條件控制／r20 候選的未配對目標為 18／20／35；在回傳前已固定的 r20／662 覆核參考中則為 37／38／14。候選的 35 個固定參考未配對目標中，16 個其實是同一預測因參考框改動而跨過 IoU 門檻，不能全部稱為實際漏檢。原圖診斷仍可見支架溢出等殘留問題。[PR94 完整評估及身份追蹤](results/evaluation/pr94-r20-20261122/README.md)。沒有使用後來的 r21 標籤重寫該結果。
+**PR96 的 r21 回傳已完成評估；目前仍選 PR35。** 固定 666 參考的配對數為 PR35 648、r21 候選 631；候選的結果依參考版本而變，未達替換條件。[完整 PR96 評估](results/evaluation/pr96-r21-20261122/README.md)；[目前模型與操作入口](docs/current-model.md)。新版標註與 notebook 準備不代表已完成 GPU 訓練或證明模型進步。
 
-沿用兩角點架構及既定配方：兩組各自由 epoch 173 開始，seed 46、30 輪、batch 4、1280、FP32、AdamW、學習率 0.0001，取最後一輪。保留 137 張訓練圖及 13 張空圖；參考／候選有 3,771／3,784 個正面，92 份訓練標籤不同。015 與 31 張 old 系列在兩組沿用完全相同 PR35 標籤。原始訓練驗證維持 20 張／664 個正面，固定評分參考維持 666／663。086–090 是開發照片，修訂不會混入訓練；r21／662 開發覆核參考另外標示為探索性結果。
-
-[實際 notebook 輸入檢查](results/review/front-review-20261122-r21/input-preflight.json)及[兩組 314 張圖／314 份標籤的複製與讀回](results/review/front-review-20261122-r21/staging-verification.json)均通過；本次新 GPU 實驗待執行 notebook。r20 與所有先前結果保留為歷史版本。[目前推論指南](docs/current-model.md)。
-
-## 先前 r12 交付（歷史快照）
-
-**2026-11-20：本輪46張指定照片已覆核，實際修訂45張。** 共修改597個既有列（543個框、84個左點、66個右點欄位），並在 `new_000023` 末尾新增第37列可辨識正面片段；沒有刪除既有物件。修訂已存成[完整157檔YOLO標籤](data/reviews/fronts-2026-11-20-r12/manifest.json)。全部原圖、原始標籤及未指定照片的r11覆核標籤保持完整。[本輪說明與未決問題](docs/front-review-r12.md)。
-
-**本輪PDF只有45張實際變更的照片，加上可點選索引。** 每張照片顯示全部目前標籤，洋紅色表示本輪變更、青色表示沿用、琥珀色表示未決欄位。照片019的部分文字參照指向不同層或欄，暫無可支持的變更，因此未加入PDF。圖冊、雜湊與交付紀錄見[PDF交付資訊](results/review/front-review-20261120-r12/pdf-delivery.json)。
-
-**新訓練入口：[baomai_front_review_r12.ipynb](notebooks/baomai_front_review_r12.ipynb)。** 兩組各自從epoch173開始，以相同seed46及30輪比較PR35與可用的r12監督標籤。15張有未決物理標註的訓練照片，以及另外31張本輪排除處理的舊照片，均在兩組保留完全相同的PR35標籤。保留137張訓練圖與13張空圖，兩組78份訓練標籤不同，物件數為3,771／3,777。原始20張驗證圖及固定666／663評分參考維持不變。[實際訓練入口驗證](results/review/front-review-20261120-r12/runner-verification.json)已通過；尚未執行r12 GPU訓練。[PR80](https://github.com/Siuuuers/dl/pull/80)是已完成的r11回傳結果。
-
-**目前仍選用PR35。** 本輪標註修訂及notebook準備尚不能證明新模型較好。推論操作請用[目前模型入口](docs/current-model.md)，下一步執行上述r12 notebook並回傳新版ZIP。
-
-## 先前 r10 交付（歷史快照）
-
-**2026-11-19：已逐圖覆核全部126張 `new_*` 原圖；31張 `old_*` 覆核標籤維持原樣。** 本輪修訂65張照片的269個既有列，包含134個框、124個左點及47個右點欄位；新增2個可辨識正面，依使用者指示刪除 `new_000007` 的r9第7／14列。全部157張原圖與原始標籤保持完整。[完整說明與判定依據](docs/front-review-r10.md)記錄框的可見極值、正面角點、逐列身份及保留問題。
-
-**完整PDF包含全部126張新照片與16張空場景，沒有省略未修改的新照片。** 青色表示相對r9沿用的欄位，洋紅色表示本輪修改，琥珀色表示具體未決問題；`44[46]` 表示目前第44列對應r9第46列。最終PDF連結、雜湊與版面驗證見[交付紀錄](results/review/front-review-20261119-r10/pdf-delivery.json)。
-
-**新訓練入口：[baomai_front_review_r10.ipynb](notebooks/baomai_front_review_r10.ipynb)。** Notebook固定來源commit與實驗雜湊，從epoch173獨立開始兩組seed46、30輪的受控比較。15張仍有問題的新訓練照片及另外31張本輪不處理的舊照片，在兩組中均使用完全相同的PR35標籤；保留全部137張訓練圖與13張空圖。兩組實際有77份訓練標籤不同，物件數為3,771／3,778。原始20張驗證圖及固定666／663評分參考維持不變。[實際訓練入口驗證](results/review/front-review-20261119-r10/runner-verification.json)已通過；尚未執行r10 GPU訓練。
-
-**目前仍選用PR35。** [已完成PR76評估](results/evaluation/pr76-recovery-20261119/README.md)不支持替換模型。現行推論設定為PR35 seed46、1280輸入、框門檻0.13、NMS IoU0.70、端點門檻0.50，操作請用[目前模型入口](docs/current-model.md)。舊版PDF與notebook保留供追溯，目前入口以上方r19為準。
+先前的 [r21](docs/front-review-r21.md)、[r20](docs/front-review-r20.md)、[r19](docs/front-review-r19.md) 及以下紀錄均保留為歷史版本；目前訓練入口以上方 r23 為準。
 
 <details>
 <summary>先前覆核與實驗紀錄</summary>
