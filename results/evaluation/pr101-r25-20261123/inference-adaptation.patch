@@ -1,0 +1,35 @@
+--- pr99/run_pr99_inference.py
++++ pr101/run_pr101_inference.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Reproduce the three fixed PR99 CPU inferences without training or tuning."""
++"""Reproduce the four fixed PR101 CPU inferences without training or tuning."""
+ import argparse
+ import hashlib
+ import json
+@@ -12,12 +12,13 @@
+     "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+     "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+     "scripts/pose_checkpoint.py": "e0f85a76fd5234a98e66783d3408e22175ba334c6209f91aca8680221a2f8d5d",
+-    "experiments/front-review-2026-11-23-r24.json": "0a6322dbf4ee0cfca60b06478f8feecbd4dce516df92301cc74a2030b73021f5",
++    "experiments/front-review-2026-11-23-r25.json": "80c3f2849890a664db9fea857342c4d78d38ba736b7a108ce13905d74aedb287",
+ }
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "723d03ea61322e5effc4722abad1019c0edc98cf0da02fbab31b9211f07f06a6",
+-    "candidate": "2830ec32d1155ef9d05263fec5769f50a9fe716f75378e5d81e47a13a6cb94c6",
++    "reference": "561665025b30718916e838e6d829e050d0fae622498a44733c1dc52b49bf05df",
++    "candidate": "6ada96ede2a33604fcb6d5b42322798c8055d3c3298f36de4a3b66a15e827e9c",
++    "r24": "2830ec32d1155ef9d05263fec5769f50a9fe716f75378e5d81e47a13a6cb94c6",
+ }
+ 
+ 
+@@ -49,7 +50,7 @@
+         (output / "commands.json").write_text(json.dumps(commands, indent=2) + "\n")
+         if result.returncode:
+             raise RuntimeError(f"{role} failed; inspect its log. No later model was run.")
+-    print("Completed the three fixed CPU inferences.")
++    print("Completed the four fixed CPU inferences.")
+ 
+ 
+ if __name__ == "__main__":

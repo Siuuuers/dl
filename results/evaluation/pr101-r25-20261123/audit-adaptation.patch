@@ -1,0 +1,60 @@
+--- pr99/audit_return.py
++++ pr101/audit_return.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Verify PR99 r24 archive, completed bundles and actual staged source bytes."""
++"""Verify PR101 r25 archive, completed bundles and actual staged source bytes."""
+ 
+ import argparse
+ import csv
+@@ -10,10 +10,10 @@
+ import sys
+ import zipfile
+ 
+-ARCHIVE_SHA = "4b2505711bce656f4b693a5ccff93bd23cbda370a5d5ec6933c86e48c0e4e719"
+-SOURCE_REVISION = "6307dae6a8db545a72446abb448f19a5dcd5d2b2"
+-PROTOCOL_PATH = "experiments/front-review-2026-11-23-r24.json"
+-PROTOCOL_SHA = "0a6322dbf4ee0cfca60b06478f8feecbd4dce516df92301cc74a2030b73021f5"
++ARCHIVE_SHA = "8cb47ae13ad14e325b540c19ccd6fccb3198b85406f3238a581bd2db5b9e3762"
++SOURCE_REVISION = "86a7ba078b348f2b1cbacf73b4c271e9216fdb63"
++PROTOCOL_PATH = "experiments/front-review-2026-11-23-r25.json"
++PROTOCOL_SHA = "80c3f2849890a664db9fea857342c4d78d38ba736b7a108ce13905d74aedb287"
+ 
+ 
+ def sha(path):
+@@ -39,7 +39,7 @@
+     from stage_pose_training import yaml_bytes
+     from package_gpu_results import collect_arm, check_pair, shared_settings
+ 
+-    require(archive.stat().st_size == 39783117 and sha(archive) == ARCHIVE_SHA, "Wrong PR99 archive")
++    require(archive.stat().st_size == 39783961 and sha(archive) == ARCHIVE_SHA, "Wrong PR101 archive")
+     with zipfile.ZipFile(archive) as z:
+         require(z.testzip() is None, "ZIP CRC failure")
+         members = z.namelist()
+@@ -69,11 +69,11 @@
+         require(index["shared_training_settings"] == shared_settings(validated["receipt"]), "Archive settings differ: " + role)
+         require(index["source"] == validated["staging"]["source"], "Archive dataset source differs: " + role)
+     require(index["source"]["training_protocol"] == {"path": PROTOCOL_PATH, "sha256": PROTOCOL_SHA}, "Archive protocol identity differs")
+-    notebook_revision = "5feb60b8156c5aff6f9c5ebc3814cbe378ff5628"
+-    notebook_path = "notebooks/baomai_front_review_r24.ipynb"
+-    notebook_sha = "36135c847fb460f7299628374bea907a01981e48d5336aa5321b1afda8fc8e2a"
++    notebook_revision = "ace99d4aa71e5c20d7c5d2445f18fdab58d63496"
++    notebook_path = "notebooks/baomai_front_review_r25.ipynb"
++    notebook_sha = "11d0cac7a492f7234e4778490c1ef70d445d5aa309f2bca11af4d02329553877"
+     notebook_bytes = subprocess.run(["git", "-C", str(root), "show", notebook_revision + ":" + notebook_path], capture_output=True, check=True).stdout
+-    require(hashlib.sha256(notebook_bytes).hexdigest() == notebook_sha, "Pinned r24 notebook differs")
++    require(hashlib.sha256(notebook_bytes).hexdigest() == notebook_sha, "Pinned r25 notebook differs")
+     notebook = json.loads(notebook_bytes)
+     notebook_code = "\n".join("".join(c["source"]) for c in notebook["cells"] if c["cell_type"] == "code")
+     require('SOURCE_REVISION = "' + SOURCE_REVISION + '"' in notebook_code and 'PROTOCOL_SHA256 = "' + PROTOCOL_SHA + '"' in notebook_code, "Notebook does not pin this source/protocol")
+@@ -83,8 +83,8 @@
+         require(sha(root / "data" / record["label"]) == record["label_sha256"], "Original label differs: " + record["id"])
+     report = {
+         "schema_version": 1,
+-        "kind": "pr99-r24-return-audit",
+-        "pr": {"number": 99, "head_sha": "0a7333d495d3bcd4f59e7fd89e8e6475dc3662e1", "url": "https://github.com/Siuuuers/dl/pull/99"},
++        "kind": "pr101-r25-return-audit",
++        "pr": {"number": 101, "head_sha": "606655962be6716b19ec29285192c86c5aca03b6", "url": "https://github.com/Siuuuers/dl/pull/101"},
+         "archive": {"size_bytes": archive.stat().st_size, "sha256": sha(archive), "crc_passed": True, "indexed_members_verified": len(index["files"])},
+         "training_source": index["training_source"],
+         "recorded_source_files_verified_against_git_revision": True,

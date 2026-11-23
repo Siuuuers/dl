@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "kind": "independent_bounded_r26_integration_qa",
+  "status": "passed",
+  "verified_at_utc": "2026-11-23T07:14:37.358383+00:00",
+  "source_revision": "ace99d4aa71e5c20d7c5d2445f18fdab58d63496",
+  "review_manifest_sha256": "b999b9491b18ecd2d55684ec14383d1c98160a6bf080a4a751ea83844fca7468",
+  "candidate_manifest_sha256": "4f3a75054b130a3627a523a9d0f1479834cc98fc3dfc66253efd01794dee109f",
+  "protocol_sha256": "232f81cdf6d367fc9ece902e01b4ab5a03da5ae0898f5f75abae25ef5001372f",
+  "row_review_sha256": "e61b6cec60866df2fe53247d5678b33bb0f1e25a9c845a76c5869bf89693d690",
+  "review_script_sha256": "cf0433f7537512a4f52317c3ac6180a78bdb7c37f4353ddad3ee221e19703d07",
+  "checks": {
+    "named_rows_covered": 22,
+    "training_analogue_rows_covered": 3,
+    "reviewer_a_proposals_applied": 15,
+    "reviewer_b_decisions_exact": 10,
+    "max_pixel_geometry_error": 3.200284481863491e-10,
+    "untouched_coordinate_class_visibility_and_missing_tokens_preserved": true,
+    "replacement_rows": 19,
+    "deleted_rows": [
+      [
+        "new_000008",
+        36
+      ]
+    ],
+    "retained_named_rows": 5,
+    "all157_review_files_independently_replayed": true,
+    "protected_standard_rows_exact": 11,
+    "actual_candidate_train_delta_vs_r25": [
+      [
+        "new_000013",
+        29
+      ],
+      [
+        "new_000013",
+        30
+      ],
+      [
+        "new_000013",
+        31
+      ]
+    ],
+    "original_trainer_validation_objects": 664,
+    "exploratory_review_validation_objects": 661,
+    "frozen_primary_objects": 666,
+    "frozen_diagnostic_objects": 663,
+    "original_labels_frozen_references_and_r25_artifacts_unchanged": true,
+    "fixed_recipe_initialization_final_epoch_and_operating_point_unchanged": true
+  },
+  "script_review": {
+    "files": [
+      "scripts/front_review_r26.py",
+      "scripts/front_review_experiment.py",
+      "scripts/stage_pose_training.py",
+      "scripts/verify_incremental_pose_candidate.py"
+    ],
+    "findings": [],
+    "notes": [
+      "Immutable base-row identities and before-lines guard replacement/deletion replay. Deleting final008:36 leaves earlier protected008 standards at their original row numbers.",
+      "R26 verifier enforces only the reviewed deletion; hidden endpoints retain exact zero tokens and class/visibility are preserved.",
+      "Shared composition retains original validation; changed development labels are only the separately versioned exploratory reference.",
+      "Integration diffs in existing helpers only add R26 verifier routing and code-hash inclusion."
+    ]
+  },
+  "limits": [
+    "Bounded integration audit and selected code review; not a new full-dataset visual certification.",
+    "No training, inference, model promotion, commits, or source-label edits performed during this check."
+  ]
+}
