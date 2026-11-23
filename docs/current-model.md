@@ -16,7 +16,7 @@ preserved exactly. See the [boundary policy](annotation-boundaries-r26.md) and
 ## Run the retained model
 
 Use branch `codex/front-review-r26-20261123`. Follow the
-[folder guide](predict-pose-folder.md#use-the-seed 46-candidate-explicitly) to
+[folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to
 obtain the verified PR35 bundle, retaining its manifest and companion files.
 
 | Setting | Value |

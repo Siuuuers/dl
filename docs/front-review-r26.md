@@ -12,7 +12,7 @@ Open [baomai_front_review_r26.ipynb](../notebooks/baomai_front_review_r26.ipynb)
 2. Choose **Run all**. The existing Drive option preserves completed runs.
 3. Return **`baomai-front-review-r26-results.zip`** after both arms finish.
 
-The notebook pins the published source and [R26 protocol](../experiments/front-review-2026-11-23-r26.json). Its input preflight checks the original images and initializer, replays the saved changes against R25, verifies row identities and accepted standards, and checks the actual training inputs before running the resource trial. The remaining six runtime cells preserve the proven R25 behavior apart from round names and pins.
+The notebook pins published source [5c0a378dccfa16392eb3951531312efa3378889b](https://github.com/Siuuuers/dl/tree/5c0a378dccfa16392eb3951531312efa3378889b) and the [R26 protocol](../experiments/front-review-2026-11-23-r26.json). Its input preflight checks the original images and initializer, replays the saved changes against R25, verifies row identities and accepted standards, and checks the actual training inputs before running the resource trial. The remaining six runtime cells preserve the proven R25 behavior apart from round names and pins. The [notebook verification receipt](../results/review/front-review-20261123-r26/notebook-verification.json) records the final artifact hash and the successful execution of its exact embedded input preflight.
 
 ## What enters training
 
