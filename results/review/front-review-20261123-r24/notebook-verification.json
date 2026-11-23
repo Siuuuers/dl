@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "kind": "r24-final-notebook-handoff-verification",
+  "status": "verified_ready_for_gpu_run",
+  "verified_at_utc": "2026-11-22T19:49:03.454589+00:00",
+  "notebook": {
+    "path": "notebooks/baomai_front_review_r24.ipynb",
+    "sha256": "36135c847fb460f7299628374bea907a01981e48d5336aa5321b1afda8fc8e2a",
+    "nbformat": [
+      4,
+      5
+    ],
+    "schema_validation": "nbformat.validate passed",
+    "code_cells_compiled": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+    ],
+    "execution_outputs_empty": true
+  },
+  "source": {
+    "published_commit": "6307dae6a8db545a72446abb448f19a5dcd5d2b2",
+    "published_tree": "71930456f065e03f9a555ed07bb4b8a435ad42d5",
+    "accepted_local_commit": "06a618c280cb6a84bd474d7a5b2efdd425344e8e",
+    "exact_tree_match": true
+  },
+  "pins": {
+    "SOURCE_REVISION": "6307dae6a8db545a72446abb448f19a5dcd5d2b2",
+    "PROTOCOL_PATH": "experiments/front-review-2026-11-23-r24.json",
+    "PROTOCOL_SHA256": "0a6322dbf4ee0cfca60b06478f8feecbd4dce516df92301cc74a2030b73021f5",
+    "EXPERIMENT_ID": "front-review-r24"
+  },
+  "finalization": {
+    "only_notebook_change_from_accepted_draft": "Replace source-commit placeholder with the published immutable source commit.",
+    "accepted_draft_sha256": "c856e33887e7163d90f2f55507d581de1fc89a9d98b02fba8eb35f1d5119d03f",
+    "input_preflight_bytes_unchanged": true,
+    "input_preflight_sha256": "c41ad7ac9d30bff48bccd72d27d5f2ffb15c6f0bd4e449c57cb07c65124719c7",
+    "runtime_cells_preserved_except_round_names_and_pins": [
+      2,
+      6,
+      8,
+      10,
+      12,
+      14
+    ]
+  },
+  "accepted_prior_actual_input_preflight": {
+    "result_sha256": "98c460bba54401dc10b523f37fd81789a18d1968105b7f69ae9295a912adbd86",
+    "result": {
+      "status": "ready_for_controlled_incremental_experiment",
+      "training_counts": {
+        "reference": {
+          "train": {
+            "images": 137,
+            "objects": 3771,
+            "visible_endpoints": 6841,
+            "missing_endpoints": 701,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "candidate": {
+          "train": {
+            "images": 137,
+            "objects": 3784,
+            "visible_endpoints": 6836,
+            "missing_endpoints": 732,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        }
+      },
+      "complete_review_counts": {
+        "train": {
+          "images": 137,
+          "objects": 3786,
+          "visible_endpoints": 6836,
+          "missing_endpoints": 736,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 662,
+          "visible_endpoints": 1226,
+          "missing_endpoints": 98,
+          "empty_images": 3
+        }
+      },
+      "weights_verified": true,
+      "named_rows_reviewed": 21,
+      "named_endpoints_reviewed": 42,
+      "adjacent_rows_reviewed": 1,
+      "endpoints_reviewed": 44,
+      "changed_rows": 22,
+      "changed_photos": 4,
+      "changed_rows_by_split": {
+        "train": 18,
+        "val": 4
+      },
+      "point_repairs": 26,
+      "point_repairs_by_side": {
+        "right": 9,
+        "left": 17
+      },
+      "unchanged_review_files": 153,
+      "changed_box_rows": 0,
+      "confirmed_reference_rows_preserved": true,
+      "original_training_validation_byte_identical": true,
+      "development_review_is_exploratory_only": true,
+      "held_training_photos": [
+        "new_000015"
+      ],
+      "old_photos_excluded_from_treatment": 31,
+      "evaluation_references": {
+        "primary": {
+          "counts": {
+            "images": 20,
+            "objects": 666,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 105,
+            "empty_images": 3
+          },
+          "objects_by_locatable_corners": {
+            "0": 23,
+            "1": 59,
+            "2": 584
+          }
+        },
+        "diagnostic": {
+          "counts": {
+            "images": 20,
+            "objects": 663,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 99,
+            "empty_images": 3
+          },
+          "objects_by_locatable_corners": {
+            "0": 20,
+            "1": 59,
+            "2": 584
+          }
+        }
+      }
+    },
+    "reused_without_rerunning_accepted_review": true
+  },
+  "accepted_source_receipts": [
+    {
+      "path": "results/review/front-review-20261123-r24/verification.json",
+      "sha256": "9914f3fdb5dcc196de2c50e39806afbc5cee6ac26d93b6080f732ab7bb218cf8"
+    },
+    {
+      "path": "results/review/front-review-20261123-r24/staging-verification.json",
+      "sha256": "48e67959761d7ae629a943b506f5301af3f0a18edbdf37c131156fe4ded57adf"
+    }
+  ],
+  "training_executed_during_handoff": false,
+  "model_promoted": false,
+  "selected_model": "PR35",
+  "result_archive": "baomai-front-review-r24-results.zip",
+  "limits": [
+    "This handoff verifies notebook syntax, structure, pins, and exact preservation of the accepted input preflight; it does not execute Colab or train an R24 model.",
+    "The accepted PDF, label corrections and measured PR97 results are preserved without re-adjudication.",
+    "The run compares accumulated eligible R24 supervision against PR35 supervision; it does not isolate the latest corner corrections."
+  ]
+}

@@ -1,18 +1,18 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前入口：r23 正面下角點修訂與新 notebook
+## 目前入口：r24 完整圖冊與 PR99 結果
 
-**2026-11-22：r22 已完成並保存，r23 再修正四個指定右角點。** `new_000001:27`、`new_000002:25–27` 改為正面下沿的實際角點；四個標準列 `001:1,19,25`、`002:28` 保持不變。框、左點、可見性、物件身份及其他 155 份標籤均維持 r22 原樣。[本輪說明](docs/front-review-r23.md)；[角點定義](docs/annotation-boundaries-r23.md)；[原圖與修訂比較](results/review/front-review-20261122-r23/front-face-corner-comparison.png)。
+**2026-11-23：R24 訓練與 PR99 評估完成，目前仍選 PR35。** [目前模型](docs/current-model.md)；[完整 PR99 評估](results/evaluation/pr99-r24-20261123/README.md)。固定 666 參考下，PR35／R24 候選分別有 18／35 個未配對目標、80／105 個未配對輸出，以及 533／518 個雙角點 5 px 成功個案（分母 584）。相對同環境重新推論的 R23 候選，R24 多配對 1 個目標、少 5 個未配對輸出，但固定參考的角點成功數較少。
 
-**訓練入口：[baomai_front_review_r23.ipynb](notebooks/baomai_front_review_r23.ipynb)，或[直接在 Colab 開啟](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r23-20261122/notebooks/baomai_front_review_r23.ipynb)。** 選 GPU、Run all，完成後回傳 **`baomai-front-review-r23-results.zip`**。Notebook 固定完整來源 commit 與實驗雜湊；[版本驗證](results/review/front-review-20261122-r23/notebook-verification.json)。
+**[R24 完整圖冊](docs/front-review-r24-pdf.md)已完成：116 頁，包含全部 110 張非空 `new_000*` 照片與 4,179 列目前標註。** 首兩頁為總覽與可點擊索引，照片佔第 3–112 頁，第 113–116 頁為四張原圖／R23／R24 放大比較。青色為保留標註，綠色與星號標示 R24 修訂，洋紅色標示舊點；原始像素無損保留。圖冊只強調 R23→R24 的 22 列、26 個角點變更，沒有新增標註決策。
 
-兩組均從原始 epoch 173 獨立開始，保持 seed 46、30 輪、batch 4、1280、FP32 及最後一輪模型。保留全部 137 張訓練圖與 13 張空圖；015 與 31 張舊圖在兩組仍用完全相同的 PR35 標籤。原始 664 驗證及固定 666／663 評分參考保持不變。[實際輸入](results/review/front-review-20261122-r23/verification.json)。
+R24 的 18 個訓練列包含 22 個角點修訂；`new_000010` 的 4 個點只屬開發覆核。標準列 `010:16`、`016:24`，框、可見性、物件身份、原始訓練驗證與固定 666／663 評分參考都保持原樣。[修訂說明](docs/front-review-r24.md)；[角點定義](docs/annotation-boundaries-r24.md)；[逐點決策](results/review/front-review-20261123-r24/point-review.json)。
 
-**r22 完整 PDF 仍是已完成的 r22 快照：141 張非空照片、4,448 個正面。** r23 的四點比較另行顯示；不覆寫已完成的 PDF 與結果。[r22 交接](docs/front-review-r22.md)；[PDF 交付](results/review/front-review-20261122-r22/pdf-delivery.json)。
+在目前 R24 的 662 開發覆核參考中，R24 候選有 16 個未配對目標、90 個未配對輸出及 557／584 個雙角點 5 px 成功個案。584 個兩角點可定位正面全部配對；剩餘 16 個目標只有零或一個可定位角點，另有 33 個重複輸出。這個探索參考與固定參考分開報告；參考框的幾何變更也會改變 IoU 配對，不能將每個評分未配對都當作完全沒有偵測提案。
 
-**PR96 的 r21 回傳已完成評估；目前仍選 PR35。** 固定 666 參考的配對數為 PR35 648、r21 候選 631；候選的結果依參考版本而變，未達替換條件。[完整 PR96 評估](results/evaluation/pr96-r21-20261122/README.md)；[目前模型與操作入口](docs/current-model.md)。新版標註與 notebook 準備不代表已完成 GPU 訓練或證明模型進步。
+**[16 個局部正面失敗個案覆核](results/evaluation/pr99-r24-20261123/partial-front-failure-queue.md)已完成**，每個個案都有確切列號、原圖與 PDF 頁碼。10 個有重疊輸出但 IoU 不足 0.50，6 個沒有保留下來的重疊輸出，沒有個案是合格框被分配給其他目標而失敗。`011:55–57` 的左點誤差約 1.96／3.36／1.43 px，但框延伸進遮擋區域，提示應優先檢查相似訓練個案的可見框範圍監督。
 
-先前的 [r21](docs/front-review-r21.md)、[r20](docs/front-review-r20.md)、[r19](docs/front-review-r19.md) 及以下紀錄均保留為歷史版本；目前訓練入口以上方 r23 為準。
+**目前不需要重跑或新增 R25 notebook。** [R24 notebook](notebooks/baomai_front_review_r24.ipynb)保留為已完成實驗的重現入口。下一步以這份個案表檢查相似訓練原圖的可見框範圍及物件完整性，參考既有遮擋／提案篩選實驗後，再決定具體介入。新的獨立拍攝場景可用於檢查泛化能力。
 
 <details>
 <summary>先前覆核與實驗紀錄</summary>

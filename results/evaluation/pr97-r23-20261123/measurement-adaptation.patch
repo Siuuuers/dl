@@ -1,0 +1,288 @@
+--- pr96-r21/audit_return.py
++++ pr97-r23/audit_return.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Verify PR96 r21 archive, completed bundles and actual staged source bytes."""
++"""Verify PR97 r23 archive, completed bundles and actual staged source bytes."""
+ 
+ import argparse
+ import csv
+@@ -10,10 +10,10 @@
+ import sys
+ import zipfile
+ 
+-ARCHIVE_SHA = "b3acac74a82dc5927242aa73b96b4c33978fee06aa1b1678b6382b237c91b802"
+-SOURCE_REVISION = "c4fb76afe280552ed13ed3c9b78608deceb7b3c4"
+-PROTOCOL_PATH = "experiments/front-review-2026-11-22-r21.json"
+-PROTOCOL_SHA = "6e79440caa989de5327531ebde2242aa3ba7f25de7497ebac8542ee766400122"
++ARCHIVE_SHA = "3f12115b2c15dec87a7e7404115ff933c54fadbea7eef415a098533933059be9"
++SOURCE_REVISION = "ffe4d4ecb6699180e7b25ee10fc9eb31647fec38"
++PROTOCOL_PATH = "experiments/front-review-2026-11-22-r23.json"
++PROTOCOL_SHA = "a4183607c6737a8466aef4edd625ca52450a486dd030456e4d10e3cd98736a54"
+ 
+ 
+ def sha(path):
+@@ -39,7 +39,7 @@
+     from stage_pose_training import yaml_bytes
+     from package_gpu_results import collect_arm, check_pair, shared_settings
+ 
+-    require(archive.stat().st_size == 39783675 and sha(archive) == ARCHIVE_SHA, "Wrong PR96 archive")
++    require(archive.stat().st_size == 39783521 and sha(archive) == ARCHIVE_SHA, "Wrong PR97 archive")
+     with zipfile.ZipFile(archive) as z:
+         require(z.testzip() is None, "ZIP CRC failure")
+         members = z.namelist()
+@@ -69,11 +69,11 @@
+         require(index["shared_training_settings"] == shared_settings(validated["receipt"]), "Archive settings differ: " + role)
+         require(index["source"] == validated["staging"]["source"], "Archive dataset source differs: " + role)
+     require(index["source"]["training_protocol"] == {"path": PROTOCOL_PATH, "sha256": PROTOCOL_SHA}, "Archive protocol identity differs")
+-    notebook_revision = "41dd2be835f5b0e30b10e15431c6795cb00f7388"
+-    notebook_path = "notebooks/baomai_front_review_r21.ipynb"
+-    notebook_sha = "1de82d9dbfb53e331048f132d96df01272e2e732d48b1454bbf12c820b005f7a"
++    notebook_revision = "ee2ca5f260af96621aed4bf5803680b9b6403349"
++    notebook_path = "notebooks/baomai_front_review_r23.ipynb"
++    notebook_sha = "c49f188c9d74c4413d6fed92e9ba878a8d4ad769fe553281a665b5941788bb36"
+     notebook_bytes = subprocess.run(["git", "-C", str(root), "show", notebook_revision + ":" + notebook_path], capture_output=True, check=True).stdout
+-    require(hashlib.sha256(notebook_bytes).hexdigest() == notebook_sha, "Pinned r21 notebook differs")
++    require(hashlib.sha256(notebook_bytes).hexdigest() == notebook_sha, "Pinned r23 notebook differs")
+     notebook = json.loads(notebook_bytes)
+     notebook_code = "\n".join("".join(c["source"]) for c in notebook["cells"] if c["cell_type"] == "code")
+     require('SOURCE_REVISION = "' + SOURCE_REVISION + '"' in notebook_code and 'PROTOCOL_SHA256 = "' + PROTOCOL_SHA + '"' in notebook_code, "Notebook does not pin this source/protocol")
+@@ -83,8 +83,8 @@
+         require(sha(root / "data" / record["label"]) == record["label_sha256"], "Original label differs: " + record["id"])
+     report = {
+         "schema_version": 1,
+-        "kind": "pr96-r21-return-audit",
+-        "pr": {"number": 96, "head_sha": "c67a753bd7b35560ea61555c0927eba7e9aca21c", "url": "https://github.com/Siuuuers/dl/pull/96"},
++        "kind": "pr97-r23-return-audit",
++        "pr": {"number": 97, "head_sha": "a58b8247e104e2fc700a49ac5c651464a570eefb", "url": "https://github.com/Siuuuers/dl/pull/97"},
+         "archive": {"size_bytes": archive.stat().st_size, "sha256": sha(archive), "crc_passed": True, "indexed_members_verified": len(index["files"])},
+         "training_source": index["training_source"],
+         "recorded_source_files_verified_against_git_revision": True,
+--- pr96-r21/measure_pr96.py
++++ pr97-r23/measure_pr97.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Score the fixed PR96 r21 comparison from saved predictions, without training."""
++"""Score the fixed PR97 r23 comparison from saved predictions, without training."""
+ 
+ import argparse
+ import hashlib
+@@ -10,11 +10,11 @@
+ import tempfile
+ from pathlib import Path
+ 
+-PROTOCOL_SHA = "6e79440caa989de5327531ebde2242aa3ba7f25de7497ebac8542ee766400122"
++PROTOCOL_SHA = "a4183607c6737a8466aef4edd625ca52450a486dd030456e4d10e3cd98736a54"
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "3b6054b0da543752ba7202995bce8834dc5daf02ea7e2463ea409da365e6acc6",
+-    "candidate": "a14467eb1e15258ab8a5f473e1f1abd600766e11d068dba4cd041714384de1d4",
++    "reference": "dae9539320c954677f6874d9ede087ba98955d816f49ecf711da12187bf7c890",
++    "candidate": "e1d9104b9add3e39bbd9b0d728c58d258e42cf1501ac9615a14e61e5e1c8716e",
+ }
+ SCORER_SHA = {
+     "evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+@@ -44,7 +44,7 @@
+         return select_checkpoint(preflight, checkpoint_path, require_weights=False)
+     require(log_path == Path("train.log") and (base / "train-log.txt").is_file(),
+             "Missing original or preserved training log")
+-    with tempfile.TemporaryDirectory(prefix="pr96-preserved-receipt-") as tmp:
++    with tempfile.TemporaryDirectory(prefix="pr97-preserved-receipt-") as tmp:
+         target = Path(tmp)
+         shutil.copytree(base, target, dirs_exist_ok=True)
+         shutil.copyfile(base / "train-log.txt", target / log_path)
+@@ -77,7 +77,7 @@
+     from diagnose_pose_quality import aggregate_quality, quality_for_image
+     from rescore_reference_amendment import load_api, verify_amendment
+ 
+-    protocol_path = root / "experiments/front-review-2026-11-22-r21.json"
++    protocol_path = root / "experiments/front-review-2026-11-22-r23.json"
+     require(sha(protocol_path) == PROTOCOL_SHA, "The preregistered protocol changed")
+     protocol = json.loads(protocol_path.read_text())
+     for name, expected in SCORER_SHA.items():
+@@ -104,8 +104,8 @@
+     runtimes = [model["metadata"]["runtime"] for model in models.values()]
+     require(all(runtime == runtimes[0] for runtime in runtimes), "Inference runtimes differ")
+     report = {
+-        "schema_version":1,"kind":"pr96-r21-fixed-development-comparison","status":"measured",
+-        "model_set":"returned_pr96_r21",
++        "schema_version":1,"kind":"pr97-r23-fixed-development-comparison","status":"measured",
++        "model_set":"returned_pr97_r23",
+         "protocol":{"path":str(protocol_path.relative_to(root)),"sha256":PROTOCOL_SHA},
+         "measurement_script_sha256":sha(__file__), "scorers_sha256":SCORER_SHA,
+         "models":{role:{key:value for key,value in model.items() if key != "predictions"}
+@@ -120,18 +120,18 @@
+             "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+             "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+             "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+-            "The separately pinned current r21 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
++            "The separately pinned current r23 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
+         ],
+     }
+-    for label in ("primary", "diagnostic", "current_r21_exploratory"):
++    for label in ("primary", "diagnostic", "current_r23_exploratory"):
+         setting = protocol["evaluation"]
+-        exploratory = label == "current_r21_exploratory"
++        exploratory = label == "current_r23_exploratory"
+         if exploratory:
+-            from front_review_r21 import experiment, verify_candidate
++            from front_review_r23 import experiment, verify_candidate
+             verify_candidate(root)
+             descriptor = setting["current_review_reference"]
+             path = root / descriptor["path"]
+-            require(sha(path) == descriptor["sha256"], "Current r21 review changed")
++            require(sha(path) == descriptor["sha256"], "Current r23 review changed")
+             review, status, _, _, _, _, reviewed = experiment(root).read_review(root)
+             gold = {image_id: parse_pose_labels(reviewed[image_id]["bytes"].decode(),
+                     record["width"], record["height"], reviewed[image_id]["path"])
+--- pr96-r21/run_pr96_inference.py
++++ pr97-r23/run_pr97_inference.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Reproduce the three fixed PR96 CPU inferences without training or tuning."""
++"""Reproduce the two returned fixed PR97 CPU inferences without training or tuning."""
+ import argparse
+ import hashlib
+ import json
+@@ -12,12 +12,11 @@
+     "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+     "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+     "scripts/pose_checkpoint.py": "e0f85a76fd5234a98e66783d3408e22175ba334c6209f91aca8680221a2f8d5d",
+-    "experiments/front-review-2026-11-22-r21.json": "6e79440caa989de5327531ebde2242aa3ba7f25de7497ebac8542ee766400122",
++    "experiments/front-review-2026-11-22-r23.json": "a4183607c6737a8466aef4edd625ca52450a486dd030456e4d10e3cd98736a54",
+ }
+ MODEL_SHA = {
+-    "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "3b6054b0da543752ba7202995bce8834dc5daf02ea7e2463ea409da365e6acc6",
+-    "candidate": "a14467eb1e15258ab8a5f473e1f1abd600766e11d068dba4cd041714384de1d4",
++    "reference": "dae9539320c954677f6874d9ede087ba98955d816f49ecf711da12187bf7c890",
++    "candidate": "e1d9104b9add3e39bbd9b0d728c58d258e42cf1501ac9615a14e61e5e1c8716e",
+ }
+ 
+ 
+@@ -49,7 +48,7 @@
+         (output / "commands.json").write_text(json.dumps(commands, indent=2) + "\n")
+         if result.returncode:
+             raise RuntimeError(f"{role} failed; inspect its log. No later model was run.")
+-    print("Completed the three fixed CPU inferences.")
++    print("Completed the two returned fixed CPU inferences.")
+ 
+ 
+ if __name__ == "__main__":
+--- pr96-r21/reference_sensitivity.py
++++ pr97-r23/reference_sensitivity.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Trace fixed-primary/r21 score sensitivity with unchanged PR96 predictions.
++"""Trace fixed-primary/r23 score sensitivity with unchanged PR97 predictions.
+ 
+ Identity comes from hash-bound archived row maps, never nearest-box assignment.
+ This diagnoses reference dependence; it does not replace the primary result.
+@@ -32,6 +32,7 @@
+     parser.add_argument("--root", type=Path, required=True)
+     parser.add_argument("--evidence", type=Path, default=Path(__file__).resolve().parent)
+     parser.add_argument("--output", type=Path, required=True)
++    parser.add_argument("--pr35", type=Path, default=Path(__file__).resolve().parent.parent / "pr96-r21-20261122/inference/eval-pr35/predictions.jsonl")
+     args = parser.parse_args()
+     root, evidence = args.root.resolve(), args.evidence.resolve()
+     sys.path.insert(0, str(root / "scripts"))
+@@ -62,7 +63,7 @@
+         return result
+ 
+     gold = {"primary": labels(primary_path, primary),
+-            "current_r21_exploratory": labels(current_path, current)}
++            "current_r23_exploratory": labels(current_path, current)}
+     chain, path = [], current_path
+     while True:
+         manifest = read(path)
+@@ -115,9 +116,9 @@
+     inverse = {iid: {parent: now for now, parent in values.items() if parent is not None}
+                for iid, values in lineage.items()}
+ 
+-    report = {"schema_version": 1, "kind": "pr96-r21-reference-definition-sensitivity",
++    report = {"schema_version": 1, "kind": "pr97-r23-reference-definition-sensitivity",
+               "script_sha256": sha(__file__), "fixed_comparison_sha256": sha(evidence / "fixed-comparison.json"),
+-              "references": {"primary": primary_descriptor, "current_r21_exploratory": current_descriptor},
++              "references": {"primary": primary_descriptor, "current_r23_exploratory": current_descriptor},
+               "identity_method": "Exact immutable recovery and successive review row maps, replayed against hash-bound label bytes.",
+               "lineage_provenance": provenance, "current_to_primary_rows": lineage,
+               "primary_objects": 666, "retained_primary_objects": sum(len(v) for v in inverse.values()),
+@@ -129,9 +130,9 @@
+                   "IoU crossings establish score sensitivity to geometry, not independent correctness of either reference.",
+                   "An unmatched gold row is a matching failure, not necessarily absence of a returned detector output.",
+                   "Unmatched predictions include reference disagreements and duplicates; they are not all confirmed background errors.",
+-                  "Only pre-return r21 labels and frozen666 are used; no r22 labels are loaded."]}
++                  "Only pre-return r23 labels and frozen666 are used; no r24 labels are loaded."]}
+     for role in ("pr35", "reference", "candidate"):
+-        pred_path = evidence / "inference" / ("eval-"+role) / "predictions.jsonl"
++        pred_path = args.pr35.resolve() if role == "pr35" else evidence / "inference" / ("eval-"+role) / "predictions.jsonl"
+         assert sha(pred_path) == scored["models"][role]["predictions_sha256"]
+         predictions = {r["image_id"]: r["predictions"] for r in map(json.loads, pred_path.read_text().splitlines()[1:])}
+         counts = Counter()
+@@ -144,20 +145,20 @@
+ 
+             def detail(parent_row, current_row, pred_index):
+                 old = gold["primary"][iid][parent_row-1]
+-                new = gold["current_r21_exploratory"][iid][current_row-1] if current_row else None
++                new = gold["current_r23_exploratory"][iid][current_row-1] if current_row else None
+                 predicted = predictions[iid][pred_index] if pred_index is not None else None
+                 result = {"image_id": iid, "image_sha256": rec["image_sha256"],
+-                          "primary_row": parent_row, "r21_row": current_row,
+-                          "primary_gold": old, "r21_gold": new,
++                          "primary_row": parent_row, "r23_row": current_row,
++                          "primary_gold": old, "r23_gold": new,
+                           "prediction_index": pred_index, "prediction": predicted,
+                           "primary_iou": _box_iou(old["bbox_xyxy"], predicted["bbox_xyxy"]) if predicted else None,
+-                          "r21_iou": _box_iou(new["bbox_xyxy"], predicted["bbox_xyxy"]) if new and predicted else None}
++                          "r23_iou": _box_iou(new["bbox_xyxy"], predicted["bbox_xyxy"]) if new and predicted else None}
+                 if new:
+                     result["box_edges_changed"] = [abs(a-b)>1e-6 for a,b in zip(old["bbox_xyxy"],new["bbox_xyxy"])]
+                     result["reference_keypoint_visibility_changed"] = [a[2]!=b[2] for a,b in zip(old["keypoints"],new["keypoints"])]
+                     result["reference_keypoint_shifts_px"] = [math.hypot(a[0]-b[0],a[1]-b[1]) if a[2]==b[2]==2 else None
+                                                                for a,b in zip(old["keypoints"],new["keypoints"])]
+-                for label, target in (("primary",old),("r21",new)):
++                for label, target in (("primary",old),("r23",new)):
+                     result[label+"_corner_errors_px"] = [math.hypot(p[0]-g[0],p[1]-g[1]) if g[2]==2 else None
+                         for g,p in zip(target["keypoints"],predicted["keypoints"])] if target and predicted else None
+                 return result
+@@ -165,33 +166,33 @@
+             for index in traces["primary"]["unmatched_gold_indices"]:
+                 parent_row = index+1
+                 now = inverse[iid].get(parent_row)
+-                matched = matches["current_r21_exploratory"].get(now)
++                matched = matches["current_r23_exploratory"].get(now)
+                 if now is None:
+-                    category = "deleted_from_r21_reference"
++                    category = "deleted_from_r23_reference"
+                     pred_index = None
+                 elif matched:
+                     pred_index = matched["prediction_index"]
+                     old_iou = _box_iou(gold["primary"][iid][index]["bbox_xyxy"], predictions[iid][pred_index]["bbox_xyxy"])
+                     category = "same_output_crosses_iou_with_reference_box_change" if old_iou < .5 else "matching_assignment_changed"
+                 else:
+-                    category = "still_unmatched_in_r21"
++                    category = "still_unmatched_in_r23"
+                     pred_index = max(range(len(predictions[iid])), key=lambda j: _box_iou(gold["primary"][iid][index]["bbox_xyxy"],predictions[iid][j]["bbox_xyxy"])) if predictions[iid] else None
+                 case = detail(parent_row,now,pred_index)
+                 case["category"] = category
+                 cases.append(case)
+                 counts[category] += 1
+-            for index in traces["current_r21_exploratory"]["unmatched_gold_indices"]:
++            for index in traces["current_r23_exploratory"]["unmatched_gold_indices"]:
+                 now = index+1
+                 parent_row = lineage[iid][now]
+                 old_match = matches["primary"].get(parent_row)
+                 if old_match:
+                     case = detail(parent_row,now,old_match["prediction_index"])
+-                    case["category"] = "same_output_falls_below_iou_with_reference_box_change" if case["r21_iou"] < .5 else "matching_assignment_changed"
++                    case["category"] = "same_output_falls_below_iou_with_reference_box_change" if case["r23_iou"] < .5 else "matching_assignment_changed"
+                     reversed_cases.append(case)
+         report["models"][role] = {"predictions_sha256":sha(pred_path),
+              "fixed_primary_misses":len(cases), "fixed_miss_categories":dict(counts),
+-             "fixed_primary_miss_cases":cases, "primary_match_but_r21_miss_cases":reversed_cases,
+-             "r21_misses":scored["references"]["current_r21_exploratory"]["models"][role]["detection"]["fn"]}
++             "fixed_primary_miss_cases":cases, "primary_match_but_r23_miss_cases":reversed_cases,
++             "r23_misses":scored["references"]["current_r23_exploratory"]["models"][role]["detection"]["fn"]}
+     assert not args.output.exists(), "Choose a fresh output"
+     args.output.write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")
+     print(json.dumps({"deleted_primary_rows":report["deleted_primary_rows"],
