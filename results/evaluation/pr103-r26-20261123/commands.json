@@ -1,0 +1,70 @@
+[
+  {
+    "phase": "archive_and_source_audit",
+    "argv": [
+      "/workspace/scratch/f0caf40aa0bb/pr101/env/bin/python",
+      "-B",
+      "/workspace/scratch/f0caf40aa0bb/pr103/scripts/audit_return.py",
+      "--root",
+      "/workspace/scratch/f0caf40aa0bb/dl-r27",
+      "--archive",
+      "/workspace/scratch/f0caf40aa0bb/pr103/r26-results.zip",
+      "--bundle",
+      "/workspace/scratch/f0caf40aa0bb/pr103/r26",
+      "--output",
+      "/workspace/scratch/f0caf40aa0bb/pr103/return-audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "phase": "crossround_input_and_control_audit",
+    "argv": [
+      "/workspace/scratch/f0caf40aa0bb/pr101/env/bin/python",
+      "-B",
+      "/workspace/scratch/f0caf40aa0bb/pr103/scripts/verify_crossround_inputs.py",
+      "--root",
+      "/workspace/scratch/f0caf40aa0bb/dl",
+      "--r25-bundle",
+      "/workspace/scratch/f0caf40aa0bb/pr101/r25",
+      "--r26-bundle",
+      "/workspace/scratch/f0caf40aa0bb/pr103/r26",
+      "--output",
+      "/workspace/scratch/f0caf40aa0bb/pr103/crossround-input-verification.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "phase": "fresh_inference",
+    "per_model_commands": "inference/commands.json",
+    "models": 5,
+    "all_exit_codes": 0
+  },
+  {
+    "phase": "saved_prediction_replay",
+    "argv": [
+      "/workspace/scratch/f0caf40aa0bb/pr101/env/bin/python",
+      "-B",
+      "results/evaluation/pr103-r26-20261123/replay_evidence.py",
+      "--root",
+      "/workspace/scratch/f0caf40aa0bb/dl-r27",
+      "--output",
+      "results/evaluation/pr103-r26-20261123/replay-verification.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "phase": "result_pdf",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/render_pr103_failures.py",
+      "--root",
+      "/workspace/scratch/f0caf40aa0bb/dl-r27",
+      "--output",
+      "/workspace/scratch/f0caf40aa0bb/output/pdf/pr103-r26-misses-and-errors.pdf",
+      "--crop-dir",
+      "/workspace/scratch/f0caf40aa0bb/r27/pdf-result/crops"
+    ],
+    "exit_code": 0
+  }
+]

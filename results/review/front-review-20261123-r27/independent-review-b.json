@@ -1,0 +1,1439 @@
+{
+  "source_review": "fronts-2026-11-23-r26",
+  "source_manifest_sha256": "b999b9491b18ecd2d55684ec14383d1c98160a6bf080a4a751ea83844fca7468",
+  "scope": "Read-only original-pixel proposals for parent review; no source labels or scripts mutated. No prediction coordinate was used as a target.",
+  "counts": {
+    "reviewed_rows": 20,
+    "proposed_amended_rows": 8,
+    "retained_rows": 12,
+    "training_amendments": 0,
+    "deletions": 0
+  },
+  "method": "Original context and nearest-neighbor crops, own front/rim curvature, neighbor ownership and local luminance transitions. Luminance is a candidate cue; no global threshold, global shift, equal spacing or neighbor clamp is applied.",
+  "preserved_standard_identities": [
+    "new_000008:18",
+    "new_000008:19",
+    "new_000008:20",
+    "new_000008:21",
+    "new_000008:28",
+    "new_000008:29",
+    "new_000008:30",
+    "new_000008:31",
+    "new_000008:32",
+    "new_000010:16",
+    "new_000016:24"
+  ],
+  "reviewed_rows": [
+    {
+      "image_id": "new_000008",
+      "row": 33,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "xmin": 1230.0,
+        "ymax": 455.0,
+        "left": [
+          1238.0,
+          447.0
+        ]
+      },
+      "before_line": "0 0.97337500 0.60100000 0.05325000 0.06466667 0.96616406 0.62500000 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.980468750000 0.600305554722 0.039062500000 0.063277779444 0.967187500000 0.620833333333 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        1211.84,
+        409.43999879999996,
+        1280.0,
+        456.0000012
+      ],
+      "proposed_box_px": [
+        1230.0,
+        409.43999879999996,
+        1280.0,
+        455.0
+      ],
+      "before_points_px": [
+        [
+          1236.6899968,
+          450.0,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          1238.0,
+          447.0,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_sha256": "41224bbd8e9da513896c865c54b4f837dc5304a4ea914b72a62ec11e66e86b7a",
+      "requested_interpretation": "The suggested predicted xmax is treated as an inspection cue. Literal xmax reduction is rejected; the independently visible left-boundary issue is proposed instead.",
+      "field_reasons": {
+        "xmin": "The old x1211.84 strip includes the neighboring cassette and dark rack wedge. The reviewed target first has its own visible rim/side transition near x1230; retain the curved front rather than a brightness-only mask.",
+        "left": "The saved (1236.69,450) sits below the visible front in the curved lower shadow. The front-to-side turn is near (1238,447), where the brighter face ends before the darker band.",
+        "xmax_retained": "The target visibly continues to the right image boundary. Preserve xmax1280; a predicted boundary cannot establish a hidden right edge. The right corner remains exact0/0/0.",
+        "ymax": "Follow-up review across the frame edge shows the front ending near y451-452, a darker separation at453-454, then the next rim rising by455-456. Tighten ymax456 to455; preserve the sloping own rim.",
+        "ymin_retained": "The current top includes the visible upper rim. Its curved, partially hidden top is not resolved well enough to select another top boundary."
+      },
+      "uncertainty": "Left point and xmin approximately +/-2 original pixels, due to the soft curved material/shadow transition. The right endpoint is outside the frame and remains unavailable."
+    },
+    {
+      "image_id": "new_000008",
+      "row": 34,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "xmin": 1214.0,
+        "ymax": 490.0,
+        "left": [
+          1225.0,
+          482.0
+        ]
+      },
+      "before_line": "0 0.9707031250 0.6534722222 0.0585937500 0.0597222222 0.95520313 0.67208333 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.974218750000 0.652083333328 0.051562500000 0.056944444456 0.957031250000 0.669444444444 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        1205.0,
+        448.999999992,
+        1280.0,
+        491.999999976
+      ],
+      "proposed_box_px": [
+        1214.0,
+        448.999999992,
+        1280.0,
+        490.0
+      ],
+      "before_points_px": [
+        [
+          1222.6600064,
+          483.8999976,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          1225.0,
+          482.0,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_sha256": "41224bbd8e9da513896c865c54b4f837dc5304a4ea914b72a62ec11e66e86b7a",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "xmin": "Same-photo partial-front analogue: x1205 lies across the adjacent front/rack wedge. Its own visible upper-left rim resumes around x1214.",
+        "left": "The saved (1222.66,483.90) falls on the lower curved shadow. Move slightly right/up to the local front turn near(1225,482), preserving the visible lower edge.",
+        "ymax": "Follow-up frame-edge review shows the lower front ending around y485-486, a separation around487-489 and the next front already rising by490-492. Tighten ymax492 to490 so the next bright front is excluded.",
+        "ymin_retained": "Retain the current upper extent around449 because the sloping rim above the main face is not separable reliably enough for a further top trim.",
+        "missing_right_retained": "The cassette extends beyond the frame; do not invent a right corner or reduce xmax1280."
+      },
+      "uncertainty": "Approximately +/-2-3 pixels for the soft left curve; parent original-pixel confirmation is requested before acceptance."
+    },
+    {
+      "image_id": "new_000008",
+      "row": 35,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "xmin": 1198.0
+      },
+      "before_line": "0 0.9664062500 0.6979166667 0.0671875000 0.0513888889 0.942968750000 0.716666666667 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.967968750000 0.6979166667 0.064062500000 0.0513888889 0.942968750000 0.716666666667 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        1194.0,
+        484.00000001999996,
+        1280.0,
+        521.000000028
+      ],
+      "proposed_box_px": [
+        1198.0,
+        484.00000001999996,
+        1280.0,
+        521.000000028
+      ],
+      "before_points_px": [
+        [
+          1207.0,
+          516.00000000024,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          1207.0,
+          516.00000000024,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_sha256": "41224bbd8e9da513896c865c54b4f837dc5304a4ea914b72a62ec11e66e86b7a",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "xmin": "Same-photo partial-front analogue: x1194 includes the dark separation/neighbor strip. The first visible target rim is near x1198; a rectangular box still contains part of the curved shadow.",
+        "left_retained": "The existing (1207,516) falls at the visible lower-front turn within the local blur uncertainty. No point change selected.",
+        "right_retained": "Frame-clipped right side remains xmax1280 with an unavailable right corner."
+      },
+      "uncertainty": "xmin approximately +/-2 pixels. Retained left point has roughly1-2-pixel local visual uncertainty."
+    },
+    {
+      "image_id": "new_000009",
+      "row": 48,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "ymax": 439.0
+      },
+      "before_line": "0 0.499609375000 0.593750000 0.060156250000 0.037500000 0.470312500000 0.606944444444 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.499609375000 0.592361111111 0.060156250000 0.034722222222 0.470312500000 0.606944444444 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        601.0,
+        413.99999999999994,
+        678.0,
+        441.00000000000006
+      ],
+      "proposed_box_px": [
+        601.0,
+        413.99999999999994,
+        678.0,
+        439.0
+      ],
+      "before_points_px": [
+        [
+          602.0,
+          436.99999999967997,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          602.0,
+          436.99999999967997,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_sha256": "8b167a3ec34d9d0b8ec5f6abf0fd40b5aa00a33790b9d5d7c9ac271aca6ab618",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "ymax": "The front ends at its lower edge near y437 and the immediate softened shadow transition around y438. The old ymax441 includes the next front starting around y440. End the box at439.",
+        "retained_geometry": "Keep its separately visible cap at current ymin414 and all existing x bounds and landmarks."
+      },
+      "uncertainty": "Qualitative uncertainty of about1-2 original pixels in the blurred transition. No subpixel physical precision is claimed."
+    },
+    {
+      "image_id": "new_000009",
+      "row": 49,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "ymin": 440.0,
+        "ymax": 457.0
+      },
+      "before_line": "0 0.480859375000 0.626388889 0.022656250000 0.027777778 0.470312500000 0.631250000000 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.480859375000 0.622916666667 0.022656250000 0.023611111111 0.470312500000 0.631250000000 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        601.0,
+        441.00000000000006,
+        630.0,
+        461.00000015999996
+      ],
+      "proposed_box_px": [
+        601.0,
+        440.0,
+        630.0,
+        457.0
+      ],
+      "before_points_px": [
+        [
+          602.0,
+          454.5,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          602.0,
+          454.5,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_sha256": "8b167a3ec34d9d0b8ec5f6abf0fd40b5aa00a33790b9d5d7c9ac271aca6ab618",
+      "requested_interpretation": "Both vertical bounds reviewed using this row own upper/lower transitions; shadow minima are evidence cues, not automatic box coordinates.",
+      "field_reasons": {
+        "ymin": "The upper material transition rises after the local shadow near y438-439. Start at440 to retain the thin upper rim; old441 was close and this one-pixel change has modest confidence.",
+        "ymax": "The lower-front transition is around y454-456; by y458-461 the next cassette is visibly present. End at457 rather than461.",
+        "landmarks_retained": "Left(602,454.5) remains on its own lower front turn. Right remains exact0/0/0; the gripper does not reveal it."
+      },
+      "uncertainty": "ymin +/-1-2 pixels; ymax +/-1-2 pixels. The bottom change is clearly supported; the one-pixel top adjustment is less decisive."
+    },
+    {
+      "image_id": "new_000009",
+      "row": 50,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "ymin": 457.0,
+        "ymax": 474.0
+      },
+      "before_line": "0 0.477929687500 0.652083333 0.017578125000 0.023611111 0.470312500000 0.654166666667 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.477929687500 0.646527777778 0.017578125000 0.023611111111 0.470312500000 0.654166666667 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        600.5,
+        460.9999998,
+        623.0,
+        477.99999971999995
+      ],
+      "proposed_box_px": [
+        600.5,
+        457.0,
+        623.0,
+        474.0
+      ],
+      "before_points_px": [
+        [
+          602.0,
+          471.00000000024,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          602.0,
+          471.00000000024,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_sha256": "8b167a3ec34d9d0b8ec5f6abf0fd40b5aa00a33790b9d5d7c9ac271aca6ab618",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "ymin": "The target upper rim emerges around y457-458 after the previous lower shadow. Old461 clips this visible top strip.",
+        "ymax": "Its lower front edge/softened shadow is around y471-473. Old478 extends into the next bright front. End at474.",
+        "landmarks_retained": "Retain its left(602,471) and missing right corner."
+      },
+      "uncertainty": "Qualitative uncertainty of about1-2 original pixels in the blurred transition. No subpixel physical precision is claimed."
+    },
+    {
+      "image_id": "new_000009",
+      "row": 51,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "ymin": 474.0,
+        "ymax": 490.0
+      },
+      "before_line": "0 0.476953125000 0.672916667 0.016406250000 0.020833333 0.469531250000 0.675000000000 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.476953125000 0.669444444444 0.016406250000 0.022222222222 0.469531250000 0.675000000000 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        600.0,
+        477.00000036,
+        621.0,
+        492.0000001199999
+      ],
+      "proposed_box_px": [
+        600.0,
+        474.0,
+        621.0,
+        490.0
+      ],
+      "before_points_px": [
+        [
+          601.0,
+          486.00000000000006,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          601.0,
+          486.00000000000006,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_sha256": "8b167a3ec34d9d0b8ec5f6abf0fd40b5aa00a33790b9d5d7c9ac271aca6ab618",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "ymin": "The target upper rim appears around y474-475, after the shadow centered near472; old477 omits the upper strip.",
+        "ymax": "The lower transition is near y486-489. Old492 includes the next front whose brightness rises by y490-491. End at490.",
+        "landmarks_retained": "Retain left(601,486) and exact missing right triplet."
+      },
+      "uncertainty": "Qualitative uncertainty of about1-2 original pixels in the blurred transition. No subpixel physical precision is claimed."
+    },
+    {
+      "image_id": "new_000009",
+      "row": 52,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "ymin": 490.0,
+        "ymax": 504.0
+      },
+      "before_line": "0 0.476562500000 0.692361111 0.015625000000 0.018055556 0.469531250000 0.697222222222 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.476562500000 0.690277777778 0.015625000000 0.019444444444 0.469531250000 0.697222222222 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        600.0,
+        491.99999976,
+        620.0,
+        505.00000007999995
+      ],
+      "proposed_box_px": [
+        600.0,
+        490.0,
+        620.0,
+        504.0
+      ],
+      "before_points_px": [
+        [
+          601.0,
+          501.99999999984004,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          601.0,
+          501.99999999984004,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_sha256": "8b167a3ec34d9d0b8ec5f6abf0fd40b5aa00a33790b9d5d7c9ac271aca6ab618",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "ymin": "The lowest front upper rim starts around y490-491. Old492 starts inside the visible front.",
+        "ymax": "The visible lower edge is near y502-503, followed by the dark support. End at504 rather than505 without deleting this small valid object.",
+        "landmarks_retained": "Retain left(601,502) and exact missing right triplet."
+      },
+      "uncertainty": "Qualitative uncertainty of about1-2 original pixels in the blurred transition. No subpixel physical precision is claimed."
+    },
+    {
+      "image_id": "new_000008",
+      "row": 28,
+      "split": "val",
+      "status": "retained_protected_standard",
+      "fields": {},
+      "before_line": "0 0.9140625000 0.4850069444 0.1437500000 0.0827638889 0.853125000 0.511111111 2 0.9835937500 0.5222222222 2",
+      "after_line": "0 0.9140625000 0.4850069444 0.1437500000 0.0827638889 0.853125000 0.511111111 2 0.9835937500 0.5222222222 2",
+      "before_box_px": [
+        1078.0,
+        319.409999964,
+        1262.0,
+        378.999999972
+      ],
+      "proposed_box_px": [
+        1078.0,
+        319.409999964,
+        1262.0,
+        378.999999972
+      ],
+      "before_points_px": [
+        [
+          1092.0,
+          367.99999991999994,
+          2
+        ],
+        [
+          1259.0,
+          375.999999984,
+          2
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          1092.0,
+          367.99999991999994,
+          2
+        ],
+        [
+          1259.0,
+          375.999999984,
+          2
+        ]
+      ],
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_sha256": "41224bbd8e9da513896c865c54b4f837dc5304a4ea914b72a62ec11e66e86b7a",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "Accepted standard used as nearby shape context; preserve all eleven original tokens byte for byte. No re-annotation proposed."
+      },
+      "uncertainty": "Preservation of the user-accepted standard, not a new precision claim."
+    },
+    {
+      "image_id": "new_000008",
+      "row": 29,
+      "split": "val",
+      "status": "retained_protected_standard",
+      "fields": {},
+      "before_line": "0 0.9031250000 0.5492847222 0.1375000000 0.0597638889 0.846093750 0.563888889 2 0.9695312500 0.5750000000 2",
+      "after_line": "0 0.9031250000 0.5492847222 0.1375000000 0.0597638889 0.846093750 0.563888889 2 0.9695312500 0.5750000000 2",
+      "before_box_px": [
+        1068.0,
+        373.96999998,
+        1244.0,
+        416.999999988
+      ],
+      "proposed_box_px": [
+        1068.0,
+        373.96999998,
+        1244.0,
+        416.999999988
+      ],
+      "before_points_px": [
+        [
+          1083.0,
+          406.00000008,
+          2
+        ],
+        [
+          1241.0,
+          413.99999999999994,
+          2
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          1083.0,
+          406.00000008,
+          2
+        ],
+        [
+          1241.0,
+          413.99999999999994,
+          2
+        ]
+      ],
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_sha256": "41224bbd8e9da513896c865c54b4f837dc5304a4ea914b72a62ec11e66e86b7a",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "Accepted standard used as nearby shape context; preserve all eleven original tokens byte for byte. No re-annotation proposed."
+      },
+      "uncertainty": "Preservation of the user-accepted standard, not a new precision claim."
+    },
+    {
+      "image_id": "new_000008",
+      "row": 30,
+      "split": "val",
+      "status": "retained_protected_standard",
+      "fields": {},
+      "before_line": "0 0.890234375000 0.5978750000 0.132031250000 0.0570277778 0.832812500 0.613888889 2 0.9546875000 0.6222222222 2",
+      "after_line": "0 0.890234375000 0.5978750000 0.132031250000 0.0570277778 0.832812500 0.613888889 2 0.9546875000 0.6222222222 2",
+      "before_box_px": [
+        1055.0,
+        409.9399999920001,
+        1224.0,
+        451.000000008
+      ],
+      "proposed_box_px": [
+        1055.0,
+        409.9399999920001,
+        1224.0,
+        451.000000008
+      ],
+      "before_points_px": [
+        [
+          1066.0,
+          442.00000008000006,
+          2
+        ],
+        [
+          1222.0,
+          447.999999984,
+          2
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          1066.0,
+          442.00000008000006,
+          2
+        ],
+        [
+          1222.0,
+          447.999999984,
+          2
+        ]
+      ],
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_sha256": "41224bbd8e9da513896c865c54b4f837dc5304a4ea914b72a62ec11e66e86b7a",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "Accepted standard used as nearby shape context; preserve all eleven original tokens byte for byte. No re-annotation proposed."
+      },
+      "uncertainty": "Preservation of the user-accepted standard, not a new precision claim."
+    },
+    {
+      "image_id": "new_000008",
+      "row": 31,
+      "split": "val",
+      "status": "retained_protected_standard",
+      "fields": {},
+      "before_line": "0 0.879882812500 0.6440208333 0.128515625000 0.0536250000 0.823437500 0.662500000 2 0.9429687500 0.6666666667 2",
+      "after_line": "0 0.879882812500 0.6440208333 0.128515625000 0.0536250000 0.823437500 0.662500000 2 0.9429687500 0.6666666667 2",
+      "before_box_px": [
+        1044.0,
+        444.389999976,
+        1208.5,
+        482.999999976
+      ],
+      "proposed_box_px": [
+        1044.0,
+        444.389999976,
+        1208.5,
+        482.999999976
+      ],
+      "before_points_px": [
+        [
+          1054.0,
+          477.0,
+          2
+        ],
+        [
+          1207.0,
+          480.000000024,
+          2
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          1054.0,
+          477.0,
+          2
+        ],
+        [
+          1207.0,
+          480.000000024,
+          2
+        ]
+      ],
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_sha256": "41224bbd8e9da513896c865c54b4f837dc5304a4ea914b72a62ec11e66e86b7a",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "Accepted standard used as nearby shape context; preserve all eleven original tokens byte for byte. No re-annotation proposed."
+      },
+      "uncertainty": "Preservation of the user-accepted standard, not a new precision claim."
+    },
+    {
+      "image_id": "new_000008",
+      "row": 32,
+      "split": "val",
+      "status": "retained_protected_standard",
+      "fields": {},
+      "before_line": "0 0.869921875 0.689854167 0.124218750 0.053625000 0.815625 0.711111111 2 0.928125000 0.713888889 2",
+      "after_line": "0 0.869921875 0.689854167 0.124218750 0.053625000 0.815625 0.711111111 2 0.928125000 0.713888889 2",
+      "before_box_px": [
+        1034.0,
+        477.39000024,
+        1193.0,
+        516.0000002400001
+      ],
+      "proposed_box_px": [
+        1034.0,
+        477.39000024,
+        1193.0,
+        516.0000002400001
+      ],
+      "before_points_px": [
+        [
+          1044.0,
+          511.99999992,
+          2
+        ],
+        [
+          1188.0,
+          514.0000000800001,
+          2
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          1044.0,
+          511.99999992,
+          2
+        ],
+        [
+          1188.0,
+          514.0000000800001,
+          2
+        ]
+      ],
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_sha256": "41224bbd8e9da513896c865c54b4f837dc5304a4ea914b72a62ec11e66e86b7a",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "Accepted standard used as nearby shape context; preserve all eleven original tokens byte for byte. No re-annotation proposed."
+      },
+      "uncertainty": "Preservation of the user-accepted standard, not a new precision claim."
+    },
+    {
+      "image_id": "new_000006",
+      "row": 50,
+      "split": "train",
+      "status": "retained_after_bounded_visual_review",
+      "fields": {},
+      "before_line": "0 0.53242188 0.68750000 0.05390625 0.05833333 0.00000000 0.00000000 0 0.54917969 0.71100000 2",
+      "after_line": "0 0.53242188 0.68750000 0.05390625 0.05833333 0.00000000 0.00000000 0 0.54917969 0.71100000 2",
+      "before_box_px": [
+        647.0000064,
+        474.00000120000004,
+        716.0000064000001,
+        515.9999988
+      ],
+      "proposed_box_px": [
+        647.0000064,
+        474.00000120000004,
+        716.0000064000001,
+        515.9999988
+      ],
+      "before_points_px": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          702.9500032,
+          511.91999999999996,
+          2
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          702.9500032,
+          511.91999999999996,
+          2
+        ]
+      ],
+      "source_image_sha256": "666bdac6bc39d2192ef430a28274ed2a042896cddee5b64e084f6fca2b5ab79a",
+      "source_label_sha256": "985e6a5c07d2ae47a57b43106f129b3d13025723121277f7ba8ec9af6584d0bf",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "The visible faces and separation lines are strongly oblique and partly occluded. Their axis-aligned boxes necessarily include triangular occluder/shadow areas. The original pixels do not establish a clearly better boundary or landmark; do not impose the vertical009 geometry or a fixed brightness threshold."
+      },
+      "uncertainty": "Blur and diagonal occlusion remain; retaining the current coordinates is not certainty about a hidden edge."
+    },
+    {
+      "image_id": "new_000006",
+      "row": 51,
+      "split": "train",
+      "status": "retained_after_bounded_visual_review",
+      "fields": {},
+      "before_line": "0 0.57265625 0.68472222 0.02968750 0.04166667 0.56113281 0.68829167 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.57265625 0.68472222 0.02968750 0.04166667 0.56113281 0.68829167 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        713.9999999999999,
+        477.99999720000005,
+        752.0,
+        507.9999996
+      ],
+      "proposed_box_px": [
+        713.9999999999999,
+        477.99999720000005,
+        752.0,
+        507.9999996
+      ],
+      "before_points_px": [
+        [
+          718.2499968000001,
+          495.5700024,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          718.2499968000001,
+          495.5700024,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "666bdac6bc39d2192ef430a28274ed2a042896cddee5b64e084f6fca2b5ab79a",
+      "source_label_sha256": "985e6a5c07d2ae47a57b43106f129b3d13025723121277f7ba8ec9af6584d0bf",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "The visible faces and separation lines are strongly oblique and partly occluded. Their axis-aligned boxes necessarily include triangular occluder/shadow areas. The original pixels do not establish a clearly better boundary or landmark; do not impose the vertical009 geometry or a fixed brightness threshold."
+      },
+      "uncertainty": "Blur and diagonal occlusion remain; retaining the current coordinates is not certainty about a hidden edge."
+    },
+    {
+      "image_id": "new_000006",
+      "row": 52,
+      "split": "train",
+      "status": "retained_after_bounded_visual_review",
+      "fields": {},
+      "before_line": "0 0.56484375 0.71458333 0.03125000 0.04861111 0.55374219 0.71701389 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.56484375 0.71458333 0.03125000 0.04861111 0.55374219 0.71701389 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        703.0,
+        496.999998,
+        743.0,
+        531.9999971999999
+      ],
+      "proposed_box_px": [
+        703.0,
+        496.999998,
+        743.0,
+        531.9999971999999
+      ],
+      "before_points_px": [
+        [
+          708.7900032,
+          516.2500008000001,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          708.7900032,
+          516.2500008000001,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "666bdac6bc39d2192ef430a28274ed2a042896cddee5b64e084f6fca2b5ab79a",
+      "source_label_sha256": "985e6a5c07d2ae47a57b43106f129b3d13025723121277f7ba8ec9af6584d0bf",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "The visible faces and separation lines are strongly oblique and partly occluded. Their axis-aligned boxes necessarily include triangular occluder/shadow areas. The original pixels do not establish a clearly better boundary or landmark; do not impose the vertical009 geometry or a fixed brightness threshold."
+      },
+      "uncertainty": "Blur and diagonal occlusion remain; retaining the current coordinates is not certainty about a hidden edge."
+    },
+    {
+      "image_id": "new_000012",
+      "row": 35,
+      "split": "train",
+      "status": "retained_after_bounded_visual_review",
+      "fields": {},
+      "before_line": "0 0.41082031 0.72361111 0.10648438 0.05277778 0.36074219 0.74008333 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.41082031 0.72361111 0.10648438 0.05277778 0.36074219 0.74008333 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        457.69999359999997,
+        501.9999984,
+        594.0,
+        540.0
+      ],
+      "proposed_box_px": [
+        457.69999359999997,
+        501.9999984,
+        594.0,
+        540.0
+      ],
+      "before_points_px": [
+        [
+          461.75000320000004,
+          532.8599976,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          461.75000320000004,
+          532.8599976,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "source_label_sha256": "0b63245d4f25abb54abf22e5961a0e0a3640d4237896592e31238e931f67f18e",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "The visible front rims and lower edges are consistent with the saved extents at the available resolution. Finger/gripper occlusion explains rectangular overlap. No new independently locatable missing corner or clearly better material boundary is established."
+      },
+      "uncertainty": "Local edge softness remains; no proposed coordinate shift exceeds the available visual justification."
+    },
+    {
+      "image_id": "new_000012",
+      "row": 36,
+      "split": "train",
+      "status": "retained_after_bounded_visual_review",
+      "fields": {},
+      "before_line": "0 0.411621095 0.76944444 0.10175781 0.05000000 0.36274219 0.78812500 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.411621095 0.76944444 0.10175781 0.05000000 0.36274219 0.78812500 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        461.7500031999999,
+        535.9999968,
+        592.0,
+        571.9999968000001
+      ],
+      "proposed_box_px": [
+        461.7500031999999,
+        535.9999968,
+        592.0,
+        571.9999968000001
+      ],
+      "before_points_px": [
+        [
+          464.31000320000004,
+          567.4499999999999,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          464.31000320000004,
+          567.4499999999999,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "source_label_sha256": "0b63245d4f25abb54abf22e5961a0e0a3640d4237896592e31238e931f67f18e",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "The visible front rims and lower edges are consistent with the saved extents at the available resolution. Finger/gripper occlusion explains rectangular overlap. No new independently locatable missing corner or clearly better material boundary is established."
+      },
+      "uncertainty": "Local edge softness remains; no proposed coordinate shift exceeds the available visual justification."
+    },
+    {
+      "image_id": "new_000012",
+      "row": 37,
+      "split": "train",
+      "status": "retained_after_bounded_visual_review",
+      "fields": {},
+      "before_line": "0 0.38320312 0.81041667 0.04453125 0.04027778 0.36521094 0.82502778 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.38320312 0.81041667 0.04453125 0.04027778 0.36521094 0.82502778 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        461.9999936,
+        569.0000015999999,
+        518.9999936,
+        598.0000031999999
+      ],
+      "proposed_box_px": [
+        461.9999936,
+        569.0000015999999,
+        518.9999936,
+        598.0000031999999
+      ],
+      "before_points_px": [
+        [
+          467.47000319999995,
+          594.0200016,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          467.47000319999995,
+          594.0200016,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "source_label_sha256": "0b63245d4f25abb54abf22e5961a0e0a3640d4237896592e31238e931f67f18e",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "The visible front rims and lower edges are consistent with the saved extents at the available resolution. Finger/gripper occlusion explains rectangular overlap. No new independently locatable missing corner or clearly better material boundary is established."
+      },
+      "uncertainty": "Local edge softness remains; no proposed coordinate shift exceeds the available visual justification."
+    },
+    {
+      "image_id": "new_000012",
+      "row": 38,
+      "split": "train",
+      "status": "retained_after_bounded_visual_review",
+      "fields": {},
+      "before_line": "0 0.37695312 0.84652778 0.03046875 0.03750000 0.36549219 0.85984722 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.37695312 0.84652778 0.03046875 0.03750000 0.36549219 0.85984722 2 0.00000000 0.00000000 0",
+      "before_box_px": [
+        462.9999935999999,
+        596.0000015999999,
+        501.9999936,
+        623.0000016
+      ],
+      "proposed_box_px": [
+        462.9999935999999,
+        596.0000015999999,
+        501.9999936,
+        623.0000016
+      ],
+      "before_points_px": [
+        [
+          467.83000319999996,
+          619.0899984,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          467.83000319999996,
+          619.0899984,
+          2
+        ],
+        [
+          0.0,
+          0.0,
+          0
+        ]
+      ],
+      "source_image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "source_label_sha256": "0b63245d4f25abb54abf22e5961a0e0a3640d4237896592e31238e931f67f18e",
+      "requested_interpretation": null,
+      "field_reasons": {
+        "all_fields": "The visible front rims and lower edges are consistent with the saved extents at the available resolution. Finger/gripper occlusion explains rectangular overlap. No new independently locatable missing corner or clearly better material boundary is established."
+      },
+      "uncertainty": "Local edge softness remains; no proposed coordinate shift exceeds the available visual justification."
+    }
+  ],
+  "luminance_evidence": {
+    "image_id": "new_000009",
+    "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+    "measurement": "Pillow grayscale mean of seven original pixels x604..610 inclusive at each y; no transformation of source data.",
+    "local_shadow_centers_y": [
+      438,
+      455,
+      472,
+      487,
+      488
+    ],
+    "profile": [
+      {
+        "y": 432,
+        "mean_luminance_x604_to610": 184.0
+      },
+      {
+        "y": 433,
+        "mean_luminance_x604_to610": 183.85714285714286
+      },
+      {
+        "y": 434,
+        "mean_luminance_x604_to610": 179.85714285714286
+      },
+      {
+        "y": 435,
+        "mean_luminance_x604_to610": 183.42857142857142
+      },
+      {
+        "y": 436,
+        "mean_luminance_x604_to610": 182.57142857142858
+      },
+      {
+        "y": 437,
+        "mean_luminance_x604_to610": 168.0
+      },
+      {
+        "y": 438,
+        "mean_luminance_x604_to610": 163.71428571428572
+      },
+      {
+        "y": 439,
+        "mean_luminance_x604_to610": 172.0
+      },
+      {
+        "y": 440,
+        "mean_luminance_x604_to610": 188.14285714285714
+      },
+      {
+        "y": 441,
+        "mean_luminance_x604_to610": 198.42857142857142
+      },
+      {
+        "y": 442,
+        "mean_luminance_x604_to610": 204.85714285714286
+      },
+      {
+        "y": 443,
+        "mean_luminance_x604_to610": 205.0
+      },
+      {
+        "y": 444,
+        "mean_luminance_x604_to610": 202.85714285714286
+      },
+      {
+        "y": 445,
+        "mean_luminance_x604_to610": 198.57142857142858
+      },
+      {
+        "y": 446,
+        "mean_luminance_x604_to610": 195.71428571428572
+      },
+      {
+        "y": 447,
+        "mean_luminance_x604_to610": 197.28571428571428
+      },
+      {
+        "y": 448,
+        "mean_luminance_x604_to610": 193.85714285714286
+      },
+      {
+        "y": 449,
+        "mean_luminance_x604_to610": 191.71428571428572
+      },
+      {
+        "y": 450,
+        "mean_luminance_x604_to610": 192.85714285714286
+      },
+      {
+        "y": 451,
+        "mean_luminance_x604_to610": 190.28571428571428
+      },
+      {
+        "y": 452,
+        "mean_luminance_x604_to610": 189.0
+      },
+      {
+        "y": 453,
+        "mean_luminance_x604_to610": 182.57142857142858
+      },
+      {
+        "y": 454,
+        "mean_luminance_x604_to610": 174.28571428571428
+      },
+      {
+        "y": 455,
+        "mean_luminance_x604_to610": 162.85714285714286
+      },
+      {
+        "y": 456,
+        "mean_luminance_x604_to610": 166.85714285714286
+      },
+      {
+        "y": 457,
+        "mean_luminance_x604_to610": 175.57142857142858
+      },
+      {
+        "y": 458,
+        "mean_luminance_x604_to610": 183.28571428571428
+      },
+      {
+        "y": 459,
+        "mean_luminance_x604_to610": 185.71428571428572
+      },
+      {
+        "y": 460,
+        "mean_luminance_x604_to610": 183.42857142857142
+      },
+      {
+        "y": 461,
+        "mean_luminance_x604_to610": 181.14285714285714
+      },
+      {
+        "y": 462,
+        "mean_luminance_x604_to610": 178.71428571428572
+      },
+      {
+        "y": 463,
+        "mean_luminance_x604_to610": 176.28571428571428
+      },
+      {
+        "y": 464,
+        "mean_luminance_x604_to610": 175.71428571428572
+      },
+      {
+        "y": 465,
+        "mean_luminance_x604_to610": 174.42857142857142
+      },
+      {
+        "y": 466,
+        "mean_luminance_x604_to610": 173.0
+      },
+      {
+        "y": 467,
+        "mean_luminance_x604_to610": 175.85714285714286
+      },
+      {
+        "y": 468,
+        "mean_luminance_x604_to610": 178.28571428571428
+      },
+      {
+        "y": 469,
+        "mean_luminance_x604_to610": 176.71428571428572
+      },
+      {
+        "y": 470,
+        "mean_luminance_x604_to610": 167.57142857142858
+      },
+      {
+        "y": 471,
+        "mean_luminance_x604_to610": 153.42857142857142
+      },
+      {
+        "y": 472,
+        "mean_luminance_x604_to610": 147.57142857142858
+      },
+      {
+        "y": 473,
+        "mean_luminance_x604_to610": 156.57142857142858
+      },
+      {
+        "y": 474,
+        "mean_luminance_x604_to610": 170.0
+      },
+      {
+        "y": 475,
+        "mean_luminance_x604_to610": 177.0
+      },
+      {
+        "y": 476,
+        "mean_luminance_x604_to610": 175.0
+      },
+      {
+        "y": 477,
+        "mean_luminance_x604_to610": 172.57142857142858
+      },
+      {
+        "y": 478,
+        "mean_luminance_x604_to610": 172.71428571428572
+      },
+      {
+        "y": 479,
+        "mean_luminance_x604_to610": 172.28571428571428
+      },
+      {
+        "y": 480,
+        "mean_luminance_x604_to610": 170.71428571428572
+      },
+      {
+        "y": 481,
+        "mean_luminance_x604_to610": 169.28571428571428
+      },
+      {
+        "y": 482,
+        "mean_luminance_x604_to610": 168.28571428571428
+      },
+      {
+        "y": 483,
+        "mean_luminance_x604_to610": 170.57142857142858
+      },
+      {
+        "y": 484,
+        "mean_luminance_x604_to610": 174.42857142857142
+      },
+      {
+        "y": 485,
+        "mean_luminance_x604_to610": 173.85714285714286
+      },
+      {
+        "y": 486,
+        "mean_luminance_x604_to610": 164.0
+      },
+      {
+        "y": 487,
+        "mean_luminance_x604_to610": 153.28571428571428
+      },
+      {
+        "y": 488,
+        "mean_luminance_x604_to610": 153.71428571428572
+      },
+      {
+        "y": 489,
+        "mean_luminance_x604_to610": 159.42857142857142
+      },
+      {
+        "y": 490,
+        "mean_luminance_x604_to610": 168.28571428571428
+      },
+      {
+        "y": 491,
+        "mean_luminance_x604_to610": 174.71428571428572
+      },
+      {
+        "y": 492,
+        "mean_luminance_x604_to610": 176.28571428571428
+      },
+      {
+        "y": 493,
+        "mean_luminance_x604_to610": 175.28571428571428
+      },
+      {
+        "y": 494,
+        "mean_luminance_x604_to610": 174.28571428571428
+      },
+      {
+        "y": 495,
+        "mean_luminance_x604_to610": 175.42857142857142
+      },
+      {
+        "y": 496,
+        "mean_luminance_x604_to610": 168.14285714285714
+      },
+      {
+        "y": 497,
+        "mean_luminance_x604_to610": 168.28571428571428
+      },
+      {
+        "y": 498,
+        "mean_luminance_x604_to610": 173.85714285714286
+      },
+      {
+        "y": 499,
+        "mean_luminance_x604_to610": 176.42857142857142
+      },
+      {
+        "y": 500,
+        "mean_luminance_x604_to610": 176.42857142857142
+      },
+      {
+        "y": 501,
+        "mean_luminance_x604_to610": 175.0
+      },
+      {
+        "y": 502,
+        "mean_luminance_x604_to610": 158.0
+      },
+      {
+        "y": 503,
+        "mean_luminance_x604_to610": 129.57142857142858
+      },
+      {
+        "y": 504,
+        "mean_luminance_x604_to610": 104.57142857142857
+      },
+      {
+        "y": 505,
+        "mean_luminance_x604_to610": 98.57142857142857
+      },
+      {
+        "y": 506,
+        "mean_luminance_x604_to610": 92.14285714285714
+      },
+      {
+        "y": 507,
+        "mean_luminance_x604_to610": 79.42857142857143
+      },
+      {
+        "y": 508,
+        "mean_luminance_x604_to610": 81.85714285714286
+      }
+    ]
+  }
+}

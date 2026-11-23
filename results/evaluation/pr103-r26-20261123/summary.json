@@ -1,0 +1,1334 @@
+{
+  "schema_version": 1,
+  "kind": "pr103-r26-evaluation-summary",
+  "status": "measured",
+  "decision": {
+    "selected_model": "PR35",
+    "selected_checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+    "promote_returned_candidate": false,
+    "reason": "Returned R26 candidate is worse than retained PR35 on frozen 666; current-review improvement over R25 is small and mixed, with a measured training-runtime confound."
+  },
+  "pr": {
+    "number": 103,
+    "head_sha": "c3cda55dd92dd2c0d85454351f0e06865b5eab73",
+    "url": "https://github.com/Siuuuers/dl/pull/103"
+  },
+  "archive": {
+    "size_bytes": 39784715,
+    "sha256": "105e86cc793378f1a47dd7cebc49ef84170d4f00ca9bec8c1e5f4e467df4b69d",
+    "crc_passed": true,
+    "indexed_members_verified": 12
+  },
+  "protocol": {
+    "path": "experiments/front-review-2026-11-23-r26.json",
+    "sha256": "232f81cdf6d367fc9ece902e01b4ab5a03da5ae0898f5f75abae25ef5001372f"
+  },
+  "thresholds": {
+    "box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "imgsz": 1280,
+    "radii_px": [
+      5,
+      10
+    ]
+  },
+  "models": {
+    "candidate": {
+      "checkpoint_sha256": "a2e71037a9995ed864ec21ab5c03a719e200301766788b88765c745638e7ad9a",
+      "predictions_sha256": "1ef6b89e95842c9c19b3a741c973ef2945db1a438927d461c1e6fb62b539ba79"
+    },
+    "reference": {
+      "checkpoint_sha256": "fcc2708241cbdd57a0e6e1a0440cd5928ca829eb764cba9770281447446fee61",
+      "predictions_sha256": "12809d2e7559ae9add4f51c4aa39de87a09e70352c9d61d1cad8b12e691502ca"
+    },
+    "pr35": {
+      "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+      "predictions_sha256": "1c0aa2c0ad27f59bfd07ae67bc49c122e99e97832062e070dd9b97285b2dac08"
+    },
+    "r25": {
+      "checkpoint_sha256": "6ada96ede2a33604fcb6d5b42322798c8055d3c3298f36de4a3b66a15e827e9c",
+      "predictions_sha256": "9529eda2ffc4b301b5be2bcc58c76cafc27a0f2bfe26996bdf525498484448f2"
+    },
+    "r25control": {
+      "checkpoint_sha256": "561665025b30718916e838e6d829e050d0fae622498a44733c1dc52b49bf05df",
+      "predictions_sha256": "e1c9219ea681ea21877598d7b2204ceef52ff0e3df263edbb315c11d994d053b"
+    }
+  },
+  "references": {
+    "primary": {
+      "reference_id": "sequence-refined-reference-2026-11-18",
+      "manifest_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "models": {
+        "candidate": {
+          "tp": 630,
+          "fn": 36,
+          "fp": 108,
+          "duplicate_fp": 27,
+          "other_fp": 81,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 519,
+            "10": 573
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 44,
+              "misses": 15
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14,
+              15
+            ],
+            "new_000008": [
+              33,
+              34,
+              35,
+              36
+            ],
+            "new_000009": [
+              8,
+              56,
+              57,
+              58
+            ],
+            "new_000010": [
+              14,
+              15,
+              26,
+              31,
+              32,
+              33,
+              34
+            ],
+            "new_000011": [
+              15,
+              61
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000056": [
+              14,
+              15
+            ],
+            "new_000057": [
+              1,
+              7,
+              11,
+              12,
+              13
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ],
+            "new_000089": [
+              43
+            ],
+            "new_000090": [
+              41,
+              42,
+              43
+            ]
+          }
+        },
+        "reference": {
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 533,
+            "10": 582
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14
+            ],
+            "new_000008": [
+              1,
+              36
+            ],
+            "new_000009": [
+              8,
+              53,
+              57,
+              58
+            ],
+            "new_000010": [
+              14,
+              33,
+              34
+            ],
+            "new_000011": [
+              15
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000057": [
+              1
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ]
+          }
+        },
+        "pr35": {
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 533,
+            "10": 582
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14
+            ],
+            "new_000008": [
+              1,
+              36
+            ],
+            "new_000009": [
+              8,
+              53,
+              57,
+              58
+            ],
+            "new_000010": [
+              14,
+              33,
+              34
+            ],
+            "new_000011": [
+              15
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000057": [
+              1
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ]
+          }
+        },
+        "r25": {
+          "tp": 629,
+          "fn": 37,
+          "fp": 108,
+          "duplicate_fp": 29,
+          "other_fp": 79,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 518,
+            "10": 574
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 43,
+              "misses": 16
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14,
+              15
+            ],
+            "new_000008": [
+              33,
+              34,
+              35,
+              36
+            ],
+            "new_000009": [
+              8,
+              56,
+              57,
+              58
+            ],
+            "new_000010": [
+              14,
+              15,
+              26,
+              31,
+              32,
+              33,
+              34
+            ],
+            "new_000011": [
+              15,
+              61
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000056": [
+              14,
+              15
+            ],
+            "new_000057": [
+              1,
+              7,
+              11,
+              12,
+              13
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ],
+            "new_000089": [
+              43,
+              49
+            ],
+            "new_000090": [
+              41,
+              42,
+              43
+            ]
+          }
+        },
+        "r25control": {
+          "tp": 646,
+          "fn": 20,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 531,
+            "10": 583
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14
+            ],
+            "new_000008": [
+              1,
+              36
+            ],
+            "new_000009": [
+              8,
+              53,
+              57,
+              58
+            ],
+            "new_000010": [
+              14,
+              33,
+              34
+            ],
+            "new_000011": [
+              15
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000056": [
+              14
+            ],
+            "new_000057": [
+              1
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ],
+            "new_000090": [
+              43
+            ]
+          }
+        }
+      }
+    },
+    "diagnostic": {
+      "reference_id": "visible-front-completion-2026-11-14",
+      "manifest_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "models": {
+        "candidate": {
+          "tp": 631,
+          "fn": 32,
+          "fp": 107,
+          "duplicate_fp": 27,
+          "other_fp": 80,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 519,
+            "10": 573
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 59,
+              "matched": 44,
+              "misses": 15
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14,
+              15
+            ],
+            "new_000008": [
+              33,
+              34,
+              35,
+              36
+            ],
+            "new_000009": [
+              8,
+              56,
+              57
+            ],
+            "new_000010": [
+              15,
+              26,
+              31,
+              32
+            ],
+            "new_000011": [
+              15,
+              61
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000056": [
+              14,
+              15
+            ],
+            "new_000057": [
+              1,
+              7,
+              11,
+              12,
+              13
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ],
+            "new_000089": [
+              43
+            ],
+            "new_000090": [
+              41,
+              42,
+              43
+            ]
+          }
+        },
+        "reference": {
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 533,
+            "10": 582
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14
+            ],
+            "new_000008": [
+              1,
+              36
+            ],
+            "new_000009": [
+              8,
+              53,
+              56,
+              57
+            ],
+            "new_000011": [
+              15
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000057": [
+              1
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ]
+          }
+        },
+        "pr35": {
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 533,
+            "10": 582
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14
+            ],
+            "new_000008": [
+              1,
+              36
+            ],
+            "new_000009": [
+              8,
+              53,
+              56,
+              57
+            ],
+            "new_000011": [
+              15
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000057": [
+              1
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ]
+          }
+        },
+        "r25": {
+          "tp": 629,
+          "fn": 34,
+          "fp": 108,
+          "duplicate_fp": 29,
+          "other_fp": 79,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 518,
+            "10": 574
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 10,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 43,
+              "misses": 16
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14,
+              15
+            ],
+            "new_000008": [
+              33,
+              34,
+              35,
+              36
+            ],
+            "new_000009": [
+              8,
+              56,
+              57
+            ],
+            "new_000010": [
+              14,
+              15,
+              26,
+              31,
+              32
+            ],
+            "new_000011": [
+              15,
+              61
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000056": [
+              14,
+              15
+            ],
+            "new_000057": [
+              1,
+              7,
+              11,
+              12,
+              13
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ],
+            "new_000089": [
+              43,
+              49
+            ],
+            "new_000090": [
+              41,
+              42,
+              43
+            ]
+          }
+        },
+        "r25control": {
+          "tp": 646,
+          "fn": 17,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 531,
+            "10": 583
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              7,
+              14
+            ],
+            "new_000008": [
+              1,
+              36
+            ],
+            "new_000009": [
+              8,
+              53,
+              56,
+              57
+            ],
+            "new_000011": [
+              15
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000056": [
+              14
+            ],
+            "new_000057": [
+              1
+            ],
+            "new_000059": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000087": [
+              15
+            ],
+            "new_000088": [
+              57
+            ],
+            "new_000090": [
+              43
+            ]
+          }
+        }
+      }
+    },
+    "current_r26_exploratory": {
+      "reference_id": "fronts-2026-11-23-r26",
+      "manifest_sha256": "b999b9491b18ecd2d55684ec14383d1c98160a6bf080a4a751ea83844fca7468",
+      "counts": {
+        "images": 20,
+        "objects": 661,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 96,
+        "empty_images": 3
+      },
+      "models": {
+        "candidate": {
+          "tp": 646,
+          "fn": 15,
+          "fp": 92,
+          "duplicate_fp": 33,
+          "other_fp": 59,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 558,
+            "10": 582
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 19,
+              "matched": 13,
+              "misses": 6
+            },
+            "1": {
+              "gold": 58,
+              "matched": 49,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 584,
+              "misses": 0
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000008": [
+              33,
+              34
+            ],
+            "new_000009": [
+              55,
+              56,
+              57
+            ],
+            "new_000010": [
+              14,
+              33,
+              34
+            ],
+            "new_000011": [
+              55,
+              56,
+              57,
+              60
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000088": [
+              57
+            ]
+          }
+        },
+        "reference": {
+          "tp": 623,
+          "fn": 38,
+          "fp": 105,
+          "duplicate_fp": 20,
+          "other_fp": 85,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 543,
+            "10": 573
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 19,
+              "matched": 11,
+              "misses": 8
+            },
+            "1": {
+              "gold": 58,
+              "matched": 35,
+              "misses": 23
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              1,
+              8,
+              9,
+              14,
+              15,
+              30
+            ],
+            "new_000008": [
+              1,
+              5
+            ],
+            "new_000009": [
+              50,
+              51,
+              52,
+              56,
+              57
+            ],
+            "new_000010": [
+              14,
+              24,
+              31,
+              32,
+              33,
+              34
+            ],
+            "new_000011": [
+              55,
+              56,
+              57,
+              58,
+              59,
+              60
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000056": [
+              16
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000088": [
+              57
+            ],
+            "new_000089": [
+              42,
+              43,
+              48,
+              49
+            ],
+            "new_000090": [
+              39,
+              40,
+              41,
+              42,
+              43
+            ]
+          }
+        },
+        "pr35": {
+          "tp": 623,
+          "fn": 38,
+          "fp": 105,
+          "duplicate_fp": 20,
+          "other_fp": 85,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 543,
+            "10": 573
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 19,
+              "matched": 11,
+              "misses": 8
+            },
+            "1": {
+              "gold": 58,
+              "matched": 35,
+              "misses": 23
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              1,
+              8,
+              9,
+              14,
+              15,
+              30
+            ],
+            "new_000008": [
+              1,
+              5
+            ],
+            "new_000009": [
+              50,
+              51,
+              52,
+              56,
+              57
+            ],
+            "new_000010": [
+              14,
+              24,
+              31,
+              32,
+              33,
+              34
+            ],
+            "new_000011": [
+              55,
+              56,
+              57,
+              58,
+              59,
+              60
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000056": [
+              16
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000088": [
+              57
+            ],
+            "new_000089": [
+              42,
+              43,
+              48,
+              49
+            ],
+            "new_000090": [
+              39,
+              40,
+              41,
+              42,
+              43
+            ]
+          }
+        },
+        "r25": {
+          "tp": 646,
+          "fn": 15,
+          "fp": 91,
+          "duplicate_fp": 33,
+          "other_fp": 58,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 557,
+            "10": 582
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 19,
+              "matched": 13,
+              "misses": 6
+            },
+            "1": {
+              "gold": 58,
+              "matched": 49,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 584,
+              "misses": 0
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000008": [
+              33,
+              34
+            ],
+            "new_000009": [
+              55,
+              56,
+              57
+            ],
+            "new_000010": [
+              14,
+              33,
+              34
+            ],
+            "new_000011": [
+              55,
+              56,
+              57,
+              60
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000088": [
+              57
+            ]
+          }
+        },
+        "r25control": {
+          "tp": 621,
+          "fn": 40,
+          "fp": 108,
+          "duplicate_fp": 15,
+          "other_fp": 93,
+          "both_corners_denominator": 584,
+          "both_corners_within_radius": {
+            "5": 539,
+            "10": 573
+          },
+          "locatable_corner_groups": {
+            "0": {
+              "gold": 19,
+              "matched": 11,
+              "misses": 8
+            },
+            "1": {
+              "gold": 58,
+              "matched": 34,
+              "misses": 24
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          },
+          "empty_scene_outputs": 0,
+          "misses_by_image": {
+            "new_000007": [
+              1,
+              6,
+              8,
+              9,
+              14,
+              15,
+              30
+            ],
+            "new_000008": [
+              1,
+              5
+            ],
+            "new_000009": [
+              49,
+              50,
+              51,
+              52,
+              56,
+              57
+            ],
+            "new_000010": [
+              14,
+              24,
+              31,
+              32,
+              33,
+              34
+            ],
+            "new_000011": [
+              55,
+              56,
+              57,
+              58,
+              59,
+              60
+            ],
+            "new_000053": [
+              1
+            ],
+            "new_000056": [
+              16
+            ],
+            "new_000086": [
+              57
+            ],
+            "new_000088": [
+              57
+            ],
+            "new_000089": [
+              42,
+              43,
+              48,
+              49
+            ],
+            "new_000090": [
+              39,
+              40,
+              41,
+              42,
+              43
+            ]
+          }
+        }
+      }
+    }
+  },
+  "training_repeated": false,
+  "all_models_inferred_fresh_in_one_runtime": true,
+  "hardware_confound": {
+    "r25": "NVIDIA L4",
+    "r26": "NVIDIA A100-SXM4-40GB",
+    "same_control_supervision": true,
+    "same_recorded_recipe_and_software": true,
+    "saved_control_tensors_changed": 706,
+    "saved_control_tensors_compared": 879,
+    "crossround_three_row_causal_claim_supported": false
+  },
+  "pdf_basis": {
+    "model": "candidate",
+    "reference": "current_r26_exploratory",
+    "r27_amendments_change_scores": false
+  },
+  "limits": [
+    "The reused development frames do not establish reliability in unseen capture sessions.",
+    "Unmatched outputs are matching outcomes, not all independently adjudicated background false positives.",
+    "Unlocatable reference corners have no verified coordinate; their predicted coordinates cannot be scored for accuracy.",
+    "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+    "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+    "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+    "R26 trained on A100 and R25 on L4; their candidate difference does not isolate the three revised training rows. The recorded controls are compared separately.",
+    "The separately pinned current r26 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score."
+  ]
+}
