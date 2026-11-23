@@ -1,17 +1,24 @@
-# Current model and completed R24 comparison
+# Current model and R25 training handoff
 
 23 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected. R24 training and PR99 evaluation are complete.**
+**PR35 remains selected. R24 training and PR99 evaluation are complete;
+the [R25 notebook](front-review-r25.md) prepares the newly requested amendment experiment.**
+R25 corrects eight left corners in three photographs: four points in one
+training photograph and four development-only points. Eleven accepted standard
+rows and all non-coordinate fields are preserved. R25 has not been trained yet.
+
 The [complete R24 photo atlas](front-review-r24-pdf.md) contains every nonempty
 new-series photo, with the accepted R23-to-R24 corner changes highlighted.
 The [PR99 evaluation](../results/evaluation/pr99-r24-20261123/README.md)
 records the returned models, fresh inference and same-reference comparisons.
-A further training notebook is not required for this completed experiment.
+The [improvement report](model-improvement-after-r24.md) explains what changed
+in the learned weights, the exact remaining failure rows and useful future
+capture types. The R25 compact review packet accompanies the annotation handoff.
 
 ## Run inference
 
-Use branch `codex/front-review-r24-20261123`. Follow the
+Use branch `codex/front-review-r25-20261123`. Follow the
 [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to
 obtain the verified PR35 bundle, retaining its manifest and companion files.
 
@@ -56,12 +63,14 @@ alter which predictions meet the fixed IoU matching requirement. An unmatched
 target does not necessarily mean the network produced no nearby proposal.
 The conflicting reference rankings do not establish a replacement for PR35.
 
-## Completed training and the next useful work
+## Completed R24 training and newly authorized R25 work
 
 The [R24 notebook](../notebooks/baomai_front_review_r24.ipynb) remains an immutable
 reproduction entry for the completed experiment. Both arms finished 30 epochs
-in the returned [PR99 archive](https://github.com/Siuuuers/dl/pull/99). There is
-no new training input or hypothesis requiring another notebook yet.
+in the returned [PR99 archive](https://github.com/Siuuuers/dl/pull/99).
+The user's subsequent feedback supplied new point amendments. The
+[R25 handoff](front-review-r25.md) and its new notebook preserve the recipe
+while changing only the newly supported supervision.
 
 The R23-to-R24 training input difference is 22 corner corrections across 18
 rows in three training photos. The four corrections in photo 010 are in the
