@@ -1,0 +1,376 @@
+{
+  "schema_version": 1,
+  "kind": "independent_r28_training_workflow_review",
+  "reviewer": "r28_pixels_a",
+  "decision": "accept_prepared_design_and_cpu_input_preflight",
+  "blocking_findings": [],
+  "scope": "Bounded inspection of the R28 training composer, notebook builder, four shared-script extensions, inherited paired workflow and actual generated candidate/protocol/delta. No source edits, optimizer steps, CUDA trial or training performed.",
+  "source_files": [
+    {
+      "path": "scripts/front_review_r28_training.py",
+      "sha256": "8426f8fbcd3e872eb5ed58e88dc86cfb9788223830b3ffb0a42c9d768a016fa0"
+    },
+    {
+      "path": "scripts/build_front_review_r28_notebook.py",
+      "sha256": "87230d4e268cbaeda7e745166f71f1cfb1d76a2f3290a56b8f607e5753b22c87"
+    },
+    {
+      "path": "scripts/pose_checkpoint.py",
+      "sha256": "2d1daf5f3a228d712d0ac40fbcc2ccb390c1f20e15b61c5466eb732de33c4bc8"
+    },
+    {
+      "path": "scripts/stage_pose_training.py",
+      "sha256": "7f66075adb0e6e7f279d2e658cb39ef16df30fad050eab07abe25342c316c7a5"
+    },
+    {
+      "path": "scripts/train_pose_comparison.py",
+      "sha256": "4a2a815b674858f853a195342af014038fcb2a960ed7a7b8086e698d22b9e8f1"
+    },
+    {
+      "path": "scripts/verify_incremental_pose_candidate.py",
+      "sha256": "ce971a4594f10292ceb61f206f83694fa2ae8bad477442fcc6fc261d3e07aea7"
+    }
+  ],
+  "source_artifacts": {
+    "accepted_review": {
+      "path": "data/reviews/fronts-2026-11-23-r28/manifest.json",
+      "sha256": "8f5f8982ee9d9cb8b1cfaa70caa4598c1b848028253e06a2154ed8bc0a7a8102"
+    },
+    "candidate": {
+      "path": "data/candidates/front-review-2026-11-23-r28/manifest.json",
+      "sha256": "b23e3273aca28e521b5c1fef8025b0888e736aa3f47229360f377d06a21abb9b"
+    },
+    "protocol": {
+      "path": "experiments/front-review-2026-11-23-r28.json",
+      "sha256": "69550efb5249dced874575fd7ecd8ddae67cd27b1dd57d35d7475716f1ee9783"
+    },
+    "training_input_delta": {
+      "path": "results/review/front-review-20261123-r28/training-input-delta.json",
+      "sha256": "16f5169a1c716bceda4c1e0304dc9da0d09c3029d359560084c2c5923fee91b6"
+    },
+    "predecessor_control": {
+      "manifest": "data/candidates/front-review-2026-11-23-r26/manifest.json",
+      "sha256": "4f3a75054b130a3627a523a9d0f1479834cc98fc3dfc66253efd01794dee109f"
+    }
+  },
+  "review_findings": [
+    {
+      "area": "control and treatment",
+      "result": "pass",
+      "evidence": "The reference plan reconstructs exactly the immutable R26 candidate overlay on original labels. The treatment selects accepted R28 train labels only for eligible photos. Held015 and31 excluded old-series photos retain identical R26 bytes. The actual input delta is10 coordinate-replaced rows in9 photos, with no added/deleted rows or class/visibility changes."
+    },
+    {
+      "area": "evaluation isolation",
+      "result": "pass",
+      "evidence": "Every val plan uses original source bytes in both arms:20 photos/664 objects. R28 development labels do not enter trainer supervision. Frozen666/663 reference manifests and counts are independently hash-verified; R28 review is explicitly exploratory."
+    },
+    {
+      "area": "initialization and numerical recipe",
+      "result": "pass",
+      "evidence": "Both full arms select the same seed46 recipe hash, 30epochs, batch4, imgsz1280, FP32, AdamW lr0=0.0001, original epoch173 initializer, and final last.pt checkpoint. The resource trial uses the candidate and cannot initialize full runs. Initializer bytes were verified by executed preflight."
+    },
+    {
+      "area": "paired runtime and recovery",
+      "result": "pass_by_source_inspection",
+      "evidence": "The preserved notebook requires equal recorded runtime for the pair and matching available runtime before a missing arm starts. Completed artifacts are verified before reuse; different source/protocol pins or incomplete runs are not silently reused."
+    },
+    {
+      "area": "staging and return provenance",
+      "result": "pass_by_source_inspection_and_input_execution",
+      "evidence": "Staging independently hashes image/label bytes. The new source record carries the entire training-input delta and its bound digest; checkpoint validation recomputes it. Reference training-label identity is explicitly r26_predecessor_control. Packaging verifies both staging source records and the embedded report/hash before returning the existing paired bundle format."
+    },
+    {
+      "area": "source-pinned notebook builder",
+      "result": "pass_by_source_inspection",
+      "evidence": "CLI generation requires a full source commit and compares all442 collected source paths with git show, including157 complete R28 review labels,92 candidate overlay labels, effective predecessor labels, and recursively referenced new evidence/policy files. A Git LFS pointer must match materialized payload SHA256 and size. The generated code cell pins source commit, protocol path/hash and experiment id. Draft generation remains internal and explicitly reported; final CLI uses strict verification."
+    }
+  ],
+  "executed_checks": {
+    "six_source_files_compiled": true,
+    "input_preflight_compiled": true,
+    "translated_baseline_code_cells_compiled": true,
+    "recipe_hash_verified": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+    "r26_dispatch_backward_compatibility": {
+      "status": "verified",
+      "candidate_manifest_sha256": "4f3a75054b130a3627a523a9d0f1479834cc98fc3dfc66253efd01794dee109f"
+    },
+    "exact_input_preflight_executed": true,
+    "input_preflight": {
+      "status": "ready_for_controlled_incremental_experiment",
+      "reference_supervision": "R26",
+      "candidate_supervision": "R28",
+      "training_counts": {
+        "reference": {
+          "train": {
+            "images": 137,
+            "objects": 3784,
+            "visible_endpoints": 6836,
+            "missing_endpoints": 732,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        },
+        "candidate": {
+          "train": {
+            "images": 137,
+            "objects": 3784,
+            "visible_endpoints": 6836,
+            "missing_endpoints": 732,
+            "empty_images": 13
+          },
+          "val": {
+            "images": 20,
+            "objects": 664,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 101,
+            "empty_images": 3
+          }
+        }
+      },
+      "complete_review_counts": {
+        "train": {
+          "images": 137,
+          "objects": 3786,
+          "visible_endpoints": 6836,
+          "missing_endpoints": 736,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 661,
+          "visible_endpoints": 1226,
+          "missing_endpoints": 96,
+          "empty_images": 3
+        }
+      },
+      "original_images_verified": 157,
+      "weights_verified": true,
+      "training_changes_vs_r26": {
+        "changed_rows": 10,
+        "changed_photos": 9,
+        "field_group_changes": {
+          "box": 6,
+          "left": 1,
+          "right": 4
+        },
+        "added_rows": 0,
+        "deleted_rows": 0,
+        "classes_visibility_preserved": true
+      },
+      "training_input_delta": "/workspace/scratch/f0caf40aa0bb/r28/review_a/training-input-delta.json",
+      "changed_training_rows": [
+        "new_000013:27",
+        "new_000014:35",
+        "new_000016:26",
+        "new_000016:27",
+        "new_000017:18",
+        "new_000028:59",
+        "new_000049:3",
+        "new_000051:20",
+        "new_000083:12",
+        "new_000094:9"
+      ],
+      "original_trainer_validation_byte_identical": true,
+      "development_review_is_exploratory_only": true,
+      "held_training_photos": [
+        "new_000015"
+      ],
+      "old_photos_excluded_from_treatment": 31,
+      "evaluation_references": {
+        "primary": {
+          "counts": {
+            "images": 20,
+            "objects": 666,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 105,
+            "empty_images": 3
+          },
+          "objects_by_locatable_corners": {
+            "0": 23,
+            "1": 59,
+            "2": 584
+          }
+        },
+        "diagnostic": {
+          "counts": {
+            "images": 20,
+            "objects": 663,
+            "visible_endpoints": 1227,
+            "missing_endpoints": 99,
+            "empty_images": 3
+          },
+          "objects_by_locatable_corners": {
+            "0": 20,
+            "1": 59,
+            "2": 584
+          }
+        }
+      },
+      "training_executed": false
+    }
+  },
+  "remaining_release_checks": [
+    "Final notebook generation against the published source commit, comparing all442 publication paths, followed by verification of notebook pins."
+  ],
+  "limitations": [
+    "This independently verifies the prepared source/design and actual nontraining input preflight. It does not establish a successful CUDA run, trained-model accuracy, new-session generalization, or model promotion."
+  ],
+  "files_edited_in_repository": [],
+  "reviewed_additional_verification": {
+    "owner": "r28_notebook",
+    "independently_rerun": false,
+    "script": "results/verification/front-review-r28-cpu-smoke.py",
+    "script_sha256": "dafd8e8c889140341ac16ce3e0b0fbbeeffa104109ba4ffe8fbb66271405d8c9",
+    "receipt": "results/verification/front-review-r28-cpu-smoke.json",
+    "receipt_sha256": "1897826d4f48ef2009a359b2b86d1ad83afaf95d342e02c43fa65b0a00316089",
+    "status": "passed",
+    "actual_staging_manifest_hash_independently_checked": true,
+    "loader_inventory_checks": 4,
+    "initializer_forward": {
+      "passed": true,
+      "batch_size": 1,
+      "classes": 1,
+      "kpt_shape": [
+        2,
+        3
+      ],
+      "tensor_shapes": [
+        [
+          1,
+          11,
+          19320
+        ],
+        [
+          1,
+          4,
+          19320
+        ],
+        [
+          1,
+          1,
+          19320
+        ],
+        [
+          1,
+          128,
+          92,
+          160
+        ],
+        [
+          1,
+          256,
+          46,
+          80
+        ],
+        [
+          1,
+          512,
+          23,
+          40
+        ],
+        [
+          1,
+          6,
+          19320
+        ],
+        [
+          1,
+          4,
+          19320
+        ],
+        [
+          1,
+          1,
+          19320
+        ],
+        [
+          1,
+          128,
+          92,
+          160
+        ],
+        [
+          1,
+          256,
+          46,
+          80
+        ],
+        [
+          1,
+          512,
+          23,
+          40
+        ],
+        [
+          1,
+          6,
+          19320
+        ]
+      ]
+    },
+    "rejected_incompatible_provenance": [
+      "wrong_control_role",
+      "altered_input_delta",
+      "wrong_worker_label_role"
+    ],
+    "optimizer_steps": 0,
+    "training_executed": false,
+    "gpu_executed": false,
+    "draft_notebook_checks": {
+      "code_cells_compiled": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      "runtime_cells_preserved_except_round_names_and_pins": [
+        2,
+        6,
+        10,
+        14
+      ],
+      "base_notebook_sha256": "37fe6bb66ce1c4d833b228466b3bce24769c42fa1b383d1384f465ca49561d4d",
+      "input_preflight_sha256": "b2070950fec4efe88cf5e53ad6b76379d02c1f1a462d94591a7ff0388528be47"
+    }
+  },
+  "final_publication_guard_review": {
+    "decision": "accept",
+    "scope": "Builder-only guard added after initial review. No runtime, training recipe, supervision composition or input-preflight changes.",
+    "builder_sha256": "87230d4e268cbaeda7e745166f71f1cfb1d76a2f3290a56b8f607e5753b22c87",
+    "builder_compiled": true,
+    "input_preflight_sha256_unchanged": "b2070950fec4efe88cf5e53ad6b76379d02c1f1a462d94591a7ff0388528be47",
+    "publication_paths": 442,
+    "review_label_files": 157,
+    "candidate_overlay_label_files": 92,
+    "all_manifest_listed_label_payloads_in_publication_inventory": true,
+    "all_inventory_paths_exist_and_are_canonical": true,
+    "inherited_lfs_pointer_original_bytes_checked": "data/images/train/new_000124.png",
+    "final_published_commit_execution_pending": true
+  },
+  "documentation_factual_review": {
+    "files": [
+      {
+        "path": "docs/front-review-r28.md",
+        "sha256_at_review": "a8fc52ed22326d6f3ce30712982a437189399a382909e32608f7a00bb60052b5"
+      },
+      {
+        "path": "docs/current-model.md",
+        "sha256_at_review": "741ece27592bcd2d7d55a2956798e003684552ae6f8cb854dcc58db05184fc87"
+      }
+    ],
+    "numeric_and_experiment_claims": "Matched R28 ledger, amendment inventory, geometry screen, exact training delta, PR103 evaluation report and historical R27 report.",
+    "nonblocking_wording_note": "Current-model wording that implied no rows change was reported to root; intended claim is no additions, deletions or renumbering, with class/visibility/missing-point tokens unchanged.",
+    "documents_edited_by_reviewer": false,
+    "flagged_wording_still_present_at_recording": false,
+    "wording_status": "resolved_in_root_document_update"
+  }
+}

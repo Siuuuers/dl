@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "kind": "r28_source_preparation_verification",
+  "status": "passed",
+  "candidate_manifest_sha256": "b23e3273aca28e521b5c1fef8025b0888e736aa3f47229360f377d06a21abb9b",
+  "protocol_sha256": "69550efb5249dced874575fd7ecd8ddae67cd27b1dd57d35d7475716f1ee9783",
+  "preflight": {
+    "executed": true,
+    "script_sha256": "b2070950fec4efe88cf5e53ad6b76379d02c1f1a462d94591a7ff0388528be47",
+    "result_path": "results/verification/front-review-r28-input-preflight.json",
+    "result_sha256": "af2d111744a18ecb8b2e5b5386bd19a8020f47eae836ea0e4d82ce9d041f733f"
+  },
+  "cpu_smoke": {
+    "script": "results/verification/front-review-r28-cpu-smoke.py",
+    "script_sha256": "dafd8e8c889140341ac16ce3e0b0fbbeeffa104109ba4ffe8fbb66271405d8c9",
+    "receipt": "results/verification/front-review-r28-cpu-smoke.json",
+    "receipt_sha256": "1897826d4f48ef2009a359b2b86d1ad83afaf95d342e02c43fa65b0a00316089"
+  },
+  "draft_notebook_checks": {
+    "code_cells_compiled": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+    ],
+    "runtime_cells_preserved_except_round_names_and_pins": [
+      2,
+      6,
+      10,
+      14
+    ],
+    "base_notebook_sha256": "37fe6bb66ce1c4d833b228466b3bce24769c42fa1b383d1384f465ca49561d4d",
+    "input_preflight_sha256": "b2070950fec4efe88cf5e53ad6b76379d02c1f1a462d94591a7ff0388528be47"
+  },
+  "exact_training_input_changes": {
+    "changed_rows": 10,
+    "changed_photos": 9,
+    "field_group_changes": {
+      "box": 6,
+      "left": 1,
+      "right": 4
+    },
+    "added_rows": 0,
+    "deleted_rows": 0,
+    "classes_visibility_preserved": true
+  },
+  "historical_compatibility": {
+    "historical_r26_pair_still_valid": true,
+    "roles": {
+      "reference": "pr35_annotation_control",
+      "candidate": "accepted_fronts_treatment"
+    },
+    "checkpoint_sha256": {
+      "reference": "fcc2708241cbdd57a0e6e1a0440cd5928ca829eb764cba9770281447446fee61",
+      "candidate": "a2e71037a9995ed864ec21ab5c03a719e200301766788b88765c745638e7ad9a"
+    }
+  },
+  "gpu_training_executed": false,
+  "notebook_publication": "A final notebook must separately verify all source bytes against its published commit pin.",
+  "notebook_builder": {
+    "path": "scripts/build_front_review_r28_notebook.py",
+    "sha256": "87230d4e268cbaeda7e745166f71f1cfb1d76a2f3290a56b8f607e5753b22c87",
+    "referenced_label_evidence_paths_in_publication_guard": 434
+  }
+}

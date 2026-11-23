@@ -1,0 +1,2270 @@
+{
+  "schema_version": 1,
+  "review": "front-review-r28-independent-b",
+  "status": "proposals_only_pending_root_independent_acceptance",
+  "source_review": "fronts-2026-11-23-r27",
+  "source_commit": "bfd7d5bd346f92935bd1695e4515e4f62a0a0f85",
+  "source_manifest_path": "data/reviews/fronts-2026-11-23-r27/manifest.json",
+  "source_manifest_sha256": "9e3675c83cb6735242b3b99266e36d5a33248c13e51b8c91bd89a65d2c4b92af",
+  "prediction_jsonl_path": "results/evaluation/pr103-r26-20261123/inference/eval-candidate/predictions.jsonl",
+  "prediction_jsonl_sha256": "1ef6b89e95842c9c19b3a741c973ef2945db1a438927d461c1e6fb62b539ba79",
+  "matching_inventory_path": "results/evaluation/pr103-r26-20261123/candidate-error-inventory.json",
+  "matching_inventory_sha256": "6bed64318d5e330abd8524421d84a1d056e0c946908ff759fb2d1bd85b4270fb",
+  "scope": "Fourteen explicitly named development-val rows in five photos; no additional photos or source-label files changed. Both008:19 and008:29 standard revisits authorized by the latest user text but retained.",
+  "counts": {
+    "reviewed_rows": 14,
+    "proposed_changed_rows": 10,
+    "retained_rows": 4,
+    "deleted_rows": 0,
+    "visibility_changes": 0,
+    "newly_located_missing_corners": 0,
+    "protected_standard_revisits": 2,
+    "standard_revisions": 0,
+    "extra_adjacent_rows": 0
+  },
+  "method": "Inspect original context and nearest-neighbor pixel crops alongside saved labels and fixed returned R26 predictions. Trace each own material rim/front-to-side turn; do not apply global brightness thresholds, midpoint rules, model-copy rules, neighbor clamps or mechanical shifts. Explicitly compare ymin as well when the user says ymax, and record any different-field correction. Preserve unchanged token strings, class, visibility and unavailable triplets.",
+  "axis_convention": "Original image x increases rightward; y increases downward. ymin is upper box edge; ymax is lower box edge. Points denote the lower-front turns under this existing annotation convention.",
+  "reviewed_rows": [
+    {
+      "identity": "new_000008:4",
+      "image_id": "new_000008",
+      "row": 4,
+      "split": "val",
+      "status": "retained_after_visual_review",
+      "fields": {},
+      "requested_fields": [
+        "ymax"
+      ],
+      "requested_field_decisions": {
+        "ymax": "retain_saved"
+      },
+      "before_line": "0 0.6691406250 0.0640416667 0.1664062500 0.0746944444 0.5875000000 0.0888888889 2 0.7500000000 0.0972222222 2",
+      "after_line": "0 0.6691406250 0.0640416667 0.1664062500 0.0746944444 0.5875000000 0.0888888889 2 0.7500000000 0.0972222222 2",
+      "changed_token_indices_0based": [],
+      "before_box_px": [
+        750.0,
+        19.22000004,
+        963.0000000000001,
+        73.000000008
+      ],
+      "proposed_box_px": [
+        750.0,
+        19.22000004,
+        963.0000000000001,
+        73.000000008
+      ],
+      "before_points_px": [
+        [
+          752.0,
+          64.000000008,
+          2.0
+        ],
+        [
+          960.0,
+          69.999999984,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          752.0,
+          64.000000008,
+          2.0
+        ],
+        [
+          960.0,
+          69.999999984,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000008.txt",
+      "source_label_sha256": "bbaed3ce1deb8f9d7a8b6420c6af4f2cd6ecae70ec2119f10e524089ec742ea4",
+      "requested_interpretation": "Literal ymax checked against the original lower edge, and prediction ymin also checked for possible axis wording ambiguity. Neither predicted bound has stronger material support.",
+      "field_reasons": {
+        "ymax_retained": "Saved y73 follows the softened lower edge of this front. Predicted y80.48 extends into the dark rack band beneath it. The front is already ending near y70-73; the lower prediction should not become the target.",
+        "ymin_retained": "Saved y19.22 covers the visible upper rim. Predicted y10.64 reaches into the upper neighbor/its edge and is not an independently supported replacement."
+      },
+      "uncertainty": "Lower material transition approximately +/-2 original pixels. Rejected expansion is about7.5px, larger than that uncertainty.",
+      "prediction_comparison": {
+        "prediction_index_0based": 15,
+        "box_xyxy_px": [
+          753.0933837890625,
+          10.635185241699219,
+          962.6395263671875,
+          80.48261260986328
+        ],
+        "left_xy_px": [
+          757.4041137695312,
+          65.63121032714844
+        ],
+        "right_xy_px": [
+          957.4171142578125,
+          71.0119400024414
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 750.0,
+          "after_px": 750.0
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 19.22000004,
+          "after_px": 19.22000004
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 963.0000000000001,
+          "after_px": 963.0000000000001
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 73.000000008,
+          "after_px": 73.000000008
+        },
+        "left.x": {
+          "decision": "retain",
+          "before_px": 752.0,
+          "after_px": 752.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 64.000000008,
+          "after_px": 64.000000008
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 960.0,
+          "after_px": 960.0
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 69.999999984,
+          "after_px": 69.999999984
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        730,
+        0,
+        984,
+        105
+      ],
+      "crop_rgb_sha256": "e7d57a648e0bf22a9d4335e1a972402187b53403c73daf8e4a879f48794c7624",
+      "original_saved_proposed_panel": "new_000008-row-04-proposed-review.png",
+      "panel_sha256": "704ecdcbd872e9dac7c36d40894b7b5a4852cfd6907f1596bc9021b5a4c4ea21",
+      "original_saved_prediction_panel": "new_000008-row-04-source-review.png"
+    },
+    {
+      "identity": "new_000008:5",
+      "image_id": "new_000008",
+      "row": 5,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "left": [
+          984.0,
+          14.999999976
+        ]
+      },
+      "requested_fields": [
+        "left.x"
+      ],
+      "requested_field_decisions": {
+        "left.x": "amend_from_original_pixels"
+      },
+      "before_line": "0 0.853125000000 0.0173611111 0.179687500000 0.0347222222 0.7640625000 0.0208333333 2 0.941796875000 0.030555555556 2",
+      "after_line": "0 0.853125000000 0.0173611111 0.179687500000 0.0347222222 0.768750000000 0.0208333333 2 0.941796875000 0.030555555556 2",
+      "changed_token_indices_0based": [
+        5
+      ],
+      "before_box_px": [
+        977.0,
+        0.0,
+        1207.0,
+        24.999999984
+      ],
+      "proposed_box_px": [
+        977.0,
+        0.0,
+        1207.0,
+        24.999999984
+      ],
+      "before_points_px": [
+        [
+          978.0,
+          14.999999976,
+          2.0
+        ],
+        [
+          1205.5,
+          22.00000000032,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          984.0,
+          14.999999976,
+          2.0
+        ],
+        [
+          1205.5,
+          22.00000000032,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000008.txt",
+      "source_label_sha256": "bbaed3ce1deb8f9d7a8b6420c6af4f2cd6ecae70ec2119f10e524089ec742ea4",
+      "requested_interpretation": "Move the left point toward the material corner as requested, but do not apply the suggested +12px literally. Original pixels support an intermediate x near984; x990 is already along the face.",
+      "field_reasons": {
+        "left.x": "Saved x978 lies on the dark side/shadow strip. The rounded brighter front-to-side turn is around x982-986. Select x984 (+6px), retaining y15 because it is within the local lower-edge transition.",
+        "left.y_retained": "The saved y15 remains consistent with the softened lower turn; there is no independent reason for a small y adjustment."
+      },
+      "uncertainty": "Left turn approximately +/-2px in x and +/-1.5px in y; blur prevents claiming subpixel accuracy.",
+      "prediction_comparison": {
+        "prediction_index_0based": 24,
+        "box_xyxy_px": [
+          975.9078369140625,
+          0.0,
+          1203.1231689453125,
+          35.440940856933594
+        ],
+        "left_xy_px": [
+          981.375244140625,
+          11.849201202392578
+        ],
+        "right_xy_px": [
+          1194.69140625,
+          16.783187866210938
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 977.0,
+          "after_px": 977.0
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 0.0,
+          "after_px": 0.0
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 1207.0,
+          "after_px": 1207.0
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 24.999999984,
+          "after_px": 24.999999984
+        },
+        "left.x": {
+          "decision": "replace",
+          "before_px": 978.0,
+          "after_px": 984.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 14.999999976,
+          "after_px": 14.999999976
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 1205.5,
+          "after_px": 1205.5
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 22.00000000032,
+          "after_px": 22.00000000032
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        955,
+        0,
+        1227,
+        60
+      ],
+      "crop_rgb_sha256": "cbc99a4c6cbf11e82b9d9e946c38fbadc0738a541de642d8ea7a3867a488e675",
+      "original_saved_proposed_panel": "new_000008-row-05-proposed-review.png",
+      "panel_sha256": "1773afd05c35dea01ce1c5648952ecfc80ef9ef30b8c6bae7bf512e3c5ce31bb",
+      "original_saved_prediction_panel": "new_000008-row-05-source-review.png"
+    },
+    {
+      "identity": "new_000008:6",
+      "image_id": "new_000008",
+      "row": 6,
+      "split": "val",
+      "status": "retained_after_visual_review",
+      "fields": {},
+      "requested_fields": [
+        "ymax"
+      ],
+      "requested_field_decisions": {
+        "ymax": "retain_saved"
+      },
+      "before_line": "0 0.839453125 0.070833333 0.171093750 0.083333333 0.762500000 0.098611111 2 0.9218750000 0.1097222222 2",
+      "after_line": "0 0.839453125 0.070833333 0.171093750 0.083333333 0.762500000 0.098611111 2 0.9218750000 0.1097222222 2",
+      "changed_token_indices_0based": [],
+      "before_box_px": [
+        965.0,
+        20.99999988,
+        1184.0,
+        80.99999964
+      ],
+      "proposed_box_px": [
+        965.0,
+        20.99999988,
+        1184.0,
+        80.99999964
+      ],
+      "before_points_px": [
+        [
+          976.0,
+          70.99999992000001,
+          2.0
+        ],
+        [
+          1180.0,
+          78.999999984,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          976.0,
+          70.99999992000001,
+          2.0
+        ],
+        [
+          1180.0,
+          78.999999984,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000008.txt",
+      "source_label_sha256": "bbaed3ce1deb8f9d7a8b6420c6af4f2cd6ecae70ec2119f10e524089ec742ea4",
+      "requested_interpretation": "Literal ymax and the alternative ymin interpretation were both inspected. Keep the saved boundaries.",
+      "field_reasons": {
+        "ymax_retained": "Saved y81 ends at the target front lower transition. Prediction y90.32 includes the dark separator and the beginning of lower material; it is not this front bottom.",
+        "ymin_retained": "Prediction y15.09 extends farther into the upper cassette. The saved y21 upper extent remains the better supported rim envelope."
+      },
+      "uncertainty": "Lower transition approximately +/-2px. The9.3px prediction expansion is unsupported.",
+      "prediction_comparison": {
+        "prediction_index_0based": 6,
+        "box_xyxy_px": [
+          967.8402709960938,
+          15.088432312011719,
+          1181.09765625,
+          90.31771850585938
+        ],
+        "left_xy_px": [
+          970.9567260742188,
+          75.40572357177734
+        ],
+        "right_xy_px": [
+          1176.1650390625,
+          78.65925598144531
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 965.0,
+          "after_px": 965.0
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 20.99999988,
+          "after_px": 20.99999988
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 1184.0,
+          "after_px": 1184.0
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 80.99999964,
+          "after_px": 80.99999964
+        },
+        "left.x": {
+          "decision": "retain",
+          "before_px": 976.0,
+          "after_px": 976.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 70.99999992000001,
+          "after_px": 70.99999992000001
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 1180.0,
+          "after_px": 1180.0
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 78.999999984,
+          "after_px": 78.999999984
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        945,
+        0,
+        1204,
+        115
+      ],
+      "crop_rgb_sha256": "b10c62410e1e7f6c540ba6bdd9079216a8980996bb6d5ea6b703d5cd1e5bfde9",
+      "original_saved_proposed_panel": "new_000008-row-06-proposed-review.png",
+      "panel_sha256": "f46c060a3ca8982e54cd8ea93e8f3c8f8252c53bad4f5c729b30f22cbc688a38",
+      "original_saved_prediction_panel": "new_000008-row-06-source-review.png"
+    },
+    {
+      "identity": "new_000008:11",
+      "image_id": "new_000008",
+      "row": 11,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "ymin": 456.0
+      },
+      "requested_fields": [
+        "ymax"
+      ],
+      "requested_field_decisions": {
+        "ymax": "retain_saved"
+      },
+      "before_line": "0 0.490234378 0.65581944 0.122656245 0.08002778 0.42968750 0.69305556 2 0.55156250 0.69444444 2",
+      "after_line": "0 0.490234378 0.664583331667 0.122656245 0.062499996667 0.42968750 0.69305556 2 0.55156250 0.69444444 2",
+      "changed_token_indices_0based": [
+        2,
+        4
+      ],
+      "before_box_px": [
+        549.0000070400001,
+        443.379996,
+        706.00000064,
+        500.99999760000003
+      ],
+      "proposed_box_px": [
+        549.0000070400001,
+        456.0,
+        706.00000064,
+        500.99999760000003
+      ],
+      "before_points_px": [
+        [
+          550.0,
+          499.00000320000004,
+          2.0
+        ],
+        [
+          706.0,
+          499.9999968,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          550.0,
+          499.00000320000004,
+          2.0
+        ],
+        [
+          706.0,
+          499.9999968,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000008.txt",
+      "source_label_sha256": "bbaed3ce1deb8f9d7a8b6420c6af4f2cd6ecae70ec2119f10e524089ec742ea4",
+      "requested_interpretation": "The requested prediction ymax is rejected. Original pixels support a different field, ymin: the saved upper bound crosses the preceding cassette. This is an explicit upper-bound repair, not a silent ymax/ymin substitution.",
+      "field_reasons": {
+        "ymin": "Saved y443.38 passes through the preceding bright front. The target upper rim/separation is visible at the sides around y455-457 despite central gripper occlusion. Select y456. Returned ymin455.43 is a useful inspection cue and lies in the same boundary interval.",
+        "ymax_retained": "Saved y501 follows the target lower edge. Returned ymax506.66 includes dark rack below. Retain the current bottom rather than expanding toward the prediction.",
+        "landmarks_retained": "Existing lower corners remain locatable near y499-500; the model corners near y493 are too high on the side strips. Neither point is changed."
+      },
+      "uncertainty": "Upper edge approximately +/-2px because the gripper hides the middle and the rim is softened. The12.6px top correction is much larger than this uncertainty.",
+      "prediction_comparison": {
+        "prediction_index_0based": 28,
+        "box_xyxy_px": [
+          548.1113891601562,
+          455.4273681640625,
+          708.1115112304688,
+          506.6627197265625
+        ],
+        "left_xy_px": [
+          551.0629272460938,
+          493.31689453125
+        ],
+        "right_xy_px": [
+          704.6475219726562,
+          493.40863037109375
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 549.0000070400001,
+          "after_px": 549.0000070400001
+        },
+        "ymin": {
+          "decision": "replace",
+          "before_px": 443.379996,
+          "after_px": 456.0
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 706.00000064,
+          "after_px": 706.00000064
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 500.99999760000003,
+          "after_px": 500.99999760000003
+        },
+        "left.x": {
+          "decision": "retain",
+          "before_px": 550.0,
+          "after_px": 550.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 499.00000320000004,
+          "after_px": 499.00000320000004
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 706.0,
+          "after_px": 706.0
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 499.9999968,
+          "after_px": 499.9999968
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        528,
+        419,
+        729,
+        531
+      ],
+      "crop_rgb_sha256": "5196a04cb66391f6cd91e6eb92e36dcedcbc061b5a7bef2177285b545e8308b2",
+      "original_saved_proposed_panel": "new_000008-row-11-proposed-review.png",
+      "panel_sha256": "40a5964cb4cce4c42b8388079f3e50fba61d149b89147922749d79c235866cd2",
+      "original_saved_prediction_panel": "new_000008-row-11-source-review.png"
+    },
+    {
+      "identity": "new_000008:19",
+      "image_id": "new_000008",
+      "row": 19,
+      "split": "val",
+      "status": "retained_after_visual_review",
+      "fields": {},
+      "requested_fields": [
+        "ymax"
+      ],
+      "requested_field_decisions": {
+        "ymax": "retain_saved"
+      },
+      "before_line": "0 0.811132812500 0.2444583333 0.155859375000 0.0666388889 0.74609375 0.2652777778 2 0.8875000000 0.2736111111 2",
+      "after_line": "0 0.811132812500 0.2444583333 0.155859375000 0.0666388889 0.74609375 0.2652777778 2 0.8875000000 0.2736111111 2",
+      "changed_token_indices_0based": [],
+      "before_box_px": [
+        938.5000000000001,
+        152.019999972,
+        1138.0,
+        199.99999998
+      ],
+      "proposed_box_px": [
+        938.5000000000001,
+        152.019999972,
+        1138.0,
+        199.99999998
+      ],
+      "before_points_px": [
+        [
+          955.0,
+          191.000000016,
+          2.0
+        ],
+        [
+          1136.0,
+          196.99999999200003,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          955.0,
+          191.000000016,
+          2.0
+        ],
+        [
+          1136.0,
+          196.99999999200003,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000008.txt",
+      "source_label_sha256": "bbaed3ce1deb8f9d7a8b6420c6af4f2cd6ecae70ec2119f10e524089ec742ea4",
+      "requested_interpretation": "This prior standard was explicitly authorized for renewed review. Original pixels do not support a change, so its exact line is retained.",
+      "field_reasons": {
+        "ymax_retained": "Saved y200 follows the lower front/rim transition. Prediction y207.09 enters the separator/upper part of the next cassette.",
+        "ymin_retained": "Prediction y140.63 extends into the upper neighbor. Saved y152.02 remains close to the target own upper separation.",
+        "landmarks_retained": "No landmark amendment was requested for this standard; the bottom-boundary review does not independently establish a necessary point change."
+      },
+      "uncertainty": "Soft boundary approximately +/-2px. Standard revisit is recorded; no standard is revised.",
+      "prediction_comparison": {
+        "prediction_index_0based": 10,
+        "box_xyxy_px": [
+          946.0296630859375,
+          140.62667846679688,
+          1141.4700927734375,
+          207.08758544921875
+        ],
+        "left_xy_px": [
+          946.832275390625,
+          192.82765197753906
+        ],
+        "right_xy_px": [
+          1135.8055419921875,
+          197.88397216796875
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": true,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 938.5000000000001,
+          "after_px": 938.5000000000001
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 152.019999972,
+          "after_px": 152.019999972
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 1138.0,
+          "after_px": 1138.0
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 199.99999998,
+          "after_px": 199.99999998
+        },
+        "left.x": {
+          "decision": "retain",
+          "before_px": 955.0,
+          "after_px": 955.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 191.000000016,
+          "after_px": 191.000000016
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 1136.0,
+          "after_px": 1136.0
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 196.99999999200003,
+          "after_px": 196.99999999200003
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        918,
+        116,
+        1162,
+        232
+      ],
+      "crop_rgb_sha256": "b1de1b2a3b6505cb262861455029cdcba7f00d132ce081044b9c06fefc4d7897",
+      "original_saved_proposed_panel": "new_000008-row-19-proposed-review.png",
+      "panel_sha256": "adb9d485583c872b381331dafd3034aa2ff1e94824bb7b80aa5e66ee6ad29233",
+      "original_saved_prediction_panel": "new_000008-row-19-source-review.png"
+    },
+    {
+      "identity": "new_000008:23",
+      "image_id": "new_000008",
+      "row": 23,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "left": [
+          909.0,
+          365.0
+        ]
+      },
+      "requested_fields": [
+        "ymax",
+        "left"
+      ],
+      "requested_field_decisions": {
+        "ymax": "retain_saved",
+        "left": "amend_from_original_pixels"
+      },
+      "before_line": "0 0.773046875000 0.4888263889 0.135156250000 0.0556805556 0.70859375 0.50351389 2 0.8382812500 0.5138888889 2",
+      "after_line": "0 0.773046875000 0.4888263889 0.135156250000 0.0556805556 0.710156250000 0.506944444444 2 0.8382812500 0.5138888889 2",
+      "changed_token_indices_0based": [
+        5,
+        6
+      ],
+      "before_box_px": [
+        903.0,
+        331.90999999200005,
+        1076.0,
+        372.00000002400003
+      ],
+      "proposed_box_px": [
+        903.0,
+        331.90999999200005,
+        1076.0,
+        372.00000002400003
+      ],
+      "before_points_px": [
+        [
+          907.0,
+          362.53000080000004,
+          2.0
+        ],
+        [
+          1073.0,
+          370.000000008,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          909.0,
+          365.0,
+          2.0
+        ],
+        [
+          1073.0,
+          370.000000008,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000008.txt",
+      "source_label_sha256": "bbaed3ce1deb8f9d7a8b6420c6af4f2cd6ecae70ec2119f10e524089ec742ea4",
+      "requested_interpretation": "The left point is moved near the user suggested midpoint after original-pixel inspection. The predicted ymax expansion is rejected; the requested point and box suggestions are decided independently.",
+      "field_reasons": {
+        "left": "Saved (907,362.53) is high on the rounded side/shadow transition. The own front-to-side turn is around (909,365), between the saved and predicted (909.89,367.26) locations. Select the visible curved turn rather than copying the model.",
+        "ymax_retained": "Saved y372 covers the lower edge. Prediction y379.30 includes the separator and next front.",
+        "ymin_retained": "Saved y331.91 follows the target upper rim; predicted y324.81 reaches toward the preceding front. No independent top correction is selected."
+      },
+      "uncertainty": "Left turn approximately +/-2px in each coordinate because of a broad shadow/curvature transition.",
+      "prediction_comparison": {
+        "prediction_index_0based": 20,
+        "box_xyxy_px": [
+          905.649169921875,
+          324.80706787109375,
+          1079.7476806640625,
+          379.30096435546875
+        ],
+        "left_xy_px": [
+          909.8897705078125,
+          367.25653076171875
+        ],
+        "right_xy_px": [
+          1074.008544921875,
+          370.3898620605469
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 903.0,
+          "after_px": 903.0
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 331.90999999200005,
+          "after_px": 331.90999999200005
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 1076.0,
+          "after_px": 1076.0
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 372.00000002400003,
+          "after_px": 372.00000002400003
+        },
+        "left.x": {
+          "decision": "replace",
+          "before_px": 907.0,
+          "after_px": 909.0
+        },
+        "left.y": {
+          "decision": "replace",
+          "before_px": 362.53000080000004,
+          "after_px": 365.0
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 1073.0,
+          "after_px": 1073.0
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 370.000000008,
+          "after_px": 370.000000008
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        883,
+        300,
+        1100,
+        404
+      ],
+      "crop_rgb_sha256": "f6ea47da4dea30aafa2154fd60160c1e41d2b6b9d1a0591597164803750b8a4d",
+      "original_saved_proposed_panel": "new_000008-row-23-proposed-review.png",
+      "panel_sha256": "a4ed1464074acc09df775fe504862479be92aaecf7e6688eec85d8f1cd570894",
+      "original_saved_prediction_panel": "new_000008-row-23-source-review.png"
+    },
+    {
+      "identity": "new_000008:29",
+      "image_id": "new_000008",
+      "row": 29,
+      "split": "val",
+      "status": "retained_after_visual_review",
+      "fields": {},
+      "requested_fields": [
+        "ymax"
+      ],
+      "requested_field_decisions": {
+        "ymax": "retain_saved"
+      },
+      "before_line": "0 0.9031250000 0.5492847222 0.1375000000 0.0597638889 0.846093750 0.563888889 2 0.9695312500 0.5750000000 2",
+      "after_line": "0 0.9031250000 0.5492847222 0.1375000000 0.0597638889 0.846093750 0.563888889 2 0.9695312500 0.5750000000 2",
+      "changed_token_indices_0based": [],
+      "before_box_px": [
+        1068.0,
+        373.96999998,
+        1244.0,
+        416.999999988
+      ],
+      "proposed_box_px": [
+        1068.0,
+        373.96999998,
+        1244.0,
+        416.999999988
+      ],
+      "before_points_px": [
+        [
+          1083.0,
+          406.00000008,
+          2.0
+        ],
+        [
+          1241.0,
+          413.99999999999994,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          1083.0,
+          406.00000008,
+          2.0
+        ],
+        [
+          1241.0,
+          413.99999999999994,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000008.txt",
+      "source_label_sha256": "bbaed3ce1deb8f9d7a8b6420c6af4f2cd6ecae70ec2119f10e524089ec742ea4",
+      "requested_interpretation": "This prior standard was explicitly authorized for renewed review. The saved lower and upper bounds remain better supported, so its exact line is retained.",
+      "field_reasons": {
+        "ymax_retained": "Saved y417 follows the target bottom transition. Predicted y423.20 extends into the next cassette/its top strip.",
+        "ymin_retained": "Saved y373.97 sits at the target upper separation. Predicted y369.04 reaches into the preceding cassette.",
+        "landmarks_retained": "No landmark amendment was requested for this standard; the box review supplies no sufficient reason to revise its point tokens."
+      },
+      "uncertainty": "Material separation approximately +/-2px. Standard revisit is recorded; no standard is revised.",
+      "prediction_comparison": {
+        "prediction_index_0based": 4,
+        "box_xyxy_px": [
+          1070.12548828125,
+          369.0410461425781,
+          1244.36181640625,
+          423.2027282714844
+        ],
+        "left_xy_px": [
+          1077.272216796875,
+          410.1917419433594
+        ],
+        "right_xy_px": [
+          1238.837646484375,
+          415.0945129394531
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": true,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 1068.0,
+          "after_px": 1068.0
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 373.96999998,
+          "after_px": 373.96999998
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 1244.0,
+          "after_px": 1244.0
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 416.999999988,
+          "after_px": 416.999999988
+        },
+        "left.x": {
+          "decision": "retain",
+          "before_px": 1083.0,
+          "after_px": 1083.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 406.00000008,
+          "after_px": 406.00000008
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 1241.0,
+          "after_px": 1241.0
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 413.99999999999994,
+          "after_px": 413.99999999999994
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        1048,
+        345,
+        1265,
+        448
+      ],
+      "crop_rgb_sha256": "1f17b7011dd979801d7e07df5563ef57c472e7a1d3dfc968743ce22069bcfa0e",
+      "original_saved_proposed_panel": "new_000008-row-29-proposed-review.png",
+      "panel_sha256": "04b24ee3ceab21ed42674133767639dc8b2f1a5d52b485a305a65779ed9569c6",
+      "original_saved_prediction_panel": "new_000008-row-29-source-review.png"
+    },
+    {
+      "identity": "new_000058:7",
+      "image_id": "new_000058",
+      "row": 7,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "left": [
+          807.0,
+          112.1199984
+        ]
+      },
+      "requested_fields": [
+        "left",
+        "right"
+      ],
+      "requested_field_decisions": {
+        "left": "amend_from_original_pixels",
+        "right": "retain_saved"
+      },
+      "before_line": "0 0.691796875 0.132638889 0.132031250 0.056944444 0.62774219 0.15572222 2 0.75612500 0.15613889 2",
+      "after_line": "0 0.691796875 0.132638889 0.132031250 0.056944444 0.630468750000 0.15572222 2 0.75612500 0.15613889 2",
+      "changed_token_indices_0based": [
+        5
+      ],
+      "before_box_px": [
+        801.0,
+        75.00000024000002,
+        970.0,
+        115.99999992000001
+      ],
+      "proposed_box_px": [
+        801.0,
+        75.00000024000002,
+        970.0,
+        115.99999992000001
+      ],
+      "before_points_px": [
+        [
+          803.5100032,
+          112.1199984,
+          2.0
+        ],
+        [
+          967.84,
+          112.4200008,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          807.0,
+          112.1199984,
+          2.0
+        ],
+        [
+          967.84,
+          112.4200008,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000058.png",
+      "source_image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000058.txt",
+      "source_label_sha256": "2f536bfa2214fd8aa26561c56caa3c08100f9a3e08a0c78637b115eae1f06783",
+      "requested_interpretation": "Only the left point needs a supported correction. The predicted right point is farther inside the face; the saved right point already lies within the visible curved lower turn.",
+      "field_reasons": {
+        "left.x": "Saved x803.51 lies on the dark side/rail; own brighter front rounds into the bottom around x806-808. Select807 and retain saved y112.12.",
+        "left.y_retained": "Saved y112.12 follows the lower turn; the model y111.29 does not establish a necessary y correction.",
+        "right_retained": "Saved (967.84,112.42) is within about1px of the visible lower-right curve. Prediction (965.29,110.97) lies farther inside the bright face. Original pixels do not support copying it.",
+        "box_retained": "No box amendment requested and none is introduced."
+      },
+      "uncertainty": "Left x approximately +/-1.5px; right turn approximately +/-1.5px. Retain the already adequate right coordinate.",
+      "prediction_comparison": {
+        "prediction_index_0based": 5,
+        "box_xyxy_px": [
+          804.0458984375,
+          68.78233337402344,
+          967.9202880859375,
+          122.61872863769531
+        ],
+        "left_xy_px": [
+          808.639892578125,
+          111.28923797607422
+        ],
+        "right_xy_px": [
+          965.2872314453125,
+          110.97196197509766
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 801.0,
+          "after_px": 801.0
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 75.00000024000002,
+          "after_px": 75.00000024000002
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 970.0,
+          "after_px": 970.0
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 115.99999992000001,
+          "after_px": 115.99999992000001
+        },
+        "left.x": {
+          "decision": "replace",
+          "before_px": 803.5100032,
+          "after_px": 807.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 112.1199984,
+          "after_px": 112.1199984
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 967.84,
+          "after_px": 967.84
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 112.4200008,
+          "after_px": 112.4200008
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        781,
+        44,
+        990,
+        147
+      ],
+      "crop_rgb_sha256": "d153b4941d6a224744d36ebec61b7d4da520a9de0a85f4af35d1e10be820070d",
+      "original_saved_proposed_panel": "new_000058-row-07-proposed-review.png",
+      "panel_sha256": "399166ad4aa3ddb36ce4d577422bbe71488a698f3275f4cffe9101d6a7f1e1ec",
+      "original_saved_prediction_panel": "new_000058-row-07-source-review.png"
+    },
+    {
+      "identity": "new_000058:18",
+      "image_id": "new_000058",
+      "row": 18,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "ymin": 401.0
+      },
+      "requested_fields": [
+        "ymax"
+      ],
+      "requested_field_decisions": {
+        "ymax": "retain_saved"
+      },
+      "before_line": "0 0.55664062 0.59375000 0.12109375 0.04861111 0.00000000 0.00000000 0 0.61428125 0.61427778 2",
+      "after_line": "0 0.55664062 0.587499999722 0.12109375 0.061111110556 0.00000000 0.00000000 0 0.61428125 0.61427778 2",
+      "changed_token_indices_0based": [
+        2,
+        4
+      ],
+      "before_box_px": [
+        634.9999936,
+        410.00000040000003,
+        789.9999936,
+        444.99999959999997
+      ],
+      "proposed_box_px": [
+        634.9999936,
+        401.0,
+        789.9999936,
+        444.99999959999997
+      ],
+      "before_points_px": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          786.28,
+          442.2800016,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          786.28,
+          442.2800016,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000058.png",
+      "source_image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000058.txt",
+      "source_label_sha256": "2f536bfa2214fd8aa26561c56caa3c08100f9a3e08a0c78637b115eae1f06783",
+      "requested_interpretation": "Literal ymax is retained: prediction differs by only0.61px. The independent original-pixel issue is the upper boundary, which clips the visible cap/rim at left; record this as an explicit ymin amendment.",
+      "field_reasons": {
+        "ymin": "The target own upper rim/cap becomes visible at the left around y400-402 below the preceding front, while saved ymin410 cuts it off. Select401 to include that material. The upper edge slopes toward y408-410 on the right, so an axis-aligned rectangle necessarily contains some adjacent shadow. Returned ymin399.80 is a useful cue but not copied.",
+        "ymax_retained": "Saved y445 and returned445.61 both lie within the softened lower-edge uncertainty; the latter gives no meaningful reason to alter the saved bottom.",
+        "missing_left_retained": "The left landmark is occluded by the gripper and remains the exact original0/0/0 triplet. No model-visible point is promoted to ground truth.",
+        "right_retained": "Saved right corner near (786.28,442.28) stays on the visible lower rim; returned y436.83 is higher on the face/occluder."
+      },
+      "uncertainty": "Upper extent approximately +/-2px; lower edge approximately +/-1.5px. Central occlusion remains; no hidden geometry inferred.",
+      "prediction_comparison": {
+        "prediction_index_0based": 8,
+        "box_xyxy_px": [
+          634.5830078125,
+          399.80316162109375,
+          787.618896484375,
+          445.61358642578125
+        ],
+        "left_xy_px": [
+          639.153564453125,
+          433.4620666503906
+        ],
+        "right_xy_px": [
+          784.5537109375,
+          436.82958984375
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 634.9999936,
+          "after_px": 634.9999936
+        },
+        "ymin": {
+          "decision": "replace",
+          "before_px": 410.00000040000003,
+          "after_px": 401.0
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 789.9999936,
+          "after_px": 789.9999936
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 444.99999959999997,
+          "after_px": 444.99999959999997
+        },
+        "left.x": {
+          "decision": "retain",
+          "before_px": 0.0,
+          "after_px": 0.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 0.0,
+          "after_px": 0.0
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 0.0,
+          "after": 0.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 786.28,
+          "after_px": 786.28
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 442.2800016,
+          "after_px": 442.2800016
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        614,
+        375,
+        810,
+        470
+      ],
+      "crop_rgb_sha256": "1a3085cb0903cc42bd87626b8c2b6e8633d7df594657a55cbb138779003a73a0",
+      "original_saved_proposed_panel": "new_000058-row-18-proposed-review.png",
+      "panel_sha256": "b1bd8f73df8810a0b98c5fea88b0abb3f001b0310d2a748cbf0bd6ea3bd6f580",
+      "original_saved_prediction_panel": "new_000058-row-18-source-review.png"
+    },
+    {
+      "identity": "new_000059:7",
+      "image_id": "new_000059",
+      "row": 7,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "left": [
+          812.0,
+          121.1999976
+        ]
+      },
+      "requested_fields": [
+        "left"
+      ],
+      "requested_field_decisions": {
+        "left": "amend_from_original_pixels"
+      },
+      "before_line": "0 0.696484375 0.147222222 0.135156250 0.058333333 0.63050781 0.16833333 2 0.76238281 0.16861111 2",
+      "after_line": "0 0.696484375 0.147222222 0.135156250 0.058333333 0.634375000000 0.16833333 2 0.76238281 0.16861111 2",
+      "changed_token_indices_0based": [
+        5
+      ],
+      "before_box_px": [
+        805.0,
+        84.99999996000001,
+        978.0000000000001,
+        126.99999972
+      ],
+      "proposed_box_px": [
+        805.0,
+        84.99999996000001,
+        978.0000000000001,
+        126.99999972
+      ],
+      "before_points_px": [
+        [
+          807.0499968,
+          121.1999976,
+          2.0
+        ],
+        [
+          975.8499968,
+          121.39999920000001,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          812.0,
+          121.1999976,
+          2.0
+        ],
+        [
+          975.8499968,
+          121.39999920000001,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000059.png",
+      "source_image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000059.txt",
+      "source_label_sha256": "0f2140a00bc7d2b22c87631aa2d8e36ebcb3aab638c2fb66b0b691e237f63f77",
+      "requested_interpretation": "Move the left point positively in x as requested, toward the independently visible rounded front turn; preserve its adequate y.",
+      "field_reasons": {
+        "left.x": "Saved x807.05 lies on the dark side of the front. The brighter front rounds into its lower edge around x811-813. Select812; returned812.93 is close to this curve.",
+        "left.y_retained": "Saved y121.20 is within the curved transition; returned122.37 differs by about1.2px and is not a necessary additional edit.",
+        "other_fields_retained": "Preserve the box and right landmark; no other supported correction selected."
+      },
+      "uncertainty": "Left corner approximately +/-1.5px in x and +/-2px in y.",
+      "prediction_comparison": {
+        "prediction_index_0based": 3,
+        "box_xyxy_px": [
+          806.7279052734375,
+          79.15901184082031,
+          977.2142333984375,
+          132.1336212158203
+        ],
+        "left_xy_px": [
+          812.9261474609375,
+          122.36512756347656
+        ],
+        "right_xy_px": [
+          974.556640625,
+          120.43934631347656
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 805.0,
+          "after_px": 805.0
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 84.99999996000001,
+          "after_px": 84.99999996000001
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 978.0000000000001,
+          "after_px": 978.0000000000001
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 126.99999972,
+          "after_px": 126.99999972
+        },
+        "left.x": {
+          "decision": "replace",
+          "before_px": 807.0499968,
+          "after_px": 812.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 121.1999976,
+          "after_px": 121.1999976
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 975.8499968,
+          "after_px": 975.8499968
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 121.39999920000001,
+          "after_px": 121.39999920000001
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        785,
+        55,
+        999,
+        157
+      ],
+      "crop_rgb_sha256": "783bfc3250d07c16c408b6ddb1bd77611fb8067817133196c1c434d1774caf71",
+      "original_saved_proposed_panel": "new_000059-row-07-proposed-review.png",
+      "panel_sha256": "8ef36a3b83b77c21f68245bfeb9a058ef0eb4b5f98e954729f91823f61148db2",
+      "original_saved_prediction_panel": "new_000059-row-07-source-review.png"
+    },
+    {
+      "identity": "new_000059:10",
+      "image_id": "new_000059",
+      "row": 10,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "left": [
+          644.0,
+          162.7999992
+        ]
+      },
+      "requested_fields": [
+        "left"
+      ],
+      "requested_field_decisions": {
+        "left": "amend_from_original_pixels"
+      },
+      "before_line": "0 0.56225391 0.20224306 0.12860156 0.05926389 0.50084375 0.22611111 2 0.62577344 0.21961111 2",
+      "after_line": "0 0.56225391 0.20224306 0.12860156 0.05926389 0.503125000000 0.22611111 2 0.62577344 0.21961111 2",
+      "changed_token_indices_0based": [
+        5
+      ],
+      "before_box_px": [
+        637.3800064000001,
+        124.2800028,
+        801.9900032,
+        166.9500036
+      ],
+      "proposed_box_px": [
+        637.3800064000001,
+        124.2800028,
+        801.9900032,
+        166.9500036
+      ],
+      "before_points_px": [
+        [
+          641.08,
+          162.7999992,
+          2.0
+        ],
+        [
+          800.9900032,
+          158.1199992,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          644.0,
+          162.7999992,
+          2.0
+        ],
+        [
+          800.9900032,
+          158.1199992,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000059.png",
+      "source_image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000059.txt",
+      "source_label_sha256": "0f2140a00bc7d2b22c87631aa2d8e36ebcb3aab638c2fb66b0b691e237f63f77",
+      "requested_interpretation": "The predicted positive-x direction agrees with the visible front turn. Amend x only and preserve the saved y.",
+      "field_reasons": {
+        "left.x": "Saved x641.08 is on the outer shadow/side portion of the rounded lower-left edge. The front turn is around x643-645; select644, close to returned644.06.",
+        "left.y_retained": "Saved y162.80 is already within the material transition; returned163.64 does not warrant a forced vertical change.",
+        "other_fields_retained": "Preserve the box and right landmark."
+      },
+      "uncertainty": "Left turn approximately +/-1.5px in each coordinate.",
+      "prediction_comparison": {
+        "prediction_index_0based": 6,
+        "box_xyxy_px": [
+          639.062744140625,
+          120.79800415039062,
+          802.74169921875,
+          172.14285278320312
+        ],
+        "left_xy_px": [
+          644.0550537109375,
+          163.63853454589844
+        ],
+        "right_xy_px": [
+          799.572021484375,
+          159.51271057128906
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 637.3800064000001,
+          "after_px": 637.3800064000001
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 124.2800028,
+          "after_px": 124.2800028
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 801.9900032,
+          "after_px": 801.9900032
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 166.9500036,
+          "after_px": 166.9500036
+        },
+        "left.x": {
+          "decision": "replace",
+          "before_px": 641.08,
+          "after_px": 644.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 162.7999992,
+          "after_px": 162.7999992
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "retain",
+          "before_px": 800.9900032,
+          "after_px": 800.9900032
+        },
+        "right.y": {
+          "decision": "retain",
+          "before_px": 158.1199992,
+          "after_px": 158.1199992
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        617,
+        96,
+        823,
+        197
+      ],
+      "crop_rgb_sha256": "8a5d90f5995da0256da3d30885024a35dda47fa2621d39f6141420db8918d892",
+      "original_saved_proposed_panel": "new_000059-row-10-proposed-review.png",
+      "panel_sha256": "2192104989bf7548bf27f06dbb5bd2fd9e164b3b577201b21f8b1d204feca643",
+      "original_saved_prediction_panel": "new_000059-row-10-source-review.png"
+    },
+    {
+      "identity": "new_000088:52",
+      "image_id": "new_000088",
+      "row": 52,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "left": [
+          438.5,
+          604.26
+        ],
+        "right": [
+          498.5,
+          612.5
+        ]
+      },
+      "requested_fields": [
+        "left",
+        "right"
+      ],
+      "requested_field_decisions": {
+        "left": "amend_from_original_pixels",
+        "right": "amend_from_original_pixels"
+      },
+      "before_line": "0 0.36564844 0.83341667 0.0496875 0.04966667 0.34080469 0.83925000 2 0.38583594 0.85243056 2",
+      "after_line": "0 0.36564844 0.83341667 0.0496875 0.04966667 0.342578125000 0.83925000 2 0.389453125000 0.850694444444 2",
+      "changed_token_indices_0based": [
+        5,
+        8,
+        9
+      ],
+      "before_box_px": [
+        436.23000320000006,
+        582.1800012,
+        499.8300032,
+        617.9400036
+      ],
+      "proposed_box_px": [
+        436.23000320000006,
+        582.1800012,
+        499.8300032,
+        617.9400036
+      ],
+      "before_points_px": [
+        [
+          436.23000320000006,
+          604.26,
+          2.0
+        ],
+        [
+          493.8700032,
+          613.7500031999999,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          438.5,
+          604.26,
+          2.0
+        ],
+        [
+          498.5,
+          612.5,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000088.png",
+      "source_image_sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000088.txt",
+      "source_label_sha256": "500277797e6de8720967327fc70cfa4cda48ce0ee4cccc05acb77286ef78a073",
+      "requested_interpretation": "The right model point is clearly closer. The left model point only partly addresses the issue; original pixels put the rounded front turn a little farther right.",
+      "field_reasons": {
+        "left.x": "Saved x436.23 lies in the dark lower-left side transition. The brighter face turns into its lower contour near x438-439; select438.5, retaining saved y604.26 within the blur interval.",
+        "left.y_retained": "Saved y604.26 remains within the softened lower-left boundary; predicted y603.12 is not clearly superior enough to force a vertical change.",
+        "right": "Saved (493.87,613.75) is too far inward/low. The own lower-right front turn is around (498.5,612.5), before the dark vertical rail.",
+        "box_retained": "Point review only; preserve all box tokens."
+      },
+      "uncertainty": "Both turns approximately +/-1.5-2px; the left vertical position is ambiguous within that interval.",
+      "prediction_comparison": {
+        "prediction_index_0based": 51,
+        "box_xyxy_px": [
+          434.52996826171875,
+          581.6134033203125,
+          502.07965087890625,
+          615.684814453125
+        ],
+        "left_xy_px": [
+          436.44744873046875,
+          603.122802734375
+        ],
+        "right_xy_px": [
+          499.08233642578125,
+          612.20947265625
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 436.23000320000006,
+          "after_px": 436.23000320000006
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 582.1800012,
+          "after_px": 582.1800012
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 499.8300032,
+          "after_px": 499.8300032
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 617.9400036,
+          "after_px": 617.9400036
+        },
+        "left.x": {
+          "decision": "replace",
+          "before_px": 436.23000320000006,
+          "after_px": 438.5
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 604.26,
+          "after_px": 604.26
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "replace",
+          "before_px": 493.8700032,
+          "after_px": 498.5
+        },
+        "right.y": {
+          "decision": "replace",
+          "before_px": 613.7500031999999,
+          "after_px": 612.5
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        414,
+        557,
+        523,
+        642
+      ],
+      "crop_rgb_sha256": "99ad808fb86f2cb426a7455cdae3ba688316634a330f249cf24e16077d791aaf",
+      "original_saved_proposed_panel": "new_000088-row-52-proposed-review.png",
+      "panel_sha256": "e63a9f8d43022866d63bb44077c30af4982bd257bad902ee8255be4c5beb5ad9",
+      "original_saved_prediction_panel": "new_000088-row-52-source-review.png"
+    },
+    {
+      "identity": "new_000090:44",
+      "image_id": "new_000090",
+      "row": 44,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "left": [
+          684.5,
+          84.5
+        ],
+        "right": [
+          794.5,
+          91.0
+        ]
+      },
+      "requested_fields": [
+        "left",
+        "right"
+      ],
+      "requested_field_decisions": {
+        "left": "amend_from_original_pixels",
+        "right": "amend_from_original_pixels"
+      },
+      "before_line": "0 0.577343750000 0.103298609 0.092187500000 0.051041662 0.5320312500 0.11893056 2 0.61584375 0.12400000 2",
+      "after_line": "0 0.577343750000 0.103298609 0.092187500000 0.051041662 0.534765625000 0.117361111111 2 0.620703125000 0.126388888889 2",
+      "changed_token_indices_0based": [
+        5,
+        6,
+        8,
+        9
+      ],
+      "before_box_px": [
+        680.0,
+        56.00000015999999,
+        798.0000000000001,
+        92.7499968
+      ],
+      "proposed_box_px": [
+        680.0,
+        56.00000015999999,
+        798.0000000000001,
+        92.7499968
+      ],
+      "before_points_px": [
+        [
+          681.0,
+          85.6300032,
+          2.0
+        ],
+        [
+          788.28,
+          89.28,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          684.5,
+          84.5,
+          2.0
+        ],
+        [
+          794.5,
+          91.0,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000090.png",
+      "source_image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000090.txt",
+      "source_label_sha256": "584563855c937419af9e432d15a5c740b2b4e47229f27853a0396252dbf34ec6",
+      "requested_interpretation": "Both model points are useful directions of correction. Original material turns determine the proposed coordinates, independently of the prediction decimals.",
+      "field_reasons": {
+        "left": "Saved (681,85.63) is left of the bright front turn, on the softened dark side. The local curve reaches the front bottom around (684.5,84.5).",
+        "right": "Saved (788.28,89.28) sits inside the front. Its lower-right curve is near (794.5,91), before the dark rail begins around x797-799.",
+        "box_retained": "No box amendment requested; the point review does not establish a necessary bound change."
+      },
+      "uncertainty": "Both rounded turns approximately +/-1.5px. Half-pixel values represent a blur-center estimate, not physical subpixel certainty.",
+      "prediction_comparison": {
+        "prediction_index_0based": 40,
+        "box_xyxy_px": [
+          681.8140258789062,
+          57.54571533203125,
+          797.2932739257812,
+          95.34896850585938
+        ],
+        "left_xy_px": [
+          684.5419921875,
+          84.05502319335938
+        ],
+        "right_xy_px": [
+          794.400634765625,
+          90.92322540283203
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 680.0,
+          "after_px": 680.0
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 56.00000015999999,
+          "after_px": 56.00000015999999
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 798.0000000000001,
+          "after_px": 798.0000000000001
+        },
+        "ymax": {
+          "decision": "retain",
+          "before_px": 92.7499968,
+          "after_px": 92.7499968
+        },
+        "left.x": {
+          "decision": "replace",
+          "before_px": 681.0,
+          "after_px": 684.5
+        },
+        "left.y": {
+          "decision": "replace",
+          "before_px": 85.6300032,
+          "after_px": 84.5
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "replace",
+          "before_px": 788.28,
+          "after_px": 794.5
+        },
+        "right.y": {
+          "decision": "replace",
+          "before_px": 89.28,
+          "after_px": 91.0
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        660,
+        32,
+        819,
+        120
+      ],
+      "crop_rgb_sha256": "f7543e326d73cb3c6d0d50ca78c6a6817b6fa784babbc793a53cab88d077f06a",
+      "original_saved_proposed_panel": "new_000090-row-44-proposed-review.png",
+      "panel_sha256": "433179d04a6abe151bc5d7df6e8121b2b13fc2b4beb2148bf9a284ce0ac07f38",
+      "original_saved_prediction_panel": "new_000090-row-44-source-review.png"
+    },
+    {
+      "identity": "new_000090:45",
+      "image_id": "new_000090",
+      "row": 45,
+      "split": "val",
+      "status": "proposed_amendment",
+      "fields": {
+        "left": [
+          683.0,
+          114.9199992
+        ],
+        "right": [
+          793.0,
+          122.0
+        ],
+        "ymax": 124.0
+      },
+      "requested_fields": [
+        "left",
+        "right",
+        "ymax"
+      ],
+      "requested_field_decisions": {
+        "left": "amend_from_original_pixels",
+        "right": "amend_from_original_pixels",
+        "ymax": "amend_from_original_pixels"
+      },
+      "before_line": "0 0.576562500000 0.147916667 0.090625000000 0.045833333 0.5320312500 0.15961111 2 0.61464844 0.16626389 2",
+      "after_line": "0 0.576562500000 0.148611111361 0.090625000000 0.047222221722 0.533593750000 0.15961111 2 0.619531250000 0.169444444444 2",
+      "changed_token_indices_0based": [
+        2,
+        4,
+        5,
+        8,
+        9
+      ],
+      "before_box_px": [
+        680.0,
+        90.00000036000002,
+        796.0,
+        123.00000012
+      ],
+      "proposed_box_px": [
+        680.0,
+        90.00000036000002,
+        796.0,
+        124.0
+      ],
+      "before_points_px": [
+        [
+          681.0,
+          114.9199992,
+          2.0
+        ],
+        [
+          786.7500031999999,
+          119.7100008,
+          2.0
+        ]
+      ],
+      "proposed_points_px": [
+        [
+          683.0,
+          114.9199992,
+          2.0
+        ],
+        [
+          793.0,
+          122.0,
+          2.0
+        ]
+      ],
+      "source_image_path": "data/images/val/new_000090.png",
+      "source_image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000090.txt",
+      "source_label_sha256": "584563855c937419af9e432d15a5c740b2b4e47229f27853a0396252dbf34ec6",
+      "requested_interpretation": "The original pixels support outward corner corrections and a small lower-bound increase toward the prediction; upper bound retained after comparison.",
+      "field_reasons": {
+        "left.x": "Saved x681 lies on the dark side. Move to x683 at the visible front-to-side turn; keep the saved y114.92, already in the lower-left curve.",
+        "left.y_retained": "Saved y114.92 is within the visible corner uncertainty and need not be reserialized.",
+        "right": "Saved (786.75,119.71) is interior to the front. The material continues right/down to the rounded lower-right turn around (793,122). The model at(792.71,120.86) is a useful but slightly higher cue.",
+        "ymax": "The bright lower front transitions to the dark separator around y123-125. Select y124, about1px below the saved bound and close to returned124.46. This is a modest-confidence one-pixel refinement.",
+        "ymin_retained": "Saved y90 spans the target own rim. Predicted y86.81 reaches into the preceding front; retain the saved top."
+      },
+      "uncertainty": "Corners approximately +/-1.5px; ymax approximately +/-1.5px. The1px ymax change is modest and should not be presented as a large accuracy gain.",
+      "prediction_comparison": {
+        "prediction_index_0based": 28,
+        "box_xyxy_px": [
+          680.4451293945312,
+          86.80516052246094,
+          796.4306030273438,
+          124.46195983886719
+        ],
+        "left_xy_px": [
+          682.7109985351562,
+          114.35340881347656
+        ],
+        "right_xy_px": [
+          792.7131958007812,
+          120.86357116699219
+        ],
+        "is_annotation_truth": false
+      },
+      "protected_standard_revisit": false,
+      "standard_revised": false,
+      "extra_adjacent_change": false,
+      "per_field_decisions": {
+        "xmin": {
+          "decision": "retain",
+          "before_px": 680.0,
+          "after_px": 680.0
+        },
+        "ymin": {
+          "decision": "retain",
+          "before_px": 90.00000036000002,
+          "after_px": 90.00000036000002
+        },
+        "xmax": {
+          "decision": "retain",
+          "before_px": 796.0,
+          "after_px": 796.0
+        },
+        "ymax": {
+          "decision": "replace",
+          "before_px": 123.00000012,
+          "after_px": 124.0
+        },
+        "left.x": {
+          "decision": "replace",
+          "before_px": 681.0,
+          "after_px": 683.0
+        },
+        "left.y": {
+          "decision": "retain",
+          "before_px": 114.9199992,
+          "after_px": 114.9199992
+        },
+        "left.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "right.x": {
+          "decision": "replace",
+          "before_px": 786.7500031999999,
+          "after_px": 793.0
+        },
+        "right.y": {
+          "decision": "replace",
+          "before_px": 119.7100008,
+          "after_px": 122.0
+        },
+        "right.visibility": {
+          "decision": "retain",
+          "before": 2.0,
+          "after": 2.0
+        },
+        "class": {
+          "decision": "retain",
+          "before": "0",
+          "after": "0"
+        }
+      },
+      "source_crop_xyxy_px": [
+        660,
+        62,
+        817,
+        149
+      ],
+      "crop_rgb_sha256": "2cd92442f7efd70c7683dc8871ed9ffe5374513a30d1dc20ac6f138b5fbb3e1a",
+      "original_saved_proposed_panel": "new_000090-row-45-proposed-review.png",
+      "panel_sha256": "e776d3d0e0664f2a4cffea4a925d1ba05984d4290c7733e4d00d452733592e72",
+      "original_saved_prediction_panel": "new_000090-row-45-source-review.png"
+    }
+  ],
+  "validation": {
+    "source_manifest_hash_verified": true,
+    "all_before_lines_match_immutable_r27_labels": true,
+    "all_class_visibility_and_unavailable_triplets_unchanged": true,
+    "all_retained_tokens_exact": true,
+    "all_locatable_points_inside_proposed_boxes": true,
+    "source_label_files_modified": false,
+    "not_whole_dataset_certification": true
+  },
+  "inspection_panel_metadata": "Panel filenames refer to scratch inspection products, not repository file links. The amendment PDF is separately rendered from original source pixels and accepted row lines."
+}

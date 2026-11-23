@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "kind": "r28_cpu_training_input_smoke",
+  "status": "passed",
+  "verified_at_utc": "2026-11-23T11:17:17.167023+00:00",
+  "candidate_manifest_sha256": "b23e3273aca28e521b5c1fef8025b0888e736aa3f47229360f377d06a21abb9b",
+  "protocol_sha256": "69550efb5249dced874575fd7ecd8ddae67cd27b1dd57d35d7475716f1ee9783",
+  "training_input_delta_sha256": "16f5169a1c716bceda4c1e0304dc9da0d09c3029d359560084c2c5923fee91b6",
+  "staging": {
+    "status": "verified",
+    "output": "/workspace/scratch/f0caf40aa0bb/r28/notebook/staged-data",
+    "staging_manifest_sha256": "e1c1a013149774ae4ea510515a2c38ac4b8e4e5edb9a0bd8d2f8eaac721bae61",
+    "counts": {
+      "reference": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6836,
+          "missing_endpoints": 732,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "candidate": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6836,
+          "missing_endpoints": 732,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "actual_original_pngs_verified": 157,
+    "geometry_gate_passed": true,
+    "physical_policy_visually_certified": false,
+    "training_run": false
+  },
+  "training_label_identities": {
+    "reference": {
+      "kind": "training_incremental_observed_overlay",
+      "role": "r26_predecessor_control",
+      "label_manifest": "data/candidates/front-review-2026-11-23-r26/manifest.json",
+      "label_manifest_sha256": "4f3a75054b130a3627a523a9d0f1479834cc98fc3dfc66253efd01794dee109f",
+      "label_candidate_id": "front-review-2026-11-23-r26",
+      "control_manifest": "data/candidates/front-review-2026-11-23-r26/manifest.json",
+      "control_manifest_sha256": "4f3a75054b130a3627a523a9d0f1479834cc98fc3dfc66253efd01794dee109f",
+      "incremental_manifest": "data/candidates/front-review-2026-11-23-r28/manifest.json",
+      "incremental_manifest_sha256": "b23e3273aca28e521b5c1fef8025b0888e736aa3f47229360f377d06a21abb9b",
+      "training_protocol": {
+        "path": "experiments/front-review-2026-11-23-r28.json",
+        "sha256": "69550efb5249dced874575fd7ecd8ddae67cd27b1dd57d35d7475716f1ee9783"
+      },
+      "full_dataset_certified": false,
+      "retained_legacy_image_ids": [
+        "new_000015"
+      ]
+    },
+    "candidate": {
+      "kind": "training_incremental_observed_overlay",
+      "role": "accepted_fronts_treatment",
+      "label_manifest": "data/candidates/front-review-2026-11-23-r28/manifest.json",
+      "label_manifest_sha256": "b23e3273aca28e521b5c1fef8025b0888e736aa3f47229360f377d06a21abb9b",
+      "label_candidate_id": "front-review-2026-11-23-r28",
+      "control_manifest": "data/candidates/front-review-2026-11-23-r26/manifest.json",
+      "control_manifest_sha256": "4f3a75054b130a3627a523a9d0f1479834cc98fc3dfc66253efd01794dee109f",
+      "incremental_manifest": "data/candidates/front-review-2026-11-23-r28/manifest.json",
+      "incremental_manifest_sha256": "b23e3273aca28e521b5c1fef8025b0888e736aa3f47229360f377d06a21abb9b",
+      "training_protocol": {
+        "path": "experiments/front-review-2026-11-23-r28.json",
+        "sha256": "69550efb5249dced874575fd7ecd8ddae67cd27b1dd57d35d7475716f1ee9783"
+      },
+      "full_dataset_certified": false,
+      "retained_legacy_image_ids": [
+        "new_000015"
+      ]
+    }
+  },
+  "rejected_incompatible_provenance": [
+    "wrong_control_role",
+    "altered_input_delta",
+    "wrong_worker_label_role"
+  ],
+  "ultralytics": "8.4.182",
+  "torch": "2.14.1+cpu",
+  "device": "cpu",
+  "loader_checks": [
+    {
+      "arm": "reference",
+      "split": "train",
+      "counts": {
+        "images": 137,
+        "objects": 3784,
+        "visible_endpoints": 6836,
+        "missing_endpoints": 732,
+        "empty_images": 13
+      },
+      "sample_image_ids": [
+        "new_000013",
+        "new_000014",
+        "new_000016",
+        "new_000017"
+      ],
+      "batch_shape": [
+        4,
+        3,
+        736,
+        1280
+      ],
+      "batch_objects_after_augmentation": 175,
+      "keypoint_tensor_shape": [
+        175,
+        2,
+        3
+      ]
+    },
+    {
+      "arm": "reference",
+      "split": "val",
+      "counts": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      },
+      "sample_image_ids": [
+        "new_000007",
+        "new_000008",
+        "new_000009",
+        "new_000010"
+      ],
+      "batch_shape": [
+        4,
+        3,
+        736,
+        1312
+      ],
+      "batch_objects_after_augmentation": 179,
+      "keypoint_tensor_shape": [
+        179,
+        2,
+        3
+      ]
+    },
+    {
+      "arm": "candidate",
+      "split": "train",
+      "counts": {
+        "images": 137,
+        "objects": 3784,
+        "visible_endpoints": 6836,
+        "missing_endpoints": 732,
+        "empty_images": 13
+      },
+      "sample_image_ids": [
+        "new_000013",
+        "new_000014",
+        "new_000016",
+        "new_000017"
+      ],
+      "batch_shape": [
+        4,
+        3,
+        736,
+        1280
+      ],
+      "batch_objects_after_augmentation": 175,
+      "keypoint_tensor_shape": [
+        175,
+        2,
+        3
+      ]
+    },
+    {
+      "arm": "candidate",
+      "split": "val",
+      "counts": {
+        "images": 20,
+        "objects": 664,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 101,
+        "empty_images": 3
+      },
+      "sample_image_ids": [
+        "new_000007",
+        "new_000008",
+        "new_000009",
+        "new_000010"
+      ],
+      "batch_shape": [
+        4,
+        3,
+        736,
+        1312
+      ],
+      "batch_objects_after_augmentation": 179,
+      "keypoint_tensor_shape": [
+        179,
+        2,
+        3
+      ]
+    }
+  ],
+  "seeded_sample_pixels_identical_between_arms": true,
+  "initializer_forward": {
+    "passed": true,
+    "batch_size": 1,
+    "classes": 1,
+    "kpt_shape": [
+      2,
+      3
+    ],
+    "tensor_shapes": [
+      [
+        1,
+        11,
+        19320
+      ],
+      [
+        1,
+        4,
+        19320
+      ],
+      [
+        1,
+        1,
+        19320
+      ],
+      [
+        1,
+        128,
+        92,
+        160
+      ],
+      [
+        1,
+        256,
+        46,
+        80
+      ],
+      [
+        1,
+        512,
+        23,
+        40
+      ],
+      [
+        1,
+        6,
+        19320
+      ],
+      [
+        1,
+        4,
+        19320
+      ],
+      [
+        1,
+        1,
+        19320
+      ],
+      [
+        1,
+        128,
+        92,
+        160
+      ],
+      [
+        1,
+        256,
+        46,
+        80
+      ],
+      [
+        1,
+        512,
+        23,
+        40
+      ],
+      [
+        1,
+        6,
+        19320
+      ]
+    ]
+  },
+  "staging_unchanged_after_loader_cache_cleanup": true,
+  "optimizer_steps": 0,
+  "training_executed": false,
+  "gpu_executed": false,
+  "limitations": [
+    "CPU input/loader/initializer smoke only; no CUDA trial, training, metric evaluation or model promotion."
+  ]
+}

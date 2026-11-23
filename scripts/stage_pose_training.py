@@ -81,6 +81,7 @@ def source_state(root, candidate):
         require(file_sha256(control_path) == control["manifest_sha256"], "control manifest changed during preflight")
         control_proposal = json.loads(control_path.read_text(encoding="utf-8"))
         expected_control_kind = ("training_endpoint_overlay" if proposal["kind"] == "training_composed_overlay"
+                                 else control["kind"] if proposal["kind"] == "training_incremental_observed_overlay"
                                  else "training_annotation_overlay")
         require(control_proposal["kind"] == expected_control_kind
                 and control_proposal["candidate_id"] == control["candidate_id"], "control is not the verified supervision overlay")
@@ -120,6 +121,8 @@ def source_state(root, candidate):
         source["training_protocol"] = receipt["training_protocol"]
     if proposal.get("kind") == "training_incremental_observed_overlay":
         source["retained_legacy_image_ids"] = receipt["retained_legacy_image_ids"]
+        if "training_input_delta" in receipt:
+            source["training_input_delta"] = receipt["training_input_delta"]
         if proposal.get("excluded_training_image_ids"):
             require(proposal["excluded_training_image_ids"] == receipt["excluded_training_image_ids"],
                     "treatment exclusions differ from the verified composition")
@@ -218,6 +221,7 @@ def code_hashes(*, composed=False, observed=False, incremental=False):
                   "front_review_r24.py",
                   "front_review_r25.py",
                   "front_review_r26.py",
+                  "front_review_r27.py", "front_review_r28.py", "front_review_r28_training.py",
                   "front_review_experiment.py")
     return {f"scripts/{name}": file_sha256(scripts / name) for name in names}
 
@@ -252,11 +256,14 @@ def manifest_fields(output, state, variants):
             removed_training_objects_denominator="original source labels")
     if observed or incremental:
         result["verification"].update(
-            reference_labels_are_verified_pr35_control=True,
             control_changed_train_labels=state["source"]["control"]["changed_train_labels"],
             net_removed_training_objects_vs_control=state["counts"]["reference"]["train"]["objects"]
                 - state["counts"]["candidate"]["train"]["objects"],
             training_readiness_verified=True)
+        reference_check = ("reference_labels_are_verified_predecessor_control"
+                           if state["source"]["control"].get("supervision") == "r26_predecessor_control"
+                           else "reference_labels_are_verified_pr35_control")
+        result["verification"][reference_check] = True
     if incremental:
         result["verification"].update(
             retained_photo_labels_identical_between_arms=True,

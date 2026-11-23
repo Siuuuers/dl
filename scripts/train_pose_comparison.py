@@ -37,6 +37,8 @@ SOURCE_FILES = ("scripts/train_pose_comparison.py", "scripts/pose_checkpoint.py"
                 "scripts/verify_front_review_r4.py", "scripts/verify_front_review_r5.py",
                 "scripts/verify_front_review_r6.py", "scripts/verify_front_review_r7.py", "scripts/verify_front_review_r8.py",
                 "scripts/front_review_experiment.py",
+                "scripts/front_review_r27.py", "scripts/front_review_r28.py",
+                "scripts/front_review_r28_training.py",
                 "scripts/evaluate_pose.py", "scripts/pose_scoring.py")
 
 

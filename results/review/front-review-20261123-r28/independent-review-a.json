@@ -1,0 +1,1222 @@
+{
+  "schema_version": 1,
+  "source_revision": "bfd7d5bd346f92935bd1695e4515e4f62a0a0f85",
+  "source_review": {
+    "path": "data/reviews/fronts-2026-11-23-r27/manifest.json",
+    "sha256": "9e3675c83cb6735242b3b99266e36d5a33248c13e51b8c91bd89a65d2c4b92af"
+  },
+  "coordinate_system": "Original1280x720 pixels; boxes[xmin,ymin,xmax,ymax]; endpoints[x,y,visibility]. Original row identities remain stable.",
+  "review_scope": "Nine explicitly named R28 cases:010:14/33/26,009:55,011:49,056:12,055:23,087:53,089:50. Adjacent context viewed only to identify visible material boundaries; no extras proposed and no full-dataset visual certification.",
+  "prediction_policy": "Returned PR103-R26 predictions are issue-location cues, not ground truth. Original image material contours and scene topology determine each proposed coordinate. No unavailable corner is inferred from a model output.",
+  "source_predictions": {
+    "path": "results/evaluation/pr103-r26-20261123/inference/eval-candidate/predictions.jsonl",
+    "sha256": "1ef6b89e95842c9c19b3a741c973ef2945db1a438927d461c1e6fb62b539ba79"
+  },
+  "source_inventory": {
+    "path": "results/evaluation/pr103-r26-20261123/candidate-error-inventory.json",
+    "sha256": "6bed64318d5e330abd8524421d84a1d056e0c946908ff759fb2d1bd85b4270fb"
+  },
+  "proposals": [
+    {
+      "image_id": "new_000010",
+      "split": "val",
+      "source_row_1based": 14,
+      "scope": "user_named",
+      "action": "replace",
+      "before": {
+        "line": "0 0.552734375 0.665972222 0.061718750 0.045833333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+        "box": [
+          668.0,
+          462.99999995999997,
+          747.0,
+          495.99999971999995
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "after": {
+        "line": "0 0.525390625000 0.665972222 0.116406250000 0.045833333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+        "box": [
+          598.0,
+          462.99999995999997,
+          747.0,
+          495.99999971999995
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "before_line": "0 0.552734375 0.665972222 0.061718750 0.045833333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_line": "0 0.525390625000 0.665972222 0.116406250000 0.045833333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "changed_geometry_fields": [
+        "box.0"
+      ],
+      "changed_token_indices_0based": [
+        1,
+        3
+      ],
+      "reason": "The existing box encloses only the aperture patch. A narrow cassette strip is also visible immediately left of the gripper near x598 at the same front level. Extend xmin to include that visible strip; the rectangular box necessarily spans the intervening occluder. Keep the user-preferred xmax747 and current vertical separators. Both corners remain unavailable.",
+      "qualitative_uncertainty": "Approximately1-2 original pixels at the blurred material transition; this is a visual contour estimate, not subpixel certainty.",
+      "notes": [
+        "PR103 p37 is the best retained overlap, not an assigned match at IoU0.50. Its whole box and invented corner outputs are not adopted.",
+        "The current visible-fragment union convention is already used for adjacent row13; this proposal does not label the gripper as an additional object."
+      ],
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "source_label_sha256": "d70cb5745bfabbad940e9ec0203a58aa6ade7cce0e9385f1a9777a47cda98116",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000010.txt",
+      "source_image_path": "data/images/val/new_000010.png",
+      "prediction_context": {
+        "index_0based": 36,
+        "onebased_output_number": 37,
+        "assigned_match": false,
+        "error_pdf_case_number": 6,
+        "selection_rank": 6,
+        "reference_revision": "R26",
+        "note": "Inventory geometry is R26; the before geometry above is immutable R27."
+      },
+      "field_decisions": {
+        "box.0": {
+          "action": "replace",
+          "value": 598.0,
+          "reason": "The existing box encloses only the aperture patch. A narrow cassette strip is also visible immediately left of the gripper near x598 at the same front level. Extend xmin to include that visible strip; the rectangular box necessarily spans the intervening occluder. Keep the user-preferred xmax747 and current vertical separators. Both corners remain unavailable."
+        },
+        "box.1": {
+          "action": "retain",
+          "value": 462.99999995999997,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.2": {
+          "action": "retain",
+          "value": 747.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "box.3": {
+          "action": "retain",
+          "value": 495.99999971999995,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.0": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "left.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "left.2": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.0": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.2": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        }
+      },
+      "contact_panel": "new_000010-row14-proposal.png"
+    },
+    {
+      "image_id": "new_000010",
+      "split": "val",
+      "source_row_1based": 33,
+      "scope": "user_named",
+      "action": "replace",
+      "before": {
+        "line": "0 0.555468750 0.715277778 0.025000000 0.050000000 0 0 0 0 0 0",
+        "box": [
+          695.0,
+          497.00000016,
+          726.9999999999999,
+          533.00000016
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "after": {
+        "line": "0 0.517968750000 0.715277778 0.100000000000 0.050000000 0 0 0 0 0 0",
+        "box": [
+          599.0,
+          497.00000016,
+          727.0,
+          533.00000016
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "before_line": "0 0.555468750 0.715277778 0.025000000 0.050000000 0 0 0 0 0 0",
+      "after_line": "0 0.517968750000 0.715277778 0.100000000000 0.050000000 0 0 0 0 0 0",
+      "changed_geometry_fields": [
+        "box.0"
+      ],
+      "changed_token_indices_0based": [
+        1,
+        3
+      ],
+      "reason": "The front visible through the lower gripper opening also has a thin exposed strip immediately left of the gripper near x599. Extend only xmin to cover both visible parts. The original aperture separators support keeping ymin497 and ymax533; the hidden corners remain unavailable.",
+      "qualitative_uncertainty": "Approximately1-2 original pixels at the blurred material transition; this is a visual contour estimate, not subpixel certainty.",
+      "notes": [
+        "PR103 p32 is the best retained overlap, below the match threshold. Its xmin was a location cue; coordinates were chosen against the original strip."
+      ],
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "source_label_sha256": "d70cb5745bfabbad940e9ec0203a58aa6ade7cce0e9385f1a9777a47cda98116",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000010.txt",
+      "source_image_path": "data/images/val/new_000010.png",
+      "prediction_context": {
+        "index_0based": 31,
+        "onebased_output_number": 32,
+        "assigned_match": false,
+        "error_pdf_case_number": 7,
+        "selection_rank": 7,
+        "reference_revision": "R26",
+        "note": "Inventory geometry is R26; the before geometry above is immutable R27."
+      },
+      "field_decisions": {
+        "box.0": {
+          "action": "replace",
+          "value": 599.0,
+          "reason": "The front visible through the lower gripper opening also has a thin exposed strip immediately left of the gripper near x599. Extend only xmin to cover both visible parts. The original aperture separators support keeping ymin497 and ymax533; the hidden corners remain unavailable."
+        },
+        "box.1": {
+          "action": "retain",
+          "value": 497.00000016,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.2": {
+          "action": "retain",
+          "value": 727.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "box.3": {
+          "action": "retain",
+          "value": 533.00000016,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.0": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "left.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "left.2": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.0": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.2": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        }
+      },
+      "contact_panel": "new_000010-row33-proposal.png"
+    },
+    {
+      "image_id": "new_000010",
+      "split": "val",
+      "source_row_1based": 26,
+      "scope": "user_named",
+      "action": "replace",
+      "before": {
+        "line": "0 0.79140625 0.571402776 0.115625 0.051638892 0.7390625000 0.5930555556 2 0.84672656 0.59573611 2",
+        "box": [
+          938.9999999999999,
+          392.8199976,
+          1087.0,
+          429.99999984
+        ],
+        "left": [
+          946.0,
+          427.000000032,
+          2.0
+        ],
+        "right": [
+          1083.8099968000001,
+          428.92999920000005,
+          2.0
+        ]
+      },
+      "after": {
+        "line": "0 0.793750000000 0.571402776 0.125000000000 0.051638892 0.7390625000 0.5930555556 2 0.853906250000 0.593750000000 2",
+        "box": [
+          936.0,
+          392.8199976,
+          1096.0,
+          429.99999984
+        ],
+        "left": [
+          946.0,
+          427.000000032,
+          2.0
+        ],
+        "right": [
+          1093.0,
+          427.5,
+          2.0
+        ]
+      },
+      "before_line": "0 0.79140625 0.571402776 0.115625 0.051638892 0.7390625000 0.5930555556 2 0.84672656 0.59573611 2",
+      "after_line": "0 0.793750000000 0.571402776 0.125000000000 0.051638892 0.7390625000 0.5930555556 2 0.853906250000 0.593750000000 2",
+      "changed_geometry_fields": [
+        "box.0",
+        "box.2",
+        "right.0",
+        "right.1"
+      ],
+      "changed_token_indices_0based": [
+        1,
+        3,
+        8,
+        9
+      ],
+      "reason": "The saved xmin939 clips the shadowed left cassette rim. Material begins near936. The saved right endpoint is inside the front face; the rounded front-to-side turn is near(1093,427.5), slightly right of the model endpoint. Expand xmax to1096 to contain that rim. The lower separator is near429-430; predicted ymax435.88 reaches into the next front, so keep current ymax430.",
+      "qualitative_uncertainty": "Approximately1-2 original pixels at the blurred material transition; this is a visual contour estimate, not subpixel certainty.",
+      "notes": [
+        "The requested xmin/right-point direction is accepted. The requested predicted ymax is challenged by the original separator.",
+        "Keep current ymin392.82: predicted ymin387.25 includes the upper front. The left endpoint remains unchanged."
+      ],
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "source_label_sha256": "d70cb5745bfabbad940e9ec0203a58aa6ade7cce0e9385f1a9777a47cda98116",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000010.txt",
+      "source_image_path": "data/images/val/new_000010.png",
+      "prediction_context": {
+        "index_0based": 1,
+        "onebased_output_number": 2,
+        "assigned_match": true,
+        "error_pdf_case_number": 40,
+        "selection_rank": 25,
+        "reference_revision": "R26",
+        "note": "Inventory geometry is R26; the before geometry above is immutable R27."
+      },
+      "field_decisions": {
+        "box.0": {
+          "action": "replace",
+          "value": 936.0,
+          "reason": "The saved xmin939 clips the shadowed left cassette rim. Material begins near936. The saved right endpoint is inside the front face; the rounded front-to-side turn is near(1093,427.5), slightly right of the model endpoint. Expand xmax to1096 to contain that rim. The lower separator is near429-430; predicted ymax435.88 reaches into the next front, so keep current ymax430."
+        },
+        "box.1": {
+          "action": "retain",
+          "value": 392.8199976,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.2": {
+          "action": "replace",
+          "value": 1096.0,
+          "reason": "The saved xmin939 clips the shadowed left cassette rim. Material begins near936. The saved right endpoint is inside the front face; the rounded front-to-side turn is near(1093,427.5), slightly right of the model endpoint. Expand xmax to1096 to contain that rim. The lower separator is near429-430; predicted ymax435.88 reaches into the next front, so keep current ymax430."
+        },
+        "box.3": {
+          "action": "retain",
+          "value": 429.99999984,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.0": {
+          "action": "retain",
+          "value": 946.0,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.1": {
+          "action": "retain",
+          "value": 427.000000032,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.2": {
+          "action": "retain",
+          "value": 2.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.0": {
+          "action": "replace",
+          "value": 1093.0,
+          "reason": "The saved xmin939 clips the shadowed left cassette rim. Material begins near936. The saved right endpoint is inside the front face; the rounded front-to-side turn is near(1093,427.5), slightly right of the model endpoint. Expand xmax to1096 to contain that rim. The lower separator is near429-430; predicted ymax435.88 reaches into the next front, so keep current ymax430."
+        },
+        "right.1": {
+          "action": "replace",
+          "value": 427.5,
+          "reason": "The saved xmin939 clips the shadowed left cassette rim. Material begins near936. The saved right endpoint is inside the front face; the rounded front-to-side turn is near(1093,427.5), slightly right of the model endpoint. Expand xmax to1096 to contain that rim. The lower separator is near429-430; predicted ymax435.88 reaches into the next front, so keep current ymax430."
+        },
+        "right.2": {
+          "action": "retain",
+          "value": 2.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        }
+      },
+      "contact_panel": "new_000010-row26-proposal.png"
+    },
+    {
+      "image_id": "new_000009",
+      "split": "val",
+      "source_row_1based": 55,
+      "scope": "user_named",
+      "action": "retain",
+      "before": {
+        "line": "0 0.547656250 0.670138889 0.029687500 0.031944444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+        "box": [
+          681.9999999999999,
+          471.00000023999996,
+          720.0,
+          493.99999992
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "after": {
+        "line": "0 0.547656250 0.670138889 0.029687500 0.031944444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+        "box": [
+          681.9999999999999,
+          471.00000023999996,
+          720.0,
+          493.99999992
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "before_line": "0 0.547656250 0.670138889 0.029687500 0.031944444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_line": "0 0.547656250 0.670138889 0.029687500 0.031944444 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "changed_geometry_fields": [],
+      "changed_token_indices_0based": [],
+      "reason": "Retain the existing aperture cassette patch x682-720,y471-494. The available row-number interpretations of predicted55/60 all lie on the left exposed stack around x594-660, physically separate from this patch. There is no retained overlapping prediction for current gold55, and the gold file has57rows. Reassigning output55 or60 to gold55 would merge different instances.",
+      "qualitative_uncertainty": "Row-reference ambiguity; existing gold patch is spatially identifiable, but the requested prediction identity is unresolved.",
+      "notes": [
+        "Unresolved reference: require the intended prediction crop or coordinate before any relabeling. Training and notebook work need not wait.",
+        "Both one-based and zero-based output interpretations were explicitly checked; all four candidate outputs are spatially separate from current gold55."
+      ],
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_sha256": "c11cd3835522e65ff8072b9db14cf656e78f0f20047639e44fcf0e24552fd4b1",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000009.txt",
+      "source_image_path": "data/images/val/new_000009.png",
+      "prediction_context": {
+        "index_0based": null,
+        "onebased_output_number": null,
+        "assigned_match": false,
+        "error_pdf_case_number": 3,
+        "selection_rank": 3,
+        "reference_revision": "R26",
+        "note": "Inventory geometry is R26; the before geometry above is immutable R27."
+      },
+      "field_decisions": {
+        "box.0": {
+          "action": "retain",
+          "value": 681.9999999999999,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.1": {
+          "action": "retain",
+          "value": 471.00000023999996,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.2": {
+          "action": "retain",
+          "value": 720.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "box.3": {
+          "action": "retain",
+          "value": 493.99999992,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.0": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "left.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "left.2": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.0": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.2": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        }
+      },
+      "prediction_number_disambiguation": [
+        {
+          "input_interpretation": "one-based55",
+          "index_0based": 54,
+          "onebased_output_number": 55,
+          "bbox_xyxy": [
+            599.07861328125,
+            436.98199462890625,
+            660.311279296875,
+            460.68804931640625
+          ],
+          "spatial_result": "Left exposed stack; does not overlap current gold55 aperture patch."
+        },
+        {
+          "input_interpretation": "one-based60",
+          "index_0based": 59,
+          "onebased_output_number": 60,
+          "bbox_xyxy": [
+            594.190185546875,
+            473.24603271484375,
+            619.1551513671875,
+            491.99822998046875
+          ],
+          "spatial_result": "Left exposed stack; does not overlap current gold55 aperture patch."
+        },
+        {
+          "input_interpretation": "zero-based55",
+          "index_0based": 55,
+          "onebased_output_number": 56,
+          "bbox_xyxy": [
+            599.0036010742188,
+            455.60052490234375,
+            651.7786254882812,
+            477.12432861328125
+          ],
+          "spatial_result": "Left exposed stack; does not overlap current gold55 aperture patch."
+        },
+        {
+          "input_interpretation": "zero-based60",
+          "index_0based": 60,
+          "onebased_output_number": 61,
+          "bbox_xyxy": [
+            598.1278076171875,
+            491.30938720703125,
+            629.7254638671875,
+            507.53009033203125
+          ],
+          "spatial_result": "Left exposed stack; does not overlap current gold55 aperture patch."
+        }
+      ],
+      "contact_panel": "new_000009-row55-proposal.png"
+    },
+    {
+      "image_id": "new_000011",
+      "split": "val",
+      "source_row_1based": 49,
+      "scope": "user_named",
+      "action": "replace",
+      "before": {
+        "line": "0 0.6101562500 0.3924236111 0.0562500000 0.0290416667 0.5828125000 0.4055555556 2 0.6351562500 0.3986111111 2",
+        "box": [
+          745.0,
+          272.08999998,
+          816.9999999999999,
+          293.000000004
+        ],
+        "left": [
+          746.0,
+          292.000000032,
+          2.0
+        ],
+        "right": [
+          813.0,
+          286.999999992,
+          2.0
+        ]
+      },
+      "after": {
+        "line": "0 0.611328125000 0.3924236111 0.058593750000 0.0290416667 0.5828125000 0.4055555556 2 0.639453125000 0.400694444444 2",
+        "box": [
+          745.0,
+          272.08999998,
+          820.0,
+          293.000000004
+        ],
+        "left": [
+          746.0,
+          292.000000032,
+          2.0
+        ],
+        "right": [
+          818.5,
+          288.49999999967997,
+          2.0
+        ]
+      },
+      "before_line": "0 0.6101562500 0.3924236111 0.0562500000 0.0290416667 0.5828125000 0.4055555556 2 0.6351562500 0.3986111111 2",
+      "after_line": "0 0.611328125000 0.3924236111 0.058593750000 0.0290416667 0.5828125000 0.4055555556 2 0.639453125000 0.400694444444 2",
+      "changed_geometry_fields": [
+        "box.2",
+        "right.0",
+        "right.1"
+      ],
+      "changed_token_indices_0based": [
+        1,
+        3,
+        8,
+        9
+      ],
+      "reason": "The saved right endpoint(813,287) is inside the bright face. The original front curls into its darker side near(818.5,288.5), consistent with the prediction as an inspection cue. Expand xmax to820 to include the outer rim and moved endpoint. Retain the other edges and left endpoint because their proposed model offsets are within local blur or include separator pixels.",
+      "qualitative_uncertainty": "Approximately1-2 original pixels at the blurred material transition; this is a visual contour estimate, not subpixel certainty.",
+      "notes": [
+        "General preference for the prediction is applied field by field. Its entire box is not copied."
+      ],
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "source_label_sha256": "b76be2ad712e25df03e3dda10d56de40d47b962667c8f3d436943b7009516500",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000011.txt",
+      "source_image_path": "data/images/val/new_000011.png",
+      "prediction_context": {
+        "index_0based": 1,
+        "onebased_output_number": 2,
+        "assigned_match": true,
+        "error_pdf_case_number": 34,
+        "selection_rank": 19,
+        "reference_revision": "R26",
+        "note": "Inventory geometry is R26; the before geometry above is immutable R27."
+      },
+      "field_decisions": {
+        "box.0": {
+          "action": "retain",
+          "value": 745.0,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.1": {
+          "action": "retain",
+          "value": 272.08999998,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.2": {
+          "action": "replace",
+          "value": 820.0,
+          "reason": "The saved right endpoint(813,287) is inside the bright face. The original front curls into its darker side near(818.5,288.5), consistent with the prediction as an inspection cue. Expand xmax to820 to include the outer rim and moved endpoint. Retain the other edges and left endpoint because their proposed model offsets are within local blur or include separator pixels."
+        },
+        "box.3": {
+          "action": "retain",
+          "value": 293.000000004,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.0": {
+          "action": "retain",
+          "value": 746.0,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.1": {
+          "action": "retain",
+          "value": 292.000000032,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.2": {
+          "action": "retain",
+          "value": 2.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.0": {
+          "action": "replace",
+          "value": 818.5,
+          "reason": "The saved right endpoint(813,287) is inside the bright face. The original front curls into its darker side near(818.5,288.5), consistent with the prediction as an inspection cue. Expand xmax to820 to include the outer rim and moved endpoint. Retain the other edges and left endpoint because their proposed model offsets are within local blur or include separator pixels."
+        },
+        "right.1": {
+          "action": "replace",
+          "value": 288.49999999967997,
+          "reason": "The saved right endpoint(813,287) is inside the bright face. The original front curls into its darker side near(818.5,288.5), consistent with the prediction as an inspection cue. Expand xmax to820 to include the outer rim and moved endpoint. Retain the other edges and left endpoint because their proposed model offsets are within local blur or include separator pixels."
+        },
+        "right.2": {
+          "action": "retain",
+          "value": 2.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        }
+      },
+      "contact_panel": "new_000011-row49-proposal.png"
+    },
+    {
+      "image_id": "new_000056",
+      "split": "val",
+      "source_row_1based": 12,
+      "scope": "user_named",
+      "action": "replace",
+      "before": {
+        "line": "0 0.500378908 0.628145830 0.122679685 0.064652780 0.442968750000 0.655555555556 2 0.00000000 0.00000000 0",
+        "box": [
+          561.9700038399999,
+          428.9899968,
+          719.0000006399999,
+          475.53999840000006
+        ],
+        "left": [
+          567.0,
+          472.00000000032,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "after": {
+        "line": "0 0.500378908 0.633708332222 0.122679685 0.053527775556 0.442968750000 0.655555555556 2 0.00000000 0.00000000 0",
+        "box": [
+          561.9700038399999,
+          436.99999999967997,
+          719.0000006399999,
+          475.53999839999994
+        ],
+        "left": [
+          567.0,
+          472.00000000032,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "before_line": "0 0.500378908 0.628145830 0.122679685 0.064652780 0.442968750000 0.655555555556 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.500378908 0.633708332222 0.122679685 0.053527775556 0.442968750000 0.655555555556 2 0.00000000 0.00000000 0",
+      "changed_geometry_fields": [
+        "box.1"
+      ],
+      "changed_token_indices_0based": [
+        2,
+        4
+      ],
+      "reason": "The blue screenshot line and original pixels identify the upper separator near y437. The old ymin428.99 includes the cassette above. Move ymin to437. The lower visible material ends near475; existing ymax475.54 remains consistent within blur, while predicted ymax481.12 enters rack/background. Retain current R27 left endpoint(567,472) and unavailable right endpoint.",
+      "qualitative_uncertainty": "Approximately1-2 original pixels at the blurred material transition; this is a visual contour estimate, not subpixel certainty.",
+      "notes": [
+        "The screenshot targets ymin, although the text says ymax. The upper-bound correction is supported independently by the original boundary.",
+        "The requested lower-bound prediction is not adopted; no meaningful additional bottom correction is established beyond the existing R27 value."
+      ],
+      "source_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "source_label_sha256": "722a2a21be9b9b4736cceabec49b90844d31a9cb6c8e7eacb037ea4111a87695",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000056.txt",
+      "source_image_path": "data/images/val/new_000056.png",
+      "prediction_context": {
+        "index_0based": 18,
+        "onebased_output_number": 19,
+        "assigned_match": true,
+        "error_pdf_case_number": 37,
+        "selection_rank": 22,
+        "reference_revision": "R26",
+        "note": "Inventory geometry is R26; the before geometry above is immutable R27."
+      },
+      "field_decisions": {
+        "box.0": {
+          "action": "retain",
+          "value": 561.9700038399999,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.1": {
+          "action": "replace",
+          "value": 436.99999999967997,
+          "reason": "The blue screenshot line and original pixels identify the upper separator near y437. The old ymin428.99 includes the cassette above. Move ymin to437. The lower visible material ends near475; existing ymax475.54 remains consistent within blur, while predicted ymax481.12 enters rack/background. Retain current R27 left endpoint(567,472) and unavailable right endpoint."
+        },
+        "box.2": {
+          "action": "retain",
+          "value": 719.0000006399999,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "box.3": {
+          "action": "retain",
+          "value": 475.53999839999994,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.0": {
+          "action": "retain",
+          "value": 567.0,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.1": {
+          "action": "retain",
+          "value": 472.00000000032,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.2": {
+          "action": "retain",
+          "value": 2.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.0": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.2": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        }
+      },
+      "contact_panel": "new_000056-row12-proposal.png"
+    },
+    {
+      "image_id": "new_000055",
+      "split": "val",
+      "source_row_1based": 23,
+      "scope": "user_named",
+      "action": "replace",
+      "before": {
+        "line": "0 0.46132812 0.00763889 0.09453125 0.01527778 0.41562500 0.01250000 2 0.00000000 0.00000000 0",
+        "box": [
+          529.9999936,
+          0.0,
+          650.9999935999999,
+          11.0000016
+        ],
+        "left": [
+          532.0,
+          9.0,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "after": {
+        "line": "0 0.457031247500 0.00763889 0.085937505000 0.01527778 0.41562500 0.01250000 2 0.00000000 0.00000000 0",
+        "box": [
+          529.9999936,
+          0.0,
+          640.0,
+          11.0000016
+        ],
+        "left": [
+          532.0,
+          9.0,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "before_line": "0 0.46132812 0.00763889 0.09453125 0.01527778 0.41562500 0.01250000 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.457031247500 0.00763889 0.085937505000 0.01527778 0.41562500 0.01250000 2 0.00000000 0.00000000 0",
+      "changed_geometry_fields": [
+        "box.2"
+      ],
+      "changed_token_indices_0based": [
+        1,
+        3
+      ],
+      "reason": "The frame-clipped front continues well beyond x538 and ends near x640 before the dark rack divider; the old xmax651 crosses that divider. Trim xmax to640 based on the original top-frame material boundary. Keep xmin and endpoints unchanged.",
+      "qualitative_uncertainty": "Approximately2-3 original pixels because the front is clipped by the upper frame. The value538 is not supported;640 requires root independent review.",
+      "notes": [
+        "User value xmax538 is not applied: it would collapse the121px front to8px and omit visible material. The accepted640 is an independent contour estimate, not a silent reinterpretation as xmin.",
+        "The digit538 may be a transcription error, but that is not assumed. The right endpoint remains unavailable because of frame clipping."
+      ],
+      "source_image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "source_label_sha256": "9ea164eaa7ee607f65c91453b8e0508a6c7b19d2df950ee867c9ea337a70f04e",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000055.txt",
+      "source_image_path": "data/images/val/new_000055.png",
+      "prediction_context": {
+        "index_0based": 25,
+        "onebased_output_number": 26,
+        "assigned_match": true,
+        "error_pdf_case_number": 28,
+        "selection_rank": 13,
+        "reference_revision": "R26",
+        "note": "Inventory geometry is R26; the before geometry above is immutable R27."
+      },
+      "field_decisions": {
+        "box.0": {
+          "action": "retain",
+          "value": 529.9999936,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.2": {
+          "action": "replace",
+          "value": 640.0,
+          "reason": "The frame-clipped front continues well beyond x538 and ends near x640 before the dark rack divider; the old xmax651 crosses that divider. Trim xmax to640 based on the original top-frame material boundary. Keep xmin and endpoints unchanged."
+        },
+        "box.3": {
+          "action": "retain",
+          "value": 11.0000016,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.0": {
+          "action": "retain",
+          "value": 532.0,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.1": {
+          "action": "retain",
+          "value": 9.0,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.2": {
+          "action": "retain",
+          "value": 2.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.0": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.2": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        }
+      },
+      "contact_panel": "new_000055-row23-proposal.png"
+    },
+    {
+      "image_id": "new_000087",
+      "split": "val",
+      "source_row_1based": 53,
+      "scope": "user_named",
+      "action": "replace",
+      "before": {
+        "line": "0 0.612304687500 0.022222222 0.080078125000 0.044444444 0.57323437 0.03081944 2 0.64654688 0.04040278 2",
+        "box": [
+          732.5,
+          0.0,
+          835.0,
+          31.99999968
+        ],
+        "left": [
+          733.7399935999999,
+          22.1899968,
+          2.0
+        ],
+        "right": [
+          827.5800064,
+          29.0900016,
+          2.0
+        ]
+      },
+      "after": {
+        "line": "0 0.612304687500 0.022222222 0.080078125000 0.044444444 0.57323437 0.03081944 2 0.650781250000 0.041666666667 2",
+        "box": [
+          732.5,
+          0.0,
+          835.0,
+          31.99999968
+        ],
+        "left": [
+          733.7399935999999,
+          22.1899968,
+          2.0
+        ],
+        "right": [
+          833.0,
+          30.00000000024,
+          2.0
+        ]
+      },
+      "before_line": "0 0.612304687500 0.022222222 0.080078125000 0.044444444 0.57323437 0.03081944 2 0.64654688 0.04040278 2",
+      "after_line": "0 0.612304687500 0.022222222 0.080078125000 0.044444444 0.57323437 0.03081944 2 0.650781250000 0.041666666667 2",
+      "changed_geometry_fields": [
+        "right.0",
+        "right.1"
+      ],
+      "changed_token_indices_0based": [
+        8,
+        9
+      ],
+      "reason": "The old right endpoint(827.58,29.09) lies inside the front face. The visible rounded lower-right turn is near(833,30), consistent with the saved prediction as an inspection cue. The current box already contains this turn; retain all box edges and the left endpoint.",
+      "qualitative_uncertainty": "Approximately1-2 original pixels at the blurred material transition; this is a visual contour estimate, not subpixel certainty.",
+      "notes": [],
+      "source_image_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "source_label_sha256": "8572a7a76cc1ace30188c5cf42cc56629c8b78b62a45b941e8d23550dfee27b7",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000087.txt",
+      "source_image_path": "data/images/val/new_000087.png",
+      "prediction_context": {
+        "index_0based": 12,
+        "onebased_output_number": 13,
+        "assigned_match": true,
+        "error_pdf_case_number": 42,
+        "selection_rank": 27,
+        "reference_revision": "R26",
+        "note": "Inventory geometry is R26; the before geometry above is immutable R27."
+      },
+      "field_decisions": {
+        "box.0": {
+          "action": "retain",
+          "value": 732.5,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.2": {
+          "action": "retain",
+          "value": 835.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "box.3": {
+          "action": "retain",
+          "value": 31.99999968,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.0": {
+          "action": "retain",
+          "value": 733.7399935999999,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.1": {
+          "action": "retain",
+          "value": 22.1899968,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.2": {
+          "action": "retain",
+          "value": 2.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.0": {
+          "action": "replace",
+          "value": 833.0,
+          "reason": "The old right endpoint(827.58,29.09) lies inside the front face. The visible rounded lower-right turn is near(833,30), consistent with the saved prediction as an inspection cue. The current box already contains this turn; retain all box edges and the left endpoint."
+        },
+        "right.1": {
+          "action": "replace",
+          "value": 30.00000000024,
+          "reason": "The old right endpoint(827.58,29.09) lies inside the front face. The visible rounded lower-right turn is near(833,30), consistent with the saved prediction as an inspection cue. The current box already contains this turn; retain all box edges and the left endpoint."
+        },
+        "right.2": {
+          "action": "retain",
+          "value": 2.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        }
+      },
+      "contact_panel": "new_000087-row53-proposal.png"
+    },
+    {
+      "image_id": "new_000089",
+      "split": "val",
+      "source_row_1based": 50,
+      "scope": "user_named",
+      "action": "replace",
+      "before": {
+        "line": "0 0.363179690000 0.87476389 0.049796880000 0.05061111 0.34108594 0.88465278 2 0.00000000 0.00000000 0",
+        "box": [
+          433.0,
+          611.6100012,
+          496.7400064,
+          648.0500003999999
+        ],
+        "left": [
+          436.59000319999996,
+          636.9500016000001,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "after": {
+        "line": "0 0.362007815000 0.87476389 0.052140630000 0.05061111 0.336718750000 0.881944444444 2 0.00000000 0.00000000 0",
+        "box": [
+          430.0,
+          611.6100012,
+          496.7400064,
+          648.0500003999999
+        ],
+        "left": [
+          431.0,
+          634.99999999968,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "before_line": "0 0.363179690000 0.87476389 0.049796880000 0.05061111 0.34108594 0.88465278 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.362007815000 0.87476389 0.052140630000 0.05061111 0.336718750000 0.881944444444 2 0.00000000 0.00000000 0",
+      "changed_geometry_fields": [
+        "box.0",
+        "left.0",
+        "left.1"
+      ],
+      "changed_token_indices_0based": [
+        1,
+        3,
+        5,
+        6
+      ],
+      "reason": "The old left endpoint(436.59,636.95) is to the right and below the visible lower-left turn. That turn is near(431,635), where the bright face meets the dark lower shadow. Move xmin from433 to430 to include the same visible rim and contain the corrected point. Keep the right endpoint unavailable.",
+      "qualitative_uncertainty": "Approximately1-2 original pixels at the blurred material transition; this is a visual contour estimate, not subpixel certainty.",
+      "notes": [
+        "Moving only the endpoint would leave it outside the old box. The xmin expansion follows the visible contour, not just an algebraic containment rule."
+      ],
+      "source_image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "source_label_sha256": "556f94bbd38ef3b8de8c7b375685b8102d90b3874b0504a2967c8192b602394e",
+      "source_label_path": "data/reviews/fronts-2026-11-23-r27/labels/val/new_000089.txt",
+      "source_image_path": "data/images/val/new_000089.png",
+      "prediction_context": {
+        "index_0based": 47,
+        "onebased_output_number": 48,
+        "assigned_match": true,
+        "error_pdf_case_number": 31,
+        "selection_rank": 16,
+        "reference_revision": "R26",
+        "note": "Inventory geometry is R26; the before geometry above is immutable R27."
+      },
+      "field_decisions": {
+        "box.0": {
+          "action": "replace",
+          "value": 430.0,
+          "reason": "The old left endpoint(436.59,636.95) is to the right and below the visible lower-left turn. That turn is near(431,635), where the bright face meets the dark lower shadow. Move xmin from433 to430 to include the same visible rim and contain the corrected point. Keep the right endpoint unavailable."
+        },
+        "box.1": {
+          "action": "retain",
+          "value": 611.6100012,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "box.2": {
+          "action": "retain",
+          "value": 496.7400064,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "box.3": {
+          "action": "retain",
+          "value": 648.0500003999999,
+          "reason": "No independent original-pixel evidence supports a further change; retain existing value."
+        },
+        "left.0": {
+          "action": "replace",
+          "value": 431.0,
+          "reason": "The old left endpoint(436.59,636.95) is to the right and below the visible lower-left turn. That turn is near(431,635), where the bright face meets the dark lower shadow. Move xmin from433 to430 to include the same visible rim and contain the corrected point. Keep the right endpoint unavailable."
+        },
+        "left.1": {
+          "action": "replace",
+          "value": 634.99999999968,
+          "reason": "The old left endpoint(436.59,636.95) is to the right and below the visible lower-left turn. That turn is near(431,635), where the bright face meets the dark lower shadow. Move xmin from433 to430 to include the same visible rim and contain the corrected point. Keep the right endpoint unavailable."
+        },
+        "left.2": {
+          "action": "retain",
+          "value": 2.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.0": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.1": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        },
+        "right.2": {
+          "action": "retain",
+          "value": 0.0,
+          "reason": "Visibility and unavailable triplets are unchanged."
+        }
+      },
+      "contact_panel": "new_000089-row50-proposal.png"
+    }
+  ],
+  "validation": {
+    "named_rows": 9,
+    "replace_rows": 8,
+    "retain_rows": 1,
+    "all_source_hashes_match_manifest": true,
+    "class_and_visibility_tokens_unchanged": true,
+    "missing_corner_triplets_unchanged": true,
+    "unchanged_token_strings_preserved": true,
+    "all_locatable_points_inside_proposed_boxes": true,
+    "labels_written": false,
+    "all_proposal_panels_visually_inspected": true,
+    "panel_roles": "Original pixels / R27 saved label / R28 proposal (or retain R27)"
+  },
+  "inspection_panel_metadata": "Panel filenames refer to scratch inspection products, not repository file links. The amendment PDF is separately rendered from original source pixels and accepted row lines."
+}

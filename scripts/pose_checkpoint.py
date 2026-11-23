@@ -271,7 +271,10 @@ def _check_staging(preflight, staging):
         _require(source.get("candidate_kind") == proposal["kind"]
                  and _same(source.get("control"), control)
                  and source.get("training_protocol") == verified["training_protocol"],
-                 "staged PR35 control or observed training protocol differs")
+                 "staged verified control or observed training protocol differs")
+        if "training_input_delta" in verified:
+            _require(_same(source.get("training_input_delta"), verified["training_input_delta"]),
+                     "staged predecessor-to-treatment input delta differs")
         if proposal["kind"] == "training_incremental_observed_overlay":
             _require(source.get("retained_legacy_image_ids") == verified["retained_legacy_image_ids"],
                      "staged incremental legacy-photo inventory differs")
@@ -328,7 +331,7 @@ def training_label_identity(staging, arm):
         incremental = source["candidate_kind"] == "training_incremental_observed_overlay"
         return {
             "kind": source["candidate_kind"],
-            "role": "pr35_annotation_control" if reference else (
+            "role": control.get("supervision", "pr35_annotation_control") if reference else (
                 "accepted_fronts_treatment" if incremental else "observed_fronts_treatment"),
             "label_manifest": control["manifest"] if reference else source["candidate_manifest"],
             "label_manifest_sha256": control["manifest_sha256"] if reference else source["candidate_manifest_sha256"],

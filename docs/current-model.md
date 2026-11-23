@@ -1,14 +1,16 @@
-# Current model and R27 annotation review
+# Current model and R28 training handoff
 
 23 November 2026, Asia/Hong_Kong.
 
 **PR35 remains the selected checkpoint. The returned R26 experiment in
-[PR103](https://github.com/Siuuuers/dl/pull/103) is evaluated. R27 adds 21 supported
-annotation amendments and two reproducible visual reports; it is not a new
-training result.**
+[PR103](https://github.com/Siuuuers/dl/pull/103) is evaluated. R28 adds 23 supported
+annotation amendments after R27 and supplies the next runnable notebook.
+R28 has no new training result yet.**
 
-Start with the [R27 review guide](front-review-r27.md) for changed rows, the color
-screen, PDF contents and reproduction commands. The complete
+Start with the [R28 review and notebook guide](front-review-r28.md) for the new
+amendment PDF, TXT geometry screen and paired training instructions. The
+[R27 review guide](front-review-r27.md) preserves the prior annotation round.
+The complete
 [PR103 evaluation](../results/evaluation/pr103-r26-20261123/README.md) preserves
 the original returned result before the R27 reference changes.
 
@@ -78,7 +80,7 @@ rows. Common inference conditions do not remove a training-history difference.
 R26 versus its own control tests the accumulated eligible annotation treatment.
 See the [cross-round input audit](../results/evaluation/pr103-r26-20261123/crossround-input-verification.json).
 
-## R27 amendment and next experiment
+## R27 amendment history
 
 R27 replaces 21 rows across 10 photographs: 7 training rows and 14 development
 rows. It deletes none. Seventy-four rows across 17 photographs were explicitly
@@ -94,12 +96,42 @@ tightened boxes at 007:24 and 009:49 no longer pass the fixed 0.50 matching IoU.
 These are reference effects, not learning or weight changes. They do not rewrite
 the PR103 return or the frozen results.
 
-For a later training run, the actual new treatment is the seven training rows
+At the end of R27, the untrained treatment was the seven training rows
 013:27, 014:35, 016:26-27, 049:3, 051:20 and 083:12. Compare R26 and R27 training
-labels under the same A100/software/recipe conditions, keeping frozen gates and
+labels under the same hardware/software/recipe conditions, keeping frozen gates and
 recording both arms' actual inputs. The 14 development edits do not teach the
 model. No R27 candidate, protocol or training notebook is introduced by this
-annotation-and-reporting change.
+annotation-and-reporting change. R28 now supersedes that proposed handoff.
+
+## R28 amendment and runnable experiment
+
+R28 reviews 25 requested identities and 8 additional TXT-screen cases. It accepts
+23 replacements across 15 photos (5 training / 18 development) and retains 10 rows.
+No rows are added, deleted or renumbered; class/visibility tokens and
+missing-point zero triplets remain unchanged.
+All 11 standards remain exact, including the explicitly revisited 008:19/29.
+The 21-page amendment PDF contains every changed row in cropped original/R27/R28
+comparisons. Prediction numbers for 009:55 remain ambiguous; that label is kept.
+
+The [R28 notebook](../notebooks/baomai_front_review_r28.ipynb) trains fresh R26
+and R28 supervision together from the same original epoch173 initializer.
+The exact accumulated treatment is 10 training rows across 9 photos: the seven
+untrained R27 rows, refinements of 016:26/27, and new 017:18, 028:59, 094:9 edits.
+The [input delta](../results/review/front-review-20261123-r28/training-input-delta.json)
+records every before/after line and is embedded in both staged manifests.
+
+Both arms keep 137 training photos / 3,784 objects, the 13 empty scenes, identical
+R26 labels on held 015 and 31 old-series treatment exclusions, and original
+20-photo / 664-front trainer validation. Use one actual GPU/software runtime
+for both arms and the resource trial (A100 recommended), seed 46, 30 epochs,
+batch 4, input 1280, FP32, AdamW at 0.0001, and final-epoch selection. The frozen 666/663
+references remain unchanged; the amended 661-front development review is
+separate exploratory evidence. Run all and return both checkpoints in
+`baomai-front-review-r28-results.zip`.
+
+No R28 training, performance gain or promotion is claimed. See the
+[complete R28 guide](front-review-r28.md) for axis corrections, screen limits,
+the runnable handoff and next-session data priorities.
 
 Fresh capture-session data is still the higher-value addition: partial fronts
 beside the gripper, frame-clipped fronts, rounded/shadowed corners, rack/hand
