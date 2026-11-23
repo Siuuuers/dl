@@ -1,0 +1,90 @@
+--- pr101/measure_pr101.py
++++ pr103/measure_pr103.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Score the fixed PR101 r25 comparison from saved predictions, without training."""
++"""Score the fixed PR103 r26 comparison from saved predictions, without training."""
+ 
+ import argparse
+ import hashlib
+@@ -10,12 +10,13 @@
+ import tempfile
+ from pathlib import Path
+ 
+-PROTOCOL_SHA = "80c3f2849890a664db9fea857342c4d78d38ba736b7a108ce13905d74aedb287"
++PROTOCOL_SHA = "232f81cdf6d367fc9ece902e01b4ab5a03da5ae0898f5f75abae25ef5001372f"
+ MODEL_SHA = {
+-    "r24": "2830ec32d1155ef9d05263fec5769f50a9fe716f75378e5d81e47a13a6cb94c6",
++    "candidate": "a2e71037a9995ed864ec21ab5c03a719e200301766788b88765c745638e7ad9a",
++    "reference": "fcc2708241cbdd57a0e6e1a0440cd5928ca829eb764cba9770281447446fee61",
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "561665025b30718916e838e6d829e050d0fae622498a44733c1dc52b49bf05df",
+-    "candidate": "6ada96ede2a33604fcb6d5b42322798c8055d3c3298f36de4a3b66a15e827e9c",
++    "r25": "6ada96ede2a33604fcb6d5b42322798c8055d3c3298f36de4a3b66a15e827e9c",
++    "r25control": "561665025b30718916e838e6d829e050d0fae622498a44733c1dc52b49bf05df"
+ }
+ SCORER_SHA = {
+     "evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+@@ -45,7 +46,7 @@
+         return select_checkpoint(preflight, checkpoint_path, require_weights=False)
+     require(log_path == Path("train.log") and (base / "train-log.txt").is_file(),
+             "Missing original or preserved training log")
+-    with tempfile.TemporaryDirectory(prefix="pr101-preserved-receipt-") as tmp:
++    with tempfile.TemporaryDirectory(prefix="pr103-preserved-receipt-") as tmp:
+         target = Path(tmp)
+         shutil.copytree(base, target, dirs_exist_ok=True)
+         shutil.copyfile(base / "train-log.txt", target / log_path)
+@@ -78,7 +79,7 @@
+     from diagnose_pose_quality import aggregate_quality, quality_for_image
+     from rescore_reference_amendment import load_api, verify_amendment
+ 
+-    protocol_path = root / "experiments/front-review-2026-11-23-r25.json"
++    protocol_path = root / "experiments/front-review-2026-11-23-r26.json"
+     require(sha(protocol_path) == PROTOCOL_SHA, "The preregistered protocol changed")
+     protocol = json.loads(protocol_path.read_text())
+     for name, expected in SCORER_SHA.items():
+@@ -105,8 +106,8 @@
+     runtimes = [model["metadata"]["runtime"] for model in models.values()]
+     require(all(runtime == runtimes[0] for runtime in runtimes), "Inference runtimes differ")
+     report = {
+-        "schema_version":1,"kind":"pr101-r25-fixed-development-comparison","status":"measured",
+-        "model_set":"returned_pr101_r25",
++        "schema_version":1,"kind":"pr103-r26-fixed-development-comparison","status":"measured",
++        "model_set":"returned_pr103_r26",
+         "protocol":{"path":str(protocol_path.relative_to(root)),"sha256":PROTOCOL_SHA},
+         "measurement_script_sha256":sha(__file__), "scorers_sha256":SCORER_SHA,
+         "models":{role:{key:value for key,value in model.items() if key != "predictions"}
+@@ -121,18 +122,19 @@
+             "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+             "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+             "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+-            "The separately pinned current r25 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
++            "R26 trained on A100 and R25 on L4; their candidate difference does not isolate the three revised training rows. The recorded controls are compared separately.",
++            "The separately pinned current r26 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
+         ],
+     }
+-    for label in ("primary", "diagnostic", "current_r25_exploratory"):
++    for label in ("primary", "diagnostic", "current_r26_exploratory"):
+         setting = protocol["evaluation"]
+-        exploratory = label == "current_r25_exploratory"
++        exploratory = label == "current_r26_exploratory"
+         if exploratory:
+-            from front_review_r25 import experiment, verify_candidate
++            from front_review_r26 import experiment, verify_candidate
+             verify_candidate(root)
+             descriptor = setting["current_review_reference"]
+             path = root / descriptor["path"]
+-            require(sha(path) == descriptor["sha256"], "Current r25 review changed")
++            require(sha(path) == descriptor["sha256"], "Current r26 review changed")
+             review, status, _, _, _, _, reviewed = experiment(root).read_review(root)
+             gold = {image_id: parse_pose_labels(reviewed[image_id]["bytes"].decode(),
+                     record["width"], record["height"], reviewed[image_id]["path"])
+@@ -181,7 +183,7 @@
+                              "miss_free_nonempty_scenes":sum(s["misses"]==0 for s in scenes if s["gold"]>0),
+                              "error_free_nonempty_scenes":sum(s["misses"]==s["extras"]==0 for s in scenes if s["gold"]>0)}
+         deltas={}
+-        for baseline in ("reference","pr35","r24"):
++        for baseline in ("reference","pr35","r25","r25control"):
+             a,b=per_model[baseline],per_model["candidate"]
+             gained=sorted(set(b["matched_identities"])-set(a["matched_identities"]))
+             lost=sorted(set(a["matched_identities"])-set(b["matched_identities"]))

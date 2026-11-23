@@ -1,0 +1,4121 @@
+{
+  "schema_version": 1,
+  "kind": "local_luminance_review_priority_screen",
+  "reference": {
+    "review_id": "fronts-2026-11-23-r26",
+    "path": "data/reviews/fronts-2026-11-23-r26/manifest.json",
+    "sha256": "b999b9491b18ecd2d55684ec14383d1c98160a6bf080a4a751ea83844fca7468"
+  },
+  "review_status": {
+    "path": "results/review/front-review-20261123-r26/review-status.json",
+    "sha256": "8f144e4812f572dbef00cbf9b9258fdd23187e9b8d11b0893c2236e8bb899c1f"
+  },
+  "protected_standards": {
+    "path": "results/review/front-review-20261123-r26/row-review.json",
+    "sha256": "e61b6cec60866df2fe53247d5678b33bb0f1e25a9c845a76c5869bf89693d690",
+    "identities": [
+      "new_000008:18",
+      "new_000008:19",
+      "new_000008:20",
+      "new_000008:21",
+      "new_000008:28",
+      "new_000008:29",
+      "new_000008:30",
+      "new_000008:31",
+      "new_000008:32",
+      "new_000010:16",
+      "new_000016:24"
+    ]
+  },
+  "screen_script": {
+    "path": "scripts/rank_front_shadow_candidates.py",
+    "sha256": "a50b6ec4920fa7e5781ee177f41fde3d5aeef255e3e5e2a923afc28f7a805b5e"
+  },
+  "method": {
+    "purpose": "Review priority only; no label edits, coordinate proposals, model predictions, or white-pixel threshold.",
+    "grayscale": "Pillow RGB.convert('L'), 8-bit luminance",
+    "patch_size_px": [
+      3,
+      3
+    ],
+    "rounding": "floor(coordinate +0.5)",
+    "sampling_offset": {
+      "inward_along_front_px": 4.0,
+      "upward_normal_px": 4.0
+    },
+    "tangent": "Left-to-right line between two locatable saved corners; horizontal fallback when only one is locatable.",
+    "score": "max(0, median(inward/up patch) - median(saved-point patch)), in grayscale levels",
+    "border_policy": "Require both full 3x3 patches. Otherwise record the endpoint as unscored; do not pad or infer pixels.",
+    "sort": "Score descending, then image_id, current one-based row, side alphabetical",
+    "limitation": "A valid material corner is often darker than the face. Brightness, curvature, shadows, blur, and occlusion can make false flags. The score is not a probability or an annotation-accuracy measure."
+  },
+  "totals": {
+    "images": 157,
+    "locatable_endpoints": 8062,
+    "scored_endpoints": 8050,
+    "skipped_border_endpoints": 12,
+    "images_train": 137,
+    "locatable_endpoints_protected_standard": 22,
+    "locatable_endpoints_held_photo": 113,
+    "locatable_endpoints_excluded_training_photo": 538,
+    "images_val": 20
+  },
+  "top_candidates": [
+    {
+      "identity": "old_000046:3:left",
+      "image_id": "old_000046",
+      "row": 3,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        596.0,
+        449.8099992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        599.9310681176943,
+        445.7422352621531
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          595,
+          449,
+          598,
+          452
+        ],
+        "median_luminance": 70,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          599,
+          445,
+          602,
+          448
+        ],
+        "median_luminance": 241,
+        "complete": true
+      },
+      "signed_contrast_luminance": 171,
+      "priority_score": 171,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "5e2c637d66f4821640eaaacbe8140ff2423ec72ebf11100c9da55404c98a79c6",
+      "source_label_sha256": "d074b919a442cfcf88835ad2ec981bf3ce8ff789dab8661ca44103b1fea8c22b",
+      "screen_rank": 1
+    },
+    {
+      "identity": "new_000083:12:right",
+      "image_id": "new_000083",
+      "row": 12,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        628.5699968,
+        418.7399976
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        624.9376753405269,
+        414.4033813136483
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          628,
+          418,
+          631,
+          421
+        ],
+        "median_luminance": 37,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          624,
+          413,
+          627,
+          416
+        ],
+        "median_luminance": 192,
+        "complete": true
+      },
+      "signed_contrast_luminance": 155,
+      "priority_score": 155,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "1959899c2d0abf5c3c7b10c344840191d7946aeb8ed18ae8ee01f1bef0989673",
+      "source_label_sha256": "a262da90f67d5ef8db302f94f1105708f7a30b7410495030e8963a02e0b6eac4",
+      "screen_rank": 2
+    },
+    {
+      "identity": "new_000049:3:right",
+      "image_id": "new_000049",
+      "row": 3,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        618.7500032,
+        431.6299992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        615.112017088963,
+        427.2981338909326
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          618,
+          431,
+          621,
+          434
+        ],
+        "median_luminance": 38,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          614,
+          426,
+          617,
+          429
+        ],
+        "median_luminance": 189,
+        "complete": true
+      },
+      "signed_contrast_luminance": 151,
+      "priority_score": 151,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "bd085b01cf8fbce5df55d5f91c6e7810f03848f307c409d2afcd5e6cde652b7a",
+      "source_label_sha256": "f02a090e71f737a868d91186393c2dd08f4f46a95154c78c84e5cd28afa98dd0",
+      "screen_rank": 3
+    },
+    {
+      "identity": "old_000042:1:left",
+      "image_id": "old_000042",
+      "row": 1,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        590.0,
+        374.5000008
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        593.8893295176343,
+        370.39231095006505
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          589,
+          374,
+          592,
+          377
+        ],
+        "median_luminance": 92,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          593,
+          369,
+          596,
+          372
+        ],
+        "median_luminance": 241,
+        "complete": true
+      },
+      "signed_contrast_luminance": 149,
+      "priority_score": 149,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "b4fb62065fd129594eefe15210fbae200f4c59932dab3574f73e03704af2c42e",
+      "source_label_sha256": "e0e371bc8f827f85d04d4ee5d2afcbf80f20631f725684e6bc89c02e34cef0c3",
+      "screen_rank": 4
+    },
+    {
+      "identity": "old_000054:6:left",
+      "image_id": "old_000054",
+      "row": 6,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        593.0,
+        393.6499992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        596.9433462741783,
+        389.594136756336
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          592,
+          393,
+          595,
+          396
+        ],
+        "median_luminance": 59,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          596,
+          389,
+          599,
+          392
+        ],
+        "median_luminance": 208,
+        "complete": true
+      },
+      "signed_contrast_luminance": 149,
+      "priority_score": 149,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "0762009e0caf58b364c210f1542b823577fa41d656d7e6ffc0e984594dc78c72",
+      "source_label_sha256": "07e0a47be8503149517bf160651cef87ef780548bb82479f3c92601f8e7ea2e7",
+      "screen_rank": 5
+    },
+    {
+      "identity": "old_000101:8:right",
+      "image_id": "old_000101",
+      "row": 8,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        721.0,
+        463.5100008
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        716.9541351406145,
+        459.55639769149377
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          720,
+          463,
+          723,
+          466
+        ],
+        "median_luminance": 32,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          716,
+          459,
+          719,
+          462
+        ],
+        "median_luminance": 179,
+        "complete": true
+      },
+      "signed_contrast_luminance": 147,
+      "priority_score": 147,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "02139e7386588bb6a18cdb1fa2a6d73db2e93f67d990abcf7e9d6c646896acab",
+      "source_label_sha256": "e8330f9f830cbdea22bc2059dbdb2a8846fa5babfb00b9946130b13447d07a53",
+      "screen_rank": 6
+    },
+    {
+      "identity": "new_000014:1:right",
+      "image_id": "new_000014",
+      "row": 1,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        638.7500032,
+        26.0899992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        635.2137157956533,
+        21.67472215389536
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          638,
+          25,
+          641,
+          28
+        ],
+        "median_luminance": 52,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          634,
+          21,
+          637,
+          24
+        ],
+        "median_luminance": 194,
+        "complete": true
+      },
+      "signed_contrast_luminance": 142,
+      "priority_score": 142,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": true,
+        "new_series": true
+      },
+      "source_image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "source_label_sha256": "f10a25763cb518ae4aa003d93f3daec34162b0fc379b15df991e4547f242be33",
+      "screen_rank": 7
+    },
+    {
+      "identity": "old_000003:2:right",
+      "image_id": "old_000003",
+      "row": 2,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        825.0,
+        242.24999760000003
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        820.952595371126,
+        238.29797080730626
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          824,
+          241,
+          827,
+          244
+        ],
+        "median_luminance": 70,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          820,
+          237,
+          823,
+          240
+        ],
+        "median_luminance": 212,
+        "complete": true
+      },
+      "signed_contrast_luminance": 142,
+      "priority_score": 142,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "738fdf97fdc4d4438e5cfe48a27ed80b4c04a8ef7d36479c2f5cbc34db51b61d",
+      "source_label_sha256": "eb623826c1f5dd60f1b2e8710915ad8615ad81d73e97e96dea76d7bc209d07e7",
+      "screen_rank": 8
+    },
+    {
+      "identity": "new_000051:20:right",
+      "image_id": "new_000051",
+      "row": 20,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        628.0,
+        79.9999992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        624.22935136407,
+        75.78310355695174
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          627,
+          79,
+          630,
+          82
+        ],
+        "median_luminance": 63,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          623,
+          75,
+          626,
+          78
+        ],
+        "median_luminance": 204,
+        "complete": true
+      },
+      "signed_contrast_luminance": 141,
+      "priority_score": 141,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+      "source_label_sha256": "8918be22a9a0f316af57c4fb669adb480a746dfd9d400a2b4f8d39aed4a734f3",
+      "screen_rank": 9
+    },
+    {
+      "identity": "old_000004:2:right",
+      "image_id": "old_000004",
+      "row": 2,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        825.0,
+        242.24999760000003
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        820.9478700763236,
+        238.3028159368831
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          824,
+          241,
+          827,
+          244
+        ],
+        "median_luminance": 67,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          820,
+          237,
+          823,
+          240
+        ],
+        "median_luminance": 208,
+        "complete": true
+      },
+      "signed_contrast_luminance": 141,
+      "priority_score": 141,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "d4ab364c88fc7a7cf722f3a31499e529cc01f3e795138f65134b63b80a111bbf",
+      "source_label_sha256": "3a373184543ea39d00883c093d5d3023e194c097e3104bdc1081a1b6ee5c0f1f",
+      "screen_rank": 10
+    },
+    {
+      "identity": "old_000042:7:right",
+      "image_id": "old_000042",
+      "row": 7,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        785.0,
+        555.4699992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        780.9445296294225,
+        551.5262497057537
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          784,
+          554,
+          787,
+          557
+        ],
+        "median_luminance": 72,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          780,
+          551,
+          783,
+          554
+        ],
+        "median_luminance": 213,
+        "complete": true
+      },
+      "signed_contrast_luminance": 141,
+      "priority_score": 141,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "b4fb62065fd129594eefe15210fbae200f4c59932dab3574f73e03704af2c42e",
+      "source_label_sha256": "e0e371bc8f827f85d04d4ee5d2afcbf80f20631f725684e6bc89c02e34cef0c3",
+      "screen_rank": 11
+    },
+    {
+      "identity": "new_000056:12:left",
+      "image_id": "new_000056",
+      "row": 12,
+      "side": "left",
+      "split": "val",
+      "saved_point_xy_px": [
+        562.9699968,
+        474.5399976
+      ],
+      "tangent_method": "horizontal_fallback_one_locatable_corner",
+      "comparison_sample_xy_px": [
+        566.9699968,
+        470.5399976
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          562,
+          474,
+          565,
+          477
+        ],
+        "median_luminance": 42,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          566,
+          470,
+          569,
+          473
+        ],
+        "median_luminance": 182,
+        "complete": true
+      },
+      "signed_contrast_luminance": 140,
+      "priority_score": 140,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "source_label_sha256": "944485e03c8bd9cb8546152dc301a5e658caa525774e338f702e8009c28f3401",
+      "screen_rank": 12
+    },
+    {
+      "identity": "old_000042:8:right",
+      "image_id": "old_000042",
+      "row": 8,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        778.0,
+        575.6299992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        773.947181629537,
+        571.683524411529
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          777,
+          575,
+          780,
+          578
+        ],
+        "median_luminance": 67,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          773,
+          571,
+          776,
+          574
+        ],
+        "median_luminance": 207,
+        "complete": true
+      },
+      "signed_contrast_luminance": 140,
+      "priority_score": 140,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "b4fb62065fd129594eefe15210fbae200f4c59932dab3574f73e03704af2c42e",
+      "source_label_sha256": "e0e371bc8f827f85d04d4ee5d2afcbf80f20631f725684e6bc89c02e34cef0c3",
+      "screen_rank": 13
+    },
+    {
+      "identity": "old_000003:1:right",
+      "image_id": "old_000003",
+      "row": 1,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        833.0,
+        193.0900032
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        828.9417378646857,
+        189.14912659179794
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          832,
+          192,
+          835,
+          195
+        ],
+        "median_luminance": 83,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          828,
+          188,
+          831,
+          191
+        ],
+        "median_luminance": 221,
+        "complete": true
+      },
+      "signed_contrast_luminance": 138,
+      "priority_score": 138,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "738fdf97fdc4d4438e5cfe48a27ed80b4c04a8ef7d36479c2f5cbc34db51b61d",
+      "source_label_sha256": "eb623826c1f5dd60f1b2e8710915ad8615ad81d73e97e96dea76d7bc209d07e7",
+      "screen_rank": 14
+    },
+    {
+      "identity": "old_000003:8:left",
+      "image_id": "old_000003",
+      "row": 8,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        606.0,
+        454.05
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        609.9372747053136,
+        449.9882432501567
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          605,
+          453,
+          608,
+          456
+        ],
+        "median_luminance": 51,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          609,
+          449,
+          612,
+          452
+        ],
+        "median_luminance": 189,
+        "complete": true
+      },
+      "signed_contrast_luminance": 138,
+      "priority_score": 138,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "738fdf97fdc4d4438e5cfe48a27ed80b4c04a8ef7d36479c2f5cbc34db51b61d",
+      "source_label_sha256": "eb623826c1f5dd60f1b2e8710915ad8615ad81d73e97e96dea76d7bc209d07e7",
+      "screen_rank": 15
+    },
+    {
+      "identity": "old_000003:10:right",
+      "image_id": "old_000003",
+      "row": 10,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        853.0,
+        129.5799984
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        848.8552634755883,
+        125.73017254118406
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          852,
+          129,
+          855,
+          132
+        ],
+        "median_luminance": 68,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          848,
+          125,
+          851,
+          128
+        ],
+        "median_luminance": 206,
+        "complete": true
+      },
+      "signed_contrast_luminance": 138,
+      "priority_score": 138,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "738fdf97fdc4d4438e5cfe48a27ed80b4c04a8ef7d36479c2f5cbc34db51b61d",
+      "source_label_sha256": "eb623826c1f5dd60f1b2e8710915ad8615ad81d73e97e96dea76d7bc209d07e7",
+      "screen_rank": 16
+    },
+    {
+      "identity": "old_000004:3:right",
+      "image_id": "old_000004",
+      "row": 3,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        814.8999936,
+        286.2200016
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        810.8708028607174,
+        282.2494069359126
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          814,
+          285,
+          817,
+          288
+        ],
+        "median_luminance": 70,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          810,
+          281,
+          813,
+          284
+        ],
+        "median_luminance": 207,
+        "complete": true
+      },
+      "signed_contrast_luminance": 137,
+      "priority_score": 137,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "d4ab364c88fc7a7cf722f3a31499e529cc01f3e795138f65134b63b80a111bbf",
+      "source_label_sha256": "3a373184543ea39d00883c093d5d3023e194c097e3104bdc1081a1b6ee5c0f1f",
+      "screen_rank": 17
+    },
+    {
+      "identity": "old_000042:5:left",
+      "image_id": "old_000042",
+      "row": 5,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        601.0,
+        509.5100016
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        604.935210843064,
+        505.4462452563408
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          600,
+          509,
+          603,
+          512
+        ],
+        "median_luminance": 71,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          604,
+          504,
+          607,
+          507
+        ],
+        "median_luminance": 208,
+        "complete": true
+      },
+      "signed_contrast_luminance": 137,
+      "priority_score": 137,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "b4fb62065fd129594eefe15210fbae200f4c59932dab3574f73e03704af2c42e",
+      "source_label_sha256": "e0e371bc8f827f85d04d4ee5d2afcbf80f20631f725684e6bc89c02e34cef0c3",
+      "screen_rank": 18
+    },
+    {
+      "identity": "new_000037:7:right",
+      "image_id": "new_000037",
+      "row": 7,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        641.0,
+        349.9999992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        637.4917502101658,
+        345.5624116333002
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          640,
+          349,
+          643,
+          352
+        ],
+        "median_luminance": 59,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          636,
+          345,
+          639,
+          348
+        ],
+        "median_luminance": 195,
+        "complete": true
+      },
+      "signed_contrast_luminance": 136,
+      "priority_score": 136,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3",
+      "source_label_sha256": "d4edbc10d2ff724958b83b2b4801b99f4ed4b33c03d830031150781f7224565b",
+      "screen_rank": 19
+    },
+    {
+      "identity": "new_000070:14:left",
+      "image_id": "new_000070",
+      "row": 14,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        591.0,
+        322.9999992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        595.3261077180739,
+        319.35516833813256
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          590,
+          322,
+          593,
+          325
+        ],
+        "median_luminance": 36,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          594,
+          318,
+          597,
+          321
+        ],
+        "median_luminance": 172,
+        "complete": true
+      },
+      "signed_contrast_luminance": 136,
+      "priority_score": 136,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+      "source_label_sha256": "6ed70eeb1df9667e55d9ec0ed0db1794546ba05a10ef621c169e703eb8aa0e2c",
+      "screen_rank": 20
+    },
+    {
+      "identity": "old_000007:7:left",
+      "image_id": "old_000007",
+      "row": 7,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        603.0,
+        427.7499984
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        606.9560063999338,
+        423.7064834236851
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          602,
+          427,
+          605,
+          430
+        ],
+        "median_luminance": 57,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          606,
+          423,
+          609,
+          426
+        ],
+        "median_luminance": 193,
+        "complete": true
+      },
+      "signed_contrast_luminance": 136,
+      "priority_score": 136,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "b56b7fcfd5424959e4309d869d796c71063439f3bf2b73ed531a5518163fe941",
+      "source_label_sha256": "d748afa5c26d736876049d5b53a5edc6d599fdab41d932f5c86943da4e51ab4a",
+      "screen_rank": 21
+    },
+    {
+      "identity": "old_000061:6:left",
+      "image_id": "old_000061",
+      "row": 6,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        592.0,
+        392.93999999999994
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        595.9601317483808,
+        388.90052521539405
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          591,
+          392,
+          594,
+          395
+        ],
+        "median_luminance": 70,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          595,
+          388,
+          598,
+          391
+        ],
+        "median_luminance": 206,
+        "complete": true
+      },
+      "signed_contrast_luminance": 136,
+      "priority_score": 136,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "d96ebdb8f31959086c449367612cf9fb9156f72f3038b9dcf0cd9c53a88913ef",
+      "source_label_sha256": "158a42bf8d75463906d4c9e07a015edb83cf3c58874a85a47889c49c109280ad",
+      "screen_rank": 22
+    },
+    {
+      "identity": "new_000114:19:left",
+      "image_id": "new_000114",
+      "row": 19,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        496.0,
+        472.99999679999996
+      ],
+      "tangent_method": "horizontal_fallback_one_locatable_corner",
+      "comparison_sample_xy_px": [
+        500.0,
+        468.99999679999996
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          495,
+          472,
+          498,
+          475
+        ],
+        "median_luminance": 53,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          499,
+          468,
+          502,
+          471
+        ],
+        "median_luminance": 188,
+        "complete": true
+      },
+      "signed_contrast_luminance": 135,
+      "priority_score": 135,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "42ef4edb56e6cc801466aa4350b009d27ecd2524cf240778efbb3d865c3c2667",
+      "source_label_sha256": "e8b4ea4b3aeb40bd7088695880f34d7663fa3b25b2ec3a88994725620a7b471a",
+      "screen_rank": 23
+    },
+    {
+      "identity": "new_000050:30:left",
+      "image_id": "new_000050",
+      "row": 30,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        560.12,
+        107.71999919999999
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        564.2601829342126,
+        103.86527673641663
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          559,
+          107,
+          562,
+          110
+        ],
+        "median_luminance": 80,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          563,
+          103,
+          566,
+          106
+        ],
+        "median_luminance": 214,
+        "complete": true
+      },
+      "signed_contrast_luminance": 134,
+      "priority_score": 134,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77",
+      "source_label_sha256": "d96142fd4e9aa4db66caae8eb992b908a92ed420416a123cd268d13390535d25",
+      "screen_rank": 24
+    },
+    {
+      "identity": "new_000065:11:left",
+      "image_id": "new_000065",
+      "row": 11,
+      "side": "left",
+      "split": "train",
+      "saved_point_xy_px": [
+        467.9100032,
+        450.1699992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        471.90711987942177,
+        446.16711795630965
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          467,
+          449,
+          470,
+          452
+        ],
+        "median_luminance": 59,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          471,
+          445,
+          474,
+          448
+        ],
+        "median_luminance": 193,
+        "complete": true
+      },
+      "signed_contrast_luminance": 134,
+      "priority_score": 134,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "1942a485fd88f64fc0ded58a2f28d85431e7fb5d6cab14663e5c4689b49040c9",
+      "source_label_sha256": "8e9971268cc35b505eb7e393bba40a9b1d01217f4f6fdb5bd474640387d7d5ef",
+      "screen_rank": 25
+    },
+    {
+      "identity": "new_000080:11:right",
+      "image_id": "new_000080",
+      "row": 11,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        700.5800064,
+        383.02999919999996
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        696.921629614874,
+        378.7153405462881
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          700,
+          382,
+          703,
+          385
+        ],
+        "median_luminance": 52,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          696,
+          378,
+          699,
+          381
+        ],
+        "median_luminance": 186,
+        "complete": true
+      },
+      "signed_contrast_luminance": 134,
+      "priority_score": 134,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "5c2cb743eaed9fd50933638a9e8e130de63e0c7743f1446a8a6aadfb1950c092",
+      "source_label_sha256": "72262742318962768ae2b85ad5c2ef3e1acc12406ee46c1dc8bee7c88278cdf2",
+      "screen_rank": 26
+    },
+    {
+      "identity": "new_000121:10:right",
+      "image_id": "new_000121",
+      "row": 10,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        658.8700031999999,
+        110.4700032
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        655.1434798941187,
+        106.21406334484176
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          658,
+          109,
+          661,
+          112
+        ],
+        "median_luminance": 65,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          654,
+          105,
+          657,
+          108
+        ],
+        "median_luminance": 199,
+        "complete": true
+      },
+      "signed_contrast_luminance": 134,
+      "priority_score": 134,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+      "source_label_sha256": "e79a8bb2356a0675057d4ea68e951b3b76e769d4290798a1ca4ce5bb0fdacb76",
+      "screen_rank": 27
+    },
+    {
+      "identity": "new_000037:9:right",
+      "image_id": "new_000037",
+      "row": 9,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        636.0,
+        413.99999999999994
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        632.5202453985125,
+        409.54003274525166
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          635,
+          413,
+          638,
+          416
+        ],
+        "median_luminance": 48,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          632,
+          409,
+          635,
+          412
+        ],
+        "median_luminance": 181,
+        "complete": true
+      },
+      "signed_contrast_luminance": 133,
+      "priority_score": 133,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3",
+      "source_label_sha256": "d4edbc10d2ff724958b83b2b4801b99f4ed4b33c03d830031150781f7224565b",
+      "screen_rank": 28
+    },
+    {
+      "identity": "new_000083:3:right",
+      "image_id": "new_000083",
+      "row": 3,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        638.9299968,
+        308.76999839999996
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        635.4185845507258,
+        304.3349128297266
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          638,
+          308,
+          641,
+          311
+        ],
+        "median_luminance": 45,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          634,
+          303,
+          637,
+          306
+        ],
+        "median_luminance": 178,
+        "complete": true
+      },
+      "signed_contrast_luminance": 133,
+      "priority_score": 133,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "1959899c2d0abf5c3c7b10c344840191d7946aeb8ed18ae8ee01f1bef0989673",
+      "source_label_sha256": "a262da90f67d5ef8db302f94f1105708f7a30b7410495030e8963a02e0b6eac4",
+      "screen_rank": 29
+    },
+    {
+      "identity": "old_000089:4:right",
+      "image_id": "old_000089",
+      "row": 4,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        650.0,
+        297.1100016
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        646.0465471984999,
+        293.06398986666176
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          649,
+          296,
+          652,
+          299
+        ],
+        "median_luminance": 63,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          645,
+          292,
+          648,
+          295
+        ],
+        "median_luminance": 196,
+        "complete": true
+      },
+      "signed_contrast_luminance": 133,
+      "priority_score": 133,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "aea9263e41a677bf9c35d47712c6e4cbb91962756ea95d35a153c582d771f4e6",
+      "source_label_sha256": "03ef759cac561ea9bdea161cf08d263e246963fd2c06e5c2052127e0a3e2b8f0",
+      "screen_rank": 30
+    },
+    {
+      "identity": "new_000037:14:right",
+      "image_id": "new_000037",
+      "row": 14,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        807.0,
+        436.0000032
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        803.5709692733053,
+        431.50092015171293
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          806,
+          435,
+          809,
+          438
+        ],
+        "median_luminance": 53,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          803,
+          431,
+          806,
+          434
+        ],
+        "median_luminance": 185,
+        "complete": true
+      },
+      "signed_contrast_luminance": 132,
+      "priority_score": 132,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3",
+      "source_label_sha256": "d4edbc10d2ff724958b83b2b4801b99f4ed4b33c03d830031150781f7224565b",
+      "screen_rank": 31
+    },
+    {
+      "identity": "old_000003:3:right",
+      "image_id": "old_000003",
+      "row": 3,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        810.0,
+        288.0799992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        805.9916070012758,
+        284.08840984639926
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          809,
+          287,
+          812,
+          290
+        ],
+        "median_luminance": 70,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          805,
+          283,
+          808,
+          286
+        ],
+        "median_luminance": 202,
+        "complete": true
+      },
+      "signed_contrast_luminance": 132,
+      "priority_score": 132,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "738fdf97fdc4d4438e5cfe48a27ed80b4c04a8ef7d36479c2f5cbc34db51b61d",
+      "source_label_sha256": "eb623826c1f5dd60f1b2e8710915ad8615ad81d73e97e96dea76d7bc209d07e7",
+      "screen_rank": 32
+    },
+    {
+      "identity": "new_000013:7:right",
+      "image_id": "new_000013",
+      "row": 7,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        685.8099968,
+        223.6600008
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        681.8714789421268,
+        219.59944947250594
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          685,
+          223,
+          688,
+          226
+        ],
+        "median_luminance": 67,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          681,
+          219,
+          684,
+          222
+        ],
+        "median_luminance": 198,
+        "complete": true
+      },
+      "signed_contrast_luminance": 131,
+      "priority_score": 131,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": true,
+        "new_series": true
+      },
+      "source_image_sha256": "f6a83ea036d86a496964c965f4ab30b0b823722fe180deda93f5d1348f88cd07",
+      "source_label_sha256": "9af572f3490ae7e3013d3f0ffb15b5371dc44c15f89cfffff834adf3f3c8d59f",
+      "screen_rank": 33
+    },
+    {
+      "identity": "new_000081:12:right",
+      "image_id": "new_000081",
+      "row": 12,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        826.04,
+        359.73
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        822.3590581469002,
+        355.43457603092565
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          825,
+          359,
+          828,
+          362
+        ],
+        "median_luminance": 58,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          821,
+          354,
+          824,
+          357
+        ],
+        "median_luminance": 189,
+        "complete": true
+      },
+      "signed_contrast_luminance": 131,
+      "priority_score": 131,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "2715f868c98a3cb349cb3dd5381dd43d4b99a3dade0121325d056790ebbea06b",
+      "source_label_sha256": "403dc9fdf3108f098b83ec476ab65d8360711c4bd1e4112fe52e120230b07494",
+      "screen_rank": 34
+    },
+    {
+      "identity": "new_000087:14:right",
+      "image_id": "new_000087",
+      "row": 14,
+      "side": "right",
+      "split": "val",
+      "saved_point_xy_px": [
+        708.5399936,
+        247.3999992
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        704.7933319141988,
+        243.1617771420907
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          708,
+          246,
+          711,
+          249
+        ],
+        "median_luminance": 58,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          704,
+          242,
+          707,
+          245
+        ],
+        "median_luminance": 189,
+        "complete": true
+      },
+      "signed_contrast_luminance": 131,
+      "priority_score": 131,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "source_label_sha256": "8572a7a76cc1ace30188c5cf42cc56629c8b78b62a45b941e8d23550dfee27b7",
+      "screen_rank": 35
+    },
+    {
+      "identity": "old_000089:7:right",
+      "image_id": "old_000089",
+      "row": 7,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        623.0,
+        428.4599976
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        618.8756249602326,
+        424.58836609230934
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          622,
+          427,
+          625,
+          430
+        ],
+        "median_luminance": 57,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          618,
+          424,
+          621,
+          427
+        ],
+        "median_luminance": 188,
+        "complete": true
+      },
+      "signed_contrast_luminance": 131,
+      "priority_score": 131,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": true,
+        "already_in_current_bounded_review": false,
+        "new_series": false
+      },
+      "source_image_sha256": "aea9263e41a677bf9c35d47712c6e4cbb91962756ea95d35a153c582d771f4e6",
+      "source_label_sha256": "03ef759cac561ea9bdea161cf08d263e246963fd2c06e5c2052127e0a3e2b8f0",
+      "screen_rank": 36
+    },
+    {
+      "identity": "new_000051:4:right",
+      "image_id": "new_000051",
+      "row": 4,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        612.5699968,
+        404.93000159999997
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        608.5699968,
+        400.93000159999997
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          612,
+          404,
+          615,
+          407
+        ],
+        "median_luminance": 65,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          608,
+          400,
+          611,
+          403
+        ],
+        "median_luminance": 195,
+        "complete": true
+      },
+      "signed_contrast_luminance": 130,
+      "priority_score": 130,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+      "source_label_sha256": "8918be22a9a0f316af57c4fb669adb480a746dfd9d400a2b4f8d39aed4a734f3",
+      "screen_rank": 37
+    },
+    {
+      "identity": "new_000058:14:right",
+      "image_id": "new_000058",
+      "row": 14,
+      "side": "right",
+      "split": "val",
+      "saved_point_xy_px": [
+        788.1299968000001,
+        406.56000240000003
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        784.3344768277631,
+        402.36547881080065
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          787,
+          406,
+          790,
+          409
+        ],
+        "median_luminance": 64,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          783,
+          401,
+          786,
+          404
+        ],
+        "median_luminance": 194,
+        "complete": true
+      },
+      "signed_contrast_luminance": 130,
+      "priority_score": 130,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "source_label_sha256": "2f536bfa2214fd8aa26561c56caa3c08100f9a3e08a0c78637b115eae1f06783",
+      "screen_rank": 38
+    },
+    {
+      "identity": "new_000080:12:right",
+      "image_id": "new_000080",
+      "row": 12,
+      "side": "right",
+      "split": "train",
+      "saved_point_xy_px": [
+        851.7100032000001,
+        400.00999679999995
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        848.2257604825804,
+        395.553534897761
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          851,
+          399,
+          854,
+          402
+        ],
+        "median_luminance": 50,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          847,
+          395,
+          850,
+          398
+        ],
+        "median_luminance": 180,
+        "complete": true
+      },
+      "signed_contrast_luminance": 130,
+      "priority_score": 130,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "5c2cb743eaed9fd50933638a9e8e130de63e0c7743f1446a8a6aadfb1950c092",
+      "source_label_sha256": "72262742318962768ae2b85ad5c2ef3e1acc12406ee46c1dc8bee7c88278cdf2",
+      "screen_rank": 39
+    },
+    {
+      "identity": "new_000087:10:right",
+      "image_id": "new_000087",
+      "row": 10,
+      "side": "right",
+      "split": "val",
+      "saved_point_xy_px": [
+        715.1699968,
+        156.3400008
+      ],
+      "tangent_method": "two_locatable_corners",
+      "comparison_sample_xy_px": [
+        711.5635722304561,
+        151.9818243666521
+      ],
+      "saved_point_patch": {
+        "bounds_xyxy": [
+          714,
+          155,
+          717,
+          158
+        ],
+        "median_luminance": 61,
+        "complete": true
+      },
+      "inward_up_patch": {
+        "bounds_xyxy": [
+          711,
+          151,
+          714,
+          154
+        ],
+        "median_luminance": 191,
+        "complete": true
+      },
+      "signed_contrast_luminance": 130,
+      "priority_score": 130,
+      "tags": {
+        "protected_standard": false,
+        "held_photo": false,
+        "excluded_training_photo": false,
+        "already_in_current_bounded_review": false,
+        "new_series": true
+      },
+      "source_image_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "source_label_sha256": "8572a7a76cc1ace30188c5cf42cc56629c8b78b62a45b941e8d23550dfee27b7",
+      "screen_rank": 40
+    }
+  ],
+  "additional_review_selection": {
+    "rule": "Top 8 scored eligible endpoints on distinct new-series photos; skip protected rows, held/excluded photos and all currently reviewed photos. No manual replacement of selected cases.",
+    "blocked_photo_ids": [
+      "new_000005",
+      "new_000006",
+      "new_000007",
+      "new_000008",
+      "new_000009",
+      "new_000012",
+      "new_000013",
+      "new_000014",
+      "new_000015",
+      "new_000016"
+    ],
+    "selected": [
+      {
+        "identity": "new_000083:12:right",
+        "image_id": "new_000083",
+        "row": 12,
+        "side": "right",
+        "split": "train",
+        "saved_point_xy_px": [
+          628.5699968,
+          418.7399976
+        ],
+        "tangent_method": "two_locatable_corners",
+        "comparison_sample_xy_px": [
+          624.9376753405269,
+          414.4033813136483
+        ],
+        "saved_point_patch": {
+          "bounds_xyxy": [
+            628,
+            418,
+            631,
+            421
+          ],
+          "median_luminance": 37,
+          "complete": true
+        },
+        "inward_up_patch": {
+          "bounds_xyxy": [
+            624,
+            413,
+            627,
+            416
+          ],
+          "median_luminance": 192,
+          "complete": true
+        },
+        "signed_contrast_luminance": 155,
+        "priority_score": 155,
+        "tags": {
+          "protected_standard": false,
+          "held_photo": false,
+          "excluded_training_photo": false,
+          "already_in_current_bounded_review": false,
+          "new_series": true
+        },
+        "source_image_sha256": "1959899c2d0abf5c3c7b10c344840191d7946aeb8ed18ae8ee01f1bef0989673",
+        "source_label_sha256": "a262da90f67d5ef8db302f94f1105708f7a30b7410495030e8963a02e0b6eac4",
+        "screen_rank": 2
+      },
+      {
+        "identity": "new_000049:3:right",
+        "image_id": "new_000049",
+        "row": 3,
+        "side": "right",
+        "split": "train",
+        "saved_point_xy_px": [
+          618.7500032,
+          431.6299992
+        ],
+        "tangent_method": "two_locatable_corners",
+        "comparison_sample_xy_px": [
+          615.112017088963,
+          427.2981338909326
+        ],
+        "saved_point_patch": {
+          "bounds_xyxy": [
+            618,
+            431,
+            621,
+            434
+          ],
+          "median_luminance": 38,
+          "complete": true
+        },
+        "inward_up_patch": {
+          "bounds_xyxy": [
+            614,
+            426,
+            617,
+            429
+          ],
+          "median_luminance": 189,
+          "complete": true
+        },
+        "signed_contrast_luminance": 151,
+        "priority_score": 151,
+        "tags": {
+          "protected_standard": false,
+          "held_photo": false,
+          "excluded_training_photo": false,
+          "already_in_current_bounded_review": false,
+          "new_series": true
+        },
+        "source_image_sha256": "bd085b01cf8fbce5df55d5f91c6e7810f03848f307c409d2afcd5e6cde652b7a",
+        "source_label_sha256": "f02a090e71f737a868d91186393c2dd08f4f46a95154c78c84e5cd28afa98dd0",
+        "screen_rank": 3
+      },
+      {
+        "identity": "new_000051:20:right",
+        "image_id": "new_000051",
+        "row": 20,
+        "side": "right",
+        "split": "train",
+        "saved_point_xy_px": [
+          628.0,
+          79.9999992
+        ],
+        "tangent_method": "two_locatable_corners",
+        "comparison_sample_xy_px": [
+          624.22935136407,
+          75.78310355695174
+        ],
+        "saved_point_patch": {
+          "bounds_xyxy": [
+            627,
+            79,
+            630,
+            82
+          ],
+          "median_luminance": 63,
+          "complete": true
+        },
+        "inward_up_patch": {
+          "bounds_xyxy": [
+            623,
+            75,
+            626,
+            78
+          ],
+          "median_luminance": 204,
+          "complete": true
+        },
+        "signed_contrast_luminance": 141,
+        "priority_score": 141,
+        "tags": {
+          "protected_standard": false,
+          "held_photo": false,
+          "excluded_training_photo": false,
+          "already_in_current_bounded_review": false,
+          "new_series": true
+        },
+        "source_image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+        "source_label_sha256": "8918be22a9a0f316af57c4fb669adb480a746dfd9d400a2b4f8d39aed4a734f3",
+        "screen_rank": 9
+      },
+      {
+        "identity": "new_000056:12:left",
+        "image_id": "new_000056",
+        "row": 12,
+        "side": "left",
+        "split": "val",
+        "saved_point_xy_px": [
+          562.9699968,
+          474.5399976
+        ],
+        "tangent_method": "horizontal_fallback_one_locatable_corner",
+        "comparison_sample_xy_px": [
+          566.9699968,
+          470.5399976
+        ],
+        "saved_point_patch": {
+          "bounds_xyxy": [
+            562,
+            474,
+            565,
+            477
+          ],
+          "median_luminance": 42,
+          "complete": true
+        },
+        "inward_up_patch": {
+          "bounds_xyxy": [
+            566,
+            470,
+            569,
+            473
+          ],
+          "median_luminance": 182,
+          "complete": true
+        },
+        "signed_contrast_luminance": 140,
+        "priority_score": 140,
+        "tags": {
+          "protected_standard": false,
+          "held_photo": false,
+          "excluded_training_photo": false,
+          "already_in_current_bounded_review": false,
+          "new_series": true
+        },
+        "source_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+        "source_label_sha256": "944485e03c8bd9cb8546152dc301a5e658caa525774e338f702e8009c28f3401",
+        "screen_rank": 12
+      },
+      {
+        "identity": "new_000037:7:right",
+        "image_id": "new_000037",
+        "row": 7,
+        "side": "right",
+        "split": "train",
+        "saved_point_xy_px": [
+          641.0,
+          349.9999992
+        ],
+        "tangent_method": "two_locatable_corners",
+        "comparison_sample_xy_px": [
+          637.4917502101658,
+          345.5624116333002
+        ],
+        "saved_point_patch": {
+          "bounds_xyxy": [
+            640,
+            349,
+            643,
+            352
+          ],
+          "median_luminance": 59,
+          "complete": true
+        },
+        "inward_up_patch": {
+          "bounds_xyxy": [
+            636,
+            345,
+            639,
+            348
+          ],
+          "median_luminance": 195,
+          "complete": true
+        },
+        "signed_contrast_luminance": 136,
+        "priority_score": 136,
+        "tags": {
+          "protected_standard": false,
+          "held_photo": false,
+          "excluded_training_photo": false,
+          "already_in_current_bounded_review": false,
+          "new_series": true
+        },
+        "source_image_sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3",
+        "source_label_sha256": "d4edbc10d2ff724958b83b2b4801b99f4ed4b33c03d830031150781f7224565b",
+        "screen_rank": 19
+      },
+      {
+        "identity": "new_000070:14:left",
+        "image_id": "new_000070",
+        "row": 14,
+        "side": "left",
+        "split": "train",
+        "saved_point_xy_px": [
+          591.0,
+          322.9999992
+        ],
+        "tangent_method": "two_locatable_corners",
+        "comparison_sample_xy_px": [
+          595.3261077180739,
+          319.35516833813256
+        ],
+        "saved_point_patch": {
+          "bounds_xyxy": [
+            590,
+            322,
+            593,
+            325
+          ],
+          "median_luminance": 36,
+          "complete": true
+        },
+        "inward_up_patch": {
+          "bounds_xyxy": [
+            594,
+            318,
+            597,
+            321
+          ],
+          "median_luminance": 172,
+          "complete": true
+        },
+        "signed_contrast_luminance": 136,
+        "priority_score": 136,
+        "tags": {
+          "protected_standard": false,
+          "held_photo": false,
+          "excluded_training_photo": false,
+          "already_in_current_bounded_review": false,
+          "new_series": true
+        },
+        "source_image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+        "source_label_sha256": "6ed70eeb1df9667e55d9ec0ed0db1794546ba05a10ef621c169e703eb8aa0e2c",
+        "screen_rank": 20
+      },
+      {
+        "identity": "new_000114:19:left",
+        "image_id": "new_000114",
+        "row": 19,
+        "side": "left",
+        "split": "train",
+        "saved_point_xy_px": [
+          496.0,
+          472.99999679999996
+        ],
+        "tangent_method": "horizontal_fallback_one_locatable_corner",
+        "comparison_sample_xy_px": [
+          500.0,
+          468.99999679999996
+        ],
+        "saved_point_patch": {
+          "bounds_xyxy": [
+            495,
+            472,
+            498,
+            475
+          ],
+          "median_luminance": 53,
+          "complete": true
+        },
+        "inward_up_patch": {
+          "bounds_xyxy": [
+            499,
+            468,
+            502,
+            471
+          ],
+          "median_luminance": 188,
+          "complete": true
+        },
+        "signed_contrast_luminance": 135,
+        "priority_score": 135,
+        "tags": {
+          "protected_standard": false,
+          "held_photo": false,
+          "excluded_training_photo": false,
+          "already_in_current_bounded_review": false,
+          "new_series": true
+        },
+        "source_image_sha256": "42ef4edb56e6cc801466aa4350b009d27ecd2524cf240778efbb3d865c3c2667",
+        "source_label_sha256": "e8b4ea4b3aeb40bd7088695880f34d7663fa3b25b2ec3a88994725620a7b471a",
+        "screen_rank": 23
+      },
+      {
+        "identity": "new_000050:30:left",
+        "image_id": "new_000050",
+        "row": 30,
+        "side": "left",
+        "split": "train",
+        "saved_point_xy_px": [
+          560.12,
+          107.71999919999999
+        ],
+        "tangent_method": "two_locatable_corners",
+        "comparison_sample_xy_px": [
+          564.2601829342126,
+          103.86527673641663
+        ],
+        "saved_point_patch": {
+          "bounds_xyxy": [
+            559,
+            107,
+            562,
+            110
+          ],
+          "median_luminance": 80,
+          "complete": true
+        },
+        "inward_up_patch": {
+          "bounds_xyxy": [
+            563,
+            103,
+            566,
+            106
+          ],
+          "median_luminance": 214,
+          "complete": true
+        },
+        "signed_contrast_luminance": 134,
+        "priority_score": 134,
+        "tags": {
+          "protected_standard": false,
+          "held_photo": false,
+          "excluded_training_photo": false,
+          "already_in_current_bounded_review": false,
+          "new_series": true
+        },
+        "source_image_sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77",
+        "source_label_sha256": "d96142fd4e9aa4db66caae8eb992b908a92ed420416a123cd268d13390535d25",
+        "screen_rank": 24
+      }
+    ]
+  },
+  "source_images": [
+    {
+      "image_id": "new_000001",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000001.png",
+      "image_sha256": "176e88b325c9d7bf87776b1220d0bc31dd50f4c1485b4efc23046cc2f4348818",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000001.txt",
+      "label_sha256": "6ca21d52993f561091aec0c487f81c489298aaab3f0e7895b3c06808fb9ca892",
+      "objects": 51
+    },
+    {
+      "image_id": "new_000002",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000002.png",
+      "image_sha256": "7f02be1bbd1f2a0f2512f985d8583189d43c1ceb1be3fd44a3f368c5a9697234",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000002.txt",
+      "label_sha256": "5a9b09a7fe1085964e6cf03ba9b101004b93e6f760165a6f5fe524c6541af98b",
+      "objects": 48
+    },
+    {
+      "image_id": "new_000003",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000003.png",
+      "image_sha256": "dff9cbf866dccc910c44843e5771d5434cbe4d082682282a0cabfb77dd94b5f9",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000003.txt",
+      "label_sha256": "b7b502c61282ca3b771437889308fc8178c68d1d9c8dafd5badc1642b092e47d",
+      "objects": 61
+    },
+    {
+      "image_id": "new_000004",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000004.png",
+      "image_sha256": "e8580246300b9ac6f892cf4e54e948289d04ef6d3e99aabca2cdc64ffbbd2cfe",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000004.txt",
+      "label_sha256": "345d91a58b9a7a90d8121d0c1dbe80b5209bb8459cecdd50922af42b7c929e03",
+      "objects": 55
+    },
+    {
+      "image_id": "new_000005",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000005.png",
+      "image_sha256": "de9ebaaf01de8f3525a8527bef96e059e811d50a5b725c0e13681611276b5614",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000005.txt",
+      "label_sha256": "72d1345847bdbadc0cc706eaec66a2ddbf841849a91fa0598b481607e91e0a5b",
+      "objects": 52
+    },
+    {
+      "image_id": "new_000006",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000006.png",
+      "image_sha256": "666bdac6bc39d2192ef430a28274ed2a042896cddee5b64e084f6fca2b5ab79a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000006.txt",
+      "label_sha256": "985e6a5c07d2ae47a57b43106f129b3d13025723121277f7ba8ec9af6584d0bf",
+      "objects": 60
+    },
+    {
+      "image_id": "new_000007",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000007.png",
+      "image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000007.txt",
+      "label_sha256": "5712c89a9f50c23f848e1c888ea99de02e16051c1f2debf0893982fe1be89d54",
+      "objects": 52
+    },
+    {
+      "image_id": "new_000008",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000008.png",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000008.txt",
+      "label_sha256": "41224bbd8e9da513896c865c54b4f837dc5304a4ea914b72a62ec11e66e86b7a",
+      "objects": 35
+    },
+    {
+      "image_id": "new_000009",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000009.png",
+      "image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000009.txt",
+      "label_sha256": "8b167a3ec34d9d0b8ec5f6abf0fd40b5aa00a33790b9d5d7c9ac271aca6ab618",
+      "objects": 57
+    },
+    {
+      "image_id": "new_000010",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000010.png",
+      "image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000010.txt",
+      "label_sha256": "d70cb5745bfabbad940e9ec0203a58aa6ade7cce0e9385f1a9777a47cda98116",
+      "objects": 34
+    },
+    {
+      "image_id": "new_000011",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000011.png",
+      "image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000011.txt",
+      "label_sha256": "b76be2ad712e25df03e3dda10d56de40d47b962667c8f3d436943b7009516500",
+      "objects": 60
+    },
+    {
+      "image_id": "new_000012",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000012.png",
+      "image_sha256": "c65d2dda5e2dbf91a9fcae1c98c3cc451f9319be740ce0a99cff718c0d159b0b",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000012.txt",
+      "label_sha256": "0b63245d4f25abb54abf22e5961a0e0a3640d4237896592e31238e931f67f18e",
+      "objects": 40
+    },
+    {
+      "image_id": "new_000013",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000013.png",
+      "image_sha256": "f6a83ea036d86a496964c965f4ab30b0b823722fe180deda93f5d1348f88cd07",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000013.txt",
+      "label_sha256": "9af572f3490ae7e3013d3f0ffb15b5371dc44c15f89cfffff834adf3f3c8d59f",
+      "objects": 37
+    },
+    {
+      "image_id": "new_000014",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000014.png",
+      "image_sha256": "802d6974b579395339fd733b448b570aab0d7311bea2f5f865f828fbbb2d709c",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000014.txt",
+      "label_sha256": "f10a25763cb518ae4aa003d93f3daec34162b0fc379b15df991e4547f242be33",
+      "objects": 38
+    },
+    {
+      "image_id": "new_000015",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000015.png",
+      "image_sha256": "bc802caa8df197bf91bad5f027cc7ef869d884bae7ee6f808951e11a64f961d9",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000015.txt",
+      "label_sha256": "ab1cc18861ee67e5703ebedc29089b0e639664d3868432af1d7673bb4457747b",
+      "objects": 61
+    },
+    {
+      "image_id": "new_000016",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000016.png",
+      "image_sha256": "1e76baeaa0a01c892b294866c517881456686624af1f900ec2ecefbae92ed81e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000016.txt",
+      "label_sha256": "43dad1e18b50f791f7e728deafdb57e45e1b76bcf95efa392e57d487373a288d",
+      "objects": 41
+    },
+    {
+      "image_id": "new_000017",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000017.png",
+      "image_sha256": "3bdd8a39de78161b2fcbffa94c2b24f48ce1087c51e0ec966f31bd163764d281",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000017.txt",
+      "label_sha256": "eb139a247997566d745f83996c84ab00b69d2fdc949104bcc95f12a75f7ff0fc",
+      "objects": 59
+    },
+    {
+      "image_id": "new_000018",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000018.png",
+      "image_sha256": "e0d709a3e7e497bdac07a8cf90be7a14c005117b45072010ba27da5ddf8576c7",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000018.txt",
+      "label_sha256": "4126ba7474229157ac86eb4627c5f7282abb20bc11a9b6d9d6b4271669df565a",
+      "objects": 36
+    },
+    {
+      "image_id": "new_000019",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000019.png",
+      "image_sha256": "86af08ed4a772c1e1f79a0d7f923885677ee1a5dc25d476b005941d8ddfd44d8",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000019.txt",
+      "label_sha256": "8e53e7d424cc973adcd2b98506007cccb81fe8eb88bba50da0c725dbca892259",
+      "objects": 63
+    },
+    {
+      "image_id": "new_000020",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000020.png",
+      "image_sha256": "ecad93d57dd88733c05e252338810d6f47662b08b67cebb3603b02ede19cdec9",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000020.txt",
+      "label_sha256": "4a16fe193191afa9bb9c88b18ce7679914cd55c91f6a44ab7fffbab2db6257e3",
+      "objects": 54
+    },
+    {
+      "image_id": "new_000023",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000023.png",
+      "image_sha256": "3bb858735aa80fb8c07e19eb6c05c35cd601ef7a355bd5de0f9446d2625e895b",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000023.txt",
+      "label_sha256": "66a6eb6d5274a70089a9b2395ce4e10035f03ef6ad79a959ca9e023ab69e9762",
+      "objects": 37
+    },
+    {
+      "image_id": "new_000024",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000024.png",
+      "image_sha256": "10634fdefefb5d13027150a2734150271d82d8d2c39461e97fcea1d134ee96fd",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000024.txt",
+      "label_sha256": "40d7d11ecb5e232c6b6ee977f4289b9af12efd4a6f39b83f2dee17a4f4b6cede",
+      "objects": 38
+    },
+    {
+      "image_id": "new_000025",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000025.png",
+      "image_sha256": "1000be2046fce410ea5e929942008682a781dc02918c92d4c526b881b54776ac",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000025.txt",
+      "label_sha256": "c7fdb447a4e87bba2f149e30ba5dfee20235a73e8ac185546c0bbdc837469bd9",
+      "objects": 57
+    },
+    {
+      "image_id": "new_000026",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000026.png",
+      "image_sha256": "304d648d7382d01b3326039c38ebcc92bfa0341aa2b55be7c5e32aea0cce8179",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000026.txt",
+      "label_sha256": "0d527e88db0e5b81e7711d2379b748e5dfc03a0b3a3f15135cb6b432ef8478c3",
+      "objects": 56
+    },
+    {
+      "image_id": "new_000027",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000027.png",
+      "image_sha256": "2ba9189c0c4df270dd33afb61e6efe3a4d5551244ca97ac6152c1e394dc0a8f8",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000027.txt",
+      "label_sha256": "bf5feb0e2213aa75066a1b03f571fd32eb86e6668f212616d1a7baea359704e5",
+      "objects": 14
+    },
+    {
+      "image_id": "new_000028",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000028.png",
+      "image_sha256": "539f0b9b019e06e00bd338f30e28852aaa29b6d92ec60b788c3eb4f8f3844ded",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000028.txt",
+      "label_sha256": "a6e54ccd78584b146257b5e2144037a71f2161d44b2e61c6b0b7ec87a63eaae5",
+      "objects": 62
+    },
+    {
+      "image_id": "new_000029",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000029.png",
+      "image_sha256": "648c113c1cfb6bbb2342851d1ecf8b0d1d3f97f230344915129b468b4b4e2040",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000029.txt",
+      "label_sha256": "36ddf058dc667eb745f7e26a582e08cd70b98e790655bc4b5e5dbd17c6423734",
+      "objects": 47
+    },
+    {
+      "image_id": "new_000030",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000030.png",
+      "image_sha256": "1ca47b685707d4b9dd1bec727e8de7acd5f7bd32cbd6d2ecab308668b135cca3",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000030.txt",
+      "label_sha256": "deff8f206f7c3842063a63b0ec5eba25c9f6c9805ad575cc9a33f49293fa054f",
+      "objects": 30
+    },
+    {
+      "image_id": "new_000031",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000031.png",
+      "image_sha256": "2c4e6aa89838565285e3cbeddb0d24809acb63140d9b7510f09c9290cf019750",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000031.txt",
+      "label_sha256": "760cceab36f9db87ed8f2fc9baf3db78a3946cfd037b1fc11fd73e116ff4cb1c",
+      "objects": 41
+    },
+    {
+      "image_id": "new_000032",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000032.png",
+      "image_sha256": "c04d97b09130d67712a2f6f166b2e41725a661a241e13a1fb9f4870229c49d70",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000032.txt",
+      "label_sha256": "8624e062414171289b4fdb6915a0c353dbc418fdc2bc9d8a1ccc0829c1bb9b81",
+      "objects": 55
+    },
+    {
+      "image_id": "new_000033",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000033.png",
+      "image_sha256": "84db172ff48ea6b90a0d8cf78606bff9103f879530bfd643a43c4d31d514772e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000033.txt",
+      "label_sha256": "cb2e0dd1e1b29413ce365e7ac7abcd34d6de67f5eb7c82c4ed55954df47d428a",
+      "objects": 49
+    },
+    {
+      "image_id": "new_000034",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000034.png",
+      "image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000034.txt",
+      "label_sha256": "bcbb7009225038ef599baa726d19f0cee72371e52dbd8302c358eaa0dae69367",
+      "objects": 56
+    },
+    {
+      "image_id": "new_000035",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000035.png",
+      "image_sha256": "bb929ec7cfd3e62de30a5f4d3c03d1d6aef60a48b45146e87055955ec8574ef2",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000035.txt",
+      "label_sha256": "96676b75c35b6c02ffd04eb0d2c106c073512d6f6c488d17c6fcd23670ce554f",
+      "objects": 59
+    },
+    {
+      "image_id": "new_000036",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000036.png",
+      "image_sha256": "ca0b88fe03f395c06fbc875d8aa06b67302d6013857dfd9326908f91597aa012",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000036.txt",
+      "label_sha256": "fb49994d401490dea6e4d56280464512014cda3b9dc3e31da3d87c772d24854f",
+      "objects": 36
+    },
+    {
+      "image_id": "new_000037",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000037.png",
+      "image_sha256": "1156cb99a9f00f3ba861775662eab1f41a1457c9a4f52019f0ae55f8b8ae22c3",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000037.txt",
+      "label_sha256": "d4edbc10d2ff724958b83b2b4801b99f4ed4b33c03d830031150781f7224565b",
+      "objects": 16
+    },
+    {
+      "image_id": "new_000038",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000038.png",
+      "image_sha256": "7bc1703c1ab6fa55d0e23517f2993759247fae35849f68e87f19cf4521c5adc1",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000038.txt",
+      "label_sha256": "d6e8dcc540b9d97eab827f2fbaae16024ba70f853742544c62f41335bb72f46a",
+      "objects": 18
+    },
+    {
+      "image_id": "new_000039",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000039.png",
+      "image_sha256": "8d77c37330fd78456bb1391653bdac33665ad9c7facf79de1ab8d6739818c974",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000039.txt",
+      "label_sha256": "f16ed89838054f350dcc8a80dd07d87d2c99f5a07a49b99dca4f29989ae964b2",
+      "objects": 30
+    },
+    {
+      "image_id": "new_000040",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000040.png",
+      "image_sha256": "7c369247f88764c20652b980a5503dc936085fa110c4c1e59e8e850ef873591c",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000040.txt",
+      "label_sha256": "ccdb8a35faae08a902fb27210c8678aae9c6462dd0d8bb31baefe2d111c643f1",
+      "objects": 36
+    },
+    {
+      "image_id": "new_000041",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000041.png",
+      "image_sha256": "4c0313f01daa3bd736f3acdf5b874847c6e46c05ec90dbb039b47416c7913b65",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000041.txt",
+      "label_sha256": "dcb82d5b26635606fd6e01de41adfe70c9419bd99ea5441252ba0bcfac3c4534",
+      "objects": 15
+    },
+    {
+      "image_id": "new_000042",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000042.png",
+      "image_sha256": "3e71fbb644f9948abcc846b8d81863f99fe4931c90b4095d4fcd1085c870d98f",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000042.txt",
+      "label_sha256": "aca818c6e81fe79308a4375165d5ffe1eedcdfd07dbc78be5a13557dd710391f",
+      "objects": 16
+    },
+    {
+      "image_id": "new_000043",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000043.png",
+      "image_sha256": "1cc8fe54b7d8d3699f55d07a5a14fc6bc2effb03bd6fcb4e4fe2405c72f41ac1",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000043.txt",
+      "label_sha256": "dafe9fb09da81496f17ead99b4202283bf0c6328456e6b4da6622f1b0dbd0f8f",
+      "objects": 31
+    },
+    {
+      "image_id": "new_000044",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000044.png",
+      "image_sha256": "819fd1faf67258367c5740662e57d2cf0c50afb6c7f34fd60b9d0f4637e10e85",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000044.txt",
+      "label_sha256": "77da47a94c91ee58c7845157bba6e31f23e7e2a0b05380a666de6d75eab0e5d9",
+      "objects": 21
+    },
+    {
+      "image_id": "new_000045",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000045.png",
+      "image_sha256": "86d57144e7a95328919a524d6866a5b63b714fb0c01059cfcd34692d13881fc8",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000045.txt",
+      "label_sha256": "01238c5d4a9baa684d79b9ff77c4dafff540c6ac09b503cf48b6e21488b320fb",
+      "objects": 21
+    },
+    {
+      "image_id": "new_000049",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000049.png",
+      "image_sha256": "bd085b01cf8fbce5df55d5f91c6e7810f03848f307c409d2afcd5e6cde652b7a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000049.txt",
+      "label_sha256": "f02a090e71f737a868d91186393c2dd08f4f46a95154c78c84e5cd28afa98dd0",
+      "objects": 26
+    },
+    {
+      "image_id": "new_000050",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000050.png",
+      "image_sha256": "e9e83109b18958c04690afd3477ae015fb666a8316e06d572319b4c737ca0c77",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000050.txt",
+      "label_sha256": "d96142fd4e9aa4db66caae8eb992b908a92ed420416a123cd268d13390535d25",
+      "objects": 33
+    },
+    {
+      "image_id": "new_000051",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000051.png",
+      "image_sha256": "20f88ffce13f091b3f64d1d4549c91d415be59844ecbc1e29b8b7ef7bdb14da2",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000051.txt",
+      "label_sha256": "8918be22a9a0f316af57c4fb669adb480a746dfd9d400a2b4f8d39aed4a734f3",
+      "objects": 24
+    },
+    {
+      "image_id": "new_000053",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000053.png",
+      "image_sha256": "dfc3621b0387b0da774001334c12c65574ae0084131b154d2f6216e420573d72",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000053.txt",
+      "label_sha256": "f02ef6030a9e62f7a820e81852eb211995c9d90e045120c6af38f2c1efce2f7b",
+      "objects": 22
+    },
+    {
+      "image_id": "new_000054",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000054.png",
+      "image_sha256": "cd22201fc88724a2b2d17eb1840af4a88b21dd06ca31a0cdb90172281d8a00d0",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000054.txt",
+      "label_sha256": "7df21b71d428028c3224739eb2efe13858032d8832ed89e2adc6ff963938e6ac",
+      "objects": 22
+    },
+    {
+      "image_id": "new_000055",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000055.png",
+      "image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000055.txt",
+      "label_sha256": "9ea164eaa7ee607f65c91453b8e0508a6c7b19d2df950ee867c9ea337a70f04e",
+      "objects": 26
+    },
+    {
+      "image_id": "new_000056",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000056.png",
+      "image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000056.txt",
+      "label_sha256": "944485e03c8bd9cb8546152dc301a5e658caa525774e338f702e8009c28f3401",
+      "objects": 22
+    },
+    {
+      "image_id": "new_000057",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000057.png",
+      "image_sha256": "39fd900aa786267bd296630fe8ff49f76ce3094268246a65aaa2542fe4e79e11",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000057.txt",
+      "label_sha256": "50edf11f9b580a88658b6cf11c69cc571f3f41b1b7b6ade5078afff6ae33c931",
+      "objects": 21
+    },
+    {
+      "image_id": "new_000058",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000058.png",
+      "image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000058.txt",
+      "label_sha256": "2f536bfa2214fd8aa26561c56caa3c08100f9a3e08a0c78637b115eae1f06783",
+      "objects": 18
+    },
+    {
+      "image_id": "new_000059",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000059.png",
+      "image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000059.txt",
+      "label_sha256": "0f2140a00bc7d2b22c87631aa2d8e36ebcb3aab638c2fb66b0b691e237f63f77",
+      "objects": 18
+    },
+    {
+      "image_id": "new_000061",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000061.png",
+      "image_sha256": "094be9e4df38d6580314f7572ac2d2716a057ad31c6ca02d4d2468e9d0dec01f",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000061.txt",
+      "label_sha256": "e037cf1418029e5b669d6598a0bc4a0ae77ce17b70ec8ad3d1149c98818c60bd",
+      "objects": 14
+    },
+    {
+      "image_id": "new_000062",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000062.png",
+      "image_sha256": "d7b5230f6480ee91d78f8225cebc89bc50fc70f7d7795801f763bb422b236e30",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000062.txt",
+      "label_sha256": "d135cb876533f79ef11547aec56a1779c1beb2809fceec2ccd96dc902eba425d",
+      "objects": 14
+    },
+    {
+      "image_id": "new_000063",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000063.png",
+      "image_sha256": "e74372f2efbdea19e451e0cc900f16412c63813f66dbc8904d0f4c03b89a709e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000063.txt",
+      "label_sha256": "7290512c6cc2015695ba18b75652aa6d7b860ad1858738101b2fd6bd52c9a77c",
+      "objects": 14
+    },
+    {
+      "image_id": "new_000064",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000064.png",
+      "image_sha256": "af1a3ad79486fa4f622e696fadf2324f078cab8bf47aa3dbee489dfb6b4ccd10",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000064.txt",
+      "label_sha256": "b4280d68fb76edf1af374108e74adec06f9137a4b6cd01b8aa29c7dd15aa8afd",
+      "objects": 36
+    },
+    {
+      "image_id": "new_000065",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000065.png",
+      "image_sha256": "1942a485fd88f64fc0ded58a2f28d85431e7fb5d6cab14663e5c4689b49040c9",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000065.txt",
+      "label_sha256": "8e9971268cc35b505eb7e393bba40a9b1d01217f4f6fdb5bd474640387d7d5ef",
+      "objects": 25
+    },
+    {
+      "image_id": "new_000066",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000066.png",
+      "image_sha256": "5d8dbff97a314d99116508adee3e1d4b84a0fa2762aeea7ef888cfb794db5075",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000066.txt",
+      "label_sha256": "5898ff00d6b5dc92aa588ea847070e5b909d01c09b171b155d7b2d6a6ef51a71",
+      "objects": 21
+    },
+    {
+      "image_id": "new_000067",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000067.png",
+      "image_sha256": "bac3b323bd499f4a37623f8d745a28727a2db8d56994158006cf4a96d5b765fa",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000067.txt",
+      "label_sha256": "34205376db2908aa34a8c09822569cb7277aab5d3d06cdcc0a6c61d5f2e0952f",
+      "objects": 24
+    },
+    {
+      "image_id": "new_000068",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000068.png",
+      "image_sha256": "778e3a9a9ba6e882b22b623409bd53c6533796329b0924eb977c7c65c8a155c7",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000068.txt",
+      "label_sha256": "e06b841f1f09703cc7f5a96b64c495a6ef27f16acd2c8291854ea17ddfad7b88",
+      "objects": 31
+    },
+    {
+      "image_id": "new_000069",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000069.png",
+      "image_sha256": "c628fd612bfa5c2779fafdd239d19ebdc680ba335a61e546f1941307df8b7b11",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000069.txt",
+      "label_sha256": "62534691369e729a74e535f2451c9e0525a7c12d11044dc3b9ea62ada802e14b",
+      "objects": 16
+    },
+    {
+      "image_id": "new_000070",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000070.png",
+      "image_sha256": "9b140310889bc7717f28cf5aa63358eb3fa9fe26f9a853fdf3b42b2e62ba8d7e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000070.txt",
+      "label_sha256": "6ed70eeb1df9667e55d9ec0ed0db1794546ba05a10ef621c169e703eb8aa0e2c",
+      "objects": 24
+    },
+    {
+      "image_id": "new_000071",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000071.png",
+      "image_sha256": "a80bac798bd3c08ac5277279ff9df5237b8d9863d6e83d0d046604a3e7f3edde",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000071.txt",
+      "label_sha256": "fd98ac086c8207b7b05e24fa3622e11ecd64579bfa69ca86bb85b74983689def",
+      "objects": 27
+    },
+    {
+      "image_id": "new_000072",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000072.png",
+      "image_sha256": "e453a3cee5b2b5bfcb972b4f241843bcc0711f4e1d441b377105d224931b827a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000072.txt",
+      "label_sha256": "207e115073e7221f6151f1fa7815c6fbdb40233008e81aa19abf6fa09730ae6b",
+      "objects": 34
+    },
+    {
+      "image_id": "new_000073",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000073.png",
+      "image_sha256": "04fe04ae0fca47acf6adbd1562dd81054e7ab04ede46d0a69ad02e2cb99d0f20",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000073.txt",
+      "label_sha256": "ca5163270dbbeb95689b266f9c4747828a87ddda9f3b1951700a7d755d3e2c93",
+      "objects": 20
+    },
+    {
+      "image_id": "new_000074",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000074.png",
+      "image_sha256": "6bed893f1ec42e95b3ab3a2dad82c30fa586ff06ff35f58836661dd56c10613a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000074.txt",
+      "label_sha256": "ba7103c28ac7987dcad624a70bfcf6a6b8a0c56023037a4e3148083420842ca3",
+      "objects": 19
+    },
+    {
+      "image_id": "new_000075",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000075.png",
+      "image_sha256": "361de6f8d0d75a25e67ff62146a3e8a75c64d476d4da537636c52a2e2294ea88",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000075.txt",
+      "label_sha256": "ba78436522118594d632f5b85e402411cff064c62cef2ca3c0817186bb9fd41c",
+      "objects": 23
+    },
+    {
+      "image_id": "new_000079",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000079.png",
+      "image_sha256": "dd93f2e0d44b4de9aaece6386fd094bd4e11d90f477952563e5fbec52b2c063f",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000079.txt",
+      "label_sha256": "c4ba131014f04c89dc6f8bdc36942cf1a8b5a00c2bd5d6441dc96171b3be1a13",
+      "objects": 34
+    },
+    {
+      "image_id": "new_000080",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000080.png",
+      "image_sha256": "5c2cb743eaed9fd50933638a9e8e130de63e0c7743f1446a8a6aadfb1950c092",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000080.txt",
+      "label_sha256": "72262742318962768ae2b85ad5c2ef3e1acc12406ee46c1dc8bee7c88278cdf2",
+      "objects": 20
+    },
+    {
+      "image_id": "new_000081",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000081.png",
+      "image_sha256": "2715f868c98a3cb349cb3dd5381dd43d4b99a3dade0121325d056790ebbea06b",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000081.txt",
+      "label_sha256": "403dc9fdf3108f098b83ec476ab65d8360711c4bd1e4112fe52e120230b07494",
+      "objects": 24
+    },
+    {
+      "image_id": "new_000082",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000082.png",
+      "image_sha256": "fe306c1bd222468227aa9fc1cfbb6cdb96953b27b67b721fe70eec8ab87892ba",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000082.txt",
+      "label_sha256": "225294f7d4d0f9a5ff9c6790df3c5aaec5bb19f59344bb03b06162bf5174017b",
+      "objects": 29
+    },
+    {
+      "image_id": "new_000083",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000083.png",
+      "image_sha256": "1959899c2d0abf5c3c7b10c344840191d7946aeb8ed18ae8ee01f1bef0989673",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000083.txt",
+      "label_sha256": "a262da90f67d5ef8db302f94f1105708f7a30b7410495030e8963a02e0b6eac4",
+      "objects": 21
+    },
+    {
+      "image_id": "new_000084",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000084.png",
+      "image_sha256": "3d017f02c02a9d37350c22d839ec821a661c8adb2d8051a26b877cffc3b4c606",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000084.txt",
+      "label_sha256": "3379eb15f423a5ed0092eb2c7d044e5e3126c4a6635182aa5b6f950efc989b4b",
+      "objects": 30
+    },
+    {
+      "image_id": "new_000085",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000085.png",
+      "image_sha256": "a33365e10beb89e4bf5ac531cb6ff36ab6d3c3b965f08c9db494a2243e46d74f",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000085.txt",
+      "label_sha256": "105384e35a06ef223cdfc5253380e3954b9cd904693bc38107a688e34705c6b4",
+      "objects": 33
+    },
+    {
+      "image_id": "new_000086",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000086.png",
+      "image_sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000086.txt",
+      "label_sha256": "1a3e290ab440ec90d1d4821ee2d3861d08486d32be96a7eb1b86bb7638a00b00",
+      "objects": 57
+    },
+    {
+      "image_id": "new_000087",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000087.png",
+      "image_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000087.txt",
+      "label_sha256": "8572a7a76cc1ace30188c5cf42cc56629c8b78b62a45b941e8d23550dfee27b7",
+      "objects": 56
+    },
+    {
+      "image_id": "new_000088",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000088.png",
+      "image_sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000088.txt",
+      "label_sha256": "500277797e6de8720967327fc70cfa4cda48ce0ee4cccc05acb77286ef78a073",
+      "objects": 57
+    },
+    {
+      "image_id": "new_000089",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000089.png",
+      "image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000089.txt",
+      "label_sha256": "556f94bbd38ef3b8de8c7b375685b8102d90b3874b0504a2967c8192b602394e",
+      "objects": 54
+    },
+    {
+      "image_id": "new_000090",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000090.png",
+      "image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000090.txt",
+      "label_sha256": "584563855c937419af9e432d15a5c740b2b4e47229f27853a0396252dbf34ec6",
+      "objects": 50
+    },
+    {
+      "image_id": "new_000094",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000094.png",
+      "image_sha256": "e49858124981ec769ed4eb53b53c76aea809981bbbcddf6446cb095ab53533f0",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000094.txt",
+      "label_sha256": "03bebac3e7be24df6a353a3242e00756e22d23b26711643010b837bd6d5c9381",
+      "objects": 38
+    },
+    {
+      "image_id": "new_000095",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000095.png",
+      "image_sha256": "2793186ed90f5031230a0df19830c2ef91deeae45910189510678c9c421a2d72",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000095.txt",
+      "label_sha256": "a057de84df433ce50597e8f28a2532a0fb54f79581c6e37b81d06d4600cec4dc",
+      "objects": 43
+    },
+    {
+      "image_id": "new_000096",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000096.png",
+      "image_sha256": "fd69bf9e5afe7725d68d65eec21dfc59da8d9efc16f0c98d562f3c9c069463d5",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000096.txt",
+      "label_sha256": "697811dbf1a947486c7cda565c1b8655f7398862b28f839640cbe84166ed6ded",
+      "objects": 46
+    },
+    {
+      "image_id": "new_000097",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000097.png",
+      "image_sha256": "b9a3b5b278331904e32ed61df31ca03f9b515d08a1177a10a7788eb3b6d5b5f0",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000097.txt",
+      "label_sha256": "54ecbfc5cf75eb9fa6d12a26da1c3559ac203ba6328be57add3366a2fafb40b4",
+      "objects": 46
+    },
+    {
+      "image_id": "new_000098",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000098.png",
+      "image_sha256": "163c6b9f585ffbd7ab0e409f6b633e1ac0dde303d793fcfdcd5958fee2d18739",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000098.txt",
+      "label_sha256": "f20c17c0881cfeacb38af104907c5e941645c37c89d5f841f9172f4fcf053c17",
+      "objects": 56
+    },
+    {
+      "image_id": "new_000099",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000099.png",
+      "image_sha256": "941f9f0d904ed951ac0fd3538e2cd76eb9b14f73bc958f7d6d0fecb7b75a2439",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000099.txt",
+      "label_sha256": "57091e2ddbd8d4e0092064480ac3700800ad9e1fe0134f1fb168f4bd7236d1ad",
+      "objects": 56
+    },
+    {
+      "image_id": "new_000100",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000100.png",
+      "image_sha256": "ea387daf6b24d49662841e1f3f8197ae2c991fecffb9cb64ca66b8689db76290",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000100.txt",
+      "label_sha256": "a0445a07f15b2903e51905218ee68e5cd9acb24f24be69c1fd43ab2c73fafdaa",
+      "objects": 56
+    },
+    {
+      "image_id": "new_000101",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000101.png",
+      "image_sha256": "5b13f5c4d0c5ab94fd5954000a299cd7dc2c1ec486cc6d1d13a623f8fcc0094c",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000101.txt",
+      "label_sha256": "fba5cbc03f54e54efc2bbcd6233868388b64bc1d8c1a9d074b780f71fbb4a0ac",
+      "objects": 53
+    },
+    {
+      "image_id": "new_000102",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000102.png",
+      "image_sha256": "107e5ff9d5870d203f8cae94c603fc422f8d52e83befc6603b2fb30fab67e73c",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000102.txt",
+      "label_sha256": "49b30c4f630a45762ab597ba0cde6291886f0c489ef3c3e9f64fb016cd812c83",
+      "objects": 53
+    },
+    {
+      "image_id": "new_000103",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000103.png",
+      "image_sha256": "f7ea432fc066632198842da8da68ec8c7f42482ba1ff1cca4de66edf85e7c83a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000103.txt",
+      "label_sha256": "e823558e8c5294b0f453bb6325a9e5ddec2422f8b72de5c2bd098ca3101bbea4",
+      "objects": 50
+    },
+    {
+      "image_id": "new_000111",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000111.png",
+      "image_sha256": "44f6a9de5ac112c7f5bf7d6b0b90c60cf5adf5ff83d697acffe0b0c2b4ac209b",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000111.txt",
+      "label_sha256": "3572fb0c00b2e5ddc2a70671c6848f8a02ddd93e0254a58c8f45692443afca2c",
+      "objects": 34
+    },
+    {
+      "image_id": "new_000112",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000112.png",
+      "image_sha256": "f14bbd3494e04f5c83676900de4ae31bbf27189765859748c4be6803e34ad1f4",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000112.txt",
+      "label_sha256": "e5c15a5da7b36ebfdc1c5f9a9684a86f722cb043202017894f53467b2b0b887c",
+      "objects": 36
+    },
+    {
+      "image_id": "new_000113",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000113.png",
+      "image_sha256": "b53b06d414d0a4c6239a4a460a5d7a04bf9629bcd2ecf082d6fe29b440525029",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000113.txt",
+      "label_sha256": "b0e89d9595e1d9e059731f802d05e7796c68d9f43578a504ac149e99073f4bb9",
+      "objects": 29
+    },
+    {
+      "image_id": "new_000114",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000114.png",
+      "image_sha256": "42ef4edb56e6cc801466aa4350b009d27ecd2524cf240778efbb3d865c3c2667",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000114.txt",
+      "label_sha256": "e8b4ea4b3aeb40bd7088695880f34d7663fa3b25b2ec3a88994725620a7b471a",
+      "objects": 26
+    },
+    {
+      "image_id": "new_000115",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000115.png",
+      "image_sha256": "218087e388114bb1e6f5187f0d816708c32a6c288840cf79deb04d168c0bc5ac",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000115.txt",
+      "label_sha256": "29754cf76fae5f1e0e8969cfcc27554add844b5ade431be9be3aac8c59c65d8a",
+      "objects": 24
+    },
+    {
+      "image_id": "new_000116",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000116.png",
+      "image_sha256": "f7e517ae9c156255b90fa1d7ca9bcfd492da3fd8eec574a25278fc595d89eb61",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000116.txt",
+      "label_sha256": "67293aed59e72a5e73b767341d342557dc1b48179351b4104b1226ecd4880090",
+      "objects": 25
+    },
+    {
+      "image_id": "new_000117",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000117.png",
+      "image_sha256": "917558398e62de0c352a7550bc9c01ad4c1678eb1746b8a4527c860d828a0454",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000117.txt",
+      "label_sha256": "eee3fe9b1d866db421c7b248913d1436eb07107dda32c63a1ad262d31917b1e6",
+      "objects": 24
+    },
+    {
+      "image_id": "new_000118",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000118.png",
+      "image_sha256": "346aee491ea67198875060780ba55503b05b74305555c419d0ecd0a2a58b9630",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000118.txt",
+      "label_sha256": "dac160f9a656b7a6fc5ef45e7ab177c162682f7d97550974314c4b2be39943b1",
+      "objects": 33
+    },
+    {
+      "image_id": "new_000119",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000119.png",
+      "image_sha256": "9a5e0e0fd881165121b54f76d4791e812cd22fec24da624413eca1a3ee259a41",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000119.txt",
+      "label_sha256": "c953e93b7d7915cdc9776729ecf9565b0c858c8a2bd61777073cca2a53d4f475",
+      "objects": 35
+    },
+    {
+      "image_id": "new_000120",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000120.png",
+      "image_sha256": "a3b62d42ae251f198115e7f7fd246161daa58a9afc8aec4cefb939a9c63309ad",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000120.txt",
+      "label_sha256": "ec3777fc63d738b37e01cc3bedd59743f7edd8c3dd30dd8dbae74ac564eace7c",
+      "objects": 56
+    },
+    {
+      "image_id": "new_000121",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000121.png",
+      "image_sha256": "e9f52aa937e88c9beb40a688d643598eacb6790ae8efbeccd14554984cded86a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000121.txt",
+      "label_sha256": "e79a8bb2356a0675057d4ea68e951b3b76e769d4290798a1ca4ce5bb0fdacb76",
+      "objects": 56
+    },
+    {
+      "image_id": "new_000122",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000122.png",
+      "image_sha256": "cdaf57e147b6845b9d543d3c0283d4b320c944f27f30ebeccb8692e27ed579a9",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000122.txt",
+      "label_sha256": "5dc760b7a77c03910629f2ffb46ea8a7afd90c9e0c91c9086a047df0f172b051",
+      "objects": 57
+    },
+    {
+      "image_id": "new_000123",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000123.png",
+      "image_sha256": "a1074f6ed3af478deac20dfb04bbd0513216461d42acacdf73514780d2087160",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000123.txt",
+      "label_sha256": "95edbc1561920cf2c0f2f3e9ef8d15796753e065bce5cba7eb0a402c6c07bb54",
+      "objects": 46
+    },
+    {
+      "image_id": "new_000124",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000124.png",
+      "image_sha256": "66fa37215d19fc95a1c3d055351dff957049e4433645f8293606ecada34314ba",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000124.txt",
+      "label_sha256": "62a4602460997c700c3568b31f89f5dab1c58372bc53ae545e4404e1f7195dd3",
+      "objects": 44
+    },
+    {
+      "image_id": "new_000125",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000125.png",
+      "image_sha256": "7c222cd020ba60723fe876a0ccf7256f6d146df488477dc7e0ca865e4dd32a5a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000125.txt",
+      "label_sha256": "b78942bcf5cca2918a5ba5cd0103964609948d50f40a50495082fa5dc19f6c41",
+      "objects": 54
+    },
+    {
+      "image_id": "new_000126",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000126.png",
+      "image_sha256": "3f8b8e4788a59e7238276c40d0f528705f16cec6c9b0e18d81b31451bc34f3f5",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000126.txt",
+      "label_sha256": "2ad7cd686b54e8c92378c1ff8e1d69466a75860d70248a98d5f58c816c0dbda1",
+      "objects": 47
+    },
+    {
+      "image_id": "new_000127",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000127.png",
+      "image_sha256": "d4a7c3d10b297f82fac00cc4d1f16829c4a5edf81d92ae2a16d54f2dc9591add",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000127.txt",
+      "label_sha256": "010744b64960fa22f435a54dc42c662e3072ca340ace97125d261b2237393146",
+      "objects": 37
+    },
+    {
+      "image_id": "new_000128",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000128.png",
+      "image_sha256": "d5f7ae2af2dd7a2cd093c3eb610e8035eb3926ef4d46d4d3413b329531ee6570",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000128.txt",
+      "label_sha256": "df00f5013681ba1038b739caee7a2af590daf5d8a2fa5ef11514c9f1a9e9e2c2",
+      "objects": 35
+    },
+    {
+      "image_id": "new_000129",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000129.png",
+      "image_sha256": "ab3e56ede990b1e47a4db5edcf1efb3beca5893ed3c647e7a3958c90ae93ac0a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000129.txt",
+      "label_sha256": "b057818faa3f57e63d37e8af98b421dcfc8886b2fee11a2e64d190e004d77e5a",
+      "objects": 50
+    },
+    {
+      "image_id": "new_000130",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000130.png",
+      "image_sha256": "936e0ca813c3a2a8c81c0c56a6a952093ffb4d42827e3d308cd1adfd8bac80c1",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000130.txt",
+      "label_sha256": "bad33ec7c32d781c5460add83167f360f0ad55ab361383ca7e0dc9a736b31b3a",
+      "objects": 59
+    },
+    {
+      "image_id": "new_000131",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000131.png",
+      "image_sha256": "3cdcf73523b155a542606da63cfb301a33c3e14ee8cba7319ae342e6a4a806b4",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000131.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000132",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000132.png",
+      "image_sha256": "4653485ff74717ab1c27842e733a0ba691681d8ba4e417291200d1402e6ae0b5",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000132.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000133",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000133.png",
+      "image_sha256": "ee3ef353a85e469fb35924cc8a44d06e8660e7f2e9b7e2fde044d66a6e8b858d",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000133.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000134",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000134.png",
+      "image_sha256": "eb9e1eec33178a5fd87faeeeb6e995529557b9053d160b1d25e17e2372741a57",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000134.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000135",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000135.png",
+      "image_sha256": "ffb4666121a2b09926babe2b39b3a9412020aa0da87aab32dae856677908708e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000135.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000136",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000136.png",
+      "image_sha256": "f2564b961fa5e53d50c936c6ce67a6416876a100566ee36f7924f9d0e49d1bd8",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000136.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000139",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000139.png",
+      "image_sha256": "34473a966e8362bd66da9ff8797035cc31a9fea789d5938383450fcadcf2cd53",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000139.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000140",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000140.png",
+      "image_sha256": "6d12f9a668e0823a34c08d65e604369e3e3b2884463ca8eb254cf5dc51152386",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000140.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000141",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000141.png",
+      "image_sha256": "7c25b3635b619e2f1d7fc53b733e53e40c8cd37f42ba7410d4632a48ab0e15a1",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000141.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000142",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000142.png",
+      "image_sha256": "f1080c61451f7512af4b41acf626ef41f8b0c8b71bf7a80798036f98abd2d26e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000142.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000143",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000143.png",
+      "image_sha256": "a5de34333b04a81ddbd0d2d4d6900bc04a9cf477e3734082049af016134b54df",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000143.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000144",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000144.png",
+      "image_sha256": "a995c703db0a78e13f3745c0dd3fe19ca1d1afce17058af7ca906f66ac257110",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000144.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000146",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000146.png",
+      "image_sha256": "77e6af710edebef707c4724578ea5e3227fb277b0914c7c8abe1e144f239bb4e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000146.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000147",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000147.png",
+      "image_sha256": "2db9797f9b2011e71e9e22c9408e93ab5f7970aff2cde1f1d44a7d89d9221eee",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000147.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000148",
+      "split": "val",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/val/new_000148.png",
+      "image_sha256": "eadb43382d2e9f5773f42211adff1a9e1c2852a3011dbd3662885e4a1c00e328",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/val/new_000148.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "new_000150",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/new_000150.png",
+      "image_sha256": "ce2208884a7107b10515118626746e53f41595aa5aaaf97488bedfc10ddc9950",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/new_000150.txt",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "objects": 0
+    },
+    {
+      "image_id": "old_000003",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000003.png",
+      "image_sha256": "738fdf97fdc4d4438e5cfe48a27ed80b4c04a8ef7d36479c2f5cbc34db51b61d",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000003.txt",
+      "label_sha256": "eb623826c1f5dd60f1b2e8710915ad8615ad81d73e97e96dea76d7bc209d07e7",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000004",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000004.png",
+      "image_sha256": "d4ab364c88fc7a7cf722f3a31499e529cc01f3e795138f65134b63b80a111bbf",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000004.txt",
+      "label_sha256": "3a373184543ea39d00883c093d5d3023e194c097e3104bdc1081a1b6ee5c0f1f",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000007",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000007.png",
+      "image_sha256": "b56b7fcfd5424959e4309d869d796c71063439f3bf2b73ed531a5518163fe941",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000007.txt",
+      "label_sha256": "d748afa5c26d736876049d5b53a5edc6d599fdab41d932f5c86943da4e51ab4a",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000010",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000010.png",
+      "image_sha256": "da428edba10715f5d02fad4855942700194ea05896eb2c10f3ca671d4f97a0b9",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000010.txt",
+      "label_sha256": "117e83820e328a80a3f0718a0a2a57864bbf562d0336fd677b1049b1ec7c4ad0",
+      "objects": 9
+    },
+    {
+      "image_id": "old_000013",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000013.png",
+      "image_sha256": "c9ec988666a1d224b9c270ab0a56cb69a685fbca6f97eef5ad4c714f8da96cc1",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000013.txt",
+      "label_sha256": "7af95738769ed53124e90f6c867c6e05d2f54daebcef20644b1b141d8ed55715",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000018",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000018.png",
+      "image_sha256": "d16b6a1d253a65a69bfc8c24196d72a00cfb6f987ea535ffc41889d11ebbc80a",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000018.txt",
+      "label_sha256": "5c349d220f08160b96da50382592a2f6f01ac60e47c557e7d37eef40ffedddbb",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000021",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000021.png",
+      "image_sha256": "796f3a6d1f85c242e2c47c47c265b83efb3d0efb69663e62cd906a5f35b87f17",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000021.txt",
+      "label_sha256": "6e9f363726c1a235ef85f8941fdff23b36b4837407fe586f02523aef299426df",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000022",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000022.png",
+      "image_sha256": "69dee9265ee96aff6f4ebbe5a6f05949b112fdf84c1797d56a90b3ccc53d3028",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000022.txt",
+      "label_sha256": "73cc9acd12c9981e3997f1cf5b0a217180d48176ab19b274776b91f7e1cd189e",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000027",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000027.png",
+      "image_sha256": "98ceccf919b31f07d8d006afd548003944f9e5234194eb8b877cdf9116520d2c",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000027.txt",
+      "label_sha256": "1846a3d79a30b37561a7c682a124dff22a2cc6e8d4b9b022263b3d49aa5440e1",
+      "objects": 6
+    },
+    {
+      "image_id": "old_000028",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000028.png",
+      "image_sha256": "121c958a86eb586c419c2593175d56f6e909e54e308611d52af51c4c7ffe203e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000028.txt",
+      "label_sha256": "dcb11a8be82e7f1417a88674654313d9aab83ea176205da8df2c2dbe8e870d32",
+      "objects": 6
+    },
+    {
+      "image_id": "old_000038",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000038.png",
+      "image_sha256": "cc80cd165ac154b27836ae85b3bd9487da5493d21be35fe16c24289b57a80569",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000038.txt",
+      "label_sha256": "0c010c3314016a9f73f50aacb879a3336ea50618e84f58e038208ae652bf7282",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000039",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000039.png",
+      "image_sha256": "334f3bd1ac7d2148f8dbe928e14ab49f96a0f5a47741dda834a7bb451a8ac85c",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000039.txt",
+      "label_sha256": "a4e039f3d851d5a5c50261eddc952e89b52567fab6bb53358687104ad6bd4cef",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000042",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000042.png",
+      "image_sha256": "b4fb62065fd129594eefe15210fbae200f4c59932dab3574f73e03704af2c42e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000042.txt",
+      "label_sha256": "e0e371bc8f827f85d04d4ee5d2afcbf80f20631f725684e6bc89c02e34cef0c3",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000046",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000046.png",
+      "image_sha256": "5e2c637d66f4821640eaaacbe8140ff2423ec72ebf11100c9da55404c98a79c6",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000046.txt",
+      "label_sha256": "d074b919a442cfcf88835ad2ec981bf3ce8ff789dab8661ca44103b1fea8c22b",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000050",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000050.png",
+      "image_sha256": "05d1480088413928782d6979d341e953e29076752af153b7b2be3abc81e91dbc",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000050.txt",
+      "label_sha256": "f4969b6a6dd1c0da2cbee11bcc800f9a88c5e716c0e46670f95ed281c91e1137",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000051",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000051.png",
+      "image_sha256": "b3372a8c3b55f3567738c1d8e649f04c3cd3391ffa1a4ea8dcbe2b1097697661",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000051.txt",
+      "label_sha256": "eecc530b01392e80cc6ede4467b7c9750b6399e29a1abb6a6ca571f8123d98de",
+      "objects": 10
+    },
+    {
+      "image_id": "old_000054",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000054.png",
+      "image_sha256": "0762009e0caf58b364c210f1542b823577fa41d656d7e6ffc0e984594dc78c72",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000054.txt",
+      "label_sha256": "07e0a47be8503149517bf160651cef87ef780548bb82479f3c92601f8e7ea2e7",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000057",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000057.png",
+      "image_sha256": "b2cfe81d5bfe404c6f5cba7ac3b9e072f534b345e63afc924589473bcedf1428",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000057.txt",
+      "label_sha256": "6c5dc6a4c95fabf29849f6599ddad4332b4f283755e79ba90513f1d521f40ed0",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000061",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000061.png",
+      "image_sha256": "d96ebdb8f31959086c449367612cf9fb9156f72f3038b9dcf0cd9c53a88913ef",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000061.txt",
+      "label_sha256": "158a42bf8d75463906d4c9e07a015edb83cf3c58874a85a47889c49c109280ad",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000065",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000065.png",
+      "image_sha256": "30fa897f2cedcc315b6adfbe7383d6691859dfb603419414eacbdccd5f0d6ca7",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000065.txt",
+      "label_sha256": "46510512d2e61b435a98ac319de68c017c6f57036657532cffdb428ec16e8364",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000068",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000068.png",
+      "image_sha256": "a9206bf333b031f62c353f0cba8f358893fe70cab2097a908e49816b8f8388d2",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000068.txt",
+      "label_sha256": "2a0570ba6fb0e6b1d426cdec0963eaa282a86d4ebaa7729e46fea1f824a16cfb",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000069",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000069.png",
+      "image_sha256": "ec45bb2478c63210f336194883c04fc4c50e8bd9bd00bb3c2b8bc845c8dc2441",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000069.txt",
+      "label_sha256": "edec8426a0408a781627907c24776b63a098dd90ba454dca4775a6de230346cc",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000073",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000073.png",
+      "image_sha256": "7c362086c7daf6df8439f6cfa67cb920273a31132f64ff07739d97f733530c01",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000073.txt",
+      "label_sha256": "6c567e678f299cb4a59b6dbd85c5d61f1bc53c20354feff87af8fd549dbfa93f",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000077",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000077.png",
+      "image_sha256": "5ea81473ba976fff299f6badb5e6d83dd93600cc898b663adfcb5614b84d8872",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000077.txt",
+      "label_sha256": "c46e660382709dcf9558eae52c73c6a704d19ea4187a42cda2fbe23acf6ad4c8",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000079",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000079.png",
+      "image_sha256": "5e15d2c83899b0c59df5ee0602a71116cdf1a087fec7f5d63190cb19a34d1972",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000079.txt",
+      "label_sha256": "7d4a02643c886e32d826a085bee0bf731977dbe9dcd28fe03fd5bfaf2200b315",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000087",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000087.png",
+      "image_sha256": "b598bfedf0fa51ffaecf67c57eb5e347512a34f3d833963d400765b9c5474e8e",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000087.txt",
+      "label_sha256": "696dad50bed5e220d993253ec27dd5166b940862ebdb9cfd1bf3ed55933edea4",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000089",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000089.png",
+      "image_sha256": "aea9263e41a677bf9c35d47712c6e4cbb91962756ea95d35a153c582d771f4e6",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000089.txt",
+      "label_sha256": "03ef759cac561ea9bdea161cf08d263e246963fd2c06e5c2052127e0a3e2b8f0",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000093",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000093.png",
+      "image_sha256": "3a086ebd2a71fc06d7da3cf02187b89e92a7f07afe24ee65031f4d06f36cd293",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000093.txt",
+      "label_sha256": "578236f579b892118553a92cd8d50b110debf9d4bf058ac768e8702662b9111f",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000097",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000097.png",
+      "image_sha256": "34c2fa0f76780c470fc0b34de255945e281506c3daab13ea3d974b562f1113ab",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000097.txt",
+      "label_sha256": "e4e272c8053202f21b5baa3385ae72a8240736473bfacd6c6960f829932a0659",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000100",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000100.png",
+      "image_sha256": "1fd64653917b0ad48f5adb05a697822bde2f6184605d8fc7dad6cb7a4078fc7c",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000100.txt",
+      "label_sha256": "09c8971e18c8ee75b1037fba4ec5dc51eae8b064b65dbedbfcd1719fed69ee3c",
+      "objects": 8
+    },
+    {
+      "image_id": "old_000101",
+      "split": "train",
+      "width": 1280,
+      "height": 720,
+      "image_path": "data/images/train/old_000101.png",
+      "image_sha256": "02139e7386588bb6a18cdb1fa2a6d73db2e93f67d990abcf7e9d6c646896acab",
+      "label_path": "data/reviews/fronts-2026-11-23-r26/labels/train/old_000101.txt",
+      "label_sha256": "e8330f9f830cbdea22bc2059dbdb2a8846fa5babfb00b9946130b13447d07a53",
+      "objects": 8
+    }
+  ],
+  "complete_score_table_sha256": "81839ec346ca130ea8c2fb63890b14d0d57c0eda5feb60fc32dd0c0d2aaa4bd2",
+  "source_preservation": {
+    "original_images_hash_verified": 157,
+    "review_label_files_hash_verified": 157,
+    "source_files_written": 0
+  }
+}

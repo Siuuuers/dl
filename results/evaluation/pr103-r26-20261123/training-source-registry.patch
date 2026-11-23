@@ -1,0 +1,26 @@
+diff --git a/scripts/stage_pose_training.py b/scripts/stage_pose_training.py
+index 924873e..2eaef0b 100644
+--- a/scripts/stage_pose_training.py
++++ b/scripts/stage_pose_training.py
+@@ -217,6 +217,7 @@ def code_hashes(*, composed=False, observed=False, incremental=False):
+                   "front_review_r23.py",
+                   "front_review_r24.py",
+                   "front_review_r25.py",
++                  "front_review_r26.py",
+                   "front_review_experiment.py")
+     return {f"scripts/{name}": file_sha256(scripts / name) for name in names}
+ 
+diff --git a/scripts/verify_incremental_pose_candidate.py b/scripts/verify_incremental_pose_candidate.py
+index bed273b..0fddbe8 100644
+--- a/scripts/verify_incremental_pose_candidate.py
++++ b/scripts/verify_incremental_pose_candidate.py
+@@ -501,6 +501,9 @@ def verify_incremental_candidate(root, candidate=None):
+     root = Path(root).resolve()
+     candidate = Path(DEFAULT_CANDIDATE) if candidate is None else Path(candidate)
+     candidate = (candidate if candidate.is_absolute() else root / candidate).resolve()
++    if candidate == root / "data/candidates/front-review-2026-11-23-r26/manifest.json":
++        from front_review_r26 import verify_candidate as verify_r26_candidate
++        return verify_r26_candidate(root, candidate)
+     if candidate == root / "data/candidates/front-review-2026-11-23-r25/manifest.json":
+         from front_review_r25 import verify_candidate as verify_r25_candidate
+         return verify_r25_candidate(root, candidate)
