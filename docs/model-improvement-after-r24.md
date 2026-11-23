@@ -1,8 +1,39 @@
 # Improving the model after R24, using the data already available
 
-**The latest model learned different weights, but the training settings did not change. R24 made a small box-matching improvement over R23 on the same accepted R24 labels, with mixed corner results; it did not establish a reliable replacement for PR35. We can still improve the project with the existing images. The R25 annotation amendments are complete and its matched training notebook is being pinned.**
+**The latest model learned different weights, but the training settings did not change. R24 made a small box-matching improvement over R23 on the same accepted R24 labels, with mixed corner results; it did not establish a reliable replacement for PR35. We can still improve the project with the existing images. The R25 annotation amendments are complete and its matched training notebook is ready.**
 
 This report explains the completed PR99 result and separates it from the new R25 work. The [complete failure ledger](../results/review/front-review-20261123-r25/model-failure-inventory.md) lists every missed R24 target, every failed two-corner pair at 5 px, the additional one-corner errors, and all duplicate outputs. Its [machine-readable record](../results/review/front-review-20261123-r25/model-failure-inventory.json) retains exact coordinates, confidence values, source hashes and verification. It uses saved predictions; no additional inference or training was needed.
+
+## What PR35 improved over the original baomai model
+
+PR35 preserves the original one-class, two-corner model architecture. Its initializer is the original epoch173 checkpoint from historical [baomai revision `351eb3cf`](https://github.com/an94-doll/embedding_vision/tree/351eb3cf960ccc34829e2bc72e1fa4645acc6295), SHA-256 `e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e`. The saved `PR35_vs_original_baomai_report.md` records this same-threshold comparison on its main 2026-11-12 development reference: 663 fronts, including 584 eligible for two-corner scoring.
+
+| Confidence 0.13; identical reference | Original epoch173 | PR35 |
+| --- | ---: | ---: |
+| Matched fronts / 663 | 642 | 643 |
+| Missed fronts | 21 | 20 |
+| Unmatched outputs | 86 | 85 |
+| Duplicate outputs | 27 | 31 |
+| Both corners within 5 px / 584 | 529 | 529 |
+| Both corners within 10 px / 584 | 575 | 577 |
+| Outputs on three empty images | 0 | 0 |
+
+This is a modest, mixed improvement: one fewer miss, one fewer unmatched output and two additional ten-pixel pairs, with unchanged five-pixel success and four more duplicates. The [completed proposal-filter review](proposal-filter-review-2026-11-11.md) preserves the PR35 results and the reason for choosing 0.13 for assisted review. Lowering a confidence threshold changes the returned proposals; it does not improve the learned weights. This historical 663-front reference must not be combined with later 663-, 666- or 662-front reference versions merely because their counts are similar.
+
+The [seed46 training record](training-annotations-seed46.md#fixed-inputs-and-recipe) establishes the intervention: 30 additional epochs from epoch173, seed 46, batch 4, input 1280, FP32, rectangular loading and AdamW at initial learning rate 0.0001, with final-epoch checkpoint selection. The eight changed training label files contain five added fronts, six deletions and three retained-row modifications. Both arms use the same 137 training images and original 20-image trainer validation. The [returned-input audit](label-refinement-2026-11-14.md#1-what-the-selected-model-actually-learned-from) records 3,771 objects and 6,841 locatable endpoint slots for PR35, versus 3,772 objects and 6,839 slots for the original-label control. Later accepted label repairs were not retroactively included in PR35's weights.
+
+The separate [original seed46 matched-control study](annotation-confirmation-2026-11-11.md#primary-comparison) uses **confidence 0.25 and the 661-front PR30 reference**, so its counts stay in their own comparison:
+
+| Historical seed46 study | Original epoch173 | Original-label control | PR35 candidate |
+| --- | ---: | ---: | ---: |
+| Missed fronts | 27 | 24 | 24 |
+| Unmatched outputs | 54 | 58 | 52 |
+| Both corners within 5 px / 584 | 528 | 527 | 529 |
+| Both corners within 10 px / 584 | 575 | 578 | 577 |
+
+The control also recovers three baseline misses after additional training. Therefore the baseline-relative improvement cannot all be assigned to the label edits: within the matched pair, misses tie, extras decrease by six, five-pixel pairs increase by two and ten-pixel pairs decrease by one. The [receipts and PR35 archive](annotation-confirmation-2026-11-11.md#return-and-execution-verification) identify A100 training; a later L4 session restored and packaged those completed runs. Cross-round differences do not establish the GPU, seed or learning rate as the cause of a model advantage.
+
+Finally, “selected” is the current evaluation decision, not proof that PR35 is physically best under every accepted reference. The [completed PR99 comparison](../results/evaluation/pr99-r24-20261123/README.md) favors PR35 on the frozen 666-front reference but favors R24 on the accepted R24 review, with predictions and scoring settings held fixed. Section 2 preserves both rankings and the reference-geometry explanation. Accepted corrections are not invalidated by an older benchmark's ranking, and repeated use of these development photographs does not establish performance on a new camera session.
 
 ## 1. What “new parameters” means in this experiment
 
@@ -106,11 +137,11 @@ There are concrete background examples: `089` output **51** lies on the bright t
 
 ### First: use the completed R25 label amendments and isolate their effect
 
-The [completed R25 review](front-review-r25.md) amends eight left points: development rows `008:35`, `010:18/19/20` and training rows `012:1/2/3/28`. The ambiguous right point at `012:28` is retained. Its matched notebook is being pinned to these supported changes. The supplied `008:18–21` and `008:28–32` examples are useful **visual standards for annotations**. They are not promises that the model predicts those points correctly: the model's left errors at standards `008:18`, `008:19` and `008:29` are 6.599, 8.190 and 7.101 px.
+The [completed R25 review](front-review-r25.md) amends eight left points: development rows `008:35`, `010:18/19/20` and training rows `012:1/2/3/28`. The ambiguous right point at `012:28` is retained. Its matched notebook is pinned to these supported changes. The supplied `008:18–21` and `008:28–32` examples are useful **visual standards for annotations**. They are not promises that the model predicts those points correctly: the model's left errors at standards `008:18`, `008:19` and `008:29` are 6.599, 8.190 and 7.101 px.
 
 The named `008:35`, `010:18/19` and `012:3/28` requests were handled through this physical amendment workflow, with the three adjacent rows recorded separately. Photo012 is training data; photos008 and010 remain development data. In the completed R24 predictions, `010:18/19` already satisfy five pixels against the accepted R24 labels. That score did not settle their physical corner placement. Conversely, an inaccurate model prediction is not evidence that a correct label needs amendment. No training prediction was evaluated for `012:3/28` in PR99.
 
-For this first R25 comparison, retain the established recipe so the experiment answers the annotation question. Compare the returned candidate and matched control on unchanged frozen references and a separately identified current review. Use an identical reference for R24-to-R25 comparisons. Preserve the detection, corner, duplicate and empty-scene checks. The new notebook is **in preparation under the user's new instruction**, not forbidden by the earlier completed-R24 decision.
+For this first R25 comparison, retain the established recipe so the experiment answers the annotation question. Compare the returned candidate and matched control on unchanged frozen references and a separately identified current review. Use an identical reference for R24-to-R25 comparisons. Preserve the detection, corner, duplicate and empty-scene checks. The new notebook is **ready for the newly authorized amendment experiment**; the earlier completed-R24 decision remains historical.
 
 ### Second: review analogous existing training fragments for visible box extent
 
@@ -154,7 +185,7 @@ The new inventory exactly reproduces every saved matching trace and the complete
 
 ## 7. Current baseline after the completed R25 reference repair
 
-The R25 labels are now complete. Its manifest is pinned to SHA-256 `de80c21ed4b148efe6446e66b8a15f75c3b6363daf9c03d0b88a29e187483517`. To make “currently poor” precise, the **same saved predictions** from all four models were scored against that new reference. This uses no new inference and measures no new learning. The R25 notebook is being pinned; the table below contains existing checkpoints, not an R25-trained candidate.
+The R25 labels are now complete. Its manifest is pinned to SHA-256 `de80c21ed4b148efe6446e66b8a15f75c3b6363daf9c03d0b88a29e187483517`. To make “currently poor” precise, the **same saved predictions** from all four models were scored against that new reference. This uses no new inference and measures no new learning. The R25 notebook is ready; the table below contains existing checkpoints, not an R25-trained candidate.
 
 | Unchanged saved model, R25 reference | Matched / 662 | Misses | Unmatched outputs | Both corners within 5 px / 584 | Within 10 px / 584 |
 | --- | ---: | ---: | ---: | ---: | ---: |

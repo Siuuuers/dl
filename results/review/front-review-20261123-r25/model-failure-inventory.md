@@ -200,3 +200,42 @@ For the unchanged R24 candidate, **all 16 misses in section 2, all 27 five-pixel
 **008:35 is no longer a five-pixel endpoint failure under the corrected reference.** Its unchanged predicted left coordinate is now 1.871916 px from the accepted point rather than 5.896019 px. The model did not move or learn; the reference was repaired. The four amended development rows and their before/after errors for all four models are preserved in JSON.
 
 Verification binds all R25 validation label files to the pinned manifest, confirms only the four declared left-point changes, and confirms unchanged boxes, classes, visibility, counts and all 80 saved-model matching traces. No inference, training or label mutation was performed by this scoring step.
+
+## 9. Where selected PR35 still fails on the current R25 reference
+
+PR35 remains selected under the frozen 666-front primary decision. On the **separate current R25 reference**, its saved outputs match 625/662 fronts, miss **37**, and place both corners within 5 px on **543/584** eligible fronts; the saved R24 candidate reaches **557/584** with 16 misses. These are existing checkpoints, not an R25-trained result. R25 has not been trained. The frozen-reference counts and row identities must not be substituted for the current rows below.
+
+The table accounts for **all 37 PR35 misses and all 41 failed two-corner targets** on R25. Seven of those 41 fail through unmatched boxes and 34 through geometric error; the missed and failed-pair columns overlap and must not be added together. Rows are one-based current R25 annotation rows. A dash means no failure in that column.
+
+| Photograph | PR35 missed rows | PR35 two-corner targets failing 5 px |
+| --- | --- | --- |
+| `new_000007` | 1, 8, 9, 14, 15, 30 | 1, 7, 8, 9, 13, 14, 15, 16, 30 |
+| `new_000008` | 1, 5, 36 | 4, 5, 6, 18, 19, 21, 25, 27, 28, 29, 30, 31 |
+| `new_000009` | 50, 51, 52, 56, 57 | 12 |
+| `new_000010` | 14, 24, 31, 32, 33, 34 | 15, 20, 26, 28 |
+| `new_000011` | 55, 56, 57, 58, 59, 60 | 4 |
+| `new_000053` | 1 | — |
+| `new_000055` | — | 21 |
+| `new_000056` | 16 | 4, 18, 19, 22 |
+| `new_000058` | — | 4 |
+| `new_000059` | — | 2, 6, 11 |
+| `new_000086` | 57 | — |
+| `new_000087` | — | 53 |
+| `new_000088` | 57 | — |
+| `new_000089` | 42, 43 | 34 |
+| `new_000090` | 39, 40, 41, 42, 43 | 44, 45, 46 |
+
+The largest miss concentrations are photos 007, 010 and 011, with six each. Photos 008 and 007 contain 12 and nine failed pairs, respectively. Four matched two-corner targets have a returned endpoint beyond 10 px:
+
+| Current target | PR35 endpoint error beyond 10 px |
+| --- | --- |
+| `007:13` | Left 14.596 px; right 14.356 px |
+| `008:18` | Left 10.286 px |
+| `008:19` | Left 13.040 px |
+| `008:29` | Left 10.559 px |
+
+The three listed photo008 left endpoints have confidence 0.944–0.957 despite these errors. Accepted annotation standards remain physical label references; high model confidence and annotation correctness do not guarantee accurate predictions.
+
+**Thirteen current targets are missed by PR35, the R24 control and the R24 candidate:** `008:36`; `009:56,57`; `010:14,33,34`; `011:55,56,57,60`; `053:1`; `086:57`; `088:57`. These shared cases concentrate on clipped borders and narrow occluded fragments. Conversely, PR35 matches `008:33,34` and `009:55`, which the R24 candidate misses; retain these three as preservation cases.
+
+Sources: [preserved comparison](../../evaluation/pr99-r24-20261123/fixed-comparison.json), `references.current_r24_exploratory.models.*.scenes`, supplies missed identities; section 8 verifies unchanged R25 box associations. The [existing inventory JSON](model-failure-inventory.json), `finalized_r25_reference_baseline.models.pr35`, supplies all current pair-failure identities and endpoint errors. This section summarizes those saved records without new inference, scoring or annotation changes.

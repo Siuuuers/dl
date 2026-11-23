@@ -2,8 +2,8 @@
 
 23 November 2026, Asia/Hong_Kong.
 
-**The R25 annotation amendment is complete. The new notebook prepares the
-requested controlled training comparison; R25 has not been trained yet.**
+**The R25 annotation amendment and pinned notebook are complete. The notebook
+is ready for the requested controlled comparison; R25 has not been trained yet.**
 PR35 remains the selected working model. The [completed PR99 comparison](../results/evaluation/pr99-r24-20261123/README.md)
 and [model improvement report](model-improvement-after-r24.md) explain the
 latest R24 result and the remaining failure patterns.
@@ -17,10 +17,18 @@ or download [baomai_front_review_r25.ipynb](../notebooks/baomai_front_review_r25
 2. Choose **Run all**. Use the existing Drive option to retain completed runs.
 3. Return **`baomai-front-review-r25-results.zip`** after both arms finish.
 
-The final notebook pins the published source and exact protocol. Its input
+The final notebook pins source commit
+`86a7ba078b348f2b1cbacf73b4c271e9216fdb63` and exact protocol. Its input
 preflight verifies the saved review, candidate, source images, missing-point
 representation, standard rows, actual training inputs and original validation.
 The resource trial and both training arms retain the established behavior.
+
+The [handoff verification](../results/review/front-review-20261123-r25/notebook-verification.json)
+records seven compiled code cells, empty execution outputs, the resolved
+source/protocol pins, and a successful run of the final notebook's exact input
+preflight. That result reproduces the saved verification. The six runtime
+cells outside the updated input check preserve the working R24 implementation
+apart from round names and pins. GPU training is the next user-run step.
 
 ## Exact amendment
 
