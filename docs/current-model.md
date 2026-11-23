@@ -1,24 +1,21 @@
-# Current model and R25 training handoff
+# Current model and R26 training handoff
 
 23 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected. R24 training and PR99 evaluation are complete;
-the [R25 notebook](front-review-r25.md) prepares the newly requested amendment experiment.**
-R25 corrects eight left corners in three photographs: four points in one
-training photograph and four development-only points. Eleven accepted standard
-rows and all non-coordinate fields are preserved. R25 has not been trained yet.
+**PR35 remains the selected checkpoint. The returned R25 experiment in
+[PR101](https://github.com/Siuuuers/dl/pull/101) is evaluated; R26 annotations
+and the [next notebook](front-review-r26.md) are prepared. R26 has not been trained.**
 
-The [complete R24 photo atlas](front-review-r24-pdf.md) contains every nonempty
-new-series photo, with the accepted R23-to-R24 corner changes highlighted.
-The [PR99 evaluation](../results/evaluation/pr99-r24-20261123/README.md)
-records the returned models, fresh inference and same-reference comparisons.
-The [improvement report](model-improvement-after-r24.md) explains what changed
-in the learned weights, the exact remaining failure rows and useful future
-capture types. The R25 compact review packet accompanies the annotation handoff.
+R26 corrects 19 rows, deletes the unsupported development patch 008:36, and
+retains five named rows after original-pixel review. Only three rows in training
+photo 013 change the supervision: three left corners and two xmin trims. All eight
+user-named photographs remain in development. Eleven accepted standards are
+preserved exactly. See the [boundary policy](annotation-boundaries-r26.md) and
+[exact amendment ledger](../results/review/front-review-20261123-r26/row-review.json).
 
-## Run inference
+## Run the retained model
 
-Use branch `codex/front-review-r25-20261123`. Follow the
+Use branch `codex/front-review-r26-20261123`. Follow the
 [folder guide](predict-pose-folder.md#use-the-seed46-candidate-explicitly) to
 obtain the verified PR35 bundle, retaining its manifest and companion files.
 
@@ -26,76 +23,96 @@ obtain the verified PR35 bundle, retaining its manifest and companion files.
 | --- | --- |
 | Checkpoint | PR35 seed 46 candidate |
 | Checkpoint SHA-256 | `420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1` |
-| Input size | 1280 |
-| Box confidence | 0.13 |
-| NMS IoU | 0.70 |
-| Endpoint confidence | 0.50 |
+| Input size |1280 |
+| Box confidence |0.13 |
+| NMS IoU |0.70 |
+| Endpoint confidence |0.50 |
 
-## Latest completed comparison
+## Returned R25 results
 
-Fresh inference uses one common CPU runtime and fixed settings for PR35, the
-R24 control, the R24 candidate and the preceding R23 candidate. On the frozen
-666-front primary reference:
+Fresh inference uses one common CPU runtime and fixed settings for PR35, R25
+control, R24 candidate and R25 candidate. No training was repeated to evaluate
+the return. Both R25 arms completed 30 epochs and their provenance audit passed.
 
-| Model | Unmatched targets | Unmatched outputs | Both corners within 5 px | Both within 10 px |
+| Frozen 666-front primary reference | Missed targets | Unmatched outputs | Both corners within 5 px | Both within 10 px |
 | --- | ---: | ---: | ---: | ---: |
-| Selected PR35 | 18 | 80 | 533/584 | 582/584 |
-| R24 control | 20 | 83 | 531/584 | 583/584 |
-| R23 candidate, freshly inferred | 36 | 110 | 521/584 | 575/584 |
-| R24 candidate | 35 | 105 | 518/584 | 573/584 |
+| Selected PR35 |18 |80 |533/584 |582/584 |
+| R25 matched control |20 |83 |531/584 |583/584 |
+| R24 candidate |35 |105 |518/584 |573/584 |
+| R25 candidate |37 |108 |518/584 |574/584 |
 
-Relative to R23, R24 gains one match and removes five unmatched outputs; its
-frozen-reference corner-success counts decrease. The 584-front denominator
-includes every target with two locatable corners, including scored misses.
-All four models produce zero outputs on the three empty development scenes.
+The denominator includes all 584 targets with two locatable corners, including
+scored misses. All four models produce zero outputs on the three empty scenes.
+The historical 663-front reference also does not support replacing PR35.
 
-On the separately identified current R24 exploratory reference (662 fronts),
-PR35 has 37 unmatched targets, 103 unmatched outputs and 544/584 both-corner
-successes within 5 px. R24 has 16, 90 and 557/584 respectively. Fresh R23,
-scored on that same R24 reference, has 17, 95 and 557/584. Both R23 and R24
-have 583/584 successes within 10 px there. The reference versions are not
-combined and reference edits are not attributed to model learning.
+On the identical pre-return R25 exploratory reference, R24/R25 have 16/17 misses,
+90/92 unmatched outputs and 557/584 five-pixel pairs each. Their ten-pixel pair
+counts are 583/584 each. R25 loses the match at 089:49; its best retained box has
+IoU 0.445 rather than R24's 0.711. Under the frozen reference it additionally loses
+089:43 at the fixed 0.50 overlap threshold. These saved filtered outputs do not
+establish which raw proposal-generation or suppression mechanism caused that.
 
-R24 matches all 584 exploratory targets with two locatable corners. Its
-remaining 16 unmatched targets have zero or one locatable corner (7 and 9),
-and it has 33 duplicate outputs on this reference. Reference-box changes also
-alter which predictions meet the fixed IoU matching requirement. An unmatched
-target does not necessarily mean the network produced no nearby proposal.
-The conflicting reference rankings do not establish a replacement for PR35.
+The [PR101 evaluation](../results/evaluation/pr101-r25-20261123/README.md)
+contains the full same-reference comparison, exact failure identities and
+provenance. The input audit finds exactly four changed training left corners
+between R24 and R25, with 879/879 identical matched-control state tensors. This
+supports a bounded four-point experiment interpretation, not a new-session
+accuracy claim or a need to change the architecture.
 
-## Completed R24 training and newly authorized R25 work
+## Separate R26 reference check
 
-The [R24 notebook](../notebooks/baomai_front_review_r24.ipynb) remains an immutable
-reproduction entry for the completed experiment. Both arms finished 30 epochs
-in the returned [PR99 archive](https://github.com/Siuuuers/dl/pull/99).
-The user's subsequent feedback supplied new point amendments. The
-[R25 handoff](front-review-r25.md) and its new notebook preserve the recipe
-while changing only the newly supported supervision.
+The new R26 exploratory review contains 661 development fronts. The same saved
+predictions, without inference or retraining, give:
 
-The R23-to-R24 training input difference is 22 corner corrections across 18
-rows in three training photos. The four corrections in photo 010 are in the
-development review only. Original trainer validation and frozen scoring
-references remain separate from the current exploratory review.
+| Current R26 exploratory reference | Missed targets | Unmatched outputs | Both corners within 5 px | Both within 10 px |
+| --- | ---: | ---: | ---: | ---: |
+| PR35 |38 |105 |543/584 |573/584 |
+| R25 matched control |40 |108 |539/584 |573/584 |
+| R24 candidate |15 |90 |557/584 |582/584 |
+| R25 candidate |15 |91 |557/584 |582/584 |
 
-The [completed 16-case review](../results/evaluation/pr99-r24-20261123/partial-front-failure-queue.md)
-maps every remaining partial-front miss to its exact accepted row, original
-photograph and atlas page. Ten have retained overlapping boxes below the fixed
-IoU 0.50 requirement; six have no retained overlap. None loses a qualifying
-retained box through assignment to a competing target. These saved outputs
-have already passed confidence filtering and NMS, so they do not establish
-the raw-network cause of a missing output.
+These numbers are a [reference-only rescore](../results/review/front-review-20261123-r26/exploratory-comparison.json).
+They must not replace or be pooled with the frozen results. The deletion removes
+one previously unmatched reference row; tighter 089:48/49 reference boxes cause two existing PR35
+matches to fail, while 089:49 becomes a match for R25. No network weight changed.
 
-In `new_000011:55-57`, the locatable left endpoints are about 1.96, 3.36 and
-1.43 px from the accepted points, while the retained boxes extend too far into
-the occluded region. Comparable training examples should be reviewed for
-visible-box extent and separate-layer coverage before designing a further
-supervision intervention. Keep `008:33`, `008:34` and `009:55` as coverage
-checks: PR35 and the control match them on the same R24 reference, but both
-R23 and R24 candidates miss them.
+The current reference favors recent candidates, while the frozen reference
+favors PR35. Retention follows the existing selection protocol; it is not proof
+that PR35 is physically best under every accepted annotation version. Resolve
+that disagreement with a stable, physically adjudicated reference and a separate
+capture-session check, rather than selecting whichever reference gives a desired
+ranking. The reused 20 images remain development data.
 
-The queue records the earlier proposal-filter and occlusion experiments so
-that a future intervention starts from the actual remaining failure cases.
-Hidden coordinates cannot be inferred from confidence alone. A separate
-capture session remains the useful generalization check; repeated development
-images do not establish new-scene reliability. The task remains RGB detection
-and two 2-D corners.
+## Focused prediction review
+
+The requested PDF reviews retained PR35's 16 largest measurable matched-corner
+errors above 5 px and eight other lowest-overlap matches below IoU 0.70. It excludes
+missed targets and unmatched outputs. Each case shows an unmarked crop and a
+reference/prediction comparison, including nearby scene context. Unlocatable
+corners have no scored error. The [inventory](../results/review/front-review-20261123-r26/prediction-error-inventory.json)
+contains all 623 matched R26 targets, the exact 24 selected identities and PDF hash.
+
+Reproduce it from the hash-bound originals and saved prediction records:
+
+```bash
+python3 scripts/render_front_review_r26_errors.py --help
+```
+
+## Next improvement
+
+Keep the architecture, inference settings and fixed paired recipe. Test the
+three supported training-row corrections in R26 as a small, explicit experiment,
+and compare its return with both PR35 and the saved R25 predecessor under the
+same references. No favorable result is promised by the amendment itself.
+
+The higher-value data addition is a separate camera session with more examples
+of narrow fronts beside the gripper, frame-clipped fronts, rounded/shadowed lower
+corners, and rack/hand lookalikes. Include ordinary and empty scenes. Preserve
+identifiable small instances and missing-point visibility; do not remove hard
+objects to improve a score. Split by capture session before training so that
+near-duplicate views do not serve as independent evidence.
+
+Current original trainer validation remains 20 images / 664 objects. Frozen 666/663
+references, the whole-photo hold for 015, and 31 excluded old-series treatment
+photos remain unchanged. The model task is still RGB front detection and two
+image-plane corners; this work does not establish metric 3-D or robot grasp accuracy.
