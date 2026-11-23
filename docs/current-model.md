@@ -1,12 +1,13 @@
-# Current model and training entry
+# Current model and completed R24 comparison
 
 23 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected. Run the r24 notebook for the next comparison.** The
-completed [PR97 audit](../results/evaluation/pr97-r23-20261123/README.md)
-evaluates the returned r23 models. [R24](front-review-r24.md) corrects 26
-front-face corner points across the 21 named rows plus adjacent `012:5`,
-preserves both accepted standards and prepares the next controlled run.
+**PR35 remains selected. R24 training and PR99 evaluation are complete.**
+The [complete R24 photo atlas](front-review-r24-pdf.md) contains every nonempty
+new-series photo, with the accepted R23-to-R24 corner changes highlighted.
+The [PR99 evaluation](../results/evaluation/pr99-r24-20261123/README.md)
+records the returned models, fresh inference and same-reference comparisons.
+A further training notebook is not required for this completed experiment.
 
 ## Run inference
 
@@ -25,39 +26,67 @@ obtain the verified PR35 bundle, retaining its manifest and companion files.
 
 ## Latest completed comparison
 
-On the frozen 666-front primary reference, PR35 / fresh r23 control / r23
-candidate have **18 / 20 / 36 unmatched targets** and **80 / 83 / 110
-unmatched outputs**. Both-corner successes within five pixels are
-**533 / 531 / 521**, each out of 584 eligible fronts. All three return zero
-outputs on the three empty scenes.
+Fresh inference uses one common CPU runtime and fixed settings for PR35, the
+R24 control, the R24 candidate and the preceding R23 candidate. On the frozen
+666-front primary reference:
 
-The candidate's ranking reverses on the separately pinned pre-return r23
-exploratory review: PR35 / candidate have 625 / 645 matched targets and
-545 / 556 both-corner successes within five pixels, out of 584. The audit
-traces reference-box changes that alter IoU matching while the predictions
-remain fixed. An unmatched target is a scoring outcome, not proof that a
-physical cassette has no prediction. The conflicting rankings do not
-establish a replacement. PR35 remains selected; no r24 training result is
-claimed.
+| Model | Unmatched targets | Unmatched outputs | Both corners within 5 px | Both within 10 px |
+| --- | ---: | ---: | ---: | ---: |
+| Selected PR35 | 18 | 80 | 533/584 | 582/584 |
+| R24 control | 20 | 83 | 531/584 | 583/584 |
+| R23 candidate, freshly inferred | 36 | 110 | 521/584 | 575/584 |
+| R24 candidate | 35 | 105 | 518/584 | 573/584 |
 
-## Run r24
+Relative to R23, R24 gains one match and removes five unmatched outputs; its
+frozen-reference corner-success counts decrease. The 584-front denominator
+includes every target with two locatable corners, including scored misses.
+All four models produce zero outputs on the three empty development scenes.
 
-[Open the notebook in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r24-20261123/notebooks/baomai_front_review_r24.ipynb),
-select GPU, choose **Run all**, and return **`baomai-front-review-r24-results.zip`**.
+On the separately identified current R24 exploratory reference (662 fronts),
+PR35 has 37 unmatched targets, 103 unmatched outputs and 544/584 both-corner
+successes within 5 px. R24 has 16, 90 and 557/584 respectively. Fresh R23,
+scored on that same R24 reference, has 17, 95 and 557/584. Both R23 and R24
+have 583/584 successes within 10 px there. The reference versions are not
+combined and reference edits are not attributed to model learning.
 
-Both arms start independently from original epoch 173: seed 46, 30 epochs,
-batch 4, input 1280, FP32, AdamW, learning rate 0.0001 and final-epoch checkpoint
-selection. Both keep 137 training images including 13 empty scenes. Photo 015
-and the 31 old-series treatment exclusions retain identical PR35 supervision
-in both arms. The [handoff](front-review-r24.md) describes the new points,
-source pins, staged-input verification and scoring references. `new_000010`
-remains development-only; its amended review points never enter training.
+R24 matches all 584 exploratory targets with two locatable corners. Its
+remaining 16 unmatched targets have zero or one locatable corner (7 and 9),
+and it has 33 duplicate outputs on this reference. Reference-box changes also
+alter which predictions meet the fixed IoU matching requirement. An unmatched
+target does not necessarily mean the network produced no nearby proposal.
+The conflicting reference rankings do not establish a replacement for PR35.
 
-## Next evidence after the run
+## Completed training and the next useful work
 
-The notebook evaluates accumulated eligible supervision. It does not isolate
-the latest 26 point edits. Repeated development images do not establish
-reliability in a new capture session; a separate independently labeled session
-is the next useful generalization check. The present task remains RGB
-detection and two 2-D corners. Pixel error alone does not establish robot
-placement accuracy in millimetres.
+The [R24 notebook](../notebooks/baomai_front_review_r24.ipynb) remains an immutable
+reproduction entry for the completed experiment. Both arms finished 30 epochs
+in the returned [PR99 archive](https://github.com/Siuuuers/dl/pull/99). There is
+no new training input or hypothesis requiring another notebook yet.
+
+The R23-to-R24 training input difference is 22 corner corrections across 18
+rows in three training photos. The four corrections in photo 010 are in the
+development review only. Original trainer validation and frozen scoring
+references remain separate from the current exploratory review.
+
+The [completed 16-case review](../results/evaluation/pr99-r24-20261123/partial-front-failure-queue.md)
+maps every remaining partial-front miss to its exact accepted row, original
+photograph and atlas page. Ten have retained overlapping boxes below the fixed
+IoU 0.50 requirement; six have no retained overlap. None loses a qualifying
+retained box through assignment to a competing target. These saved outputs
+have already passed confidence filtering and NMS, so they do not establish
+the raw-network cause of a missing output.
+
+In `new_000011:55-57`, the locatable left endpoints are about 1.96, 3.36 and
+1.43 px from the accepted points, while the retained boxes extend too far into
+the occluded region. Comparable training examples should be reviewed for
+visible-box extent and separate-layer coverage before designing a further
+supervision intervention. Keep `008:33`, `008:34` and `009:55` as coverage
+checks: PR35 and the control match them on the same R24 reference, but both
+R23 and R24 candidates miss them.
+
+The queue records the earlier proposal-filter and occlusion experiments so
+that a future intervention starts from the actual remaining failure cases.
+Hidden coordinates cannot be inferred from confidence alone. A separate
+capture session remains the useful generalization check; repeated development
+images do not establish new-scene reliability. The task remains RGB detection
+and two 2-D corners.

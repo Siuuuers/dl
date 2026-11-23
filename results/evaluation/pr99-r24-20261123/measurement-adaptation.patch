@@ -1,0 +1,292 @@
+--- pr97/measure_pr97.py
++++ pr99/measure_pr99.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Score the fixed PR97 r23 comparison from saved predictions, without training."""
++"""Score the fixed PR99 r24 comparison from saved predictions, without training."""
+ 
+ import argparse
+ import hashlib
+@@ -10,11 +10,11 @@
+ import tempfile
+ from pathlib import Path
+ 
+-PROTOCOL_SHA = "a4183607c6737a8466aef4edd625ca52450a486dd030456e4d10e3cd98736a54"
++PROTOCOL_SHA = "0a6322dbf4ee0cfca60b06478f8feecbd4dce516df92301cc74a2030b73021f5"
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "dae9539320c954677f6874d9ede087ba98955d816f49ecf711da12187bf7c890",
+-    "candidate": "e1d9104b9add3e39bbd9b0d728c58d258e42cf1501ac9615a14e61e5e1c8716e",
++    "reference": "723d03ea61322e5effc4722abad1019c0edc98cf0da02fbab31b9211f07f06a6",
++    "candidate": "2830ec32d1155ef9d05263fec5769f50a9fe716f75378e5d81e47a13a6cb94c6",
+ }
+ SCORER_SHA = {
+     "evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+@@ -44,7 +44,7 @@
+         return select_checkpoint(preflight, checkpoint_path, require_weights=False)
+     require(log_path == Path("train.log") and (base / "train-log.txt").is_file(),
+             "Missing original or preserved training log")
+-    with tempfile.TemporaryDirectory(prefix="pr97-preserved-receipt-") as tmp:
++    with tempfile.TemporaryDirectory(prefix="pr99-preserved-receipt-") as tmp:
+         target = Path(tmp)
+         shutil.copytree(base, target, dirs_exist_ok=True)
+         shutil.copyfile(base / "train-log.txt", target / log_path)
+@@ -77,7 +77,7 @@
+     from diagnose_pose_quality import aggregate_quality, quality_for_image
+     from rescore_reference_amendment import load_api, verify_amendment
+ 
+-    protocol_path = root / "experiments/front-review-2026-11-22-r23.json"
++    protocol_path = root / "experiments/front-review-2026-11-23-r24.json"
+     require(sha(protocol_path) == PROTOCOL_SHA, "The preregistered protocol changed")
+     protocol = json.loads(protocol_path.read_text())
+     for name, expected in SCORER_SHA.items():
+@@ -104,8 +104,8 @@
+     runtimes = [model["metadata"]["runtime"] for model in models.values()]
+     require(all(runtime == runtimes[0] for runtime in runtimes), "Inference runtimes differ")
+     report = {
+-        "schema_version":1,"kind":"pr97-r23-fixed-development-comparison","status":"measured",
+-        "model_set":"returned_pr97_r23",
++        "schema_version":1,"kind":"pr99-r24-fixed-development-comparison","status":"measured",
++        "model_set":"returned_pr99_r24",
+         "protocol":{"path":str(protocol_path.relative_to(root)),"sha256":PROTOCOL_SHA},
+         "measurement_script_sha256":sha(__file__), "scorers_sha256":SCORER_SHA,
+         "models":{role:{key:value for key,value in model.items() if key != "predictions"}
+@@ -120,18 +120,18 @@
+             "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+             "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+             "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+-            "The separately pinned current r23 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
++            "The separately pinned current r24 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
+         ],
+     }
+-    for label in ("primary", "diagnostic", "current_r23_exploratory"):
++    for label in ("primary", "diagnostic", "current_r24_exploratory"):
+         setting = protocol["evaluation"]
+-        exploratory = label == "current_r23_exploratory"
++        exploratory = label == "current_r24_exploratory"
+         if exploratory:
+-            from front_review_r23 import experiment, verify_candidate
++            from front_review_r24 import experiment, verify_candidate
+             verify_candidate(root)
+             descriptor = setting["current_review_reference"]
+             path = root / descriptor["path"]
+-            require(sha(path) == descriptor["sha256"], "Current r23 review changed")
++            require(sha(path) == descriptor["sha256"], "Current r24 review changed")
+             review, status, _, _, _, _, reviewed = experiment(root).read_review(root)
+             gold = {image_id: parse_pose_labels(reviewed[image_id]["bytes"].decode(),
+                     record["width"], record["height"], reviewed[image_id]["path"])
+--- pr97/run_pr97_inference.py
++++ pr99/run_pr99_inference.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Reproduce the two returned fixed PR97 CPU inferences without training or tuning."""
++"""Reproduce the three fixed PR99 CPU inferences without training or tuning."""
+ import argparse
+ import hashlib
+ import json
+@@ -12,11 +12,12 @@
+     "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+     "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+     "scripts/pose_checkpoint.py": "e0f85a76fd5234a98e66783d3408e22175ba334c6209f91aca8680221a2f8d5d",
+-    "experiments/front-review-2026-11-22-r23.json": "a4183607c6737a8466aef4edd625ca52450a486dd030456e4d10e3cd98736a54",
++    "experiments/front-review-2026-11-23-r24.json": "0a6322dbf4ee0cfca60b06478f8feecbd4dce516df92301cc74a2030b73021f5",
+ }
+ MODEL_SHA = {
+-    "reference": "dae9539320c954677f6874d9ede087ba98955d816f49ecf711da12187bf7c890",
+-    "candidate": "e1d9104b9add3e39bbd9b0d728c58d258e42cf1501ac9615a14e61e5e1c8716e",
++    "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
++    "reference": "723d03ea61322e5effc4722abad1019c0edc98cf0da02fbab31b9211f07f06a6",
++    "candidate": "2830ec32d1155ef9d05263fec5769f50a9fe716f75378e5d81e47a13a6cb94c6",
+ }
+ 
+ 
+@@ -48,7 +49,7 @@
+         (output / "commands.json").write_text(json.dumps(commands, indent=2) + "\n")
+         if result.returncode:
+             raise RuntimeError(f"{role} failed; inspect its log. No later model was run.")
+-    print("Completed the two returned fixed CPU inferences.")
++    print("Completed the three fixed CPU inferences.")
+ 
+ 
+ if __name__ == "__main__":
+--- pr97/reference_sensitivity.py
++++ pr99/reference_sensitivity.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Trace fixed-primary/r23 score sensitivity with unchanged PR97 predictions.
++"""Trace fixed-primary/r24 score sensitivity with unchanged PR99 predictions.
+ 
+ Identity comes from hash-bound archived row maps, never nearest-box assignment.
+ This diagnoses reference dependence; it does not replace the primary result.
+@@ -63,7 +63,7 @@
+         return result
+ 
+     gold = {"primary": labels(primary_path, primary),
+-            "current_r23_exploratory": labels(current_path, current)}
++            "current_r24_exploratory": labels(current_path, current)}
+     chain, path = [], current_path
+     while True:
+         manifest = read(path)
+@@ -116,9 +116,9 @@
+     inverse = {iid: {parent: now for now, parent in values.items() if parent is not None}
+                for iid, values in lineage.items()}
+ 
+-    report = {"schema_version": 1, "kind": "pr97-r23-reference-definition-sensitivity",
++    report = {"schema_version": 1, "kind": "pr99-r24-reference-definition-sensitivity",
+               "script_sha256": sha(__file__), "fixed_comparison_sha256": sha(evidence / "fixed-comparison.json"),
+-              "references": {"primary": primary_descriptor, "current_r23_exploratory": current_descriptor},
++              "references": {"primary": primary_descriptor, "current_r24_exploratory": current_descriptor},
+               "identity_method": "Exact immutable recovery and successive review row maps, replayed against hash-bound label bytes.",
+               "lineage_provenance": provenance, "current_to_primary_rows": lineage,
+               "primary_objects": 666, "retained_primary_objects": sum(len(v) for v in inverse.values()),
+@@ -130,7 +130,7 @@
+                   "IoU crossings establish score sensitivity to geometry, not independent correctness of either reference.",
+                   "An unmatched gold row is a matching failure, not necessarily absence of a returned detector output.",
+                   "Unmatched predictions include reference disagreements and duplicates; they are not all confirmed background errors.",
+-                  "Only pre-return r23 labels and frozen666 are used; no r24 labels are loaded."]}
++                  "Only the pre-return R24 review and frozen 666 reference are used; no post-return label edits are loaded."]}
+     for role in ("pr35", "reference", "candidate"):
+         pred_path = args.pr35.resolve() if role == "pr35" else evidence / "inference" / ("eval-"+role) / "predictions.jsonl"
+         assert sha(pred_path) == scored["models"][role]["predictions_sha256"]
+@@ -145,20 +145,20 @@
+ 
+             def detail(parent_row, current_row, pred_index):
+                 old = gold["primary"][iid][parent_row-1]
+-                new = gold["current_r23_exploratory"][iid][current_row-1] if current_row else None
++                new = gold["current_r24_exploratory"][iid][current_row-1] if current_row else None
+                 predicted = predictions[iid][pred_index] if pred_index is not None else None
+                 result = {"image_id": iid, "image_sha256": rec["image_sha256"],
+-                          "primary_row": parent_row, "r23_row": current_row,
+-                          "primary_gold": old, "r23_gold": new,
++                          "primary_row": parent_row, "r24_row": current_row,
++                          "primary_gold": old, "r24_gold": new,
+                           "prediction_index": pred_index, "prediction": predicted,
+                           "primary_iou": _box_iou(old["bbox_xyxy"], predicted["bbox_xyxy"]) if predicted else None,
+-                          "r23_iou": _box_iou(new["bbox_xyxy"], predicted["bbox_xyxy"]) if new and predicted else None}
++                          "r24_iou": _box_iou(new["bbox_xyxy"], predicted["bbox_xyxy"]) if new and predicted else None}
+                 if new:
+                     result["box_edges_changed"] = [abs(a-b)>1e-6 for a,b in zip(old["bbox_xyxy"],new["bbox_xyxy"])]
+                     result["reference_keypoint_visibility_changed"] = [a[2]!=b[2] for a,b in zip(old["keypoints"],new["keypoints"])]
+                     result["reference_keypoint_shifts_px"] = [math.hypot(a[0]-b[0],a[1]-b[1]) if a[2]==b[2]==2 else None
+                                                                for a,b in zip(old["keypoints"],new["keypoints"])]
+-                for label, target in (("primary",old),("r23",new)):
++                for label, target in (("primary",old),("r24",new)):
+                     result[label+"_corner_errors_px"] = [math.hypot(p[0]-g[0],p[1]-g[1]) if g[2]==2 else None
+                         for g,p in zip(target["keypoints"],predicted["keypoints"])] if target and predicted else None
+                 return result
+@@ -166,33 +166,33 @@
+             for index in traces["primary"]["unmatched_gold_indices"]:
+                 parent_row = index+1
+                 now = inverse[iid].get(parent_row)
+-                matched = matches["current_r23_exploratory"].get(now)
++                matched = matches["current_r24_exploratory"].get(now)
+                 if now is None:
+-                    category = "deleted_from_r23_reference"
++                    category = "deleted_from_r24_reference"
+                     pred_index = None
+                 elif matched:
+                     pred_index = matched["prediction_index"]
+                     old_iou = _box_iou(gold["primary"][iid][index]["bbox_xyxy"], predictions[iid][pred_index]["bbox_xyxy"])
+                     category = "same_output_crosses_iou_with_reference_box_change" if old_iou < .5 else "matching_assignment_changed"
+                 else:
+-                    category = "still_unmatched_in_r23"
++                    category = "still_unmatched_in_r24"
+                     pred_index = max(range(len(predictions[iid])), key=lambda j: _box_iou(gold["primary"][iid][index]["bbox_xyxy"],predictions[iid][j]["bbox_xyxy"])) if predictions[iid] else None
+                 case = detail(parent_row,now,pred_index)
+                 case["category"] = category
+                 cases.append(case)
+                 counts[category] += 1
+-            for index in traces["current_r23_exploratory"]["unmatched_gold_indices"]:
++            for index in traces["current_r24_exploratory"]["unmatched_gold_indices"]:
+                 now = index+1
+                 parent_row = lineage[iid][now]
+                 old_match = matches["primary"].get(parent_row)
+                 if old_match:
+                     case = detail(parent_row,now,old_match["prediction_index"])
+-                    case["category"] = "same_output_falls_below_iou_with_reference_box_change" if case["r23_iou"] < .5 else "matching_assignment_changed"
++                    case["category"] = "same_output_falls_below_iou_with_reference_box_change" if case["r24_iou"] < .5 else "matching_assignment_changed"
+                     reversed_cases.append(case)
+         report["models"][role] = {"predictions_sha256":sha(pred_path),
+              "fixed_primary_misses":len(cases), "fixed_miss_categories":dict(counts),
+-             "fixed_primary_miss_cases":cases, "primary_match_but_r23_miss_cases":reversed_cases,
+-             "r23_misses":scored["references"]["current_r23_exploratory"]["models"][role]["detection"]["fn"]}
++             "fixed_primary_miss_cases":cases, "primary_match_but_r24_miss_cases":reversed_cases,
++             "r24_misses":scored["references"]["current_r24_exploratory"]["models"][role]["detection"]["fn"]}
+     assert not args.output.exists(), "Choose a fresh output"
+     args.output.write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")
+     print(json.dumps({"deleted_primary_rows":report["deleted_primary_rows"],
+--- pr97/measure_pr97.py
++++ pr99/measure_r23_same_runtime.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Score the fixed PR97 r23 comparison from saved predictions, without training."""
++"""Score the fresh R23 comparator on the exact R24 references, without training."""
+ 
+ import argparse
+ import hashlib
+@@ -10,10 +10,10 @@
+ import tempfile
+ from pathlib import Path
+ 
+-PROTOCOL_SHA = "a4183607c6737a8466aef4edd625ca52450a486dd030456e4d10e3cd98736a54"
++PROTOCOL_SHA = "0a6322dbf4ee0cfca60b06478f8feecbd4dce516df92301cc74a2030b73021f5"
+ MODEL_SHA = {
+     "pr35": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+-    "reference": "dae9539320c954677f6874d9ede087ba98955d816f49ecf711da12187bf7c890",
++    "reference": "723d03ea61322e5effc4722abad1019c0edc98cf0da02fbab31b9211f07f06a6",
+     "candidate": "e1d9104b9add3e39bbd9b0d728c58d258e42cf1501ac9615a14e61e5e1c8716e",
+ }
+ SCORER_SHA = {
+@@ -44,7 +44,7 @@
+         return select_checkpoint(preflight, checkpoint_path, require_weights=False)
+     require(log_path == Path("train.log") and (base / "train-log.txt").is_file(),
+             "Missing original or preserved training log")
+-    with tempfile.TemporaryDirectory(prefix="pr97-preserved-receipt-") as tmp:
++    with tempfile.TemporaryDirectory(prefix="pr99-preserved-receipt-") as tmp:
+         target = Path(tmp)
+         shutil.copytree(base, target, dirs_exist_ok=True)
+         shutil.copyfile(base / "train-log.txt", target / log_path)
+@@ -77,7 +77,7 @@
+     from diagnose_pose_quality import aggregate_quality, quality_for_image
+     from rescore_reference_amendment import load_api, verify_amendment
+ 
+-    protocol_path = root / "experiments/front-review-2026-11-22-r23.json"
++    protocol_path = root / "experiments/front-review-2026-11-23-r24.json"
+     require(sha(protocol_path) == PROTOCOL_SHA, "The preregistered protocol changed")
+     protocol = json.loads(protocol_path.read_text())
+     for name, expected in SCORER_SHA.items():
+@@ -104,8 +104,8 @@
+     runtimes = [model["metadata"]["runtime"] for model in models.values()]
+     require(all(runtime == runtimes[0] for runtime in runtimes), "Inference runtimes differ")
+     report = {
+-        "schema_version":1,"kind":"pr97-r23-fixed-development-comparison","status":"measured",
+-        "model_set":"returned_pr97_r23",
++        "schema_version":1,"kind":"pr99-r23-comparator-on-r24-references","status":"measured",
++        "model_set":"returned_pr97_r23_comparator",
+         "protocol":{"path":str(protocol_path.relative_to(root)),"sha256":PROTOCOL_SHA},
+         "measurement_script_sha256":sha(__file__), "scorers_sha256":SCORER_SHA,
+         "models":{role:{key:value for key,value in model.items() if key != "predictions"}
+@@ -120,18 +120,18 @@
+             "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+             "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+             "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+-            "The separately pinned current r23 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
++            "The separately pinned current r24 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score.",
+         ],
+     }
+-    for label in ("primary", "diagnostic", "current_r23_exploratory"):
++    for label in ("primary", "diagnostic", "current_r24_exploratory"):
+         setting = protocol["evaluation"]
+-        exploratory = label == "current_r23_exploratory"
++        exploratory = label == "current_r24_exploratory"
+         if exploratory:
+-            from front_review_r23 import experiment, verify_candidate
++            from front_review_r24 import experiment, verify_candidate
+             verify_candidate(root)
+             descriptor = setting["current_review_reference"]
+             path = root / descriptor["path"]
+-            require(sha(path) == descriptor["sha256"], "Current r23 review changed")
++            require(sha(path) == descriptor["sha256"], "Current r24 review changed")
+             review, status, _, _, _, _, reviewed = experiment(root).read_review(root)
+             gold = {image_id: parse_pose_labels(reviewed[image_id]["bytes"].decode(),
+                     record["width"], record["height"], reviewed[image_id]["path"])

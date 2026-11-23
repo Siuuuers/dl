@@ -1,0 +1,493 @@
+{
+  "schema_version": 1,
+  "kind": "PR99 R24 result summary",
+  "decision": "retain_PR35",
+  "automatic_next_notebook": false,
+  "date": "2026-11-23",
+  "source_revision": "6307dae6a8db545a72446abb448f19a5dcd5d2b2",
+  "training_return_pr": 99,
+  "training_return_head": "0a7333d495d3bcd4f59e7fd89e8e6475dc3662e1",
+  "fresh_inference_models": 4,
+  "fresh_inference_images": 80,
+  "inference_runtime": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "device_requested": "cpu",
+    "torch": "2.14.1+cpu",
+    "torch_cuda": null,
+    "torch_threads_requested": 4,
+    "ultralytics": "8.4.182",
+    "loaded_kpt_shape": [
+      2,
+      3
+    ],
+    "packages": {
+      "torchvision": "0.29.1+cpu",
+      "numpy": "2.4.6",
+      "Pillow": "11.3.0",
+      "opencv-python": "5.0.0.93"
+    },
+    "device_actual": "cpu",
+    "backend_end2end": false,
+    "backend_fp16": false,
+    "torch_threads": 4
+  },
+  "operating_point": {
+    "box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "imgsz": 1280,
+    "radii_px": [
+      5,
+      10
+    ]
+  },
+  "references": {
+    "primary": {
+      "reference_id": "sequence-refined-reference-2026-11-18",
+      "reference_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+      "counts": {
+        "images": 20,
+        "objects": 666,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 105,
+        "empty_images": 3
+      },
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 18,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "returned_endpoints": 1218,
+          "missing_endpoints": 9,
+          "conditional_median_error_px": 1.5583490516550391,
+          "conditional_p95_error_px": 5.10749682236233,
+          "both_corners_within_5px": 533,
+          "both_corners_within_10px": 582,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 6,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "reference": {
+          "tp": 646,
+          "fn": 20,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "returned_endpoints": 1216,
+          "missing_endpoints": 11,
+          "conditional_median_error_px": 1.557546931278539,
+          "conditional_p95_error_px": 5.075541017469904,
+          "both_corners_within_5px": 531,
+          "both_corners_within_10px": 583,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 4,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 13,
+              "misses": 10
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "candidate": {
+          "tp": 631,
+          "fn": 35,
+          "fp": 105,
+          "duplicate_fp": 28,
+          "other_fp": 77,
+          "returned_endpoints": 1196,
+          "missing_endpoints": 31,
+          "conditional_median_error_px": 1.7635774504153536,
+          "conditional_p95_error_px": 5.454219047438029,
+          "both_corners_within_5px": 518,
+          "both_corners_within_10px": 573,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 4,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 45,
+              "misses": 14
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          }
+        },
+        "r23_candidate": {
+          "tp": 630,
+          "fn": 36,
+          "fp": 110,
+          "duplicate_fp": 32,
+          "other_fp": 78,
+          "returned_endpoints": 1196,
+          "missing_endpoints": 31,
+          "conditional_median_error_px": 1.7562893223076443,
+          "conditional_p95_error_px": 5.499377932229841,
+          "both_corners_within_5px": 521,
+          "both_corners_within_10px": 575,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 4,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 23,
+              "matched": 10,
+              "misses": 13
+            },
+            "1": {
+              "gold": 59,
+              "matched": 43,
+              "misses": 16
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          }
+        }
+      }
+    },
+    "diagnostic": {
+      "reference_id": "visible-front-completion-2026-11-14",
+      "reference_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+      "counts": {
+        "images": 20,
+        "objects": 663,
+        "visible_endpoints": 1227,
+        "missing_endpoints": 99,
+        "empty_images": 3
+      },
+      "models": {
+        "pr35": {
+          "tp": 648,
+          "fn": 15,
+          "fp": 80,
+          "duplicate_fp": 32,
+          "other_fp": 48,
+          "returned_endpoints": 1218,
+          "missing_endpoints": 9,
+          "conditional_median_error_px": 1.5583490516550391,
+          "conditional_p95_error_px": 5.10749682236233,
+          "both_corners_within_5px": 533,
+          "both_corners_within_10px": 582,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 7,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 52,
+              "misses": 7
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "reference": {
+          "tp": 646,
+          "fn": 17,
+          "fp": 83,
+          "duplicate_fp": 29,
+          "other_fp": 54,
+          "returned_endpoints": 1216,
+          "missing_endpoints": 11,
+          "conditional_median_error_px": 1.557546931278539,
+          "conditional_p95_error_px": 5.075541017469904,
+          "both_corners_within_5px": 531,
+          "both_corners_within_10px": 583,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 5,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 59,
+              "matched": 50,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 583,
+              "misses": 1
+            }
+          }
+        },
+        "candidate": {
+          "tp": 632,
+          "fn": 31,
+          "fp": 104,
+          "duplicate_fp": 28,
+          "other_fp": 76,
+          "returned_endpoints": 1196,
+          "missing_endpoints": 31,
+          "conditional_median_error_px": 1.7635774504153536,
+          "conditional_p95_error_px": 5.454219047438029,
+          "both_corners_within_5px": 518,
+          "both_corners_within_10px": 573,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 4,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 59,
+              "matched": 45,
+              "misses": 14
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          }
+        },
+        "r23_candidate": {
+          "tp": 631,
+          "fn": 32,
+          "fp": 109,
+          "duplicate_fp": 32,
+          "other_fp": 77,
+          "returned_endpoints": 1196,
+          "missing_endpoints": 31,
+          "conditional_median_error_px": 1.7562893223076443,
+          "conditional_p95_error_px": 5.499377932229841,
+          "both_corners_within_5px": 521,
+          "both_corners_within_10px": 575,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 4,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 59,
+              "matched": 43,
+              "misses": 16
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          }
+        }
+      }
+    },
+    "current_r24_exploratory": {
+      "reference_id": "fronts-2026-11-23-r24",
+      "reference_sha256": "5fbb38db225857b84a8092b7fb12333cb3bba11fa2e9fcf326bea99ffb780084",
+      "counts": {
+        "images": 20,
+        "objects": 662,
+        "visible_endpoints": 1226,
+        "missing_endpoints": 98,
+        "empty_images": 3
+      },
+      "models": {
+        "pr35": {
+          "tp": 625,
+          "fn": 37,
+          "fp": 103,
+          "duplicate_fp": 21,
+          "other_fp": 82,
+          "returned_endpoints": 1191,
+          "missing_endpoints": 35,
+          "conditional_median_error_px": 1.5856811787036527,
+          "conditional_p95_error_px": 4.701079267614638,
+          "both_corners_within_5px": 544,
+          "both_corners_within_10px": 573,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 6,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 37,
+              "misses": 21
+            },
+            "2": {
+              "gold": 584,
+              "matched": 577,
+              "misses": 7
+            }
+          }
+        },
+        "reference": {
+          "tp": 624,
+          "fn": 38,
+          "fp": 105,
+          "duplicate_fp": 16,
+          "other_fp": 89,
+          "returned_endpoints": 1189,
+          "missing_endpoints": 37,
+          "conditional_median_error_px": 1.5864750884187553,
+          "conditional_p95_error_px": 4.807530939182842,
+          "both_corners_within_5px": 540,
+          "both_corners_within_10px": 573,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 6,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 11,
+              "misses": 9
+            },
+            "1": {
+              "gold": 58,
+              "matched": 37,
+              "misses": 21
+            },
+            "2": {
+              "gold": 584,
+              "matched": 576,
+              "misses": 8
+            }
+          }
+        },
+        "candidate": {
+          "tp": 646,
+          "fn": 16,
+          "fp": 90,
+          "duplicate_fp": 33,
+          "other_fp": 57,
+          "returned_endpoints": 1216,
+          "missing_endpoints": 10,
+          "conditional_median_error_px": 1.5882332594021706,
+          "conditional_p95_error_px": 4.247725010663235,
+          "both_corners_within_5px": 557,
+          "both_corners_within_10px": 583,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 10,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 58,
+              "matched": 49,
+              "misses": 9
+            },
+            "2": {
+              "gold": 584,
+              "matched": 584,
+              "misses": 0
+            }
+          }
+        },
+        "r23_candidate": {
+          "tp": 645,
+          "fn": 17,
+          "fp": 95,
+          "duplicate_fp": 33,
+          "other_fp": 62,
+          "returned_endpoints": 1215,
+          "missing_endpoints": 11,
+          "conditional_median_error_px": 1.5941298912388038,
+          "conditional_p95_error_px": 4.106978907243564,
+          "both_corners_within_5px": 557,
+          "both_corners_within_10px": 583,
+          "two_corner_denominator": 584,
+          "miss_free_nonempty_scenes": 9,
+          "empty_scene_outputs": 0,
+          "corner_groups": {
+            "0": {
+              "gold": 20,
+              "matched": 13,
+              "misses": 7
+            },
+            "1": {
+              "gold": 58,
+              "matched": 48,
+              "misses": 10
+            },
+            "2": {
+              "gold": 584,
+              "matched": 584,
+              "misses": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "crossround_input_check": "crossround-input-verification.json",
+  "limits": [
+    "The reused development frames do not establish reliability in unseen capture sessions.",
+    "Unmatched outputs are matching outcomes, not all independently adjudicated background false positives.",
+    "Unlocatable reference corners have no verified coordinate; their predicted coordinates cannot be scored for accuracy.",
+    "Confidence is not a calibrated probability of pixel accuracy or physical visibility.",
+    "Training validation uses 664 original objects; primary and historical development references use 666 and 663 separately.",
+    "No seed, epoch, confidence or NMS search is performed. No automatic model promotion follows.",
+    "The separately pinned current r24 development review is exploratory; reference disagreement is not resolved by selecting the more favorable score."
+  ]
+}

@@ -1,14 +1,18 @@
-# R24: focused corner amendments and the next notebook
+# R24: accepted corner amendments and completed training
 
 23 November 2026, Asia/Hong_Kong.
 
-**The r24 notebook is the next training entry. PR35 remains the working model.**
+**R24 has completed training in [PR99](https://github.com/Siuuuers/dl/pull/99).
+The [returned-model evaluation](../results/evaluation/pr99-r24-20261123/README.md)
+retains PR35. The [complete 116-page photo atlas](front-review-r24-pdf.md) is now
+available. The notebook below is the preserved reproduction entry; no unchanged
+rerun is required.**
 The [PR97 evaluation](../results/evaluation/pr97-r23-20261123/README.md) is
 complete. This round corrects 26 corner points on the original camera pixels,
 keeps the two-point model and existing training recipe, and preserves every
 earlier review and result.
 
-## Run
+## Reproduce the completed experiment
 
 [Open r24 in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/front-review-r24-20261123/notebooks/baomai_front_review_r24.ipynb)
 or download [baomai_front_review_r24.ipynb](../notebooks/baomai_front_review_r24.ipynb).
