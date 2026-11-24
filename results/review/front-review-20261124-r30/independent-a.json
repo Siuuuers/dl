@@ -1,0 +1,1344 @@
+{
+  "schema_version": 1,
+  "reviewer": "annotation_blind_spots",
+  "source_review": "fronts-2026-11-23-r28",
+  "prediction_anchor": "PR105 candidate, not PR107 outputs",
+  "prediction_model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+  "prediction_file_sha256": "32142eadd3e41a8af2d3885e82b3a904acd156989dd66af7d565b4101a3ff611",
+  "scope": "Twelve user-requested rows in six development images, two additional adjacent shaded-bottom cases, and two retained comparison cases. No label files modified.",
+  "coordinate_domain": "Original 1280x720 image pixels; x right, y down. All unavailable corners remain canonical zero triplets.",
+  "proposals": [
+    {
+      "image_id": "new_000055",
+      "row_1based": 21,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.1796875 0.041666667 0.09375 0.044444444 0.13561719 0.05919444 2 0.21960156 0.04654167 2",
+      "after_line": "0 0.1796875 0.0409722225 0.09375 0.043055555 0.13561719 0.05919444 2 0.21960156 0.04654167 2",
+      "geometry_before": {
+        "xyxy": [
+          170.0,
+          14.000000399999998,
+          290.0,
+          46.00000008000001
+        ],
+        "left": [
+          173.5900032,
+          42.6199968,
+          2.0
+        ],
+        "right": [
+          281.0899968,
+          33.5100024,
+          2.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          170.0,
+          14.000000400000001,
+          290.0,
+          45.0
+        ],
+        "left": [
+          173.5900032,
+          42.6199968,
+          2.0
+        ],
+        "right": [
+          281.0899968,
+          33.5100024,
+          2.0
+        ]
+      },
+      "changed_fields": [
+        "ymax"
+      ],
+      "patch_pixels": {
+        "ymax": 45
+      },
+      "reason": "The visible lower rim ends around y44–45 at the left bend and rises toward the right. y46 extends into the darker underside/rack band. Use y45 to keep the soft rim rather than trimming directly to the point y42.62.",
+      "confidence": "moderate",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        146,
+        0,
+        314,
+        82
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000055.png",
+      "source_image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000055.txt",
+      "source_label_sha256": "91778cf02d00929d1e5c17cdf34c54e49fba7163aee6a24b9887b39d5727a7cf",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 23,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          170.43017578125,
+          10.574178695678711,
+          290.8990783691406,
+          48.914405822753906
+        ],
+        "keypoints": [
+          [
+            175.28298950195312,
+            44.672386169433594,
+            0.8930938243865967
+          ],
+          [
+            287.29632568359375,
+            32.55841064453125,
+            0.8990960121154785
+          ]
+        ],
+        "confidence": 0.851896345615387,
+        "r28_iou": 0.8259419175114739,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000055-r21-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000055-r21-proposal.png"
+    },
+    {
+      "image_id": "new_000056",
+      "row_1based": 22,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.498789063 0.015972222 0.128984375 0.031944444 0.43430469 0.031944444 2 0.56097656 0.02308333 2",
+      "after_line": "0 0.498789063 0.015972222 0.128984375 0.031944444 0.4359375 0.025 2 0.56097656 0.02308333 2",
+      "geometry_before": {
+        "xyxy": [
+          555.9000006399999,
+          0.0,
+          721.00000064,
+          22.999999680000002
+        ],
+        "left": [
+          555.9100032,
+          22.999999680000002,
+          2.0
+        ],
+        "right": [
+          718.0499967999999,
+          16.619997599999998,
+          2.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          555.9000006399999,
+          0.0,
+          721.00000064,
+          22.999999680000002
+        ],
+        "left": [
+          558.0,
+          18.0,
+          2.0
+        ],
+        "right": [
+          718.0499967999999,
+          16.619997599999998,
+          2.0
+        ]
+      },
+      "changed_fields": [
+        "left_x",
+        "left_y"
+      ],
+      "patch_pixels": {
+        "left_x": 558,
+        "left_y": 18
+      },
+      "reason": "The lower-front turn is the rounded change from the left wall to the bright front edge near (558,18). The old (555.91,23) is on the lower dark vertical/underside boundary. PR105 p13 is a supporting cue; its larger predicted box is not adopted.",
+      "confidence": "high",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        531,
+        0,
+        746,
+        58
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000056.png",
+      "source_image_sha256": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000056.txt",
+      "source_label_sha256": "3f84d483d280dfd15676e4aa55ae5885bd625849a35856bca45e8b90797c44ce",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 13,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          553.621826171875,
+          0.0,
+          722.013671875,
+          29.7059326171875
+        ],
+        "keypoints": [
+          [
+            557.9309692382812,
+            18.073820114135742,
+            0.9505161046981812
+          ],
+          [
+            716.7022705078125,
+            15.864852905273438,
+            0.9448259472846985
+          ]
+        ],
+        "confidence": 0.9132896065711975,
+        "r28_iou": 0.7591203860369163,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000056-r22-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000056-r22-proposal.png"
+    },
+    {
+      "image_id": "new_000058",
+      "row_1based": 1,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.833593750 0.019444444 0.137500000 0.038888889 0.77197656 0.02684722 2 0.90182812 0.03212500 2",
+      "after_line": "0 0.833593750 0.019444444 0.137500000 0.038888889 0.77197656 0.02684722 2 0.9 0.029166666667 2",
+      "geometry_before": {
+        "xyxy": [
+          979.0,
+          -3.599999998105119e-07,
+          1155.0,
+          27.99999972
+        ],
+        "left": [
+          988.1299968000001,
+          19.3299984,
+          2.0
+        ],
+        "right": [
+          1154.3399936,
+          23.13,
+          2.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          979.0,
+          -3.599999998105119e-07,
+          1155.0,
+          27.99999972
+        ],
+        "left": [
+          988.1299968000001,
+          19.3299984,
+          2.0
+        ],
+        "right": [
+          1152.0,
+          21.00000000024,
+          2.0
+        ]
+      },
+      "changed_fields": [
+        "right_x",
+        "right_y"
+      ],
+      "patch_pixels": {
+        "right_x": 1152,
+        "right_y": 21
+      },
+      "reason": "The right lower-front turn is at the pale face tip near (1152,21); the old point lies lower on the descending side/underside edge. The original soft contour supports a small upward-left correction, not replacement of the left endpoint.",
+      "confidence": "moderate",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        955,
+        0,
+        1179,
+        63
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000058.png",
+      "source_image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000058.txt",
+      "source_label_sha256": "c22dee4f30ec62d339977f5f2909274d8d72c508de0e51f3489a865b76d4ab8d",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 18,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          978.2037353515625,
+          0.0,
+          1156.7672119140625,
+          35.725128173828125
+        ],
+        "keypoints": [
+          [
+            982.5498657226562,
+            20.637845993041992,
+            0.9523745179176331
+          ],
+          [
+            1151.96826171875,
+            20.60850715637207,
+            0.9450179934501648
+          ]
+        ],
+        "confidence": 0.8638573884963989,
+        "r28_iou": 0.7725102703719429,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000058-r01-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000058-r01-proposal.png"
+    },
+    {
+      "image_id": "new_000058",
+      "row_1based": 4,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.692187500 0.075694444 0.132812500 0.059722222 0.62870313 0.09797222 2 0.75738281 0.09768056 2",
+      "after_line": "0 0.69375 0.075694444 0.1296875 0.059722222 0.6328125 0.097222222222 2 0.75738281 0.09768056 2",
+      "geometry_before": {
+        "xyxy": [
+          801.0,
+          32.99999976,
+          971.0,
+          75.9999996
+        ],
+        "left": [
+          804.7400064,
+          70.5399984,
+          2.0
+        ],
+        "right": [
+          969.4499968,
+          70.3300032,
+          2.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          805.0,
+          32.99999976,
+          971.0,
+          75.9999996
+        ],
+        "left": [
+          810.0,
+          69.99999999984,
+          2.0
+        ],
+        "right": [
+          969.4499968,
+          70.3300032,
+          2.0
+        ]
+      },
+      "changed_fields": [
+        "xmin",
+        "left_x",
+        "left_y"
+      ],
+      "patch_pixels": {
+        "xmin": 805,
+        "left_x": 810,
+        "left_y": 70
+      },
+      "reason": "At x801–804 the rectangle includes rack/side-background rather than the front. The own upper protrusion and front rim start near x805, while the rounded lower-front junction is inward near (810,70). Keep the right point and all Y box boundaries.",
+      "confidence": "high",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        777,
+        0,
+        995,
+        111
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000058.png",
+      "source_image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000058.txt",
+      "source_label_sha256": "c22dee4f30ec62d339977f5f2909274d8d72c508de0e51f3489a865b76d4ab8d",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 2,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          805.21044921875,
+          28.183189392089844,
+          969.6959228515625,
+          80.78187561035156
+        ],
+        "keypoints": [
+          [
+            809.82861328125,
+            69.85255432128906,
+            0.9436581134796143
+          ],
+          [
+            966.5457763671875,
+            68.35856628417969,
+            0.9535595178604126
+          ]
+        ],
+        "confidence": 0.930800199508667,
+        "r28_iou": 0.7957024539336629,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000058-r04-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000058-r04-proposal.png"
+    },
+    {
+      "image_id": "new_000058",
+      "row_1based": 10,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.56053125 0.18755556 0.12537500 0.05550000 0.49903125 0.21391667 2 0.62238281 0.20336111 2",
+      "after_line": "0 0.56053125 0.18755556 0.12537500 0.05550000 0.503125 0.211111111111 2 0.62109375 0.206944444444 2",
+      "geometry_before": {
+        "xyxy": [
+          637.24,
+          115.06000320000001,
+          797.72,
+          155.02000320000002
+        ],
+        "left": [
+          638.76,
+          154.0200024,
+          2.0
+        ],
+        "right": [
+          796.6499967999999,
+          146.4199992,
+          2.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          637.24,
+          115.06000320000001,
+          797.72,
+          155.02000320000002
+        ],
+        "left": [
+          644.0,
+          151.99999999992,
+          2.0
+        ],
+        "right": [
+          795.0,
+          148.99999999968,
+          2.0
+        ]
+      },
+      "changed_fields": [
+        "left_x",
+        "left_y",
+        "right_x",
+        "right_y"
+      ],
+      "patch_pixels": {
+        "left_x": 644,
+        "left_y": 152,
+        "right_x": 795,
+        "right_y": 149
+      },
+      "reason": "The left lower-front turn is inward/upward from the old point on the dark outer rim. The right junction is slightly inward and lower than the old point on the vertical flank. Original rim continuity supports nominal (644,152) and (795,149); the full predicted box extends below the visible face and is not adopted.",
+      "confidence": "moderate",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        613,
+        80,
+        822,
+        191
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000058.png",
+      "source_image_sha256": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000058.txt",
+      "source_label_sha256": "c22dee4f30ec62d339977f5f2909274d8d72c508de0e51f3489a865b76d4ab8d",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 5,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          639.2794189453125,
+          110.7239761352539,
+          798.5159912109375,
+          160.10232543945312
+        ],
+        "keypoints": [
+          [
+            644.1616821289062,
+            151.35543823242188,
+            0.9202377200126648
+          ],
+          [
+            795.400390625,
+            148.3121337890625,
+            0.9555844068527222
+          ]
+        ],
+        "confidence": 0.9216655492782593,
+        "r28_iou": 0.7969560953819672,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000058-r10-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000058-r10-proposal.png"
+    },
+    {
+      "image_id": "new_000059",
+      "row_1based": 4,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.696875000 0.088888889 0.137500000 0.058333333 0.63142188 0.11102778 2 0.76366406 0.11054167 2",
+      "after_line": "0 0.6984375 0.088888889 0.134375 0.058333333 0.63515625 0.109722222222 2 0.76366406 0.11054167 2",
+      "geometry_before": {
+        "xyxy": [
+          804.0,
+          43.000000199999995,
+          980.0,
+          84.99999996
+        ],
+        "left": [
+          808.2200064,
+          79.9400016,
+          2.0
+        ],
+        "right": [
+          977.4899968,
+          79.5900024,
+          2.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          808.0000000000001,
+          43.000000199999995,
+          980.0,
+          84.99999996
+        ],
+        "left": [
+          813.0,
+          78.99999999984,
+          2.0
+        ],
+        "right": [
+          977.4899968,
+          79.5900024,
+          2.0
+        ]
+      },
+      "changed_fields": [
+        "xmin",
+        "left_x",
+        "left_y"
+      ],
+      "patch_pixels": {
+        "xmin": 808,
+        "left_x": 813,
+        "left_y": 79
+      },
+      "reason": "The visible own front and upper protrusion begin around x808; x804–807 includes the intervening rack/side boundary. The actual rounded lower turn lies near (813,79), consistent with PR105 p9, while the remaining box and right point stay unchanged.",
+      "confidence": "high",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        780,
+        8,
+        1004,
+        120
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000059.png",
+      "source_image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000059.txt",
+      "source_label_sha256": "a3d344e41d98fae332084ed902abbeed8540196d7dac247c07fd1dc82f010e93",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 9,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          808.098876953125,
+          36.45998001098633,
+          977.654052734375,
+          91.05891418457031
+        ],
+        "keypoints": [
+          [
+            813.2854614257812,
+            79.29768371582031,
+            0.9463352560997009
+          ],
+          [
+            974.91015625,
+            77.73860168457031,
+            0.9457094073295593
+          ]
+        ],
+        "confidence": 0.9124289155006409,
+        "r28_iou": 0.7473926352547429,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000059-r04-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000059-r04-proposal.png"
+    },
+    {
+      "image_id": "new_000059",
+      "row_1based": 11,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.695703125 0.203472222 0.133593750 0.059722222 0.63074219 0.22950000 2 0.76055469 0.22700000 2",
+      "after_line": "0 0.695703125 0.203472222 0.133593750 0.059722222 0.634375 0.226388888889 2 0.76055469 0.22700000 2",
+      "geometry_before": {
+        "xyxy": [
+          805.0,
+          124.99999992000001,
+          976.0,
+          167.99999976
+        ],
+        "left": [
+          807.3500032,
+          165.24,
+          2.0
+        ],
+        "right": [
+          973.5100032,
+          163.44,
+          2.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          805.0,
+          124.99999992000001,
+          976.0,
+          167.99999976
+        ],
+        "left": [
+          812.0,
+          163.00000000008,
+          2.0
+        ],
+        "right": [
+          973.5100032,
+          163.44,
+          2.0
+        ]
+      },
+      "changed_fields": [
+        "left_x",
+        "left_y"
+      ],
+      "patch_pixels": {
+        "left_x": 812,
+        "left_y": 163
+      },
+      "reason": "The front lower edge meets its side at the inward rounded turn near (812,163). The prior (807.35,165.24) sits at the external dark rim next to the rack. Keep the box and right endpoint.",
+      "confidence": "high",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        781,
+        89,
+        1000,
+        203
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000059.png",
+      "source_image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000059.txt",
+      "source_label_sha256": "a3d344e41d98fae332084ed902abbeed8540196d7dac247c07fd1dc82f010e93",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 8,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          806.8211669921875,
+          121.11599731445312,
+          975.475341796875,
+          174.12094116210938
+        ],
+        "keypoints": [
+          [
+            811.863525390625,
+            163.0814208984375,
+            0.9182425141334534
+          ],
+          [
+            971.9342651367188,
+            163.30337524414062,
+            0.9456209540367126
+          ]
+        ],
+        "confidence": 0.9132729172706604,
+        "r28_iou": 0.8021933879777935,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000059-r11-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000059-r11-proposal.png"
+    },
+    {
+      "image_id": "new_000087",
+      "row_1based": 48,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.57744922 0.62263889 0.06478906 0.04041667 0.54737500 0.62493056 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.562371095 0.622916666667 0.03463281 0.029166666667 0.54765625 0.630555555556 2 0.00000000 0.00000000 0",
+      "geometry_before": {
+        "xyxy": [
+          697.6700031999999,
+          433.74999959999997,
+          780.6,
+          462.85000199999996
+        ],
+        "left": [
+          700.6399999999999,
+          449.9500032,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          697.6700032000001,
+          438.00000000011994,
+          742.0,
+          459.00000000036
+        ],
+        "left": [
+          701.0,
+          454.00000000032,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "changed_fields": [
+        "ymin",
+        "xmax",
+        "ymax",
+        "left_x",
+        "left_y"
+      ],
+      "patch_pixels": {
+        "ymin": 438,
+        "xmax": 742,
+        "ymax": 459,
+        "left_x": 701,
+        "left_y": 454
+      },
+      "reason": "The identifiable own front is the left wedge below the slanted shaded separator and left of the gripper. The bright full-width band above the tool belongs to the preceding front. The visible wedge reaches approximately x742/y459 at the occluder; its lower-left turn is near (701,454). The old box extends far into the gripper and its top includes the preceding face. Opposite point remains missing. Root second review requested for upper-rim ownership and rightmost visible extent.",
+      "confidence": "moderate_pending_second_review",
+      "qualitative_edge_uncertainty_px": [
+        2,
+        3
+      ],
+      "crop_bounds_xyxy": [
+        665,
+        400,
+        820,
+        495
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000087.png",
+      "source_image_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000087.txt",
+      "source_label_sha256": "d71a9c843ad77cb24742d42740177a281660b71fe7914cc591f8ce870728ba68",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 56,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          697.2139892578125,
+          438.26153564453125,
+          753.735595703125,
+          461.48480224609375
+        ],
+        "keypoints": [
+          [
+            701.4295654296875,
+            454.12249755859375,
+            0.8162490725517273
+          ],
+          [
+            756.3843994140625,
+            460.0539855957031,
+            0.6652012467384338
+          ]
+        ],
+        "confidence": 0.6275101900100708,
+        "r28_iou": 0.5371720452304373,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000087-r48-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000087-r48-proposal.png"
+    },
+    {
+      "image_id": "new_000089",
+      "row_1based": 42,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.4687421875 0.64418056 0.0312656250 0.03469444 0.45468750 0.65491667 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.4687421875 0.642583336667 0.0312656250 0.031499993333 0.45468750 0.65491667 2 0.00000000 0.00000000 0",
+      "geometry_before": {
+        "xyxy": [
+          579.98,
+          451.3200048,
+          620.0,
+          476.30000160000003
+        ],
+        "left": [
+          582.0,
+          471.5400024,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          579.98,
+          451.32000480036,
+          620.0,
+          474.00000000012
+        ],
+        "left": [
+          582.0,
+          471.5400024,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "changed_fields": [
+        "ymax"
+      ],
+      "patch_pixels": {
+        "ymax": 474
+      },
+      "reason": "Follow the lower light rim immediately above the shaded horizontal separator around y474; y476.30 includes the dark inter-front band. The cropped fragment remains one instance and the covered right point remains missing.",
+      "confidence": "moderate",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        545,
+        420,
+        690,
+        516
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000089.png",
+      "source_image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000089.txt",
+      "source_label_sha256": "ee4e314689c3bddd168b8de452bbf0fc7446e4712db1d1ba5eff57667a69060c",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 51,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          579.2622680664062,
+          453.7345886230469,
+          646.7326049804688,
+          478.3990173339844
+        ],
+        "keypoints": [
+          [
+            581.304931640625,
+            472.1888732910156,
+            0.8712384700775146
+          ],
+          [
+            642.8226928710938,
+            475.1385803222656,
+            0.8010218143463135
+          ]
+        ],
+        "confidence": 0.7073172330856323,
+        "r28_iou": 0.5128884628645711,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r42-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r42-proposal.png"
+    },
+    {
+      "image_id": "new_000089",
+      "row_1based": 43,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.465429687500 0.66851389 0.025390625000 0.03616667 0.45375781 0.68081944 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.465429687500 0.667576388611 0.025390625000 0.034291667222 0.45375781 0.68081944 2 0.00000000 0.00000000 0",
+      "geometry_before": {
+        "xyxy": [
+          579.5,
+          468.3099996,
+          612.0,
+          494.3500020000001
+        ],
+        "left": [
+          580.8099968,
+          490.1899968,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          579.5,
+          468.3099996,
+          612.0,
+          492.99999999984
+        ],
+        "left": [
+          580.8099968,
+          490.1899968,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "changed_fields": [
+        "ymax"
+      ],
+      "patch_pixels": {
+        "ymax": 493
+      },
+      "reason": "The bottom visible front ends at its light/gray rim around y492–493. The prior y494.35 extends into rack/shadow beneath it. The one-pixel-scale refinement is less certain than the larger point or extent changes; no endpoint moves.",
+      "confidence": "moderate",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        545,
+        438,
+        685,
+        530
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000089.png",
+      "source_image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000089.txt",
+      "source_label_sha256": "ee4e314689c3bddd168b8de452bbf0fc7446e4712db1d1ba5eff57667a69060c",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 59,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          576.9632568359375,
+          476.42767333984375,
+          620.3740234375,
+          495.52069091796875
+        ],
+        "keypoints": [
+          [
+            581.6144409179688,
+            490.71612548828125,
+            0.7454561591148376
+          ],
+          [
+            620.0341796875,
+            492.5234069824219,
+            0.620812177658081
+          ]
+        ],
+        "confidence": 0.30121177434921265,
+        "r28_iou": 0.5330770680518774,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r43-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r43-proposal.png"
+    },
+    {
+      "image_id": "new_000089",
+      "row_1based": 48,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.640878905000 0.63462500 0.034882810000 0.05341667 0.00000000 0.00000000 0 0.65832031 0.65515278 2",
+      "after_line": "0 0.640878905000 0.633124999167 0.034882810000 0.050416668333 0.00000000 0.00000000 0 0.65832031 0.65515278 2",
+      "geometry_before": {
+        "xyxy": [
+          798.0,
+          437.6999988,
+          842.6499968,
+          476.1600012
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          842.6499968,
+          471.7100016,
+          2.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          798.0,
+          437.69999880036,
+          842.6499968,
+          474.00000000012005
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          842.6499968,
+          471.7100016,
+          2.0
+        ]
+      },
+      "changed_fields": [
+        "ymax"
+      ],
+      "patch_pixels": {
+        "ymax": 474
+      },
+      "reason": "The upper of the two exposed right-hand front fragments ends at the slanted shaded separator near y473–474. y476.16 extends into the next front transition. Preserve the visible right point and missing left point.",
+      "confidence": "moderate",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        750,
+        410,
+        880,
+        515
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000089.png",
+      "source_image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000089.txt",
+      "source_label_sha256": "ee4e314689c3bddd168b8de452bbf0fc7446e4712db1d1ba5eff57667a69060c",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 49,
+        "pdf_coordinate_match": true,
+        "bbox_xyxy": [
+          765.459228515625,
+          441.5245666503906,
+          846.1053466796875,
+          475.9398498535156
+        ],
+        "keypoints": [
+          [
+            770.1354370117188,
+            464.77490234375,
+            0.9155044555664062
+          ],
+          [
+            841.608642578125,
+            473.3028564453125,
+            0.8935496211051941
+          ]
+        ],
+        "confidence": 0.8184780478477478,
+        "r28_iou": 0.5198285970950146,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Exact PDF rounded-point match to ordered PR105 outputs"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r48-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r48-proposal.png"
+    },
+    {
+      "image_id": "new_000089",
+      "row_1based": 50,
+      "origin": "user_request",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.362007815000 0.87476389 0.052140630000 0.05061111 0.336718750000 0.881944444444 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.362007815000 0.87476389 0.052140630000 0.05061111 0.3390625 0.884722222222 2 0.00000000 0.00000000 0",
+      "geometry_before": {
+        "xyxy": [
+          430.0,
+          611.6100012,
+          496.7400064,
+          648.0500003999999
+        ],
+        "left": [
+          431.0,
+          634.99999999968,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          430.0,
+          611.6100012,
+          496.7400064,
+          648.0500003999999
+        ],
+        "left": [
+          434.0,
+          636.99999999984,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "changed_fields": [
+        "left_x",
+        "left_y"
+      ],
+      "patch_pixels": {
+        "left_x": 434,
+        "left_y": 637
+      },
+      "reason": "Move the lower-left turn rightward from the dark rack/outer edge onto the front junction near x434. A small downward refinement to y637 follows the observed sloping lower rim. The user-requested increase is interpreted as rightward X; root should confirm the small Y adjustment from the original crop. The occluded right endpoint and box remain unchanged.",
+      "confidence": "moderate_pending_second_review",
+      "qualitative_edge_uncertainty_px": [
+        2,
+        3
+      ],
+      "crop_bounds_xyxy": [
+        395,
+        580,
+        535,
+        680
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000089.png",
+      "source_image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000089.txt",
+      "source_label_sha256": "ee4e314689c3bddd168b8de452bbf0fc7446e4712db1d1ba5eff57667a69060c",
+      "prediction_anchor": {
+        "source": "PR105 candidate ordered predictions at confidence 0.13",
+        "index_1based": 48,
+        "pdf_coordinate_match": false,
+        "bbox_xyxy": [
+          429.62591552734375,
+          613.00244140625,
+          493.07086181640625,
+          647.5650634765625
+        ],
+        "keypoints": [
+          [
+            430.95684814453125,
+            635.1802978515625,
+            0.8233881592750549
+          ],
+          [
+            489.7861328125,
+            643.5281982421875,
+            0.8450736403465271
+          ]
+        ],
+        "confidence": 0.8352966904640198,
+        "r28_iou": 0.8915959948019729,
+        "model_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+        "predictions_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+        "basis": "Maximum-IoU lookup for context only; not cited as correction evidence"
+      },
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r50-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r50-proposal.png"
+    },
+    {
+      "image_id": "new_000087",
+      "row_1based": 47,
+      "origin": "bounded_analogous_scan",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.5788242200 0.59841667 0.0657890600 0.03894444 0.54749219 0.60201389 2 0.61067969 0.61173611 2",
+      "after_line": "0 0.5788242200 0.596416669444 0.0657890600 0.034944438889 0.54749219 0.60201389 2 0.61067969 0.61173611 2",
+      "geometry_before": {
+        "xyxy": [
+          698.7900032,
+          416.84000399999996,
+          783.0,
+          444.8800008
+        ],
+        "left": [
+          700.7900032,
+          433.45000080000005,
+          2.0
+        ],
+        "right": [
+          781.6700032,
+          440.44999920000004,
+          2.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          698.7900032,
+          416.84000399964003,
+          783.0,
+          441.99999999971993
+        ],
+        "left": [
+          700.7900032,
+          433.45000080000005,
+          2.0
+        ],
+        "right": [
+          781.6700032,
+          440.44999920000004,
+          2.0
+        ]
+      },
+      "changed_fields": [
+        "ymax"
+      ],
+      "patch_pixels": {
+        "ymax": 442
+      },
+      "reason": "Bounded analogous case immediately above requested row48: the front lower rim reaches about y441–442 at the right, whereas y444.88 extends into the tool/next-front transition. Keep both lower-front points and other box limits.",
+      "confidence": "moderate",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        665,
+        399,
+        820,
+        468
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000087.png",
+      "source_image_sha256": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000087.txt",
+      "source_label_sha256": "d71a9c843ad77cb24742d42740177a281660b71fe7914cc591f8ce870728ba68",
+      "prediction_anchor": null,
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000087-r47-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000087-r47-proposal.png"
+    },
+    {
+      "image_id": "new_000089",
+      "row_1based": 41,
+      "origin": "bounded_analogous_scan",
+      "status": "proposed_pending_root_review",
+      "before_line": "0 0.485601562500 0.61867361 0.066515625000 0.03543056 0.45375781 0.62955556 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.485601562500 0.617145831667 0.066515625000 0.032375003333 0.45375781 0.62955556 2 0.00000000 0.00000000 0",
+      "geometry_before": {
+        "xyxy": [
+          579.0,
+          432.68999759999997,
+          664.14,
+          458.2000008
+        ],
+        "left": [
+          580.8099968,
+          453.2800032,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_after": {
+        "xyxy": [
+          579.0,
+          432.68999760036,
+          664.14,
+          456.00000000011994
+        ],
+        "left": [
+          580.8099968,
+          453.2800032,
+          2.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "changed_fields": [
+        "ymax"
+      ],
+      "patch_pixels": {
+        "ymax": 456
+      },
+      "reason": "Bounded analogous case immediately above requested row42: the visible lower white/gray rim ends near y455–456 before the shaded inter-front band. y458.20 includes that band. The right point stays missing and other limits are retained.",
+      "confidence": "moderate",
+      "qualitative_edge_uncertainty_px": [
+        1,
+        2
+      ],
+      "crop_bounds_xyxy": [
+        545,
+        407,
+        690,
+        481
+      ],
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000089.png",
+      "source_image_sha256": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-23-r28/labels/val/new_000089.txt",
+      "source_label_sha256": "ee4e314689c3bddd168b8de452bbf0fc7446e4712db1d1ba5eff57667a69060c",
+      "prediction_anchor": null,
+      "original_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r41-original.png",
+      "comparison_crop_path": "/workspace/scratch/31f5e28106bc/tmp/pr107-annotation-audit-b/new_000089-r41-proposal.png"
+    }
+  ],
+  "retained_scans": [
+    {
+      "image_id": "new_000058",
+      "row_1based": 11,
+      "reason": "Nearby bottom-over-rack case inspected in the original upper stack. The current bottom includes a soft own rim; a one-pixel trim is not sufficiently distinct from blur to introduce an additional change."
+    },
+    {
+      "image_id": "new_000089",
+      "row_1based": 49,
+      "reason": "Immediately below requested row48. Current ymax493.01 is consistent with the exposed own lower rim near y492–493; retain it."
+    }
+  ]
+}
