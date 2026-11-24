@@ -113,7 +113,7 @@ def worker_training_labels(config, staging):
     return labels
 
 
-def run_worker(config, input_transform=None):
+def run_worker(config, input_transform=None, sampling=None):
     recipe = get_recipe(config["recipe_id"])
     declared_recipe = recipe_identity(config["recipe_id"])
     require(all(config.get(key) == value for key, value in declared_recipe.items()),
@@ -158,6 +158,8 @@ def run_worker(config, input_transform=None):
     def save_progress():
         if input_transform is not None:
             progress["input_corruption"] = input_transform.state()
+        if sampling is not None:
+            progress["sampling"] = sampling.state()
         progress["worker_wall_seconds"] = time.perf_counter() - started
         progress["worker_peak_rss_mib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
         write_json(run / "training-progress.json", progress)
@@ -183,6 +185,8 @@ def run_worker(config, input_transform=None):
         def _build_train_pipeline(self):
             require(self.batch_size == recipe["batch"], "automatic batch-size changes invalidate the comparison")
             super()._build_train_pipeline()
+            if sampling is not None:
+                self.train_loader = sampling.install(self.train_loader)
             routed = []
             files = {item["path"]: item["output_sha256"] for item in staging["variants"][arm]["files"]}
             for split, loader in (("train", self.train_loader), ("val", self.test_loader)):
@@ -222,6 +226,8 @@ def run_worker(config, input_transform=None):
         def record_epoch_start(self, trainer):
             self.epoch_batch_count = self.epoch_image_count = 0
             self.completed_training_epoch = None
+            if sampling is not None:
+                sampling.start_epoch(self.epoch + 1)
 
         def record_batch_start(self, trainer):
             self.batch_started = time.perf_counter()
@@ -262,6 +268,8 @@ def run_worker(config, input_transform=None):
             self.epoch_image_count += self.current_batch["shape"][0]
             progress["batches_completed"] += 1
             progress["images_processed"] += self.current_batch["shape"][0]
+            if sampling is not None:
+                sampling.record_batch(self.current_batch["image_ids"], self.epoch + 1)
             if len(progress["batch_samples"]) < config["trial_batches"]:
                 progress["batch_samples"].append({**self.current_batch,
                     "epoch": self.epoch + 1, "batch": self.epoch_batch_count,
@@ -281,6 +289,8 @@ def run_worker(config, input_transform=None):
             require(self.epoch_batch_count == len(self.train_loader)
                     and self.epoch_image_count == len(self.train_loader.dataset),
                     "partial training epoch cannot be recorded as complete")
+            if sampling is not None:
+                sampling.finish_epoch(self.epoch + 1)
             self.completed_training_epoch = self.epoch + 1
 
         def record_model_save(self, trainer):
