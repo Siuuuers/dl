@@ -39,6 +39,7 @@ SOURCE_FILES = ("scripts/train_pose_comparison.py", "scripts/pose_checkpoint.py"
                 "scripts/front_review_experiment.py",
                 "scripts/front_review_r27.py", "scripts/front_review_r28.py",
                 "scripts/front_review_r28_training.py",
+                "scripts/front_review_r30.py",
                 "scripts/evaluate_pose.py", "scripts/pose_scoring.py")
 
 
@@ -113,7 +114,7 @@ def worker_training_labels(config, staging):
     return labels
 
 
-def run_worker(config, input_transform=None, sampling=None):
+def run_worker(config, input_transform=None, sampling=None, loss_controller=None):
     recipe = get_recipe(config["recipe_id"])
     declared_recipe = recipe_identity(config["recipe_id"])
     require(all(config.get(key) == value for key, value in declared_recipe.items()),
@@ -160,6 +161,8 @@ def run_worker(config, input_transform=None, sampling=None):
             progress["input_corruption"] = input_transform.state()
         if sampling is not None:
             progress["sampling"] = sampling.state()
+        if loss_controller is not None:
+            progress["partial_target_loss"] = loss_controller.state()
         progress["worker_wall_seconds"] = time.perf_counter() - started
         progress["worker_peak_rss_mib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
         write_json(run / "training-progress.json", progress)
@@ -221,6 +224,8 @@ def run_worker(config, input_transform=None, sampling=None):
             self.current_batch = {"shape": list(result["img"].shape),
                                   "image_ids": [Path(name).stem for name in result["im_file"]],
                                   "objects": len(result["cls"])}
+            if loss_controller is not None:
+                loss_controller.prepare_batch(result, self.epoch + 1)
             return result
 
         def record_epoch_start(self, trainer):
@@ -228,6 +233,8 @@ def run_worker(config, input_transform=None, sampling=None):
             self.completed_training_epoch = None
             if sampling is not None:
                 sampling.start_epoch(self.epoch + 1)
+            if loss_controller is not None:
+                loss_controller.start_epoch(self.model, self.ema.ema, self.epoch + 1)
 
         def record_batch_start(self, trainer):
             self.batch_started = time.perf_counter()
@@ -270,6 +277,8 @@ def run_worker(config, input_transform=None, sampling=None):
             progress["images_processed"] += self.current_batch["shape"][0]
             if sampling is not None:
                 sampling.record_batch(self.current_batch["image_ids"], self.epoch + 1)
+            if loss_controller is not None:
+                loss_controller.finish_batch(self.current_batch["image_ids"], self.epoch + 1)
             if len(progress["batch_samples"]) < config["trial_batches"]:
                 progress["batch_samples"].append({**self.current_batch,
                     "epoch": self.epoch + 1, "batch": self.epoch_batch_count,
@@ -291,6 +300,8 @@ def run_worker(config, input_transform=None, sampling=None):
                     "partial training epoch cannot be recorded as complete")
             if sampling is not None:
                 sampling.finish_epoch(self.epoch + 1)
+            if loss_controller is not None:
+                loss_controller.finish_epoch(self.epoch + 1)
             self.completed_training_epoch = self.epoch + 1
 
         def record_model_save(self, trainer):

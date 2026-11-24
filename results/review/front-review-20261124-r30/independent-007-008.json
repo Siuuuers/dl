@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "review_kind": "independent_second_review_of_root_007_008_scope",
+  "prediction_file": "/workspace/scratch/31f5e28106bc/tmp/pr107-eval/inference/eval-pr105/predictions.jsonl",
+  "prediction_file_sha256": "32142eadd3e41a8af2d3885e82b3a904acd156989dd66af7d565b4101a3ff611",
+  "checkpoint_sha256": "12c4b36dab413100cc88cfdc61c64b4613634ef5503bcc233e42a75228940a1c",
+  "canonical_labels_modified": false,
+  "recommendations": [
+    {
+      "image_id": "new_000007",
+      "row": 1,
+      "decision": "retain",
+      "proposed_changes_original_pixels": {},
+      "before_line": "0 0.471289062500 0.0104166667 0.061328125000 0.0208333333 0.44216406 0.01858333 2 0.50127344 0.01884722 2",
+      "before": {
+        "box_xyxy": [
+          564.0,
+          3.600000048065155e-08,
+          642.5,
+          15.000000012000001
+        ],
+        "left_xyv": [
+          565.9699968,
+          13.3799976,
+          2.0
+        ],
+        "right_xyv": [
+          641.6300031999999,
+          13.569998400000001,
+          2.0
+        ]
+      },
+      "source_label_sha256": "47506ebcebfda7fed6da596e55bb0aa6a02df531243b5d90546a4a89ac0da8fb",
+      "source_image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "reason": "Existing top-clipped front is already annotated with both locatable points. Its box ymax 15 follows the lower edge; saved points differ from p50 by only about 1-3 pixels and remain plausible in the original blur. No new object or unavailable keypoint is present to add.",
+      "inspection_ruler": "007-row1-ruler.png",
+      "predictions": [
+        {
+          "one_based_id": 50,
+          "class_id": 0,
+          "bbox_xyxy": [
+            564.2728271484375,
+            0.0,
+            645.3638916015625,
+            16.370994567871094
+          ],
+          "confidence": 0.7989215850830078,
+          "keypoints": [
+            [
+              566.3388671875,
+              12.062747955322266,
+              0.9029088020324707
+            ],
+            [
+              641.9779052734375,
+              10.534231185913086,
+              0.914826512336731
+            ]
+          ]
+        }
+      ],
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": false
+    },
+    {
+      "image_id": "new_000007",
+      "row": 4,
+      "decision": "amend_box",
+      "proposed_changes_original_pixels": {
+        "xmax": 721.5,
+        "ymax": 14
+      },
+      "before_line": "0 0.534632810000 0.01397222 0.060671870000 0.02794444 0.50501562 0.01520833 2 0.56307031 0.01380556 2",
+      "before": {
+        "box_xyxy": [
+          645.5,
+          0.0,
+          723.1599935999999,
+          20.1199968
+        ],
+        "left_xyv": [
+          646.4199936,
+          10.949997600000001,
+          2.0
+        ],
+        "right_xyv": [
+          720.7299968,
+          9.9400032,
+          2.0
+        ]
+      },
+      "source_label_sha256": "47506ebcebfda7fed6da596e55bb0aa6a02df531243b5d90546a4a89ac0da8fb",
+      "source_image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "reason": "The first visible front is clipped by the top frame. Existing ymax 20.12 includes the following front's shaded upper rim; the original lower contour is near y 12-14. Trim xmax leftward to 721.5 at the actual outer rim. Keep ymin 0. Both points already exist and are plausible; p51 left x 644.38 lies in the dark gap and should not be copied. p46 and p51 describe the same physical top front; do not add another annotation.",
+      "inspection_ruler": "007-row4-ruler.png",
+      "predictions": [
+        {
+          "one_based_id": 46,
+          "class_id": 0,
+          "bbox_xyxy": [
+            644.4393310546875,
+            0.0,
+            721.5726318359375,
+            16.658939361572266
+          ],
+          "confidence": 0.8617435097694397,
+          "keypoints": [
+            [
+              648.2621459960938,
+              11.12326431274414,
+              0.9079063534736633
+            ],
+            [
+              720.0164794921875,
+              8.535102844238281,
+              0.9118486046791077
+            ]
+          ]
+        },
+        {
+          "one_based_id": 51,
+          "class_id": 0,
+          "bbox_xyxy": [
+            643.7442626953125,
+            0.0,
+            725.138671875,
+            13.694515228271484
+          ],
+          "confidence": 0.7751321196556091,
+          "keypoints": [
+            [
+              644.3797607421875,
+              11.325174331665039,
+              0.895899772644043
+            ],
+            [
+              719.3778076171875,
+              7.453437805175781,
+              0.8987326622009277
+            ]
+          ]
+        }
+      ],
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": false
+    },
+    {
+      "image_id": "new_000007",
+      "row": 13,
+      "decision": "amend_box",
+      "proposed_changes_original_pixels": {
+        "ymax": 10
+      },
+      "before_line": "0 0.711148435 0.01440278 0.05667187 0.02880556 0.68441406 0.00751389 2 0.73792187 0.00705556 2",
+      "before": {
+        "box_xyxy": [
+          874.0,
+          0.0,
+          946.5399936,
+          20.7400032
+        ],
+        "left_xyv": [
+          876.0499968,
+          5.4100008,
+          2.0
+        ],
+        "right_xyv": [
+          944.5399936,
+          5.0800032,
+          2.0
+        ]
+      },
+      "source_label_sha256": "47506ebcebfda7fed6da596e55bb0aa6a02df531243b5d90546a4a89ac0da8fb",
+      "source_image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "reason": "The visible top-clipped front occupies the upper image strip. Existing ymax 20.74 reaches into the next front's visible face. The own lower edge is about 8-10 pixels; y 10 retains a small boundary allowance. Keep ymin 0: using prediction left.y 7.23 as ymin would cut away the visible white front above it. Preserve both accepted points.",
+      "inspection_ruler": "007-row13-ruler.png",
+      "predictions": [
+        {
+          "one_based_id": 56,
+          "class_id": 0,
+          "bbox_xyxy": [
+            873.5523681640625,
+            0.0,
+            948.4632568359375,
+            10.799570083618164
+          ],
+          "confidence": 0.42756742238998413,
+          "keypoints": [
+            [
+              877.23046875,
+              7.229273796081543,
+              0.8133560419082642
+            ],
+            [
+              947.3062133789062,
+              3.8797874450683594,
+              0.8074936270713806
+            ]
+          ]
+        }
+      ],
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": false,
+      "additional_right_rim_review": {
+        "proposed_right_point_xy": [
+          947,
+          4
+        ],
+        "proposed_xmax": 948.5,
+        "decision": "physically plausible within about2px original edge blur",
+        "reason": "The clipped uppermost front reaches its upper-right soft material boundary aroundx946-949 near imagey0-5. A right point near947,4 and xmax948.5 are consistent with that own rim and PR105p56. Preserve ymin0 and do not infer unobserved material beyond the frame. This is a small edge refinement, not subpixel evidence."
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "row": 4,
+      "decision": "retain",
+      "proposed_changes_original_pixels": {},
+      "before_line": "0 0.6691406250 0.0640416667 0.1664062500 0.0746944444 0.5875000000 0.0888888889 2 0.7500000000 0.0972222222 2",
+      "before": {
+        "box_xyxy": [
+          750.0,
+          19.22000004,
+          963.0000000000001,
+          73.000000008
+        ],
+        "left_xyv": [
+          752.0,
+          64.000000008,
+          2.0
+        ],
+        "right_xyv": [
+          960.0,
+          69.999999984,
+          2.0
+        ]
+      },
+      "source_label_sha256": "364c0e9e7e16523cd5722b51e86d64013a6ffdfe8254731f1055ed4f803197c5",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "reason": "Current ymax 73 follows the lowest own white-material edge; the predicted 80.45 includes rack/background underneath. A one/two-pixel edge shift could lie within blur, but the original pixels do not support a necessary change.",
+      "inspection_ruler": "008-row4-bottom-ruler.png",
+      "predictions": [
+        {
+          "one_based_id": 19,
+          "class_id": 0,
+          "bbox_xyxy": [
+            753.060791015625,
+            10.725372314453125,
+            962.53955078125,
+            80.44550323486328
+          ],
+          "confidence": 0.918794572353363,
+          "keypoints": [
+            [
+              757.4974975585938,
+              65.42572021484375,
+              0.9605977535247803
+            ],
+            [
+              957.3665161132812,
+              70.75585174560547,
+              0.9595378637313843
+            ]
+          ]
+        }
+      ],
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": false
+    },
+    {
+      "image_id": "new_000008",
+      "row": 6,
+      "decision": "amend_box",
+      "proposed_changes_original_pixels": {
+        "xmax": 1182
+      },
+      "before_line": "0 0.839453125 0.070833333 0.171093750 0.083333333 0.762500000 0.098611111 2 0.9218750000 0.1097222222 2",
+      "before": {
+        "box_xyxy": [
+          965.0,
+          20.99999988,
+          1184.0,
+          80.99999964
+        ],
+        "left_xyv": [
+          976.0,
+          70.99999992000001,
+          2.0
+        ],
+        "right_xyv": [
+          1180.0,
+          78.999999984,
+          2.0
+        ]
+      },
+      "source_label_sha256": "364c0e9e7e16523cd5722b51e86d64013a6ffdfe8254731f1055ed4f803197c5",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "reason": "The current 1184 right bound extends slightly beyond the own rounded material edge. A manual 1182 trim lies within the observed 1181-1183 soft edge and is close to predicted 1181.09; preserve right point 1180 and all other coordinates. The change is small and within about 2 pixels of visual uncertainty.",
+      "inspection_ruler": "008-row6-right-ruler.png",
+      "predictions": [
+        {
+          "one_based_id": 13,
+          "class_id": 0,
+          "bbox_xyxy": [
+            967.9019165039062,
+            15.17352294921875,
+            1181.0869140625,
+            90.3550796508789
+          ],
+          "confidence": 0.9242019653320312,
+          "keypoints": [
+            [
+              971.0856323242188,
+              75.34005737304688,
+              0.9504095911979675
+            ],
+            [
+              1176.3212890625,
+              78.40338897705078,
+              0.9469731450080872
+            ]
+          ]
+        }
+      ],
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": false,
+      "explicit_bottom_review": {
+        "current_ymax": 80.99999964,
+        "prediction_ymax": 90.3550796508789,
+        "decision": "retain ymax81",
+        "reason": "The target front reaches its visible lower material edge aroundy80-81. The predicted lower boundary90.36 lies in the dark rack/space below; the original right-edge ruler shows this directly. No body-material evidence supports extending this box downward."
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "row": 19,
+      "decision": "retain",
+      "proposed_changes_original_pixels": {},
+      "before_line": "0 0.811132812500 0.2444583333 0.155859375000 0.0666388889 0.74609375 0.2652777778 2 0.8875000000 0.2736111111 2",
+      "before": {
+        "box_xyxy": [
+          938.5000000000001,
+          152.019999972,
+          1138.0,
+          199.99999998
+        ],
+        "left_xyv": [
+          955.0,
+          191.000000016,
+          2.0
+        ],
+        "right_xyv": [
+          1136.0,
+          196.99999999200003,
+          2.0
+        ]
+      },
+      "source_label_sha256": "364c0e9e7e16523cd5722b51e86d64013a6ffdfe8254731f1055ed4f803197c5",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "reason": "Current ymax 200 follows the sloping front's lowest own edge at the right. Prediction ymax 207.09 reaches into the next cassette's shaded upper rim. Retain this explicitly revisited standard, including every point and other box coordinate.",
+      "inspection_ruler": "008-row19-bottom-ruler.png",
+      "predictions": [
+        {
+          "one_based_id": 11,
+          "class_id": 0,
+          "bbox_xyxy": [
+            946.0150146484375,
+            140.7489471435547,
+            1141.6114501953125,
+            207.0850372314453
+          ],
+          "confidence": 0.924866259098053,
+          "keypoints": [
+            [
+              946.9019775390625,
+              192.70578002929688,
+              0.9590795040130615
+            ],
+            [
+              1135.931640625,
+              197.84808349609375,
+              0.9551616907119751
+            ]
+          ]
+        }
+      ],
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": true
+    },
+    {
+      "image_id": "new_000008",
+      "row": 29,
+      "decision": "retain",
+      "proposed_changes_original_pixels": {},
+      "before_line": "0 0.9031250000 0.5492847222 0.1375000000 0.0597638889 0.846093750 0.563888889 2 0.9695312500 0.5750000000 2",
+      "before": {
+        "box_xyxy": [
+          1068.0,
+          373.96999998,
+          1244.0,
+          416.999999988
+        ],
+        "left_xyv": [
+          1083.0,
+          406.00000008,
+          2.0
+        ],
+        "right_xyv": [
+          1241.0,
+          413.99999999999994,
+          2.0
+        ]
+      },
+      "source_label_sha256": "364c0e9e7e16523cd5722b51e86d64013a6ffdfe8254731f1055ed4f803197c5",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "reason": "Current ymax 417 follows the sloping front's lowest own edge at the right, within 1-2 pixels of blur. Prediction ymax 423.16 includes the lower cassette's shaded upper rim. Retain this explicitly revisited standard, including every point and other box coordinate.",
+      "inspection_ruler": "008-row29-bottom-ruler.png",
+      "predictions": [
+        {
+          "one_based_id": 6,
+          "class_id": 0,
+          "bbox_xyxy": [
+            1070.0433349609375,
+            369.0607604980469,
+            1244.5413818359375,
+            423.1644592285156
+          ],
+          "confidence": 0.9300239682197571,
+          "keypoints": [
+            [
+              1077.3233642578125,
+              410.1520080566406,
+              0.9567629098892212
+            ],
+            [
+              1239.0340576171875,
+              415.0045166015625,
+              0.9552462697029114
+            ]
+          ]
+        }
+      ],
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": true
+    }
+  ],
+  "limits": [
+    "Second opinion only: root decides final accepted edits.",
+    "No additional objects or missing points are created; p50/p51 alreadycorrespondtoexistinglabels.",
+    "Predictionboxboundaries are cues; materialownership and originalpixels decide changes.",
+    "These are seven deliberately selected cases, not a dataset-quality estimate."
+  ]
+}
