@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "kind": "r37_notebook_and_source_validation",
+  "status": "passed",
+  "notebook": {
+    "path": "notebooks/baomai_front_review_r37.ipynb",
+    "sha256": "b793f36b546e3905aa0d2b8be3ffb018761cf610f67ec1e8547f5ca33f2a3ded",
+    "size_bytes": 35508,
+    "code_cells": 5,
+    "embedded_file_count": 0
+  },
+  "published_source_revision": "86dea96b5294568dcc96f8912f6949d12433380c",
+  "published_source_tree": "8d3f7a0df8bd17c66c5d0939490d30cb6b03845a",
+  "published_source_files_compared_by_generator": 298,
+  "protocol": {
+    "path": "experiments/front-review-2026-11-26-r37.json",
+    "sha256": "46a8edcafc41d39f14d230534ef34a7499aa82191d0352d75ae64766f600c9c4"
+  },
+  "accepted_review": {
+    "path": "data/reviews/fronts-2026-11-26-r37/manifest.json",
+    "sha256": "35a2c6b3ddc1691eaae4b7e416144b8f68f0ab960cbd3ca8b65edd647b619471"
+  },
+  "candidate": {
+    "path": "data/candidates/front-review-2026-11-26-r37/manifest.json",
+    "sha256": "ccfe09cae8e890b80896dac5d025f981573e5da3f49bb9f40175f2d0685de2f3"
+  },
+  "training_input_delta": {
+    "path": "results/review/front-review-20261126-r37/training-input-delta.json",
+    "sha256": "819cb1cc053bf5649fd144c0adcd9c1e9a2ef4903e931c265ac59ae5168f33d4"
+  },
+  "native_protocol_verification": "passed",
+  "paired_staging": {
+    "status": "passed",
+    "counts": {
+      "reference": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6837,
+          "missing_endpoints": 731,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "candidate": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6837,
+          "missing_endpoints": 731,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "original_pngs_verified": 157,
+    "copied_images_verified": 314,
+    "copied_labels_verified": 314,
+    "original_validation_identical": true,
+    "development_label_files_unchanged_vs_r36": 20,
+    "held_and_excluded_supervision_identical": true,
+    "changed_rows": 2,
+    "changed_photos": 2,
+    "changed_field_groups": {
+      "box": 1,
+      "left": 1
+    },
+    "class_or_visibility_changes": 0
+  },
+  "complete_notebook_setup_integration": {
+    "status": "passed",
+    "notebook_sha256": "b793f36b546e3905aa0d2b8be3ffb018761cf610f67ec1e8547f5ca33f2a3ded",
+    "complete_setup_cells_executed": [
+      1,
+      3
+    ],
+    "fresh_checkout": true,
+    "input_files_verified": 158,
+    "clean_rerun": true,
+    "dirty_source_preserved_and_rejected": true,
+    "wrong_source_revision_rejected": true,
+    "pending_request_guards": {
+      "accepted_pending_rows": 1,
+      "accepted_partial_box_changes": 0,
+      "fully_held_rows": 1,
+      "forbidden_coordinate_changes_rejected": 5,
+      "accepted_training_annotation_changes": 2,
+      "forbidden_training_changes_rejected": 7
+    },
+    "training_executed": false
+  },
+  "actual_notebook_original_input_gate": {
+    "status": "passed",
+    "published_source_revision": "86dea96b5294568dcc96f8912f6949d12433380c",
+    "notebook_sha256": "b793f36b546e3905aa0d2b8be3ffb018761cf610f67ec1e8547f5ca33f2a3ded",
+    "isolated_clean_checkout": true,
+    "checkout_method": "Read-only object alternates from the local fetched published commit; separate worktree and index",
+    "notebook_original_input_function_executed": true,
+    "actual_original_images_verified": 157,
+    "actual_initializer_bytes_verified": 106838542,
+    "actual_initializer_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "source_and_index_clean_after_input_gate": true,
+    "training_executed": false
+  },
+  "request_completion": "current_marked_requests_resolved_inherited_pending",
+  "current_marked_requests_completed": true,
+  "held_request_rows": [
+    {
+      "image_id": "new_000010",
+      "row": 24,
+      "scope": "inherited_pending",
+      "inherited_from": {
+        "path": "data/reviews/fronts-2026-11-26-r36/manifest.json",
+        "sha256": "d0cdb9d56c043175ca12e538951cb28b1a8cd897039cce7a971e8f046407d416"
+      },
+      "preserve_row": true,
+      "pending_fields": [
+        "left.x",
+        "left.y",
+        "right.x",
+        "right.y"
+      ],
+      "reason": "Inherited R36 request: the saved left point is unavailable behind the jaw and the only observed point is right (909,491). Neither new attachment identifies this case. Preserve the entire row and both triplets until the intended landmark is clarified.",
+      "split": "val"
+    }
+  ],
+  "training_executed": false,
+  "test_scope": "Complete setup cells 1 and 3 execute against a real temporary Git remote with synthetic image and initializer fixtures. The generated notebook original-input function also executes unchanged in a separate clean checkout of the published source using all 157 actual original images and the full 106838542-byte initializer. GPU resource-trial, full training, Drive authentication and Colab hardware remain runtime checks."
+}

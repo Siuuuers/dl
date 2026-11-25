@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "kind": "same_checkpoint_one2one_head_probe",
+  "checkpoint_sha256": "f501bb80f7e77f6a35cf72630ca5ff2a3b2169690ee5d9852919d1cbd2661ba4",
+  "checkpoint_manifest_sha256": "45b41190a64ea9b3d9db530bcb27101c7f6ba9ed357d616228a9c5a2607f82c2",
+  "initializer_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "initializer_one2one_state": {
+    "tensors": 168,
+    "elements": 758277,
+    "float32_state_sha256": "ba502c912222addf574388d41839a5cacf2530c2ab3f805569d4f2cc46a5d801"
+  },
+  "prefusion_model": {
+    "head_class": "Pose26",
+    "serialized_end2end": false,
+    "head_modules": [
+      "cv2",
+      "cv3",
+      "dfl",
+      "one2one_cv2",
+      "one2one_cv3",
+      "cv4",
+      "one2one_cv4",
+      "flow_model",
+      "cv4_kpts",
+      "cv4_sigma",
+      "one2one_cv4_kpts",
+      "one2one_cv4_sigma"
+    ],
+    "one2one_state": {
+      "tensors": 168,
+      "elements": 758277,
+      "float32_state_sha256": "376b18d07f9966b783cd1dd0a878e33fbb47eaa6bf5dec7163732e9e408b7e7c"
+    }
+  },
+  "retained_one2one_state_changed_from_initializer": true,
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "device_requested": "cpu",
+    "torch": "2.10.0+cpu",
+    "torch_cuda": null,
+    "torch_threads_requested": 4,
+    "ultralytics": "8.4.182",
+    "loaded_kpt_shape": [
+      2,
+      3
+    ],
+    "packages": {
+      "torchvision": "0.25.0+cpu",
+      "numpy": "2.3.5",
+      "Pillow": "13.0.0",
+      "opencv-python": "5.0.0.93"
+    },
+    "device_actual": "cpu",
+    "backend_end2end": true,
+    "backend_fp16": false,
+    "torch_threads": 4
+  },
+  "inference": {
+    "imgsz": 1280,
+    "rect": true,
+    "batch": 1,
+    "nms": false,
+    "iou": 0.7,
+    "max_det": 300,
+    "quantize": 32,
+    "save": false,
+    "save_txt": false,
+    "save_crop": false,
+    "show": false,
+    "verbose": false
+  },
+  "box_confidence": 0.13,
+  "endpoint_confidence": 0.5,
+  "nms_iou_applies": false,
+  "nms_note": "nms=False selects the trained one-to-one branch. The retained iou=0.70 argument does not run ordinary NMS on this output.",
+  "image_ids": [
+    "new_000007",
+    "new_000008",
+    "new_000009",
+    "new_000010",
+    "new_000011",
+    "new_000053",
+    "new_000054",
+    "new_000055",
+    "new_000056",
+    "new_000057",
+    "new_000058",
+    "new_000059",
+    "new_000086",
+    "new_000087",
+    "new_000088",
+    "new_000089",
+    "new_000090",
+    "new_000146",
+    "new_000147",
+    "new_000148"
+  ],
+  "warmup": "One zero image, excluded from measured predictions",
+  "source_helper": {
+    "path": "scripts/probe_pr121_one2one.py",
+    "sha256": "64b60cdec550fc5b256aa7df6699f974e8fd139bd8e6a5150d1441d2f54f1433"
+  },
+  "timing_claim": "No latency comparison; concurrent CPU work may affect timings.",
+  "training_executed": false,
+  "automatic_promotion": false,
+  "predictions": {
+    "path": "results/evaluation/pr121-r36-20261126/predictions/candidate-one2one.jsonl",
+    "sha256": "a84ffb3e8fd8780f0a841f7ab74ad9351b7d1702b11431c9bf213eba9f9d3671"
+  },
+  "processed_images": 20,
+  "prediction_count": 710,
+  "finished_at_utc": "2026-11-25T20:50:42.249882+00:00"
+}
