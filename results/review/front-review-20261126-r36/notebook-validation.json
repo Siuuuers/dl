@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "kind": "r36_notebook_and_source_validation",
+  "status": "passed",
+  "notebook": {
+    "path": "notebooks/baomai_front_review_r36.ipynb",
+    "sha256": "26226fc729aa2a0b29689db236e17d61ff1ffe7efb33c1deb7311903154c55db",
+    "size_bytes": 35547,
+    "code_cells": 5,
+    "embedded_file_count": 0
+  },
+  "published_source_revision": "83aeca67264e1f98872abeca40debc212c0775e9",
+  "published_source_tree": "232686ae6d987e72115bab4b80c73de191e26118",
+  "published_source_files_compared_by_generator": 294,
+  "protocol": {
+    "path": "experiments/front-review-2026-11-26-r36.json",
+    "sha256": "aa0f50570ac06b8b9da95938955ee53413f25087e53f53779fb3fc5f317c970b"
+  },
+  "accepted_review": {
+    "path": "data/reviews/fronts-2026-11-26-r36/manifest.json",
+    "sha256": "d0cdb9d56c043175ca12e538951cb28b1a8cd897039cce7a971e8f046407d416"
+  },
+  "candidate": {
+    "path": "data/candidates/front-review-2026-11-26-r36/manifest.json",
+    "sha256": "3ea3c07c9735cba6b407d702ca20f00877ac39069eb0f7f81995de48597b90cb"
+  },
+  "training_input_delta": {
+    "path": "results/review/front-review-20261126-r36/training-input-delta.json",
+    "sha256": "cdf1a3144ee09011a4d993db4e8326592bd6c956b75b1c21897e10faf728061d"
+  },
+  "native_protocol_verification": "passed",
+  "actual_original_images_verified": 157,
+  "original_initializer": {
+    "path": "weights/cassette_lower_epoch173.pt",
+    "storage": "git_lfs_object_materialized",
+    "declared_object_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "declared_object_size_bytes": 106838542,
+    "pointer_matches_protocol": true,
+    "content_downloaded_and_verified_locally": true,
+    "runtime_gate": "The notebook restores the original object and checks its SHA-256 before training.",
+    "actual_object_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "actual_object_size_bytes": 106838542
+  },
+  "paired_staging": {
+    "status": "passed",
+    "counts": {
+      "reference": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6837,
+          "missing_endpoints": 731,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "candidate": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6837,
+          "missing_endpoints": 731,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      }
+    },
+    "original_pngs_verified": 157,
+    "copied_images_verified": 314,
+    "copied_labels_verified": 314,
+    "original_validation_identical": true,
+    "held_and_excluded_supervision_identical": true,
+    "changed_rows": 2,
+    "changed_photos": 1,
+    "keypoint_changes": 0
+  },
+  "complete_notebook_setup_integration": {
+    "status": "passed",
+    "notebook_sha256": "26226fc729aa2a0b29689db236e17d61ff1ffe7efb33c1deb7311903154c55db",
+    "complete_setup_cells_executed": [
+      1,
+      3
+    ],
+    "fresh_checkout": true,
+    "input_files_verified": 158,
+    "clean_rerun": true,
+    "dirty_source_preserved_and_rejected": true,
+    "wrong_source_revision_rejected": true,
+    "pending_request_guards": {
+      "accepted_pending_rows": 3,
+      "accepted_partial_box_changes": 2,
+      "fully_held_rows": 1,
+      "forbidden_coordinate_changes_rejected": 7
+    },
+    "training_executed": false
+  },
+  "request_completion": "verified_subset_with_pending_requests",
+  "held_request_rows": [
+    {
+      "image_id": "new_000006",
+      "row": 53,
+      "preserve_row": true,
+      "pending_fields": [
+        "xmax"
+      ],
+      "reason": "The yellow/red marked crop was not attached or found in the supplied PR or available recent images. Preserve the whole R35 row until the target is visible.",
+      "split": "train"
+    },
+    {
+      "image_id": "new_000034",
+      "row": 35,
+      "preserve_row": false,
+      "pending_fields": [
+        "left.x",
+        "left.y"
+      ],
+      "reason": "At the current y297.09, x511 is on the dark rack transition. The lower-front turn is around x516-519,y296-299. Preserve the point pending a marked intended corner.",
+      "split": "train"
+    },
+    {
+      "image_id": "new_000010",
+      "row": 24,
+      "preserve_row": false,
+      "pending_fields": [
+        "left.x",
+        "left.y",
+        "right.x",
+        "right.y"
+      ],
+      "reason": "The requested left point is unavailable in the saved label; the only observed point is the right corner at909,491. Preserve both points until the intended landmark is identified.",
+      "split": "val"
+    }
+  ],
+  "training_executed": false,
+  "test_scope": "Complete setup cells 1 and 3 execute against a real temporary Git remote with synthetic image and initializer fixtures. All 157 actual original PNGs are verified separately during paired staging. Root subsequently restored the actual 106,838,542-byte epoch-173 initializer and verified its SHA-256 against the protocol. GPU resource-trial, full-training, Drive authentication and Colab hardware checks remain runtime checks in the published notebook."
+}
