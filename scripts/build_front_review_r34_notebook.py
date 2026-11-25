@@ -82,6 +82,11 @@ def build(root, revision):
                         "PROTOCOL_SHA256": context["sha256"], "EXPERIMENT_ID": "front-review-r34"}.items():
         first = replace_assignment(first, name, value)
     notebook["cells"][1]["source"] = first.splitlines(keepends=True)
+    inputs = "".join(notebook["cells"][3]["source"])
+    restore_marker = "def verify_original_inputs(repo):"
+    assert inputs.count(restore_marker) == 1, "Original-input restore function differs."
+    inputs = restore_marker + inputs.split(restore_marker, 1)[1]
+    notebook["cells"][3]["source"] = inputs.splitlines(keepends=True)
     preflight = "".join(notebook["cells"][5]["source"])
     preflight = preflight.replace('assert DELTA["summary"]["classes_visibility_preserved"] is True',
                                   'assert DELTA["summary"]["classes_preserved"] is True')
@@ -141,6 +146,11 @@ PR35 remains selected. This notebook does not promote a model, change inference 
     for index, cell in enumerate(notebook["cells"]):
         if cell["cell_type"] == "code":
             compile("".join(cell["source"]), f"R34 cell {index}", "exec")
+    code = "\n".join("".join(cell["source"]) for cell in notebook["cells"] if cell["cell_type"] == "code")
+    assert code.count("def assemble_source(") == 1, "A later cell overrides the published-source loader."
+    assert all(name not in code for name in ("BASE_REVISION", "PUBLISHED_SOURCE_REVISION", "SOURCE_TREE",
+                                             "ASSEMBLY_NAME", "ASSEMBLY_EMAIL", "ASSEMBLY_DATE", "ASSEMBLY_MESSAGE")), \
+        "Historical commit-reconstruction state survived notebook generation."
     payload = (json.dumps(notebook, ensure_ascii=False, indent=1)+"\n").encode()
     assert len(payload) < 50000 and b"EMBEDDED_FILES" not in payload
     output = root / OUTPUT_PATH
