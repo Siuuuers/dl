@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "kind": "r35_to_r36_eligible_training_input_delta",
+  "reference": {
+    "path": "data/candidates/front-review-2026-11-25-r35/manifest.json",
+    "sha256": "53181503da2ff636dc9c7b83f646efc051b40db10224320ad6c5694606d58b70"
+  },
+  "candidate_id": "front-review-2026-11-26-r36",
+  "accepted_review": {
+    "path": "data/reviews/fronts-2026-11-26-r36/manifest.json",
+    "sha256": "d0cdb9d56c043175ca12e538951cb28b1a8cd897039cce7a971e8f046407d416"
+  },
+  "rows": [
+    {
+      "image_id": "new_000034",
+      "row": 34,
+      "split": "train",
+      "before_line": "0 0.379296875000000 0.736111111111111 0.092968750000000 0.044444444444444 0.3406250000 0.7569444444 2 0.42559375 0.73695833 2",
+      "after_line": "0 0.382812500000000 0.736111111111111 0.085937500000000 0.044444444444444 0.3406250000 0.7569444444 2 0.42559375 0.73695833 2",
+      "changed_groups": [
+        "box"
+      ],
+      "source_image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "reference_label_sha256": "e667da869b372351603f475facb343b7f6fc79a873eadc8ffa7acca520bed575",
+      "candidate_label_sha256": "9d3d38449f6016c498386fbf6713ff9caa6e33e0bb5acb73ff28e9f83bc75a5a"
+    },
+    {
+      "image_id": "new_000034",
+      "row": 35,
+      "split": "train",
+      "before_line": "0 0.447656250000000 0.387500000000000 0.100000000000000 0.058333333333333 0.40496094 0.41262500 2 0.4960937500 0.3944444444 2",
+      "after_line": "0 0.448437500000000 0.385416666666667 0.098437500000000 0.062500000000000 0.40496094 0.41262500 2 0.4960937500 0.3944444444 2",
+      "changed_groups": [
+        "box"
+      ],
+      "source_image_sha256": "5d874ff81937f006b3c77c0c9f7560a6dd074657fdb2fd093e759017dbf0ed1c",
+      "reference_label_sha256": "e667da869b372351603f475facb343b7f6fc79a873eadc8ffa7acca520bed575",
+      "candidate_label_sha256": "9d3d38449f6016c498386fbf6713ff9caa6e33e0bb5acb73ff28e9f83bc75a5a"
+    }
+  ],
+  "changed_image_ids": [
+    "new_000034"
+  ],
+  "held_request_rows": [
+    {
+      "image_id": "new_000006",
+      "row": 53,
+      "preserve_row": true,
+      "pending_fields": [
+        "xmax"
+      ],
+      "reason": "The yellow/red marked crop was not attached or found in the supplied PR or available recent images. Preserve the whole R35 row until the target is visible.",
+      "split": "train"
+    },
+    {
+      "image_id": "new_000034",
+      "row": 35,
+      "preserve_row": false,
+      "pending_fields": [
+        "left.x",
+        "left.y"
+      ],
+      "reason": "At the current y297.09, x511 is on the dark rack transition. The lower-front turn is around x516-519,y296-299. Preserve the point pending a marked intended corner.",
+      "split": "train"
+    },
+    {
+      "image_id": "new_000010",
+      "row": 24,
+      "preserve_row": false,
+      "pending_fields": [
+        "left.x",
+        "left.y",
+        "right.x",
+        "right.y"
+      ],
+      "reason": "The requested left point is unavailable in the saved label; the only observed point is the right corner at909,491. Preserve both points until the intended landmark is identified.",
+      "split": "val"
+    }
+  ],
+  "summary": {
+    "changed_rows": 2,
+    "changed_photos": 1,
+    "field_group_changes": {
+      "box": 2
+    },
+    "added_rows": 0,
+    "deleted_rows": 0,
+    "classes_preserved": true,
+    "visibility_changes": 0,
+    "classes_visibility_preserved": true
+  },
+  "retained_legacy_image_ids": [
+    "new_000015"
+  ],
+  "excluded_training_image_ids": [
+    "old_000003",
+    "old_000004",
+    "old_000007",
+    "old_000010",
+    "old_000013",
+    "old_000018",
+    "old_000021",
+    "old_000022",
+    "old_000027",
+    "old_000028",
+    "old_000038",
+    "old_000039",
+    "old_000042",
+    "old_000046",
+    "old_000050",
+    "old_000051",
+    "old_000054",
+    "old_000057",
+    "old_000061",
+    "old_000065",
+    "old_000068",
+    "old_000069",
+    "old_000073",
+    "old_000077",
+    "old_000079",
+    "old_000087",
+    "old_000089",
+    "old_000093",
+    "old_000097",
+    "old_000100",
+    "old_000101"
+  ],
+  "reference_counts": {
+    "train": {
+      "images": 137,
+      "objects": 3784,
+      "visible_endpoints": 6837,
+      "missing_endpoints": 731,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 664,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 101,
+      "empty_images": 3
+    }
+  },
+  "candidate_counts": {
+    "train": {
+      "images": 137,
+      "objects": 3784,
+      "visible_endpoints": 6837,
+      "missing_endpoints": 731,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 664,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 101,
+      "empty_images": 3
+    }
+  },
+  "interpretation": "Only these eligible training-coordinate replacements differ between the two fresh arms. R36 development amendments are excluded from trainer supervision. Both arms independently start from original epoch 173 under the same fixed recipe and recorded runtime."
+}

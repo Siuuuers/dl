@@ -1,0 +1,83 @@
+{
+  "review_id": "fronts-2026-11-26-r36",
+  "parent_review": {
+    "path": "data/reviews/fronts-2026-11-25-r35/manifest.json",
+    "sha256": "1ec7e4826d3e14c61d83e5267fdb798255348858c834e64ec2d66347076f9019"
+  },
+  "reviewed_rows": 5,
+  "replacement_rows": 4,
+  "retained_rows": 1,
+  "changed_photos": 3,
+  "changed_image_ids": [
+    "new_000010",
+    "new_000034",
+    "new_000057"
+  ],
+  "changed_rows_by_split": {
+    "train": 2,
+    "val": 2
+  },
+  "field_group_changes": {
+    "box": 4
+  },
+  "request_dispositions": {
+    "pending": 1,
+    "verified": 2,
+    "partially_verified": 2
+  },
+  "held_request_rows": [
+    {
+      "image_id": "new_000006",
+      "row": 53,
+      "preserve_row": true,
+      "pending_fields": [
+        "xmax"
+      ],
+      "reason": "The yellow/red marked crop was not attached or found in the supplied PR or available recent images. Preserve the whole R35 row until the target is visible."
+    },
+    {
+      "image_id": "new_000034",
+      "row": 35,
+      "preserve_row": false,
+      "pending_fields": [
+        "left.x",
+        "left.y"
+      ],
+      "reason": "At the current y297.09, x511 is on the dark rack transition. The lower-front turn is around x516-519,y296-299. Preserve the point pending a marked intended corner."
+    },
+    {
+      "image_id": "new_000010",
+      "row": 24,
+      "preserve_row": false,
+      "pending_fields": [
+        "left.x",
+        "left.y",
+        "right.x",
+        "right.y"
+      ],
+      "reason": "The requested left point is unavailable in the saved label; the only observed point is the right corner at909,491. Preserve both points until the intended landmark is identified."
+    }
+  ],
+  "added_rows": 0,
+  "deleted_rows": 0,
+  "expected_review_counts": {
+    "train": {
+      "images": 137,
+      "objects": 3786,
+      "visible_endpoints": 6837,
+      "missing_endpoints": 735,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 659,
+      "visible_endpoints": 1224,
+      "missing_endpoints": 94,
+      "empty_images": 3
+    }
+  },
+  "current_round_full_dataset_screen": false,
+  "full_dataset_certified": false,
+  "training_run": false,
+  "automatic_promotion": false
+}
