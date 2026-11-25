@@ -72,7 +72,8 @@ def check_common(root, receipt, staging, role, context):
     require(_same(receipt["training_labels"], training_label_identity(staging, role)), "Selected supervision differs")
     require(staging["variants"][role]["counts"] == document["roles"][role]["counts"], "Role training counts differ")
     require(receipt["training_labels"]["training_protocol"] ==
-            {"path": DEFAULT_PROTOCOL, "sha256": context["sha256"]}, "Staged training protocol differs")
+            {"path": context["path"].relative_to(root).as_posix(), "sha256": context["sha256"]},
+            "Staged training protocol differs")
 
 
 def verify_trial(root, run, role="candidate", context=None):
@@ -132,9 +133,9 @@ def verify_run(root, run, role, context=None):
     return bundle
 
 
-def package_pair(root, reference, candidate, output, verify_existing=False, protocol=DEFAULT_PROTOCOL):
+def package_pair(root, reference, candidate, output, verify_existing=False, protocol=DEFAULT_PROTOCOL, context=None):
     root = Path(root).resolve()
-    context = load_protocol(root, protocol)
+    context = context or load_protocol(root, protocol)
     runs = {"reference": Path(reference).resolve(), "candidate": Path(candidate).resolve()}
     require(all(p.is_dir() and not Path(raw).is_symlink() for raw, p in
                 ((reference, runs["reference"]), (candidate, runs["candidate"]))), "Run directories must be regular")
@@ -159,7 +160,9 @@ def package_pair(root, reference, candidate, output, verify_existing=False, prot
                               "training_labels": bundle["receipt"]["training_labels"]}
                        for role, bundle in bundles.items()},
              "files": [{k: v for k, v in row.items() if k != "source_path"} for row in rows],
-             "scope": "Native loss in both arms; only the accepted training boundary delta differs. No accuracy approval or model promotion."}
+             "scope": ("Native loss in both arms; only the accepted training "
+                       + ("boundary" if context["document"]["experiment_id"] == "front-review-r33" else "annotation")
+                       + " delta differs. No accuracy approval or model promotion.")}
     output = Path(output).absolute()
     require(not output.is_symlink() and output.suffix.lower() == ".zip", "Output must be a regular ZIP path")
     output = output.resolve()
