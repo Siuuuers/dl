@@ -226,6 +226,7 @@ def code_hashes(*, composed=False, observed=False, incremental=False):
                   "front_review_r32.py", "front_review_r33.py", "front_review_r33_training.py",
                   "front_review_r34.py", "front_review_r34_training.py",
                   "front_review_r35.py", "front_review_r35_training.py",
+                  "front_review_r36.py", "front_review_r36_training.py",
                   "front_review_experiment.py")
     return {f"scripts/{name}": file_sha256(scripts / name) for name in names}
 
@@ -265,7 +266,7 @@ def manifest_fields(output, state, variants):
                 - state["counts"]["candidate"]["train"]["objects"],
             training_readiness_verified=True)
         reference_check = ("reference_labels_are_verified_predecessor_control"
-                           if state["source"]["control"].get("supervision") in ("r26_predecessor_control", "r28_predecessor_control", "r30_predecessor_control", "r31_predecessor_control")
+                           if state["source"]["control"].get("supervision", "").endswith("_predecessor_control")
                            else "reference_labels_are_verified_pr35_control")
         result["verification"][reference_check] = True
     if incremental:

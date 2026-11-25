@@ -1,0 +1,112 @@
+{
+  "status": "passed",
+  "reviewer": "independent annotation_review agent",
+  "reviewed_at_utc": "2026-11-25T18:46:24.613474+00:00",
+  "artifact": {
+    "filename": "r36-annotation-amendments.pdf",
+    "sha256": "7ac2997a3fa019664d9bb0aeb7f50d114d980ce33f9007eab84710d4d34e399b",
+    "bytes": 413772,
+    "page_count": 9
+  },
+  "review_manifest_sha256": "d0cdb9d56c043175ca12e538951cb28b1a8cd897039cce7a971e8f046407d416",
+  "method": "Inspected all nine complete Poppler-rendered PNG pages at 110 dpi, including full-size views of pages 3, 6, 8, 9; checked rendered typography, crop scale, overlays, L/R fields, status wording and analytical grids against the independently reviewed R36 data. Confirmed source PDF page count with pypdf and bytes with SHA-256. Text extraction was not used as a substitute for image inspection.",
+  "inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "render_evidence": {
+    "scratch_directory": "analysis_r36_labels/pdf-qa",
+    "files": [
+      "page-1.png",
+      "page-2.png",
+      "page-3.png",
+      "page-4.png",
+      "page-5.png",
+      "page-6.png",
+      "page-7.png",
+      "page-8.png",
+      "page-9.png"
+    ],
+    "renderer": "Poppler pdftoppm",
+    "dpi": 110
+  },
+  "page_checks": [
+    {
+      "page": 1,
+      "status": "pass",
+      "finding": "Cover correctly states five requested rows, four photographs, four box amendments, two training rows, zero corner changes, and three pending requests; 659 development fronts and 583 two-corner objects are preserved."
+    },
+    {
+      "page": 2,
+      "status": "pass",
+      "finding": "Reading guide clearly defines original-pixel evidence, same-scale case crops, L/R saved fields, image-coordinate directions, corrected point naming, remaining requests, and separate reference rescoring."
+    },
+    {
+      "page": 3,
+      "status": "pass",
+      "finding": "new_000006 row 53: R35 and retained R36 boxes and sole L point agree. xmax 503 is explicitly held. Missing yellow/red markup is explained; no missing target is reconstructed."
+    },
+    {
+      "page": 4,
+      "status": "pass",
+      "finding": "new_000034 row 34: xmin 426 to 435 agrees with overlays; both L/R points remain unchanged. Explanation identifies the relevant LEFT point and why literal xmin at the right point would collapse the box."
+    },
+    {
+      "page": 5,
+      "status": "pass",
+      "finding": "new_000034 row 35: xmin 509 to 511 and physical top 258 to 255 are correctly shown. The lower-left point remains (518.35,297.09), the pending landmark request is explicit, and the uncertainty and preserved bottom/right edges are stated."
+    },
+    {
+      "page": 6,
+      "status": "pass",
+      "finding": "new_000010 row 24: xmax 910 to 913 includes the owned white rim. Only the existing R point is drawn; the left point remains unavailable. The point-name question is clearly pending."
+    },
+    {
+      "page": 7,
+      "status": "pass",
+      "finding": "new_000057 row 1: xmin approximately 777 to 782 is shown with unchanged L/R coordinates. The left point remains inside the corrected box."
+    },
+    {
+      "page": 8,
+      "status": "pass",
+      "finding": "White-rim explanation: context crop and magnified original-pixel grid are readable; magenta x910, green x913 and saved R (909,491) agree. Ownership is justified by contour continuity. Prospective corner range is explicitly uncertainty, not a newly saved point."
+    },
+    {
+      "page": 9,
+      "status": "pass",
+      "finding": "Lower-left-turn explanation: restored box and unchanged L/R points agree with the ledger. Grid A at x511 and current y is distinguished from saved B. Caption says A is not applied; narrative expressly says the red analytical A is illustrative and not user-supplied markup."
+    }
+  ],
+  "checks": {
+    "same_crop_and_scale_in_case_triptychs": true,
+    "case_triptych_pages": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "all_type_and_tables_readable": true,
+    "no_clipping_or_overlap": true,
+    "no_missing_or_substituted_case_images": true,
+    "correct_L_R_saved_point_labels": true,
+    "no_unavailable_corner_invented": true,
+    "pending_requests_not_misrepresented_as_resolved": true,
+    "red_analytical_A_distinguished_from_missing_user_markup": true,
+    "exactly_four_box_amendments_and_zero_corner_changes": true,
+    "no_instance_addition_or_deletion": true,
+    "headers_and_sequential_footers_correct": true
+  },
+  "issues": [],
+  "limitations": [
+    "The source images remain blurred; the approximately 2-2.5 px visual ranges are reading limits, not calibrated physical measurements.",
+    "Three request items remain intentionally pending as documented. Passing document QA does not resolve those items."
+  ]
+}
