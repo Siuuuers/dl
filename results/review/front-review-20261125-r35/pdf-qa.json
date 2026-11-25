@@ -1,0 +1,126 @@
+{
+  "status": "passed",
+  "reviewer": "independent annotation-review agent",
+  "review_date_utc": "2026-11-25",
+  "artifact": {
+    "filename": "r35-annotation-amendments.pdf",
+    "sha256": "e320785aa30620dc004349e4fd52207c6473fece69ebdcba6071df1cffbda97d",
+    "bytes": 343600,
+    "page_count": 13
+  },
+  "review_manifest_sha256": "1ec7e4826d3e14c61d83e5267fdb798255348858c834e64ec2d66347076f9019",
+  "method": "Rendered every page with PyMuPDF at 1.5x; inspected the complete contact sheet and all 13 individual full-page renders. Compared displayed changes with the independently reviewed R34-to-R35 decisions and canonical label audit.",
+  "pages_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "case_pages": [
+    {
+      "page": 3,
+      "image": "new_000006",
+      "r34_row": 53,
+      "decision": "xmax 509 -> 503"
+    },
+    {
+      "page": 4,
+      "image": "new_000013",
+      "r34_row": 36,
+      "decision": "xmin 828 -> 833; ymax 512 -> 505"
+    },
+    {
+      "page": 5,
+      "image": "new_000034",
+      "r34_row": 43,
+      "decision": "xmax 635 -> 640; right corner remains unavailable"
+    },
+    {
+      "page": 6,
+      "image": "new_000034",
+      "r34_row": 34,
+      "decision": "xmin 427 -> 426; ymin 505.05 -> 514; ymax 547 -> 546"
+    },
+    {
+      "page": 7,
+      "image": "new_000034",
+      "r34_row": 35,
+      "decision": "xmin 511 -> 509; ymin 255 -> 258; ymax 298 -> 300"
+    },
+    {
+      "page": 8,
+      "image": "new_000009",
+      "r34_row": 51,
+      "decision": "ymin 474 -> 472; ymax 490 -> 488"
+    },
+    {
+      "page": 9,
+      "image": "new_000007",
+      "r34_row": 10,
+      "decision": "xmax 879.53 -> 874"
+    },
+    {
+      "page": 10,
+      "image": "new_000010",
+      "r34_row": 24,
+      "decision": "xmax 911 -> 910; right corner (911,491,v2) -> (909,491,v2)"
+    },
+    {
+      "page": 11,
+      "image": "new_000057",
+      "r34_row": 1,
+      "decision": "xmax 881 -> 883; interpretation of positive request disclosed"
+    },
+    {
+      "page": 12,
+      "image": "new_000009",
+      "r34_row": 56,
+      "decision": "user-directed instance exclusion; R35 panel has no annotation"
+    },
+    {
+      "page": 13,
+      "image": "new_000009",
+      "r34_row": 57,
+      "decision": "user-directed instance exclusion; R35 panel has no annotation"
+    }
+  ],
+  "checks": {
+    "all_11_requested_rows_present_once": true,
+    "cover_counts_match_9_replacements_and_2_exclusions": true,
+    "training_5_development_4_replacement_counts_correct": true,
+    "seven_unique_photographs_correct": true,
+    "new034_rows34_35_not_new040": true,
+    "per_case_original_before_after_same_crop_and_scale": true,
+    "before_magenta_after_teal_legible": true,
+    "physical_edge_and_stored_coordinate_names_consistent": true,
+    "tables_and_overlays_agree_with_reviewed_decisions": true,
+    "soft_shaded_boundaries_explained_with_visual_uncertainty": true,
+    "new010_corner_followup_explicit_and_drawn_inside_box": true,
+    "hidden_corners_not_invented": true,
+    "deletion_after_panels_have_no_box_or_point": true,
+    "deletion_history_and_uncertainty_preserved": true,
+    "deletions_not_claimed_as_duplicates_or_model_recovery": true,
+    "revised_659_objects_and_583_two_corner_denominator_correct": true,
+    "all_text_readable_without_overlap_or_clipping": true,
+    "all_pages_have_correct_sequential_footer": true
+  },
+  "limitations": [
+    "Original image blur limits physical boundary precision to the stated approximately 1.5-2.5 px; exact saved tokens support replay rather than subpixel physical certainty."
+  ],
+  "issues": [],
+  "render_evidence": {
+    "scratch_directory": "analysis_r35_labels/pdfqa",
+    "contact_sheet": "contact_all_pages.png",
+    "individual_pages": "page_01.png through page_13.png",
+    "extracted_text": "page-text.json"
+  }
+}
