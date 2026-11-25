@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-partial-box-loss-protocol",
+  "experiment_id": "partial-box-loss-r31",
+  "created_date": "2026-11-24",
+  "timezone": "Asia/Hong_Kong",
+  "hypothesis": "At the existing fixed inference settings, doubling only the native CIoU and normalized-L1 box-regression contributions of already-assigned partial fronts may improve localization while avoiding the additional classification weighting used in R30. Classification, keypoint, RLE and native branch scheduling retain their original objectives. The factor is prespecified. The PR109 trade-off motivates this test but does not prove which prior term caused it.",
+  "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "candidate_manifest": "data/candidates/front-review-2026-11-24-r31/manifest.json",
+  "candidate_manifest_sha256": "8fb270a31131bf1e20c9bf5aeb05471cdcc29c03860da76e93614eeb7183fdb7",
+  "accepted_review": {
+    "path": "data/reviews/fronts-2026-11-24-r31/manifest.json",
+    "sha256": "bbe202ae73f2af33030b2e8e48b3710257dc1449581f59cca399ce0636c9e16a"
+  },
+  "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+  "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+  "label_arm_for_both_experimental_roles": "candidate",
+  "training_counts": {
+    "train": {
+      "images": 137,
+      "objects": 3784,
+      "visible_endpoints": 6836,
+      "missing_endpoints": 732,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 664,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 101,
+      "empty_images": 3
+    }
+  },
+  "execution": {
+    "epochs": 30,
+    "resource_trial_batches": 4,
+    "expected_batches": 1050,
+    "expected_images": 4110,
+    "expected_optimizer_steps": 78,
+    "same_runtime_required": true,
+    "automatic_promotion": false,
+    "initialization": "original_epoch173_independently_for_each_role",
+    "checkpoint_selection": "final_epoch",
+    "resource_trial_initializes_full_runs": false,
+    "recommended_gpu": "NVIDIA L4 or A100",
+    "training_executed": false
+  },
+  "evaluation": {
+    "primary_box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "imgsz": 1280,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "radii_px": [
+      5,
+      10
+    ],
+    "primary_reference": "data/references/sequence-refined-reference-2026-11-18/manifest.json",
+    "primary_reference_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+    "primary_counts": {
+      "images": 20,
+      "objects": 666,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 105,
+      "empty_images": 3
+    },
+    "diagnostic_reference": "data/references/visible-front-completion-2026-11-14/manifest.json",
+    "diagnostic_reference_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+    "diagnostic_counts": {
+      "images": 20,
+      "objects": 663,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 99,
+      "empty_images": 3
+    },
+    "diagnostic_reference_required": true,
+    "unresolved_reference_rows": [
+      {
+        "image_id": "new_000007",
+        "row": 7,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 7
+      },
+      {
+        "image_id": "new_000007",
+        "row": 14,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 14
+      },
+      {
+        "image_id": "new_000008",
+        "row": 36,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 36
+      },
+      {
+        "image_id": "new_000009",
+        "row": 8,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 8
+      },
+      {
+        "image_id": "new_000010",
+        "row": 30,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 30
+      },
+      {
+        "image_id": "new_000011",
+        "row": 15,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 15
+      },
+      {
+        "image_id": "new_000057",
+        "row": 1,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 1
+      },
+      {
+        "image_id": "new_000059",
+        "row": 1,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 1
+      }
+    ],
+    "diagnostic_unresolved_reference_rows": [
+      {
+        "image_id": "new_000007",
+        "row": 7,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000007",
+        "row": 14,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000008",
+        "row": 36,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000009",
+        "row": 8,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000009",
+        "row": 56,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000010",
+        "row": 13,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000010",
+        "row": 14,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000010",
+        "row": 30,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000011",
+        "row": 15,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000057",
+        "row": 1,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000059",
+        "row": 1,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000086",
+        "row": 57,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000088",
+        "row": 57,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      }
+    ],
+    "training_validation_unchanged": true,
+    "references_reported_separately": true,
+    "current_review_reference": {
+      "path": "data/reviews/fronts-2026-11-24-r31/manifest.json",
+      "sha256": "bbe202ae73f2af33030b2e8e48b3710257dc1449581f59cca399ce0636c9e16a"
+    },
+    "current_review_reference_is_exploratory": true,
+    "PR35_checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+    "decision": "Compare both freshly trained R31-label roles and retained PR35 at the existing fixed settings. Preserve frozen666 primary and historical663 reports, and separately report exploratory R31. Report gained/lost identities, zero/one/two-corner recall, both-corner5/10px successes including eligible misses, unmatched outputs, duplicates and empty scenes. Both roles use identical R31 supervision, ordinary per-image sampling and native architecture. Only assigned-partial CIoU and normalized-L1 box-loss weighting differs. No post-result threshold/seed/epoch search or automatic model promotion."
+  },
+  "scope": [
+    "Both experimental roles use the same eligible R31 supervision. All accepted coordinate amendments are shared preparation, not the experimental treatment.",
+    "All137 training images occur once per epoch, including13 empty scenes; held015 and31 old-series photos remain in training with their retained accepted supervision.",
+    "Original trainer validation remains20 images/664 fronts and never uses the amended development labels.",
+    "The20 development photos have informed repeated decisions and are not an independent test of new capture sessions.",
+    "This run changes no architecture, initializer, optimizer recipe, image sampling, native classification objective or inference postprocessing.",
+    "Weight2 is a bounded hypothesis. A target receiving no task-aligned foreground assignment is not directly rescued by loss weighting. PR109 one2one assignments covered every observed partial target; remaining inference misses therefore cannot be described as demonstrated training assignment starvation.",
+    "The actual fixed checkpoint uses native normalizedL1 with reg_max1. Preserve its Pose26/E2ELoss branches and schedule; fail on incompatible package or model architecture.",
+    "Holding the classification objective fixed does not hold predictions or scores fixed: shared-feature optimization can still change them. Returned metrics must determine the actual trade-off."
+  ],
+  "loss_weighting": {
+    "control_factor": 1,
+    "candidate_factor": 2,
+    "partial_definition": "post_augmentation_fewer_than_two_nonzero_keypoint_visibilities",
+    "normalizer": "original_unweighted_target_scores_sum",
+    "classification": "native_bce_unchanged_for_all_anchors",
+    "box": "ciou_and_native_box_auxiliary_on_assigned_partial_anchors",
+    "sampling": "ordinary_once_per_image_per_epoch",
+    "background_unchanged": true,
+    "keypoint_losses_unchanged": true,
+    "native_model_head": "Pose26",
+    "native_reg_max": 1,
+    "native_pose_criterion": "E2ELoss(PoseLoss26,PoseLoss26)",
+    "native_box_auxiliary": "normalized_l1",
+    "preserve_native_branch_schedule": true,
+    "soft_target_values_unchanged": true,
+    "unassigned_partial_targets_logged": true,
+    "interpretation": "Multiply native CIoU and normalized-L1 box contributions for already-assigned partial anchors by2 in the candidate, retaining the original target-quality scores and denominator everywhere else. BCE remains exactly native for partial, full and background anchors; keypoint, RLE and kobj terms remain native. Targets without foreground assignment receive no direct weighted contribution. Post-augmentation clipping can make an otherwise two-corner source object partial."
+  },
+  "prior_result": {
+    "pull_request": "https://github.com/Siuuuers/dl/pull/109",
+    "archive_sha256": "450fe2b66adc779fe0f0c77302b5efcb8786de41e0a498182e1e96d96f144c47",
+    "control_checkpoint_sha256": "59ccc3102fe423ab22abb22a15a66b19872993cfde7c16ebf583f48c89beb491",
+    "candidate_checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+    "frozen666": {
+      "control_misses": 36,
+      "candidate_misses": 33,
+      "control_unmatched_outputs": 106,
+      "candidate_unmatched_outputs": 127,
+      "control_duplicates": 30,
+      "candidate_duplicates": 30,
+      "control_pair5_success": 518,
+      "candidate_pair5_success": 519,
+      "eligible_pair_denominator": 584
+    },
+    "exploratory_r30": {
+      "control_misses": 16,
+      "candidate_misses": 11,
+      "control_unmatched_outputs": 91,
+      "candidate_unmatched_outputs": 110,
+      "control_duplicates": 33,
+      "candidate_duplicates": 35,
+      "control_pair5_success": 571,
+      "candidate_pair5_success": 570,
+      "control_pair10_success": 582,
+      "candidate_pair10_success": 582
+    },
+    "training_assignments": {
+      "post_augmentation_partial_targets_per_role": 18376,
+      "one2one_assigned_partials_per_role": 18376,
+      "one2one_unassigned_partials_per_role": 0,
+      "one2many_unassigned_partials_control": 4,
+      "one2many_unassigned_partials_candidate": 5
+    },
+    "interpretation": "The prior candidate gained3matches on frozen666 while producing21more unmatched outputs. On the exploratory R30 reference it gained5matches with19more unmatched outputs and1fewer5px pair successes. These joint changes motivate separating regression from classification weighting; they do not establish classification as the cause. All18376partial targets acquired one2one training assignments in both roles, so assignment starvation is not supported by these receipts."
+  }
+}

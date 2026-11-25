@@ -1,0 +1,959 @@
+{
+  "schema_version": 1,
+  "review_kind": "bounded_fresh_original_pixel_review_A",
+  "parent_review": "fronts-2026-11-24-r30",
+  "source_revision": "337a12d8b11f9925b493cba794f29a4ffcf848ed",
+  "source_manifest_path": "data/reviews/fronts-2026-11-24-r30/manifest.json",
+  "source_manifest_sha256": "b3e020fe086a6585b305417c84d7650ea1f7881d86fa3cf77fdc3fbacf4c0f9d",
+  "prediction_file": "/workspace/scratch/31f5e28106bc/dl/tmp/pr109-eval/inference/eval-pr107-candidate/predictions.jsonl",
+  "prediction_file_sha256": "4a7987c685d34546beab935f21154817f24c77281cfb962388f4636e20821a11",
+  "checkpoint_sha256": "faad7bf0e855477771990e54191c8e55b1787e850cea79fb823314ffece1ecb9",
+  "previous_pdf_path": "/workspace/scratch/31f5e28106bc/tmp/pr109-previous-reports/pr107-r30-misses-and-errors.pdf",
+  "previous_pdf_sha256": "96a2245b8ff9aad42a2da740487e3305621ac41e2177b9ffc980ffcd6c3c4476",
+  "annotation_policy_path": "docs/annotation-boundaries-r26.md",
+  "annotation_policy_sha256": "c207383965b9c22c100f2f2ebe40b8446f221ea4b6645abd06d20e7e68fd306d",
+  "coordinate_system": "Original1280x720 pixels; x increases right, y down; negative amendment means decrease within valid coordinates.",
+  "canonical_labels_modified": false,
+  "changed_count": 3,
+  "retained_count": 4,
+  "method": "First inspect unmarked original crops at native pixels and nearest-neighbor enlargement; then compare R30 labels and exact ordered PR107 candidate outputs. Predictions serve as cues, not truth. Estimates are visually bounded and carry1-3px uncertainty. All edits preserve absent-keypoint zeros and image/object identities.",
+  "recommendations": [
+    {
+      "image_id": "new_000008",
+      "split": "val",
+      "row": 4,
+      "row_numbering": "one-based parent R30 unchanged ordering",
+      "decision": "retain",
+      "user_cue": "Prediction ymax preferred.",
+      "before_line": "0 0.6691406250 0.0640416667 0.1664062500 0.0746944444 0.5875000000 0.0888888889 2 0.7500000000 0.0972222222 2",
+      "after_line": "0 0.6691406250 0.0640416667 0.1664062500 0.0746944444 0.5875000000 0.0888888889 2 0.7500000000 0.0972222222 2",
+      "before_line_sha256": "bbc68149e03c9f3852d08da9e7611056190a0775f68d0dfdaeb186f2f4d428b9",
+      "after_line_sha256": "bbc68149e03c9f3852d08da9e7611056190a0775f68d0dfdaeb186f2f4d428b9",
+      "before": {
+        "bbox_xyxy": [
+          750.0,
+          19.22000004,
+          963.0000000000001,
+          73.000000008
+        ],
+        "left_xyv": [
+          752.0,
+          64.000000008,
+          2
+        ],
+        "right_xyv": [
+          960.0,
+          69.999999984,
+          2
+        ]
+      },
+      "after": {
+        "bbox_xyxy": [
+          750.0,
+          19.22000004,
+          963.0000000000001,
+          73.000000008
+        ],
+        "left_xyv": [
+          752.0,
+          64.000000008,
+          2
+        ],
+        "right_xyv": [
+          960.0,
+          69.999999984,
+          2
+        ]
+      },
+      "proposed_changes_original_pixels": {},
+      "source_label_path": "data/reviews/fronts-2026-11-24-r30/labels/val/new_000008.txt",
+      "source_label_sha256": "dbc18e8e91210e7bf7ff6ce3fd1b29e9a62d7752522c5bfd0b6b36484ef5f6af",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_identity": {
+        "pull_request": 107,
+        "arm": "candidate",
+        "one_based_p_index": 16,
+        "checkpoint_sha256": "faad7bf0e855477771990e54191c8e55b1787e850cea79fb823314ffece1ecb9",
+        "prediction_file_sha256": "4a7987c685d34546beab935f21154817f24c77281cfb962388f4636e20821a11",
+        "prediction": {
+          "class_id": 0,
+          "bbox_xyxy": [
+            753.1292114257812,
+            10.644378662109375,
+            963.1817016601562,
+            80.39495849609375
+          ],
+          "confidence": 0.9269049763679504,
+          "keypoints": [
+            [
+              757.3945922851562,
+              65.43183898925781,
+              0.9567919373512268
+            ],
+            [
+              957.4185791015625,
+              70.94459533691406,
+              0.9558824896812439
+            ]
+          ]
+        }
+      },
+      "source_pdf": {
+        "name": "pr107-r30-misses-and-errors.pdf",
+        "sha256": "96a2245b8ff9aad42a2da740487e3305621ac41e2177b9ffc980ffcd6c3c4476",
+        "one_based_pages": [
+          14
+        ]
+      },
+      "reason": "Retain ymax 73 after a fresh original-pixel review. The own front and narrow lower rim terminate along the sloping light-to-gray material edge, approximately y65 at the left through y72-73 at the right. The additional strip down to PR107 p16 ymax80.39 is continuous with the perforated basket's upper support rail and vertical lattice. Its darkness is not the reason for exclusion: the continuous geometry identifies it as support rather than the target front. A 1-2px placement range exists in the soft boundary, but the prediction's extra 7.4px is unsupported.",
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": false,
+      "explicit_user_revisit": false,
+      "protected_fields_changed": [],
+      "protected_before_after_byte_identical": null,
+      "object_identity_changed": false,
+      "class_changed": false,
+      "visibility_changed": false,
+      "object_added_or_removed": false,
+      "crop_bounds_xyxy": [
+        728,
+        0,
+        986,
+        109
+      ],
+      "crop_native_size": [
+        258,
+        109
+      ],
+      "evidence": {
+        "raw_native": "new_000008-row04-raw.png",
+        "before": "new_000008-row04-before.png",
+        "proposed": "new_000008-row04-proposed.png",
+        "prediction": "new_000008-row04-pr107-p16.png",
+        "comparison": "new_000008-row04-comparison.png",
+        "inspection_rulers": [
+          "008-top-ruler.png",
+          "008-r4-bottom-ruler.png"
+        ]
+      },
+      "evidence_file_sha256": {
+        "new_000008-row04-raw.png": "600d1bfda81931e06b70094d91d51397bfd7322d4d83644cc431c52a8f420a46",
+        "new_000008-row04-before.png": "f4aa60b3ae12549e78b4b4ee76f6ef2f5d49528c22d18ff21cef3995afa5b2ba",
+        "new_000008-row04-proposed.png": "c388e7073b4db43111f47f1babbe8a262d4907227b812b6e517da6c0e9e970a0",
+        "new_000008-row04-pr107-p16.png": "3524f50cc0810372ab473a4e5ba77a9a310b6d5d272a68413a96ce3a8c26e927",
+        "new_000008-row04-comparison.png": "14e42fd47ce1b40c66af8924eb46e9c830d731c5c61ae520650293e76a524127",
+        "008-top-ruler.png": "0e73ec5c6ffe19d5ef38b8bbe04414c97e4e3e483de30074feeb9d98555666b2",
+        "008-r4-bottom-ruler.png": "8f4bc0baf430e08622fb4637b999c481cdda5321752ae52f8609135d710bab3d"
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "split": "val",
+      "row": 5,
+      "row_numbering": "one-based parent R30 unchanged ordering",
+      "decision": "replace",
+      "user_cue": "Both points should land on the physical corners; color and the shaded triangle are cues.",
+      "before_line": "0 0.853125000000 0.0173611111 0.179687500000 0.0347222222 0.768750000000 0.0208333333 2 0.941796875000 0.030555555556 2",
+      "after_line": "0 0.853125000000 0.0173611111 0.179687500000 0.0347222222 0.767968750000 0.018055555556 2 0.936718750000 0.023611111111 2",
+      "before_line_sha256": "799432b368ba6409e2737f40043da5c5004eb878ca42197ec938b172001a7f2c",
+      "after_line_sha256": "147eeae96eab4662f95571178e011c61445e9b8393abea205577a994811cf9d8",
+      "before": {
+        "bbox_xyxy": [
+          977.0,
+          0.0,
+          1207.0,
+          24.999999984
+        ],
+        "left_xyv": [
+          984.0,
+          14.999999976,
+          2
+        ],
+        "right_xyv": [
+          1205.5,
+          22.00000000032,
+          2
+        ]
+      },
+      "after": {
+        "bbox_xyxy": [
+          977.0,
+          0.0,
+          1207.0,
+          24.999999984
+        ],
+        "left_xyv": [
+          983.0,
+          13.00000000032,
+          2
+        ],
+        "right_xyv": [
+          1199.0,
+          16.99999999992,
+          2
+        ]
+      },
+      "proposed_changes_original_pixels": {
+        "left_xy": [
+          983,
+          13
+        ],
+        "right_xy": [
+          1199,
+          17
+        ]
+      },
+      "source_label_path": "data/reviews/fronts-2026-11-24-r30/labels/val/new_000008.txt",
+      "source_label_sha256": "dbc18e8e91210e7bf7ff6ce3fd1b29e9a62d7752522c5bfd0b6b36484ef5f6af",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_identity": {
+        "pull_request": 107,
+        "arm": "candidate",
+        "one_based_p_index": 24,
+        "checkpoint_sha256": "faad7bf0e855477771990e54191c8e55b1787e850cea79fb823314ffece1ecb9",
+        "prediction_file_sha256": "4a7987c685d34546beab935f21154817f24c77281cfb962388f4636e20821a11",
+        "prediction": {
+          "class_id": 0,
+          "bbox_xyxy": [
+            976.4236450195312,
+            0.0,
+            1204.965087890625,
+            36.194942474365234
+          ],
+          "confidence": 0.913415789604187,
+          "keypoints": [
+            [
+              980.9573974609375,
+              11.492063522338867,
+              0.9624484181404114
+            ],
+            [
+              1196.3968505859375,
+              16.133392333984375,
+              0.9401763677597046
+            ]
+          ]
+        }
+      },
+      "source_pdf": {
+        "name": "pr107-r30-misses-and-errors.pdf",
+        "sha256": "96a2245b8ff9aad42a2da740487e3305621ac41e2177b9ffc980ffcd6c3c4476",
+        "one_based_pages": [
+          9
+        ]
+      },
+      "reason": "Move both existing visible landmarks to the lower front-face turns. On the left, the softened vertical side transitions into the pale horizontal face near (983,13), slightly above the old point on the shaded line. On the right, the pale front turns down into its gray side near (1199,17); the old (1205.5,22) lies on the outer side/rim, beyond that turn. PR107 p24 gives the useful direction for both, but its right x1196.40 is slightly inside the visible face. The existing outer-rim box remains unchanged because a front turn and a rim extreme need not coincide.",
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": false,
+      "explicit_user_revisit": false,
+      "protected_fields_changed": [],
+      "protected_before_after_byte_identical": null,
+      "object_identity_changed": false,
+      "class_changed": false,
+      "visibility_changed": false,
+      "object_added_or_removed": false,
+      "crop_bounds_xyxy": [
+        954,
+        0,
+        1229,
+        65
+      ],
+      "crop_native_size": [
+        275,
+        65
+      ],
+      "evidence": {
+        "raw_native": "new_000008-row05-raw.png",
+        "before": "new_000008-row05-before.png",
+        "proposed": "new_000008-row05-proposed.png",
+        "prediction": "new_000008-row05-pr107-p24.png",
+        "comparison": "new_000008-row05-comparison.png",
+        "inspection_rulers": [
+          "008-r5-left-ruler.png",
+          "008-r5-r7-right-ruler.png",
+          "008-r5-left-candidates.png",
+          "008-r5-right-candidates.png"
+        ]
+      },
+      "evidence_file_sha256": {
+        "new_000008-row05-raw.png": "fe37a11439c571967ca47770dfc777499448dd07c2b83d41e293cfc1e444987f",
+        "new_000008-row05-before.png": "2c91fe82e36d817609274faede1a69b529a772ff94303f254fe6d3e5c92dfb92",
+        "new_000008-row05-proposed.png": "b45bed14cf9c4de69994f55cee1cefb0edc547ef6f96049f1bea3a59ee7954c7",
+        "new_000008-row05-pr107-p24.png": "8caf46e25e5ee5b209964194c31fc350aa5d15c9d6c31ce275929ff0019bd09c",
+        "new_000008-row05-comparison.png": "18e1798699b9c42f954b78eabe43f0b2dd22ffb7483faa95979cb66327a11d29",
+        "008-r5-left-ruler.png": "aa6bfaef3cf12a257f661c9fa932b0458f76af14f66ba8d8181a7a4af077dca1",
+        "008-r5-r7-right-ruler.png": "fb035c17fda17c30e0dbddf5ca139a2166171655c3331406dd30a3fc878fab8f",
+        "008-r5-left-candidates.png": "d77bce943c6d85cfa43d9547093b2eb1bf51efdb6bc4b672d0a935d778a93584",
+        "008-r5-right-candidates.png": "f3361ed2cb0e4ca5bf4e7ac1df7d8cda21d10a3b4b920d292883aa5d4030560a"
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "split": "val",
+      "row": 6,
+      "row_numbering": "one-based parent R30 unchanged ordering",
+      "decision": "retain",
+      "user_cue": "Prediction ymax preferred.",
+      "before_line": "0 0.838671875000 0.070833333 0.169531250000 0.083333333 0.762500000 0.098611111 2 0.9218750000 0.1097222222 2",
+      "after_line": "0 0.838671875000 0.070833333 0.169531250000 0.083333333 0.762500000 0.098611111 2 0.9218750000 0.1097222222 2",
+      "before_line_sha256": "f3a50dadb314407a7ddeb1aef3b6fccf2de625a699886b4500b34c14eadb9ed3",
+      "after_line_sha256": "f3a50dadb314407a7ddeb1aef3b6fccf2de625a699886b4500b34c14eadb9ed3",
+      "before": {
+        "bbox_xyxy": [
+          965.0,
+          20.99999988,
+          1182.0,
+          80.99999964
+        ],
+        "left_xyv": [
+          976.0,
+          70.99999992000001,
+          2
+        ],
+        "right_xyv": [
+          1180.0,
+          78.999999984,
+          2
+        ]
+      },
+      "after": {
+        "bbox_xyxy": [
+          965.0,
+          20.99999988,
+          1182.0,
+          80.99999964
+        ],
+        "left_xyv": [
+          976.0,
+          70.99999992000001,
+          2
+        ],
+        "right_xyv": [
+          1180.0,
+          78.999999984,
+          2
+        ]
+      },
+      "proposed_changes_original_pixels": {},
+      "source_label_path": "data/reviews/fronts-2026-11-24-r30/labels/val/new_000008.txt",
+      "source_label_sha256": "dbc18e8e91210e7bf7ff6ce3fd1b29e9a62d7752522c5bfd0b6b36484ef5f6af",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_identity": {
+        "pull_request": 107,
+        "arm": "candidate",
+        "one_based_p_index": 13,
+        "checkpoint_sha256": "faad7bf0e855477771990e54191c8e55b1787e850cea79fb823314ffece1ecb9",
+        "prediction_file_sha256": "4a7987c685d34546beab935f21154817f24c77281cfb962388f4636e20821a11",
+        "prediction": {
+          "class_id": 0,
+          "bbox_xyxy": [
+            968.5460815429688,
+            14.991828918457031,
+            1181.690673828125,
+            90.09779357910156
+          ],
+          "confidence": 0.9292637705802917,
+          "keypoints": [
+            [
+              971.76416015625,
+              75.23100280761719,
+              0.9448126554489136
+            ],
+            [
+              1176.4788818359375,
+              78.72167205810547,
+              0.9422265291213989
+            ]
+          ]
+        }
+      },
+      "source_pdf": {
+        "name": "pr107-r30-misses-and-errors.pdf",
+        "sha256": "96a2245b8ff9aad42a2da740487e3305621ac41e2177b9ffc980ffcd6c3c4476",
+        "one_based_pages": [
+          12
+        ]
+      },
+      "reason": "Retain ymax81 after a fresh original-pixel review. The target's lower rim reaches about y80-81 at its rounded right edge. The broad dark strip at y82-91 continues into the basket rail and perforated support at both sides. PR107 p13 ymax90.10 would box that support. The existing xmax1182 and both points are outside this requested correction and remain unchanged. The decision follows ownership and contour continuity, not a rule to keep only white pixels.",
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": false,
+      "explicit_user_revisit": false,
+      "protected_fields_changed": [],
+      "protected_before_after_byte_identical": null,
+      "object_identity_changed": false,
+      "class_changed": false,
+      "visibility_changed": false,
+      "object_added_or_removed": false,
+      "crop_bounds_xyxy": [
+        943,
+        0,
+        1204,
+        119
+      ],
+      "crop_native_size": [
+        261,
+        119
+      ],
+      "evidence": {
+        "raw_native": "new_000008-row06-raw.png",
+        "before": "new_000008-row06-before.png",
+        "proposed": "new_000008-row06-proposed.png",
+        "prediction": "new_000008-row06-pr107-p13.png",
+        "comparison": "new_000008-row06-comparison.png",
+        "inspection_rulers": [
+          "008-top-ruler.png",
+          "008-r6-bottom-ruler.png"
+        ]
+      },
+      "evidence_file_sha256": {
+        "new_000008-row06-raw.png": "aa42eba9acddf8c2983a6fe8e4f67bf4f45d200a38133a22ab0a9215d45c5958",
+        "new_000008-row06-before.png": "667e8ec285323cf1dc574b8b25a4d9e6766253e54d629a9b01ceba2f4cc7b7e1",
+        "new_000008-row06-proposed.png": "95013293f1ae19a21c2cc37f4f51a114f5ace5408353c5060aad21d2c6360894",
+        "new_000008-row06-pr107-p13.png": "2fc49ec3f1e083a68a552fc1af991cf9009a380b80cd438006dd18ce38be2f56",
+        "new_000008-row06-comparison.png": "c8a557aa0d2249e583b9efdd0b70213c12657c84797b016d3568c848a8226674",
+        "008-top-ruler.png": "0e73ec5c6ffe19d5ef38b8bbe04414c97e4e3e483de30074feeb9d98555666b2",
+        "008-r6-bottom-ruler.png": "1185ce48fee0fb5b24fb595e887104dee7916bbc712635683f6b263142d5cd47"
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "split": "val",
+      "row": 7,
+      "row_numbering": "one-based parent R30 unchanged ordering",
+      "decision": "replace",
+      "user_cue": "Left-point x should be more positive than PR107 prediction.",
+      "before_line": "0 0.968750002 0.022916667 0.062500005 0.045833333 0.94407031 0.03172222 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.968750002 0.022916667 0.062500005 0.045833333 0.950781250000 0.030555555556 2 0.00000000 0.00000000 0",
+      "before_line_sha256": "e14341c47ba416459885fde1f030148a0bc95faa7b2574f66c4361742952ce5d",
+      "after_line_sha256": "e07c9778732ca09d23a67cd8cbd19b14b8067bffc63a5bb6e963af2c151b30e2",
+      "before": {
+        "bbox_xyxy": [
+          1199.9999993600002,
+          3.600000023085137e-07,
+          1280.0000057600002,
+          33.00000012
+        ],
+        "left_xyv": [
+          1208.4099968,
+          22.839998400000002,
+          2
+        ],
+        "right_xyv": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "after": {
+        "bbox_xyxy": [
+          1199.9999993600002,
+          3.600000023085137e-07,
+          1280.0000057600002,
+          33.00000012
+        ],
+        "left_xyv": [
+          1217.0,
+          22.00000000032,
+          2
+        ],
+        "right_xyv": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "proposed_changes_original_pixels": {
+        "left_xy": [
+          1217,
+          22
+        ]
+      },
+      "source_label_path": "data/reviews/fronts-2026-11-24-r30/labels/val/new_000008.txt",
+      "source_label_sha256": "dbc18e8e91210e7bf7ff6ce3fd1b29e9a62d7752522c5bfd0b6b36484ef5f6af",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_identity": {
+        "pull_request": 107,
+        "arm": "candidate",
+        "one_based_p_index": 36,
+        "checkpoint_sha256": "faad7bf0e855477771990e54191c8e55b1787e850cea79fb823314ffece1ecb9",
+        "prediction_file_sha256": "4a7987c685d34546beab935f21154817f24c77281cfb962388f4636e20821a11",
+        "prediction": {
+          "class_id": 0,
+          "bbox_xyxy": [
+            1204.678955078125,
+            0.0,
+            1280.0,
+            35.56654357910156
+          ],
+          "confidence": 0.3130861818790436,
+          "keypoints": [
+            [
+              1213.6307373046875,
+              22.721515655517578,
+              0.8754598498344421
+            ],
+            [
+              1280.0,
+              22.715068817138672,
+              0.8563950657844543
+            ]
+          ]
+        }
+      },
+      "source_pdf": {
+        "name": "pr107-r30-misses-and-errors.pdf",
+        "sha256": "96a2245b8ff9aad42a2da740487e3305621ac41e2177b9ffc980ffcd6c3c4476",
+        "one_based_pages": [
+          16
+        ]
+      },
+      "reason": "Move the existing left landmark from (1208.41,22.84) to approximately(1217,22). The old point lies in the broad gray side transition shared visually with the adjoining top cassette. The target's own pale front turns into that side farther right, beyond PR107 p36 x1213.63. The selected point follows that local turn while keeping y close to the existing lower edge. The right corner remains unavailable at the image border: no physical right turn is visible, so its exact zero triplet and visibility0 are preserved.",
+      "approximate_visual_uncertainty_px": 3,
+      "protected_standard": false,
+      "explicit_user_revisit": false,
+      "protected_fields_changed": [],
+      "protected_before_after_byte_identical": null,
+      "object_identity_changed": false,
+      "class_changed": false,
+      "visibility_changed": false,
+      "object_added_or_removed": false,
+      "crop_bounds_xyxy": [
+        1170,
+        0,
+        1280,
+        64
+      ],
+      "crop_native_size": [
+        110,
+        64
+      ],
+      "evidence": {
+        "raw_native": "new_000008-row07-raw.png",
+        "before": "new_000008-row07-before.png",
+        "proposed": "new_000008-row07-proposed.png",
+        "prediction": "new_000008-row07-pr107-p36.png",
+        "comparison": "new_000008-row07-comparison.png",
+        "inspection_rulers": [
+          "008-r5-r7-right-ruler.png",
+          "008-r7-left-candidates.png"
+        ]
+      },
+      "evidence_file_sha256": {
+        "new_000008-row07-raw.png": "419d09956046dfd680e100a19843e08ccde4ca9e9e713d3327ad195e88a7304d",
+        "new_000008-row07-before.png": "3979781c84ca28799f29e55378e88b03e6567b7c460b759c51d4c4c22d1c9837",
+        "new_000008-row07-proposed.png": "c7308cd7587f0a29efaa7d5cc1c8f604a310b5f1b6fa35b51bfb2bbfa845dd7c",
+        "new_000008-row07-pr107-p36.png": "562d1631c670afbf2c94524e9f0922f2ed99cdac79c59581bac590e19e849381",
+        "new_000008-row07-comparison.png": "d45fa07e96e158a16f7ac36eecc3aacf8c26e318e1532158e8578dbcdbeb3640",
+        "008-r5-r7-right-ruler.png": "fb035c17fda17c30e0dbddf5ca139a2166171655c3331406dd30a3fc878fab8f",
+        "008-r7-left-candidates.png": "e5010cb941a2aca5763d3e38b9dcc6a49053d5118341f0da9a68884719375656"
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "split": "val",
+      "row": 10,
+      "row_numbering": "one-based parent R30 unchanged ordering",
+      "decision": "retain",
+      "user_cue": "Ymax needs negative amendment; the source PDF displays both label454 and prediction461.14.",
+      "before_line": "0 0.491601562500 0.6009791667 0.126953125000 0.0591527778 0.4296875000 0.6263888889 2 0.5539062500 0.6250000000 2",
+      "after_line": "0 0.491601562500 0.6009791667 0.126953125000 0.0591527778 0.4296875000 0.6263888889 2 0.5539062500 0.6250000000 2",
+      "before_line_sha256": "0229039d0b97f8c186a93833a4872467922af27f1976ce50017d74b85bd2597b",
+      "after_line_sha256": "0229039d0b97f8c186a93833a4872467922af27f1976ce50017d74b85bd2597b",
+      "before": {
+        "bbox_xyxy": [
+          548.0,
+          411.41000001599997,
+          710.5,
+          454.000000032
+        ],
+        "left_xyv": [
+          550.0,
+          451.000000008,
+          2
+        ],
+        "right_xyv": [
+          709.0,
+          450.0,
+          2
+        ]
+      },
+      "after": {
+        "bbox_xyxy": [
+          548.0,
+          411.41000001599997,
+          710.5,
+          454.000000032
+        ],
+        "left_xyv": [
+          550.0,
+          451.000000008,
+          2
+        ],
+        "right_xyv": [
+          709.0,
+          450.0,
+          2
+        ]
+      },
+      "proposed_changes_original_pixels": {},
+      "source_label_path": "data/reviews/fronts-2026-11-24-r30/labels/val/new_000008.txt",
+      "source_label_sha256": "dbc18e8e91210e7bf7ff6ce3fd1b29e9a62d7752522c5bfd0b6b36484ef5f6af",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_identity": {
+        "pull_request": 107,
+        "arm": "candidate",
+        "one_based_p_index": 27,
+        "checkpoint_sha256": "faad7bf0e855477771990e54191c8e55b1787e850cea79fb823314ffece1ecb9",
+        "prediction_file_sha256": "4a7987c685d34546beab935f21154817f24c77281cfb962388f4636e20821a11",
+        "prediction": {
+          "class_id": 0,
+          "bbox_xyxy": [
+            546.2243041992188,
+            414.0050964355469,
+            708.6832885742188,
+            461.1418762207031
+          ],
+          "confidence": 0.8408837914466858,
+          "keypoints": [
+            [
+              549.0485229492188,
+              452.50531005859375,
+              0.9045973420143127
+            ],
+            [
+              703.1138916015625,
+              441.0516662597656,
+              0.9053146839141846
+            ]
+          ]
+        }
+      },
+      "source_pdf": {
+        "name": "pr107-r30-misses-and-errors.pdf",
+        "sha256": "96a2245b8ff9aad42a2da740487e3305621ac41e2177b9ffc980ffcd6c3c4476",
+        "one_based_pages": [
+          10
+        ]
+      },
+      "reason": "Retain the saved ymax454. The prediction's ymax461.14 extends below the target into lower material/support, so reducing that prediction is directionally sensible. Reducing the saved label farther would cut the target's visible lower-left lobe, whose blurred boundary lies approximately y454-457. The lower-right rim ends nearer y452-454. This asymmetric occlusion is not evidence for forcing both sides to the right-point y. The present box is a plausible conservative placement within2-3px blur; no upward correction of the saved label is established by the original.",
+      "approximate_visual_uncertainty_px": 3,
+      "protected_standard": false,
+      "explicit_user_revisit": false,
+      "protected_fields_changed": [],
+      "protected_before_after_byte_identical": null,
+      "object_identity_changed": false,
+      "class_changed": false,
+      "visibility_changed": false,
+      "object_added_or_removed": false,
+      "crop_bounds_xyxy": [
+        524,
+        383,
+        733,
+        490
+      ],
+      "crop_native_size": [
+        209,
+        107
+      ],
+      "evidence": {
+        "raw_native": "new_000008-row10-raw.png",
+        "before": "new_000008-row10-before.png",
+        "proposed": "new_000008-row10-proposed.png",
+        "prediction": "new_000008-row10-pr107-p27.png",
+        "comparison": "new_000008-row10-comparison.png",
+        "inspection_rulers": [
+          "008-row10-ruler.png",
+          "008-r10-bottom-ruler.png"
+        ]
+      },
+      "evidence_file_sha256": {
+        "new_000008-row10-raw.png": "1ce60b7c834ba39364a06a32d6e6517bfc7b188c434afd5cd9491de717c3a778",
+        "new_000008-row10-before.png": "3e13ad5be2e2336a93025d0f52303f967a779f9e7d18d4933e7fb70231d568f9",
+        "new_000008-row10-proposed.png": "3e2fa831baad170f31c7d5a1a14cc309e651b80daa2a53c02d0d700c6122bb02",
+        "new_000008-row10-pr107-p27.png": "d58dec17450aa90d1d968a3acaf73845e476651ca5b8b87c8c8b9712a24e75ad",
+        "new_000008-row10-comparison.png": "708cf909ec1fe38bc9ac45a97b930e6e93a039407607b98764f9e575b274c50d",
+        "008-row10-ruler.png": "5c9dd8da298d00894bff314a7c4035af77bff6dccea6050c1430d25e372d12b7",
+        "008-r10-bottom-ruler.png": "fc775240f0302be76d4ab9f7581f1aedb31989e47b5adc0739aae3a28ec3308a"
+      }
+    },
+    {
+      "image_id": "new_000008",
+      "split": "val",
+      "row": 29,
+      "row_numbering": "one-based parent R30 unchanged ordering",
+      "decision": "retain",
+      "user_cue": "Prediction ymax preferred; explicit user request reopens protected row008:29.",
+      "before_line": "0 0.9031250000 0.5492847222 0.1375000000 0.0597638889 0.846093750 0.563888889 2 0.9695312500 0.5750000000 2",
+      "after_line": "0 0.9031250000 0.5492847222 0.1375000000 0.0597638889 0.846093750 0.563888889 2 0.9695312500 0.5750000000 2",
+      "before_line_sha256": "1b043c9ae6327050b7401c09159fd560a13831330ce9939bf96340e3813f6c8f",
+      "after_line_sha256": "1b043c9ae6327050b7401c09159fd560a13831330ce9939bf96340e3813f6c8f",
+      "before": {
+        "bbox_xyxy": [
+          1068.0,
+          373.96999998,
+          1244.0,
+          416.999999988
+        ],
+        "left_xyv": [
+          1083.0,
+          406.00000008,
+          2
+        ],
+        "right_xyv": [
+          1241.0,
+          413.99999999999994,
+          2
+        ]
+      },
+      "after": {
+        "bbox_xyxy": [
+          1068.0,
+          373.96999998,
+          1244.0,
+          416.999999988
+        ],
+        "left_xyv": [
+          1083.0,
+          406.00000008,
+          2
+        ],
+        "right_xyv": [
+          1241.0,
+          413.99999999999994,
+          2
+        ]
+      },
+      "proposed_changes_original_pixels": {},
+      "source_label_path": "data/reviews/fronts-2026-11-24-r30/labels/val/new_000008.txt",
+      "source_label_sha256": "dbc18e8e91210e7bf7ff6ce3fd1b29e9a62d7752522c5bfd0b6b36484ef5f6af",
+      "source_image_path": "data/images/val/new_000008.png",
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "prediction_identity": {
+        "pull_request": 107,
+        "arm": "candidate",
+        "one_based_p_index": 7,
+        "checkpoint_sha256": "faad7bf0e855477771990e54191c8e55b1787e850cea79fb823314ffece1ecb9",
+        "prediction_file_sha256": "4a7987c685d34546beab935f21154817f24c77281cfb962388f4636e20821a11",
+        "prediction": {
+          "class_id": 0,
+          "bbox_xyxy": [
+            1070.0521240234375,
+            369.1084899902344,
+            1245.1580810546875,
+            423.0146179199219
+          ],
+          "confidence": 0.935278058052063,
+          "keypoints": [
+            [
+              1076.92431640625,
+              410.23175048828125,
+              0.954378604888916
+            ],
+            [
+              1239.50390625,
+              415.03350830078125,
+              0.9531661868095398
+            ]
+          ]
+        }
+      },
+      "source_pdf": {
+        "name": "pr107-r30-misses-and-errors.pdf",
+        "sha256": "96a2245b8ff9aad42a2da740487e3305621ac41e2177b9ffc980ffcd6c3c4476",
+        "one_based_pages": [
+          10
+        ]
+      },
+      "reason": "Explicitly re-review the protected row and retain its exact line. The target's own lower front edge runs from the left turn near(1083,406) to the right turn near(1241,414), ending in its rim at about y416-417. Below that contour the gray band runs into the next cassette's upper protruding lip and its side triangle. PR107 p7 ymax423.01 crosses into that lower cassette. The shadow line is informative only after establishing which cassette owns it. No protected field changed; this is a fresh contour/ownership adjudication rather than reliance on the prior freeze.",
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": true,
+      "explicit_user_revisit": true,
+      "protected_fields_changed": [],
+      "protected_before_after_byte_identical": true,
+      "object_identity_changed": false,
+      "class_changed": false,
+      "visibility_changed": false,
+      "object_added_or_removed": false,
+      "crop_bounds_xyxy": [
+        1046,
+        341,
+        1268,
+        452
+      ],
+      "crop_native_size": [
+        222,
+        111
+      ],
+      "evidence": {
+        "raw_native": "new_000008-row29-raw.png",
+        "before": "new_000008-row29-before.png",
+        "proposed": "new_000008-row29-proposed.png",
+        "prediction": "new_000008-row29-pr107-p7.png",
+        "comparison": "new_000008-row29-comparison.png",
+        "inspection_rulers": [
+          "008-row29-ruler.png",
+          "008-r29-bottom-ruler.png"
+        ]
+      },
+      "evidence_file_sha256": {
+        "new_000008-row29-raw.png": "12a10cd75c2b5532725c3212fb6d158515d309ab4b6f04926c81dd7407fbd68f",
+        "new_000008-row29-before.png": "7aa34c19a56b42d83af5aebe1e34d7d27659d9c553bd3663200c043bef981dd6",
+        "new_000008-row29-proposed.png": "d3ab174d9824fd89cf3d7cec49ab03839d9db6542597e25407f5e457bcdeeb60",
+        "new_000008-row29-pr107-p7.png": "cf5a17ffba3c920aea65fe700c78d50e5ab3049eea05d24a8365a6110263e894",
+        "new_000008-row29-comparison.png": "ca759944f95f90aa4aa283d14b0fba2802aacd9455740c930ff91486ed1dac1e",
+        "008-row29-ruler.png": "fe43698964292ce2b9134632ecb4028f639d20304043a6672d140ec727e660c6",
+        "008-r29-bottom-ruler.png": "6fe92576ef2286ac052797dfbcb30523844f0285175657f1c658fa00572efbcf"
+      }
+    },
+    {
+      "image_id": "new_000007",
+      "split": "val",
+      "row": 47,
+      "row_numbering": "one-based parent R30 unchanged ordering",
+      "decision": "replace",
+      "user_cue": "Prediction right point is better; xmin should be between the label and prediction.",
+      "before_line": "0 0.592578125 0.549305556 0.047656250 0.020833333 0.5695312500 0.5597222222 2 0.6148437500 0.5541666667 2",
+      "after_line": "0 0.591796875000 0.549305556 0.049218750000 0.020833333 0.5695312500 0.5597222222 2 0.613671875000 0.551388888889 2",
+      "before_line_sha256": "97b9e61a2be7661c22992fa8e1d63558103952f1e9ca4e86a45c3073a77f1f38",
+      "after_line_sha256": "f99246b95364f30c3800a00e57c6d1739dee6a03f94b3590f3e38eddfeb815f3",
+      "before": {
+        "bbox_xyxy": [
+          728.0,
+          388.00000044,
+          788.9999999999999,
+          403.00000019999993
+        ],
+        "left_xyv": [
+          729.0,
+          402.999999984,
+          2
+        ],
+        "right_xyv": [
+          787.0,
+          399.00000002400003,
+          2
+        ]
+      },
+      "after": {
+        "bbox_xyxy": [
+          726.0,
+          388.00000044,
+          789.0,
+          403.00000019999993
+        ],
+        "left_xyv": [
+          729.0,
+          402.999999984,
+          2
+        ],
+        "right_xyv": [
+          785.5,
+          397.00000000008,
+          2
+        ]
+      },
+      "proposed_changes_original_pixels": {
+        "xmin": 726,
+        "right_xy": [
+          785.5,
+          397
+        ]
+      },
+      "source_label_path": "data/reviews/fronts-2026-11-24-r30/labels/val/new_000007.txt",
+      "source_label_sha256": "ddc7ab8a75c00dd071e9e691d57734503fa365fbd84e6274f21e8eb869aea5fa",
+      "source_image_path": "data/images/val/new_000007.png",
+      "source_image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "prediction_identity": {
+        "pull_request": 107,
+        "arm": "candidate",
+        "one_based_p_index": 44,
+        "checkpoint_sha256": "faad7bf0e855477771990e54191c8e55b1787e850cea79fb823314ffece1ecb9",
+        "prediction_file_sha256": "4a7987c685d34546beab935f21154817f24c77281cfb962388f4636e20821a11",
+        "prediction": {
+          "class_id": 0,
+          "bbox_xyxy": [
+            723.3365478515625,
+            384.72369384765625,
+            786.7196044921875,
+            407.15118408203125
+          ],
+          "confidence": 0.874966561794281,
+          "keypoints": [
+            [
+              726.4729614257812,
+              403.3642578125,
+              0.7774373888969421
+            ],
+            [
+              785.5065307617188,
+              396.9060363769531,
+              0.8338449001312256
+            ]
+          ]
+        }
+      },
+      "source_pdf": {
+        "name": "pr107-r30-misses-and-errors.pdf",
+        "sha256": "96a2245b8ff9aad42a2da740487e3305621ac41e2177b9ffc980ffcd6c3c4476",
+        "one_based_pages": [
+          21
+        ]
+      },
+      "reason": "Move xmin728 to726 to include the visible left rim while excluding the adjacent dark vertical rack strip. PR107 p44 xmin723.34 enters that strip; the old728 clips the rim, so the physical boundary supports an intermediate position. Move the right landmark from(787,399) to(785.5,397), consistent with the prediction and the observed turn before the right vertical side. The old point falls on the gray support/bevel below and outside the face. Keep all other box coordinates, the left landmark, and visibility flags.",
+      "approximate_visual_uncertainty_px": 2,
+      "protected_standard": false,
+      "explicit_user_revisit": false,
+      "protected_fields_changed": [],
+      "protected_before_after_byte_identical": null,
+      "object_identity_changed": false,
+      "class_changed": false,
+      "visibility_changed": false,
+      "object_added_or_removed": false,
+      "crop_bounds_xyxy": [
+        686,
+        350,
+        827,
+        441
+      ],
+      "crop_native_size": [
+        141,
+        91
+      ],
+      "evidence": {
+        "raw_native": "new_000007-row47-raw.png",
+        "before": "new_000007-row47-before.png",
+        "proposed": "new_000007-row47-proposed.png",
+        "prediction": "new_000007-row47-pr107-p44.png",
+        "comparison": "new_000007-row47-comparison.png",
+        "inspection_rulers": [
+          "007-row47-ruler.png",
+          "007-r47-close-ruler.png",
+          "007-r47-point-comparison.png"
+        ]
+      },
+      "evidence_file_sha256": {
+        "new_000007-row47-raw.png": "6ba053d84668db1dbbcb6c5b80e4c8d19beed7ac47ca79257aeb883f172fbab3",
+        "new_000007-row47-before.png": "592cdbf6aa8f101fece97f0628cdd343b99091a17ba45e1cc3bfdc754694f2a9",
+        "new_000007-row47-proposed.png": "cfc228160622eac35d8771589f7129b1edccc5f06e5b2f8aa5ea1d14ac72e548",
+        "new_000007-row47-pr107-p44.png": "c055ce2642d2c24238ae89933faac176a1911fc2e13c13ba5c5f51dc7d05a280",
+        "new_000007-row47-comparison.png": "188d889707fc551f131aae3d2146a7d31f4e230d07e7c8dadcc715cb7e1be684",
+        "007-row47-ruler.png": "6b34610061ecdcbe36ff2f065120f1ede881f3fd10c78eb059ab9bf8e0a97531",
+        "007-r47-close-ruler.png": "ed44dc57bc5ad4676d08f822ef38313724b1a83d70d408d4f4251fb36ad6d965",
+        "007-r47-point-comparison.png": "c735dc519c9406a063834b17d365d3ce227df1f4ebfce117a59b17f8d4bd1cc0"
+      }
+    }
+  ],
+  "bounded_neighbor_changes": [],
+  "validation": {
+    "source_images_match_R30_manifest": true,
+    "source_labels_match_R30_manifest": true,
+    "row_count_unchanged": true,
+    "visibility_flags_unchanged": true,
+    "protected00829_unchanged": true
+  }
+}

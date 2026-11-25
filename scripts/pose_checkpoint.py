@@ -42,8 +42,10 @@ ENDPOINT_RECIPE_ID = "reviewed-endpoints-seed46-v1"
 COMPOSED_RECIPE_ID = "reviewed-composed-seed46-v1"
 OBSERVED_RECIPE_ID = "reviewed-observed-fronts-seed46-v1"
 INCREMENTAL_RECIPE_ID = "reviewed-incremental-fronts-seed46-v1"
+INCREMENTAL_CONFIRMATION_RECIPE_ID = "reviewed-incremental-fronts-seed47-v1"
+INCREMENTAL_RECIPE_IDS = (INCREMENTAL_RECIPE_ID, INCREMENTAL_CONFIRMATION_RECIPE_ID)
 RECIPE_IDS = (ORIGINAL_RECIPE_ID, WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS,
-              ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID, OBSERVED_RECIPE_ID, INCREMENTAL_RECIPE_ID)
+              ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID, OBSERVED_RECIPE_ID, *INCREMENTAL_RECIPE_IDS)
 
 # Resolved defaults observed in the pinned trainer, in addition to RECIPE.
 # These are checked, not changed, by the runner. In particular RLE stays at 1.0.
@@ -85,7 +87,7 @@ def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
     recipe = {**RECIPE, **({"warmup_bias_lr": 0.0001}
                          if recipe_id in (WARMUP_RECIPE_ID, *BOX_RECIPE_IDS, *ANNOTATION_RECIPE_IDS,
                                           ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID, OBSERVED_RECIPE_ID,
-                                          INCREMENTAL_RECIPE_ID) else {})}
+                                          *INCREMENTAL_RECIPE_IDS) else {})}
     for seed, fixed_id in BOX_REPEATABILITY_RECIPES.items():
         if recipe_id == fixed_id:
             recipe["seed"] = seed
@@ -94,6 +96,8 @@ def get_recipe(recipe_id=ORIGINAL_RECIPE_ID):
     elif recipe_id in (ANNOTATION_CONFIRMATION_RECIPE_ID, ENDPOINT_RECIPE_ID, COMPOSED_RECIPE_ID,
                        OBSERVED_RECIPE_ID, INCREMENTAL_RECIPE_ID):
         recipe["seed"] = 46
+    elif recipe_id == INCREMENTAL_CONFIRMATION_RECIPE_ID:
+        recipe["seed"] = 47
     return recipe
 
 
@@ -110,7 +114,7 @@ def check_recipe_candidate_kind(recipe_id, kind):
              "reviewed-composed recipe and training_composed_overlay must be selected together")
     _require((recipe_id == OBSERVED_RECIPE_ID) == (kind == "training_observed_review_composition"),
              "observed-fronts recipe and observed review composition must be selected together")
-    _require((recipe_id == INCREMENTAL_RECIPE_ID) == (kind == "training_incremental_observed_overlay"),
+    _require((recipe_id in INCREMENTAL_RECIPE_IDS) == (kind == "training_incremental_observed_overlay"),
              "incremental-fronts recipe and limited correction overlay must be selected together")
     _require((recipe_id in BOX_RECIPE_IDS) == (kind == "training_box_overlay"),
              "box-supervision recipe and training_box_overlay must be selected together")
