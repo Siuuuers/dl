@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "reviewer": "annotation_review agent; artifact-author visual QA",
+  "reviewed_at_utc": "2026-11-25T21:05:31.503425+00:00",
+  "artifact": {
+    "filename": "r37-annotation-amendments.pdf",
+    "sha256": "9c4b83bace76f4d4518eec65cc634e26e49da4954b519c599eb48c9338c05f36",
+    "bytes": 615271,
+    "page_count": 5
+  },
+  "review_manifest_sha256": "35a2c6b3ddc1691eaae4b7e416144b8f68f0ab960cbd3ca8b65edd647b619471",
+  "row_audit_sha256": "1e0802e81f337deb88fd47d5026d29c882870913451d82b7ccb6a7d185e175e6",
+  "method": "Inspected all five full Poppler-rendered PNG pages at 110 dpi. Checked typography, tables, same-scale original/R36/R37 crops, saved L/R fields, exact changes, source-markup registration and separate inherited pending scope. Confirmed source PDF SHA-256, bytes and page count with pypdf. Text extraction was not substituted for visual inspection.",
+  "inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "render_evidence": {
+    "scratch_directory": "analysis_r37_labels/pdf-qa",
+    "files": [
+      "page-1.png",
+      "page-2.png",
+      "page-3.png",
+      "page-4.png",
+      "page-5.png"
+    ],
+    "renderer": "Poppler pdftoppm",
+    "dpi": 110
+  },
+  "page_checks": [
+    {
+      "page": 1,
+      "status": "pass",
+      "finding": "Summary distinguishes two actual marked requests, one box amendment, one observed-point amendment and the separate inherited new_000010:24 hold. All 20 development files unchanged and approximate 2 px uncertainty are explicit."
+    },
+    {
+      "page": 2,
+      "status": "pass",
+      "finding": "Same-scale new_000006:53 crops show xmax 503 to 495 and unchanged L point. The other edges and unavailable R remain exact. Explanation ties the yellow region to the lower sloping front and expressly rejects a second bottom-edge change from the thick lower stroke."
+    },
+    {
+      "page": 3,
+      "status": "pass",
+      "finding": "Same-scale new_000034:35 crops and original-pixel grid show L from (518.35,297.09) to integer (517,294), visibility 2 unchanged. Box and R point stay fixed. Table, grid and uncertainty explanation agree and do not overlap."
+    },
+    {
+      "page": 4,
+      "status": "pass",
+      "finding": "Both actual supplied JPEG details are legible. Previous analytical A/B marks are distinguished from the newly user-supplied orange/pink marks. Registration ranges, original image interpretation and approximate physical uncertainty agree with the bound evidence."
+    },
+    {
+      "page": 5,
+      "status": "pass",
+      "finding": "Inherited new_000010:24 is clearly unchanged and is not a third current amendment. Actual left remains unavailable; visible R and box remain exact. The closing scope excludes blanket deletion of small labels and does not imply a new training result."
+    }
+  ],
+  "checks": {
+    "all_type_and_tables_readable": true,
+    "no_clipping_or_overlap": true,
+    "same_crop_and_scale_in_case_triptychs": true,
+    "case_triptych_pages": [
+      2,
+      3
+    ],
+    "correct_L_R_saved_point_labels": true,
+    "no_unavailable_corner_invented": true,
+    "actual_supplied_markup_distinguished_from_prior_analytical_marks": true,
+    "screenshot_registration_not_claimed_as_subpixel_physical_certainty": true,
+    "no_unintended_bottom_amendment": true,
+    "inherited_pending_request_not_misrepresented_as_resolved": true,
+    "no_instance_addition_or_deletion": true,
+    "no_blanket_small_box_deletion": true,
+    "headers_and_sequential_footers_correct": true
+  },
+  "issues": [],
+  "limitations": [
+    "Approximate 2 px visual ambiguity remains in the blurred originals and thick user markings; integer coordinates are accepted adjudications, not subpixel physical measurements.",
+    "The inherited new_000010:24 point identity remains pending.",
+    "This is artifact-author QA; parent independent review is requested separately."
+  ]
+}

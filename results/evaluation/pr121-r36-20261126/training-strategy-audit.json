@@ -1,0 +1,630 @@
+{
+  "schema_version": 1,
+  "kind": "pr121_training_and_r37_strategy_audit",
+  "status": "complete",
+  "scope": "Read-only checkpoint, pinned trainer and curve inspection; one separately recorded inference-head probe. No additional training or model promotion.",
+  "evidence": {
+    "primary_comparison": {
+      "path": "results/evaluation/pr121-r36-20261126/comparison.json",
+      "sha256": "9e50df5587fbd5df1435babab542c2f3456cd169040b8a7ff986b4795a8cd793"
+    },
+    "head_probe_comparison": {
+      "path": "results/evaluation/pr121-r36-20261126/head-probe-comparison.json",
+      "sha256": "58f711062950aae41d85f53605a59e7c6cac7bb082b325b6ff0b3c1423fe0796"
+    },
+    "head_model_audit": {
+      "path": "results/evaluation/pr121-r36-20261126/head-probe-model-audit.json",
+      "sha256": "efabe7aced218a88cec906338c0c6ba20e956188bec4ed523606d90547cf778e"
+    },
+    "original_training_config": {
+      "path": "metadata/training_config.json",
+      "sha256": "b1b037038d2c21690b777406d37c6a4c089eea3ccd8b8f489a6e1420018ffb4b"
+    },
+    "recipe_source": {
+      "path": "scripts/pose_checkpoint.py",
+      "sha256": "c1311307fd49b37e60f2939c9b084bc36690c1d13b6b31b9e4c51ea9353562d4"
+    },
+    "pinned_ultralytics_source_sha256": {
+      "engine/trainer.py": "7016131a47b61a8b9b9ea51ef5a9e59b0fb896a328eed4901c89ac7a83169655",
+      "engine/validator.py": "ada0e46603dedda0d9438e2bf25013f5ab9352bb8ec2cae49f700586fdd6b5b1",
+      "utils/loss.py": "f8db64a3093ef310b23cb83d587dd5c8aa3db20a27da94d95a62a734a6c055d2",
+      "nn/backends/pytorch.py": "aabae215c5474913be5887ce64c1d832f5f60b0e3c49c89a058fd3dfc91e03b3"
+    }
+  },
+  "architecture": {
+    "name": "YOLO26s-Pose",
+    "model_class": "PoseModel",
+    "head_class": "Pose26",
+    "training_parameters": 10576562,
+    "classes": 1,
+    "keypoint_shape": [
+      2,
+      3
+    ],
+    "strides": [
+      8,
+      16,
+      32
+    ],
+    "both_native_heads_retained": true,
+    "serialized_end2end": false,
+    "serialized_flag_selects_inference_not_branch_existence": true
+  },
+  "original_initialization": {
+    "source": "Official COCO-pretrained YOLO26s-Pose",
+    "sha256": "a083adb42303728ae14c4bd6bd56d80da46f82fb2564dbd6f31dcc92ea321646",
+    "original_schedule_epochs": 200,
+    "extended_to_epochs": 300,
+    "retained_epoch": 173,
+    "stored_epoch_zero_based": 172,
+    "retained_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+    "original_lr0": 0.001,
+    "original_batch": 8,
+    "original_nbs": 64,
+    "ema_updates_at_retained_epoch": 399
+  },
+  "current_finetune_semantics": {
+    "resume": false,
+    "starts_from_epoch173_weights": true,
+    "independent_fresh_optimizer_lr_and_ema": true,
+    "not_cumulative_across_rounds": true,
+    "native_loss": "E2ELoss with PoseLoss26 for both heads",
+    "one_to_many_weight_epoch1": 0.8,
+    "one_to_many_weight_epoch30": 0.1,
+    "one_to_one_weight_epoch1": 0.2,
+    "one_to_one_weight_epoch30": 0.9,
+    "logged_training_loss_components": "one-to-one branch, while the optimized loss combines both branches",
+    "trainer_validation_head": "one-to-many because nms=None is not False"
+  },
+  "gradient_accumulation": {
+    "observed_optimizer_steps": 78,
+    "batches": 1050,
+    "image_presentations": 4110,
+    "nominal_nbs": 64,
+    "batch": 4,
+    "nominal_accumulation_batches": 16,
+    "warmup_batches": 105,
+    "derived_optimizer_steps_during_warmup": 19,
+    "derived_steps_after_warmup": 59,
+    "derived_last_optimizer_step_global_batch": 1042,
+    "derived_trailing_batches_without_final_optimizer_step": 8,
+    "derived_trailing_image_presentations": 29,
+    "derivation_scope": "Exact pinned-loop reconstruction matches both receipts and the eight recorded update locations; trailing-gradient behavior is derived from source, not separately instrumented."
+  },
+  "learning_curves": {
+    "reference": {
+      "results_csv_sha256": "9080f6f02d3c9b7c28d5846256ccf5594aa53007822b86344b96251a22647325",
+      "training_receipt_sha256": "79ad16fcf63220ca96b55fd4ac35a4479c62e19eecf50987d737efb4d22cd84b",
+      "epochs": 30,
+      "optimizer_steps": 78,
+      "batches_completed": 1050,
+      "images_processed": 4110,
+      "checkpoint_selection": "final_epoch",
+      "settings": {
+        "epochs": 30,
+        "resume": false,
+        "batch": 4,
+        "nbs": 64,
+        "lr0": 0.0001,
+        "lrf": 0.01,
+        "warmup_epochs": 3.0,
+        "warmup_bias_lr": 0.0001,
+        "seed": 46,
+        "optimizer": "AdamW"
+      },
+      "metrics": {
+        "train/box_loss": {
+          "epoch_1": 1.49447,
+          "epoch_30": 1.14795,
+          "mean_epochs_16_20": 1.142282,
+          "mean_epochs_21_25": 1.147472,
+          "mean_epochs_26_30": 1.150354,
+          "minimum": 1.11136,
+          "maximum": 1.49447
+        },
+        "train/pose_loss": {
+          "epoch_1": 0.01425,
+          "epoch_30": 0.01335,
+          "mean_epochs_16_20": 0.013154,
+          "mean_epochs_21_25": 0.013294,
+          "mean_epochs_26_30": 0.012994,
+          "minimum": 0.01173,
+          "maximum": 0.01876
+        },
+        "train/cls_loss": {
+          "epoch_1": 0.36796,
+          "epoch_30": 0.28619,
+          "mean_epochs_16_20": 0.279188,
+          "mean_epochs_21_25": 0.276978,
+          "mean_epochs_26_30": 0.279464,
+          "minimum": 0.27113,
+          "maximum": 0.38768
+        },
+        "val/box_loss": {
+          "epoch_1": 1.49658,
+          "epoch_30": 1.55458,
+          "mean_epochs_16_20": 1.6029,
+          "mean_epochs_21_25": 1.537128,
+          "mean_epochs_26_30": 1.545226,
+          "minimum": 1.49658,
+          "maximum": 1.80503
+        },
+        "val/pose_loss": {
+          "epoch_1": 0.01544,
+          "epoch_30": 0.01459,
+          "mean_epochs_16_20": 0.014804,
+          "mean_epochs_21_25": 0.014444,
+          "mean_epochs_26_30": 0.014551999999999999,
+          "minimum": 0.01419,
+          "maximum": 0.01851
+        },
+        "val/cls_loss": {
+          "epoch_1": 0.32472,
+          "epoch_30": 0.39545,
+          "mean_epochs_16_20": 0.396636,
+          "mean_epochs_21_25": 0.385938,
+          "mean_epochs_26_30": 0.39209,
+          "minimum": 0.32472,
+          "maximum": 0.40007
+        },
+        "metrics/mAP50(B)": {
+          "epoch_1": 0.9358,
+          "epoch_30": 0.92021,
+          "mean_epochs_16_20": 0.918788,
+          "mean_epochs_21_25": 0.9256880000000001,
+          "mean_epochs_26_30": 0.9258299999999999,
+          "minimum": 0.9148,
+          "maximum": 0.9394
+        },
+        "metrics/mAP50-95(B)": {
+          "epoch_1": 0.55457,
+          "epoch_30": 0.47938,
+          "mean_epochs_16_20": 0.473166,
+          "mean_epochs_21_25": 0.478932,
+          "mean_epochs_26_30": 0.48103999999999997,
+          "minimum": 0.41502,
+          "maximum": 0.55457
+        },
+        "metrics/recall(B)": {
+          "epoch_1": 0.91478,
+          "epoch_30": 0.90326,
+          "mean_epochs_16_20": 0.904472,
+          "mean_epochs_21_25": 0.906206,
+          "mean_epochs_26_30": 0.902578,
+          "minimum": 0.90118,
+          "maximum": 0.92448
+        },
+        "metrics/mAP50-95(P)": {
+          "epoch_1": 0.96031,
+          "epoch_30": 0.96088,
+          "mean_epochs_16_20": 0.959876,
+          "mean_epochs_21_25": 0.960568,
+          "mean_epochs_26_30": 0.9608599999999999,
+          "minimum": 0.9593,
+          "maximum": 0.96095
+        },
+        "lr/pg0": {
+          "epoch_1": 3.2381e-05,
+          "epoch_30": 4.3e-06,
+          "mean_epochs_16_20": 4.39e-05,
+          "mean_epochs_21_25": 2.74e-05,
+          "mean_epochs_26_30": 1.09e-05,
+          "minimum": 4.3e-06,
+          "maximum": 9.25105e-05
+        }
+      }
+    },
+    "candidate": {
+      "results_csv_sha256": "bd21992263781163e49ab8e25693101196cf052426a1a1189a616bea14a0dff6",
+      "training_receipt_sha256": "46923d6e04f752fbb579ca178b94931cb25ff42f71a9a491963755bbe4f1886b",
+      "epochs": 30,
+      "optimizer_steps": 78,
+      "batches_completed": 1050,
+      "images_processed": 4110,
+      "checkpoint_selection": "final_epoch",
+      "settings": {
+        "epochs": 30,
+        "resume": false,
+        "batch": 4,
+        "nbs": 64,
+        "lr0": 0.0001,
+        "lrf": 0.01,
+        "warmup_epochs": 3.0,
+        "warmup_bias_lr": 0.0001,
+        "seed": 46,
+        "optimizer": "AdamW"
+      },
+      "metrics": {
+        "train/box_loss": {
+          "epoch_1": 1.49445,
+          "epoch_30": 1.14779,
+          "mean_epochs_16_20": 1.141748,
+          "mean_epochs_21_25": 1.146824,
+          "mean_epochs_26_30": 1.149866,
+          "minimum": 1.11124,
+          "maximum": 1.49445
+        },
+        "train/pose_loss": {
+          "epoch_1": 0.01425,
+          "epoch_30": 0.01333,
+          "mean_epochs_16_20": 0.013212,
+          "mean_epochs_21_25": 0.013252,
+          "mean_epochs_26_30": 0.012982,
+          "minimum": 0.01167,
+          "maximum": 0.01862
+        },
+        "train/cls_loss": {
+          "epoch_1": 0.36795,
+          "epoch_30": 0.28871,
+          "mean_epochs_16_20": 0.279072,
+          "mean_epochs_21_25": 0.27724,
+          "mean_epochs_26_30": 0.280104,
+          "minimum": 0.27034,
+          "maximum": 0.38832
+        },
+        "val/box_loss": {
+          "epoch_1": 1.49653,
+          "epoch_30": 1.5578,
+          "mean_epochs_16_20": 1.603248,
+          "mean_epochs_21_25": 1.538054,
+          "mean_epochs_26_30": 1.548356,
+          "minimum": 1.49653,
+          "maximum": 1.80471
+        },
+        "val/pose_loss": {
+          "epoch_1": 0.01544,
+          "epoch_30": 0.01452,
+          "mean_epochs_16_20": 0.014828,
+          "mean_epochs_21_25": 0.014292,
+          "mean_epochs_26_30": 0.014482,
+          "minimum": 0.01392,
+          "maximum": 0.01855
+        },
+        "val/cls_loss": {
+          "epoch_1": 0.32469,
+          "epoch_30": 0.39412,
+          "mean_epochs_16_20": 0.395502,
+          "mean_epochs_21_25": 0.386086,
+          "mean_epochs_26_30": 0.391538,
+          "minimum": 0.32469,
+          "maximum": 0.40231
+        },
+        "metrics/mAP50(B)": {
+          "epoch_1": 0.93584,
+          "epoch_30": 0.92033,
+          "mean_epochs_16_20": 0.918766,
+          "mean_epochs_21_25": 0.92581,
+          "mean_epochs_26_30": 0.922828,
+          "minimum": 0.91476,
+          "maximum": 0.93941
+        },
+        "metrics/mAP50-95(B)": {
+          "epoch_1": 0.55433,
+          "epoch_30": 0.48047,
+          "mean_epochs_16_20": 0.473866,
+          "mean_epochs_21_25": 0.47937,
+          "mean_epochs_26_30": 0.481194,
+          "minimum": 0.41511,
+          "maximum": 0.55433
+        },
+        "metrics/recall(B)": {
+          "epoch_1": 0.91457,
+          "epoch_30": 0.90331,
+          "mean_epochs_16_20": 0.904296,
+          "mean_epochs_21_25": 0.905868,
+          "mean_epochs_26_30": 0.901938,
+          "minimum": 0.90137,
+          "maximum": 0.92458
+        },
+        "metrics/mAP50-95(P)": {
+          "epoch_1": 0.96031,
+          "epoch_30": 0.96082,
+          "mean_epochs_16_20": 0.95981,
+          "mean_epochs_21_25": 0.960528,
+          "mean_epochs_26_30": 0.960832,
+          "minimum": 0.95928,
+          "maximum": 0.96091
+        },
+        "lr/pg0": {
+          "epoch_1": 3.2381e-05,
+          "epoch_30": 4.3e-06,
+          "mean_epochs_16_20": 4.39e-05,
+          "mean_epochs_21_25": 2.74e-05,
+          "mean_epochs_26_30": 1.09e-05,
+          "minimum": 4.3e-06,
+          "maximum": 9.25105e-05
+        }
+      }
+    }
+  },
+  "learning_curve_interpretation": "Late training box-loss windows flatten; original-label validation trends are mixed and do not show a continuing broad improvement. These curves cannot isolate underfitting, overfitting, initialization failure or model-capacity failure. Training labels and original validation boxes use different annotation snapshots, and trainer pose mAP differs from 5/10-pixel pair success.",
+  "primary_result": {
+    "frozen666": {
+      "reference": {
+        "gold_count": 666,
+        "prediction_count": 737,
+        "fn": 36,
+        "fp": 107,
+        "duplicate_fp": 29,
+        "other_fp": 78,
+        "pair_denominator": 584,
+        "pair5": 517,
+        "pair10": 573
+      },
+      "candidate": {
+        "gold_count": 666,
+        "prediction_count": 738,
+        "fn": 36,
+        "fp": 108,
+        "duplicate_fp": 29,
+        "other_fp": 79,
+        "pair_denominator": 584,
+        "pair5": 518,
+        "pair10": 573
+      }
+    },
+    "historical663": {
+      "reference": {
+        "gold_count": 663,
+        "prediction_count": 737,
+        "fn": 32,
+        "fp": 106,
+        "duplicate_fp": 29,
+        "other_fp": 77,
+        "pair_denominator": 584,
+        "pair5": 517,
+        "pair10": 573
+      },
+      "candidate": {
+        "gold_count": 663,
+        "prediction_count": 738,
+        "fn": 32,
+        "fp": 107,
+        "duplicate_fp": 29,
+        "other_fp": 78,
+        "pair_denominator": 584,
+        "pair5": 518,
+        "pair10": 573
+      }
+    },
+    "r35": {
+      "reference": {
+        "gold_count": 659,
+        "prediction_count": 737,
+        "fn": 15,
+        "fp": 93,
+        "duplicate_fp": 31,
+        "other_fp": 62,
+        "pair_denominator": 583,
+        "pair5": 570,
+        "pair10": 582
+      },
+      "candidate": {
+        "gold_count": 659,
+        "prediction_count": 738,
+        "fn": 15,
+        "fp": 94,
+        "duplicate_fp": 31,
+        "other_fp": 63,
+        "pair_denominator": 583,
+        "pair5": 570,
+        "pair10": 582
+      }
+    },
+    "r36": {
+      "reference": {
+        "gold_count": 659,
+        "prediction_count": 737,
+        "fn": 15,
+        "fp": 93,
+        "duplicate_fp": 31,
+        "other_fp": 62,
+        "pair_denominator": 583,
+        "pair5": 570,
+        "pair10": 582
+      },
+      "candidate": {
+        "gold_count": 659,
+        "prediction_count": 738,
+        "fn": 15,
+        "fp": 94,
+        "duplicate_fp": 31,
+        "other_fp": 63,
+        "pair_denominator": 583,
+        "pair5": 570,
+        "pair10": 582
+      }
+    },
+    "r37": {
+      "reference": {
+        "gold_count": 659,
+        "prediction_count": 737,
+        "fn": 15,
+        "fp": 93,
+        "duplicate_fp": 31,
+        "other_fp": 62,
+        "pair_denominator": 583,
+        "pair5": 570,
+        "pair10": 582
+      },
+      "candidate": {
+        "gold_count": 659,
+        "prediction_count": 738,
+        "fn": 15,
+        "fp": 94,
+        "duplicate_fp": 31,
+        "other_fp": 63,
+        "pair_denominator": 583,
+        "pair5": 570,
+        "pair10": 582
+      }
+    }
+  },
+  "one_to_one_probe": {
+    "frozen666": {
+      "one_to_many": {
+        "gold_count": 666,
+        "prediction_count": 738,
+        "fn": 36,
+        "fp": 108,
+        "duplicate_fp": 29,
+        "other_fp": 79,
+        "pair_denominator": 584,
+        "pair5": 518,
+        "pair10": 573
+      },
+      "one_to_one": {
+        "gold_count": 666,
+        "prediction_count": 710,
+        "fn": 38,
+        "fp": 82,
+        "duplicate_fp": 32,
+        "other_fp": 50,
+        "pair_denominator": 584,
+        "pair5": 525,
+        "pair10": 573
+      }
+    },
+    "historical663": {
+      "one_to_many": {
+        "gold_count": 663,
+        "prediction_count": 738,
+        "fn": 32,
+        "fp": 107,
+        "duplicate_fp": 29,
+        "other_fp": 78,
+        "pair_denominator": 584,
+        "pair5": 518,
+        "pair10": 573
+      },
+      "one_to_one": {
+        "gold_count": 663,
+        "prediction_count": 710,
+        "fn": 38,
+        "fp": 85,
+        "duplicate_fp": 31,
+        "other_fp": 54,
+        "pair_denominator": 584,
+        "pair5": 524,
+        "pair10": 572
+      }
+    },
+    "r35": {
+      "one_to_many": {
+        "gold_count": 659,
+        "prediction_count": 738,
+        "fn": 15,
+        "fp": 94,
+        "duplicate_fp": 31,
+        "other_fp": 63,
+        "pair_denominator": 583,
+        "pair5": 570,
+        "pair10": 582
+      },
+      "one_to_one": {
+        "gold_count": 659,
+        "prediction_count": 710,
+        "fn": 16,
+        "fp": 67,
+        "duplicate_fp": 37,
+        "other_fp": 30,
+        "pair_denominator": 583,
+        "pair5": 572,
+        "pair10": 581
+      }
+    },
+    "r36": {
+      "one_to_many": {
+        "gold_count": 659,
+        "prediction_count": 738,
+        "fn": 15,
+        "fp": 94,
+        "duplicate_fp": 31,
+        "other_fp": 63,
+        "pair_denominator": 583,
+        "pair5": 570,
+        "pair10": 582
+      },
+      "one_to_one": {
+        "gold_count": 659,
+        "prediction_count": 710,
+        "fn": 16,
+        "fp": 67,
+        "duplicate_fp": 37,
+        "other_fp": 30,
+        "pair_denominator": 583,
+        "pair5": 572,
+        "pair10": 581
+      }
+    },
+    "r37": {
+      "one_to_many": {
+        "gold_count": 659,
+        "prediction_count": 738,
+        "fn": 15,
+        "fp": 94,
+        "duplicate_fp": 31,
+        "other_fp": 63,
+        "pair_denominator": 583,
+        "pair5": 570,
+        "pair10": 582
+      },
+      "one_to_one": {
+        "gold_count": 659,
+        "prediction_count": 710,
+        "fn": 16,
+        "fp": 67,
+        "duplicate_fp": 37,
+        "other_fp": 30,
+        "pair_denominator": 583,
+        "pair5": 572,
+        "pair10": 581
+      }
+    }
+  },
+  "probe_invalid_geometry": {
+    "image_id": "new_000010",
+    "prediction_id": 37,
+    "bbox_xyxy": [
+      323.1650695800781,
+      720.0,
+      438.2831726074219,
+      720.0
+    ],
+    "confidence": 0.179103285074234,
+    "counted_as_other_unmatched": true,
+    "raw_output_preserved": true,
+    "cause_scope": "Geometry is consistent with bottom-border clipping; pre-clipping coordinates were not recorded."
+  },
+  "decision": {
+    "default_head": "one-to-many plus NMS0.70",
+    "model_change": false,
+    "initialization_change": false,
+    "budget_change": false,
+    "r37_question": "Regression and gain check for the two user-marked annotation changes only",
+    "r37_reference": "eligible R36 supervision",
+    "r37_candidate": "eligible R37 supervision",
+    "do_not_claim": "A general missed-fragment cure, proof that 78 updates is optimal, or an architecture-independent reliability guarantee.",
+    "future_initialization_study": "If a broader retraining study is later justified, distinguish a fresh same-architecture COCO-pretrained run on consolidated labels from random initialization. Predeclare a suitable schedule and matched comparator; the present 30-epoch fine-tune is not a fair random-scratch benchmark.",
+    "random_scratch_and_other_models": "No present evidence justifies discarding pretrained representations or changing architecture; these are separate future hypotheses, not bundled R37 treatments."
+  },
+  "primary_external_sources": [
+    {
+      "url": "https://docs.ultralytics.com/tasks/pose/",
+      "use": "Official distinctions between pretrained .pt, YAML new construction, and transferred weights."
+    },
+    {
+      "url": "https://docs.ultralytics.com/modes/train/",
+      "use": "New training versus resume-state restoration."
+    },
+    {
+      "url": "https://arxiv.org/abs/1811.08883",
+      "use": "Random-initialization object detection can work with adequate iterations on COCO; this does not establish adequacy of 137 cassette images and 78 updates."
+    }
+  ],
+  "training_executed_by_this_audit": false,
+  "r36_to_r37_development_equivalence": {
+    "labels_byte_identical": 20,
+    "primary_and_probe_scores_unchanged": true
+  }
+}

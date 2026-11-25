@@ -94,7 +94,7 @@ The experiment preserves architecture, loss, input size 1280, FP32, batch 4, Ada
 
 Open the published notebook in Colab, select an L4 or A100 GPU, and run all cells. It verifies the pinned source, protocol, 157 original image hashes and actual epoch-173 initializer bytes, then runs the resource trial and matched pair. Return `baomai-front-review-r37-results.zip`. Compatible completed runs can be recovered; incompatible or incomplete folders are preserved. The notebook contains five code cells and no embedded repository source payload.
 
-Source publication precedes final notebook generation. Setup verification exercises checkout, actual input hashes, clean reuse, dirty-source preservation/rejection and wrong-revision rejection. These checks do not run R37 GPU training.
+Source publication precedes final notebook generation. Full setup integration uses synthetic input fixtures to exercise checkout, restoration, clean reuse, dirty-source preservation/rejection and wrong-revision rejection. Separately, the generated notebook's original-input function is checked against the actual 157 PNGs and 106,838,542-byte epoch-173 initializer in an isolated clean checkout. These checks do not run R37 GPU training.
 
 ## The next improvement after this narrow comparison
 
@@ -104,5 +104,7 @@ Source publication precedes final notebook generation. Setup verification exerci
 4. **Use the application requirement to define acceptance.** Continue detecting identifiable visible fronts under the existing policy. If a downstream action needs a minimum visible span, valid corner pair or calibrated positional tolerance, make that an explicit eligibility decision with its own measurements. Missing or uncertain corners must remain distinguishable from observed points. A pixel-area filter should not quietly redefine the annotated world.
 
 The returned curves do not justify simply adding more epochs: the native validation box metric declines during this short run while pose metrics are nearly flat, and trainer-validation boundary conventions differ from the reviewed development labels. Moreover, batch 4 with nominal batch 64 accumulates gradients, yielding 78 optimizer steps over 30 epochs. Native logged loss components describe the one-to-one branch while the optimized objective combines both branches. A broader training change needs its own fixed comparison and success criteria.
+
+The [training-strategy audit](../results/evaluation/pr121-r36-20261126/training-strategy-audit.json) binds the actual checkpoint architecture, pinned native loss implementation, schedules, learning curves and inference-head comparison. A small visible box may describe only a clipped or occluded portion of a full-size cassette; it is not a direct physical-size measurement.
 
 The repeated 20-image development set supports these diagnosis and regression decisions. It does not establish unseen-session reliability or a mechanical grasping tolerance. Better annotation fidelity, better development scores and a better deployed system are related claims that require different evidence.
