@@ -1,0 +1,222 @@
+[
+  {
+    "image_id": "new_000007",
+    "split": "val",
+    "base_row": 47,
+    "action": "replace",
+    "before_line": "0 0.592578125 0.549305556 0.047656250 0.020833333 0.5695312500 0.5597222222 2 0.6148437500 0.5541666667 2",
+    "after_line": "0 0.591796875000 0.549305556 0.049218750000 0.020833333 0.5695312500 0.5597222222 2 0.613671875000 0.551388888889 2",
+    "changed_groups": [
+      "box",
+      "right"
+    ],
+    "changed_fields": [
+      "xmin",
+      "right.x",
+      "right.y"
+    ],
+    "reason": "Move xmin728 to726 to include the visible left rim while excluding the adjacent dark vertical rack strip. PR107 p44 xmin723.34 enters that strip; the old728 clips the rim, so the physical boundary supports an intermediate position. Move the right landmark from(787,399) to(785.5,397), consistent with the prediction and the observed turn before the right vertical side. The old point falls on the gray support/bevel below and outside the face. Keep all other box coordinates, the left landmark, and visibility flags."
+  },
+  {
+    "image_id": "new_000008",
+    "split": "val",
+    "base_row": 5,
+    "action": "replace",
+    "before_line": "0 0.853125000000 0.0173611111 0.179687500000 0.0347222222 0.768750000000 0.0208333333 2 0.941796875000 0.030555555556 2",
+    "after_line": "0 0.853125000000 0.0173611111 0.179687500000 0.0347222222 0.767968750000 0.018055555556 2 0.936718750000 0.023611111111 2",
+    "changed_groups": [
+      "left",
+      "right"
+    ],
+    "changed_fields": [
+      "left.x",
+      "left.y",
+      "right.x",
+      "right.y"
+    ],
+    "reason": "Move both existing visible landmarks to the lower front-face turns. On the left, the softened vertical side transitions into the pale horizontal face near (983,13), slightly above the old point on the shaded line. On the right, the pale front turns down into its gray side near (1199,17); the old (1205.5,22) lies on the outer side/rim, beyond that turn. PR107 p24 gives the useful direction for both, but its right x1196.40 is slightly inside the visible face. The existing outer-rim box remains unchanged because a front turn and a rim extreme need not coincide."
+  },
+  {
+    "image_id": "new_000008",
+    "split": "val",
+    "base_row": 7,
+    "action": "replace",
+    "before_line": "0 0.968750002 0.022916667 0.062500005 0.045833333 0.94407031 0.03172222 2 0.00000000 0.00000000 0",
+    "after_line": "0 0.968750002 0.022916667 0.062500005 0.045833333 0.950781250000 0.030555555556 2 0.00000000 0.00000000 0",
+    "changed_groups": [
+      "left"
+    ],
+    "changed_fields": [
+      "left.x",
+      "left.y"
+    ],
+    "reason": "Move the existing left landmark from (1208.41,22.84) to approximately(1217,22). The old point lies in the broad gray side transition shared visually with the adjoining top cassette. The target's own pale front turns into that side farther right, beyond PR107 p36 x1213.63. The selected point follows that local turn while keeping y close to the existing lower edge. The right corner remains unavailable at the image border: no physical right turn is visible, so its exact zero triplet and visibility0 are preserved."
+  },
+  {
+    "image_id": "new_000010",
+    "split": "val",
+    "base_row": 25,
+    "action": "replace",
+    "before_line": "0 0.7984375000 0.5217638889 0.1234375000 0.0564722222 0.73970313 0.54558333 2 0.8585937500 0.5458333333 2",
+    "after_line": "0 0.801953125000 0.5217638889 0.130468750000 0.0564722222 0.745312500000 0.544444444444 2 0.862500000000 0.545833333333 2",
+    "changed_groups": [
+      "box",
+      "left",
+      "right"
+    ],
+    "changed_fields": [
+      "xmax",
+      "left.x",
+      "left.y",
+      "right.x"
+    ],
+    "reason": "Move the left landmark to the rounded front-to-side turn around(954,392), right of the model cue951.28 as requested. Move the right landmark to(1104,393), compatible with p7 and the visible lower-right turn. Extend xmax1101 to1110 to contain the actual rounded right outer material and the corrected point. Retain ymax396 after independent root review: predicted402.15 enters the next front below the thin separator. No change to the upper cap/face ownership is made."
+  },
+  {
+    "image_id": "new_000011",
+    "split": "val",
+    "base_row": 56,
+    "action": "replace",
+    "before_line": "0 0.481250000000 0.640277778 0.015625000000 0.025000000 0.47578125 0.65000000 2 0.00000000 0.00000000 0",
+    "after_line": "0 0.481250000000 0.640277778 0.015625000000 0.025000000 0.475000000000 0.647222222222 2 0.00000000 0.00000000 0",
+    "changed_groups": [
+      "left"
+    ],
+    "changed_fields": [
+      "left.x",
+      "left.y"
+    ],
+    "reason": "011 row56 and output p57 name the same existing one-corner target. The lower face-to-side turn is around (608,466), where the bright face rounds into the darker left boundary; the old point (609,468) sits down in the separator. Both old PR107 p65 and p57 are compatible cues. Retain ymin452: the visible front extends upward from the lower landmark, so increasing ymin toward y466 would erase real material. The right corner remains hidden by the jaw and stays v0."
+  },
+  {
+    "image_id": "new_000055",
+    "split": "val",
+    "base_row": 21,
+    "action": "replace",
+    "before_line": "0 0.1796875 0.0409722225 0.09375 0.043055555 0.13561719 0.05919444 2 0.21960156 0.04654167 2",
+    "after_line": "0 0.1796875 0.040277778056 0.09375 0.041666666111 0.13561719 0.05919444 2 0.21960156 0.04654167 2",
+    "changed_groups": [
+      "box"
+    ],
+    "changed_fields": [
+      "ymax"
+    ],
+    "reason": "A fresh look places the visible front/rim outer transition near y44 at the left bend, rising toward the right. Decrease ymax45 to44 to remove the first dark underside/rack pixels while retaining the rim below the existing lower-left landmark y42.62. Do not copy the predicted ymax48.93 or its right landmark, which are different requested fields."
+  },
+  {
+    "image_id": "new_000055",
+    "split": "val",
+    "base_row": 25,
+    "action": "replace",
+    "before_line": "0 0.40156250 0.79041667 0.09218750 0.04416667 0.35703125 0.80972222 2 0.44609375 0.80000000 2",
+    "after_line": "0 0.40156250 0.79041667 0.09218750 0.04416667 0.357812500000 0.811111111111 2 0.44609375 0.80000000 2",
+    "changed_groups": [
+      "left"
+    ],
+    "changed_fields": [
+      "left.x",
+      "left.y"
+    ],
+    "reason": "Move the visible left lower turn slightly right and down to (458,584), at the rounded face-to-side junction. The PR107 p12 point (458.15,583.62) is compatible with this original-pixel placement. Its predicted right point is not adopted: the user cue concerns the left point and the current right turn remains consistent with visible material."
+  },
+  {
+    "image_id": "new_000089",
+    "split": "val",
+    "base_row": 48,
+    "action": "replace",
+    "before_line": "0 0.640878905000 0.633124999167 0.034882810000 0.050416668333 0.00000000 0.00000000 0 0.65832031 0.65515278 2",
+    "after_line": "0 0.640878905000 0.634513888056 0.034882810000 0.053194446111 0.00000000 0.00000000 0 0.65832031 0.65515278 2",
+    "changed_groups": [
+      "box"
+    ],
+    "changed_fields": [
+      "ymax"
+    ],
+    "reason": "The lower white-to-gray rim continues beyond the previous ymax474, especially in the central/right visible strip. Extend to476 at the shaded boundary before the lower front. PR107 p49 bottom476.005 is compatible with this boundary, but its xmin764.88 and invented left endpoint cover the jaw/hidden continuation and are not adopted. Left visibility stays0."
+  },
+  {
+    "image_id": "new_000090",
+    "split": "val",
+    "base_row": 18,
+    "action": "replace",
+    "before_line": "0 0.568750000000 0.378472222 0.085937500000 0.043055556 0.5269531250 0.39116667 2 0.607031250000 0.399305555556 2",
+    "after_line": "0 0.567578125000 0.378472222000 0.083593750000 0.043055556000 0.5269531250 0.39116667 2 0.605468750000 0.398611111111 2",
+    "changed_groups": [
+      "box",
+      "right"
+    ],
+    "changed_fields": [
+      "xmax",
+      "right.x",
+      "right.y"
+    ],
+    "reason": "Move the right point and xmax left. The pale front turns into the darker side around (775,287). xmax780 includes the soft outer rim without the more distant rail strip captured by old xmax783. Darkness alone does not determine ownership."
+  },
+  {
+    "image_id": "new_000090",
+    "split": "val",
+    "base_row": 19,
+    "action": "replace",
+    "before_line": "0 0.566015625000 0.413888889 0.082031250000 0.044444444 0.5261718750 0.42626389 2 0.605078125000 0.434722222222 2",
+    "after_line": "0 0.565625000000 0.413888889000 0.081250000000 0.044444444000 0.5261718750 0.42626389 2 0.603906250000 0.434027777778 2",
+    "changed_groups": [
+      "box",
+      "right"
+    ],
+    "changed_fields": [
+      "xmax",
+      "right.x",
+      "right.y"
+    ],
+    "reason": "Move the right point and xmax left. The lower-right turn is around (773,312.5); the outer visible rim reaches about x776. Old coordinates extend farther into the gray side/rail. Keep the other edges and left point."
+  },
+  {
+    "image_id": "new_000090",
+    "split": "val",
+    "base_row": 20,
+    "action": "replace",
+    "before_line": "0 0.566015625000 0.450000000 0.083593750000 0.041666667 0.5261718750 0.45979167 2 0.603906250000 0.468750000000 2",
+    "after_line": "0 0.564843750000 0.450000000000 0.081250000000 0.041666667000 0.5261718750 0.45979167 2 0.602343750000 0.468055555556 2",
+    "changed_groups": [
+      "box",
+      "right"
+    ],
+    "changed_fields": [
+      "xmax",
+      "right.x",
+      "right.y"
+    ],
+    "reason": "Move the right point and xmax left. The corner at (771,337) follows this face's rounded lower-right turn, and xmax775 retains its outer rim. No shared x-coordinate is imposed across the three perspective-shifted cassettes."
+  },
+  {
+    "image_id": "new_000090",
+    "split": "val",
+    "base_row": 42,
+    "action": "replace",
+    "before_line": "0 0.4601992175 0.72311111 0.0280390650 0.03816667 0.44774219 0.72975000 2 0.00000000 0.00000000 0",
+    "after_line": "0 0.4601992175 0.720138888889 0.0280390650 0.029166666667 0.44774219 0.72975000 2 0.00000000 0.00000000 0",
+    "changed_groups": [
+      "box"
+    ],
+    "changed_fields": [
+      "ymin",
+      "ymax"
+    ],
+    "reason": "Increase ymin506.90 to508 at the shaded top seam below the preceding front, compatible with PR107 p44 top507.852. The same original-pixel inspection also finds that ymax534.38 extends below this front into the next white front. Its visible lower-left turn is near525 and the shaded outer rim ends around528-529, supporting ymax529. This additional field correction is bounded to the already-requested row and was corroborated independently by root. Preserve the one visible left landmark and missing right corner; do not add a new instance for the lower occluded material in this pass."
+  },
+  {
+    "image_id": "new_000094",
+    "split": "train",
+    "base_row": 9,
+    "action": "replace",
+    "before_line": "0 0.2989023425 0.686673610000 0.114695315 0.048347220000 0.248437500000 0.70281944 2 0.35005469 0.71084722 2",
+    "after_line": "0 0.2989023425 0.686673610000 0.114695315 0.048347220000 0.243750000000 0.702819440000 2 0.35005469 0.71084722 2",
+    "changed_groups": [
+      "left"
+    ],
+    "changed_fields": [
+      "left.x"
+    ],
+    "reason": "Move the left point toward xmin. The old x318 sits inside the face; x312 follows the rounded lower-left face-to-side turn. The box begins at x309.19 because its outer rim extends beyond this corner. Keep y506.03 and all box/right fields."
+  }
+]

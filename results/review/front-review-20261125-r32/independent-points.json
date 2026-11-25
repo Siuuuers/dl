@@ -1,0 +1,1171 @@
+{
+  "schema_version": 1,
+  "kind": "independent_original_pixel_proposals",
+  "reviewer": "/root/r32_points_and_occlusion",
+  "created_at_utc": "2026-11-24T17:56:58.844279+00:00",
+  "status": "ready_for_root_adjudication",
+  "canonical_mutation": false,
+  "parent_review": "fronts-2026-11-24-r31",
+  "parent_manifest_sha256": "bbe202ae73f2af33030b2e8e48b3710257dc1449581f59cca399ce0636c9e16a",
+  "source_revision": "0a8ff31cadaf0ee0691de73fd103bba5de82b038",
+  "source_manifest_sha256": "72ae8365d5abf0b45b75d400a2e6d22119c0e31b54ee33035feb8edc1f967926",
+  "coordinate_system": {
+    "stored_image_xy": "x rightward, y downward, 1280x720 pixels",
+    "user_terms_confirmed": "User ymax=upper edge, ymin=lower edge; positive y visually upward.",
+    "mapping": {
+      "user_ymax": "stored bbox_xyxy[1] / top",
+      "user_ymin": "stored bbox_xyxy[3] / bottom",
+      "user_y_positive": "decrease stored y"
+    }
+  },
+  "row_count": 9,
+  "proposed_change_count": 7,
+  "retained_or_held_count": 2,
+  "alias_mapping": [
+    {
+      "request": "new_000009 output p54",
+      "source_pr": 109,
+      "candidate_pID": 54,
+      "existing_r31_row": 12,
+      "new_row_added": false
+    }
+  ],
+  "scope_limits": [
+    "No canonical labels or model outputs were modified.",
+    "Original PNG hashes verified against source manifest and exact PR109 prediction cache.",
+    "Native pixels inspected before overlays; enlarged views use nearest-neighbor only.",
+    "Model cues were not treated as ground truth; proposed coordinates are rounded and have explicit uncertainty.",
+    "The two retained/held rows require no fabricated visible point or hidden extent."
+  ],
+  "rows": [
+    {
+      "image_id": "new_000009",
+      "split": "val",
+      "row": 56,
+      "status": "proposed_change",
+      "canonical_mutation": false,
+      "request_origin": "Right point of PR109 prediction is more correct.",
+      "before_line": "0 0.63984375 0.70208333 0.01406250 0.04305556 0.00000000 0.00000000 0 0.64375000 0.71944444 2",
+      "after_line": "0 0.63984375 0.70208333 0.01406250 0.04305556 0.00000000 0.00000000 0 0.642968750000 0.716666666667 2",
+      "updates_pixels": {
+        "right": [
+          823,
+          516,
+          2
+        ]
+      },
+      "before_pixels": {
+        "bbox_xyxy": [
+          810.0,
+          489.999996,
+          828.0000000000001,
+          520.9999992
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0
+        ],
+        "right": [
+          824.0,
+          517.9999968,
+          2
+        ]
+      },
+      "after_pixels": {
+        "bbox_xyxy": [
+          810.0,
+          489.999996,
+          828.0000000000001,
+          520.9999992
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0
+        ],
+        "right": [
+          823.0,
+          516.00000000024,
+          2
+        ]
+      },
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000009.png",
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-24-r31/labels/val/new_000009.txt",
+      "source_label_sha256": "7c9ef43cc05f82d078179bc83a46d60036c7faa57715000d4092ad7cc9d376b4",
+      "original_pixels_inspected": true,
+      "crop_bounds_xyxy": [
+        790,
+        480,
+        845,
+        532
+      ],
+      "crop_paths": {
+        "raw_native": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r56-raw-native.png",
+        "raw": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r56-raw.png",
+        "before": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r56-before.png",
+        "proposed": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r56-proposed.png",
+        "prediction_cues": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r56-prediction_cues.png",
+        "comparison": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r56-comparison.png"
+      },
+      "reason": "The visible pale sliver ends in a lower-right face-to-rim turn around x822–824, y515–517. The existing point (824,518) is down/right in the darker rim. PR109 p70 points toward the same visible corner but y514.18 is slightly above the observed turn; use (823,516), not the model coordinates verbatim. The left corner remains behind the jaw.",
+      "coordinate_uncertainty": {
+        "right_px": 1.5
+      },
+      "retained_fields": [
+        "box",
+        "left_visibility"
+      ],
+      "prediction_cue": {
+        "source_pr": 109,
+        "arm": "candidate",
+        "threshold": 0.13,
+        "checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+        "prediction_cache_path": "/workspace/scratch/31f5e28106bc/dl/tmp/pr110-eval/inference/pr109_candidate/predictions.jsonl",
+        "prediction_cache_sha256": "79a6448b60026125633e33ed84b3948a300ee4f9198788003a38b0cd77788ea6",
+        "identity_rule": "pID equals exact per-image predictions array index plus 1; no reordering.",
+        "mapping_method": "Original-pixel identity plus same-image geometric overlap; cue links do not replace scored one-to-one detection matching.",
+        "outputs": [
+          {
+            "pID": 70,
+            "bbox_iou_with_r31_row": 0.39071004089786454,
+            "class_id": 0,
+            "bbox_xyxy": [
+              791.00244140625,
+              488.74481201171875,
+              825.4658203125,
+              522.0712280273438
+            ],
+            "confidence": 0.241734117269516,
+            "keypoints": [
+              [
+                787.6427612304688,
+                509.900146484375,
+                0.6255699396133423
+              ],
+              [
+                823.0825805664062,
+                514.1806030273438,
+                0.6558520197868347
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "image_id": "new_000011",
+      "split": "val",
+      "row": 56,
+      "status": "proposed_change",
+      "canonical_mutation": false,
+      "request_origin": "Left point of PR109 prediction is more correct; user ymin (lower edge) should approach the left point height to exclude the cassette below.",
+      "before_line": "0 0.481250000000 0.640277778 0.015625000000 0.025000000 0.475000000000 0.647222222222 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.481250000000 0.638888889000 0.015625000000 0.022222222000 0.474218750000 0.646527777778 2 0.00000000 0.00000000 0",
+      "updates_pixels": {
+        "left": [
+          607,
+          465.5,
+          2
+        ],
+        "bottom": 468
+      },
+      "before_pixels": {
+        "bbox_xyxy": [
+          606.0,
+          452.00000016,
+          626.0,
+          470.00000015999996
+        ],
+        "left": [
+          608.0,
+          465.99999999984,
+          2
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "after_pixels": {
+        "bbox_xyxy": [
+          606.0,
+          452.00000016,
+          626.0,
+          467.99999999999994
+        ],
+        "left": [
+          607.0,
+          465.50000000015996,
+          2
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000011.png",
+      "source_image_sha256": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-24-r31/labels/val/new_000011.txt",
+      "source_label_sha256": "522d1fc220518787246852b7c66171e88ae1383c29dcdba577e77ae35ee0e89e",
+      "original_pixels_inspected": true,
+      "crop_bounds_xyxy": [
+        594,
+        435,
+        640,
+        485
+      ],
+      "crop_paths": {
+        "raw_native": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000011-r56-raw-native.png",
+        "raw": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000011-r56-raw.png",
+        "before": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000011-r56-before.png",
+        "proposed": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000011-r56-proposed.png",
+        "prediction_cues": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000011-r56-prediction_cues.png",
+        "comparison": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000011-r56-comparison.png"
+      },
+      "reason": "The middle visible fragment has a pale front at approximately y454–465/466, with the lower-left face turn near (607,465.5). The next lower cassette becomes pale again around y470. Move the lower box edge from 470 to 468 to retain this cassette rim and exclude the next front. User confirmed their ymax is the upper edge and ymin is the lower edge; the requested lower-edge correction therefore changes stored bbox y_max, not stored y_min. PR109 p57 and p63 both cue the same visible left turn; their right points land on the jaw and remain unlabelled.",
+      "coordinate_uncertainty": {
+        "left_px": 1.5,
+        "bottom_px": 1.5
+      },
+      "retained_fields": [
+        "top",
+        "left_edge",
+        "right_edge",
+        "right_visibility"
+      ],
+      "prediction_cue": {
+        "source_pr": 109,
+        "arm": "candidate",
+        "threshold": 0.13,
+        "checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+        "prediction_cache_path": "/workspace/scratch/31f5e28106bc/dl/tmp/pr110-eval/inference/pr109_candidate/predictions.jsonl",
+        "prediction_cache_sha256": "79a6448b60026125633e33ed84b3948a300ee4f9198788003a38b0cd77788ea6",
+        "identity_rule": "pID equals exact per-image predictions array index plus 1; no reordering.",
+        "mapping_method": "Original-pixel identity plus same-image geometric overlap; cue links do not replace scored one-to-one detection matching.",
+        "outputs": [
+          {
+            "pID": 57,
+            "bbox_iou_with_r31_row": 0.3592402466591045,
+            "class_id": 0,
+            "bbox_xyxy": [
+              604.124755859375,
+              449.9788818359375,
+              651.271728515625,
+              471.2340087890625
+            ],
+            "confidence": 0.7454848885536194,
+            "keypoints": [
+              [
+                607.366455078125,
+                465.4844970703125,
+                0.7824897170066833
+              ],
+              [
+                657.4153442382812,
+                467.2129211425781,
+                0.6829404234886169
+              ]
+            ]
+          },
+          {
+            "pID": 63,
+            "bbox_iou_with_r31_row": 0.4565895714462206,
+            "class_id": 0,
+            "bbox_xyxy": [
+              601.2138671875,
+              452.747802734375,
+              638.568115234375,
+              472.5780029296875
+            ],
+            "confidence": 0.3044929802417755,
+            "keypoints": [
+              [
+                606.454345703125,
+                465.5301513671875,
+                0.658225953578949
+              ],
+              [
+                645.8792724609375,
+                469.1858215332031,
+                0.6179744601249695
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "image_id": "new_000055",
+      "split": "val",
+      "row": 25,
+      "status": "proposed_change",
+      "canonical_mutation": false,
+      "request_origin": "Right point should move x negative to the corner.",
+      "before_line": "0 0.40156250 0.79041667 0.09218750 0.04416667 0.357812500000 0.811111111111 2 0.44609375 0.80000000 2",
+      "after_line": "0 0.40156250 0.79041667 0.09218750 0.04416667 0.357812500000 0.811111111111 2 0.442968750000 0.80000000 2",
+      "updates_pixels": {
+        "right_x": 567
+      },
+      "before_pixels": {
+        "bbox_xyxy": [
+          455.0,
+          553.2000012,
+          573.0,
+          585.0000036
+        ],
+        "left": [
+          458.0,
+          583.99999999992,
+          2
+        ],
+        "right": [
+          571.0,
+          576.0,
+          2
+        ]
+      },
+      "after_pixels": {
+        "bbox_xyxy": [
+          455.0,
+          553.2000012,
+          573.0,
+          585.0000036
+        ],
+        "left": [
+          458.0,
+          583.99999999992,
+          2
+        ],
+        "right": [
+          567.0,
+          576.0,
+          2
+        ]
+      },
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000055.png",
+      "source_image_sha256": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-24-r31/labels/val/new_000055.txt",
+      "source_label_sha256": "381a6c5c2efd3c147a52201f37ce346e1043ff458a3c224ac38e41245c504c27",
+      "original_pixels_inspected": true,
+      "crop_bounds_xyxy": [
+        442,
+        542,
+        582,
+        597
+      ],
+      "crop_paths": {
+        "raw_native": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000055-r25-raw-native.png",
+        "raw": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000055-r25-raw.png",
+        "before": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000055-r25-before.png",
+        "proposed": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000055-r25-proposed.png",
+        "prediction_cues": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000055-r25-prediction_cues.png",
+        "comparison": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000055-r25-comparison.png"
+      },
+      "reason": "The own pale front turns into the darker side around x566–568, y575–577. Existing x571 sits farther into the dark outer side/hand boundary. Shift only right x to 567, keeping y576 and the accepted R31 left point. PR109 p10 right (566.25,576.69) independently cues this area.",
+      "coordinate_uncertainty": {
+        "right_x_px": 1.5
+      },
+      "retained_fields": [
+        "box",
+        "left",
+        "right_y",
+        "right_visibility"
+      ],
+      "prediction_cue": {
+        "source_pr": 109,
+        "arm": "candidate",
+        "threshold": 0.13,
+        "checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+        "prediction_cache_path": "/workspace/scratch/31f5e28106bc/dl/tmp/pr110-eval/inference/pr109_candidate/predictions.jsonl",
+        "prediction_cache_sha256": "79a6448b60026125633e33ed84b3948a300ee4f9198788003a38b0cd77788ea6",
+        "identity_rule": "pID equals exact per-image predictions array index plus 1; no reordering.",
+        "mapping_method": "Original-pixel identity plus same-image geometric overlap; cue links do not replace scored one-to-one detection matching.",
+        "outputs": [
+          {
+            "pID": 10,
+            "bbox_iou_with_r31_row": 0.7883366398250458,
+            "class_id": 0,
+            "bbox_xyxy": [
+              454.6136474609375,
+              549.1880493164062,
+              569.1451416015625,
+              588.3197631835938
+            ],
+            "confidence": 0.9092164039611816,
+            "keypoints": [
+              [
+                457.8171691894531,
+                583.7213134765625,
+                0.9218127727508545
+              ],
+              [
+                566.2535400390625,
+                576.6896362304688,
+                0.9343425631523132
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "image_id": "new_000059",
+      "split": "val",
+      "row": 1,
+      "status": "proposed_change",
+      "canonical_mutation": false,
+      "request_origin": "Right point should move a little y positive; the user has confirmed visual y increases upward.",
+      "before_line": "0 0.842187500 0.024305556 0.142187500 0.048611111 0.77817187 0.03861111 2 0.91163281 0.04197222 2",
+      "after_line": "0 0.842187500 0.024305556 0.142187500 0.048611111 0.77817187 0.03861111 2 0.91163281 0.039583333333 2",
+      "updates_pixels": {
+        "right_y": 28.5
+      },
+      "before_pixels": {
+        "bbox_xyxy": [
+          987.0,
+          3.599999998105119e-07,
+          1169.0,
+          35.00000028
+        ],
+        "left": [
+          996.0599936,
+          27.7999992,
+          2
+        ],
+        "right": [
+          1166.8899968,
+          30.219998399999998,
+          2
+        ]
+      },
+      "after_pixels": {
+        "bbox_xyxy": [
+          987.0,
+          3.599999998105119e-07,
+          1169.0,
+          35.00000028
+        ],
+        "left": [
+          996.0599936,
+          27.7999992,
+          2
+        ],
+        "right": [
+          1166.8899968,
+          28.49999999976,
+          2
+        ]
+      },
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000059.png",
+      "source_image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-24-r31/labels/val/new_000059.txt",
+      "source_label_sha256": "9d396175dd28ffc4f7381aa91c62f0adf2cb3280e229c65d644394fb4aae9de2",
+      "original_pixels_inspected": true,
+      "crop_bounds_xyxy": [
+        1127,
+        0,
+        1182,
+        49
+      ],
+      "crop_paths": {
+        "raw_native": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r01-raw-native.png",
+        "raw": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r01-raw.png",
+        "before": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r01-before.png",
+        "proposed": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r01-proposed.png",
+        "prediction_cues": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r01-prediction_cues.png",
+        "comparison": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r01-comparison.png"
+      },
+      "reason": "At the top-clipped cassette, the visible lower-right pale front rounds into the gray side at approximately y28–29. The current y30.22 is slightly below that turn. Move stored y upward to 28.5 and preserve x1166.8899968. This interprets user y-positive consistently with their clarified y-up convention. The PR109 right point has y28.78 but x1161.73, too far left to copy wholesale.",
+      "coordinate_uncertainty": {
+        "right_y_px": 1.5
+      },
+      "retained_fields": [
+        "box",
+        "left",
+        "right_x",
+        "right_visibility"
+      ],
+      "prediction_cue": {
+        "source_pr": 109,
+        "arm": "candidate",
+        "threshold": 0.13,
+        "checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+        "prediction_cache_path": "/workspace/scratch/31f5e28106bc/dl/tmp/pr110-eval/inference/pr109_candidate/predictions.jsonl",
+        "prediction_cache_sha256": "79a6448b60026125633e33ed84b3948a300ee4f9198788003a38b0cd77788ea6",
+        "identity_rule": "pID equals exact per-image predictions array index plus 1; no reordering.",
+        "mapping_method": "Original-pixel identity plus same-image geometric overlap; cue links do not replace scored one-to-one detection matching.",
+        "outputs": [
+          {
+            "pID": 16,
+            "bbox_iou_with_r31_row": 0.7804311502867568,
+            "class_id": 0,
+            "bbox_xyxy": [
+              985.685546875,
+              0.5473670959472656,
+              1165.75439453125,
+              43.196537017822266
+            ],
+            "confidence": 0.8731153011322021,
+            "keypoints": [
+              [
+                992.3111572265625,
+                27.523792266845703,
+                0.9556878209114075
+              ],
+              [
+                1161.7286376953125,
+                28.77945327758789,
+                0.9475930333137512
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "image_id": "new_000059",
+      "split": "val",
+      "row": 2,
+      "status": "proposed_change",
+      "canonical_mutation": false,
+      "request_origin": "Left point of PR109 prediction is more correct.",
+      "before_line": "0 0.697656250 0.029861111 0.139062500 0.059722222 0.63284375 0.05248611 2 0.76560938 0.05245833 2",
+      "after_line": "0 0.697656250 0.029861111 0.139062500 0.059722222 0.636328125000 0.051388888889 2 0.76560938 0.05245833 2",
+      "updates_pixels": {
+        "left": [
+          814.5,
+          37,
+          2
+        ]
+      },
+      "before_pixels": {
+        "bbox_xyxy": [
+          803.9999999999999,
+          0.0,
+          982.0,
+          42.99999984
+        ],
+        "left": [
+          810.0400000000001,
+          37.789999200000004,
+          2
+        ],
+        "right": [
+          979.9800064,
+          37.769997599999996,
+          2
+        ]
+      },
+      "after_pixels": {
+        "bbox_xyxy": [
+          803.9999999999999,
+          0.0,
+          982.0,
+          42.99999984
+        ],
+        "left": [
+          814.5,
+          37.00000000008,
+          2
+        ],
+        "right": [
+          979.9800064,
+          37.769997599999996,
+          2
+        ]
+      },
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000059.png",
+      "source_image_sha256": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-24-r31/labels/val/new_000059.txt",
+      "source_label_sha256": "9d396175dd28ffc4f7381aa91c62f0adf2cb3280e229c65d644394fb4aae9de2",
+      "original_pixels_inspected": true,
+      "crop_bounds_xyxy": [
+        796,
+        9,
+        846,
+        52
+      ],
+      "crop_paths": {
+        "raw_native": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r02-raw-native.png",
+        "raw": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r02-raw.png",
+        "before": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r02-before.png",
+        "proposed": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r02-proposed.png",
+        "prediction_cues": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r02-prediction_cues.png",
+        "comparison": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000059-r02-comparison.png"
+      },
+      "reason": "The rack strip occupies the darker left edge, while the pale own front bends into its lower gray rim around x814–815, y37. The previous (810.04,37.79) is at the rack/side fringe. PR109 p17 left (814.55,37.22) agrees with the visible turn; use a rounded (814.5,37) annotation with explicit pixel uncertainty.",
+      "coordinate_uncertainty": {
+        "left_px": 1.5
+      },
+      "retained_fields": [
+        "box",
+        "right"
+      ],
+      "prediction_cue": {
+        "source_pr": 109,
+        "arm": "candidate",
+        "threshold": 0.13,
+        "checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+        "prediction_cache_path": "/workspace/scratch/31f5e28106bc/dl/tmp/pr110-eval/inference/pr109_candidate/predictions.jsonl",
+        "prediction_cache_sha256": "79a6448b60026125633e33ed84b3948a300ee4f9198788003a38b0cd77788ea6",
+        "identity_rule": "pID equals exact per-image predictions array index plus 1; no reordering.",
+        "mapping_method": "Original-pixel identity plus same-image geometric overlap; cue links do not replace scored one-to-one detection matching.",
+        "outputs": [
+          {
+            "pID": 17,
+            "bbox_iou_with_r31_row": 0.7355754608487738,
+            "class_id": 0,
+            "bbox_xyxy": [
+              809.718994140625,
+              4.484851837158203,
+              979.76513671875,
+              50.3492546081543
+            ],
+            "confidence": 0.865371823310852,
+            "keypoints": [
+              [
+                814.5459594726562,
+                37.21589279174805,
+                0.9479991793632507
+              ],
+              [
+                974.9315185546875,
+                37.170570373535156,
+                0.9525272250175476
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "image_id": "new_000009",
+      "split": "val",
+      "row": 12,
+      "status": "proposed_change",
+      "canonical_mutation": false,
+      "request_origin": "Literal PR109 output p54 left point should be removed.",
+      "before_line": "0 0.6053125 0.01006250 0.07473438 0.02012500 0.57010156 0.00151389 2 0.64267969 0.01347222 2",
+      "after_line": "0 0.6053125 0.01006250 0.07473438 0.02012500 0 0 0 0.64267969 0.01347222 2",
+      "updates_pixels": {
+        "left": [
+          0,
+          0,
+          0
+        ]
+      },
+      "before_pixels": {
+        "bbox_xyxy": [
+          726.9699968,
+          0.0,
+          822.6300032,
+          14.49
+        ],
+        "left": [
+          729.7299968,
+          1.0900007999999999,
+          2
+        ],
+        "right": [
+          822.6300032,
+          9.6999984,
+          2
+        ]
+      },
+      "after_pixels": {
+        "bbox_xyxy": [
+          726.9699968,
+          0.0,
+          822.6300032,
+          14.49
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0
+        ],
+        "right": [
+          822.6300032,
+          9.6999984,
+          2
+        ]
+      },
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000009.png",
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-24-r31/labels/val/new_000009.txt",
+      "source_label_sha256": "7c9ef43cc05f82d078179bc83a46d60036c7faa57715000d4092ad7cc9d376b4",
+      "original_pixels_inspected": true,
+      "crop_bounds_xyxy": [
+        710,
+        0,
+        840,
+        49
+      ],
+      "crop_paths": {
+        "raw_native": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r12-raw-native.png",
+        "raw": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r12-raw.png",
+        "before": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r12-before.png",
+        "proposed": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r12-proposed.png",
+        "prediction_cues": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r12-prediction_cues.png",
+        "comparison": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000009-r12-comparison.png"
+      },
+      "reason": "Exact PR109 p54 maps to existing R31 row12 (same-image box IoU 0.6092); it is not label row54. The target is clipped at the top image boundary. Neither the original label at (729.73,1.09) nor the model point at (725.38,0) identifies a complete visible left-front corner. Set the existing row12 left triplet to exactly 0 0 0; keep its box, right point and row identity. Do not edit model outputs or add a duplicate row.",
+      "coordinate_uncertainty": {
+        "visibility": "left corner not locatable inside the original frame"
+      },
+      "retained_fields": [
+        "box",
+        "right",
+        "row_identity"
+      ],
+      "prediction_cue": {
+        "source_pr": 109,
+        "arm": "candidate",
+        "threshold": 0.13,
+        "checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+        "prediction_cache_path": "/workspace/scratch/31f5e28106bc/dl/tmp/pr110-eval/inference/pr109_candidate/predictions.jsonl",
+        "prediction_cache_sha256": "79a6448b60026125633e33ed84b3948a300ee4f9198788003a38b0cd77788ea6",
+        "identity_rule": "pID equals exact per-image predictions array index plus 1; no reordering.",
+        "mapping_method": "Original-pixel identity plus same-image geometric overlap; cue links do not replace scored one-to-one detection matching.",
+        "outputs": [
+          {
+            "pID": 54,
+            "bbox_iou_with_r31_row": 0.6092170071815641,
+            "class_id": 0,
+            "bbox_xyxy": [
+              721.4200439453125,
+              0.0,
+              824.454833984375,
+              9.262588500976562
+            ],
+            "confidence": 0.7106447815895081,
+            "keypoints": [
+              [
+                725.3792114257812,
+                0.0,
+                0.9204510450363159
+              ],
+              [
+                823.62646484375,
+                6.319151878356934,
+                0.9064614176750183
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "image_id": "new_000090",
+      "split": "val",
+      "row": 39,
+      "status": "proposed_change",
+      "canonical_mutation": false,
+      "request_origin": "Both user ymax (upper edge) and ymin (lower edge) need amendment.",
+      "before_line": "0 0.464453125000 0.63685417 0.039843750000 0.04201389 0.44707031 0.64630556 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.464453125000 0.638194444444 0.039843750000 0.029166666667 0.44707031 0.64630556 2 0.00000000 0.00000000 0",
+      "updates_pixels": {
+        "top": 449,
+        "bottom": 470
+      },
+      "before_pixels": {
+        "bbox_xyxy": [
+          569.0,
+          443.410002,
+          620.0,
+          473.6600028
+        ],
+        "left": [
+          572.2499968000001,
+          465.34000319999996,
+          2
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "after_pixels": {
+        "bbox_xyxy": [
+          569.0,
+          448.99999999956,
+          620.0,
+          469.9999999998
+        ],
+        "left": [
+          572.2499968000001,
+          465.34000319999996,
+          2
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000090.png",
+      "source_image_sha256": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-24-r31/labels/val/new_000090.txt",
+      "source_label_sha256": "7b8d65b7cb5078f762a37cec9340f2fdd3061de572f533a2fd45104891bf965d",
+      "original_pixels_inspected": true,
+      "crop_bounds_xyxy": [
+        556,
+        430,
+        635,
+        490
+      ],
+      "crop_paths": {
+        "raw_native": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000090-r39-raw-native.png",
+        "raw": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000090-r39-raw.png",
+        "before": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000090-r39-before.png",
+        "proposed": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000090-r39-proposed.png",
+        "prediction_cues": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000090-r39-prediction_cues.png",
+        "comparison": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000090-r39-comparison.png"
+      },
+      "reason": "The target is the middle front left of the jaw: its pale front occupies about y452–466, with its rim bounded by the seams near 449 and 470. The old top 443.41 includes white material of the cassette above; old bottom 473.66 reaches the pale front below. Restrict top to 449 and bottom to 470, keeping the visible left point and hidden right point unchanged. PR109 p57 bounds 448.36–470.84 provide a compatible cue but do not establish ownership by themselves.",
+      "coordinate_uncertainty": {
+        "top_px": 2,
+        "bottom_px": 1.5
+      },
+      "retained_fields": [
+        "left_edge",
+        "right_edge",
+        "left",
+        "right_visibility"
+      ],
+      "prediction_cue": {
+        "source_pr": 109,
+        "arm": "candidate",
+        "threshold": 0.13,
+        "checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+        "prediction_cache_path": "/workspace/scratch/31f5e28106bc/dl/tmp/pr110-eval/inference/pr109_candidate/predictions.jsonl",
+        "prediction_cache_sha256": "79a6448b60026125633e33ed84b3948a300ee4f9198788003a38b0cd77788ea6",
+        "identity_rule": "pID equals exact per-image predictions array index plus 1; no reordering.",
+        "mapping_method": "Original-pixel identity plus same-image geometric overlap; cue links do not replace scored one-to-one detection matching.",
+        "outputs": [
+          {
+            "pID": 48,
+            "bbox_iou_with_r31_row": 0.6170287226707772,
+            "class_id": 0,
+            "bbox_xyxy": [
+              567.876220703125,
+              444.36505126953125,
+              645.498046875,
+              471.89825439453125
+            ],
+            "confidence": 0.7703155279159546,
+            "keypoints": [
+              [
+                569.83447265625,
+                466.5087585449219,
+                0.9001744985580444
+              ],
+              [
+                646.2470092773438,
+                468.9035949707031,
+                0.8466768860816956
+              ]
+            ]
+          },
+          {
+            "pID": 57,
+            "bbox_iou_with_r31_row": 0.713456412963467,
+            "class_id": 0,
+            "bbox_xyxy": [
+              568.3477172851562,
+              448.3560791015625,
+              622.2258911132812,
+              470.84356689453125
+            ],
+            "confidence": 0.24720634520053864,
+            "keypoints": [
+              [
+                571.9229736328125,
+                466.734130859375,
+                0.7700163125991821
+              ],
+              [
+                616.72021484375,
+                468.19964599609375,
+                0.6321626305580139
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "image_id": "new_000088",
+      "split": "val",
+      "row": 51,
+      "status": "held_for_visible_extent_evidence",
+      "canonical_mutation": false,
+      "request_origin": "xmin should move x negative.",
+      "before_line": "0 0.616992187500 0.64572222 0.063671875000 0.03591667 0.00000000 0.00000000 0 0.64786719 0.65848611 2",
+      "after_line": "0 0.616992187500 0.64572222 0.063671875000 0.03591667 0.00000000 0.00000000 0 0.64786719 0.65848611 2",
+      "updates_pixels": {},
+      "before_pixels": {
+        "bbox_xyxy": [
+          748.9999999999999,
+          451.9899972,
+          830.5,
+          477.8499996
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0
+        ],
+        "right": [
+          829.2700032,
+          474.1099992,
+          2
+        ]
+      },
+      "after_pixels": {
+        "bbox_xyxy": [
+          748.9999999999999,
+          451.9899972,
+          830.5,
+          477.8499996
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0
+        ],
+        "right": [
+          829.2700032,
+          474.1099992,
+          2
+        ]
+      },
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000088.png",
+      "source_image_sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-24-r31/labels/val/new_000088.txt",
+      "source_label_sha256": "b8cfdb0ff514911ed8eb0881c4a3fc186df130c29983774cef7cd748658f4d50",
+      "original_pixels_inspected": true,
+      "crop_bounds_xyxy": [
+        715,
+        428,
+        848,
+        494
+      ],
+      "crop_paths": {
+        "raw_native": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000088-r51-raw-native.png",
+        "raw": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000088-r51-raw.png",
+        "before": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000088-r51-before.png",
+        "proposed": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000088-r51-proposed.png",
+        "prediction_cues": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000088-r51-prediction_cues.png",
+        "comparison": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000088-r51-comparison.png"
+      },
+      "reason": "The current left box edge x749 lies behind the jaw. In the unmarked original the exposed right fragment belongs to this cassette, but no identifiable own-front or own-rim fragment to the left of x749 can be assigned to this target confidently. Material at x715–740 belongs to the adjacent column on the other side of the dark rack divider. Extending left would infer a hidden extent. Retain the exact line until the user marks the leftmost visible piece intended; the left keypoint remains unavailable.",
+      "coordinate_uncertainty": {
+        "left_extent": "physical ownership of any proposed extension is unresolved"
+      },
+      "retained_fields": [
+        "entire_line"
+      ],
+      "prediction_cue": {
+        "source_pr": 109,
+        "arm": "candidate",
+        "threshold": 0.13,
+        "checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+        "prediction_cache_path": "/workspace/scratch/31f5e28106bc/dl/tmp/pr110-eval/inference/pr109_candidate/predictions.jsonl",
+        "prediction_cache_sha256": "79a6448b60026125633e33ed84b3948a300ee4f9198788003a38b0cd77788ea6",
+        "identity_rule": "pID equals exact per-image predictions array index plus 1; no reordering.",
+        "mapping_method": "Original-pixel identity plus same-image geometric overlap; cue links do not replace scored one-to-one detection matching.",
+        "outputs": [
+          {
+            "pID": 56,
+            "bbox_iou_with_r31_row": 0.5904071160638533,
+            "class_id": 0,
+            "bbox_xyxy": [
+              779.415283203125,
+              452.1722412109375,
+              833.051025390625,
+              477.2705078125
+            ],
+            "confidence": 0.7262102365493774,
+            "keypoints": [
+              [
+                773.2567138671875,
+                468.24163818359375,
+                0.7373328804969788
+              ],
+              [
+                831.1218872070312,
+                472.496826171875,
+                0.7205513119697571
+              ]
+            ]
+          },
+          {
+            "pID": 57,
+            "bbox_iou_with_r31_row": 0.8331584107253641,
+            "class_id": 0,
+            "bbox_xyxy": [
+              751.807861328125,
+              449.5033874511719,
+              833.11181640625,
+              477.1402282714844
+            ],
+            "confidence": 0.7004556655883789,
+            "keypoints": [
+              [
+                756.1151733398438,
+                466.51385498046875,
+                0.8779054880142212
+              ],
+              [
+                830.1785278320312,
+                473.5633544921875,
+                0.8502181768417358
+              ]
+            ]
+          }
+        ]
+      },
+      "bounded_question": "Which visible piece of row51 lies left of x749: can you mark its leftmost own rim/face pixel? The adjacent-column front must not be included."
+    },
+    {
+      "image_id": "new_000010",
+      "split": "val",
+      "row": 14,
+      "status": "retain_hidden_point",
+      "canonical_mutation": false,
+      "request_origin": "Left point is around PR109 prediction.",
+      "before_line": "0 0.525390625000 0.665972222 0.116406250000 0.045833333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_line": "0 0.525390625000 0.665972222 0.116406250000 0.045833333 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "updates_pixels": {},
+      "before_pixels": {
+        "bbox_xyxy": [
+          598.0,
+          462.99999995999997,
+          747.0,
+          495.99999971999995
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "after_pixels": {
+        "bbox_xyxy": [
+          598.0,
+          462.99999995999997,
+          747.0,
+          495.99999971999995
+        ],
+        "left": [
+          0.0,
+          0.0,
+          0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0
+        ]
+      },
+      "source_image_path": "/workspace/scratch/31f5e28106bc/dl/data/images/val/new_000010.png",
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "source_label_path": "/workspace/scratch/31f5e28106bc/dl/data/reviews/fronts-2026-11-24-r31/labels/val/new_000010.txt",
+      "source_label_sha256": "161e80687c1820c958aacf1c171ff0c178a1c2cf6b4eeabd50becf459cc69946",
+      "original_pixels_inspected": true,
+      "crop_bounds_xyxy": [
+        582,
+        448,
+        750,
+        509
+      ],
+      "crop_paths": {
+        "raw_native": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000010-r14-raw-native.png",
+        "raw": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000010-r14-raw.png",
+        "before": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000010-r14-before.png",
+        "proposed": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000010-r14-proposed.png",
+        "prediction_cues": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000010-r14-prediction_cues.png",
+        "comparison": "/workspace/scratch/31f5e28106bc/tmp/r32-points-occlusion/new_000010-r14-comparison.png"
+      },
+      "reason": "Both exact overlapping PR109 outputs put their left point on the jaw: p38 at (604.52,486.39), p36 at (604.58,495.79). The original pixels show the jaw body and its rectangular recess at these locations, not a visible cassette front-corner turn. The central window exposes part of the cassette but not its left corner. Retain the exact v0 triplet rather than infer a hidden corner from the model.",
+      "coordinate_uncertainty": {
+        "left_visibility": "no identifiable visible corner at either recovered cue"
+      },
+      "retained_fields": [
+        "entire_line"
+      ],
+      "prediction_cue": {
+        "source_pr": 109,
+        "arm": "candidate",
+        "threshold": 0.13,
+        "checkpoint_sha256": "99a0004f43ccfb524dbf9beb6fecc6f0b71085762575e076e2b87390a0d0f54b",
+        "prediction_cache_path": "/workspace/scratch/31f5e28106bc/dl/tmp/pr110-eval/inference/pr109_candidate/predictions.jsonl",
+        "prediction_cache_sha256": "79a6448b60026125633e33ed84b3948a300ee4f9198788003a38b0cd77788ea6",
+        "identity_rule": "pID equals exact per-image predictions array index plus 1; no reordering.",
+        "mapping_method": "Original-pixel identity plus same-image geometric overlap; cue links do not replace scored one-to-one detection matching.",
+        "outputs": [
+          {
+            "pID": 36,
+            "bbox_iou_with_r31_row": 0.6666484199063942,
+            "class_id": 0,
+            "bbox_xyxy": [
+              596.81298828125,
+              464.48260498046875,
+              726.21142578125,
+              504.5556640625
+            ],
+            "confidence": 0.2737849950790405,
+            "keypoints": [
+              [
+                604.5797119140625,
+                495.7876892089844,
+                0.8788180351257324
+              ],
+              [
+                723.2789306640625,
+                493.4853820800781,
+                0.8131632208824158
+              ]
+            ]
+          },
+          {
+            "pID": 38,
+            "bbox_iou_with_r31_row": 0.7972441893431909,
+            "class_id": 0,
+            "bbox_xyxy": [
+              596.7721557617188,
+              459.2947998046875,
+              733.1755981445312,
+              495.2137451171875
+            ],
+            "confidence": 0.23398031294345856,
+            "keypoints": [
+              [
+                604.5153198242188,
+                486.3887634277344,
+                0.8854898810386658
+              ],
+              [
+                728.4271240234375,
+                481.9797668457031,
+                0.8537183403968811
+              ]
+            ]
+          }
+        ]
+      },
+      "bounded_question": "If you see a different exposed left corner for row14, please mark that point on the original crop; the two recovered model cues lie on the jaw."
+    }
+  ]
+}
