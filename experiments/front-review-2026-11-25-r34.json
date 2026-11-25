@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "kind": "baomai-r34-fronts-training-protocol",
+  "experiment_id": "front-review-r34",
+  "status": "prospectively_prepared",
+  "training_readiness": "ready_for_controlled_incremental_experiment",
+  "full_dataset_certified": false,
+  "candidate": {
+    "path": "data/candidates/front-review-2026-11-25-r34/manifest.json",
+    "sha256": "e1af61c80d86a15dce445c546d7c4b2b7b7f8c235e6ca03e9e45eea530b9318d"
+  },
+  "source_candidate": {
+    "path": "data/reviews/fronts-2026-11-25-r34/manifest.json",
+    "sha256": "79e41ce201771959c66b7a7d5f841e97b42f27690c6e1b962e8a4c99eccfc948"
+  },
+  "source_review_status": {
+    "path": "results/review/front-review-20261125-r34/review-status.json",
+    "sha256": "e0382ea186941244117c37f516111df97b0781b43a5adca80f1c01a1c89f37fe"
+  },
+  "control": {
+    "manifest": "data/candidates/front-review-2026-11-25-r33/manifest.json",
+    "sha256": "a268f6a18237f290886325a51cacd42e25f846ad1dbf50e92b5445a8a184439a"
+  },
+  "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+  "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+  "initial_checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+  "task_scope": "Visible cassette front material and locatable actual lower-front corners; no inferred hidden targets.",
+  "unresolved_case_ids": [
+    "r6-a-04-new_000015"
+  ],
+  "retained_legacy_image_ids": [
+    "new_000015"
+  ],
+  "changed_images_vs_control": [
+    "new_000003",
+    "new_000006",
+    "new_000013",
+    "new_000034",
+    "new_000040",
+    "new_000066"
+  ],
+  "complete_review_counts": {
+    "train": {
+      "images": 137,
+      "objects": 3786,
+      "visible_endpoints": 6837,
+      "missing_endpoints": 735,
+      "empty_images": 13
+    },
+    "val": {
+      "images": 20,
+      "objects": 661,
+      "visible_endpoints": 1225,
+      "missing_endpoints": 97,
+      "empty_images": 3
+    }
+  },
+  "roles": {
+    "reference": {
+      "arm": "reference",
+      "supervision": "r33_predecessor_control",
+      "candidate_manifest": "data/candidates/front-review-2026-11-25-r34/manifest.json",
+      "candidate_manifest_sha256": "e1af61c80d86a15dce445c546d7c4b2b7b7f8c235e6ca03e9e45eea530b9318d",
+      "candidate_id": "front-review-2026-11-25-r34",
+      "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+      "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6836,
+          "missing_endpoints": 732,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "display_name": "R33 supervision"
+    },
+    "candidate": {
+      "arm": "candidate",
+      "supervision": "accepted_fronts_treatment",
+      "candidate_manifest": "data/candidates/front-review-2026-11-25-r34/manifest.json",
+      "candidate_manifest_sha256": "e1af61c80d86a15dce445c546d7c4b2b7b7f8c235e6ca03e9e45eea530b9318d",
+      "candidate_id": "front-review-2026-11-25-r34",
+      "recipe_id": "reviewed-incremental-fronts-seed46-v1",
+      "recipe_sha256": "f18e0a813a1057e1b3ab3a44ea3ce9b2a3e7673cc2bf04ca09b394bfdd8c51b8",
+      "counts": {
+        "train": {
+          "images": 137,
+          "objects": 3784,
+          "visible_endpoints": 6837,
+          "missing_endpoints": 731,
+          "empty_images": 13
+        },
+        "val": {
+          "images": 20,
+          "objects": 664,
+          "visible_endpoints": 1227,
+          "missing_endpoints": 101,
+          "empty_images": 3
+        }
+      },
+      "display_name": "R34 supervision"
+    }
+  },
+  "execution": {
+    "seed": 46,
+    "epochs": 30,
+    "initialization": "original_epoch173_independently_for_each_arm",
+    "checkpoint_selection": "final_epoch",
+    "checkpoint_path": "fit/weights/last.pt",
+    "resource_trial": {
+      "role": "candidate",
+      "batches": 4,
+      "initializes_full_runs": false
+    },
+    "same_runtime_required": true,
+    "automatic_promotion": false,
+    "recommended_gpu": "NVIDIA L4 or A100",
+    "historical_runtime_match_required": false,
+    "expected_batches": 1050,
+    "expected_images": 4110,
+    "expected_optimizer_steps": 78,
+    "loss": "unmodified_native_Pose26",
+    "partial_box_factor": 1
+  },
+  "evaluation": {
+    "primary_box_confidence": 0.13,
+    "endpoint_confidence": 0.5,
+    "imgsz": 1280,
+    "nms_iou": 0.7,
+    "matching_iou": 0.5,
+    "radii_px": [
+      5,
+      10
+    ],
+    "primary_reference": "data/references/sequence-refined-reference-2026-11-18/manifest.json",
+    "primary_reference_sha256": "0de64be3797dce2e43d4cb98d09620eab969bb95725ed9e75682dcfcd53c7f96",
+    "primary_counts": {
+      "images": 20,
+      "objects": 666,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 105,
+      "empty_images": 3
+    },
+    "diagnostic_reference": "data/references/visible-front-completion-2026-11-14/manifest.json",
+    "diagnostic_reference_sha256": "bbc1dca71f7a3e0fe2f54a4391962e562c3353a62533eb233b697819edcc64b1",
+    "diagnostic_counts": {
+      "images": 20,
+      "objects": 663,
+      "visible_endpoints": 1227,
+      "missing_endpoints": 99,
+      "empty_images": 3
+    },
+    "diagnostic_reference_required": true,
+    "unresolved_reference_rows": [
+      {
+        "image_id": "new_000007",
+        "row": 7,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 7
+      },
+      {
+        "image_id": "new_000007",
+        "row": 14,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 14
+      },
+      {
+        "image_id": "new_000008",
+        "row": 36,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 36
+      },
+      {
+        "image_id": "new_000009",
+        "row": 8,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 8
+      },
+      {
+        "image_id": "new_000010",
+        "row": 30,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 30
+      },
+      {
+        "image_id": "new_000011",
+        "row": 15,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 15
+      },
+      {
+        "image_id": "new_000057",
+        "row": 1,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 1
+      },
+      {
+        "image_id": "new_000059",
+        "row": 1,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred.",
+        "parent_row": 1
+      }
+    ],
+    "diagnostic_unresolved_reference_rows": [
+      {
+        "image_id": "new_000007",
+        "row": 7,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000007",
+        "row": 14,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000008",
+        "row": 36,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000009",
+        "row": 8,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000009",
+        "row": 56,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000010",
+        "row": 13,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000010",
+        "row": 14,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000010",
+        "row": 30,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000011",
+        "row": 15,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000057",
+        "row": 1,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000059",
+        "row": 1,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000086",
+        "row": 57,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      },
+      {
+        "image_id": "new_000088",
+        "row": 57,
+        "status": "held",
+        "reason": "Physical front identity, seam ownership, or actual target-surface boundary remains unresolved after fresh full-context and original-pixel review. Existing label retained; no hidden corner inferred."
+      }
+    ],
+    "training_validation_unchanged": true,
+    "references_reported_separately": true,
+    "current_review_reference": {
+      "path": "data/reviews/fronts-2026-11-25-r34/manifest.json",
+      "sha256": "79e41ce201771959c66b7a7d5f841e97b42f27690c6e1b962e8a4c99eccfc948"
+    },
+    "current_review_reference_is_exploratory": true,
+    "PR35_checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+    "decision": "Compare the fresh R33-supervision and R34-supervision arms and retained PR35 on unchanged frozen 666-front primary and 663-front historical references. Report misses, unmatched outputs, duplicates, empty scenes, zero/one/two-locatable-corner groups and both-corner successes at 5/10 original-image pixels with eligible misses retained in denominators. Report the separately identified current R34 review as exploratory only. Inspect gained/lost identities and the exact training delta. Conflicting reference rankings remain inconclusive; no automatic promotion or new-session reliability claim follows from this run.",
+    "current_review_counts": {
+      "images": 20,
+      "objects": 661,
+      "visible_endpoints": 1225,
+      "missing_endpoints": 97,
+      "empty_images": 3
+    },
+    "preserved_r32_reference": {
+      "path": "data/reviews/fronts-2026-11-25-r32/manifest.json",
+      "sha256": "bc2e14ffeb1608be55ae39c5082ac8bed5d769b7bfc098a2592684fdb2ed654f"
+    },
+    "preserved_r33_reference": {
+      "path": "data/reviews/fronts-2026-11-25-r33/manifest.json",
+      "sha256": "291f6897f9873225af19f05f26a2aad13197179458772570a286c04f5535f144"
+    }
+  },
+  "limits": [
+    "The reference arm uses R33 training supervision; the candidate uses eligible R34 supervision. Both are freshly trained together from the original epoch-173 initializer. The comparison isolates the exact hash-bound training-input delta, after the accepted user-named follow-up review in original pixels.",
+    "Development amendments do not enter trainer supervision. Original trainer validation remains 664 fronts; frozen 666/663 references are unchanged. The current R34 review is separately identified exploratory evidence only. Training changes are original-pixel boundary/corner corrections, including only the explicitly audited 066:14 visible-left-corner restoration when supported; no hidden point is inferred.",
+    "Use L4 or A100. Both fresh arms must have the same recorded runtime. Preserve seed 46, 30 epochs, batch 4, input 1280, FP32, AdamW and final-epoch selection. The unmodified native Pose26 loss is used in both arms. PR113 failed the prespecified clean-improvement screen; partial-box factor2 is discontinued. No threshold/seed/epoch search and no automatic promotion."
+  ],
+  "excluded_training_image_ids": [
+    "old_000003",
+    "old_000004",
+    "old_000007",
+    "old_000010",
+    "old_000013",
+    "old_000018",
+    "old_000021",
+    "old_000022",
+    "old_000027",
+    "old_000028",
+    "old_000038",
+    "old_000039",
+    "old_000042",
+    "old_000046",
+    "old_000050",
+    "old_000051",
+    "old_000054",
+    "old_000057",
+    "old_000061",
+    "old_000065",
+    "old_000068",
+    "old_000069",
+    "old_000073",
+    "old_000077",
+    "old_000079",
+    "old_000087",
+    "old_000089",
+    "old_000093",
+    "old_000097",
+    "old_000100",
+    "old_000101"
+  ],
+  "training_input_delta": {
+    "path": "results/review/front-review-20261125-r34/training-input-delta.json",
+    "sha256": "16e3ad8cddcafe81ba3302768c4142ae6c6dfd352f98ec02886f9dddc5f8a1e9"
+  },
+  "created_date": "2026-11-25",
+  "timezone": "Asia/Hong_Kong",
+  "hypothesis": "Does the exact accepted R34 training-annotation delta improve observed-front localization when both arms use the unchanged native loss and the same fixed seed46 recipe?",
+  "prediction_semantics": "Hidden-corner estimates remain allowed at inference. A missing annotation is unscorable; it is not proof that a predicted point is physically visible or a false positive.",
+  "prior_decision": {
+    "result_pr": "https://github.com/Siuuuers/dl/pull/113",
+    "immediate_predecessor_result_pr": "https://github.com/Siuuuers/dl/pull/114",
+    "r34_design": "Reviewed R33 versus R34 supervision only; no new loss, architecture, sampling or inference change.",
+    "seed47_frozen666_control_candidate": {
+      "misses": [
+        32,
+        33
+      ],
+      "unmatched": [
+        105,
+        100
+      ],
+      "duplicates": [
+        26,
+        23
+      ],
+      "pair5": [
+        524,
+        522
+      ],
+      "pair10": [
+        577,
+        576
+      ],
+      "pairs": 584
+    },
+    "pr114_r33_reference_control_candidate": {
+      "misses": [
+        15,
+        15
+      ],
+      "unmatched": [
+        92,
+        90
+      ],
+      "duplicates": [
+        32,
+        30
+      ],
+      "pair5": [
+        571,
+        571
+      ],
+      "pair10": [
+        582,
+        582
+      ],
+      "pairs": 583
+    },
+    "pr114_frozen666_control_candidate": {
+      "misses": [
+        36,
+        35
+      ],
+      "unmatched": [
+        108,
+        105
+      ],
+      "duplicates": [
+        30,
+        30
+      ],
+      "pair5": [
+        516,
+        516
+      ],
+      "pair10": [
+        573,
+        573
+      ],
+      "pairs": 584
+    },
+    "pr114_interpretation": "Accepted R33 supervision reduces two duplicate outputs under the R33 review without changing misses or both-corner success. Frozen 666 recovers one miss without a corner-pair gain. This is a limited annotation comparison, not a promotion or new-session reliability claim.",
+    "stop_partial_box_weight_escalation": true,
+    "retained_selected_checkpoint": "PR35",
+    "inference_default": "one-to-many, NMS0.70, confidence0.13",
+    "interpretation": "Neither seed46 nor seed47 gives a clean favorable box-weighting trade-off. Stronger NMS and the one-to-one head also lose recall in exploratory checks; keep inference defaults."
+  }
+}
