@@ -1,0 +1,7 @@
+# R45 reconstruction (new source, not the lost patch)
+
+The original notebook is retained in notebooks/recovery. This replacement consumes only published inputs: R37's exact effective overlay, the original epoch173 checkpoint, and the complete R44 frame_0383 from the existing verified archive. No additional photos/weights/PDFs are committed. The original 137 training photos and 20 trainer-validation photos remain; candidate adds a single photo with 43 fronts. Other held photos remain excluded.
+
+Both arms use the existing pinned native seed46 recipe, 30 epochs, batch4, 1280, FP32, AdamW, and final last.pt. Before full training the script checks actual loader membership and completes a discarded four-batch resource trial. It measures actual image presentations, batches, optimizer steps, finite gradients and parameter updates. Raw NMS predictions and the existing postclip filter are scored separately against fixed R38, frozen666, historical663 reference sets. No automatic model promotion or independent-session accuracy claim. Both arms run in matching runtime; completed arms are checked by hash on reuse.
+
+This source is newly reconstructed, not the original tested implementation. No full GPU run or real-loader smoke test has been performed on this reconstruction in the authoring environment. The first Colab preflight and trial are the validation gates; stop on any failure and preserve logs. The result ZIP is a reconstruction-specific handoff.
