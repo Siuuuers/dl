@@ -1,0 +1,96 @@
+{
+  "kind": "r42-artifact-verification",
+  "capsule": {
+    "verification": {
+      "passed": true,
+      "scope": "Artifact integrity, exact operation replay, stable identities, declared whole-image gates and strict geometry; physical decisions remain assistant visual review.",
+      "counts": {
+        "baseline_rows": 507,
+        "candidate_rows": 507,
+        "retained_source_rows": 340,
+        "replaced_source_rows": 166,
+        "deleted_source_rows": 1,
+        "added_rows": 1,
+        "held_source_rows": 55,
+        "corner_coordinate_slots_changed": 63,
+        "corner_availability_slots_changed": 6
+      },
+      "annotation_complete_ids": [
+        "frame_0383",
+        "frame_0146",
+        "frame_0371"
+      ],
+      "held_image_ids": [
+        "frame_0001",
+        "frame_0160",
+        "frame_0038",
+        "frame_0074",
+        "frame_0128",
+        "frame_0178",
+        "frame_0225",
+        "frame_0280",
+        "frame_0301"
+      ],
+      "human_review_performed": false,
+      "training": false,
+      "promotion": false
+    },
+    "archive_sha256": "716f81f9b72fffccfb52120d90b30a50b3d605ebd649736ed1f5ad189b4cb2ef",
+    "archive_bytes": 4181563,
+    "members": 65
+  },
+  "notebook": {
+    "path": "notebooks/baomai_front_review_r42.ipynb",
+    "sha256": "46141bdc026e34cef679dcaf95dc066812f64e19eb08dbc6c9b1386a1db7a5c3",
+    "schema_validated": true,
+    "all_code_cells_parse": true,
+    "cpu_local_archive_verification_cell_executed": true,
+    "display_cell_browser_execution": false
+  },
+  "independent_code_review": {
+    "script": "/workspace/scratch/f96fc0b86985/dl-r42/scripts/review_front_mining_r42.py",
+    "script_sha256": "a81fbe0059de9e9e11df69335c31a0ad3b0a2deee932a0547d14d186a5ab36a8",
+    "manifest_sha256": "5fad09d5e1922a4b176200459bcd53a698577472feb05a03d1be329aa45896b7",
+    "repo_edits": [
+      "scripts/review_front_mining_r42.py"
+    ],
+    "counts_verified": {
+      "baseline_rows": 507,
+      "candidate_rows": 507,
+      "retained_source_rows": 340,
+      "replaced_source_rows": 166,
+      "deleted_source_rows": 1,
+      "added_rows": 1,
+      "held_source_rows": 55,
+      "corner_coordinate_slots_changed": 63,
+      "corner_availability_slots_changed": 6
+    },
+    "fixed_issues": [
+      "Candidate exports now require exact relative TXT paths and exact proposal bytes, not filename stems.",
+      "Portable check compares stored verification to replay and HTML to one canonical renderer.",
+      "Typed hold-reason/field lists prevent verified metadata from breaking the viewer; identity/count/boolean types tightened.",
+      "Empty filters clear stale row identity/tokens; image-load guards avoid stale selection/render races; label whitespace is parsed consistently.",
+      "Five case PNGs are bound to diagnostic manifest identity, case paths and SHA256, retained as separate files, and embedded for srcdoc/standalone rendering."
+    ],
+    "adversarial_checks_passed": 31,
+    "adversarial_checks_total": 31,
+    "portable_verification": "Passed with Python -S from /tmp using the packaged review.py",
+    "ui_fallback": {
+      "mode": "Node VM with minimal DOM adapters and real @napi-rs/canvas image decoding/drawing; not browser/CSS rendering",
+      "frames": 12,
+      "filter_combinations": 36,
+      "row_renderings": 508,
+      "embedded_pngs": 5
+    },
+    "browser_render_performed": false,
+    "browser_limitation": "Installed Chromium wrapper has no executable; Playwright cache has no browser. No installation or remote session used.",
+    "trust_boundary": "Internal checks detect inconsistent artifacts. Authenticity still depends on the trusted published archive/manifest hashes; coordinated rewriting is not human visual approval.",
+    "evidence_files": [
+      "/workspace/scratch/f96fc0b86985/pr127/review-a/code-review/adversarial-before.json",
+      "/workspace/scratch/f96fc0b86985/pr127/review-a/code-review/adversarial-after.json",
+      "/workspace/scratch/f96fc0b86985/pr127/review-a/code-review/dom-qa.json"
+    ],
+    "script_frozen": true
+  },
+  "unchanged_active_data_and_model": true
+}
