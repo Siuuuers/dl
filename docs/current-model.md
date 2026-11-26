@@ -2,9 +2,9 @@
 
 26 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected under the established frozen-reference gate.** The latest work is [R39: partial-front diagnosis and clipped-box suppression](front-diagnosis-r39.md), following the accepted [R38 development amendments](front-review-r38.md) and returned PR123 model. The R39 notebook replays completed CPU diagnosis; the old R28 notebook below is historical, not the next run.
+**PR35 remains selected under the established frozen-reference gate.** The latest work is [R40: fewer unmatched outputs and ordinary folder filtering](unmatched-output-r40.md), following the accepted [R38 development amendments](front-review-r38.md), returned PR123 model and [R39 diagnosis](front-diagnosis-r39.md). PR125 successfully returned the identical R39 CPU replay archive. The old R28 notebook below is historical, not the next run.
 
-PR123 has 11 misses and 94 unmatched outputs on accepted R38, compared with PR35's 40 and 114. The historical frozen666 ranking reverses (PR35:18/80; PR123:35/106). Current-target performance and historical compatibility remain separate; neither reference is a new capture session. R39's clipped-box suppression reduces PR123 unmatched outputs to85 without changing matches on either reference, but does not automatically promote PR123 or change inference defaults.
+PR123 has 11 misses and 94 unmatched outputs on accepted R38, compared with PR35's 40 and 114. The historical frozen666 ranking reverses (PR35:18/80; PR123:35/106). Current-target performance and historical compatibility remain separate; neither reference is a new capture session. The optional `--postclip-nms` folder flag now implements R39's fixed 0.70 clipped-box suppression. A fresh all-20-image CPU run exactly reproduced 85 unmatched outputs with every existing match and corner outcome preserved. It does not automatically promote PR123 or change inference defaults.
 
 ## Historical R28 handoff
 

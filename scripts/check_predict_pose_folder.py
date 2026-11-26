@@ -280,6 +280,89 @@ class FolderChecks(unittest.TestCase):
         self.assertEqual(self.summary()["inference"], {**original, "iou": 0.68, "conf": 0.25})
         self.assertEqual(runner.INFERENCE, original)
 
+    def test_postclip_nms_is_opt_in_and_keeps_primary_ids_in_outputs(self):
+        self.image("frame.png")
+        raw = [detection(), detection(), detection([[0.0, 0.0, 0.9], [0.9, 0.9, 0.4]])]
+        raw[0]["confidence"], raw[1]["confidence"], raw[2]["confidence"] = 0.7, 0.95, 0.8
+        raw[2]["bbox_xyxy"] = [0.0, 0.0, 1.0, 1.0]
+        original = copy.deepcopy(raw)
+        expected = runner.describe_predictions(raw, 12, 10, 0.5)
+
+        def predict(rgb):
+            return {"predictions": raw, "stage_ms": {"inference": 1.0}, "predict_call_wall_ms": 2.0}
+
+        run = runner.run
+
+        def legacy_namespace(args):
+            del args.postclip_nms
+            return run(args)
+
+        with patch.object(runner, "postclip_nms", wraps=runner.postclip_nms) as filter_boxes, \
+                patch.object(runner, "run", side_effect=legacy_namespace), \
+                patch("PIL.ImageDraw.ImageDraw.text", autospec=True) as draw_text:
+            code, _ = self.invoke(predictor=predict)
+        self.assertEqual(code, 0)
+        filter_boxes.assert_not_called()
+        self.assertEqual(self.records()[0]["predictions"], expected)
+        self.assertNotIn("postclip_nms", self.records()[0])
+        self.assertNotIn("postclip_nms", self.summary())
+        self.assertEqual([call.args[2] for call in draw_text.call_args_list], ["1", "2", "3"])
+
+        self.output = self.root / "filtered"
+        with patch("PIL.ImageDraw.ImageDraw.text", autospec=True) as draw_text:
+            code, prepare = self.invoke(predictor=predict, extra=("--postclip-nms", "--nms-iou", "0.68"))
+        self.assertEqual(code, 0)
+        self.assertEqual(prepare.call_args.kwargs, {"conf": 0.25, "nms_iou": 0.68})
+        record, summary = self.records()[0], self.summary()
+        self.assertEqual(record["predictions"], [{**expected[i], "primary_prediction_id": i + 1} for i in (1, 2)])
+        self.assertEqual(record["postclip_nms"]["retained_primary_prediction_ids"], [2, 3])
+        self.assertEqual(record["postclip_nms"]["suppressed_predictions"], [
+            {"primary_prediction_id": 1, "suppressor_primary_prediction_id": 2,
+             "postclip_prediction_iou": 1.0, "prediction": expected[0]}])
+        self.assertEqual(record["postclip_nms"]["iou_threshold"], 0.70)
+        self.assertEqual(summary["postclip_nms"]["iou_threshold"], 0.70)
+        self.assertEqual(summary["inference"]["iou"], 0.68)
+        self.assertEqual((summary["prediction_count"], summary["displayed_endpoints"],
+                          summary["postclip_nms"]["primary_prediction_count"],
+                          summary["postclip_nms"]["suppressed_prediction_count"]), (2, 3, 3, 1))
+        self.assertEqual([call.args[2] for call in draw_text.call_args_list], ["2", "3"])
+        with (self.output / "summary.csv").open(newline="") as stream:
+            self.assertEqual(next(csv.DictReader(stream))["prediction_count"], "2")
+        self.assertEqual(raw, original)
+
+    def test_postclip_nms_reproduces_all_saved_r39_outputs_and_suppression_ids(self):
+        root = Path(runner.__file__).resolve().parents[1]
+        directory = root / "results/evaluation/pr123-r39-diagnosis-20261126"
+        primary = [json.loads(line) for line in (
+            root / "results/evaluation/pr123-r37-20261126/predictions/candidate.jsonl").read_text().splitlines()][1:]
+        expected = {row["image_id"]: row for row in
+                    (json.loads(line) for line in (directory / "clipped-nms-predictions.jsonl").read_text().splitlines()[1:])}
+        probe = json.loads((directory / "clip-nms-probe.json").read_text())
+        original, inference = copy.deepcopy(primary), copy.deepcopy(runner.INFERENCE)
+        totals, dropped = [0, 0, 0], []
+        for row in primary:
+            with self.subTest(image=row["image_id"]):
+                described = runner.describe_predictions(row["predictions"], row["width"], row["height"], 0.5)
+                selected, audit = runner.postclip_nms(described)
+                saved = expected[row["image_id"]]
+                self.assertEqual(audit["retained_primary_prediction_ids"], saved["primary_prediction_ids"])
+                self.assertEqual(selected, [{**prediction, "primary_prediction_id": identity} for prediction, identity in zip(
+                    runner.describe_predictions(saved["predictions"], row["width"], row["height"], 0.5),
+                    saved["primary_prediction_ids"])])
+                recovered = {p["primary_prediction_id"]: {k: v for k, v in p.items() if k != "primary_prediction_id"}
+                             for p in selected}
+                recovered.update({p["primary_prediction_id"]: p["prediction"] for p in audit["suppressed_predictions"]})
+                self.assertEqual([recovered[i + 1] for i in range(len(described))], described)
+                totals = [a + b for a, b in zip(totals, (len(described), len(selected), len(audit["suppressed_predictions"])))]
+                dropped.extend((row["image_id"], item["primary_prediction_id"], item["suppressor_primary_prediction_id"])
+                               for item in audit["suppressed_predictions"])
+        self.assertEqual(len(primary), 20)
+        self.assertEqual(totals, [737, 728, 9])
+        self.assertEqual(dropped, [(item["image_id"], item["primary_prediction_id"], item["suppressor_primary_prediction_id"])
+                                   for item in probe["suppressed_outputs"]])
+        self.assertEqual(primary, original)
+        self.assertEqual(runner.INFERENCE, inference)
+
     def test_predictor_uses_selected_nms_for_warmup_and_each_image(self):
         import numpy as np
         rgb = Image.fromarray(np.full((10, 12, 3), 255, dtype=np.uint8))
