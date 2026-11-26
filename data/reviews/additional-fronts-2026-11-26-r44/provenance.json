@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "round": 44,
+  "review_date": "2026-11-26",
+  "base_work_commit": "a4ead2ee8de56a5e9e125947b78d09b1fce84b92",
+  "source_return": {
+    "pr": "https://github.com/Siuuuers/dl/pull/131",
+    "commit": "7b6c312c492a65a216a678b855f62cb63ee2bdd4",
+    "archive_sha256": "ae3d7310fd6b2d3a623bd7b8760dc9d6ffc75e6df1be28bbf0a2555fdb380d6e",
+    "bytes": 4293004,
+    "members": 73,
+    "byte_identical_to_published_r43": true
+  },
+  "scope": {
+    "original_photographs": 12,
+    "current_fronts_visually_inspected": 507,
+    "stable_identities_preserved": 508,
+    "all_320_additional_photos_reviewed": false,
+    "training_performed": false,
+    "inference_performed": false,
+    "human_review_performed": false,
+    "active_dataset_modified": false,
+    "model_promoted": false
+  },
+  "latest_counts": {
+    "reviewed_rows": 507,
+    "amended_rows": 100,
+    "retained_rows": 407,
+    "changed_tokens": 262,
+    "corner_coordinate_slots_changed": 35,
+    "box_boundaries_changed": 122,
+    "added_rows": 0,
+    "deleted_rows": 0,
+    "visibility_changes": 0,
+    "hold_changes": 280,
+    "newly_held_rows": 273,
+    "newly_held_fields": 279,
+    "resolved_fields": 0
+  },
+  "complete_candidate_image_ids": [
+    "frame_0383"
+  ],
+  "held_image_ids": [
+    "frame_0001",
+    "frame_0160",
+    "frame_0038",
+    "frame_0074",
+    "frame_0128",
+    "frame_0146",
+    "frame_0178",
+    "frame_0225",
+    "frame_0280",
+    "frame_0301",
+    "frame_0371"
+  ],
+  "historical_guidance": {
+    "pr": "https://github.com/Siuuuers/dl/pull/30",
+    "title": "Apply reviewed reference annotations and replay all five models",
+    "head": "fda37dc364f8c6ea54ad23819482dbf21be0534a",
+    "policy_url": "https://github.com/Siuuuers/dl/blob/fda37dc364f8c6ea54ad23819482dbf21be0534a/docs/annotation-policy.md",
+    "policy_sha256": "3cda361ac4c5c9ba36b037e7e8968e0629eb3bca8d489c187beb8dd66e208a91",
+    "review_guide_url": "https://github.com/Siuuuers/dl/blob/fda37dc364f8c6ea54ad23819482dbf21be0534a/docs/reference-amendment-2026-11-10.md",
+    "front_definition": "One identifiable physical visible FRONT surface. Its illumination may be gray/dark. Tight axis-aligned box outer extents must follow its material, excluding rack, gripper, neighbor, broad upper surface and projecting tray. Internal background beside a sloped face or between owned patches is allowed.",
+    "current_rim_clarification": "The current front-labeling guide includes the same front's own molded frontal rim/short protrusion; it excludes the broad receding/perforated upper plane and another front's lip. This is a surface-ownership/orientation distinction, not an all-white or all-gray decision.",
+    "corner_definition": "Actual lower-front edge/side junction, ordered by imageX; not upper lip, tray corner, brightest stripe, arbitrary box corner or occluder edge. Each visible corner independently uses v2; unlocatable stays0 0 0.",
+    "concrete_examples": [
+      {
+        "case": "new_000054:17 / new_000056:1",
+        "decision": "Top362.94\u2192392 and258.99\u2192285 remove definite rack overhang above front."
+      },
+      {
+        "case": "new_000086\u2013090:4",
+        "decision": "Top moves outward to restore visible front omitted by thin lower-band boxes, while excluding projecting upper lip/roof."
+      }
+    ],
+    "earlier_editor_url": "https://github.com/an94-doll/embedding_vision/blob/6f7112a553e1759fc755bda1f18ee56cb34dd315/detect/data/data_last/picture/work/ANNOTATION_EDITOR.md",
+    "earlier_editor_scope": "Historical editor asks users to drag the visible front extent, mark actual long-edge turns, retain unlocatable points as0 0 0, and keep review/save separate from approved training inclusion. Its older frame83/front-lip convention does not supersede current actual lower-front definition."
+  },
+  "documented_training_lineage": [
+    {
+      "stage": "Original epoch173",
+      "checkpoint_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+      "images": {
+        "train": 137,
+        "val": 20
+      },
+      "dataset": "157 frozen PNG originals;126new+31old;zero frame_* IDs",
+      "initialization": "Official COCO YOLO26s-Pose, independent fresh training; explicitly not previous cassette epoch127",
+      "initialization_sha256": "a083adb42303728ae14c4bd6bd56d80da46f82fb2564dbd6f31dcc92ea321646",
+      "evidence": [
+        "https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/metadata/training_config.json",
+        "https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/metadata/model_card.json",
+        "https://github.com/Siuuuers/dl/blob/a4ead2ee8de56a5e9e125947b78d09b1fce84b92/data/manifest.json"
+      ],
+      "upstream_local_metadata_byte_equal": true
+    },
+    {
+      "stage": "Selected PR35 seed46 candidate",
+      "checkpoint_sha256": "420c00f73eeba24e587342400878b7d96371d3e745772113809aa705ec8163b1",
+      "initialization": "Exact original epoch173, resume=false",
+      "images": {
+        "train": 137,
+        "val": 20
+      },
+      "epochs": 30,
+      "training_images_processed": 4110,
+      "training_objects": 3771,
+      "training_label_change": "Five additions, six deletions and three retained-row modifications across eight existing training images; no new photos.",
+      "training_source": "23d7db97ca626f5591dbd26e699c0f23d318ee73",
+      "return_pr": "https://github.com/Siuuuers/dl/pull/35",
+      "return_head": "8e8bb99cabcb44ed0ec0acd14db911aa44013fd8",
+      "evidence": [
+        "https://github.com/Siuuuers/dl/blob/a4ead2ee8de56a5e9e125947b78d09b1fce84b92/docs/training-annotations-seed46.md",
+        "https://github.com/Siuuuers/dl/blob/a4ead2ee8de56a5e9e125947b78d09b1fce84b92/docs/annotation-confirmation-2026-11-11.md",
+        "https://github.com/Siuuuers/dl/blob/a4ead2ee8de56a5e9e125947b78d09b1fce84b92/docs/current-model.md"
+      ]
+    },
+    {
+      "stage": "PR123 R37 candidate used for R41 mining",
+      "checkpoint_sha256": "51d8a60f95b1b76097513d8b07732de5d5deed5e6e17251a28ddd28e6be1ebc1",
+      "initialization": "Both controlled arms independently initialize from exact original epoch173",
+      "images": {
+        "train": 137,
+        "val": 20
+      },
+      "training_image_prefixes": {
+        "new": 106,
+        "old": 31,
+        "frame": 0
+      },
+      "training_objects": 3784,
+      "epochs": 30,
+      "training_images_processed": 4110,
+      "training_delta_vs_control": "Two rows in two existing training photos; one box and one left point.",
+      "training_source": "86dea96b5294568dcc96f8912f6949d12433380c",
+      "return_pr": "https://github.com/Siuuuers/dl/pull/123",
+      "return_head": "6707967049c548396745e66127691028c17c20a4",
+      "evidence": [
+        "https://github.com/Siuuuers/dl/blob/a4ead2ee8de56a5e9e125947b78d09b1fce84b92/docs/front-review-r38.md",
+        "https://github.com/Siuuuers/dl/blob/a4ead2ee8de56a5e9e125947b78d09b1fce84b92/data/candidates/front-review-2026-11-26-r37/manifest.json",
+        "https://github.com/Siuuuers/dl/blob/a4ead2ee8de56a5e9e125947b78d09b1fce84b92/results/evaluation/pr123-r37-20261126/archive-audit.json",
+        "https://github.com/Siuuuers/dl/blob/a4ead2ee8de56a5e9e125947b78d09b1fce84b92/notebooks/baomai_front_mining_r41.ipynb"
+      ],
+      "note": "R37 excluded_training_image_ids refers to exclusion from new review treatment:31 old photos retain predecessor labels in both arms, and are still among137 training images. Do not misread the field as only106 training images."
+    }
+  ],
+  "additional_pool": {
+    "images": 320,
+    "current_use": "Frozen PR123 inference over320;12 selected for cumulative physical review, no new training so far.",
+    "source": "grasp-vision/box_in_basket/white_box_pose",
+    "source_commit": "9a6bf2432582af517d789c94eab2ac27e03a304b",
+    "upstream_other_use": "Intake records copies reused in dataset_0 and dataset_fall and separate basket_white_box training/evaluation runs; these are not evidence of exposure in the documented epoch173\u2192PR35/PR123 lineage.",
+    "input_contract": "white_box with2points is structurally compatible but physical box/corner semantics require qualification under cassette_front visible-front policy; class renaming alone is insufficient.",
+    "session_limit": "Capture/session grouping is not available. Exact file/RGB nonidentity from157 does not establish independent scenes. The mined selection is development material."
+  },
+  "upstream_branch_heads_rechecked": {
+    "baomai": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+    "grasp-vision": "9a6bf2432582af517d789c94eab2ac27e03a304b",
+    "yolo-pose": "72a99dafa1b14bfabd101e639b9ddb5f5aa38d52"
+  },
+  "user_example": {
+    "stable_id": "frame_0160:source:002",
+    "attachment_sha256": "e75c84643b62a1543c1b90f61eeadd6575935a54f0efeb686499f9fe318018f9",
+    "new_geometry_grounded_in_original_raster": true,
+    "outline_is_training_mask": false
+  },
+  "original_images": [
+    {
+      "image_id": "frame_0001",
+      "sha256": "3ed8b1a7318e64b3a74351b422d32183089fd9960c4c53288154410cd168ab1e",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0160",
+      "sha256": "08ac4c0da332a5ec6656878bde34bfcf0bbfc74ff0176edcfadf4600713608b6",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0383",
+      "sha256": "cad520edcb4299210090da752b4bdc7bd8e857651cdd2351dfe58ac9a534cbd6",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0038",
+      "sha256": "9003ee0991b1a543f19a358cb65943c91a99081c4a85435cf71a4186518b5673",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0074",
+      "sha256": "13859993ce906701df1e5789ce2ec0fb147aa2ae996e062a397ec60e3d844fbd",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0128",
+      "sha256": "5e6d60f56f892ac0f3b558219f2e7d4c85d9a2c4f59ce5d1a27685c9f57109cb",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0146",
+      "sha256": "f3148a6be26882e9f5e9ff1ff9599be2aa3c0e01d2241fb4687bd0a21c34dae1",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0178",
+      "sha256": "4b66052a465a8c28af1916f840d7e63b909abf1cb309a12986ddafc27242cd95",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0225",
+      "sha256": "91e92425291f4acceeb0425cb54924e1bc0137fb384979ea8a73c2059b1137ee",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0280",
+      "sha256": "5f9866e7fe1c4054e86d30f866faaa8ad58bca6dcae288267c7ec273383f8a76",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0301",
+      "sha256": "4c68ed4cd1e9b9692572023ee185ce9cbfdef0b3946c11763d2de74405e02548",
+      "image_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "image_id": "frame_0371",
+      "sha256": "4b3e9783add0776b7434ef3ee7dac769d82b68e43efd3b5a4aa2f985b2431383",
+      "image_size": [
+        1280,
+        720
+      ]
+    }
+  ],
+  "artifacts": {
+    "data/reviews/additional-fronts-2026-11-26-r44/audit-ledger.json": {
+      "bytes": 854440,
+      "sha256": "2ff7046e357c2a0da9f9eba1c7d4500c4da08d942973c97c3237db214278c074"
+    },
+    "data/reviews/additional-fronts-2026-11-26-r44/manifest.json": {
+      "bytes": 1343168,
+      "sha256": "6a52279ac5c53452cf7e6a3dbd6ea8f76d4aeae287bd2d2a23ae5b61a4c231bf"
+    },
+    "data/reviews/additional-fronts-2026-11-26-r44/outlines.json": {
+      "bytes": 1574,
+      "sha256": "1f41d38fb72174e5d857d7184bded549a638fcc5a4a7260cde083290592cd954"
+    },
+    "results/review/front-mining-r44/review.html": {
+      "bytes": 5100021,
+      "sha256": "8cf106f56ea4a9e50b0805ddc4a4790344bf8e98127476a93c8f4bd962c9676b"
+    },
+    "results/review/front-mining-r44/review.zip": {
+      "bytes": 6599840,
+      "sha256": "100bfaceb9281bcf8c37c48eaaacf5159df14b0d04dd0ec37d5dcd4fc89c672d"
+    },
+    "results/review/front-mining-r44/frame_0160-row002-review.png": {
+      "bytes": 55100,
+      "sha256": "35b7384334dccbecbdc92193193602ec816e4f913c43d5387d9d4da1792465bf"
+    },
+    "notebooks/baomai_front_review_r44.ipynb": {
+      "bytes": 10171,
+      "sha256": "b7d5e84a18f25cf56cd070a59a20cf1e23cc07b624c2ccbbe86d011afe4e1b72"
+    },
+    "scripts/build_front_review_r44.py": {
+      "bytes": 17308,
+      "sha256": "20378343825fdde3c2bf41670c65d8954fd9ecf835ea399eca33b020fb9139a4"
+    },
+    "scripts/render_front_review_r44.py": {
+      "bytes": 29588,
+      "sha256": "eaaed44bb545bbe79027da48a31882aa1ef54fefb34e9278bbadfb53f08c3908"
+    }
+  }
+}

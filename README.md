@@ -1,6 +1,12 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前標註覆核：R43 同一張照片的全部列
+## 目前標註覆核：R44 全部正面與支架邊界
+
+**2026-11-26：[R44 完整覆核與輪廓說明](docs/front-review-r44.md)** 已逐一檢視12張額外原圖的507個現有正面，修訂100列、35個角點與122個框邊界；保留全部508個歷史身份、未變更列及缺失點。[新版 review.html](results/review/front-mining-r44/review.html) 每頁呈現同一照片的全部列，可切換 R42／R43 歷史，並顯示 `frame_0160:2` 的實際正面輪廓解讀。支架不應決定框的外緣；灰色材質仍需依幾何與歸屬區分。新發現的不確定上緣明確保留：328個來源列有未決欄位，目前只有 `frame_0383` 的一張完整照片可匯出為候選，其他11張整圖保留。
+
+[PR131](https://github.com/Siuuuers/dl/pull/131) 回傳的是完全相同的 R43 CPU 覆核包，並沒有訓練新模型。已核對的訓練沿革使用原有137張訓練照片，320張 `frame_*` 尚未加入這些訓練輸入；不能因此直接斷定它就是所有錯誤的原因。[下一步資料與受控訓練設計](docs/front-review-r44-training-plan.md)。可直接開啟 HTML，或使用[選用 CPU notebook](notebooks/baomai_front_review_r44.ipynb)；無需只為開啟同一覆核包再次建立回傳 PR。
+
+### 先前覆核：R43 同一張照片的全部列
 
 **2026-11-26：[R43 覆核頁與角點說明](docs/front-review-r43.md)** 已核對 [PR129](https://github.com/Siuuuers/dl/pull/129) 的 R42 CPU 回傳。[新版 review.html](results/review/front-mining-r43/review.html) 預設把同一張照片的全部列放在同一頁，上下方 Previous/Next 改為切換照片；保留原圖、工作基線、R42、最新 R43、未變更列與先前刪除身份。下載後可離線開啟，也可使用[精簡 CPU notebook](notebooks/baomai_front_review_r43.ipynb)。
 
