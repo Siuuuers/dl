@@ -27,6 +27,8 @@ Strongly overlapping boxes can belong to distinct adjacent fronts. Confirm dupli
 
 Use the tight axis-aligned rectangle enclosing the visible portions of the target front surface, clipped to the image. Determine its extrema from the target face, not from metal rack, gripper, hand, neighboring cassette, upper surface, projecting tray or other material.
 
+An owned molded frontal rim or small tab continuous with that front is part of its observed extent. A broad receding/perforated upper plane is a different surface. Trace the material contour and surface orientation before deciding whether a gray strip is shaded cassette material or rack. Excluding rack does not mean removing every gray pixel or cutting the box to the brightest inner stripe.
+
 An axis-aligned enclosing rectangle may contain background or occluder pixels between visible portions, or alongside a slanted face. That is compatible with the rule. Do not extend its outer bounds to guessed hidden face limits. Do not split a single face into multiple object rows merely to exclude an occlusion gap.
 
 Keep box and point judgments independent during review. A point outside its box calls for checking the image and target definition; do not automatically enlarge the box to accommodate an incorrect point or snap a correct point to an incorrect box.
@@ -44,15 +46,25 @@ Each endpoint is decided independently:
 
 Mild softness or a rounded visible junction does not automatically require a missing label. A reliably identifiable actual junction can be marked. Where the image supports materially different candidate junctions, retain uncertainty rather than importing yolo-pose's extrapolated-corner convention. A visibility label is not a numerical guarantee of subpixel accuracy.
 
+### Bright turn, darker underside, and lateral shadow
+
+Recorded explicitly after the user's R46 feedback on 27 November 2026 (Asia/Hong_Kong): a visible lower-front corner often appears as a relatively bright turn, with darker material or shadow below it and a soft gray/shadowed region beside it. At a left corner the side region is usually to its left; at a right corner it is usually to its right. This is a useful local observation, not an invariant lighting rule or a physical law.
+
+Follow the same front's lower edge to the side turn, then use this brightness pattern to support that interpretation. Inspect an unmarked original crop and the surrounding cassette/rack before moving the point. A highlight, cast shadow, internal stripe, or edge belonging to the next cassette can mimic the pattern. Do not choose the brightest pixel, apply a fixed upward/inward offset, or invent a hidden corner. A nominal outline can make the interpretation reviewable; it remains a diagnostic aid, not a segmentation training mask.
+
+The earlier [R25 guidance](annotation-boundaries-r25.md) already treated brightness and shadow as supporting cues. The explicit underside/lateral pattern and the new examples are documented in the [R46 review](front-review-r46.md).
+
 ## 4. Coordinates and mechanical acceptance
 
-Use the original 1280×720 PNG, with one 11-field row per instance:
+Use the original 1280×720 photograph (PNG in the frozen collection; JPEG in the additional `frame_*` collection), with one 11-field row per instance:
 
 ```text
 0 cx cy width height left_x left_y left_v right_x right_y right_v
 ```
 
 Coordinates are normalized by original width/height. Require finite values, class 0, positive box width/height, and visibility only 0 or 2. Preserve `kpt_shape: [2, 3]`, `flip_idx: [1, 0]`, the class name and point names from the frozen data configuration.
+
+The image origin is at the upper left: right increases X and down increases Y. Moving a point **up decreases Y**. Moving the top box boundary down increases `ymin`; moving its right boundary right increases `xmax`. The corner coordinates are judged independently of the rectangle's intersections.
 
 Box edges use the closed image rectangle, so a right or bottom box edge may equal normalized 1. Visible point coordinates use the same half-open domain as the existing evaluator: `0 <= x < width`, `0 <= y < height`. A visible point saved at normalized 1 requires review; do not silently clamp or nudge it inward. An actual corner beyond the frame is missing.
 
