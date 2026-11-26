@@ -1,0 +1,102 @@
+{
+  "status": "passed",
+  "reviewer": "annotation_review agent; artifact-author visual QA",
+  "reviewed_at_utc": "2026-11-26T05:39:51.209619+00:00",
+  "artifact": {
+    "filename": "r38-annotation-amendments.pdf",
+    "sha256": "e9271c9d778af08fe640ed344eb5d345cfdcda60edadb0212ae65c02e8c07754",
+    "bytes": 327649,
+    "page_count": 8
+  },
+  "review_manifest_sha256": "0921081930f49340ff34290d5752be2d669f084f4d1518e2019060a5600c43b5",
+  "row_audit_sha256": "fb72478f033858a86045cdf0c7e5c2a6a94bc68618a6b043625d0eac7c961adb",
+  "method": "Inspected every full Poppler-rendered PNG page at110dpi through image viewing. Checked crop scale, row identities, L/R labels, changed coordinates, deletion panels, table readability, uncertainty language and scope against the accepted ledger. Confirmed PDF bytes, SHA256 and page count with pypdf. Text extraction was not a substitute for visual inspection.",
+  "inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "render_evidence": {
+    "scratch_directory": "analysis_r38_labels/pdf-qa",
+    "renderer": "Poppler pdftoppm",
+    "dpi": 110,
+    "files": [
+      "page-1.png",
+      "page-2.png",
+      "page-3.png",
+      "page-4.png",
+      "page-5.png",
+      "page-6.png",
+      "page-7.png",
+      "page-8.png"
+    ]
+  },
+  "page_checks": [
+    {
+      "page": 1,
+      "status": "pass",
+      "finding": "Cover correctly distinguishes three coordinate-amended rows, five explicit exclusions, zero training changes and one inherited pending request. Counts and R37-before-deletion identity convention agree with the accepted ledger."
+    },
+    {
+      "page": 2,
+      "status": "pass",
+      "finding": "new_000010:29 original/R37/R38 crops have the same scale. Top666 and L325,714 agree with the table and enlarged grid. The unavailable right point remains absent; source-cache p28 identities are distinguished."
+    },
+    {
+      "page": 3,
+      "status": "pass",
+      "finding": "new_000008:7 bottom33 to23 is correctly overlaid. L1221,20 is unchanged. Text explains the sloping visible extent rather than snapping the box to the point, and rejects the taller predicted box as ground truth."
+    },
+    {
+      "page": 4,
+      "status": "pass",
+      "finding": "new_000007:47 top388 to385 agrees with overlays and table. Both observed points stay fixed; the explicit PR121 p57 cue is separated from PR123 p45/p57. No predicted xmin or displaced point is substituted."
+    },
+    {
+      "page": 5,
+      "status": "pass",
+      "finding": "Both thin-region exclusions 086:57 and088:57 have readable before/after crops at the same scale within each case. After panels remove only the selected row. Exclusion is not presented as proof of background or model recovery."
+    },
+    {
+      "page": 6,
+      "status": "pass",
+      "finding": "Image-boundary exclusions 053:1 and010:30 are correctly named by R37 row identity. After panels contain no selected-row overlay. Captioned shifts old053:2 to current1 and old010:31-34 to30-33 are correct; high containment is not claimed as proof of duplication."
+    },
+    {
+      "page": 7,
+      "status": "pass",
+      "finding": "new_000009:52 visibly retains original image content in the after panel while the selected label is excluded. The visible partial front and user-directed population change are explicit. Row52 has no destination; old53-55 become52-54."
+    },
+    {
+      "page": 8,
+      "status": "pass",
+      "finding": "Inherited010:24 remains exact with only observed R909,491 drawn. The unavailable left point remains absent. Zero-training-delta CPU replay and the unchanged front/observed-corner target policy are clearly stated."
+    }
+  ],
+  "checks": {
+    "all_type_and_tables_readable": true,
+    "no_clipping_or_overlap": true,
+    "same_crop_and_scale_within_each_case": true,
+    "R37_before_deletion_ids_explicit": true,
+    "all_eight_current_requests_covered": true,
+    "correct_L_R_saved_point_labels": true,
+    "no_unavailable_corner_invented": true,
+    "deleted_target_overlays_absent_from_after_panels": true,
+    "case_specific_exclusions_not_a_blanket_size_rule": true,
+    "exclusions_not_presented_as_model_recoveries": true,
+    "inherited_pending_request_retained": true,
+    "zero_training_delta_explicit": true,
+    "headers_and_sequential_footers_correct": true
+  },
+  "issues": [],
+  "limitations": [
+    "Soft original boundaries support approximate2px visual ambiguity, not subpixel physical certainty.",
+    "Five removals are explicit case-specific user exclusions; this document does not certify them all as duplicate annotations or background.",
+    "This is artifact-author QA; parent independent review is requested separately."
+  ]
+}

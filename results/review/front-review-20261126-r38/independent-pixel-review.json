@@ -1,0 +1,702 @@
+{
+  "schema_version": 1,
+  "kind": "independent_original_pixel_review",
+  "source_revision": "6103bb872431ade34e23334a5940e4ccd1e70896",
+  "source_review": {
+    "path": "data/reviews/fronts-2026-11-26-r37/manifest.json",
+    "sha256": "35a2c6b3ddc1691eaae4b7e416144b8f68f0ab960cbd3ca8b65edd647b619471"
+  },
+  "reviewer": "annotation_review agent; original grids independently checked and exact proposals endorsed by root",
+  "coordinate_uncertainty_px": 2,
+  "scope": "Eight named validation requests only, plus inherited unchanged new_000010:24. No training changes.",
+  "prediction_evidence": [
+    {
+      "path": "results/evaluation/pr121-r36-20261126/predictions/candidate.jsonl",
+      "sha256": "6f718c4344eb20b05d95703570d92d5d2112f166f5beaabb3cfb7e27273b3382"
+    },
+    {
+      "path": "results/evaluation/pr123-r37-20261126/predictions/candidate.jsonl",
+      "sha256": "7ec91a12a2882f5b641683963556f1e5e16148f376c118432b4d95bf1da493ef"
+    }
+  ],
+  "original_pixel_observations": [
+    {
+      "image_id": "new_000007",
+      "row": 47,
+      "stable_id": "fronts-2026-11-26-r37/new_000007:47",
+      "action": "replace",
+      "before_line": "0 0.591796875000 0.549305556 0.049218750000 0.020833333 0.5695312500 0.5597222222 2 0.613671875000 0.551388888889 2",
+      "after_line": "0 0.591796875000 0.547222222361111 0.049218750000 0.025000000277778 0.5695312500 0.5597222222 2 0.613671875000 0.551388888889 2",
+      "before_pixels": {
+        "box_xyxy": [
+          726.0,
+          388.00000044,
+          789.0,
+          403.00000019999993
+        ],
+        "keypoints": [
+          [
+            729.0,
+            402.999999984,
+            2
+          ],
+          [
+            785.5,
+            397.00000000008,
+            2
+          ]
+        ]
+      },
+      "after_pixels": {
+        "box_xyxy": [
+          726.0,
+          384.99999999999983,
+          789.0,
+          403.00000019999993
+        ],
+        "keypoints": [
+          [
+            729.0,
+            402.999999984,
+            2
+          ],
+          [
+            785.5,
+            397.00000000008,
+            2
+          ]
+        ]
+      },
+      "source_image_sha256": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "source_label_sha256": "4dcb03e4b9a19e26ce8434a721d41e107dea445e33c8fbe3dd707d932f5ad870",
+      "coordinate_uncertainty_px": 2,
+      "reason": "The own shaded upper front edge reaches about y385 near the right side. Adopt stored top385, consistent with the explicit PR121 candidate p57 top384.77 and raw contour. Preserve xmin and both lower-front points; do not substitute the narrower prediction or its displaced left point.",
+      "crop_xyxy": [
+        701,
+        357,
+        811,
+        423
+      ],
+      "prediction_cues": [
+        {
+          "cache": {
+            "path": "results/evaluation/pr121-r36-20261126/predictions/candidate.jsonl",
+            "sha256": "6f718c4344eb20b05d95703570d92d5d2112f166f5beaabb3cfb7e27273b3382"
+          },
+          "prediction_id": 57,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              739.76416015625,
+              384.77154541015625,
+              788.153564453125,
+              405.43707275390625
+            ],
+            "confidence": 0.18446703255176544,
+            "keypoints": [
+              [
+                736.9490966796875,
+                398.55511474609375,
+                0.5876281261444092
+              ],
+              [
+                786.2288208007812,
+                397.82562255859375,
+                0.6815028786659241
+              ]
+            ]
+          },
+          "interpretation": "Explicit user PR121 candidate p57 cue; use top direction only."
+        },
+        {
+          "cache": {
+            "path": "results/evaluation/pr123-r37-20261126/predictions/candidate.jsonl",
+            "sha256": "7ec91a12a2882f5b641683963556f1e5e16148f376c118432b4d95bf1da493ef"
+          },
+          "prediction_id": 45,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              723.048583984375,
+              384.57366943359375,
+              786.796630859375,
+              407.03863525390625
+            ],
+            "confidence": 0.8640543818473816,
+            "keypoints": [
+              [
+                726.24755859375,
+                403.0869445800781,
+                0.7835758924484253
+              ],
+              [
+                785.2556762695312,
+                397.0830078125,
+                0.833455502986908
+              ]
+            ]
+          },
+          "interpretation": "Separate PR123 matched candidate supports a similar top."
+        },
+        {
+          "cache": {
+            "path": "results/evaluation/pr123-r37-20261126/predictions/candidate.jsonl",
+            "sha256": "7ec91a12a2882f5b641683963556f1e5e16148f376c118432b4d95bf1da493ef"
+          },
+          "prediction_id": 57,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              739.87744140625,
+              384.78192138671875,
+              788.146484375,
+              405.43414306640625
+            ],
+            "confidence": 0.18355345726013184,
+            "keypoints": [
+              [
+                736.9075317382812,
+                398.5525817871094,
+                0.5895483493804932
+              ],
+              [
+                786.2523803710938,
+                397.8492126464844,
+                0.6828211545944214
+              ]
+            ]
+          },
+          "interpretation": "Separate PR123 duplicate output; its pID is not the PR121 cache identity."
+        }
+      ]
+    },
+    {
+      "image_id": "new_000008",
+      "row": 7,
+      "stable_id": "fronts-2026-11-26-r37/new_000008:7",
+      "action": "replace",
+      "before_line": "0 0.968750002 0.022916667 0.062500005 0.045833333 0.953906250000 0.027777777778 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.968750002 0.015972222472222 0.062500005 0.031944443944444 0.953906250000 0.027777777778 2 0.00000000 0.00000000 0",
+      "before_pixels": {
+        "box_xyxy": [
+          1199.9999993600002,
+          3.600000023085137e-07,
+          1280.0000057600002,
+          33.00000012
+        ],
+        "keypoints": [
+          [
+            1221.0,
+            20.00000000016,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "after_pixels": {
+        "box_xyxy": [
+          1199.9999993600002,
+          3.599999998105119e-07,
+          1280.0000057600002,
+          22.99999999999968
+        ],
+        "keypoints": [
+          [
+            1221.0,
+            20.00000000016,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "source_image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "source_label_sha256": "f2d32671a1023e2cefa03659271c55f97e1658e6e30aa8f5c21a5373fee7dad8",
+      "coordinate_uncertainty_px": 2,
+      "reason": "Tighten the bottom from y33 to y23. The owned lower edge slopes/fades from the left turn near y20 toward about y23 at the clipped right border; the broader separator below is excluded. Preserve the observed left point and unavailable right point. PR121/PR123 p36 still extend to about y34 and are not adopted.",
+      "crop_xyxy": [
+        1170,
+        0,
+        1280,
+        65
+      ],
+      "prediction_cues": [
+        {
+          "cache": {
+            "path": "results/evaluation/pr121-r36-20261126/predictions/candidate.jsonl",
+            "sha256": "6f718c4344eb20b05d95703570d92d5d2112f166f5beaabb3cfb7e27273b3382"
+          },
+          "prediction_id": 36,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              1204.0634765625,
+              0.35604095458984375,
+              1280.0,
+              33.97791290283203
+            ],
+            "confidence": 0.25555354356765747,
+            "keypoints": [
+              [
+                1212.9864501953125,
+                21.094736099243164,
+                0.8699231743812561
+              ],
+              [
+                1277.882568359375,
+                22.35232162475586,
+                0.8302432298660278
+              ]
+            ]
+          },
+          "interpretation": "Prediction still includes the broad lower separator; its bottom about34 is not adopted."
+        },
+        {
+          "cache": {
+            "path": "results/evaluation/pr123-r37-20261126/predictions/candidate.jsonl",
+            "sha256": "7ec91a12a2882f5b641683963556f1e5e16148f376c118432b4d95bf1da493ef"
+          },
+          "prediction_id": 36,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              1204.0684814453125,
+              0.35454559326171875,
+              1280.0,
+              33.949256896972656
+            ],
+            "confidence": 0.242683544754982,
+            "keypoints": [
+              [
+                1212.9898681640625,
+                21.101451873779297,
+                0.8700543642044067
+              ],
+              [
+                1277.71435546875,
+                22.335054397583008,
+                0.8301888108253479
+              ]
+            ]
+          },
+          "interpretation": "Prediction still includes the broad lower separator; its bottom about34 is not adopted."
+        }
+      ]
+    },
+    {
+      "image_id": "new_000009",
+      "row": 52,
+      "stable_id": "fronts-2026-11-26-r37/new_000009:52",
+      "action": "delete",
+      "before_line": "0 0.474609375 0.690277777778 0.01171875 0.019444444444 0.469531250000 0.697222222222 2 0.00000000 0.00000000 0",
+      "after_line": null,
+      "before_pixels": {
+        "box_xyxy": [
+          600.0,
+          490.00000000032003,
+          615.0,
+          504.00000000000006
+        ],
+        "keypoints": [
+          [
+            601.0,
+            501.99999999984004,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "after_pixels": null,
+      "source_image_sha256": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "source_label_sha256": "4c1f086bfdeeead0ec298d6d6e747e7e35a39e129e30762c8057ce08e31ddb8b",
+      "coordinate_uncertainty_px": null,
+      "reason": "Explicit user-directed exclusion of R37 row52. The original pixels visibly support a small partial front, so removal changes the chosen reference target population; it does not prove background, establish a general size cutoff or demonstrate a learned recovery.",
+      "crop_xyxy": [
+        575,
+        470,
+        645,
+        530
+      ],
+      "prediction_cues": []
+    },
+    {
+      "image_id": "new_000010",
+      "row": 24,
+      "stable_id": "fronts-2026-11-26-r37/new_000010:24",
+      "action": "retain",
+      "before_line": "0 0.673046875000000 0.665972222222222 0.080468750000000 0.043055555555556 0.00000000 0.00000000 0 0.710156250000000 0.68194444 2",
+      "after_line": "0 0.673046875000000 0.665972222222222 0.080468750000000 0.043055555555556 0.00000000 0.00000000 0 0.710156250000000 0.68194444 2",
+      "before_pixels": {
+        "box_xyxy": [
+          810.0,
+          463.99999999999966,
+          913.0000000000001,
+          495.0
+        ],
+        "keypoints": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            909.0,
+            490.99999679999996,
+            2
+          ]
+        ]
+      },
+      "after_pixels": {
+        "box_xyxy": [
+          810.0,
+          463.99999999999966,
+          913.0000000000001,
+          495.0
+        ],
+        "keypoints": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            909.0,
+            490.99999679999996,
+            2
+          ]
+        ]
+      },
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "source_label_sha256": "5d8cc8473c12f87f4332c0452ebd578b7f2d8561ab495e1721d1b58570829173",
+      "coordinate_uncertainty_px": null,
+      "reason": "Inherited unresolved landmark request. The left point remains unavailable behind the jaw, the observed right point remains (909,491), and no current request identifies a replacement. Preserve the entire R37 row exactly.",
+      "crop_xyxy": [
+        780,
+        425,
+        945,
+        520
+      ],
+      "prediction_cues": []
+    },
+    {
+      "image_id": "new_000010",
+      "row": 29,
+      "stable_id": "fronts-2026-11-26-r37/new_000010:29",
+      "action": "replace",
+      "before_line": "0 0.30219813 0.97216097 0.10973297 0.05567806 0.25071094 0.99620833 2 0.00000000 0.00000000 0",
+      "after_line": "0 0.30219813 0.962500000000000 0.10973297 0.075000000000000 0.253906250000000 0.991666666666667 2 0.00000000 0.00000000 0",
+      "before_pixels": {
+        "box_xyxy": [
+          316.5845056,
+          679.9117968,
+          457.04270720000005,
+          720.0
+        ],
+        "keypoints": [
+          [
+            320.9100032,
+            717.2699976,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "after_pixels": {
+        "box_xyxy": [
+          316.5845056,
+          666.0,
+          457.04270720000005,
+          720.0
+        ],
+        "keypoints": [
+          [
+            325.0,
+            714.0000000000002,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "source_label_sha256": "5d8cc8473c12f87f4332c0452ebd578b7f2d8561ab495e1721d1b58570829173",
+      "coordinate_uncertainty_px": 2,
+      "reason": "Original front material and its light upper rim extend to y666. Move the observed lower-left turn to (325,714), above/right of the old dark supporting-region placement. PR121 p28 and separate PR123 p28 corroborate the direction. Preserve other edges, visibility and the unavailable right point.",
+      "crop_xyxy": [
+        285,
+        638,
+        485,
+        720
+      ],
+      "prediction_cues": [
+        {
+          "cache": {
+            "path": "results/evaluation/pr121-r36-20261126/predictions/candidate.jsonl",
+            "sha256": "6f718c4344eb20b05d95703570d92d5d2112f166f5beaabb3cfb7e27273b3382"
+          },
+          "prediction_id": 28,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              318.8638916015625,
+              665.8292236328125,
+              447.52764892578125,
+              717.4830322265625
+            ],
+            "confidence": 0.788360059261322,
+            "keypoints": [
+              [
+                324.6097717285156,
+                713.7376098632812,
+                0.906688928604126
+              ],
+              [
+                442.4975891113281,
+                704.3740844726562,
+                0.8735301494598389
+              ]
+            ]
+          },
+          "interpretation": "Corroborates top about665.8 and L about324.6,713.7; other predicted fields are not adopted."
+        },
+        {
+          "cache": {
+            "path": "results/evaluation/pr123-r37-20261126/predictions/candidate.jsonl",
+            "sha256": "7ec91a12a2882f5b641683963556f1e5e16148f376c118432b4d95bf1da493ef"
+          },
+          "prediction_id": 28,
+          "prediction": {
+            "class_id": 0,
+            "bbox_xyxy": [
+              318.825927734375,
+              665.813232421875,
+              447.5137939453125,
+              717.455078125
+            ],
+            "confidence": 0.786802351474762,
+            "keypoints": [
+              [
+                324.5979919433594,
+                713.7022705078125,
+                0.9068536162376404
+              ],
+              [
+                442.4844970703125,
+                704.3919067382812,
+                0.8736801743507385
+              ]
+            ]
+          },
+          "interpretation": "Corroborates top about665.8 and L about324.6,713.7; other predicted fields are not adopted."
+        }
+      ]
+    },
+    {
+      "image_id": "new_000010",
+      "row": 30,
+      "stable_id": "fronts-2026-11-26-r37/new_000010:30",
+      "action": "delete",
+      "before_line": "0 0.30286309 0.99408368 0.11106289 0.01183264 0.00000000 0.00000000 0 0.00000000 0.00000000 0",
+      "after_line": null,
+      "before_pixels": {
+        "box_xyxy": [
+          316.5845056,
+          711.4804992,
+          458.7450048,
+          720.0
+        ],
+        "keypoints": [
+          [
+            0.0,
+            0.0,
+            0
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "after_pixels": null,
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "source_label_sha256": "5d8cc8473c12f87f4332c0452ebd578b7f2d8561ab495e1721d1b58570829173",
+      "coordinate_uncertainty_px": null,
+      "reason": "Explicit user-directed exclusion of R37 row30, the lower clipped strip overlapping the broader row29 rectangle. The user selects its removal; geometric containment alone is not a confirmed duplicate-annotation verdict.",
+      "crop_xyxy": [
+        285,
+        650,
+        485,
+        720
+      ],
+      "prediction_cues": []
+    },
+    {
+      "image_id": "new_000053",
+      "row": 1,
+      "stable_id": "fronts-2026-11-26-r37/new_000053:1",
+      "action": "delete",
+      "before_line": "0 0.517578127750 0.006944440 0.036718744500 0.013888890 0.50062500 0.01156944 2 0.00000000 0.00000000 0",
+      "after_line": null,
+      "before_pixels": {
+        "box_xyxy": [
+          639.00000704,
+          -3.5999999999786203e-06,
+          686.0,
+          9.9999972
+        ],
+        "keypoints": [
+          [
+            640.8,
+            8.3299968,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "after_pixels": null,
+      "source_image_sha256": "dfc3621b0387b0da774001334c12c65574ae0084131b154d2f6216e420573d72",
+      "source_label_sha256": "f02ef6030a9e62f7a820e81852eb211995c9d90e045120c6af38f2c1efce2f7b",
+      "coordinate_uncertainty_px": null,
+      "reason": "Explicit user-directed exclusion of R37 row1 at the top image boundary. High containment with row2 is a review flag, not independent proof that the two labels depict the same physical cassette.",
+      "crop_xyxy": [
+        620,
+        0,
+        780,
+        72
+      ],
+      "prediction_cues": []
+    },
+    {
+      "image_id": "new_000086",
+      "row": 57,
+      "stable_id": "fronts-2026-11-26-r37/new_000086:57",
+      "action": "delete",
+      "before_line": "0 0.39609375 0.84375000 0.00625000 0.03194444 0.39472656 0.85687500 2 0.00000000 0.00000000 0",
+      "after_line": null,
+      "before_pixels": {
+        "box_xyxy": [
+          503.00000000000006,
+          596.0000016,
+          511.0,
+          618.9999984
+        ],
+        "keypoints": [
+          [
+            505.2499968,
+            616.95,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "after_pixels": null,
+      "source_image_sha256": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+      "source_label_sha256": "4561aa7bfe68b6f7364904d8c920543d806fcfbbead5ab364b1e6c2e111e5e42",
+      "coordinate_uncertainty_px": null,
+      "reason": "Explicit user-directed exclusion of R37 row57, a narrow region beside the finger/rack. This case-specific removal is not a general small-size rule and does not establish that every similar strip is background or a duplicate annotation.",
+      "crop_xyxy": [
+        480,
+        575,
+        535,
+        640
+      ],
+      "prediction_cues": []
+    },
+    {
+      "image_id": "new_000088",
+      "row": 57,
+      "stable_id": "fronts-2026-11-26-r37/new_000088:57",
+      "action": "delete",
+      "before_line": "0 0.39804688 0.83888889 0.00703125 0.03333333 0.39680469 0.85268056 2 0.00000000 0.00000000 0",
+      "after_line": null,
+      "before_pixels": {
+        "box_xyxy": [
+          505.00000639999996,
+          592.000002,
+          514.0000064000001,
+          615.9999996
+        ],
+        "keypoints": [
+          [
+            507.9100032,
+            613.9300032,
+            2
+          ],
+          [
+            0.0,
+            0.0,
+            0
+          ]
+        ]
+      },
+      "after_pixels": null,
+      "source_image_sha256": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+      "source_label_sha256": "36e28d1fc83785b7ca4476f2b145c568c1eac4093eaa3cfd732b9d23fd7a03c3",
+      "coordinate_uncertainty_px": null,
+      "reason": "Explicit user-directed exclusion of R37 row57, a narrow region beside the finger/rack. Preserve all other rows. Do not claim that a size threshold or physical duplicate test established this exclusion.",
+      "crop_xyxy": [
+        480,
+        570,
+        538,
+        636
+      ],
+      "prediction_cues": []
+    }
+  ],
+  "visual_evidence": {
+    "scratch_directory": "analysis_r38_labels",
+    "inspected_files": [
+      "new_000010_row29_initial.png",
+      "new_000008_row7_initial.png",
+      "new_000007_row47_initial.png",
+      "new_000010_corner_grid.png",
+      "new_000010_top_grid.png",
+      "new_000008_bottom_grid.png",
+      "new_000007_top_grid.png",
+      "five_requested_deletions.png"
+    ],
+    "original_image_paths": [
+      "data/images/val/new_000007.png",
+      "data/images/val/new_000008.png",
+      "data/images/val/new_000009.png",
+      "data/images/val/new_000010.png",
+      "data/images/val/new_000053.png",
+      "data/images/val/new_000086.png",
+      "data/images/val/new_000088.png"
+    ]
+  },
+  "blind_spots": [
+    "Five exclusions change the reference target population and cannot be called model recoveries.",
+    "new_000009:52 visibly contains a partial front; its removal is user-directed rather than proof of background.",
+    "R37 row IDs precede all deletions. Numeric TXT rows shift in three photographs.",
+    "All eight requests are development-only; the existing eligible R37 training manifest remains authoritative.",
+    "Changing a box to include rack/environment changes target geometry and is not adopted as a context-learning remedy."
+  ]
+}

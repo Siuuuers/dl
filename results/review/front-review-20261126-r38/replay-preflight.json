@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "scope": "Prepublication replay and input verification; final notebook source pin/setup execution follows publication.",
+  "contract_sha256": "21de76ae990473b07571a86e8110cba4e77db66d6ec570558cfd6cfb9697b605",
+  "source_files_sha256": {
+    "scripts/front_review_r38_replay.py": "abf49d15a6aa434af6321cc40fee4046eaae672d249f11789e8d0df3e1e264ee",
+    "scripts/score_pr123_review.py": "944da5f1aec67f604a9de3a5e0497de2ad043bd9f353230ce494682d1e8d7317",
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+    "scripts/diagnose_pose_quality.py": "a3baa1285d1580ee44547f7c3d606f524f2f40616fed568885746d2014159953",
+    "scripts/pose_checkpoint.py": "c1311307fd49b37e60f2939c9b084bc36690c1d13b6b31b9e4c51ea9353562d4"
+  },
+  "input_files_verified": 645,
+  "verified_review_training_files": 137,
+  "eligible_training_counts": {
+    "images": 137,
+    "objects": 3784,
+    "visible_endpoints": 6837,
+    "missing_endpoints": 731,
+    "empty_images": 13
+  },
+  "original_trainer_validation": {
+    "images": 20,
+    "objects": 664
+  },
+  "review_operation_counts": {
+    "replace": 3,
+    "delete": 5,
+    "train": 0,
+    "val": 8
+  },
+  "original_request_lineage": [
+    {
+      "image_id": "new_000007",
+      "r37_row": 47,
+      "r38_row": 47,
+      "action": "replace"
+    },
+    {
+      "image_id": "new_000008",
+      "r37_row": 7,
+      "r38_row": 7,
+      "action": "replace"
+    },
+    {
+      "image_id": "new_000009",
+      "r37_row": 52,
+      "r38_row": null,
+      "action": "delete"
+    },
+    {
+      "image_id": "new_000010",
+      "r37_row": 29,
+      "r38_row": 29,
+      "action": "replace"
+    },
+    {
+      "image_id": "new_000010",
+      "r37_row": 30,
+      "r38_row": null,
+      "action": "delete"
+    },
+    {
+      "image_id": "new_000053",
+      "r37_row": 1,
+      "r38_row": null,
+      "action": "delete"
+    },
+    {
+      "image_id": "new_000086",
+      "r37_row": 57,
+      "r38_row": null,
+      "action": "delete"
+    },
+    {
+      "image_id": "new_000088",
+      "r37_row": 57,
+      "r38_row": null,
+      "action": "delete"
+    }
+  ],
+  "comparison_exactly_reproduced": true,
+  "reference_delta_exactly_reproduced": true,
+  "runtime": "python3 -S; Python standard library only",
+  "training_executed": false,
+  "inference_executed": false
+}
