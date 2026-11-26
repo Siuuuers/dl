@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BASELINE_SHA256 = "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e"
 BASELINE_BYTES = 106838542
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg"}
+POSTCLIP_NMS_IOU = 0.70
 CSV_FIELDS = ("image", "status", "width", "height", "prediction_count", "displayed_endpoints", "overlay", "error")
 
 
@@ -127,6 +128,33 @@ def describe_predictions(raw, width, height, endpoint_conf):
     return described
 
 
+def postclip_nms(predictions):
+    """Filter validated final boxes, retaining original per-image prediction IDs.
+
+    Framework clipping has already happened. This pass neither moves boxes nor
+    averages keypoints; a suppressed prediction remains complete in the audit.
+    """
+    from pose_scoring import _box_iou
+    kept, suppressed = [], []
+    for index in sorted(range(len(predictions)), key=lambda i: (-predictions[i]["confidence"], i)):
+        current = predictions[index]
+        suppressor = next((other for other in kept
+                           if predictions[other]["class_id"] == current["class_id"]
+                           and _box_iou(predictions[other]["bbox_xyxy"], current["bbox_xyxy"]) > POSTCLIP_NMS_IOU), None)
+        if suppressor is None:
+            kept.append(index)
+        else:
+            suppressed.append({"primary_prediction_id": index + 1,
+                               "suppressor_primary_prediction_id": suppressor + 1,
+                               "postclip_prediction_iou": _box_iou(predictions[suppressor]["bbox_xyxy"],
+                                                                   current["bbox_xyxy"]),
+                               "prediction": current})
+    selected = [{**predictions[index], "primary_prediction_id": index + 1} for index in kept]
+    return selected, {"iou_threshold": POSTCLIP_NMS_IOU, "primary_prediction_count": len(predictions),
+                      "retained_primary_prediction_ids": [index + 1 for index in kept],
+                      "suppressed_predictions": suppressed}
+
+
 def prepare_predictor(weights, device, threads, first_rgb, conf=0.25, nms_iou=0.70):
     import numpy as np
     import torch
@@ -163,7 +191,7 @@ def _save_overlay(rgb, predictions, path):
     for number, prediction in enumerate(predictions, 1):
         box = prediction["bbox_xyxy"]
         draw.rectangle(box, outline="#4ce2ff", width=1)
-        draw.text((max(0, box[0]), max(0, box[1] - 12)), str(number),
+        draw.text((max(0, box[0]), max(0, box[1] - 12)), str(prediction.get("primary_prediction_id", number)),
                   font=font, fill="white", stroke_width=1, stroke_fill="black")
         if all(status["displayed"] for status in prediction["endpoint_status"]):
             draw.line((*prediction["keypoints"][0][:2], *prediction["keypoints"][1][:2]), fill="#ffb74c", width=2)
@@ -181,6 +209,7 @@ def _write_status(path, summary):
 
 
 def run(args):
+    postclip_enabled = getattr(args, "postclip_nms", False)
     if args.threads <= 0:
         raise ValueError("threads must be positive")
     if any(not _finite(value) or not 0 <= value <= 1 for value in (args.conf, args.endpoint_conf)):
@@ -203,6 +232,13 @@ def run(args):
                "prediction_scope": "Ultralytics postprocessed boxes/keypoints, including framework clipping; endpoint confidence is not reference visibility.",
                "warmup": None,
                "timing_scope": "predict call excludes file decoding, overlay rendering and serialization"}
+    if postclip_enabled:
+        summary["postclip_nms"] = {"iou_threshold": POSTCLIP_NMS_IOU,
+                                   "suppression_rule": "same class and IoU strictly greater than threshold",
+                                   "ordering": "confidence descending; original index breaks ties",
+                                   "primary_prediction_count": 0, "suppressed_prediction_count": 0}
+        summary["prediction_scope"] += " Optional post-clip NMS filters final boxes; original prediction IDs and suppressed records are retained."
+        summary["timing_scope"] = "predict call excludes file decoding, post-clip filtering, overlay rendering and serialization"
     output.mkdir(parents=True, exist_ok=False)
     _write_status(output / "run_status.json", summary)
     predictor, fatal_error = None, None
@@ -234,8 +270,12 @@ def run(args):
                         summary["warmup"] = "one explicit zero-image prediction excluded from timings"
                     result = predictor(rgb)
                     predictions = describe_predictions(result["predictions"], rgb.width, rgb.height, args.endpoint_conf)
+                    postprocess = {}
+                    if postclip_enabled:
+                        stage = "postclip_nms"
+                        predictions, postprocess["postclip_nms"] = postclip_nms(predictions)
                     overlay = Path("overlays") / relative.with_name(relative.name + ".prediction.png")
-                    candidate = {**item, **result, "predictions": predictions, "status": "complete",
+                    candidate = {**item, **result, **postprocess, "predictions": predictions, "status": "complete",
                                  "prediction_count": len(predictions), "overlay": overlay.as_posix(),
                                  "displayed_endpoints": sum(status["displayed"] for prediction in predictions
                                                             for status in prediction["endpoint_status"])}
@@ -250,6 +290,9 @@ def run(args):
                 summary["succeeded_images"] += 1
                 summary["prediction_count"] += item["prediction_count"]
                 summary["displayed_endpoints"] += item["displayed_endpoints"]
+                if postclip_enabled:
+                    summary["postclip_nms"]["primary_prediction_count"] += item["postclip_nms"]["primary_prediction_count"]
+                    summary["postclip_nms"]["suppressed_prediction_count"] += len(item["postclip_nms"]["suppressed_predictions"])
             else:
                 summary["failed_images"] += 1
             stream.write(json.dumps(item, allow_nan=False) + "\n")
@@ -278,6 +321,8 @@ def main(argv=None):
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--conf", type=float, default=0.25, help="box confidence threshold")
     parser.add_argument("--nms-iou", type=float, default=0.70, help="NMS overlap threshold; default 0.70")
+    parser.add_argument("--postclip-nms", action="store_true",
+                        help="opt in to an extra NMS pass on final clipped boxes at fixed IoU 0.70; default off")
     parser.add_argument("--endpoint-conf", type=float, default=0.50, help="endpoint display threshold, not physical visibility")
     args = parser.parse_args(argv)
     try:

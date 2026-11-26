@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "kind": "live-upstream-branch-update-audit",
+  "checked_at_utc": "2026-11-26T07:38:35Z",
+  "checked_at_hong_kong": "2026-11-26T15:38:35+08:00",
+  "repository": "an94-doll/embedding_vision",
+  "default_branch": "yolo-pose",
+  "branch_listing_url": "https://api.github.com/repos/an94-doll/embedding_vision/branches?per_page=100",
+  "branch_listing_complete": true,
+  "listed_branch_count": 3,
+  "saved_intake": {
+    "path": "docs/additional-frame-intake-2026-11-07.json",
+    "sha256": "6754ce0994dfb4f2587117bd213df9896283f87b4dacf0d7a714562d41e8a8c6"
+  },
+  "branches": [
+    {
+      "branch": "baomai",
+      "saved_2026_11_07_commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+      "current_commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+      "unchanged_from_saved_intake": true,
+      "tree_sha": "9b90fa9cf6fc319d97dba8d3c046c8de78910fb7",
+      "last_commit_utc": "2026-10-28T15:00:17Z",
+      "last_commit_hong_kong": "2026-10-28T23:00:17.000+08:00",
+      "last_commit_message": "Add epoch 173 training and validation data with reviewed annotations",
+      "commit_url": "https://github.com/an94-doll/embedding_vision/commit/351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+      "branch_url": "https://github.com/an94-doll/embedding_vision/tree/baomai"
+    },
+    {
+      "branch": "grasp-vision",
+      "saved_2026_11_07_commit": "9a6bf2432582af517d789c94eab2ac27e03a304b",
+      "current_commit": "9a6bf2432582af517d789c94eab2ac27e03a304b",
+      "unchanged_from_saved_intake": true,
+      "tree_sha": "5652d09fa1345b7b4e15c99869554b6d7708f34b",
+      "last_commit_utc": "2026-11-04T08:12:49Z",
+      "last_commit_hong_kong": "2026-11-04T16:12:49.000+08:00",
+      "last_commit_message": "检测程序换为双模型",
+      "commit_url": "https://github.com/an94-doll/embedding_vision/commit/9a6bf2432582af517d789c94eab2ac27e03a304b",
+      "branch_url": "https://github.com/an94-doll/embedding_vision/tree/grasp-vision"
+    },
+    {
+      "branch": "yolo-pose",
+      "saved_2026_11_07_commit": "72a99dafa1b14bfabd101e639b9ddb5f5aa38d52",
+      "current_commit": "72a99dafa1b14bfabd101e639b9ddb5f5aa38d52",
+      "unchanged_from_saved_intake": true,
+      "tree_sha": "d7b7903ad33dd2c39b053f2b2d7c8ffc533f7ef5",
+      "last_commit_utc": "2026-10-22T07:17:29Z",
+      "last_commit_hong_kong": "2026-10-22T15:17:29.000+08:00",
+      "last_commit_message": "添加多目标与远距离训练数据，最新模型位于/runs/pose/front_back_pose-4内",
+      "commit_url": "https://github.com/an94-doll/embedding_vision/commit/72a99dafa1b14bfabd101e639b9ddb5f5aa38d52",
+      "branch_url": "https://github.com/an94-doll/embedding_vision/tree/yolo-pose"
+    }
+  ],
+  "conclusion": "All three currently published branch heads exactly equal the previously recorded 7 November source commits. There are no new tracked images, labels, models, README changes or other file changes on those branches relative to that saved intake.",
+  "new_training_images_found_from_updates": 0,
+  "new_model_updates_found": false,
+  "large_payloads_downloaded": false,
+  "existing_material": {
+    "baomai": {
+      "original_images": 157,
+      "train": 137,
+      "development": 20,
+      "note": "Already used current source pool; source labels/model remain unchanged upstream."
+    },
+    "grasp_vision": {
+      "additional_original_images": 320,
+      "archive_path": "box_in_basket/white_box_pose_reviewed_320_images_20261028_145012.zip",
+      "archive_sha256": "b28bcce5fffe91f3e486ff11ec3085a67c868fe09e65c14788bc6fe494af4dd0",
+      "archive_bytes": 43424432,
+      "note": "Previously recovered material, not a fresh update. Saved intake found no exact hash overlap with the original157, but capture-session independence was not established. Current target-policy review remains required."
+    },
+    "yolo_pose": {
+      "archived_alternative_images": 450,
+      "note": "Previously recorded alternative front/back, five-keypoint task; some groups are crops. Not a drop-in dataset for current two-lower-corner visible-front policy."
+    }
+  },
+  "interpretation_limits": [
+    "Commit and tree equality establish no tracked source changes since the saved snapshot; commit dates are not camera capture dates.",
+    "Existing extra frames are not automatically training-ready or independent test data.",
+    "Absence of an upstream update does not imply the already recovered additional-frame pool cannot support a bounded, correctly reviewed training addition."
+  ]
+}

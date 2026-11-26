@@ -1,10 +1,10 @@
 # Predict cassette objects in a folder of images
 
-**Current entry point:** [Current model and command](current-model.md). PR67 is evaluated; retain PR35. Use the current working branch for the reviewed source and label evidence. Historical checkouts and measurements below remain reproduction records.
+**Current entry point:** [Current model and command](current-model.md). PR35 remains selected under the historical frozen-reference gate. The explicit [PR123 post-clip filtering option](#optional-nms-after-framework-clipping) below makes the measured R39 duplicate reduction available for folder predictions. Use the current working branch for this option and the reviewed source and label evidence. Historical checkouts and measurements below remain reproduction records.
 
 Use `scripts/predict_pose_folder.py` to run the default epoch173 model or an explicitly selected, verified completed checkpoint on a folder of original still images. It writes annotated PNGs, structured predictions and an image summary. No annotation TXT files, camera, desktop display or training run are needed.
 
-The agreed scope is one `cassette_front` class and its two lower-front corner slots. The user has delegated assistant review and supported label amendments, with missed objects first. For that review workflow, use the **PR35 seed46 candidate at image size 1280 and box confidence 0.13**, NMS IoU **0.70** and endpoint display confidence **0.50**. The generic runtime default remains epoch173 at 0.25. The [completed proposal-filter review](proposal-filter-review-2026-11-11.md) explains this bounded choice, its added review cost and the corrected reference; no universal optimum is claimed.
+The agreed scope is one `cassette_front` class and its two lower-front corner slots. The user has delegated assistant review and supported label amendments. The latest [R40 objective](unmatched-output-r40.md) is fewer unwanted outputs while retaining useful detections. The historically selected review workflow uses the **PR35 seed46 candidate at image size 1280 and box confidence 0.13**, NMS IoU **0.70** and endpoint display confidence **0.50**; the optional PR123 experiment is documented separately below. The generic runtime default remains epoch173 at 0.25. The [completed proposal-filter review](proposal-filter-review-2026-11-11.md) explains that earlier bounded choice, its added review cost and the corrected reference; no universal optimum is claimed.
 
 ## Run
 
@@ -92,6 +92,67 @@ The default NMS IoU remains **0.70**. A bounded [existing-data comparison](postp
 
 This historical result used epoch173 and the original reference; it is not a tested combination with the seed46 checkpoint. To try that epoch173 setting, add `--conf 0.25 --nms-iou 0.68` to the default-model command. The actual IoU is recorded in `run_status.json` under `inference.iou`. A lower value suppresses overlapping predictions more strongly; the tested 0.60 and 0.50 values also remove valid reference matches, so lower is not automatically better. NMS IoU is separate from the evaluator's fixed matching IoU of 0.50.
 
+### Optional NMS after framework clipping
+
+Add `--postclip-nms` to apply one extra suppression pass after the framework has
+returned its final clipped boxes. It uses a fixed IoU of **0.70**, independent of
+the ordinary `--nms-iou` argument, processes predictions in descending
+box-confidence order, and suppresses a box only when a previously retained box
+of the same class has IoU **strictly greater than 0.70**. Original output order
+breaks confidence ties. Box coordinates, corner
+coordinates and endpoint display rules are preserved for every retained output.
+The option defaults to off; the ordinary model prediction path and historical
+evaluator remain unchanged.
+
+This implements the [R39 saved-prediction result](front-diagnosis-r39.md#why-clipping-explains-some-duplicates):
+on the twenty PR123 development images, the extra pass at **0.70** retains 728 of
+737 outputs and removes nine unmatched outputs. Accepted R38 matches remain 643,
+misses remain 11, and unmatched outputs fall from 94 to 85. Every original matched
+prediction identity, both-corner result and empty-scene result is preserved in
+that comparison. It cannot recover missing predictions. These are results on
+reused development photographs, not a measurement on new photographs or a
+promotion of PR123 over the historically selected PR35 checkpoint.
+
+To use the tested combination, keep the complete candidate bundle from the
+[immutable PR123 return](https://github.com/Siuuuers/dl/tree/6707967049c548396745e66127691028c17c20a4/results/gpu/baomai-front-review-r37-l4-001)
+extracted as `../pr123-results/candidate/`. The candidate checkpoint SHA-256 is
+`51d8a60f95b1b76097513d8b07732de5d5deed5e6e17251a28ddd28e6be1ebc1`;
+the [PR123 archive audit](../results/evaluation/pr123-r37-20261126/README.md#exact-returned-run-and-verification)
+records its provenance. Use the current working branch containing this option
+and the R36/R37 review manifests. This recipe's provenance verification hashes
+the original dataset images, so its `data/images/` Git LFS payloads must be
+present even when predicting another image folder. The earlier PR35 setup
+without original image payloads is specific to that earlier recipe. Obtain the
+original image bytes in this checkout, then run the verified PR123 command:
+
+```bash
+git lfs install --local
+git lfs pull --include='data/images/**' --exclude=''
+.venv/bin/python scripts/predict_pose_folder.py \
+  --checkpoint-manifest ../pr123-results/candidate/checkpoint-manifest.json \
+  --input /path/to/original-images \
+  --output /path/to/new-pr123-filtered-results \
+  --device cpu --conf 0.13 --nms-iou 0.70 --endpoint-conf 0.50 \
+  --postclip-nms
+```
+
+The verified manifest and its companion files are required, as for the earlier
+checkpoint command. PR125 returns the CPU replay evidence; it does not contain
+new model weights. The published nine-removal result applies to PR123 at the
+settings above. Other checkpoints or overlap thresholds require their own
+comparison.
+
+When the option is enabled, successful image records have a `postclip_nms` audit
+with the original count, retained original IDs, and complete suppressed records
+including the retained suppressor ID and measured overlap. Retained predictions
+also carry `primary_prediction_id`, their one-based position **before** this
+extra filter. Overlay numbers use that identity, so gaps are intentional; these
+IDs identify a prediction within one image and run, not a tracked object across
+images. The audit allows the original described prediction list to be
+reconstructed. `run_status.json` records the actual overlap rule and aggregate
+original/suppressed counts. JSON, CSV and overlay output counts all describe the
+retained list. Omitting the option preserves the previous output contract.
+
 ## Results
 
 | Output | Contents |
@@ -103,7 +164,7 @@ This historical result used epoch173 and the original reference; it is not a tes
 
 For example, `tray/frame.jpg` and `tray/frame.png` produce `overlays/tray/frame.jpg.prediction.png` and `overlays/tray/frame.png.prediction.png`.
 
-The overlay uses cyan boxes, green left-slot points, pink right-slot points, and an orange line when both points pass the display checks. Small numbers identify each prediction's one-based position in that image's JSON list; they are not tracking IDs across images. Confidence values remain in JSON so dense scenes stay readable.
+The overlay uses cyan boxes, green left-slot points, pink right-slot points, and an orange line when both points pass the display checks. By default, small numbers identify each prediction's one-based position in that image's JSON list. With `--postclip-nms`, they use the retained `primary_prediction_id` from before the extra filter, as described above. They are not tracking IDs across images. Confidence values remain in JSON so dense scenes stay readable.
 
 Require both process exit **0** and `run_status.json` with `status: complete` before treating a run as finished. A failed or interrupted run is not a complete result; create a new output directory after correcting its cause. A zero-object prediction is a successful processed image, not a read error or proof that the scene contains no cassette.
 
