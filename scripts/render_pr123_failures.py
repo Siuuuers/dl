@@ -299,7 +299,7 @@ def r38_crop_pages(pdf,root,report,delta,predictions,images,start):
     matched_deleted=[r for r in candidate['changed_reference_rows'] if r['action']=='delete' and r['r37']['matched_prediction_id'] is not None]
     require(len(changes)==3 and len(matched_deleted)==1,'R38 crop inventory changed');cases=changes+matched_deleted
     w=(WIDTH-2*MARGIN-18)/2;inventory=[]
-    explanations={('new_000007',47):'Top 388 -> 385; both corner targets stay unchanged. The same p45 remains matched. Smaller duplicate p59 falls below the revised box-overlap gate and becomes other-unmatched.',
+    explanations={('new_000007',47):'Top 388 -> 385; both corner targets stay unchanged. The same p45 remains matched. Smaller duplicate p59 falls below the fixed 0.50 IoU gate after the reference box changes and becomes other-unmatched.',
         ('new_000008',7):'Bottom 33 -> 23 excludes the separator below the owned front. The same p36 remains matched; its left-point error stays 8.085506 px. The correction is not copied from the broader prediction.',
         ('new_000010',29):'Top 679.911797 -> 666; observed left target (320.910003,717.269998) -> (325,714). The same p28 remains matched. Its left-point distance changes because the reference changes.'}
     for page_index in range(2):
