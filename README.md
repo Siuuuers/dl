@@ -1,5 +1,11 @@
 # D405 包埋盒兩點即時偵測與錄影
 
+## 目前標註覆核：R43 同一張照片的全部列
+
+**2026-11-26：[R43 覆核頁與角點說明](docs/front-review-r43.md)** 已核對 [PR129](https://github.com/Siuuuers/dl/pull/129) 的 R42 CPU 回傳。[新版 review.html](results/review/front-mining-r43/review.html) 預設把同一張照片的全部列放在同一頁，上下方 Previous/Next 改為切換照片；保留原圖、工作基線、R42、最新 R43、未變更列與先前刪除身份。下載後可離線開啟，也可使用[精簡 CPU notebook](notebooks/baomai_front_review_r43.ipynb)。
+
+本輪覆核10個指定來源列，修訂9列、保留1列；9個角點與1個 `xmax` 邊界變更，既有未決欄位完整保留。`frame_*` 是上游 `grasp-vision` 既有320張原始照片的檔名，與157張 `new_*`／`old_*` 不同；頁面包含選出的12張原始 JPEG。三張完整候選與九張整圖保留狀態不變，本輪沒有 GPU 訓練或模型提升宣稱。
+
 ## 目前入口：R40 減少未配對輸出
 
 **2026-11-26：[R40 改善與逐案分析](docs/unmatched-output-r40.md)** 已核對 [PR125](https://github.com/Siuuuers/dl/pull/125) 的 R39 CPU 回傳檔，並把已測量的裁切後 NMS 加入資料夾推論：使用明確的 `--postclip-nms` 選項。PR123 在全部20張原圖的新 CPU 推論逐項重現既有結果：未配對94→85、配對643及漏檢11不變，角點結果與原有配對身份完整保留。[操作指引](docs/predict-pose-folder.md#optional-nms-after-framework-clipping)。
