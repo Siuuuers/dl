@@ -42,7 +42,7 @@ coordinates rather than claims of subpixel physical accuracy.
 
 ## View and verify
 
-Download the [review capsule](../../../../results/review/front-mining-r42/review.zip),
+Download the [review capsule](../../../results/review/front-mining-r42/review.zip),
 extract it, and open `review.html` in a browser. It is self-contained and reads no
 network service. Original pixels, working labels, proposed labels and exact
 reasons are available for every source row and the added front. The full-frame
@@ -70,7 +70,7 @@ python scripts/review_front_mining_r42.py \
   --output /path/to/review.zip
 ```
 
-The [R42 CPU notebook](../../../../notebooks/baomai_front_review_r42.ipynb)
+The [R42 CPU notebook](../../../notebooks/baomai_front_review_r42.ipynb)
 downloads the capsule by immutable Git blob identity, verifies the archive and
 manifest hashes, checks all operations, and displays the same viewer. It needs no
 GPU or inference dependencies.
@@ -78,7 +78,7 @@ GPU or inference dependencies.
 ## Preserve the task
 
 The policy remains
-[baomai-visible-front-v1](../../../../docs/annotation-policy.md): one identifiable
+[baomai-visible-front-v1](../../../docs/annotation-policy.md): one identifiable
 physical cassette front including its own visible rim, a tight observed envelope,
 and independently judged actual lower-front corners. Broad roofs, rack and
 gripper do not define the target's boundary. Visible target patches may enclose
@@ -90,7 +90,7 @@ top front is added as `frame_0128:add:lower_left_top:001`. Later source identiti
 are never shifted to disguise the missing/additional-instance pair. The frame
 remains held because source 35's upper boundary is unresolved.
 
-See the [R42 findings](../../../../docs/front-mining-review-r42.md) for the fixed
+See the [R42 findings](../../../docs/front-mining-review-r42.md) for the fixed
 prediction comparison and next experiment decision. The returned 320-frame pool
 has already been mined for development. Distinct file hashes, filename spacing
 and assistant annotation review do not establish independent captures or
