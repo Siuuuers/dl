@@ -2,6 +2,12 @@
 
 27 November 2026, Asia/Hong_Kong.
 
+**Subsequent result:** the proposed R51 training comparison has now completed in
+PR146. See the [replayed result](partial-classification-r51-results.md): four
+R50 recoveries, 28 additional unmatched outputs, and no automatic promotion.
+The stage diagnoses below describe the earlier PR137/R49 checkpoint; PR146's
+saved final outputs do not establish the new candidate's decoded-stage causes.
+
 **[PR143](https://github.com/Siuuuers/dl/pull/143) contains the completed R49
 inference diagnosis.** Its fresh hard-NMS baseline exactly reproduces the saved
 PR137 candidate on all 20 original development photographs. The submitted linear

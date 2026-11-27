@@ -2,6 +2,15 @@
 
 27 November 2026, Asia/Hong_Kong.
 
+**Update after PR146:** the classification-only comparison has now completed.
+The [R51 result audit](partial-classification-r51-results.md) finds four fewer
+R50 misses with 28 more unmatched outputs. The [R52 annotation review](front-review-r52.md)
+adds 11 nominal side refinements on 10 supplementary rows, and the
+[R52 thesis proposal](thesis-plan-r52.md) focuses on geometry-guided annotation
+quality control. The [next notebook](annotation-study-r52.md) reproduces the
+review and reports on CPU. The paragraphs below retain their earlier decision
+context; PR137 is no longer the latest completed training return.
+
 **Update after PR143:** the inference question proposed below has now completed.
 The [R51 diagnosis](front-diagnosis-r51.md) confirms exact fresh-baseline replay,
 no miss recovery from Soft-NMS, and ten confidence / three decoded-geometry / two
