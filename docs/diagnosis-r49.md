@@ -1,10 +1,16 @@
 # R49 frozen-model proposal diagnosis and Soft-NMS pilot
 
-**Historical handoff. Use the [R50 successor](diagnosis-r50.md) for the next run.**
-PR140 added the missing R38 row-map sparse path, but only for a newly created
-checkout. R50 also repairs an existing failed checkout and performs the actual
-source/data preflight before inference. No completed R49 return was present in
-PR140; the validation statement below describes the original R49 publication.
+**Completed in [PR143](https://github.com/Siuuuers/dl/pull/143). Read the
+[R51 result and independent audit](front-diagnosis-r51.md); no repeat inference
+is needed for this question.** The fresh baseline reproduced every saved
+PR137 output. Soft-NMS removed one final unmatched output and recovered no target.
+The [next notebook](partial-classification-r51.md) prepares a separate training
+ablation. The instructions and validation statement below describe the original
+R49 handoff. PR140 fixed the missing row-map path for fresh checkouts; R50 also
+repaired resumed checkouts. Those setup repairs do not invalidate the completed
+PR143 result.
+
+## Historical run instructions
 
 Open [baomai_r49_diagnosis.ipynb](../notebooks/baomai_r49_diagnosis.ipynb) in Colab; select a GPU runtime and Run all (CPU is supported, but slower). Return `baomai-r49-diagnosis-results.zip`.
 

@@ -2,6 +2,17 @@
 
 27 November 2026, Asia/Hong_Kong.
 
+**Update after PR143:** the inference question proposed below has now completed.
+The [R51 diagnosis](front-diagnosis-r51.md) confirms exact fresh-baseline replay,
+no miss recovery from Soft-NMS, and ten confidence / three decoded-geometry / two
+NMS cases. A single lower-confidence probe recovers six targets at the cost of
+74 additional unmatched outputs. The [R51 notebook](partial-classification-r51.md)
+therefore isolates partial-target classification weighting on unchanged training
+inputs. This is a distinct ablation after the earlier joint box/classification
+and box-only trials, with no guaranteed improvement. Sections below preserve
+the lecture interpretation and the pre-return R50 decision context; R49/R50
+inference does not need to be repeated.
+
 **The present assignment is to annotate the cassette data and train a model.**
 The user says the thesis topic has not been settled. Professor LI Hongsheng's
 uploaded detection lecture is background teaching material, not a thesis
