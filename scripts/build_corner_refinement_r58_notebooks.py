@@ -159,6 +159,12 @@ def build(source_commit, driver_sha, hint_mode):
         exact FP32 checkpoint parts wrapped in small ZIP files, with a manifest
         that verifies their reassembly. Keep the entire returned upload ZIP.
 
+        **To return the result through a GitHub pull request:** extract the outer
+        upload ZIP, then upload its compact evidence ZIP, `return-manifest.json`
+        and every small wrapped checkpoint part together. Do not unwrap the
+        individual checkpoint parts. The outer download can exceed GitHub's
+        ordinary file-size limits; its extracted members are the upload units.
+
         Two-corner success uses every eligible reference row, including missed
         detections. Offered-pair accounting matches all fixed detector boxes first
         and retains those assignments when classifying available pairs. This is

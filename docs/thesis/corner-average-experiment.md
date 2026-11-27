@@ -48,4 +48,6 @@ The last two categories cannot be described as accurate two-corner outputs. Pres
 
 This replay is optional: the numerical analysis above is already completed and independently verified. A CPU runtime is sufficient. The next new model measurements come from the [two controlled local-refinement notebooks](corner-refinement-experiment.md).
 
+The notebook pins source commit `5b1650b8fa3959a0917680305d7b499af783c5aa`. All four actual code cells passed sequential execution in real IPython from a fresh checkout, using the already verified returned ZIP as a cache. The generated summary, averaged predictions, associations and case changes match both the reviewed evidence and the published source blobs exactly after decompression. The [execution receipt](corner-average-bootstrap-r58.json) records source and notebook identities, cell outcomes, artifact hashes, and the distinction between this execution and the untested Colab download interface.
+
 The [evidence index](evidence/corner-average/README.md) identifies every saved output. An [independent implementation](evidence/corner-average/independent-verification.md) reproduces all 723 resulting records, every aggregate count, and the individual gains and losses without importing the averaging function.

@@ -29,9 +29,12 @@ The automatic-output analysis shows that higher corner confidence can remove som
 | [reflection-results.md](reflection-results.md) | Completed reflection results, paired changes, and numerical checks |
 | [corner-average-experiment.md](corner-average-experiment.md) | Completed coordinate-average results and CPU replay instructions |
 | [CPU averaging notebook](../../notebooks/baomai_corner_average_r58.ipynb) | Reproduce the saved-output analysis without a GPU or new model inference |
+| [corner-average-bootstrap-r58.json](corner-average-bootstrap-r58.json) | Actual execution of all four averaging notebook cells from published source |
 | [corner-refinement-experiment.md](corner-refinement-experiment.md) | Matched local-corner training protocol and run instructions |
 | [GPU image-only notebook](../../notebooks/baomai_corner_refinement_rgb_r58.ipynb) | Train the local model with RGB input and zero-valued hint channels |
 | [GPU image-and-hints notebook](../../notebooks/baomai_corner_refinement_hints_r58.ipynb) | Train the same model with RGB input and initial-corner Gaussian hints |
+| [local-refiner-cpu-validation-r58.json](local-refiner-cpu-validation-r58.json) | Real pretrained computation, masked-gradient checks and focused implementation tests |
+| [local-refiner-notebook-bootstrap-r58.json](local-refiner-notebook-bootstrap-r58.json) | Both refinement notebooks' actual published-source setup execution and per-arm model checks |
 | [research-local-refinement.md](research-local-refinement.md) | Primary papers, crop evidence, and the earlier design rationale |
 | [research-corner-quality.md](research-corner-quality.md) | Saved-prediction diagnostics of confidence, disagreement, and crop feasibility |
 | [evidence/corner-quality/README.md](evidence/corner-quality/README.md) | Diagnostic results, source hashes, and reproduction commands |

@@ -99,17 +99,21 @@ One relevant limitation is that the frozen detector's training proposals are in-
 
 Choose a GPU Colab runtime and run all four code cells. The notebooks keep the runtime's compatible Torch/TorchVision pair and pin Ultralytics 8.4.182, OpenCV 5.0.0.93, NumPy 2.4.6 and Pillow 13.0.0. Native inference sources are checked by hash. Use the same Torch/TorchVision versions and GPU type for the two arms. Hardware or memory failures do not automatically change the recipe.
 
-Each run downloads one `baomai-corner-refinement-r58-<hint-mode>-upload.zip`. Keep and return that complete file. It contains:
+Each run downloads one `baomai-corner-refinement-r58-<hint-mode>-upload.zip`. Keep that complete file as the result archive. It contains:
 
 - A compact evidence ZIP with inputs, source identities, frozen predictions, refined predictions, crop/decoder traces, training logs, scores, case transitions and an inventory.
 - `return-manifest.json`, describing the exact final model and its parts.
 - Small wrapped parts of the exact FP32 final checkpoint. The manifest specifies their order, individual hashes and the complete reconstructed model hash.
+
+**To return a result through a GitHub pull request, first extract the outer upload ZIP. Upload its compact evidence ZIP, `return-manifest.json`, and every small wrapped checkpoint part together. Leave the individual checkpoint parts wrapped.** The complete outer download can exceed ordinary GitHub file-size limits; its extracted members are the intended upload units. Keep the original download as a complete local copy.
 
 The checkpoint is split for practical repository storage; no precision reduction or model conversion is applied. Reassembly concatenates the single member from each wrapper in manifest order, checks the complete SHA256, then loads the recorded state dictionary into `corner_refinement_r58.build_model()`.
 
 CPU artifact verification reconstructs postclip suppression, training supervision, per-epoch sample order, exposure and update counts, all score tables and case identities. For each endpoint it replays the recorded local-neighbour offset, heatmap-to-canvas mapping and inverse crop mapping. This arithmetic check does not recompute every heatmap or prove its global maximum without rerunning the saved model. Interrupted outer packaging is rebuilt from verified inner files. Resume requires matching package sources, Python/Torch/TorchVision versions, device and GPU identity.
 
 The generator is `scripts/build_corner_refinement_r58_notebooks.py`. It requires the actual published implementation commit; placeholder source pins are not runnable releases. The complete implementation is in `scripts/corner_refinement_r58.py` and `scripts/run_corner_refinement_r58.py`. Focused checks are in `tests/test_corner_refinement_r58.py`.
+
+Both released notebooks pin implementation commit `5b1650b8fa3959a0917680305d7b499af783c5aa`. Their actual first two code cells passed in separate fresh checkouts with verified cached downloads. Each pinned implementation also passed a real pretrained CPU forward/backward/optimizer check with the same initial-state hash. The [published-source execution receipt](local-refiner-notebook-bootstrap-r58.json) and [focused CPU validation](local-refiner-cpu-validation-r58.json) record these checks. Full GPU training and development accuracy remain pending.
 
 ## 8. References
 
