@@ -2,23 +2,62 @@
 
 27 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected under the established frozen-reference gate.** The latest returned model experiment is [PR137: completed R47 supplementary training](additional-front-pilot-r47-results.md). Its 138-photo reference and 142-photo candidate give a mixed result: on unchanged R38, misses 13→15, unmatched 90→84, and two-corner 5 px successes 569→566/583. On the frozen666 primary reference, misses 33→34 and strict corner successes 518→511/584. This does not support automatic promotion.
+**PR35 remains selected under the established frozen-reference gate.** The latest
+completed training is [PR146/R51](partial-classification-r51-results.md): both
+arms use the same 142 photographs and 3,999 fronts. Doubling classification
+weight for assigned partial targets changes R50 misses 15→11, unmatched 84→112,
+formal duplicates 13→23, and both-corner 5 px successes 566→567/583. This is a
+tradeoff and does not support automatic promotion. The reference predictions
+exactly reproduce the PR137 candidate on all 20 development images.
 
-**Current entry points:** [R51 completed diagnosis](front-diagnosis-r51.md), [R51 controlled training comparison](partial-classification-r51.md), [R50 boundary amendment](front-review-r50.md), and [complete case analysis](front-error-review-r50.md). [PR143](https://github.com/Siuuuers/dl/pull/143) returns the successful R49 inference experiment. Its fresh baseline exactly reproduces all 20 saved PR137 outputs. Soft-NMS removes one unmatched output but recovers no target; R38/R50 misses remain 15 and two-corner 5px success remains 566/583. The equivalent R49/R50 inference question is complete and does not need another run.
+**Current entry points:** [canonical thesis workspace](thesis.md),
+[primary literature and hypotheses](thesis-literature-r53.md),
+[R53 inference comparisons](inference-ablation-r53.md), and
+[camera pipeline audit](camera-pipeline-r53.md). R53 prepares separate fixed
+contrast and 1280/1600 scale probes using the immutable PR137 candidate. It has
+no new model inference or training result yet. Every probe must reproduce the
+archived control before treatment interpretation. The new
+[size/visibility replay](size-visibility-r53.md) is a descriptive CPU analysis
+of existing predictions, not a fresh model run.
 
-The 15 miss traces comprise ten confidence-gate cases, three without an IoU-eligible decoded box and two ordinary-NMS cases. One post-hoc CPU replay at confidence 0.05 recovers six R38/R50 targets but adds 74 unmatched outputs, including outputs in two previously empty scenes. Confidence 0.13 remains unchanged. The new R51 notebook isolates classification-loss weighting for partial targets on the same 142 training photos. It prepares a testable hypothesis, not a measured improvement or an automatic promotion. No R51 GPU training result is claimed.
+The generic live launcher and `weights/base.json` currently select epoch 173,
+with confidence 0.25, while the retained PR35 operating point below uses 0.13.
+The camera audit explains explicit launch settings and checkpoint verification.
+A selected-model document does not itself change the live application's
+weights. R53 does not change these runtime defaults.
+
+## Completed inference diagnosis and annotation work
+
+[PR143](https://github.com/Siuuuers/dl/pull/143) returns the successful R49
+inference experiment. Its fresh baseline exactly reproduces all 20 saved PR137
+outputs. Soft-NMS removes one unmatched output but recovers no target; R38/R50
+misses remain 15 and two-corner 5 px success remains 566/583. The equivalent
+R49/R50 inference question is complete and does not need another run.
+
+For that reference checkpoint, the 15 miss traces comprise ten confidence-gate
+cases, three without an IoU-eligible decoded box and two ordinary-NMS cases.
+One post-hoc CPU replay at confidence 0.05 recovers six R38/R50 targets but adds 74
+unmatched outputs, including outputs in two previously empty scenes.
+Confidence 0.13 remains unchanged. These stage causes were measured for the
+PR137/reference model; they must not be copied onto the PR146 candidate
+without its decoded-candidate evidence.
 
 [The subsequent PR144 R50 return](../results/evaluation/pr144-r50-20261127/README.md)
-confirms the diagnosis: all 20 decoded tensor files are byte-identical to PR143,
-the full prediction and trace objects are identical, and all four reference
-scores agree. This is reproducibility on the same scenes, not independent
-generalization evidence. The prepared R51 training comparison is unchanged.
+confirms that prior diagnosis: all 20 decoded tensor files are byte-identical
+to PR143, prediction and trace objects are identical, and all four reference
+scores agree. This establishes reproducibility on those scenes, not independent
+generalization.
 
-The thesis is not settled: the user's current assignment is annotation and model training, and new captures are unavailable for now. [Lecture-guided project direction](project-direction-r50.md), [R48](front-review-r48.md) and its [thesis proposal](thesis-plan-r48.md) remain background and historical discussion. These four label references share the same repeatedly reviewed development photographs; they are not independent test sets.
+[R52](front-review-r52.md) records 10 amended rows/11 boundary fields on
+`frame_0160`, with all corner fields and existing holds retained. Its
+[CPU study notebook](annotation-study-r52.md) replays the returned training
+result and produces the review reports. The thesis topic is still a proposal;
+new captures are unavailable for now. All four evaluation label references
+share the same repeatedly reviewed development photographs.
 
 The earlier [R40 folder filter](unmatched-output-r40.md) followed the accepted [R38 development amendments](front-review-r38.md), PR123 and [R39 diagnosis](front-diagnosis-r39.md). PR125 returned the identical R39 CPU replay archive. The old R28 notebook below is historical, not the next run.
 
-PR123 has 11 misses and 94 unmatched outputs on accepted R38, compared with PR35's 40 and 114. The historical frozen666 ranking reverses (PR35:18/80; PR123:35/106). Current-target performance and historical compatibility remain separate; neither reference is a new capture session. The optional `--postclip-nms` folder flag now implements R39's fixed 0.70 clipped-box suppression. A fresh all-20-image CPU run exactly reproduced 85 unmatched outputs with every existing match and corner outcome preserved. It does not automatically promote PR123 or change inference defaults.
+PR123 has 11 misses and 94 unmatched outputs on accepted R38, compared with PR35's 40 and 114. The historical frozen666 ranking reverses (PR35: 18/80; PR123: 35/106). Current-target performance and historical compatibility remain separate; neither reference is a new capture session. The optional `--postclip-nms` folder flag now implements R39's fixed 0.70 clipped-box suppression. A fresh all-20-image CPU run exactly reproduced 85 unmatched outputs with every existing match and corner outcome preserved. It does not automatically promote PR123 or change inference defaults.
 
 ## Historical R28 handoff
 
