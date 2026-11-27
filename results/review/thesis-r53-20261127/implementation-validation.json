@@ -1,0 +1,150 @@
+{
+  "actual_preprocessing": true,
+  "archive_sha256": "fc8c40357c83831d17f88b0bb5a5ecd2e0cb1a8128be697e37e80620e4981023",
+  "baseline_self_replay": {
+    "discrete_policy": "Exact per-image match/miss/unmatched/duplicate IDs, counts, and per-row endpoint threshold states across all four references; raw and postclip.",
+    "exact_json_equal": true,
+    "failures": [],
+    "maximum_drift": {
+      "coordinate_component_px": 0.0,
+      "endpoint_error_px": 0.0,
+      "probability": 0.0
+    },
+    "passed": true,
+    "tolerances": {
+      "coordinate_component_px": 0.05,
+      "endpoint_error_px": 0.075,
+      "probability": 1e-05
+    }
+  },
+  "case_rows": 2637,
+  "checked_on": "2026-11-27",
+  "clahe_bgr_sha256": "fb16e6c8e55300bb6d0c88f97bdeb3e3313b2969d565127bcca6252741f87ed7",
+  "command": "PYTHONPATH=/path/to/opencv-numpy-deps python -B -m unittest discover -s tests -p test_inference_ablation_r53.py -v",
+  "fresh_inference": false,
+  "independent_checks": [
+    "noncontiguous and negative-stride BGR; no alias/mutation",
+    "endpoint confidence crossing 0.50 rejected despite numeric tolerance",
+    "5px endpoint state crossing rejected despite numeric tolerance",
+    "synthetic blocked-baseline archive replay and overwrite refusal"
+  ],
+  "interpretation": "Implementation and archived-result checks only; no new model predictions or treatment benefit measured.",
+  "model_loaded": false,
+  "numpy": "2.4.6",
+  "opencv": "5.0.0",
+  "original_bgr_sha256": "5006cdc93291a3e37b6bd36717fca26ea141f7c3ea198dfffdd824ef8c407ea0",
+  "references": {
+    "frozen666": {
+      "corners": {
+        "0": {
+          "eligible": 23,
+          "matched": 10,
+          "within10": 0,
+          "within5": 0
+        },
+        "1": {
+          "eligible": 59,
+          "matched": 45,
+          "within10": 45,
+          "within5": 39
+        },
+        "2": {
+          "eligible": 584,
+          "matched": 577,
+          "within10": 575,
+          "within5": 511
+        }
+      },
+      "duplicate_fp": 17,
+      "fn": 34,
+      "fp": 91
+    },
+    "historical663": {
+      "corners": {
+        "0": {
+          "eligible": 20,
+          "matched": 11,
+          "within10": 0,
+          "within5": 0
+        },
+        "1": {
+          "eligible": 59,
+          "matched": 45,
+          "within10": 45,
+          "within5": 39
+        },
+        "2": {
+          "eligible": 584,
+          "matched": 577,
+          "within10": 575,
+          "within5": 511
+        }
+      },
+      "duplicate_fp": 17,
+      "fn": 30,
+      "fp": 90
+    },
+    "r38": {
+      "corners": {
+        "0": {
+          "eligible": 17,
+          "matched": 14,
+          "within10": 0,
+          "within5": 0
+        },
+        "1": {
+          "eligible": 54,
+          "matched": 42,
+          "within10": 41,
+          "within5": 39
+        },
+        "2": {
+          "eligible": 583,
+          "matched": 583,
+          "within10": 582,
+          "within5": 566
+        }
+      },
+      "duplicate_fp": 14,
+      "fn": 15,
+      "fp": 84
+    },
+    "r50": {
+      "corners": {
+        "0": {
+          "eligible": 17,
+          "matched": 14,
+          "within10": 0,
+          "within5": 0
+        },
+        "1": {
+          "eligible": 54,
+          "matched": 42,
+          "within10": 41,
+          "within5": 39
+        },
+        "2": {
+          "eligible": 583,
+          "matched": 583,
+          "within10": 582,
+          "within5": 566
+        }
+      },
+      "duplicate_fp": 13,
+      "fn": 15,
+      "fp": 84
+    }
+  },
+  "schema_version": 1,
+  "source_parent": "9983d996e087aa6fd348a1861b61a1c99ec88a0d",
+  "source_sha256": {
+    "scripts/analyze_size_visibility_r53.py": "64245a33d36ece9e96ae602b41ad03d80e2a28216ca232872f6db2facfdfcfac",
+    "scripts/build_inference_ablation_r53_notebooks.py": "e4acd00a9bfeb7334e90f1601f18ebe4d35688563991d761bb7748b3e38c39e7",
+    "scripts/run_inference_ablation_r53.py": "8c8a37c3dcaccde5c568e9df6f44651cdb05965ca5f5ed5b0f2978852387dcc1",
+    "tests/test_inference_ablation_r53.py": "264295c09b7a05f68d7c8ae02af25b590b86847accf33affb6a9b48379114721"
+  },
+  "status": "passed",
+  "training": false,
+  "unit_tests_passed": 9,
+  "unmatched_case_entries": 349
+}
