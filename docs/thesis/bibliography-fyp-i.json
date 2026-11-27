@@ -1,8 +1,8 @@
 {
-  "schema": "cassette-fyp-i-external-bibliography-v2",
+  "schema": "cassette-fyp-i-bibliography-v2",
   "revised_on": "2026-11-28",
-  "numbering": "IEEE references in first-citation order in report.md.",
-  "scope": "External academic publications and professional documentation only. Project methods, measurements, and reasoning are explained in the manuscript itself.",
+  "numbering": "IEEE first appearance in the current concise report",
+  "scope": "External academic and professional references; original supplied model is the sole comparison baseline.",
   "entries": [
     {
       "key": "yolo2016",
@@ -51,42 +51,26 @@
       "reference_number": 1
     },
     {
-      "key": "tide2020",
-      "type": "conference_paper",
+      "key": "yolo26docs",
+      "type": "professional_documentation",
       "authors": [
-        "Daniel Bolya",
-        "Sean Foley",
-        "James Hays",
-        "Judy Hoffman"
+        "Ultralytics"
       ],
-      "title": "TIDE: A General Toolbox for Identifying Object Detection Errors",
-      "year": 2020,
-      "venue": "Computer Vision – ECCV 2020",
-      "series": "Lecture Notes in Computer Science",
-      "volume": "12348",
-      "publisher": "Springer",
-      "pages": "558–573",
-      "doi": "10.1007/978-3-030-58580-8_33",
-      "url": "https://link.springer.com/chapter/10.1007/978-3-030-58580-8_33",
-      "ieee_entry": "D. Bolya, S. Foley, J. Hays, and J. Hoffman, “TIDE: A general toolbox for identifying object detection errors,” in Computer Vision – ECCV 2020, Lecture Notes in Computer Science, vol. 12348. Springer, 2020, pp. 558–573, doi: 10.1007/978-3-030-58580-8_33.",
-      "supported_claim": "TIDE separates sources of object-detection and instance-segmentation error and measures their effects on average precision, encouraging diagnosis beyond a single aggregate score.",
-      "limitation": "The project's fixed-threshold missed, unmatched, and duplicate counts are not a full reproduction of TIDE's error-oracle analysis, and corner accuracy requires additional metrics.",
+      "title": "Ultralytics YOLO26",
+      "url": "https://docs.ultralytics.com/models/yolo26/",
+      "accessed": "2026-11-28",
+      "ieee_entry": "Ultralytics, “Ultralytics YOLO26,” Ultralytics Docs. Accessed: Nov. 28, 2026. [Online]. Available: https://docs.ultralytics.com/models/yolo26/",
+      "supported_claim": "YOLO26 is a model family with detection and pose-estimation variants.",
+      "limitation": "Current model documentation does not establish the accuracy of the project-specific checkpoint.",
       "verification": [
         {
-          "url": "https://link.springer.com/chapter/10.1007/978-3-030-58580-8_33",
+          "url": "https://docs.ultralytics.com/models/yolo26/",
           "ref_ids": [
-            "turn907124369view0"
+            "turn382010710view2"
           ],
           "supports": [
-            "authors",
-            "title",
-            "venue",
-            "series",
-            "volume",
-            "year",
-            "pages",
-            "DOI",
-            "method summary"
+            "family name",
+            "pose support"
           ]
         }
       ],
@@ -187,154 +171,128 @@
       "reference_number": 4
     },
     {
-      "key": "clahe1994",
-      "type": "book_chapter",
+      "key": "tide2020",
+      "type": "conference_paper",
       "authors": [
-        "Karel Zuiderveld"
+        "Daniel Bolya",
+        "Sean Foley",
+        "James Hays",
+        "Judy Hoffman"
       ],
-      "title": "Contrast Limited Adaptive Histogram Equalization",
-      "year": 1994,
-      "venue": "Graphics Gems IV",
-      "editors": [
-        "Paul S. Heckbert"
-      ],
-      "publisher": "Academic Press",
-      "pages": "474–485",
-      "url": "https://www.cse.unr.edu/~bebis/CS474/StudentPaperPresentations/Constrast-Limited%20Adaptive%20Histogram%20Enhancement.pdf",
-      "publisher_url": "https://www.sciencedirect.com/book/9780123361561/graphics-gems-iv",
-      "ieee_entry": "K. Zuiderveld, “Contrast limited adaptive histogram equalization,” in Graphics Gems IV, P. S. Heckbert, Ed. Academic Press, 1994, pp. 474–485.",
-      "supported_claim": "CLAHE limits local histogram amplification by clipping and redistributing histogram counts, with interpolation between neighboring regions to reduce boundary artifacts.",
-      "limitation": "The chapter supplies the algorithmic background, not evidence that a particular clip limit or tile grid improves cassette detection or two-corner localization.",
+      "title": "TIDE: A General Toolbox for Identifying Object Detection Errors",
+      "year": 2020,
+      "venue": "Computer Vision – ECCV 2020",
+      "series": "Lecture Notes in Computer Science",
+      "volume": "12348",
+      "publisher": "Springer",
+      "pages": "558–573",
+      "doi": "10.1007/978-3-030-58580-8_33",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-030-58580-8_33",
+      "ieee_entry": "D. Bolya, S. Foley, J. Hays, and J. Hoffman, “TIDE: A general toolbox for identifying object detection errors,” in Computer Vision – ECCV 2020, Lecture Notes in Computer Science, vol. 12348. Springer, 2020, pp. 558–573, doi: 10.1007/978-3-030-58580-8_33.",
+      "supported_claim": "TIDE separates sources of object-detection and instance-segmentation error and measures their effects on average precision, encouraging diagnosis beyond a single aggregate score.",
+      "limitation": "The project's fixed-threshold missed, unmatched, and duplicate counts are not a full reproduction of TIDE's error-oracle analysis, and corner accuracy requires additional metrics.",
       "verification": [
         {
-          "url": "https://www.cse.unr.edu/~bebis/CS474/StudentPaperPresentations/Constrast-Limited%20Adaptive%20Histogram%20Enhancement.pdf",
+          "url": "https://link.springer.com/chapter/10.1007/978-3-030-58580-8_33",
           "ref_ids": [
-            "turn257754807view0"
+            "turn907124369view0"
           ],
           "supports": [
-            "original chapter text",
-            "author",
+            "authors",
             "title",
+            "venue",
+            "series",
+            "volume",
             "year",
-            "publisher",
             "pages",
-            "algorithm"
-          ]
-        },
-        {
-          "url": "https://www.sciencedirect.com/book/9780123361561/graphics-gems-iv",
-          "ref_ids": [
-            "turn458583483search0",
-            "turn661882623search1"
-          ],
-          "supports": [
-            "book title",
-            "editor",
-            "year",
-            "chapter author and pages in indexed publisher record"
+            "DOI",
+            "method summary"
           ]
         }
-      ],
-      "metadata_notes": [
-        "A chapter DOI was not successfully verified from a primary metadata record and is deliberately omitted.",
-        "The university-hosted PDF is a scan of the original chapter, not a secondary summary."
       ],
       "reference_number": 5
     },
     {
-      "key": "iayolo2022",
+      "key": "simple_baselines2018",
       "type": "conference_paper",
       "authors": [
-        "Wenyu Liu",
-        "Gaofeng Ren",
-        "Runsheng Yu",
-        "Shi Guo",
-        "Jianke Zhu",
-        "Lei Zhang"
+        "Bin Xiao",
+        "Haiping Wu",
+        "Yichen Wei"
       ],
-      "title": "Image-Adaptive YOLO for Object Detection in Adverse Weather Conditions",
-      "year": 2022,
-      "venue": "AAAI Conference on Artificial Intelligence",
-      "volume": "36",
-      "pages": "1792–1800",
-      "doi": "10.1609/aaai.v36i2.20072",
-      "url": "https://cdn.aaai.org/ojs/20072/20072-13-24085-1-2-20220628.pdf",
-      "ieee_entry": "W. Liu, G. Ren, R. Yu, S. Guo, J. Zhu, and L. Zhang, “Image-adaptive YOLO for object detection in adverse weather conditions,” in Proc. AAAI Conf. Artificial Intelligence, vol. 36, 2022, pp. 1792–1800, doi: 10.1609/aaai.v36i2.20072.",
-      "supported_claim": "IA-YOLO jointly trains an image-dependent filter-parameter predictor and a YOLOv3 detector for adverse-weather object detection.",
-      "limitation": "Joint learned enhancement differs from applying fixed CLAHE to a frozen pose model; the cassette CLAHE result cannot establish the value of the full IA-YOLO approach.",
+      "title": "Simple Baselines for Human Pose Estimation and Tracking",
+      "year": 2018,
+      "venue": "European Conference on Computer Vision (ECCV)",
+      "pages": "466–481",
+      "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
+      "ieee_entry": "B. Xiao, H. Wu, and Y. Wei, “Simple baselines for human pose estimation and tracking,” in Proc. European Conf. Computer Vision (ECCV), 2018, pp. 466–481. [Online]. Available: https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
+      "supported_claim": "The human-pose baseline averages heatmaps from original and horizontally flipped inputs during testing, providing a direct pose-estimation precedent for flip testing.",
+      "limitation": "Its heatmap model and human-joint task differ from the project's two-point regression output, so its results do not establish a cassette improvement.",
       "verification": [
         {
-          "url": "https://cdn.aaai.org/ojs/20072/20072-13-24085-1-2-20220628.pdf",
+          "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
           "ref_ids": [
-            "turn240754251view1"
+            "turn716501904search1",
+            "turn311618434search2"
           ],
           "supports": [
             "authors",
             "title",
             "venue",
             "year",
-            "pages",
-            "method"
+            "pages"
           ]
         },
         {
-          "url": "https://researchportal.hkust.edu.hk/en/publications/image-adaptive-yolo-for-object-detection-in-adverse-weather-condi-2/",
+          "url": "https://openaccess.thecvf.com/content_ECCV_2018/papers/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.pdf",
           "ref_ids": [
-            "turn661882623search0"
+            "turn311618434search8"
           ],
           "supports": [
-            "author institution publication record",
-            "volume",
-            "pages",
-            "DOI"
+            "test-time averaging of original and flipped heatmaps"
           ]
         }
       ],
       "reference_number": 6
     },
     {
-      "key": "sahi2022",
+      "key": "posefix2019",
       "type": "conference_paper",
       "authors": [
-        "Fatih Cagatay Akyon",
-        "Sinan Onur Altinuc",
-        "Alptekin Temizel"
+        "Gyeongsik Moon",
+        "Ju Yong Chang",
+        "Kyoung Mu Lee"
       ],
-      "title": "Slicing Aided Hyper Inference and Fine-tuning for Small Object Detection",
-      "year": 2022,
-      "venue": "IEEE International Conference on Image Processing (ICIP)",
-      "pages": "966–970",
-      "doi": "10.1109/ICIP46576.2022.9897990",
-      "arxiv_id": "2202.06934",
-      "url": "https://arxiv.org/abs/2202.06934",
-      "ieee_entry": "F. C. Akyon, S. O. Altinuc, and A. Temizel, “Slicing aided hyper inference and fine-tuning for small object detection,” in Proc. IEEE Int. Conf. Image Processing (ICIP), 2022, pp. 966–970, doi: 10.1109/ICIP46576.2022.9897990.",
-      "supported_claim": "SAHI combines predictions from image slices and studies sliced fine-tuning to improve small-object box detection in the evaluated datasets.",
-      "limitation": "Two-keypoint coordinate restoration, tile-edge truncation, and duplicate handling need separate validation; slicing is a different intervention from increasing whole-image input resolution.",
+      "title": "PoseFix: Model-Agnostic General Human Pose Refinement Network",
+      "year": 2019,
+      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "pages": "7773–7781",
+      "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Moon_PoseFix_Model-Agnostic_General_Human_Pose_Refinement_Network_CVPR_2019_paper.html",
+      "author_manuscript": "https://arxiv.org/abs/1812.03595",
+      "ieee_entry": "G. Moon, J. Y. Chang, and K. M. Lee, “PoseFix: Model-agnostic general human pose refinement network,” in Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR), 2019, pp. 7773–7781.",
+      "supported_claim": "Image and initial-pose input can support a separate pose-refinement stage.",
+      "limitation": "Human-pose benchmark evidence motivates a cassette experiment; it does not establish cassette accuracy.",
       "verification": [
         {
-          "url": "https://arxiv.org/abs/2202.06934",
+          "url": "https://arxiv.org/abs/1812.03595",
           "ref_ids": [
-            "turn115794251view0"
+            "turn991257851view1"
           ],
           "supports": [
             "authors",
             "title",
-            "year",
-            "venue",
-            "DOI",
+            "CVPR2019 publication",
             "method"
           ]
         },
         {
-          "url": "https://github.com/obss/sahi",
+          "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Moon_PoseFix_Model-Agnostic_General_Human_Pose_Refinement_Network_CVPR_2019_paper.html",
           "ref_ids": [
-            "turn257754807view3"
+            "turn439694374search0"
           ],
           "supports": [
-            "author-maintained citation BibTeX",
-            "pages",
-            "DOI",
-            "conference metadata"
+            "venue",
+            "pages"
           ]
         }
       ],
@@ -380,75 +338,6 @@
       "reference_number": 8
     },
     {
-      "key": "selective2017",
-      "type": "conference_paper",
-      "authors": [
-        "Yonatan Geifman",
-        "Ran El-Yaniv"
-      ],
-      "title": "Selective Classification for Deep Neural Networks",
-      "year": 2017,
-      "venue": "Advances in Neural Information Processing Systems",
-      "volume": "30",
-      "pages": "4878–4887",
-      "url": "https://proceedings.neurips.cc/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html",
-      "ieee_entry": "Y. Geifman and R. El-Yaniv, “Selective classification for deep neural networks,” in Advances in Neural Information Processing Systems, vol. 30, 2017, pp. 4878–4887. [Online]. Available: https://proceedings.neurips.cc/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html",
-      "supported_claim": "Selective classification formalizes a reject option and the trade-off between prediction coverage and error risk among accepted predictions.",
-      "limitation": "Its classification risk guarantees do not transfer automatically to cassette confidence thresholds, incomplete references, or a repeatedly reused development set.",
-      "verification": [
-        {
-          "url": "https://proceedings.neurips.cc/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html",
-          "ref_ids": [
-            "turn907124369view3"
-          ],
-          "supports": [
-            "authors",
-            "title",
-            "venue",
-            "year",
-            "volume",
-            "method summary"
-          ]
-        },
-        {
-          "url": "https://proceedings.neurips.cc/paper_files/paper/2017/file/4a8423d5e91fda00bb7e46540e2b0cf1-Metadata.json",
-          "ref_ids": [
-            "turn257754807view1"
-          ],
-          "supports": [
-            "official page_first 4878 and page_last 4887"
-          ]
-        }
-      ],
-      "reference_number": 9
-    },
-    {
-      "key": "yolo26docs",
-      "type": "professional_documentation",
-      "authors": [
-        "Ultralytics"
-      ],
-      "title": "Ultralytics YOLO26",
-      "url": "https://docs.ultralytics.com/models/yolo26/",
-      "accessed": "2026-11-28",
-      "ieee_entry": "Ultralytics, “Ultralytics YOLO26,” Ultralytics Docs. Accessed: Nov. 28, 2026. [Online]. Available: https://docs.ultralytics.com/models/yolo26/",
-      "supported_claim": "YOLO26 is a model family with detection and pose-estimation variants.",
-      "limitation": "Current model documentation does not establish the accuracy of the project-specific checkpoint.",
-      "verification": [
-        {
-          "url": "https://docs.ultralytics.com/models/yolo26/",
-          "ref_ids": [
-            "turn382010710view2"
-          ],
-          "supports": [
-            "family name",
-            "pose support"
-          ]
-        }
-      ],
-      "reference_number": 10
-    },
-    {
       "key": "adamw2019",
       "type": "conference_paper",
       "authors": [
@@ -477,7 +366,7 @@
           ]
         }
       ],
-      "reference_number": 11
+      "reference_number": 9
     },
     {
       "key": "rle2021",
@@ -514,94 +403,7 @@
           ]
         }
       ],
-      "reference_number": 12
-    },
-    {
-      "key": "simple_baselines2018",
-      "type": "conference_paper",
-      "authors": [
-        "Bin Xiao",
-        "Haiping Wu",
-        "Yichen Wei"
-      ],
-      "title": "Simple Baselines for Human Pose Estimation and Tracking",
-      "year": 2018,
-      "venue": "European Conference on Computer Vision (ECCV)",
-      "pages": "466–481",
-      "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
-      "ieee_entry": "B. Xiao, H. Wu, and Y. Wei, “Simple baselines for human pose estimation and tracking,” in Proc. European Conf. Computer Vision (ECCV), 2018, pp. 466–481. [Online]. Available: https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
-      "supported_claim": "The human-pose baseline averages heatmaps from original and horizontally flipped inputs during testing, providing a direct pose-estimation precedent for flip testing.",
-      "limitation": "Its heatmap model and human-joint task differ from the project's two-point regression output, so its results do not establish a cassette improvement.",
-      "verification": [
-        {
-          "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
-          "ref_ids": [
-            "turn716501904search1",
-            "turn311618434search2"
-          ],
-          "supports": [
-            "authors",
-            "title",
-            "venue",
-            "year",
-            "pages"
-          ]
-        },
-        {
-          "url": "https://openaccess.thecvf.com/content_ECCV_2018/papers/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.pdf",
-          "ref_ids": [
-            "turn311618434search8"
-          ],
-          "supports": [
-            "test-time averaging of original and flipped heatmaps"
-          ]
-        }
-      ],
-      "reference_number": 13
-    },
-    {
-      "key": "udp2020",
-      "type": "conference_paper",
-      "authors": [
-        "Junjie Huang",
-        "Zheng Zhu",
-        "Feng Guo",
-        "Guan Huang"
-      ],
-      "title": "The Devil Is in the Details: Delving Into Unbiased Data Processing for Human Pose Estimation",
-      "year": 2020,
-      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
-      "pages": "5700–5709",
-      "url": "https://openaccess.thecvf.com/content_CVPR_2020/html/Huang_The_Devil_Is_in_the_Details_Delving_Into_Unbiased_Data_CVPR_2020_paper.html",
-      "ieee_entry": "J. Huang, Z. Zhu, F. Guo, and G. Huang, “The devil is in the details: Delving into unbiased data processing for human pose estimation,” in Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR), 2020, pp. 5700–5709. [Online]. Available: https://openaccess.thecvf.com/content_CVPR_2020/html/Huang_The_Devil_Is_in_the_Details_Delving_Into_Unbiased_Data_CVPR_2020_paper.html",
-      "supported_claim": "UDP identifies coordinate-transformation and encoding bias in pose-estimation pipelines, including misalignment when combining predictions from original and flipped images.",
-      "limitation": "Using the model's native reflection convention is necessary implementation hygiene, but it does not reproduce the full UDP method or demonstrate better cassette results.",
-      "verification": [
-        {
-          "url": "https://openaccess.thecvf.com/content_CVPR_2020/html/Huang_The_Devil_Is_in_the_Details_Delving_Into_Unbiased_Data_CVPR_2020_paper.html",
-          "ref_ids": [
-            "turn716501904search0"
-          ],
-          "supports": [
-            "authors",
-            "title",
-            "venue",
-            "year",
-            "pages",
-            "method summary"
-          ]
-        },
-        {
-          "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Huang_The_Devil_Is_in_the_Details_Delving_Into_Unbiased_Data_CVPR_2020_paper.pdf",
-          "ref_ids": [
-            "turn716501904search4"
-          ],
-          "supports": [
-            "coordinate handling and flip alignment discussion"
-          ]
-        }
-      ],
-      "reference_number": 14
+      "reference_number": 10
     },
     {
       "key": "tta_aggregation2021",
@@ -645,143 +447,46 @@
           ]
         }
       ],
-      "reference_number": 15
+      "reference_number": 11
     },
     {
-      "key": "cald2022",
-      "type": "workshop_paper",
+      "key": "ief2016",
+      "type": "conference_paper",
       "authors": [
-        "Weiping Yu",
-        "Sijie Zhu",
-        "Taojiannan Yang",
-        "Chen Chen"
+        "Joao Carreira",
+        "Pulkit Agrawal",
+        "Katerina Fragkiadaki",
+        "Jitendra Malik"
       ],
-      "title": "Consistency-Based Active Learning for Object Detection",
-      "year": 2022,
-      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
-      "pages": "3951–3960",
-      "pagination_basis": "CVF open-access proceedings",
-      "url": "https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/html/Yu_Consistency-Based_Active_Learning_for_Object_Detection_CVPRW_2022_paper.html",
-      "ieee_entry": "W. Yu, S. Zhu, T. Yang, and C. Chen, “Consistency-based active learning for object detection,” in Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition Workshops (CVPRW), 2022, pp. 3951–3960. [Online]. Available: https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/html/Yu_Consistency-Based_Active_Learning_for_Object_Detection_CVPRW_2022_paper.html",
-      "supported_claim": "CALD uses consistency between original and augmented detections, including localization and classification information, to select examples for annotation.",
-      "limitation": "Adapting consistency to review prioritization neither reproduces CALD nor proves a label is wrong; independent adjudication and equal review budgets are needed.",
+      "title": "Human Pose Estimation with Iterative Error Feedback",
+      "year": 2016,
+      "venue": "IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "pages": "4733–4742",
+      "doi": "10.1109/CVPR.2016.512",
+      "url": "https://arxiv.org/abs/1507.06550",
+      "ieee_entry": "J. Carreira, P. Agrawal, K. Fragkiadaki, and J. Malik, “Human pose estimation with iterative error feedback,” in Proc. IEEE Conf. Computer Vision and Pattern Recognition (CVPR), 2016, pp. 4733–4742, doi: 10.1109/CVPR.2016.512.",
+      "supported_claim": "Image content and a rendered current pose can inform learned coordinate corrections.",
+      "limitation": "The proposed single-step cassette residual pilot is an adaptation; it does not reproduce the full iterative training scheme or establish cassette accuracy.",
       "verification": [
         {
-          "url": "https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/html/Yu_Consistency-Based_Active_Learning_for_Object_Detection_CVPRW_2022_paper.html",
-          "ref_ids": [
-            "turn895100843search0"
-          ],
+          "url": "https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Carreira_Human_Pose_Estimation_CVPR_2016_paper.html",
           "supports": [
             "authors",
             "title",
             "venue",
             "year",
-            "CVF page range",
+            "pages",
             "method summary"
           ]
         },
         {
-          "url": "https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/papers/Yu_Consistency-Based_Active_Learning_for_Object_Detection_CVPRW_2022_paper.pdf",
-          "ref_ids": [
-            "turn895100843search5"
-          ],
+          "url": "https://arxiv.org/abs/1507.06550",
           "supports": [
-            "author names and consistency method"
+            "author manuscript and correction formulation"
           ]
         }
       ],
-      "metadata_notes": [
-        "Pages follow the verified CVF open-access record; some secondary indexes use a different page range.",
-        "A DOI found only in secondary results was not included."
-      ],
-      "reference_number": 16
-    },
-    {
-      "key": "posefix2019",
-      "type": "conference_paper",
-      "authors": [
-        "Gyeongsik Moon",
-        "Ju Yong Chang",
-        "Kyoung Mu Lee"
-      ],
-      "title": "PoseFix: Model-Agnostic General Human Pose Refinement Network",
-      "year": 2019,
-      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
-      "pages": "7773–7781",
-      "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Moon_PoseFix_Model-Agnostic_General_Human_Pose_Refinement_Network_CVPR_2019_paper.html",
-      "author_manuscript": "https://arxiv.org/abs/1812.03595",
-      "ieee_entry": "G. Moon, J. Y. Chang, and K. M. Lee, “PoseFix: Model-agnostic general human pose refinement network,” in Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR), 2019, pp. 7773–7781.",
-      "supported_claim": "Image and initial-pose input can support a separate pose-refinement stage.",
-      "limitation": "Human-pose benchmark evidence motivates a cassette experiment; it does not establish cassette accuracy.",
-      "verification": [
-        {
-          "url": "https://arxiv.org/abs/1812.03595",
-          "ref_ids": [
-            "turn991257851view1"
-          ],
-          "supports": [
-            "authors",
-            "title",
-            "CVPR2019 publication",
-            "method"
-          ]
-        },
-        {
-          "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Moon_PoseFix_Model-Agnostic_General_Human_Pose_Refinement_Network_CVPR_2019_paper.html",
-          "ref_ids": [
-            "turn439694374search0"
-          ],
-          "supports": [
-            "venue",
-            "pages"
-          ]
-        }
-      ],
-      "reference_number": 17
-    },
-    {
-      "key": "hrnet2019",
-      "type": "conference_paper",
-      "authors": [
-        "Ke Sun",
-        "Bin Xiao",
-        "Dong Liu",
-        "Jingdong Wang"
-      ],
-      "title": "Deep High-Resolution Representation Learning for Human Pose Estimation",
-      "year": 2019,
-      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
-      "pages": "5693–5703",
-      "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Sun_Deep_High-Resolution_Representation_Learning_for_Human_Pose_Estimation_CVPR_2019_paper.html",
-      "author_manuscript": "https://arxiv.org/abs/1902.09212",
-      "ieee_entry": "K. Sun, B. Xiao, D. Liu, and J. Wang, “Deep high-resolution representation learning for human pose estimation,” in Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR), 2019, pp. 5693–5703.",
-      "supported_claim": "Parallel high- and lower-resolution feature streams retain spatial detail for landmark heatmap prediction.",
-      "limitation": "This motivates a local landmark model; no cassette improvement has been measured.",
-      "verification": [
-        {
-          "url": "https://arxiv.org/abs/1902.09212",
-          "ref_ids": [
-            "turn991257851view2"
-          ],
-          "supports": [
-            "authors",
-            "title",
-            "CVPR2019 publication",
-            "method"
-          ]
-        },
-        {
-          "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Sun_Deep_High-Resolution_Representation_Learning_for_Human_Pose_Estimation_CVPR_2019_paper.html",
-          "ref_ids": [
-            "turn822719452search0"
-          ],
-          "supports": [
-            "venue",
-            "pages"
-          ]
-        }
-      ],
-      "reference_number": 18
+      "reference_number": 12
     }
   ]
 }

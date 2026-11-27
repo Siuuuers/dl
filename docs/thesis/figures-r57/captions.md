@@ -1,5 +1,7 @@
 # Figure captions
 
+The concise current report uses only Figure 1. Figures 2–4 and their measured data remain historical assets from the earlier report presentation.
+
 ## Figure 1 — Cassette front and lower corners
 
 The original photograph and an enlarged cassette front. The blue rectangle marks the labelled front box; orange points mark the two labelled lower corners. The enlargement uses the same source pixels.

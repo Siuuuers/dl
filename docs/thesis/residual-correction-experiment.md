@@ -77,6 +77,8 @@ The detector has previously trained on these photographs. Their proposal errors 
 
 Open [the residual correction notebook](../../notebooks/baomai_residual_corner_r59.ipynb), select a GPU runtime and run all cells. Its implementation is pinned to an immutable published source commit and driver hash.
 
+Published source: `06e55d9c1b2557014aff7ff0d68b5096890fe546`. Driver SHA256: `54cdf49281abdc5409c9a8828d1a3bb00c5f9da8610e8767645b69315a78e5d3`.
+
 Before any experiment training, the notebook runs an actual pretrained CPU forward/backward check on two real training images. It verifies exactly zero initial outputs, exact original-coordinate preservation, a finite nonzero loss, an updated output layer and zero gradient for an unavailable endpoint. These disposable mechanics fixtures are discarded. The experiment model is reinitialized and must match the recorded initial state exactly.
 
 The detector must then reproduce its archived development output within the established tolerances, including matching identities and five-/ten-pixel success states. A failed check produces a diagnostic return and blocks training. A passing run trains once, evaluates the final epoch, and packages predictions, coordinate traces, score tables, training-target distributions, epoch exposure/order, runtime identities and exact checkpoint parts.
@@ -89,7 +91,9 @@ The primary success count uses every eligible reference front, including missed 
 
 Because boxes and suppression are fixed, this model cannot recover a missed front or remove a duplicate detection. The experiment addresses coordinate errors on available original points. Examine both improvements and regressions for the same reference rows, not only the total success count. A decrease rejects this configuration; a development gain motivates a separate capture-session evaluation. No checkpoint is adopted automatically.
 
-Implementation checks are in [the evidence folder](evidence/residual/README.md). No full residual training run is claimed by those checks.
+Exceeding the unrefined control's 566/583 reviewed five-pixel successes is insufficient to prefer the added model: it should also improve on the existing coordinate average's 569/583 at the same common confidence threshold, with individual regressions, ten-pixel success and offered-pair outcomes examined.
+
+Implementation checks are in [the evidence folder](evidence/residual/README.md). The actual notebook source and data-preparation cells, followed by the pretrained CPU mechanics check, passed from the published source with all 697 source/data files verified. No full residual training run is claimed by those checks.
 
 ## Reference
 

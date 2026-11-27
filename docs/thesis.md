@@ -1,17 +1,18 @@
 # Final Year Project I workspace
 
-Start with the **[thesis folder](thesis/README.md)** and the **[current report](thesis/report.md)**, prepared for undergraduate Electronic Engineering readers. The manuscript explains cassette-front detection and lower-corner localization without requiring knowledge of repository revision codes or project links. It explains the methods and conclusions directly and cites external academic and professional sources. The final Word report has 29 pages, a 278-word abstract, 40 numbered headings, 18 IEEE references, nine equations, 11 tables, four figures, and a Project II plan. Acknowledgements are omitted as requested.
+Start with the **[thesis folder](thesis/README.md)** and **[current report](thesis/report.md)**. The concise undergraduate Electronic Engineering report explains cassette-front detection and lower-corner localization directly, using the untouched supplied baomai model as its comparison baseline. It cites external academic and professional sources, with no GitHub links or unexplained project codes.
 
-The [contrast and input-size results](thesis/r53-results.md) and [horizontal-reflection results](thesis/reflection-results.md) are complete. Reflection reduces misses and total extras but increases duplicates, and its five-pixel corner change has opposite signs under the fixed and reviewed annotations. A separate [coordinate-average analysis](thesis/corner-average-experiment.md) keeps the original detections unchanged and improves five-pixel pair success under both references, while losing one fixed-reference ten-pixel success. This is completed analysis of saved outputs.
+The Word report has 14 pages, a 207-word abstract, 25 numbered headings, 12 IEEE references, six centered editable equations, four tables and one figure. Acknowledgements are omitted as requested.
 
-The [corner-quality diagnostic](thesis/research-corner-quality.md) shows that fixed local crops contain both reference corners in every matched complete target. The [local-refinement experiment guide](thesis/corner-refinement-experiment.md) prepares the next matched GPU training comparison: RGB input with zero hints versus RGB input with initial-corner Gaussian hints. Full training and recognition results remain pending.
+The [fresh comparison](thesis/original-comparison.md) runs both models under the same software and operating settings. On the reviewed annotations, the proposed method reduces misses 34→18 and extras 61→51; duplicates remain five. Complete pairs within five pixels increase 555→569/583, and within ten pixels 577→583/583. The earlier fixed annotations favour the supplied model (534 versus 525 five-pixel successes), which the report explains and retains in an appendix.
 
-| Next notebook | Runtime and purpose |
+Both [local-refinement training returns](thesis/local-refinement-results.md) are complete and independently audited. The image-only and image-plus-hints models achieve 547 and 558 reviewed five-pixel successes. Neither exceeds the proposed method's 569. A numerical ideal-heatmap check and saved-model replay point to learned peak placement as a useful next focus.
+
+| Notebook | Purpose |
 | --- | --- |
-| [Coordinate-average replay](../notebooks/baomai_corner_average_r58.ipynb) | CPU; reproduce completed results without new inference |
-| [Image-only local refinement](../notebooks/baomai_corner_refinement_rgb_r58.ipynb) | GPU; train the zero-hint control |
-| [Image and corner hints](../notebooks/baomai_corner_refinement_hints_r58.ipynb) | GPU; train the matched initial-corner-hint treatment |
+| [Original-model comparison](../notebooks/baomai_original_comparison_r59.ipynb) | Optional reproduction of the completed fresh inference comparison; all four cells already ran locally |
+| [Residual corner correction](../notebooks/baomai_residual_corner_r59.ipynb) | Next GPU training pilot; learns offsets from available initial points with a zero-initialized output head |
 
-The application uses outputs automatically, and recognition quality is the priority. The report evaluates missed fronts, extra predictions, duplicates, and corner accuracy together. The selected deployment model and live defaults remain unchanged. All present comparisons use existing development photographs; later capture sessions will test transfer.
+Outputs are used automatically, and recognition quality is the priority. The report measures misses, extras, duplicates and corner accuracy together. The current results use repeatedly inspected development photographs; independent captures remain needed. The selected deployment model and live defaults are unchanged.
 
-Technical names and exact evidence paths are in the [report source map](thesis/report-source-map.md). Earlier plans remain in [history](thesis/history); their pending-work statements describe their original dates.
+Exact technical provenance is in the [source map](thesis/report-source-map.md). Earlier protocols and results remain linked from the thesis folder; dated plans in [history](thesis/history) retain their historical meaning.

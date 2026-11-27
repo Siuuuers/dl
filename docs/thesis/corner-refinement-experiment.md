@@ -9,7 +9,7 @@ The runnable experiment consists of two notebooks:
 - `notebooks/baomai_corner_refinement_rgb_r58.ipynb`: the local RGB crop with two zero hint channels.
 - `notebooks/baomai_corner_refinement_hints_r58.ipynb`: the same RGB crop and network, with two Gaussian maps describing available initial corners.
 
-The implementation has passed an actual pretrained CPU forward/backward check on two verified training photographs, an optimizer update, an unavailable-corner gradient check, and focused geometry/audit tests. **Full GPU training and recognition results are pending.** These checks establish that the implemented mechanism runs; they do not establish an accuracy improvement.
+**Both GPU training runs are complete:** PR153 returns the initial-corner-hint arm and PR154 returns the RGB arm. The [audited results](local-refinement-results.md) supersede the original pending status. Neither local model exceeds the proposed two-view method at five pixels. This page retains the exact training protocol and original notebooks for reproducibility; the next hypothesis is [residual correction](residual-correction-experiment.md).
 
 This experiment preserves detector boxes, box confidences, original corner scores and postclip suppression identities. It can improve or worsen coordinate accuracy. It cannot recover a cassette for which the fixed detector produced no box, and it does not remove duplicate boxes. The unchanged detector provides the control inside each notebook.
 

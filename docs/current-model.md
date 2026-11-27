@@ -2,61 +2,21 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected under the established frozen-reference gate.** The latest
-completed training is [PR146/R51](partial-classification-r51-results.md): both
-arms use the same 142 photographs and 3,999 fronts. Doubling classification
-weight for assigned partial targets changes R50 misses 15→11, unmatched 84→112,
-formal duplicates 13→23, and both-corner 5 px successes 566→567/583. This is a
-tradeoff and does not support automatic promotion. The reference predictions
-exactly reproduce the PR137 candidate on all 20 development images.
+**PR35 remains selected under the established frozen-reference gate.** The new thesis comparison uses the untouched supplied epoch-173 checkpoint as its baseline; this is a different question from promoting a candidate for application use.
 
-**Current entry points:** [Final Year Project I report](thesis/README.md),
-[completed contrast and input-size results](thesis/r53-results.md),
-[completed reflection results](thesis/reflection-results.md),
-[coordinate-average analysis and CPU notebook](thesis/corner-average-experiment.md),
-and [local-refinement training notebooks](thesis/corner-refinement-experiment.md).
+**Current entry points:** [concise FYP I report](thesis/README.md), [fresh original-model comparison](thesis/original-comparison.md), [completed local-refinement results](thesis/local-refinement-results.md), and [next residual-correction pilot](thesis/residual-correction-experiment.md).
 
-PR149 and PR150 complete the fixed contrast and 1280/1600 probes using the
-immutable PR137 research checkpoint. Both reproduction checks pass, but neither
-treatment passes the joint quality screen. Primary misses change 34→33 while
-both-corner 5 px success falls 511→506/584 for CLAHE and 511→503/584 for size1600.
-Fixed cached two-view fusion also increases unmatched and duplicate outputs.
+The supplied model and proposed adapted-detector/two-view method have been rerun on all 20 photographs in one FP32 CPU environment, at object confidence strictly above 0.25 and common scoring settings. Reviewed-reference misses change 34→18, extras 61→51, duplicates remain five, and complete pairs within five pixels change 555→569/583. Ten-pixel success changes 577→583/583. The earlier fixed reference is adverse: misses 26→34, extras 41→55, and five-pixel success 534→525/584. This annotation sensitivity prevents automatic promotion under the retained gate.
 
-PR152 completes the horizontal-reflection experiment. Control reproduction,
-coordinate mapping, repeated predictions, and scoring pass independent replay.
-Fixed-reference misses change 34→32 and extras 91→84, but duplicates increase
-17→23. Five-pixel pair success rises 511→518/584 under the fixed reference and
-falls 566→562/583 under R50. The original notebook and its immutable source pin
-remain available for reproduction; a fresh reflection run is not required for
-the next CPU analysis.
+PR153 and PR154 complete both local-refinement training runs. Full returned-data/model checks, exact control reproduction, paired scoring, decoder checks and selected checkpoint replays pass. At the common threshold, RGB gives 547/583 five-pixel pairs and RGB plus initial-corner hints gives 558/583, below the proposed method's 569/583. They preserve detector boxes, so they do not change misses, extras or duplicates. No local refiner is selected for application use.
 
-The completed fixed-box coordinate average modifies 666 of 723 original records
-and preserves all original detection outcomes. Fixed-reference five-pixel pair
-success rises 511→525/584, while ten-pixel success falls 575→574/584. R50 changes
-566→569/583 and 582→583/583. Its rule uses predicted-box association and equal
-weights fixed before calculation. The [CPU replay notebook](../notebooks/baomai_corner_average_r58.ipynb)
-uses saved outputs; it neither trains nor reruns a model.
+The next notebook tests zero-initialized residual corrections. Its accuracy result remains pending. The [original-comparison notebook](../notebooks/baomai_original_comparison_r59.ipynb) has already completed all four actual code cells, full inference and saved-score verification locally; it is available for reproduction.
 
-The [crop-containment check](thesis/research-corner-quality.md) shows that all 583
-matched complete R50 targets retain both reference corners in fixed 1.5x crops,
-including all 17 baseline five-pixel failures. The new GPU notebooks compare
-[RGB with zero hint channels](../notebooks/baomai_corner_refinement_rgb_r58.ipynb)
-against [RGB with initial-corner hints](../notebooks/baomai_corner_refinement_hints_r58.ipynb)
-using the same architecture and recipe. Pretrained CPU forward/backward and
-masked-gradient smoke checks pass; full GPU training and accuracy results are
-pending. No local refiner has been selected for application use.
+The self-contained report has 14 verified Word pages, a 207-word abstract, 25 numbered headings, 12 external IEEE references, six centered equations, four tables and one figure. The [source map](thesis/report-source-map.md) keeps technical provenance separate from report prose.
 
-The self-contained FYP I report has 29 verified Word pages, a 278-word abstract,
-40 numbered headings, 18 external IEEE references, nine equations, 11 tables,
-and four figures. It contains no project GitHub citations or unexplained
-experiment codes. The [source map](thesis/report-source-map.md) preserves exact
-technical provenance separately.
+The generic live launcher and `weights/base.json` select epoch173 at confidence 0.25, while the retained PR35 operating point uses 0.13. A selected-model document does not itself change live weights. Explicit checkpoint and inference settings remain necessary for a camera comparison.
 
-The generic live launcher and `weights/base.json` currently select epoch 173,
-with confidence 0.25, while the retained PR35 operating point below uses 0.13.
-The camera audit explains explicit launch settings and checkpoint verification.
-A selected-model document does not itself change the live application's
-weights. The reflection and coordinate studies do not change these runtime defaults.
+Earlier research results are retained in the [contrast/input-size analysis](thesis/r53-results.md), [reflection analysis](thesis/reflection-results.md), and [saved-output coordinate averaging](thesis/corner-average-experiment.md). Their original confidence-above-0.13 counts must not be mixed with the new common-threshold original-model comparison.
 
 ## Completed inference diagnosis and annotation work
 

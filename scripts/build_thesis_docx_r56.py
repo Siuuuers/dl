@@ -39,6 +39,7 @@ PAGE_WIDTH_MM = 215.9
 PAGE_HEIGHT_MM = 279.4
 MARGIN_MM = 25.0
 TEXT_WIDTH_MM = PAGE_WIDTH_MM - 2 * MARGIN_MM
+FRESH_PAGE_SECTIONS = {"abstract", "table of contents", "introduction", "references", "appendices"}
 MATH_NS = "http://schemas.openxmlformats.org/officeDocument/2006/math"
 HEADING = re.compile(r"^(#{2,6})\s*(.*?)\s*#*\s*$")
 TYPED_NUMBER = re.compile(r"^(\d+(?:\.\d+)*)(?:\.)?\s+(.+)$")
@@ -203,14 +204,17 @@ def math_element(tag: str, **attrs):
     return node
 
 
-def math_run(text: str, variant: str = "normal"):
+def math_run(text: str, variant: str = "normal", *, literal: bool = False):
     run = math_element("r")
     props = math_element("rPr")
     style = {"normal": "p", "italic": "i", "bold": "b", "bold-italic": "bi"}.get(variant, "p")
     if variant in ("double-struck", "script", "fraktur", "sans-serif", "monospace"):
         props.append(math_element("scr", val=variant))
     props.append(math_element("sty", val=style))
-    if variant == "normal":
+    # Upright mathematics is still math.  Marking every number/operator as
+    # literal text makes some Word-compatible renderers left-align fraction
+    # arguments.  Reserve normal-text mode for actual text and explicit spaces.
+    if literal:
         props.append(math_element("nor", val="1"))
     run.append(props)
     wprops = OxmlElement("w:rPr")
@@ -276,7 +280,8 @@ def mathml_to_omml(node, inherited: str | None = None) -> list:
         text = "".join(node.itertext()).replace("\u2061", "").replace("\u2062", "").replace("\u2063", "")
         if not text:
             return []
-        return [math_run(text, variant or ("italic" if tag == "mi" and len(text) == 1 else "normal"))]
+        return [math_run(text, variant or ("italic" if tag == "mi" and len(text) == 1 else "normal"),
+                         literal=tag in ("mtext", "ms"))]
     if tag == "mspace":
         match = re.fullmatch(r"(-?[\d.]+)em", node.get("width", ""))
         width = float(match[1]) if match else 1 / 6
@@ -288,7 +293,7 @@ def mathml_to_omml(node, inherited: str | None = None) -> list:
             spacing = "\u2002"
         else:
             spacing = "\u2009"
-        return [math_run(spacing)]
+        return [math_run(spacing, literal=True)]
     spec = {
         "mfrac": ("f", ("num", "den")),
         "msub": ("sSub", ("e", "sub")),
@@ -462,7 +467,7 @@ def setup_styles(doc):
         style.paragraph_format.space_after = Pt(9 if level == 1 else 6)
         style.paragraph_format.keep_with_next = True
         style.paragraph_format.keep_together = True
-        style.paragraph_format.page_break_before = (level == 1)
+        style.paragraph_format.page_break_before = False
         style.paragraph_format.line_spacing = 1.08
     for name, size in (("Thesis TOC 1", 11), ("Thesis TOC 2", 11), ("Thesis TOC 3", 11),
                        ("Thesis TOC 4", 11), ("Thesis TOC 5", 11), ("Bibliography", 10.5),
@@ -597,6 +602,32 @@ def add_math(paragraph, source: str, equations: dict):
     result = math_element("oMath")
     result.extend(etree.fromstring(etree.tostring(item)) for item in equations[source])
     paragraph._p.append(result)
+
+
+def add_numbered_equation(doc, source: str, number: str, equations: dict):
+    """Center editable math in the text area; align its number to the right.
+
+    A center tab positions only the equation, independently of the number's
+    width.  Centering the whole paragraph would instead shift the equation to
+    the left.  Derive both stops from the section so margins stay authoritative.
+    """
+    section = doc.sections[-1]
+    usable_width = section.page_width - section.left_margin - section.right_margin
+    paragraph = doc.add_paragraph(style="Equation")
+    formatting = paragraph.paragraph_format
+    formatting.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    formatting.left_indent = formatting.right_indent = formatting.first_line_indent = Pt(0)
+    formatting.keep_together = True
+    formatting.space_before = Pt(7)
+    formatting.space_after = Pt(10)
+    tabs = formatting.tab_stops
+    tabs.clear_all()
+    tabs.add_tab_stop(int(usable_width / 2), WD_TAB_ALIGNMENT.CENTER)
+    tabs.add_tab_stop(int(usable_width), WD_TAB_ALIGNMENT.RIGHT)
+    paragraph.add_run("\t")
+    add_math(paragraph, source, equations)
+    paragraph.add_run(f"\t({number})")
+    return paragraph
 
 
 def inline(paragraph, text: str, equations: dict, bold=False):
@@ -825,6 +856,12 @@ def build(args):
                 appendices = h["title"].casefold() == "appendices"
                 appendix_started = False
             p = doc.add_paragraph(h["title"], style=f"Heading {h['level']}")
+            if h["level"] == 1:
+                # Keep front/back matter distinct while the concise main body
+                # flows naturally instead of leaving short continuation pages.
+                p.paragraph_format.page_break_before = h["title"].casefold() in FRESH_PAGE_SECTIONS
+                if not p.paragraph_format.page_break_before:
+                    p.paragraph_format.space_before = Pt(18)
             if appendices and h["level"] == 2:
                 # Give each later appendix its own page instead of an isolated tail.
                 if appendix_started:
@@ -845,6 +882,8 @@ def build(args):
             elif block.kind == "code":
                 style = "Code Block"
             paragraph = doc.add_paragraph(style=style)
+            if previous_kind == "heading":
+                paragraph.paragraph_format.keep_together = True
             if previous_kind == "table":
                 paragraph.paragraph_format.space_before = Pt(6)
             if cover:
@@ -860,16 +899,7 @@ def build(args):
         elif block.kind == "image":
             add_image(doc, source.parent / str(block.data), block.text)
         elif block.kind == "equation":
-            paragraph = doc.add_paragraph(style="Equation")
-            paragraph.paragraph_format.keep_together = True
-            paragraph.paragraph_format.space_before = Pt(7)
-            paragraph.paragraph_format.space_after = Pt(10)
-            tabs = paragraph.paragraph_format.tab_stops
-            tabs.add_tab_stop(Mm(TEXT_WIDTH_MM / 2), WD_TAB_ALIGNMENT.CENTER)
-            tabs.add_tab_stop(Mm(TEXT_WIDTH_MM), WD_TAB_ALIGNMENT.RIGHT)
-            paragraph.add_run("\t")
-            add_math(paragraph, block.text, equations)
-            paragraph.add_run(f"\t({block.data})")
+            add_numbered_equation(doc, block.text, block.data, equations)
         previous_kind = block.kind
     target.parent.mkdir(parents=True, exist_ok=True)
     doc.save(target)
@@ -878,7 +908,9 @@ def build(args):
     manifest = {"source": str(source), "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
                 "docx": str(target), "title": title, "toc_has_page_numbers": page_map is not None,
                 "page_numbering": "Physical pages counted from 1; cover footer hidden; subsequent page numbers equal PDF page indices.",
+                "section_layout": "Flowing main body; Abstract, Table of Contents, Introduction, References and Appendices start fresh pages.",
                 "equation_representation": "Editable native Office Math (OMML), translated from bundled KaTeX MathML",
+                "equation_alignment": "Formula centered across the usable section width; equation number at the right margin, using independent center and right tab stops with zero paragraph indents.",
                 "headings": [dict(h, **({"page": page_map[h['id']]} if page_map else {})) for h in headings]}
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"docx": str(target), "headings_manifest": str(manifest_path),

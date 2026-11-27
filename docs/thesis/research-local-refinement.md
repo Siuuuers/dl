@@ -2,7 +2,7 @@
 
 **28 November 2026 · Hong Kong**
 
-**Status:** literature review and completed crop-containment analysis. The reflection and fixed-box coordinate-average analyses are complete. Two [local-refinement notebooks](corner-refinement-experiment.md) now prepare the GPU training comparison; their accuracy results remain pending. Section 4 preserves the earlier design proposal, while the linked experiment guide specifies the implemented architecture and matched arms. Related work and evidence: [corner-quality investigation](research-corner-quality.md), [crop-containment summary](evidence/corner-quality/crop-containment-summary.json), and [project report](report.md).
+**Current status:** both local-model GPU runs are complete and independently audited; see [returned results](local-refinement-results.md). Neither exceeds the two-view method's reviewed five-pixel result. The [original supplied-model comparison](original-comparison.md) is also complete in one common runtime. The next focused training hypothesis is [residual correction](residual-correction-experiment.md). The sections below preserve the literature and rationale used before the heatmap runs; their prospective wording is historical, not a request to repeat completed training.
 
 ## 1. Recommendation
 

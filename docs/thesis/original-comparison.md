@@ -2,9 +2,9 @@
 
 The report's main comparison uses two clearly defined methods: the original supplied cassette detector and the trained detector with equal corner averaging. The original checkpoint is the supplied epoch-173 model, not a later research control. Both use the same photographs, annotations, confidence thresholds, box matching and additional suppression.
 
-## Current archived measurement
+## Fresh common-runtime measurement
 
-These numbers are recomputed from verified historical predictions. Both models have been rescored consistently, but their original inference environments differ. The new notebook runs the complete comparison again in one environment before a common-runtime result is claimed.
+The original model and both trained-model views have now been run again on all 20 photographs in one CPU environment. Both models used Python 3.12.14, Torch 2.9.0+cpu, TorchVision 0.24.0+cpu and Ultralytics 8.4.182 with FP32 arithmetic. This is fresh inference with a complete saved-prediction score replay, not a training run. All headline counts match the earlier archived comparison.
 
 | Reviewed reference: 654 fronts; 583 complete corner pairs | Supplied detector | Proposed method |
 |---|---:|---:|
@@ -38,7 +38,7 @@ The direction changes under the earlier annotations. The main result is therefor
 
 The extra suppression is common processing applied to supplied weights. This comparison does not claim to recreate every setting of an upstream live-camera program. The box threshold 0.25 follows the supplied detector's default, and the same threshold is applied before association for both trained views. No confidence, averaging weight, model epoch or annotation is selected by this comparison run.
 
-The archived proposed output averages 648 of 687 retained records. Another 29 have no mutual partner, five have an unavailable original-view pair and five have an unavailable reflected-view pair. These cases retain the original trained prediction. The averaging step preserves detection boxes; reductions in missed and extra detections relative to the supplied model therefore arise from the trained detector. The averaging step changes corner positions.
+The fresh proposed output averages 648 of 687 retained records. Another 29 have no mutual partner, five have an unavailable original-view pair and five have an unavailable reflected-view pair. These cases retain the original trained prediction. The averaging step preserves detection boxes; reductions in missed and extra detections relative to the supplied model therefore arise from the trained detector. The averaging step changes corner positions.
 
 ## Model and data identities
 
@@ -48,16 +48,21 @@ The archived proposed output averages 648 of 687 retained records. Another 29 ha
 | Trained detector | `222bf3c91a651183047a10eb1a50e16ae8fe999f15372afe005bfca2d0b157f9` |
 | Original saved evaluation archive | `3dfe3415841b47a605e2fd4b9e490b2c12b348b0014c6c2a8c78c06f323ffc1a` |
 | Trained original/reflected prediction archive | `88689ce9f3d03178683ea98ce98d50f5ddc4e07ba1fb24262e7820e9488bd114` |
+| Fresh common-runtime comparison archive | `aae05d14298afad0263197fe4ab7e0e753f63445d9d3503dc1b006030e16c516` |
 
-The original archive contains predictions at confidence settings 0.15, 0.25 and 0.40. The audit reproduces all 60 image/threshold score records and all three original summaries before selecting the prespecified 0.25 output for common scoring. The original archive used CPU Torch 2.10.0; the trained views used A100 Torch 2.14.1. Ultralytics 8.4.182 is common to both. The confirmatory run removes this runtime difference by rerunning both models together.
+The original archive contains predictions at confidence settings 0.15, 0.25 and 0.40. The audit reproduces all 60 image/threshold score records and all three original summaries before selecting the prespecified 0.25 output for common scoring. The original archive used CPU Torch 2.10.0; the trained views used A100 Torch 2.14.1. Ultralytics 8.4.182 is common to both. The fresh common-runtime comparison reran both models together. Numerical continuity checks passed for all three views: the largest coordinate-component difference from historical predictions was 0.000184 pixels and the largest score difference was below 0.000004. Detection assignments and individual 5- and 10-pixel outcomes were unchanged in all four annotation references.
 
 The supplied model was selected using the 20 validation photographs. These images have also guided subsequent development. Their repeated use permits a controlled development comparison, but cannot measure generalization to an independent capture session. No physical length calibration is available; pixel errors are not presented as millimetre errors.
 
 ## Reproducible artifacts
 
-- [Archived measurement and individual cases](evidence/original-baseline/README.md)
+- [Fresh and archived evidence](evidence/original-baseline/README.md)
+- [Fresh comparison summary](evidence/original-baseline/fresh/summary.json)
+- [Notebook execution receipt](evidence/original-baseline/fresh/notebook-execution.json)
 - [Comparison driver](../../scripts/run_original_comparison_r59.py)
 - [Notebook builder](../../scripts/build_original_comparison_r59_notebook.py)
 - [Four-cell comparison notebook](../../notebooks/baomai_original_comparison_r59.ipynb)
 
 The notebook checks immutable source and all model/image/annotation identities, runs three model passes per photograph, reconstructs every score from saved predictions, and exports one compact ZIP. GPU is the default; explicitly setting `BAOMAI_ORIGINAL_COMPARISON_DEVICE=cpu` runs the same protocol on CPU. It does not retrain either detector and does not automatically replace an application model.
+
+The published implementation source is `b4e8420ef6014daae9693c18ed564c224067cda3`; the driver SHA-256 is `279e2c0bd701299ea2a6f30403e97da68cc44a9c4ff874c5ee5a0d155a6e6ea3`. All four unchanged notebook code cells passed sequential execution through an in-process IPython shell, using a new clean source checkout and verified cached inputs. Local socket restrictions prevented a separate Jupyter kernel from starting, so the receipt distinguishes this execution from a Colab browser run. The scientific inference and replay completed in full; the browser download interface has not been exercised here.
