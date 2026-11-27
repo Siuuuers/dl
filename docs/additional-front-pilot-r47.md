@@ -110,9 +110,11 @@ also run from the published immutable source before final handoff; the
 verification record identifies that source and the scope actually executed.
 
 The GPU cells compile and reuse the checked native training recipe, but they
-are not reported as executed locally. See the machine-readable records in
-[`results/review/front-review-r47-20261127`](../results/review/front-review-r47-20261127/)
-and the pilot verification record for the exact completed checks.
+are not reported as executed locally. The [pilot preflight record](../results/review/front-review-r47-20261127/pilot-preflight-verification.json)
+covers real input staging, negative guards and independent code review.
+The [published-notebook verification](../results/review/front-review-r47-20261127/notebook-verification.json)
+records the actual first two cells completed from a fresh remote checkout,
+the immutable source revision, exact notebook hash and reused input cache.
 
 This is a development pilot on related camera photographs. It does not create
 an independent capture-session test set. PR35 remains selected until the
