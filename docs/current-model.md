@@ -1,8 +1,10 @@
 # Current model and review status
 
-26 November 2026, Asia/Hong_Kong.
+27 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected under the established frozen-reference gate.** The latest work is [R40: fewer unmatched outputs and ordinary folder filtering](unmatched-output-r40.md), following the accepted [R38 development amendments](front-review-r38.md), returned PR123 model and [R39 diagnosis](front-diagnosis-r39.md). PR125 successfully returned the identical R39 CPU replay archive. The old R28 notebook below is historical, not the next run.
+**PR35 remains selected under the established frozen-reference gate.** The latest returned experiment is [PR137: completed R47 supplementary training](additional-front-pilot-r47-results.md). Its 138-photo reference and 142-photo candidate give a mixed result: on unchanged R38, misses 13→15, unmatched 90→84, and two-corner 5 px successes 569→566/583. On the frozen666 primary reference, misses 33→34 and strict corner successes 518→511/584. This does not support automatic promotion. [R48 amendments](front-review-r48.md), the [complete error atlas](front-error-review-r48.md), and the [thesis plan](thesis-plan-r48.md) are the current review entry points; no additional training was run for R48.
+
+The earlier [R40 folder filter](unmatched-output-r40.md) followed the accepted [R38 development amendments](front-review-r38.md), PR123 and [R39 diagnosis](front-diagnosis-r39.md). PR125 returned the identical R39 CPU replay archive. The old R28 notebook below is historical, not the next run.
 
 PR123 has 11 misses and 94 unmatched outputs on accepted R38, compared with PR35's 40 and 114. The historical frozen666 ranking reverses (PR35:18/80; PR123:35/106). Current-target performance and historical compatibility remain separate; neither reference is a new capture session. The optional `--postclip-nms` folder flag now implements R39's fixed 0.70 clipped-box suppression. A fresh all-20-image CPU run exactly reproduced 85 unmatched outputs with every existing match and corner outcome preserved. It does not automatically promote PR123 or change inference defaults.
 

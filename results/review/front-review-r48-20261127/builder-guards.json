@@ -1,0 +1,104 @@
+{
+  "builder_sha256": "052ac5207a0dcb3a43b7c96e038a6cb519acb608fad5bf4c759b63c6159c7ebf",
+  "inputs": {
+    "data/reviews/additional-fronts-2026-11-27-r48/audit-ledger.json": "b3625992a9baae56a48689c89962f265c94821263853a13b40790795f0733ffc",
+    "data/reviews/additional-fronts-2026-11-27-r48/outlines.json": "596aab1c723377d19af344af3f121d210b98d33cb58291ba333a8310349984ea",
+    "data/reviews/fronts-2026-11-27-r48/audit-ledger.json": "ef2c6103d8693b2bffbbff961e94d35fa50bca455854048d739f3b7333927462",
+    "data/reviews/fronts-2026-11-27-r48/outlines.json": "6463939df1e08e98b9b3cc907d7fc990ca8db1bc5b7ff2f14128bf2014243ec0"
+  },
+  "negative_checks": [
+    {
+      "name": "missing_all_development_labels_with_claimed_counts",
+      "reason": "Unexpected or missing review file: development/labels/new_000007.txt, development/labels/new_000008.txt, development/labels/new_000009.txt, development/labels/new_000010.txt, development/labels/new_000011.txt, development/labels/new_000053.txt, development/labels/new_000054.txt, development/labels/new_000055.txt, development/labels/new_000056.txt, development/labels/new_000057.txt, development/labels/new_000058.txt, development/labels/new_000059.txt, development/labels/new_000086.txt, development/labels/new_000087.txt, development/labels/new_000088.txt, development/labels/new_000089.txt, development/labels/new_000090.txt, development/labels/new_000146.txt, development/labels/new_000147.txt, development/labels/new_000148.txt",
+      "status": "rejected"
+    },
+    {
+      "name": "held_photo_smuggled_into_complete_candidates",
+      "reason": "Unexpected or missing review file: supplementary/complete-candidates/labels/frame_0038.txt",
+      "status": "rejected"
+    },
+    {
+      "name": "parent_label_changed_and_self_declared_hash_updated",
+      "reason": "Pinned R38 label differs: new_000007",
+      "status": "rejected"
+    },
+    {
+      "name": "required_prediction_cues_removed",
+      "reason": "Required requested, context or assigned prediction cue missing",
+      "status": "rejected"
+    },
+    {
+      "name": "duplicate_semantic_request_under_distinct_id",
+      "reason": "Exact fifteen development requests differ",
+      "status": "rejected"
+    },
+    {
+      "name": "zero_based_prediction_cue",
+      "reason": "Prediction cue index is outside its one-based list",
+      "status": "rejected"
+    },
+    {
+      "name": "held_development_field_amended",
+      "reason": "Held development field was amended",
+      "status": "rejected"
+    },
+    {
+      "name": "illustrative_outline_declared_training_mask",
+      "reason": "Supplementary outline scope differs",
+      "status": "rejected"
+    },
+    {
+      "name": "original_image_changed_with_updated_inventory",
+      "reason": "Hash differs: TEMPORARY_TEST_PACKAGE/originals/new_000010.png",
+      "status": "rejected"
+    },
+    {
+      "name": "stale_output_rejected_before_writes",
+      "reason": "Existing unexpected review files preserved: supplementary/complete-candidates/labels/frame_0038.txt",
+      "status": "rejected"
+    },
+    {
+      "name": "pdf_inside_review_directory_rejected_before_writes",
+      "reason": "The PDF must be outside the review output directory",
+      "status": "rejected"
+    }
+  ],
+  "path_display": "Temporary test roots normalized; test packages were removed.",
+  "positive": {
+    "development": {
+      "added_rows": 0,
+      "amended_rows": 9,
+      "corner_positions_changed": 2,
+      "deleted_rows": 0,
+      "distinct_reviewed_targets": 10,
+      "held_fields": 2,
+      "held_rows": 2,
+      "images": 20,
+      "objects": 654,
+      "requests": 15,
+      "visibility_changes": 0
+    },
+    "frozen_references_modified": false,
+    "new_training": false,
+    "passed": true,
+    "predictions_modified": false,
+    "reference_predictions_sha256": "dbee466505287122543648bf999d688483a5b6c80573976bd31bb0d1678b7990",
+    "scope": "Exact R47/R38 parents, complete annotation-ledger and label replay, whole-photo membership, immutable request/cue identities, original image hashes, outlines, bundled source and exact file inventory; assistant visual proposals are not independent human sign-off.",
+    "supplementary": {
+      "amended_rows": 44,
+      "box_boundaries_changed": 44,
+      "held_fields": 31,
+      "held_rows": 12,
+      "new_held_fields": 0,
+      "resolved_fields": 1,
+      "retained_rows": 463,
+      "reviewed_rows": 507
+    },
+    "verified_inventory_entries": 88
+  },
+  "reference_predictions_sha256": "dbee466505287122543648bf999d688483a5b6c80573976bd31bb0d1678b7990",
+  "renderer_snapshot_sha256": "8781ec35e2579ed27a5ab6e4ea4f4c0f931614262e15d0fff38114c03ac50e81",
+  "schema": "baomai-r48-builder-focused-validation-v1",
+  "scope": "Temporary replay and targeted rejection checks only; all temporary packages deleted. No final bundle, PDF, source exports, labels, training or inference created.",
+  "status": "passed"
+}
