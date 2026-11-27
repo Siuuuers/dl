@@ -1,5 +1,14 @@
 # R51: isolate partial-target classification weighting
 
+**Completed in [PR146](https://github.com/Siuuuers/dl/pull/146).** The
+[independent return audit](partial-classification-r51-results.md) verifies both
+30-epoch arms. R50 misses fall from 15 to 11 while unmatched outputs rise from
+84 to 112. This is a tradeoff, and PR35 remains selected. The notebook and
+preparation notes below preserve the original experiment for reproduction;
+statements that the GPU run had not yet happened describe that preparation date.
+The current next step is the [R52 CPU annotation study](annotation-study-r52.md),
+not another run of the same training comparison.
+
 ## The question and its evidence
 
 R51 asks whether assigning twice the native classification BCE weight to anchors matched to partially visible cassette fronts improves the detection/corner tradeoff. It is a controlled training experiment, not a claimed improvement. The runnable entry is [the four-cell notebook](../notebooks/baomai_partial_classification_r51.ipynb). It returns `baomai-partial-classification-r51-results.zip`.

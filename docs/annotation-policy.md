@@ -31,7 +31,7 @@ An owned molded frontal rim or small tab continuous with that front is part of i
 
 ### Small fronts and neighboring shadows
 
-The R48 review keeps the same material-ownership rule at every object size. A shadow cast **onto the target's own front** changes its appearance, not its ownership; that shaded front remains included. A shadow or dark separator belonging only to the rack, gripper, upper cassette or lower cassette must not enlarge the target's outer bounds. A thin owned molded frontal cap remains included even when it is gray. Small size alone is not an exception.
+The R48 review keeps the same material-ownership rule at every object size. A shadow cast **onto the target's own front** changes its appearance, not its ownership; that shaded front remains included. This remains true when the shadow is cast by a neighboring cassette or the rack. Judge the physical surface receiving the shadow, not the identity of the object casting it. A shadow falling on rack/background, or the material of a gripper or neighboring cassette, must not enlarge the target's outer bounds. A thin owned molded frontal cap remains included even when it is gray. Small size alone is not an exception. This receiver-based clarification is explicit in R52.
 
 In [R50](front-review-r50.md), the user's material-ownership clarification resolves
 `new_000010 / R38 row029`: the lower band belongs to the next cassette. Its
@@ -55,6 +55,30 @@ In `frame_0160`, source row 034's left lower corner provides useful context for 
 For a cassette to the **right** of a rack upright, excluding the rack may mean moving the cassette's **left** boundary rightward: increase `xmin`. If that boundary instead cuts the cassette's own outward molded rim, move it leftward: decrease `xmin`. Inspect each row; do not apply one offset to an entire column. The same reasoning applies independently to the other three bounds. Gray material continuous with the front remains included; an adjoining gray rack strip or neighboring white cassette does not set the target's extrema.
 
 See the [R47 original-image review](front-review-r47.md) for the explicit row decisions, original/R46/R47 comparisons and whole-photograph gates.
+
+### Check all four sides against neighboring corners
+
+The [R52 review](front-review-r52.md) extends the earlier
+`rank_front_geometry_candidates.py` screening with a read-only
+[`audit_front_geometry_r52.py`](../scripts/audit_front_geometry_r52.py).
+It records other instances' locatable corners relative to the left, top, right
+and bottom boundaries, distinguishing strict containment from near-edge contact.
+Distances are measured in original-image pixels, and the available source-row
+identity is retained. Missing `0 0 0` corners are not evidence of contact.
+
+A foreign corner touching or entering a rectangle is a **review cue**, not proof
+of an impossible physical configuration. Perspective, slanted surfaces and
+occlusion can make the tight axis-aligned envelopes of distinct objects overlap.
+The neighboring point may itself be wrong. Inspect the unmarked original and
+the wider stack before accepting a change; never shrink a box, move a point,
+delete an instance or lift a hold automatically to satisfy this check.
+
+Prioritize strict containment and materially overextended sides over routine
+stack contacts. A lower flag count is not a correctness metric. This check also
+cannot discover a wholly unannotated cassette for which no box or corner exists;
+full-frame review and review of unflagged regions remain necessary. Nominal
+boundary refinements and their visual uncertainty belong in a versioned change
+ledger, independently of whether the diagnostic count decreases.
 
 ## 3. Locate the two actual lower-front corners
 
