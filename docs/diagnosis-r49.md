@@ -10,4 +10,4 @@ The single predeclared intervention replaces ordinary hard NMS with linear Soft-
 
 Validation before publication: all four notebook code cells compiled; the script's actual notebook reconstruction was executed locally; synthetic Soft-NMS and stage-classification checks passed. Fresh inference, archive retrieval and the complete Colab run were not executed in the authoring environment (GitHub binary/network access unavailable there). The notebook contains runtime and archive integrity checks and may stop if its assumptions do not hold. No model or inference default is changed. PR35 remains selected. No new images, weights, PDFs, or training-label changes are published.
 
-Notebook SHA-256: `3cebaaa67aa76050113c75e963fca086575f7dc5a83181b40f9ef6ba565cd8ef`.
+Notebook SHA-256: `63060941e7834a60562d97ddf3dd1bb46f2feb921b737ae744aaca0d329026d2`.
