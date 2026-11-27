@@ -1,0 +1,751 @@
+{
+  "schema": "cassette-thesis-primary-bibliography-r56-v1",
+  "verified_on": "2026-11-27",
+  "numbering": "IEEE references ordered by first citation in report.md.",
+  "scope": "Primary sources supporting the existing methods, evaluation interpretation, and planned controlled experiments. A cited paper motivates a hypothesis; it does not establish performance on cassette-front two-keypoint pose.",
+  "entries": [
+    {
+      "key": "baomai_data",
+      "type": "repository_documentation",
+      "authors": [
+        "an94-doll"
+      ],
+      "title": "Data README",
+      "original_heading": "第173轮模型对应训练数据",
+      "year": null,
+      "venue": "embedding_vision repository, baomai branch",
+      "commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+      "git_blob_sha": "7af771c01e2d35f0262afec040d039da679418f3",
+      "url": "https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md",
+      "accessed": "2026-11-27",
+      "ieee_entry": "an94-doll, “Data README,” embedding_vision, commit 351eb3cf960ccc34829e2bc72e1fa4645acc6295. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md",
+      "supported_claim": "The data specification uses the cassette_front class and two lower front corners ordered by image x-coordinate, with flip_idx [1, 0]; an unavailable corner is encoded as 0 0 0 rather than guessed.",
+      "limitation": "This is the upstream annotation contract, not evidence of an application's accuracy, a fully specified box-extent policy, or a requirement to output inferred coordinates for invisible corners.",
+      "verification": [
+        {
+          "kind": "github_connector_file_read",
+          "url": "https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md",
+          "commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
+          "git_blob_sha": "7af771c01e2d35f0262afec040d039da679418f3",
+          "supports": [
+            "document heading",
+            "keypoint and visibility convention",
+            "flip mapping",
+            "dataset sizes and image dimensions"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "Data README is a descriptive citation title; the original heading is retained separately.",
+        "No publication date is inferred from the access date or commit identifier."
+      ],
+      "reference_number": 1
+    },
+    {
+      "key": "yolo2016",
+      "type": "conference_paper",
+      "authors": [
+        "Joseph Redmon",
+        "Santosh Divvala",
+        "Ross Girshick",
+        "Ali Farhadi"
+      ],
+      "title": "You Only Look Once: Unified, Real-Time Object Detection",
+      "year": 2016,
+      "venue": "IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "pages": "779–788",
+      "doi": "10.1109/CVPR.2016.91",
+      "url": "https://openaccess.thecvf.com/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+      "ieee_entry": "J. Redmon, S. Divvala, R. Girshick, and A. Farhadi, “You only look once: Unified, real-time object detection,” in Proc. IEEE Conf. Computer Vision and Pattern Recognition (CVPR), 2016, pp. 779–788, doi: 10.1109/CVPR.2016.91.",
+      "supported_claim": "The original YOLO formulates object detection as a single network that predicts bounding boxes and class probabilities from a complete image.",
+      "limitation": "This historical detector paper does not document the current pose implementation, its two-point output, or the accuracy of the cassette models.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+          "ref_ids": [
+            "turn742744914search0",
+            "turn458583483search8"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "pages",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://doi.org/10.1109/CVPR.2016.91",
+          "ref_ids": [
+            "turn458583483search7"
+          ],
+          "supports": [
+            "DOI in indexed primary IEEE record"
+          ]
+        }
+      ],
+      "reference_number": 2
+    },
+    {
+      "key": "tide2020",
+      "type": "conference_paper",
+      "authors": [
+        "Daniel Bolya",
+        "Sean Foley",
+        "James Hays",
+        "Judy Hoffman"
+      ],
+      "title": "TIDE: A General Toolbox for Identifying Object Detection Errors",
+      "year": 2020,
+      "venue": "Computer Vision – ECCV 2020",
+      "series": "Lecture Notes in Computer Science",
+      "volume": "12348",
+      "publisher": "Springer",
+      "pages": "558–573",
+      "doi": "10.1007/978-3-030-58580-8_33",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-030-58580-8_33",
+      "ieee_entry": "D. Bolya, S. Foley, J. Hays, and J. Hoffman, “TIDE: A general toolbox for identifying object detection errors,” in Computer Vision – ECCV 2020, Lecture Notes in Computer Science, vol. 12348. Springer, 2020, pp. 558–573, doi: 10.1007/978-3-030-58580-8_33.",
+      "supported_claim": "TIDE separates sources of object-detection and instance-segmentation error and measures their effects on average precision, encouraging diagnosis beyond a single aggregate score.",
+      "limitation": "The project's fixed-threshold missed, unmatched, and duplicate counts are not a full reproduction of TIDE's error-oracle analysis, and corner accuracy requires additional metrics.",
+      "verification": [
+        {
+          "url": "https://link.springer.com/chapter/10.1007/978-3-030-58580-8_33",
+          "ref_ids": [
+            "turn907124369view0"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "series",
+            "volume",
+            "year",
+            "pages",
+            "DOI",
+            "method summary"
+          ]
+        }
+      ],
+      "reference_number": 3
+    },
+    {
+      "key": "objectlab2023",
+      "type": "workshop_paper_with_preprint",
+      "authors": [
+        "Ulyana Tkachenko",
+        "Aditya Thyagarajan",
+        "Jonas Mueller"
+      ],
+      "title": "ObjectLab: Automated Diagnosis of Mislabeled Images in Object Detection Data",
+      "year": 2023,
+      "venue": "ICML Workshop on Data-centric Machine Learning Research",
+      "arxiv_id": "2309.00832",
+      "doi": "10.48550/arXiv.2309.00832",
+      "doi_kind": "arXiv preprint identifier",
+      "url": "https://arxiv.org/abs/2309.00832",
+      "ieee_entry": "U. Tkachenko, A. Thyagarajan, and J. Mueller, “ObjectLab: Automated diagnosis of mislabeled images in object detection data,” in ICML Workshop on Data-centric Machine Learning Research, 2023. [Online]. Available: https://arxiv.org/abs/2309.00832",
+      "supported_claim": "ObjectLab uses model predictions to prioritize images that may contain missing, misplaced, or incorrectly classified bounding-box annotations for human review.",
+      "limitation": "A model-generated suspicion is not proof that an annotation is wrong; independent image inspection is still required, and the paper does not validate the project's corner labels.",
+      "verification": [
+        {
+          "url": "https://arxiv.org/abs/2309.00832",
+          "ref_ids": [
+            "turn907124369view1"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "year",
+            "workshop stated by authors",
+            "arXiv identifier and DOI",
+            "method summary"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "No proceedings page range was verified, so none is supplied.",
+        "The arXiv DOI is not represented as a publisher proceedings DOI."
+      ],
+      "reference_number": 4
+    },
+    {
+      "key": "noise2025",
+      "type": "conference_paper",
+      "authors": [
+        "Jeffri Murrugarra-Llerena",
+        "Claudio R. Jung"
+      ],
+      "title": "Noise-Aware Evaluation of Object Detectors",
+      "year": 2025,
+      "venue": "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)",
+      "open_access_pages": "9304–9313",
+      "doi": "10.1109/WACV61041.2025.00903",
+      "url": "https://openaccess.thecvf.com/content/WACV2025/html/Llerena_Noise-Aware_Evaluation_of_Object_Detectors_WACV_2025_paper.html",
+      "ieee_entry": "J. Murrugarra-Llerena and C. R. Jung, “Noise-aware evaluation of object detectors,” in Proc. IEEE/CVF Winter Conf. Applications of Computer Vision (WACV), 2025, doi: 10.1109/WACV61041.2025.00903.",
+      "supported_claim": "Bounding-box annotation uncertainty can alter detector evaluation, particularly for small objects and restrictive overlap thresholds, motivating sensitivity analysis of disputed references.",
+      "limitation": "This does not justify moving reference annotations toward a preferred model's predictions or treating model agreement as ground truth.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content/WACV2025/html/Llerena_Noise-Aware_Evaluation_of_Object_Detectors_WACV_2025_paper.html",
+          "ref_ids": [
+            "turn742744914search2"
+          ],
+          "supports": [
+            "title",
+            "venue",
+            "year",
+            "CVF open-access page range",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://openaccess.thecvf.com/content/WACV2025/papers/Llerena_Noise-Aware_Evaluation_of_Object_Detectors_WACV_2025_paper.pdf",
+          "ref_ids": [
+            "turn742744914search8"
+          ],
+          "supports": [
+            "author names as printed on paper"
+          ]
+        },
+        {
+          "url": "https://ieeexplore.ieee.org/abstract/document/10943665",
+          "ref_ids": [
+            "turn742744914search4"
+          ],
+          "supports": [
+            "DOI in indexed primary IEEE record"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "CVF verifies pages 9304–9313. Secondary indexes give a different IEEE pagination; an IEEE page range was not verified from the primary record, so the DOI-based IEEE entry deliberately omits pages."
+      ],
+      "reference_number": 5
+    },
+    {
+      "key": "clahe1994",
+      "type": "book_chapter",
+      "authors": [
+        "Karel Zuiderveld"
+      ],
+      "title": "Contrast Limited Adaptive Histogram Equalization",
+      "year": 1994,
+      "venue": "Graphics Gems IV",
+      "editors": [
+        "Paul S. Heckbert"
+      ],
+      "publisher": "Academic Press",
+      "pages": "474–485",
+      "url": "https://www.cse.unr.edu/~bebis/CS474/StudentPaperPresentations/Constrast-Limited%20Adaptive%20Histogram%20Enhancement.pdf",
+      "publisher_url": "https://www.sciencedirect.com/book/9780123361561/graphics-gems-iv",
+      "ieee_entry": "K. Zuiderveld, “Contrast limited adaptive histogram equalization,” in Graphics Gems IV, P. S. Heckbert, Ed. Academic Press, 1994, pp. 474–485.",
+      "supported_claim": "CLAHE limits local histogram amplification by clipping and redistributing histogram counts, with interpolation between neighboring regions to reduce boundary artifacts.",
+      "limitation": "The chapter supplies the algorithmic background, not evidence that a particular clip limit or tile grid improves cassette detection or two-corner localization.",
+      "verification": [
+        {
+          "url": "https://www.cse.unr.edu/~bebis/CS474/StudentPaperPresentations/Constrast-Limited%20Adaptive%20Histogram%20Enhancement.pdf",
+          "ref_ids": [
+            "turn257754807view0"
+          ],
+          "supports": [
+            "original chapter text",
+            "author",
+            "title",
+            "year",
+            "publisher",
+            "pages",
+            "algorithm"
+          ]
+        },
+        {
+          "url": "https://www.sciencedirect.com/book/9780123361561/graphics-gems-iv",
+          "ref_ids": [
+            "turn458583483search0",
+            "turn661882623search1"
+          ],
+          "supports": [
+            "book title",
+            "editor",
+            "year",
+            "chapter author and pages in indexed publisher record"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "A chapter DOI was not successfully verified from a primary metadata record and is deliberately omitted.",
+        "The university-hosted PDF is a scan of the original chapter, not a secondary summary."
+      ],
+      "reference_number": 6
+    },
+    {
+      "key": "iayolo2022",
+      "type": "conference_paper",
+      "authors": [
+        "Wenyu Liu",
+        "Gaofeng Ren",
+        "Runsheng Yu",
+        "Shi Guo",
+        "Jianke Zhu",
+        "Lei Zhang"
+      ],
+      "title": "Image-Adaptive YOLO for Object Detection in Adverse Weather Conditions",
+      "year": 2022,
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "volume": "36",
+      "pages": "1792–1800",
+      "doi": "10.1609/aaai.v36i2.20072",
+      "url": "https://cdn.aaai.org/ojs/20072/20072-13-24085-1-2-20220628.pdf",
+      "ieee_entry": "W. Liu, G. Ren, R. Yu, S. Guo, J. Zhu, and L. Zhang, “Image-adaptive YOLO for object detection in adverse weather conditions,” in Proc. AAAI Conf. Artificial Intelligence, vol. 36, 2022, pp. 1792–1800, doi: 10.1609/aaai.v36i2.20072.",
+      "supported_claim": "IA-YOLO jointly trains an image-dependent filter-parameter predictor and a YOLOv3 detector for adverse-weather object detection.",
+      "limitation": "Joint learned enhancement differs from applying fixed CLAHE to a frozen pose model; the cassette CLAHE result cannot establish the value of the full IA-YOLO approach.",
+      "verification": [
+        {
+          "url": "https://cdn.aaai.org/ojs/20072/20072-13-24085-1-2-20220628.pdf",
+          "ref_ids": [
+            "turn240754251view1"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "pages",
+            "method"
+          ]
+        },
+        {
+          "url": "https://researchportal.hkust.edu.hk/en/publications/image-adaptive-yolo-for-object-detection-in-adverse-weather-condi-2/",
+          "ref_ids": [
+            "turn661882623search0"
+          ],
+          "supports": [
+            "author institution publication record",
+            "volume",
+            "pages",
+            "DOI"
+          ]
+        }
+      ],
+      "reference_number": 7
+    },
+    {
+      "key": "sahi2022",
+      "type": "conference_paper",
+      "authors": [
+        "Fatih Cagatay Akyon",
+        "Sinan Onur Altinuc",
+        "Alptekin Temizel"
+      ],
+      "title": "Slicing Aided Hyper Inference and Fine-tuning for Small Object Detection",
+      "year": 2022,
+      "venue": "IEEE International Conference on Image Processing (ICIP)",
+      "pages": "966–970",
+      "doi": "10.1109/ICIP46576.2022.9897990",
+      "arxiv_id": "2202.06934",
+      "url": "https://arxiv.org/abs/2202.06934",
+      "ieee_entry": "F. C. Akyon, S. O. Altinuc, and A. Temizel, “Slicing aided hyper inference and fine-tuning for small object detection,” in Proc. IEEE Int. Conf. Image Processing (ICIP), 2022, pp. 966–970, doi: 10.1109/ICIP46576.2022.9897990.",
+      "supported_claim": "SAHI combines predictions from image slices and studies sliced fine-tuning to improve small-object box detection in the evaluated datasets.",
+      "limitation": "Two-keypoint coordinate restoration, tile-edge truncation, and duplicate handling need separate validation; slicing is a different intervention from increasing whole-image input resolution.",
+      "verification": [
+        {
+          "url": "https://arxiv.org/abs/2202.06934",
+          "ref_ids": [
+            "turn115794251view0"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "year",
+            "venue",
+            "DOI",
+            "method"
+          ]
+        },
+        {
+          "url": "https://github.com/obss/sahi",
+          "ref_ids": [
+            "turn257754807view3"
+          ],
+          "supports": [
+            "author-maintained citation BibTeX",
+            "pages",
+            "DOI",
+            "conference metadata"
+          ]
+        }
+      ],
+      "reference_number": 8
+    },
+    {
+      "key": "project_policy",
+      "type": "project_evidence",
+      "title": "Cassette-front annotation policy",
+      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/annotation-policy.md",
+      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
+      "ieee_entry": "Siuuuers/dl project, “Cassette-front annotation policy,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/annotation-policy.md",
+      "reference_number": 9
+    },
+    {
+      "key": "scorer",
+      "type": "project_evidence",
+      "title": "Cassette pose scoring implementation",
+      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/scripts/pose_scoring.py",
+      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
+      "ieee_entry": "Siuuuers/dl project, “Cassette pose scoring implementation,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/scripts/pose_scoring.py",
+      "reference_number": 10
+    },
+    {
+      "key": "calibration2017",
+      "type": "conference_paper",
+      "authors": [
+        "Chuan Guo",
+        "Geoff Pleiss",
+        "Yu Sun",
+        "Kilian Q. Weinberger"
+      ],
+      "title": "On Calibration of Modern Neural Networks",
+      "year": 2017,
+      "venue": "International Conference on Machine Learning (ICML)",
+      "series": "Proceedings of Machine Learning Research",
+      "volume": "70",
+      "pages": "1321–1330",
+      "url": "https://proceedings.mlr.press/v70/guo17a.html",
+      "ieee_entry": "C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in Proc. 34th Int. Conf. Machine Learning (ICML), Proceedings of Machine Learning Research, vol. 70, 2017, pp. 1321–1330. [Online]. Available: https://proceedings.mlr.press/v70/guo17a.html",
+      "supported_claim": "Modern neural-network classification scores can be miscalibrated, and temperature scaling improved calibration on the studied classification tasks.",
+      "limitation": "A calibrated classification confidence is not automatically a probability of satisfying a two-corner pixel tolerance or of a hidden corner being physically observable.",
+      "verification": [
+        {
+          "url": "https://proceedings.mlr.press/v70/guo17a.html",
+          "ref_ids": [
+            "turn907124369view2"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "series",
+            "volume",
+            "pages",
+            "method summary"
+          ]
+        }
+      ],
+      "reference_number": 11
+    },
+    {
+      "key": "selective2017",
+      "type": "conference_paper",
+      "authors": [
+        "Yonatan Geifman",
+        "Ran El-Yaniv"
+      ],
+      "title": "Selective Classification for Deep Neural Networks",
+      "year": 2017,
+      "venue": "Advances in Neural Information Processing Systems",
+      "volume": "30",
+      "pages": "4878–4887",
+      "url": "https://proceedings.neurips.cc/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html",
+      "ieee_entry": "Y. Geifman and R. El-Yaniv, “Selective classification for deep neural networks,” in Advances in Neural Information Processing Systems, vol. 30, 2017, pp. 4878–4887. [Online]. Available: https://proceedings.neurips.cc/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html",
+      "supported_claim": "Selective classification formalizes a reject option and the trade-off between prediction coverage and error risk among accepted predictions.",
+      "limitation": "Its classification risk guarantees do not transfer automatically to cassette confidence thresholds, incomplete references, or a repeatedly reused development set.",
+      "verification": [
+        {
+          "url": "https://proceedings.neurips.cc/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html",
+          "ref_ids": [
+            "turn907124369view3"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "volume",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://proceedings.neurips.cc/paper_files/paper/2017/file/4a8423d5e91fda00bb7e46540e2b0cf1-Metadata.json",
+          "ref_ids": [
+            "turn257754807view1"
+          ],
+          "supports": [
+            "official page_first 4878 and page_last 4887"
+          ]
+        }
+      ],
+      "reference_number": 12
+    },
+    {
+      "key": "r51",
+      "type": "project_evidence",
+      "title": "R51 partial-target classification: completed paired training results",
+      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/partial-classification-r51-results.md",
+      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
+      "ieee_entry": "Siuuuers/dl project, “R51 partial-target classification: completed paired training results,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/partial-classification-r51-results.md",
+      "reference_number": 13
+    },
+    {
+      "key": "r53_protocol",
+      "type": "project_evidence",
+      "title": "R53 fixed contrast and scale inference comparisons",
+      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/inference-ablation-r53.md",
+      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
+      "ieee_entry": "Siuuuers/dl project, “R53 fixed contrast and scale inference comparisons,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/inference-ablation-r53.md",
+      "reference_number": 14
+    },
+    {
+      "key": "viewer",
+      "type": "project_evidence",
+      "title": "Camera and inference pipeline audit",
+      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/camera-pipeline-r53.md",
+      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
+      "ieee_entry": "Siuuuers/dl project, “Camera and inference pipeline audit,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/camera-pipeline-r53.md",
+      "reference_number": 15
+    },
+    {
+      "key": "r53_scale",
+      "type": "project_return",
+      "title": "R53 scale inference return",
+      "url": "https://github.com/Siuuuers/dl/pull/150",
+      "commit": "e8a70f67cba1bf99e2d8a7bce9c93b5d4d7996b2",
+      "ieee_entry": "Siuuuers/dl project, “R53 scale inference return,” pull request 150, head e8a70f67cba1bf99e2d8a7bce9c93b5d4d7996b2, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/pull/150",
+      "reference_number": 16
+    },
+    {
+      "key": "r53_clahe",
+      "type": "project_return",
+      "title": "R53 contrast inference return",
+      "url": "https://github.com/Siuuuers/dl/pull/149",
+      "commit": "343f8d759ccaba671fa38ad4e9674d75a1bb5ba7",
+      "ieee_entry": "Siuuuers/dl project, “R53 contrast inference return,” pull request 149, head 343f8d759ccaba671fa38ad4e9674d75a1bb5ba7, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/pull/149",
+      "reference_number": 17
+    },
+    {
+      "key": "r54_r55",
+      "type": "project_evidence",
+      "title": "R55 automatic pair-output diagnostic",
+      "url": "https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/evidence/automatic-pair-results.md",
+      "ref": "codex/thesis-r56-report-and-flip-probe-20261127",
+      "ieee_entry": "Siuuuers/dl project, “R55 automatic pair-output diagnostic,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/evidence/automatic-pair-results.md",
+      "reference_number": 18
+    },
+    {
+      "key": "occlusion",
+      "type": "project_evidence",
+      "title": "Hidden-corner prediction after covering image pixels",
+      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/pixel-occlusion-2026-11-13.md",
+      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
+      "ieee_entry": "Siuuuers/dl project, “Hidden-corner prediction after covering image pixels,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/pixel-occlusion-2026-11-13.md",
+      "reference_number": 19
+    },
+    {
+      "key": "annotation_seed46",
+      "type": "project_evidence",
+      "title": "Reviewed annotations: completed seed46 confirmation",
+      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/annotation-confirmation-2026-11-11.md",
+      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
+      "ieee_entry": "Siuuuers/dl project, “Reviewed annotations: completed seed46 confirmation,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/annotation-confirmation-2026-11-11.md",
+      "reference_number": 20
+    },
+    {
+      "key": "fusion_audit",
+      "type": "project_evidence",
+      "title": "R53 cached two-view fusion and complementarity analysis",
+      "url": "https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/evidence/cached-fusion-results.md",
+      "ref": "codex/thesis-r56-report-and-flip-probe-20261127",
+      "ieee_entry": "Siuuuers/dl project, “R53 cached two-view fusion and complementarity analysis,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/evidence/cached-fusion-results.md",
+      "reference_number": 21
+    },
+    {
+      "key": "simple_baselines2018",
+      "type": "conference_paper",
+      "authors": [
+        "Bin Xiao",
+        "Haiping Wu",
+        "Yichen Wei"
+      ],
+      "title": "Simple Baselines for Human Pose Estimation and Tracking",
+      "year": 2018,
+      "venue": "European Conference on Computer Vision (ECCV)",
+      "pages": "466–481",
+      "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
+      "ieee_entry": "B. Xiao, H. Wu, and Y. Wei, “Simple baselines for human pose estimation and tracking,” in Proc. European Conf. Computer Vision (ECCV), 2018, pp. 466–481. [Online]. Available: https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
+      "supported_claim": "The human-pose baseline averages heatmaps from original and horizontally flipped inputs during testing, providing a direct pose-estimation precedent for flip testing.",
+      "limitation": "Its heatmap model and human-joint task differ from the project's two-point regression output, so its results do not establish a cassette improvement.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
+          "ref_ids": [
+            "turn716501904search1",
+            "turn311618434search2"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "pages"
+          ]
+        },
+        {
+          "url": "https://openaccess.thecvf.com/content_ECCV_2018/papers/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.pdf",
+          "ref_ids": [
+            "turn311618434search8"
+          ],
+          "supports": [
+            "test-time averaging of original and flipped heatmaps"
+          ]
+        }
+      ],
+      "reference_number": 22
+    },
+    {
+      "key": "udp2020",
+      "type": "conference_paper",
+      "authors": [
+        "Junjie Huang",
+        "Zheng Zhu",
+        "Feng Guo",
+        "Guan Huang"
+      ],
+      "title": "The Devil Is in the Details: Delving Into Unbiased Data Processing for Human Pose Estimation",
+      "year": 2020,
+      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "pages": "5700–5709",
+      "url": "https://openaccess.thecvf.com/content_CVPR_2020/html/Huang_The_Devil_Is_in_the_Details_Delving_Into_Unbiased_Data_CVPR_2020_paper.html",
+      "ieee_entry": "J. Huang, Z. Zhu, F. Guo, and G. Huang, “The devil is in the details: Delving into unbiased data processing for human pose estimation,” in Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR), 2020, pp. 5700–5709. [Online]. Available: https://openaccess.thecvf.com/content_CVPR_2020/html/Huang_The_Devil_Is_in_the_Details_Delving_Into_Unbiased_Data_CVPR_2020_paper.html",
+      "supported_claim": "UDP identifies coordinate-transformation and encoding bias in pose-estimation pipelines, including misalignment when combining predictions from original and flipped images.",
+      "limitation": "Using the model's native reflection convention is necessary implementation hygiene, but it does not reproduce the full UDP method or demonstrate better cassette results.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_CVPR_2020/html/Huang_The_Devil_Is_in_the_Details_Delving_Into_Unbiased_Data_CVPR_2020_paper.html",
+          "ref_ids": [
+            "turn716501904search0"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "pages",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Huang_The_Devil_Is_in_the_Details_Delving_Into_Unbiased_Data_CVPR_2020_paper.pdf",
+          "ref_ids": [
+            "turn716501904search4"
+          ],
+          "supports": [
+            "coordinate handling and flip alignment discussion"
+          ]
+        }
+      ],
+      "reference_number": 23
+    },
+    {
+      "key": "flip_protocol",
+      "type": "project_evidence",
+      "title": "R56 explicit horizontal flip experiment",
+      "url": "https://github.com/Siuuuers/dl/blob/dc7eec630bb0b613fc1fe784e4d9818a0893658e/docs/thesis/flip-experiment-r56.md",
+      "ref": "dc7eec630bb0b613fc1fe784e4d9818a0893658e",
+      "ieee_entry": "Siuuuers/dl project, “R56 explicit horizontal flip experiment,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/dc7eec630bb0b613fc1fe784e4d9818a0893658e/docs/thesis/flip-experiment-r56.md",
+      "reference_number": 24
+    },
+    {
+      "key": "tta_aggregation2021",
+      "type": "conference_paper",
+      "authors": [
+        "Divya Shanmugam",
+        "Davis Blalock",
+        "Guha Balakrishnan",
+        "John Guttag"
+      ],
+      "title": "Better Aggregation in Test-Time Augmentation",
+      "year": 2021,
+      "venue": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+      "pages": "1214–1223",
+      "url": "https://openaccess.thecvf.com/content/ICCV2021/html/Shanmugam_Better_Aggregation_in_Test-Time_Augmentation_ICCV_2021_paper.html",
+      "ieee_entry": "D. Shanmugam, D. Blalock, G. Balakrishnan, and J. Guttag, “Better aggregation in test-time augmentation,” in Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV), 2021, pp. 1214–1223. [Online]. Available: https://openaccess.thecvf.com/content/ICCV2021/html/Shanmugam_Better_Aggregation_in_Test-Time_Augmentation_ICCV_2021_paper.html",
+      "supported_claim": "In classification, test-time augmentation with standard averaging can turn correct predictions into errors, making aggregation choice and paired-case analysis relevant to evaluation.",
+      "limitation": "The paper does not evaluate cassette detection or pose fusion and does not justify training an aggregation selector on the small, reused validation set.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content/ICCV2021/html/Shanmugam_Better_Aggregation_in_Test-Time_Augmentation_ICCV_2021_paper.html",
+          "ref_ids": [
+            "turn716501904search2"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "pages",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://openaccess.thecvf.com/content/ICCV2021/papers/Shanmugam_Better_Aggregation_in_Test-Time_Augmentation_ICCV_2021_paper.pdf",
+          "ref_ids": [
+            "turn716501904search5"
+          ],
+          "supports": [
+            "augmentation-induced errors and aggregation analysis"
+          ]
+        }
+      ],
+      "reference_number": 25
+    },
+    {
+      "key": "cald2022",
+      "type": "workshop_paper",
+      "authors": [
+        "Weiping Yu",
+        "Sijie Zhu",
+        "Taojiannan Yang",
+        "Chen Chen"
+      ],
+      "title": "Consistency-Based Active Learning for Object Detection",
+      "year": 2022,
+      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+      "pages": "3951–3960",
+      "pagination_basis": "CVF open-access proceedings",
+      "url": "https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/html/Yu_Consistency-Based_Active_Learning_for_Object_Detection_CVPRW_2022_paper.html",
+      "ieee_entry": "W. Yu, S. Zhu, T. Yang, and C. Chen, “Consistency-based active learning for object detection,” in Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition Workshops (CVPRW), 2022, pp. 3951–3960. [Online]. Available: https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/html/Yu_Consistency-Based_Active_Learning_for_Object_Detection_CVPRW_2022_paper.html",
+      "supported_claim": "CALD uses consistency between original and augmented detections, including localization and classification information, to select examples for annotation.",
+      "limitation": "Adapting consistency to review prioritization neither reproduces CALD nor proves a label is wrong; independent adjudication and equal review budgets are needed.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/html/Yu_Consistency-Based_Active_Learning_for_Object_Detection_CVPRW_2022_paper.html",
+          "ref_ids": [
+            "turn895100843search0"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "CVF page range",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/papers/Yu_Consistency-Based_Active_Learning_for_Object_Detection_CVPRW_2022_paper.pdf",
+          "ref_ids": [
+            "turn895100843search5"
+          ],
+          "supports": [
+            "author names and consistency method"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "Pages follow the verified CVF open-access record; some secondary indexes use a different page range.",
+        "A DOI found only in secondary results was not included."
+      ],
+      "reference_number": 26
+    }
+  ]
+}

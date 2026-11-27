@@ -10,15 +10,19 @@ formal duplicates 13→23, and both-corner 5 px successes 566→567/583. This is
 tradeoff and does not support automatic promotion. The reference predictions
 exactly reproduce the PR137 candidate on all 20 development images.
 
-**Current entry points:** [canonical thesis workspace](thesis.md),
-[primary literature and hypotheses](thesis-literature-r53.md),
-[R53 inference comparisons](inference-ablation-r53.md), and
-[camera pipeline audit](camera-pipeline-r53.md). R53 prepares separate fixed
-contrast and 1280/1600 scale probes using the immutable PR137 candidate. It has
-no new model inference or training result yet. Every probe must reproduce the
-archived control before treatment interpretation. The new
-[size/visibility replay](size-visibility-r53.md) is a descriptive CPU analysis
-of existing predictions, not a fresh model run.
+**Current entry points:** [thesis folder and report](thesis/README.md),
+[completed R53 inference results](thesis/r53-results.md),
+[new literature and hypotheses](thesis/literature-r56.md), and
+[R56 explicit reflection experiment](thesis/flip-experiment-r56.md).
+PR149 and PR150 complete the fixed contrast and 1280/1600 probes using the
+immutable PR137 research checkpoint. Both reproduction checks pass, but neither
+treatment passes the joint quality screen. Primary misses change 34→33 while
+both-corner 5 px success falls 511→506/584 for CLAHE and 511→503/584 for size1600.
+Fixed cached two-view fusion also increases unmatched and duplicate outputs.
+R56 has a published source pin, eight passing CPU tests and actual notebook
+bootstrap/preflight verification; it has no model inference result yet.
+The [size/visibility replay](size-visibility-r53.md) and R54/R55 pair-output
+analyses remain descriptive CPU studies of saved predictions.
 
 The generic live launcher and `weights/base.json` currently select epoch 173,
 with confidence 0.25, while the retained PR35 operating point below uses 0.13.
@@ -51,7 +55,7 @@ generalization.
 [R52](front-review-r52.md) records 10 amended rows/11 boundary fields on
 `frame_0160`, with all corner fields and existing holds retained. Its
 [CPU study notebook](annotation-study-r52.md) replays the returned training
-result and produces the review reports. The thesis topic is still a proposal;
+result and produces the review reports. The user permits an empirical thesis without a required new architecture;
 new captures are unavailable for now. All four evaluation label references
 share the same repeatedly reviewed development photographs.
 

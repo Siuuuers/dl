@@ -71,18 +71,24 @@ The implementation reuses the R53 source/data closure, scorer, baseline comparis
 
 Eight focused tests cover pixel-array reversal and immutability, continuous inverse geometry, double reflection, slot/confidence retention, missing-coordinate retention, inverse mapping before postclip suppression, strict baseline threshold crossings, complete and blocked offline return replay, rejection of an incorrectly inverted native output, case identity in complementarity, and the four notebook cells.
 
-These CPU checks use synthetic predictions where a model result is needed. They are implementation checks and must not appear as experimental recognition results. Final notebook source pins and actual bootstrap receipts are recorded at publication.
+These CPU checks use synthetic predictions where a model result is needed. They are implementation checks and must not appear as experimental recognition results.
+
+The published implementation is pinned to commit [`dc7eec630bb0b613fc1fe784e4d9818a0893658e`](https://github.com/Siuuuers/dl/commit/dc7eec630bb0b613fc1fe784e4d9818a0893658e), with R56 driver SHA-256 `bf2ff9056f12976ca8c4aa971de2d2a7af1c679369c44dbf73de9f9d2542700d`. The generated notebook SHA-256 is `69d0438fc6a6e879d1618f9b22642992532016d01f538299ef288411d284ab0b`.
+
+The actual first two code cells of that notebook were executed against a fresh checkout of the published commit and separate copies of the previously verified cache. CPU preflight passed: it verified 678 source files, all 20 original images, the checkpoint and the input archive. The source checkout remained clean. All four code cells compile. The reference dependency closure also includes the R48 parent for lineage checks; the four scored references remain frozen666, historical663, R38 and R50.
+
+The compact [bootstrap receipt](flip-bootstrap-r56.json) records these checks. It reports `ready_for_inference: true`; no model was loaded, and the GPU inference and return-replay cells were not executed. R56 recognition results remain pending.
 
 ## Run
 
-Use `notebooks/baomai_flip_inference_r56.ipynb` after its immutable source pin has been published. Select a GPU runtime and run all four code cells. The notebook checks inputs before installing the fixed compatible inference packages; an incompatible source or cache is preserved rather than overwritten. The default working base is `/content/baomai-r56`.
+Use `notebooks/baomai_flip_inference_r56.ipynb`, which contains the published immutable source pin above. Select a GPU runtime and run all four code cells. The notebook checks inputs before installing the fixed compatible inference packages; an incompatible source or cache is preserved rather than overwritten. The default working base is `/content/baomai-r56`.
 
 The command-line equivalent accepts `prepare`, `run`, and `verify` actions:
 
 ```bash
 python -B scripts/run_flip_inference_r56.py prepare \
-  --source-commit FULL_PUBLISHED_COMMIT \
-  --script-sha256 PUBLISHED_DRIVER_SHA256 \
+  --source-commit dc7eec630bb0b613fc1fe784e4d9818a0893658e \
+  --script-sha256 bf2ff9056f12976ca8c4aa971de2d2a7af1c679369c44dbf73de9f9d2542700d \
   --root SOURCE --work WORK --cache-dir CACHE
 ```
 
@@ -92,7 +98,7 @@ Build the notebook after committing the source:
 
 ```bash
 python -B scripts/build_flip_inference_r56_notebook.py \
-  --source-commit FULL_PUBLISHED_COMMIT
+  --source-commit dc7eec630bb0b613fc1fe784e4d9818a0893658e
 ```
 
 ## Interpretation limits
