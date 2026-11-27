@@ -1,6 +1,6 @@
 # R50: complete the frozen-model diagnosis
 
-Open [baomai_r50_diagnosis.ipynb](../notebooks/baomai_r50_diagnosis.ipynb) in Colab, select a T4 GPU and Run all. Return `baomai-r50-diagnosis-results.zip`. CPU execution is supported. The source revision and script SHA in the authoring notebook must be pinned by the publication step before it can run.
+Open [baomai_r50_diagnosis.ipynb](../notebooks/baomai_r50_diagnosis.ipynb) in Colab, select a T4 GPU and Run all. Return `baomai-r50-diagnosis-results.zip`. CPU execution is supported. The notebook is pinned to published source commit `5aa5c04d91fb6e1b5a5cf9cce85215f7564238aa` and the exact script SHA256 `cba4f1df6dcf431c933af1506a4de15718636d9477406eb34779ac4d8ab6ee3e`.
 
 ## What this measures
 
@@ -34,8 +34,8 @@ The CPU preflight is also available directly:
 ```bash
 python -B scripts/diagnose_fronts_r50.py \
   --root /path/to/pinned/source --work /path/to/separate/run \
-  --source-revision FULL_PUBLISHED_SOURCE_SHA \
-  --script-sha256 FULL_PUBLISHED_SCRIPT_SHA256 \
+  --source-revision 5aa5c04d91fb6e1b5a5cf9cce85215f7564238aa \
+  --script-sha256 cba4f1df6dcf431c933af1506a4de15718636d9477406eb34779ac4d8ab6ee3e \
   --preflight-only
 ```
 
@@ -47,6 +47,8 @@ The ZIP contains 20 decoded tensors, the exact diagnosis script, prediction/trac
 
 Until this notebook returns successfully, no measured claim is made that Soft-NMS reduces misses or unmatched predictions. A filter can select or rescore proposals already produced by the model; it cannot establish the missing cassette geometry when no suitable proposal exists. If the fixed comparison helps, any later model-selection decision must also consider precision, corner placement and the development-only status of these repeatedly reviewed scenes.
 
-Authoring verification: all four notebook code cells compile; the fixed Soft-NMS and stage-classification checks pass. The actual first two notebook cells passed against an isolated clean Git fixture using the real PR137 archive, all 20 originals and the real reference labels. Fresh setup, repair of an existing sparse checkout, byte-identical repeated preflight, preservation of wrong revisions and dirty source, missing-row-map rejection, and preservation of an incompatible completed return were checked. The return-reuse negative check did not import Torch or Ultralytics. The publishing step must repeat the fresh/resume source and CPU preflight cells against the published source pin. These checks do not constitute a fresh inference result.
+Publication verification: the pinned notebook’s actual first two cells passed against source commit `5aa5c04d91fb6e1b5a5cf9cce85215f7564238aa` fetched directly from GitHub. Fresh setup and CPU preflight verified 658 source/data files, the PR137 archive and candidate checkpoint, all 20 original PNGs and all four score references. The test then excluded the R38 row map through sparse checkout and reran the same two cells: setup restored the file, and the complete preflight receipt was byte-identical. No package installation or inference cells were executed. The readable [publication receipt](../results/review/front-review-r50-20261127/notebook-publication-check.json) records the exact source, script, notebook, input-contract and preflight hashes.
+
+Authoring verification also compiled all four notebook code cells and passed the fixed Soft-NMS and stage-classification checks. An isolated clean Git fixture checked preservation of wrong revisions and dirty source, missing-row-map rejection and repair, repeated preflight identity, and rejection without overwrite of an incompatible completed return. The return-reuse negative check did not import Torch or Ultralytics. These setup and integrity checks do not constitute a fresh inference result.
 
 The historical R49 notebook is preserved. Fresh inference and training are not performed while preparing these source changes.
