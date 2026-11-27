@@ -29,6 +29,12 @@ Use the tight axis-aligned rectangle enclosing the visible portions of the targe
 
 An owned molded frontal rim or small tab continuous with that front is part of its observed extent. A broad receding/perforated upper plane is a different surface. Trace the material contour and surface orientation before deciding whether a gray strip is shaded cassette material or rack. Excluding rack does not mean removing every gray pixel or cutting the box to the brightest inner stripe.
 
+### Small fronts and neighboring shadows
+
+The R48 review keeps the same material-ownership rule at every object size. A shadow cast **onto the target's own front** changes its appearance, not its ownership; that shaded front remains included. A shadow or dark separator belonging only to the rack, gripper, upper cassette or lower cassette must not enlarge the target's outer bounds. A thin owned molded frontal cap remains included even when it is gray. Small size alone is not an exception.
+
+The full input image already supplies surrounding context. When a separate crop-based experiment needs a larger context window, expand the input crop and preserve the original target geometry through an explicit coordinate transform. Do not enlarge the ground-truth box merely to feed context to the network. Soft image edges can carry nominal visual uncertainty; numerical serialization to many decimals is not evidence of that physical accuracy.
+
 An axis-aligned enclosing rectangle may contain background or occluder pixels between visible portions, or alongside a slanted face. That is compatible with the rule. Do not extend its outer bounds to guessed hidden face limits. Do not split a single face into multiple object rows merely to exclude an occlusion gap.
 
 Keep box and point judgments independent during review. A point outside its box calls for checking the image and target definition; do not automatically enlarge the box to accommodate an incorrect point or snap a correct point to an incorrect box.
@@ -76,6 +82,8 @@ Coordinates are normalized by original width/height. Require finite values, clas
 
 The image origin is at the upper left: right increases X and down increases Y. Moving a point **up decreases Y**. Moving the top box boundary down increases `ymin`; moving its right boundary right increases `xmax`. The corner coordinates are judged independently of the rectangle's intersections.
 
+In the R48 feedback, the user names physical **top** as `ymax` and physical **bottom** as `ymin`. The review records that wording, then explicitly translates top to stored `ymin` and bottom to stored `ymax`; it does not reverse the file format. Prediction numbers are also versioned: the old R47 PDF's P numbers denote PR133 candidate outputs, which equal PR137 reference outputs in the saved cache. The new R48 error PDF's P numbers denote PR137 candidate outputs. They are not interchangeable row identities.
+
 Box edges use the closed image rectangle, so a right or bottom box edge may equal normalized 1. Visible point coordinates use the same half-open domain as the existing evaluator: `0 <= x < width`, `0 <= y < height`. A visible point saved at normalized 1 requires review; do not silently clamp or nudge it inward. An actual corner beyond the frame is missing.
 
 Visible points must be on or inside their box. Allow **0.0001 original-image pixels** only when checking box clipping and point containment, to absorb decimal serialization. This is a numerical comparison tolerance, not an annotation-accuracy allowance or deployment requirement. The audited frozen labels have maximum box and point-containment rounding overhangs of approximately 0.0000064 and 0.0000128 px, respectively; no visible endpoint is on the excluded right/bottom boundary.
@@ -111,6 +119,8 @@ The [dedup-2026-11-06 candidate](../data/candidates/dedup-2026-11-06/README.md) 
 Keep reference images, labels, split and checkpoint intact. Preserve original row IDs, source hashes, reason, reviewer status and changed-row text for each correction. The supervised HTML editor already supplies the needed drawing and saving operations; saving a file alone does not establish semantic acceptance. Run the mechanical checks and retain original-image review evidence.
 
 Validation has already been used for development and epoch selection. Any correction of its reference labels must be separately versioned and reported, not folded into a score comparison unnoticed. Independent final-test scenes and application tolerances are still required for an application-level acceptance claim.
+
+For R48, predictions locate review regions but remain unchanged evidence. Amend the appropriate versioned reference or training proposal only when the original pixels support it. Multiple unmatched prediction cues can refer to one existing physical front; they do not authorize one new annotation row per prediction. A fixed-cache rescore after a reference amendment measures label-version sensitivity, not additional model learning. See [the R48 amendment decisions](front-review-r48.md).
 
 ## 8. Context-derived proposals
 
