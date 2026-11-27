@@ -482,6 +482,7 @@ def setup_styles(doc):
         if name == "Bibliography":
             style.paragraph_format.left_indent = Mm(8)
             style.paragraph_format.first_line_indent = Mm(-8)
+            style.paragraph_format.space_after = Pt(3)
             style.paragraph_format.keep_together = True
         if name == "Code Block":
             style.font.name = "Courier New"
@@ -700,7 +701,10 @@ def add_table(doc, data: dict, equations: dict):
             paragraph.paragraph_format.space_after = Pt(1)
             paragraph.paragraph_format.space_before = Pt(1)
             paragraph.paragraph_format.line_spacing = 1.05
-            paragraph.paragraph_format.keep_with_next = (row_index == 0)
+            # Preserve the header and avoid a lone final data row on a new page.
+            paragraph.paragraph_format.keep_with_next = (
+                row_index == 0 or (len(rows) > 2 and row_index == len(rows) - 2)
+            )
             align = alignment[j]
             numeric = bool(re.fullmatch(r"[\d\s.,+−–/%()→-]+", strip_inline(text)))
             if (align.startswith(":") and align.endswith(":")) or numeric:

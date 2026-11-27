@@ -1,6 +1,6 @@
 # Current model and review status
 
-27 November 2026, Asia/Hong_Kong.
+28 November 2026, Asia/Hong_Kong.
 
 **PR35 remains selected under the established frozen-reference gate.** The latest
 completed training is [PR146/R51](partial-classification-r51-results.md): both
@@ -10,9 +10,10 @@ formal duplicates 13→23, and both-corner 5 px successes 566→567/583. This is
 tradeoff and does not support automatic promotion. The reference predictions
 exactly reproduce the PR137 candidate on all 20 development images.
 
-**Current entry points:** [thesis folder and report](thesis/README.md),
+**Current entry points:** [Final Year Project I report](thesis/README.md),
 [completed R53 inference results](thesis/r53-results.md),
-[new literature and hypotheses](thesis/literature-r56.md), and
+[corner-quality diagnostic](thesis/research-corner-quality.md),
+[local-refinement research](thesis/research-local-refinement.md), and
 [R56 explicit reflection experiment](thesis/flip-experiment-r56.md).
 PR149 and PR150 complete the fixed contrast and 1280/1600 probes using the
 immutable PR137 research checkpoint. Both reproduction checks pass, but neither
@@ -23,6 +24,14 @@ R56 has a published source pin, eight passing CPU tests and actual notebook
 bootstrap/preflight verification; it has no model inference result yet.
 The [size/visibility replay](size-visibility-r53.md) and R54/R55 pair-output
 analyses remain descriptive CPU studies of saved predictions.
+
+The FYP I presentation revision introduces the task for Electronic Engineering
+readers and uses descriptive experiment names. Its new crop-containment check
+is a CPU analysis of existing predictions: all 583 matched complete targets in
+the reviewed reference retain both reference corners in fixed 1.5x crops,
+including all 17 baseline five-pixel failures. No corner-refinement model has
+been trained, and the reflection notebook's source pin is unchanged while its
+result is pending.
 
 The generic live launcher and `weights/base.json` currently select epoch 173,
 with confidence 0.25, while the retained PR35 operating point below uses 0.13.

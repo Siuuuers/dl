@@ -1,56 +1,62 @@
-# Cassette vision thesis
+# Cassette vision: Final Year Project I
 
-Updated 27 November 2026, Asia/Hong_Kong.
+Updated 28 November 2026, Asia/Hong_Kong.
 
-**Current report:** [Cassette Front Detection and Corner Localization for Automatic Image Analysis](report.md). This folder brings the report, research notes, measured results, figure sources, and next experiment together. The report includes a 230-word abstract, decimal section numbering, 26 IEEE references in first-citation order, eight numbered equations, eight tables, and four figures. Acknowledgements are omitted as requested.
+**Current report:** [Cassette Front Detection and Corner Localization](report.md), prepared as an undergraduate Final Year Project I report for the Department of Electronic Engineering. It introduces the recognition task and measurement methods for readers unfamiliar with computer vision. Completed experiments establish the findings; the final discussion sets out the investigations for Project II.
+
+The manuscript includes a 231-word abstract, 38 decimal-numbered headings and contents entries, 29 IEEE references in first-citation order, eight numbered equations, nine tables, and four figures. Acknowledgements are omitted as requested.
 
 ## Main findings
 
-An earlier matched annotation experiment reduced unmatched outputs from 58 to 52 while tying misses at 24, under its original 661-front reference and confidence 0.25. That favorable result is retained alongside the later tradeoffs.
+A matched annotation-training comparison reduced extra predictions from 58 to 52 while maintaining 24 missed fronts. Later experiments show why finding more fronts and returning better coordinates need separate measurements. Contrast enhancement and a larger input each reduced misses from 34 to 33 against the fixed reference, but five-pixel corner-pair success fell from 511 to 506 and 503. Combining processed views increased extra and duplicate predictions.
 
-The completed [PR149 contrast](https://github.com/Siuuuers/dl/pull/149) and [PR150 scale](https://github.com/Siuuuers/dl/pull/150) experiments both pass their reproduction checks. Neither passes the joint quality screen: on the primary Frozen666 reference, misses change 34 to 33 but both-corner five-pixel successes fall from 511 to 506 and 503. The fixed cached-view combinations also increase unmatched and duplicate outputs. See [the complete R53 interpretation](r53-results.md) and [fusion evidence](evidence/cached-fusion-results.md).
+The automatic-output analysis shows that higher corner confidence can remove some unconfirmed pairs without correcting known localization errors. A new fixed-crop feasibility check contains both annotated corners of every matched complete target, including all 17 five-pixel failures against the reviewed reference. This supports testing a separate local corner model; no refiner has been trained yet.
 
-The [R55 pair-output analysis](evidence/automatic-pair-results.md) distinguishes finding eligible fronts from the quality of all offered coordinate pairs. An output lacking complete reference support is not automatically a physically incorrect prediction. All these analyses reuse the same development photographs.
-
-**PR35 remains selected under the historical rule.** This work does not change deployed model, camera, label, or confidence defaults.
+The horizontal reflection notebook is the current model experiment. Its returned results are still pending. New capture sessions will be needed to assess transfer to unfamiliar scenes.
 
 ## Read and run
 
 | File | Purpose |
 | --- | --- |
-| [report.md](report.md) | Complete current manuscript and linked contents |
+| [report.md](report.md) | Current FYP I manuscript and linked contents |
 | [requirements.md](requirements.md) | Supplied report requirements and their implementation |
-| [r53-results.md](r53-results.md) | Completed CLAHE/scale audit and decisions |
-| [literature-r56.md](literature-r56.md) | Papers, hypotheses, and ranked next investigations |
-| [bibliography-r56.json](bibliography-r56.json) | Verified metadata and first-appearance reference numbering |
-| [flip-experiment-r56.md](flip-experiment-r56.md) | Explicit reflection protocol, fixed source pin, and interpretation |
-| [R56 notebook](../../notebooks/baomai_flip_inference_r56.ipynb) | Four code cells for the next controlled inference comparison |
-| [flip-bootstrap-r56.json](flip-bootstrap-r56.json) | Actual clean-checkout execution of notebook setup cells 1–2 |
-| [figures/captions-r56.md](figures/captions-r56.md) | Detailed captions, measured data provenance, and figure reproduction |
-| [evidence/README.md](evidence/README.md) | Saved-output analysis and reproduction instructions |
-| [history](history) | Earlier R48–R55 thesis plans and notes, preserved as historical snapshots |
+| [bibliography-fyp-i.json](bibliography-fyp-i.json) | Current citation metadata and numbering |
+| [report-validation-fyp-i.json](report-validation-fyp-i.json) | Final 25-page Word document checks and artifact hashes |
+| [report-source-map.md](report-source-map.md) | Mapping from plain-language report names to exact experiment records |
+| [r53-results.md](r53-results.md) | Completed contrast and input-size evidence |
+| [research-local-refinement.md](research-local-refinement.md) | Primary papers and a controlled crop-refinement experiment design |
+| [research-corner-quality.md](research-corner-quality.md) | Saved-prediction diagnostics of confidence, disagreement, and crop feasibility |
+| [evidence/corner-quality/README.md](evidence/corner-quality/README.md) | New diagnostic results, source hashes, and reproduction commands |
+| [literature-r56.md](literature-r56.md) | Earlier literature review and experiment priorities |
+| [flip-experiment-r56.md](flip-experiment-r56.md) | Reflection protocol and immutable source pin |
+| [Reflection notebook](../../notebooks/baomai_flip_inference_r56.ipynb) | Four code cells for the controlled inference comparison |
+| [flip-bootstrap-r56.json](flip-bootstrap-r56.json) | Verified execution of the published notebook setup cells |
+| [figures-r57/captions.md](figures-r57/captions.md) | Current figure captions and provenance |
+| [evidence/README.md](evidence/README.md) | Earlier saved-output evidence and reproduction instructions |
+| [history](history) | Earlier thesis plans and notes |
 
-For the next model experiment, open the [R56 notebook in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/notebooks/baomai_flip_inference_r56.ipynb), select a GPU runtime, and run all four code cells. Return `baomai-flip-inference-r56-results.zip`. The source is pinned to `dc7eec630bb0b613fc1fe784e4d9818a0893658e`. The first two cells have passed in a fresh checkout; no R56 model inference or training result exists yet.
+The [reflection notebook in Colab](https://colab.research.google.com/github/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/notebooks/baomai_flip_inference_r56.ipynb) returns `baomai-flip-inference-r56-results.zip`. Its source stays pinned to `dc7eec630bb0b613fc1fe784e4d9818a0893658e` while the run is in progress. The first two setup cells passed in a fresh checkout. The report revision and CPU diagnostics do not change its input or implementation.
 
-## Scope and remaining evidence
+## Working decisions
 
-The study concerns identifiable cassette fronts and actual lower-corner image coordinates. The outputs are automatically consumed. Recognition quality is the priority; latency and hardware are recorded but are not selection constraints. Robot calibration and physical grasp accuracy are outside the present project scope. New capture sessions are unavailable for now.
+The target is each identifiable cassette front and its actual lower-corner image coordinates. The application consumes outputs automatically. Recognition quality is the priority. New captures are unavailable for now, so the existing photographs support development comparisons. The report keeps the fixed comparison annotations separate from their reviewed version and keeps annotation changes separate from model changes.
 
-There is sufficient completed evidence for a substantive empirical report. A favorable reflection result is not required to make the existing report valid. Stronger claims still need a fixed, physically adjudicated reference, a downstream pixel-tolerance definition, and later independent capture-session evaluation. A budget-controlled training-side annotation review study is a useful next contribution if time permits; it is not already a completed result.
+Repository experiment codes remain useful for reproducing the work. The report uses descriptive names so it can be read without knowing that history. Current report and figure sources supersede the earlier report presentation; the older bibliography, figure assets, and validation record retain their historical meaning.
 
 ## Rebuild the Word report
 
-The [DOCX builder](../../scripts/build_thesis_docx_r56.py) uses Python with python-docx, Pillow, lxml, PyMuPDF, and the primary runtime’s bundled KaTeX module. Its Node/runtime-module paths are provided through `CODEX_PRIMARY_RUNTIME_NODE` and `CODEX_PRIMARY_RUNTIME_NODE_MODULES`. The document uses editable Word equations, actual multilevel heading numbering, internal contents links, and a verified page map. It does not need model inference.
+The [DOCX builder](../../scripts/build_thesis_docx_r56.py) uses python-docx, Pillow, lxml, PyMuPDF, and the primary runtime's bundled KaTeX module. Node/runtime-module paths are supplied by `CODEX_PRIMARY_RUNTIME_NODE` and `CODEX_PRIMARY_RUNTIME_NODE_MODULES`. The document uses editable Word equations, actual multilevel heading numbering, linked contents, and a verified page map.
 
 ```bash
 python scripts/build_thesis_docx_r56.py docs/thesis/report.md --output report-first.docx
 ```
 
-Render the file to PDF with an Office-compatible engine, then rebuild using that rendered PDF:
+Render the document to PDF with an Office-compatible engine, then rebuild using that PDF:
 
 ```bash
 python scripts/build_thesis_docx_r56.py docs/thesis/report.md \
-  --output report.docx --page-map-from-pdf report-first.pdf --require-page-map
+  --output cassette-vision-fyp-i-report.docx \
+  --page-map-from-pdf report-first.pdf --require-page-map
 ```
 
-Render and visually inspect the final document. The final heading-page map must agree with the rendered pages. Do not treat an unrendered file or a changed page map as a completed formatting check.
+Render and inspect the final document. Check that every contents page number matches the rendered heading. The final Word file is delivered separately; the repository contains its source and validation record.

@@ -1,11 +1,9 @@
-# Thesis workspace
+# Final Year Project I workspace
 
-The current workspace is **[docs/thesis/](thesis/README.md)**. Start with the [complete report](thesis/report.md), [completed R53 results](thesis/r53-results.md), and [R56 reflection notebook guide](thesis/flip-experiment-r56.md).
+Start with the **[thesis folder](thesis/README.md)** and the **[current report](thesis/report.md)**, prepared for undergraduate Electronic Engineering readers. The manuscript explains cassette-front detection and lower-corner localization without requiring knowledge of repository revision codes. It includes the completed evidence, a 231-word abstract, 29 IEEE references, eight equations, nine tables, four figures, and a Project II plan. Acknowledgements are omitted as requested.
 
-The user has confirmed automatic output consumption and freedom to pursue an empirical thesis. Recognition quality takes priority over latency and hardware; physical calibration and robot grasping are outside the current image-analysis scope. New capture sessions are unavailable for now.
+The [contrast and input-size results](thesis/r53-results.md) are complete. The [horizontal reflection experiment](thesis/flip-experiment-r56.md) is running with its existing source pin; its result is pending. The new [corner-quality diagnostic](thesis/research-corner-quality.md) reuses saved outputs and shows that fixed local crops contain both reference corners in every matched complete target. The [local-refinement research note](thesis/research-local-refinement.md) develops the next controlled training hypothesis.
 
-PR149 and PR150 are completed, audited inference returns. Neither passes the joint quality screen. The new explicit-reflection notebook has passed its actual source/bootstrap cells and is ready for a GPU run; it has no model result yet. PR35 remains selected under the historical reference rule.
+The application uses outputs automatically, and recognition quality is the priority. The report evaluates missed fronts, extra predictions, duplicate predictions, and corner accuracy together. All present comparisons use existing development photographs; later capture sessions will test transfer.
 
-The report includes the favorable historical seed-46 annotation comparison as well as later tradeoffs, four figures, eight tables, eight equations, and IEEE references. Acknowledgements are omitted at the user's request.
-
-Earlier thesis plans and notes remain in [history](thesis/history). The prior version of this entry point is preserved as [plan-r53.md](thesis/history/plan-r53.md). Their pending-work statements describe the original revision, not the current state.
+Technical names and exact evidence paths are in the [report source map](thesis/report-source-map.md). Earlier plans remain in [history](thesis/history); their pending-work statements describe their original dates.
