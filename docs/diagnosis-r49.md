@@ -1,5 +1,11 @@
 # R49 frozen-model proposal diagnosis and Soft-NMS pilot
 
+**Historical handoff. Use the [R50 successor](diagnosis-r50.md) for the next run.**
+PR140 added the missing R38 row-map sparse path, but only for a newly created
+checkout. R50 also repairs an existing failed checkout and performs the actual
+source/data preflight before inference. No completed R49 return was present in
+PR140; the validation statement below describes the original R49 publication.
+
 Open [baomai_r49_diagnosis.ipynb](../notebooks/baomai_r49_diagnosis.ipynb) in Colab; select a GPU runtime and Run all (CPU is supported, but slower). Return `baomai-r49-diagnosis-results.zip`.
 
 This is an exploratory development-set inference comparison, not training. The exact PR137 candidate checkpoint and its verified archived predictions are restored by the R48 audit. All 20 original development PNGs and the R38, frozen666 (primary), and historical663 reference labels are pinned and verified. These are three annotation versions on the same scenes, not three independent tests.

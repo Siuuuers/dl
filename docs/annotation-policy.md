@@ -33,6 +33,13 @@ An owned molded frontal rim or small tab continuous with that front is part of i
 
 The R48 review keeps the same material-ownership rule at every object size. A shadow cast **onto the target's own front** changes its appearance, not its ownership; that shaded front remains included. A shadow or dark separator belonging only to the rack, gripper, upper cassette or lower cassette must not enlarge the target's outer bounds. A thin owned molded frontal cap remains included even when it is gray. Small size alone is not an exception.
 
+In [R50](front-review-r50.md), the user's material-ownership clarification resolves
+`new_000010 / R38 row029`: the lower band belongs to the next cassette. Its
+physical bottom becomes nominal `ymax=714`, near its retained left corner. This
+is a row-specific decision supported by ownership and the visible junction, not
+a general rule to copy a corner's Y coordinate to every box. The unseen right
+corner remains `0 0 0`.
+
 The full input image already supplies surrounding context. When a separate crop-based experiment needs a larger context window, expand the input crop and preserve the original target geometry through an explicit coordinate transform. Do not enlarge the ground-truth box merely to feed context to the network. Soft image edges can carry nominal visual uncertainty; numerical serialization to many decimals is not evidence of that physical accuracy.
 
 An axis-aligned enclosing rectangle may contain background or occluder pixels between visible portions, or alongside a slanted face. That is compatible with the rule. Do not extend its outer bounds to guessed hidden face limits. Do not split a single face into multiple object rows merely to exclude an occlusion gap.
