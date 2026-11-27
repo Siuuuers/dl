@@ -33,6 +33,16 @@ An axis-aligned enclosing rectangle may contain background or occluder pixels be
 
 Keep box and point judgments independent during review. A point outside its box calls for checking the image and target definition; do not automatically enlarge the box to accommodate an incorrect point or snap a correct point to an incorrect box.
 
+### Use neighboring cassettes to identify the repeated front
+
+The R47 review makes the existing neighboring-contour guidance operational. Compare the target with a nearby cassette whose front, molded rim and lower turns are clear. Match the physical surfaces and their contour continuity, allowing for perspective, pose and occlusion. Then locate the target's own visible edge. A neighboring lower corner can clarify approximately where the next front begins, but is not a coordinate to copy and does not reveal an entirely hidden point.
+
+In `frame_0160`, source row 034's left lower corner provides useful context for row 037's upper frontal rim. The visible rim on row 037 must still determine its nominal top; the older box included the continuing rack above. This comparison can resolve surface ownership even when the transition is softened by a few pixels of blur. Normal edge softness should carry a nominal uncertainty, rather than automatically holding an otherwise identifiable front. Keep a field held when materially different surface owners, instance identities or hidden extents remain plausible, and record those alternatives.
+
+For a cassette to the **right** of a rack upright, excluding the rack may mean moving the cassette's **left** boundary rightward: increase `xmin`. If that boundary instead cuts the cassette's own outward molded rim, move it leftward: decrease `xmin`. Inspect each row; do not apply one offset to an entire column. The same reasoning applies independently to the other three bounds. Gray material continuous with the front remains included; an adjoining gray rack strip or neighboring white cassette does not set the target's extrema.
+
+See the [R47 original-image review](front-review-r47.md) for the explicit row decisions, original/R46/R47 comparisons and whole-photograph gates.
+
 ## 3. Locate the two actual lower-front corners
 
 First identify the physical lower-front corner pair, then order the pair by image X. Do not substitute an upper lip, tray corner, occluder boundary, brightest stripe or arbitrary lowest image edge. The target is a physical feature, so perspective can tilt its connecting line.
