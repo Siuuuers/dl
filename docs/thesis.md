@@ -134,7 +134,7 @@ not findings about our cassettes.
 | Hypothesis | Single comparison | Evidence against it / limitation |
 | --- | --- | --- |
 | H1: the geometry queue helps reviewers discover genuine label errors | Frozen geometry ranking versus sequential and seeded random order at the same reviewed-case budgets | No better confirmed-issue yield; many legitimate overlaps; time savings cannot be claimed without actual time logs. |
-| H2: mild luminance contrast enhancement helps the frozen checkpoint | Identity versus Lab-L CLAHE, clip limit 2.0, 8×8 tile grid, both at inference size 1280 | No net miss reduction, more unmatched or formal duplicate outputs, worse original-pixel corners, or new empty-scene outputs. Use the frozen666 screen below; a failed inference-only test does not disprove jointly trained enhancement. |
+| H2: mild contrast enhancement on Lab lightness helps the frozen checkpoint | Identity versus Lab-L CLAHE, clip limit 2.0, 8×8 tile grid, both at inference size 1280 | No net miss reduction, more unmatched or formal duplicate outputs, worse original-pixel corners, or new empty-scene outputs. Use the frozen666 screen below; a failed inference-only test does not disprove jointly trained enhancement. |
 | H3: a higher inference scale helps thin/partial fronts | Identity at 1280 versus 1600, same checkpoint and all other settings | No net miss reduction, worsening duplicate/unmatched outputs, corner regressions or unacceptable runtime/memory. Use the frozen666 screen below. Upscaling adds no new captured detail. |
 | H4: accepted training-label corrections improve the unchanged learner | Same image membership, initialization, recipe, seed and fixed checkpoint rule; only accepted labels differ | No useful effect or conflicting metrics. Small corrections near annotation uncertainty may be undetectable. |
 | H5: a learned adaptive filter could help | Later, only after H2 evidence and a declared training design | IA-YOLO is jointly trained on different adverse-image tasks; its results do not establish a useful plug-in for this checkpoint. |
@@ -163,7 +163,8 @@ Both use the immutable PR137 candidate checkpoint whose saved predictions
 equal the PR146 reference. Its checkpoint hash is
 `222bf3c91a651183047a10eb1a50e16ae8fe999f15372afe005bfca2d0b157f9`.
 This choice provides a previously verified control; it does not change the
-selected PR35 deployment model. The notebooks fix image membership, original
+selected PR35 deployment model. The Lab L channel is perceptual lightness, not a new physical luminance
+measurement. The notebooks fix image membership, original
 image bytes, reference labels, box confidence 0.13, ordinary NMS IoU 0.70,
 postclip policy, matching IoU 0.50 and endpoint confidence 0.50. Corner errors
 remain in original 1280×720 coordinates.
