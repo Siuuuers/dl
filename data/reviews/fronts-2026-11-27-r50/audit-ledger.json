@@ -1,0 +1,49 @@
+{
+  "coordinate_semantics": "Original 1280 x 720: x right, y down; physical bottom is stored ymax.",
+  "date": "2026-11-27",
+  "human_review_performed": false,
+  "operations": [
+    {
+      "after_line": "0 0.30219813 0.95833333 0.10973297 0.06666667 0.253906250000000 0.991666666666667 2 0.00000000 0.00000000 0",
+      "before_line": "0 0.30219813 0.962500000000000 0.10973297 0.075000000000000 0.253906250000000 0.991666666666667 2 0.00000000 0.00000000 0",
+      "changed_fields": [
+        "ymax"
+      ],
+      "feedback": "new_000010 / row 029 the bottom borderline need to excluding the other cassette, it is at around left point.",
+      "human_review_performed": false,
+      "image_id": "new_000010",
+      "nominal_visual_uncertainty_px": 2,
+      "original_pixels_inspected": true,
+      "reason": "The user clarifies that the band below this cassette belongs to another cassette, resolving the R48 material-ownership hold. The original image shows the lower-left front transition near the retained left corner at (325,714). Set the tight axis-aligned visible-front bottom to nominal y714, excluding the neighboring lower band. This uses the stated ownership and visible junction, not a general rule to snap every box to a point. Keep the top, sides, visible left point and canonical missing right point exactly as recorded.",
+      "reference_row": 29,
+      "resolved_fields": [
+        {
+          "basis": "User material-ownership clarification plus original-image lower-left transition.",
+          "field": "ymax",
+          "prior_review": "R48"
+        }
+      ],
+      "source_image_sha256": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "stable_id": "new_000010:R38:029",
+      "updates_px": {
+        "ymax": 714
+      },
+      "user_ownership_clarification": true
+    }
+  ],
+  "parent_manifest_sha256": "21838bd979a03f41a82ea17496f29bb4d4bd6357c94064112a91124a5a4723e4",
+  "remaining_holds": [
+    {
+      "field": "xmax",
+      "image_id": "new_000089",
+      "reason": "Thin strip above the gripper has unresolved ownership. Preserve the prior bound; do not use either the broad prediction or the jaw edge as automatic truth.",
+      "reference_row": 41,
+      "stable_id": "new_000089:R38:041"
+    }
+  ],
+  "round": 50,
+  "schema_version": 1,
+  "scope": "One development-row bottom amendment; inherited rows are not newly certified.",
+  "timezone": "Asia/Hong_Kong",
+  "user_feedback_adjudicates_one_material_owner": true
+}

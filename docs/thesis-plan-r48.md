@@ -1,5 +1,11 @@
 # R48: a focused thesis and experiment plan
 
+**R50 clarification:** the user has not settled a thesis topic. Professor LI
+Hongsheng's uploaded document is an object-detection lecture; the stated current
+assignment is to annotate data and train a model. This page is a historical
+proposal for discussion. Use [the revised project direction](project-direction-r50.md)
+for the current scope and work possible while new captures are unavailable.
+
 27 November 2026, Asia/Hong_Kong.
 
 **Proposed research plan.** This document explains the next scientific question;
