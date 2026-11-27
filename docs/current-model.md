@@ -8,6 +8,12 @@
 
 The 15 miss traces comprise ten confidence-gate cases, three without an IoU-eligible decoded box and two ordinary-NMS cases. One post-hoc CPU replay at confidence 0.05 recovers six R38/R50 targets but adds 74 unmatched outputs, including outputs in two previously empty scenes. Confidence 0.13 remains unchanged. The new R51 notebook isolates classification-loss weighting for partial targets on the same 142 training photos. It prepares a testable hypothesis, not a measured improvement or an automatic promotion. No R51 GPU training result is claimed.
 
+[The subsequent PR144 R50 return](../results/evaluation/pr144-r50-20261127/README.md)
+confirms the diagnosis: all 20 decoded tensor files are byte-identical to PR143,
+the full prediction and trace objects are identical, and all four reference
+scores agree. This is reproducibility on the same scenes, not independent
+generalization evidence. The prepared R51 training comparison is unchanged.
+
 The thesis is not settled: the user's current assignment is annotation and model training, and new captures are unavailable for now. [Lecture-guided project direction](project-direction-r50.md), [R48](front-review-r48.md) and its [thesis proposal](thesis-plan-r48.md) remain background and historical discussion. These four label references share the same repeatedly reviewed development photographs; they are not independent test sets.
 
 The earlier [R40 folder filter](unmatched-output-r40.md) followed the accepted [R38 development amendments](front-review-r38.md), PR123 and [R39 diagnosis](front-diagnosis-r39.md). PR125 returned the identical R39 CPU replay archive. The old R28 notebook below is historical, not the next run.

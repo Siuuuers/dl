@@ -3,8 +3,11 @@
 **The inference question is now complete.** [PR143](https://github.com/Siuuuers/dl/pull/143)
 returned the successful R49 experiment with all decoded tensors. The
 [R51 audit](front-diagnosis-r51.md) independently verifies it and additionally
-replays its outputs on the R50 reference. A fresh R50 run is unnecessary just
-to reproduce this result. The next prepared experiment is the
+replays its outputs on the R50 reference. The subsequent
+[PR144 R50 return](../results/evaluation/pr144-r50-20261127/README.md) confirms
+identical decoded tensors, predictions and trace objects, with all four
+reference scores agreeing. No further R50 run is needed for this question.
+The next prepared experiment is the
 [R51 classification-only training comparison](partial-classification-r51.md).
 The original source pins and run instructions below remain as historical,
 reproducible evidence.

@@ -13,6 +13,15 @@ The R50 notebook was a repaired handoff for this same inference question. The
 successful R49 return now provides the required tensors and traces, so a new run
 of the equivalent R50 notebook is unnecessary just to obtain them again.
 
+During publication, [PR144](https://github.com/Siuuuers/dl/pull/144) also returned
+the completed R50 diagnosis. Its [confirmation audit](../results/evaluation/pr144-r50-20261127/README.md)
+finds all 20 decoded tensor files byte-identical to PR143 and the complete
+prediction/trace objects identical. Its four reference tables agree with this
+analysis, including the R50 replay. This confirms reproducibility without adding
+new scenes or changing the next training question. The 14-page PDF remains the
+focused visual analysis of PR143; its cases and numerical conclusions also agree
+with the later return.
+
 ## 1. Measured result
 
 The [independent CPU audit](../results/evaluation/pr143-r49-20261127/README.md)
