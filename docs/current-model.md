@@ -4,7 +4,17 @@
 
 **PR35 remains selected under the established frozen-reference gate.** The latest returned model experiment is [PR137: completed R47 supplementary training](additional-front-pilot-r47-results.md). Its 138-photo reference and 142-photo candidate give a mixed result: on unchanged R38, misses 13→15, unmatched 90→84, and two-corner 5 px successes 569→566/583. On the frozen666 primary reference, misses 33→34 and strict corner successes 518→511/584. This does not support automatic promotion.
 
-**Current entry points:** [R50 boundary amendment](front-review-r50.md), [complete case analysis](front-error-review-r50.md), [R50 diagnosis notebook](diagnosis-r50.md), and [lecture-guided project direction](project-direction-r50.md). PR140 fixes a missing checkout dependency; it is not a completed R49 inference result. The R50 setup also repairs resumed checkouts and audits the real inputs before inference. No new training result or model promotion is claimed. The thesis is not settled: the user's current assignment is annotation and model training, and new captures are unavailable for now. [R48](front-review-r48.md) and its [thesis proposal](thesis-plan-r48.md) remain historical evidence and discussion material.
+**Current entry points:** [R51 completed diagnosis](front-diagnosis-r51.md), [R51 controlled training comparison](partial-classification-r51.md), [R50 boundary amendment](front-review-r50.md), and [complete case analysis](front-error-review-r50.md). [PR143](https://github.com/Siuuuers/dl/pull/143) returns the successful R49 inference experiment. Its fresh baseline exactly reproduces all 20 saved PR137 outputs. Soft-NMS removes one unmatched output but recovers no target; R38/R50 misses remain 15 and two-corner 5px success remains 566/583. The equivalent R49/R50 inference question is complete and does not need another run.
+
+The 15 miss traces comprise ten confidence-gate cases, three without an IoU-eligible decoded box and two ordinary-NMS cases. One post-hoc CPU replay at confidence 0.05 recovers six R38/R50 targets but adds 74 unmatched outputs, including outputs in two previously empty scenes. Confidence 0.13 remains unchanged. The new R51 notebook isolates classification-loss weighting for partial targets on the same 142 training photos. It prepares a testable hypothesis, not a measured improvement or an automatic promotion. No R51 GPU training result is claimed.
+
+[The subsequent PR144 R50 return](../results/evaluation/pr144-r50-20261127/README.md)
+confirms the diagnosis: all 20 decoded tensor files are byte-identical to PR143,
+the full prediction and trace objects are identical, and all four reference
+scores agree. This is reproducibility on the same scenes, not independent
+generalization evidence. The prepared R51 training comparison is unchanged.
+
+The thesis is not settled: the user's current assignment is annotation and model training, and new captures are unavailable for now. [Lecture-guided project direction](project-direction-r50.md), [R48](front-review-r48.md) and its [thesis proposal](thesis-plan-r48.md) remain background and historical discussion. These four label references share the same repeatedly reviewed development photographs; they are not independent test sets.
 
 The earlier [R40 folder filter](unmatched-output-r40.md) followed the accepted [R38 development amendments](front-review-r38.md), PR123 and [R39 diagnosis](front-diagnosis-r39.md). PR125 returned the identical R39 CPU replay archive. The old R28 notebook below is historical, not the next run.
 

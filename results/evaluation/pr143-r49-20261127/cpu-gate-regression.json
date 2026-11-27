@@ -1,0 +1,35 @@
+{
+  "driver_sha256": "382b51e48013ec82b30eb1a44175546ae30ce716bd75882646338ae8b48b0852",
+  "fresh_inference": false,
+  "mutations": [
+    {
+      "case": "false_native_equivalence",
+      "message": "A CPU loss/gradient invariant failed: mixed_real_batch",
+      "rejected": true
+    },
+    {
+      "case": "false_selective_gradient",
+      "message": "Selective classification gradient differs",
+      "rejected": true
+    },
+    {
+      "case": "zero_parameter_gradients",
+      "message": "Full-network native-equivalence guard failed",
+      "rejected": true
+    },
+    {
+      "case": "unexpected_optimizer_update",
+      "message": "Full-network native-equivalence guard failed",
+      "rejected": true
+    }
+  ],
+  "real_preflight_sha256": {
+    "cpu-loader-preflight.json": "16f4ba4f5945c9f2439a1b40c8f494b9de15043a5490f6d8b1bd14044549c672",
+    "loss-guard.json": "fdb72c746fed446d02d17b1acb02f84832c7e3eb1cc58a6d0afbcbee38e0dc4e"
+  },
+  "schema": "r51-cpu-guard-fail-closed-regression-v1",
+  "scope": "Reuses the real authoring CPU loader and native-gradient receipts; invalid guard claims are rejected. No full GPU training or source-publication validation is implied.",
+  "status": "passed",
+  "training": false,
+  "valid_real_receipts_accepted": true
+}

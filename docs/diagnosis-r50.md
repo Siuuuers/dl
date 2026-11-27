@@ -1,5 +1,19 @@
 # R50: complete the frozen-model diagnosis
 
+**The inference question is now complete.** [PR143](https://github.com/Siuuuers/dl/pull/143)
+returned the successful R49 experiment with all decoded tensors. The
+[R51 audit](front-diagnosis-r51.md) independently verifies it and additionally
+replays its outputs on the R50 reference. The subsequent
+[PR144 R50 return](../results/evaluation/pr144-r50-20261127/README.md) confirms
+identical decoded tensors, predictions and trace objects, with all four
+reference scores agreeing. No further R50 run is needed for this question.
+The next prepared experiment is the
+[R51 classification-only training comparison](partial-classification-r51.md).
+The original source pins and run instructions below remain as historical,
+reproducible evidence.
+
+## Historical R50 handoff
+
 Open [baomai_r50_diagnosis.ipynb](../notebooks/baomai_r50_diagnosis.ipynb) in Colab, select a T4 GPU and Run all. Return `baomai-r50-diagnosis-results.zip`. CPU execution is supported. The notebook is pinned to published source commit `5aa5c04d91fb6e1b5a5cf9cce85215f7564238aa` and the exact script SHA256 `cba4f1df6dcf431c933af1506a4de15718636d9477406eb34779ac4d8ab6ee3e`.
 
 ## What this measures
