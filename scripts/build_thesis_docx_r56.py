@@ -472,7 +472,7 @@ def setup_styles(doc):
         style = doc.styles[name]
         style.base_style = normal
         set_font(style, size)
-        style.paragraph_format.space_after = Pt(2.5 if "TOC" in name else 6)
+        style.paragraph_format.space_after = Pt(1.8 if "TOC" in name else 6)
         style.paragraph_format.line_spacing = 1.05 if "TOC" in name else 1.1
         if "TOC" in name:
             level = int(name[-1])
@@ -813,6 +813,7 @@ def build(args):
     doc.core_properties.keywords = "cassette recognition; pose estimation; thesis"
     doc.core_properties.comments = ""
     bibliography, cover, previous_kind = False, True, None
+    appendices, appendix_started = False, False
     for block in blocks:
         if block.kind == "title":
             doc.add_paragraph(block.text, style="Title")
@@ -821,7 +822,14 @@ def build(args):
             h = block.data
             if h["level"] == 1:
                 bibliography = h["title"].casefold() == "references"
+                appendices = h["title"].casefold() == "appendices"
+                appendix_started = False
             p = doc.add_paragraph(h["title"], style=f"Heading {h['level']}")
+            if appendices and h["level"] == 2:
+                # Give each later appendix its own page instead of an isolated tail.
+                if appendix_started:
+                    p.paragraph_format.page_break_before = True
+                appendix_started = True
             bookmark(p, h["id"], headings.index(h) + 1)
             if h["title"].casefold() == "table of contents":
                 for item in headings:

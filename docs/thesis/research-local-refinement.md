@@ -2,7 +2,7 @@
 
 **28 November 2026 · Hong Kong**
 
-**Status:** literature review and completed crop-containment analysis. Corner-refiner training remains a proposed experiment. Related work and evidence: [corner-quality investigation](research-corner-quality.md), [crop-containment summary](evidence/corner-quality/crop-containment-summary.json), and [project report](report.md).
+**Status:** literature review and completed crop-containment analysis. The reflection and fixed-box coordinate-average analyses are complete. Two [local-refinement notebooks](corner-refinement-experiment.md) now prepare the GPU training comparison; their accuracy results remain pending. Section 4 preserves the earlier design proposal, while the linked experiment guide specifies the implemented architecture and matched arms. Related work and evidence: [corner-quality investigation](research-corner-quality.md), [crop-containment summary](evidence/corner-quality/crop-containment-summary.json), and [project report](report.md).
 
 ## 1. Recommendation
 
@@ -10,7 +10,7 @@ A useful next hypothesis is: **after the existing model finds a cassette front, 
 
 The [completed training comparison](../partial-classification-r51-results.md) supports this focus. Both arms of the partial-target training comparison detected all 583 fronts with two locatable corners under the reviewed reference. Nevertheless, the unchanged control had 566 five-pixel pair successes and the weighted candidate had 567. In the separate automatic-output audit, increasing the candidate's endpoint cutoff retained all 16 known five-pixel localization failures. A coordinate refiner could address an error that simple confidence screening did not remove. It would not recover fronts for which the frozen detector supplies no box.
 
-The crop-containment check is complete: all matched two-corner targets fit inside the fixed crop (Section 5). The next step is to finish the pending reflection comparison and inspect the remaining localization failures in the original images before preparing one refiner pilot. The detector remains fixed, so unmatched and duplicate boxes are unchanged; the [automatic-output quality investigation](research-corner-quality.md) addresses the complementary question of which pairs to offer.
+The crop-containment check is complete: all matched two-corner targets fit inside the fixed crop (Section 5). The [reflection comparison](reflection-results.md) and [fixed-box coordinate average](corner-average-experiment.md) are now complete. The next step is to run the prepared image-only and image-plus-hints refinement comparisons, retaining the remaining localization failures for paired analysis. The detector remains fixed, so unmatched and duplicate boxes are unchanged; the [automatic-output quality investigation](research-corner-quality.md) addresses the complementary question of which pairs to offer.
 
 ## 2. Three primary papers and their relevance
 
@@ -52,7 +52,7 @@ The first question should be whether a single refiner helps the existing system,
 
 | Component | Fixed proposal for the first pilot |
 | --- | --- |
-| Detection | Use the same pinned unchanged detector and original-view prediction recipe as the pending reflection control. Preserve boxes, scores, suppression, proposal IDs, and maximum detections. |
+| Detection | Use the same pinned unchanged detector and original-view prediction recipe as the completed reflection control. Preserve boxes, scores, suppression, proposal IDs, and maximum detections. |
 | Crop | Expand each predicted box to 1.5 times its width and height about its centre; floor the left/top, ceil the right/bottom, then clip to the original image. Preserve aspect ratio when placing the resulting crop into a 256 × 256 input canvas. Record the actual integer crop and affine transform exactly. |
 | Target identity | Process one detector record at a time. Give the refiner the RGB crop plus two image-aligned maps marking the initial left and right proposals. Do not select a neighbouring detection by comparing it with the reference. |
 | Refiner | One pretrained image backbone with a new two-output landmark head. A small HRNet configuration is a defensible implementation option; load only compatible pretrained parameters and record what was reinitialized. Treat the result as a project-specific adaptation, not a PoseFix reproduction. |

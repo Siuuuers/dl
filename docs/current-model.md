@@ -11,33 +11,52 @@ tradeoff and does not support automatic promotion. The reference predictions
 exactly reproduce the PR137 candidate on all 20 development images.
 
 **Current entry points:** [Final Year Project I report](thesis/README.md),
-[completed R53 inference results](thesis/r53-results.md),
-[corner-quality diagnostic](thesis/research-corner-quality.md),
-[local-refinement research](thesis/research-local-refinement.md), and
-[R56 explicit reflection experiment](thesis/flip-experiment-r56.md).
+[completed contrast and input-size results](thesis/r53-results.md),
+[completed reflection results](thesis/reflection-results.md),
+[coordinate-average analysis and CPU notebook](thesis/corner-average-experiment.md),
+and [local-refinement training notebooks](thesis/corner-refinement-experiment.md).
+
 PR149 and PR150 complete the fixed contrast and 1280/1600 probes using the
 immutable PR137 research checkpoint. Both reproduction checks pass, but neither
 treatment passes the joint quality screen. Primary misses change 34→33 while
 both-corner 5 px success falls 511→506/584 for CLAHE and 511→503/584 for size1600.
 Fixed cached two-view fusion also increases unmatched and duplicate outputs.
-R56 has a published source pin, eight passing CPU tests and actual notebook
-bootstrap/preflight verification; it has no model inference result yet.
-The [size/visibility replay](size-visibility-r53.md) and R54/R55 pair-output
-analyses remain descriptive CPU studies of saved predictions.
 
-The FYP I presentation revision introduces the task for Electronic Engineering
-readers and uses descriptive experiment names. Its new crop-containment check
-is a CPU analysis of existing predictions: all 583 matched complete targets in
-the reviewed reference retain both reference corners in fixed 1.5x crops,
-including all 17 baseline five-pixel failures. No corner-refinement model has
-been trained, and the reflection notebook's source pin is unchanged while its
-result is pending.
+PR152 completes the horizontal-reflection experiment. Control reproduction,
+coordinate mapping, repeated predictions, and scoring pass independent replay.
+Fixed-reference misses change 34→32 and extras 91→84, but duplicates increase
+17→23. Five-pixel pair success rises 511→518/584 under the fixed reference and
+falls 566→562/583 under R50. The original notebook and its immutable source pin
+remain available for reproduction; a fresh reflection run is not required for
+the next CPU analysis.
+
+The completed fixed-box coordinate average modifies 666 of 723 original records
+and preserves all original detection outcomes. Fixed-reference five-pixel pair
+success rises 511→525/584, while ten-pixel success falls 575→574/584. R50 changes
+566→569/583 and 582→583/583. Its rule uses predicted-box association and equal
+weights fixed before calculation. The [CPU replay notebook](../notebooks/baomai_corner_average_r58.ipynb)
+uses saved outputs; it neither trains nor reruns a model.
+
+The [crop-containment check](thesis/research-corner-quality.md) shows that all 583
+matched complete R50 targets retain both reference corners in fixed 1.5x crops,
+including all 17 baseline five-pixel failures. The new GPU notebooks compare
+[RGB with zero hint channels](../notebooks/baomai_corner_refinement_rgb_r58.ipynb)
+against [RGB with initial-corner hints](../notebooks/baomai_corner_refinement_hints_r58.ipynb)
+using the same architecture and recipe. Pretrained CPU forward/backward and
+masked-gradient smoke checks pass; full GPU training and accuracy results are
+pending. No local refiner has been selected for application use.
+
+The self-contained FYP I report has 29 verified Word pages, a 278-word abstract,
+40 numbered headings, 18 external IEEE references, nine equations, 11 tables,
+and four figures. It contains no project GitHub citations or unexplained
+experiment codes. The [source map](thesis/report-source-map.md) preserves exact
+technical provenance separately.
 
 The generic live launcher and `weights/base.json` currently select epoch 173,
 with confidence 0.25, while the retained PR35 operating point below uses 0.13.
 The camera audit explains explicit launch settings and checkpoint verification.
 A selected-model document does not itself change the live application's
-weights. R53 does not change these runtime defaults.
+weights. The reflection and coordinate studies do not change these runtime defaults.
 
 ## Completed inference diagnosis and annotation work
 

@@ -1,48 +1,9 @@
 {
-  "schema": "cassette-fyp-i-bibliography-v1",
-  "verified_on": "2026-11-27",
-  "numbering": "IEEE references ordered by first citation in report.md.",
-  "scope": "Primary sources supporting the existing methods, evaluation interpretation, and planned controlled experiments. A cited paper motivates a hypothesis; it does not establish performance on cassette-front two-keypoint pose.",
+  "schema": "cassette-fyp-i-external-bibliography-v2",
   "revised_on": "2026-11-28",
+  "numbering": "IEEE references in first-citation order in report.md.",
+  "scope": "External academic publications and professional documentation only. Project methods, measurements, and reasoning are explained in the manuscript itself.",
   "entries": [
-    {
-      "key": "baomai_data",
-      "type": "repository_documentation",
-      "authors": [
-        "an94-doll"
-      ],
-      "title": "Data README",
-      "original_heading": "第173轮模型对应训练数据",
-      "year": null,
-      "venue": "embedding_vision repository, baomai branch",
-      "commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
-      "git_blob_sha": "7af771c01e2d35f0262afec040d039da679418f3",
-      "url": "https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md",
-      "accessed": "2026-11-27",
-      "ieee_entry": "an94-doll, “Dataset and annotation specification,” embedding_vision dataset documentation. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md",
-      "supported_claim": "The data specification uses the cassette_front class and two lower front corners ordered by image x-coordinate, with flip_idx [1, 0]; an unavailable corner is encoded as 0 0 0 rather than guessed.",
-      "limitation": "This is the upstream annotation contract, not evidence of an application's accuracy, a fully specified box-extent policy, or a requirement to output inferred coordinates for invisible corners.",
-      "verification": [
-        {
-          "kind": "github_connector_file_read",
-          "url": "https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md",
-          "commit": "351eb3cf960ccc34829e2bc72e1fa4645acc6295",
-          "git_blob_sha": "7af771c01e2d35f0262afec040d039da679418f3",
-          "supports": [
-            "document heading",
-            "keypoint and visibility convention",
-            "flip mapping",
-            "dataset sizes and image dimensions"
-          ]
-        }
-      ],
-      "metadata_notes": [
-        "Data README is a descriptive citation title; the original heading is retained separately.",
-        "No publication date is inferred from the access date or commit identifier."
-      ],
-      "reference_number": 1,
-      "report_title": "Dataset and annotation specification"
-    },
     {
       "key": "yolo2016",
       "type": "conference_paper",
@@ -87,7 +48,7 @@
           ]
         }
       ],
-      "reference_number": 2
+      "reference_number": 1
     },
     {
       "key": "tide2020",
@@ -129,7 +90,7 @@
           ]
         }
       ],
-      "reference_number": 3
+      "reference_number": 2
     },
     {
       "key": "objectlab2023",
@@ -169,7 +130,7 @@
         "No proceedings page range was verified, so none is supplied.",
         "The arXiv DOI is not represented as a publisher proceedings DOI."
       ],
-      "reference_number": 4
+      "reference_number": 3
     },
     {
       "key": "noise2025",
@@ -223,7 +184,7 @@
       "metadata_notes": [
         "CVF verifies pages 9304–9313. Secondary indexes give a different IEEE pagination; an IEEE page range was not verified from the primary record, so the DOI-based IEEE entry deliberately omits pages."
       ],
-      "reference_number": 5
+      "reference_number": 4
     },
     {
       "key": "clahe1994",
@@ -278,7 +239,7 @@
         "A chapter DOI was not successfully verified from a primary metadata record and is deliberately omitted.",
         "The university-hosted PDF is a scan of the original chapter, not a secondary summary."
       ],
-      "reference_number": 6
+      "reference_number": 5
     },
     {
       "key": "iayolo2022",
@@ -329,7 +290,7 @@
           ]
         }
       ],
-      "reference_number": 7
+      "reference_number": 6
     },
     {
       "key": "sahi2022",
@@ -377,25 +338,7 @@
           ]
         }
       ],
-      "reference_number": 8
-    },
-    {
-      "key": "project_policy",
-      "type": "project_evidence",
-      "title": "Cassette-front annotation policy",
-      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/annotation-policy.md",
-      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
-      "ieee_entry": "Siuuuers/dl project, “Cassette-front annotation policy,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/annotation-policy.md",
-      "reference_number": 9
-    },
-    {
-      "key": "scorer",
-      "type": "project_evidence",
-      "title": "Cassette pose scoring implementation",
-      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/scripts/pose_scoring.py",
-      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
-      "ieee_entry": "Siuuuers/dl project, “Cassette pose scoring implementation,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/scripts/pose_scoring.py",
-      "reference_number": 10
+      "reference_number": 7
     },
     {
       "key": "calibration2017",
@@ -434,7 +377,7 @@
           ]
         }
       ],
-      "reference_number": 11
+      "reference_number": 8
     },
     {
       "key": "selective2017",
@@ -477,112 +420,101 @@
           ]
         }
       ],
-      "reference_number": 12
+      "reference_number": 9
     },
     {
-      "key": "r51",
-      "type": "project_evidence",
-      "title": "R51 partial-target classification: completed paired training results",
-      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/partial-classification-r51-results.md",
-      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
-      "ieee_entry": "Siuuuers/dl project, “Partial-front training comparison,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/partial-classification-r51-results.md",
-      "reference_number": 13,
-      "report_title": "Partial-front training comparison"
-    },
-    {
-      "key": "r53_protocol",
-      "type": "project_evidence",
-      "title": "R53 fixed contrast and scale inference comparisons",
-      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/inference-ablation-r53.md",
-      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
-      "ieee_entry": "Siuuuers/dl project, “Contrast enhancement and input-size experiment protocol,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/inference-ablation-r53.md",
-      "reference_number": 14,
-      "report_title": "Contrast enhancement and input-size experiment protocol"
-    },
-    {
-      "key": "viewer",
-      "type": "project_evidence",
-      "title": "Camera and inference pipeline audit",
-      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/camera-pipeline-r53.md",
-      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
-      "ieee_entry": "Siuuuers/dl project, “Camera image and prediction pipeline,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/camera-pipeline-r53.md",
-      "reference_number": 15,
-      "report_title": "Camera image and prediction pipeline"
-    },
-    {
-      "key": "r53_scale",
-      "type": "project_return",
-      "title": "R53 scale inference return",
-      "url": "https://github.com/Siuuuers/dl/pull/150",
-      "commit": "e8a70f67cba1bf99e2d8a7bce9c93b5d4d7996b2",
-      "ieee_entry": "Siuuuers/dl project, “Larger-input experiment results,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/pull/150",
-      "reference_number": 16,
-      "report_title": "Larger-input experiment results"
-    },
-    {
-      "key": "r53_clahe",
-      "type": "project_return",
-      "title": "R53 contrast inference return",
-      "url": "https://github.com/Siuuuers/dl/pull/149",
-      "commit": "343f8d759ccaba671fa38ad4e9674d75a1bb5ba7",
-      "ieee_entry": "Siuuuers/dl project, “Contrast-enhancement experiment results,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/pull/149",
-      "reference_number": 17,
-      "report_title": "Contrast-enhancement experiment results"
-    },
-    {
-      "key": "r54_r55",
-      "type": "project_evidence",
-      "title": "R55 automatic pair-output diagnostic",
-      "url": "https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/evidence/automatic-pair-results.md",
-      "ref": "codex/thesis-r56-report-and-flip-probe-20261127",
-      "ieee_entry": "Siuuuers/dl project, “Coordinate-pair acceptance analysis,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/evidence/automatic-pair-results.md",
-      "reference_number": 18,
-      "report_title": "Coordinate-pair acceptance analysis"
-    },
-    {
-      "key": "occlusion",
-      "type": "project_evidence",
-      "title": "Hidden-corner prediction after covering image pixels",
-      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/pixel-occlusion-2026-11-13.md",
-      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
-      "ieee_entry": "Siuuuers/dl project, “Corner prediction after controlled image masking,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/pixel-occlusion-2026-11-13.md",
-      "reference_number": 19,
-      "report_title": "Corner prediction after controlled image masking"
-    },
-    {
-      "key": "annotation_seed46",
-      "type": "project_evidence",
-      "title": "Reviewed annotations: completed seed46 confirmation",
-      "url": "https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/annotation-confirmation-2026-11-11.md",
-      "ref": "5001d83439eaf31c7ecae378c27a0de847e65686",
-      "ieee_entry": "Siuuuers/dl project, “Training comparison with reviewed annotations,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/5001d83439eaf31c7ecae378c27a0de847e65686/docs/annotation-confirmation-2026-11-11.md",
-      "reference_number": 20,
-      "report_title": "Training comparison with reviewed annotations"
-    },
-    {
-      "key": "fusion_audit",
-      "type": "project_evidence",
-      "title": "R53 cached two-view fusion and complementarity analysis",
-      "url": "https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/evidence/cached-fusion-results.md",
-      "ref": "codex/thesis-r56-report-and-flip-probe-20261127",
-      "ieee_entry": "Siuuuers/dl project, “Combination of predictions from processed image views,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/evidence/cached-fusion-results.md",
-      "reference_number": 21,
-      "report_title": "Combination of predictions from processed image views"
-    },
-    {
-      "key": "corner_feasibility",
-      "type": "repository_documentation",
+      "key": "yolo26docs",
+      "type": "professional_documentation",
       "authors": [
-        "Siuuuers/dl project"
+        "Ultralytics"
       ],
-      "title": "Corner quality and local crop feasibility",
-      "year": 2026,
-      "url": "https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/research-corner-quality.md",
+      "title": "Ultralytics YOLO26",
+      "url": "https://docs.ultralytics.com/models/yolo26/",
       "accessed": "2026-11-28",
-      "ieee_entry": "Siuuuers/dl project, “Corner quality and local crop feasibility,” project documentation, 2026. Accessed: Nov. 28, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/codex/thesis-r56-report-and-flip-probe-20261127/docs/thesis/research-corner-quality.md",
-      "supported_claim": "A fixed 1.5x predicted-box crop contains both annotated corners for every matched complete target in the saved baseline predictions.",
-      "limitation": "A geometric feasibility calculation on reused development images, with no trained refiner or measured refinement improvement.",
-      "reference_number": 22
+      "ieee_entry": "Ultralytics, “Ultralytics YOLO26,” Ultralytics Docs. Accessed: Nov. 28, 2026. [Online]. Available: https://docs.ultralytics.com/models/yolo26/",
+      "supported_claim": "YOLO26 is a model family with detection and pose-estimation variants.",
+      "limitation": "Current model documentation does not establish the accuracy of the project-specific checkpoint.",
+      "verification": [
+        {
+          "url": "https://docs.ultralytics.com/models/yolo26/",
+          "ref_ids": [
+            "turn382010710view2"
+          ],
+          "supports": [
+            "family name",
+            "pose support"
+          ]
+        }
+      ],
+      "reference_number": 10
+    },
+    {
+      "key": "adamw2019",
+      "type": "conference_paper",
+      "authors": [
+        "Ilya Loshchilov",
+        "Frank Hutter"
+      ],
+      "title": "Decoupled Weight Decay Regularization",
+      "year": 2019,
+      "venue": "International Conference on Learning Representations (ICLR)",
+      "url": "https://openreview.net/forum?id=Bkg6RiCqY7",
+      "author_manuscript": "https://arxiv.org/abs/1711.05101",
+      "ieee_entry": "I. Loshchilov and F. Hutter, “Decoupled weight decay regularization,” in Proc. Int. Conf. Learning Representations (ICLR), 2019. [Online]. Available: https://arxiv.org/abs/1711.05101",
+      "supported_claim": "AdamW separates weight decay from adaptive gradient updates.",
+      "limitation": "The publication motivates the optimizer; the reported cassette training settings and outcomes are project measurements.",
+      "verification": [
+        {
+          "url": "https://arxiv.org/abs/1711.05101",
+          "ref_ids": [
+            "turn382010710view0"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "ICLR2019 publication",
+            "optimizer principle"
+          ]
+        }
+      ],
+      "reference_number": 11
+    },
+    {
+      "key": "rle2021",
+      "type": "conference_paper",
+      "authors": [
+        "Jiefeng Li",
+        "Siyuan Bian",
+        "Ailing Zeng",
+        "Can Wang",
+        "Bo Pang",
+        "Wentao Liu",
+        "Cewu Lu"
+      ],
+      "title": "Human Pose Regression with Residual Log-Likelihood Estimation",
+      "year": 2021,
+      "venue": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+      "pages": "11025–11034",
+      "url": "https://openaccess.thecvf.com/content/ICCV2021/html/Li_Human_Pose_Regression_With_Residual_Log-Likelihood_Estimation_ICCV_2021_paper.html",
+      "author_manuscript": "https://arxiv.org/abs/2107.11291",
+      "ieee_entry": "J. Li et al., “Human pose regression with residual log-likelihood estimation,” in Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV), 2021, pp. 11025–11034.",
+      "supported_claim": "Residual log-likelihood estimation models coordinate-regression residuals through a likelihood objective.",
+      "limitation": "Its human-pose results do not establish calibrated five-pixel confidence or cassette performance.",
+      "verification": [
+        {
+          "url": "https://arxiv.org/abs/2107.11291",
+          "ref_ids": [
+            "turn382010710view1"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "ICCV2021 publication",
+            "method"
+          ]
+        }
+      ],
+      "reference_number": 12
     },
     {
       "key": "simple_baselines2018",
@@ -625,7 +557,7 @@
           ]
         }
       ],
-      "reference_number": 23
+      "reference_number": 13
     },
     {
       "key": "udp2020",
@@ -669,17 +601,7 @@
           ]
         }
       ],
-      "reference_number": 24
-    },
-    {
-      "key": "flip_protocol",
-      "type": "project_evidence",
-      "title": "R56 explicit horizontal flip experiment",
-      "url": "https://github.com/Siuuuers/dl/blob/dc7eec630bb0b613fc1fe784e4d9818a0893658e/docs/thesis/flip-experiment-r56.md",
-      "ref": "dc7eec630bb0b613fc1fe784e4d9818a0893658e",
-      "ieee_entry": "Siuuuers/dl project, “Horizontal reflection experiment protocol,” project documentation, 2026. Accessed: Nov. 27, 2026. [Online]. Available: https://github.com/Siuuuers/dl/blob/dc7eec630bb0b613fc1fe784e4d9818a0893658e/docs/thesis/flip-experiment-r56.md",
-      "reference_number": 25,
-      "report_title": "Horizontal reflection experiment protocol"
+      "reference_number": 14
     },
     {
       "key": "tta_aggregation2021",
@@ -723,7 +645,7 @@
           ]
         }
       ],
-      "reference_number": 26
+      "reference_number": 15
     },
     {
       "key": "cald2022",
@@ -772,7 +694,7 @@
         "Pages follow the verified CVF open-access record; some secondary indexes use a different page range.",
         "A DOI found only in secondary results was not included."
       ],
-      "reference_number": 27
+      "reference_number": 16
     },
     {
       "key": "posefix2019",
@@ -815,7 +737,7 @@
           ]
         }
       ],
-      "reference_number": 28
+      "reference_number": 17
     },
     {
       "key": "hrnet2019",
@@ -859,7 +781,7 @@
           ]
         }
       ],
-      "reference_number": 29
+      "reference_number": 18
     }
   ]
 }

@@ -1,0 +1,69 @@
+{
+  "development_photographs": 20,
+  "initial_model_state_sha256": "8978a47c2b71b3a5aa1f4752e322cf4d91c947afe263c75baa673f4c7bb6ddc8",
+  "known_training_endpoints": 7259,
+  "model_smoke": {
+    "backbone_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+    "description": "Two real training images, annotation-box mechanics fixtures; one disposable optimization step. Model is reinitialized before experiment training.",
+    "device": "cpu",
+    "finite_loss": 0.010169543325901031,
+    "image_ids": [
+      "new_000001",
+      "new_000002"
+    ],
+    "parameters_changed": true,
+    "shape": [
+      2,
+      2,
+      64,
+      64
+    ],
+    "status": "passed",
+    "torch": "2.9.0+cpu",
+    "torchvision": "0.24.0+cpu",
+    "training_result": false,
+    "unavailable_channel_gradient_zero": true
+  },
+  "pretrained_bytes": 102540417,
+  "published_notebook_bootstrap": "Pending actual implementation commit at this validation stage.",
+  "runtime_packages": {
+    "Pillow": "13.0.0",
+    "numpy": "2.4.6",
+    "opencv-python": "5.0.0.93",
+    "ultralytics": "8.4.182"
+  },
+  "schema": "baomai-corner-refinement-r58-cpu-validation-v1",
+  "scope": "Local isolated CPU mechanics and focused verification; no full training or recognition-result claim.",
+  "source_sha256": {
+    "scripts/build_corner_refinement_r58_notebooks.py": "363d445b1a041aef6fbf659d5a4e801e606f466fd2b1fb91bb53d5406313a21c",
+    "scripts/corner_refinement_r58.py": "5747d7d00a1af70c730165eb14dfd99b9bae5bef1b96494086bca2328fe0bd05",
+    "scripts/run_corner_refinement_r58.py": "80d52d827e3b0a63318ebb0a611356bd6534da7df1d9891a3f409f57076841b6",
+    "tests/test_corner_refinement_r58.py": "633d2afe7d77a70e17a266244f2979bb00846f2aa6506441d76dcaae10a5739b"
+  },
+  "status": "passed",
+  "tests": {
+    "command": "R58_BACKBONE_WEIGHTS=<verified ResNet50 file> python -B -m unittest discover -s tests -p test_corner_refinement_r58.py -v",
+    "coverage": [
+      "actual pretrained output and identical initial RGB/hint outputs",
+      "forward/inverse crop coordinates with rounded scales",
+      "known heatmap decoding and inverse-coordinate trace",
+      "padding exclusion",
+      "unknown endpoint and padding zero gradients",
+      "deterministic hint ablation",
+      "nonfinite/nonpositive decoder failures",
+      "frozen box/score/suppression identities",
+      "all-raw-record trace coverage",
+      "incomplete-reference and unmatched offered pairs",
+      "failed-baseline bundle and interrupted outer ZIP recovery",
+      "all eight generated code cells compile"
+    ],
+    "elapsed_seconds": 4.323,
+    "failed": 0,
+    "passed": 12,
+    "skipped": 0
+  },
+  "trainable_parameters": 34002114,
+  "training_fronts": 3999,
+  "training_photographs": 142,
+  "unavailable_training_endpoints": 739
+}

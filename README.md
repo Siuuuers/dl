@@ -1,10 +1,20 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前進度：Final Year Project I 報告修訂與角點診斷
+## 目前進度：反射結果、角點平均與局部細化實驗
 
-**2026-11-28：[報告](docs/thesis/report.md)**已按電子工程學系大學畢業專題 I 的讀者重寫：先解釋任務與量度方法，以清楚的實驗名稱取代內部版本代號，保留已完成結果，並安排專題 II 的後續研究。現有 231 字摘要、29 項 IEEE 參考文獻、八個公式、九張表及四幅圖；致謝依要求略過。
+**2026-11-28：[專題 I 報告](docs/thesis/report.md)**已更新為可獨立閱讀的電子工程學系大學報告：直接解釋方法與結果，只引用外部學術及專業資料，不含 GitHub 連結或內部實驗代號。最終 Word 共 29 頁，摘要 278 個英文單字、40 個十進位標題、18 項 IEEE 參考文獻、九個公式、11 張表及四幅圖；致謝依要求略過。
 
-等待[水平翻轉 notebook](notebooks/baomai_flip_inference_r56.ipynb)結果期間，新增[角點品質診斷](docs/thesis/research-corner-quality.md)與[局部細化文獻及設計](docs/thesis/research-local-refinement.md)。固定擴大預測框 1.5 倍的裁切包含所有已配對完整目標的兩個參考角點，包括修訂參考下的 17 個五像素失敗案例。這支持下一步測試局部角點模型；目前沒有訓練細化模型或宣稱其準確度提升。翻轉 notebook 的來源鎖定與實作保持原樣。
+[**PR152 水平反射結果已完成並核對**](docs/thesis/reflection-results.md)：固定參考漏檢 34→32、額外輸出 91→84，但重複 17→23；雙角點五像素成功在固定參考為 511→518/584，在修訂參考則為 566→562/583。這是不同指標間的取捨，不能視為全面改善。
+
+[**固定原框的角點平均已完成**](docs/thesis/corner-average-experiment.md)：只依預測框關聯原圖與反射輸出，平均其中 666/723 筆角點，保留所有原始框、分數與身份。五像素成功為 511→525/584、566→569/583；固定參考十像素成功少一個，修訂參考增加一個。這是已保存輸出的 CPU 分析，沒有新增推論或訓練，也沒有改變偵測結果。
+
+新準備的三份 notebook 分工如下：
+
+- [CPU 角點平均重播](notebooks/baomai_corner_average_r58.ipynb)：重現已完成的平均分析。
+- [GPU RGB 局部細化](notebooks/baomai_corner_refinement_rgb_r58.ipynb)：訓練影像輸入、提示通道為零的控制組。
+- [GPU RGB 加初始角點提示](notebooks/baomai_corner_refinement_hints_r58.ipynb)：以相同模型與配方比較初始角點提示；詳見[局部細化操作說明](docs/thesis/corner-refinement-experiment.md)。
+
+兩個細化實驗已做預訓練模型的 CPU 前向／反向與缺失角點梯度檢查，完整 GPU 訓練及辨識結果仍待回傳。[固定裁切診斷](docs/thesis/research-corner-quality.md)提供實驗依據，但尚不能證明細化會提升準確度。目前選用模型及相機預設值維持原樣。以下各輪進度保留當時的狀態與數字。
 
 ## 先前進度：R56 論文報告、R53 完成結果與水平翻轉實驗
 

@@ -1,5 +1,7 @@
 # R56 explicit horizontal flip experiment
 
+> **Completed 28 November 2026:** [PR152 results and independent replay](reflection-results.md) now provide the model evidence for this experiment. Reflection reduces misses and total extras but increases duplicates, with different corner-accuracy changes under the fixed and reviewed references. The [separate fixed-box coordinate-average study](corner-average-experiment.md) is also complete. The protocol below preserves its original pre-run wording and source pin; statements about pending inference describe the preparation stage and no longer indicate current status.
+
 ## Purpose
 
 Test whether the same cassette pose model produces useful complementary detections when the input image is horizontally reversed. The two separate views are evaluated in the original image coordinate system. This experiment does not combine their predictions, edit labels, train a model, search thresholds, or promote a model.
