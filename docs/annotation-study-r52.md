@@ -77,3 +77,22 @@ The source pin and execution receipt are recorded in the publication evidence
 under `results/review/annotation-study-r52-20261127/`. The notebook is a
 reproduction and review tool, not evidence of an independently collected test
 set. See the [thesis proposal](thesis-plan-r52.md) for that distinction.
+
+## Published source and execution check
+
+The notebook pins source commit
+`d43dee1bb9e2fa837bf3713a0a7f13f467c48dec`. Its SHA-256 is
+`2b4d88c030a37157be843b96ad86771cd6922e986728ec302797c8e6fc2f01c1`
+(10,843 bytes). The source revision stays fixed when the notebook is subsequently
+published in a newer commit.
+
+All four actual code cells passed locally on CPU using a fresh checkout fetched
+from GitHub and an existing, exactly verified input cache. The test replayed the
+audit, produced both PDFs and built the evidence ZIP. A second execution began
+with the R52 review directory deliberately omitted from an otherwise clean sparse
+checkout: the first cell restored it, all four cells passed again, and the
+completed-review receipt and bundle hash were unchanged. These are execution
+checks of the notebook code against published source, not a claim of a Colab GPU
+session or new model evaluation. The
+[execution receipt](../results/review/annotation-study-r52-20261127/notebook-publication-check.json)
+records the exact scope and output hashes.
