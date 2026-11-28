@@ -1,0 +1,711 @@
+{
+  "archive": {
+    "bytes": 2289832,
+    "crc_check": "pass",
+    "path": "/workspace/scratch/be67d3adbd23/dl/docs/thesis/evidence/partial-detection-r68/baomai-partial-detection-r68-results.zip",
+    "sha256": "befe5da298de4432e74e90c8fbac0867bdf001493475679f40efad3f8ec8ad32"
+  },
+  "baseline_continuity": {
+    "matrix_rows": 20,
+    "per_image_scores": 400,
+    "source": "R68 unchanged arm only"
+  },
+  "candidate_r67_target_changes": {
+    "historical_retained": {
+      "gains": 0,
+      "losses": 0,
+      "rematches": 0
+    },
+    "pr157_native": {
+      "gains": 0,
+      "losses": 0,
+      "rematches": 0
+    },
+    "pr157_qfl": {
+      "gains": 0,
+      "losses": 0,
+      "rematches": 0
+    },
+    "pr158_original_labels": {
+      "gains": 0,
+      "losses": 1,
+      "rematches": 0
+    },
+    "pr158_reviewed_labels": {
+      "gains": 0,
+      "losses": 0,
+      "rematches": 0
+    }
+  },
+  "counts": {
+    "matrix_rows": 60,
+    "overlapping_prediction_pairs": 117,
+    "per_image_scores": 1200,
+    "removed_output_reference_records": 520,
+    "target_changes": 64
+  },
+  "created_utc": "2026-11-28T13:10:07.647231+00:00",
+  "final_binding_script_sha256": "d11303abdc1d1037fecd028e0e1bce528a0b0a9830d754f4ff73ebfd786325a6",
+  "fresh_cpu_continuity_supplement": {
+    "fixed_thresholds_unchanged": true,
+    "fresh_target_assignments_and_errors_preserved_under_all_four_references": true,
+    "r67_archived": {
+      "duplicates": 11,
+      "eligible_pairs": 583,
+      "extras": 44,
+      "missed": 18,
+      "within10": 583,
+      "within5": 572
+    },
+    "r67_fresh_cpu": {
+      "duplicates": 12,
+      "eligible_pairs": 583,
+      "extras": 44,
+      "missed": 18,
+      "within10": 583,
+      "within5": 572
+    },
+    "sha256": "2e919629e71857d7fdb6c9805b3eef06651ae34ee6f5c174fc1392601292e66f",
+    "source": "current-proposals-r69/qualified-rule-runtime-continuity.json.gz"
+  },
+  "independent_review_sources": {
+    "/workspace/scratch/be67d3adbd23/r67-review/verify_r67_independent.py": "6ccddd7453035b8e8bc228878abd3aa69038a24c95c0e33202d5b5a10ba52b2c",
+    "/workspace/scratch/be67d3adbd23/r69-corner-review/verify_corner_suppression_independent.py": "e358193407d53747a38d40bf735459d3d05254e827b94eaf5bd537531bd50e82"
+  },
+  "input_predictions_sha256": "37e9c6cf334b538e3ea7524e9c8f5353226224013c7a91fccc2e6e3a20ba3fdf",
+  "method": "Independent direct rectangle IoU, confidence/index-ordered survivor selection, finite in-image confidence-qualified corresponding corner distances, then fresh independent greedy reference matching. No project driver, selector or scorer imported.",
+  "notebook_execution_audit": {
+    "cells": [
+      {
+        "code_cell": 1,
+        "log": "notebook-cell-1.txt",
+        "log_sha256": "7cd2d4b7813630ac1b4d215e7d50abc23185361464089b463d5c498c8213c9f6",
+        "notebook_cell_index": 2,
+        "rich_output_count": 0,
+        "seconds": 0.059,
+        "source_sha256": "b4cc4dab401086fe34adba40cbcfcb210d9ca0b36ca4efc6ed70bfdf96745f36",
+        "source_unchanged": true,
+        "status": "passed"
+      },
+      {
+        "code_cell": 2,
+        "log": "notebook-cell-2.txt",
+        "log_sha256": "71203faceb552942ef15610ae2e02fc4e99fc6d5f23967062e381f7b6bdb97a7",
+        "notebook_cell_index": 4,
+        "rich_output_count": 0,
+        "seconds": 2.549,
+        "source_sha256": "a373a0e9fc92cf02debd7f090627caa6f039e97d96fc00a489c2967d8ef7df67",
+        "source_unchanged": true,
+        "status": "passed"
+      },
+      {
+        "code_cell": 3,
+        "log": "notebook-cell-3.txt",
+        "log_sha256": "5e714140c509656db6ce766c5c56e3ef03154f9a486dd1c585f5ee539079ea00",
+        "notebook_cell_index": 6,
+        "rich_output_count": 2,
+        "seconds": 38.969,
+        "source_sha256": "e79d1b4a685641a44fa618d354b5007f8e390117cdf112e57093cdf4bbea4f0a",
+        "source_unchanged": true,
+        "status": "passed"
+      },
+      {
+        "code_cell": 4,
+        "log": "notebook-cell-4.txt",
+        "log_sha256": "47be78fb0ea1ce9ac06d0c8d9e95f54eae371f249d1977cb542640df38abaeee",
+        "notebook_cell_index": 8,
+        "rich_output_count": 1,
+        "seconds": 0.551,
+        "source_sha256": "7a6049fdafa819ac13928e14792597da6f00e7ec364ba9a6ed22d6d2015a3869",
+        "source_unchanged": true,
+        "status": "passed"
+      }
+    ],
+    "code_cells_checked": 4,
+    "executed_notebook": {
+      "bytes": 29568,
+      "path": "executed-notebook.ipynb",
+      "sha256": "e9833a66eee84b252e19a84a7b9641164a94c6dbd8dce9140637414d1966aa08"
+    },
+    "limitations": [
+      "Local IPython execution, not hosted Google Colab.",
+      "GitHub download paths were not exercised because immutable source and inputs were preseeded.",
+      "The non-Colab FileLink was captured; the Colab browser download interface was not tested."
+    ],
+    "notebook": {
+      "bytes": 17276,
+      "path": "notebooks/baomai_current_proposals_r69.ipynb",
+      "sha256": "bf552d6e372869cb145be731b8b45e8750d0842011eb1a4dc6ffc6b45f3c4c27"
+    },
+    "receipt_sha256": "144e3cd2862e399dedbe7e425b7b0dc8e29d84fc8d5d24e8422f8b34d2d495fd",
+    "runner_sha256": "df655291d1898fcf4dea7ffbdaf65903f591e09cc5703af788a6211b6e3100ba",
+    "scope": "The shared current-proposals notebook executes this archived-output companion as a separate subprocess in code cell 3, then verifies and packages it in code cell 4. All four actual code cells passed unchanged. This companion itself performs no fresh inference or training.",
+    "source_checkout_clean": true,
+    "source_pin": "41d0e6937c695377373cc55071ffb780345870ee",
+    "status": "pass"
+  },
+  "numeric_findings": [
+    "The reviewed-label r67 candidate preserves all 640 target assignments and known-corner outcomes. Misses remain 18, extras decrease 50 to 44, duplicates 13 to 11, pair success stays 572/583 and 583/583.",
+    "Zero candidate target changes occur in the reviewed-label arm under any of the four references. This follows from complete identity/error comparisons, not only unchanged denominators.",
+    "The original-label candidate loses one one-known-corner target on r67 and r50. That observed trade-off is retained.",
+    "The rule acts after the archived completed output stage. It neither replaces native NMS nor imports reflected-union detections.",
+    "Agreement between predictions is a suppression heuristic. It does not establish physical correctness or support automatic promotion."
+  ],
+  "numerical_output_continuity": {
+    "all_matrix_prediction_selection_and_ledger_bytes_unchanged": true,
+    "first_numeric_receipt_sha256": "c6f95d079d493a7b17aefdadc8ffafdc78e14a3bdcb677eaf78d4cf068c90dc2",
+    "only_summary_change": "The driver source hash after removing its unused Counter import.",
+    "status": "pass"
+  },
+  "original_label_r67_partial_loss": [
+    {
+      "after": {
+        "complete_reference": false,
+        "detected": false,
+        "image": "new_000009",
+        "known_corner_outcomes": [
+          {
+            "available": false,
+            "error_px": null,
+            "slot": 1,
+            "within10": false,
+            "within5": false
+          }
+        ],
+        "maximum_corner_error_px": null,
+        "original_prediction_index": null,
+        "prediction_index": null,
+        "reference_index": 11,
+        "within10": false,
+        "within5": false
+      },
+      "before": {
+        "complete_reference": false,
+        "detected": true,
+        "image": "new_000009",
+        "known_corner_outcomes": [
+          {
+            "available": true,
+            "error_px": 1.621860285404378,
+            "slot": 1,
+            "within10": true,
+            "within5": true
+          }
+        ],
+        "maximum_corner_error_px": null,
+        "original_prediction_index": 55,
+        "prediction_index": 55,
+        "reference_index": 11,
+        "within10": false,
+        "within5": false
+      },
+      "detection_gain": false,
+      "detection_loss": true,
+      "image": "new_000009",
+      "known_corners": 1,
+      "method": "pr158_original_labels",
+      "reference": "r67",
+      "reference_id": "r67/new_000009/R012",
+      "reference_index": 11,
+      "rematched": false,
+      "variant": "corner_qualified_nms_060"
+    }
+  ],
+  "protocol_sha256": "27eebb3c8e1c993e849ca3c9acf7be39d1ca38c9dd3472ff75003d74672af1e6",
+  "r67_known_corner_groups": {
+    "historical_retained": {
+      "additional_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 38,
+          "within10": 37,
+          "within5": 35
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1166,
+          "within5": 1152
+        }
+      },
+      "corner_qualified_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 41,
+          "within10": 40,
+          "within5": 38
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1166,
+          "within5": 1152
+        }
+      },
+      "unchanged": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 41,
+          "within10": 40,
+          "within5": 38
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1166,
+          "within5": 1152
+        }
+      }
+    },
+    "pr157_native": {
+      "additional_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 38,
+          "within10": 37,
+          "within5": 35
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1166,
+          "within5": 1151
+        }
+      },
+      "corner_qualified_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 41,
+          "within10": 40,
+          "within5": 38
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1166,
+          "within5": 1151
+        }
+      },
+      "unchanged": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 41,
+          "within10": 40,
+          "within5": 38
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1166,
+          "within5": 1151
+        }
+      }
+    },
+    "pr157_qfl": {
+      "additional_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 44,
+          "within10": 42,
+          "within5": 40
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1164,
+          "within5": 1152
+        }
+      },
+      "corner_qualified_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 45,
+          "within10": 44,
+          "within5": 42
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1164,
+          "within5": 1152
+        }
+      },
+      "unchanged": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 45,
+          "within10": 44,
+          "within5": 42
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1164,
+          "within5": 1152
+        }
+      }
+    },
+    "pr158_original_labels": {
+      "additional_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 29,
+          "within10": 29,
+          "within5": 26
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1138,
+          "within10": 1135,
+          "within5": 1100
+        }
+      },
+      "corner_qualified_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 29,
+          "within10": 29,
+          "within5": 26
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1138,
+          "within10": 1135,
+          "within5": 1100
+        }
+      },
+      "unchanged": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 30,
+          "within10": 30,
+          "within5": 27
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1138,
+          "within10": 1135,
+          "within5": 1100
+        }
+      }
+    },
+    "pr158_reviewed_labels": {
+      "additional_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 42,
+          "within10": 42,
+          "within5": 40
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1166,
+          "within5": 1155
+        }
+      },
+      "corner_qualified_nms_060": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 43,
+          "within10": 43,
+          "within5": 41
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1166,
+          "within5": 1155
+        }
+      },
+      "unchanged": {
+        "0": {
+          "known_corners": 0
+        },
+        "1": {
+          "known_corners": 57,
+          "returned_corners": 43,
+          "within10": 43,
+          "within5": 41
+        },
+        "2": {
+          "known_corners": 1166,
+          "returned_corners": 1166,
+          "within10": 1166,
+          "within5": 1155
+        }
+      }
+    }
+  },
+  "report_addition_review": {
+    "findings": [
+      "Fixed same-class prediction-only suppression uses IoU strictly above 0.60, accepted corners and both corresponding distances at most five pixels.",
+      "Table 9 matches the archived reviewed-label r67 baseline and two fixed restrictions.",
+      "Reviewed-label target identities and known-corner outcomes are unchanged under the candidate across all four references.",
+      "The supplied-label one-known-corner loss remains explicit despite unchanged complete-pair counts.",
+      "Current proposal-stage counts, focused target scores/overlaps and the 641-versus-640 original-view support bound agree with verified ledgers.",
+      "Archived-L4 versus fresh-CPU duplicate counts remain distinct. Six removals in each runtime are described without claiming identical numerical records."
+    ],
+    "material_corrections_remaining": [],
+    "report_sha256": "13ef6ab0d18d909261d5714f747c80c04978e7864f15be3c3c5cf5c004c169df",
+    "sections": [
+      "5.5",
+      "7.7",
+      "7.8",
+      "8.2",
+      "11.2"
+    ],
+    "status": "pass"
+  },
+  "result_package_audit": {
+    "all_member_sizes_and_hashes_passed": true,
+    "analysis_member_prefix": "corner-suppression/",
+    "archive_members_checked": 35,
+    "companion_inventory_sha256": "9b67339609c35d75bc873fcec738287e44edc8eb04b84b0de5168f1045953ef0",
+    "companion_member_prefix": "corner-suppression/",
+    "package": {
+      "bytes": 39331256,
+      "filename": "baomai-current-proposals-r69-results.zip",
+      "sha256": "cb6a80abb90d792cb241beb93c13312f3bdcbab9c5631c831523df8cce96ca48"
+    },
+    "package_manifest_sha256": "47be78fb0ea1ce9ac06d0c8d9e95f54eae371f249d1977cb542640df38abaeee",
+    "source_and_reference_hashes_match_pin": true,
+    "status": "pass",
+    "zip_crc_passed": true
+  },
+  "reviewed_label_all_four_references_known_corner_outcomes_unchanged": true,
+  "reviewed_label_all_four_references_target_changes": 0,
+  "reviewed_label_r67": [
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 13,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 50,
+      "fronts": 658,
+      "known0_fronts": 18,
+      "known0_matched": 13,
+      "known0_missed": 5,
+      "known1_fronts": 57,
+      "known1_matched": 44,
+      "known1_missed": 13,
+      "known2_fronts": 583,
+      "known2_matched": 583,
+      "known2_missed": 0,
+      "matched": 640,
+      "matched_pair_unavailable": 0,
+      "method": "pr158_reviewed_labels",
+      "missed": 18,
+      "other_extras": 37,
+      "outputs": 690,
+      "reference": "r67",
+      "variant": "unchanged",
+      "within10": 583,
+      "within5": 572
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 2,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 31,
+      "fronts": 658,
+      "known0_fronts": 18,
+      "known0_matched": 13,
+      "known0_missed": 5,
+      "known1_fronts": 57,
+      "known1_matched": 43,
+      "known1_missed": 14,
+      "known2_fronts": 583,
+      "known2_matched": 583,
+      "known2_missed": 0,
+      "matched": 639,
+      "matched_pair_unavailable": 0,
+      "method": "pr158_reviewed_labels",
+      "missed": 19,
+      "other_extras": 29,
+      "outputs": 670,
+      "reference": "r67",
+      "variant": "additional_nms_060",
+      "within10": 583,
+      "within5": 572
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 11,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 44,
+      "fronts": 658,
+      "known0_fronts": 18,
+      "known0_matched": 13,
+      "known0_missed": 5,
+      "known1_fronts": 57,
+      "known1_matched": 44,
+      "known1_missed": 13,
+      "known2_fronts": 583,
+      "known2_matched": 583,
+      "known2_missed": 0,
+      "matched": 640,
+      "matched_pair_unavailable": 0,
+      "method": "pr158_reviewed_labels",
+      "missed": 18,
+      "other_extras": 33,
+      "outputs": 684,
+      "reference": "r67",
+      "variant": "corner_qualified_nms_060",
+      "within10": 583,
+      "within5": 572
+    }
+  ],
+  "reviewer": "results_audit",
+  "scope": "Complete fixed archived-output experiment independently rescored. Final shared notebook, clean source and package are bound. No threshold sweep or automatic promotion.",
+  "selection": {
+    "all_survivor_records_unchanged": true,
+    "both_corresponding_corner_distances_at_most_px": 5,
+    "box_iou_strictly_above": 0.6,
+    "point_confidence_at_least": 0.5,
+    "point_coordinates": "finite and within 1280 x 720 image",
+    "r68_union_excluded": true,
+    "ranking": "descending original confidence, ascending original index for ties",
+    "references_used": false,
+    "same_class": true,
+    "selected_counts": {
+      "historical_retained": {
+        "additional_nms_060": 669,
+        "corner_qualified_nms_060": 684,
+        "unchanged": 687
+      },
+      "pr157_native": {
+        "additional_nms_060": 667,
+        "corner_qualified_nms_060": 681,
+        "unchanged": 685
+      },
+      "pr157_qfl": {
+        "additional_nms_060": 698,
+        "corner_qualified_nms_060": 719,
+        "unchanged": 725
+      },
+      "pr158_original_labels": {
+        "additional_nms_060": 668,
+        "corner_qualified_nms_060": 688,
+        "unchanged": 692
+      },
+      "pr158_reviewed_labels": {
+        "additional_nms_060": 670,
+        "corner_qualified_nms_060": 684,
+        "unchanged": 690
+      }
+    },
+    "survivor_order": "original relative order"
+  },
+  "source_closure": {
+    "all_declared_sources_bound_to_immutable_pin": true,
+    "module_count": 14,
+    "source_sha256": {
+      "scripts/analyze_corner_suppression_r69.py": "719ef2406a2d4a95311ff6ad866e161558a1b8e1b6632b3f60bd78b0c29e291f",
+      "scripts/analyze_duplicate_audit_r66.py": "868ab2c5df33ba376da4212aca6281d99a9d5c3a9d6cd1dac7dfaf4e1cd7acfa",
+      "scripts/audit_reflection_return.py": "55f391535b040a27682e899aec74915b87864063023bc1ed818f8f82e67101de",
+      "scripts/diagnose_fronts_r50.py": "cba4f1df6dcf431c933af1506a4de15718636d9477406eb34779ac4d8ab6ee3e",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_checkpoint.py": "c1311307fd49b37e60f2939c9b084bc36690c1d13b6b31b9e4c51ea9353562d4",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/predict_pose_folder.py": "2942864e86303a67911826fc0dbfe547b4b4fc2ed3860e74c9d0210c635520a6",
+      "scripts/run_corner_average_r58.py": "286232cf490f950b367068ea52b43078970ab27bb016169cb99159dab2fdbd88",
+      "scripts/run_flip_inference_r56.py": "bf2ff9056f12976ca8c4aa971de2d2a7af1c679369c44dbf73de9f9d2542700d",
+      "scripts/run_inference_ablation_r53.py": "8c8a37c3dcaccde5c568e9df6f44651cdb05965ca5f5ed5b0f2978852387dcc1",
+      "scripts/run_original_comparison_r59.py": "279e2c0bd701299ea2a6f30403e97da68cc44a9c4ff874c5ee5a0d155a6e6ea3",
+      "scripts/run_reference_matrix_r60.py": "2939b2789abf2566d7680de60a0a87efae2a41e45c2dc01c9d15d1221cb8bbf1",
+      "scripts/run_training_label_comparison_r61.py": "0dc8d5dfdd344f590f88d17ea7ced76f3fc018026fae221a4df6e25d7c807a9c"
+    },
+    "status": "pass"
+  },
+  "source_pin": "41d0e6937c695377373cc55071ffb780345870ee",
+  "status": "pass",
+  "summary_sha256": "1656d6895273f2965d406f0647dad183b7e0e3ac25ad90554cc0c2d56a3fec49",
+  "verified_at_utc": "2026-11-28T13:26:45.055235+00:00",
+  "verified_files": {
+    "matrix.csv": {
+      "bytes": 7120,
+      "sha256": "e5d605ec0d2316671b744af277339594932e6dba452d0acf65f6b2dd521d6336"
+    },
+    "overlapping-pairs.json.gz": {
+      "bytes": 7355,
+      "sha256": "a5e1767d7dad5be3e0f5848589e9a80737f806ec25d60d508bdee0c98aab2136"
+    },
+    "per-image.json.gz": {
+      "bytes": 1383213,
+      "sha256": "d1d9e8587ebb53553b4ee7f20f9ea1606468d022139ea81946dac8d28fd230d3"
+    },
+    "predictions.json.gz": {
+      "bytes": 1070979,
+      "sha256": "0e490de9b9fec5e8c3d12c94b4c989c44b1827e7aff61a94cfb0b43e866fd7a7"
+    },
+    "protocol.json": {
+      "bytes": 2845,
+      "sha256": "27eebb3c8e1c993e849ca3c9acf7be39d1ca38c9dd3472ff75003d74672af1e6"
+    },
+    "removed-outputs.json.gz": {
+      "bytes": 102413,
+      "sha256": "06a833f356ffeeef2f0793ea4e9b4aea392d9fd67fe12805755f265c3e7b29ba"
+    },
+    "results.md": {
+      "bytes": 2298,
+      "sha256": "d3fcfa5de620ad874788ff4824c5b7600837dbd428e4cd274b762cc3671e688d"
+    },
+    "selected-indices.json.gz": {
+      "bytes": 1861,
+      "sha256": "bfd3d836ad4a2dafd61597292a876c62ea6b5ad2fb890c9d5e11193819177012"
+    },
+    "summary.json": {
+      "bytes": 47264,
+      "sha256": "1656d6895273f2965d406f0647dad183b7e0e3ac25ad90554cc0c2d56a3fec49"
+    },
+    "target-changes.json.gz": {
+      "bytes": 2048,
+      "sha256": "020a0ed9116ada37bb9d8ebe94e3fb6badb5ff88e9fdd17f68b251cd4ab6f42b"
+    }
+  }
+}

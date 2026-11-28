@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "scope": "Two supplied-model images and their reflected views; fixed-threshold records are unchanged by low-floor inference. No training or candidate accuracy measured.",
+  "torch": "2.9.0+cpu",
+  "python": "3.12.14",
+  "inference": {
+    "imgsz": 1280,
+    "rect": true,
+    "batch": 1,
+    "nms": true,
+    "iou": 0.7,
+    "max_det": 300,
+    "quantize": 32,
+    "save": false,
+    "save_txt": false,
+    "save_crop": false,
+    "show": false,
+    "verbose": false
+  },
+  "calls": 8,
+  "checks": [
+    {
+      "image_id": "new_000008",
+      "view": "original",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "low_floor_predictions": 198,
+      "above_point25": 37,
+      "native_records_identical": true,
+      "postclip_identical": true
+    },
+    {
+      "image_id": "new_000008",
+      "view": "reflected",
+      "image_sha256": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "low_floor_predictions": 178,
+      "above_point25": 39,
+      "native_records_identical": true,
+      "postclip_identical": true
+    },
+    {
+      "image_id": "new_000146",
+      "view": "original",
+      "image_sha256": "77e6af710edebef707c4724578ea5e3227fb277b0914c7c8abe1e144f239bb4e",
+      "low_floor_predictions": 48,
+      "above_point25": 0,
+      "native_records_identical": true,
+      "postclip_identical": true
+    },
+    {
+      "image_id": "new_000146",
+      "view": "reflected",
+      "image_sha256": "77e6af710edebef707c4724578ea5e3227fb277b0914c7c8abe1e144f239bb4e",
+      "low_floor_predictions": 48,
+      "above_point25": 0,
+      "native_records_identical": true,
+      "postclip_identical": true
+    }
+  ]
+}

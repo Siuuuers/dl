@@ -1,0 +1,645 @@
+{
+  "archive_sha256": "88689ce9f3d03178683ea98ce98d50f5ddc4e07ba1fb24262e7820e9488bd114",
+  "baseline_equivalence": {
+    "discrete_policy": "Exact per-image match/miss/unmatched/duplicate IDs, counts, and per-row endpoint threshold states across all four references; raw and postclip.",
+    "exact_json_equal": false,
+    "failures": [],
+    "maximum_drift": {
+      "coordinate_component_px": 0.0001220703125,
+      "endpoint_error_px": 6.766371575572805e-05,
+      "probability": 1.1622905731201172e-06
+    },
+    "passed": true,
+    "tolerances": {
+      "coordinate_component_px": 0.05,
+      "endpoint_error_px": 0.075,
+      "probability": 1e-05
+    }
+  },
+  "box_matching_boundary_example": {
+    "case_id": "frozen666/new_000057/R012",
+    "control": {
+      "box_confidence": 0.8778804540634155,
+      "box_iou": 0.505161653531422,
+      "corner_errors_px": [
+        0.3358521098918628,
+        0.5220026175877658
+      ],
+      "prediction_index": 18
+    },
+    "treatment": {
+      "box_confidence": 0.8771704435348511,
+      "box_iou": 0.47744118432775245,
+      "corner_errors_px": [
+        0.5641877307031967,
+        0.7126169667647392
+      ],
+      "prediction_index": 19
+    }
+  },
+  "checkpoint_sha256": "222bf3c91a651183047a10eb1a50e16ae8fe999f15372afe005bfca2d0b157f9",
+  "empty_images": {
+    "new_000146": {
+      "control": 0,
+      "treatment": 0
+    },
+    "new_000147": {
+      "control": 0,
+      "treatment": 0
+    },
+    "new_000148": {
+      "control": 0,
+      "treatment": 0
+    }
+  },
+  "method": "Original scorer replay plus independent complete-pair accounting and inverse mapping; no model inference.",
+  "per_image_score_tables_checked": 320,
+  "repeat_count_per_arm": 3,
+  "repeats_exact": true,
+  "results": {
+    "frozen666": {
+      "postclip": {
+        "changes": {
+          "complete_within10_gains": 0,
+          "complete_within10_losses": 3,
+          "complete_within5_gains": 21,
+          "complete_within5_losses": 14,
+          "matched_by_both": 630,
+          "missed_by_both": 30,
+          "newly_missed": 2,
+          "recovered": 4
+        },
+        "control": {
+          "complete_pairs": {
+            "eligible": 584,
+            "matched": 577,
+            "returned_pairs": 577,
+            "within10": 575,
+            "within5": 511
+          },
+          "detection": {
+            "duplicate_fp": 17,
+            "fn": 34,
+            "fp": 91,
+            "gold_count": 666,
+            "other_fp": 74,
+            "prediction_count": 723,
+            "tp": 632
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.7835827274977512,
+            "conditional_p95_error_px": 5.643536823116458,
+            "returned_endpoints": 1199,
+            "visible_endpoints": 1227
+          }
+        },
+        "treatment": {
+          "complete_pairs": {
+            "eligible": 584,
+            "matched": 576,
+            "returned_pairs": 576,
+            "within10": 572,
+            "within5": 518
+          },
+          "detection": {
+            "duplicate_fp": 23,
+            "fn": 32,
+            "fp": 84,
+            "gold_count": 666,
+            "other_fp": 61,
+            "prediction_count": 718,
+            "tp": 634
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.7511307663516027,
+            "conditional_p95_error_px": 5.2168887859659065,
+            "returned_endpoints": 1196,
+            "visible_endpoints": 1227
+          }
+        }
+      },
+      "raw": {
+        "changes": {
+          "complete_within10_gains": 0,
+          "complete_within10_losses": 3,
+          "complete_within5_gains": 21,
+          "complete_within5_losses": 14,
+          "matched_by_both": 630,
+          "missed_by_both": 30,
+          "newly_missed": 2,
+          "recovered": 4
+        },
+        "control": {
+          "complete_pairs": {
+            "eligible": 584,
+            "matched": 577,
+            "returned_pairs": 577,
+            "within10": 575,
+            "within5": 511
+          },
+          "detection": {
+            "duplicate_fp": 24,
+            "fn": 34,
+            "fp": 100,
+            "gold_count": 666,
+            "other_fp": 76,
+            "prediction_count": 732,
+            "tp": 632
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.7835827274977512,
+            "conditional_p95_error_px": 5.643536823116458,
+            "returned_endpoints": 1199,
+            "visible_endpoints": 1227
+          }
+        },
+        "treatment": {
+          "complete_pairs": {
+            "eligible": 584,
+            "matched": 576,
+            "returned_pairs": 576,
+            "within10": 572,
+            "within5": 518
+          },
+          "detection": {
+            "duplicate_fp": 32,
+            "fn": 32,
+            "fp": 94,
+            "gold_count": 666,
+            "other_fp": 62,
+            "prediction_count": 728,
+            "tp": 634
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.7511307663516027,
+            "conditional_p95_error_px": 5.2168887859659065,
+            "returned_endpoints": 1196,
+            "visible_endpoints": 1227
+          }
+        }
+      }
+    },
+    "historical663": {
+      "postclip": {
+        "changes": {
+          "complete_within10_gains": 0,
+          "complete_within10_losses": 4,
+          "complete_within5_gains": 20,
+          "complete_within5_losses": 14,
+          "matched_by_both": 630,
+          "missed_by_both": 27,
+          "newly_missed": 3,
+          "recovered": 3
+        },
+        "control": {
+          "complete_pairs": {
+            "eligible": 584,
+            "matched": 577,
+            "returned_pairs": 577,
+            "within10": 575,
+            "within5": 511
+          },
+          "detection": {
+            "duplicate_fp": 17,
+            "fn": 30,
+            "fp": 90,
+            "gold_count": 663,
+            "other_fp": 73,
+            "prediction_count": 723,
+            "tp": 633
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.7835827274977512,
+            "conditional_p95_error_px": 5.643536823116458,
+            "returned_endpoints": 1199,
+            "visible_endpoints": 1227
+          }
+        },
+        "treatment": {
+          "complete_pairs": {
+            "eligible": 584,
+            "matched": 575,
+            "returned_pairs": 575,
+            "within10": 571,
+            "within5": 517
+          },
+          "detection": {
+            "duplicate_fp": 22,
+            "fn": 30,
+            "fp": 85,
+            "gold_count": 663,
+            "other_fp": 63,
+            "prediction_count": 718,
+            "tp": 633
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.750017294814596,
+            "conditional_p95_error_px": 5.218131022073926,
+            "returned_endpoints": 1194,
+            "visible_endpoints": 1227
+          }
+        }
+      },
+      "raw": {
+        "changes": {
+          "complete_within10_gains": 0,
+          "complete_within10_losses": 4,
+          "complete_within5_gains": 20,
+          "complete_within5_losses": 14,
+          "matched_by_both": 630,
+          "missed_by_both": 27,
+          "newly_missed": 3,
+          "recovered": 3
+        },
+        "control": {
+          "complete_pairs": {
+            "eligible": 584,
+            "matched": 577,
+            "returned_pairs": 577,
+            "within10": 575,
+            "within5": 511
+          },
+          "detection": {
+            "duplicate_fp": 24,
+            "fn": 30,
+            "fp": 99,
+            "gold_count": 663,
+            "other_fp": 75,
+            "prediction_count": 732,
+            "tp": 633
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.7835827274977512,
+            "conditional_p95_error_px": 5.643536823116458,
+            "returned_endpoints": 1199,
+            "visible_endpoints": 1227
+          }
+        },
+        "treatment": {
+          "complete_pairs": {
+            "eligible": 584,
+            "matched": 575,
+            "returned_pairs": 575,
+            "within10": 571,
+            "within5": 517
+          },
+          "detection": {
+            "duplicate_fp": 31,
+            "fn": 30,
+            "fp": 95,
+            "gold_count": 663,
+            "other_fp": 64,
+            "prediction_count": 728,
+            "tp": 633
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.750017294814596,
+            "conditional_p95_error_px": 5.218131022073926,
+            "returned_endpoints": 1194,
+            "visible_endpoints": 1227
+          }
+        }
+      }
+    },
+    "r38": {
+      "postclip": {
+        "changes": {
+          "complete_within10_gains": 1,
+          "complete_within10_losses": 0,
+          "complete_within5_gains": 8,
+          "complete_within5_losses": 12,
+          "matched_by_both": 637,
+          "missed_by_both": 9,
+          "newly_missed": 2,
+          "recovered": 6
+        },
+        "control": {
+          "complete_pairs": {
+            "eligible": 583,
+            "matched": 583,
+            "returned_pairs": 583,
+            "within10": 582,
+            "within5": 566
+          },
+          "detection": {
+            "duplicate_fp": 14,
+            "fn": 15,
+            "fp": 84,
+            "gold_count": 654,
+            "other_fp": 70,
+            "prediction_count": 723,
+            "tp": 639
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.584716712443429,
+            "conditional_p95_error_px": 3.7764402699960815,
+            "returned_endpoints": 1208,
+            "visible_endpoints": 1220
+          }
+        },
+        "treatment": {
+          "complete_pairs": {
+            "eligible": 583,
+            "matched": 583,
+            "returned_pairs": 583,
+            "within10": 583,
+            "within5": 562
+          },
+          "detection": {
+            "duplicate_fp": 21,
+            "fn": 11,
+            "fp": 75,
+            "gold_count": 654,
+            "other_fp": 54,
+            "prediction_count": 718,
+            "tp": 643
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.601201905730239,
+            "conditional_p95_error_px": 3.9598526949535215,
+            "returned_endpoints": 1209,
+            "visible_endpoints": 1220
+          }
+        }
+      },
+      "raw": {
+        "changes": {
+          "complete_within10_gains": 1,
+          "complete_within10_losses": 0,
+          "complete_within5_gains": 8,
+          "complete_within5_losses": 12,
+          "matched_by_both": 637,
+          "missed_by_both": 9,
+          "newly_missed": 2,
+          "recovered": 6
+        },
+        "control": {
+          "complete_pairs": {
+            "eligible": 583,
+            "matched": 583,
+            "returned_pairs": 583,
+            "within10": 582,
+            "within5": 566
+          },
+          "detection": {
+            "duplicate_fp": 22,
+            "fn": 15,
+            "fp": 93,
+            "gold_count": 654,
+            "other_fp": 71,
+            "prediction_count": 732,
+            "tp": 639
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.584716712443429,
+            "conditional_p95_error_px": 3.7764402699960815,
+            "returned_endpoints": 1208,
+            "visible_endpoints": 1220
+          }
+        },
+        "treatment": {
+          "complete_pairs": {
+            "eligible": 583,
+            "matched": 583,
+            "returned_pairs": 583,
+            "within10": 583,
+            "within5": 562
+          },
+          "detection": {
+            "duplicate_fp": 31,
+            "fn": 11,
+            "fp": 85,
+            "gold_count": 654,
+            "other_fp": 54,
+            "prediction_count": 728,
+            "tp": 643
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.601201905730239,
+            "conditional_p95_error_px": 3.9598526949535215,
+            "returned_endpoints": 1209,
+            "visible_endpoints": 1220
+          }
+        }
+      }
+    },
+    "r50": {
+      "postclip": {
+        "changes": {
+          "complete_within10_gains": 1,
+          "complete_within10_losses": 0,
+          "complete_within5_gains": 8,
+          "complete_within5_losses": 12,
+          "matched_by_both": 637,
+          "missed_by_both": 9,
+          "newly_missed": 2,
+          "recovered": 6
+        },
+        "control": {
+          "complete_pairs": {
+            "eligible": 583,
+            "matched": 583,
+            "returned_pairs": 583,
+            "within10": 582,
+            "within5": 566
+          },
+          "detection": {
+            "duplicate_fp": 13,
+            "fn": 15,
+            "fp": 84,
+            "gold_count": 654,
+            "other_fp": 71,
+            "prediction_count": 723,
+            "tp": 639
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.5843449145091828,
+            "conditional_p95_error_px": 3.7764402699960815,
+            "returned_endpoints": 1208,
+            "visible_endpoints": 1220
+          }
+        },
+        "treatment": {
+          "complete_pairs": {
+            "eligible": 583,
+            "matched": 583,
+            "returned_pairs": 583,
+            "within10": 583,
+            "within5": 562
+          },
+          "detection": {
+            "duplicate_fp": 22,
+            "fn": 11,
+            "fp": 75,
+            "gold_count": 654,
+            "other_fp": 53,
+            "prediction_count": 718,
+            "tp": 643
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.5992266728998763,
+            "conditional_p95_error_px": 3.9598526949535215,
+            "returned_endpoints": 1209,
+            "visible_endpoints": 1220
+          }
+        }
+      },
+      "raw": {
+        "changes": {
+          "complete_within10_gains": 1,
+          "complete_within10_losses": 0,
+          "complete_within5_gains": 8,
+          "complete_within5_losses": 12,
+          "matched_by_both": 637,
+          "missed_by_both": 9,
+          "newly_missed": 2,
+          "recovered": 6
+        },
+        "control": {
+          "complete_pairs": {
+            "eligible": 583,
+            "matched": 583,
+            "returned_pairs": 583,
+            "within10": 582,
+            "within5": 566
+          },
+          "detection": {
+            "duplicate_fp": 21,
+            "fn": 15,
+            "fp": 93,
+            "gold_count": 654,
+            "other_fp": 72,
+            "prediction_count": 732,
+            "tp": 639
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.5843449145091828,
+            "conditional_p95_error_px": 3.7764402699960815,
+            "returned_endpoints": 1208,
+            "visible_endpoints": 1220
+          }
+        },
+        "treatment": {
+          "complete_pairs": {
+            "eligible": 583,
+            "matched": 583,
+            "returned_pairs": 583,
+            "within10": 583,
+            "within5": 562
+          },
+          "detection": {
+            "duplicate_fp": 32,
+            "fn": 11,
+            "fp": 85,
+            "gold_count": 654,
+            "other_fp": 53,
+            "prediction_count": 728,
+            "tp": 643
+          },
+          "endpoint_error_summary": {
+            "conditional_median_error_px": 1.5992266728998763,
+            "conditional_p95_error_px": 3.9598526949535215,
+            "returned_endpoints": 1209,
+            "visible_endpoints": 1220
+          }
+        }
+      }
+    }
+  },
+  "runtime": {
+    "backend_fp16": false,
+    "cuda": "13.0",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "python": "3.13.16",
+    "tf32": false,
+    "torch": "2.14.1+cu130"
+  },
+  "schema": "reflection-return-independent-audit-v1",
+  "scoring_tables_checked": 16,
+  "script_sha256": "55f391535b040a27682e899aec74915b87864063023bc1ed818f8f82e67101de",
+  "source_commit": "dc7eec630bb0b613fc1fe784e4d9818a0893658e",
+  "status": "passed",
+  "timing": {
+    "control": {
+      "array_to_output_ms": {
+        "mean": 14.586320066664863,
+        "median": 14.309668499947747,
+        "p95_nearest_rank": 16.354993000049944
+      },
+      "cuda_allocated_before_bytes": 72818176,
+      "cuda_peak_allocated_bytes": 174916608,
+      "cuda_peak_reserved_bytes": 236978176,
+      "images": 20,
+      "input_tensor_shapes": [
+        [
+          1,
+          3,
+          736,
+          1280
+        ]
+      ],
+      "input_transform_ms": {
+        "mean": 0.3580995833412241,
+        "median": 0.34573850001606843,
+        "p95_nearest_rank": 0.4873579999866706
+      },
+      "measured_calls": 60,
+      "predict_call_ms": {
+        "mean": 12.913112449994438,
+        "median": 12.900340500038965,
+        "p95_nearest_rank": 13.569988999961424
+      },
+      "record_and_postclip_ms": {
+        "mean": 1.3151080333292005,
+        "median": 1.0081160000368072,
+        "p95_nearest_rank": 2.607842000088567
+      },
+      "stage_ms_mean": {
+        "inference": 10.106279966661683,
+        "postprocess": 1.2774974999899769,
+        "preprocess": 1.1673160000024534
+      }
+    },
+    "treatment": {
+      "array_to_output_ms": {
+        "mean": 20.676805750008498,
+        "median": 20.618525500026408,
+        "p95_nearest_rank": 22.69153599991114
+      },
+      "cuda_allocated_before_bytes": 72818176,
+      "cuda_peak_allocated_bytes": 174916608,
+      "cuda_peak_reserved_bytes": 236978176,
+      "images": 20,
+      "input_tensor_shapes": [
+        [
+          1,
+          3,
+          736,
+          1280
+        ]
+      ],
+      "input_transform_ms": {
+        "mean": 6.215328149994548,
+        "median": 6.073887499951525,
+        "p95_nearest_rank": 6.909340999982305
+      },
+      "measured_calls": 60,
+      "predict_call_ms": {
+        "mean": 12.976816733347126,
+        "median": 13.014481500022157,
+        "p95_nearest_rank": 13.62621200007652
+      },
+      "record_and_postclip_ms": {
+        "mean": 1.4846608666668242,
+        "median": 1.2449490000108199,
+        "p95_nearest_rank": 2.7969710000661507
+      },
+      "stage_ms_mean": {
+        "inference": 10.145377433341688,
+        "postprocess": 1.2839126333384836,
+        "preprocess": 1.1858101166675776
+      }
+    }
+  },
+  "verified_prediction_records_including_repeats": 5840
+}

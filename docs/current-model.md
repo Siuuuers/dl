@@ -1,30 +1,20 @@
 # Current model and review status
 
-27 November 2026, Asia/Hong_Kong.
+28 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected under the established frozen-reference gate.** The latest
-completed training is [PR146/R51](partial-classification-r51-results.md): both
-arms use the same 142 photographs and 3,999 fronts. Doubling classification
-weight for assigned partial targets changes R50 misses 15→11, unmatched 84→112,
-formal duplicates 13→23, and both-corner 5 px successes 566→567/583. This is a
-tradeoff and does not support automatic promotion. The reference predictions
-exactly reproduce the PR137 candidate on all 20 development images.
+**PR35 remains selected under the established frozen-reference gate.** The report's untouched supplied-model baseline is a separate comparison, and no returned local model is automatically promoted.
 
-**Current entry points:** [canonical thesis workspace](thesis.md),
-[primary literature and hypotheses](thesis-literature-r53.md),
-[R53 inference comparisons](inference-ablation-r53.md), and
-[camera pipeline audit](camera-pipeline-r53.md). R53 prepares separate fixed
-contrast and 1280/1600 scale probes using the immutable PR137 candidate. It has
-no new model inference or training result yet. Every probe must reproduce the
-archived control before treatment interpretation. The new
-[size/visibility replay](size-visibility-r53.md) is a descriptive CPU analysis
-of existing predictions, not a fresh model run.
+**Current entry points:** [FYP I report](thesis/README.md), [PR155 residual results](thesis/residual-results.md), [three-reference annotation comparison](thesis/annotation-comparison.md), and [completed CPU matrix notebook](../notebooks/baomai_annotation_reference_r60.ipynb).
 
-The generic live launcher and `weights/base.json` currently select epoch 173,
-with confidence 0.25, while the retained PR35 operating point below uses 0.13.
-The camera audit explains explicit launch settings and checkpoint verification.
-A selected-model document does not itself change the live application's
-weights. R53 does not change these runtime defaults.
+PR155 completes the residual-correction pilot: reviewed five-pixel pair success is 564/583 versus 566/583 for its research control and 569/583 for the existing two-view method. Its mean maximum error improves 2.316739→2.266216 pixels versus that control, while the two-view method gives 2.163264 pixels on the same 583 pairs. Boxes/scores are fixed; reviewed misses 18, extras 51, duplicates 5 remain unchanged.
+
+The original-versus-proposed comparison depends on annotations. Five-pixel successes are 521→514/584 under the authenticated supplied 664-front labels, 534→525/584 under the earlier fixed 666-front labels, and 555→569/583 under the reviewed 654-front labels. The new CPU notebook changes only scoring references and fully reproduces the prior results. It runs no model and changes no labels.
+
+The manuscript includes the completed residual result and all three reference comparisons. The Word builder now uses genuine centered display math with separate right-aligned numbers and automatic row height. The [validation record](thesis/report-validation-fyp-i.json) owns final presentation counts and all-page checks.
+
+The generic live launcher and weights/base.json select epoch173 at confidence 0.25, while the retained PR35 operating point uses 0.13. Explicit checkpoint and inference settings remain necessary for camera comparisons. These report and analysis changes do not alter them.
+
+Earlier [heatmap refinement](thesis/local-refinement-results.md), [contrast/input-size](thesis/r53-results.md), [reflection](thesis/reflection-results.md), and [saved-output averaging](thesis/corner-average-experiment.md) results remain available. Their original confidence-above-0.13 measurements retain their historical context.
 
 ## Completed inference diagnosis and annotation work
 
@@ -51,7 +41,7 @@ generalization.
 [R52](front-review-r52.md) records 10 amended rows/11 boundary fields on
 `frame_0160`, with all corner fields and existing holds retained. Its
 [CPU study notebook](annotation-study-r52.md) replays the returned training
-result and produces the review reports. The thesis topic is still a proposal;
+result and produces the review reports. The user permits an empirical thesis without a required new architecture;
 new captures are unavailable for now. All four evaluation label references
 share the same repeatedly reviewed development photographs.
 

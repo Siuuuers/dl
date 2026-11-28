@@ -1,0 +1,854 @@
+{
+  "schema": "cassette-fyp-i-bibliography-v6",
+  "revised_on": "2026-11-28",
+  "numbering": "IEEE first appearance in the explanatory report",
+  "scope": "External academic and professional sources. The supplied model is the main benchmark; the adapted single-view control isolates added corner processing.",
+  "entries": [
+    {
+      "key": "yolo2016",
+      "type": "conference_paper",
+      "authors": [
+        "Joseph Redmon",
+        "Santosh Divvala",
+        "Ross Girshick",
+        "Ali Farhadi"
+      ],
+      "title": "You Only Look Once: Unified, Real-Time Object Detection",
+      "year": 2016,
+      "venue": "IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "pages": "779–788",
+      "doi": "10.1109/CVPR.2016.91",
+      "url": "https://openaccess.thecvf.com/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+      "ieee_entry": "J. Redmon, S. Divvala, R. Girshick, and A. Farhadi, “You only look once: Unified, real-time object detection,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR), 2016, pp. 779–788, doi: 10.1109/CVPR.2016.91.",
+      "supported_claim": "The original YOLO formulates object detection as a single network that predicts bounding boxes and class probabilities from a complete image.",
+      "limitation": "This historical detector paper does not document the current pose implementation, its two-point output, or the accuracy of the cassette models.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+          "ref_ids": [
+            "turn742744914search0",
+            "turn458583483search8"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "pages",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://doi.org/10.1109/CVPR.2016.91",
+          "ref_ids": [
+            "turn458583483search7"
+          ],
+          "supports": [
+            "DOI in indexed primary IEEE record"
+          ]
+        }
+      ],
+      "reference_number": 1
+    },
+    {
+      "key": "yolo26docs",
+      "type": "professional_documentation",
+      "authors": [
+        "Ultralytics"
+      ],
+      "title": "Ultralytics YOLO26",
+      "url": "https://docs.ultralytics.com/models/yolo26/",
+      "accessed": "2026-11-28",
+      "ieee_entry": "Ultralytics, “Ultralytics YOLO26,” Ultralytics Docs. Accessed: Nov. 28, 2026. [Online]. Available: https://docs.ultralytics.com/models/yolo26/",
+      "supported_claim": "YOLO26 is a model family with detection and pose-estimation variants.",
+      "limitation": "Current model documentation does not establish the accuracy of the project-specific checkpoint.",
+      "verification": [
+        {
+          "url": "https://docs.ultralytics.com/models/yolo26/",
+          "ref_ids": [
+            "turn382010710view2"
+          ],
+          "supports": [
+            "family name",
+            "pose support"
+          ]
+        }
+      ],
+      "reference_number": 2
+    },
+    {
+      "key": "objectlab2023",
+      "type": "workshop_paper_with_preprint",
+      "authors": [
+        "Ulyana Tkachenko",
+        "Aditya Thyagarajan",
+        "Jonas Mueller"
+      ],
+      "title": "ObjectLab: Automated Diagnosis of Mislabeled Images in Object Detection Data",
+      "year": 2023,
+      "venue": "ICML Workshop on Data-centric Machine Learning Research",
+      "arxiv_id": "2309.00832",
+      "doi": "10.48550/arXiv.2309.00832",
+      "doi_kind": "arXiv preprint identifier",
+      "url": "https://arxiv.org/abs/2309.00832",
+      "ieee_entry": "U. Tkachenko, A. Thyagarajan, and J. Mueller, “ObjectLab: Automated diagnosis of mislabeled images in object detection data,” in ICML Workshop on Data-centric Machine Learning Research, 2023. [Online]. Available: https://arxiv.org/abs/2309.00832",
+      "supported_claim": "ObjectLab uses model predictions to prioritize images that may contain missing, misplaced, or incorrectly classified bounding-box annotations for human review.",
+      "limitation": "A model-generated suspicion is not proof that an annotation is wrong; independent image inspection is still required, and the paper does not validate the project's corner labels.",
+      "verification": [
+        {
+          "url": "https://arxiv.org/abs/2309.00832",
+          "ref_ids": [
+            "turn907124369view1"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "year",
+            "workshop stated by authors",
+            "arXiv identifier and DOI",
+            "method summary"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "No proceedings page range was verified, so none is supplied.",
+        "The arXiv DOI is not represented as a publisher proceedings DOI."
+      ],
+      "reference_number": 3
+    },
+    {
+      "key": "noise2025",
+      "type": "conference_paper",
+      "authors": [
+        "Jeffri Murrugarra-Llerena",
+        "Claudio R. Jung"
+      ],
+      "title": "Noise-Aware Evaluation of Object Detectors",
+      "year": 2025,
+      "venue": "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)",
+      "open_access_pages": "9304–9313",
+      "doi": "10.1109/WACV61041.2025.00903",
+      "url": "https://openaccess.thecvf.com/content/WACV2025/html/Llerena_Noise-Aware_Evaluation_of_Object_Detectors_WACV_2025_paper.html",
+      "ieee_entry": "J. Murrugarra-Llerena and C. R. Jung, “Noise-aware evaluation of object detectors,” in Proc. IEEE/CVF Winter Conf. Appl. Comput. Vis. (WACV), 2025, pp. 9322–9331, doi: 10.1109/WACV61041.2025.00903.",
+      "supported_claim": "Bounding-box annotation uncertainty can alter detector evaluation, particularly for small objects and restrictive overlap thresholds, motivating sensitivity analysis of disputed references.",
+      "limitation": "This does not justify moving reference annotations toward a preferred model's predictions or treating model agreement as ground truth.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content/WACV2025/html/Llerena_Noise-Aware_Evaluation_of_Object_Detectors_WACV_2025_paper.html",
+          "ref_ids": [
+            "turn742744914search2"
+          ],
+          "supports": [
+            "title",
+            "venue",
+            "year",
+            "CVF open-access page range",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://openaccess.thecvf.com/content/WACV2025/papers/Llerena_Noise-Aware_Evaluation_of_Object_Detectors_WACV_2025_paper.pdf",
+          "ref_ids": [
+            "turn742744914search8"
+          ],
+          "supports": [
+            "author names as printed on paper"
+          ]
+        },
+        {
+          "url": "https://ieeexplore.ieee.org/abstract/document/10943665",
+          "ref_ids": [
+            "turn742744914search4"
+          ],
+          "supports": [
+            "DOI in indexed primary IEEE record"
+          ]
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1109/WACV61041.2025.00903",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publisher-deposited title, author list, venue, year, pagination and DOI"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "The manuscript cites publisher pagination with the publisher DOI; the CVF open-access copy uses the separately recorded open_access_pages."
+      ],
+      "reference_number": 4,
+      "pages": "9322–9331"
+    },
+    {
+      "key": "tide2020",
+      "type": "conference_paper",
+      "authors": [
+        "Daniel Bolya",
+        "Sean Foley",
+        "James Hays",
+        "Judy Hoffman"
+      ],
+      "title": "TIDE: A General Toolbox for Identifying Object Detection Errors",
+      "year": 2020,
+      "venue": "Computer Vision – ECCV 2020",
+      "series": "Lecture Notes in Computer Science",
+      "volume": "12348",
+      "publisher": "Springer",
+      "pages": "558–573",
+      "doi": "10.1007/978-3-030-58580-8_33",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-030-58580-8_33",
+      "ieee_entry": "D. Bolya, S. Foley, J. Hays, and J. Hoffman, “TIDE: A general toolbox for identifying object detection errors,” in Computer Vision – ECCV 2020, Lecture Notes in Computer Science, vol. 12348. Springer, 2020, pp. 558–573, doi: 10.1007/978-3-030-58580-8_33.",
+      "supported_claim": "TIDE separates sources of object-detection and instance-segmentation error and measures their effects on average precision, encouraging diagnosis beyond a single aggregate score.",
+      "limitation": "The project's fixed-threshold missed, unmatched, and duplicate counts are not a full reproduction of TIDE's error-oracle analysis, and corner accuracy requires additional metrics.",
+      "verification": [
+        {
+          "url": "https://link.springer.com/chapter/10.1007/978-3-030-58580-8_33",
+          "ref_ids": [
+            "turn907124369view0"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "series",
+            "volume",
+            "year",
+            "pages",
+            "DOI",
+            "method summary"
+          ]
+        }
+      ],
+      "reference_number": 5
+    },
+    {
+      "key": "simple_baselines2018",
+      "type": "conference_paper",
+      "authors": [
+        "Bin Xiao",
+        "Haiping Wu",
+        "Yichen Wei"
+      ],
+      "title": "Simple Baselines for Human Pose Estimation and Tracking",
+      "year": 2018,
+      "venue": "European Conference on Computer Vision (ECCV)",
+      "pages": "472–487",
+      "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
+      "ieee_entry": "B. Xiao, H. Wu, and Y. Wei, “Simple baselines for human pose estimation and tracking,” in Computer Vision – ECCV 2018, Lecture Notes in Computer Science, vol. 11210. Springer, 2018, pp. 472–487, doi: 10.1007/978-3-030-01231-1_29.",
+      "supported_claim": "A ResNet feature extractor and three learned upsampling layers predict Gaussian-supervised landmark heatmaps; the paper also uses original/reflected heatmap averaging and a quarter-cell decoding adjustment.",
+      "limitation": "The cassette models adapt the architecture to two points. Coordinate averaging differs from the paper’s heatmap averaging; published human-pose results do not establish cassette performance.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.html",
+          "ref_ids": [
+            "turn716501904search1",
+            "turn311618434search2"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "pages"
+          ]
+        },
+        {
+          "url": "https://openaccess.thecvf.com/content_ECCV_2018/papers/Bin_Xiao_Simple_Baselines_for_ECCV_2018_paper.pdf",
+          "ref_ids": [
+            "turn311618434search8"
+          ],
+          "supports": [
+            "test-time averaging of original and flipped heatmaps"
+          ]
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1007/978-3-030-01231-1_29",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publisher-deposited title, author list, venue, year, pagination and DOI"
+          ]
+        }
+      ],
+      "reference_number": 6,
+      "doi": "10.1007/978-3-030-01231-1_29",
+      "open_access_pages": "466–481",
+      "metadata_notes": [
+        "The manuscript cites publisher pagination with the publisher DOI; the CVF open-access copy uses the separately recorded open_access_pages."
+      ],
+      "series": "Lecture Notes in Computer Science",
+      "volume": "11210"
+    },
+    {
+      "key": "posefix2019",
+      "type": "conference_paper",
+      "authors": [
+        "Gyeongsik Moon",
+        "Ju Yong Chang",
+        "Kyoung Mu Lee"
+      ],
+      "title": "PoseFix: Model-Agnostic General Human Pose Refinement Network",
+      "year": 2019,
+      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "pages": "7765–7773",
+      "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Moon_PoseFix_Model-Agnostic_General_Human_Pose_Refinement_Network_CVPR_2019_paper.html",
+      "author_manuscript": "https://arxiv.org/abs/1812.03595",
+      "ieee_entry": "G. Moon, J. Y. Chang, and K. M. Lee, “PoseFix: Model-agnostic general human pose refinement network,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR), 2019, pp. 7765–7773, doi: 10.1109/CVPR.2019.00796.",
+      "supported_claim": "PoseFix refines image-plus-initial-pose input and trains on synthetic pose errors informed by observed human-pose error distributions.",
+      "limitation": "The cassette hint model uses Gaussian-target MSE and peak decoding, and does not reproduce PoseFix’s synthetic-error distribution, one-hot/integral objective or full inference procedure.",
+      "verification": [
+        {
+          "url": "https://arxiv.org/abs/1812.03595",
+          "ref_ids": [
+            "turn991257851view1"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "CVPR2019 publication",
+            "method"
+          ]
+        },
+        {
+          "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Moon_PoseFix_Model-Agnostic_General_Human_Pose_Refinement_Network_CVPR_2019_paper.html",
+          "ref_ids": [
+            "turn439694374search0"
+          ],
+          "supports": [
+            "venue",
+            "pages"
+          ]
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1109/CVPR.2019.00796",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publisher-deposited title, author list, venue, year, pagination and DOI"
+          ]
+        }
+      ],
+      "reference_number": 7,
+      "doi": "10.1109/CVPR.2019.00796",
+      "open_access_pages": "7773–7781",
+      "metadata_notes": [
+        "The manuscript cites publisher pagination with the publisher DOI; the CVF open-access copy uses the separately recorded open_access_pages."
+      ]
+    },
+    {
+      "key": "calibration2017",
+      "type": "conference_paper",
+      "authors": [
+        "Chuan Guo",
+        "Geoff Pleiss",
+        "Yu Sun",
+        "Kilian Q. Weinberger"
+      ],
+      "title": "On Calibration of Modern Neural Networks",
+      "year": 2017,
+      "venue": "International Conference on Machine Learning (ICML)",
+      "series": "Proceedings of Machine Learning Research",
+      "volume": "70",
+      "pages": "1321–1330",
+      "url": "https://proceedings.mlr.press/v70/guo17a.html",
+      "ieee_entry": "C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in Proc. 34th Int. Conf. Mach. Learn. (ICML), Proceedings of Machine Learning Research, vol. 70, 2017, pp. 1321–1330. [Online]. Available: https://proceedings.mlr.press/v70/guo17a.html",
+      "supported_claim": "Modern neural-network classification scores can be miscalibrated, and temperature scaling improved calibration on the studied classification tasks.",
+      "limitation": "A calibrated classification confidence is not automatically a probability of satisfying a two-corner pixel tolerance or of a hidden corner being physically observable.",
+      "verification": [
+        {
+          "url": "https://proceedings.mlr.press/v70/guo17a.html",
+          "ref_ids": [
+            "turn907124369view2"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "series",
+            "volume",
+            "pages",
+            "method summary"
+          ]
+        }
+      ],
+      "reference_number": 8
+    },
+    {
+      "key": "adamw2019",
+      "type": "conference_paper",
+      "authors": [
+        "Ilya Loshchilov",
+        "Frank Hutter"
+      ],
+      "title": "Decoupled Weight Decay Regularization",
+      "year": 2019,
+      "venue": "International Conference on Learning Representations (ICLR)",
+      "url": "https://openreview.net/forum?id=Bkg6RiCqY7",
+      "author_manuscript": "https://arxiv.org/abs/1711.05101",
+      "ieee_entry": "I. Loshchilov and F. Hutter, “Decoupled weight decay regularization,” in Proc. Int. Conf. Learning Representations (ICLR), 2019. [Online]. Available: https://arxiv.org/abs/1711.05101",
+      "supported_claim": "AdamW separates weight decay from adaptive gradient updates.",
+      "limitation": "The publication motivates the optimizer; the reported cassette training settings and outcomes are project measurements.",
+      "verification": [
+        {
+          "url": "https://arxiv.org/abs/1711.05101",
+          "ref_ids": [
+            "turn382010710view0"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "ICLR2019 publication",
+            "optimizer principle"
+          ]
+        }
+      ],
+      "reference_number": 9
+    },
+    {
+      "key": "rle2021",
+      "type": "conference_paper",
+      "authors": [
+        "Jiefeng Li",
+        "Siyuan Bian",
+        "Ailing Zeng",
+        "Can Wang",
+        "Bo Pang",
+        "Wentao Liu",
+        "Cewu Lu"
+      ],
+      "title": "Human Pose Regression with Residual Log-Likelihood Estimation",
+      "year": 2021,
+      "venue": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+      "pages": "11005–11014",
+      "url": "https://openaccess.thecvf.com/content/ICCV2021/html/Li_Human_Pose_Regression_With_Residual_Log-Likelihood_Estimation_ICCV_2021_paper.html",
+      "author_manuscript": "https://arxiv.org/abs/2107.11291",
+      "ieee_entry": "J. Li et al., “Human pose regression with residual log-likelihood estimation,” in Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV), 2021, pp. 11005–11014, doi: 10.1109/ICCV48922.2021.01084.",
+      "supported_claim": "RLE learns a change to a reference coordinate-error distribution during likelihood-based training; it is distinct from a later model that adds a coordinate offset.",
+      "limitation": "Its human-pose results do not establish calibrated five-pixel confidence or cassette performance.",
+      "verification": [
+        {
+          "url": "https://arxiv.org/abs/2107.11291",
+          "ref_ids": [
+            "turn382010710view1"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "ICCV2021 publication",
+            "method"
+          ]
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1109/ICCV48922.2021.01084",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publisher-deposited title, author list, venue, year, pagination and DOI"
+          ]
+        }
+      ],
+      "reference_number": 10,
+      "doi": "10.1109/ICCV48922.2021.01084",
+      "open_access_pages": "11025–11034",
+      "metadata_notes": [
+        "The manuscript cites publisher pagination with the publisher DOI; the CVF open-access copy uses the separately recorded open_access_pages."
+      ]
+    },
+    {
+      "key": "tta_aggregation2021",
+      "type": "conference_paper",
+      "authors": [
+        "Divya Shanmugam",
+        "Davis Blalock",
+        "Guha Balakrishnan",
+        "John Guttag"
+      ],
+      "title": "Better Aggregation in Test-Time Augmentation",
+      "year": 2021,
+      "venue": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+      "pages": "1194–1203",
+      "url": "https://openaccess.thecvf.com/content/ICCV2021/html/Shanmugam_Better_Aggregation_in_Test-Time_Augmentation_ICCV_2021_paper.html",
+      "ieee_entry": "D. Shanmugam, D. Blalock, G. Balakrishnan, and J. Guttag, “Better aggregation in test-time augmentation,” in Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV), 2021, pp. 1194–1203, doi: 10.1109/ICCV48922.2021.00125.",
+      "supported_claim": "In classification, test-time augmentation with standard averaging can turn correct predictions into errors, making aggregation choice and paired-case analysis relevant to evaluation.",
+      "limitation": "The paper does not evaluate cassette detection or pose fusion and does not justify training an aggregation selector on the small, reused validation set.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content/ICCV2021/html/Shanmugam_Better_Aggregation_in_Test-Time_Augmentation_ICCV_2021_paper.html",
+          "ref_ids": [
+            "turn716501904search2"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "pages",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://openaccess.thecvf.com/content/ICCV2021/papers/Shanmugam_Better_Aggregation_in_Test-Time_Augmentation_ICCV_2021_paper.pdf",
+          "ref_ids": [
+            "turn716501904search5"
+          ],
+          "supports": [
+            "augmentation-induced errors and aggregation analysis"
+          ]
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1109/ICCV48922.2021.00125",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publisher-deposited title, author list, venue, year, pagination and DOI"
+          ]
+        }
+      ],
+      "reference_number": 11,
+      "doi": "10.1109/ICCV48922.2021.00125",
+      "open_access_pages": "1214–1223",
+      "metadata_notes": [
+        "The manuscript cites publisher pagination with the publisher DOI; the CVF open-access copy uses the separately recorded open_access_pages."
+      ]
+    },
+    {
+      "key": "resnet2016",
+      "type": "conference_paper",
+      "authors": [
+        "Kaiming He",
+        "Xiangyu Zhang",
+        "Shaoqing Ren",
+        "Jian Sun"
+      ],
+      "title": "Deep Residual Learning for Image Recognition",
+      "year": 2016,
+      "venue": "IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "pages": "770–778",
+      "doi": "10.1109/CVPR.2016.90",
+      "url": "https://arxiv.org/abs/1512.03385",
+      "supported_claim": "ResNet shortcut connections add a block’s input to its learned transformation, easing optimization of deep feature networks.",
+      "limitation": "Internal feature additions are distinct from the cassette coordinate-offset model; the paper does not establish cassette performance.",
+      "verification": [
+        {
+          "url": "https://arxiv.org/pdf/1512.03385",
+          "accessed": "2026-11-28",
+          "supports": [
+            "authors",
+            "title",
+            "residual architecture"
+          ]
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1109/CVPR.2016.90",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publisher metadata",
+            "pages",
+            "DOI"
+          ]
+        }
+      ],
+      "ieee_entry": "K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual learning for image recognition,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR), 2016, pp. 770–778, doi: 10.1109/CVPR.2016.90.",
+      "reference_number": 12
+    },
+    {
+      "key": "ief2016",
+      "type": "conference_paper",
+      "authors": [
+        "Joao Carreira",
+        "Pulkit Agrawal",
+        "Katerina Fragkiadaki",
+        "Jitendra Malik"
+      ],
+      "title": "Human Pose Estimation with Iterative Error Feedback",
+      "year": 2016,
+      "venue": "IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "pages": "4733–4742",
+      "doi": "10.1109/CVPR.2016.512",
+      "url": "https://arxiv.org/abs/1507.06550",
+      "ieee_entry": "J. Carreira, P. Agrawal, K. Fragkiadaki, and J. Malik, “Human pose estimation with iterative error feedback,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR), 2016, pp. 4733–4742, doi: 10.1109/CVPR.2016.512.",
+      "supported_claim": "Image content and a rendered current pose can inform learned coordinate corrections.",
+      "limitation": "The single-step cassette correction model is an adaptation; it does not reproduce the full iterative training scheme. Its measured cassette results are reported in this study.",
+      "verification": [
+        {
+          "url": "https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Carreira_Human_Pose_Estimation_CVPR_2016_paper.html",
+          "supports": [
+            "authors",
+            "title",
+            "venue",
+            "year",
+            "pages",
+            "method summary"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/1507.06550",
+          "supports": [
+            "author manuscript and correction formulation"
+          ]
+        }
+      ],
+      "reference_number": 13
+    },
+    {
+      "key": "pytorch_smoothl1",
+      "type": "professional_documentation",
+      "authors": [
+        "PyTorch Contributors"
+      ],
+      "title": "SmoothL1Loss",
+      "venue": "PyTorch Documentation",
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.SmoothL1Loss.html",
+      "accessed": "2026-11-28",
+      "reference_number": 14,
+      "ieee_entry": "PyTorch Contributors, “SmoothL1Loss,” PyTorch Documentation, ver. 2.14. Accessed: Nov. 28, 2026. [Online]. Available: https://docs.pytorch.org/docs/2.14/generated/torch.nn.SmoothL1Loss.html",
+      "supported_claim": "SmoothL1 uses a quadratic penalty below beta and a linear penalty above beta for each coordinate component separately.",
+      "limitation": "The definition documents the implemented loss, not evidence of improved cassette recognition.",
+      "verification": [
+        {
+          "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.SmoothL1Loss.html",
+          "accessed": "2026-11-28",
+          "supports": [
+            "elementwise loss definition",
+            "beta transition",
+            "official documentation in the recorded training version family"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "The recorded training runtime is PyTorch 2.14.1; the official 2.14 documentation describes the loss definition. Project code establishes beta=1 and the eligible-target mask."
+      ]
+    },
+    {
+      "key": "gfl2020",
+      "type": "conference_paper",
+      "authors": [
+        "Xiang Li",
+        "Wenhai Wang",
+        "Lijun Wu",
+        "Shuo Chen",
+        "Xiaolin Hu",
+        "Jun Li",
+        "Jinhui Tang",
+        "Jian Yang"
+      ],
+      "title": "Generalized Focal Loss: Learning Qualified and Distributed Bounding Boxes for Dense Object Detection",
+      "year": 2020,
+      "venue": "Advances in Neural Information Processing Systems",
+      "volume": "33",
+      "pages": "21002–21012",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/f0bda020d2470f2e74990a07a607ebd9-Paper.pdf",
+      "supported_claim": "Quality Focal Loss supports continuous quality targets and weights classification loss by the magnitude of score-target disagreement.",
+      "limitation": "The cassette trial retains native pose-aware target construction and changes only the classification objective. It does not reproduce the complete GFL detector or distributed box representation, and it changes aggregate loss scale. The completed paired comparison recovers misses but increases extras and duplicates.",
+      "verification": [
+        {
+          "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/f0bda020d2470f2e74990a07a607ebd9-Paper.pdf",
+          "accessed": "2026-11-28",
+          "supports": [
+            "authors",
+            "title",
+            "QFL equation and scope"
+          ]
+        },
+        {
+          "url": "https://proceedings.neurips.cc/paper_files/paper/11487-/bibtex",
+          "accessed": "2026-11-28",
+          "supports": [
+            "official authors",
+            "venue",
+            "volume",
+            "pages",
+            "year"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "No publisher DOI appears in the verified official BibTeX; none is invented."
+      ],
+      "ieee_entry": "X. Li et al., “Generalized focal loss: Learning qualified and distributed bounding boxes for dense object detection,” in Advances in Neural Information Processing Systems, vol. 33, 2020, pp. 21002–21012. [Online]. Available: https://proceedings.neurips.cc/paper_files/paper/2020/file/f0bda020d2470f2e74990a07a607ebd9-Paper.pdf",
+      "reference_number": 15
+    },
+    {
+      "key": "pytorch_reproducibility",
+      "type": "professional_documentation",
+      "authors": [
+        "PyTorch Contributors"
+      ],
+      "title": "Reproducibility",
+      "version": "2.14",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/randomness.html",
+      "accessed": "2026-11-28",
+      "ieee_entry": "PyTorch Contributors, “Reproducibility,” PyTorch Documentation, ver. 2.14. Accessed: Nov. 28, 2026. [Online]. Available: https://docs.pytorch.org/docs/2.14/notes/randomness.html",
+      "supported_claim": "Identical seeds do not guarantee reproducibility across PyTorch releases or computing platforms; controlling randomness and nondeterministic operations supports repeatability within a specified environment.",
+      "limitation": "The documentation does not quantify an A100-versus-L4 effect for these cassette experiments or establish that any observed cross-run difference was caused by the GPU.",
+      "verification": [
+        {
+          "url": "https://docs.pytorch.org/docs/2.14/notes/randomness.html",
+          "ref_ids": [
+            "turn951159185view0"
+          ],
+          "supports": [
+            "official versioned documentation",
+            "equal-seed limitation across platforms",
+            "environment-specific reproducibility guidance"
+          ]
+        }
+      ],
+      "reference_number": 16
+    },
+    {
+      "key": "rmpe2017",
+      "type": "conference_paper",
+      "authors": [
+        "Hao-Shu Fang",
+        "Shuqin Xie",
+        "Yu-Wing Tai",
+        "Cewu Lu"
+      ],
+      "title": "RMPE: Regional Multi-Person Pose Estimation",
+      "year": 2017,
+      "venue": "IEEE International Conference on Computer Vision (ICCV)",
+      "pages": "2334–2343",
+      "url": "https://openaccess.thecvf.com/content_ICCV_2017/papers/Fang_RMPE_Regional_Multi-Person_ICCV_2017_paper.pdf",
+      "supported_claim": "The parametric pose NMS component compares estimated human poses using spatial and confidence-sensitive joint agreement to remove repeated poses.",
+      "limitation": "The cassette experiment uses a fixed box-overlap condition and agreement of two accepted corners. It does not reproduce RMPE's full similarity function, parameter fitting, pose merging, or complete architecture.",
+      "metadata_notes": [
+        "The entry cites the verified CVF accepted copy, pages 2334–2343, and its URL. Publisher pagination and a publisher DOI are not combined with this version."
+      ],
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_ICCV_2017/papers/Fang_RMPE_Regional_Multi-Person_ICCV_2017_paper.pdf",
+          "accessed": "2026-11-28",
+          "ref_ids": [
+            "turn622125833search24",
+            "turn241902552view4",
+            "turn929816121search1",
+            "turn190357086search7"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "year",
+            "CVF accepted-copy pagination",
+            "Section 3.2 method scope"
+          ]
+        }
+      ],
+      "ieee_entry": "H.-S. Fang, S. Xie, Y.-W. Tai, and C. Lu, “RMPE: Regional multi-person pose estimation,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), 2017, pp. 2334–2343. [Online]. Available: https://openaccess.thecvf.com/content_ICCV_2017/papers/Fang_RMPE_Regional_Multi-Person_ICCV_2017_paper.pdf",
+      "reference_number": 17
+    },
+    {
+      "key": "autofocus2019",
+      "type": "conference_paper",
+      "authors": [
+        "Mahyar Najibi",
+        "Bharat Singh",
+        "Larry S. Davis"
+      ],
+      "title": "AutoFocus: Efficient Multi-Scale Inference",
+      "year": 2019,
+      "venue": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+      "pages": "9745–9755",
+      "url": "https://openaccess.thecvf.com/content_ICCV_2019/papers/Najibi_AutoFocus_Efficient_Multi-Scale_Inference_ICCV_2019_paper.pdf",
+      "supported_claim": "Section 4.3 identifies spurious detections from objects cut by crop boundaries and rejects artificial-edge detections while distinguishing genuine image boundaries.",
+      "limitation": "The one-pixel margin is this project's fixed choice. It uses fixed windows rather than learned FocusPixels and dilated adaptive chips, so the full method and its coverage properties are not reproduced.",
+      "metadata_notes": [
+        "CVF open-access pagination 9745–9755 is retained with its URL. It is distinct from the publisher pagination 9744–9754. No unverified publisher DOI is combined with this copy."
+      ],
+      "reference_number": 18,
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_ICCV_2019/papers/Najibi_AutoFocus_Efficient_Multi-Scale_Inference_ICCV_2019_paper.pdf",
+          "accessed": "2026-11-28",
+          "supports": [
+            "authors",
+            "title",
+            "conference year",
+            "CVF pagination",
+            "Section 4.3"
+          ]
+        }
+      ],
+      "ieee_entry": "M. Najibi, B. Singh, and L. S. Davis, “AutoFocus: Efficient multi-scale inference,” in Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV), 2019, pp. 9745–9755. [Online]. Available: https://openaccess.thecvf.com/content_ICCV_2019/papers/Najibi_AutoFocus_Efficient_Multi-Scale_Inference_ICCV_2019_paper.pdf"
+    },
+    {
+      "key": "soft_nms2017",
+      "type": "conference_paper",
+      "authors": [
+        "Navaneeth Bodla",
+        "Bharat Singh",
+        "Rama Chellappa",
+        "Larry S. Davis"
+      ],
+      "title": "Soft-NMS — Improving Object Detection with One Line of Code",
+      "year": 2017,
+      "venue": "IEEE International Conference on Computer Vision (ICCV)",
+      "pages": "5562–5570",
+      "doi": "10.1109/ICCV.2017.593",
+      "url": "https://openaccess.thecvf.com/content_iccv_2017/html/Bodla_Soft-NMS_--_Improving_ICCV_2017_paper.html",
+      "supported_claim": "Soft-NMS decays competing proposal scores as a function of overlap instead of immediately deleting all proposals above a hard overlap threshold.",
+      "limitation": "The completed cassette Soft-NMS check uses confidence above 0.13 and overlap 0.70. It differs from additional hard suppression and corner-conditioned suppression. Its result applies to that recorded candidate pool and operating point.",
+      "reference_number": 19,
+      "ieee_entry": "N. Bodla, B. Singh, R. Chellappa, and L. S. Davis, “Soft-NMS — Improving object detection with one line of code,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), 2017, pp. 5562–5570, doi: 10.1109/ICCV.2017.593.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_iccv_2017/html/Bodla_Soft-NMS_--_Improving_ICCV_2017_paper.html",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publication metadata",
+            "method scope"
+          ]
+        },
+        {
+          "url": "https://pure.johnshopkins.edu/en/publications/soft-nms-improving-object-detection-with-one-line-of-code/",
+          "accessed": "2026-11-28",
+          "supports": [
+            "author institutional record of DOI and final pages"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "Publisher pagination retained with DOI; CVF accepted-version pagination is 5561–5569."
+      ]
+    },
+    {
+      "key": "iou_net2018",
+      "type": "conference_paper",
+      "authors": [
+        "Borui Jiang",
+        "Ruixuan Luo",
+        "Jiayuan Mao",
+        "Tete Xiao",
+        "Yuning Jiang"
+      ],
+      "title": "Acquisition of Localization Confidence for Accurate Object Detection",
+      "year": 2018,
+      "venue": "Computer Vision – ECCV 2018",
+      "pages": "816–832",
+      "doi": "10.1007/978-3-030-01264-9_48",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-030-01264-9_48",
+      "supported_claim": "IoU-Net predicts box localization quality and uses it to guide NMS; the paper separately proposes optimization-based box refinement.",
+      "limitation": "A cassette quality ranker is unimplemented and conditional. The current native targets already include box/pose quality. A box-quality estimate does not establish corner accuracy, and the complete paper gains are not solely a suppression result.",
+      "reference_number": 20,
+      "ieee_entry": "B. Jiang, R. Luo, J. Mao, T. Xiao, and Y. Jiang, “Acquisition of localization confidence for accurate object detection,” in Computer Vision – ECCV 2018, Lecture Notes in Computer Science, vol. 11218. Springer, 2018, pp. 816–832, doi: 10.1007/978-3-030-01264-9_48.",
+      "verification": [
+        {
+          "url": "https://link.springer.com/chapter/10.1007/978-3-030-01264-9_48",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publication metadata",
+            "method scope"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "Publisher pagination retained with DOI; CVF accepted-version pagination is 784–799."
+      ],
+      "volume": "11218"
+    }
+  ],
+  "style_guide": {
+    "title": "IEEE Reference Guide",
+    "version": "3.28.2025",
+    "url": "https://docs.google.com/document/d/e/2PACX-1vSBoV_hTIURPZKtQkxI6bAONJtjyDLxQIUvCHi-XPzD8NKLcxRfZrpvQLFrjWZ3M6FFR_Obau3R-t63/pub",
+    "accessed": "2026-11-28",
+    "user_supplied_url": "http://www.ijssst.info/info/IEEE-Citation-StyleGuide.pdf",
+    "user_supplied_access": "Fetch unsuccessful; current official IEEE guide used for the citation rules."
+  }
+}

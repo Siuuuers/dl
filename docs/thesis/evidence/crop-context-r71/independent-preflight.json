@@ -1,0 +1,130 @@
+{
+  "schema": "r71-independent-preflight-v1",
+  "analysis_source_sha256": "7befc607b653c3069a346898a88d9146e23c1a340c5cd603638947bc75f7d77a",
+  "source_native_scale_coords_sha256": "499672757c9463187ce2b354585a9ada28325e57178f4bc3307d9548bd552089",
+  "baseline_archive_sha256": "b069e017cb382f73edbf12a164b410766bf8e4051ded93217be221887523133c",
+  "checks": [
+    {
+      "check": "native_coordinate_reversal",
+      "input_hw": [
+        736,
+        1280
+      ],
+      "transform": {
+        "original_size_wh": [
+          1280,
+          720
+        ],
+        "input_size_wh": [
+          1280,
+          736
+        ],
+        "resized_size_wh": [
+          1280,
+          720
+        ],
+        "gain_xy": [
+          1.0,
+          1.0
+        ],
+        "pad_left_top_right_bottom": [
+          0,
+          8,
+          0,
+          8
+        ]
+      },
+      "exact": true
+    },
+    {
+      "check": "native_coordinate_reversal",
+      "input_hw": [
+        736,
+        768
+      ],
+      "transform": {
+        "original_size_wh": [
+          768,
+          720
+        ],
+        "input_size_wh": [
+          768,
+          736
+        ],
+        "resized_size_wh": [
+          768,
+          720
+        ],
+        "gain_xy": [
+          1.0,
+          1.0
+        ],
+        "pad_left_top_right_bottom": [
+          0,
+          8,
+          0,
+          8
+        ]
+      },
+      "exact": true
+    },
+    {
+      "check": "native_coordinate_reversal",
+      "input_hw": [
+        1216,
+        1280
+      ],
+      "transform": {
+        "original_size_wh": [
+          768,
+          720
+        ],
+        "input_size_wh": [
+          1280,
+          1216
+        ],
+        "resized_size_wh": [
+          1280,
+          1200
+        ],
+        "gain_xy": [
+          1.6666666666666667,
+          1.6666666666666667
+        ],
+        "pad_left_top_right_bottom": [
+          0,
+          8,
+          0,
+          8
+        ]
+      },
+      "exact": true
+    },
+    {
+      "check": "archived_baseline_only_merge",
+      "images": 20,
+      "outputs": 690,
+      "records_and_order_identical": true
+    },
+    {
+      "check": "artificial_edge_box_boundaries",
+      "cases": 4,
+      "expected_rejection_matches": true,
+      "actual_photo_edge_boxes_allowed": true
+    },
+    {
+      "check": "crop_point_validity_and_translation",
+      "crops": 2,
+      "outside_points_unavailable": true,
+      "valid_points_translated_without_reordering": true
+    },
+    {
+      "check": "equal_score_same_box_merge",
+      "baseline_wins_tie": true,
+      "surviving_whole_pose_preserved": true
+    }
+  ],
+  "passed": true,
+  "fresh_inference": false,
+  "training": false
+}

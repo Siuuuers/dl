@@ -1,0 +1,99 @@
+{
+  "schema": "local-refiner-cpu-forward-check-v1",
+  "status": "passed",
+  "mode": "initial",
+  "model_sha256": "a389d44a04366529ebf8ec35b76f23467d02ee0cbe515f375b64fc3eb51df69c",
+  "torch": "2.9.0+cpu",
+  "torchvision": "0.24.0+cpu",
+  "source_commit": "5b1650b8fa3959a0917680305d7b499af783c5aa",
+  "original_runtime": {
+    "checkpoint_sha256": "222bf3c91a651183047a10eb1a50e16ae8fe999f15372afe005bfca2d0b157f9",
+    "cuda": "13.0",
+    "device": "cuda:0",
+    "gpu": "Tesla T4",
+    "native_sources": {
+      "data/augment.py": "802333ea359def55e88f61d6726e35c29d28a6491110840a5e912ec1fafd1de3",
+      "engine/trainer.py": "7016131a47b61a8b9b9ea51ef5a9e59b0fb896a328eed4901c89ac7a83169655",
+      "utils/loss.py": "f8db64a3093ef310b23cb83d587dd5c8aa3db20a27da94d95a62a734a6c055d2",
+      "utils/tal.py": "7fc3127e4b094247ccbbcf8af9829972295f96fc53027313ef51b076d27274cd"
+    },
+    "packages": {
+      "Pillow": "13.0.0",
+      "numpy": "2.4.6",
+      "opencv-python": "5.0.0.93",
+      "ultralytics": "8.4.182"
+    },
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130"
+  },
+  "rows": [
+    {
+      "image": "new_000008",
+      "primary_prediction_id": 18,
+      "raw_index": 17,
+      "maximum_coordinate_drift_px": 0.0,
+      "returned_keypoints": [
+        [
+          1086.2109375,
+          371.8333333333333,
+          0.949615478515625
+        ],
+        [
+          1235.5703125,
+          375.6111111111111,
+          0.9450082778930664
+        ]
+      ],
+      "cpu_keypoints": [
+        [
+          1086.2109375,
+          371.8333333333333,
+          0.949615478515625
+        ],
+        [
+          1235.5703125,
+          375.6111111111111,
+          0.9450082778930664
+        ]
+      ],
+      "seconds": 0.11809835899998689,
+      "heatmap_sha256": "25c2d3495109688a9144e0c715ec8ea51f8e16d0da3d3c9bc843f13ca5874c3e",
+      "exact_coordinates": true
+    },
+    {
+      "image": "new_000053",
+      "primary_prediction_id": 6,
+      "raw_index": 5,
+      "maximum_coordinate_drift_px": 0.0,
+      "returned_keypoints": [
+        [
+          645.0703125,
+          35.46052631578947,
+          0.9457122683525085
+        ],
+        [
+          747.5234375,
+          29.013157894736842,
+          0.9806305766105652
+        ]
+      ],
+      "cpu_keypoints": [
+        [
+          645.0703125,
+          35.46052631578947,
+          0.9457122683525085
+        ],
+        [
+          747.5234375,
+          29.013157894736842,
+          0.9806305766105652
+        ]
+      ],
+      "seconds": 0.07154982600013682,
+      "heatmap_sha256": "93ced3a0a7a2c81d9805d41aa49328052c095798d8fe206a80abf8b007fddef5",
+      "exact_coordinates": true
+    }
+  ],
+  "interpretation": "Two selected failure cases rerun on CPU with a different recorded framework version; not an independent scene test or a replay of all model predictions."
+}

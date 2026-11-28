@@ -1,0 +1,85 @@
+{
+  "schema": "cassette-augmentation-panel-review-r63-v1",
+  "status": "complete",
+  "source_commit": "87b3f1dfd547bf46fef35b171aebe16d832bd1be",
+  "summary_sha256": "6803268fcdb58c439939a323674423dab070fd0712a39d57a4b63b3474ee23e1",
+  "selection": "first qualifying samples in native traversal order; at most three removed-row and three retained-clipping/visibility cases, with unique photographs across both groups",
+  "panels_reviewed": [
+    {
+      "path": "results/panels/01-frame_0178-pass01.jpg",
+      "sha256": "71434ed7d1133572d046ebe725583cf4f5d71bec4851a2f16c4c2eadca9ca879",
+      "sample_id": "frame_0178/pass01",
+      "category": "removed",
+      "visually_inspected": true,
+      "published_run_bytes_identical_to_inspected_panel": true,
+      "observation": "Bottom-edge targets move outside the augmented canvas; retained partial boxes follow the remaining image extent.",
+      "concrete_inconsistent_supervision_found": false
+    },
+    {
+      "path": "results/panels/02-new_000002-pass01.jpg",
+      "sha256": "4732a47df6ec7d73730f0daefd6d9bfda83f93a9956f56bd30d32b25cb4e199f",
+      "sample_id": "new_000002/pass01",
+      "category": "clipped_or_visibility",
+      "visually_inspected": true,
+      "published_run_bytes_identical_to_inspected_panel": true,
+      "observation": "Upper-edge fronts are cropped, with observed lower-corner dots retained on their transformed physical landmarks.",
+      "concrete_inconsistent_supervision_found": false
+    },
+    {
+      "path": "results/panels/03-new_000003-pass01.jpg",
+      "sha256": "df28c37c2308a950de8132cd119446853a2708d75fba02ab48b2875594c617e0",
+      "sample_id": "new_000003/pass01",
+      "category": "clipped_or_visibility",
+      "visually_inspected": true,
+      "published_run_bytes_identical_to_inspected_panel": true,
+      "observation": "Upper-edge fronts are clipped; known corner dots remain attached to the transformed visible landmarks.",
+      "concrete_inconsistent_supervision_found": false
+    },
+    {
+      "path": "results/panels/04-new_000004-pass01.jpg",
+      "sha256": "37ec86d8e5d3e9147df08a6ed4a20ad31f2b77d37fea4f1ee01dc54a1f6a84ac",
+      "sample_id": "new_000004/pass01",
+      "category": "removed",
+      "visually_inspected": true,
+      "published_run_bytes_identical_to_inspected_panel": true,
+      "observation": "An upper-edge source target moves outside the canvas; the neighboring retained target is clipped at the upper boundary.",
+      "concrete_inconsistent_supervision_found": false
+    },
+    {
+      "path": "results/panels/05-new_000005-pass01.jpg",
+      "sha256": "79da6d69274b652e779efea54f3ad161a8ff2c0c7aaab6ed8e1e43906d3ee62d",
+      "sample_id": "new_000005/pass01",
+      "category": "clipped_or_visibility",
+      "visually_inspected": true,
+      "published_run_bytes_identical_to_inspected_panel": true,
+      "observation": "An upper-edge target is clipped after the native transform; known corner dots stay on the surviving physical lower edge.",
+      "concrete_inconsistent_supervision_found": false
+    },
+    {
+      "path": "results/panels/06-new_000012-pass01.jpg",
+      "sha256": "6969b69191b4598330360e35a844e4022e3a3863c9f02736b2791530c2ebf0e0",
+      "sample_id": "new_000012/pass01",
+      "category": "removed",
+      "visually_inspected": true,
+      "published_run_bytes_identical_to_inspected_panel": true,
+      "observation": "Bottom-edge targets move outside the canvas; one removed target retains a subpixel box sliver, and the retained partial target is clipped at the bottom.",
+      "concrete_inconsistent_supervision_found": false
+    }
+  ],
+  "source_overlay_geometry_verified_all_presentations": true,
+  "source_image_shape_hw": [
+    720,
+    1280
+  ],
+  "native_augmented_canvas_shape_hw": [
+    736,
+    1280
+  ],
+  "decision": "Retain current augmentation policy; the sampled removals and corner-availability transitions do not demonstrate inconsistent supervision.",
+  "limitations": [
+    "Six deterministically selected panels were visually inspected, not every transformed object contour.",
+    "Box clipping and area ratios are geometric measurements, not physical segmentation or recognizability measurements.",
+    "Frozen source annotations were not independently re-adjudicated by this audit.",
+    "The diagnostic does not train or score a model and cannot establish whether changing augmentation improves recognition."
+  ]
+}

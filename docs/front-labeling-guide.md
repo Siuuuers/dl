@@ -1,5 +1,7 @@
 # Where the box and two points belong
 
+For the compact definition, decision table and repeatability procedure, start with [Cassette-front annotation definition](annotation-definition.md).
+
 This guide explains the existing [visible-front annotation policy](annotation-policy.md). It does not change the task or create a new landmark definition. The [round 6 review record](front-review-r6.md) covers all 157 originals; [round 5](front-review-r5.md) remains a separate historical record. The definition of actual lower-front corners is confirmed against the [pinned original baomai README](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md).
 
 ## Identify the surface before placing a mark

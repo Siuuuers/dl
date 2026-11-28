@@ -1,0 +1,279 @@
+{
+  "all_original_detection_records_preserved": true,
+  "automatic_promotion": false,
+  "baseline_equivalence": {
+    "discrete_policy": "Exact per-image match/miss/unmatched/duplicate IDs, counts, and per-row endpoint threshold states across all four references; raw and postclip.",
+    "exact_json_equal": true,
+    "failures": [],
+    "maximum_drift": {
+      "coordinate_component_px": 0.0,
+      "endpoint_error_px": 0.0,
+      "probability": 0.0
+    },
+    "passed": true,
+    "tolerances": {
+      "coordinate_component_px": 0.05,
+      "endpoint_error_px": 0.075,
+      "probability": 1e-05
+    }
+  },
+  "driver_sha256": "80d52d827e3b0a63318ebb0a611356bd6534da7df1d9891a3f409f57076841b6",
+  "epochs": 30,
+  "implementation_commit": "5b1650b8fa3959a0917680305d7b499af783c5aa",
+  "initial_model_state_sha256": "8978a47c2b71b3a5aa1f4752e322cf4d91c947afe263c75baa673f4c7bb6ddc8",
+  "input": {
+    "bytes": 3117954,
+    "head": "bf718680bc5f2888e51ac084610e678fc761244a",
+    "pr": 154,
+    "sha256": "1f66eae2410c9e9d866f924956e1dc94916c86dd115ec2e43a0c27f5c3fa0b60"
+  },
+  "interpretation": "Development comparison with the frozen research detector. This control is not the original supplied baomai model.",
+  "known_training_endpoints": 7259,
+  "mode": "none",
+  "model": {
+    "manifest_sha256": "9c7250f35d293021420bf02be0bd909256356cdcd29a6d0f578f55a29147e360",
+    "model_bytes": 136332779,
+    "model_sha256": "6dcc57f1d9b807e472c62557e8a85d0dfd456e418957737323fea52b0c00fbb6",
+    "parts": 9
+  },
+  "raw_refinement_records": 732,
+  "recorded_runtime": {
+    "checkpoint_sha256": "222bf3c91a651183047a10eb1a50e16ae8fe999f15372afe005bfca2d0b157f9",
+    "cuda": "13.0",
+    "device": "cuda:0",
+    "gpu": "Tesla T4",
+    "native_sources": {
+      "data/augment.py": "802333ea359def55e88f61d6726e35c29d28a6491110840a5e912ec1fafd1de3",
+      "engine/trainer.py": "7016131a47b61a8b9b9ea51ef5a9e59b0fb896a328eed4901c89ac7a83169655",
+      "utils/loss.py": "f8db64a3093ef310b23cb83d587dd5c8aa3db20a27da94d95a62a734a6c055d2",
+      "utils/tal.py": "7fc3127e4b094247ccbbcf8af9829972295f96fc53027313ef51b076d27274cd"
+    },
+    "packages": {
+      "Pillow": "13.0.0",
+      "numpy": "2.4.6",
+      "opencv-python": "5.0.0.93",
+      "ultralytics": "8.4.182"
+    },
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130"
+  },
+  "replayed_aggregate_tables": 16,
+  "replayed_per_image_tables": 320,
+  "replayed_training_photographs": 142,
+  "results": {
+    "frozen666": {
+      "control": {
+        "complete_pairs": {
+          "eligible": 584,
+          "matched": 577,
+          "within10": 575,
+          "within5": 511
+        },
+        "detection": {
+          "duplicate_fp": 17,
+          "fn": 34,
+          "fp": 91,
+          "gold_count": 666,
+          "other_fp": 74,
+          "prediction_count": 723,
+          "tp": 632
+        },
+        "offered_pairs": {
+          "confirmed_within5": 511,
+          "known_pair_errors_over5": 66,
+          "matched_incomplete_reference": 51,
+          "offered_pairs": 712,
+          "unmatched_offered_pairs": 84
+        }
+      },
+      "treatment": {
+        "complete_pairs": {
+          "eligible": 584,
+          "matched": 577,
+          "within10": 571,
+          "within5": 501
+        },
+        "detection": {
+          "duplicate_fp": 17,
+          "fn": 34,
+          "fp": 91,
+          "gold_count": 666,
+          "other_fp": 74,
+          "prediction_count": 723,
+          "tp": 632
+        },
+        "offered_pairs": {
+          "confirmed_within5": 501,
+          "known_pair_errors_over5": 76,
+          "matched_incomplete_reference": 54,
+          "offered_pairs": 722,
+          "unmatched_offered_pairs": 91
+        }
+      }
+    },
+    "historical663": {
+      "control": {
+        "complete_pairs": {
+          "eligible": 584,
+          "matched": 577,
+          "within10": 575,
+          "within5": 511
+        },
+        "detection": {
+          "duplicate_fp": 17,
+          "fn": 30,
+          "fp": 90,
+          "gold_count": 663,
+          "other_fp": 73,
+          "prediction_count": 723,
+          "tp": 633
+        },
+        "offered_pairs": {
+          "confirmed_within5": 511,
+          "known_pair_errors_over5": 66,
+          "matched_incomplete_reference": 52,
+          "offered_pairs": 712,
+          "unmatched_offered_pairs": 83
+        }
+      },
+      "treatment": {
+        "complete_pairs": {
+          "eligible": 584,
+          "matched": 577,
+          "within10": 571,
+          "within5": 501
+        },
+        "detection": {
+          "duplicate_fp": 17,
+          "fn": 30,
+          "fp": 90,
+          "gold_count": 663,
+          "other_fp": 73,
+          "prediction_count": 723,
+          "tp": 633
+        },
+        "offered_pairs": {
+          "confirmed_within5": 501,
+          "known_pair_errors_over5": 76,
+          "matched_incomplete_reference": 55,
+          "offered_pairs": 722,
+          "unmatched_offered_pairs": 90
+        }
+      }
+    },
+    "r38": {
+      "control": {
+        "complete_pairs": {
+          "eligible": 583,
+          "matched": 583,
+          "within10": 582,
+          "within5": 566
+        },
+        "detection": {
+          "duplicate_fp": 14,
+          "fn": 15,
+          "fp": 84,
+          "gold_count": 654,
+          "other_fp": 70,
+          "prediction_count": 723,
+          "tp": 639
+        },
+        "offered_pairs": {
+          "confirmed_within5": 566,
+          "known_pair_errors_over5": 17,
+          "matched_incomplete_reference": 51,
+          "offered_pairs": 712,
+          "unmatched_offered_pairs": 78
+        }
+      },
+      "treatment": {
+        "complete_pairs": {
+          "eligible": 583,
+          "matched": 583,
+          "within10": 582,
+          "within5": 547
+        },
+        "detection": {
+          "duplicate_fp": 14,
+          "fn": 15,
+          "fp": 84,
+          "gold_count": 654,
+          "other_fp": 70,
+          "prediction_count": 723,
+          "tp": 639
+        },
+        "offered_pairs": {
+          "confirmed_within5": 547,
+          "known_pair_errors_over5": 36,
+          "matched_incomplete_reference": 55,
+          "offered_pairs": 722,
+          "unmatched_offered_pairs": 84
+        }
+      }
+    },
+    "r50": {
+      "control": {
+        "complete_pairs": {
+          "eligible": 583,
+          "matched": 583,
+          "within10": 582,
+          "within5": 566
+        },
+        "detection": {
+          "duplicate_fp": 13,
+          "fn": 15,
+          "fp": 84,
+          "gold_count": 654,
+          "other_fp": 71,
+          "prediction_count": 723,
+          "tp": 639
+        },
+        "offered_pairs": {
+          "confirmed_within5": 566,
+          "known_pair_errors_over5": 17,
+          "matched_incomplete_reference": 51,
+          "offered_pairs": 712,
+          "unmatched_offered_pairs": 78
+        }
+      },
+      "treatment": {
+        "complete_pairs": {
+          "eligible": 583,
+          "matched": 583,
+          "within10": 582,
+          "within5": 547
+        },
+        "detection": {
+          "duplicate_fp": 13,
+          "fn": 15,
+          "fp": 84,
+          "gold_count": 654,
+          "other_fp": 71,
+          "prediction_count": 723,
+          "tp": 639
+        },
+        "offered_pairs": {
+          "confirmed_within5": 547,
+          "known_pair_errors_over5": 36,
+          "matched_incomplete_reference": 55,
+          "offered_pairs": 722,
+          "unmatched_offered_pairs": 84
+        }
+      }
+    }
+  },
+  "sample_order_hashes_replayed": 30,
+  "sample_order_replay_torch": "2.9.0+cpu",
+  "samples": 114450,
+  "schema": "cassette-local-refinement-return-audit-v1",
+  "status": "passed",
+  "training_fronts": 3999,
+  "training_loss_first": 0.0032943523768762793,
+  "training_loss_last": 9.054598826538927e-06,
+  "updates": 3600,
+  "usable_training_crops": 3815,
+  "verification_limit": "Saved decoder arithmetic and scoring are replayed; this audit does not independently recompute model heatmaps. Training sample order is reproduced with the stated CPU Torch version, not the original T4 runtime.",
+  "verified_archive_members": 20,
+  "verified_source_data_files": 690
+}

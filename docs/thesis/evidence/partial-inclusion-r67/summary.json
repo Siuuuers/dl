@@ -1,0 +1,796 @@
+{
+  "analysis_source_sha256": {
+    "scripts/analyze_duplicate_audit_r66.py": "868ab2c5df33ba376da4212aca6281d99a9d5c3a9d6cd1dac7dfaf4e1cd7acfa",
+    "scripts/audit_reflection_return.py": "55f391535b040a27682e899aec74915b87864063023bc1ed818f8f82e67101de",
+    "scripts/diagnose_fronts_r50.py": "cba4f1df6dcf431c933af1506a4de15718636d9477406eb34779ac4d8ab6ee3e",
+    "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+    "scripts/pose_checkpoint.py": "c1311307fd49b37e60f2939c9b084bc36690c1d13b6b31b9e4c51ea9353562d4",
+    "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+    "scripts/predict_pose_folder.py": "2942864e86303a67911826fc0dbfe547b4b4fc2ed3860e74c9d0210c635520a6",
+    "scripts/replay_partial_inclusion_r67.py": "5502022e8f5a7b510e875f2948d3dcbf4b1ab59addd94a9e5d3260ec3eda7f9a",
+    "scripts/run_corner_average_r58.py": "286232cf490f950b367068ea52b43078970ab27bb016169cb99159dab2fdbd88",
+    "scripts/run_flip_inference_r56.py": "bf2ff9056f12976ca8c4aa971de2d2a7af1c679369c44dbf73de9f9d2542700d",
+    "scripts/run_inference_ablation_r53.py": "8c8a37c3dcaccde5c568e9df6f44651cdb05965ca5f5ed5b0f2978852387dcc1",
+    "scripts/run_original_comparison_r59.py": "279e2c0bd701299ea2a6f30403e97da68cc44a9c4ff874c5ee5a0d155a6e6ea3",
+    "scripts/run_reference_matrix_r60.py": "2939b2789abf2566d7680de60a0a87efae2a41e45c2dc01c9d15d1221cb8bbf1",
+    "scripts/run_training_label_comparison_r61.py": "0dc8d5dfdd344f590f88d17ea7ced76f3fc018026fae221a4df6e25d7c807a9c"
+  },
+  "automatic_promotion": false,
+  "candidate_reference": {
+    "counts": {
+      "complete_pairs": 583,
+      "fronts": 658,
+      "held_candidates": 3,
+      "images": 20,
+      "known_corner_groups": {
+        "0": 18,
+        "1": 57,
+        "2": 583
+      },
+      "restored_fronts": 4
+    },
+    "held_ids": [
+      "r34/new_000009/R057",
+      "r37/new_000086/R057",
+      "r37/new_000088/R057"
+    ],
+    "path": "data/reviews/fronts-2026-11-28-r67/manifest.json",
+    "restored_ids": [
+      "r34/new_000009/R056",
+      "r37/new_000009/R052",
+      "r37/new_000010/R030",
+      "r37/new_000053/R001"
+    ],
+    "sha256": "07c8c566f41a04bd1336dd833b47857af8c0eaeecbea04dc6a0e125af5802911"
+  },
+  "development_only": true,
+  "fresh_inference": false,
+  "historical_references_modified": false,
+  "limitations": [
+    "This changes the evaluated reference population, not learned recognition or model outputs.",
+    "All 20 photographs are repeatedly examined development images, not independent test captures.",
+    "Three other excluded candidates remain held for ownership or corner uncertainty; the evaluator has no ignore-region mechanism.",
+    "The corrected inventory is a bounded four-case inclusion decision, not certification that every visible front is annotated.",
+    "Restored coordinates retain historical nominal precision; soft image edges do not establish subpixel physical accuracy.",
+    "Complete-pair success omits incomplete-corner fronts; report detection strata and restored-front outcomes alongside it.",
+    "Evaluation matches are recomputed from unchanged predictions. Reference changes can reassign an output or change its duplicate category.",
+    "No training labels, historical references, scorer rules, confidence thresholds or suppression settings are changed."
+  ],
+  "matrix": [
+    {
+      "complete_pair_missed_boxes": 3,
+      "duplicates": 5,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 61,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 9,
+          "missed": 8
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 31,
+          "missed": 23
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 580,
+          "missed": 3
+        }
+      },
+      "matched": 620,
+      "matched_pair_unavailable": 0,
+      "method": "supplied_original",
+      "missed": 34,
+      "other_extras": 56,
+      "outputs": 681,
+      "reference": "r50",
+      "within10": 577,
+      "within5": 555
+    },
+    {
+      "complete_pair_missed_boxes": 3,
+      "duplicates": 5,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 60,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 10,
+          "missed": 8
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 31,
+          "missed": 26
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 580,
+          "missed": 3
+        }
+      },
+      "matched": 621,
+      "matched_pair_unavailable": 0,
+      "method": "supplied_original",
+      "missed": 37,
+      "other_extras": 55,
+      "outputs": 681,
+      "reference": "r67",
+      "within10": 577,
+      "within5": 555
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 5,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 51,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 12,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 41,
+          "missed": 13
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 636,
+      "matched_pair_unavailable": 0,
+      "method": "historical_retained",
+      "missed": 18,
+      "other_extras": 46,
+      "outputs": 687,
+      "reference": "r50",
+      "within10": 583,
+      "within5": 569
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 5,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 50,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 13,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 41,
+          "missed": 16
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 637,
+      "matched_pair_unavailable": 0,
+      "method": "historical_retained",
+      "missed": 21,
+      "other_extras": 45,
+      "outputs": 687,
+      "reference": "r67",
+      "within10": 583,
+      "within5": 569
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 4,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 49,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 12,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 41,
+          "missed": 13
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 636,
+      "matched_pair_unavailable": 0,
+      "method": "pr157_native",
+      "missed": 18,
+      "other_extras": 45,
+      "outputs": 685,
+      "reference": "r50",
+      "within10": 583,
+      "within5": 568
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 4,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 48,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 13,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 41,
+          "missed": 16
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 637,
+      "matched_pair_unavailable": 0,
+      "method": "pr157_native",
+      "missed": 21,
+      "other_extras": 44,
+      "outputs": 685,
+      "reference": "r67",
+      "within10": 583,
+      "within5": 568
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 17,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 83,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 14,
+          "missed": 3
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 45,
+          "missed": 9
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 642,
+      "matched_pair_unavailable": 0,
+      "method": "pr157_qfl",
+      "missed": 12,
+      "other_extras": 66,
+      "outputs": 725,
+      "reference": "r50",
+      "within10": 582,
+      "within5": 570
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 17,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 82,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 15,
+          "missed": 3
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 45,
+          "missed": 12
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 643,
+      "matched_pair_unavailable": 0,
+      "method": "pr157_qfl",
+      "missed": 15,
+      "other_extras": 65,
+      "outputs": 725,
+      "reference": "r67",
+      "within10": 582,
+      "within5": 570
+    },
+    {
+      "complete_pair_missed_boxes": 14,
+      "duplicates": 6,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 85,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 8,
+          "missed": 9
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 30,
+          "missed": 24
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 569,
+          "missed": 14
+        }
+      },
+      "matched": 607,
+      "matched_pair_unavailable": 0,
+      "method": "pr158_original_labels",
+      "missed": 47,
+      "other_extras": 79,
+      "outputs": 692,
+      "reference": "r50",
+      "within10": 566,
+      "within5": 541
+    },
+    {
+      "complete_pair_missed_boxes": 14,
+      "duplicates": 6,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 84,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 9,
+          "missed": 9
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 30,
+          "missed": 27
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 569,
+          "missed": 14
+        }
+      },
+      "matched": 608,
+      "matched_pair_unavailable": 0,
+      "method": "pr158_original_labels",
+      "missed": 50,
+      "other_extras": 78,
+      "outputs": 692,
+      "reference": "r67",
+      "within10": 566,
+      "within5": 541
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 13,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 51,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 12,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 44,
+          "missed": 10
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 639,
+      "matched_pair_unavailable": 0,
+      "method": "pr158_reviewed_labels",
+      "missed": 15,
+      "other_extras": 38,
+      "outputs": 690,
+      "reference": "r50",
+      "within10": 583,
+      "within5": 572
+    },
+    {
+      "complete_pair_missed_boxes": 0,
+      "duplicates": 13,
+      "eligible_pairs": 583,
+      "empty_scene_outputs": 0,
+      "extras": 50,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 13,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 44,
+          "missed": 13
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 640,
+      "matched_pair_unavailable": 0,
+      "method": "pr158_reviewed_labels",
+      "missed": 18,
+      "other_extras": 37,
+      "outputs": 690,
+      "reference": "r67",
+      "within10": 583,
+      "within5": 572
+    }
+  ],
+  "methods": {
+    "historical_retained": {
+      "completed_predictions_sha256": "dc0a1ff23fe429c41d36b4b8cdced71c02c6f2227824965d455f5e4342fff773",
+      "input": "historical",
+      "model_sha256": "222bf3c91a651183047a10eb1a50e16ae8fe999f15372afe005bfca2d0b157f9",
+      "name": "Historical retained method"
+    },
+    "pr157_native": {
+      "completed_predictions_sha256": "d1c8948b32f7ebcee35c133ea70cf4dc31da82393848976f26c5da528a206bf1",
+      "input": "qfl",
+      "model_sha256": "15d7c97d5c58f16e40462807231c7bb01a5ee9a719225cb756493e1b41714d67",
+      "name": "PR157 native control"
+    },
+    "pr157_qfl": {
+      "completed_predictions_sha256": "cbdd576ed5a6aa535cf084264993733be087ecfa092b34c5acea2cf212e153a0",
+      "input": "qfl",
+      "model_sha256": "8760602df814f47685dde25a2e389a554f623a7280473c90d5e94a0f30fe519f",
+      "name": "PR157 QFL candidate"
+    },
+    "pr158_original_labels": {
+      "completed_predictions_sha256": "0a2598b483658585f5b18f59953034d8988956d289b646c332c951a2ccdf78bf",
+      "input": "labels",
+      "model_sha256": "493f34d4af03e6f0e96b21b026da52437837e631bafe893a5df3cec0c92cd232",
+      "name": "PR158 original-label arm"
+    },
+    "pr158_reviewed_labels": {
+      "completed_predictions_sha256": "86e4b3ecea3855ff1a1ea91f92fb111a904c4ef82375f1bcb36c08af0e3a1587",
+      "input": "labels",
+      "model_sha256": "c749fcff2126467cbc770f75a71fd79da51ebd08308ba909a448c3dd8cb5b372",
+      "name": "PR158 reviewed-label arm"
+    },
+    "supplied_original": {
+      "completed_predictions_sha256": "333f7da9539b17c1a28f93255b6202d0019ab2f5c3d7f0a4c077d3e4482a7fc0",
+      "input": "historical",
+      "model_sha256": "e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e",
+      "name": "Supplied original model"
+    }
+  },
+  "new_evaluation_reference": true,
+  "predictions_modified": false,
+  "primary_scorer_modified": false,
+  "protocol": {
+    "box_confidence_strictly_greater": 0.25,
+    "completed_outputs_and_coordinates_unchanged": true,
+    "cross_view_associations_unchanged": true,
+    "endpoint_confidence_inclusive": 0.5,
+    "fresh_evaluation_matching_per_reference": true,
+    "matching_iou_inclusive": 0.5,
+    "native_nms_unchanged": 0.7,
+    "postclip_nms_unchanged": 0.7,
+    "restoration_rule": "Four exact historical lines appended; retained r50 rows preserve bytes and indices."
+  },
+  "provenance": {
+    "model_bytes_loaded": false,
+    "photograph_bytes_loaded": false,
+    "reference_labels_sha256": {
+      "frozen666": {
+        "new_000007": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+        "new_000008": "4e83a14adeaff7e60ee5c3d423cb3338507407d7b92b5f88a6b5befcc773f4e5",
+        "new_000009": "581b913266547da042b2f45817438066841733faf822fe3d10a9e376b02a1774",
+        "new_000010": "540d4801b3597abdc6982309cba0424235b89a5471d6f3f8a8ece3f92ce7326d",
+        "new_000011": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838",
+        "new_000053": "40f5da5a1594e35889b4df0bbd4a5ca273f64db722242a30ec51c393d8b8e87e",
+        "new_000054": "a141b368e31100930826c3c3b777c066c5050b52759161e2b12cf429bd9d0b20",
+        "new_000055": "54531ae2addfa6cb3aaf6d9677a0d7d94f2be73017b515a36a61f365e160c936",
+        "new_000056": "56557ff588c710572df2d4e75812f76566c235187423aa098127d168be696eea",
+        "new_000057": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f",
+        "new_000058": "0d7cc2962aa94337a3e5340cda114a23bab0c8e3c590855ebbce1e1ca28c1b0c",
+        "new_000059": "60e6866fda66ad0d385094c32fd41f19eb451c5a16365b41da77cf5f0e01ade4",
+        "new_000086": "9d6c732962fae773027d9721b235959463942e08304f0fd844c981933609f1e5",
+        "new_000087": "17d7537f9626058aca885a2afb4ebc1dfa2d8b89acb818e90c09ecbe1113eab1",
+        "new_000088": "1cb9dfbf1aa06c1d9d062ccfe2453e262b9e8e76d2f29a6170771e71baae14f0",
+        "new_000089": "a7b83d04894e165e80d9ff6bd30b3ed59bdb49aec62afd17ab0179785726eb06",
+        "new_000090": "576a5ec9cc55e59c28379c0571becbc33a485c402e6921d7390a6c9e8aa9029d",
+        "new_000146": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "new_000147": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "new_000148": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "r50": {
+        "new_000007": "def064435049f2216024200eb45fcd91f3ce044fd767082ff017f38314e78ff1",
+        "new_000008": "c4f379ed44d206c3aa3cfcda06711803da43540d7329a52fe5947884293b2c06",
+        "new_000009": "034cfe5fd0ada90a3831ab3b6043f644edaad0eb3a3c203b2a6a2dce83390f98",
+        "new_000010": "eea3b4932a9144910a0ab7ea0a38d1796e4cc82bfd8b4d1cecd79fbe8682ccdf",
+        "new_000011": "e0811d8d991c827ae76523e6ff0b166d766698df94c826b15b82558ba9df59f8",
+        "new_000053": "6a6d776acc50803c78e9808a950080541197dd7dfac9aba71ef48eaebc164b53",
+        "new_000054": "7df21b71d428028c3224739eb2efe13858032d8832ed89e2adc6ff963938e6ac",
+        "new_000055": "ab1a7a39857f58214809dbf467917551597738379f1e181570bf9dd25205e2f7",
+        "new_000056": "c8791a0b725cb1b4df4f3d771b3e4834954b1d094afdb4ae3e5f41e8d253470d",
+        "new_000057": "6b6613daaa78b1ab7ad415e629baeb4a74223be96373c3293a8527808970fe01",
+        "new_000058": "d99b48a7d1fdcb943defd5e01f6c233223c0586ea95e5aa7d21d9ea851b20aa5",
+        "new_000059": "2e1687ab851db6a756a5be84aa1f4705082cdf5e62b8a0400231d3fc8ccde62d",
+        "new_000086": "7ac900b13abf7e8aaa0db4c5a178251f346c25a3d581a1689815e6b40305d3a3",
+        "new_000087": "ff4c6cbe7709314b35b4db810f049df9e6aab27d568562e701e3993d39771675",
+        "new_000088": "d02e5bd9f0a740ba3b6b52ed0b960fddf650fb0893d326bb5530fed015e74b49",
+        "new_000089": "af920442abf47544f01c30c5487b9bbfa4d980273d69b91beb351d61eb61fafd",
+        "new_000090": "4602503ad0ee52320c3ba47daebea9cada9eb7eb54b4d7d92974e6c211e694c8",
+        "new_000146": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "new_000147": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "new_000148": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "supplied664": {
+        "new_000007": "88fa1a222a2ba7aa7bb453e04711694fd6b2205bc0c861ff69df0e5d95fd2921",
+        "new_000008": "1dfc03fa28c01c7ea48887a35083c2f52d8c83acc8e2f3af895e023170b76b07",
+        "new_000009": "28d85a70e54ee0a3833ef297b66a0562736a626bfe9690ac6dd9fac4cfd5968f",
+        "new_000010": "9a0cc16ca96d094b1c7849b829ec67625d7569666d5753bd660006c9eecbf3c6",
+        "new_000011": "92bac561a1071a1a9769194e289858efe3d67ad32adf02dcb202bfade23eb838",
+        "new_000053": "7135ccca2049769b7bba27ffc57757324a4106cb674709792e36ef099dac8ded",
+        "new_000054": "ab47c7bbb668f33427d740bce989381a0292ebdb0f3c0b0d9ab9c0bb1791d1ce",
+        "new_000055": "0df645bff0d4b1250c0405b5bfd0f938a824cf628a2a1e81331a51d3dac831a0",
+        "new_000056": "65d4820136ea23e8be8e467a15c60e06831fe0b59d903b89e1f12d6b863a28e4",
+        "new_000057": "1b119bcbbe3985974b954da1940a8914242b61b7d8dc75c049f952a4fac5627f",
+        "new_000058": "e97220280deda6e39ec9663be2110a208f134305171d882992303dcfc75ca23e",
+        "new_000059": "63c5c7813abc3ce8ca1398f78e00ac996d4e66b59e3794ef6c7651ac99353117",
+        "new_000086": "1bcf8922954afe0b1bcfda7a28219e6ca8c25ad4fe8b010d111a45f538854598",
+        "new_000087": "4620cea073b82f3aef412af275e54bf25b8acdb8aa98dfc1c3643388348d76df",
+        "new_000088": "15503652de9a8bba58f3a92749adcaed1f6333be3694341f3adfd49c80600693",
+        "new_000089": "bd1101bdf69c50cf7bfee6d7a4e4b861c0e2d44307a02bc06fffa9d645e498ea",
+        "new_000090": "3a4f524cd0731a75cbab6d73a0c49d45f6ce81f050e4dbd30e88dd8b5228233e",
+        "new_000146": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "new_000147": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "new_000148": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "replay": "All archived historical and PR157/PR158 prediction, association, case and per-image objects reproduce exactly.",
+    "replayed_image_scores": 840,
+    "source_archives": {
+      "historical": {
+        "bytes": 972658,
+        "filename": "historical-r60.zip",
+        "repository_path": "docs/thesis/evidence/annotation-reference/baomai-annotation-reference-r60-results.zip",
+        "sha256": "ce8df4bcf223b6bee49fa67e829a443acb572e4a6aad75fa0f92657a16cc2601"
+      },
+      "labels": {
+        "bytes": 2038950,
+        "commit": "6bde3b7a759604d605965d468e6102bf99bf7946",
+        "filename": "training-labels-pr158.zip",
+        "repository_path": "results/l4/baomai-training-label-comparison-r61-l4-001/baomai-training-label-comparison-r61-results.zip",
+        "sha256": "33dbf73b0d8e145fb0aa74184b16a306d148f0b177787349b13465e7b77c3974"
+      },
+      "qfl": {
+        "bytes": 7528011,
+        "commit": "f971e880e8aff2859ce4d8ae2923efea826eddb4",
+        "filename": "quality-focal-pr157.zip",
+        "repository_path": "results/a100/baomai-quality-focal-r61-a100-001/baomai-quality-focal-r61-results.zip",
+        "sha256": "cf7b7b71349b9412bd5272001f5071afcf8d3b356423deb6c233cb1e6c326c4a"
+      }
+    },
+    "source_photographs": {
+      "new_000007": "bd0bbad3d205341c2bf35c2ff61ccce00761602c3580f74ab20a048ef29f7147",
+      "new_000008": "ebef5e0445a967b8f129ce6e485c8f4a67fb0bdac37e5ad8d69c770121b286ca",
+      "new_000009": "1646139bcae5901401e94d5b6bf0198aeec257ea13e9c9e012773fa696e3917f",
+      "new_000010": "31f944700b81891b8444ef140dba8441232bef6e704c8e5f448c9b23e548d6e9",
+      "new_000011": "ec5ea58d2cf0e6c5a990ee892ea5df18387bcb2db2b4a77d72d2c7407ef6d1a6",
+      "new_000053": "dfc3621b0387b0da774001334c12c65574ae0084131b154d2f6216e420573d72",
+      "new_000054": "cd22201fc88724a2b2d17eb1840af4a88b21dd06ca31a0cdb90172281d8a00d0",
+      "new_000055": "94157af0858cb2bcf3bea8d0e08c242d6a9a5660a12326be46d78e90a058d5fc",
+      "new_000056": "23db7d4e7cb751db87c23b5ee0ad36eb35e7e511cd6f846c65b64d084722472b",
+      "new_000057": "39fd900aa786267bd296630fe8ff49f76ce3094268246a65aaa2542fe4e79e11",
+      "new_000058": "c40da8e147fad2ea7eb6dc23345e447586e6e01611144ad50bf084369a2e50eb",
+      "new_000059": "aa5fa631f16b2e4fb5c085865dbf4e3f3c8694ab2d368cb4d2542ee2ce4695a8",
+      "new_000086": "9e88f5a49659fdef560157b1100bd11651f6123d82c2aa55a6ccbcf43381d755",
+      "new_000087": "7bf9f9a116099ebf4788790dda58e8d01d987b3ce78dbdb6f964752cb8e6c10c",
+      "new_000088": "d3c287c9b493b35ab70abfc9cb75e3e4b8fffc0a46282c8203cb0f9ecfc5e01a",
+      "new_000089": "9e4381bde5b63e2e6f64142dddcd0cd05b894205a05b6945590adc54237dcf4d",
+      "new_000090": "2cc846318c2d6e7e0154e231477ea6919c137cc84b721d12249eb3b22f3bfba5",
+      "new_000146": "77e6af710edebef707c4724578ea5e3227fb277b0914c7c8abe1e144f239bb4e",
+      "new_000147": "2db9797f9b2011e71e9e22c9408e93ab5f7970aff2cde1f1d44a7d89d9221eee",
+      "new_000148": "eadb43382d2e9f5773f42211adff1a9e1c2852a3011dbd3662885e4a1c00e328"
+    }
+  },
+  "record_counts": {
+    "baseline_image_scores_rechecked": 120,
+    "per_image_score_objects": 240,
+    "prediction_category_or_assignment_changes": 6,
+    "restored_target_outcomes": 24,
+    "retained_target_changes": 0,
+    "supplemental_filter_rows": 8,
+    "supplemental_per_image_score_objects": 160,
+    "supplemental_restored_target_states": 32,
+    "target_states": 7872
+  },
+  "reference_input_sha256": {
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000007.txt": "def064435049f2216024200eb45fcd91f3ce044fd767082ff017f38314e78ff1",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000008.txt": "c4f379ed44d206c3aa3cfcda06711803da43540d7329a52fe5947884293b2c06",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000009.txt": "ec430fab2c7fd455dbd956797e31219c122a722c00e80d7b7a4de2a4b9317fe5",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000010.txt": "33b13397f6e8d0ae27ff7c17dd3150a6059c6ddb3598dccec7902721b3e037db",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000011.txt": "e0811d8d991c827ae76523e6ff0b166d766698df94c826b15b82558ba9df59f8",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000053.txt": "93d31341083c31b16b530c8aa926f83be50d33904e67000a8b82321f4f4ea4b5",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000054.txt": "7df21b71d428028c3224739eb2efe13858032d8832ed89e2adc6ff963938e6ac",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000055.txt": "ab1a7a39857f58214809dbf467917551597738379f1e181570bf9dd25205e2f7",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000056.txt": "c8791a0b725cb1b4df4f3d771b3e4834954b1d094afdb4ae3e5f41e8d253470d",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000057.txt": "6b6613daaa78b1ab7ad415e629baeb4a74223be96373c3293a8527808970fe01",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000058.txt": "d99b48a7d1fdcb943defd5e01f6c233223c0586ea95e5aa7d21d9ea851b20aa5",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000059.txt": "2e1687ab851db6a756a5be84aa1f4705082cdf5e62b8a0400231d3fc8ccde62d",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000086.txt": "7ac900b13abf7e8aaa0db4c5a178251f346c25a3d581a1689815e6b40305d3a3",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000087.txt": "ff4c6cbe7709314b35b4db810f049df9e6aab27d568562e701e3993d39771675",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000088.txt": "d02e5bd9f0a740ba3b6b52ed0b960fddf650fb0893d326bb5530fed015e74b49",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000089.txt": "af920442abf47544f01c30c5487b9bbfa4d980273d69b91beb351d61eb61fafd",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000090.txt": "4602503ad0ee52320c3ba47daebea9cada9eb7eb54b4d7d92974e6c211e694c8",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000146.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000147.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/reviews/fronts-2026-11-28-r67/labels/new_000148.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/reviews/fronts-2026-11-28-r67/manifest.json": "07c8c566f41a04bd1336dd833b47857af8c0eaeecbea04dc6a0e125af5802911",
+    "docs/thesis/evidence/partial-inclusion-r67/excluded-front-provenance.json": "7fdcef0546dd3d6e70f5aacca006b4de4794ff48a88bb1222c34e5c3dfe87e5a"
+  },
+  "reference_only_deltas": [
+    {
+      "method": "supplied_original",
+      "r67_minus_r50": {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 0,
+        "eligible_pairs": 0,
+        "extras": -1,
+        "fronts": 4,
+        "matched": 1,
+        "matched_pair_unavailable": 0,
+        "missed": 3,
+        "other_extras": -1,
+        "outputs": 0,
+        "within10": 0,
+        "within5": 0
+      }
+    },
+    {
+      "method": "historical_retained",
+      "r67_minus_r50": {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 0,
+        "eligible_pairs": 0,
+        "extras": -1,
+        "fronts": 4,
+        "matched": 1,
+        "matched_pair_unavailable": 0,
+        "missed": 3,
+        "other_extras": -1,
+        "outputs": 0,
+        "within10": 0,
+        "within5": 0
+      }
+    },
+    {
+      "method": "pr157_native",
+      "r67_minus_r50": {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 0,
+        "eligible_pairs": 0,
+        "extras": -1,
+        "fronts": 4,
+        "matched": 1,
+        "matched_pair_unavailable": 0,
+        "missed": 3,
+        "other_extras": -1,
+        "outputs": 0,
+        "within10": 0,
+        "within5": 0
+      }
+    },
+    {
+      "method": "pr157_qfl",
+      "r67_minus_r50": {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 0,
+        "eligible_pairs": 0,
+        "extras": -1,
+        "fronts": 4,
+        "matched": 1,
+        "matched_pair_unavailable": 0,
+        "missed": 3,
+        "other_extras": -1,
+        "outputs": 0,
+        "within10": 0,
+        "within5": 0
+      }
+    },
+    {
+      "method": "pr158_original_labels",
+      "r67_minus_r50": {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 0,
+        "eligible_pairs": 0,
+        "extras": -1,
+        "fronts": 4,
+        "matched": 1,
+        "matched_pair_unavailable": 0,
+        "missed": 3,
+        "other_extras": -1,
+        "outputs": 0,
+        "within10": 0,
+        "within5": 0
+      }
+    },
+    {
+      "method": "pr158_reviewed_labels",
+      "r67_minus_r50": {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 0,
+        "eligible_pairs": 0,
+        "extras": -1,
+        "fronts": 4,
+        "matched": 1,
+        "matched_pair_unavailable": 0,
+        "missed": 3,
+        "other_extras": -1,
+        "outputs": 0,
+        "within10": 0,
+        "within5": 0
+      }
+    }
+  ],
+  "schema": "cassette-partial-inclusion-replay-r67-v1",
+  "status": "completed",
+  "suppression_sensitivity_scope": {
+    "method": "pr158_reviewed_labels",
+    "purpose": "Check the same previously fixed r66 restrictions after reference restoration.",
+    "replacement_native_nms": false,
+    "retained_prediction_coordinates_and_associations_unchanged": true,
+    "rows": 8,
+    "threshold_selection": false,
+    "variants": [
+      "unchanged",
+      "mutual_view_support",
+      "additional_nms_060",
+      "additional_nms_050"
+    ]
+  },
+  "training": false,
+  "training_labels_modified": false
+}

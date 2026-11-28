@@ -1,0 +1,776 @@
+{
+  "counts": {
+    "archived_primary_baseline_scores": 120,
+    "candidate_complete_pairs": 583,
+    "candidate_fronts": 658,
+    "held_exact_rows_absent": 3,
+    "per_image_scores": 240,
+    "prediction_category_changes": 6,
+    "primary_matrix_rows": 12,
+    "restored_exact_rows": 4,
+    "restored_target_outcomes": 24,
+    "retained_r50_rows": 654,
+    "retained_target_changes": 0,
+    "target_states": 7872
+  },
+  "evidence_directory": "/workspace/scratch/be67d3adbd23/dl/docs/thesis/evidence/partial-inclusion-r67",
+  "findings": [
+    "All 654 parent rows retain exact bytes and positions; only four exact historical rows are appended across three photos.",
+    "All six original completed prediction dictionaries match the replay outputs exactly.",
+    "Every method newly matches the restored new_000010 lower strip using existing P029, previously other_extra; the other three restored fronts remain unmatched.",
+    "Fresh matching leaves every retained reference assignment and per-target corner state unchanged; this was checked directly, not inferred from the unchanged complete-pair denominator.",
+    "For each method the reference-only change is +4 fronts, +1 match, +3 misses, -1 other extra, zero duplicate-count change and zero 5/10-pixel success change."
+  ],
+  "implementation": "Separate standard-library label parser, direct-area IoU, confidence-ordered greedy one-to-one matching, duplicate classification and corner scoring; no project scorer or driver imported. Original archived completed predictions and r50 label bytes are read directly.",
+  "independent_verifier_sha256": "6ccddd7453035b8e8bc228878abd3aa69038a24c95c0e33202d5b5a10ba52b2c",
+  "known_corner_groups": {
+    "r50": {
+      "0": 17,
+      "1": 54,
+      "2": 583
+    },
+    "r67": {
+      "0": 18,
+      "1": 57,
+      "2": 583
+    }
+  },
+  "limitations": [
+    "No new inference, training or physical-image claim is made by this numerical verification.",
+    "The new labels affect only a separately versioned development reference.",
+    "The notebook receipt documents local IPython execution with preseeded immutable source/input archives; hosted Colab, GitHub acquisition branches and browser download were not exercised."
+  ],
+  "matrix": {
+    "historical_retained/r50": {
+      "duplicates": 5,
+      "extras": 51,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 12,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 41,
+          "missed": 13
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 636,
+      "missed": 18,
+      "within10": 583,
+      "within5": 569
+    },
+    "historical_retained/r67": {
+      "duplicates": 5,
+      "extras": 50,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 13,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 41,
+          "missed": 16
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 637,
+      "missed": 21,
+      "within10": 583,
+      "within5": 569
+    },
+    "pr157_native/r50": {
+      "duplicates": 4,
+      "extras": 49,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 12,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 41,
+          "missed": 13
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 636,
+      "missed": 18,
+      "within10": 583,
+      "within5": 568
+    },
+    "pr157_native/r67": {
+      "duplicates": 4,
+      "extras": 48,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 13,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 41,
+          "missed": 16
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 637,
+      "missed": 21,
+      "within10": 583,
+      "within5": 568
+    },
+    "pr157_qfl/r50": {
+      "duplicates": 17,
+      "extras": 83,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 14,
+          "missed": 3
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 45,
+          "missed": 9
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 642,
+      "missed": 12,
+      "within10": 582,
+      "within5": 570
+    },
+    "pr157_qfl/r67": {
+      "duplicates": 17,
+      "extras": 82,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 15,
+          "missed": 3
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 45,
+          "missed": 12
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 643,
+      "missed": 15,
+      "within10": 582,
+      "within5": 570
+    },
+    "pr158_original_labels/r50": {
+      "duplicates": 6,
+      "extras": 85,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 8,
+          "missed": 9
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 30,
+          "missed": 24
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 569,
+          "missed": 14
+        }
+      },
+      "matched": 607,
+      "missed": 47,
+      "within10": 566,
+      "within5": 541
+    },
+    "pr158_original_labels/r67": {
+      "duplicates": 6,
+      "extras": 84,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 9,
+          "missed": 9
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 30,
+          "missed": 27
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 569,
+          "missed": 14
+        }
+      },
+      "matched": 608,
+      "missed": 50,
+      "within10": 566,
+      "within5": 541
+    },
+    "pr158_reviewed_labels/r50": {
+      "duplicates": 13,
+      "extras": 51,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 12,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 44,
+          "missed": 10
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 639,
+      "missed": 15,
+      "within10": 583,
+      "within5": 572
+    },
+    "pr158_reviewed_labels/r67": {
+      "duplicates": 13,
+      "extras": 50,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 13,
+          "missed": 5
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 44,
+          "missed": 13
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 583,
+          "missed": 0
+        }
+      },
+      "matched": 640,
+      "missed": 18,
+      "within10": 583,
+      "within5": 572
+    },
+    "supplied_original/r50": {
+      "duplicates": 5,
+      "extras": 61,
+      "fronts": 654,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 17,
+          "matched": 9,
+          "missed": 8
+        },
+        "1": {
+          "fronts": 54,
+          "matched": 31,
+          "missed": 23
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 580,
+          "missed": 3
+        }
+      },
+      "matched": 620,
+      "missed": 34,
+      "within10": 577,
+      "within5": 555
+    },
+    "supplied_original/r67": {
+      "duplicates": 5,
+      "extras": 60,
+      "fronts": 658,
+      "known_corner_groups": {
+        "0": {
+          "fronts": 18,
+          "matched": 10,
+          "missed": 8
+        },
+        "1": {
+          "fronts": 57,
+          "matched": 31,
+          "missed": 26
+        },
+        "2": {
+          "fronts": 583,
+          "matched": 580,
+          "missed": 3
+        }
+      },
+      "matched": 621,
+      "missed": 37,
+      "within10": 577,
+      "within5": 555
+    }
+  },
+  "notebook_execution_audit": {
+    "code_cells_checked": 4,
+    "executed_notebook": {
+      "bytes": 18229,
+      "path": "executed-notebook.ipynb",
+      "sha256": "f21dead57577e1d6fd45ee99217cb94df231d5d0cc4ec4b211aa80b348647305"
+    },
+    "limitations": [
+      "Local IPython execution, not hosted Google Colab.",
+      "GitHub download paths were not exercised because immutable source and inputs were preseeded.",
+      "The non-Colab FileLink was captured; the Colab browser download interface was not tested."
+    ],
+    "notebook": {
+      "bytes": 10640,
+      "path": "notebooks/baomai_partial_inclusion_r67.ipynb",
+      "sha256": "67fea3563efaef53683ebeb2fabd4019eb0577800c4cdad732360defa67c224c"
+    },
+    "receipt_sha256": "954cbd32ec87ebb0e72aae266a13246777101f5d79f7dd607bbc340a0c882be1",
+    "runner_sha256": "74706c8f3f3fba6f1eed29516d8ab37e4277ad8eeefb80ab8ed5ef16f1eaa9a9",
+    "scope": "Independently checked the saved actual-cell execution receipt, original/executed notebook bytes, exact code and log hashes, no error outputs, runner implementation, clean pinned checkout, all14 source modules and all22 reference inputs. Did not repeat notebook execution.",
+    "source_checkout_clean": true,
+    "source_pin": "2c3886271c12e501d236a5eff54e3eb78007d1b0",
+    "status": "pass"
+  },
+  "reference_files_sha256": {
+    "new_000007": "def064435049f2216024200eb45fcd91f3ce044fd767082ff017f38314e78ff1",
+    "new_000008": "c4f379ed44d206c3aa3cfcda06711803da43540d7329a52fe5947884293b2c06",
+    "new_000009": "ec430fab2c7fd455dbd956797e31219c122a722c00e80d7b7a4de2a4b9317fe5",
+    "new_000010": "33b13397f6e8d0ae27ff7c17dd3150a6059c6ddb3598dccec7902721b3e037db",
+    "new_000011": "e0811d8d991c827ae76523e6ff0b166d766698df94c826b15b82558ba9df59f8",
+    "new_000053": "93d31341083c31b16b530c8aa926f83be50d33904e67000a8b82321f4f4ea4b5",
+    "new_000054": "7df21b71d428028c3224739eb2efe13858032d8832ed89e2adc6ff963938e6ac",
+    "new_000055": "ab1a7a39857f58214809dbf467917551597738379f1e181570bf9dd25205e2f7",
+    "new_000056": "c8791a0b725cb1b4df4f3d771b3e4834954b1d094afdb4ae3e5f41e8d253470d",
+    "new_000057": "6b6613daaa78b1ab7ad415e629baeb4a74223be96373c3293a8527808970fe01",
+    "new_000058": "d99b48a7d1fdcb943defd5e01f6c233223c0586ea95e5aa7d21d9ea851b20aa5",
+    "new_000059": "2e1687ab851db6a756a5be84aa1f4705082cdf5e62b8a0400231d3fc8ccde62d",
+    "new_000086": "7ac900b13abf7e8aaa0db4c5a178251f346c25a3d581a1689815e6b40305d3a3",
+    "new_000087": "ff4c6cbe7709314b35b4db810f049df9e6aab27d568562e701e3993d39771675",
+    "new_000088": "d02e5bd9f0a740ba3b6b52ed0b960fddf650fb0893d326bb5530fed015e74b49",
+    "new_000089": "af920442abf47544f01c30c5487b9bbfa4d980273d69b91beb351d61eb61fafd",
+    "new_000090": "4602503ad0ee52320c3ba47daebea9cada9eb7eb54b4d7d92974e6c211e694c8",
+    "new_000146": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "new_000147": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "new_000148": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reference_manifest_sha256": "07c8c566f41a04bd1336dd833b47857af8c0eaeecbea04dc6a0e125af5802911",
+  "result_package_audit": {
+    "all_member_sizes_and_hashes_passed": true,
+    "archive_members_checked": 19,
+    "local_output_bytes_match_package": true,
+    "package": {
+      "bytes": 1093811,
+      "filename": "baomai-partial-inclusion-r67-results.zip",
+      "sha256": "18c0e5491bb59b2b242853fc3df2c0ef3655099e5c98a08194846814923665cd"
+    },
+    "package_manifest_sha256": "35b526570399b233f3d50f080eaad460b007467a81e263143f988a68193e868a",
+    "packaged_source_and_reference_hashes_match_pin": true,
+    "status": "pass",
+    "zip_crc_passed": true
+  },
+  "reviewer": "independent results-audit agent",
+  "source_archive_sha256": {
+    "historical": "ce8df4bcf223b6bee49fa67e829a443acb572e4a6aad75fa0f92657a16cc2601",
+    "labels": "33dbf73b0d8e145fb0aa74184b16a306d148f0b177787349b13465e7b77c3974",
+    "qfl": "cf7b7b71349b9412bd5272001f5071afcf8d3b356423deb6c233cb1e6c326c4a"
+  },
+  "source_closure": {
+    "execution": "python -S -B; import of the final replay driver",
+    "local_module_count": 14,
+    "source_hashes": {
+      "scripts/analyze_duplicate_audit_r66.py": "868ab2c5df33ba376da4212aca6281d99a9d5c3a9d6cd1dac7dfaf4e1cd7acfa",
+      "scripts/audit_reflection_return.py": "55f391535b040a27682e899aec74915b87864063023bc1ed818f8f82e67101de",
+      "scripts/diagnose_fronts_r50.py": "cba4f1df6dcf431c933af1506a4de15718636d9477406eb34779ac4d8ab6ee3e",
+      "scripts/evaluate_pose.py": "3f80bd09efbe97327b705ffe6ad3e662111f3e2bc71b69b51a9d38d7baa90ce0",
+      "scripts/pose_checkpoint.py": "c1311307fd49b37e60f2939c9b084bc36690c1d13b6b31b9e4c51ea9353562d4",
+      "scripts/pose_scoring.py": "04e5cdbef26df978707d0b6e4b82f05471b6012845f7986b9c05c71644ec0018",
+      "scripts/predict_pose_folder.py": "2942864e86303a67911826fc0dbfe547b4b4fc2ed3860e74c9d0210c635520a6",
+      "scripts/replay_partial_inclusion_r67.py": "5502022e8f5a7b510e875f2948d3dcbf4b1ab59addd94a9e5d3260ec3eda7f9a",
+      "scripts/run_corner_average_r58.py": "286232cf490f950b367068ea52b43078970ab27bb016169cb99159dab2fdbd88",
+      "scripts/run_flip_inference_r56.py": "bf2ff9056f12976ca8c4aa971de2d2a7af1c679369c44dbf73de9f9d2542700d",
+      "scripts/run_inference_ablation_r53.py": "8c8a37c3dcaccde5c568e9df6f44651cdb05965ca5f5ed5b0f2978852387dcc1",
+      "scripts/run_original_comparison_r59.py": "279e2c0bd701299ea2a6f30403e97da68cc44a9c4ff874c5ee5a0d155a6e6ea3",
+      "scripts/run_reference_matrix_r60.py": "2939b2789abf2566d7680de60a0a87efae2a41e45c2dc01c9d15d1221cb8bbf1",
+      "scripts/run_training_label_comparison_r61.py": "0dc8d5dfdd344f590f88d17ea7ced76f3fc018026fae221a4df6e25d7c807a9c"
+    },
+    "source_list_exactly_covers_imported_local_modules": true,
+    "status": "pass",
+    "third_party_imports": []
+  },
+  "source_pin": "2c3886271c12e501d236a5eff54e3eb78007d1b0",
+  "status": "pass",
+  "summary_sha256": "ce18d3c0336be91e92c546c7142bfe6c0d2abccbfa2de43e747abd7626bb152d",
+  "suppression_sensitivity": {
+    "findings": [
+      "Existing new_000010/P029 survives all three fixed restrictions and remains the sole newly matched restored front.",
+      "For each fixed variant, r67 versus r50 adds three misses and removes one other extra; duplicates and complete-pair counts stay unchanged.",
+      "The three other restored targets remain missed under every variant."
+    ],
+    "image_scores_independently_computed": 160,
+    "matching": "Fresh independent greedy matching after each independent fixed output selection; original output identity is restored after subset reindexing.",
+    "matrix": [
+      {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 13,
+        "eligible_pairs": 583,
+        "empty_scene_outputs": 0,
+        "extras": 51,
+        "fronts": 654,
+        "known_corner_groups": {
+          "0": {
+            "fronts": 17,
+            "matched": 12,
+            "missed": 5
+          },
+          "1": {
+            "fronts": 54,
+            "matched": 44,
+            "missed": 10
+          },
+          "2": {
+            "fronts": 583,
+            "matched": 583,
+            "missed": 0
+          }
+        },
+        "matched": 639,
+        "matched_pair_unavailable": 0,
+        "method": "pr158_reviewed_labels",
+        "missed": 15,
+        "other_extras": 38,
+        "outputs": 690,
+        "reference": "r50",
+        "restored_target_matches": null,
+        "restored_targets_in_reference": 0,
+        "unchanged_r67_supporting_outputs_kept": 1,
+        "variant": "unchanged",
+        "within10": 583,
+        "within5": 572
+      },
+      {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 13,
+        "eligible_pairs": 583,
+        "empty_scene_outputs": 0,
+        "extras": 50,
+        "fronts": 658,
+        "known_corner_groups": {
+          "0": {
+            "fronts": 18,
+            "matched": 13,
+            "missed": 5
+          },
+          "1": {
+            "fronts": 57,
+            "matched": 44,
+            "missed": 13
+          },
+          "2": {
+            "fronts": 583,
+            "matched": 583,
+            "missed": 0
+          }
+        },
+        "matched": 640,
+        "matched_pair_unavailable": 0,
+        "method": "pr158_reviewed_labels",
+        "missed": 18,
+        "other_extras": 37,
+        "outputs": 690,
+        "reference": "r67",
+        "restored_target_matches": 1,
+        "restored_targets_in_reference": 4,
+        "unchanged_r67_supporting_outputs_kept": 1,
+        "variant": "unchanged",
+        "within10": 583,
+        "within5": 572
+      },
+      {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 6,
+        "eligible_pairs": 583,
+        "empty_scene_outputs": 0,
+        "extras": 27,
+        "fronts": 654,
+        "known_corner_groups": {
+          "0": {
+            "fronts": 17,
+            "matched": 11,
+            "missed": 6
+          },
+          "1": {
+            "fronts": 54,
+            "matched": 41,
+            "missed": 13
+          },
+          "2": {
+            "fronts": 583,
+            "matched": 583,
+            "missed": 0
+          }
+        },
+        "matched": 635,
+        "matched_pair_unavailable": 0,
+        "method": "pr158_reviewed_labels",
+        "missed": 19,
+        "other_extras": 21,
+        "outputs": 662,
+        "reference": "r50",
+        "restored_target_matches": null,
+        "restored_targets_in_reference": 0,
+        "unchanged_r67_supporting_outputs_kept": 1,
+        "variant": "mutual_view_support",
+        "within10": 583,
+        "within5": 572
+      },
+      {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 6,
+        "eligible_pairs": 583,
+        "empty_scene_outputs": 0,
+        "extras": 26,
+        "fronts": 658,
+        "known_corner_groups": {
+          "0": {
+            "fronts": 18,
+            "matched": 12,
+            "missed": 6
+          },
+          "1": {
+            "fronts": 57,
+            "matched": 41,
+            "missed": 16
+          },
+          "2": {
+            "fronts": 583,
+            "matched": 583,
+            "missed": 0
+          }
+        },
+        "matched": 636,
+        "matched_pair_unavailable": 0,
+        "method": "pr158_reviewed_labels",
+        "missed": 22,
+        "other_extras": 20,
+        "outputs": 662,
+        "reference": "r67",
+        "restored_target_matches": 1,
+        "restored_targets_in_reference": 4,
+        "unchanged_r67_supporting_outputs_kept": 1,
+        "variant": "mutual_view_support",
+        "within10": 583,
+        "within5": 572
+      },
+      {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 2,
+        "eligible_pairs": 583,
+        "empty_scene_outputs": 0,
+        "extras": 32,
+        "fronts": 654,
+        "known_corner_groups": {
+          "0": {
+            "fronts": 17,
+            "matched": 12,
+            "missed": 5
+          },
+          "1": {
+            "fronts": 54,
+            "matched": 43,
+            "missed": 11
+          },
+          "2": {
+            "fronts": 583,
+            "matched": 583,
+            "missed": 0
+          }
+        },
+        "matched": 638,
+        "matched_pair_unavailable": 0,
+        "method": "pr158_reviewed_labels",
+        "missed": 16,
+        "other_extras": 30,
+        "outputs": 670,
+        "reference": "r50",
+        "restored_target_matches": null,
+        "restored_targets_in_reference": 0,
+        "unchanged_r67_supporting_outputs_kept": 1,
+        "variant": "additional_nms_060",
+        "within10": 583,
+        "within5": 572
+      },
+      {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 2,
+        "eligible_pairs": 583,
+        "empty_scene_outputs": 0,
+        "extras": 31,
+        "fronts": 658,
+        "known_corner_groups": {
+          "0": {
+            "fronts": 18,
+            "matched": 13,
+            "missed": 5
+          },
+          "1": {
+            "fronts": 57,
+            "matched": 43,
+            "missed": 14
+          },
+          "2": {
+            "fronts": 583,
+            "matched": 583,
+            "missed": 0
+          }
+        },
+        "matched": 639,
+        "matched_pair_unavailable": 0,
+        "method": "pr158_reviewed_labels",
+        "missed": 19,
+        "other_extras": 29,
+        "outputs": 670,
+        "reference": "r67",
+        "restored_target_matches": 1,
+        "restored_targets_in_reference": 4,
+        "unchanged_r67_supporting_outputs_kept": 1,
+        "variant": "additional_nms_060",
+        "within10": 583,
+        "within5": 572
+      },
+      {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 1,
+        "eligible_pairs": 583,
+        "empty_scene_outputs": 0,
+        "extras": 23,
+        "fronts": 654,
+        "known_corner_groups": {
+          "0": {
+            "fronts": 17,
+            "matched": 12,
+            "missed": 5
+          },
+          "1": {
+            "fronts": 54,
+            "matched": 40,
+            "missed": 14
+          },
+          "2": {
+            "fronts": 583,
+            "matched": 583,
+            "missed": 0
+          }
+        },
+        "matched": 635,
+        "matched_pair_unavailable": 0,
+        "method": "pr158_reviewed_labels",
+        "missed": 19,
+        "other_extras": 22,
+        "outputs": 658,
+        "reference": "r50",
+        "restored_target_matches": null,
+        "restored_targets_in_reference": 0,
+        "unchanged_r67_supporting_outputs_kept": 1,
+        "variant": "additional_nms_050",
+        "within10": 583,
+        "within5": 572
+      },
+      {
+        "complete_pair_missed_boxes": 0,
+        "duplicates": 1,
+        "eligible_pairs": 583,
+        "empty_scene_outputs": 0,
+        "extras": 22,
+        "fronts": 658,
+        "known_corner_groups": {
+          "0": {
+            "fronts": 18,
+            "matched": 13,
+            "missed": 5
+          },
+          "1": {
+            "fronts": 57,
+            "matched": 40,
+            "missed": 17
+          },
+          "2": {
+            "fronts": 583,
+            "matched": 583,
+            "missed": 0
+          }
+        },
+        "matched": 636,
+        "matched_pair_unavailable": 0,
+        "method": "pr158_reviewed_labels",
+        "missed": 22,
+        "other_extras": 21,
+        "outputs": 658,
+        "reference": "r67",
+        "restored_target_matches": 1,
+        "restored_targets_in_reference": 4,
+        "unchanged_r67_supporting_outputs_kept": 1,
+        "variant": "additional_nms_050",
+        "within10": 583,
+        "within5": 572
+      }
+    ],
+    "matrix_rows": 8,
+    "restored_target_survival_records": 32,
+    "selected_output_counts": {
+      "additional_nms_050": 658,
+      "additional_nms_060": 670,
+      "mutual_view_support": 662,
+      "unchanged": 690
+    },
+    "source": "PR158 archived completed reviewed-label predictions and archived mutual-view associations; no project selector imported.",
+    "status": "pass"
+  },
+  "verified_at_utc": "2026-11-28T11:38:03.842362+00:00"
+}

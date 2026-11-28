@@ -1,5 +1,7 @@
 # R53 inference comparisons
 
+**Completion update, 27 November 2026:** PR149 and PR150 have returned and passed their reproduction audits. Neither treatment passes the joint quality screen. See [completed results](thesis/r53-results.md). The protocol below is preserved; statements describing the originally prepared run are historical. The next controlled model experiment is [R56 explicit reflection](thesis/flip-experiment-r56.md).
+
 These two notebooks prepare evidence for the annotation thesis without another
 training run. Neither comparison has produced new model results at publication.
 The CPU tests and saved-result replays establish that the experiment code is
