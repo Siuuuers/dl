@@ -736,8 +736,9 @@ def table_column_widths(rows: list[list[str]]) -> list[float]:
     columns = list(zip(*rows))
     weights, minimums = [], []
     fonts = (fitz.Font("tibo"), fitz.Font("tiro"))
-    # 100 twips of padding per side, plus 0.8 mm for metric/font rounding.
-    horizontal_padding_mm = 200 / 1440 * 25.4 + 0.8
+    # Reserve room for Word font substitution as well as the cell padding.
+    # Base-14 Times metrics alone left long bold headers too close to borders.
+    horizontal_padding_mm = 200 / 1440 * 25.4 + 1.5
     for col in columns:
         lengths = sorted(len(strip_inline(cell)) for cell in col)
         weights.append(max(8.0, min(42.0, lengths[len(lengths) // 2] * 0.7 + max(lengths) * 0.3)))
@@ -747,7 +748,7 @@ def table_column_widths(rows: list[list[str]]) -> list[float]:
             words = re.split(r"[\s/\\\u200b–—-]+", strip_inline(text))
             for word in words:
                 word_width = max(word_width, font.text_length(word, fontsize=10.5) / 72 * 25.4)
-        minimums.append(max(12.0, word_width + horizontal_padding_mm))
+        minimums.append(max(12.0, word_width * 1.20 + horizontal_padding_mm))
     if sum(minimums) > TEXT_WIDTH_MM:
         raise ValueError("A table's unbreakable words exceed the text width; revise its columns or insert explicit break opportunities")
     widths = [0.0] * len(columns)
@@ -776,6 +777,9 @@ def add_table(doc, data: dict, equations: dict):
     table.autofit = False
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
     table_pr = table._tbl.tblPr
+    table_width = table_pr.find(qn("w:tblW"))
+    table_width.set(qn("w:type"), "dxa")
+    table_width.set(qn("w:w"), str(round(Mm(TEXT_WIDTH_MM) / 635)))
     borders = OxmlElement("w:tblBorders")
     for side in ("top", "left", "bottom", "right", "insideH", "insideV"):
         border = OxmlElement("w:" + side)
@@ -784,7 +788,7 @@ def add_table(doc, data: dict, equations: dict):
         borders.append(border)
     table_pr.append(borders)
     margins = OxmlElement("w:tblCellMar")
-    for side, value in (("top", "85"), ("bottom", "85"), ("left", "100"), ("right", "100")):
+    for side, value in (("top", "110"), ("bottom", "110"), ("left", "100"), ("right", "100")):
         node = OxmlElement("w:" + side)
         node.set(qn("w:w"), value)
         node.set(qn("w:type"), "dxa")
@@ -813,12 +817,13 @@ def add_table(doc, data: dict, equations: dict):
             )
             align = alignment[j]
             numeric = bool(re.fullmatch(r"[\d\s.,+−–/%()→-]+", strip_inline(text)))
-            if (align.startswith(":") and align.endswith(":")) or numeric:
+            if (row_index == 0 and j > 0) or (align.startswith(":") and align.endswith(":")) or numeric:
                 paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
             elif align.endswith(":"):
                 paragraph.alignment = WD_ALIGN_PARAGRAPH.RIGHT
             inline(paragraph, text, equations, bold=(row_index == 0))
             for run in paragraph.runs:
+                run.font.name = FONT
                 run.font.size = Pt(10.5)
             if row_index == 0:
                 shade = OxmlElement("w:shd")

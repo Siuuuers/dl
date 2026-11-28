@@ -4,6 +4,8 @@
 [frozen output audit](duplicate-audit-r66.md). No default model, annotation or
 operating threshold is changed by this note.
 
+**Retrospective update, 28 November 2026:** the [addendum below](#retrospective-addendum-28-november-2026) corrects the prospective Soft-NMS wording using recovered completed experiments and links the subsequent partial-front work. The original analysis remains available as a historical record.
+
 **Decision:** inspect physical instance ownership and the output-selection
 trade-off before adding a loss, ranker or detector family. The completed paired
 returns and [assignment diagnostic](score-assignment-audit.md) do not support a
@@ -204,3 +206,34 @@ publisher pagination already verified in the manuscript's bibliography audit.
 The papers were read from primary full-text sources. Publication records were
 checked on 28 November 2026. Sources motivate hypotheses and interpretation;
 project performance claims refer to the linked repository evidence.
+
+## Retrospective addendum, 28 November 2026
+
+Section 3's proposed Soft-NMS comparison omitted completed project evidence.
+[PR143/R49](../front-diagnosis-r51.md) already replayed hard NMS and linear
+Soft-NMS from the same decoded proposals, using confidence strictly above 0.13,
+overlap 0.70, cap 300 and the unchanged postclip filter. Under R50, misses stayed
+at 15, unmatched outputs fell from 84 to 83 and formal duplicates from 13 to 12.
+Five-pixel pair success stayed at 566/583. The primary frozen666 comparison also
+recovered no front and removed one unmatched output. Raw Soft-NMS before
+postclip filtering recovered no target, so that filter did not erase a measured
+recall gain.
+
+The [PR144/R50 confirmation](../../results/evaluation/pr144-r50-20261127/README.md)
+found all 20 decoded tensors byte-identical to PR143 and complete prediction and
+trace objects identical. These are two returns of the same fixed comparison,
+not independent scenes or evidence for a second successful method. A generic
+Soft-NMS rerun is therefore not the next experiment. A different variant would
+need a distinct stage-specific reason and a declared protocol. The result does
+not establish that every Soft-NMS configuration fails.
+
+The later [partial-front review](partial-inclusion-r67.md) resolves four
+historical exclusions, including the `new_000009/R052` case discussed in section
+5. Three other cases remain held. The [R68 research and completed CPU
+comparison](research-partial-detection-r68.md) then separates confidence and
+geometry losses and evaluates one fixed union with unused reflected outputs.
+For the reviewed-label model under r67, that union reduces misses from 18 to 10
+but increases extras from 50 to 60 and duplicates from 13 to 18. All three
+focused restored misses remain. Known-corner accuracy on recovered partials and
+the weaker benefit under older references prevent interpreting unchanged
+complete-pair scores as a complete success. No output rule or model is promoted.

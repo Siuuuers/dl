@@ -10,7 +10,9 @@ The Word report uses six centered display equations with separate right-aligned 
 
 ## Completed comparisons and diagnostics
 
-The **[notebook guide](experiments.md)** records both completed GPU comparisons, the frozen assignment diagnostic, saved-output duplicate audit and completed partial-front inclusion replay.
+The **[notebook guide](experiments.md)** records both completed GPU comparisons, the frozen assignment diagnostic, saved-output duplicate audit, partial-front inclusion replay and completed r68 partial-detection experiment.
+
+The **[r68 diagnosis and fixed union](research-partial-detection-r68.md)** uses saved outputs to separate confidence and geometry failures, then measures one union with unused reflected records. For the reviewed-label model under r67, misses change from 18 to 10, extras from 50 to 60 and duplicates from 13 to 18. Complete-pair counts stay at 572/583 within five pixels and 583/583 within ten. Six one-known and two zero-known fronts are recovered, but one returned known corner has an 11.3027-pixel error. The three newly restored focus misses remain, and older references give only two added matches with sixteen more extras. The [CPU notebook](../../notebooks/baomai_partial_detection_r68.ipynb) reproduces this bounded experiment without inference or training. No union, loss or model is promoted.
 
 The **[partial-front review](partial-inclusion-r67.md)** restores four exact historical rows in a separate r67 evaluation reference after raw-image adjudication. Three other candidates remain held. All 654 r50 rows preserve their bytes and positions; r67 contains 658 fronts, with 18/57/583 fronts having zero/one/two known corners and 1,223 known corners in total. For all six unchanged methods, the reference change adds one match and three misses while removing one other-extra. Duplicates and complete-pair scores are unchanged. The [research note](research-partial-inclusion-r67.md), [reference manifest](../../data/reviews/fronts-2026-11-28-r67/manifest.json) and [evidence guide](evidence/partial-inclusion-r67/README.md) preserve the reasoning and exact changes.
 
@@ -57,6 +59,9 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Annotation definition](../annotation-definition.md) | Practical labeling decisions and unresolved-case handling |
 | [Annotation research](research-annotation-definition.md) | Primary sources and a proposed repeatability measurement |
 | [Notebook guide](experiments.md) | Two completed GPU comparisons and the focused CPU diagnostics, with execution status |
+| [Partial-detection research and results](research-partial-detection-r68.md) | Three restored miss stages, completed reflection union, partial-corner and reference sensitivity, and conditional methods |
+| [Partial-detection notebook](../../notebooks/baomai_partial_detection_r68.ipynb) | Four-cell CPU reproduction pinned to source 0e1f545a2cf33022b86bf316866b08cacfa55477 |
+| [Partial-detection results](evidence/partial-detection-r68/results.md) | Five methods, four references, saved-pool limits and the full union tradeoff |
 | [Partial-front inclusion](partial-inclusion-r67.md) | Four restored rows, three held cases and the completed six-method reference-only replay |
 | [Partial-inclusion research](research-partial-inclusion-r67.md) | Supplied Baomai guidance, identifiable partial fronts and unknown-corner semantics |
 | [Partial-inclusion notebook](../../notebooks/baomai_partial_inclusion_r67.ipynb) | Four actual CPU cells completed from pinned source and preseeded archives |

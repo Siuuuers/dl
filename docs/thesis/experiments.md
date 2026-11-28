@@ -2,10 +2,11 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-Both paired GPU experiments have returned. Their saved outputs and training receipts have been independently verified, so there is no need to rerun them merely to obtain the reported comparisons. The score-target and duplicate-audit notebooks have also completed. The latest partial-front inclusion notebook replays the effect of four justified reference additions from saved outputs, with no model inference or training.
+Both paired GPU experiments have returned. Their saved outputs and training receipts have been independently verified, so there is no need to rerun them merely to obtain the reported comparisons. The score-target, duplicate-audit and partial-front inclusion analyses have also completed. The latest r68 CPU experiment diagnoses the three restored misses and measures one fixed union of unused reflected outputs, without new inference or training.
 
 | Role | Notebook | Question | Runtime and status |
 | --- | --- | --- | --- |
+| Completed diagnosis and fixed output comparison | [Partial-front detection](../../notebooks/baomai_partial_detection_r68.ipynb) | Where do the three restored misses lose eligible boxes, and what does adding unused reflected outputs recover or add? | CPU analysis and independent verification complete. [Research and interpretation](research-partial-detection-r68.md), [full results](evidence/partial-detection-r68/results.md). |
 | Completed reference replay | [Partial-front inclusion](../../notebooks/baomai_partial_inclusion_r67.ipynb) | How do four restored fronts change the scores of six unchanged methods and the interpretation of existing fixed filters? | All four actual CPU cells completed locally from pinned source and preseeded archives; [guide and evidence](partial-inclusion-r67.md). |
 | Completed diagnostic | [Duplicate and unmatched audit](../../notebooks/baomai_duplicate_audit_r66.ipynb) | What do reflected support and extra suppression remove, and does complete-pair scoring hide partial-front losses? | CPU; saved predictions only. [Results and execution evidence](duplicate-audit-r66.md). |
 | Completed diagnostic | [Score and assignment audit](../../notebooks/baomai_score_assignment_r65.ipynb) | For each zero-, one- or two-corner target, how do native assignments, quality targets and predicted scores relate? | All four actual cells completed on CPU; 284 full-pass forwards, no optimizer. See [execution evidence](evidence/score-assignment-r65/README.md). |
@@ -13,6 +14,14 @@ Both paired GPU experiments have returned. Their saved outputs and training rece
 | Completed comparison | [Controlled training-label comparison](../../notebooks/baomai_training_label_comparison_r61.ipynb) | What changes when only the training annotations change on the same 137 photographs? | PR158 returned; [independent all-reference replay](training-label-results.md) complete. |
 | Completed diagnostic | [Proposal-stage and box-geometry audit](../../notebooks/baomai_proposal_audit_r63.ipynb) | Where do the historical candidate's misses lose eligible proposals? | CPU; all four unchanged cells completed from published source; [evidence](evidence/proposal-stages/README.md). |
 | Completed diagnostic | [Training-augmentation audit](../../notebooks/baomai_augmentation_audit_r63.ipynb) | How do the existing transforms affect target retention and corner availability? | CPU; all four unchanged cells completed from published source; [evidence](evidence/augmentation-audit/README.md). |
+
+## Completed partial-front diagnosis and union
+
+The [r68 research note](research-partial-detection-r68.md) explains the measured stages, prior Soft-NMS and larger-input results, and conditional NWD or sliced-inference options. Its fixed union adds every reflected record without a mutual original-view box partner, then applies the existing score-ranked suppression above IoU 0.70. Reference annotations do not select additions. The [40-row result matrix](evidence/partial-detection-r68/matrix.csv) covers five methods and four reference versions.
+
+For the reviewed-label model under r67, misses fall from 18 to 10 while extras rise from 50 to 60 and duplicates from 13 to 18. Complete-pair counts stay at 572/583 within five pixels and 583/583 within ten. Six one-known and two zero-known partial fronts are recovered. Of the six known corners, four are within five pixels and five within ten, with one error of 11.3027 pixels. The three restored focus misses remain. Either older reference gives only two additional matches and sixteen more extras. The union is not promoted.
+
+For optional reproduction, run the four CPU cells in [baomai_partial_detection_r68.ipynb](../../notebooks/baomai_partial_detection_r68.ipynb). Source is pinned to `0e1f545a2cf33022b86bf316866b08cacfa55477`. The notebook uses immutable saved outputs and nominal training labels. It requires no model weights, original photographs, new inference or training. The bounded geometry and training-size observations do not by themselves justify a new GPU loss or sampling experiment.
 
 ## Completed partial-front inclusion replay
 
@@ -34,7 +43,7 @@ The returned notebooks execute source `acaf5d4b4043583fdd81f5ea848b3a6a68ada728`
 
 ## Choose the next change from evidence
 
-The [duplicate and unmatched audit](duplicate-audit-r66.md) compares unchanged final outputs, an existing reflected-partner requirement, and separate additional hard-suppression cutoffs of 0.60 and 0.50. It preserves surviving corner coordinates and reruns the original evaluator. The reviewed-label candidate loses four partial matches under either the reflected-support rule or the 0.50 rule, despite unchanged complete-pair scores. The maximum-cardinality diagnostic finds no reviewed-reference match gain available merely by replacing the greedy matcher on the five audited baseline sets. The [literature note](research-duplicates-r66.md) distinguishes these restrictions from a future pre-NMS Soft-NMS or learned-quality experiment.
+The [duplicate and unmatched audit](duplicate-audit-r66.md) compares unchanged final outputs, an existing reflected-partner requirement, and separate additional hard-suppression cutoffs of 0.60 and 0.50. It preserves surviving corner coordinates and reruns the original evaluator. The reviewed-label candidate loses four partial matches under either the reflected-support rule or the 0.50 rule, despite unchanged complete-pair scores. The maximum-cardinality diagnostic finds no reviewed-reference match gain available merely by replacing the greedy matcher on the five audited baseline sets. The [literature addendum](research-duplicates-r66.md#retrospective-addendum-28-november-2026) records the already completed pre-NMS linear Soft-NMS comparison, which recovered no missed fronts. A learned-quality intervention remains conditional.
 
 Use the [score-target research](research-score-assignment.md) to interpret the fixed-weight diagnostic. A low supervision target, missing assignment and score below a useful target require different remedies. The completed box-only counterfactual lowers mean one-corner targets while preserving assignment for every front. It describes assignment at fixed predictions; it is not a trained-model result. Do not select a new operating threshold using the same twenty development photographs.
 
