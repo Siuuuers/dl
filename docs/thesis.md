@@ -8,12 +8,14 @@ The **[notebook guide](thesis/experiments.md)** is the single entry point for th
 
 The **[completed detection audit](thesis/detection-errors.md)** finds that all 18 retained-method misses belong to the 71 fronts with incomplete corner annotations. Its 51 extras include five duplicates, 36 other outputs with moderate reference overlap and ten with little overlap. These geometric groups guide image review without declaring physical errors. A fixed reflected-box alternative gives 15 misses and 43 extras with the same 569/583 five-pixel successes, but ten duplicates and slightly worse older-reference corner scores. The [small CPU notebook](../notebooks/baomai_detection_audit_r62.ipynb) reproduces both analyses without new inference or training.
 
-The next GPU runs are prepared in this order:
+The two paired GPU comparisons are complete:
 
 1. **[Model improvement with Quality Focal Loss](thesis/quality-focal-experiment.md)** — change the classification objective while keeping data and the rest of training fixed.
 2. **[Controlled training-label comparison](thesis/training-label-comparison.md)** — keep the original 137 photographs and training settings fixed while changing only the training labels.
 
-The guides link to their notebooks and completed preparation checks. GPU accuracy results remain pending.
+The [classification-loss return](thesis/quality-focal-results.md) recovers six fronts but adds 34 extras. The [training-label return](thesis/training-label-results.md) reduces misses by 32 and increases five-pixel pair successes by 31 under the reviewed reference, while increasing duplicates and reversing rank under the older references. Both pairs were independently replayed.
+
+The completed [score and assignment audit](thesis/score-assignment-audit.md) finds an assignment for every training front in both returned models and both heads. Removing corner agreement lowers one-corner supervision targets in its descriptive counterfactual; no box-only training change follows. The [duplicate and unmatched audit](thesis/duplicate-audit-r66.md) uses saved predictions to quantify the cost of reflected support and stronger suppression. Fewer duplicates can coexist with more missed partial fronts and unchanged complete-pair scores. The [research note](thesis/research-duplicates-r66.md) connects those findings to primary literature and prior attempts.
 
 The [PR155 residual correction result](thesis/residual-results.md) is complete and audited: 564/583 reviewed complete pairs within five pixels and 582/583 within ten. It remains below the proposed two-view method's 569/583 and 583/583. Its slight mean-error improvement over the unrefined control is retained alongside the five-pixel regression.
 

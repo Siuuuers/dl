@@ -1,5 +1,5 @@
 {
-  "schema": "cassette-fyp-i-bibliography-v4",
+  "schema": "cassette-fyp-i-bibliography-v5",
   "revised_on": "2026-11-28",
   "numbering": "IEEE first appearance in the explanatory report",
   "scope": "External academic and professional sources. The supplied model is the main benchmark; the adapted single-view control isolates added corner processing.",
@@ -635,7 +635,7 @@
       "pages": "21002–21012",
       "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/f0bda020d2470f2e74990a07a607ebd9-Paper.pdf",
       "supported_claim": "Quality Focal Loss supports continuous quality targets and weights classification loss by the magnitude of score-target disagreement.",
-      "limitation": "The prepared cassette trial retains native pose-aware target construction and only changes the classification objective. It does not reproduce the complete GFL detector or distributed box representation; it also changes aggregate loss scale. Results remain pending.",
+      "limitation": "The cassette trial retains native pose-aware target construction and changes only the classification objective. It does not reproduce the complete GFL detector or distributed box representation, and it changes aggregate loss scale. The completed paired comparison recovers misses but increases extras and duplicates.",
       "verification": [
         {
           "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/f0bda020d2470f2e74990a07a607ebd9-Paper.pdf",
@@ -691,6 +691,81 @@
         }
       ],
       "reference_number": 16
+    },
+    {
+      "key": "soft_nms2017",
+      "type": "conference_paper",
+      "authors": [
+        "Navaneeth Bodla",
+        "Bharat Singh",
+        "Rama Chellappa",
+        "Larry S. Davis"
+      ],
+      "title": "Soft-NMS — Improving Object Detection with One Line of Code",
+      "year": 2017,
+      "venue": "IEEE International Conference on Computer Vision (ICCV)",
+      "pages": "5562–5570",
+      "doi": "10.1109/ICCV.2017.593",
+      "url": "https://openaccess.thecvf.com/content_iccv_2017/html/Bodla_Soft-NMS_--_Improving_ICCV_2017_paper.html",
+      "supported_claim": "Soft-NMS decays competing proposal scores as a function of overlap instead of immediately deleting all proposals above a hard overlap threshold.",
+      "limitation": "This is a conditional future cassette comparison, not the completed additional hard-suppression experiment. Post-NMS survivors cannot reproduce a pre-NMS replacement or recover discarded proposals.",
+      "reference_number": 17,
+      "ieee_entry": "N. Bodla, B. Singh, R. Chellappa, and L. S. Davis, “Soft-NMS — Improving object detection with one line of code,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), 2017, pp. 5562–5570, doi: 10.1109/ICCV.2017.593.",
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_iccv_2017/html/Bodla_Soft-NMS_--_Improving_ICCV_2017_paper.html",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publication metadata",
+            "method scope"
+          ]
+        },
+        {
+          "url": "https://pure.johnshopkins.edu/en/publications/soft-nms-improving-object-detection-with-one-line-of-code/",
+          "accessed": "2026-11-28",
+          "supports": [
+            "author institutional record of DOI and final pages"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "Publisher pagination retained with DOI; CVF accepted-version pagination is 5561–5569."
+      ]
+    },
+    {
+      "key": "iou_net2018",
+      "type": "conference_paper",
+      "authors": [
+        "Borui Jiang",
+        "Ruixuan Luo",
+        "Jiayuan Mao",
+        "Tete Xiao",
+        "Yuning Jiang"
+      ],
+      "title": "Acquisition of Localization Confidence for Accurate Object Detection",
+      "year": 2018,
+      "venue": "Computer Vision – ECCV 2018",
+      "pages": "816–832",
+      "doi": "10.1007/978-3-030-01264-9_48",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-030-01264-9_48",
+      "supported_claim": "IoU-Net predicts box localization quality and uses it to guide NMS; the paper separately proposes optimization-based box refinement.",
+      "limitation": "A cassette quality ranker is unimplemented and conditional. The current native targets already include box/pose quality. A box-quality estimate does not establish corner accuracy, and the complete paper gains are not solely a suppression result.",
+      "reference_number": 18,
+      "ieee_entry": "B. Jiang, R. Luo, J. Mao, T. Xiao, and Y. Jiang, “Acquisition of localization confidence for accurate object detection,” in Computer Vision – ECCV 2018, Lecture Notes in Computer Science, vol. 11218. Springer, 2018, pp. 816–832, doi: 10.1007/978-3-030-01264-9_48.",
+      "verification": [
+        {
+          "url": "https://link.springer.com/chapter/10.1007/978-3-030-01264-9_48",
+          "accessed": "2026-11-28",
+          "supports": [
+            "publication metadata",
+            "method scope"
+          ]
+        }
+      ],
+      "metadata_notes": [
+        "Publisher pagination retained with DOI; CVF accepted-version pagination is 784–799."
+      ],
+      "volume": "11218"
     }
   ],
   "style_guide": {

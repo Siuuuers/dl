@@ -1,6 +1,6 @@
 # Frozen score and assignment audit
 
-Status: implementation and a real three-photograph CPU smoke are complete; the published-source, all-142-photograph notebook run is still pending. Updated 28 November 2026 (Asia/Hong_Kong).
+Status: all four actual notebook cells completed on CPU from published source `7528f2f3980b7abaef0f2644c0a98d5163440f11`, including the three-photograph smoke and the complete 142-photograph audit for both checkpoints. Updated 28 November 2026 (Asia/Hong_Kong). The [execution receipt](evidence/score-assignment-r65/notebook-execution.json) records the source, runtime, unchanged cell hashes and verification results.
 
 ## Why this diagnostic comes next
 
@@ -63,10 +63,34 @@ Optional environment variables `BAOMAI_SCORE_ASSIGNMENT_BASE` and `BAOMAI_R61_CA
 
 The returned ZIP contains the source/input plan, original return manifest, driver, five result payloads and their manifest, plus the smoke summary when present. It includes neither checkpoint weights nor photographs. The payloads are `summary.json`, `targets.json.gz`, `images.json`, `groups.csv` and `results.md`.
 
-## Execution status and decision rule
+## Access to the detailed records
 
-The local real-weight smoke has completed six forward calls on CPU and passed native-input, native-assignment and frozen-state checks. This is an implementation check, not completion of the full audit. Published-source notebook execution and any all-142-image findings must be recorded separately after they actually finish.
+The [repository storage guide](evidence/score-assignment-r65/repository-storage.md) explains how to restore the exact full target-record gzip from four verified parts. The original notebook outputs, execution receipt and inventory retain their original bytes. After restoration, all original inventory hashes verify directly. This storage arrangement changes no experiment result.
 
-If assignment is present but component quality is low, inspect the contributing geometry before proposing an assignment change. If assigned anchors have high `q` but low `p`, the result motivates checking score learning at those exact anchors, without establishing its historical cause. If box-only overlap changes ownership substantially, inspect the affected fronts and their known corners before considering a controlled training comparison. If the diagnostic finds no consistent pattern, retain the current method and report the negative result.
+## Completed execution and findings
+
+The published notebook completed all four unchanged code cells in one local IPython session. It performed 284 fresh full-pass forwards and six separate smoke forwards on CPU, without an optimizer. The result contains 31,992 target records and 568 image/head records. All native-input, native-assignment and frozen-state guards passed; the 96-file source closure and all ten return-ZIP members were independently verified. This exercised the local notebook execution and file-link path, not a hosted Colab session or its browser download interface. See the [execution receipt](evidence/score-assignment-r65/notebook-execution.json), [full summary](evidence/score-assignment-r65/results/summary.json) and [complete group table](evidence/score-assignment-r65/results/groups.csv).
+
+The source contains 137 zero-known, 465 one-known and 3,397 two-known fronts. Every one of the 3,999 fronts has an eligible center, a pre-conflict candidate and a surviving assignment under both heads, both checkpoints and both overlap variants. No surviving anchor has `q = 0`, and no owner-outside-eligible event occurs in these data. This frozen, unaugmented pass therefore provides no evidence of missing assignments in any known-corner group; it does not exclude transient problems during historical augmented training.
+
+The native one-to-many head shows a clear group pattern:
+
+| Known corners | Source fronts | Control mean `p` | Control mean `q` | QFL mean `p` | QFL mean `q` |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 0 | 137 | 0.1673 | 0.2834 | 0.1926 | 0.2890 |
+| 1 | 465 | 0.5598 | 0.6262 | 0.5525 | 0.6437 |
+| 2 | 3,397 | 0.7909 | 0.8032 | 0.7464 | 0.8065 |
+
+These are means over surviving anchors, whose membership can differ between checkpoints. Lower known-corner counts coincide with lower target quality and lower predicted scores. The zero-known group's predicted scores also fall below its normalized targets on average. The one-to-one head shows the same group ordering: its zero-known mean `p/q` is `0.2242/0.6257` for the control and `0.2469/0.6388` for QFL. Such differences are descriptive and do not establish a historical learning cause or a generalization result.
+
+For one-known fronts under native one-to-many assignment, mean known-only OKS is approximately `0.985` for both checkpoints, while mean clamped CIoU is approximately `0.68`. The known-corner term therefore contributes higher overlap than the box component on these assigned anchors. In the separate box-only counterfactual, mean normalized `q` for this group falls from `0.6262` to `0.4658` for the control and from `0.6437` to `0.4771` for QFL. This comparison includes changed assignments and normalization; it is not a component-only subtraction at fixed anchors.
+
+Box-only overlap changes the surviving one-to-many anchor set for 681 control fronts and 825 QFL fronts, while all fronts remain assigned. It also changes some zero-known assignments through competition with neighboring targets, even though the zero-known target's own overlap already uses the box alone. These findings show assignment sensitivity, but do not demonstrate a benefit from removing the corner term.
+
+## Effect on the next-method decision
+
+Retain the existing recognition candidate. This audit does not support a box-only training switch or a general missing-assignment explanation for incomplete-front errors. QFL's higher zero-known mean score is accompanied by lower means in the one-known and two-known groups; its separately measured increase in extra predictions remains the relevant adverse recognition result. The audit is not grounds to promote it.
+
+If another score-learning intervention is proposed, first inspect the exact partial-front cases and their geometry, score targets and assigned anchors. The present records make that investigation possible without another training run. A later intervention would need a specific paired hypothesis and should explain how it addresses extra predictions as well as misses. No additional GPU experiment is justified solely by these group means.
 
 No result from this notebook alone promotes either returned checkpoint, changes annotations, establishes robotic-arm tolerance, or supplies evidence from a new capture session.

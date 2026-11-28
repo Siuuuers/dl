@@ -174,18 +174,10 @@ candidate's evolving predictions; it is not the separately trained control.
 [Trace definitions and totals](evidence/quality-focal-return/training-diagnostics.json) ·
 [Per-epoch values](evidence/quality-focal-return/training-by-epoch.csv).
 
-## 5. Next experiment
+## 5. Completed diagnostic and next decision
 
-The next useful step is a frozen-checkpoint score/assignment audit, without an
-optimizer. Use both returned checkpoints, the unchanged training photographs
-and labels, deterministic unaugmented inputs, and the exact native loss sources.
-Separate zero, one and two known corners; retain candidate eligibility,
-pre-conflict selection, surviving assignment, predicted p, target q, clamped
-CIoU, known-only OKS and their mixed quality. Confirm that observation leaves
-the native assignments unchanged.
+The [frozen score and assignment audit](score-assignment-audit.md) has completed all four notebook cells for both returned checkpoints and the unchanged 142 training photographs. Every one of the 3999 fronts receives an assignment in both heads and both overlap variants. The zero-, one- and two-known-corner groups remain separate. The native observer and frozen parameter/buffer checks passed.
 
-A box-only-overlap counterfactual may then describe how pose coupling changes
-assignment at the same frozen predictions. It is not a trained detector or proof
-that removing pose quality improves recognition. The current evidence does not
-justify immediately adding VFL, NWD, another detector, or another threshold sweep.
-The separate [controlled training-label comparison](training-label-results.md) is also complete. It improves agreement under the reviewed reference, while increasing duplicates and reversing rank under both older references. The [fixed-weight diagnostic guide](score-assignment-audit.md) records implementation and execution status.
+For one-known fronts, native one-to-many mean q is 0.6262 in the control and 0.6437 in QFL. The separate box-only counterfactual lowers these to 0.4658 and 0.4771, including changed anchor choices and normalization. This result does not support removing corner agreement as an obvious fix. The replay uses final checkpoints on unaugmented training images; it does not reconstruct historical optimization or predict a retrained model's accuracy.
+
+The [duplicate audit](duplicate-audit-r66.md) additionally shows that output restrictions can remove extras and duplicates while losing reviewed-reference incomplete-front matches. Its complete-pair scores alone conceal those losses. The next change should target a physically reviewed error mechanism and preserve the established task population. The [research note](research-duplicates-r66.md) gives bounded later suppression/ranking experiments and the [controlled training-label comparison](training-label-results.md) remains the strongest paired evidence for the label intervention under the reviewed reference.

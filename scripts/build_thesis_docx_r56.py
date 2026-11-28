@@ -518,7 +518,8 @@ def setup_styles(doc):
             style.paragraph_format.left_indent = Mm(8)
             style.paragraph_format.first_line_indent = Mm(-8)
             style.paragraph_format.tab_stops.add_tab_stop(Mm(8))
-            style.paragraph_format.space_after = Pt(3)
+            style.paragraph_format.space_after = Pt(1)
+            style.paragraph_format.line_spacing = 1
             style.paragraph_format.keep_together = True
         if name == "Code Block":
             style.font.name = "Courier New"

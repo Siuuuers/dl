@@ -17,7 +17,7 @@ The report is for undergraduate Final Year Project I in the Department of Electr
 | References | Section 10; external academic/professional sources in IEEE first-citation order |
 | Appendices | Section 11; three-reference scoring comparison and training/coordinate settings |
 
-All sections receive decimal numbers and contents entries. Major equations are numbered, centered editable native display mathematics; equation numbers are separate at the right margin. Symmetric borderless layout rows use automatic height and are distinct from the seven captioned data tables. The one explanatory figure and every data table have descriptive numbered captions.
+All sections receive decimal numbers and contents entries. Major equations are numbered, centered editable native display mathematics; equation numbers are separate at the right margin. Symmetric borderless layout rows use automatic height and are distinct from the eight captioned data tables. The one explanatory figure and every data table have descriptive numbered captions.
 
 The manuscript contains no GitHub links, project-note citations or unexplained experiment codes. It explains project procedures and results directly. The untouched supplied checkpoint remains the common baseline; supplied, earlier fixed and reviewed evaluation labels remain distinct. Changing evaluation labels is explicitly separated from changing training labels.
 

@@ -2,10 +2,9 @@
 
 28 November 2026. Updated after the paired training returns; no additional model training.
 
-**Decision:** the [classification-loss return](quality-focal-results.md) and [training-label return](training-label-results.md) are complete. The aggregate QFL traces show nearly complete partial-target assignment, but do not separate zero/one-corner groups or record per-target predicted scores. The focused [frozen-checkpoint diagnostic](score-assignment-audit.md) now investigates the remaining distinction between a low native supervision target and a prediction below a useful target. These are different hypotheses. The most useful new finding is that the
-pinned pose model already includes corner quality in its object-score targets.
-Adding “quality-aware classification” or “task-aligned assignment” without
-specifying a difference would repeat an existing component.
+**Decision:** the paired returns and [frozen-checkpoint diagnostic](score-assignment-audit.md) are complete. Every one of the 3999 unaugmented training fronts receives an assignment in both checkpoints, both native heads and both overlap variants. For one-known-corner fronts, the box-only counterfactual lowers mean normalized targets rather than raising them. These descriptive results do not justify an immediate box-only training switch. The [saved-output duplicate audit](duplicate-audit-r66.md) further shows that stricter output selection can remove extras while losing partial-front matches. A new intervention should address a measured error mechanism.
+
+The pinned pose model already includes corner quality in its object-score targets. Adding “quality-aware classification” or “task-aligned assignment” without specifying a difference would repeat an existing component.
 
 This note develops three bounded directions: inspect the existing assignment
 and score target; consider localization-quality ranking if the suppression
@@ -113,10 +112,11 @@ alone. These are COCO detection results.
 **Project implication:** the core alignment idea and continuous targets are
 already present, with a pose-specific overlap. Installing TOOD as an entire
 detector would not isolate the question raised by the partial-front errors.
-The useful adaptation is to inspect whether eligible incomplete targets receive
-positive anchors, whether their mixed-quality targets are low, and whether
-predicted scores fall below those targets. No such per-target finding is claimed
-here.
+The completed frozen replay now provides target-level observations: every front
+receives a surviving assignment, while normalized targets and predicted scores
+differ by known-corner group. The remaining question is how those final-checkpoint
+training-image quantities relate to particular evaluation errors; the replay
+does not establish that causal link.
 
 ### B. Localization-quality ranking: relevant to three measured NMS losses
 
@@ -169,7 +169,7 @@ and weighting together would prevent attribution. With native pose targets it wo
 varifocal-style weighting test, not the paper's IoU-aware-score reproduction.
 No parameter search or third training notebook is proposed now.
 
-## 4. One diagnostic that distinguishes these hypotheses
+## 4. Completed diagnostic and the remaining uncertainty
 
 **The aggregate diagnostics are now available.** The [QFL result](quality-focal-results.md) verifies nearly complete partial-target assignment and positive score targets for every foreground anchor. The aggregate mean targets are lower for incomplete than complete fronts, but do not identify any individual miss. The frozen QFL driver
 logs assigned/unassigned partial and full target counts, foreground anchors,
@@ -179,11 +179,12 @@ the candidate over training. A change in total loss alone cannot identify the
 source of the final errors. The present “partial” grouping combines zero and one
 known corner, so it cannot by itself test the pose-target distinction above.
 
-Those aggregates leave the per-target question open. The [new diagnostic](score-assignment-audit.md) specifies **one frozen-checkpoint,
+The [completed diagnostic](score-assignment-audit.md) adds **one frozen-checkpoint,
 no-optimizer assignment pass** on the verified training images, preserving the
-source images/labels, input transforms and checkpoint hashes. Its implementation and exact execution status are recorded in the linked guide. Record each target's source identity,
+source images/labels, input transforms and checkpoint hashes. All four notebook
+cells completed. The records retain each target's source identity,
 post-transform width/height and zero/one/two known-corner group. For each native
-branch, retain:
+branch they include:
 
 1. Candidate-center eligibility, selected candidates before conflicts, and
    surviving foreground anchors after all assignment filters.
@@ -192,13 +193,17 @@ branch, retain:
 3. Distinct counts for “no foreground anchor” and “foreground anchor but no
    positive class target.” These are not interchangeable.
 
-Use the same frozen predictions for one descriptive counterfactual: recompute
-the assignment with box-only overlap while retaining the candidate pool,
-hyperparameters and target geometry. Report changed assignments and q values
-alongside both original quality components. This isolates how the pose component
-affects the target construction at that checkpoint; it is **not** a trained
-candidate, an inference rule or evidence that removing pose alignment improves
-recognition. Do not modify the frozen GPU notebooks to collect it mid-run.
+The same frozen predictions also supply a descriptive box-only-overlap
+counterfactual, with the candidate pool, hyperparameters and target geometry
+held fixed. All 3999 fronts receive a surviving assignment in both models,
+both heads and both overlap variants. For one-known-corner targets in the
+one-to-many head, mean normalized q falls from 0.6262 to 0.4658 in the control
+and from 0.6437 to 0.4771 in the QFL model when the corner component is removed.
+These means include changes in selected anchors and target normalization.
+The counterfactual describes target construction at the final checkpoint; it
+is **not** a trained candidate, an inference rule or evidence of retrained
+recognition accuracy. The unaugmented training replay does not reconstruct
+historical stochastic training or attribute an individual evaluation miss.
 
 | Observation in that pass | Next question it supports |
 | --- | --- |
