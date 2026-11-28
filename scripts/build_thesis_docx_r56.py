@@ -924,7 +924,6 @@ def build(args):
     doc.core_properties.keywords = "cassette recognition; pose estimation; thesis"
     doc.core_properties.comments = ""
     bibliography, cover, previous_kind = False, True, None
-    appendices, appendix_started = False, False
     for block_index, block in enumerate(blocks):
         if block.kind == "title":
             doc.add_paragraph(block.text, style="Title")
@@ -933,8 +932,6 @@ def build(args):
             h = block.data
             if h["level"] == 1:
                 bibliography = h["title"].casefold() == "references"
-                appendices = h["title"].casefold() == "appendices"
-                appendix_started = False
             p = doc.add_paragraph(h["title"], style=f"Heading {h['level']}")
             if h["level"] == 1:
                 # Keep front/back matter distinct while the concise main body
@@ -942,11 +939,6 @@ def build(args):
                 p.paragraph_format.page_break_before = h["title"].casefold() in FRESH_PAGE_SECTIONS
                 if not p.paragraph_format.page_break_before:
                     p.paragraph_format.space_before = Pt(18)
-            if appendices and h["level"] == 2:
-                # Give each later appendix its own page instead of an isolated tail.
-                if appendix_started:
-                    p.paragraph_format.page_break_before = True
-                appendix_started = True
             bookmark(p, h["id"], headings.index(h) + 1)
             if h["title"].casefold() == "table of contents":
                 for item in headings:

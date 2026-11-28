@@ -1,10 +1,36 @@
 # Crop context and scale for the remaining partial fronts
 
-## Decision before the experiment
+## Completed finding and decision
 
-The next small experiment keeps the reviewed-label detector fixed and adds two overlapping crops of each photograph. One arm uses the original pixel scale. The other enlarges the same crops. This tests whether the existing model can produce useful detections from a different presentation of the same image before committing to more training.
+Keep full-image inference. The fixed crop comparison recovered few additional fronts and worsened corner outcomes. Enlargement also produced many extra outputs. All four actual notebook cells completed locally on CPU, and an independent implementation reconstructed the recorded outcomes.
 
-The [fixed protocol](evidence/crop-context-r71/protocol.json) was written before crop inference. The implementation records the source of every output, rejects boxes at artificial crop cuts and checks both detection and corner outcomes. The comparison will be evaluated under four annotation versions, with the extended 658-front reference as the primary development reference.
+The [fixed protocol](evidence/crop-context-r71/protocol.json) and source were published at `5da7aa4f903dceb1e8300234ff98aebbdff06c17` before crop inference. The [four-cell notebook](../../notebooks/baomai_crop_context_r71.ipynb) uses that immutable source. The [complete evidence](evidence/crop-context-r71/README.md) includes the predictions and decision records.
+
+| Method on the 658-front reference | Misses | Extras | Duplicates | Both corners within 5 px | Both within 10 px |
+|---|---:|---:|---:|---:|---:|
+| Fresh full-image two-view control | 18 | 50 | 14 | 572/583 | 583/583 |
+| Add crops at original scale | 17 | 51 | 11 | 572/583 | 581/583 |
+| Add enlarged crops | 17 | 106 | 44 | 566/583 | 581/583 |
+
+Original-scale crops recover one one-corner front and lose no box matches. One five-pixel pair gain and one loss cancel, while two pairs lose ten-pixel success. Enlarged crops recover two one-corner fronts and newly miss one. Four five-pixel gains and ten losses produce a net loss of six. All arms return zero outputs on the three empty photographs.
+
+The recovered fronts were previously lost at the confidence filter. Neither crop arm recovers any of the five original-view geometry failures or the one original-view NMS loss. The three restored focus misses also remain. This links the recovery to the earlier stage ledger. The retained-output archive does not identify where unsuccessful crop candidates were lost before the final outputs.
+
+### Why the corner losses matter
+
+At `new_000008/R010`, a crop record directly suppresses the baseline record. Its detection score increases while its worst corner error grows:
+
+| Selected record | Detection score | Maximum corner error |
+|---|---:|---:|
+| Full-image control | 0.8288 | 8.877 px |
+| Crop at original scale | 0.8396 | 12.542 px |
+| Enlarged crop | 0.9065 | 13.422 px |
+
+The four ten-pixel loss records across the two arms all have valid coordinates before clipping and accepted coordinates after mapping. Their losses therefore arise from the selected predictions, not from invalidating crop points. This is a concrete ordering failure, not a general measurement of score calibration.
+
+The recovered partial front `new_000008/R007` has a known-corner error of 8.402 pixels with original-scale crops and 19.882 pixels with enlarged crops. Enlarged crops also recover `new_000008/R034` with a 2.233-pixel known-corner error, but lose `new_000089/R048`, whose earlier known corner was within 1.997 pixels. Detection recovery and usable corner recovery need to be judged together.
+
+The [full four-reference matrix](evidence/crop-context-r71/results.md) also retains the adverse outcomes under earlier annotation versions. They describe sensitivity on the same photographs. The fresh CPU baseline has 14 duplicates, compared with 13 in the earlier L4 archive, and exactly reproduces the earlier CPU records. All treatment comparisons use the same fresh CPU baseline.
 
 ## What the current evidence makes worth testing
 
@@ -62,13 +88,15 @@ The model, confidence threshold, native suppression and corner acceptance thresh
 
 The first arm changes context and the number of candidates available to merging. It is not a pure measurement of context alone. Comparing the two crop arms measures resizing within this procedure, including interpolation, changed tensor and candidate counts, and padding. A difference does not by itself identify the cause of a baseline miss. Both reuse the same pixels and provide no new optical observation.
 
-## How the result will guide a decision
+## What follows from the comparison
 
-Fresh matching must report misses, extras, the duplicate subset, complete pairs within five and ten pixels, known-corner errors for partial fronts, and empty-photograph outputs. Each recovered or newly missed front retains its source identity. A lower miss count alone is insufficient if the added inference damages accurate corners or produces many extra outputs.
+Fresh matching reports misses, extras, the duplicate subset, complete pairs within five and ten pixels, known-corner errors for partial fronts, and empty-photograph outputs. Each recovered or newly missed front retains its source identity. Both candidates fail to preserve the control's corner accuracy. Neither earns the added inference cost.
 
-The fresh full-image control must reproduce the earlier CPU matching and corner outcomes before crop inference starts. The saved crop evidence covers retained native outputs, their pre-clipping coordinates and every filter and merge decision. It does not inventory low-confidence decoded candidates.
+The fresh full-image control reproduced every earlier CPU record before crop inference started. The saved crop evidence covers retained native outputs, their pre-clipping coordinates and every filter and merge decision. It does not inventory low-confidence decoded candidates.
 
-The [earlier experiment review](research-next-models.md) already covers partial-image sampling, partial box and classification weighting, synthetic occlusion, larger whole-image inference, Soft-NMS and a one-to-one detection head. R71 asks a different bounded question. Its outcomes will decide whether crops deserve further work, with no automatic change to the selected method.
+The [earlier experiment review](research-next-models.md) already covers partial-image sampling, partial box and classification weighting, synthetic occlusion, larger whole-image inference, Soft-NMS and a one-to-one detection head. R71 asks a different bounded question and now supplies a measured reason to retain full-image inference at these settings. Another crop or threshold sweep is a lower priority than representative real partial-front and difficult-background examples.
+
+A useful next data comparison would add examples from new capture sessions while holding optimizer updates and total image presentations fixed. Preserve a separate capture group for evaluation. Include small complete fronts, identifiable partial fronts with zero or one locatable corner, and visually confusing background. Annotate each actual visible corner using the written definition. The sampling proportions should follow the captured failure distribution, rather than being chosen to fit these 20 photographs.
 
 ## References
 

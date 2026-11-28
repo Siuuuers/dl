@@ -41,6 +41,7 @@ A final suppression rule uses agreement between predicted corners to remove six 
   - [7.6 Including identifiable partial fronts](#76-including-identifiable-partial-fronts)
   - [7.7 Remaining misses and reflected detections](#77-remaining-misses-and-reflected-detections)
   - [7.8 Using corner agreement in suppression](#78-using-corner-agreement-in-suppression)
+  - [7.9 Effect of overlapping crops](#79-effect-of-overlapping-crops)
 - [8 Discussions](#8-discussions)
   - [8.1 Findings and interpretation](#81-findings-and-interpretation)
   - [8.2 Further work](#82-further-work)
@@ -189,7 +190,7 @@ Evaluation uses input size 1280, object confidence strictly above 0.25, corner c
 
 The supplied and proposed methods were run on all 20 photographs in the same environment using 32-bit tensors. Both views are filtered before association. The proposed method averages corners for 648 of 687 original-view detections. The local models use the same detector outputs and evaluation thresholds.
 
-The main comparisons use the 654-front reviewed annotations. Sections 7.6–7.8 use the 658-front extension. The appendices report results under the earlier annotation versions and give the computing settings.
+The main comparisons use the 654-front reviewed annotations. Sections 7.6–7.9 use the 658-front extension. The appendices report results under the earlier annotation versions and give the computing settings.
 
 ### 5.5 Controlled comparisons
 
@@ -197,7 +198,7 @@ Two paired training experiments use the same starting checkpoint, image order, s
 
 The first changes classification loss on the same 142 photographs and 3999 fronts. Quality Focal Loss gives more relative weight to predictions farther from their quality targets [15]. The cassette implementation already derives targets from box and known-corner agreement. The candidate multiplies each binary cross-entropy term by the squared score–target difference. Assignment rules and other losses stay the same. This also reduces the total classification-loss scale, so the experiment tests both the weighting and its strength relative to the other objectives.
 
-The second changes only the training annotations on the same 137 supplied photographs. Supplied and reviewed labels contain 3772 and 3784 fronts, with differences in 92 files. Both runs use the same 13 empty images and exclude the five supplementary photographs. This comparison measures the effect of the label revision during fine-tuning.
+The second changes only the training annotations on the same 137 supplied photographs. Supplied and reviewed labels contain 3772 and 3784 fronts, with differences in 92 files. Both runs use the same 13 empty images and exclude the five supplementary photographs. This comparison measures the effect of the label revision during fine-tuning from a shared supplied checkpoint.
 
 Both experiments report detection and corner outcomes at the common operating thresholds. The classification comparison also reports original-view AP50, which summarises precision across recall levels at matching IoU 0.50. It uses 101 recall levels, a preset score floor of 0.001 and at most 300 predictions per image. Appendix 11.2 records the computing settings according to PyTorch's reproducibility guidance [16].
 
@@ -205,7 +206,9 @@ Further diagnostics hold the trained models fixed. A replay without augmentation
 
 Output comparisons test three ways to remove extras: require a reflected partner, add suppression above IoU 0.60, or add suppression above 0.50. A separate test adds reflected detections without a mutual box partner, then applies the usual suppression above 0.70. Added detections retain their own corners and scores and can suppress an original detection.
 
-The final rule uses corner agreement to guide removal. RMPE compares estimated human poses to suppress repeated detections [17]. The cassette rule removes a lower-scoring output only when box IoU exceeds 0.60, both outputs have two accepted corners, and each pair of corresponding corners is at most five pixels apart. It uses Equation (1) for box overlap and the distance calculation in Equation (3) between predictions. The thresholds were fixed before the comparison. Every output rule uses predictions alone and is evaluated by fresh matching to the annotations.
+A further rule uses corner agreement to guide removal. RMPE compares estimated human poses to suppress repeated detections [17]. The cassette rule removes a lower-scoring output only when box IoU exceeds 0.60, both outputs have two accepted corners, and each pair of corresponding corners is at most five pixels apart. It uses Equation (1) for box overlap and the distance calculation in Equation (3) between predictions. The thresholds were fixed before the comparison. Every output rule uses predictions alone and is evaluated by fresh matching to the annotations.
+
+AutoFocus identifies false detections caused by objects cut at crop boundaries [18]. A fixed cassette comparison adds two overlapping full-height crops, first at their original scale and then enlarged. Boxes within one pixel of an artificial cut are rejected. Valid crop coordinates are mapped back to the photograph, and score-ranked suppression selects complete box-and-corner records from the pooled predictions. This tests local image presentation while keeping the detector fixed.
 
 ## 6 Simulation Results
 
@@ -366,6 +369,22 @@ The corner condition removes six extras, including two duplicates, and preserves
 
 The same rule increases misses from 50 to 51 for the supplied-label model, removing a useful prediction whose known corner was within two pixels. The outcome therefore depends on the model's predictions. For the reviewed-label model, it provides a small improvement using corners the system already predicts.
 
+### 7.9 Effect of overlapping crops
+
+Table 10 tests the reviewed-label model with two additional cropped views per photograph. The fresh CPU control reproduces the earlier CPU outputs, including its 14 duplicates.
+
+Table 10. Fixed crop comparison on the 658-front reference. Each corner column counts successes among 583 complete pairs. Duplicates are included in extras.
+
+| Input views | Misses | Extras | Duplicates | Within 5 pixels | Within 10 pixels |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Full images | 18 | 50 | 14 | 572 | 583 |
+| Add crops at original scale | 17 | 51 | 11 | 572 | 581 |
+| Add enlarged crops | 17 | 106 | 44 | 566 | 581 |
+
+Crops at the original scale recover one partial front, but two previously successful corner pairs exceed ten pixels. Enlarged crops recover two fronts and lose one, add 56 extras and reduce five-pixel pair successes by six. Neither arm recovers the five fronts without an eligible full-image candidate box. Every arm produces zero detections on the three empty photographs.
+
+A higher detection score can select worse corners during merging. For one front, the maximum corner error rises from 8.88 pixels to 12.54 with original-scale crops and 13.42 with enlarged crops, despite increasing detection confidence. The small detection gain comes with worse corner accuracy, so the method retains full-image inference.
+
 ## 8 Discussions
 
 ### 8.1 Findings and interpretation
@@ -384,15 +403,15 @@ The proposed method produces no detections on the three evaluation photographs w
 
 ### 8.2 Further work
 
-The fixed-model diagnostic finds assignments for all training fronts and shows that corner agreement can raise targets for one-corner fronts. The output audit shows that stricter selection loses some detected incomplete fronts. The next change should therefore address an observed separation, box-geometry or score-ordering problem and measure its cost across all these outcomes.
+The frozen classification-loss models assign all their training fronts and show that corner agreement can raise targets for one-corner fronts. The output audit shows that stricter selection loses some detected incomplete fronts. The next change should therefore address an observed separation, box-geometry or score-ordering problem and measure its cost across all these outcomes.
 
 The reviewed-label proposal trace now identifies confidence and box geometry as the main sources of remaining misses. Its original-view candidates above the existing cutoff support at most 641 reference matches, compared with 640 after suppression. Changing only suppression within that fixed pool can therefore recover at most one further front. A focused comparison of representative partial-front training examples would address the larger group of low-scoring or poorly bounded fronts. The training-label size counts help identify which small, narrow examples to examine.
 
-Soft-NMS reduces overlapping proposals' scores instead of deleting them immediately [18]. An earlier cassette test of linear Soft-NMS, at confidence above 0.13 and suppression IoU 0.70, recovered no missed fronts and removed one final unmatched output. Its outputs before the common post-clipping filter also recovered no fronts. At those settings, the remaining suppression conflicts point towards the ordering of competing boxes.
+Soft-NMS reduces overlapping proposals' scores instead of deleting them immediately [19]. An earlier cassette test of linear Soft-NMS, at confidence above 0.13 and suppression IoU 0.70, recovered no missed fronts and removed one final unmatched output. Its outputs before the common post-clipping filter also recovered no fronts. At those settings, the remaining suppression conflicts point towards the ordering of competing boxes.
 
-IoU-Net predicts localization quality to guide which competing box survives [19]. This is relevant when a higher-scoring but poorly placed box suppresses an eligible alternative. A cassette adaptation would add a learned ranking component. It would need to improve detection while preserving corner accuracy to earn that complexity.
+IoU-Net predicts localization quality to guide which competing box survives [20]. This is relevant when a higher-scoring but poorly placed box suppresses an eligible alternative. A cassette adaptation would add a learned ranking component. It would need to improve detection while preserving corner accuracy to earn that complexity.
 
-The five supplementary photographs form a separate data question. A matched training comparison using the same checkpoint, label policy and optimizer would measure their contribution to recognition.
+The crop comparison finds little useful recovery and worsens corner accuracy. The five supplementary photographs mainly add complete fronts, with only eight one-corner examples and none without known corners. More representative real partial fronts and confusing background examples are therefore the next data priority. A controlled training comparison should hold optimizer updates and image presentations fixed, then measure gains on photographs from a separate capture session.
 
 For local refinement, comparing detector errors on training photographs with errors on new captures would help choose representative correction examples. Proposals from detectors whose full training histories exclude the refiner's photographs would supply errors on unseen images, including exclusion from the starting checkpoint's data. PoseFix offers another approach through synthetic errors derived from measured patterns [7]. Both approaches focus the training inputs on the mistakes the refiner is intended to correct.
 
@@ -402,7 +421,7 @@ The developed method combines reviewed training annotations, detector fine-tunin
 
 None of the three learned local corner models exceeds the proposed method. Coordinate correction slightly lowers mean error but reduces five-pixel success relative to its input. Quality Focal Loss recovers six fronts over its paired native control while adding 34 extras, with almost unchanged AP50.
 
-Changing training labels on 137 photographs gives 32 fewer misses, 34 fewer extras and 31 more five-pixel successes under the reviewed reference. Duplicates increase, and older references favour supplied-label training. Restoring four identifiable partial fronts in a separate reference adds three misses and removes one extra for every method, preserving their relative differences. The fixed-model replay assigns every training front. Stricter box suppression loses incomplete fronts, while adding reflected detections increases coverage and extras. Requiring corner agreement before stricter suppression removes six extras, including two duplicates, from the reviewed-label model without changing its matches or corner results. This model-specific improvement uses already available predictions. The comparisons establish a practical selection rule: judge each change by misses, extras, duplicates and corner accuracy together.
+Changing training labels on 137 photographs gives 32 fewer misses, 34 fewer extras and 31 more five-pixel successes under the reviewed reference. Duplicates increase, and older references favour supplied-label training. Restoring four identifiable partial fronts in a separate reference adds three misses and removes one extra for every method, preserving their relative differences. The fixed-model replay assigns every training front. Stricter box suppression loses incomplete fronts, while adding reflected detections increases coverage and extras. Requiring corner agreement before stricter suppression removes six extras, including two duplicates, from the reviewed-label model without changing its matches or corner results. This model-specific improvement uses already available predictions. Adding overlapping crops gives little net detection recovery while reducing corner accuracy. The comparisons establish a practical selection rule: judge each change by misses, extras, duplicates and corner accuracy together.
 
 ## 10 References
 
@@ -440,17 +459,19 @@ Changing training labels on 137 photographs gives 32 fewer misses, 34 fewer extr
 
 [17] H.-S. Fang, S. Xie, Y.-W. Tai, and C. Lu, “RMPE: Regional multi-person pose estimation,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), 2017, pp. 2334–2343. [Online]. Available: https://openaccess.thecvf.com/content_ICCV_2017/papers/Fang_RMPE_Regional_Multi-Person_ICCV_2017_paper.pdf
 
-[18] N. Bodla, B. Singh, R. Chellappa, and L. S. Davis, “Soft-NMS — Improving object detection with one line of code,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), 2017, pp. 5562–5570, doi: 10.1109/ICCV.2017.593.
+[18] M. Najibi, B. Singh, and L. S. Davis, “AutoFocus: Efficient multi-scale inference,” in Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV), 2019, pp. 9745–9755. [Online]. Available: https://openaccess.thecvf.com/content_ICCV_2019/papers/Najibi_AutoFocus_Efficient_Multi-Scale_Inference_ICCV_2019_paper.pdf
 
-[19] B. Jiang, R. Luo, J. Mao, T. Xiao, and Y. Jiang, “Acquisition of localization confidence for accurate object detection,” in Computer Vision – ECCV 2018, Lecture Notes in Computer Science, vol. 11218. Springer, 2018, pp. 816–832, doi: 10.1007/978-3-030-01264-9_48.
+[19] N. Bodla, B. Singh, R. Chellappa, and L. S. Davis, “Soft-NMS — Improving object detection with one line of code,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), 2017, pp. 5562–5570, doi: 10.1109/ICCV.2017.593.
+
+[20] B. Jiang, R. Luo, J. Mao, T. Xiao, and Y. Jiang, “Acquisition of localization confidence for accurate object detection,” in Computer Vision – ECCV 2018, Lecture Notes in Computer Science, vol. 11218. Springer, 2018, pp. 816–832, doi: 10.1007/978-3-030-01264-9_48.
 
 ## 11 Appendices
 
 ### 11.1 Sensitivity to the annotation reference
 
-All three references describe the same 20 photographs. Supplied labels contain 664 fronts, earlier fixed labels 666, and reviewed labels 654. Table 10 gives complete-pair counts.
+All three references describe the same 20 photographs. Supplied labels contain 664 fronts, earlier fixed labels 666, and reviewed labels 654. Table 11 gives complete-pair counts.
 
-Table 10. Effect of changing the scoring reference while keeping predictions fixed. Each arrow shows the supplied model followed by the proposed method. Corner-success denominators are the complete-pair counts in the first column.
+Table 11. Effect of changing the scoring reference while keeping predictions fixed. Each arrow shows the supplied model followed by the proposed method. Corner-success denominators are the complete-pair counts in the first column.
 
 | Annotation reference | Misses | Extra predictions | Within 5 pixels | Within 10 pixels |
 | --- | ---: | ---: | ---: | ---: |
@@ -464,7 +485,9 @@ The proposed method loses seven five-pixel successes under supplied labels and n
 
 The common inference rerun used Python 3.12.14, PyTorch 2.9.0+cpu, and Ultralytics 8.4.182.
 
-The later reviewed-label proposal trace used PyTorch 2.10.0+cpu with the same Ultralytics version and 32-bit inference. Compared with its archived L4 outputs, matched-front status, corner availability and five- and ten-pixel outcomes agree under all four references. One extra changes category to a duplicate under the reviewed references, giving 14 instead of 13 duplicates. The fixed corner condition removes six outputs in each runtime, leaving 44 extras and respectively 12 or 11 duplicates. The recorded environment therefore accompanies each result.
+The later reviewed-label proposal trace and crop comparison used PyTorch 2.10.0+cpu with the same Ultralytics version and 32-bit inference. Compared with its archived L4 outputs, matched-front status, corner availability and five- and ten-pixel outcomes agree under all four references. One extra changes category to a duplicate under the reviewed references, giving 14 instead of 13 duplicates. The fixed corner condition removes six outputs in each runtime, leaving 44 extras and respectively 12 or 11 duplicates. The recorded environment therefore accompanies each result.
+
+The crop windows span x = 0–768 and x = 512–1280 over the full 720-pixel height. Their 256-pixel overlap retains local context around each artificial cut. The two arms use inputs of 768 and 1280, giving crop scale factors of 1 and 5/3. Corner coordinates outside a crop before native clipping become unavailable. The comparison changes context and candidate exposure, with enlargement adding interpolation and more candidate locations. It reuses the existing photograph.
 
 The paired classification-loss experiment used one NVIDIA A100-SXM4-40GB. The paired training-label experiment used one NVIDIA L4. Both used Python 3.13.16, PyTorch 2.14.1+cu130 and Ultralytics 8.4.182, with the same recorded runtime for both arms of each pair. Mixed-precision training was disabled. Classification inference explicitly disabled TensorFloat32. These settings document the matched computing conditions used for the comparisons [16].
 
@@ -478,14 +501,12 @@ The correction model uses an NVIDIA L4 with the same optimizer, learning-rate sc
 
 ### 11.3 Training-label results under all references
 
-Table 11 holds each evaluation reference fixed and compares supplied-label training with reviewed-label training. Both models use two-view averaging. All three rows rescore the same 20 photographs, providing three reference-sensitive comparisons.
+Table 12 holds each evaluation reference fixed and compares supplied-label training with reviewed-label training. Both models use two-view averaging. All three rows rescore the same 20 photographs, providing three reference-sensitive comparisons.
 
-Table 11. Training-label intervention under all three evaluation references. The first column gives the complete-pair denominator for both corner columns.
+Table 12. Training-label intervention under all three evaluation references. The first column gives the complete-pair denominator for both corner columns.
 
 | Evaluation reference | Misses | Extra predictions | Within 5 pixels | Within 10 pixels |
 | --- | ---: | ---: | ---: | ---: |
 | Supplied, 584 pairs | 34 → 50 | 62 → 76 | 531 → 513 | 572 → 566 |
 | Earlier fixed, 584 pairs | 23 → 38 | 49 → 62 | 544 → 523 | 584 → 575 |
 | Reviewed, 583 pairs | 47 → 15 | 85 → 51 | 541 → 572 | 566 → 583 |
-
-These results measure the frozen training-label revision during adaptation from a shared supplied checkpoint. Both arms use the same photographs and retain the checkpoint's common earlier training exposure.

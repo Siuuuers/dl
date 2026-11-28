@@ -10,7 +10,9 @@ The Word report uses six centered display equations with separate right-aligned 
 
 ## Completed comparisons and diagnostics
 
-The **[notebook guide](experiments.md)** records the completed GPU comparisons and focused CPU experiments. The latest [current-checkpoint trace and corner-condition comparison](research-detection-decisions-r69.md) adds verified full-proposal evidence and a small measured output improvement.
+The **[notebook guide](experiments.md)** records the completed GPU comparisons and focused CPU experiments. The [current-checkpoint trace and corner-condition comparison](research-detection-decisions-r69.md) adds verified full-proposal evidence and a small measured output improvement.
+
+The latest **[crop context and scale comparison](research-crop-context-r71.md)** adds two overlapping local views at fixed sizes. Original-scale crops give one fewer miss but two fewer ten-pixel pair successes. Enlarged crops increase extras from 50 to 106 and duplicates from 14 to 44 while reducing five-pixel pair successes from 572 to 566. The [four-cell CPU notebook](../../notebooks/baomai_crop_context_r71.ipynb) is complete, with [independent verification and full results](evidence/crop-context-r71/README.md). These findings support retaining full-image inference and prioritizing representative real partial-front examples.
 
 The **[R69 four-cell notebook](../../notebooks/baomai_current_proposals_r69.ipynb)** has completed from source `41d0e6937c695377373cc55071ffb780345870ee`. The reviewed-label model's 18 r67 original-view misses comprise 12 confidence failures, five geometry failures and one native-suppression loss. The [corner condition](evidence/corner-suppression-r69/README.md) reduces its archived extras from 50 to 44 and duplicates from 13 to 11 while preserving every match and known-corner outcome under all four references. The [fresh CPU trace](evidence/current-proposals-r69/README.md) confirms the same extra reduction, with the measured runtime duplicate-category difference recorded separately. The [citation update](citation-audit-r69.md) explains the applied RMPE connection and the purpose of each equation.
 
@@ -61,6 +63,8 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Annotation definition](../annotation-definition.md) | Practical labeling decisions and unresolved-case handling |
 | [Annotation research](research-annotation-definition.md) | Primary sources and a proposed repeatability measurement |
 | [Notebook guide](experiments.md) | Two completed GPU comparisons and the focused CPU diagnostics, with execution status |
+| [Crop context and scale research](research-crop-context-r71.md) | Completed two-scale crop comparison, applied literature and next data priority |
+| [Crop notebook and evidence](evidence/crop-context-r71/README.md) | Four actual CPU cells completed, complete archive and standalone independent replay |
 | [Current-model and suppression research](research-detection-decisions-r69.md) | Completed raw stages, fixed corner rule and four primary research directions |
 | [Current-model notebook](../../notebooks/baomai_current_proposals_r69.ipynb) | Four actual CPU cells completed from the published R69 source |
 | [Current-model evidence](evidence/current-proposals-r69/README.md) | Full decoded proposals, native lineage, runtime comparisons and independent verification |

@@ -2,10 +2,11 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-Both paired GPU experiments have returned. Their saved outputs and training receipts have been independently verified, so there is no need to rerun them merely to obtain the reported comparisons. The score-target, duplicate-audit and partial-front inclusion analyses have also completed. The latest R69 notebook completes fresh current-checkpoint inference and a separate fixed corner-conditioned suppression comparison. Both analyses are verified, and all four notebook cells have run unchanged.
+Both paired GPU experiments have returned. Their saved outputs and training receipts have been independently verified, so there is no need to rerun them merely to obtain the reported comparisons. The score-target, duplicate-audit and partial-front inclusion analyses have also completed. The latest R71 notebook tests fixed overlapping crops with the reviewed-label checkpoint. All four actual cells completed on CPU, and independent replay verifies the results. Neither crop arm preserves the control's corner accuracy, so no GPU run is needed to obtain this comparison.
 
 | Role | Notebook | Question | Runtime and status |
 | --- | --- | --- | --- |
+| Completed frozen crop comparison | [Crop context and scale](../../notebooks/baomai_crop_context_r71.ipynb) | Do two local views recover partial fronts while preserving detections and corners? | All four actual CPU cells completed from source 5da7aa4f903dceb1e8300234ff98aebbdff06c17. [Evidence](evidence/crop-context-r71/README.md) and [interpretation](research-crop-context-r71.md). |
 | Completed current-model trace and corner comparison | [Current proposals and corner suppression](../../notebooks/baomai_current_proposals_r69.ipynb) | Where does the reviewed-label model lose eligible boxes, and can corner agreement remove extras while keeping matches? | All four actual CPU cells completed from source 41d0e6937c695377373cc55071ffb780345870ee. [Trace evidence](evidence/current-proposals-r69/README.md) and [corner results](evidence/corner-suppression-r69/README.md). |
 | Completed diagnosis and fixed output comparison | [Partial-front detection](../../notebooks/baomai_partial_detection_r68.ipynb) | Where do the three restored misses lose eligible boxes, and what does adding unused reflected outputs recover or add? | CPU analysis and independent verification complete. [Research and interpretation](research-partial-detection-r68.md), [full results](evidence/partial-detection-r68/results.md). |
 | Completed reference replay | [Partial-front inclusion](../../notebooks/baomai_partial_inclusion_r67.ipynb) | How do four restored fronts change the scores of six unchanged methods and the interpretation of existing fixed filters? | All four actual CPU cells completed locally from pinned source and preseeded archives; [guide and evidence](partial-inclusion-r67.md). |
@@ -17,6 +18,14 @@ Both paired GPU experiments have returned. Their saved outputs and training rece
 | Completed diagnostic | [Training-augmentation audit](../../notebooks/baomai_augmentation_audit_r63.ipynb) | How do the existing transforms affect target retention and corner availability? | CPU; all four unchanged cells completed from published source; [evidence](evidence/augmentation-audit/README.md). |
 
 ## Latest completed experiment
+
+The [crop notebook](../../notebooks/baomai_crop_context_r71.ipynb) reproduces the existing two-view control, then adds two fixed full-height crops at their original scale and at enlargement 5/3. It rejects boxes at artificial crop boundaries, maps whole pose records back to the photograph and applies the existing merge suppression. The [protocol](evidence/crop-context-r71/protocol.json) was published before inference.
+
+Under the 658-front reference, the fresh CPU control gives 18 misses, 50 extras and 14 duplicates, with 572/583 complete pairs within five pixels and 583/583 within ten. Original-scale crops give 17 misses, 51 extras and 11 duplicates, with 572 and 581 pair successes. Enlarged crops give 17, 106 and 44, with 566 and 581. All three empty photographs remain empty. Neither candidate preserves the control's corner accuracy.
+
+The [independent verification](evidence/crop-context-r71/independent-verification.json) reconstructs all native crop mappings, merge decisions and four-reference outcomes. The complete 3,322,927-byte ZIP and a standalone replay are in the [evidence guide](evidence/crop-context-r71/README.md). All four unchanged cells ran locally from clean pinned source and preseeded, hash-verified inputs. Reproduction is optional and requires CPU inference only.
+
+## Completed current-model trace and corner comparison
 
 The [R69 notebook](../../notebooks/baomai_current_proposals_r69.ipynb) uses one frozen reviewed-label checkpoint and the same 20 photographs. It captures all decoded FP32 proposals in both views, verifies their native reconstruction, and records the first stage that removes each front's eligible support. A separate companion compares one fixed corner condition on five saved methods and four references.
 
