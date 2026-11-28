@@ -1,0 +1,29 @@
+{
+  "schema": "partial-detection-r68-fixed-protocol-v1",
+  "base_commit": "475a9dea5d1cc0dcb61bf1b11235b54d18289819",
+  "status": "Fixed after stage and missed-target support inspection, before full union scoring",
+  "focus_historical_ids": ["r34/new_000009/R056", "r37/new_000009/R052", "r37/new_000053/R001"],
+  "diagnostic": "Trace the three restored misses through only the saved stages available for each checkpoint; report geometry, scores, finite-pool coverage bounds and descriptive training-label size support.",
+  "baseline": "Unchanged completed original-view detections with existing associated-corner averaging",
+  "variant": "unpaired_reflection_union",
+  "addition_rule": "Append every postclip reflected-view output whose index is unused by every existing mutual box association. A link remains used even when either corner pair is unavailable.",
+  "selection": "Apply the existing postclip NMS to the complete appended pool, in descending original confidence and pool-index tie order, suppressing same-class IoU strictly greater than 0.70. No new output cap.",
+  "preserved": "Original boxes, scores and completed corner coordinates; reflected records already inverted to original-image coordinates; confidence strictly greater than 0.25 and endpoint confidence at least 0.50.",
+  "references": ["r50", "r67", "supplied664", "frozen666"],
+  "methods": ["historical_retained", "pr157_native", "pr157_qfl", "pr158_original_labels", "pr158_reviewed_labels"],
+  "support_gate": {
+    "historical_retained": {"missed_targets_with_unpaired_support": 6, "supported_after_fixed_nms": 5},
+    "pr157_native": {"missed_targets_with_unpaired_support": 7, "supported_after_fixed_nms": 6},
+    "pr157_qfl": {"missed_targets_with_unpaired_support": 4, "supported_after_fixed_nms": 4},
+    "pr158_original_labels": {"missed_targets_with_unpaired_support": 2, "supported_after_fixed_nms": 2},
+    "pr158_reviewed_labels": {"missed_targets_with_unpaired_support": 9, "supported_after_fixed_nms": 8}
+  },
+  "support_caveat": "These are geometric eligibility counts on baseline r67 misses, not measured recovery. None of the three focus targets has surviving eligible unpaired support. The QFL reflected lower009 box is already paired and is not added.",
+  "selection_uses_reference": false,
+  "threshold_search": false,
+  "model_inference": false,
+  "training": false,
+  "labels_changed": false,
+  "automatic_promotion": false,
+  "scope": "Exploratory saved-output experiment on repeatedly used development photographs; do not infer new-capture generalization or complete current-checkpoint pre-NMS behavior."
+}
