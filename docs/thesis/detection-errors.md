@@ -82,7 +82,7 @@ The [probe evidence](evidence/reflected-anchor/README.md) includes all twelve me
 
 ## 4. Correct pairs among returned outputs
 
-The complete-pair success denominator answers how many eligible reference fronts receive accurate pairs. Automatic software also needs to know what is contained in all returned pairs. Reusing the existing accepted-pair diagnostic at corner confidence at least 0.50 gives:
+The complete-pair success denominator answers how many eligible reference fronts receive accurate pairs. Assessing the complete model output also requires examining all returned pairs. Reusing the existing accepted-pair diagnostic at corner confidence at least 0.50 gives:
 
 | Reviewed reference | Retained method | Reflected-box method |
 | --- | ---: | ---: |
@@ -112,7 +112,7 @@ The annotation definition is documented, but an independent repeatability study 
 
 The 20 photographs have guided repeated review and method selection. They remain development data. A new split of the original training photographs cannot by itself create an unseen evaluation if initialization still uses the supplied checkpoint trained on those photographs. Future group-held-out or out-of-fold experiments must exclude each held-out group from the entire checkpoint training history. This follows from leakage control [6]; it does not invalidate the prepared conditional fine-tuning comparison, whose starting checkpoint is intentionally identical in both arms.
 
-The remaining output-interface choice is whether automatic downstream software can explicitly receive a detected front without a trusted coordinate pair. That choice affects a later acceptance stage. It does not require changing the current detection target or guessing missing annotation coordinates.
+On 28 November 2026, the user clarified that only the supplied baomai guidance and materials are available. No separate downstream interface specification has been supplied. The [recorded scope](requirements.md#available-requirements-and-downstream-scope) retains cassette-front detection, two-corner estimation and the existing evaluation rules. Baomai's missing annotation slots and independent endpoint display checks do not establish an automatic consumer's acceptance contract. The prepared experiments can proceed without a new output interface or acceptance stage; physical positioning and downstream integration remain unevaluated.
 
 ## References
 

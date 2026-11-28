@@ -24,3 +24,11 @@ The manuscript contains no GitHub links, project-note citations or unexplained e
 Physical units are metric; image errors use pixels. The document uses Letter portrait, 25 mm margins, Times New Roman 12-point body text and 1.15 line spacing. Front matter, Introduction, References and Appendices start on fresh pages; the main body flows between sections.
 
 The [validation record](report-validation-fyp-i.json) is authoritative for final page/word counts, heading/reference counts, artifact hashes, contents page map, equation geometry and all-page visual inspection. An institutional template can be applied later.
+
+## Available requirements and downstream scope
+
+On 28 November 2026, the user clarified that the supplied baomai guidance and materials are the available requirements; no separate downstream interface specification has been supplied. The study therefore retains the existing cassette-front detection and two lower-corner estimation task, its annotation rules, and the declared image-space evaluation. Robot positioning remains application motivation, not a verified integration or grasp-success result.
+
+The inspected [baomai README](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/README.md), [annotation guidance](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md), and [viewer](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/scripts/view_d405_yolo.py) distinguish annotation availability from model output. Unlocatable annotation points use `0 0 0`; the viewer checks each predicted endpoint independently and draws a connecting line only when both pass. Its raw prediction records still carry two coordinate/score slots. These conventions do not establish a downstream API rule for missing predictions, a compulsory complete pair for every detection, or a physical acceptance tolerance.
+
+Continue the prepared model and training-label comparisons under their frozen protocols. This clarification requires no architecture change, new acceptance stage, or additional interface question before those experiments. Any later downstream specification can define its own output and acceptance requirements explicitly.

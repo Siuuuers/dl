@@ -12,6 +12,8 @@ This technical companion maps the report's descriptive names to reproducible rec
 
 All three label sets describe the same 20 photographs. The [upstream provenance receipt](evidence/annotation-reference/upstream-provenance.json) verifies the byte-identical supplied manifest and every original validation-label hash. The supplied validation labels also monitored detector training; they are not the earlier fixed 666-front set.
 
+The current upstream `baomai` branch was rechecked at commit `351eb3cf960ccc34829e2bc72e1fa4645acc6295`. Its [README](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/README.md) describes live display, recording and snapshots. The [data guidance](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md) defines two corner slots with independent missing-point labels. The [viewer](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/scripts/view_d405_yolo.py) gates point rendering independently but preserves both returned keypoint slots in snapshots. These conventions do not specify a downstream consumer interface or physical acceptance tolerance. Section 3.1 now records those requirements as unspecified, following the user's clarification that only the upstream guidance is available.
+
 - Supplied checkpoint SHA-256: e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e.
 - Adapted detector SHA-256: 222bf3c91a651183047a10eb1a50e16ae8fe999f15372afe005bfca2d0b157f9.
 - Residual correction checkpoint SHA-256: 19c7e95aca0019c3b1eb60de4c36c6ecd30d35fdcaaa103606cdd7d553f7006a.

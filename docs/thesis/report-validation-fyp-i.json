@@ -5,9 +5,9 @@
   "status": "passed",
   "title": "Cassette Front Detection and Corner Localization",
   "audience": "Undergraduate Final Year Project I, Department of Electronic Engineering",
-  "report_source_sha256": "dcceb60a8116f07757893c303df9eb50f7d0cce5b7e80655df7857474d56dae0",
+  "report_source_sha256": "2da9dbcf818c58a1ae748feab3da6bd5d6a897c5d75d6149d5d7eb511c9d7005",
   "docx_filename": "cassette-vision-fyp-i-report.docx",
-  "docx_sha256": "2260809196d6957444cccef192d86063e56f14fccdefd29e31bc2a2e352ad068",
+  "docx_sha256": "728c632bcf8bd6f81b4b096efd33a6dfc76482bbac9cd62a646a8dd259662bc8",
   "pages": 15,
   "abstract_words": 222,
   "decimal_headings_in_contents": 25,
@@ -53,7 +53,8 @@
     "automatic_output_denominator_separated": true,
     "reflected_anchor_exploratory_tradeoff_preserved": true,
     "training_comparison_results_not_claimed": true,
-    "starting_weight_exposure_caveat_included": true
+    "starting_weight_exposure_caveat_included": true,
+    "downstream_interface_not_assumed": true
   },
   "heading_page_map": {
     "hdg_1": 2,
@@ -325,7 +326,7 @@
       }
     ],
     "receipt": "equation-layout-validation-r62.json",
-    "receipt_sha256": "bb1a2d026e0d242d973407d73268079b50842dbdb59e53ea78cc0ebc8540147a"
+    "receipt_sha256": "9e0d14c30bc06485cd6a7241fab9198fff48cdc9e821e79b276b5c11de1166c4"
   },
   "visual_review": {
     "pages_checked": [
@@ -345,7 +346,7 @@
       14,
       15
     ],
-    "method": "Opened every page PNG at full image resolution in this session. Final pages 1, 2 and 4 through 9 are byte-identical to the already inspected first render; final contents and pages 10 through 15 were opened separately. Every page was checked for clipping, overlap, missing glyphs, table flow and equation layout.",
+    "method": "Every page PNG was visually inspected at full image resolution in this session. After the downstream-interface clarification, fourteen of the fifteen final page PNGs were byte-identical to the fully reviewed preceding render; only page 4 changed and was reopened and checked. Every page was checked for clipping, overlap, missing glyphs, table flow and equation layout.",
     "remaining_issues": [],
     "layout_adjustments": [
       "Replace inline tab-positioned equations with native centered display math in symmetric borderless layout rows.",
@@ -360,7 +361,7 @@
       "1": "9f7b5e937e5e05281044989d90471b41fb9d5fc2817bf67a4ef4e58698dd539f",
       "2": "fceda83ffd23553f49d6d30033817d53f977d0362ce988d926411d210ce55c5f",
       "3": "c8f64f8bcc2808088dd17d4dc41d553b7706139c9e5d34247f860423b6f7c68d",
-      "4": "43b3ab493ce9e53cb12dad811d1a2a12625e2ab95b4a13101411981060a18a24",
+      "4": "adc9848fc0162cd9c4b813aeeb5401fd20c68fccd4344bf0687eb6d23d4b3f8e",
       "5": "4ee60db8fb6fb3de23b2dd6a5560802157b763255c3af9d27ba0c1a20c0f8a10",
       "6": "81e437662628088342457f412cee25007f4eaff9428290aa8e36d5e36715292b",
       "7": "247ddcef879faf2f3b667bd46dfa2b1d7163e53a1abf0bae6918c9230f80dae0",
@@ -397,8 +398,8 @@
   "source_builder_sha256": "4180633d80e336e1ac24670e71f2f6c4a6f523d456830ebda813a9b8470f9df1",
   "equation_validator_sha256": "090edfb1f9275828b5f5c129a0dc204440fd916b739a80ea22e83c02ea12c626",
   "bibliography_sha256": "48bb4ec1453234a9212b0986307e13f852ce0a512579de86f459e77d2d6a6144",
-  "rendered_pdf_sha256": "efda37fd7fbd5f34bee589569b4131f0ba99142ffe101ea622f527db124afa13",
-  "current_evidence_state": "The previous original-model, three local-model and annotation-reference comparisons are retained. A saved-prediction audit reproduces all six baseline matrix cells and 240 per-image rows. The proposed method detects every complete reviewed front but misses 13 one-corner and five zero-corner fronts; its 51 extras comprise five duplicates, 36 nearby unmatched and ten low-overlap unmatched predictions. These geometric bands are not physical verdicts. A fixed reflected-view output-anchor probe reduces reviewed misses/extras to 15/43 with unchanged pair counts, doubles duplicates to ten, and loses corner successes under both older references; it is not promoted. The accepted-pair diagnostic separates 569 supported successes from all 678 emitted pairs. Both prepared paired training experiments remain pending. Future unseen-group claims must exclude held groups from starting-weight history as well as fine-tuning.",
+  "rendered_pdf_sha256": "ba8c507006166cdfb52c308dc8b6e7ddf3971fe0155834985cb100a34a5bdf01",
+  "current_evidence_state": "The previous original-model, three local-model and annotation-reference comparisons are retained. A saved-prediction audit reproduces all six baseline matrix cells and 240 per-image rows. The proposed method detects every complete reviewed front but misses 13 one-corner and five zero-corner fronts; its 51 extras comprise five duplicates, 36 nearby unmatched and ten low-overlap unmatched predictions. These geometric bands are not physical verdicts. A fixed reflected-view output-anchor probe reduces reviewed misses/extras to 15/43 with unchanged pair counts, doubles duplicates to ten, and loses corner successes under both older references; it is not promoted. The accepted-pair diagnostic separates 569 supported successes from all 678 emitted pairs. Both prepared paired training experiments remain pending. Future unseen-group claims must exclude held groups from starting-weight history as well as fine-tuning. The upstream baomai guidance specifies two independently available corner slots but no downstream interface or physical acceptance tolerance; the report records those requirements as unspecified.",
   "evidence_sha256": {
     "evidence/original-baseline/fresh/summary.json": "dc59f647b991a1a0c42fff974307ffebc5ebde7c52820ea83a7036b4169439d9",
     "evidence/original-baseline/fresh/historical-continuity.json": "b5ceaa03ac303195a25310e422a69c02fc22f2fe7eba91d4fd1a14d47f195bc8",
@@ -417,7 +418,7 @@
     "evidence/annotation-reference/upstream-provenance.json": "c619aaa6bcd44f87cf7251fddf86b3b79d7b4eb435f46fb8fa9e5b60fd82d7af",
     "evidence/detection-errors/summary.json": "5a9b8313f6ec36bfab4a35d68bdeca2dbbdd80f39550e0bf63881e8a7ef5b661",
     "evidence/detection-errors/cases.json.gz": "56658d2974b65d12429a468e920f5cb13840f1409841f258494106f1a81d01db",
-    "evidence/detection-errors/manifest.json": "4fd9708c2faf9750b2003768533dbed416d2fb012ad3cbaeb89a64e090f706f9",
+    "evidence/detection-errors/manifest.json": "ed68ee6a33800d67e33d8cd5d00599fc72314a9f28f883f4af1ac143570a68c3",
     "evidence/reflected-anchor/summary.json": "39e309653571722697f02fb7a919c8288c14077941f3b24e762bd820efbfb203",
     "evidence/reflected-anchor/paired-cases.json.gz": "c4b0f6ebe94c88233029a4213fc857de5f6063059f3e1272ed117446481f335d",
     "evidence/reflected-anchor/inventory.json": "71f861b3f7714244684ee8d5e74d9c7bd355d0574fb0239098dc1e626330d825"

@@ -46,7 +46,7 @@ Performance depends on the annotation reference. The original supplied annotatio
 
 ### 3.1 Problem and aim
 
-The system must identify each tissue cassette front in a colour image and return its lower-left and lower-right corner coordinates. These points describe the position and orientation of the lower edge. The application consumes predictions automatically, so a missed front, an extra response, and an inaccurate corner can each affect its operation.
+The system must identify each tissue cassette front in a colour image and return its lower-left and lower-right corner coordinates. These points describe the position and orientation of the lower edge. Recognition is evaluated through missed fronts, extra predictions and corner error. No downstream interface or physical acceptance tolerance has been specified for this study.
 
 Cassettes are closely arranged in a rack. A front may be partly covered by another cassette or a gripper, or cut by the image boundary. The required rectangle follows the cassette's own visible front material; rack and gripper boundaries must not define the object. Figure 1 illustrates the target.
 
