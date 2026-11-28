@@ -1,0 +1,45 @@
+# Training-label-comparison-r61 L4 results
+
+Provenance for the returned training-label-comparison-r61 pack. Facts below are transcribed from the returned files and the Colab run, not a claim of improvement. This records the archive. It makes no accuracy or promotion claim. It is development evidence only. PR35 remains the selected deployment model. Nothing is automatically promoted.
+
+- Official run of the PR 156 fixed notebook, unchanged Run all, with no `BAOMAI_*` environment variables set. Drive copy https://colab.research.google.com/drive/1MT0AwvHXaQgla7BXmlZTJTKgMGYXxCoy?authuser=1, account gloriawingyin@gmail.com.
+- `SOURCE_COMMIT` / `source` `acaf5d4b4043583fdd81f5ea848b3a6a68ada728`. `DRIVER_SHA256` `0dc8d5dfdd344f590f88d17ea7ced76f3fc018026fae221a4df6e25d7c807a9c` (`scripts/run_training_label_comparison_r61.py`; the `source/scripts/run_training_label_comparison_r61.py` member of the evidence ZIP matches that hash). Notebook pin `587514e557db13be287a5483eaf952dfd5e14761`.
+- Recorded flags: `summary.json` schema `controlled-training-label-result-r61-v1`; `automatic_promotion` false; `development_only` true; `measurement.protocol.box_confidence_strictly_greater` 0.25. `preflight.json` `status` passed (`images_and_initializer_verified` true). Both arm receipts `status` complete.
+- Hardware: A100 High-RAM was requested; Colab said that GPU was unavailable and connected an authorized L4, which was kept. NVIDIA L4, hostname `db1de6098498`, Driver 580.82.07, CUDA 13.0, System RAM about 53 GB (session not labeled High-RAM). From `summary.json` `runtime` and both arm receipts: Python 3.13.16, torch 2.14.1+cu130, torchvision 0.29.1+cu130, ultralytics 8.4.182, opencv-python 5.0.0.93, numpy 2.4.6, Pillow 13.0.0, GPU NVIDIA L4, CUDA 13.0, cuDNN 92800. The runtime has since been released; Manage Sessions was empty after release. After the first terminate, Colab briefly auto-attached a new L4 without a Connect/Reconnect click; that unwanted allocation was immediately disconnected and deleted, then Manage Sessions was confirmed empty.
+- Training, transcribed from `preflight.json` counts and budget and both arm receipts: 137 original training photographs per arm (five supplementary excluded). original_labels train 3772 objects / 6839 known corners; reviewed_labels train 3784 objects / 6837 known corners; 13 empty images each. Val identical on both arms (20 images, 3 empty, 664 objects, 1227 known corners). `numeric_changed_training_files` 92. Input verification passed. Budget 30 epochs, batch 4, 1050 batches, 35 batches/epoch, 4110 images, 78 steps per arm. Both arms complete, epochs 30, updates 78, same `initial_state_sha256` `5268194c14264aed09912980a0f9678c4705836c8cf864c5db9d28953fc00011`, `plan_sha256` `2eb13bd2cb4b7741ea6825da58158f1f43bd0ca6660098b2de1707434146d642`. Does not use PR 137; assets from media.githubusercontent.com at `ea4ac955`.
+- Outer upload ZIP `baomai-training-label-comparison-r61-upload.zip`, 41664487 bytes, SHA-256 `9dd469825bd08265706c6b997b61879168a392308655d0953a34fdd66246f621`. That wrapper is not committed here. This pack follows the notebook return layout: the compact evidence ZIP, `return-manifest.json`, and the wrapped checkpoint parts extracted from the outer ZIP. Schema `paired-model-return-r61-v1`, `status` completed.
+- Evidence ZIP `baomai-training-label-comparison-r61-results.zip`, 2038950 bytes, SHA-256 `33dbf73b0d8e145fb0aa74184b16a306d148f0b177787349b13465e7b77c3974`.
+- Complete models, transcribed from `return-manifest.json` and verified by concatenating listed members: `original_labels-last.pt` 21704814 bytes, SHA-256 `493f34d4af03e6f0e96b21b026da52437837e631bafe893a5df3cec0c92cd232`; `reviewed_labels-last.pt` 21704814 bytes, SHA-256 `c749fcff2126467cbc770f75a71fd79da51ebd08308ba909a448c3dd8cb5b372`.
+- This pull request is based on current `main` `b4df76935178de5a122119aea48e85d2d661effc`. This results pack does not merge, close, or edit earlier PRs, including quality-focal results PR 157 (https://github.com/Siuuuers/dl/pull/157), source PR 156 (https://github.com/Siuuuers/dl/pull/156), results PR 155 (https://github.com/Siuuuers/dl/pull/155), results PR 154 (https://github.com/Siuuuers/dl/pull/154), results PR 153 (https://github.com/Siuuuers/dl/pull/153), results PR 152 (https://github.com/Siuuuers/dl/pull/152), draft PR 151 (https://github.com/Siuuuers/dl/pull/151), results PR 150 (https://github.com/Siuuuers/dl/pull/150), results PR 149 (https://github.com/Siuuuers/dl/pull/149), draft PR 148 (https://github.com/Siuuuers/dl/pull/148), draft PR 147 (https://github.com/Siuuuers/dl/pull/147), results PR 146 (https://github.com/Siuuuers/dl/pull/146), draft PR 145 (https://github.com/Siuuuers/dl/pull/145), results PR 144 (https://github.com/Siuuuers/dl/pull/144), results PR 143 (https://github.com/Siuuuers/dl/pull/143), draft PR 142 (https://github.com/Siuuuers/dl/pull/142), PR 140 (https://github.com/Siuuuers/dl/pull/140), draft PR 139 (https://github.com/Siuuuers/dl/pull/139), and PR 137 (https://github.com/Siuuuers/dl/pull/137).
+
+Printed evaluation table, transcribed from `summary.json` `measurement.references` (`detection.fn` / `detection.fp` as misses / extras, `detection.duplicate_fp` as duplicates, and `pairs` within 5 px / within 10 px over eligible). These are transcribed only and are not a selection or promotion:
+
+- frozen666, original_labels original: misses 23, extras 49, duplicates 17; within5 533/584, within10 584/584
+- frozen666, original_labels two_view: misses 23, extras 49, duplicates 17; within5 544/584, within10 584/584
+- frozen666, reviewed_labels original: misses 38, extras 62, duplicates 14; within5 517/584, within10 573/584
+- frozen666, reviewed_labels two_view: misses 38, extras 62, duplicates 14; within5 523/584, within10 575/584
+- r50, original_labels original: misses 47, extras 85, duplicates 6; within5 545/583, within10 566/583
+- r50, original_labels two_view: misses 47, extras 85, duplicates 6; within5 541/583, within10 566/583
+- r50, reviewed_labels original: misses 15, extras 51, duplicates 13; within5 570/583, within10 582/583
+- r50, reviewed_labels two_view: misses 15, extras 51, duplicates 13; within5 572/583, within10 583/583
+- supplied664, original_labels original: misses 34, extras 62, duplicates 15; within5 522/584, within10 572/584
+- supplied664, original_labels two_view: misses 34, extras 62, duplicates 15; within5 531/584, within10 572/584
+- supplied664, reviewed_labels original: misses 50, extras 76, duplicates 12; within5 506/584, within10 564/584
+- supplied664, reviewed_labels two_view: misses 50, extras 76, duplicates 12; within5 513/584, within10 566/584
+
+The notebook also printed this caveat, transcribed from `summary.json` `interpretation`: one paired seed estimates this frozen label intervention under the current recipe. It does not estimate the effect of the five additional photographs, every new definition rule, or transfer to a new capture session.
+
+How to reassemble the models from the wrapped parts (do not unwrap the parts in this repository). From `return-manifest.json`: for each of `original_labels-last.pt` and `reviewed_labels-last.pt`, read the listed `part00.zip` then `part01.zip` in that order; verify each wrapper SHA-256 and size; extract and verify each listed member SHA-256 and size; concatenate the member bytes in that same order; verify each complete model is 21704814 bytes with the SHA-256 below.
+
+Wrapper hashes transcribed from `return-manifest.json`:
+
+- `original_labels-last.pt.part00.zip`, 15374969 bytes, SHA-256 `dcd995dbb64c1570002431bce5bb910ca09ced0e62f34b752e5d1e546ddf8ca3`, member `original_labels-last.pt.part00` 16777216 bytes, member SHA-256 `3df81c3e327021003df51b33963bc6157b5f8f31e18b0c6b265d68cf64404f02`
+- `original_labels-last.pt.part01.zip`, 4435620 bytes, SHA-256 `ead79e1c81a08015b5dbe246010f05c3798a2349ec3b3e1aa8bbac5378a831e5`, member `original_labels-last.pt.part01` 4927598 bytes, member SHA-256 `a3b129940a47d384468f25408c202edfc719a5f0d30d20a7825cffea8ee9fb5e`
+- `reviewed_labels-last.pt.part00.zip`, 15375540 bytes, SHA-256 `4c527bfe1c84b19eae3ca49f053f362e153124c602be3d420a909689928def3d`, member `reviewed_labels-last.pt.part00` 16777216 bytes, member SHA-256 `132faf2302b1a97fb2cb6159c6ff8072481ecd57b9edda57faafc2d7c21025ad`
+- `reviewed_labels-last.pt.part01.zip`, 4436144 bytes, SHA-256 `b6d7a2929a10ef0d0a4b2b664b05a1cf85e4b753feb758286dad9c1c796de6aa`, member `reviewed_labels-last.pt.part01` 4927598 bytes, member SHA-256 `131e15d2cf51492cc700684ad66726a495e91a6bfef2abc4f6139f23787a03ff`
+
+Complete model hashes: `original_labels-last.pt` SHA-256 `493f34d4af03e6f0e96b21b026da52437837e631bafe893a5df3cec0c92cd232`; `reviewed_labels-last.pt` SHA-256 `c749fcff2126467cbc770f75a71fd79da51ebd08308ba909a448c3dd8cb5b372`.
+
+All pack files are ordinary git `100644` blobs, not Git LFS, and the full outer upload ZIP is not committed.
+
+This records the returned archive. It makes no accuracy or performance claim. It is development evidence only, not an automatic model promotion. PR35 remains the selected deployment model.
