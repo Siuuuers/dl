@@ -57,6 +57,7 @@ SOURCES = (
     "audit_reflection_return.py", "predict_pose_folder.py", "run_corner_average_r58.py",
     "run_original_comparison_r59.py", "run_reference_matrix_r60.py",
     "run_training_label_comparison_r61.py", "run_flip_inference_r56.py",
+    "diagnose_fronts_r50.py", "run_inference_ablation_r53.py",
 )
 RESULT_NAME = "baomai-duplicate-audit-r66-results.zip"
 
