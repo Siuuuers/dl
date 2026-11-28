@@ -1,16 +1,18 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前進度：標註定義與兩個受控訓練實驗
+## 目前進度：兩項受控訓練結果已完成分析
 
-**2026-11-28：[Notebook 入口](docs/thesis/experiments.md)**集中兩項待跑 GPU 比較與兩項已完成全部四格的 CPU 診斷。[完整候選框重播](docs/thesis/proposal-stages.md)把目前 18 個漏檢分為 12 個信心值篩選、3 個原生 NMS、3 個沒有達到配對 IoU 的解碼框；這是處理階段的定位，並非訓練原因的證明。[增強資料稽核](docs/thesis/augmentation-audit.md)追蹤 11,997 次目標呈現，其中保留 11,880、移除 117；多數移除框已完全離開畫面，有限的視覺覆核未顯示需要更換現行增強政策的具體問題。[研究決策](docs/thesis/research-next-models.md)記錄文獻、已試方法與後續條件。現有 GPU notebook 與執行中的實驗維持原本固定版本。
+**2026-11-28：[專題 I 報告](docs/thesis/report.md)**已加入兩項結果，並區分訓練標籤、評分參考與模型設計的影響。硬體及軟體只在重現設定中簡短記錄；研究重點仍是辨識品質。
 
-**2026-11-28：[標註定義](docs/annotation-definition.md)**已整理正面材質歸屬、可見範圍、實際下角點、缺失點與未決照片處理；[研究說明](docs/thesis/research-annotation-definition.md)記錄文獻依據。定義不會自動更改既有標籤；獨立覆核重複性仍待量測。使用者確認影像輸出供機械臂定位包埋盒，機械臂控制及整合不在本研究範圍；訊息格式及物理誤差容限尚未提供。
+[**PR157 分類損失比較**](docs/thesis/quality-focal-results.md)：覆核參考下，QFL 相對同次原生控制組把漏檢由 18 減至 12，但額外輸出由 49 增至 83、重複由 4 增至 17；五像素雙角點由 568 增至 570，十像素由 583 降至 582。AP50 幾乎不變，不能視為全面改善。
 
-**先跑[模型改良 notebook](notebooks/baomai_quality_focal_r61.ipynb)**：相同142張照片與標籤、相同初始權重及訓練量，只比較原生分類損失與 Quality Focal Loss 啟發的調整。[實驗說明](docs/thesis/quality-focal-experiment.md)保留漏檢、額外輸出、重複、雙角點與預先固定的 AP50 指標。再跑[訓練標籤比較 notebook](notebooks/baomai_training_label_comparison_r61.ipynb)：相同137張原始訓練照片，只更換原始／覆核標籤，隔離新增照片的影響。兩項實驗已完成 CPU 資料與實作核對，GPU 訓練結果尚待回傳。
+[**PR158 訓練標籤比較**](docs/thesis/training-label-results.md)：相同 137 張訓練照片，只更換原始／覆核標籤，覆核參考下漏檢由 47 減至 15、額外輸出由 85 減至 51、五像素由 541 增至 572；重複則由 6 增至 13。兩套較舊評分參考仍偏向原始標籤訓練組。所有結果保留配對得失與單一種子、重用開發照片的限制。
+
+[**Notebook 入口**](docs/thesis/experiments.md)記錄已完成比較及新的[固定權重分數／指派診斷](docs/thesis/score-assignment-audit.md)。後者檢查每個目標的訓練品質目標與預測分數，不更新模型。[標註定義](docs/annotation-definition.md)及[本次影像覆核](docs/thesis/annotation-review-r65.md)以原圖的正面材質、可見範圍與實際下角點為依據，模型分數不會自動決定標籤。機械臂控制及整合仍在研究範圍之外。
 
 ## 已完成：殘差結果、原始標註比較與公式修正
 
-**2026-11-28：[專題 I 報告](docs/thesis/report.md)**已補充非專門讀者需要的方法說明，每項文獻均交代其研究內容、在本專題的用途與限制；[引用稽核](docs/thesis/citation-audit-r64.md)保留 15 項 IEEE 引用及出版資料依據。新增未精修控制組，清楚比較 566/583、殘差精修 564/583 與雙視圖 569/583 的五像素結果，原始 baomai 模型仍是主要基準。[分數與指派研究](docs/thesis/research-score-assignment.md)分析原生姿態品質目標及後續診斷條件。Word 公式維持置中可編輯、編號獨立靠右及自動高度；頁數、摘要字數及逐頁檢查統一記錄於[驗證檔](docs/thesis/report-validation-fyp-i.json)。
+**2026-11-28：[專題 I 報告](docs/thesis/report.md)**已補充非專門讀者需要的方法說明，每項文獻均交代其研究內容、在本專題的用途與限制；[引用稽核](docs/thesis/citation-audit-r64.md)保留原有 15 項 IEEE 引用；本次另加 PyTorch 重現性文件為第 16 項及出版資料依據。新增未精修控制組，清楚比較 566/583、殘差精修 564/583 與雙視圖 569/583 的五像素結果，原始 baomai 模型仍是主要基準。[分數與指派研究](docs/thesis/research-score-assignment.md)分析原生姿態品質目標及後續診斷條件。Word 公式維持置中可編輯、編號獨立靠右及自動高度；頁數、摘要字數及逐頁檢查統一記錄於[驗證檔](docs/thesis/report-validation-fyp-i.json)。
 
 [**PR155 殘差修正結果已核對**](docs/thesis/residual-results.md)：修訂參考雙角點五像素成功 564/583、十像素 582/583，未超過目前兩視角平均的 569/583 及 583/583。相對未修正控制組，平均角點誤差略降，但五像素成功 566→564。保留這項指標差異，不自動採用新模型。
 

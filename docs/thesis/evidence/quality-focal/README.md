@@ -1,5 +1,7 @@
 # Quality-focal preparation evidence
 
+**Historical preparation record.** The paired GPU run has now returned; see the [completed result and independent replay](../../quality-focal-results.md). Statements below about unrun cells describe the earlier preparation checkpoint.
+
 These receipts verify the implementation and inputs before paired GPU training. They contain no new trained-candidate accuracy result.
 
 - `loss-guard.json`: actual supplied weights differentiated on two verified training photographs and one synthetic empty scene. Exponent zero matches native losses and all 498 parameter-gradient tensors exactly. Exponent two preserves fixed-prediction assignments, soft targets and nonclassification gradients while its classification derivative agrees with an independent analytic calculation. Missing coordinates, empty targets, class weights and native branch scheduling are checked. No optimizer step is made.

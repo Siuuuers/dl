@@ -1,5 +1,7 @@
 # Controlled training-label experiment: preparation evidence
 
+**Historical preparation record.** The paired GPU run has now returned; see the [completed result and independent replay](../../training-label-results.md). Statements below about unrun cells describe the earlier preparation checkpoint.
+
 The experiment is prepared; **no GPU training result is recorded here**.
 
 The local checks used the real 157 original PNGs and the supplied epoch-173 checkpoint. Every image and checkpoint hash matched its frozen manifest. Both staged arms contain the same 137 training and 20 development photographs. The 92 differing training-label files all differ numerically; the split, images and trainer-validation labels are unchanged.

@@ -44,6 +44,7 @@ REFERENCE_FILES = {
 PROTOCOL = {
     'box_confidence_strictly_greater': .25, 'endpoint_confidence_inclusive': .5,
     'matching_iou_inclusive': .5, 'native_nms_iou': .7,
+    'clipped_nonpositive_predictions': 'retained as other unmatched false positives; excluded from matching',
     'postclip_suppression_iou_strictly_greater': .7,
     'image_size_px': [1280, 720], 'imgsz': 1280, 'precision': 'float32', 'max_det': 300,
     'association_iou_inclusive': .5, 'coordinate_weights': [.5, .5],

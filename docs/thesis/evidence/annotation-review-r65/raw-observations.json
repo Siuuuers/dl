@@ -1,0 +1,81 @@
+{
+  "schema": "baomai-raw-image-review-r65-v1",
+  "reviewer": "assistant, agent-assisted visual review",
+  "sequence": "The seven unmarked full photographs and all eight unmarked crops were viewed before any comparison overlay was generated or viewed in this review.",
+  "blinding_limit": "Case selection, reference identities and numeric target coordinates were known from the diagnostic case list. This is raw-image-first inspection, not a blinded human annotation study or independent human ground truth.",
+  "display": "Original 1280 by 720 PNGs; crops enlarged three times with nearest-neighbour sampling. No enhancement or generated pixels.",
+  "observations": [
+    {
+      "case_id": "case-01",
+      "image": "new_000007",
+      "region_xyxy": [514, 0, 693, 66],
+      "raw_judgment": "A white cassette front continues through the top image border above the next complete front. Its lower edge and the two lower side junctions remain in the photograph. Top-border truncation by itself does not make either lower corner unavailable.",
+      "instance_identity": "clear",
+      "corner_availability": "both lower junctions appear visible",
+      "uncertainty": "Blur softens the lower edge and junctions; this view does not establish subpixel precision."
+    },
+    {
+      "case_id": "case-02",
+      "image": "new_000008",
+      "region_xyxy": [1164, 398, 1280, 541],
+      "raw_judgment": "The selected rightmost cassette has a visible left side and lower edge, and continues beyond the right image border. The left lower junction is visible; the physical right lower junction cannot be located inside this photograph. The image-border intersection is not a replacement right corner.",
+      "instance_identity": "clear",
+      "corner_availability": "left available, right unavailable",
+      "uncertainty": "The molded edge is blurred and shaded, so an exact one-pixel box-side or corner correction is not justified from this inspection alone."
+    },
+    {
+      "case_id": "case-03",
+      "image": "new_000057",
+      "region_xyxy": [519, 40, 730, 177],
+      "raw_judgment": "The lowest white cassette front in the upper tray has a sloping lower boundary above the dark rack. The dark horizontal and diagonal rack structure below it is a separate surface. Both lower junctions of the cassette front appear visible. Including a substantial strip of the rack would not follow the visible-front definition.",
+      "instance_identity": "clear",
+      "corner_availability": "both lower junctions appear visible",
+      "uncertainty": "The narrow dark underside may contain both cassette-owned shading and rack pixels. The precise separating contour remains uncertain over a small band; no numeric correction was selected at this stage."
+    },
+    {
+      "case_id": "case-04",
+      "image": "new_000009",
+      "region_xyxy": [551, 390, 681, 508],
+      "raw_judgment": "Below the upper visible front, several separate horizontal cassette fronts remain visible to the left of the foreground gripper. For the selected band, a left lower junction can be seen while the right part disappears behind the gripper. Adjacent horizontal bands are separate instances; they should not be merged merely because their rectangular envelopes or detections overlap.",
+      "instance_identity": "clear",
+      "corner_availability": "left available, right occluded",
+      "uncertainty": "The right visible extent is an occlusion boundary, not the hidden physical right corner. Blur makes the exact contour at the gripper uncertain."
+    },
+    {
+      "case_id": "case-05",
+      "image": "new_000090",
+      "region_xyxy": [521, 419, 662, 542],
+      "raw_judgment": "A vertical sequence of distinct cassette fronts is visible to the left of the foreground gripper. The selected middle band has a visible left lower junction and is occluded on the right. The gripper edge does not identify the hidden cassette corner. Repeated horizontal boundaries support multiple front instances in the local cluster.",
+      "instance_identity": "clear",
+      "corner_availability": "left available, right occluded",
+      "uncertainty": "Narrow shaded bands and the sloping occluder make exact box height and right visible extent uncertain. A geometric duplicate decision must be checked against which band each box depicts."
+    },
+    {
+      "case_id": "case-06",
+      "image": "new_000055",
+      "region_xyxy": [120, 0, 341, 95],
+      "raw_judgment": "The lowest white cassette front above the metal tray remains a distinct visible front. Its sloping lower edge and both lower junctions are visible, although the surrounding rack is close. The rack below the front should remain separate from its cassette-owned rim.",
+      "instance_identity": "clear",
+      "corner_availability": "both lower junctions appear visible",
+      "uncertainty": "The right molded rim and nearby rack are blurred. This inspection supports the instance and availability, not a uniquely exact subpixel box or corner location."
+    },
+    {
+      "case_id": "case-07",
+      "image": "new_000011",
+      "region_xyxy": [359, 51, 524, 145],
+      "raw_judgment": "The middle of the three visible left-column fronts is unobstructed. Its own front surface is separated from the front above and below, and both lower junctions are visible. This ordinary region supports retaining one complete-corner front.",
+      "instance_identity": "clear",
+      "corner_availability": "both lower junctions appear visible",
+      "uncertainty": "Image softness still prevents using this region as evidence of subpixel human agreement."
+    },
+    {
+      "case_id": "case-08",
+      "image": "new_000009",
+      "region_xyxy": [680, 0, 860, 75],
+      "raw_judgment": "A narrow cassette-front fragment is visible along the top border above the next complete front. The visible strip appears to belong to one clipped front, rather than two fronts formed by its bright rim and shaded underside. The small height and image-border clipping make its precise extrema and lower-junction availability harder to judge than in the other selected regions.",
+      "instance_identity": "one clipped front is the supported interpretation",
+      "corner_availability": "uncertain at the narrow border fragment",
+      "uncertainty": "Preserve the existing reference while recording uncertainty; do not infer a hidden corner or remove a front merely because its box is thin."
+    }
+  ]
+}

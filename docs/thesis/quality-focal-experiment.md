@@ -2,7 +2,7 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-**Status:** the classification-loss implementation and pretrained CPU gradient guard are complete. The first two original notebook code cells have passed from clean published source; [execution evidence](evidence/quality-focal/README.md) records the checks. The paired GPU training result is pending. The [notebook](../../notebooks/baomai_quality_focal_r61.ipynb) tests the model change first; the [training-label comparison](training-label-comparison.md) is a separate experiment.
+**Completed:** PR157 returns both paired training arms and their evaluation. The [independent result analysis](quality-focal-results.md) reproduces all saved comparisons: reviewed-reference misses fall from 18 to 12, extras rise from 49 to 83, duplicates rise from 4 to 17, and five-pixel successes rise from 568 to 570 while one ten-pixel success is lost. Original-view AP50 changes by only about 0.000088. The trade-off does not establish an overall replacement. The [notebook](../../notebooks/baomai_quality_focal_r61.ipynb) and protocol below remain available for reproduction; the [preparation evidence](evidence/quality-focal/README.md) is historical. The [training-label result](training-label-results.md) is a separate controlled intervention.
 
 ## Question and choice
 
@@ -18,7 +18,7 @@ The source audit also prevents repeating existing ingredients. Horizontal flippi
 
 Li et al. introduce Quality Focal Loss (QFL) to train classification with continuous quality targets [1]. Its modulating factor reduces the relative contribution of predictions already close to their targets. The paper evaluates QFL separately from its distributional box-regression component and uses an exponent of two. That gives a small, identifiable change to test in the present detector.
 
-The native Pose26 assigner already produces continuous target scores. We retain those exact targets and apply the QFL modulation to its classification binary cross-entropy. We do not replace the targets with pure box overlap, add a quality head, or implement the complete Generalized Focal Loss detector from the paper.
+The native Pose26 assigner already produces continuous target scores. We retain that target-construction rule and apply the QFL modulation to its classification binary cross-entropy. Actual target values and assignments may differ as the two models learn. We do not replace the targets with pure box overlap, add a quality head, or implement the complete Generalized Focal Loss detector from the paper.
 
 For logit z, probability p = sigmoid(z), and detached native soft target y, the candidate classification term is
 

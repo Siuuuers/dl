@@ -1,5 +1,5 @@
 {
-  "schema": "cassette-fyp-i-bibliography-v3",
+  "schema": "cassette-fyp-i-bibliography-v4",
   "revised_on": "2026-11-28",
   "numbering": "IEEE first appearance in the explanatory report",
   "scope": "External academic and professional sources. The supplied model is the main benchmark; the adapted single-view control isolates added corner processing.",
@@ -663,6 +663,34 @@
       ],
       "ieee_entry": "X. Li et al., “Generalized focal loss: Learning qualified and distributed bounding boxes for dense object detection,” in Advances in Neural Information Processing Systems, vol. 33, 2020, pp. 21002–21012. [Online]. Available: https://proceedings.neurips.cc/paper_files/paper/2020/file/f0bda020d2470f2e74990a07a607ebd9-Paper.pdf",
       "reference_number": 15
+    },
+    {
+      "key": "pytorch_reproducibility",
+      "type": "professional_documentation",
+      "authors": [
+        "PyTorch Contributors"
+      ],
+      "title": "Reproducibility",
+      "version": "2.14",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/randomness.html",
+      "accessed": "2026-11-28",
+      "ieee_entry": "PyTorch Contributors, “Reproducibility,” PyTorch Documentation, ver. 2.14. Accessed: Nov. 28, 2026. [Online]. Available: https://docs.pytorch.org/docs/2.14/notes/randomness.html",
+      "supported_claim": "Identical seeds do not guarantee reproducibility across PyTorch releases or computing platforms; controlling randomness and nondeterministic operations supports repeatability within a specified environment.",
+      "limitation": "The documentation does not quantify an A100-versus-L4 effect for these cassette experiments or establish that any observed cross-run difference was caused by the GPU.",
+      "verification": [
+        {
+          "url": "https://docs.pytorch.org/docs/2.14/notes/randomness.html",
+          "ref_ids": [
+            "turn951159185view0"
+          ],
+          "supports": [
+            "official versioned documentation",
+            "equal-seed limitation across platforms",
+            "environment-specific reproducibility guidance"
+          ]
+        }
+      ],
+      "reference_number": 16
     }
   ],
   "style_guide": {

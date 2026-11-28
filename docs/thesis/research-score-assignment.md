@@ -1,11 +1,8 @@
 # What should a cassette detection score represent?
 
-28 November 2026. Research addendum; no new model training or notebook changes.
+28 November 2026. Updated after the paired training returns; no additional model training.
 
-**Decision:** finish the existing paired classification-loss and training-label
-experiments. Before preparing another training run, distinguish insufficient
-assignment, a low native supervision target, and a prediction below a useful
-target. These are different hypotheses. The most useful new finding is that the
+**Decision:** the [classification-loss return](quality-focal-results.md) and [training-label return](training-label-results.md) are complete. The aggregate QFL traces show nearly complete partial-target assignment, but do not separate zero/one-corner groups or record per-target predicted scores. The focused [frozen-checkpoint diagnostic](score-assignment-audit.md) now investigates the remaining distinction between a low native supervision target and a prediction below a useful target. These are different hypotheses. The most useful new finding is that the
 pinned pose model already includes corner quality in its object-score targets.
 Adding “quality-aware classification” or “task-aligned assignment” without
 specifying a difference would repeat an existing component.
@@ -156,7 +153,7 @@ its Eq. (2) is q times BCE(p,q); for zero targets it is alpha times p^gamma time
 BCE(p,0). The paper uses raw box IoU for positive q and selects alpha 0.75,
 gamma 2. The full detector's gain is not a loss-only result.
 
-**Difference from the prepared experiment:** current QFL multiplies every native
+**Difference from the completed experiment:** current QFL multiplies every native
 BCE term by |p-q| squared. A varifocal-style adaptation would preserve positive
 learning differently while suppressing easy negatives. However, multiplying a
 positive by q reduces its contribution when q is small; it is not automatically
@@ -174,7 +171,7 @@ No parameter search or third training notebook is proposed now.
 
 ## 4. One diagnostic that distinguishes these hypotheses
 
-**First consume the diagnostics already being produced.** The frozen QFL driver
+**The aggregate diagnostics are now available.** The [QFL result](quality-focal-results.md) verifies nearly complete partial-target assignment and positive score targets for every foreground anchor. The aggregate mean targets are lower for incomplete than complete fronts, but do not identify any individual miss. The frozen QFL driver
 logs assigned/unassigned partial and full target counts, foreground anchors,
 positive class terms, target-score sums, and native/modulated foreground and
 background BCE contributions in each branch. Read the native control alongside
@@ -182,10 +179,9 @@ the candidate over training. A change in total loss alone cannot identify the
 source of the final errors. The present “partial” grouping combines zero and one
 known corner, so it cannot by itself test the pose-target distinction above.
 
-If those aggregates leave the question open, specify **one frozen-checkpoint,
+Those aggregates leave the per-target question open. The [new diagnostic](score-assignment-audit.md) specifies **one frozen-checkpoint,
 no-optimizer assignment pass** on the verified training images, preserving the
-source images/labels, input transforms and checkpoint hashes. This is a proposed
-diagnostic, not a completed experiment. Record each target's source identity,
+source images/labels, input transforms and checkpoint hashes. Its implementation and exact execution status are recorded in the linked guide. Record each target's source identity,
 post-transform width/height and zero/one/two known-corner group. For each native
 branch, retain:
 

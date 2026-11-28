@@ -919,7 +919,7 @@ def build(args):
     doc.core_properties.comments = ""
     bibliography, cover, previous_kind = False, True, None
     appendices, appendix_started = False, False
-    for block in blocks:
+    for block_index, block in enumerate(blocks):
         if block.kind == "title":
             doc.add_paragraph(block.text, style="Title")
         elif block.kind == "heading":
@@ -958,6 +958,11 @@ def build(args):
             paragraph = doc.add_paragraph(style=style)
             if previous_kind == "heading":
                 paragraph.paragraph_format.keep_together = True
+            if (block.kind == "paragraph" and block_index + 1 < len(blocks)
+                    and blocks[block_index + 1].kind == "equation"):
+                # Keep the final line introducing a display with its equation,
+                # instead of leaving an unfinished introduction at a page foot.
+                paragraph.paragraph_format.keep_with_next = True
             if previous_kind == "table":
                 paragraph.paragraph_format.space_before = Pt(6)
             if cover:

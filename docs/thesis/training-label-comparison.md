@@ -2,9 +2,9 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-**Prepared GPU experiment. Run the model-improvement experiment first.** This notebook isolates the effect of the training-label revision already used by the current detector. It does not assume that revised labels improve recognition.
+**Completed:** PR158 returns both paired training arms. The [independent result analysis](training-label-results.md) reproduces all twelve reference/model/view comparisons. Under reviewed evaluation labels, changing only the training labels gives 32 fewer misses, 34 fewer extras and 31 more five-pixel successes with two-view averaging; duplicates rise from 6 to 13. Both older evaluation references favour the supplied-label arm. This is evidence for the frozen label intervention under the declared recipe, with explicit reference dependence.
 
-The first two original notebook code cells have passed from clean published source. The [execution evidence](evidence/training-label-comparison/README.md) distinguishes these setup checks from the pending GPU trial, paired training and accuracy measurements.
+The [preparation evidence](evidence/training-label-comparison/README.md) preserves the earlier setup checks. The returned run used the PR156 scoring source, which counts clipped zero-area outputs as unmatched extras. The [return analysis](training-label-results.md) records verified source, checkpoint and paired-training identities, exact score replay and an explicitly retained auxiliary progress-log anomaly.
 
 ## The question
 
@@ -64,7 +64,7 @@ Completed arms can be reused under the same source, inputs and runtime. Incompat
 
 The local input preflight has verified all 157 original photographs, the shared supplied checkpoint, all staged labels, and the exact treatment counts above. Native loaders reproduce every staged label coordinate and count. Sixteen sampled augmented images per arm agree pixel-for-pixel after the same seed reset. Focused checks reproduce the current two-view method's saved scores under all three references, reject missing prediction views, and exercise multipart checkpoint reconstruction and corruption rejection. The notebook code cells are syntax checked.
 
-GPU training and comparative accuracy are pending. The returned evidence must support any claim that the training-label revision helped or harmed recognition. These development photographs have already guided annotation review and method selection; a new capture-group evaluation is a separate question.
+GPU training and comparative accuracy are complete and independently replayed from saved predictions. The result supports a conditional training-label effect under each fixed reference. These development photographs have already guided annotation review and method selection; a new capture-group evaluation is a separate question.
 
 - [Experiment driver and shared evaluator](../../scripts/run_training_label_comparison_r61.py)
 - [Notebook builder](../../scripts/build_training_label_comparison_r61_notebook.py)

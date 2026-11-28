@@ -1,9 +1,6 @@
 # Which model change is justified next?
 
-**Recommendation:** complete the prepared classification-loss and training-label
-comparisons, and use the CPU proposal-stage and augmentation audits to choose
-any further training change. The current evidence does not justify immediately
-adding another detector, another suppression rule, or a Wasserstein box loss.
+**Recommendation:** use the completed [classification-loss](quality-focal-results.md) and [training-label](training-label-results.md) comparisons to focus the next investigation. QFL recovers six fronts but adds 34 extras; its AP50 barely changes. Reviewed-label training improves reviewed-reference counts while increasing duplicates and reversing rank under older references. Inspect the native per-target score/assignment mechanism and uncertain photo boundaries before another training loss. The evidence does not justify immediately adding another detector, another suppression rule, or a Wasserstein box loss.
 One small localization-loss comparison is specified below as a conditional next
 experiment, not an implemented or successful method.
 
@@ -11,7 +8,7 @@ The later [score and assignment addendum](research-score-assignment.md) checks
 TOOD, IoU-Net and VarifocalNet against the exact pinned pose implementation. It
 shows why assignment, normalized training targets and predicted scores must be
 examined separately before another loss change. These additions refine the
-interpretation of the pending experiments; they do not expand the GPU queue.
+interpretation of the completed experiments. The focused [score-target diagnostic](score-assignment-audit.md) requires no training; no new GPU training comparison is added.
 
 This note supplements the [experiment index](experiments.md),
 [proposal-stage analysis](proposal-stages.md), [detection-error analysis](detection-errors.md)
@@ -137,8 +134,8 @@ Their suppressors survive as unmatched outputs, with reference IoUs approximatel
 above. Consequently, a poorly delimited retained box does not prove that the
 network never produced a better box. This makes ranking and suppression relevant
 to these cases and weakens a blanket claim that regression loss is the main
-bottleneck. The already prepared QFL comparison remains a specific hypothesis
-about learned scores; a stage count does not demonstrate that QFL will help.
+bottleneck. The completed QFL comparison tests that score-learning hypothesis and finds
+a substantial increase in extras. The earlier stage count did not predict a benefit.
 
 The completed [augmentation audit](augmentation-audit.md) measures target
 survival in a fixed diagnostic sample from the existing native pipeline. A small
@@ -189,7 +186,7 @@ relevant failures. The present cached predictions alone do not meet that gate.
 | NWD units | Decoded boxes converted to input-image pixels before the distance; do not mix feature-stride units |
 | Normalization C | Freeze the mean square-root box area across unique training targets after nominal input resize, without random augmentation or development labels |
 | Scope of the change | Apply the same term to every assigned positive; do not add partial-only weights |
-| Data and initialization | The same verified 142-photo data and supplied epoch-173 weights used for the prepared native/QFL comparison |
+| Data and initialization | The same verified 142-photo data and supplied epoch-173 weights used for the completed native/QFL comparison |
 | Budget | Independent matched arms, existing 30-epoch recipe, seed 46, batch 4, input 1280, FP32, final-epoch selection |
 | Classification, pose and branch schedule | Native and identical in both arms; no simultaneous QFL or head switch |
 | Evaluation | Original supplied benchmark, new matched control and candidate at the established operating settings; all three reference versions and paired identities |

@@ -6,11 +6,13 @@ Department of Electronic Engineering
 
 ## 1 Abstract
 
-This project investigates the detection of tissue cassette fronts and the location of their two lower corners in camera images. Closely arranged objects and partial occlusion can cause missed fronts, repeated detections, and inaccurate coordinates. The work combines consistent annotation review, adaptation of a supplied pose-estimation model, and equal averaging of corner estimates from original and horizontally reflected images.
+This project investigates tissue cassette front detection and the location of two lower corners in camera images. Closely arranged objects and partial occlusion can cause missed fronts, repeated detections and inaccurate coordinates. The work combines annotation review, adaptation of a supplied pose-estimation model and equal averaging of corner estimates from original and horizontally reflected images.
 
-The comparison uses the untouched supplied model as its baseline. Both methods are evaluated on the same 20 photographs with common confidence and matching settings. Against the reviewed annotations, the proposed method reduces missed fronts from 34 to 18 and extra predictions from 61 to 51. Duplicate predictions remain at five. The number of fronts with both corners within five pixels increases from 555 to 569 out of 583; at ten pixels it increases from 577 to 583. Three local corner models are also evaluated, including a learned coordinate correction, but none exceeds the proposed method.
+Against reviewed annotations on 20 development photographs, the proposed method reduces missed fronts from 34 to 18 and extra predictions from 61 to 51 relative to the untouched supplied model. Duplicate predictions remain at five. Both corners lie within five pixels for 569 of 583 complete reference pairs, compared with 555 for the supplied model. Three local corner models do not exceed this result.
 
-Performance depends on the annotation reference. The original supplied annotations and an earlier fixed reference favour the supplied model. Rescoring unchanged predictions separates this evaluation effect from changes caused by training. The contribution is a cassette-specific annotation procedure and an evaluated recognition method with traceable detection and coordinate measurements. Further work will isolate the effect of the latest training-label revisions and assess transfer to independently captured images.
+Two controlled training comparisons examine what produces useful recognition. Changing the classification loss recovers six fronts but adds 34 extra predictions, with almost unchanged detection average precision. Separately, changing only the training labels on the same 137 photographs reduces misses from 47 to 15 and extras from 85 to 51 under the reviewed reference. Five-pixel successes increase from 541 to 572, while duplicates increase from six to 13. The older evaluation references favour the model trained with supplied labels.
+
+The contribution is an explicit cassette annotation procedure and controlled evidence separating training-label effects, evaluation-reference effects and model-design trade-offs. These single-seed comparisons support conclusions about the declared development setting. Independent annotation repeatability, repeated training seeds and separately captured scenes remain necessary to assess wider reliability.
 
 ## 2 Table of Contents
 
@@ -28,10 +30,13 @@ Performance depends on the annotation reference. The original supplied annotatio
   - [5.2 Proposed recognition method](#52-proposed-recognition-method)
   - [5.3 Local corner models](#53-local-corner-models)
   - [5.4 Common evaluation procedure](#54-common-evaluation-procedure)
+  - [5.5 Controlled training comparisons](#55-controlled-training-comparisons)
 - [6 Simulation Results](#6-simulation-results)
 - [7 Experimental Results](#7-experimental-results)
   - [7.1 Comparison with the supplied model](#71-comparison-with-the-supplied-model)
   - [7.2 Results of the local corner models](#72-results-of-the-local-corner-models)
+  - [7.3 Effect of classification loss](#73-effect-of-classification-loss)
+  - [7.4 Effect of training annotations](#74-effect-of-training-annotations)
 - [8 Discussions](#8-discussions)
   - [8.1 Findings and interpretation](#81-findings-and-interpretation)
   - [8.2 Further work](#82-further-work)
@@ -40,6 +45,7 @@ Performance depends on the annotation reference. The original supplied annotatio
 - [11 Appendices](#11-appendices)
   - [11.1 Sensitivity to the annotation reference](#111-sensitivity-to-the-annotation-reference)
   - [11.2 Training and coordinate settings](#112-training-and-coordinate-settings)
+  - [11.3 Training-label results under all references](#113-training-label-results-under-all-references)
 <!-- DOCX_TOC_END -->
 
 ## 3 Introduction
@@ -56,7 +62,7 @@ Figure 1. Camera image and enlarged cassette front. The rectangle marks the anno
 
 The aim is to improve recognition quality while keeping the processing method clear. The project starts from a supplied image collection and trained cassette model. Its main comparison is between that original model and the proposed method, evaluated with the same measurement rules. The target output is every identifiable front, including a partial front, together with whichever corner locations can be supported by the image.
 
-The proposed processing has two main stages. First, a detector identifies candidate fronts and estimates their corner coordinates. Second, the same detector processes a horizontally reflected copy of the photograph; corresponding corner estimates are returned to the original image coordinates and averaged where the two views can be associated. Original-view boxes determine which detections are output. Separate experiments test whether a small model examining an enlarged cassette crop can further improve its corners.
+The proposed processing has two main stages. First, a detector identifies candidate fronts and estimates their corner coordinates. Second, the same detector processes a horizontally reflected copy of the photograph; corresponding corner estimates are returned to the original image coordinates and averaged where the two views can be associated. Original-view boxes determine which detections are output. Separate experiments test local corner models, a different classification loss and the effect of replacing training annotations while holding the photographs and training procedure fixed.
 
 ### 3.2 Related research
 
@@ -138,11 +144,13 @@ This definition allows an identifiable partial front to receive a box even when 
 
 Review corrected omitted fronts, redundant entries, and inaccurate boundaries or landmarks. Each accepted edit was checked against the original image. Model predictions assisted the review, and the same evaluation photographs were inspected during development. The original supplied validation annotations contain 664 fronts; an earlier fixed reference contains 666. Appendix 11.1 compares both with the reviewed reference using unchanged predictions.
 
+The frozen reviewed reference also inherits documented case-specific exclusions from earlier review, including a visible partial front. It is therefore the accepted benchmark used in these comparisons, rather than an independently verified exhaustive application of the general visible-front rule. These exclusions are preserved for the controlled experiments. An unmatched prediction may correspond to excluded material, disputed boundaries or a model error; the score alone cannot decide which interpretation applies.
+
 ### 5.2 Proposed recognition method
 
 The baseline is the supplied YOLO26s-Pose checkpoint saved after epoch 173. A checkpoint stores the model's learned parameters at a particular training stage. This model predicts one object category and two corners per cassette. Its parameters are used unchanged for the baseline comparison.
 
-The proposed detector starts from the same checkpoint and continues training on the reviewed and expanded training data. This adaptation is called fine-tuning. Training uses seed 46, 30 epochs, input size 1280, batches of four images and 32-bit arithmetic. An epoch presents the training set once; a random seed fixes the initial random-number sequence for a run. AdamW updates the parameters using adaptive gradient steps while applying weight decay separately [9]. The initial learning rate is 0.0001 and weight decay is 0.0005. The final epoch is used, avoiding selection of an intermediate checkpoint by the reported corner result.
+The proposed detector starts from the same checkpoint and continues training on the reviewed and expanded training data. This adaptation is called fine-tuning. Training uses seed 46, 30 epochs, input size 1280, batches of four images and 32-bit training tensors. An epoch presents the training set once; a random seed fixes the initial random-number sequence for a run. AdamW updates the parameters using adaptive gradient steps while applying weight decay separately [9]. The initial learning rate is 0.0001 and weight decay is 0.0005. The final epoch is used, avoiding selection of an intermediate checkpoint by the reported corner result.
 
 The existing box, landmark, availability and residual log-likelihood losses are retained. A loss measures a training discrepancy and determines how parameters are updated. Residual log-likelihood estimation learns an adjustment to a reference distribution of coordinate errors, allowing the training objective to model errors more flexibly than a fixed distribution alone [10]. Retaining this objective does not establish calibrated probabilities for the final corner outputs. Further training settings appear in Appendix 11.2.
 
@@ -194,9 +202,25 @@ The primary comparison evaluates the supplied model and proposed method at input
 
 These thresholds serve different decisions. The object threshold decides whether a candidate is retained, the corner threshold decides whether a coordinate is available for the pair measurement, and the suppression threshold decides whether overlapping predictions compete. The matching threshold determines which retained predictions agree with reference fronts during evaluation. A lower object threshold can admit useful low-scoring detections and additional erroneous responses, so a recovered miss is assessed together with changes in extra predictions.
 
-Both methods were run again on all 20 photographs in the same CPU environment using 32-bit arithmetic. The proposed method filters both views at the common object threshold before association and averaging. It averages 648 of 687 retained original-view records. Saved predictions are scored against the supplied, earlier fixed and reviewed annotation references. The earlier fixed and reviewed counts reproduce the archived results exactly. Changing only the scoring annotations requires no further inference or training.
+Both methods were run again on all 20 photographs in the same computing environment using 32-bit tensors. The proposed method filters both views at the common object threshold before association and averaging. It averages 648 of 687 retained original-view records. Saved predictions are scored against the supplied, earlier fixed and reviewed annotation references. The earlier fixed and reviewed counts reproduce the archived results exactly. Changing only the scoring annotations requires no further inference or training.
 
-The local models are evaluated at the same object threshold and reference definitions. The two heatmap runs share identical detector outputs, initialization, training examples and sample orders, and use an NVIDIA Tesla T4. The correction model uses an NVIDIA L4 and a different output layer, loss and target mask. It is an alternative design, rather than a one-variable comparison with the heatmap models. Saved model files, training records, coordinate transforms and scores were checked. Selected heatmap cases and all 71 predictions in two correction-model images were reproduced on a CPU without changing their scored outcomes.
+The local models are evaluated at the same object threshold and reference definitions. The two heatmap runs share identical detector outputs, initialization, training examples and sample orders. The correction model uses a different output layer, loss and target mask. It is an alternative design, rather than a one-variable comparison with the heatmap models. Saved model files, training records, coordinate transforms and scores were checked. Selected heatmap cases and all 71 predictions in two correction-model images were reproduced on a CPU without changing their scored outcomes. Appendix 11.2 records the computing environments.
+
+Clipping a predicted box to the image can leave zero width or height. Such a record has no area and cannot match a reference. It is retained in the output count as an extra prediction, so evaluation does not improve merely by omitting invalid outputs. The fixed matching and suppression thresholds otherwise remain unchanged.
+
+### 5.5 Controlled training comparisons
+
+Two experiments separate changes that the complete proposed method combines. Each experiment trains a control and a candidate independently from the same supplied checkpoint, using seed 46, 30 epochs, batches of four, the same AdamW settings and the final epoch. Initial parameter hashes, image order, sample exposure and optimizer-update indices agree within each pair. These checks establish the intended comparison; one paired seed does not measure variation across repeated training runs.
+
+The first experiment changes the classification loss while keeping the same 142 photographs and 3999 training fronts. Li et al.'s Generalized Focal Loss includes Quality Focal Loss, which supports continuous quality targets and gives greater relative emphasis to predictions farther from their targets [15]. The native cassette model already constructs a continuous classification target using box and available-corner agreement. The candidate multiplies each native binary cross-entropy term by the squared difference between its predicted score and that target. An already well-scored example therefore receives less relative weight than one with a large discrepancy. The assignment and target-construction rules, other loss terms and normalization remain native. Their realized target values can change as the models learn.
+
+This is a classification-loss adaptation, without the paper's complete detector or distributed box representation. It also changes the total classification-loss scale relative to the other objectives. Consequently, its outcome cannot isolate error-dependent weighting from a general reduction in classification strength. Each arm receives 4260 image presentations and 80 optimizer updates.
+
+The second experiment changes only the training annotations on the same 137 supplied photographs. One arm uses the supplied labels; the other uses the frozen reviewed labels already used by the adapted detector. These contain 3772 and 3784 fronts, respectively, and 92 label files differ numerically. Both arms exclude the five supplementary photographs, retain the same 13 empty training images, and use the same supplied validation labels during training. Each receives 4110 image presentations and 78 optimizer updates. The comparison estimates the effect of this label revision during adaptation from shared pretrained weights. The earlier training history of those weights remains common to both arms.
+
+Each returned model is evaluated using its original view and the same two-view corner procedure. All three annotation references and the fixed operating thresholds are retained. The classification comparison additionally measures original-view AP50: average precision at reference IoU 0.50 over the ranked detection list. As lower-scoring predictions are admitted, it averages interpolated precision at 101 recall levels. It uses a prespecified score floor of 0.001 and at most 300 predictions per photograph. This helps distinguish a change at the 0.25 operating point from a change in ranking across scores. It is a single-overlap detection measure, not the multiple-overlap COCO mean average precision.
+
+Both arms within each experiment use the same GPU and software environment. PyTorch documents that equal seeds do not guarantee identical results across platforms [16]. Hardware and software are therefore recorded briefly for reproducibility in Appendix 11.2. Recognition is assessed through the paired comparisons; the study does not compare processor speeds.
 
 ## 6 Simulation Results
 
@@ -256,29 +280,76 @@ The mean larger-of-two corner error is 2.32 pixels for the adapted single-view c
 
 The heatmap models sometimes select nearby cassette features. In one examined case, the right-corner response moves towards a neighbouring junction, producing an error above 20 pixels. The correction model can also move an acceptable point beyond the five-pixel tolerance. Saved-checkpoint replay reproduces these outcomes. Together with Section 6, this supports examining the training-error examples used by local models.
 
+### 7.3 Effect of classification loss
+
+Table 4 compares the new native-loss control with the Quality Focal Loss candidate under the reviewed reference. The control is trained alongside the candidate; the earlier proposed detector is retained as a separate comparison. Repeating a nominal recipe does not make a newly trained checkpoint identical to an older one.
+
+Table 4. Paired classification-loss comparison. Detection and corner counts use the two-view method at object confidence above 0.25; AP50 uses original-view predictions above the prespecified 0.001 floor.
+
+| Measure | Native loss | Quality Focal Loss |
+| --- | ---: | ---: |
+| Missed fronts | 18 | 12 |
+| Extra predictions | 49 | 83 |
+| Duplicates included in extras | 4 | 17 |
+| Both corners within 5 pixels | 568/583 | 570/583 |
+| Both corners within 10 pixels | 583/583 | 582/583 |
+| Original-view AP50 | 0.983865 | 0.983953 |
+
+All six recovered fronts have incomplete reference corners, and no previously matched front is lost. However, the candidate produces 34 additional extras: 13 more duplicates and 21 more other unmatched predictions. Its two new five-pixel successes have no corresponding five-pixel losses, while one previously successful pair fails the ten-pixel criterion. Both original-view models have 567 five-pixel successes before corner averaging. The final two-view gain therefore must be distinguished from an improvement in the original-view corner count.
+
+AP50 changes by approximately 0.000088, or 0.0088 percentage point. At the lower score floor both models match 651 of 654 fronts, but the candidate emits 5183 predictions compared with 2768 for the control. The result demonstrates a recall-versus-extras trade-off at the fixed operating point, with little change in this ranking measure. It does not establish an overall improvement or justify choosing a new threshold from these same development photographs.
+
+Training diagnostics also narrow the next question. The native training procedure has two prediction branches: one can assign several candidates to a reference target, while the other aims for one assigned candidate per target. Across 18,626 presentations of targets with incomplete corners, the one-to-many branch leaves four unassigned in the control and three in the candidate; the one-to-one branch leaves one unassigned in each. These are repeated augmented target presentations, not distinct fronts. Almost all therefore receive training assignments. The aggregate evidence does not support a broad absence of partial-front supervision. It does not reveal the predicted score and supervision target for each individual front, or separate fronts with zero known corners from those with one. Those quantities require a more detailed diagnostic.
+
+### 7.4 Effect of training annotations
+
+Table 5 holds the reviewed evaluation reference fixed while changing only the training labels. This asks a different question from rescoring unchanged predictions against different references in Appendix 11.1.
+
+Table 5. Paired training-label comparison on the same 137 training photographs. Both models use two-view corner averaging and the reviewed 654-front evaluation reference.
+
+| Measure | Supplied training labels | Reviewed training labels |
+| --- | ---: | ---: |
+| Missed fronts | 47 | 15 |
+| Extra predictions | 85 | 51 |
+| Duplicates included in extras | 6 | 13 |
+| Detected fronts with two known corners | 569/583 | 583/583 |
+| Detected fronts with fewer than two known corners | 38/71 | 56/71 |
+| Both corners within 5 pixels | 541/583 | 572/583 |
+| Both corners within 10 pixels | 566/583 | 583/583 |
+
+The reviewed-label model recovers 33 fronts and loses one, giving 32 fewer misses. Fourteen recoveries are complete fronts, 15 have one known corner and four have neither. It gains 37 five-pixel successes and loses six, giving a net increase of 31. Thirteen gains come from recovered complete fronts; 24 improve fronts already detected by the control. The remaining recovered complete front has a maximum-corner error of 5.607 pixels and passes only the ten-pixel criterion.
+
+Here, recovery means that a front gains an eligible reference match. Focused inspection finds cases where the control already places a prediction over the cassette, but its box is too broad to reach IoU 0.50. Improved agreement can therefore arise from better object extent, rather than a newly appearing response to previously overlooked image material. These examples do not explain every recovered match.
+
+The decrease in total extras coexists with an increase in duplicates. Twelve of the reviewed-label model's 13 duplicates correspond to incomplete reference fronts. Each duplicate overlaps the already matched prediction by no more than the suppression threshold, so their survival is consistent with the implemented NMS rule. This points to remaining instance-separation and localization questions; it does not show that every overlapping output should be removed.
+
+The direction reverses under the older annotation references. With two-view averaging, supplied-reference five-pixel successes fall from 531 to 513 when reviewed training labels replace supplied labels. Under the earlier fixed reference they fall from 544 to 523. Appendix 11.3 reports the accompanying detection and ten-pixel results. The controlled experiment therefore shows that training-label choice changes recognition and that its measured benefit depends on the scoring definition. It does not independently establish which label version follows the physical surfaces more accurately.
+
+The reviewed-label model also has three fewer misses and three more five-pixel successes than the earlier proposed method, with the same 51 extras but eight more duplicates. This is an encouraging additional candidate. The comparison cannot isolate the effect of excluding the five supplementary images because it spans separate runs and computing environments. The paired label intervention in Table 5 is the supported causal comparison for the declared training procedure.
+
 ## 8 Discussions
 
 ### 8.1 Findings and interpretation
 
-The proposed method improves reviewed-reference detection and corner results at the declared operating point, with unchanged duplicate counts.
+The proposed method improves reviewed-reference detection and corner results over the supplied model at the declared operating point. The subsequent controlled comparisons show why a single success count is insufficient for choosing a replacement: focal weighting recovers fronts while increasing extras, and reviewed-label training improves several measures while increasing duplicates.
 
 The contribution is a cassette-front annotation procedure and an evaluated recognition method, compared with the supplied model. Development experiments guide method selection. The final measurements describe the combined system. The single-view control isolates the observed effect of adding averaging to the adapted detector at the declared settings: five-pixel successes increase from 566 to 569, and ten-pixel successes from 582 to 583. It does not separate the effects of annotation changes, additional photographs and further training that produced the adapted detector.
 
-The annotation sensitivity is substantial. The supplied and earlier fixed references contain different object entries, boundaries and corner positions, and both give the supplied model a higher five-pixel count. Rescoring changes agreement with a reference; it does not change the images, model parameters or predictions. The reviewed reference represents the accepted visible-front annotations, but predictions informed its review. The sensitivity finding is consistent with the motivation for noise-aware evaluation [4], without establishing that any one annotation version is independently correct.
+The annotation sensitivity is substantial. The supplied and earlier fixed references contain different object entries, boundaries and corner positions, and both give the supplied model a higher five-pixel count. Rescoring changes agreement with a reference; it does not change the images, model parameters or predictions. The new training-label experiment changes learning while holding each scoring reference fixed, and its ranking also reverses across reference versions. Predictions informed review, and the frozen reviewed reference retains documented target exclusions as well as geometric amendments. These findings are consistent with the motivation for noise-aware evaluation [4], without establishing that any one annotation version is independently correct.
 
 Both annotations and methods have been examined on the same 20 photographs. These images consequently serve as development evidence rather than an untouched test of generalization. Many cassettes share a photograph's lighting, viewpoint and rack arrangement, so 583 complete fronts do not constitute 583 independently captured scenes. New capture groups with independently reviewed labels are needed to assess transfer. A repeat annotation exercise should also measure how consistently reviewers can place the specified corners before interpreting differences of a few pixels as model limitations alone.
 
 Two denominators answer two different operational questions. The score 569/583 asks how many reference fronts with two known corners are successfully returned. Examining emitted pairs instead asks how much support the accepted outputs have in the reference. After pair acceptance and fresh matching, the proposed method offers 678 pairs: 569 satisfy the five-pixel criterion, 14 matched pairs exceed it, 48 match incomplete reference pairs, and 47 are unmatched. The last two groups lack complete reference support; they cannot automatically be counted as physically wrong. The 97.60% reference-pair result is therefore not the accuracy of all 678 emitted pairs.
 
-The three evaluation photographs without annotated fronts produce no detections at the declared settings. This is a useful check on those images, but it provides limited evidence about other empty scenes. The study does not measure a robot's positioning success or validate an automatic decision to move an arm.
+The proposed method produces no detections on the three evaluation photographs without annotated fronts. This is a useful check on those images, but it provides limited evidence about other empty scenes. The study does not measure a robot's positioning success or validate an automatic decision to move an arm.
 
 ### 8.2 Further work
 
-The prepared training-label comparison holds photographs, starting checkpoint, settings, budget and scoring annotations fixed while changing training labels. Both runs use the same 137 supplied training photographs, so the five additional photographs are excluded from this controlled comparison. The experiment tests adaptation from shared supplied weights. It cannot measure what would have happened if the entire training history, including training before the supplied checkpoint, had used a different annotation policy.
+The controlled label result makes annotation repeatability a priority. Review should begin with unmarked originals and the visible-front definition, then compare uncertain instance identities, box boundaries and corner locations. Disagreement between models or label versions identifies a review region; it does not determine the correct edit. A second independent annotation pass should measure instance and availability disagreements separately from coordinate differences. A delayed repeat by the same reviewer would measure within-reviewer repeatability instead.
 
-A separate paired experiment examines proposal scores. Li et al.'s Generalized Focal Loss includes Quality Focal Loss, which supports continuous quality targets and gives greater relative emphasis to predictions farther from their targets [15]. The native cassette training procedure already constructs soft classification targets influenced by box and landmark agreement. The prepared experiment retains that target-construction procedure and changes the weighting of its classification loss according to the score-target discrepancy. Following the same construction rule does not force identical target values as the two models learn. The experiment does not reproduce the paper's complete detector or distributed box representation.
+The completed classification comparison motivates inspecting the existing score targets before another loss change. A frozen-checkpoint diagnostic can separate fronts with zero, one or two known corners and record eligible candidates, surviving assignments, box agreement, known-corner agreement, normalized supervision targets and predicted scores. This distinguishes a missing assignment from a low target or a prediction below a useful target. A descriptive box-only assignment comparison would show how the pose component changes supervision for the same predictions; it would not establish the recognition result of a retrained model.
 
-Both training comparisons await results. The focal weighting also changes the overall scale of the classification term relative to other losses, so any gain cannot automatically be attributed only to better emphasis on difficult proposals. The analysis should inspect missed partial fronts, extra predictions, duplicates and corner outcomes together. The proposal-stage diagnostic makes score quality a relevant hypothesis, but it has not established that the current training targets are appropriate for every partial front.
+The reviewed-label candidate warrants repeated paired seeds under the same declared protocol. A separate matched experiment would be required to measure the effect of the five supplementary photographs. Neither comparison can erase the supplied checkpoint's earlier exposure to its original training labels. Independent capture groups and separately reviewed evaluation labels remain necessary before claiming transfer beyond the reused development photographs.
 
 Local models currently learn from proposals produced by a detector trained on the same photographs. Their training inputs may therefore contain a different distribution of errors from new photographs; this remains a hypothesis to measure. One option is to generate proposals with detectors whose complete training histories exclude the photographs used to train the refiner. Holding them out only during fine-tuning leaves earlier checkpoint exposure intact. PoseFix suggests synthetic errors based on measured error patterns as another source of training inputs [7]. Arbitrary coordinate noise is not evidence that those patterns have been reproduced. Promising results require repeated paired seeds and evaluation on independent capture groups.
 
@@ -286,7 +357,9 @@ Local models currently learn from proposals produced by a detector trained on th
 
 A method combining reviewed training annotations, detector adaptation, and equal averaging of associated two-view corner estimates was developed for cassette recognition. On the reviewed 20-image reference, it reduces missed fronts from 34 to 18 and extra predictions from 61 to 51 compared with the supplied model. Five-pixel pair success increases from 555 to 569 out of 583, and ten-pixel success increases from 577 to 583. Duplicate predictions remain at five.
 
-Three learned local corner models were evaluated, including a coordinate-correction model, but none exceeds the proposed method. The coordinate correction also reduces five-pixel success relative to the adapted detector that supplies its initial points, despite a small improvement in mean error. Scoring unchanged predictions against the original supplied and earlier fixed annotations reverses the main comparison. The demonstrated improvement is therefore tied to the reviewed target definition and development photographs. The next phase will isolate training-label effects, examine proposal scoring and refinement inputs, and evaluate independent captures.
+Three learned local corner models were evaluated, including a coordinate-correction model, but none exceeds the proposed method. The coordinate correction reduces five-pixel success relative to its input detector despite a small improvement in mean error. Quality Focal Loss recovers six fronts relative to its matched native control but adds 34 extras, with almost unchanged AP50.
+
+Changing only the training labels on 137 photographs gives 32 fewer misses, 34 fewer extras and 31 more five-pixel successes under the reviewed reference. Duplicates increase, and older references favour the supplied-label arm. This supplies controlled evidence for the effect of the label revision during fine-tuning while preserving its dependence on the target definition. The next phase should measure annotation repeatability, inspect score targets and verify promising designs across repeated seeds and independent captures.
 
 ## 10 References
 
@@ -320,13 +393,15 @@ Three learned local corner models were evaluated, including a coordinate-correct
 
 [15] X. Li et al., “Generalized focal loss: Learning qualified and distributed bounding boxes for dense object detection,” in Advances in Neural Information Processing Systems, vol. 33, 2020, pp. 21002–21012. [Online]. Available: https://proceedings.neurips.cc/paper_files/paper/2020/file/f0bda020d2470f2e74990a07a607ebd9-Paper.pdf
 
+[16] PyTorch Contributors, “Reproducibility,” PyTorch Documentation, ver. 2.14. Accessed: Nov. 28, 2026. [Online]. Available: https://docs.pytorch.org/docs/2.14/notes/randomness.html
+
 ## 11 Appendices
 
 ### 11.1 Sensitivity to the annotation reference
 
-All three annotation sets describe the same 20 photographs. The supplied labels contain 664 fronts, the earlier fixed labels contain 666, and the reviewed labels contain 654. Their numbers of complete corner pairs appear in Table 4. Original supplied labels were verified against the supplied data manifest before scoring.
+All three annotation sets describe the same 20 photographs. The supplied labels contain 664 fronts, the earlier fixed labels contain 666, and the reviewed labels contain 654. Their numbers of complete corner pairs appear in Table 6. Original supplied labels were verified against the supplied data manifest before scoring.
 
-Table 4. Effect of changing the scoring reference while keeping predictions fixed. Each arrow shows the supplied model followed by the proposed method. Corner-success denominators are the complete-pair counts in the first column.
+Table 6. Effect of changing the scoring reference while keeping predictions fixed. Each arrow shows the supplied model followed by the proposed method. Corner-success denominators are the complete-pair counts in the first column.
 
 | Annotation reference | Misses | Extra predictions | Within 5 pixels | Within 10 pixels |
 | --- | ---: | ---: | ---: | ---: |
@@ -340,10 +415,26 @@ The proposed method loses seven five-pixel successes under the supplied labels a
 
 The common inference rerun used Python 3.12.14, PyTorch 2.9.0+cpu, and Ultralytics 8.4.182.
 
+The paired classification-loss experiment used one NVIDIA A100-SXM4-40GB; the paired training-label experiment used one NVIDIA L4. Both used Python 3.13.16, PyTorch 2.14.1+cu130 and Ultralytics 8.4.182. Within each experiment, both arms shared the same recorded runtime. Mixed-precision training was disabled. This setting specifies the training tensor precision; the saved training receipts do not separately establish every backend arithmetic flag. The classification experiment's inference explicitly disabled TensorFloat32. Exact cross-platform training identity was not measured [16]. The GPU models are recorded as experimental conditions; latency is not an outcome of this study.
+
 The adapted detector uses AdamW with an initial learning rate of 0.0001, final learning-rate factor 0.01, weight decay 0.0005, and three warmup epochs. Training includes rotation up to five degrees, translation fraction 0.05, scale fraction 0.15, and horizontal reflection probability 0.50. Mosaic, mixup, vertical reflection, shear, and perspective transforms are disabled. The final checkpoint follows 1080 batches and 80 parameter updates; gradient accumulation combines several batches into each update. The supplied 664-front validation labels monitor training, and the final comparison uses the separately reviewed annotations.
 
-The heatmap models use batch size 32, AdamW learning rate 0.0001, weight decay 0.0001, and cosine decay to 0.000001 over 30 epochs. Both expose 3815 crops per epoch, giving 114450 crop presentations. Colour augmentation is disabled. Initial-corner hints have Gaussian standard deviation eight canvas pixels, with four-pixel standard-deviation position noise during training only. Target heatmaps have standard deviation two heatmap cells. The output grid represents canvas positions at four-pixel intervals; padding is masked in both loss and decoding.
+The heatmap models share an NVIDIA Tesla T4 and use batch size 32, AdamW learning rate 0.0001, weight decay 0.0001, and cosine decay to 0.000001 over 30 epochs. Both expose 3815 crops per epoch, giving 114450 crop presentations. Colour augmentation is disabled. Initial-corner hints have Gaussian standard deviation eight canvas pixels, with four-pixel standard-deviation position noise during training only. Target heatmaps have standard deviation two heatmap cells. The output grid represents canvas positions at four-pixel intervals; padding is masked in both loss and decoding.
 
-The correction model uses the same optimizer, learning-rate schedule, batch size and epoch budget, with no hint noise. Its 7204 eligible endpoint targets produce 114270 crop presentations and 3600 parameter updates. Eight known reference corners lack a usable initial estimate and are excluded. A nonfinite correction or a corrected point outside the image becomes unavailable. The recorded training runtime uses PyTorch 2.14.1+cu130; the selected CPU replay uses PyTorch 2.9.0+cpu.
+The correction model uses an NVIDIA L4 with the same optimizer, learning-rate schedule, batch size and epoch budget, with no hint noise. Its 7204 eligible endpoint targets produce 114270 crop presentations and 3600 parameter updates. Eight known reference corners lack a usable initial estimate and are excluded. A nonfinite correction or a corrected point outside the image becomes unavailable. The recorded training runtime uses PyTorch 2.14.1+cu130; the selected CPU replay uses PyTorch 2.9.0+cpu.
 
 Every comparison retains the image identity, reference version, model bytes, inference settings, predicted boxes and points, and individual gained or lost targets. These records allow the reported counts and individual outcomes to be recomputed using the declared one-to-one matching rule.
+
+### 11.3 Training-label results under all references
+
+Table 7 keeps each evaluation reference fixed while comparing the two training-label arms. Each arrow runs from the model trained with supplied labels to the model trained with reviewed labels. Both use two-view corner averaging. The three rows concern the same 20 photographs and are sensitivity analyses, not three independent evaluation datasets.
+
+Table 7. Training-label intervention under all three evaluation references. The first column gives the complete-pair denominator for both corner columns.
+
+| Evaluation reference | Misses | Extra predictions | Within 5 pixels | Within 10 pixels |
+| --- | ---: | ---: | ---: | ---: |
+| Supplied, 584 pairs | 34 → 50 | 62 → 76 | 531 → 513 | 572 → 566 |
+| Earlier fixed, 584 pairs | 23 → 38 | 49 → 62 | 544 → 523 | 584 → 575 |
+| Reviewed, 583 pairs | 47 → 15 | 85 → 51 | 541 → 572 | 566 → 583 |
+
+These results measure the effect of the frozen training-label revision from the shared supplied checkpoint. They do not compare training from random initialization or establish a unique physical reference from model agreement. The five supplementary photographs and any future annotation amendments require separate controlled comparisons.

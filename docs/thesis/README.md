@@ -4,26 +4,25 @@ Updated 28 November 2026, Asia/Hong_Kong.
 
 **[Current report](report.md)** explains cassette-front detection and lower-corner localization for undergraduate Electronic Engineering readers. It compares the proposed method with the untouched supplied baomai model, explains project results directly, and cites external academic or professional sources. Acknowledgements are omitted as requested.
 
-The expanded report now explains what each cited method establishes and how the cassette implementation adapts it. It distinguishes suppression, cross-view association and evaluation matching; reference availability and predicted confidence; and image accuracy and physical positioning. The [citation audit](citation-audit-r64.md) records 15 verified IEEE references and the publisher-pagination choices. Table 3 includes the adapted single-view control, making the residual model's 564/583 result comparable with its unrefined input's 566/583, as well as the proposed method's 569/583.
+The expanded report now explains what each cited method establishes and how the cassette implementation adapts it. It distinguishes suppression, cross-view association and evaluation matching; reference availability and predicted confidence; and image accuracy and physical positioning. The [citation audit](citation-audit-r64.md) records the original 15 verified IEEE references and the new reproducibility reference, with publisher-pagination decisions. Table 3 includes the adapted single-view control, making the residual model's 564/583 result comparable with its unrefined input's 566/583, as well as the proposed method's 569/583.
 
 The Word report uses six centered display equations with separate right-aligned numbers and automatic row height. The [validation record](report-validation-fyp-i.json) contains the exact page count, abstract length, linked contents map, equation geometry and all-page visual checks. It is the authoritative source for presentation counts.
 
-## Next experiments
+## Completed comparisons and next diagnostic
 
-The compact **[notebook guide](experiments.md)** lists the two GPU comparisons and the two new CPU diagnostics, with their execution status and return instructions. Runs already in progress keep their frozen protocols.
+The **[notebook guide](experiments.md)** records both completed GPU comparisons and the fixed-weight diagnostic now being prepared from their findings.
 
-The [annotation definition](../annotation-definition.md) gives the practical rule: one identifiable visible front, its visible extent, and each actual lower corner when locatable. It retains the accepted material-ownership and missing-point rules. The [research note](research-annotation-definition.md) explains their basis and the proposed annotation-repeatability measurement.
+The [classification-loss result](quality-focal-results.md) verifies six fewer misses but 34 more extras, including 13 more duplicates, and almost unchanged AP50. The [controlled training-label result](training-label-results.md) verifies 32 fewer misses, 34 fewer extras and 31 more five-pixel successes under the reviewed reference, with seven more duplicates. Both older references favour the supplied-label arm. The paired controls and reference dependence remain explicit in the report.
 
-1. **[Run the model-improvement experiment first](quality-focal-experiment.md).** Test Quality Focal Loss against native training with the same photographs, labels and initial weights. It targets how the detector learns object scores, addressing misses and extras as well as checking corner accuracy.
-2. **[Run the controlled training-label comparison second](training-label-comparison.md).** Keep the original 137 photographs and training procedure identical while changing only the eligible training labels.
+The [annotation definition](../annotation-definition.md) gives the practical rule: one identifiable visible front, its visible extent, and each actual lower corner when locatable. The [focused photo review](annotation-review-r65.md) records bounded image judgments; it is separate from an independent annotation-repeatability study. Any future amendment must preserve source identities and show changed details on only the affected photographs.
 
-Both guides link to their GPU notebooks and completed preparation checks. Comparative training results are pending; the current measured results below remain the report's evidence.
+The next [score and assignment diagnostic](score-assignment-audit.md) uses frozen returned checkpoints and no optimizer. Existing aggregate traces show almost complete partial-target assignment; the remaining question is how per-target scores relate to native supervision for zero, one and two known corners. A new trained loss or detector is not justified by these aggregates alone.
 
 The new **[detection audit and fixed reflected-box experiment](detection-errors.md)** are complete. The retained method detects all 583 fronts with complete corner annotations but only 53 of 71 with incomplete annotations. A reflected-box alternative reduces misses/extras to 15/43 and keeps 569/583 five-pixel successes, while duplicates rise to ten and older-reference corner scores decline. The **[CPU reproduction notebook](../../notebooks/baomai_detection_audit_r62.ipynb)** needs no model or photograph download. It adds an explicit tradeoff, not an automatic replacement.
 
 The **[full-proposal replay](proposal-stages.md)** now explains where those 18 misses lose eligible boxes: 12 at the confidence gate, three during native NMS, and three without a decoded box reaching matching IoU. Matching outcomes agree with the current comparison under all three references. The accompanying box-geometry audit finds that eight of ten near misses have a greatest-overlap retained box more than 1.5 times the reference width. These are geometric diagnoses, not proof of physical box ownership or a particular learning cause. The **[augmentation audit](augmentation-audit.md)** retains 11,880 of 11,997 target presentations, with 117 removed and 368 retained boxes clipped. Most removals are wholly outside the canvas; the bounded visual review gives no concrete reason to change the policy. Both new CPU notebooks completed all four actual cells. The [research note](research-next-models.md) connects these findings to primary literature and records which ideas have already been tried.
 
-The additional [score and assignment research](research-score-assignment.md) examines TOOD, IoU-Net and VarifocalNet against the pinned native implementation. That implementation already uses box and known-corner agreement in assignment and soft score targets. The note specifies a conditional diagnostic to distinguish missing assignment, low supervision targets and predictions below useful targets. No new training run or change to the frozen notebooks is introduced.
+The additional [score and assignment research](research-score-assignment.md) examines TOOD, IoU-Net and VarifocalNet against the pinned native implementation. That implementation already uses box and known-corner agreement in assignment and soft score targets. The note specifies a conditional diagnostic to distinguish missing assignment, low supervision targets and predictions below useful targets. The detailed diagnostic develops that question without training. The returned notebook source includes the PR156 repair that retains clipped zero-area boxes as unmatched extras.
 
 ## Current results
 
@@ -53,7 +52,7 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Report source map](report-source-map.md) | Exact technical provenance |
 | [Annotation definition](../annotation-definition.md) | Practical labeling decisions and unresolved-case handling |
 | [Annotation research](research-annotation-definition.md) | Primary sources and a proposed repeatability measurement |
-| [Notebook guide](experiments.md) | Two prepared GPU comparisons and two CPU audits, with execution status |
+| [Notebook guide](experiments.md) | Two completed GPU comparisons and the focused CPU diagnostics, with execution status |
 | [Proposal stages](proposal-stages.md) | Full decoded-proposal continuity, score/NMS losses and box geometry |
 | [Proposal and geometry notebook](../../notebooks/baomai_proposal_audit_r63.ipynb) | Four-cell CPU reproduction from immutable source |
 | [Augmentation audit](augmentation-audit.md) | Native transforms, target lineage and review panels |
@@ -64,6 +63,10 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Detection audit notebook](../../notebooks/baomai_detection_audit_r62.ipynb) | Completed CPU replay; all four unchanged code cells executed |
 | [Detection audit evidence](evidence/detection-errors/README.md) | Exact baseline replay and method/reference-specific review cases |
 | [Reflected-box evidence](evidence/reflected-anchor/README.md) | All references, independent averaging replay and adverse paired cases |
+| [Classification-loss results](quality-focal-results.md) | PR157 paired return, exact score/AP replay and adverse trade-offs |
+| [Training-label results](training-label-results.md) | PR158 controlled intervention and all-reference rank reversal |
+| [Score and assignment diagnostic](score-assignment-audit.md) | Frozen-checkpoint, per-target investigation; exact execution status in the guide |
+| [Focused annotation review](annotation-review-r65.md) | Original-image review and recorded decisions |
 | [Residual results](residual-results.md) | PR155 audit, paired changes, mean-error nuance and CPU replay |
 | [Residual evidence](evidence/residual-return/README.md) | Reproduction and complete audit identities |
 | [Annotation comparison](annotation-comparison.md) | Evaluation-label versus training-label effects |
@@ -79,7 +82,7 @@ The new annotation-reference notebook uses saved predictions and the Python stan
 
 Vision outputs are intended for robotic arms to locate cassettes; arm control and integration are outside this study. Recognition quality is the priority. The report measures misses, extras, duplicates and corner accuracy together. The 20 photographs have guided development and annotation review; independent captures are still needed. A downstream message format and physical acceptance tolerance have not been supplied.
 
-The prepared training-label comparison excludes the five additional photographs from both arms to isolate the label intervention. It tests the frozen effective labels, not a newly relabeled implementation of the written definition. Independent annotation repeatability remains unmeasured. Local-model training also needs errors representative of photographs unseen by the proposal detector.
+The completed training-label comparison excludes the five additional photographs from both arms to isolate the label intervention. It tests the frozen effective labels, not a newly relabeled implementation of the written definition. Independent annotation repeatability remains unmeasured. Local-model training also needs errors representative of photographs unseen by the proposal detector.
 
 The selected deployment model and live defaults are unchanged. Technical experiment identifiers remain in this folder; the report uses descriptive names.
 

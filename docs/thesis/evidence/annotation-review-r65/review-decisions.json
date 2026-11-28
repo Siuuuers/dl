@@ -1,0 +1,100 @@
+{
+  "case_count": 8,
+  "decisions": [
+    {
+      "after_overlay": "The reviewed reference keeps the top-clipped front and both visible lower corners. Its shallower box is consistent with the observed front boundary. The original-label training arm already has an output in this region; recovery means a successful box match under the fixed evaluator, not proof of a newly acquired ability to see the object.",
+      "case_id": "case-01",
+      "disposition": "no_change",
+      "reference_identity": "r50/new_000007/R001",
+      "reference_index_0based": 0,
+      "remaining_uncertainty": "Exact placement within the blurred junction was not independently measured.",
+      "selected_prediction_comparison": {
+        "original_labels": {
+          "position_1based": 35,
+          "reference_iou": 0.4674734551055615,
+          "status": "extra"
+        },
+        "reviewed_labels": {
+          "position_1based": 22,
+          "reference_iou": 0.7663218872489075,
+          "status": "matched"
+        }
+      }
+    },
+    {
+      "after_overlay": "The reference correctly retains an identifiable right-edge partial with the observed left corner and an unavailable right corner. Its absence from the reviewed-label arm's matched outputs is a genuine reference-defined detection loss on a visible target; no box or point adjustment is justified to make that prediction succeed.",
+      "case_id": "case-02",
+      "disposition": "no_change",
+      "reference_identity": "r50/new_000008/R034",
+      "reference_index_0based": 33,
+      "remaining_uncertainty": "This inspection does not distinguish a low-confidence proposal from a suppressed or poorly localized proposal, because only the retained outputs were shown."
+    },
+    {
+      "after_overlay": "Both lower-corner coordinates are identical across these corresponding rows. The older box extends farther into the rack below and to the left. The reviewed box is more consistent with the visible-front definition in this region. This supplies a concrete explanation for one reference-dependent match, without certifying all reviewed annotations.",
+      "case_id": "case-03",
+      "disposition": "no_change",
+      "historical_identity": "supplied664 and frozen666 new_000057/R011",
+      "reference_identity": "r50/new_000057/R010",
+      "reference_index_0based": 9,
+      "reference_iou_comparison": {
+        "original_labels_P016": {
+          "r50_R010": 0.5894596846242794,
+          "supplied664_R011": 0.5972961720416813
+        },
+        "reviewed_labels_P018": {
+          "r50_R010": 0.6836756029892974,
+          "supplied664_R011": 0.4454676422200817
+        }
+      },
+      "remaining_uncertainty": "A narrow shaded underside remains less sharply defined than the major rack/front separation."
+    },
+    {
+      "after_overlay": "The selected front remains identifiable with one observed lower corner. Reviewed-label predictions P060 and P064 are duplicate extras for the already matched R050 band under the fixed evaluator. The raw photograph supports several distinct horizontal front bands, so suppression must retain neighbouring instances rather than merge the entire cluster.",
+      "case_id": "case-04",
+      "disposition": "no_change",
+      "legacy_exception": "The lower visible front formerly identified as R37 new_000009:52, box [600,490,615,504], was explicitly excluded in R38. The historical ledger confirms that this changed the scored target population despite a visible partial front. The existing exclusion is preserved. See legacy-exclusion.json.",
+      "reference_identity": "r50/new_000009/R049 and adjacent partial-front cluster",
+      "reference_index_0based": 48,
+      "remaining_uncertainty": "The visible-front rule and frozen reference inventory have a documented exception here. An unmatched output on the excluded region is not automatically evidence of physical background."
+    },
+    {
+      "after_overlay": "The selected front has one observed lower corner; the other side is hidden by the gripper. Older broad boxes extend across more of the occluder, whereas the reviewed boxes track visible extent for these lower bands. Repeated retained hypotheses on R040, R041, R042 and R050 produce four evaluator duplicates in this cluster. The raw bands support distinct adjacent physical fronts.",
+      "case_id": "case-05",
+      "disposition": "no_change",
+      "reference_identity": "r50/new_000090/R040 and adjacent partial-front cluster",
+      "reference_index_0based": 39,
+      "remaining_uncertainty": "The exact visible right boundary and shadow ownership remain soft. A prediction-pair overlap threshold is not a physical instance-identity test."
+    },
+    {
+      "after_overlay": "The complete front and both available corners are supported by the photograph. Both training arms output a box over the region; the original-label arm's P024 has IoU about 0.4814 and is unmatched, while the reviewed-label arm's P023 has IoU about 0.5948 and matches. This is a recovered threshold-defined box match.",
+      "case_id": "case-06",
+      "disposition": "no_change",
+      "reference_identity": "r50/new_000055/R021",
+      "reference_index_0based": 20,
+      "remaining_uncertainty": "No uniquely superior subpixel corner placement follows from the blurred rim."
+    },
+    {
+      "after_overlay": "This ordinary control remains one front with two observed lower corners, matched by both training arms. The reviewed extent follows the visible front more closely than the older broader context box. The small historical left-corner difference lies within a blurred junction; this inspection does not establish that one nominal coordinate is uniquely true.",
+      "case_id": "case-07",
+      "disposition": "no_change",
+      "reference_identity": "r50/new_000011/R002",
+      "reference_index_0based": 1,
+      "remaining_uncertainty": "No inter-reviewer or within-reviewer localization precision has been measured."
+    },
+    {
+      "after_overlay": "The matched reviewed-label P053 and duplicate P055 cover the same narrow top-border front fragment. The reviewed reference retains its right corner and leaves the left corner unavailable; older references place the left point approximately one pixel below the image edge. The raw photograph does not justify asserting a newly visible left junction or inventing a replacement point.",
+      "case_id": "case-08",
+      "disposition": "uncertain_preserve_reference",
+      "historical_identity": "supplied664 and frozen666 new_000009/R013",
+      "reference_identity": "r50/new_000009/R012",
+      "reference_index_0based": 11,
+      "remaining_uncertainty": "Preserve the reference and record the availability ambiguity. The evaluator duplicate is clear as an overlap assignment, while exact border-fragment geometry requires a separate repeat review."
+    }
+  ],
+  "independent_human_review": false,
+  "label_changes": 0,
+  "photograph_count": 7,
+  "population_error_rate_estimated": false,
+  "schema": "baomai-annotation-review-decisions-r65-v1",
+  "status": "completed_bounded_agent_assisted_review"
+}

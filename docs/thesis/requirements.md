@@ -11,13 +11,13 @@ The report is for undergraduate Final Year Project I in the Department of Electr
 | Background | Section 4; annotations, detection matching, corner error and confidence |
 | Methodology and Implementation | Section 5; data review, original/proposed methods, three local models and common evaluation |
 | Simulation Results | Section 6; ideal-heatmap numerical check |
-| Experimental Results | Section 7; original-model comparison and all three local-model returns |
+| Experimental Results | Section 7; original-model comparison, three local-model returns and paired classification-loss and training-label comparisons |
 | Discussions | Section 8; contribution, interpretation, annotation sensitivity and further work |
 | Conclusions | Section 9; supported results and adverse findings |
 | References | Section 10; external academic/professional sources in IEEE first-citation order |
 | Appendices | Section 11; three-reference scoring comparison and training/coordinate settings |
 
-All sections receive decimal numbers and contents entries. Major equations are numbered, centered editable native display mathematics; equation numbers are separate at the right margin. Symmetric borderless layout rows use automatic height and are distinct from the four captioned data tables. The one explanatory figure and every data table have descriptive numbered captions.
+All sections receive decimal numbers and contents entries. Major equations are numbered, centered editable native display mathematics; equation numbers are separate at the right margin. Symmetric borderless layout rows use automatic height and are distinct from the seven captioned data tables. The one explanatory figure and every data table have descriptive numbered captions.
 
 The manuscript contains no GitHub links, project-note citations or unexplained experiment codes. It explains project procedures and results directly. The untouched supplied checkpoint remains the common baseline; supplied, earlier fixed and reviewed evaluation labels remain distinct. Changing evaluation labels is explicitly separated from changing training labels.
 
@@ -35,4 +35,10 @@ On 28 November 2026, the user clarified that the supplied baomai guidance and ma
 
 The inspected [baomai README](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/README.md), [annotation guidance](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/data/README.md), and [viewer](https://github.com/an94-doll/embedding_vision/blob/351eb3cf960ccc34829e2bc72e1fa4645acc6295/scripts/view_d405_yolo.py) distinguish annotation availability from model output. Unlocatable annotation points use `0 0 0`; the viewer checks each predicted endpoint independently and draws a connecting line only when both pass. Its raw prediction records still carry two coordinate/score slots. These conventions do not establish a downstream API rule for missing predictions, a compulsory complete pair for every detection, or a physical acceptance tolerance.
 
-Continue the prepared model and training-label comparisons under their frozen protocols. This clarification requires no architecture change, new acceptance stage, or additional interface question before those experiments. Any later downstream specification can define its own output and acceptance requirements explicitly.
+The completed model and training-label comparisons retain their frozen protocols. This clarification required no architecture change, new acceptance stage, or additional interface question before those experiments. Any later downstream specification can define its own output and acceptance requirements explicitly.
+
+## Reporting hardware and new result interpretation
+
+The user prioritizes recognition discoveries and a simple report, with no latency or hardware constraint. Record the GPU model and relevant software/precision settings briefly in the reproducibility appendix. The main scientific comparisons are within matched arms, not cross-GPU performance claims. Equal seeds do not establish identical training across platforms. CPU model details are not needed for an unclaimed timing benchmark. Keep total extras and their duplicate subset visible when a candidate improves other measurements.
+
+The completed paired returns use the same seed and final-epoch rule within each experiment. Their single-seed, development-only scope and dependence on evaluation annotations must remain explicit. If an annotation is amended, retain the old reference for scoring and create a changed-photo-only PDF with the exact amended details highlighted. No model score alone justifies a label change.

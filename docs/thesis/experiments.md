@@ -2,35 +2,32 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-The next GPU comparison remains the classification-loss experiment, followed by the controlled training-label experiment. Two CPU audits explain the remaining errors and the existing augmentation path. They do not change either frozen training comparison.
+Both paired GPU experiments have returned. Their saved outputs and training receipts have been independently verified, so there is no need to rerun them merely to obtain the reported comparisons. The next useful notebook inspects the existing score-target mechanism without training a new model.
 
-| Priority | Notebook | Question | Runtime and status |
+| Role | Notebook | Question | Runtime and status |
 | --- | --- | --- | --- |
-| 1 | [Model-improvement comparison](../../notebooks/baomai_quality_focal_r61.ipynb) | Does changing classification-loss emphasis improve misses, extras and corner results? | GPU; first two setup cells verified, comparative training result pending |
-| 2 | [Controlled training-label comparison](../../notebooks/baomai_training_label_comparison_r61.ipynb) | What changes when only the training annotations change on the same 137 photographs? | GPU; first two setup cells verified, comparative training result pending |
-| Diagnostic | [Proposal-stage and box-geometry audit](../../notebooks/baomai_proposal_audit_r63.ipynb) | Where do the current misses lose eligible proposals, and what box disagreements remain? | CPU; all four actual cells completed from published source; [evidence](evidence/proposal-stages/README.md) |
-| Diagnostic | [Training-augmentation audit](../../notebooks/baomai_augmentation_audit_r63.ipynb) | How do the existing transforms affect target retention and corner availability? | CPU; all four actual cells completed from published source; [evidence](evidence/augmentation-audit/README.md) |
+| Next diagnostic | [Score and assignment audit](../../notebooks/baomai_score_assignment_r65.ipynb) | For each zero-, one- or two-corner target, how do native assignments, quality targets and predicted scores relate? | CPU or an already available GPU; no optimizer. See [exact validation and execution status](score-assignment-audit.md). |
+| Completed comparison | [Classification-loss comparison](../../notebooks/baomai_quality_focal_r61.ipynb) | Does QFL improve misses, extras and corner results relative to a matched native control? | PR157 returned; [independent score/AP replay](quality-focal-results.md) complete. |
+| Completed comparison | [Controlled training-label comparison](../../notebooks/baomai_training_label_comparison_r61.ipynb) | What changes when only the training annotations change on the same 137 photographs? | PR158 returned; [independent all-reference replay](training-label-results.md) complete. |
+| Completed diagnostic | [Proposal-stage and box-geometry audit](../../notebooks/baomai_proposal_audit_r63.ipynb) | Where do the historical candidate's misses lose eligible proposals? | CPU; all four unchanged cells completed from published source; [evidence](evidence/proposal-stages/README.md). |
+| Completed diagnostic | [Training-augmentation audit](../../notebooks/baomai_augmentation_audit_r63.ipynb) | How do the existing transforms affect target retention and corner availability? | CPU; all four unchanged cells completed from published source; [evidence](evidence/augmentation-audit/README.md). |
 
-Each notebook has four code cells. The GPU notebooks retain their original source pins and paired training budgets. A run already in progress need not be restarted for these new CPU diagnostics.
+## What the completed comparisons establish
 
-Both CPU notebooks have already completed locally in IPython. Rerunning them is optional; hosted Colab and its browser download interface were not exercised. The augmentation diagnostic retains the current policy: 117 of 11,997 target presentations are removed, mostly because the transformed boxes lie entirely outside the canvas. The six reviewed panels reveal no concrete supervision inconsistency in that bounded sample. These findings do not measure a trained model's accuracy.
+QFL changes reviewed-reference two-view results from 18 misses/49 extras/4 duplicates to 12/83/17. Five-pixel successes change from 568 to 570; ten-pixel successes from 583 to 582. Original-view AP50 changes from 0.9838649 to 0.9839534. The aggregate training traces show almost complete assignment of incomplete-corner targets; they do not log per-target predicted scores or separate zero and one known corner.
 
-## Return the GPU results
+On the same 137 photographs, changing supplied training labels to frozen reviewed labels changes reviewed-reference two-view results from 47 misses/85 extras/6 duplicates to 15/51/13, and five-pixel successes from 541 to 572. Both older annotation references favour the supplied-label arm. One paired seed and reused development photographs do not establish independent generalization or human-label precision.
 
-For each GPU notebook, select one GPU runtime and run all four cells. The final cell evaluates, verifies and downloads one upload ZIP. Extract its outer ZIP and return the compact evidence ZIP, the return manifest and every wrapped model part together. The two training notebooks share the default verified asset cache within the same runtime. Their separate work directories prevent mixing results.
+The returned notebooks execute source `acaf5d4b4043583fdd81f5ea848b3a6a68ada728`, pinned in notebook commit `587514e557db13be287a5483eaf952dfd5e14761`. This incorporates PR156's clipped-box accounting: finite non-positive-area predictions stay in extra-output totals and cannot match. The same repair is retained in this branch. Existing thresholds, training budgets and final-epoch selection are unchanged.
 
-The model comparison downloads `baomai-quality-focal-r61-upload.zip`; the label comparison downloads `baomai-training-label-comparison-r61-upload.zip`. Follow their [model protocol](quality-focal-experiment.md) and [label protocol](training-label-comparison.md) for persistence and compatible-run reuse.
+## Choose the next change from evidence
 
-## How a result changes the plan
+Use the [score-target research](research-score-assignment.md) to interpret the fixed-weight diagnostic. A low supervision target, missing assignment and score below a useful target require different remedies. A box-only overlap counterfactual, if produced, describes assignment at fixed predictions; it is not a trained-model result. Do not select a new operating threshold using the same twenty development photographs.
 
-Assess the fixed-threshold detection and corner results together. For the classification-loss experiment also inspect the declared AP50 ranking measure; a shifted confidence distribution alone does not establish improved recognition. Report the incomplete-corner group explicitly and retain all three annotation-reference comparisons.
+The [focused annotation review](annotation-review-r65.md) follows the existing visible-front definition and retains uncertain ownership judgments. Predictions may prioritize a region; the original pixels decide whether an edit is warranted. An independent second pass is required to measure annotation repeatability. If labels are amended later, freeze a new reference, retain the older matrices and produce a PDF of only changed photographs with exact changes highlighted.
 
-If a model has a useful tradeoff, repeat the matched comparison with additional declared seeds before a strong repeatability claim. If augmentation loses a useful target or leaves an inconsistent target, first verify the original and transformed pixels; then compare one precisely defined transform change. A measured target drop is not automatically a bug.
-
-The [research note](research-next-models.md) records why further suppression sweeps, generic occlusion training, another corner-only refiner, or a new detector family are not the current priority. Prior attempts remain visible so that the same idea is not presented as an untried method.
-
-The [score and assignment addendum](research-score-assignment.md) adds the native pose-target mechanism and three relevant primary papers. Read the existing native/QFL diagnostics first. A further frozen-checkpoint assignment audit is specified only as a conditional next diagnostic; it is not an added notebook or a completed result.
+Additional matched seeds are worthwhile for a promising design. A controlled 137-versus-142-photo comparison would separately test the five extra photographs; the existing cross-run results cannot isolate that effect. The [model research note](research-next-models.md) keeps previous suppression, augmentation and corner-refinement attempts visible so they are not presented as untried methods.
 
 ## Application boundary
 
-The user clarified that the vision outputs are intended for robotic arms to locate the cassettes. Arm control and its integration are outside this project. The vision study reports detection and corner-coordinate quality; the downstream message format and physical acceptance tolerance remain unspecified.
+Vision outputs are intended for robotic arms to locate cassettes. Arm control and integration are outside this project. Recognition quality is the priority; latency and hardware capacity are not current decision criteria. The downstream message format and physical acceptance tolerance remain unspecified.

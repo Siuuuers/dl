@@ -4,6 +4,8 @@
 
 This is the compact operating definition of the existing **`baomai-visible-front-v1`** [policy](annotation-policy.md). It preserves the accepted target and file format. It adds a repeatable review procedure; it does not relabel images or certify every historical label. The [research note](thesis/research-annotation-definition.md) explains the supporting literature and what still needs measurement.
 
+**Frozen benchmark scope.** The general definition below and the inherited reviewed evaluation inventory are not identical. The [R38 record](front-review-r38.md) preserves five case-specific user exclusions, including a visibly present partial front at the former `new_000009:52`. These exclusions are retained in the later reviewed reference; they are not a general size rule or evidence that the excluded fronts are background. The [bounded R65 photo review](thesis/annotation-review-r65.md) documents this distinction with the original pixels and exact historical row identity. Existing reference versions remain frozen, and an extra prediction means an unmatched output under the named reference, not necessarily a nonexistent physical cassette.
+
 ## 1. Decide what belongs to the front
 
 The target is the cassette's front face, including its own visible molded frontal rim or small frontal tab. Include its shaded material. Exclude the receding upper plane, projecting tray, rear surface, rack, gripper, hand and neighboring cassettes.
