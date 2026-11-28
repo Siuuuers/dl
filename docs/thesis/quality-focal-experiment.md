@@ -10,6 +10,8 @@ Can changing how the detector learns its object scores improve the balance betwe
 
 The current two-view method has 18 misses, 51 extras and 569/583 complete pairs within five pixels under the reviewed reference at box confidence strictly above 0.25. The three completed corner refiners do not beat that corner result and cannot change detection counts when boxes remain fixed. Earlier partial-target classification weighting recovered some partial fronts but increased extra predictions. These observations motivate a new classification objective rather than another coordinate-only model. They do not predict whether it will succeed. See the [residual results](residual-results.md) and [partial-classification result](../partial-classification-r51-results.md).
 
+The later [full-proposal replay](proposal-stages.md) locates 12 of the 18 current misses at confidence filtering, three at native NMS, and three without any decoded box reaching reference IoU 0.50. In the three NMS cases, a higher-score, lower-reference-overlap output suppresses an eligible alternative. These findings make score learning a relevant question, but do not establish a classification-loss cause or a guaranteed QFL benefit. The existing notebook, source pin, targets and training protocol remain fixed.
+
 The source audit also prevents repeating existing ingredients. Horizontal flipping is already enabled during training with probability 0.5 and a left/right slot exchange. Native coordinate training already includes residual log-likelihood estimation. Soft suppression, a larger inference input, and synthetic covered-corner training have already been tested; none establishes an overall replacement for the retained method.
 
 ## Research basis

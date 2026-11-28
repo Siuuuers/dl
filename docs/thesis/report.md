@@ -46,7 +46,7 @@ Performance depends on the annotation reference. The original supplied annotatio
 
 ### 3.1 Problem and aim
 
-The system must identify each tissue cassette front in a colour image and return its lower-left and lower-right corner coordinates. These points describe the position and orientation of the lower edge. Recognition is evaluated through missed fronts, extra predictions and corner error. No downstream interface or physical acceptance tolerance has been specified for this study.
+The system detects cassette fronts and locates their lower-left and lower-right corners for robotic-arm localization. These points describe the lower edge's position and orientation. Evaluation measures misses, extra predictions and corner error. Arm control and integration are outside this study. The output message format and physical tolerance remain unspecified.
 
 Cassettes are closely arranged in a rack. A front may be partly covered by another cassette or a gripper, or cut by the image boundary. The required rectangle follows the cassette's own visible front material; rack and gripper boundaries must not define the object. Figure 1 illustrates the target.
 
@@ -193,13 +193,15 @@ Table 2. Recognition on the same 20 photographs and reviewed annotations. Pair c
 | Both corners within 5 pixels | 555/583 | 569/583 |
 | Both corners within 10 pixels | 577/583 | 583/583 |
 
-The proposed method has 16 fewer misses and ten fewer extra outputs. Detection precision increases from 91.04% to 92.58%, and recall increases from 94.80% to 97.25%. Five-pixel pair success increases from 95.20% to 97.60%, a gain of 14 targets or 2.40 percentage points. The ten-pixel criterion gains six targets. Duplicate detections remain unchanged.
+Detection precision increases from 91.04% to 92.58%, and recall from 94.80% to 97.25%. Five-pixel pair success rises from 95.20% to 97.60%, a gain of 2.40 percentage points. The ten-pixel criterion gains six fronts; duplicates remain unchanged.
 
 The proposed method detects 583/583 complete fronts, versus 580/583 for the supplied model. For the 71 fronts with unavailable corners, detection rises from 40/71 (56.34%) to 53/71 (74.65%). Its 18 misses have one known corner (13 fronts) or neither (five). The 583/583 ten-pixel result therefore excludes these incomplete fronts.
 
+Archived original-view proposals from the same checkpoint locate the 18 misses: 12 have no eligible box passing confidence filtering, three are lost in native non-maximum suppression, and three have no decoded box reaching IoU 0.50. This partition does not establish the cause during learning.
+
 The 51 extras comprise five duplicates, 36 predictions whose greatest reference IoU is at least 0.10 but below 0.50, and ten below 0.10. These geometric groups indicate possible localization and background errors for review [5]; they are not physical verdicts. Displacement, omitted annotations and disputed boundaries require checking the original photograph.
 
-These measurements support improved recognition against the reviewed annotations. They do not show that every individual prediction improves. Both the supplied annotations and the earlier fixed annotations favour the supplied model, as shown in Appendix 11.1. Annotation choice materially affects the conclusion.
+Both older references favour the supplied model (Appendix 11.1), so the recognition improvement is tied to the reviewed annotations. Individual targets can improve or regress.
 
 Keeping reflected-view detections with the same corner averaging gives 15 misses, 43 extras and unchanged five- and ten-pixel pair counts under the reviewed reference. It recovers eight fronts and loses five, but duplicates double from five to ten and both older references lose corner successes. This exploratory trade-off does not replace the original-view detections used in the main comparison.
 

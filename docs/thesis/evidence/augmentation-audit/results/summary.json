@@ -1,0 +1,274 @@
+{
+  "actual_transform_pipeline": [
+    {
+      "name": "Compose"
+    },
+    {
+      "name": "Compose"
+    },
+    {
+      "name": "Mosaic",
+      "p": 0.0
+    },
+    {
+      "name": "CopyPaste",
+      "p": 0.0
+    },
+    {
+      "degrees": 5.0,
+      "name": "RandomPerspective",
+      "perspective": 0.0,
+      "scale": 0.15,
+      "shear": 0.0,
+      "translate": 0.05
+    },
+    {
+      "name": "MixUp",
+      "p": 0.0
+    },
+    {
+      "name": "CutMix",
+      "p": 0.0
+    },
+    {
+      "enabled": false,
+      "flip_idx": [
+        1,
+        0
+      ],
+      "name": "Albumentations",
+      "p": 1.0,
+      "transforms": null
+    },
+    {
+      "name": "RandomHSV"
+    },
+    {
+      "direction": "vertical",
+      "flip_idx": [
+        1,
+        0
+      ],
+      "name": "RandomFlip",
+      "p": 0.0
+    },
+    {
+      "direction": "horizontal",
+      "flip_idx": [
+        1,
+        0
+      ],
+      "name": "RandomFlip",
+      "p": 0.5
+    },
+    {
+      "name": "Format"
+    }
+  ],
+  "counts": {
+    "filter_failure_reasons_nonexclusive": {
+      "area_ratio_le_0_10": 117,
+      "aspect_ratio_ge_100": 111,
+      "height_le_2": 111,
+      "width_le_2": 2
+    },
+    "images_with_removed_rows": 54,
+    "known_corners_outside_canvas_before_row_filter": 318,
+    "removed_distinct_source_rows": 96,
+    "removed_object_presentations": 117,
+    "removed_positive_area_maximum_short_side_px": 4.047277450561523,
+    "removed_positive_clipped_box_area": 9,
+    "removed_zero_clipped_box_area": 108,
+    "retained_clipped_presentations": 368,
+    "retained_object_presentations": 11880,
+    "source_corner_groups": {
+      "0": {
+        "box_clipped": 26,
+        "known_corners_outside_canvas": 0,
+        "removed": 14,
+        "retained": 397,
+        "source_presentations": 411
+      },
+      "1": {
+        "box_clipped": 83,
+        "known_corners_outside_canvas": 39,
+        "removed": 25,
+        "retained": 1370,
+        "source_presentations": 1395
+      },
+      "2": {
+        "box_clipped": 376,
+        "known_corners_outside_canvas": 279,
+        "removed": 78,
+        "retained": 10113,
+        "source_presentations": 10191
+      }
+    },
+    "source_object_presentations": 11997,
+    "source_to_final_corner_count": {
+      "0->0": 397,
+      "0->removed": 14,
+      "1->0": 14,
+      "1->1": 1356,
+      "1->removed": 25,
+      "2->0": 22,
+      "2->1": 79,
+      "2->2": 10012,
+      "2->removed": 78
+    },
+    "source_unavailable_corners_restored": 0,
+    "zero_source_fronts_preserved": true
+  },
+  "image_presentations": 426,
+  "interpretation": "Native transformed-label arithmetic and row lineage are verified. A removed row or changed visible-point count is not by itself an error. Box area ratios do not measure physical visible material. Human image review is required to judge recognizability after cropping; this audit cannot prove which augmentation would improve a detector.",
+  "native_loader_inventory": {
+    "cached_coordinates_atol": 1e-07,
+    "counts": [
+      142,
+      3999,
+      7259,
+      739,
+      13
+    ],
+    "entries_sha256": "eb23d2b855cbcc7dba27d2a2f5dccfb5d773711e6117c68b3f51e148c99a9532",
+    "exact_image_and_label_bytes": true
+  },
+  "observer_equivalence_cases": [
+    "empty",
+    "nonempty",
+    "removed"
+  ],
+  "panels": [
+    {
+      "category": "removed",
+      "path": "panels/01-frame_0178-pass01.jpg",
+      "sample_id": "frame_0178/pass01",
+      "source_rows": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
+      ]
+    },
+    {
+      "category": "clipped_or_visibility",
+      "path": "panels/02-new_000002-pass01.jpg",
+      "sample_id": "new_000002/pass01",
+      "source_rows": [
+        4,
+        15
+      ]
+    },
+    {
+      "category": "clipped_or_visibility",
+      "path": "panels/03-new_000003-pass01.jpg",
+      "sample_id": "new_000003/pass01",
+      "source_rows": [
+        4,
+        15,
+        16
+      ]
+    },
+    {
+      "category": "removed",
+      "path": "panels/04-new_000004-pass01.jpg",
+      "sample_id": "new_000004/pass01",
+      "source_rows": [
+        15,
+        16
+      ]
+    },
+    {
+      "category": "clipped_or_visibility",
+      "path": "panels/05-new_000005-pass01.jpg",
+      "sample_id": "new_000005/pass01",
+      "source_rows": [
+        15
+      ]
+    },
+    {
+      "category": "removed",
+      "path": "panels/06-new_000012-pass01.jpg",
+      "sample_id": "new_000012/pass01",
+      "source_rows": [
+        28,
+        29,
+        31,
+        32,
+        33,
+        34
+      ]
+    }
+  ],
+  "plan_sha256": "7a100194e1bc18516d13371f57e286918ca161bfc0a215e555c424d4cb3c4438",
+  "protocol": {
+    "annotation_edits": false,
+    "box_area_ratio_is_physical_visibility": false,
+    "control": "native LetterBox and Format only, on the same training rectangular canvas",
+    "dataset": "exact PR137 candidate training photos and labels used by r61",
+    "drop_implies_annotation_error": false,
+    "historical_training_rng_reproduced": false,
+    "inference": false,
+    "maximum_panels": 6,
+    "native_box_filter": {
+      "area_ratio_strictly_greater": 0.1,
+      "aspect_ratio_strictly_less": 100,
+      "height_strictly_greater_px": 2,
+      "width_strictly_greater_px": 2
+    },
+    "native_coordinate_bounds": "0 <= x <= width and 0 <= y <= height; upper boundaries are inclusive",
+    "panel_selection": "first qualifying samples in native traversal order; at most three removed-row and three retained-clipping/visibility cases, with unique photographs across both groups",
+    "passes_per_training_photo": 3,
+    "sample_seed": "46 + pass_index * 142 + native_dataset_index; indices start at zero",
+    "seed_base": 46,
+    "source_fronts": 3999,
+    "training": false,
+    "training_photos": 142,
+    "treatment": "unchanged native training augmentation; no new augmentation",
+    "weights_loaded": false
+  },
+  "runtime": {
+    "device": "cpu",
+    "native_files": {
+      "data/augment.py": {
+        "git_blob_sha1": "14d574c52f2d92809a5c9f7d0fa1e78ec3889560",
+        "sha256": "802333ea359def55e88f61d6726e35c29d28a6491110840a5e912ec1fafd1de3"
+      },
+      "data/base.py": {
+        "git_blob_sha1": "541781d541f6f0f8fc2a2e85c57c3fcd1f327e17",
+        "sha256": "4c8827598a093257a1e3218db2028f591dcd1d5ce68c63f8cdbf5741096b5f96"
+      },
+      "data/build.py": {
+        "git_blob_sha1": "2e0ff237bc35a6f878b3a3113e6e62113830e3cd",
+        "sha256": "16f13c60db87c051aec086eae82263dc7227207a8c2326c0365f013471c2609f"
+      },
+      "data/dataset.py": {
+        "git_blob_sha1": "3f8d96688bd0bdef7a78639bc2daf870507607de",
+        "sha256": "a962f2535b9e322e211ac3df75907f77e649999df4375a834458a4548584ce5f"
+      },
+      "utils/instance.py": {
+        "git_blob_sha1": "da3a50063f81fbae88ff50139ee621034bee349d",
+        "sha256": "ebc8b6337f4636c1457473c079d007693b3d8766c4891e2b5dd521c22c2e5527"
+      }
+    },
+    "native_filter_and_missing_point_fixtures": "passed",
+    "packages": {
+      "Pillow": "13.0.0",
+      "albumentations": null,
+      "numpy": "2.4.6",
+      "opencv-python": "5.0.0.93",
+      "torch": "2.10.0+cpu",
+      "torchvision": "0.25.0+cpu",
+      "ultralytics": "8.4.182"
+    },
+    "python": "3.12.14"
+  },
+  "schema": "training-augmentation-audit-result-r63-v1",
+  "source_panel_geometry_equals_raw_input_all_samples": true,
+  "status": "complete"
+}

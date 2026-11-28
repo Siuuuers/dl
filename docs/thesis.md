@@ -4,6 +4,8 @@ Start with the **[thesis folder](thesis/README.md)** and **[current report](thes
 
 The compact **[annotation definition](annotation-definition.md)** explains visible-front ownership, box extent, actual lower corners and unresolved cases. Its [research basis](thesis/research-annotation-definition.md) separates established rules from the proposed repeatability measurement.
 
+The **[notebook guide](thesis/experiments.md)** is the single entry point for the two prepared GPU comparisons and the new CPU diagnostics. The **[proposal-stage replay](thesis/proposal-stages.md)** traces the 18 current misses to 12 confidence-gate losses, three native-NMS losses and three without an IoU-eligible decoded box. Its box-geometry analysis and the **[native augmentation audit](thesis/augmentation-audit.md)** address concrete blind spots before another training intervention. The [research note](thesis/research-next-models.md) explains the literature and avoids repeating prior experiments as new ideas.
+
 The **[completed detection audit](thesis/detection-errors.md)** finds that all 18 retained-method misses belong to the 71 fronts with incomplete corner annotations. Its 51 extras include five duplicates, 36 other outputs with moderate reference overlap and ten with little overlap. These geometric groups guide image review without declaring physical errors. A fixed reflected-box alternative gives 15 misses and 43 extras with the same 569/583 five-pixel successes, but ten duplicates and slightly worse older-reference corner scores. The [small CPU notebook](../notebooks/baomai_detection_audit_r62.ipynb) reproduces both analyses without new inference or training.
 
 The next GPU runs are prepared in this order:
@@ -21,4 +23,4 @@ The **[completed CPU notebook](../notebooks/baomai_annotation_reference_r60.ipyn
 
 The Word equations now use centered native display math with separate right-aligned numbers and automatic height. Exact presentation counts and checks are in the [validation record](thesis/report-validation-fyp-i.json).
 
-Outputs are used automatically, so missed fronts, extra predictions, duplicates and coordinate accuracy remain separate measurements. Current evidence comes from repeatedly examined development photographs. The selected deployment model and live defaults remain unchanged. The [source map](thesis/report-source-map.md) keeps technical provenance separate from the report.
+Outputs support robotic arms in locating cassettes; arm control and integration are outside this project. Missed fronts, extra predictions, duplicates and coordinate accuracy remain separate measurements. The downstream message format and physical acceptance tolerance remain unspecified. Current evidence comes from repeatedly examined development photographs. The selected deployment model and live defaults remain unchanged. The [source map](thesis/report-source-map.md) keeps technical provenance separate from the report.

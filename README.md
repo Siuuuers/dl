@@ -2,7 +2,9 @@
 
 ## 目前進度：標註定義與兩個受控訓練實驗
 
-**2026-11-28：[標註定義](docs/annotation-definition.md)**已整理正面材質歸屬、可見範圍、實際下角點、缺失點與未決照片處理；[研究說明](docs/thesis/research-annotation-definition.md)記錄文獻依據。定義不會自動更改既有標籤；獨立覆核重複性仍待量測。
+**2026-11-28：[Notebook 入口](docs/thesis/experiments.md)**集中兩項待跑 GPU 比較與兩項已完成全部四格的 CPU 診斷。[完整候選框重播](docs/thesis/proposal-stages.md)把目前 18 個漏檢分為 12 個信心值篩選、3 個原生 NMS、3 個沒有達到配對 IoU 的解碼框；這是處理階段的定位，並非訓練原因的證明。[增強資料稽核](docs/thesis/augmentation-audit.md)追蹤 11,997 次目標呈現，其中保留 11,880、移除 117；多數移除框已完全離開畫面，有限的視覺覆核未顯示需要更換現行增強政策的具體問題。[研究決策](docs/thesis/research-next-models.md)記錄文獻、已試方法與後續條件。現有 GPU notebook 與執行中的實驗維持原本固定版本。
+
+**2026-11-28：[標註定義](docs/annotation-definition.md)**已整理正面材質歸屬、可見範圍、實際下角點、缺失點與未決照片處理；[研究說明](docs/thesis/research-annotation-definition.md)記錄文獻依據。定義不會自動更改既有標籤；獨立覆核重複性仍待量測。使用者確認影像輸出供機械臂定位包埋盒，機械臂控制及整合不在本研究範圍；訊息格式及物理誤差容限尚未提供。
 
 **先跑[模型改良 notebook](notebooks/baomai_quality_focal_r61.ipynb)**：相同142張照片與標籤、相同初始權重及訓練量，只比較原生分類損失與 Quality Focal Loss 啟發的調整。[實驗說明](docs/thesis/quality-focal-experiment.md)保留漏檢、額外輸出、重複、雙角點與預先固定的 AP50 指標。再跑[訓練標籤比較 notebook](notebooks/baomai_training_label_comparison_r61.ipynb)：相同137張原始訓練照片，只更換原始／覆核標籤，隔離新增照片的影響。兩項實驗已完成 CPU 資料與實作核對，GPU 訓練結果尚待回傳。
 

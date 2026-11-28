@@ -8,6 +8,8 @@ The Word report uses six centered display equations with separate right-aligned 
 
 ## Next experiments
 
+The compact **[notebook guide](experiments.md)** lists the two GPU comparisons and the two new CPU diagnostics, with their execution status and return instructions. Runs already in progress keep their frozen protocols.
+
 The [annotation definition](../annotation-definition.md) gives the practical rule: one identifiable visible front, its visible extent, and each actual lower corner when locatable. It retains the accepted material-ownership and missing-point rules. The [research note](research-annotation-definition.md) explains their basis and the proposed annotation-repeatability measurement.
 
 1. **[Run the model-improvement experiment first](quality-focal-experiment.md).** Test Quality Focal Loss against native training with the same photographs, labels and initial weights. It targets how the detector learns object scores, addressing misses and extras as well as checking corner accuracy.
@@ -16,6 +18,8 @@ The [annotation definition](../annotation-definition.md) gives the practical rul
 Both guides link to their GPU notebooks and completed preparation checks. Comparative training results are pending; the current measured results below remain the report's evidence.
 
 The new **[detection audit and fixed reflected-box experiment](detection-errors.md)** are complete. The retained method detects all 583 fronts with complete corner annotations but only 53 of 71 with incomplete annotations. A reflected-box alternative reduces misses/extras to 15/43 and keeps 569/583 five-pixel successes, while duplicates rise to ten and older-reference corner scores decline. The **[CPU reproduction notebook](../../notebooks/baomai_detection_audit_r62.ipynb)** needs no model or photograph download. It adds an explicit tradeoff, not an automatic replacement.
+
+The **[full-proposal replay](proposal-stages.md)** now explains where those 18 misses lose eligible boxes: 12 at the confidence gate, three during native NMS, and three without a decoded box reaching matching IoU. Matching outcomes agree with the current comparison under all three references. The accompanying box-geometry audit finds that eight of ten near misses have a greatest-overlap retained box more than 1.5 times the reference width. These are geometric diagnoses, not proof of physical box ownership or a particular learning cause. The **[augmentation audit](augmentation-audit.md)** retains 11,880 of 11,997 target presentations, with 117 removed and 368 retained boxes clipped. Most removals are wholly outside the canvas; the bounded visual review gives no concrete reason to change the policy. Both new CPU notebooks completed all four actual cells. The [research note](research-next-models.md) connects these findings to primary literature and records which ideas have already been tried.
 
 ## Current results
 
@@ -44,6 +48,12 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Report source map](report-source-map.md) | Exact technical provenance |
 | [Annotation definition](../annotation-definition.md) | Practical labeling decisions and unresolved-case handling |
 | [Annotation research](research-annotation-definition.md) | Primary sources and a proposed repeatability measurement |
+| [Notebook guide](experiments.md) | Two prepared GPU comparisons and two CPU audits, with execution status |
+| [Proposal stages](proposal-stages.md) | Full decoded-proposal continuity, score/NMS losses and box geometry |
+| [Proposal and geometry notebook](../../notebooks/baomai_proposal_audit_r63.ipynb) | Four-cell CPU reproduction from immutable source |
+| [Augmentation audit](augmentation-audit.md) | Native transforms, target lineage and review panels |
+| [Augmentation notebook](../../notebooks/baomai_augmentation_audit_r63.ipynb) | Four-cell CPU audit of the existing training recipe |
+| [Research and model decisions](research-next-models.md) | Evidence-based priorities, prior attempts and conditional next tests |
 | [Detection errors](detection-errors.md) | Current extra-output groups, partial-front recall and the next model decision |
 | [Detection audit notebook](../../notebooks/baomai_detection_audit_r62.ipynb) | Completed CPU replay; all four unchanged code cells executed |
 | [Detection audit evidence](evidence/detection-errors/README.md) | Exact baseline replay and method/reference-specific review cases |
@@ -61,7 +71,7 @@ The new annotation-reference notebook uses saved predictions and the Python stan
 
 ## Interpretation and next work
 
-Outputs are used automatically, and recognition quality is the priority. The report measures misses, extras, duplicates and corner accuracy together. The 20 photographs have guided development and annotation review; independent captures are still needed.
+Vision outputs are intended for robotic arms to locate cassettes; arm control and integration are outside this study. Recognition quality is the priority. The report measures misses, extras, duplicates and corner accuracy together. The 20 photographs have guided development and annotation review; independent captures are still needed. A downstream message format and physical acceptance tolerance have not been supplied.
 
 The prepared training-label comparison excludes the five additional photographs from both arms to isolate the label intervention. It tests the frozen effective labels, not a newly relabeled implementation of the written definition. Independent annotation repeatability remains unmeasured. Local-model training also needs errors representative of photographs unseen by the proposal detector.
 
