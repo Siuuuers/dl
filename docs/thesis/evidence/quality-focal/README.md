@@ -12,3 +12,11 @@ The seven detection-ranking checks and three controlled-label/shared-scoring/pac
 The candidate changes the classification objective, including its aggregate scale. The experiment does not isolate focal weighting from a uniform classification-strength reduction. Both complete arms must start independently from the supplied checkpoint; the disposable GPU resource trial cannot supply their initial weights.
 
 See the [experiment guide](../../quality-focal-experiment.md) for the scientific question and interpretation.
+
+## Published notebook check
+
+The first two unmodified code cells of the published notebook completed from a fresh checkout of source commit `e31b4076c3588694e836c155f552bde71593c4fd`. `published-notebook-bootstrap.json` records the notebook/cell hashes, elapsed times, clean source status and input-check receipt hashes; its accompanying log retains the actual output. Files prefixed `published-` retain these source-bound receipts. Earlier local receipts remain identified by their own hashes and development scope.
+
+Cells 3 and 4, including GPU resource trial, full paired training and candidate evaluation, have not run. The Colab download interface has not been exercised.
+
+The published guard repeats the actual pretrained differentiation checks against the exact published source; it supersedes the development guard for that source identity. The only intervening loss-file edit removed a trailing blank line.

@@ -52,7 +52,7 @@ Current evidence supports the annotation-reference sensitivity result. The new w
 
 [1] S. Zhang, R. Benenson, and B. Schiele, “CityPersons: A diverse dataset for pedestrian detection,” in *Proc. IEEE Conf. Computer Vision and Pattern Recognition*, 2017, pp. 3213–3221. [Primary paper](https://openaccess.thecvf.com/content_cvpr_2017/papers/Zhang_CityPersons_A_Diverse_CVPR_2017_paper.pdf).
 
-[2] D. P. Papadopoulos, J. R. R. Uijlings, F. Keller, and V. Ferrari, “Extreme clicking for efficient object annotation,” in *Proc. IEEE Int. Conf. Computer Vision*, 2017, pp. 4930–4939. [Primary paper](https://openaccess.thecvf.com/content_ICCV_2017/papers/Papadopoulos_Extreme_Clicking_for_ICCV_2017_paper.pdf).
+[2] D. P. Papadopoulos, J. R. R. Uijlings, F. Keller, and V. Ferrari, “Extreme clicking for efficient object annotation,” in *Proc. IEEE Int. Conf. Computer Vision*, 2017, pp. 4940–4949, doi: 10.1109/ICCV.2017.528. [Primary paper](https://openaccess.thecvf.com/content_ICCV_2017/papers/Papadopoulos_Extreme_Clicking_for_ICCV_2017_paper.pdf).
 
 [3] COCO Consortium, “Data format: Keypoint detection,” accessed Nov. 28, 2026. [Official format specification](https://github.com/cocodataset/cocodataset.github.io/blob/master/dataset/format-data.htm).
 

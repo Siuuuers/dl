@@ -2,7 +2,7 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-**Status:** the classification-loss implementation and pretrained CPU gradient guard are complete. The paired GPU training result is pending. The [notebook](../../notebooks/baomai_quality_focal_r61.ipynb) tests the model change first; the [training-label comparison](training-label-comparison.md) is a separate experiment.
+**Status:** the classification-loss implementation and pretrained CPU gradient guard are complete. The first two original notebook code cells have passed from clean published source; [execution evidence](evidence/quality-focal/README.md) records the checks. The paired GPU training result is pending. The [notebook](../../notebooks/baomai_quality_focal_r61.ipynb) tests the model change first; the [training-label comparison](training-label-comparison.md) is a separate experiment.
 
 ## Question and choice
 

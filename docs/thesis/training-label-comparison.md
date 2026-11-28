@@ -4,6 +4,8 @@
 
 **Prepared GPU experiment. Run the model-improvement experiment first.** This notebook isolates the effect of the training-label revision already used by the current detector. It does not assume that revised labels improve recognition.
 
+The first two original notebook code cells have passed from clean published source. The [execution evidence](evidence/training-label-comparison/README.md) distinguishes these setup checks from the pending GPU trial, paired training and accuracy measurements.
+
 ## The question
 
 If two copies of the same supplied detector are fine-tuned on the same photographs with the same settings, how does replacing the supplied training labels with the current effective training labels change their recognition results?

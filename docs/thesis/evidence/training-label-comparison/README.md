@@ -19,3 +19,9 @@ Multipart packaging is exercised with a synthetic byte fixture crossing the 16 M
 The source identity in these local receipts distinguishes unpublished development verification from a later clean published-notebook execution. The GPU resource trial, both full training arms and their resulting accuracy remain pending.
 
 See [the experiment guide](../../training-label-comparison.md) for the controlled question and run instructions.
+
+## Published notebook check
+
+The first two unmodified code cells of the published notebook completed from a fresh checkout of source commit `e31b4076c3588694e836c155f552bde71593c4fd`. `published-notebook-bootstrap.json` records the notebook/cell hashes, elapsed times, clean source status and input-check receipt hashes; its accompanying log retains the actual output. Files prefixed `published-` retain these source-bound receipts. Earlier local receipts remain identified by their own hashes and development scope.
+
+Cells 3 and 4, including GPU resource trial, full paired training and candidate evaluation, have not run. The Colab download interface has not been exercised.
