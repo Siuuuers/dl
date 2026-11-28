@@ -13,6 +13,8 @@ Policy ID: **`baomai-visible-front-v1`**. Adopted as the working convention for 
 
 The three branch heads were checked remotely on the adoption date. The current baomai source remains authoritative for the target feature. The visible-box and inclusion details below are explicit local decisions informed by the older editor, compatible current examples and the completed image review.
 
+The Baomai and yolo-pose heads and the cited source files were checked again on 28 November 2026. The current Baomai instructions preserve each reliably locatable lower endpoint independently; they specify no minimum object size or visible-area fraction. The [R67 source audit](thesis/research-partial-inclusion-r67.md) distinguishes these upstream statements from this project's include-identifiable-partials decision. The [R67 image review](thesis/partial-inclusion-r67.md) resolves four historical exclusions by restoring their visible fronts in a separate evaluation reference and records three unresolved regions. The policy ID is unchanged because the general target definition is unchanged.
+
 ## 1. One identifiable visible front, one row
 
 Annotate each uniquely identifiable visible cassette front exactly once. The target is the physical white front surface; illumination may make it look gray or dark. Do not classify instances using a brightness cutoff.

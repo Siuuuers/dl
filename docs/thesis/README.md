@@ -4,13 +4,15 @@ Updated 28 November 2026, Asia/Hong_Kong.
 
 **[Current report](report.md)** explains cassette-front detection and lower-corner localization for undergraduate Electronic Engineering readers. It compares the proposed method with the untouched supplied baomai model, explains project results directly, and cites external academic or professional sources. Acknowledgements are omitted as requested.
 
-The expanded report now explains what each cited method establishes and how the cassette implementation adapts it. It distinguishes suppression, cross-view association and evaluation matching; reference availability and predicted confidence; and image accuracy and physical positioning. The [citation audit](citation-audit-r64.md) records all 18 current external references, their supported claims and limits, and publisher-pagination decisions. Table 3 includes the adapted single-view control, making the residual model's 564/583 result comparable with its unrefined input's 566/583, as well as the proposed method's 569/583.
+The expanded report now explains what each cited method establishes and how the cassette implementation adapts it. It distinguishes suppression, cross-view association and evaluation matching; reference availability and predicted confidence; and image accuracy and physical positioning. The [citation audit](citation-audit-r64.md) records the external references, their supported claims and limits, and publisher-pagination decisions. Table 3 includes the adapted single-view control, making the residual model's 564/583 result comparable with its unrefined input's 566/583, as well as the proposed method's 569/583.
 
 The Word report uses six centered display equations with separate right-aligned numbers and automatic row height. The [validation record](report-validation-fyp-i.json) contains the exact page count, abstract length, linked contents map, equation geometry and all-page visual checks. It is the authoritative source for presentation counts.
 
 ## Completed comparisons and diagnostics
 
-The **[notebook guide](experiments.md)** records both completed GPU comparisons, the completed frozen assignment diagnostic and the new saved-output duplicate audit.
+The **[notebook guide](experiments.md)** records both completed GPU comparisons, the frozen assignment diagnostic, saved-output duplicate audit and completed partial-front inclusion replay.
+
+The **[partial-front review](partial-inclusion-r67.md)** restores four exact historical rows in a separate r67 evaluation reference after raw-image adjudication. Three other candidates remain held. All 654 r50 rows preserve their bytes and positions; r67 contains 658 fronts, with 18/57/583 fronts having zero/one/two known corners and 1,223 known corners in total. For all six unchanged methods, the reference change adds one match and three misses while removing one other-extra. Duplicates and complete-pair scores are unchanged. The [research note](research-partial-inclusion-r67.md), [reference manifest](../../data/reviews/fronts-2026-11-28-r67/manifest.json) and [evidence guide](evidence/partial-inclusion-r67/README.md) preserve the reasoning and exact changes.
 
 The [classification-loss result](quality-focal-results.md) verifies six fewer misses but 34 more extras, including 13 more duplicates, and almost unchanged AP50. The [controlled training-label result](training-label-results.md) verifies 32 fewer misses, 34 fewer extras and 31 more five-pixel successes under the reviewed reference, with seven more duplicates. Both older references favour the supplied-label arm. The paired controls and reference dependence remain explicit in the report.
 
@@ -18,7 +20,7 @@ The [annotation definition](../annotation-definition.md) gives the practical rul
 
 The completed [score and assignment diagnostic](score-assignment-audit.md) observes all 3999 training fronts under both checkpoints and both native heads without an optimizer. Every front receives an assignment. Removing corner agreement lowers the one-corner group's mean targets in this frozen counterfactual, which does not support an immediate box-only training switch.
 
-The [duplicate and unmatched audit](duplicate-audit-r66.md) separately applies reflected support and additional output suppression to saved detections. On the reviewed-label candidate, requiring reflected support gives 19 misses, 27 extras and six duplicates; additional suppression at IoU 0.50 gives 19, 23 and one, respectively, versus the unchanged 15, 51 and 13. Both restrictions lose four partial-front matches while retaining 572/583 five-pixel and 583/583 ten-pixel successes. These diagnostic trade-offs do not select a replacement. [Primary-source research](research-duplicates-r66.md) explains the next conditional choices.
+The [duplicate and unmatched audit](duplicate-audit-r66.md) separately applies reflected support and additional output suppression to saved detections. Under frozen r50, requiring reflected support on the reviewed-label candidate gives 19 misses, 27 extras and six duplicates; additional suppression at IoU 0.50 gives 19, 23 and one, respectively, versus the unchanged 15, 51 and 13. Both restrictions lose four partial-front matches while retaining 572/583 five-pixel and 583/583 ten-pixel successes. The [r67 sensitivity check](partial-inclusion-r67.md#the-suppression-risk-remains) retains the newly supported bottom-band output under every restriction, but those other partial-front losses persist. These diagnostic trade-offs do not select a replacement. [Primary-source research](research-duplicates-r66.md) explains the next conditional choices.
 
 The new **[detection audit and fixed reflected-box experiment](detection-errors.md)** are complete. The retained method detects all 583 fronts with complete corner annotations but only 53 of 71 with incomplete annotations. A reflected-box alternative reduces misses/extras to 15/43 and keeps 569/583 five-pixel successes, while duplicates rise to ten and older-reference corner scores decline. The **[CPU reproduction notebook](../../notebooks/baomai_detection_audit_r62.ipynb)** needs no model or photograph download. It adds an explicit tradeoff, not an automatic replacement.
 
@@ -26,9 +28,9 @@ The **[full-proposal replay](proposal-stages.md)** now explains where those 18 m
 
 The additional [score and assignment research](research-score-assignment.md) examines TOOD, IoU-Net and VarifocalNet against the pinned native implementation. That implementation already uses box and known-corner agreement in assignment and soft score targets. The completed diagnostic distinguishes missing assignment, low supervision targets and predictions below useful targets without training. Its anchor-level averages are descriptive, not each front's maximum inference confidence. The returned notebook source includes the PR156 repair that retains clipped zero-area boxes as unmatched extras.
 
-## Current results
+## Frozen r50 comparison
 
-The [original-model comparison](original-comparison.md) uses the same 20 photographs, software environment and operating settings for both methods. The proposed method adapts the supplied detector and averages associated original/reflected corner predictions.
+The [original-model comparison](original-comparison.md) uses the same 20 photographs, software environment and operating settings for both methods. The proposed method adapts the supplied detector and averages associated original/reflected corner predictions. This table preserves the 654-front r50 benchmark; the [r67 guide](partial-inclusion-r67.md) reports the separately versioned 658-front comparison.
 
 | Reviewed annotations | Supplied model | Proposed method |
 | --- | ---: | ---: |
@@ -55,6 +57,10 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Annotation definition](../annotation-definition.md) | Practical labeling decisions and unresolved-case handling |
 | [Annotation research](research-annotation-definition.md) | Primary sources and a proposed repeatability measurement |
 | [Notebook guide](experiments.md) | Two completed GPU comparisons and the focused CPU diagnostics, with execution status |
+| [Partial-front inclusion](partial-inclusion-r67.md) | Four restored rows, three held cases and the completed six-method reference-only replay |
+| [Partial-inclusion research](research-partial-inclusion-r67.md) | Supplied Baomai guidance, identifiable partial fronts and unknown-corner semantics |
+| [Partial-inclusion notebook](../../notebooks/baomai_partial_inclusion_r67.ipynb) | Four actual CPU cells completed from pinned source and preseeded archives |
+| [Partial-inclusion evidence](evidence/partial-inclusion-r67/README.md) | Review decisions, exact row lineage, numeric replay, filter sensitivity and independent verification |
 | [Proposal stages](proposal-stages.md) | Full decoded-proposal continuity, score/NMS losses and box geometry |
 | [Proposal and geometry notebook](../../notebooks/baomai_proposal_audit_r63.ipynb) | Four-cell CPU reproduction from immutable source |
 | [Augmentation audit](augmentation-audit.md) | Native transforms, target lineage and review panels |
@@ -80,7 +86,7 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Original-comparison notebook](../../notebooks/baomai_original_comparison_r59.ipynb) | Optional reproduction of the completed inference comparison |
 | [Residual training protocol](residual-correction-experiment.md) | Exact completed pilot and original notebook |
 
-The new annotation-reference notebook uses saved predictions and the Python standard library. It needs no GPU, model download or image download. It already completed locally; rerunning it is optional. Earlier GPU notebooks retain their immutable source pins for reproduction and need not be repeated to answer the evaluation-reference question.
+The annotation-reference and partial-inclusion notebooks use saved predictions and the Python standard library. They need no GPU, model download or image download and have completed locally; rerunning them is optional. The r67 notebook uses immutable source `2c3886271c12e501d236a5eff54e3eb78007d1b0`; its four actual cells ran with preseeded source and archives, without a hosted Colab or live-download claim. Earlier GPU notebooks retain their original pins for reproduction and need not be repeated to answer an evaluation-reference question.
 
 ## Interpretation and next work
 

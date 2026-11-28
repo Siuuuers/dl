@@ -2,10 +2,11 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-Both paired GPU experiments have returned. Their saved outputs and training receipts have been independently verified, so there is no need to rerun them merely to obtain the reported comparisons. The score-target notebook has also completed. The new duplicate audit reproduces the effect of output restrictions from saved predictions without model inference or training.
+Both paired GPU experiments have returned. Their saved outputs and training receipts have been independently verified, so there is no need to rerun them merely to obtain the reported comparisons. The score-target and duplicate-audit notebooks have also completed. The latest partial-front inclusion notebook replays the effect of four justified reference additions from saved outputs, with no model inference or training.
 
 | Role | Notebook | Question | Runtime and status |
 | --- | --- | --- | --- |
+| Completed reference replay | [Partial-front inclusion](../../notebooks/baomai_partial_inclusion_r67.ipynb) | How do four restored fronts change the scores of six unchanged methods and the interpretation of existing fixed filters? | All four actual CPU cells completed locally from pinned source and preseeded archives; [guide and evidence](partial-inclusion-r67.md). |
 | Completed diagnostic | [Duplicate and unmatched audit](../../notebooks/baomai_duplicate_audit_r66.ipynb) | What do reflected support and extra suppression remove, and does complete-pair scoring hide partial-front losses? | CPU; saved predictions only. [Results and execution evidence](duplicate-audit-r66.md). |
 | Completed diagnostic | [Score and assignment audit](../../notebooks/baomai_score_assignment_r65.ipynb) | For each zero-, one- or two-corner target, how do native assignments, quality targets and predicted scores relate? | All four actual cells completed on CPU; 284 full-pass forwards, no optimizer. See [execution evidence](evidence/score-assignment-r65/README.md). |
 | Completed comparison | [Classification-loss comparison](../../notebooks/baomai_quality_focal_r61.ipynb) | Does QFL improve misses, extras and corner results relative to a matched native control? | PR157 returned; [independent score/AP replay](quality-focal-results.md) complete. |
@@ -13,7 +14,17 @@ Both paired GPU experiments have returned. Their saved outputs and training rece
 | Completed diagnostic | [Proposal-stage and box-geometry audit](../../notebooks/baomai_proposal_audit_r63.ipynb) | Where do the historical candidate's misses lose eligible proposals? | CPU; all four unchanged cells completed from published source; [evidence](evidence/proposal-stages/README.md). |
 | Completed diagnostic | [Training-augmentation audit](../../notebooks/baomai_augmentation_audit_r63.ipynb) | How do the existing transforms affect target retention and corner availability? | CPU; all four unchanged cells completed from published source; [evidence](evidence/augmentation-audit/README.md). |
 
-## What the completed comparisons establish
+## Completed partial-front inclusion replay
+
+The [r67 guide](partial-inclusion-r67.md) records four exact historical restorations across three photographs and three held cases. Its [manifest](../../data/reviews/fronts-2026-11-28-r67/manifest.json) preserves all 654 r50 rows and appends four rows: 658 fronts comprise 18 with no known corner, 57 with one and 583 with two, for 1,223 known corners. Historical evaluation versions and training labels remain unchanged. The [research note](research-partial-inclusion-r67.md) explains the supplied guidance and the inclusion/availability distinction.
+
+All six methods gain one reference match, gain three misses and lose one other-extra; duplicates and complete-pair scores stay unchanged. The already emitted `new_000010/P029` matches the restored bottom band. No retained target is reassigned. The separate eight-row supplement repeats r66's existing support and additional-suppression restrictions for PR158 reviewed labels. Every restriction retains that P029, while losses of other partial fronts remain. The [evidence guide](evidence/partial-inclusion-r67/README.md) links all measurements, exact transitions and independent verification.
+
+For optional reproduction, select a CPU runtime and run all four code cells. The notebook pins `2c3886271c12e501d236a5eff54e3eb78007d1b0` and verifies the candidate and three immutable prediction archives. All four actual cells completed unchanged in one local IPython session using a clean pinned checkout and preseeded archives. Live source/input acquisition, hosted Colab and its browser-download interface were not tested; the [execution receipt](evidence/partial-inclusion-r67/notebook-execution.json) states those limits. No model weights, photographs, new inference or training are required.
+
+## What the completed GPU comparisons establish
+
+The following results retain the frozen 654-front r50 evaluation reference. Their r67 reference-only counterparts appear in the guide above.
 
 QFL changes reviewed-reference two-view results from 18 misses/49 extras/4 duplicates to 12/83/17. Five-pixel successes change from 568 to 570; ten-pixel successes from 583 to 582. Original-view AP50 changes from 0.9838649 to 0.9839534. The aggregate training traces show almost complete assignment of incomplete-corner targets; they do not log per-target predicted scores or separate zero and one known corner.
 
@@ -27,7 +38,7 @@ The [duplicate and unmatched audit](duplicate-audit-r66.md) compares unchanged f
 
 Use the [score-target research](research-score-assignment.md) to interpret the fixed-weight diagnostic. A low supervision target, missing assignment and score below a useful target require different remedies. The completed box-only counterfactual lowers mean one-corner targets while preserving assignment for every front. It describes assignment at fixed predictions; it is not a trained-model result. Do not select a new operating threshold using the same twenty development photographs.
 
-The [focused annotation review](annotation-review-r65.md) follows the existing visible-front definition and retains uncertain ownership judgments. Predictions may prioritize a region; the original pixels decide whether an edit is warranted. An independent second pass is required to measure annotation repeatability. If labels are amended later, freeze a new reference, retain the older matrices and produce a PDF of only changed photographs with exact changes highlighted.
+The [focused annotation review](annotation-review-r65.md) follows the existing visible-front definition and retains uncertain ownership judgments. The completed [r67 review](partial-inclusion-r67.md) resolves four historical exclusions through original-image inspection and records the other three as held. The changed-photo PDF and its [validation](evidence/partial-inclusion-r67/pdf-validation.json) cover only the three amended photographs. This focused agent-assisted review does not measure human annotation repeatability. Further amendments should preserve the same explicit versioning, stable identities and changed-photo evidence.
 
 Additional matched seeds are worthwhile for a promising design. A controlled 137-versus-142-photo comparison would separately test the five extra photographs; the existing cross-run results cannot isolate that effect. The [model research note](research-next-models.md) keeps previous suppression, augmentation and corner-refinement attempts visible so they are not presented as untried methods.
 
