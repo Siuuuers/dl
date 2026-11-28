@@ -6,6 +6,15 @@ Updated 28 November 2026, Asia/Hong_Kong.
 
 The Word report uses six centered display equations with separate right-aligned numbers and automatic row height. The [validation record](report-validation-fyp-i.json) contains the exact page count, abstract length, linked contents map, equation geometry and all-page visual checks. It is the authoritative source for presentation counts.
 
+## Next experiments
+
+The [annotation definition](../annotation-definition.md) gives the practical rule: one identifiable visible front, its visible extent, and each actual lower corner when locatable. It retains the accepted material-ownership and missing-point rules. The [research note](research-annotation-definition.md) explains their basis and the proposed annotation-repeatability measurement.
+
+1. **[Run the model-improvement experiment first](quality-focal-experiment.md).** Test Quality Focal Loss against native training with the same photographs, labels and initial weights. It targets how the detector learns object scores, addressing misses and extras as well as checking corner accuracy.
+2. **[Run the controlled training-label comparison second](training-label-comparison.md).** Keep the original 137 photographs and training procedure identical while changing only the eligible training labels.
+
+Both guides link to their GPU notebooks and completed preparation checks. Comparative training results are pending; the current measured results below remain the report's evidence.
+
 ## Current results
 
 The [original-model comparison](original-comparison.md) uses the same 20 photographs, software environment and operating settings for both methods. The proposed method adapts the supplied detector and averages associated original/reflected corner predictions.
@@ -31,6 +40,8 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Bibliography](bibliography-fyp-i.json) | External references in IEEE first-citation order |
 | [Word validation](report-validation-fyp-i.json) | Final document, contents, equation and visual checks |
 | [Report source map](report-source-map.md) | Exact technical provenance |
+| [Annotation definition](../annotation-definition.md) | Practical labeling decisions and unresolved-case handling |
+| [Annotation research](research-annotation-definition.md) | Primary sources and a proposed repeatability measurement |
 | [Residual results](residual-results.md) | PR155 audit, paired changes, mean-error nuance and CPU replay |
 | [Residual evidence](evidence/residual-return/README.md) | Reproduction and complete audit identities |
 | [Annotation comparison](annotation-comparison.md) | Evaluation-label versus training-label effects |
@@ -46,7 +57,7 @@ The new annotation-reference notebook uses saved predictions and the Python stan
 
 Outputs are used automatically, and recognition quality is the priority. The report measures misses, extras, duplicates and corner accuracy together. The 20 photographs have guided development and annotation review; independent captures are still needed.
 
-A future annotation-only training comparison must keep photographs, starting weights, training settings and evaluation labels fixed, changing only training labels. The earlier 137-photo paired trial is documented in the annotation guide; it does not isolate every revision in the current 142-photo method. Local-model training also needs errors representative of photographs unseen by the proposal detector.
+The prepared training-label comparison excludes the five additional photographs from both arms to isolate the label intervention. It tests the frozen effective labels, not a newly relabeled implementation of the written definition. Independent annotation repeatability remains unmeasured. Local-model training also needs errors representative of photographs unseen by the proposal detector.
 
 The selected deployment model and live defaults are unchanged. Technical experiment identifiers remain in this folder; the report uses descriptive names.
 

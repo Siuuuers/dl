@@ -1,6 +1,12 @@
 # D405 包埋盒兩點即時偵測與錄影
 
-## 目前進度：殘差結果、原始標註比較與公式修正
+## 目前進度：標註定義與兩個受控訓練實驗
+
+**2026-11-28：[標註定義](docs/annotation-definition.md)**已整理正面材質歸屬、可見範圍、實際下角點、缺失點與未決照片處理；[研究說明](docs/thesis/research-annotation-definition.md)記錄文獻依據。定義不會自動更改既有標籤；獨立覆核重複性仍待量測。
+
+**先跑[模型改良 notebook](notebooks/baomai_quality_focal_r61.ipynb)**：相同142張照片與標籤、相同初始權重及訓練量，只比較原生分類損失與 Quality Focal Loss 啟發的調整。[實驗說明](docs/thesis/quality-focal-experiment.md)保留漏檢、額外輸出、重複、雙角點與預先固定的 AP50 指標。再跑[訓練標籤比較 notebook](notebooks/baomai_training_label_comparison_r61.ipynb)：相同137張原始訓練照片，只更換原始／覆核標籤，隔離新增照片的影響。兩項實驗已完成 CPU 資料與實作核對，GPU 訓練結果尚待回傳。
+
+## 已完成：殘差結果、原始標註比較與公式修正
 
 **2026-11-28：[專題 I 報告](docs/thesis/report.md)**已納入最新結果，繼續以原始 baomai 模型為共同基準。Word 公式改為真正置中的可編輯顯示公式，編號獨立靠右，使用自動高度防止裁切；頁數、摘要字數及逐頁檢查統一記錄於[驗證檔](docs/thesis/report-validation-fyp-i.json)。
 
@@ -8,7 +14,7 @@
 
 [**原始標註比較已完成**](docs/thesis/annotation-comparison.md)：真正上游原始標註有 664 個正面，並非先前固定 666 版本。使用完全相同的預測，原模型／改良方法的五像素成功，在上游原始標註為 521／514（共 584 對），先前固定標註為 534／525（共 584 對），修訂標註為 555／569（共 583 對）。這是評分參考的影響，不是單獨量測訓練標註的效果。
 
-[**新 CPU notebook**](notebooks/baomai_annotation_reference_r60.ipynb)已完整執行四格程式並重現六個比較組合，無需 GPU、新推論或重新訓練。原始推論及殘差訓練 notebook 保留作重現，不必為更換評分標註而重跑模型。
+[**已完成的 CPU notebook**](notebooks/baomai_annotation_reference_r60.ipynb)已完整執行四格程式並重現六個比較組合，無需 GPU、新推論或重新訓練。原始推論及殘差訓練 notebook 保留作重現，不必為更換評分標註而重跑模型。
 
 報告直接解釋方法及結論，只引用外部學術和專業資料，不含 GitHub 連結或內部代號；致謝略過。目前選用模型與相機預設值維持原樣。以下歷史進度保留當時狀態。
 
