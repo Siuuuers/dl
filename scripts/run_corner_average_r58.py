@@ -2,11 +2,13 @@
 """Average paired original/reflected corners while preserving original detections."""
 import argparse
 from collections import Counter
+from collections.abc import Mapping, Sequence
 from copy import deepcopy
 import gzip
 import hashlib
 import json
 import math
+from numbers import Real
 from pathlib import Path
 import platform
 import re
@@ -70,6 +72,54 @@ def average_predictions(original, reflected):
     return output, rows
 
 
+def clipped_prediction_indices(predictions):
+    """Return indexes of finite boxes with no positive area. Other records stay untouched."""
+    if isinstance(predictions, (str, bytes)) or not isinstance(predictions, Sequence):
+        return []
+    invalid = []
+    for index, prediction in enumerate(predictions):
+        if not isinstance(prediction, Mapping):
+            continue
+        box = prediction.get('bbox_xyxy')
+        if isinstance(box, (str, bytes)) or not isinstance(box, Sequence) or len(box) != 4:
+            continue
+        if any(isinstance(value, bool) or not isinstance(value, Real) for value in box):
+            continue
+        coords = [float(value) for value in box]
+        if not all(math.isfinite(value) for value in coords):
+            continue
+        if coords[2] <= coords[0] or coords[3] <= coords[1]:
+            invalid.append(index)
+    return invalid
+
+
+def score_image_counting_clipped(gold, predictions, width, height, matching_iou, endpoint_conf):
+    """Count clipped non-positive predictions as other unmatched outputs.
+
+    pose_scoring.score_image still rejects a non-positive box. Positive-area
+    records are scored unchanged and their indexes are mapped back. Each clipped
+    box stays in the prediction and false-output totals, keeps its original
+    index, and cannot match.
+    """
+    from pose_scoring import score_image
+    invalid = clipped_prediction_indices(predictions)
+    if not invalid:
+        return score_image(gold, predictions, width, height, matching_iou, endpoint_conf)
+    skipped = set(invalid)
+    valid = [index for index in range(len(predictions)) if index not in skipped]
+    score = score_image(gold, [predictions[index] for index in valid], width, height, matching_iou, endpoint_conf)
+    for match in score['matches']:
+        match['prediction_index'] = valid[match['prediction_index']]
+    for key in ('unmatched_prediction_indices', 'duplicate_prediction_indices', 'other_fp_prediction_indices'):
+        score[key] = [valid[index] for index in score[key]]
+    for key in ('unmatched_prediction_indices', 'other_fp_prediction_indices'):
+        score[key] = sorted([*score[key], *invalid])
+    score['prediction_count'] += len(invalid)
+    score['fp'] += len(invalid)
+    score['other_fp'] += len(invalid)
+    return score
+
+
 def state(target, prediction):
     complete = all(p[2] == 2 for p in target['keypoints'])
     usable = prediction is not None and all(valid_point(p) for p in prediction['keypoints'])
@@ -81,11 +131,11 @@ def state(target, prediction):
 
 
 def report(gold, predictions):
-    from pose_scoring import score_image, aggregate_scores
+    from pose_scoring import aggregate_scores
     scores, rows = {}, []
     for image, targets in sorted(gold.items()):
         values = predictions[image]
-        result = score_image(targets, values, 1280, 720, .5, .5)
+        result = score_image_counting_clipped(targets, values, 1280, 720, .5, .5)
         scores[image] = result
         matches = {m['gold_index']: m['prediction_index'] for m in result['matches']}
         for gi, target in enumerate(targets):

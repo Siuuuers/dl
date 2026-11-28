@@ -5,6 +5,7 @@ from collections.abc import Mapping, Sequence
 from numbers import Real
 
 from pose_scoring import score_image
+from run_corner_average_r58 import score_image_counting_clipped
 
 
 CONFIDENCE_FLOOR = 0.001
@@ -23,6 +24,7 @@ def score_detection_ranking(reference_by_image, predictions_by_image, *, width=1
     Image dictionaries must have identical keys, including empty scenes. All
     reference objects enter the recall denominator. The supplied prediction-list
     position is its original index for both image matching and global score ties.
+    A clipped non-positive box is an other unmatched false positive and cannot match.
     AP is undefined (None) if the complete reference contains no target objects.
     This single-IoU, single-class metric is not COCO mAP and selects no threshold.
     """
@@ -50,7 +52,7 @@ def score_detection_ranking(reference_by_image, predictions_by_image, *, width=1
             if (isinstance(confidence, bool) or not isinstance(confidence, Real)
                     or not math.isfinite(confidence) or not CONFIDENCE_FLOOR < confidence <= 1):
                 raise ValueError(f"prediction confidence must be finite and strictly > 0.001: {image_id}")
-        scored = score_image(gold, predictions, width, height, MATCHING_IOU, 0.50)
+        scored = score_image_counting_clipped(gold, predictions, width, height, MATCHING_IOU, 0.50)
         positives += scored["gold_count"]
         matches = {pair["prediction_index"]: pair for pair in scored["matches"]}
         duplicates = set(scored["duplicate_prediction_indices"])
@@ -107,6 +109,7 @@ def score_detection_ranking(reference_by_image, predictions_by_image, *, width=1
             "max_detections_per_image": MAX_DETECTIONS_PER_IMAGE,
             "postclip_nms_applied_by_caller": True,
             "matching": "pose_scoring.score_image score-ordered one-to-one greatest-IoU matching",
+            "clipped_nonpositive_boxes": "Counted as other unmatched false positives; not passed to the matcher and cannot match.",
             "global_tie_break": ["image_id", "original_prediction_index"],
             "original_prediction_index": "zero-based position in the caller-supplied image prediction list",
             "interpolation": "maximum precision at recall >= each of 101 equally spaced levels from 0 to 1",
