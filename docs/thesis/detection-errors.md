@@ -4,7 +4,7 @@
 
 **The remaining detection weakness is concentrated in fronts whose lower corners are not fully locatable.** All 18 misses of the retained two-view method belong to that group. Only five of its 51 extra predictions are duplicates. A completed saved-output experiment reduces misses and total extras by retaining the reflected view's boxes, but doubles the duplicate subset and slightly worsens corner agreement with older references. It remains an exploratory alternative.
 
-The [CPU notebook](../../notebooks/baomai_detection_audit_r62.ipynb) reproduces this audit and that single experiment. It uses the already completed common-runtime predictions; no GPU, image download, training or new inference is required. The prepared [classification-loss experiment](quality-focal-experiment.md) remains the next model run, followed by the [controlled training-label comparison](training-label-comparison.md).
+The [CPU notebook](../../notebooks/baomai_detection_audit_r62.ipynb) reproduces this audit and that single experiment. All four unchanged code cells have completed from clean published source; the [execution receipt](evidence/detection-errors/notebook-execution.json) records the run and verified result package. It uses the already completed common-runtime predictions; no GPU, image download, training or new inference is required. The prepared [classification-loss experiment](quality-focal-experiment.md) remains the next model run, followed by the [controlled training-label comparison](training-label-comparison.md).
 
 ## 1. What unmatched and duplicate mean here
 

@@ -45,7 +45,7 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Annotation definition](../annotation-definition.md) | Practical labeling decisions and unresolved-case handling |
 | [Annotation research](research-annotation-definition.md) | Primary sources and a proposed repeatability measurement |
 | [Detection errors](detection-errors.md) | Current extra-output groups, partial-front recall and the next model decision |
-| [Detection audit notebook](../../notebooks/baomai_detection_audit_r62.ipynb) | CPU replay of the current errors and one fixed reflected-box alternative |
+| [Detection audit notebook](../../notebooks/baomai_detection_audit_r62.ipynb) | Completed CPU replay; all four unchanged code cells executed |
 | [Detection audit evidence](evidence/detection-errors/README.md) | Exact baseline replay and method/reference-specific review cases |
 | [Reflected-box evidence](evidence/reflected-anchor/README.md) | All references, independent averaging replay and adverse paired cases |
 | [Residual results](residual-results.md) | PR155 audit, paired changes, mean-error nuance and CPU replay |

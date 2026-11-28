@@ -195,7 +195,13 @@ Table 2. Recognition on the same 20 photographs and reviewed annotations. Pair c
 
 The proposed method has 16 fewer misses and ten fewer extra outputs. Detection precision increases from 91.04% to 92.58%, and recall increases from 94.80% to 97.25%. Five-pixel pair success increases from 95.20% to 97.60%, a gain of 14 targets or 2.40 percentage points. The ten-pixel criterion gains six targets. Duplicate detections remain unchanged.
 
+The proposed method detects 583/583 complete fronts, versus 580/583 for the supplied model. For the 71 fronts with unavailable corners, detection rises from 40/71 (56.34%) to 53/71 (74.65%). Its 18 misses have one known corner (13 fronts) or neither (five). The 583/583 ten-pixel result therefore excludes these incomplete fronts.
+
+The 51 extras comprise five duplicates, 36 predictions whose greatest reference IoU is at least 0.10 but below 0.50, and ten below 0.10. These geometric groups indicate possible localization and background errors for review [5]; they are not physical verdicts. Displacement, omitted annotations and disputed boundaries require checking the original photograph.
+
 These measurements support improved recognition against the reviewed annotations. They do not show that every individual prediction improves. Both the supplied annotations and the earlier fixed annotations favour the supplied model, as shown in Appendix 11.1. Annotation choice materially affects the conclusion.
+
+Keeping reflected-view detections with the same corner averaging gives 15 misses, 43 extras and unchanged five- and ten-pixel pair counts under the reviewed reference. It recovers eight fronts and loses five, but duplicates double from five to ten and both older references lose corner successes. This exploratory trade-off does not replace the original-view detections used in the main comparison.
 
 ### 7.2 Results of the local corner models
 
@@ -218,19 +224,21 @@ The heatmap models sometimes select nearby cassette features. In one examined ca
 
 ### 8.1 Findings and interpretation
 
-The proposed method combines reviewed training data with a two-view coordinate rule. Against the reviewed annotations, it finds more fronts, produces fewer extra outputs, and returns more accurate corner pairs than the supplied model. Duplicate counts remain unchanged at the chosen operating point.
+The proposed method improves reviewed-reference detection and corner results at the declared operating point, with unchanged duplicate counts.
 
 The contribution is a cassette-front annotation procedure and an evaluated recognition method, compared with the supplied model. Development experiments guide method selection. The final measurements describe the combined system; they do not assign its full gain to annotation review or averaging alone.
 
 The annotation sensitivity is substantial. The supplied and earlier fixed references contain different object entries, boundaries and corner positions, and both give the supplied model a higher five-pixel count. Rescoring changes agreement with a reference; it does not change the images, model parameters or predictions. The reviewed reference represents the accepted visible-front annotations, but predictions informed its review. Both annotations and methods have been examined on the same 20 photographs. New capture groups with independently reviewed labels are needed to assess transfer and reduce this dependence on development decisions.
 
-Corner confidence also needs further evaluation. An automatically offered pair may match an incompletely annotated front or have no reference assignment. Neither case establishes correct positioning. A physical positioning requirement should specify an acceptable distance after camera calibration, then relate that requirement to the image-coordinate criterion.
+At the current thresholds, the proposed method offers 678 pairs: 569 satisfy the five-pixel criterion, 14 matched pairs exceed it, 48 match incomplete reference pairs, and 47 are unmatched. The last two groups lack reference support; this does not establish physical error. The 569/583 score therefore describes eligible reference fronts, not all emitted outputs. Physical positioning also requires a distance tolerance and calibrated camera geometry.
 
 ### 8.2 Further work
 
-To isolate the effect of the latest training annotations, both training conditions should use the same photographs, starting checkpoint, settings and training budget. Only the training labels should change, and both resulting models should be scored against the same fixed evaluation annotations. The present supplied-model comparison also changes training exposure and adds five photographs, so its total gain cannot be assigned to label review alone.
+The prepared training-label comparison holds photographs, starting checkpoint, settings, budget and scoring annotations fixed while changing training labels. The main comparison also changes training exposure and includes five extra photographs, so its full gain cannot be attributed to label review.
 
-Local-model training proposals come from a detector already trained on those photographs. Models trained without each proposal photograph could supply more representative training errors. PoseFix instead uses realistic synthetic errors when preparing its training inputs [7]. These ideas motivate a controlled training-data comparison before adding model complexity. Promising results should then be repeated with additional fixed seeds and independently captured images.
+A separate paired experiment changes classification-loss emphasis on incorrectly scored proposals while retaining target scores and other losses. Both training comparisons await results; any replacement must be judged on detection and corner outcomes together.
+
+Local models currently learn from proposals produced by a detector trained on the same photographs. To obtain errors on unseen photographs, both the detector's training and its initial checkpoint must exclude those photographs. Holding them out only during fine-tuning leaves earlier exposure intact. The prepared paired runs remain valid tests of adaptation from shared supplied weights. PoseFix suggests realistic synthetic errors as another training source [7]. Promising results need additional fixed seeds and independent capture groups.
 
 ## 9 Conclusions
 

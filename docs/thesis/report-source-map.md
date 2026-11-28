@@ -21,6 +21,8 @@ All three label sets describe the same 20 photographs. The [upstream provenance 
 | Report description | Evidence |
 | --- | --- |
 | Original versus proposed recognition | [Fresh common-runtime comparison](original-comparison.md); proposed method preserves adapted original-view boxes while averaging associated corner pairs |
+| Remaining misses and extra predictions | [Detection-error analysis](detection-errors.md) and [audit evidence](evidence/detection-errors/README.md); all 583 complete fronts detected, incomplete-front detection 40/71 to 53/71, and proposed extras partitioned into 5 duplicates, 36 nearby unmatched and 10 low-overlap unmatched predictions |
+| Exploratory reflected-view output detections | [Reflected-anchor evidence](evidence/reflected-anchor/README.md); same saved inference, reversed output anchor, paired outcomes under all three references; trade-off retained without replacing the report's proposed method |
 | Three annotation references | [CPU reference matrix](annotation-comparison.md), [six-cell summary](evidence/annotation-reference/summary.json), and [actual notebook execution](evidence/annotation-reference/notebook-execution.json) |
 | Local image model | PR154 RGB-only heatmap return; [paired local-model results](local-refinement-results.md) |
 | Local image and initial-corner model | PR153 Gaussian-hint heatmap return; same architecture/initialization/order as PR154 |
@@ -33,8 +35,17 @@ Main report measurements use object confidence strictly above 0.25, endpoint con
 
 The residual/control/two-view mean maximum-corner errors use the same 583 complete pairs. The supplied-model conditional mean uses 580 available matched pairs, so it is not presented as a directly comparable 583-pair mean in the report.
 
+The detection audit keeps all 654 reviewed fronts in detection evaluation. The supplied model misses three complete, 23 one-corner and eight zero-corner fronts; the proposed method misses zero, 13 and five respectively. For nonduplicate extras, the nearby geometric band is greatest reference IoU at least 0.10 and below 0.50; the low-overlap band is below 0.10. Neither band is a physical annotation verdict or an automatic negative training label.
+
+The exploratory reflected-view anchor has 15 misses, 43 extras and ten duplicates under the reviewed reference. It retains 569/583 and 583/583 successes at five and ten pixels, recovering eight incomplete fronts while losing five other incomplete fronts. Supplied-reference successes change from 514/565 to 512/563, and earlier-fixed-reference successes from 525/574 to 524/573. These adverse results prevent presenting the variant as an unconditional replacement.
+
+The same reflected-anchor evidence includes the refreshed automatic-pair diagnostic. For the retained proposed method, 678 accepted pairs comprise 569 supported within five pixels, 14 matched localization failures, 48 matches to incomplete reference pairs and 47 unmatched accepted predictions. The latter two groups lack reference support rather than establishing physical error. Acceptance screening is followed by fresh matching; these counts must not be inferred by subtracting the full detection table.
+
+The report's further-work paragraph preserves the pending status of the [model-training pilot](quality-focal-experiment.md) and [controlled label comparison](training-label-comparison.md). A future unseen-group or out-of-fold proposal claim must exclude each held group from the starting weights' training history as well as from subsequent fine-tuning. This does not invalidate the prepared comparisons' stated intervention from shared supplied weights.
+
 ## Reproduction and presentation
 
+- [Detection-audit notebook](../../notebooks/baomai_detection_audit_r62.ipynb): all four unchanged cells completed from clean published source, with [execution evidence](evidence/detection-errors/notebook-execution.json); both analyses and the exact result package verified without inference or training.
 - [Annotation-reference notebook](../../notebooks/baomai_annotation_reference_r60.ipynb): all four exact cells completed from published source, no new inference or training.
 - [Original-comparison notebook](../../notebooks/baomai_original_comparison_r59.ipynb): all four cells and full 60 image/model passes completed previously.
 - [Residual notebook](../../notebooks/baomai_residual_corner_r59.ipynb): completed return PR155; retained for reproduction.
