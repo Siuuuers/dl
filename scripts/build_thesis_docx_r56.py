@@ -517,6 +517,7 @@ def setup_styles(doc):
         if name == "Bibliography":
             style.paragraph_format.left_indent = Mm(8)
             style.paragraph_format.first_line_indent = Mm(-8)
+            style.paragraph_format.tab_stops.add_tab_stop(Mm(8))
             style.paragraph_format.space_after = Pt(3)
             style.paragraph_format.keep_together = True
         if name == "Code Block":
@@ -965,6 +966,12 @@ def build(args):
                 paragraph.paragraph_format.keep_with_next = strip_inline(block.text).startswith("Table ")
             if block.kind == "code":
                 paragraph.add_run(block.text)
+            elif bibliography and (reference := re.match(r"^(\[\d+\])\s+(.+)$", block.text, re.S)):
+                # IEEE reference numbers occupy their own hanging column. A
+                # tab aligns first-line text with continuation lines for both
+                # single- and double-digit reference numbers.
+                paragraph.add_run(reference.group(1) + "\t")
+                inline(paragraph, reference.group(2), equations)
             else:
                 inline(paragraph, block.text, equations)
         elif block.kind == "table":

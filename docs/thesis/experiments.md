@@ -29,6 +29,8 @@ If a model has a useful tradeoff, repeat the matched comparison with additional 
 
 The [research note](research-next-models.md) records why further suppression sweeps, generic occlusion training, another corner-only refiner, or a new detector family are not the current priority. Prior attempts remain visible so that the same idea is not presented as an untried method.
 
+The [score and assignment addendum](research-score-assignment.md) adds the native pose-target mechanism and three relevant primary papers. Read the existing native/QFL diagnostics first. A further frozen-checkpoint assignment audit is specified only as a conditional next diagnostic; it is not an added notebook or a completed result.
+
 ## Application boundary
 
 The user clarified that the vision outputs are intended for robotic arms to locate the cassettes. Arm control and its integration are outside this project. The vision study reports detection and corner-coordinate quality; the downstream message format and physical acceptance tolerance remain unspecified.

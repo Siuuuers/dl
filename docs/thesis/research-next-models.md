@@ -7,6 +7,12 @@ adding another detector, another suppression rule, or a Wasserstein box loss.
 One small localization-loss comparison is specified below as a conditional next
 experiment, not an implemented or successful method.
 
+The later [score and assignment addendum](research-score-assignment.md) checks
+TOOD, IoU-Net and VarifocalNet against the exact pinned pose implementation. It
+shows why assignment, normalized training targets and predicted scores must be
+examined separately before another loss change. These additions refine the
+interpretation of the pending experiments; they do not expand the GPU queue.
+
 This note supplements the [experiment index](experiments.md),
 [proposal-stage analysis](proposal-stages.md), [detection-error analysis](detection-errors.md)
 and [annotation definition](research-annotation-definition.md). The consumer is

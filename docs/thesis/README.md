@@ -4,6 +4,8 @@ Updated 28 November 2026, Asia/Hong_Kong.
 
 **[Current report](report.md)** explains cassette-front detection and lower-corner localization for undergraduate Electronic Engineering readers. It compares the proposed method with the untouched supplied baomai model, explains project results directly, and cites external academic or professional sources. Acknowledgements are omitted as requested.
 
+The expanded report now explains what each cited method establishes and how the cassette implementation adapts it. It distinguishes suppression, cross-view association and evaluation matching; reference availability and predicted confidence; and image accuracy and physical positioning. The [citation audit](citation-audit-r64.md) records 15 verified IEEE references and the publisher-pagination choices. Table 3 includes the adapted single-view control, making the residual model's 564/583 result comparable with its unrefined input's 566/583, as well as the proposed method's 569/583.
+
 The Word report uses six centered display equations with separate right-aligned numbers and automatic row height. The [validation record](report-validation-fyp-i.json) contains the exact page count, abstract length, linked contents map, equation geometry and all-page visual checks. It is the authoritative source for presentation counts.
 
 ## Next experiments
@@ -20,6 +22,8 @@ Both guides link to their GPU notebooks and completed preparation checks. Compar
 The new **[detection audit and fixed reflected-box experiment](detection-errors.md)** are complete. The retained method detects all 583 fronts with complete corner annotations but only 53 of 71 with incomplete annotations. A reflected-box alternative reduces misses/extras to 15/43 and keeps 569/583 five-pixel successes, while duplicates rise to ten and older-reference corner scores decline. The **[CPU reproduction notebook](../../notebooks/baomai_detection_audit_r62.ipynb)** needs no model or photograph download. It adds an explicit tradeoff, not an automatic replacement.
 
 The **[full-proposal replay](proposal-stages.md)** now explains where those 18 misses lose eligible boxes: 12 at the confidence gate, three during native NMS, and three without a decoded box reaching matching IoU. Matching outcomes agree with the current comparison under all three references. The accompanying box-geometry audit finds that eight of ten near misses have a greatest-overlap retained box more than 1.5 times the reference width. These are geometric diagnoses, not proof of physical box ownership or a particular learning cause. The **[augmentation audit](augmentation-audit.md)** retains 11,880 of 11,997 target presentations, with 117 removed and 368 retained boxes clipped. Most removals are wholly outside the canvas; the bounded visual review gives no concrete reason to change the policy. Both new CPU notebooks completed all four actual cells. The [research note](research-next-models.md) connects these findings to primary literature and records which ideas have already been tried.
+
+The additional [score and assignment research](research-score-assignment.md) examines TOOD, IoU-Net and VarifocalNet against the pinned native implementation. That implementation already uses box and known-corner agreement in assignment and soft score targets. The note specifies a conditional diagnostic to distinguish missing assignment, low supervision targets and predictions below useful targets. No new training run or change to the frozen notebooks is introduced.
 
 ## Current results
 
@@ -41,9 +45,10 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 
 | File | Purpose |
 | --- | --- |
-| [Report](report.md) | Current concise manuscript |
+| [Report](report.md) | Current explanatory manuscript |
 | [Requirements](requirements.md) | Supplied report requirements and their implementation |
 | [Bibliography](bibliography-fyp-i.json) | External references in IEEE first-citation order |
+| [Citation audit](citation-audit-r64.md) | Source claims, cassette adaptations, scope limits and verified publisher metadata |
 | [Word validation](report-validation-fyp-i.json) | Final document, contents, equation and visual checks |
 | [Report source map](report-source-map.md) | Exact technical provenance |
 | [Annotation definition](../annotation-definition.md) | Practical labeling decisions and unresolved-case handling |
@@ -54,6 +59,7 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Augmentation audit](augmentation-audit.md) | Native transforms, target lineage and review panels |
 | [Augmentation notebook](../../notebooks/baomai_augmentation_audit_r63.ipynb) | Four-cell CPU audit of the existing training recipe |
 | [Research and model decisions](research-next-models.md) | Evidence-based priorities, prior attempts and conditional next tests |
+| [Score and assignment research](research-score-assignment.md) | Native pose-aware targets, three additional primary papers and one conditional diagnostic |
 | [Detection errors](detection-errors.md) | Current extra-output groups, partial-front recall and the next model decision |
 | [Detection audit notebook](../../notebooks/baomai_detection_audit_r62.ipynb) | Completed CPU replay; all four unchanged code cells executed |
 | [Detection audit evidence](evidence/detection-errors/README.md) | Exact baseline replay and method/reference-specific review cases |
