@@ -1,16 +1,16 @@
-# Cassette vision: Final Year Project I
+# Cassette vision Final Year Project I
 
 Updated 28 November 2026, Asia/Hong_Kong.
 
-**Current report:** [Cassette Front Detection and Corner Localization](report.md), an undergraduate Electronic Engineering report written for readers unfamiliar with computer vision. It explains the methods and results directly, with the untouched supplied baomai checkpoint as the comparison baseline and external academic or professional references.
+**[Current report](report.md)** explains cassette-front detection and lower-corner localization for undergraduate Electronic Engineering readers. It compares the proposed method with the untouched supplied baomai model, explains project results directly, and cites external academic or professional sources. Acknowledgements are omitted as requested.
 
-The concise Word report has 14 pages, a 207-word abstract, 25 decimal-numbered headings, 12 IEEE references in first-citation order, six centered editable equations, four tables, and one figure. Acknowledgements are omitted as requested. It contains no GitHub links or unexplained internal experiment codes.
+The Word report uses six centered display equations with separate right-aligned numbers and automatic row height. The [validation record](report-validation-fyp-i.json) contains the exact page count, abstract length, linked contents map, equation geometry and all-page visual checks. It is the authoritative source for presentation counts.
 
-## Current findings
+## Current results
 
-The [fresh original-model comparison](original-comparison.md) runs the supplied checkpoint and the proposed method on all 20 photographs in one CPU software environment, at the same object threshold above 0.25. The proposed method uses the adapted detector and equal averaging of associated original/reflected corner predictions.
+The [original-model comparison](original-comparison.md) uses the same 20 photographs, software environment and operating settings for both methods. The proposed method adapts the supplied detector and averages associated original/reflected corner predictions.
 
-| Reviewed annotations: 654 fronts, 583 complete pairs | Supplied model | Proposed method |
+| Reviewed annotations | Supplied model | Proposed method |
 | --- | ---: | ---: |
 | Missed fronts | 34 | 18 |
 | Extra predictions | 61 | 51 |
@@ -18,51 +18,46 @@ The [fresh original-model comparison](original-comparison.md) runs the supplied 
 | Both corners within 5 pixels | 555/583 | 569/583 |
 | Both corners within 10 pixels | 577/583 | 583/583 |
 
-The earlier fixed annotations reverse the five-pixel comparison: 534/584 for the supplied model and 525/584 for the proposed method. The report retains this result in a short appendix and explains the dependence on reviewed annotations and repeatedly inspected development photographs. These measurements do not establish automatic-output reliability on new captures.
+The completed [annotation-reference experiment](annotation-comparison.md) scores those same predictions against three verified label sets. At five pixels the original/proposed comparison is 521/514 out of 584 under the untouched supplied labels, 534/525 out of 584 under the earlier fixed labels, and 555/569 out of 583 under the reviewed labels. No inference, training or labels changed during this comparison. The direction depends on the reference; it is not an isolated measurement of the training-label effect.
 
-Both returned [local-refinement runs](local-refinement-results.md) are complete and audited. At the common object threshold, the RGB model gives 547/583 five-pixel successes and the image-plus-initial-corner model gives 558/583. Neither reaches the proposed method's 569/583. Their boxes remain fixed, so these models cannot recover missed fronts or remove duplicate detections. An ideal-heatmap numerical check shows that the crop and decoder can represent all 583 complete reference pairs within five pixels; learned peak locations remain a concrete source of error.
+All three local-model training returns are complete. [RGB and hint heatmap models](local-refinement-results.md) achieve 547/583 and 558/583 reviewed five-pixel successes. The [residual correction model](residual-results.md) achieves 564/583, below the two-view method's 569/583. Its mean maximum-corner error improves slightly over its unrefined control, while its five-pixel success count declines. The report preserves that distinction.
 
-The next focused experiment is [zero-initialized residual correction](residual-correction-experiment.md): learn an offset from an available initial point, starting with exactly unchanged coordinates. Full training and recognition results for this new method remain pending.
-
-## Read and run
+## Read and reproduce
 
 | File | Purpose |
 | --- | --- |
-| [Report](report.md) | Concise manuscript, explanatory methods, results and limitations |
+| [Report](report.md) | Current concise manuscript |
 | [Requirements](requirements.md) | Supplied report requirements and their implementation |
-| [Bibliography](bibliography-fyp-i.json) | External reference metadata and citation order |
-| [Word validation](report-validation-fyp-i.json) | Final artifact hashes, contents map and all-page visual checks |
-| [Report source map](report-source-map.md) | Exact technical provenance kept separate from the manuscript |
-| [Original comparison](original-comparison.md) | Common-runtime results and comparison procedure |
-| [Original-comparison notebook](../../notebooks/baomai_original_comparison_r59.ipynb) | Reproduce the completed full inference comparison; already run locally |
-| [Original-comparison evidence](evidence/original-baseline/README.md) | Original model identity, fresh predictions, score replay and execution receipt |
-| [Local-refinement results](local-refinement-results.md) | Both returned training runs, paired changes, audits and failure diagnosis |
-| [Refinement evidence](evidence/refinement/README.md) | Reproducible audit and ideal-heatmap results |
-| [Residual-correction experiment](residual-correction-experiment.md) | One new training hypothesis and fixed protocol |
-| [Residual-correction notebook](../../notebooks/baomai_residual_corner_r59.ipynb) | Prepare, train, evaluate and export the next GPU pilot |
+| [Bibliography](bibliography-fyp-i.json) | External references in IEEE first-citation order |
+| [Word validation](report-validation-fyp-i.json) | Final document, contents, equation and visual checks |
+| [Report source map](report-source-map.md) | Exact technical provenance |
+| [Residual results](residual-results.md) | PR155 audit, paired changes, mean-error nuance and CPU replay |
+| [Residual evidence](evidence/residual-return/README.md) | Reproduction and complete audit identities |
+| [Annotation comparison](annotation-comparison.md) | Evaluation-label versus training-label effects |
+| [Annotation-reference notebook](../../notebooks/baomai_annotation_reference_r60.ipynb) | Completed CPU experiment; all four code cells executed |
+| [Annotation-reference evidence](evidence/annotation-reference/README.md) | Untouched upstream-label provenance, six matrix cells and execution receipt |
+| [Original-model comparison](original-comparison.md) | Completed common-runtime model inference |
+| [Original-comparison notebook](../../notebooks/baomai_original_comparison_r59.ipynb) | Optional reproduction of the completed inference comparison |
+| [Residual training protocol](residual-correction-experiment.md) | Exact completed pilot and original notebook |
 
-Earlier work remains available: [reflection](reflection-results.md), [coordinate averaging](corner-average-experiment.md), [contrast and input size](r53-results.md), [local-model protocol](corner-refinement-experiment.md), [research notes](research-local-refinement.md), and [history](history). Their original notebooks and immutable source pins retain their historical meaning. Completed runs do not need to be repeated before starting the residual pilot.
+The new annotation-reference notebook uses saved predictions and the Python standard library. It needs no GPU, model download or image download. It already completed locally; rerunning it is optional. Earlier GPU notebooks retain their immutable source pins for reproduction and need not be repeated to answer the evaluation-reference question.
 
-## Working decisions
+## Interpretation and next work
 
-The target is each identifiable cassette front and its actual lower-corner image coordinates. Outputs are used automatically, and recognition quality is the priority. New captures are unavailable for now. The report therefore measures missed fronts, extra and duplicate outputs, and corner accuracy together, and clearly identifies the present data as development photographs.
+Outputs are used automatically, and recognition quality is the priority. The report measures misses, extras, duplicates and corner accuracy together. The 20 photographs have guided development and annotation review; independent captures are still needed.
 
-The selected deployment model and live defaults are unchanged. A completed thesis comparison is not automatic model promotion. Repository names support reproducibility; the report uses descriptive terms.
+A future annotation-only training comparison must keep photographs, starting weights, training settings and evaluation labels fixed, changing only training labels. The earlier 137-photo paired trial is documented in the annotation guide; it does not isolate every revision in the current 142-photo method. Local-model training also needs errors representative of photographs unseen by the proposal detector.
+
+The selected deployment model and live defaults are unchanged. Technical experiment identifiers remain in this folder; the report uses descriptive names.
 
 ## Rebuild the Word report
 
-The [DOCX builder](../../scripts/build_thesis_docx_r56.py) uses python-docx, Pillow, lxml, PyMuPDF, and the primary runtime's bundled KaTeX module. Runtime paths come from `CODEX_PRIMARY_RUNTIME_NODE` and `CODEX_PRIMARY_RUNTIME_NODE_MODULES`. It creates editable centered equations with right-aligned numbers, real multilevel heading numbering, linked contents, and a verified page map. The main body flows between sections while front matter, Introduction, References and Appendices start on fresh pages.
+The [builder](../../scripts/build_thesis_docx_r56.py) creates editable native Office Math display paragraphs inside symmetric borderless equation rows. The whole formula is centered, its number occupies a separate right-hand cell, and neither line nor row has a fixed height. Ordinary labels render upright and vector symbols retain their intended bold appearance.
 
-```bash
-"$CODEX_PRIMARY_RUNTIME_PYTHON" scripts/build_thesis_docx_r56.py docs/thesis/report.md --output report-first.docx
-```
+    "$CODEX_PRIMARY_RUNTIME_PYTHON" scripts/build_thesis_docx_r56.py docs/thesis/report.md --output report-first.docx
 
-Render the document with the canonical documents renderer, then rebuild using its PDF:
+Render using the canonical documents renderer, then rebuild with its PDF page map:
 
-```bash
-"$CODEX_PRIMARY_RUNTIME_PYTHON" scripts/build_thesis_docx_r56.py docs/thesis/report.md \
-  --output cassette-vision-fyp-i-report.docx \
-  --page-map-from-pdf report-first.pdf --require-page-map
-```
+    "$CODEX_PRIMARY_RUNTIME_PYTHON" scripts/build_thesis_docx_r56.py docs/thesis/report.md --output cassette-vision-fyp-i-report.docx --page-map-from-pdf report-first.pdf --require-page-map
 
-Render and inspect every final page, including the contents page numbers. The Word file is delivered separately; the repository contains its source and validation record.
+Render the final document, run [equation geometry verification](../../scripts/verify_thesis_equations_r60.py), inspect every page and confirm the contents page numbers. The final Word file is delivered separately.

@@ -2,21 +2,19 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-**PR35 remains selected under the established frozen-reference gate.** The new thesis comparison uses the untouched supplied epoch-173 checkpoint as its baseline; this is a different question from promoting a candidate for application use.
+**PR35 remains selected under the established frozen-reference gate.** The report's untouched supplied-model baseline is a separate comparison, and no returned local model is automatically promoted.
 
-**Current entry points:** [concise FYP I report](thesis/README.md), [fresh original-model comparison](thesis/original-comparison.md), [completed local-refinement results](thesis/local-refinement-results.md), and [next residual-correction pilot](thesis/residual-correction-experiment.md).
+**Current entry points:** [FYP I report](thesis/README.md), [PR155 residual results](thesis/residual-results.md), [three-reference annotation comparison](thesis/annotation-comparison.md), and [completed CPU matrix notebook](../notebooks/baomai_annotation_reference_r60.ipynb).
 
-The supplied model and proposed adapted-detector/two-view method have been rerun on all 20 photographs in one FP32 CPU environment, at object confidence strictly above 0.25 and common scoring settings. Reviewed-reference misses change 34→18, extras 61→51, duplicates remain five, and complete pairs within five pixels change 555→569/583. Ten-pixel success changes 577→583/583. The earlier fixed reference is adverse: misses 26→34, extras 41→55, and five-pixel success 534→525/584. This annotation sensitivity prevents automatic promotion under the retained gate.
+PR155 completes the residual-correction pilot: reviewed five-pixel pair success is 564/583 versus 566/583 for its research control and 569/583 for the existing two-view method. Its mean maximum error improves 2.316739→2.266216 pixels versus that control, while the two-view method gives 2.163264 pixels on the same 583 pairs. Boxes/scores are fixed; reviewed misses 18, extras 51, duplicates 5 remain unchanged.
 
-PR153 and PR154 complete both local-refinement training runs. Full returned-data/model checks, exact control reproduction, paired scoring, decoder checks and selected checkpoint replays pass. At the common threshold, RGB gives 547/583 five-pixel pairs and RGB plus initial-corner hints gives 558/583, below the proposed method's 569/583. They preserve detector boxes, so they do not change misses, extras or duplicates. No local refiner is selected for application use.
+The original-versus-proposed comparison depends on annotations. Five-pixel successes are 521→514/584 under the authenticated supplied 664-front labels, 534→525/584 under the earlier fixed 666-front labels, and 555→569/583 under the reviewed 654-front labels. The new CPU notebook changes only scoring references and fully reproduces the prior results. It runs no model and changes no labels.
 
-The next notebook tests zero-initialized residual corrections. Its accuracy result remains pending. The [original-comparison notebook](../notebooks/baomai_original_comparison_r59.ipynb) has already completed all four actual code cells, full inference and saved-score verification locally; it is available for reproduction.
+The manuscript includes the completed residual result and all three reference comparisons. The Word builder now uses genuine centered display math with separate right-aligned numbers and automatic row height. The [validation record](thesis/report-validation-fyp-i.json) owns final presentation counts and all-page checks.
 
-The self-contained report has 14 verified Word pages, a 207-word abstract, 25 numbered headings, 12 external IEEE references, six centered equations, four tables and one figure. The [source map](thesis/report-source-map.md) keeps technical provenance separate from report prose.
+The generic live launcher and weights/base.json select epoch173 at confidence 0.25, while the retained PR35 operating point uses 0.13. Explicit checkpoint and inference settings remain necessary for camera comparisons. These report and analysis changes do not alter them.
 
-The generic live launcher and `weights/base.json` select epoch173 at confidence 0.25, while the retained PR35 operating point uses 0.13. A selected-model document does not itself change live weights. Explicit checkpoint and inference settings remain necessary for a camera comparison.
-
-Earlier research results are retained in the [contrast/input-size analysis](thesis/r53-results.md), [reflection analysis](thesis/reflection-results.md), and [saved-output coordinate averaging](thesis/corner-average-experiment.md). Their original confidence-above-0.13 counts must not be mixed with the new common-threshold original-model comparison.
+Earlier [heatmap refinement](thesis/local-refinement-results.md), [contrast/input-size](thesis/r53-results.md), [reflection](thesis/reflection-results.md), and [saved-output averaging](thesis/corner-average-experiment.md) results remain available. Their original confidence-above-0.13 measurements retain their historical context.
 
 ## Completed inference diagnosis and annotation work
 

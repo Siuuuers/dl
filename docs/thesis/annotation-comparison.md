@@ -69,6 +69,8 @@ The present annotation review and method selection have reused the same 20 devel
 
 Run [the CPU annotation-reference notebook](../../notebooks/baomai_annotation_reference_r60.ipynb) to reproduce this analysis. It verifies the published source and inputs, recomputes all six displayed cells, checks the earlier scores, and exports one evidence ZIP. It downloads no model weights or photographs and starts no training.
 
+All four exact notebook code cells have completed from a fresh checkout of published source `8ee1d751817638d72eb7b385a7f4164478a2b7e8`. The driver SHA-256 is `2939b2789abf2566d7680de60a0a87efae2a41e45c2dc01c9d15d1221cb8bbf1`. Source and input verification, full score reconstruction, saved-result replay and packaging passed. Execution used an in-process IPython shell; the Colab browser-download interface was not exercised. Repeating the notebook is optional reproduction, not a prerequisite for using the completed results.
+
 - [Driver](../../scripts/run_reference_matrix_r60.py)
 - [Notebook builder](../../scripts/build_reference_matrix_r60_notebook.py)
 - [Matrix summary](evidence/annotation-reference/summary.json)

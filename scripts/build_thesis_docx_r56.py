@@ -208,26 +208,55 @@ def math_run(text: str, variant: str = "normal", *, literal: bool = False):
     run = math_element("r")
     props = math_element("rPr")
     style = {"normal": "p", "italic": "i", "bold": "b", "bold-italic": "bi"}.get(variant, "p")
+    # Explicit Latin bold symbols need their mathematical alphabet codepoints
+    # as well as OMML styling: some Word-compatible importers otherwise drop
+    # m:sty=b.  These remain editable characters inside the native equation.
+    if variant == "bold" and text.isascii() and text.isalpha():
+        text = "".join(chr(ord(ch) - ord("A") + 0x1D400) if ch.isupper()
+                       else chr(ord(ch) - ord("a") + 0x1D41A) for ch in text)
+        literal = True
+    # Upright mathematics is still math.  Marking every number/operator as
+    # literal text makes some Word-compatible renderers left-align fraction
+    # arguments.  Reserve normal-text mode for actual words, explicit upright
+    # alphabetic labels, styled Unicode letters and explicit spaces.
+    if literal:
+        props.append(math_element("nor", val="1"))
     if variant in ("double-struck", "script", "fraktur", "sans-serif", "monospace"):
         props.append(math_element("scr", val=variant))
     props.append(math_element("sty", val=style))
-    # Upright mathematics is still math.  Marking every number/operator as
-    # literal text makes some Word-compatible renderers left-align fraction
-    # arguments.  Reserve normal-text mode for actual text and explicit spaces.
-    if literal:
-        props.append(math_element("nor", val="1"))
     run.append(props)
     wprops = OxmlElement("w:rPr")
     fonts = OxmlElement("w:rFonts")
     for key in ("ascii", "hAnsi", "cs"):
         fonts.set(qn("w:" + key), MATH_FONT)
     wprops.append(fonts)
+    for key, enabled in (("b", style in ("b", "bi")), ("i", style in ("i", "bi"))):
+        flag = OxmlElement("w:" + key)
+        flag.set(qn("w:val"), "1" if enabled else "0")
+        wprops.append(flag)
     run.append(wprops)
     value = math_element("t")
     value.set("{http://www.w3.org/XML/1998/namespace}space", "preserve")
     value.text = text
     run.append(value)
     return run
+
+
+def merge_literal_math_runs(nodes: list) -> list:
+    """Keep upright labels such as TP and reflected together in Word math."""
+    result = []
+    for node in nodes:
+        literal = node.tag == f"{{{MATH_NS}}}r" and node.find(f"{{{MATH_NS}}}rPr/{{{MATH_NS}}}nor") is not None
+        previous = result[-1] if result else None
+        if literal and previous is not None and previous.tag == node.tag:
+            same = all(etree.tostring(previous.find(name)) == etree.tostring(node.find(name))
+                       for name in (f"{{{MATH_NS}}}rPr", qn("w:rPr")))
+            if same:
+                old_text, new_text = previous.find(f"{{{MATH_NS}}}t"), node.find(f"{{{MATH_NS}}}t")
+                old_text.text = (old_text.text or "") + (new_text.text or "")
+                continue
+        result.append(node)
+    return result
 
 
 def math_sequence(children, variant=None):
@@ -260,7 +289,7 @@ def math_sequence(children, variant=None):
         else:
             i += 1
         result.extend(converted)
-    return result
+    return merge_literal_math_runs(result)
 
 
 def mathml_to_omml(node, inherited: str | None = None) -> list:
@@ -280,8 +309,9 @@ def mathml_to_omml(node, inherited: str | None = None) -> list:
         text = "".join(node.itertext()).replace("\u2061", "").replace("\u2062", "").replace("\u2063", "")
         if not text:
             return []
-        return [math_run(text, variant or ("italic" if tag == "mi" and len(text) == 1 else "normal"),
-                         literal=tag in ("mtext", "ms"))]
+        resolved_variant = variant or ("italic" if tag == "mi" and len(text) == 1 else "normal")
+        return [math_run(text, resolved_variant,
+                         literal=tag in ("mtext", "ms") or (resolved_variant == "normal" and text.isalpha()))]
     if tag == "mspace":
         match = re.fullmatch(r"(-?[\d.]+)em", node.get("width", ""))
         width = float(match[1]) if match else 1 / 6
@@ -605,28 +635,69 @@ def add_math(paragraph, source: str, equations: dict):
 
 
 def add_numbered_equation(doc, source: str, number: str, equations: dict):
-    """Center editable math in the text area; align its number to the right.
+    """Use genuine centered display math with a separate right-hand number.
 
-    A center tab positions only the equation, independently of the number's
-    width.  Centering the whole paragraph would instead shift the equation to
-    the left.  Derive both stops from the section so margins stay authoritative.
+    Equal empty/number side cells leave the formula centered on the complete
+    text area.  The borderless layout row has no fixed height, so fractions,
+    roots and scripts can expand naturally without clipping.  This is a layout
+    container, not a numbered data table.
     """
     section = doc.sections[-1]
     usable_width = section.page_width - section.left_margin - section.right_margin
-    paragraph = doc.add_paragraph(style="Equation")
+    side_width = Mm(10)
+    table = doc.add_table(rows=1, cols=3)
+    table.autofit = False
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    table_props = table._tbl.tblPr
+    width = table_props.find(qn("w:tblW"))
+    width.set(qn("w:type"), "dxa")
+    width.set(qn("w:w"), str(round(usable_width / 635)))
+    borders = OxmlElement("w:tblBorders")
+    for side in ("top", "bottom", "left", "right", "insideH", "insideV"):
+        edge = OxmlElement("w:" + side)
+        edge.set(qn("w:val"), "nil")
+        borders.append(edge)
+    table_props.append(borders)
+    margins = OxmlElement("w:tblCellMar")
+    for side in ("top", "bottom", "left", "right"):
+        margin = OxmlElement("w:" + side)
+        margin.set(qn("w:w"), "0")
+        margin.set(qn("w:type"), "dxa")
+        margins.append(margin)
+    table_props.append(margins)
+    caption = OxmlElement("w:tblCaption")
+    caption.set(qn("w:val"), f"Equation {number} layout")
+    table_props.append(caption)
+    for column, cell, cell_width in zip(table.columns, table.rows[0].cells,
+                                        (side_width, usable_width - 2 * side_width, side_width)):
+        column.width = cell_width
+        cell.width = cell_width
+        cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+        cell.paragraphs[0].paragraph_format.space_before = Pt(0)
+        cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+        cell.paragraphs[0].paragraph_format.line_spacing = 1
+    table.rows[0]._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
+    paragraph = table.cell(0, 1).paragraphs[0]
+    paragraph.style = "Equation"
     formatting = paragraph.paragraph_format
-    formatting.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    formatting.alignment = WD_ALIGN_PARAGRAPH.CENTER
     formatting.left_indent = formatting.right_indent = formatting.first_line_indent = Pt(0)
     formatting.keep_together = True
-    formatting.space_before = Pt(7)
-    formatting.space_after = Pt(10)
-    tabs = formatting.tab_stops
-    tabs.clear_all()
-    tabs.add_tab_stop(int(usable_width / 2), WD_TAB_ALIGNMENT.CENTER)
-    tabs.add_tab_stop(int(usable_width), WD_TAB_ALIGNMENT.RIGHT)
-    paragraph.add_run("\t")
-    add_math(paragraph, source, equations)
-    paragraph.add_run(f"\t({number})")
+    formatting.line_spacing = 1  # automatic height; never an exact point value
+    formatting.space_before = Pt(8)
+    formatting.space_after = Pt(12)
+    formatting.tab_stops.clear_all()
+    display = math_element("oMathPara")
+    properties = math_element("oMathParaPr")
+    properties.append(math_element("jc", val="center"))
+    display.append(properties)
+    formula = math_element("oMath")
+    formula.extend(etree.fromstring(etree.tostring(item)) for item in equations[source])
+    display.append(formula)
+    paragraph._p.append(display)
+    label = table.cell(0, 2).paragraphs[0]
+    label.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    label.add_run(f"({number})")
     return paragraph
 
 
@@ -732,9 +803,11 @@ def add_table(doc, data: dict, equations: dict):
             paragraph.paragraph_format.space_after = Pt(1)
             paragraph.paragraph_format.space_before = Pt(1)
             paragraph.paragraph_format.line_spacing = 1.05
-            # Preserve the header and avoid a lone final data row on a new page.
+            # Keep compact result tables on one page. Longer tables retain a
+            # repeated header and do not leave a lone final data row.
             paragraph.paragraph_format.keep_with_next = (
-                row_index == 0 or (len(rows) > 2 and row_index == len(rows) - 2)
+                row_index < len(rows) - 1 if len(rows) <= 8
+                else row_index == 0 or row_index == len(rows) - 2
             )
             align = alignment[j]
             numeric = bool(re.fullmatch(r"[\d\s.,+−–/%()→-]+", strip_inline(text)))
@@ -910,7 +983,7 @@ def build(args):
                 "page_numbering": "Physical pages counted from 1; cover footer hidden; subsequent page numbers equal PDF page indices.",
                 "section_layout": "Flowing main body; Abstract, Table of Contents, Introduction, References and Appendices start fresh pages.",
                 "equation_representation": "Editable native Office Math (OMML), translated from bundled KaTeX MathML",
-                "equation_alignment": "Formula centered across the usable section width; equation number at the right margin, using independent center and right tab stops with zero paragraph indents.",
+                "equation_alignment": "Native centered display OMML inside borderless automatic-height rows with equal 10 mm side cells; the whole formula is centered on the text area and its number is separately right-aligned. No equation tabs or fixed row heights.",
                 "headings": [dict(h, **({"page": page_map[h['id']]} if page_map else {})) for h in headings]}
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"docx": str(target), "headings_manifest": str(manifest_path),

@@ -466,7 +466,7 @@
       "url": "https://arxiv.org/abs/1507.06550",
       "ieee_entry": "J. Carreira, P. Agrawal, K. Fragkiadaki, and J. Malik, “Human pose estimation with iterative error feedback,” in Proc. IEEE Conf. Computer Vision and Pattern Recognition (CVPR), 2016, pp. 4733–4742, doi: 10.1109/CVPR.2016.512.",
       "supported_claim": "Image content and a rendered current pose can inform learned coordinate corrections.",
-      "limitation": "The proposed single-step cassette residual pilot is an adaptation; it does not reproduce the full iterative training scheme or establish cassette accuracy.",
+      "limitation": "The single-step cassette correction model is an adaptation; it does not reproduce the full iterative training scheme. Its measured cassette results are reported in this study.",
       "verification": [
         {
           "url": "https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Carreira_Human_Pose_Estimation_CVPR_2016_paper.html",
@@ -487,6 +487,34 @@
         }
       ],
       "reference_number": 12
+    },
+    {
+      "key": "pytorch_smoothl1",
+      "type": "professional_documentation",
+      "authors": [
+        "PyTorch Contributors"
+      ],
+      "title": "SmoothL1Loss",
+      "venue": "PyTorch Documentation",
+      "url": "https://docs.pytorch.org/docs/2.15/generated/torch.nn.SmoothL1Loss.html",
+      "accessed": "2026-11-28",
+      "reference_number": 13,
+      "ieee_entry": "PyTorch Contributors, “SmoothL1Loss,” PyTorch Documentation. Accessed: Nov. 28, 2026. [Online]. Available: https://docs.pytorch.org/docs/2.15/generated/torch.nn.SmoothL1Loss.html",
+      "supported_claim": "SmoothL1 uses a quadratic term below beta and a linear absolute-error term above it.",
+      "limitation": "The definition documents the implemented loss, not evidence of improved cassette recognition.",
+      "verification": [
+        {
+          "url": "https://docs.pytorch.org/docs/2.15/generated/torch.nn.SmoothL1Loss.html",
+          "ref_ids": [
+            "turn274887792view0"
+          ],
+          "supports": [
+            "loss definition",
+            "beta transition",
+            "official documentation"
+          ]
+        }
+      ]
     }
   ]
 }

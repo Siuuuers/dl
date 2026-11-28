@@ -1,45 +1,44 @@
 # Report source map
 
-This technical companion maps the report's descriptive names to reproducible records. The manuscript itself explains its methods and results and cites external academic or professional sources. Updated 28 November 2026, Asia/Hong_Kong.
+This technical companion maps the report's descriptive names to reproducible records. The report itself explains methods and results and cites external academic or professional sources. Updated 28 November 2026, Asia/Hong_Kong.
 
-## Annotation references
+## References and model identities
 
-| Report name | Internal source | Fronts | Complete pairs | Use |
-| --- | --- | ---: | ---: | --- |
-| Reviewed reference | `r50` | 654 | 583 | Main measurement reference on 20 development photographs |
-| Earlier fixed reference | `frozen666` | 666 | 584 | Sensitivity comparison in Appendix 11.1 on the same photographs |
-| Supplied validation labels | Original trainer validation | 664 | See training records | Training monitor; not silently equated with either comparison reference |
+| Report name | Technical source | Fronts | Complete pairs |
+| --- | --- | ---: | ---: |
+| Supplied annotation reference | Untouched data/labels/val, verified against upstream baomai commit 351eb3cf960ccc34829e2bc72e1fa4645acc6295 | 664 | 584 |
+| Earlier fixed annotation reference | frozen666 | 666 | 584 |
+| Reviewed annotation reference | r50 | 654 | 583 |
 
-The earlier `historical663` and `r38` references remain in technical evidence but are not additional test sets or separate report comparisons. Reviewed/expanded training uses 142 photographs, 3999 fronts and 7259 known corners; supplied training uses 137 photographs, 3772 fronts and 6839 known corners.
+All three label sets describe the same 20 photographs. The [upstream provenance receipt](evidence/annotation-reference/upstream-provenance.json) verifies the byte-identical supplied manifest and every original validation-label hash. The supplied validation labels also monitored detector training; they are not the earlier fixed 666-front set.
 
-## Models and measurements
+- Supplied checkpoint SHA-256: e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e.
+- Adapted detector SHA-256: 222bf3c91a651183047a10eb1a50e16ae8fe999f15372afe005bfca2d0b157f9.
+- Residual correction checkpoint SHA-256: 19c7e95aca0019c3b1eb60de4c36c6ecd30d35fdcaaa103606cdd7d553f7006a.
 
-| Report description | Exact evidence |
+## Measurements
+
+| Report description | Evidence |
 | --- | --- |
-| Supplied model | Untouched epoch-173 checkpoint, SHA-256 `e0aab1b377491700318e0b14cd4c558ec3c1684087a13b7dde2298ebdbf2847e` |
-| Adapted detector | PR137 checkpoint, SHA-256 `222bf3c91a651183047a10eb1a50e16ae8fe999f15372afe005bfca2d0b157f9` |
-| Proposed method | Adapted detector plus original/reflected equal-coordinate averaging, with original boxes and scores preserved |
-| Main original-model comparison | [Fresh common-runtime comparison](original-comparison.md), [fresh summary](evidence/original-baseline/fresh/summary.json) and [execution receipt](evidence/original-baseline/fresh/notebook-execution.json) |
-| Local image model | PR154 completed RGB-only arm; two hint input channels are zero |
-| Local image and initial-corner model | PR153 completed Gaussian-hint arm; same architecture, data, initializer and sample orders |
-| Local-model measurements | [Returned-run analysis](local-refinement-results.md), [paired audit](evidence/refinement/paired-analysis.json), [full evidence inventory](evidence/refinement/README.md) |
-| Ideal-heatmap numerical check | [Synthetic reference-centered heatmaps](evidence/refinement/ideal-heatmap-diagnostic.json); not a measured recognition result |
-| Proposed residual correction | [Next pilot](residual-correction-experiment.md); full training and accuracy remain pending |
+| Original versus proposed recognition | [Fresh common-runtime comparison](original-comparison.md); proposed method preserves adapted original-view boxes while averaging associated corner pairs |
+| Three annotation references | [CPU reference matrix](annotation-comparison.md), [six-cell summary](evidence/annotation-reference/summary.json), and [actual notebook execution](evidence/annotation-reference/notebook-execution.json) |
+| Local image model | PR154 RGB-only heatmap return; [paired local-model results](local-refinement-results.md) |
+| Local image and initial-corner model | PR153 Gaussian-hint heatmap return; same architecture/initialization/order as PR154 |
+| Local coordinate-correction model | PR155, completed L4 training; [results](residual-results.md) and [independent audit](evidence/residual-return/audit.json) |
+| Selected residual model replay | [CPU receipt](evidence/residual-return/selected-cpu-forward.json); all 71 raw proposals from two images, unchanged scored outcomes |
+| Ideal-heatmap simulation | [Synthetic-map diagnostic](evidence/refinement/ideal-heatmap-diagnostic.json); reference positions are supplied, so this is not recognition accuracy |
+| Historical annotation-only training | Earlier PR35 two-arm 137-photo trial, explained separately in [annotation comparison](annotation-comparison.md); its historical scores are not pasted into the current matrix |
 
-The main comparison filters both model views at object confidence strictly above 0.25 before common postclip suppression and association. Corner confidence is at least 0.50. It averages 648 of 687 retained adapted original-view outputs. The earlier saved-output averaging study used confidence above 0.13 and averaged 666 of 723; these protocols must not be mixed. The fresh comparison reruns both complete checkpoints and all three image/model views in one FP32 CPU environment, and reproduces the historical per-object outcomes.
+Main report measurements use object confidence strictly above 0.25, endpoint confidence at least 0.50, matching IoU at least 0.50 and common postclip suppression. Equal averaging affects 648 of 687 adapted original-view records. The older research runs also retain their original confidence-above-0.13 scores in technical evidence; those counts are not mixed into the main table.
 
-The thesis's local-model table is rescored at the same object threshold above 0.25. The technical audit also preserves original returned scores above 0.13 and the adapted-detector control for diagnosis; that control is not the untouched supplied model. PR35 remains the selected deployment candidate under the established selection gate, separately from the report's original-baseline comparison.
+The residual/control/two-view mean maximum-corner errors use the same 583 complete pairs. The supplied-model conditional mean uses 580 available matched pairs, so it is not presented as a directly comparable 583-pair mean in the report.
 
-## Current notebooks and presentation
+## Reproduction and presentation
 
-| File | Status |
-| --- | --- |
-| [Original comparison](../../notebooks/baomai_original_comparison_r59.ipynb) | All four actual code cells and full 60 image/model passes completed locally; browser download interface not exercised |
-| [Residual correction](../../notebooks/baomai_residual_corner_r59.ipynb) | Next training pilot; full training and recognition results pending |
-| [Image-only local model](../../notebooks/baomai_corner_refinement_rgb_r58.ipynb) | Completed return PR154, audited |
-| [Image-plus-hints local model](../../notebooks/baomai_corner_refinement_hints_r58.ipynb) | Completed return PR153, audited |
-| [Report](report.md) | 207-word abstract, 25 headings, 12 references, six equations, four tables, one figure; 14 Word pages |
-| [Bibliography](bibliography-fyp-i.json) | Current external citation order and verification metadata |
-| [Word validation](report-validation-fyp-i.json) | Artifact hashes, stable contents map, structural checks and all-page visual review |
+- [Annotation-reference notebook](../../notebooks/baomai_annotation_reference_r60.ipynb): all four exact cells completed from published source, no new inference or training.
+- [Original-comparison notebook](../../notebooks/baomai_original_comparison_r59.ipynb): all four cells and full 60 image/model passes completed previously.
+- [Residual notebook](../../notebooks/baomai_residual_corner_r59.ipynb): completed return PR155; retained for reproduction.
+- [Report](report.md), [bibliography](bibliography-fyp-i.json), and [final validation](report-validation-fyp-i.json): manuscript, external sources, final presentation counts and artifact identities.
+- [Word builder](../../scripts/build_thesis_docx_r56.py) and [equation validator](../../scripts/verify_thesis_equations_r60.py): genuine centered display OMML, automatic-height equation rows, and measured whole-formula positions.
 
-Only Figure 1, the photographed cassette front and labelled corners, is used from [the retained figure set](figures-r57/captions.md). Earlier charts and reports remain historical assets. The Word builder's filename, `scripts/build_thesis_docx_r56.py`, is an implementation identifier, not report terminology.
+Only Figure 1 is used from the retained figure set. Older charts and dated plans remain historical assets. The selected deployment model and live defaults are separate from the thesis comparisons.

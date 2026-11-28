@@ -1,10 +1,12 @@
 # One-step residual corner correction
 
+**Completed:** PR155 returns the full L4 training run. The [audited results](residual-results.md) give 564/583 reviewed five-pixel successes, below the current two-view method 569/583. This page preserves the fixed protocol and original notebook for reproduction.
+
 ## Purpose
 
 The two returned local heatmap models reduced five-pixel corner-pair success relative to their fixed research detector. On the reviewed reference, the detector achieved 566 successful pairs out of 583; the image-only and image-plus-hint models achieved 547 and 558. Their boxes and detection scores were unchanged. The [paired audit](local-refinement-results.md) explains the measurements and their limits.
 
-The next experiment asks one question: **can a network improve available detector points by learning their correction while starting from exactly the detector's output?** It predicts an offset instead of finding a new heatmap maximum. A benefit remains unmeasured until the notebook completes.
+The experiment asked one question: **can a network improve available detector points by learning their correction while starting from exactly the detector's output?** It predicts an offset instead of finding a new heatmap maximum. The measured result and its mixed mean-error/success-count effect are recorded in the linked results guide.
 
 This control is the project's fixed research detector, not the untouched original supplied baomai model. Use [the direct original-model comparison](../../notebooks/baomai_original_comparison_r59.ipynb) for the report's main comparison. The residual notebook also exports scores at the same strict box-confidence threshold greater than 0.25, but those scores alone do not run the original model.
 

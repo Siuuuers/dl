@@ -2,7 +2,7 @@
 
 **28 November 2026 · Hong Kong**
 
-**Current status:** both local-model GPU runs are complete and independently audited; see [returned results](local-refinement-results.md). Neither exceeds the two-view method's reviewed five-pixel result. The [original supplied-model comparison](original-comparison.md) is also complete in one common runtime. The next focused training hypothesis is [residual correction](residual-correction-experiment.md). The sections below preserve the literature and rationale used before the heatmap runs; their prospective wording is historical, not a request to repeat completed training.
+**Current status:** both heatmap models and the residual-correction model have completed training and independent audit; see [heatmap results](local-refinement-results.md) and [residual results](residual-results.md). None exceeds the current two-view method on the reviewed five-pixel criterion. The [three-reference annotation experiment](annotation-comparison.md) is complete. The sections below retain the original literature and design rationale; prospective wording is historical, not a request to repeat completed training.
 
 ## 1. Recommendation
 

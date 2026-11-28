@@ -16,7 +16,15 @@ This analysis keeps the original and proposed model predictions fixed and scores
 | [summary.json](summary.json) | Complete six-cell matrix, input identities and per-reference paired changes |
 | [upstream-provenance.json](upstream-provenance.json) | Direct immutable-upstream manifest equality and all original-label hashes |
 | [prepublication-check.json](prepublication-check.json) | Completed source-level calculation and notebook compilation; not a published-source execution claim |
+| [notebook-execution.json](notebook-execution.json) | All four actual code cells passed from a fresh fetch of the published implementation |
+| [verification.json](verification.json) | Complete saved-result replay passed |
+| [preflight.json](preflight.json) | Immutable source and exact input identities |
+| [executed-notebook.ipynb](executed-notebook.ipynb) | Exact delivered cell sources with captured outputs |
+| [baomai-annotation-reference-r60-results.zip](baomai-annotation-reference-r60-results.zip) | Full labels, predictions, score tables, associations and paired outcomes |
+| [manifest.json](manifest.json) | Evidence-file sizes and SHA-256 hashes; cell logs use `.txt` files |
 
 The original model gives 521/584 five-pixel successes under the supplied annotations and the proposed method 514/584. The earlier fixed result is 534 versus 525/584, and the reviewed result is 555 versus 569/583. Different annotations change measured agreement, not the stored predictions. The references are not independent test sets.
 
-The four-cell notebook will retain an immutable published source pin. Its completed execution receipt and full result archive are added after that exact source has been fetched and all cells run. No GPU or third-party scientific package is required for the calculation.
+The four-cell notebook is pinned to `8ee1d751817638d72eb7b385a7f4164478a2b7e8`. All four unchanged code cells completed in an in-process IPython shell, including a fresh source fetch, all six matrix cells, exact reproduction of the existing reference results, archive creation and full saved-result replay. The source checkout remained clean. This does not claim that the Colab browser-download interface was exercised.
+
+The notebook SHA-256 is `de1142323805e6f855277c4e36496031c7cdffaba844c96126e5277416205d69`; the driver SHA-256 is `2939b2789abf2566d7680de60a0a87efae2a41e45c2dc01c9d15d1221cb8bbf1`. The complete result archive SHA-256 is `ce8df4bcf223b6bee49fa67e829a443acb572e4a6aad75fa0f92657a16cc2601`. No GPU or third-party scientific package is required for the calculation.

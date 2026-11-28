@@ -1,18 +1,13 @@
 # Final Year Project I workspace
 
-Start with the **[thesis folder](thesis/README.md)** and **[current report](thesis/report.md)**. The concise undergraduate Electronic Engineering report explains cassette-front detection and lower-corner localization directly, using the untouched supplied baomai model as its comparison baseline. It cites external academic and professional sources, with no GitHub links or unexplained project codes.
+Start with the **[thesis folder](thesis/README.md)** and **[current report](thesis/report.md)**. The report explains the task for undergraduate Electronic Engineering readers, compares with the original supplied baomai model, and cites external academic or professional sources. Acknowledgements are omitted.
 
-The Word report has 14 pages, a 207-word abstract, 25 numbered headings, 12 IEEE references, six centered editable equations, four tables and one figure. Acknowledgements are omitted as requested.
+The [PR155 residual correction result](thesis/residual-results.md) is complete and audited: 564/583 reviewed complete pairs within five pixels and 582/583 within ten. It remains below the proposed two-view method's 569/583 and 583/583. Its slight mean-error improvement over the unrefined control is retained alongside the five-pixel regression.
 
-The [fresh comparison](thesis/original-comparison.md) runs both models under the same software and operating settings. On the reviewed annotations, the proposed method reduces misses 34→18 and extras 61→51; duplicates remain five. Complete pairs within five pixels increase 555→569/583, and within ten pixels 577→583/583. The earlier fixed annotations favour the supplied model (534 versus 525 five-pixel successes), which the report explains and retains in an appendix.
+The [annotation-reference experiment](thesis/annotation-comparison.md) adds the untouched supplied 664-front labels, which differ from the earlier fixed 666-front labels. With the same saved predictions, five-pixel success changes from 521 to 514/584 under supplied labels, 534 to 525/584 under earlier fixed labels, and 555 to 569/583 under reviewed labels. This measures evaluation-reference sensitivity, not the isolated effect of training-label changes.
 
-Both [local-refinement training returns](thesis/local-refinement-results.md) are complete and independently audited. The image-only and image-plus-hints models achieve 547 and 558 reviewed five-pixel successes. Neither exceeds the proposed method's 569. A numerical ideal-heatmap check and saved-model replay point to learned peak placement as a useful next focus.
+The **[new CPU notebook](../notebooks/baomai_annotation_reference_r60.ipynb)** reproduces all six method/reference combinations. All four actual code cells have already completed from published source. No model inference, training or annotation editing is required.
 
-| Notebook | Purpose |
-| --- | --- |
-| [Original-model comparison](../notebooks/baomai_original_comparison_r59.ipynb) | Optional reproduction of the completed fresh inference comparison; all four cells already ran locally |
-| [Residual corner correction](../notebooks/baomai_residual_corner_r59.ipynb) | Next GPU training pilot; learns offsets from available initial points with a zero-initialized output head |
+The Word equations now use centered native display math with separate right-aligned numbers and automatic height. Exact presentation counts and checks are in the [validation record](thesis/report-validation-fyp-i.json).
 
-Outputs are used automatically, and recognition quality is the priority. The report measures misses, extras, duplicates and corner accuracy together. The current results use repeatedly inspected development photographs; independent captures remain needed. The selected deployment model and live defaults are unchanged.
-
-Exact technical provenance is in the [source map](thesis/report-source-map.md). Earlier protocols and results remain linked from the thesis folder; dated plans in [history](thesis/history) retain their historical meaning.
+Outputs are used automatically, so missed fronts, extra predictions, duplicates and coordinate accuracy remain separate measurements. Current evidence comes from repeatedly examined development photographs. The selected deployment model and live defaults remain unchanged. The [source map](thesis/report-source-map.md) keeps technical provenance separate from the report.

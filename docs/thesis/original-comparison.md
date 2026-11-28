@@ -2,6 +2,8 @@
 
 The report's main comparison uses two clearly defined methods: the original supplied cassette detector and the trained detector with equal corner averaging. The original checkpoint is the supplied epoch-173 model, not a later research control. Both use the same photographs, annotations, confidence thresholds, box matching and additional suppression.
 
+**Further annotation comparison completed:** the [three-reference CPU matrix](annotation-comparison.md) now adds the authenticated untouched supplied 664-front labels. The earlier fixed 666 set below is a later reference, not the original supplied labels. No new inference was needed.
+
 ## Fresh common-runtime measurement
 
 The original model and both trained-model views have now been run again on all 20 photographs in one CPU environment. Both models used Python 3.12.14, Torch 2.9.0+cpu, TorchVision 0.24.0+cpu and Ultralytics 8.4.182 with FP32 arithmetic. This is fresh inference with a complete saved-prediction score replay, not a training run. All headline counts match the earlier archived comparison.
