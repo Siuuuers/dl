@@ -64,6 +64,22 @@ class DetectionRankingChecks(unittest.TestCase):
         self.assertEqual(result["maximum_recall"], 0.5)
         self.assertAlmostEqual(result["ap50"], 51 / 101)
 
+    def test_clipped_zero_height_box_is_an_unmatched_false_positive(self):
+        zero = prediction((782.99072265625, 0.0, 880.15234375, 0.0), 0.25628936290740967)
+        low = prediction((520.2713623046875, 0.0, 617.4639892578125, 0.0), 0.0010046660900115967)
+        result = score_detection_ranking(
+            {"new_000057": [target()]},
+            {"new_000057": [zero, prediction(confidence=0.2), low]})
+        self.assertEqual([row["tp"] for row in result["curve"]], [0, 1, 0])
+        self.assertEqual([row["prediction_index"] for row in result["curve"]], [0, 1, 2])
+        self.assertEqual((result["tp"], result["fp"], result["prediction_count"]), (1, 2, 3))
+        self.assertFalse(any(row["duplicate_fp"] for row in result["curve"]))
+        self.assertEqual(result["curve"][0]["matched_gold_index"], None)
+        self.assertAlmostEqual(result["ap50"], 0.5)
+        self.assertEqual(
+            result["protocol"]["clipped_nonpositive_boxes"],
+            "Counted as other unmatched false positives; not passed to the matcher and cannot match.")
+
     def test_floor_cap_and_complete_image_set_are_enforced(self):
         cases = [
             ({"scene": [target()]}, {"scene": [prediction(confidence=0.001)]}),
