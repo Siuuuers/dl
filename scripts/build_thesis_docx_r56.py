@@ -964,6 +964,12 @@ def build(args):
             paragraph = doc.add_paragraph(style=style)
             if previous_kind == "heading":
                 paragraph.paragraph_format.keep_together = True
+                if (block.kind == "paragraph" and block_index + 1 < len(blocks)
+                        and blocks[block_index + 1].kind == "caption"
+                        and strip_inline(blocks[block_index + 1].text).startswith("Table ")):
+                    # Keep a section's short table introduction with its caption
+                    # instead of stranding the heading on the preceding page.
+                    paragraph.paragraph_format.keep_with_next = True
             if (block.kind == "paragraph" and block_index + 1 < len(blocks)
                     and blocks[block_index + 1].kind == "equation"):
                 # Keep the final line introducing a display with its equation,

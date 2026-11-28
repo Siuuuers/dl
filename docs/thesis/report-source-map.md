@@ -149,4 +149,16 @@ The November 2026 prose pass explains each method for a reader unfamiliar with c
 
 The Word builder allocates additional width to unbreakable words, writes an explicit full table width and increases vertical cell padding. It retains the full headers “Photographs” and “Duplicates” and the 10.5-point table type. Rows remain automatic in height. Final validation checks the native Word structure, final rendered pages, contents pagination and all evidence bindings. Native Microsoft Word is unavailable, so visual verification uses the document renderer alongside the Word XML.
 
-The final bibliography uses 10-point type to keep all 19 complete entries together on page 25. Main prose remains 12 points, tables remain 10.5 points, and the final document has 28 individually inspected pages. The [validation record](report-validation-fyp-i.json) binds the exact source, Word artifact, rendered PDF, page images and scientific evidence.
+The bibliography uses 10-point type. Main prose remains 12 points and tables remain 10.5 points. The [validation record](report-validation-fyp-i.json) gives the current page count and binds the exact source, Word artifact, rendered PDF, page images and scientific evidence.
+
+## Concise methods and results revision
+
+The subsequent prose revision shortens Sections 4, 5 and 7 while preserving all eleven table bodies, six displayed equations and nineteen reference entries. Background explains the measurement decisions, methodology explains the inputs and changed components, and results retain the findings and their design implications. Thresholds, named annotation versions, complete-pair denominators, the unrefined detector control, the QFL scale change and adverse outcomes remain explicit.
+
+The builder keeps a section heading and its immediate table-introduction paragraph with the following caption. This prevents short section openings from being left at the foot of the previous page after the prose reduction. All final page images are inspected again.
+
+“Historical references” becomes “earlier annotation versions”, meaning the supplied 664-front and earlier fixed 666-front labels on the same twenty photographs. The 654-front reviewed reference remains the principal benchmark, with the 658-front extension evaluated separately. File-level identity statements and repeated replay assurances are removed from the manuscript narrative and remain in these evidence records.
+
+The heatmap decoder converts a spatial score grid into a point. A nonfinite map, no valid crop cells, a nonpositive peak or a point outside the crop produces an unavailable coordinate, with no fallback to the old point. The concise appendix states that behaviour directly. The heatmap comparisons in [paired analysis](evidence/refinement/paired-analysis.json) contain 1464 decoded points per model without a decoder rejection. The correction model has a distinct rule and updates only usable initial points.
+
+The historical proposal stages in Section 7.1 are condensed out of the main narrative to avoid mixing their 12 confidence, three suppression and three geometry losses with the current reviewed-label trace. The full [historical analysis](proposal-stages.md) remains available. Section 7.7 retains the current model's twelve confidence, five geometry and one suppression losses. Numerical experiments, labels, predictions and operating code are unchanged by this prose revision. The prior [R69 report validation](history/report-validation-r69.json) preserves the earlier document receipt.

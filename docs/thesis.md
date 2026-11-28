@@ -2,6 +2,8 @@
 
 Start with the **[thesis folder](thesis/README.md)** and **[current report](thesis/report.md)**. The report explains the task for undergraduate Electronic Engineering readers, compares with the original supplied baomai model, and cites external academic or professional sources. Acknowledgements are omitted.
 
+The latest prose revision shortens Sections 4, 5 and 7 around their essential definitions, method choices and findings. It explains earlier annotation versions directly, moves the invalid-decoding rule to the appendix and keeps detailed record checks in the supporting evidence. The six equations and eleven numerical tables retain their content.
+
 The latest **[completed R69 experiment](thesis/research-detection-decisions-r69.md)** records the reviewed-label model's full proposals and tests a fixed corner-agreement suppression rule. Under the extended reference, the rule reduces extras from 50 to 44 and duplicates from 13 to 11 while keeping every match and corner outcome. The current proposal trace attributes 12 misses to confidence, five to box geometry and one to native suppression. The [four-cell notebook](../notebooks/baomai_current_proposals_r69.ipynb) has completed on CPU, with [independent evidence](thesis/evidence/current-proposals-r69/README.md).
 
 The compact **[annotation definition](annotation-definition.md)** explains visible-front ownership, box extent, actual lower corners and unresolved cases. Its [research basis](thesis/research-annotation-definition.md) separates established rules from the proposed repeatability measurement.
