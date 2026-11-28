@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "experiment": "R71 frozen crop context and scale comparison",
+  "created_utc": "2026-11-28T14:47:45.807318+00:00",
+  "design_status": "Fixed before any R71 crop inference. Publish source and protocol before executing the four notebook cells.",
+  "base_commit": "4332e036e418a79db4890a994074b612a36b9186",
+  "implementation_contract": {
+    "checkpoint_sha256": "c749fcff2126467cbc770f75a71fd79da51ebd08308ba909a448c3dd8cb5b372",
+    "photographs": 20,
+    "image_size_wh": [
+      1280,
+      720
+    ],
+    "baseline": "unchanged original/reflected two-view corner averaging at input 1280",
+    "crops_xyxy": {
+      "left": [
+        0,
+        0,
+        768,
+        720
+      ],
+      "right": [
+        512,
+        0,
+        1280,
+        720
+      ]
+    },
+    "crop_input_sizes": [
+      768,
+      1280
+    ],
+    "crop_reflection": false,
+    "confidence_strictly_above": 0.25,
+    "native_nms_iou": 0.7,
+    "native_max_det_per_call": 300,
+    "corner_confidence_inclusive": 0.5,
+    "matching_iou_inclusive": 0.5,
+    "artificial_crop_edge_rejection_margin_px": 1.0,
+    "point_validity_before_mapping": "finite unclipped crop coordinates in [0,width) x [0,height)",
+    "invalid_crop_point": [
+      null,
+      null,
+      "original confidence"
+    ],
+    "merge": "union baseline then left crop then right crop, whole-record postclip NMS at IoU strictly above 0.70",
+    "merge_score_ties": "earlier pool index, baseline first then left/right native output order",
+    "pooled_output_cap": null,
+    "references": [
+      "r50",
+      "r67",
+      "supplied664",
+      "frozen666"
+    ],
+    "primary_reference": "r67",
+    "control": "R69 fresh CPU, exact per-image score identities and known-corner threshold outcomes",
+    "training": false,
+    "optimizer_updates": 0,
+    "labels_changed": false,
+    "threshold_search": false,
+    "automatic_promotion": false
+  },
+  "question": "Does adding two full-height crop predictions recover currently missed partial fronts without worsening extra detections, duplicate outputs or known-corner accuracy?",
+  "checkpoint": {
+    "description": "PR158 reviewed-label final checkpoint",
+    "bytes": 21704814,
+    "sha256": "c749fcff2126467cbc770f75a71fd79da51ebd08308ba909a448c3dd8cb5b372"
+  },
+  "arms": [
+    {
+      "id": "baseline",
+      "description": "Fresh original and reflected full-frame inference at 1280, established two-view corner averaging"
+    },
+    {
+      "id": "crop_context_768",
+      "description": "Same baseline plus two full-height crops at native pixel scale. Context and additional candidate exposure both change.",
+      "nominal_scale": 1.0,
+      "expected_input_nchw": [
+        1,
+        3,
+        736,
+        768
+      ]
+    },
+    {
+      "id": "crop_context_scale_1280",
+      "description": "Same baseline plus the same crops enlarged by 5/3. This adds resizing relative to the 768 arm.",
+      "nominal_scale": 1.6666666666666667,
+      "expected_input_nchw": [
+        1,
+        3,
+        1216,
+        1280
+      ]
+    }
+  ],
+  "crop_design": {
+    "selection_basis": "Two 768-pixel-wide full-height windows overlap by 256 pixels. Multiples of 32 retain the nominal stride-32 grid phase in the unscaled arm. Cropping still changes feature boundaries, available context and the candidate pool. Full height avoids artificial horizontal cuts.",
+    "artificial_edges": "Reject left-crop boxes with clipped xmax>=767 and right-crop boxes with clipped xmin<=1, measured after inverse letterbox in original crop pixels. Real photograph edges are allowed.",
+    "keypoints": "Record retained native points before clipping. Nonfinite coordinates or coordinates outside the half-open crop extent become unavailable with original confidence preserved. Valid coordinates are translated to the photograph. No crop point is inferred from an annotation.",
+    "inverse_transform": "Record actual input tensor, resized image size, per-axis gain and integer padding. Verify reconstructed clipped points against the pinned native implementation before using unclipped values.",
+    "information_scope": "Crops and interpolation reuse the existing photograph and supply no new camera observation.",
+    "containment_audit_after_window_selection": {
+      "reference": "r67",
+      "fully_contained_with_more_than_one_pixel_artificial_edge_clearance": {
+        "one_crop": 410,
+        "both_crops": 248,
+        "neither_crop": 0
+      },
+      "largest_reference_width_px": 230,
+      "interpretation": "Geometric feasibility only. This does not establish predicted-box retention or recovery."
+    },
+    "scale_interpretation": "The 768 versus 1280 comparison includes interpolation, input tensor and candidate counts, and padding. A change does not by itself prove that small-object scale caused a baseline miss.",
+    "point_policy_difference": "Crop points use pre-clipping validity at every edge, including genuine photograph edges. The baseline retains its existing native clipping. Preserve invalidation lineage and inspect any affected corner outcomes."
+  },
+  "merge_design": {
+    "whole_records": "Scores, boxes and both points stay together. Do not average a crop point into the existing two-view pair.",
+    "pool_order": [
+      "baseline",
+      "left crop native order",
+      "right crop native order"
+    ],
+    "suppression": "Score-ranked class-aware established postclip NMS at IoU strictly above 0.70. Keep earlier pool index for a score tie. No additional global output cap.",
+    "baseline_only_check": "Require unchanged baseline records and matching outcomes when the same merge procedure receives only the baseline.",
+    "risk_to_measure": "A crop prediction may suppress a previously useful baseline prediction or replace accurate averaged corners with less accurate ones."
+  },
+  "baseline_gate": {
+    "control_directory": "docs/thesis/evidence/current-proposals-r69",
+    "control_files": {
+      "native-predictions.json.gz": {
+        "bytes": 272772,
+        "sha256": "66ffc3da1ade6d2522e098ce22bc3f0ae182c242dfa22259218283b33fae016c"
+      },
+      "predictions.json.gz": {
+        "bytes": 694543,
+        "sha256": "b069e017cb382f73edbf12a164b410766bf8e4051ded93217be221887523133c"
+      },
+      "per-image.json.gz": {
+        "bytes": 925601,
+        "sha256": "fbd184c0992bf4744ae7b2d7e2d7060840382c39d5adfdef8ab9abbfe6784b3f"
+      },
+      "summary.json": {
+        "bytes": 77635,
+        "sha256": "973627f75a593f43ff3d35ca6f5924b8bcb125c0e7241b7446b4d8cf0bc379e7"
+      }
+    },
+    "required": "All four references must reproduce R69 fresh-CPU per-image matching identities, extra/duplicate identities and known-corner five/ten-pixel outcomes. Record numerical coordinate/score differences as well.",
+    "on_failure": "Stop before crop inference and investigate the baseline discrepancy. Do not change treatment thresholds."
+  },
+  "evaluation": {
+    "primary_reference": "r67, 658 fronts with 75 incomplete and 583 complete pairs",
+    "other_references": "r50, supplied664 and frozen666 are sensitivity checks on annotation versions of the same photographs.",
+    "fresh_matching": true,
+    "required_outputs": [
+      "misses",
+      "extras",
+      "duplicate subset",
+      "recovered and newly lost target identities",
+      "complete pairs within 5 and 10 pixels",
+      "available-corner errors for incomplete fronts",
+      "empty-photograph outputs",
+      "source lineage for every pooled and retained record",
+      "boundary-rejection and point-invalidation records",
+      "per-image outcomes",
+      "inference call counts and tensor sizes"
+    ],
+    "selection_rule": "Consider the added inference only if useful recovery is accompanied by preserved complete-pair outcomes, acceptable extra/duplicate outputs and no new empty-scene outputs. Report all tradeoffs. There is no automatic deployment or choice of thresholds from these results.",
+    "data_scope": "The 20 photographs are existing development evidence. This comparison is not independent-capture generalization evidence."
+  },
+  "evidence_scope": "Archive all retained native crop outputs and their mapping/filter/merge trace. This study does not inventory every low-confidence raw decoded candidate.",
+  "runtime_scope": "Pinned CPU FP32 inference with 2 threads, 1 interop thread and deterministic algorithms. Timing is descriptive local-runtime evidence, not a deployment benchmark.",
+  "training_size_audit": {
+    "path": "training-size-audit.json",
+    "bytes": 58869,
+    "sha256": "3098106db9cff6d5552cfeaaad479bcf372ce54617cbdcd0951d0cd8b0bc7fc9",
+    "interpretation": "Nominal size counts describe this label set. They do not prove appearance coverage or the effective augmented training distribution."
+  },
+  "research_basis": [
+    {
+      "title": "Slicing Aided Hyper Inference and Fine-tuning for Small Object Detection",
+      "url": "https://arxiv.org/abs/2202.06934",
+      "application": "Overlapping inference crops and mapping predictions back. Use a native pose wrapper to preserve keypoints."
+    },
+    {
+      "title": "AutoFocus: Efficient Multi-Scale Inference",
+      "url": "https://arxiv.org/abs/1812.01600",
+      "application": "Avoid detections caused by artificial crop cuts. The fixed windows do not reproduce learned FocusPixels or adaptive chip generation."
+    },
+    {
+      "title": "SNIPER: Efficient Multi-Scale Training",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2018/file/166cee72e93a992007a89b39eb29628b-Paper.pdf",
+      "application": "Motivates accounting for difficult background if crop training is later warranted. No SNIPER training is performed here."
+    }
+  ]
+}
