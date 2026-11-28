@@ -1,5 +1,5 @@
 {
-  "schema": "cassette-fyp-i-bibliography-v5",
+  "schema": "cassette-fyp-i-bibliography-v6",
   "revised_on": "2026-11-28",
   "numbering": "IEEE first appearance in the explanatory report",
   "scope": "External academic and professional sources. The supplied model is the main benchmark; the adapted single-view control isolates added corner processing.",
@@ -693,6 +693,47 @@
       "reference_number": 16
     },
     {
+      "key": "rmpe2017",
+      "type": "conference_paper",
+      "authors": [
+        "Hao-Shu Fang",
+        "Shuqin Xie",
+        "Yu-Wing Tai",
+        "Cewu Lu"
+      ],
+      "title": "RMPE: Regional Multi-Person Pose Estimation",
+      "year": 2017,
+      "venue": "IEEE International Conference on Computer Vision (ICCV)",
+      "pages": "2334–2343",
+      "url": "https://openaccess.thecvf.com/content_ICCV_2017/papers/Fang_RMPE_Regional_Multi-Person_ICCV_2017_paper.pdf",
+      "supported_claim": "The parametric pose NMS component compares estimated human poses using spatial and confidence-sensitive joint agreement to remove repeated poses.",
+      "limitation": "The cassette experiment uses a fixed box-overlap condition and agreement of two accepted corners. It does not reproduce RMPE's full similarity function, parameter fitting, pose merging, or complete architecture.",
+      "metadata_notes": [
+        "The entry cites the verified CVF accepted copy, pages 2334–2343, and its URL. Publisher pagination and a publisher DOI are not combined with this version."
+      ],
+      "verification": [
+        {
+          "url": "https://openaccess.thecvf.com/content_ICCV_2017/papers/Fang_RMPE_Regional_Multi-Person_ICCV_2017_paper.pdf",
+          "accessed": "2026-11-28",
+          "ref_ids": [
+            "turn622125833search24",
+            "turn241902552view4",
+            "turn929816121search1",
+            "turn190357086search7"
+          ],
+          "supports": [
+            "authors",
+            "title",
+            "year",
+            "CVF accepted-copy pagination",
+            "Section 3.2 method scope"
+          ]
+        }
+      ],
+      "ieee_entry": "H.-S. Fang, S. Xie, Y.-W. Tai, and C. Lu, “RMPE: Regional multi-person pose estimation,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), 2017, pp. 2334–2343. [Online]. Available: https://openaccess.thecvf.com/content_ICCV_2017/papers/Fang_RMPE_Regional_Multi-Person_ICCV_2017_paper.pdf",
+      "reference_number": 17
+    },
+    {
       "key": "soft_nms2017",
       "type": "conference_paper",
       "authors": [
@@ -708,8 +749,8 @@
       "doi": "10.1109/ICCV.2017.593",
       "url": "https://openaccess.thecvf.com/content_iccv_2017/html/Bodla_Soft-NMS_--_Improving_ICCV_2017_paper.html",
       "supported_claim": "Soft-NMS decays competing proposal scores as a function of overlap instead of immediately deleting all proposals above a hard overlap threshold.",
-      "limitation": "This is a conditional future cassette comparison, not the completed additional hard-suppression experiment. Post-NMS survivors cannot reproduce a pre-NMS replacement or recover discarded proposals.",
-      "reference_number": 17,
+      "limitation": "The completed cassette Soft-NMS check uses confidence above 0.13 and overlap 0.70. It differs from additional hard suppression and corner-conditioned suppression. Its result applies to that recorded candidate pool and operating point.",
+      "reference_number": 18,
       "ieee_entry": "N. Bodla, B. Singh, R. Chellappa, and L. S. Davis, “Soft-NMS — Improving object detection with one line of code,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), 2017, pp. 5562–5570, doi: 10.1109/ICCV.2017.593.",
       "verification": [
         {
@@ -750,7 +791,7 @@
       "url": "https://link.springer.com/chapter/10.1007/978-3-030-01264-9_48",
       "supported_claim": "IoU-Net predicts box localization quality and uses it to guide NMS; the paper separately proposes optimization-based box refinement.",
       "limitation": "A cassette quality ranker is unimplemented and conditional. The current native targets already include box/pose quality. A box-quality estimate does not establish corner accuracy, and the complete paper gains are not solely a suppression result.",
-      "reference_number": 18,
+      "reference_number": 19,
       "ieee_entry": "B. Jiang, R. Luo, J. Mao, T. Xiao, and Y. Jiang, “Acquisition of localization confidence for accurate object detection,” in Computer Vision – ECCV 2018, Lecture Notes in Computer Science, vol. 11218. Springer, 2018, pp. 816–832, doi: 10.1007/978-3-030-01264-9_48.",
       "verification": [
         {

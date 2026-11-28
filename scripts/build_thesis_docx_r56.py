@@ -500,7 +500,7 @@ def setup_styles(doc):
         style.paragraph_format.page_break_before = False
         style.paragraph_format.line_spacing = 1.08
     for name, size in (("Thesis TOC 1", 11), ("Thesis TOC 2", 11), ("Thesis TOC 3", 11),
-                       ("Thesis TOC 4", 11), ("Thesis TOC 5", 11), ("Bibliography", 10.5),
+                       ("Thesis TOC 4", 11), ("Thesis TOC 5", 11), ("Bibliography", 10),
                        ("Equation", 12), ("Code Block", 10.5)):
         if name not in doc.styles:
             doc.styles.add_style(name, WD_STYLE_TYPE.PARAGRAPH)

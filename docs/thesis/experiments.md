@@ -2,10 +2,11 @@
 
 28 November 2026, Asia/Hong_Kong.
 
-Both paired GPU experiments have returned. Their saved outputs and training receipts have been independently verified, so there is no need to rerun them merely to obtain the reported comparisons. The score-target, duplicate-audit and partial-front inclusion analyses have also completed. The latest r68 CPU experiment diagnoses the three restored misses and measures one fixed union of unused reflected outputs, without new inference or training.
+Both paired GPU experiments have returned. Their saved outputs and training receipts have been independently verified, so there is no need to rerun them merely to obtain the reported comparisons. The score-target, duplicate-audit and partial-front inclusion analyses have also completed. The latest R69 notebook completes fresh current-checkpoint inference and a separate fixed corner-conditioned suppression comparison. Both analyses are verified, and all four notebook cells have run unchanged.
 
 | Role | Notebook | Question | Runtime and status |
 | --- | --- | --- | --- |
+| Completed current-model trace and corner comparison | [Current proposals and corner suppression](../../notebooks/baomai_current_proposals_r69.ipynb) | Where does the reviewed-label model lose eligible boxes, and can corner agreement remove extras while keeping matches? | All four actual CPU cells completed from source 41d0e6937c695377373cc55071ffb780345870ee. [Trace evidence](evidence/current-proposals-r69/README.md) and [corner results](evidence/corner-suppression-r69/README.md). |
 | Completed diagnosis and fixed output comparison | [Partial-front detection](../../notebooks/baomai_partial_detection_r68.ipynb) | Where do the three restored misses lose eligible boxes, and what does adding unused reflected outputs recover or add? | CPU analysis and independent verification complete. [Research and interpretation](research-partial-detection-r68.md), [full results](evidence/partial-detection-r68/results.md). |
 | Completed reference replay | [Partial-front inclusion](../../notebooks/baomai_partial_inclusion_r67.ipynb) | How do four restored fronts change the scores of six unchanged methods and the interpretation of existing fixed filters? | All four actual CPU cells completed locally from pinned source and preseeded archives; [guide and evidence](partial-inclusion-r67.md). |
 | Completed diagnostic | [Duplicate and unmatched audit](../../notebooks/baomai_duplicate_audit_r66.ipynb) | What do reflected support and extra suppression remove, and does complete-pair scoring hide partial-front losses? | CPU; saved predictions only. [Results and execution evidence](duplicate-audit-r66.md). |
@@ -14,6 +15,20 @@ Both paired GPU experiments have returned. Their saved outputs and training rece
 | Completed comparison | [Controlled training-label comparison](../../notebooks/baomai_training_label_comparison_r61.ipynb) | What changes when only the training annotations change on the same 137 photographs? | PR158 returned; [independent all-reference replay](training-label-results.md) complete. |
 | Completed diagnostic | [Proposal-stage and box-geometry audit](../../notebooks/baomai_proposal_audit_r63.ipynb) | Where do the historical candidate's misses lose eligible proposals? | CPU; all four unchanged cells completed from published source; [evidence](evidence/proposal-stages/README.md). |
 | Completed diagnostic | [Training-augmentation audit](../../notebooks/baomai_augmentation_audit_r63.ipynb) | How do the existing transforms affect target retention and corner availability? | CPU; all four unchanged cells completed from published source; [evidence](evidence/augmentation-audit/README.md). |
+
+## Latest completed experiment
+
+The [R69 notebook](../../notebooks/baomai_current_proposals_r69.ipynb) uses one frozen reviewed-label checkpoint and the same 20 photographs. It captures all decoded FP32 proposals in both views, verifies their native reconstruction, and records the first stage that removes each front's eligible support. A separate companion compares one fixed corner condition on five saved methods and four references.
+
+Under r67, the current original view has 12 confidence-gate misses, five without an eligible decoded box and one native-suppression loss. Its candidates above the fixed 0.25 cutoff support at most 641 matches, compared with 640 after suppression. This gives a one-match upper bound for changing only suppression within that pool.
+
+On the archived reviewed-label outputs, requiring two accepted corresponding corners within five pixels before additional suppression at IoU 0.60 changes extras from 50 to 44 and duplicates from 13 to 11. Misses stay at 18, complete-pair scores stay at 572/583 and 583/583, and every target's matched output and known-corner outcome is preserved under all four references. The supplied-label checkpoint loses one partial front under the same rule.
+
+The fresh CPU outputs preserve all target detection and corner-threshold outcomes relative to the archived L4 outputs. One separate extra changes category, giving 14 baseline duplicates and 12 after the corner rule. Both runtimes retain the same 50-to-44 extra reduction. The full numerical differences and selected-candidate witnesses remain in the evidence.
+
+All four unchanged cells completed in local IPython from a clean published checkout with preseeded, hash-verified inputs. The complete result ZIP preserves raw tensors, diagnostic ledgers and the companion records. For optional reproduction, choose a CPU runtime and run all four cells. No GPU training is required. Live network acquisition and the hosted Colab download interface have separate execution status in the [receipt](evidence/current-proposals-r69/notebook-execution.json).
+
+The [research note](research-detection-decisions-r69.md) explains how RMPE motivates this small rule, why score ranking alone does not define an absolute confidence threshold, and how Repulsion Loss and learned suppression address different mechanisms. The next training question is the representation and scoring of partial fronts under the existing annotation definition.
 
 ## Completed partial-front diagnosis and union
 
