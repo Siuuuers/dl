@@ -221,7 +221,7 @@ def analyze(root, input_directory):
                     baseline_cases.append({"reference": ref, "method": method, "image": image,
                         "id": prediction_id(method, image, i), "kind": "extra", "prediction": p,
                         "duplicate": i in duplicates, "maximum_reference_iou": maximum,
-                        "nearest_reference_id": ref + "/" + image + f"/R{nearest + 1:03d}" if nearest is not None else None})
+                        "nearest_reference_id": ref + "/" + image + f"/R{nearest + 1:03d}" if nearest is not None and maximum > 0 else None})
                 for j in score["unmatched_gold_indices"]:
                     baseline_cases.append({"reference": ref, "method": method, "image": image,
                         "id": ref + "/" + image + f"/R{j + 1:03d}", "kind": "miss", "target": gold[image][j],
