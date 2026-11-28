@@ -4,6 +4,8 @@ Start with the **[thesis folder](thesis/README.md)** and **[current report](thes
 
 The compact **[annotation definition](annotation-definition.md)** explains visible-front ownership, box extent, actual lower corners and unresolved cases. Its [research basis](thesis/research-annotation-definition.md) separates established rules from the proposed repeatability measurement.
 
+The **[completed detection audit](thesis/detection-errors.md)** finds that all 18 retained-method misses belong to the 71 fronts with incomplete corner annotations. Its 51 extras include five duplicates, 36 other outputs with moderate reference overlap and ten with little overlap. These geometric groups guide image review without declaring physical errors. A fixed reflected-box alternative gives 15 misses and 43 extras with the same 569/583 five-pixel successes, but ten duplicates and slightly worse older-reference corner scores. The [small CPU notebook](../notebooks/baomai_detection_audit_r62.ipynb) reproduces both analyses without new inference or training.
+
 The next GPU runs are prepared in this order:
 
 1. **[Model improvement with Quality Focal Loss](thesis/quality-focal-experiment.md)** — change the classification objective while keeping data and the rest of training fixed.

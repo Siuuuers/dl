@@ -15,6 +15,8 @@ The [annotation definition](../annotation-definition.md) gives the practical rul
 
 Both guides link to their GPU notebooks and completed preparation checks. Comparative training results are pending; the current measured results below remain the report's evidence.
 
+The new **[detection audit and fixed reflected-box experiment](detection-errors.md)** are complete. The retained method detects all 583 fronts with complete corner annotations but only 53 of 71 with incomplete annotations. A reflected-box alternative reduces misses/extras to 15/43 and keeps 569/583 five-pixel successes, while duplicates rise to ten and older-reference corner scores decline. The **[CPU reproduction notebook](../../notebooks/baomai_detection_audit_r62.ipynb)** needs no model or photograph download. It adds an explicit tradeoff, not an automatic replacement.
+
 ## Current results
 
 The [original-model comparison](original-comparison.md) uses the same 20 photographs, software environment and operating settings for both methods. The proposed method adapts the supplied detector and averages associated original/reflected corner predictions.
@@ -42,6 +44,10 @@ All three local-model training returns are complete. [RGB and hint heatmap model
 | [Report source map](report-source-map.md) | Exact technical provenance |
 | [Annotation definition](../annotation-definition.md) | Practical labeling decisions and unresolved-case handling |
 | [Annotation research](research-annotation-definition.md) | Primary sources and a proposed repeatability measurement |
+| [Detection errors](detection-errors.md) | Current extra-output groups, partial-front recall and the next model decision |
+| [Detection audit notebook](../../notebooks/baomai_detection_audit_r62.ipynb) | CPU replay of the current errors and one fixed reflected-box alternative |
+| [Detection audit evidence](evidence/detection-errors/README.md) | Exact baseline replay and method/reference-specific review cases |
+| [Reflected-box evidence](evidence/reflected-anchor/README.md) | All references, independent averaging replay and adverse paired cases |
 | [Residual results](residual-results.md) | PR155 audit, paired changes, mean-error nuance and CPU replay |
 | [Residual evidence](evidence/residual-return/README.md) | Reproduction and complete audit identities |
 | [Annotation comparison](annotation-comparison.md) | Evaluation-label versus training-label effects |
